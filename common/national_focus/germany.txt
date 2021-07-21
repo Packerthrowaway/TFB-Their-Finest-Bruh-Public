@@ -2593,6 +2593,7 @@ focus_tree = {
 		prerequisite = { focus = GER_mol_rib_pact }
 		will_lead_to_war_with = POL
 		available = {
+			date > 1939.1.1
 			is_puppet = no
 			has_army_manpower = { size > 949999 } #100 div			
 			#Make custom trigger tooltip here
@@ -3434,7 +3435,7 @@ focus_tree = {
 		prerequisite = { focus = GER_danzig_or_war }
 		
 		available = {
-			date < 1940.5.10
+			
 			OR = {
 				NOT = { HOL = { is_in_faction_with = GER } }
 				NOT = { BEL = { is_in_faction_with = GER } }
@@ -4979,15 +4980,24 @@ focus_tree = {
 		}
 		
 		completion_reward = {
+			add_state_core = 39
+			if = {
+				limit = {
+					NOT = { owns_state = 39 }
+				}
+				transfer_state = 39
+			}
 			set_autonomy = {
 				target = ITA
 				autonomy_state = autonomy_satellite
 			}
+				
 			ITA = { 
 			set_cosmetic_tag = ITA_ISR 
 			remove_ideas = victor_emmanuel
 			add_ideas = ITA_german_occupation
 			}
+			
 		}
 	}
 
