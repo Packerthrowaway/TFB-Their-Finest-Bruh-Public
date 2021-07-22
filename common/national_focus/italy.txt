@@ -736,6 +736,55 @@
 			}
 		}
 	}
+	focus = {
+		id = ITA_focus_mil_expansion
+
+		icon = GFX_goal_generic_construct_mil_factory
+		
+		prerequisite = { focus = ITA_steel_production }		
+		
+		relative_position_id = ITA_steel_production
+		x = 0
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_timed_idea = { idea = ITA_Military_Construction days = 365 }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+
+	}
 
 	focus = {
 		id = ITA_develop_the_empire
@@ -1606,6 +1655,40 @@
 
 		completion_reward = {
 			add_timed_idea = { idea = ITA_bank_loans_idea days = 730 }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 
