@@ -1283,6 +1283,34 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_confiscate_romanian_oil
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = GER_align_romania }
+		x = -1
+		y = 3
+		relative_position_id = GER_grosraumwirtschaft
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = { has_war_with = ROM }
+		}
+
+		bypass = {
+			ROM = {
+				exists = no
+			}
+		}
+		
+		completion_reward = {
+			give_resource_rights = { receiver = GER state = 46 }
+		}
+	}
+	
+
+	focus = {
 		id = GER_luft
 		icon = GFX_luftwaffe_laurel
 		x = 14
