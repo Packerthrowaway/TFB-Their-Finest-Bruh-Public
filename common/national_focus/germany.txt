@@ -3526,6 +3526,31 @@ focus_tree = {
 			add_timed_idea = { idea = GER_blitzkrieg days = 60 }
 		}
 	}
+
+	focus = {
+		id = GER_secure_spain
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = GER_around_maginot }
+		available = {
+			FRA = { has_capitulated = yes }
+			SPR = { has_government = communism }
+
+		}
+		completion_reward = {
+			
+			ENG = {add_to_faction = SPR }
+			declare_war_on = {
+					target = SPR
+					type = annex_everything
+				}
+		}
+		cost = 1
+		relative_position_id = GER_around_maginot
+		x = 0 
+		y = 1
+	}
+
+
 	
 	
 	focus = {
