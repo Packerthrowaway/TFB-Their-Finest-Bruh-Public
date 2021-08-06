@@ -1260,6 +1260,10 @@ focus_tree = {
 		relative_position_id = SOV_war_mobilisation
 		cost = 5
 
+		available = {
+			surrender_progress > 0.3
+		}
+
 		completion_reward = {
 			add_ideas = SOV_tankograd_idea
 		}
@@ -1751,10 +1755,9 @@ focus_tree = {
 		cost = 1
 		
 		available = {
-			OR = {
-				surrender_progress > 0.15
-				casualties > 500000
-			}
+			
+			surrender_progress > 0.20
+			casualties > 500000
 		}
 
 		completion_reward = {
@@ -1858,13 +1861,9 @@ focus_tree = {
 				every_state = {
 					limit = {	
 						AND = {
-							any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN } }
+							any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR } }
 							is_controlled_by = SOV
 						}
-					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = SOV
 					}
 					create_unit = {
 						division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
@@ -1935,7 +1934,7 @@ focus_tree = {
 				every_state = {
 					limit = {	
 						AND = {
-							any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN } }
+							any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR } }
 							is_controlled_by = SOV
 						}
 					}
@@ -1956,33 +1955,6 @@ focus_tree = {
 			custom_effect_tooltip = SOV_frontline_mob_tt2
 		}
 	}
-
-
-	
-	focus = {
-		id = SOV_ussr_last_stand
-		icon = GFX_focus_ger_great_red_menace
-		prerequisite = { focus = SOV_fareast_reserves }
-		relative_position_id = SOV_fareast_reserves
-		x = 0
-		y = 1
-		cost = 1
-
-		available = {
-			surrender_progress > 0.75
-		}
-
-		ai_will_do = {
-			factor = 5
-		}
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			add_timed_idea = { idea = SOV_last_stand days = 60 }
-		}
-	}
-
 
 	focus = {
 		id = SOV_reorganise_command

@@ -505,8 +505,8 @@
 	}
 	
 	focus = {
-		id = ITA_hungarian_cooperation
-		icon = GFX_goal_generic_construct_civ_factory
+		id = ITA_bulgarian_cooperation
+		icon = GFX_focus_generic_befriend_bulgaria
 		prerequisite = { focus = ITA_hungarian_trade }
 		x = 0
 		y = 1
@@ -537,7 +537,7 @@
 					instant_build = yes
 				}
 			}
-			HUN = {
+			BUL = {
 				random_owned_controlled_state = {
 					limit = {
 						free_building_slots = {
@@ -545,7 +545,7 @@
 							size > 2
 							include_locked = yes
 						}
-						is_core_of = HUN
+						is_core_of = BUL
 					}
 					add_extra_state_shared_building_slots = 3
 					add_building_construction = {
@@ -2495,30 +2495,7 @@
 						}
 					}
 				}
-				458 = {
-					CONTROLLER = {
-						OR = {
-							tag = GER
-							AND = {
-								original_tag = FRA
-								has_government = fascism
-							}
-							is_subject_of = GER
-						}
-					}
-				}
-				665 = {
-					CONTROLLER = {
-						OR = {
-							tag = GER
-							AND = {
-								original_tag = FRA
-								has_government = fascism
-							}
-							is_subject_of = GER
-						}
-					}
-				}
+				
 			}
 		}
 		x = -3
@@ -2527,7 +2504,8 @@
 		cost = 5
 		
 		completion_reward = {
-			GER = { country_event = germany.104 }			
+			GER = { country_event = germany.104 }
+			unlock_decision_tooltip = ITA_demand_tunisia			
 		}
 	}
 	
@@ -4161,6 +4139,12 @@
 				bonus = 0.50
 				uses = 2
 				category = battlefield_support_tree
+			}
+			add_tech_bonus = {
+				name = sf_bonus
+				bonus = 1
+				uses = 1
+				technology = mot_radio2
 			}
 			add_ideas = german_cooperation_focus 
 		}
