@@ -33,5 +33,108 @@ operations = {
 			transfer_state = 146
 		}
 	}
+
+	FIN_surrender_soviets = {
+		icon = generic_nationalism
+
+		allowed ={
+			original_tag = FIN
+
+		}
+
+		fire_only_once = yes
+		
+		visible = {
+			has_completed_focus = FIN_winter_war
+			NOT = { has_country_flag = winter_war_finished  }
+		}
+
+		days_remove = 14
+
+		available = {
+			has_war_with = SOV
+			has_civil_war = no
+			is_in_faction = no
+			OR = {
+				casualties > 65000
+				surrender_progress > 0.20
+				NOT = {
+					146 = {
+						CONTROLLER = {
+							OR = {
+								tag = FIN
+								is_subject_of = FIN
+							}
+						}
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			SOV = {
+				white_peace = FIN
+				transfer_state = 146
+				transfer_state = 147
+			}
+			FIN = { set_country_flag = winter_war_finished }
+			diplomatic_relation = {
+				country = SOV
+				relation = non_aggression_pact
+			}
+		}
+	}
+	
+	FIN_victory_soviets = {
+		icon = generic_nationalism
+		allowed = {
+			original_tag = FIN
+		}
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = FIN_winter_war
+			NOT = { has_country_flag = winter_war_finished  }
+			
+		}
+		fire_only_once = yes
+
+		available = {
+			
+		has_war_with = SOV
+		NOT = { has_war_with = GER }
+		OR = {
+			SOV = {
+				casualties > 250000
+			}
+			surrender_progress > 0.10
+			195 = {
+				CONTROLLER = {
+					OR = {
+						tag = FIN
+						is_subject_of = FIN
+					}
+				}
+			}
+		}
+		}
+		days_remove = 7
+		remove_effect = {
+			SOV = {
+				white_peace = FIN
+				
+			}
+			FIN = { set_country_flag = winter_war_finished }
+			diplomatic_relation = {
+				country = SOV
+				relation = non_aggression_pact
+			}
+			
+			set_global_flag =  FIN_winter_victory
+
+		}
+
+
+
+	}
 }
 
