@@ -505,7 +505,7 @@
 	focus = {
 		id = FRA_the_free_french_navy
 		icon = GFX_goal_generic_build_navy
-		x = -2
+		x = -3
 		y = 2
 		offset = {
 			x = 0
@@ -550,7 +550,7 @@
 	focus = {
 		id = FRA_colonial_recruitment
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 0
+		x = -1
 		y = 2
 		offset = {
 			x = 0
@@ -588,7 +588,7 @@
 	focus = {
 		id = FRA_the_regiment_normandie
 		icon = GFX_focus_fra_regiment_normandie
-		x = 2
+		x = 1
 		y = 2
 		offset = {
 			x = 0
@@ -628,6 +628,34 @@
 				}
 			}
 		}
+	}
+
+	focus = {
+		id = FRA_allied_equipment
+		icon = GFX_focus_generic_combined_arms
+		prerequisite = { 
+			focus = FRA_continue_the_fight
+		}
+		relative_position_id = FRA_continue_the_fight
+		x = 3
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		cost = 5
+		completion_reward = {
+			add_relation_modifier = {
+				target = USA
+				modifier = FRA_license_allied_equipment
+			}
+			add_relation_modifier = {
+				target = CAN
+				modifier = FRA_license_allied_equipment
+			}
+			
+		}
+
 	}
 
 	focus = {

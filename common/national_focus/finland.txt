@@ -976,7 +976,7 @@ focus_tree = {
 		icon = GFX_goal_demand_sudetenland
 		prerequisite = { focus = FIN_winter_war }
 		mutually_exclusive = { focus = FIN_victorious }
-		x = 2
+		x = 3
 		y = 1
 		relative_position_id = FIN_winter_war
 
@@ -1022,7 +1022,7 @@ focus_tree = {
 		icon = GFX_goal_demand_sudetenland
 		prerequisite = { focus = FIN_winter_war }
 		mutually_exclusive = { focus = FIN_revanchism }
-		x = 4
+		x = 5
 		y = 1
 		relative_position_id = FIN_winter_war
 
@@ -1191,7 +1191,7 @@ focus_tree = {
 		id = FIN_field_kitchens
 		icon = GFX_focus_secret_rearmament
 		prerequisite = { focus = FIN_winter_war }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = FIN_winter_war
 
@@ -1204,6 +1204,58 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = FIN_kitchens
 		}
+	}
+
+	focus = {
+		id = FIN_foreign_support
+		icon = GFX_focus_generic_little_entente
+		cost = 1
+		x = -1
+		y = 1
+		relative_position_id = FIN_winter_war
+		prerequisite = {
+			focus = FIN_winter_war
+		}
+		available = {
+			has_war_with = SOV
+		}
+
+		completion_reward = {
+			add_manpower = 12000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1200
+			}
+			add_equipment_to_stockpile = {
+				type = squad_equipment
+				amount = 500
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 50
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment
+				amount = 50
+			}
+			add_equipment_to_stockpile = {
+					type = horse_equipment
+					amount = 300
+			}
+			add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 100
+			}
+			add_equipment_to_stockpile = {
+					type = radio_equipment
+					amount = 50
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment
+				amount = 40
+			}
+
+		 }
 	}
 
 }		
