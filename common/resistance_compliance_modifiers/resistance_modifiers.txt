@@ -61,6 +61,17 @@ resistance_25 = {
 		resistance_garrison_penetration_chance = 0.5
 	}
 }
+resistance_35 = {
+	type = state_resistance_modifier
+	icon = "GFX_occupation_resistance_modifier_strip:1"
+	small_icon = "GFX_occupation_resistance_modifier_small_strip:1"
+	threshold = 35
+	margin = 2
+	state_modifier = {
+		army_speed_factor_for_controller = -0.05
+		local_supplies_for_controller = -0.1
+	}
+}
 resistance_50 = {
 	type = state_resistance_modifier
 	icon = "GFX_occupation_resistance_modifier_strip:2"
@@ -69,6 +80,8 @@ resistance_50 = {
 	margin = 2
 	state_modifier = {
 		resistance_damage_to_garrison = 1
+		army_speed_factor_for_controller = -0.1
+		local_supplies_for_controller = -0.2
 	}
 }
 
@@ -79,8 +92,8 @@ resistance_75 = {
 	threshold = 75
 	margin = 2
 	state_modifier = {
-		army_speed_factor_for_controller = -0.5
-		local_supplies_for_controller = -0.5
+		army_speed_factor_for_controller = -0.3
+		local_supplies_for_controller = -0.3
 		attrition_for_controller = 0.3
 		disable_strategic_redeployment_for_controller = 1
 	}

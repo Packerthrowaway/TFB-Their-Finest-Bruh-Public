@@ -3075,11 +3075,37 @@ focus_tree = {
 			activate_mission = GER_barbarossa_mission_lenin
 		}
 	}
+
+	focus = {
+		id = GER_roa
+		icon = GFX_roa
+		prerequisite = { focus = GER_barb }
+		
+		available = {
+			has_war_with = SOV
+		}
+
+		
+		x = 0
+		y = 1
+		relative_position_id = GER_barb
+		cost = 2
+		completion_reward = {
+
+			every_controlled_state = {
+				limit = {
+					is_core_of = SOV
+				}
+				add_compliance = 20
+			}
+			
+		}
+	}
 	
 	focus = {
 		id = GER_ostwall
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = GER_barb }
+		prerequisite = { focus = GER_roa }
 		available = {
 			any_country = {
 				OR = {
@@ -3103,7 +3129,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 1
-		relative_position_id = GER_barb
+		relative_position_id = GER_roa
 		cost = 10
 		ai_will_do = {
 			factor = 1
