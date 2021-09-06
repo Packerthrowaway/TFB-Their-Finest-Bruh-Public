@@ -1718,6 +1718,48 @@ operations = {
 		}
 
 	}
+
+	SOV_winter_war_victory = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			has_active_mission = SOV_winter_war
+		}
+
+		available = {
+			has_war_with = FIN
+			OR = {
+				FIN = {
+					casualties > 100000
+				}
+
+				FIN = {
+					surrender_progress > 0.3
+				}
+			}
+		}
+
+		days_remove = 7
+		fire_only_once = yes
+
+		remove_effect = {
+			SOV = {
+				white_peace = FIN
+				transfer_state = 146
+				transfer_state = 147
+			}
+			FIN = { set_country_flag = winter_war_finished }
+			diplomatic_relation = {
+				country = SOV
+				relation = non_aggression_pact
+			}
+			
+		}
+	}
 	
 	SOV_border_war_SOV = {
 
