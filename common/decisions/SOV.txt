@@ -1719,6 +1719,35 @@ operations = {
 
 	}
 
+	SOV_winter_war_lessons = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			has_active_mission = SOV_winter_war
+		}
+
+		available = {
+			has_war_with = FIN
+			casualties > 175000
+		}
+
+		fire_only_once = yes
+
+		days_remove = 7
+
+		remove_effect = {
+			add_timed_idea = {
+				idea = SOV_winter_war_adapt
+				days = 90
+			}
+		}
+
+	}
+
 	SOV_winter_war_victory = {
 		icon = generic_operation
 
