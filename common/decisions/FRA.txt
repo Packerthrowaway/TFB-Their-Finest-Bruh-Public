@@ -1531,7 +1531,7 @@ FRA_intervention_in_overseas_territories = {
 			set_country_flag = FRA_west_africa_promised_independence
 			custom_effect_tooltip = FRA_promise_independence_tt
 			random_list = {
-				50 = {
+				100 = {
 					FRA_transfer_western_africa_effect = yes
 					every_owned_state = {
 						limit = {
@@ -1550,7 +1550,7 @@ FRA_intervention_in_overseas_territories = {
 						add_compliance = 5
 					}
 				}
-				50 = {}
+				0 = {}
 			}
 		}
 		fire_only_once = yes
@@ -1582,47 +1582,7 @@ FRA_intervention_in_overseas_territories = {
 			factor = 0
 		}
 	}
-	FRA_invasion_in_west_africa = {
-		available = { 
-			NOT = {
-				FRA_controls_west_africa = yes
-			}
-			any_state = {
-				OR = {
-						state = 557
-						state = 272
-						state = 556
-						state = 780
-						state = 779
-						state = 778
-						state = 781
-						state = 776
-				}
-				any_neighbor_state = {
-					CONTROLLER = {
-						OR = {
-							tag = ROOT
-							is_in_faction_with = ROOT
-						}
-					}
-				}
-			} 
-		} 
-
-		visible = { has_completed_focus = FRA_intervention_in_west_africa }
-		
-		days_remove = 90
-
-		remove_effect = { 
-			FRA_transfer_western_africa_effect = yes
-		}
-		fire_only_once = yes
-		cost = 25
-		ai_will_do = {
-			factor = 0
-		}
-	}
-
+	
 	FRA_promise_independence_to_madagascar = {
 		available = {  
 			NOT = {
@@ -1972,7 +1932,7 @@ operations = {
 		fire_only_once = yes
 		
 		available = {
-			FRA_controls_west_africa = yes
+			FRA_controls_central_africa = yes
 		}
 
 		visible = {
