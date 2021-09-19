@@ -1697,17 +1697,22 @@ operations = {
 			has_war = no 
 		}
 
-		days_mission_timeout = 180
+		days_mission_timeout = 210
 		fire_only_once = yes
 		is_good = no
 
 		timeout_effect = {
-			add_war_support = -0.2
-			add_stability = -0.2
+			add_war_support = -0.3
+			add_stability = -0.3
+			add_timed_idea = {
+				idea = SOV_assure_competency
+				days = 150
+			}
 			diplomatic_relation = {
 				country = FIN
 				relation = non_aggression_pact
 			}
+			FIN = { set_country_flag = winter_war_finished }
 			white_peace = FIN
 			set_global_flag =  FIN_winter_victory
 		}
@@ -1715,6 +1720,12 @@ operations = {
 		complete_effect = {
 			add_war_support = 0.05
 			add_stability = 0.05
+			add_tech_bonus = {
+				name = doc_bonus
+				bonus = 0.5
+				uses = 2
+				category = land_doctrine
+			}
 		}
 
 	}

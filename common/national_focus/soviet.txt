@@ -1976,6 +1976,48 @@ focus_tree = {
 			army_experience = -100
 		}
 	}
+
+	focus = {
+		id = SOV_study_our_losses
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = SOV_reorganise_command }
+		available = {
+			surrender_progress > 0.3
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_reorganise_command
+		cost = 5
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+				unlock_decision_tooltip = SOV_zhukov_up
+				unlock_decision_tooltip = SOV_rokosov_up
+		}
+	}
+
+	focus = {
+		id = SOV_learn_from_the_germans
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = SOV_study_our_losses }
+		available = {
+			surrender_progress > 0.3
+		}
+		x = 0
+		y = 1
+		relative_position_id = SOV_study_our_losses
+		cost = 5
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+				unlock_decision_tooltip = SOV_meretskov_up
+				unlock_decision_tooltip = SOV_timoshenko_up
+		}
+	}
 	
 	focus = {
 		id = SOV_coordinate_industry
@@ -2752,56 +2794,7 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = SOV_study_khalkin_gol
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = SOV_lessons_of_war}
-		available = {
-			OR = {
-				has_country_flag = SOV_war_since_purge
-				date > 1941.1.1
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = SOV_lessons_of_war
-		cost = 5
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-				unlock_decision_tooltip = SOV_zhukov_up
-				unlock_decision_tooltip = SOV_rokosov_up
-		}
-	}
 	
-	focus = {
-		id = SOV_study_winter_war
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = SOV_study_khalkin_gol}
-		available = {
-			OR = {
-				has_country_flag = SOV_war_since_purge
-				date > 1941.1.1
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = SOV_study_khalkin_gol
-		cost = 5
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-				unlock_decision_tooltip = SOV_meretskov_up
-				unlock_decision_tooltip = SOV_timoshenko_up
-		}
-	}
-	
-
-
 	focus = {
 		id = SOV_improve_stalin_line
 		icon = GFX_goal_generic_fortify_city
@@ -3759,7 +3752,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = doc_bonus
 				bonus = 0.5
-				uses = 3
+				uses = 1
 				category = cat_mass_assault
 			}
 		}
