@@ -1956,14 +1956,41 @@ focus_tree = {
 		}
 	}
 
+	
+
 	focus = {
-		id = SOV_reorganise_command
-		icon = GFX_SOV_dual_command
+		id = SOV_study_our_losses
+		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = SOV_order_270 }
+		available = {
+			surrender_progress > 0.25
+			
+		}
 		x = 0
 		y = 1
 		relative_position_id = SOV_order_270
-		cost = 5
+		cost = 3
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+				
+				unlock_decision_tooltip = SOV_zhukov_up
+				unlock_decision_tooltip = SOV_rokosov_up
+				unlock_decision_tooltip = SOV_meretskov_up
+				unlock_decision_tooltip = SOV_timoshenko_up
+		}
+	}
+		
+	focus = {
+		id = SOV_reorganise_command
+		icon = GFX_SOV_dual_command
+		prerequisite = { focus = SOV_study_our_losses }
+		x = 0
+		y = 1
+		relative_position_id = SOV_study_our_losses
+		cost = 3
 		
 		available = {
 			has_army_experience > 100
@@ -1974,48 +2001,6 @@ focus_tree = {
 				add_skill_level = 1
 			}
 			army_experience = -100
-		}
-	}
-
-	focus = {
-		id = SOV_study_our_losses
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = SOV_reorganise_command }
-		available = {
-			surrender_progress > 0.3
-		}
-		x = 0
-		y = 1
-		relative_position_id = SOV_reorganise_command
-		cost = 5
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-				unlock_decision_tooltip = SOV_zhukov_up
-				unlock_decision_tooltip = SOV_rokosov_up
-		}
-	}
-
-	focus = {
-		id = SOV_learn_from_the_germans
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = SOV_study_our_losses }
-		available = {
-			surrender_progress > 0.3
-		}
-		x = 0
-		y = 1
-		relative_position_id = SOV_study_our_losses
-		cost = 5
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-				unlock_decision_tooltip = SOV_meretskov_up
-				unlock_decision_tooltip = SOV_timoshenko_up
 		}
 	}
 	
@@ -2794,340 +2779,13 @@ focus_tree = {
 		}
 	}
 	
-	
-	focus = {
-		id = SOV_improve_stalin_line
-		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = SOV_claim_bessarabia }
-		x = -1
-		y = 2
-		relative_position_id = SOV_claim_bessarabia
-		mutually_exclusive = { focus = SOV_dismantle_stalin_line }
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
 		
-		available = {
-			NOT = { has_war_with = GER }
-			has_country_flag = SOV_stalin_finished
-		}
-		
-		completion_reward = {
-			192 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11670
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 741
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 754
-				}
-			}
-			194 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6556
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6232
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 3203
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 3293
-				}
-			}
-			198 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6455
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 9423
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 9576
-				}
-			}
-			199 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 3457
-				}
-			}
-			201 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11477
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 3570
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6593
-				}
-			}
-			206 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11216
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11370
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 3267
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 3759
-				}
-			}
-			204 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11313
-				}
-			}
-			207 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6220
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6326
-				}
-			}
-			207 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 126
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 104
-				}
-			}
-			209 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11392
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6324
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11202
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 9120
-				}
-			}
-			210 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11259
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6242
-				}
-			}
-		}
-	}
-	
-	focus = {
-		id = SOV_dnieper_defences
-		icon = GFX_goal_generic_construct_military
-		prerequisite = { focus = SOV_improve_stalin_line }
-		x = 0
-		y = 2
-		relative_position_id = SOV_improve_stalin_line
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-		
-		available = {
-			NOT = { has_war_with = GER }
-		}
-		
-		completion_reward = {
-			196 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 721
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 737
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 3573
-				}
-			}
-			200 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 588
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11405
-				}
-			}
-			226 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 453
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 9463
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6507
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 6495
-				}
-			}
-			203 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 11530
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 9491
-				}
-			}
-			202 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 9543
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 1157
-				}
-			}
-		}
-	}
-	
 	focus = {
 		id = SOV_dismantle_stalin_line
 		icon = GFX_focus_ger_bulwark_against_bolshevism
 		prerequisite = { focus = SOV_claim_bessarabia }
-		mutually_exclusive = { focus = SOV_improve_stalin_line }
-		x = 1
-		y = 2
+		x = 0
+		y = 1
 		relative_position_id = SOV_claim_bessarabia
 		cost = 5
 		ai_will_do = {

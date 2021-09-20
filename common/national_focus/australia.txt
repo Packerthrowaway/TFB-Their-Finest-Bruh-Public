@@ -2904,7 +2904,7 @@ focus_tree = {
 		icon = GFX_goal_tfv_strengthen_commonwealth_ties
 		prerequisite = { focus = AST_support_the_policy_of_appeasement }
 		relative_position_id = AST_support_the_policy_of_appeasement
-		x = -1
+		x = 0
 		y = 1
 
 		cost = 10
@@ -2940,67 +2940,11 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = AST_the_singapore_strategy
-		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = AST_support_the_policy_of_appeasement }
-		x = 1
-		y = 1
-		relative_position_id = AST_support_the_policy_of_appeasement
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 0.2
-		}
-
-		available = {
-			is_in_faction_with = ENG
-			ENG = { has_government = ROOT }
-			MAL = {
-				is_puppet_of = ENG
-			}
-		}
-		
-		bypass = {
-			OR = {
-				NOT = {
-					OR = {
-						336 = {
-							is_owned_by = MAL
-						}
-						333 = {
-							is_owned_by = MAL
-						}
-					}
-				}
-				NOT = {
-					MAL = {
-						is_puppet_of = ENG
-					}
-				}
-			}
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
-		completion_reward = {
-			ENG = {
-				country_event = { id = tfv_australia.1 }
-			}
-		}
-	}
-
+	
 	focus = {
 		id = AST_adopt_westminster
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = AST_strengthen_ties_with_uk focus = AST_the_singapore_strategy }
+		prerequisite = { focus = AST_strengthen_ties_with_uk }
 		x = 0
 		y = 2
 		relative_position_id = AST_support_the_policy_of_appeasement
