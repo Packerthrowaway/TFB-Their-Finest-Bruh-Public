@@ -724,58 +724,20 @@
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_war_support = 0.1
-			add_stability = 0.1
+			add_war_support = 0.15
+			add_stability = 0.15
 		}
 	}
 
-	focus = {
-		id = CHI_united_front
-		icon = GFX_focus_chi_united_front
-		prerequisite = { focus = CHI_foreign_threats }
-		x = 0
-		y = 1
-		relative_position_id = CHI_foreign_threats
-
-		cost = 6
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			is_subject = no
-			is_in_faction = no
-		}
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
-		completion_reward = {
-			CHI = {
-				set_rule = { can_create_factions = yes }
-				create_faction = chinese_united_front
-			}
-			add_war_support = 0.05
-			add_stability = 0.05
-		}
-	}
+	
 
 	focus = {
 		id = CHI_pick_a_fight_with_japan
 		icon = GFX_focus_AST_war_japan
-		prerequisite = { focus = CHI_united_front }
+		prerequisite = { focus = CHI_foreign_threats }
 		x = 0
 		y = 1
-		relative_position_id = CHI_united_front
+		relative_position_id = CHI_foreign_threats
 
 		cost = 6
 
@@ -890,9 +852,7 @@
 		}
 
 		available = {
-			NOT = {
-				has_idea = CHI_army_corruption_2
-			}
+			surrender_progress > 0.4
 			has_defensive_war = yes
 		}
 
@@ -928,7 +888,7 @@
 		y = 1
 		relative_position_id = CHI_war_of_resistance
 
-		cost = 5
+		cost = 3
 
 		ai_will_do = {
 			factor = 4
@@ -987,14 +947,50 @@
 	}
 
 	focus = {
-		id = CHI_forced_conscription
-		icon = GFX_focus_generic_support_the_left_right
+		id = CHI_industrial_evacuation
+		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = CHI_scorched_earth_tactics }
 		x = 0
 		y = 1
 		relative_position_id = CHI_scorched_earth_tactics
 
-		cost = 6
+		cost = 3
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				has_manpower > 1000000
+				factor = 0
+			}
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			unlock_decision_category_tooltip = CHI_industrial_evacuations
+		}
+	}
+
+	focus = {
+		id = CHI_forced_conscription
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = CHI_war_of_resistance }
+		x = 0
+		y = 1
+		relative_position_id = CHI_war_of_resistance
+
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -1025,10 +1021,10 @@
 	focus = {
 		id = CHI_adopt_guerilla_tactics
 		icon = GFX_focus_prc_infiltration
-		prerequisite = { focus = CHI_war_of_resistance }
+		prerequisite = { focus = CHI_forced_conscription }
 		x = 0
 		y = 1
-		relative_position_id = CHI_war_of_resistance
+		relative_position_id = CHI_forced_conscription
 
 		cost = 1
 
@@ -1037,7 +1033,7 @@
 		}
 
 		available = {
-			surrender_progress > 0.65
+			surrender_progress > 0.7
 			has_defensive_war = yes
 		}
 

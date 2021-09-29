@@ -1158,10 +1158,14 @@ country_event = {
 		}
 		every_state = {
 			limit = {	
+				NOT = {
+					state = 616
+				}
 				AND = {
 					any_neighbor_state = { OR = { is_controlled_by = JAP is_controlled_by = MAN is_controlled_by = MEN } }
 					is_controlled_by = CHI
 				}
+								
 			}
 			create_unit = {
 				division = "division_template = \"Juntuan\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
@@ -1222,7 +1226,7 @@ country_event = {
 	trigger = {
 		tag = CHI
 		is_ai = yes
-		has_war_with = JAP
+		has_war_with = JAP		
 		casualties > 1250000
 		surrender_progress > 0.3
 	}
@@ -1249,11 +1253,16 @@ country_event = {
 			}
 		}
 		every_state = {
+			
 			limit = {	
+				NOT = {
+					state = 616
+				}
 				AND = {
 					any_neighbor_state = { OR = { is_controlled_by = JAP is_controlled_by = MAN is_controlled_by = MEN } }
 					is_controlled_by = CHI
 				}
+				
 			}
 			create_unit = {
 				division = "division_template = \"Juntuan\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
@@ -1315,7 +1324,10 @@ country_event = {
 		tag = CHI
 		is_ai = yes
 		has_war_with = JAP
-		casualties > 4000000
+		OR = {
+		casualties > 3500000
+		surrender_progress > 0.6
+		}
 	}
 	
 	option = {
@@ -1340,11 +1352,15 @@ country_event = {
 			}
 		}
 		every_state = {
-			limit = {	
+			limit = {
+				NOT = {
+					state = 616
+				}	
 				AND = {
 					any_neighbor_state = { OR = { is_controlled_by = JAP is_controlled_by = MAN is_controlled_by = MEN } }
 					is_controlled_by = CHI
 				}
+				
 			}
 			create_unit = {
 				division = "division_template = \"Juntuan\" start_experience_factor = 0.1 start_equipment_factor = 1.0"

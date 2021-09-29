@@ -1172,13 +1172,13 @@
 			OR = {
 				GER = { has_war_with = ENG }
 				CHI = {
-					surrender_progress > 0.8
+					surrender_progress > 0.75
 				}
 			}
 		}
 
 		bypass = {
-			CHI = { has_capitulated = yes }
+			NOT = { country_exists = CHI }
 		}
 
 		cancel_if_invalid = yes
@@ -1191,10 +1191,80 @@
 	}
 
 	focus = {
+		id = JAP_develop_china
+		icon = GFX_goal_generic_build_tank
+		prerequisite = { focus = JAP_secure_china }
+		x = 0
+		y = 1
+		cost = 10
+		relative_position_id = JAP_secure_china
+
+		available = {
+			NOT = { country_exists = CHI }
+		}
+
+		completion_reward = {
+			613 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+
+			592 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+
+			597 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+
+			594 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
+
+			599 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
+
+			593 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
 		id = JAP_strike_south_doctrine
 		icon = GFX_focus_jap_strike_south
 		prerequisite = { focus = JAP_intervene_in_china }
-		x = 6
+		x = 7
 		y = 1
 		cost = 20
 		relative_position_id = JAP_intervene_in_china
