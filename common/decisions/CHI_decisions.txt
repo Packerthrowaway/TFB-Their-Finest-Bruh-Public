@@ -247,6 +247,7 @@ war_measures = {
 			10079
 			4079
 			11916
+			9958
 		}
 		
 		visible = {
@@ -264,6 +265,7 @@ war_measures = {
 						id = 7085
 						id = 9995
 						id = 7126
+						id = 9958
 					}
 				}
 				damage_building = {
@@ -286,8 +288,6 @@ war_measures = {
 						id = 11973
 						id = 1121
 						id = 1161
-						id = 7126
-						id = 10079
 						id = 1076
 						id = 4123
 						id = 4005
@@ -2597,178 +2597,43 @@ foreign_support = {
 
 political_actions = {
 
-	CHI_suspend_the_inter_party_coordination_council = {
-		icon = oppression
+	CHI_move_the_capital_chongqing = {
+		allowed = {
+			original_tag = CHI
+		}
 		available = {
-			has_idea = CHI_inter_party_coordination_council
+			has_war = yes
+			controls_state = 605
+					
 		}
 		visible = {
-			has_idea = CHI_inter_party_coordination_council
+			has_war = yes
 		}
-		cost = 25
-		complete_effect = {
-			if = {
-				limit = {
-					NOT = {
-						has_government = democratic
-					}
-				}
-				add_stability = -0.05
-			}
-			remove_ideas = CHI_inter_party_coordination_council
-		}
-	}
-	CHI_reinstate_the_inter_party_coordination_council = {
-		icon = generic_political_discourse
-		available = {
-			NOT = { has_idea = CHI_inter_party_coordination_council }
-			NOT = {
-				has_government = democratic
-			}
-			has_completed_focus = CHI_inter_party_coordination_council
-		}
-		visible = {
-			NOT = { has_idea = CHI_inter_party_coordination_council }
-			NOT = {
-				has_government = democratic
-			}
-			has_completed_focus = CHI_inter_party_coordination_council
-		}
-		cost = 25
-		complete_effect = {
-			add_ideas = CHI_inter_party_coordination_council
+		cost = 15
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			set_capital = 605
 		}
 	}
 
-	CHI_join_united_front = {
-		available = {
-			is_literally_china = yes
-			CHI = {
-				is_in_faction_with = PRC
-			}
-			OR = {
-				PRC = {
-					is_faction_leader = yes
-				}
-				CHI = {
-					is_faction_leader = yes
-				}
-			}
-			NOT = {
-				OR = {
-					has_war_with = CHI
-					has_war_with = PRC
-				}
-			}
-			is_in_faction = no
-			NOT = {
-				always = no
-			}
-			OR = {
-				is_subject = no
-				OVERLORD = {
-					is_in_faction_with = event_target:WTT_current_china_leader
-				}
-			}
-		}
-		visible = {
-			is_literally_china = yes
-			CHI = {
-				is_in_faction_with = PRC
-			}
-			is_in_faction = no
-		}
-		cost = 25
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				JAP = {
-					OR = {
-						has_war_with = CHI
-						has_war_with = PRC
-					}
-				}
-				factor = 10
-			}
-			modifier = {
-				has_war_with = JAP
-				factor = 500
-			}
-		}
-		complete_effect = {
-			If = {
-				limit = {
-					CHI = {
-						is_faction_leader = yes
-					}
-				}
-				CHI = {
-					country_event = generic.2
-				}
-				add_ai_strategy = {
-					type = alliance
-					id = "CHI"
-					value = 200
-				}
-			}
-			else_if = {
-				limit = {
-					PRC = {
-						is_faction_leader = yes
-					}
-				}
-				PRC = {
-					country_event = generic.2
-				}
-				add_ai_strategy = {
-					type = alliance
-					id = "PRC"
-					value = 200
-				}
-			}
-		}
-	}
-	CHI_move_the_capital = {
+	CHI_move_the_capital_kunming = {
 		allowed = {
-			is_literally_china = yes
-			has_dlc = "Waking the Tiger"
+			original_tag = CHI
 		}
 		available = {
-			has_war = no
-			OR = {
-				has_full_control_of_state = 608
-				has_full_control_of_state = 613
-			}
-			capital_scope = {
-				NOT = {
-					OR = {
-						state = 608
-						state = 613
-					}
-				}
-			}
+			has_war = yes
+			controls_state = 325
+					
 		}
 		visible = {
-			has_war = no
-			OR = {
-				has_full_control_of_state = 608
-				has_full_control_of_state = 613
-			}
-			capital_scope = {
-				NOT = {
-					OR = {
-						state = 608
-						state = 613
-					}
-				}
-			}
+			has_war = yes
 		}
-		cost = 50
-		ai_will_do = {
-			factor = 1
-		}
-		complete_effect = {
-			country_event = wtt_china.204
+		cost = 15
+		fire_only_once = yes
+		days_remove = 7
+		remove_effect = {
+			set_capital = 325
 		}
 	}
 }

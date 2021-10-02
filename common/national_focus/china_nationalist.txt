@@ -58,7 +58,7 @@
 		x = 5
 		y = 0
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -94,7 +94,7 @@
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
-		cost = 6
+		cost = 3
 
 		ai_will_do = {
 			factor = 4
@@ -133,7 +133,7 @@
 		y = 1
 		relative_position_id = CHI_welfare
 
-		cost = 6
+		cost = 3
 
 		ai_will_do = {
 			factor = 4
@@ -172,7 +172,7 @@
 		y = 1
 		relative_position_id = CHI_welfare
 
-		cost = 6
+		cost = 3
 
 		ai_will_do = {
 			factor = 4
@@ -208,7 +208,7 @@
 		y = 3
 		relative_position_id = CHI_welfare
 
-		cost = 6
+		cost = 3
 
 		ai_will_do = {
 			factor = 4
@@ -244,7 +244,7 @@
 		y = 3
 		relative_position_id = CHI_welfare
 
-		cost = 6
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -284,7 +284,7 @@
 		y = 4
 		relative_position_id = CHI_welfare
 
-		cost = 6
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -323,7 +323,7 @@
 		y = 5
 		relative_position_id = CHI_welfare
 
-		cost = 6
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -363,7 +363,7 @@
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -399,7 +399,7 @@
 		y = 1
 		relative_position_id = CHI_democracy
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -421,91 +421,18 @@
 		completion_reward = {
 			add_war_support = 0.1
 		}
-	}
-
-	focus = {
-		id = CHI_republicanism
-		icon = GFX_goal_generic_propaganda
-		prerequisite = { focus = CHI_constitutional_reform }
-		x = -1
-		y = 1
-		relative_position_id = CHI_constitutional_reform
-
-		cost = 6
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-
-		completion_reward = {
-			every_country = {
-				limit = {
-					is_major = yes
-					has_government = democratic
-				}
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = CHI_republicanism
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = CHI_inter_party_coordination_council
-		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = CHI_constitutional_reform }
-		prerequisite = { focus = CHI_executive_yuan }
-		x = 1
-		y = 1
-		relative_position_id = CHI_constitutional_reform
-
-		cost = 6
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			add_ideas = CHI_inter_party_coordination_council
-		}
-	}
+	}	
 
 	focus = {
 		id = CHI_judicial_yuan
 		icon = GFX_goal_generic_defence
-		prerequisite = { focus = CHI_republicanism }
-		prerequisite = { focus = CHI_inter_party_coordination_council }
-		x = 1
+		prerequisite = { focus = CHI_constitutional_reform }
+		
+		x = 0
 		y = 1
-		relative_position_id = CHI_republicanism
+		relative_position_id = CHI_constitutional_reform
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -530,15 +457,46 @@
 	}
 
 	focus = {
-		id = CHI_control_yuan
-		icon = GFX_goal_generic_attack_allies
-		prerequisite = { focus = CHI_judicial_yuan }
-		prerequisite = { focus = CHI_legislative_yuan }
+		id = CHI_executive_yuan
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = CHI_democracy }
 		x = 1
 		y = 1
-		relative_position_id = CHI_judicial_yuan
+		relative_position_id = CHI_democracy
 
-		cost = 6
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = CHI_executive_yuan
+		}
+	}
+
+	focus = {
+		id = CHI_control_yuan
+		icon = GFX_goal_generic_attack_allies
+		prerequisite = { focus = CHI_executive_yuan }
+		x = 0
+		y = 1
+		relative_position_id = CHI_executive_yuan
+
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -566,18 +524,19 @@
 		id = CHI_examination_yuan
 		icon = GFX_focus_chi_examination_yuan
 		prerequisite = { focus = CHI_control_yuan }
-		x = 0
+		prerequisite = { focus = CHI_judicial_yuan	}
+		x = -1
 		y = 1
 		relative_position_id = CHI_control_yuan
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-
+			has_country_flag = CHI_lessons_of_war_completed
 		}
 
 		bypass = {
@@ -594,75 +553,9 @@
 		}
 	}
 
-	focus = {
-		id = CHI_executive_yuan
-		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = CHI_democracy }
-		x = 1
-		y = 1
-		relative_position_id = CHI_democracy
+	
 
-		cost = 6
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			add_ideas = CHI_executive_yuan
-		}
-	}
-
-	focus = {
-		id = CHI_legislative_yuan
-		icon = GFX_focus_chi_legislative_yuan
-		prerequisite = { focus = CHI_executive_yuan }
-		prerequisite = { focus = CHI_inter_party_coordination_council }
-		x = 0
-		y = 2
-		relative_position_id = CHI_executive_yuan
-
-		cost = 6
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = CHI_executive_yuan
-				add_idea = CHI_legislative_yuan
-			}
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = CHI_kwong_jiang
-		}
-	}
+	
 
 	focus = {
 		id = CHI_nationalism
@@ -672,7 +565,7 @@
 		y = 1
 		relative_position_id = CHI_three_principles_of_the_people
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -704,7 +597,7 @@
 		y = 1
 		relative_position_id = CHI_nationalism
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -739,7 +632,7 @@
 		y = 1
 		relative_position_id = CHI_foreign_threats
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -845,14 +738,14 @@
 		y = 1
 		relative_position_id = CHI_war_of_resistance
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			surrender_progress > 0.4
+			surrender_progress > 0.35
 			has_defensive_war = yes
 		}
 
@@ -888,7 +781,7 @@
 		y = 1
 		relative_position_id = CHI_war_of_resistance
 
-		cost = 3
+		cost = 2
 
 		ai_will_do = {
 			factor = 4
@@ -919,7 +812,7 @@
 		y = 1
 		relative_position_id = CHI_war_of_national_liberation
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
@@ -954,7 +847,7 @@
 		y = 1
 		relative_position_id = CHI_scorched_earth_tactics
 
-		cost = 3
+		cost = 2
 
 		ai_will_do = {
 			factor = 4
@@ -965,7 +858,7 @@
 		}
 
 		available = {
-
+			has_war = yes
 		}
 
 		bypass = {
@@ -990,7 +883,7 @@
 		y = 1
 		relative_position_id = CHI_war_of_resistance
 
-		cost = 5
+		cost = 4
 
 		ai_will_do = {
 			factor = 4
@@ -1033,7 +926,7 @@
 		}
 
 		available = {
-			surrender_progress > 0.7
+			surrender_progress > 0.65
 			has_defensive_war = yes
 		}
 
@@ -1091,7 +984,7 @@
 		y = 1
 		relative_position_id = CHI_military_affairs_commission
 
-		cost = 6
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -1203,7 +1096,7 @@
 		y = 2
 		relative_position_id = CHI_military_affairs_commission
 
-		cost = 6
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -1217,7 +1110,7 @@
 			}
 			NOT = {
 				any_enemy_country = {
-					has_full_control_of_state = 606
+					has_full_control_of_state = 749
 				}
 			}
 		}
@@ -1310,12 +1203,13 @@
 			}
 
 			if = {
-				limit = { has_full_control_of_state = 606 }
-				606 = { # Anhui
+				limit = { has_full_control_of_state = 749 }
+				749 = { # Huangshan
 					set_building_level = {
 						type = bunker
 						province = {
 							id = 1099
+							id = 1153
 							id = 1171
 							id = 11937
 							id = 10044
@@ -1328,7 +1222,7 @@
 				#If not full control, only add forts in provinces bordering the enemy
 				#Only time to throw up some emergency stuff
 				else = {
-					606 = {
+					749 = {
 						add_building_construction = {
 							type = bunker
 							province = {
@@ -1340,21 +1234,7 @@
 						}
 					}
 				}
-			}
-
-			if = {
-				limit = { has_full_control_of_state = 600 }
-				600 = { # Jiangxi
-					set_building_level = {
-						type = bunker
-						province = {
-							id = 1153
-						}
-						level = 2
-						instant_build = yes
-					}								
-				}
-			}
+			}			
 		}
 	}
 
@@ -1366,7 +1246,7 @@
 		y = 1
 		relative_position_id = CHI_military_affairs_commission
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 4
@@ -1397,7 +1277,7 @@
 		y = 1
 		relative_position_id = CHI_military_affairs_commission
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 4
@@ -1431,7 +1311,7 @@
 		y = 2
 		relative_position_id = CHI_military_affairs_commission
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
@@ -1463,7 +1343,7 @@
 		y = 2
 		relative_position_id = CHI_military_affairs_commission
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
@@ -1496,7 +1376,7 @@
 		y = 0
 		relative_position_id =  CHI_military_affairs_commission
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -1533,7 +1413,7 @@
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -1568,7 +1448,7 @@
 		y = 1
 		relative_position_id = CHI_expand_the_academica_sinica
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -1600,7 +1480,7 @@
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -1666,7 +1546,7 @@
 		y = 1
 		relative_position_id = CHI_rural_reconstruction_movement
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 4
@@ -1711,7 +1591,7 @@
 		y = 1
 		relative_position_id = CHI_mining_commission
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -1754,7 +1634,7 @@
 		y = 1
 		relative_position_id = CHI_mining_commission
 
-		cost = 6
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -1820,7 +1700,7 @@
 		y = 1
 		relative_position_id = CHI_unified_industrial_planning
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 4
@@ -1854,7 +1734,7 @@
 		y = 1
 		relative_position_id = CHI_financial_policy
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 4
@@ -1886,14 +1766,15 @@
 		y = 1
 		relative_position_id = CHI_price_controls
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-
+			has_defensive_war = yes
+			has_war_with = JAP
 		}
 
 		bypass = {
@@ -1918,7 +1799,7 @@
 		y = 1
 		relative_position_id = CHI_price_controls
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
@@ -1950,7 +1831,7 @@
 		y = 1
 		relative_position_id = CHI_reform_the_national_bank
 
-		cost = 6
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
