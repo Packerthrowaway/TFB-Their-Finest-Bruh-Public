@@ -2153,82 +2153,7 @@ focus_tree = {
 				technology = ger_assault_gun_3
 			}
 		}
-	}
-	
-	focus = {
-		id = GER_improved_command
-		icon = GFX_ger_fur_das_vaterland
-		prerequisite = { focus = GER_artillery2 focus = GER_infantry2 }
-		prerequisite = { focus = GER_panzer }
-		x = 1
-		y = 1
-		relative_position_id = GER_artillery2
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			swap_ideas = {
-				add_idea = general_staff2
-				remove_idea = general_staff
-			}
-		}
-	}
-	
-	focus = {
-		id = GER_lessons_of_war
-		icon = GFX_ger_kampfgruppen
-		prerequisite = { focus = GER_improved_command }
-		x = 0
-		y = 2
-		relative_position_id = GER_improved_command
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-		
-		available = {
-			has_war = yes
-			has_army_experience > 100
-		}
-		
-		cancel_if_invalid = yes
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			army_experience = -100
-			every_army_leader = {
-				add_attack = 1
-			}
-		}
-	}
-	
-	focus = {
-		id = GER_share_tanks
-		icon = GFX_goal_share_tanks
-		prerequisite = { focus = GER_lessons_of_war }
-		x = 0
-		y = 1
-		relative_position_id = GER_lessons_of_war
-		cost = 2
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-		}
-
-		bypass = {
-		}
-		
-		completion_reward = {
-			custom_effect_tooltip = ger_share_tanks_tt_4
-		}
-	}
+	}	
 
 	focus = {
 		id = GER_rhineland
@@ -5278,6 +5203,80 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			custom_effect_tooltip = GER_wunderwaffe_tt
+		}
+	}
+
+	focus = {
+		id = GER_improved_command
+		icon = GFX_ger_fur_das_vaterland
+		prerequisite = { focus = GER_avenge_versailles }
+		x = 7
+		y = 1
+		relative_position_id = GER_avenge_versailles
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+				add_idea = general_staff2
+				remove_idea = general_staff
+			}
+		}
+	}
+	
+	focus = {
+		id = GER_lessons_of_war
+		icon = GFX_ger_kampfgruppen
+		prerequisite = { focus = GER_improved_command }
+		x = 0
+		y = 1
+		relative_position_id = GER_improved_command
+		cost = 4
+		ai_will_do = {
+			factor = 1
+		}
+		
+		available = {
+			has_war = yes
+			has_army_experience > 100
+		}
+		
+		cancel_if_invalid = yes
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = -100
+			every_army_leader = {
+				add_attack = 1
+			}
+		}
+	}
+	
+	focus = {
+		id = GER_share_tanks
+		icon = GFX_goal_share_tanks
+		prerequisite = { focus = GER_lessons_of_war }
+		x = 0
+		y = 1
+		relative_position_id = GER_lessons_of_war
+		cost = 1
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+
+		bypass = {
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = ger_share_tanks_tt_4
 		}
 	}
 	
