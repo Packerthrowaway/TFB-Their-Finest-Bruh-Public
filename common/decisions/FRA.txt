@@ -981,6 +981,23 @@ FRA_intervention_in_overseas_territories = {
 			NOT = {
 				FRA_controls_syria = yes
 			} 
+			any_state = {
+				OR = {
+					state = 680
+					state = 677
+					state = 554
+					state = 553
+				}
+				any_neighbor_state = {
+					CONTROLLER = {
+						OR = {
+							tag = ROOT
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+			} 
+
 		} 
 
 		visible = {
@@ -1610,7 +1627,8 @@ FRA_intervention_in_overseas_territories = {
 					}
 					transfer_state = 706 
 					transfer_state = 708 
-					transfer_state = 713 
+					transfer_state = 713
+					transfer_state = 268 
 				}
 				0 = {}
 			}
@@ -1928,8 +1946,6 @@ operations = {
 		allowed = {
 			original_tag = FRA
 		}
-
-		fire_only_once = yes
 		
 		available = {
 			FRA_controls_central_africa = yes
@@ -1937,10 +1953,34 @@ operations = {
 
 		visible = {
 			has_completed_focus = FRA_appeal_to_overseas_territories
+			539 = {
+				is_capital = no
+			}
+
 		}
 		
 		complete_effect = {
 			set_capital = 539
+		}
+	}
+
+	FRA_develop_central_africa = {
+
+		icon = generic_nationalism
+
+		fire_only_once = yes
+
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			FRA_controls_central_africa = yes
+		}	
+
+		visible = {
+			FRA_controls_central_africa = yes
+		}
+		complete_effect = {
 			539 = {
 				add_building_construction = {
 					type = naval_base
@@ -1949,6 +1989,28 @@ operations = {
 					instant_build = yes
 				}
 			}
+		}
+
+	}
+
+	FRA_move_capital_algiers ={
+
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = FRA
+		}
+		available = {
+			FRA_controls_north_africa = yes
+		}
+		visible = {
+			has_completed_focus = FRA_appeal_to_overseas_territories
+			459 = {
+				is_capital = no
+			}
+		}
+		complete_effect = {
+			set_capital = 459
 		}
 	}
 	
