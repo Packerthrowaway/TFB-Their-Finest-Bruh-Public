@@ -701,6 +701,27 @@ tactic_defender_hb_skillful_defence = {
 	defender = 0.05
 }
 
+#Anti-Partisan, purpose is to counter guerrilla 
+#default phase so everyone can counter meme roaching
+#is otherwise identical to normal attack, so that rolling it outside of countering has little impact
+tactic_partisan_sweeps = {
+
+    is_attacker = yes
+    trigger = { # combined scope for both country and combatant
+        is_attacker = yes
+        phase = no
+    }
+    
+    active = yes
+
+    base =  { factor = 4 } #this could be lower, doing some research before doing so
+    
+    picture = tactic_banzai_charge #put a picture here if you want to differentiate
+    
+    countered_by = tactic_counterattack #keep so that is otherwise identical to attack
+    attacker = 0.05
+}
+
 tactic_guerrilla_tactics = { #People's army defender tactic. also for German volksturm branch.
 	is_attacker = no
 	trigger = {
@@ -716,6 +737,7 @@ tactic_guerrilla_tactics = { #People's army defender tactic. also for German vol
 	
 	base =  { factor = 4 }
 	picture = tactic_guerrilla_tactics
+	countered_by = tactic_partisan_sweeps
 	
 	combat_width = -0.5
 	attacker = -0.7
