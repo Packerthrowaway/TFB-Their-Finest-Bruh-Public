@@ -143,27 +143,6 @@ characters = {
 		}
 	}
 
-	POL_vladislav_korchits = {
-		name = POL_vladislav_korchits
-		portraits = {
-			army = {
-				large = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-				small = "gfx/interface/ideas/idea_europe_generic_land_1.dds"
-			}
-		}
-		corps_commander = {
-			visible = {
-				has_completed_focus = POL_soviet_military_staff
-			}
-			traits = { JAP_communist_sympathizer old_guard }
-			skill = 3
-			attack_skill = 2
-			defense_skill = 4
-			planning_skill = 3
-			logistics_skill = 2
-		}
-	}
-
 	POL_ignacy_moscicki = {
 		name=POL_ignacy_moscicki
 		portraits = {
@@ -361,21 +340,6 @@ characters = {
 						has_autonomy_state = autonomy_supervised_state
 					}
 				}
-				if = {
-					limit = {
-						has_dlc = "Poland: United and Ready"
-						NOT = {
-							has_dlc = "No Step Back"
-						}
-					}
-					has_completed_focus = POL_restore_the_sejm 
-				}
-				if = {
-					limit = {
-						has_dlc = "No Step Back"
-					}
-					has_completed_focus = POL_nationalist_constitution 
-				}
 			}
 			traits = {
 				fascist_demagogue 
@@ -481,28 +445,6 @@ characters = {
 			ideology=despotism
 			traits = { he_who_bears_the_throne }
 			expire="1966.1.1.1"
-		}
-	}
-
-	POL_rudinger_von_der_goltz = {
-		name=POL_rudinger_von_der_goltz
-		portraits = {
-			army = {
-				large="GFX_portrait_POL_rudiger_von_der_goltz"
-				small = "gfx/interface/ideas/idea_POL_rudiger_von_der_goltz.dds"
-			}
-		}
-		field_marshal = {
-			traits = { thorough_planner old_guard }
-			skill = 3
-			attack_skill = 2
-			defense_skill = 1
-			planning_skill = 3
-			logistics_skill = 4
-			legacy_id=-1
-			visible = {
-				has_completed_focus = POL_restore_bermontians
-			}
 		}
 	}
 
@@ -1052,7 +994,6 @@ characters = {
 			available = {
 				OR = {
 					has_completed_focus = POL_modus_vivendi
-					has_completed_focus = POL_a_leftist_sejm
 				}
 			}
 			allowed = {
@@ -1077,7 +1018,6 @@ characters = {
 			available = {
 				OR = {
 					has_completed_focus = POL_modus_vivendi
-					has_completed_focus = POL_integrate_the_falanga 
 				}
 			}
 			allowed = {
@@ -1119,34 +1059,6 @@ characters = {
 	POL_mieczyslaw_michalowicz={
 		instance = {
 			allowed = {
-				has_dlc = "No Step Back"
-			}
-			name=POL_mieczyslaw_michalowicz
-			portraits={
-				army={
-					small="GFX_idea_POL_mieczyslaw_michalowicz"
-				}
-			}
-			advisor={
-				slot = political_advisor
-				idea_token = POL_mieczyslaw_michalowicz
-				allowed = {
-					original_tag = POL
-					has_dlc = "No Step Back"
-				}
-				available = {
-					has_completed_focus = POL_reassemble_the_sejm 
-				}
-				traits = {
-					socdem_reformist 
-				}
-				ai_will_do = {
-					factor = 0.000
-				}
-			}			
-		}
-		instance = {
-			allowed = {
 				NOT = {
 					has_dlc = "No Step Back"
 				}
@@ -1174,15 +1086,6 @@ characters = {
 						NOT = {
 							has_autonomy_state = autonomy_supervised_state
 						}
-					}
-					if = {
-						limit = {
-							has_dlc = "Poland: United and Ready"
-							NOT = {
-								has_dlc = "No Step Back"
-							}
-						}
-						has_completed_focus = POL_restore_the_sejm 
 					}
 				}
 				traits = {
@@ -1233,10 +1136,6 @@ characters = {
 			}
 			available = {
 				if = {
-					limit = { has_DLC = "No Step Back" }
-					has_completed_focus = POL_a_leftist_sejm 
-				}
-				if = {
 					limit = { NOT = { has_DLC = "No Step Back" } }
 					has_government = communism 
 				}
@@ -1270,10 +1169,6 @@ characters = {
 				original_tag = POL
 			}
 			available = {
-				if = {
-					limit = { has_DLC = "No Step Back" }
-					has_completed_focus = POL_a_leftist_sejm 
-				}
 				if = {
 					limit = { NOT = { has_DLC = "No Step Back" } }
 					has_government = communism 
@@ -1335,70 +1230,6 @@ characters = {
 		}		
 	}
 
-	POL_zdzislaw_lubomirski={
-		name=POL_zdzislaw_lubomirski
-		portraits={
-			army={
-				small="GFX_idea_POL_zdzislaw_lubomirski"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = POL_zdzislaw_lubomirski
-			allowed = {
-					original_tag = POL
-				}
-			available = {
-				has_completed_focus = POL_assemble_the_regency_council
-				OR = {
-					has_government = neutrality
-					has_government = fascism
-				}
-			}
-			visible = {
-				has_completed_focus = POL_assemble_the_regency_council
-			}
-			traits = {
-				staunch_aristocrat 
-			}
-			ai_will_do = {
-				factor = 1.000
-				modifier = {
-					factor = 0.000
-					NOT = {
-						has_government = neutrality 
-					}
-				}
-			}
-		}		
-	}
-
-	POL_tadeusz_bielecki={
-		name=POL_tadeusz_bielecki
-		portraits={
-			army={
-				small="GFX_portrait_POL_tadeusz_bielecki_small"
-				large = "GFX_portrait_POL_tadeusz_bielecki" #Country Leader role not implemented
-			}
-			civilian = {
-				large = "GFX_portrait_POL_tadeusz_bielecki"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = POL_tadeusz_bielecki
-			available = {
-				has_completed_focus = POL_integrate_the_endecja 
-			}
-			allowed = {
-				original_tag = POL
-				has_dlc = "No Step Back"
-			}
-			traits = {
-				nationalist_journalist 
-			}
-		}		
-	}
 
 	POL_joachim_stefan_bartoszewicz={
 		name=POL_joachim_stefan_bartoszewicz
@@ -1413,8 +1244,6 @@ characters = {
 			available = {
 				OR = {
 					has_completed_focus = POL_modus_vivendi 
-					has_completed_focus = POL_reassemble_the_sejm 
-					has_completed_focus = POL_integrate_the_endecja 
 				}
 			}
 			allowed = {
@@ -1444,7 +1273,6 @@ characters = {
 				original_tag = POL
 			}
 			available = {
-				has_completed_focus = POL_assemble_the_regency_council
 				OR = {
 					has_government = neutrality
 					has_government = fascism
@@ -1463,53 +1291,6 @@ characters = {
 				}
 			}
 		}		
-	}
-
-	POL_stanislaw_radkiewicz={
-		name=POL_stanislaw_radkiewicz
-		portraits={
-			army={
-				small="GFX_idea_POL_stanislaw_radkiewicz"
-			}
-		}
-		advisor={
-			slot = political_advisor
-			idea_token = POL_stanislaw_radkiewicz
-			allowed = {
-				original_tag = POL
-			}
-			available = {
-				if = {
-					limit = {
-						has_dlc = "Man the Guns"
-					}
-					NOT = {
-						has_autonomy_state = autonomy_supervised_state
-					}
-				}
-				if = {
-					limit = {
-						has_dlc = "Poland: United and Ready"
-						NOT = {
-							has_dlc = "No Step Back"
-						}
-					}
-					has_completed_focus = POL_restore_the_sejm 
-				}
-				if = {
-					limit = {
-						has_dlc = "No Step Back"
-					}
-					has_completed_focus = POL_a_leftist_sejm 
-				}
-			}
-			traits = {
-				communist_revolutionary 
-			}
-			ai_will_do = {
-				factor = 0.000
-			}
-		}
 	}
 
 	POL_eugeniusz_kwiatkowiski={
@@ -1544,8 +1325,6 @@ characters = {
 			available = {
 				OR = {
 					has_completed_focus = POL_modus_vivendi 
-					has_completed_focus = POL_reassemble_the_sejm 
-					has_completed_focus = POL_assemble_the_regency_council 
 				}
 			}
 			allowed = {
@@ -1577,7 +1356,6 @@ characters = {
 			available = {
 				OR = {
 					has_completed_focus = POL_support_right_paramilitaries 
-					has_completed_focus = POL_integrate_the_falanga 
 				}
 			}
 			traits = {
