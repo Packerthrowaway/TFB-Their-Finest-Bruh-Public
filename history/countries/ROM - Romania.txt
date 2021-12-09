@@ -1,6 +1,19 @@
 ﻿capital = 46
 
-oob = "ROM_1936"
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "ROM_1936"
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "ROM_1936_nsb"
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "ROM_1936_naval_mtg"
@@ -27,7 +40,27 @@ set_technology = {
 	gw_artillery = 1
 	interwar_antiair = 1
 	early_fighter = 1
+	basic_train = 1
 }
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {

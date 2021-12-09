@@ -1,6 +1,8 @@
 ﻿capital = 361
 
 oob = "USA_1936"
+
+starting_train_buffer = 5
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "USA_1936_naval_mtg"
@@ -48,7 +50,29 @@ set_technology = {
 	fuel_silos = 1
 	fuel_refining = 1
 	marines = 1
+	basic_train = 1
 }
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+	add_ideas = bureau_of_ordnance_spirit
+}
+
 
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
