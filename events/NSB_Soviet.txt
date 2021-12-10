@@ -3879,20 +3879,6 @@ country_event = {
 
 		ai_chance = {
 			base = 1
-			modifier = {
-				factor = 5
-				has_opinion = {
-					target = FROM
-					value < -50
-				}
-			}
-			modifier = { #Is going commie or historical
-				factor = 0
-				OR = {
-					has_completed_focus = JAP_the_unthinkable_option
-					has_completed_focus = JAP_purge_the_kodoha_faction
-				}
-			}
 		}
 
 		hidden_effect = {
@@ -6119,35 +6105,6 @@ country_event = {
 
 		ai_chance = {
 			base = 5
-			modifier = {
-				factor = 10
-				has_war = yes
-			}
-			modifier = {
-				factor = 10
-				has_war_with = ENG
-			}
-			modifier = {
-				factor = 10
-				has_completed_focus = GER_mol_rib_pact
-			}
-			modifier = {
-				factor = 10
-				has_completed_focus = GER_soviet_ally
-			}
-			modifier = {
-				factor = 0.1
-				has_completed_focus = GER_anti_comitern_pact
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_war_with = FROM
-					is_justifying_wargoal_against = FROM
-					has_completed_focus = GER_anti_soviet_pact
-					has_completed_focus = GER_ussr_war_goal
-				}
-			}
 		}
 
 		add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
@@ -6690,38 +6647,6 @@ country_event = {
 
 		ai_chance = {
 			base = 10
-			modifier = {
-				factor = 2
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-			modifier = {
-				factor = 2
-				has_completed_focus = POL_organize_the_peasants_strike
-			}
-			modifier = {
-				factor = 2
-				is_in_faction = no
-			}
-			modifier = { #Appropriate PC for Foreign Affairs
-				factor = 1.2
-				SOV = { has_idea = SOV_maksim_litvinov }
-			}
-			modifier = {
-				factor = 0.5
-				OR = {
-					SOV = { has_completed_focus = SOV_claims_on_poland }
-				}
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_completed_focus = POL_assemble_the_regency_council
-					has_completed_focus = POL_nationalist_constitution
-				}
-			}
 		}
 
 		FROM = { country_event = { id = NSB_soviet_policies_of_collective_security.12 hours = 8 random_hours = 4 } } #Answer to FRA (potentially) who will in turn asnswer to SOV, so FROM is available for effects that can't use variables
@@ -7199,8 +7124,6 @@ country_event = {
 				support = {
 					engineer = { x = 0 y = 0 }
 					recon = { x = 0 y = 1 }
-					artillery = { x = 0 y = 2 }
-					anti_tank = { x = 0 y = 3 }
 				}
 			}
 		}

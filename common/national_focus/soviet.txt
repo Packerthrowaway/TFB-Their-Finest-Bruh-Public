@@ -5785,7 +5785,7 @@ focus_tree = {
 			hidden_effect = {
 				division_template = {
 					name = "Kazachya Kavaleryskaya Diviziya"
-					division_names_group = SOV_CAV_02
+					#division_names_group = SOV_CAV
 					template_counter = 05
 
 					regiments = {
@@ -5798,7 +5798,6 @@ focus_tree = {
 					}
 					support = {
 						engineer = { x = 0 y = 0 }
-						artillery = { x = 0 y = 1 }
 						recon = { x = 0 y = 2 }
 					}
 				}
@@ -6034,7 +6033,7 @@ focus_tree = {
 
 				division_template = {
 					name = "Shtrafnaya Chast"
-					division_names_group = SOV_PEN_01
+					#division_names_group = SOV_PEN_01
 					is_locked = yes
 
 					regiments = {
@@ -6049,7 +6048,7 @@ focus_tree = {
 						penal_battalion = { x = 2 y = 2 }
 					}
 					support = {
-						artillery = { x = 0 y = 0 }
+						military_police = { x = 0 y = 0 }
 					}
 				}
 
@@ -8695,7 +8694,7 @@ focus_tree = {
 				name = "Trotskyist Revolutionary Militias"
 				priority = 1
 				is_locked = yes
-				division_names_group = SOV_INF_02
+				division_names_group = SOV_INF_01
 				regiments = {
 					infantry = { x = 0 y = 0 }
 					infantry = { x = 0 y = 1 }
@@ -9413,7 +9412,7 @@ focus_tree = {
 				AND = {
 					country_exists = SPC
 					NOT = { has_war_with = SPC }
-					SPC = { has_completed_focus = SPR_the_anti_fascist_workers_revolution }
+					#SPC = { has_completed_focus = SPR_the_anti_fascist_workers_revolution }
 				}
 			}
 			
@@ -9440,7 +9439,7 @@ focus_tree = {
 					AND = {
 						has_global_flag = SPR_anarchist_uprising_flag
 						OR = {
-							NOT = { SPC = { has_completed_focus = SPR_the_anti_fascist_workers_revolution } }
+							#NOT = { SPC = { has_completed_focus = SPR_the_anti_fascist_workers_revolution } }
 							NOT = { country_exists = SPC }
 						}
 					}
@@ -9542,7 +9541,7 @@ focus_tree = {
 				tooltip = SOV_poum_exists_tt
 				SPC = { 
 					exists = yes 
-					has_completed_focus = SPR_the_anti_fascist_workers_revolution
+					#has_completed_focus = SPR_the_anti_fascist_workers_revolution
 				}
 			}
 		}
@@ -11577,7 +11576,7 @@ focus_tree = {
 					has_completed_focus = SOV_coup_detat
 					has_global_flag = SPR_anarchist_uprising_flag
 					country_exists = SPC
-					SPC = { has_completed_focus = SPR_the_anti_fascist_workers_revolution }
+					#SPC = { has_completed_focus = SPR_the_anti_fascist_workers_revolution }
 				}
 				SPC = {
 					hidden_effect = { country_event = { id = NSB_soviet_foreign_politics_events.20 hours = 2 random_hours = 1 } }
@@ -16599,22 +16598,22 @@ ai_will_do = {
 
 		available = {
 			is_subject = no
-			ENG = {
-				NOT = {
-					has_government = communism
-				}
-				NOT = {
-					has_completed_focus = ENG_alliance_with_germany
-				}
-			}
-			FRA = {
-				NOT = {
-					has_government = communism
-				}
-				NOT = {
-					has_completed_focus = FRA_establish_spheres_of_influence
-				}
-			}
+		#	ENG = {
+		#		NOT = {
+		#			has_government = communism
+		#		}
+		#		NOT = {
+		#			has_completed_focus = ENG_alliance_with_germany
+		#		}
+		#	}
+		#	FRA = {
+		#		NOT = {
+		#			has_government = communism
+		#		}
+		#		NOT = {
+		#			has_completed_focus = FRA_establish_spheres_of_influence
+		#		}
+		#	}
 		}
 
 		bypass = {
