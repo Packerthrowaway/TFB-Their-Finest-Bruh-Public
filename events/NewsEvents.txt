@@ -1310,7 +1310,14 @@ news_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		set_global_flag = trotsky_dead
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				SOV_kill_trotsky_effect = yes
+			}
+		}
 	}
 	
 	option = {
@@ -1319,12 +1326,38 @@ news_event = {
 			NOT = { 
 				TAG = SOV 
 				is_in_faction_with = SOV
+				tag = MEX
 			} 
 		}
 	}
 	option = {
+		name = news.37.a
+		trigger = {
+			tag = MEX
+			NOT = { is_in_faction_with = SOV }
+		}
+
+		effect_tooltip = {
+			retire_character = MEX_leon_trotsky
+		}
+	}
+
+	option = {
 		name = news.37.b
 		trigger = { TAG = SOV }
+
+		if = {
+			limit = {
+				has_idea = trotskyite_plot_nsb
+			}
+			effect_tooltip = {
+				retire_character = SOV_lev_trotsky
+			}
+			swap_ideas = {
+				remove_idea = trotskyite_plot_nsb
+				add_idea = trotskyite_plot_purged
+			}
+		}
 	}
 
 	option = {
@@ -4388,6 +4421,7 @@ news_event = {
 	
 	immediate = {
 		set_global_flag = fall_of_berlin_sov
+		play_victory_parade_effect = yes
 	}
 	
 	mean_time_to_happen = {
@@ -5887,142 +5921,142 @@ news_event = {
 	}
 }
 
-news_event = {
-	id = news.173
-	title = news.173.t
-	picture = GFX_news_event_023
-	
-	major = yes
-
-	trigger = {
-		NOT = { has_global_flag = SOV_fourth_international_fired }
-		SOV = {
-			OR = {
-				has_completed_focus = SOV_great_purge
-				NOT = { has_country_flag = SOV_purge_started }
-			}
-			has_government = communism
-		}		
-		date > 1938.9.1
-	}
-
-	immediate = {
-		set_global_flag = SOV_fourth_international_fired
-
-		# Set flag for amount of purges (completing focus counts as 1)
-		SOV = {
-			#1
-			if = {
-				limit = {
-					has_completed_focus = SOV_great_purge
-					has_country_flag = no_political_purge
-					has_country_flag = purge_1_no_purge
-					has_country_flag = purge_2_no_purge
-				}
-				set_country_flag = SOV_purged_1
-			}
-			#2
-			if = {
-				limit = {
-					has_completed_focus = SOV_great_purge
-					OR = {
-						AND = {
-							NOT = { has_country_flag = no_political_purge }
-							has_country_flag = purge_1_no_purge
-							has_country_flag = purge_2_no_purge
-						}
-						AND = {
-							has_country_flag = no_political_purge
-							NOT = { has_country_flag = purge_1_no_purge }
-							has_country_flag = purge_2_no_purge
-						}
-						AND = {
-							has_country_flag = no_political_purge
-							has_country_flag = purge_1_no_purge
-							NOT = { has_country_flag = purge_2_no_purge }
-						}
-					}
-				}
-				set_country_flag = SOV_purged_2
-			}
-			#3
-			if = {
-				limit = {
-					has_completed_focus = SOV_great_purge
-					OR = {
-						AND = {
-							NOT = { has_country_flag = no_political_purge }
-							NOT = { has_country_flag = purge_1_no_purge }
-							has_country_flag = purge_2_no_purge
-						}
-						AND = {
-							has_country_flag = no_political_purge
-							NOT = { has_country_flag = purge_1_no_purge }
-							NOT = { has_country_flag = purge_2_no_purge }
-						}
-						AND = {
-							NOT = { has_country_flag = no_political_purge }
-							has_country_flag = purge_1_no_purge
-							NOT = { has_country_flag = purge_2_no_purge }
-						}
-					}
-				}
-				set_country_flag = SOV_purged_3
-			}
-			#4
-			if = {
-				limit = {
-					SOV = {
-						has_completed_focus = SOV_great_purge
-						NOT = { has_country_flag = no_political_purge }
-						NOT = { has_country_flag = purge_1_no_purge }
-						NOT = { has_country_flag = purge_2_no_purge	}
-					}
-				}
-				set_country_flag = SOV_purged_4
-			}
-		}
-	}
-
-	mean_time_to_happen = { days = 2 }
-
-	desc = {
-		#not enough ppl killed
-		text = news.173.d_1
-		trigger = {
-			SOV = {
-				OR = {
-					NOT = { has_completed_focus = SOV_great_purge }
-					has_country_flag = no_political_purge
-					has_country_flag = purge_1_no_purge
-					has_country_flag = purge_2_no_purge
-				}
-			}
-		}
-	}
-	desc = {
-		text = news.173.d_2
-		trigger = {
-			SOV = {
-				has_completed_focus = SOV_great_purge
-				NOT = { has_country_flag = no_political_purge }
-				NOT = { has_country_flag = purge_1_no_purge }
-				NOT = { has_country_flag = purge_2_no_purge	}
-			}
-		}
-	}
-
-	option = {
-		name = news.173.a
-		trigger = { NOT = {	tag = SOV } }
-	}
-	option = {
-		name = news.173.b
-		trigger = { tag = SOV }
-	}
-}
-
-
+#news_event = {
+#	id = news.173
+#	title = news.173.t
+#	picture = GFX_news_event_023
+#	
+#	major = yes
+#
+#	trigger = {
+#		NOT = { has_global_flag = SOV_fourth_international_fired }
+#		SOV = {
+#			OR = {
+#				has_completed_focus = SOV_great_purge
+#				NOT = { has_country_flag = SOV_purge_started }
+#			}
+#			has_government = communism
+#		}		
+#		date > 1938.9.1
+#	}
+#
+#	immediate = {
+#		set_global_flag = SOV_fourth_international_fired
+#
+#		# Set flag for amount of purges (completing focus counts as 1)
+#		SOV = {
+#			#1
+#			if = {
+#				limit = {
+#					has_completed_focus = SOV_great_purge
+#					has_country_flag = no_political_purge
+#					has_country_flag = purge_1_no_purge
+#					has_country_flag = purge_2_no_purge
+#				}
+#				set_country_flag = SOV_purged_1
+#			}
+#			#2
+#			if = {
+#				limit = {
+#					has_completed_focus = SOV_great_purge
+#					OR = {
+#						AND = {
+#							NOT = { has_country_flag = no_political_purge }
+#							has_country_flag = purge_1_no_purge
+#							has_country_flag = purge_2_no_purge
+#						}
+#						AND = {
+#							has_country_flag = no_political_purge
+#							NOT = { has_country_flag = purge_1_no_purge }
+#							has_country_flag = purge_2_no_purge
+#						}
+#						AND = {
+#							has_country_flag = no_political_purge
+#							has_country_flag = purge_1_no_purge
+#							NOT = { has_country_flag = purge_2_no_purge }
+#						}
+#					}
+#				}
+#				set_country_flag = SOV_purged_2
+#			}
+#			#3
+#			if = {
+#				limit = {
+#					has_completed_focus = SOV_great_purge
+#					OR = {
+#						AND = {
+#							NOT = { has_country_flag = no_political_purge }
+#							NOT = { has_country_flag = purge_1_no_purge }
+#							has_country_flag = purge_2_no_purge
+#						}
+#						AND = {
+#							has_country_flag = no_political_purge
+#							NOT = { has_country_flag = purge_1_no_purge }
+#							NOT = { has_country_flag = purge_2_no_purge }
+#						}
+#						AND = {
+#							NOT = { has_country_flag = no_political_purge }
+#							has_country_flag = purge_1_no_purge
+#							NOT = { has_country_flag = purge_2_no_purge }
+#						}
+#					}
+#				}
+#				set_country_flag = SOV_purged_3
+#			}
+#			#4
+#			if = {
+#				limit = {
+#					SOV = {
+#						has_completed_focus = SOV_great_purge
+#						NOT = { has_country_flag = no_political_purge }
+#						NOT = { has_country_flag = purge_1_no_purge }
+#						NOT = { has_country_flag = purge_2_no_purge	}
+#					}
+#				}
+#				set_country_flag = SOV_purged_4
+#			}
+#		}
+#	}
+#
+#	mean_time_to_happen = { days = 2 }
+#
+#	desc = {
+#		#not enough ppl killed
+#		text = news.173.d_1
+#		trigger = {
+#			SOV = {
+#				OR = {
+#					NOT = { has_completed_focus = SOV_great_purge }
+#					has_country_flag = no_political_purge
+#					has_country_flag = purge_1_no_purge
+#					has_country_flag = purge_2_no_purge
+#				}
+#			}
+#		}
+#	}
+#	desc = {
+#		text = news.173.d_2
+#		trigger = {
+#			SOV = {
+#				has_completed_focus = SOV_great_purge
+#				NOT = { has_country_flag = no_political_purge }
+#				NOT = { has_country_flag = purge_1_no_purge }
+#				NOT = { has_country_flag = purge_2_no_purge	}
+#			}
+##		}
+#	}
+#
+#	option = {
+#		name = news.173.a
+#		trigger = { NOT = {	tag = SOV } }
+#	}
+#	option = {
+#		name = news.173.b
+#		trigger = { tag = SOV }
+#	}
+#}
+#
+#
 #FROM pursues nuclear technology
 news_event = {
 	id = news.174
