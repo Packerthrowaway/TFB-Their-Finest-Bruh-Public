@@ -70,129 +70,129 @@ operations = {
 		}
 	}
 
-	GER_summer_off = {
-
-		icon = generic_operation
-
-		allowed = {
-			original_tag = GER
-		}
-
-		available = {
-			OR = {
-				AND = {
-					date > 1940.5.1
-					date < 1940.7.1
-				}
-				AND = {
-					date > 1941.5.1
-					date < 1941.7.1
-				}
-				AND = {
-					date > 1942.5.1
-					date < 1942.7.1
-				}
-				AND = {
-					date > 1943.5.1
-					date < 1943.7.1
-				}
-				AND = {
-					date > 1944.5.1
-					date < 1944.7.1
-				}
-				AND = {
-					date > 1945.5.1
-					date < 1945.7.1
-				}
-				AND = {
-					date > 1946.5.1
-					date < 1946.7.1
-				}
-			}
-		}
-
-		cost = 0
-
-		days_re_enable = 250
-
-		visible = {
-			tag = GER
-			has_war_with = SOV
-			NOT = { has_idea = GER_summer_off }
-			NOT = { has_idea = GER_barbarossa }
-		}
-		
-		days_remove = 14
-
-		modifier = {
-			max_planning = 0.1
-			planning_speed = 0.25
-		}
-
-		remove_effect = {
-			add_timed_idea = {
-				idea = GER_summer_off
-				days = 90
-			}
-			if = {
-				limit = {
-					AND = {
-						is_in_faction_with = ROM
-						ROM = { has_war_with = SOV }
-					}
-				}
-				ROM = {
-					add_timed_idea = {
-						idea = GER_summer_off_minor
-						days = 90
-					}
-				}
-			}
-			if = {
-				limit = {
-					AND = {
-						is_in_faction_with = HUN
-						HUN = { has_war_with = SOV }
-					}
-				}
-				HUN = {
-					add_timed_idea = {
-						idea = GER_summer_off_minor
-						days = 90
-					}
-				}
-			}
-			if = {
-				limit = {
-					AND = {
-						is_in_faction_with = BUL
-						BUL = { has_war_with = SOV }
-					}
-				}
-				BUL = {
-					add_timed_idea = {
-						idea = GER_summer_off_minor
-						days = 90
-					}
-				}
-			}
-			if = {
-				limit = {
-					AND = {
-						is_in_faction_with = ITA
-						ITA = { has_war_with = SOV }
-					}
-				}
-				ITA = {
-					add_timed_idea = {
-						idea = GER_summer_off_minor
-						days = 90
-					}
-				}
-			}
-		}
-
-	}
+#	#GER_summer_off = {
+#
+#		icon = generic_operation
+#
+#		allowed = {
+#			original_tag = GER
+#		}
+#
+#		available = {
+#			OR = {
+#				AND = {
+#					date > 1940.5.1
+#					date < 1940.7.1
+#				}
+#				AND = {
+#					date > 1941.5.1
+#					date < 1941.7.1
+#				}
+#				AND = {
+#					date > 1942.5.1
+#					date < 1942.7.1
+#				}
+#				AND = {
+#					date > 1943.5.1
+#					date < 1943.7.1
+#				}
+#				AND = {
+#					date > 1944.5.1
+#					date < 1944.7.1
+#				}
+#				AND = {
+#					date > 1945.5.1
+#					date < 1945.7.1
+#				}
+#				AND = {
+#					date > 1946.5.1
+#					date < 1946.7.1
+#				}
+#			}
+#		}
+#
+#		cost = 0
+#
+#		days_re_enable = 250
+#
+#		visible = {
+#			tag = GER
+#			has_war_with = SOV
+#			NOT = { has_idea = GER_summer_off }
+#			NOT = { has_idea = GER_barbarossa }
+#		}
+#		
+#		days_remove = 14
+#
+#		modifier = {
+#			max_planning = 0.1
+#			planning_speed = 0.25
+#		}
+#
+#		remove_effect = {
+#			add_timed_idea = {
+#				idea = GER_summer_off
+#				days = 90
+#			}
+#			if = {
+#				limit = {
+#					AND = {
+#						is_in_faction_with = ROM
+#						ROM = { has_war_with = SOV }
+#					}
+#				}
+#				ROM = {
+#					add_timed_idea = {
+#						idea = GER_summer_off_minor
+#						days = 90
+#					}
+#				}
+#			}
+#			if = {
+#				limit = {
+#					AND = {
+#						is_in_faction_with = HUN
+#						HUN = { has_war_with = SOV }
+#					}
+#				}
+#				HUN = {
+#					add_timed_idea = {
+#						idea = GER_summer_off_minor
+#						days = 90
+#					}
+#				}
+#			}
+#			if = {
+#				limit = {
+#					AND = {
+#						is_in_faction_with = BUL
+#						BUL = { has_war_with = SOV }
+#					}
+#				}
+#				BUL = {
+#					add_timed_idea = {
+#						idea = GER_summer_off_minor
+#						days = 90
+#					}
+#				}
+#			}
+#			if = {
+#				limit = {
+#					AND = {
+#						is_in_faction_with = ITA
+#						ITA = { has_war_with = SOV }
+#					}
+#				}
+#				ITA = {
+#					add_timed_idea = {
+#						idea = GER_summer_off_minor
+#						days = 90
+#					}
+#				}
+#			}
+#		}
+#
+#	}
 	
 	GER_barbarossa_mission_moscow = {
 
