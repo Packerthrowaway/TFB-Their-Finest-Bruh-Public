@@ -2117,6 +2117,7 @@ focus_tree = {
 				add_to_variable = { SOV_soviet_airforce_air_accidents_factor = 0.05 }
 			}
 
+			hidden_effect = {
 			if = { #DEFAULT COMMIE
 				limit = {
 					has_government = communism
@@ -2130,6 +2131,7 @@ focus_tree = {
 				remove_dynamic_modifier = { modifier = SOV_soviet_airforce_dynamic_modifier_alt }
 				add_dynamic_modifier = { modifier = SOV_soviet_airforce_aircraft_production_focus_dynamic_modifier_alt }
 			}
+		}
 
 			custom_effect_tooltip = SOV_increase_aircraft_production_ns_tt
 
@@ -3946,7 +3948,10 @@ focus_tree = {
 		cost = 10
 
 		available = {
-			has_tech = improved_medium_tank_chassis
+			OR = {
+				has_tech = improved_medium_tank_chassis
+				has_tech = improved_medium_tank
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_RESEARCH}
@@ -5132,7 +5137,16 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_the_molotov_line }
 
 		available = {
-
+			OR = {
+				has_full_control_of_state = 209
+				has_full_control_of_state = 210
+				has_full_control_of_state = 207
+				has_full_control_of_state = 206
+				has_full_control_of_state = 202
+				has_full_control_of_state = 203
+				has_full_control_of_state = 834
+				has_full_control_of_state = 192
+			}
 		}
 		
 		search_filters = {}
@@ -5140,7 +5154,7 @@ focus_tree = {
 		completion_reward = {
 			209 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 6
@@ -5151,7 +5165,7 @@ focus_tree = {
 			}
 			210 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 4
@@ -5162,7 +5176,7 @@ focus_tree = {
 			}
 			207 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 4
@@ -5185,7 +5199,7 @@ focus_tree = {
 			}
 			206 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 4
@@ -5196,7 +5210,7 @@ focus_tree = {
 			}
 			202 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 7
@@ -5214,7 +5228,7 @@ focus_tree = {
 			}
 			203 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 7
@@ -5225,7 +5239,7 @@ focus_tree = {
 			}
 			834 ={
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 5
@@ -5242,7 +5256,7 @@ focus_tree = {
 			}
 			192 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
 						level = 5
@@ -5398,7 +5412,11 @@ focus_tree = {
 		cost = 10
 
 		available = {
-
+			OR = {
+				has_full_control_of_state = 195 #LENINGRAD
+				has_full_control_of_state = 208 #LUGA
+				has_full_control_of_state = 137 #CRIMEA
+			}
 		}
 		
 		search_filters = {}
@@ -5499,7 +5517,10 @@ focus_tree = {
 		cost = 5
 
 		available = {
-
+			has_full_control_of_state = 215 #ONEGA
+			has_full_control_of_state = 216 #OLONETS
+			has_full_control_of_state = 264 #TIKHVIN
+			has_full_control_of_state = 195 #LENINGRAD
 		}
 		
 		search_filters = {}
@@ -5611,7 +5632,13 @@ focus_tree = {
 		cost = 10
 
 		available = {
-
+			OR = {
+				has_full_control_of_state = 563
+				has_full_control_of_state = 561
+				has_full_control_of_state = 657
+				has_full_control_of_state = 409
+				has_full_control_of_state = 408
+			}
 		}
 		
 		search_filters = {}
@@ -5619,7 +5646,7 @@ focus_tree = {
 		completion_reward = {
 			563 = { #CHITA
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					custom_effect_tooltip = SOV_far_east_fortification_forts_4
 					hidden_effect = {
 						add_building_construction = {
@@ -5644,7 +5671,7 @@ focus_tree = {
 			}
 			561 = { #AMUR
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					custom_effect_tooltip = SOV_far_east_fortification_forts_4
 					hidden_effect = {
 						add_building_construction = {
@@ -5670,7 +5697,7 @@ focus_tree = {
 			}
 			657 = { #BIROBIDZHAN
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					custom_effect_tooltip = SOV_far_east_fortification_forts_10
 					hidden_effect = {
 						add_building_construction = {
@@ -5699,7 +5726,7 @@ focus_tree = {
 			}
 			409 = { #KHABAROVSK
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					custom_effect_tooltip = SOV_far_east_fortification_forts_4
 					hidden_effect = {
 						add_building_construction = {
@@ -5723,7 +5750,7 @@ focus_tree = {
 			}
 			408 = { #VLADIVOSTOK
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = { is_fully_controlled_by = ROOT }
 					custom_effect_tooltip = SOV_far_east_fortification_forts_10
 					hidden_effect = {
 						add_building_construction = {
@@ -5785,7 +5812,7 @@ focus_tree = {
 			hidden_effect = {
 				division_template = {
 					name = "Kazachya Kavaleryskaya Diviziya"
-					#division_names_group = SOV_CAV
+					#division_names_group = SOV_CAV_02
 					template_counter = 05
 
 					regiments = {
@@ -7413,6 +7440,10 @@ focus_tree = {
 				}
 			}
 			has_completed_focus = SOV_expand_the_agitprop
+			has_country_leader = {
+				character = SOV_iosif_stalin
+				ruling_only = yes
+			}
 		}
 		
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA}
@@ -8620,6 +8651,7 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
 					level = 2
@@ -8822,6 +8854,7 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
 					level = 2
@@ -8837,6 +8870,7 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex 
 					level = 2
@@ -8853,6 +8887,7 @@ focus_tree = {
 					}
 					is_coastal = yes 
 				}
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard  
 					level = 2
