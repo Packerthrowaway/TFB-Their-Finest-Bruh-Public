@@ -226,6 +226,7 @@ NDefines.NMilitary.ARMY_COMBAT_FUEL_MULT =   2.0					-- fuel consumption ratio i
 NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.25				-- ratio of the stats that you get from equipments that uses fuel and you lack it
 NDefines.NMilitary.OUT_OF_FUEL_SPEED_MULT = 0.1					-- speed mult that armies get when out of fuel
 NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 168             	-- default capacity if not specified
+NDefines.NMilitary.DAMAGE_SPLIT_ON_FIRST_TARGET = 0.5				--% of damage dealt to the first target in a combat. The rest will be split amongst subsequent targets. Modifiers can affect this up to a maximum of 0.9. That value must not be exposed as a define.
 
 NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 120
 NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 120
@@ -381,3 +382,7 @@ NDefines.NGraphics.WEATHER_ZOOM_IN_FADE_FACTOR = 0.0 -- How much the weather eff
 NDefines.NGraphics.WEATHER_PLAYBACK_RATE = 0.25 -- Playback rate at maximum distance
 NDefines.NGraphics.WEATHER_PLAYBACK_RATE_CUTOFF = 400 -- Playback rate maximum distance
 NDefines.NGraphics.WEATHER_PLAYBACK_RATE_LENGTH = 200 -- For how long to fade between normal playback rate and maximum distance playback rate
+
+NDefines.NCharacter.SPECIALIST_ADVISOR_MIN_RANK = 2
+NDefines.NCharacter.EXPERT_ADVISOR_MIN_RANK = 4
+NDefines.NCharacter.GENIUS_ADVISOR_MIN_RANK = 6
