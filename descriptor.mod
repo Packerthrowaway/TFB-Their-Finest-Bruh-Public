@@ -1,4 +1,4 @@
-version="1.0"
+version="1.11.0"
 tags={
 	"Balance"
 	"Events"
@@ -9,4 +9,4 @@ tags={
 }
 name="Their Finest Bruh DEV "
 picture="thumbnail.png"
-supported_version="1.10.*"
+supported_version="1.11.*"
