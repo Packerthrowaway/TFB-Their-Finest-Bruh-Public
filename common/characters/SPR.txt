@@ -47,6 +47,10 @@ characters={
 			civilian={
 				large="GFX_portrait_emilio_mola"
 			}
+			army={
+				large="GFX_portrait_SPA_emilio_mola"
+				small="gfx/interface/ideas/idea_spa_emilio_mola.dds"
+			}
 		}
 		country_leader={
 			ideology=falangism
@@ -132,7 +136,8 @@ characters={
 		name=SPA_emilio_mola_vidal
 		portraits={
 			army={
-				small="GFX_idea_generic_army_europe_3"
+				large="GFX_portrait_SPA_emilio_mola"
+				small="gfx/interface/ideas/idea_spa_emilio_mola.dds"
 			}
 		}
 		advisor={
@@ -628,6 +633,167 @@ characters={
 			}
 			ai_will_do = {
 				factor = 1
+			}
+		}
+	}
+	SPR_diego_hidalgo_duran = {
+		name=SPR_diego_hidalgo_duran
+		portraits={
+			army={
+				small="GFX_idea_generic_army_europe_3"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SPR_diego_hidalgo_duran
+			ledger = army
+			name = SPR_diego_hidalgo_duran
+			allowed = {
+				NOT = {
+					has_dlc = "La Resistance"
+				}
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			available = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			traits = {
+				army_concealment_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+	SPA_ramon_serrano_suner={
+		name=SPA_ramon_serrano_suner
+		portraits={
+			army={
+				small="GFX_idea_SPA_ramon_serrano_suner"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SPA_ramon_serrano_suner
+			name = SPA_ramon_serrano_suner 
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				NOT = { has_idea = SPA_raimundo_fernandez_cuesta }
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { tag = SPD }
+				}
+			}
+			traits = {
+				silent_workhorse 
+			}
+		}
+	}
+	SPA_luis_hernando_de_larramendi={
+		name=SPA_luis_hernando_de_larramendi
+		portraits={
+			army={
+				small="GFX_idea_SPA_luis_hernando_de_larramendi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SPA_luis_hernando_de_larramendi
+			name = SPA_luis_hernando_de_larramendi 
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { tag = SPD }
+				}
+			}
+			traits = {
+				traditionalist_theorist 
+			}
+		}
+	}
+	SPA_diego_hidalgo_y_duran={
+		name=SPA_diego_hidalgo_y_duran
+		portraits={
+			army={
+				small="GFX_idea_SPA_diego_hidalgo_y_duran"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SPA_diego_hidalgo_y_duran
+			name = SPA_diego_hidalgo_y_duran 
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			traits = {
+				war_industrialist 
+			}
+		}
+	}
+
+	SPA_emilio_herrera_vanilla={
+		name=SPA_emilio_herrera_vanilla
+		portraits={
+			army={
+				small="GFX_idea_generic_air_europe_3"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = SPA_emilio_herrera_vanilla
+			ledger = air
+			name = SPA_emilio_herrera_vanilla
+			allowed = {
+				NOT = {
+					has_dlc = "La Resistance"
+				}
+				original_tag = SPR
+			}
+			visible = {
+				has_government = fascism
+			}
+			available = {
+				has_government = fascism
+			}
+			traits = {
+				air_warfare_theorist
 			}
 		}
 	}
