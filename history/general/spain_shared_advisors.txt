@@ -58,6 +58,10 @@ every_possible_country = {
 			civilian={
 				large="GFX_portrait_emilio_mola"
 			}
+			army={
+				large="GFX_portrait_SPA_emilio_mola"
+				small="gfx/interface/ideas/idea_spa_emilio_mola.dds"
+			}
 		}
 		country_leader={
 			ideology=falangism
@@ -146,7 +150,8 @@ every_possible_country = {
 		name=SPA_emilio_mola_vidal
 		portraits={
 			army={
-				small="GFX_idea_generic_army_europe_3"
+				large="GFX_portrait_SPA_emilio_mola"
+				small="gfx/interface/ideas/idea_spa_emilio_mola.dds"
 			}
 		}
 		advisor={
@@ -659,6 +664,137 @@ every_possible_country = {
 			}
 			ai_will_do = {
 				factor = 1
+			}
+		}
+	}
+
+	# Just to get this working for Saturday
+	# TODO FIX SPAIN'S CHARACTERS AND CLEAN THEM UP RIGHT THIS IS TWIGS RIGHT NOW
+	generate_character = {
+		token_base = SPA_jose_antonio_giron
+		name=SPA_jose_antonio_giron
+		portraits={
+			army={
+				small="GFX_idea_SPA_jose_antonio_giron"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SPA_jose_antonio_giron
+			name = SPA_jose_antonio_giron 
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { tag = SPD }
+				}
+			}
+			traits = {
+				falangist_industrialist 
+			}
+		}
+	}
+	generate_character = {
+		token_base = SPA_diego_hidalgo_y_duran
+		name=SPA_diego_hidalgo_y_duran
+		portraits={
+			army={
+				small="GFX_idea_SPA_diego_hidalgo_y_duran"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SPA_diego_hidalgo_y_duran
+			name = SPA_diego_hidalgo_y_duran 
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				NOT = {
+					has_completed_focus = SPA_the_phalanx_ascendant
+					has_completed_focus = SPA_supremacy_of_the_communion
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = SPR_the_anti_fascist_workers_revolution
+				}
+			}
+			traits = {
+				war_industrialist 
+			}
+		}
+	}
+	generate_character = {
+		token_base = SPA_jose_enrique_varela
+		name=SPA_jose_enrique_varela
+		portraits={
+			army={
+				large="GFX_portrait_SPA_jose_enrique_varela"
+				small="gfx/interface/ideas/idea_SPA_jose_enrique_varela.dds"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = SPA_jose_enrique_varela
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			traits = {
+				military_theorist
+			}
+		}
+	}
+	generate_character = {
+		token_base = SPA_emilio_herrera_vanilla
+		name=SPA_emilio_herrera_vanilla
+		portraits={
+			army={
+				small="GFX_idea_generic_air_europe_3"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = SPA_emilio_herrera_vanilla
+			ledger = air
+			name = SPA_emilio_herrera_vanilla
+			allowed = {
+				NOT = {
+					has_dlc = "La Resistance"
+				}
+				original_tag = SPR
+			}
+			visible = {
+				has_government = fascism
+			}
+			available = {
+				has_government = fascism
+			}
+			traits = {
+				air_warfare_theorist
 			}
 		}
 	}
