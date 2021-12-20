@@ -379,13 +379,13 @@ shared_focus = {
 				limit = {
 					has_completed_focus = CHI_closer_ties_with_germany
 				}
-				add_equipment_to_stockpile = { type = ger_light_tank_equipment_1 amount = 300 producer = GER }
+				add_equipment_to_stockpile = { type = light_tank_chassis_1 amount = 300 producer = GER }
 			}
 			if = {
 				limit = {
 					has_completed_focus = CHI_rapprochement_with_soviet_union
 				}
-				add_equipment_to_stockpile = { type = sov_bt_tank_equipment_1 amount = 300 producer = SOV }
+				add_equipment_to_stockpile = { type = light_tank_chassis_1 amount = 300 producer = SOV variant_name = "BT-5"}
 			}
 		}
 	}
@@ -525,14 +525,18 @@ shared_focus = {
 					regiments = {
 						light_armor = { x = 0 y = 0 }
 						light_armor = { x = 0 y = 1 }
+						light_armor = { x = 0 y = 2 }
+						light_armor = { x = 0 y = 3 }
+						light_armor = { x = 1 y = 0 }
 			
-						motorized = { x = 1 y = 0 }
-						motorized = { x = 1 y = 1 }
-						motorized = { x = 1 y = 2 }
-						motorized = { x = 1 y = 3 }
+						motorized = { x = 2 y = 0 }
+						motorized = { x = 2 y = 1 }
+						motorized = { x = 2 y = 2 }
+						motorized = { x = 2 y = 3 }
+						motorized = { x = 3 y = 0 }
 					}
 					support = {
-						
+						hq_company = { x = 0 y = 0 }
 					}
 				}
 			}
@@ -671,7 +675,7 @@ shared_focus = {
 			category = armor
 		}
 		custom_effect_tooltip = available_designer
-		show_ideas_tooltip = morozov_design_bureau
+		show_ideas_tooltip = SOV_morozov_design_bureau
 	}
 }
 
@@ -706,7 +710,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		add_equipment_to_stockpile = { type = sov_bt_tank_equipment_1 amount = 600 producer = SOV }
+		add_equipment_to_stockpile = { type = light_tank_chassis_1 amount = 600 producer = SOV variant_name = "T-26TU mod. 1933"}
 	}
 }
 
