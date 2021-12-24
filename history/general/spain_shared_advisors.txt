@@ -1,211 +1,285 @@
-﻿# Characters shared by the Spanish countries
+﻿# Characters shared by the chinese countries
 # for each country, generate one instance of the characters
-
 every_possible_country = {
 	limit = {
 		original_tag = SPR
 		has_dlc = "La Resistance"
 	}
+
 	generate_character = {
-		token_base = SPR_manuel_fal_conde
-		name="Manuel Fal Conde"
+		token_base = SPA_emilio_herrera
+		name=SPA_emilio_herrera
 		portraits={
-			civilian={
-				large="GFX_portrait_SPA_manuel_fal_conde"
+			army={
+				small="GFX_idea_generic_air_europe_3"
 			}
 		}
-		country_leader={
-			ideology=despotism
-			traits={ jefe }
-			expire="1965.1.1.1"
-			id=-1
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = SPA_emilio_herrera
+			ledger = air
+			name = SPA_emilio_herrera
+			allowed = {
+				original_tag = SPR
+			}
+			available = {
+				has_government = fascism
+			}
+			traits = {
+				air_warfare_theorist
+			}
 		}
 	}
-	generate_character = { 
-		token_base = SPR_manuel_azaña
-		name="Manuel Azaña"
+
+	generate_character = {
+		token_base = SPA_francisco_franco
+		name=SPA_francisco_franco
 		portraits={
-			civilian={
-				large="gfx/leaders/SPR/Portrait_Spain_Manuel_Azana.dds"
+			army={
+				large="GFX_portrait_spain_francisco_franco"
+				small="gfx/interface/ideas/idea_SPA_francisco_franco.dds"
 			}
-		}
-		country_leader={
-			ideology=conservatism
-			traits={ figurehead_president }
-			expire="1965.1.1.1"
-			id=-1
 		}
 	}
-	generate_character = { 
-		token_base = SPR_josé_díaz
-		name="José Díaz"
+
+	generate_character = {
+		token_base = SPA_emilio_mola
+		name=SPA_emilio_mola
 		portraits={
-			civilian={
-				large="gfx/leaders/SPR/portrait_spr_jose_diaz.dds"
-			}
-		}
-		country_leader={
-			ideology=stalinism
-			traits={ veteran_communist }
-			expire="1965.1.1.1"
-			id=-1
-		}
-	}
-	generate_character = { 
-		token_base = SPR_emilio_mola
-		name="Emilio Mola"
-		portraits={
-			civilian={
-				large="GFX_portrait_emilio_mola"
-			}
 			army={
 				large="GFX_portrait_SPA_emilio_mola"
-				small="gfx/interface/ideas/idea_spa_emilio_mola.dds"
+				small="gfx/interface/ideas/idea_SPA_emilio_mola.dds"
 			}
-		}
-		country_leader={
-			ideology=falangism
-			traits={ the_director }
-			expire="1965.1.1.1"
-			id=-1
 		}
 		advisor={
 			slot = high_command
 			idea_token = SPA_emilio_mola
+			ledger = army
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
+
 			visible = {
 				NOT = {
-					has_government = democratic
-					has_government = communism
+					tag = SPD
+					tag = SPC
 				}
 			}
+
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
+					NOT = { has_government = communism }
 				}
 			}
 			traits = {
-				army_infantry_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
+				army_infantry_2
+				}
+			cost = 100
 		}
 	}
-	# Army Chief
-	generate_character = { 
-		token_base = SPA_miguel_cabanellas_ferrer_vanilla
-		name=SPA_miguel_cabanellas_ferrer
-		portraits={
-			army={
-				small="GFX_idea_generic_army_europe_3"
-			}
-		}
-		advisor={
-			slot = army_chief
-			idea_token = SPA_miguel_cabanellas_ferrer_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				army_chief_old_guard 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_ricardo_rada_vanilla
-		name=SPA_ricardo_rada
-		portraits={
-			army={
-				small="GFX_idea_generic_army_europe_3"
-			}
-		}
-		advisor={
-			slot = army_chief
-			idea_token = SPA_ricardo_rada_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				army_chief_defensive_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_emilio_mola_vidal_vanilla
-		name=SPA_emilio_mola_vidal
-		portraits={
-			army={
-				large="GFX_portrait_SPA_emilio_mola"
-				small="gfx/interface/ideas/idea_spa_emilio_mola.dds"
-			}
-		}
-		advisor={
-			slot = army_chief
-			idea_token = SPA_emilio_mola_vidal_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				army_chief_offensive_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
+
+	generate_character = {
 		token_base = SPA_juan_yague
 		name=SPA_juan_yague
 		portraits={
 			army={
-				small="GFX_idea_SPA_juan_yague"
+				large="GFX_portrait_SPA_juan_yague"
+				small="gfx/interface/ideas/idea_SPA_juan_yague.dds"
 			}
 		}
 		advisor={
 			slot = army_chief
 			idea_token = SPA_juan_yague
+			ledger = army
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
-				}
-			}
-			visible = {
-				NOT = {
-					has_government = democratic
-					has_government = communism
+					NOT = { has_government = communism }
 				}
 			}
 			traits = {
-				army_chief_offensive_2 
+				army_chief_offensive_2
 			}
+			cost = 100
+		}
+	}
+
+	generate_character = {
+		token_base = SPA_emilio_esteban_infantes
+		name=SPA_emilio_esteban_infantes
+		portraits={
+			army={
+				small="GFX_idea_generic_army_europe_5"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SPA_emilio_esteban_infantes
+			ledger = army
+			name = SPA_emilio_esteban_infantes
+			allowed = {
+				NOT = {
+					has_dlc = "La Resistance"
+				}
+				original_tag = SPR
+			}
+			visible = {
+				has_government = fascism
+			}
+			available = {
+				has_government = fascism
+			}
+			traits = {
+				army_logistics_2
+			}
+			cost = 100
 			ai_will_do = {
-				factor = 1
+				factor = 1.000
 			}
 		}
 	}
-	generate_character = { 
+
+	generate_character = {
+		token_base = SPA_agustin_munoz_grandes
+		name=SPA_agustin_munoz_grandes
+		portraits={
+			army={
+				small="GFX_idea_SPA_agustin_munoz_grandes"
+				large="GFX_portrait_SPA_augustin_muynoz_grandes"
+			}
+		}
+		advisor={
+		cost = 100
+			slot = theorist
+			idea_token = SPA_agustin_munoz_grandes
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { has_government = communism }
+				}
+			}
+			traits = {
+				mobile_warfare_expert
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = SPA_jose_enrique_varela
+		name=SPA_jose_enrique_varela
+		portraits={
+			army={
+				large="GFX_portrait_SPA_jose_enrique_varela"
+				small="gfx/interface/ideas/idea_SPA_jose_enrique_varela.dds"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = SPA_jose_enrique_varela
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				if = {
+					limit = {
+						has_completed_focus = SPA_unify_the_nationalist_front
+					}
+					NOT = {
+						has_global_flag = SPR_carlist_uprising_flag
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { tag = SPD }
+				}
+			}
+			traits = {
+				military_theorist
+			}
+		}
+	}
+
+	generate_character = {
+		token_base = SPA_luis_carrero_blanco
+		name=SPA_luis_carrero_blanco
+		portraits={
+			army={
+				large="GFX_portrait_SPA_luis_carrero_blanco"
+				small="gfx/interface/ideas/idea_SPA_luis_carrero_blanco.dds"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = SPA_luis_carrero_blanco
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+			}
+			traits = {
+				navy_chief_decisive_battle_2
+			}
+			cost = 100
+		}
+		navy_leader={
+			traits={ trait_SPA_nationalist_sympathies seawolf }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			maneuvering_skill=0
+			coordination_skill=0
+			legacy_id=1118
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+		}
+	}
+
+	generate_character = {
 		token_base = SPA_rafael_garcia_valino
 		name=SPA_rafael_garcia_valino
 		portraits={
@@ -216,31 +290,39 @@ every_possible_country = {
 		advisor={
 			slot = army_chief
 			idea_token = SPA_rafael_garcia_valino
+			ledger = army
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
-				}
-			}
 			visible = {
 				NOT = {
-					has_government = democratic
-					has_government = communism
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				if = {
+					limit = {
+						has_completed_focus = SPA_unify_the_nationalist_front
+					}
+					NOT = {
+						has_global_flag = SPR_carlist_uprising_flag
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { tag = SPD }
 				}
 			}
 			traits = {
-				army_chief_organizational_2 
+				army_chief_organizational_2
 			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
+			cost = 100
+		}		
 	}
-	generate_character = { 
+
+	generate_character = {
 		token_base = SPA_heli_rolando_de_tella
 		name=SPA_heli_rolando_de_tella
 		portraits={
@@ -251,31 +333,39 @@ every_possible_country = {
 		advisor={
 			slot = army_chief
 			idea_token = SPA_heli_rolando_de_tella
+			ledger = army
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
-			available = {
-				custom_trigger_tooltip = {
-					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
-				}
-			}
 			visible = {
 				NOT = {
-					has_government = democratic
-					has_government = communism
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				if = {
+					limit = {
+						has_completed_focus = SPA_unify_the_nationalist_front
+					}
+					NOT = {
+						has_global_flag = SPR_carlist_uprising_flag
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { tag = SPD }
 				}
 			}
 			traits = {
-				army_chief_defensive_2 
+				army_chief_defensive_2
 			}
-			ai_will_do = {
-				factor = 1
-			}
+			cost = 100
 		}
 	}
-	generate_character = { 
+
+	generate_character = {
 		token_base = SPA_miguel_ponte
 		name=SPA_miguel_ponte
 		portraits={
@@ -286,80 +376,33 @@ every_possible_country = {
 		advisor={
 			slot = army_chief
 			idea_token = SPA_miguel_ponte
+			ledger = army
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
+
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
-				}
-			}
-			visible = {
-				NOT = {
-					has_government = democratic
-					has_government = communism
+					NOT = { tag = SPD }
 				}
 			}
 			traits = {
-				army_chief_drill_2 
+				army_chief_drill_2
 			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
+			cost = 100
+		}		
 	}
-	# Air Chief
-	generate_character = { 
-		token_base = SPA_alfredo_kindelan_duany_vanilla
-		name=SPA_alfredo_kindelan_duany
-		portraits={
-			army={
-				small="GFX_idea_generic_air_europe_1"
-			}
-		}
-		advisor={
-			slot = air_chief
-			idea_token = SPA_alfredo_kindelan_duany_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				air_chief_ground_support_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_juan_yague_blanco_vanilla
-		name=SPA_juan_yague_blanco
-		portraits={
-			army={
-				small="GFX_idea_generic_air_europe_3"
-			}
-		}
-		advisor={
-			slot = air_chief
-			idea_token = SPA_juan_yague_blanco_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				air_chief_reform_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
+
+	generate_character = {
 		token_base = SPA_joaquin_garcia_morato
 		name=SPA_joaquin_garcia_morato
 		portraits={
@@ -370,231 +413,33 @@ every_possible_country = {
 		advisor={
 			slot = air_chief
 			idea_token = SPA_joaquin_garcia_morato
+			ledger = air
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
+
 			visible = {
 				NOT = {
-					has_government = democratic
-					has_government = communism
+					tag = SPD
+					tag = SPC
 				}
 			}
-			traits = {
-				air_chief_ground_support_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	# Navy Chief
-	generate_character = { 
-		token_base = SPA_salvador_moreno_fernandez_vanilla
-		name=SPA_salvador_moreno_fernandez_vanilla
-		portraits={
-			army={
-				small="GFX_idea_generic_navy_europe_1"
-			}
-		}
-		advisor={
-			slot = navy_chief
-			idea_token = SPA_salvador_moreno_fernandez_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				navy_chief_decisive_battle_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_fransisco_moreno_fernandez_vanilla
-		name=SPA_fransisco_moreno_fernandez_vanilla
-		portraits={
-			army={
-				small="GFX_idea_generic_navy_europe_1"
-			}
-		}
-		advisor={
-			slot = navy_chief
-			idea_token = SPA_fransisco_moreno_fernandez_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				navy_chief_reform_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_luis_carrero_blanco_vanilla
-		name=SPA_luis_carrero_blanco_vanilla
-		portraits={
-			army={
-				small="GFX_idea_SPA_luis_carrero_blanco"
-			}
-		}
-		advisor={
-			slot = navy_chief
-			idea_token = SPA_luis_carrero_blanco_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				navy_chief_old_guard 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_luis_carrero_blanco
-		name=SPA_luis_carrero_blanco
-		portraits={
-			army={
-				small="GFX_idea_SPA_luis_carrero_blanco"
-			}
-		}
-		advisor={
-			slot = navy_chief
-			idea_token = SPA_luis_carrero_blanco
-			allowed = {
-				has_dlc = "La Resistance"
-				original_tag = SPR
-			}
-			visible = {
-				NOT = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-			
+
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
+					NOT = { tag = SPD }
 				}
 			}
 			traits = {
-				navy_chief_decisive_battle_2 
+				air_chief_ground_support_2
 			}
-			ai_will_do = {
-				factor = 1
-			}
+			cost = 100
 		}
 	}
-	# High Command
-	generate_character = { 
-		token_base = SPA_emilio_esteban_infantes_vanilla
-		name=SPA_emilio_esteban_infantes
-		portraits={
-			army={
-				small="GFX_idea_generic_army_europe_5"
-			}
-		}
-		advisor={
-			slot = high_command
-			idea_token = SPA_emilio_esteban_infantes_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				army_logistics_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_agustin_munoz_grandes_vanilla
-		name=SPA_agustin_munoz_grandes
-		portraits={
-			army={
-				small="GFX_idea_generic_army_europe_3"
-			}
-		}
-		advisor={
-			slot = high_command
-			idea_token = SPA_agustin_munoz_grandes_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				army_infantry_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_joaquin_garcia_morato_vanilla
-		name=SPA_joaquin_garcia_morato
-		portraits={
-			army={
-				small="GFX_idea_generic_air_europe_2"
-			}
-		}
-		advisor={
-			slot = high_command
-			idea_token = SPA_joaquin_garcia_morato_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				air_air_combat_training_3 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
-		token_base = SPA_angel_salas_larrazabal_vanilla
-		name=SPA_angel_salas_larrazabal
-		portraits={
-			army={
-				small="GFX_idea_generic_air_europe_2"
-			}
-		}
-		advisor={
-			slot = high_command
-			idea_token = SPA_angel_salas_larrazabal_vanilla
-			allowed = {
-				NOT = { has_dlc = "La Resistance" }
-				original_tag = SPR
-				has_government = fascism
-			}
-			traits = {
-				air_strategic_bombing_2 
-			}
-			ai_will_do = {
-				factor = 1
-			}
-		}
-	}
-	generate_character = { 
+
+	generate_character = {
 		token_base = SPA_wilhelm_ritter_von_thoma
 		name=SPA_wilhelm_ritter_von_thoma
 		portraits={
@@ -602,36 +447,35 @@ every_possible_country = {
 				small="GFX_idea_SPA_wilhelm_ritter_von_thoma"
 			}
 		}
-		advisor={
+		advisor={	
 			slot = high_command
 			idea_token = SPA_wilhelm_ritter_von_thoma
+			ledger = army
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
 			visible = {
 				NOT = {
-					has_government = democratic
-					has_government = communism
+					tag = SPD
+					tag = SPC
 				}
 			}
-
 			available = {
+				has_completed_focus = SPA_the_condor_legion
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
+					NOT = { tag = SPD }
 				}
-				has_completed_focus = SPA_the_condor_legion
 			}
 			traits = {
-				army_armored_2 
+				army_armored_2
 			}
-			ai_will_do = {
-				factor = 1
-			}
+			cost = 100
 		}
 	}
-	generate_character = { 
+
+	generate_character = {
 		token_base = SPA_enrique_canovas_lacruz
 		name=SPA_enrique_canovas_lacruz
 		portraits={
@@ -642,34 +486,32 @@ every_possible_country = {
 		advisor={
 			slot = high_command
 			idea_token = SPA_enrique_canovas_lacruz
+			ledger = army
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
+
 			visible = {
 				NOT = {
-					has_government = democratic
-					has_government = communism
+					tag = SPD
+					tag = SPC
 				}
 			}
 
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
-					NOT = { has_government = democratic }
+					NOT = { tag = SPD }
 				}
 			}
 			traits = {
-				army_logistics_2 
+				army_logistics_2
 			}
-			ai_will_do = {
-				factor = 1
-			}
+			cost = 100
 		}
 	}
 
-	# Just to get this working for Saturday
-	# TODO FIX SPAIN'S CHARACTERS AND CLEAN THEM UP RIGHT THIS IS TWIGS RIGHT NOW
 	generate_character = {
 		token_base = SPA_jose_antonio_giron
 		name=SPA_jose_antonio_giron
@@ -695,7 +537,7 @@ every_possible_country = {
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
-					NOT = { tag = SPD }
+					NOT = { has_government = communism }
 				}
 			}
 			traits = {
@@ -703,6 +545,43 @@ every_possible_country = {
 			}
 		}
 	}
+
+	generate_character = {
+		token_base = SPA_raimundo_fernandez_cuesta
+		name=SPA_raimundo_fernandez_cuesta
+		portraits={
+			army={
+				small="GFX_idea_SPA_raimundo_fernandez_cuesta"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SPA_raimundo_fernandez_cuesta
+			name = SPA_raimundo_fernandez_cuesta 
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = SPR
+			}
+			visible = {
+				NOT = {
+					tag = SPD
+					tag = SPC
+				}
+			}
+			available = {
+				NOT = { has_idea = SPA_ramon_serrano_suner }
+				has_completed_focus = SPA_banish_the_party_leaders
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { has_government = communism }
+				}
+			}
+			traits = {
+				loyal_falangist 
+			}
+		}
+	}
+
 	generate_character = {
 		token_base = SPA_diego_hidalgo_y_duran
 		name=SPA_diego_hidalgo_y_duran
@@ -726,77 +605,49 @@ every_possible_country = {
 				}
 			}
 			available = {
-				NOT = {
-					has_completed_focus = SPA_the_phalanx_ascendant
-					has_completed_focus = SPA_supremacy_of_the_communion
-					has_completed_focus = SPR_regional_defense_council_of_aragon
-					has_completed_focus = SPR_the_anti_fascist_workers_revolution
-				}
+				NOT = { has_government = communism }
 			}
 			traits = {
 				war_industrialist 
 			}
 		}
 	}
+
 	generate_character = {
-		token_base = SPA_jose_enrique_varela
-		name=SPA_jose_enrique_varela
+		token_base = SPA_ramon_serrano_suner
+		name=SPA_ramon_serrano_suner
 		portraits={
 			army={
-				large="GFX_portrait_SPA_jose_enrique_varela"
-				small="gfx/interface/ideas/idea_SPA_jose_enrique_varela.dds"
+				small="GFX_idea_SPA_ramon_serrano_suner"
 			}
 		}
 		advisor={
-			cost = 100
-			slot = theorist
-			idea_token = SPA_jose_enrique_varela
-			ledger = army
+			slot = political_advisor
+			idea_token = SPA_ramon_serrano_suner
+			name = SPA_ramon_serrano_suner 
 			allowed = {
 				has_dlc = "La Resistance"
 				original_tag = SPR
 			}
+
 			visible = {
 				NOT = {
 					tag = SPD
 					tag = SPC
 				}
 			}
-			traits = {
-				military_theorist
-			}
-		}
-	}
-	generate_character = {
-		token_base = SPA_emilio_herrera_vanilla
-		name=SPA_emilio_herrera_vanilla
-		portraits={
-			army={
-				small="GFX_idea_generic_air_europe_3"
-			}
-		}
-		advisor={
-			cost = 100
-			slot = theorist
-			idea_token = SPA_emilio_herrera_vanilla
-			ledger = air
-			name = SPA_emilio_herrera_vanilla
-			allowed = {
-				NOT = {
-					has_dlc = "La Resistance"
-				}
-				original_tag = SPR
-			}
-			visible = {
-				has_government = fascism
-			}
+
 			available = {
-				has_government = fascism
+				custom_trigger_tooltip = {
+					tooltip = SPA_not_republican_spain_tt
+					NOT = { has_government = communism }
+				}
 			}
 			traits = {
-				air_warfare_theorist
+				silent_workhorse 
 			}
 		}
 	}
+
 }
 
