@@ -1,22 +1,90 @@
 on_actions = {
    on_startup = {
-	effect = {
-		every_country = { 
-			limit = { tag = GER }
-			country_event = { 
-				id = germany.mefoair }
+		effect = {
+			every_country = { 
+				limit = { tag = GER }
+				country_event = { 
+					id = germany.mefoair }
+				}
+			every_country = { 
+				limit = { tag = MON }
+				country_event = { 
+					id = mongolia.start }
+				}	
+			every_country = { 
+				limit = { tag = ITA }
+				country_event = { 
+					id = italy.air }
+				}			
+		}
+	}
+
+	on_capitulation = {
+		# Japan and Manchu split China
+		effect = {
+			if = {
+				limit = {
+					original_tag = CHI
+					FROM = { tag = JAP }
+					has_global_flag = JAP_split_china
+				}
+				MAN = {
+					transfer_state = 616 #Ningxia
+					transfer_state = 621 #Suiyuan
+					transfer_state = 746 #Ordos
+				}
+				JAP = {
+					annex_country = {
+						target = CHI
+						transfer_troops = no
+					}
+				}
 			}
-		every_country = { 
-			limit = { tag = MON }
-			country_event = { 
-				id = mongolia.start }
-			}	
-		every_country = { 
-			limit = { tag = ITA }
-			country_event = { 
-				id = italy.air }
-			}			
+		}
+		# Japan Takes all of China
+		effect = {
+			if = {
+				limit = {
+					original_tag = CHI
+					FROM = { tag = JAP }
+					has_global_flag = JAP_take_china
+				}
+				JAP = {
+					annex_country = {
+						target = CHI
+						transfer_troops = no
+					}
+				}
+			}
+		}
+		# Manchu takes all of China
+		effect = {
+			if = {
+				limit = {
+					original_tag = CHI
+					FROM = { tag = JAP }
+					has_global_flag = JAP_give_china
+				}
+				MAN = {
+					annex_country = {
+						target = CHI
+						transfer_troops = no
+					}
+				}
+			}
+		}
+		# Japan Puppets China
+		effect = { 
+			if = {
+				limit = {
+					original_tag = CHI
+					FROM = { tag = JAP }
+					has_global_flag = JAP_puppet_china
+				}
+				JAP = {
+					puppet = CHI
+				}
+			}
+		}
 	}
-	}
-	
 }
