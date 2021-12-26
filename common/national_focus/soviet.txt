@@ -32,8 +32,72 @@
 		completion_reward = {
 			add_political_power = 150
 		}
+	}	
+	
+	
+
+	focus = {
+		id = SOV_heavy_industry_expansion
+		icon = GFX_SOV_magnitogorsk_the_closed_city
+		prerequisite = { focus = SOV_socialist_realism }
+		x = 0
+		y = 1
+		relative_position_id = SOV_socialist_realism
+		cost = 6
+		ai_will_do = {
+			factor = 5
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			651 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+			398 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
 	}
 	
+	focus = {
+		id = SOV_railway_5
+		icon = GFX_goal_socialist_realism
+		prerequisite = { focus = SOV_railway_4 }
+		prerequisite = {focus = SOV_siberia_1 }
+
+		x = 0
+		y = 3
+		relative_position_id = SOV_heavy_industry_expansion
+		cost = 1
+		ai_will_do = {
+			factor = 4
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			remove_ideas = SOV_bad_rail
+		}
+	}
+
 	focus = {
 		id = SOV_railway_2
 		icon = GFX_goal_generic_soviet_infrastructure
@@ -134,7 +198,7 @@
 			}
 		}
 	}
-	
+
 	focus = {
 		id = SOV_siberia_1
 		icon = GFX_SOV_one_way_trip_to_hell
@@ -142,7 +206,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_railway_2
-		cost = 3
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -249,7 +313,7 @@
 			}
 		}
 	}
-	
+
 	focus = {
 		id = SOV_railway_3
 		icon = GFX_goal_generic_soviet_infrastructure
@@ -383,9 +447,48 @@
 					instant_build = yes
 				}
 			}
+			build_railway = {
+				path = { 3358 366 11326 11349 }
+			}
+			build_railway = {
+				path = { 11349 6264 3235 9287 11234 }
+			}
+			build_railway = {
+				path = { 11234 9331 320 9234 11109 117 6197 79 6174 }
+			}
+			build_railway = {
+				path = { 6174 3151 }
+			}
+			build_railway = {
+				path = { 11068 9197 }
+			}
+			build_railway = {
+				path = { 11068 9197 }
+			}
+			build_railway = {
+				path = { 9197 70 }
+			}
+			build_railway = {
+				path = { 70 11059 11153 6057 90 11159 }
+			}
+			build_railway = {
+				path = { 70 11059 11153 6057 90 11159 }
+			}
+			build_railway = {
+				path = { 11159 9118 3033 11092 155 11175 6021 94 9195 3189 }
+			}
+			build_railway = {
+				path = { 11159 9118 3033 11092 155 11175 6021 94 9195 3189 }
+			}
+			build_railway = {
+				path = { 3189 86 3008 9162 3121 6181 9201 11117 3134 }
+			}
+			build_railway = {
+				path = { 3189 86 3008 9162 3121 6181 9201 11117 3134 }
+			}
 		}
 	}
-	
+
 	focus = {
 		id = SOV_railway_4
 		icon = GFX_goal_generic_soviet_infrastructure
@@ -582,74 +685,47 @@
 					instant_build = yes
 				}
 			}
-		}
-	}
-	
-	focus = {
-		id = SOV_railway_5
-		icon = GFX_goal_socialist_realism
-		prerequisite = { focus = SOV_railway_4 }
-		prerequisite = {focus = SOV_siberia_1 }
-
-		x = 0
-		y = 3
-		relative_position_id = SOV_heavy_industry_expansion
-		cost = 2
-		ai_will_do = {
-			factor = 4
-		}
-
-		available_if_capitulated = yes
-
-		bypass = {
-		}
-
-		complete_tooltip = {
-		}
-
-		completion_reward = {
-			remove_ideas = SOV_bad_rail
-			219 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
+			build_railway = {
+				path = { 6380 6414 }
 			}
-		}
-	}
-
-	focus = {
-		id = SOV_heavy_industry_expansion
-		icon = GFX_SOV_magnitogorsk_the_closed_city
-		prerequisite = { focus = SOV_socialist_realism }
-		x = 0
-		y = 1
-		relative_position_id = SOV_socialist_realism
-		cost = 6
-		ai_will_do = {
-			factor = 5
-		}
-
-		complete_tooltip = {
-		}
-
-		completion_reward = {
-			651 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
+			build_railway = {
+				path = { 6414 6348 3263 11300 11235 11284 6252 3335 }
 			}
-			398 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
+			build_railway = {
+				path = { 3335 3306 288 3225 9566 6508 11489 }
+			}
+			build_railway = {
+				path = { 11489 6458 11557 }
+			}
+			build_railway = {
+				path = { 11557 525 }
+			}
+			build_railway = {
+				path = { 6414 9348 }
+			}
+			build_railway = {
+				path = { 9348 9282 11268 9330 3356  }
+			}
+			build_railway = {
+				path = { 3356 6279 6230 6398 }
+			}
+			build_railway = {
+				path = { 6398 6341 413 3527 }
+			}
+			build_railway = {
+				path = { 3527 11475 11412 6591 3540 3519 11459 }
+			}
+			build_railway = {
+				path = { 11459 11450 11434 9417 }
+			}
+			build_railway = {
+				path = { 9417 9430 6493 6474 }
+			}
+			build_railway = {
+				path = { 6474 3479 502 6530 3531 418 }
+			}
+			build_railway = {
+				path = { 6474 3466 3449 472 453 11437 }
 			}
 		}
 	}
@@ -671,18 +747,18 @@
 
 		completion_reward = {
 			264 = {
-				add_extra_state_shared_building_slots = 5
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
-					level = 5
+					level = 4
 					instant_build = yes
 				}
 			}
 			247 = {
-				add_extra_state_shared_building_slots = 5
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
-					level = 5
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -838,44 +914,6 @@
 		}
 	}
 	
-	focus = {
-		id = SOV_rare_metal
-		icon = GFX_SOV_goals_renovation_of_siberia
-		prerequisite = { focus = SOV_petrochemical }
-		x = 0
-		y = 1
-		relative_position_id = SOV_petrochemical
-		cost = 6
-		ai_will_do = {
-			factor = 5
-		}
-
-		complete_tooltip = {
-		}
-
-		completion_reward = {
-			add_resource = {
-				type = chromium
-				amount = 240
-				state = 573
-			}
-			add_resource = {
-				type = tungsten
-				amount = 400
-				state = 401
-			}
-        	modify_building_resources = {
-        	   building = steel_refinery
-        	   resource = chromium
-        	   amount = 20
-        	}
-        	modify_building_resources = {
-        	   building = steel_refinery
-        	   resource = tungsten
-        	   amount = 20
-        	}
-		}
-	}
 	
 	focus = {
 		id = SOV_aluminium
@@ -947,6 +985,45 @@
 				amount = 250
 				state = 232
 			}
+		}
+	}
+
+	focus = {
+		id = SOV_rare_metal
+		icon = GFX_SOV_goals_renovation_of_siberia
+		prerequisite = { focus = SOV_petrochemical }
+		x = 0
+		y = 1
+		relative_position_id = SOV_petrochemical
+		cost = 6
+		ai_will_do = {
+			factor = 5
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_resource = {
+				type = chromium
+				amount = 240
+				state = 573
+			}
+			add_resource = {
+				type = tungsten
+				amount = 400
+				state = 401
+			}
+        	modify_building_resources = {
+        	   building = steel_refinery
+        	   resource = chromium
+        	   amount = 20
+        	}
+        	modify_building_resources = {
+        	   building = steel_refinery
+        	   resource = tungsten
+        	   amount = 20
+        	}
 		}
 	}
 	
@@ -1507,11 +1584,6 @@
 
 		completion_reward = {
 			add_equipment_to_stockpile = {
-				type = medium_tank_equipment
-				amount = 2000
-				producer = USA
-			}
-			add_equipment_to_stockpile = {
 				type = mechanized_equipment
 				amount = 2000
 				producer = USA
@@ -1817,8 +1889,6 @@
 
 			custom_effect_tooltip = SOV_lessons_of_war_ns_tt
 
-			unlock_decision_tooltip = SOV_order_227
-			custom_effect_tooltip = SOV_lessons_of_war_unlock_military_operations_tt
 
 			custom_effect_tooltip = SOV_lessons_of_war_cowed_trait_tt
 			hidden_effect = {
@@ -1852,7 +1922,7 @@
 		
 		available = {
 			casualties > 2000000
-			surrender_progress > 0.2
+			surrender_progress > 0.3
 		}
 
 		completion_reward = {
@@ -1891,10 +1961,6 @@
 							any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR } }
 							is_controlled_by = SOV
 						}
-					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = SOV
 					}
 					create_unit = {
 						division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
@@ -1972,10 +2038,6 @@
 					create_unit = {
 						division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
 						owner = SOV
-					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-						owner = SOV
 					}						
 				}
 			}
@@ -1990,13 +2052,13 @@
 		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = SOV_order_270 }
 		available = {
-			surrender_progress > 0.25
+			surrender_progress > 0.3
 			
 		}
 		x = 0
 		y = 1
 		relative_position_id = SOV_order_270
-		cost = 3
+		cost = 5
 
 		available_if_capitulated = yes
 
@@ -2010,6 +2072,7 @@
 			add_to_variable = { SOV_the_red_army_acclimatization_hot_climate_gain_factor = 0.15 }
 			add_to_variable = { SOV_the_red_army_terrain_penalty_reduction = 0.05 }
 			custom_effect_tooltip = SOV_an_adaptable_army_ns_tt
+			custom_effect_tooltip = SOV_lessons_of_war_unlock_military_operations_tt
 		}
 	}
 
@@ -2157,6 +2220,7 @@
 			add_ideas = SOV_gulag_workers
 			add_offsite_building = { type = industrial_complex level = 30 }
 			add_offsite_building = { type = arms_factory level = 30 }
+			unlock_decision_tooltip = SOV_raise_penal_units
 		}
 	}
 	
@@ -2177,10 +2241,8 @@
 				has_completed_focus = SOV_beaten_but_not_defeated
 			}
 		}
-		relative_position_id = SOV_strengthen_the_mobilization_plan
 		cost = 1
 
-		mutually_exclusive = { focus = SOV_beaten_but_not_defeated }
 
 		allow_branch = {
 			if = {
@@ -2232,7 +2294,7 @@
 		relative_position_id = SOV_the_path_of_marxism_leninism
 		cost = 2
 
-		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_left_opposition }
+		
 
 		allow_branch = {
 			if = {
@@ -3056,89 +3118,6 @@
 		}
 	}
 
-	focus = {
-		id = SOV_they_will_know_fear
-		icon = GFX_focus_generic_army_tanks2
-		prerequisite = { focus = SOV_stalins_cult_of_personality }
-		x = -3
-		y = 1
-		relative_position_id = SOV_stalins_cult_of_personality
-		cost = 5
-
-		available = {
-			has_defensive_war = yes
-			has_tech = advanced_heavy_tank_chassis
-		}
-		
-		search_filters = {FOCUS_FILTER_RESEARCH}
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = SOV_they_will_know_fear
-				bonus = 1
-				uses = 2
-				category = armor
-			}
-
-			# IS-2 tank template
-			if = {
-				limit = {
-					OR = {
-						has_tech = antiair2
-						has_tech = antitank2
-					}
-				}
-				create_equipment_variant = {
-					name = "IS-2"
-					type = heavy_tank_chassis_3
-					parent_version = 0
-					modules = {
-						main_armament_slot = tank_heavy_cannon_2
-						turret_type_slot = tank_heavy_three_man_tank_turret
-						suspension_type_slot = tank_torsion_bar_suspension
-						armor_type_slot = tank_welded_armor
-						engine_type_slot = tank_diesel_engine
-						special_type_slot_1 = tank_radio_1
-						special_type_slot_2 = sloped_armor
-						special_type_slot_3 = smoke_launchers
-					}
-					upgrades = {
-						tank_nsb_engine_upgrade = 8
-						tank_nsb_armor_upgrade = 6
-					}
-					icon = "gfx/interface/technologies/SOV_adv_heavy_tank.dds"
-				}
-			}
-			else_if = {
-				limit = {
-					OR = {
-						has_tech = interwar_antiair
-						has_tech = interwar_antitank
-					}
-				}
-				create_equipment_variant = {
-					name = "IS-2"
-					type = heavy_tank_chassis_3
-					parent_version = 0
-					modules = {
-						main_armament_slot = tank_heavy_cannon
-						turret_type_slot = tank_heavy_three_man_tank_turret
-						suspension_type_slot = tank_torsion_bar_suspension
-						armor_type_slot = tank_welded_armor
-						engine_type_slot = tank_diesel_engine
-						special_type_slot_1 = tank_radio_1
-						special_type_slot_2 = sloped_armor
-						special_type_slot_3 = smoke_launchers
-					}
-					upgrades = {
-						tank_nsb_engine_upgrade = 8
-						tank_nsb_armor_upgrade = 6
-					}
-					icon = "gfx/interface/technologies/SOV_adv_heavy_tank.dds"
-				}
-			}
-		}
-	}
 
 	focus = {
 		id = SOV_inheritor_of_the_mantle_of_lenin
@@ -4126,7 +4105,6 @@
 		
 		available = { 
 			has_war = no
-			NOT = { has_idea = generals_purged }
 		}
 
 		completion_reward = {
@@ -5202,12 +5180,12 @@
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				bonus = 0.50
-				uses = 2
-				category = cat_mobile_warfare
+				cost_reduction = 0.5
+				uses = 1
 				category = cat_superior_firepower
+				category = cat_mobile_warfare
 			}
 			SOV_modernisation_towards_mech = yes
 		}
@@ -5232,9 +5210,9 @@
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				bonus = 1
+				cost_reduction = 0.5
 				uses = 1
 				category = cat_mobile_warfare
 			}
@@ -5286,17 +5264,17 @@
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				bonus = 1
+				cost_reduction = 0.5
 				uses = 1
 				category = cat_mobile_warfare
 			}
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				bonus = 1
+				cost_reduction = 0.5
 				uses = 2
-				category = battlefield_support_tree
+				category = cat_battlefield_support 
 			}
 		}
 	}
@@ -5319,12 +5297,7 @@
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = doc_bonus
-				bonus = 0.75
-				uses = 3
-				category = cat_mobile_warfare
-			}
+			army_experience = 50
 		}
 	}
 	
@@ -5403,8 +5376,8 @@
 				category = electronics
 			}
 			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = kharkiv_locomotive_plant
-			add_ideas = kharkiv_locomotive_plant
+			show_ideas_tooltip = SOV_kirov
+			add_ideas = SOV_kirov
 		}
 	}
 	
@@ -5456,9 +5429,9 @@
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				bonus = 0.75
+				cost_reduction = 0.5
 				uses = 1
 				category = cat_superior_firepower
 			}
@@ -5510,17 +5483,17 @@
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				bonus = 0.75
+				cost_reduction = 0.5
 				uses = 1
 				category = cat_superior_firepower
 			}
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				bonus = 0.75
-				uses = 1
-				category = air_doctrine
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine 
 			}
 		}
 	}
@@ -5543,12 +5516,7 @@
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = doc_bonus
-				bonus = 0.5
-				uses = 3
-				category = cat_superior_firepower
-			}
+			army_experience = 50
 		}
 	}
 	
@@ -5679,7 +5647,6 @@
 		icon = GFX_goal_generic_air_fighter2
 		x = 46
 		y = 0
-		relative_position_id = SOV_infrastructure_effort_nsb
 		cost = 5
 
 		ai_will_do = {
