@@ -2625,7 +2625,6 @@
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
 
 		completion_reward = {
-			add_to_variable = { SOV_the_politburo_good_consumer_goods_factor = -0.02 }
 			add_to_variable = { SOV_the_politburo_production_speed_buildings_factor = 0.05 } 
 			add_to_variable = { SOV_the_politburo_global_building_slots_factor = 0.1 } 
 			custom_effect_tooltip = SOV_the_collectivization_process_ns_tt
@@ -2862,7 +2861,7 @@
 					remove = stalin_political_paranoia
 					add = stalin_political_paranoia_advanced
 				}
-				add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 3 }
+				add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 2 }
 				SOV_paranoia_modifier_update_gui_tooltip = yes
 			}		
 			custom_effect_tooltip = SOV_increase_weekly_paranoia_in_trait_tt
@@ -3017,6 +3016,11 @@
 			}
 
 			set_country_flag = SOV_stalinist_military_flag #New Generals have more chances of being Stalinists after this
+
+			add_timed_idea = {
+				idea = generals_purged
+				days = 1825
+			}
 		}
 	}
 
@@ -3802,6 +3806,7 @@
 		x = -1
 		y = 1
 		relative_position_id = SOV_claim_bessarabia
+		mutually_exclusive = { focus = SOV_improve_stalin_line }
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -3823,7 +3828,7 @@
 			owns_state = 13
 			owns_state = 191
 			NOT = { has_war_with = GER }
-			has_country_flag = SOV_stalin_finished
+
 		}
 		
 		completion_reward = {
@@ -4001,6 +4006,14 @@
 			add_state_core = 190
 			add_state_core = 13
 			add_state_core = 191
+			add_state_core = 808
+			add_state_core = 809
+			add_state_core = 810
+			add_state_core = 811
+			add_state_core = 812
+			add_state_core = 813
+			add_state_core = 814
+			add_state_core = 815
 			if = {
 				limit = {
 					AND = {
@@ -4249,7 +4262,6 @@
 
 		available = {
 			NOT = { has_war_with = GER }
-			has_country_flag = SOV_stalin_finished
 		}
 
 		completion_reward = {
