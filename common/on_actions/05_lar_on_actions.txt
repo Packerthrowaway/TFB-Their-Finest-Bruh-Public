@@ -264,6 +264,47 @@ on_actions = {
 		}
 	}
 
+	on_startup = {	
+		effect = {	
+			SPR = {	
+				if = {	
+					limit = {	
+						date < 1936.1.2	
+						has_dlc = "La Resistance"	
+					}	
+					country_lock_all_division_template = yes	
+					every_state = {	
+						limit = {	
+							is_core_of = SPR	
+						}	
+						remove_core_of = SPA		
+						remove_core_of = SPB	
+						remove_core_of = SPC	
+					}	
+					if = {	
+						limit = {	
+							difficulty > 1	
+							is_ai = no	
+						}	
+						SPR = {	
+							add_to_variable = { var = spa_civil_war_divisions_counter_var value = 6 }	
+						}	
+					}	
+				}	
+			}	
+			if = {	
+				limit = {	
+					has_dlc = "La Resistance"	
+				}	
+				every_country = {	
+					capital_scope = {	
+						set_variable = { historical_capital_for_country = PREV }	
+					}	
+				}	
+			}	
+		}	
+	}
+
 	# called a country fully decrypts cipher of a target country
 	# scope is the target country that its cipher is decrypted
 	# from scope is the decrypter country
