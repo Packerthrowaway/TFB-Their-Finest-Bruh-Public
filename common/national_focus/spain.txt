@@ -85,7 +85,7 @@ focus_tree = {
 			    ideology = neutrality
 			    popularity = 0.05
 			}
-			hidden_effect = {activate_mission = SPA_military_plot_nationalists}
+			#hidden_effect = {activate_mission = SPA_military_plot_nationalists}
 		}
 	}
 
@@ -298,6 +298,29 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SPA_CIVIL_WAR}
 		completion_reward = {
 			custom_effect_tooltip = SPA_con_paquito_tt
+		}
+	}
+
+	focus = {
+		id = SPA_unify_the_nationalist_front
+		available = {
+			has_global_flag = spanish_civil_war
+		}
+		bypass = {
+		}
+		prerequisite = { focus = SPA_con_paquito }
+		mutually_exclusive = { focus = SPA_the_phalanx_ascendant focus = SPA_supremacy_of_the_communion }
+		
+		icon = GFX_focus_spa_unify_the_nationalist_front
+		x = 0
+		y = 1
+		relative_position_id = SPA_con_paquito
+		cost = 5
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_STABILITY}
+		completion_reward = {
+			add_stability = 0.1
 		}
 	}
 
@@ -607,7 +630,7 @@ focus_tree = {
 			    ideology = fascism
 			    popularity = 0.1
 			}
-			activate_mission = SPA_carlist_uprising_mission
+			#activate_mission = SPA_carlist_uprising_mission
 		}
 	}
 
@@ -897,18 +920,36 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			GER = {
-				add_timed_idea = { idea = SPA_spanish_civil_war_commitments days = 730 }
-				add_opinion_modifier = { target = ROOT modifier = SPA_spanish_civil_war_commitments }
+				army_experience = 25
+				air_experience = 50
+				add_doctrine_cost_reduction = {
+					name = SPA_the_condor_legion
+					cost_reduction = 0.5
+					uses = 2
+					category = air_doctrine
+				}
+				add_doctrine_cost_reduction = {
+					name = SPA_the_condor_legion
+					cost_reduction = 0.5
+					uses = 1
+					category = land_doctrine
+				}
+			}
+			
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+				producer = GER
 			}
 			add_tech_bonus = {
 				name = SPA_the_condor_legion
-				bonus = 1.0
+				bonus = 0.5
 				uses = 1
 				category = light_fighter
 			}
 			add_tech_bonus = {
 				name = SPA_the_condor_legion
-				bonus = 1.0
+				bonus = 0.5
 				uses = 1
 				category = cas_bomber
 			}
@@ -1021,13 +1062,13 @@ focus_tree = {
 			add_doctrine_cost_reduction = {
 				name = SPA_doctrinal_advancements
 				cost_reduction = 0.5
-				uses = 1
+				uses = 2
 				category = land_doctrine
 			}
 			add_doctrine_cost_reduction = {
 				name = SPA_doctrinal_advancements
 				cost_reduction = 0.5
-				uses = 1
+				uses = 2
 				category = air_doctrine
 			}
 		}
@@ -1329,143 +1370,6 @@ focus_tree = {
 			}
 			custom_effect_tooltip = SPA_a_one_party_state_tt
 			add_stability = a_one_party_state_var
-		}
-	}
-
-	focus = {
-		id = SPA_expand_conscription
-		available = {
-		}
-		bypass = {
-		}
-		prerequisite = { focus = SPA_establish_the_directory focus = SPA_extol_the_martyrs_of_the_war }
-		
-		icon = GFX_goal_generic_axis_build_infantry
-		x = 3
-		y = 1
-		relative_position_id = SPA_establish_the_directory
-		cost = 10
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_MANPOWER}
-		completion_reward = {
-			add_ideas = SPA_expand_conscription
-		}
-		allow_branch = {
-			always = no
-		}
-	}
-
-	focus = {
-		id = SPA_safeguard_the_freedom_of_worship
-		available = {
-		}
-		bypass = {
-		}
-		prerequisite = { focus = SPA_establish_the_directory focus = SPA_extol_the_martyrs_of_the_war }
-		
-		icon = GFX_focus_generic_strike_at_democracy1
-		x = 5
-		y = 1
-		relative_position_id = SPA_establish_the_directory
-		cost = 10
-		allow_branch = {
-			always = no
-		}
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL}
-		completion_reward = {
-			add_popularity = {
-			    ideology = neutrality
-			    popularity = 0.05
-			}
-			add_stability = 0.1
-			add_political_power = 60
-		}
-	}
-
-	focus = {
-		id = SPA_prepare_the_pyrenees_defenses
-		available = {
-			has_full_control_of_state = 792
-			has_full_control_of_state = 172
-			has_full_control_of_state = 166
-			has_full_control_of_state = 794
-			has_full_control_of_state = 165
-		}
-		bypass = {
-		}
-		prerequisite = { focus = SPA_establish_the_directory focus = SPA_extol_the_martyrs_of_the_war }
-		
-		icon = GFX_goal_generic_fortify_city
-		x = 4
-		y = 2
-		relative_position_id = SPA_establish_the_directory
-		cost = 10
-
-		available_if_capitulated = yes
-		allow_branch = {
-			always = no
-		}
-		completion_reward = {
-			custom_effect_tooltip = SPA_prepare_the_pyrenees_defenses_tt
-			hidden_effect = {
-				792 = {
-					add_building_construction = {
-						type = bunker
-						province = {
-							id = 6756
-						}
-						level = 2
-						instant_build = yes
-					}
-				}
-				172 = {
-					add_building_construction = {
-						type = bunker
-						province = {
-							id = 3737
-							id = 3931
-						}
-						level = 2
-						instant_build = yes
-					}
-				}
-				166 = {
-					add_building_construction = {
-						type = bunker
-						province = {
-							id = 11838
-						}
-						level = 2
-						instant_build = yes
-					}
-				}
-				794 = {
-					add_building_construction = {
-						type = bunker
-						province = {
-							id = 915
-							id = 899
-						}
-						level = 2
-						instant_build = yes
-					}
-				}
-				165 = {
-					add_building_construction = {
-						type = bunker
-						province = {
-							id = 3899
-							id = 3898
-							id = 11779
-							id = 9824
-						}
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
 		}
 	}
 
@@ -1961,7 +1865,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SPA_unite_iberia
+		id = SPA_unite_iberia_vanilla
 		available = {
 			OR = {
 				AND = {
@@ -2064,12 +1968,12 @@ focus_tree = {
 		}
 		bypass = {
 		}
-		prerequisite = { focus = SPA_unite_iberia }
+		prerequisite = { focus = SPA_unite_iberia_vanilla }
 		
 		icon = GFX_goal_generic_forceful_treaty
 		x = 1
 		y = 1
-		relative_position_id = SPA_unite_iberia
+		relative_position_id = SPA_unite_iberia_vanilla
 		cost = 10
 
 		available_if_capitulated = yes
@@ -2143,12 +2047,12 @@ focus_tree = {
 		}
 		bypass = {
 		}
-		prerequisite = { focus = SPA_unite_iberia }
+		prerequisite = { focus = SPA_unite_iberia_vanilla }
 		
 		icon = GFX_goal_generic_territory_or_war
 		x = 0
 		y = 2
-		relative_position_id = SPA_unite_iberia
+		relative_position_id = SPA_unite_iberia_vanilla
 		cost = 10
 
 		available_if_capitulated = yes
@@ -2377,19 +2281,19 @@ focus_tree = {
 		prerequisite = { focus = SPA_the_national_syndicalist_state focus = SPA_fuse_the_parties }
 		
 		icon = GFX_goal_generic_army_doctrines
-		x = -6
-		y = 1
-		relative_position_id = SPA_fuse_the_parties
+		x = 3
+		y = 0
+		relative_position_id = SPA_the_national_syndicalist_state
 		cost = 10
 
 		available_if_capitulated = yes
 		complete_tooltip = {
 			every_state = {
 				limit	= {	has_state_flag = SPA_the_national_and_popular_army_of_spain_2mil }
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 5
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 5
 					instant_build = yes
 				}
 			}
@@ -2509,7 +2413,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = SPA_equipment_modernization
-				bonus = 1.0
+				bonus = 0.5
 				uses = 2
 				category = infantry_weapons
 			}
@@ -2535,7 +2439,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = SPA_artillery_modernization
-				bonus = 1.0
+				bonus = 0.5
 				uses = 2
 				category = artillery
 			}
@@ -2568,7 +2472,7 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = SPA_expand_the_air_branch
-				bonus = 1.0
+				bonus = 0.5
 				uses = 1
 				category = light_fighter
 				category = cas_bomber
@@ -2595,13 +2499,13 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = SPA_expand_the_special_forces
-				bonus = 1.0
+				bonus = 0.5
 				uses = 1
 				category = marine_tech
 			}
 			add_tech_bonus = {
 				name = SPA_expand_the_special_forces
-				bonus = 1.0
+				bonus = 0.5
 				uses = 1
 				category = mountaineers_tech
 			}
@@ -2627,7 +2531,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = SPA_equipment_modernization
-				bonus = 2.0
+				bonus = 0.5
 				uses = 1
 				category = motorized_equipment
 			}
@@ -2637,11 +2541,16 @@ focus_tree = {
 	focus = {
 		id = SPA_an_armored_corps
 		available = {
+			any_country = {
+				is_in_faction_with = ROOT
+				has_government = fascism
+				is_major = yes
+			}
 		}
 		bypass = {
 		}
 		prerequisite = { focus = SPA_motorization }
-		prerequisite = { focus = SPA_join_the_axis }
+		#prerequisite = { focus = SPA_join_the_axis }
 		
 		icon = GFX_goal_generic_army_tanks
 		x = 1
@@ -2738,11 +2647,6 @@ focus_tree = {
 	focus = {
 		id = SPA_fascist_economic_aid
 		available = {
-			any_country = {
-				is_in_faction_with = ROOT
-				has_government = fascism
-				is_major = yes
-			}
 		}
 		bypass = {
 		}
@@ -2750,9 +2654,9 @@ focus_tree = {
 		mutually_exclusive = { focus = SPA_autarky }
 		
 		icon = GFX_goal_generic_construction
-		x = 0
+		x = 6
 		y = 1
-		relative_position_id = SPA_national_recovery
+		relative_position_id = SPA_the_national_syndicalist_state
 		cost = 10
 
 		available_if_capitulated = yes
@@ -2765,7 +2669,7 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = SPA_fascist_economic_aid
-				bonus = 1.0
+				bonus = 0.5
 				uses = 1
 				category = industry
 			}
@@ -2781,10 +2685,6 @@ focus_tree = {
 			has_full_control_of_state = 176
 			has_full_control_of_state = 792
 			has_full_control_of_state = 41
-			any_allied_country = {
-				is_major = yes
-				has_government = fascism
-			}
 		}
 		bypass = {
 		}
@@ -2865,10 +2765,6 @@ focus_tree = {
 	focus = {
 		id = SPA_improve_cross_country_railways
 		available = {
-			any_allied_country = {
-				is_major = yes
-				has_government = fascism
-			}
 			has_full_control_of_state = 169
 			has_full_control_of_state = 789
 			has_full_control_of_state = 175
@@ -2931,11 +2827,11 @@ focus_tree = {
 
 		complete_tooltip = {
 			every_state = {
-				limit	= {	has_state_flag = SPA_support_the_war_industry_1civ }
-				add_extra_state_shared_building_slots = 1
+				limit = {has_state_flag = SPA_support_the_war_industry_1civ }
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -2950,15 +2846,15 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
-						size > 0
+						size > 1
 					}
 					is_core_of = ROOT
 				}
 				set_state_flag = SPA_support_the_war_industry_1civ
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -2966,16 +2862,16 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
-						size > 0
+						size > 1
 					}
 					is_core_of = ROOT
 					NOT = { has_state_flag = SPA_support_the_war_industry_1civ }
 				}
 				set_state_flag = SPA_support_the_war_industry_1civ
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -2983,16 +2879,16 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
-						size > 0
+						size > 1
 					}
 					is_core_of = ROOT
 					NOT = { has_state_flag = SPA_support_the_war_industry_1civ }
 				}
 				set_state_flag = SPA_support_the_war_industry_1civ
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -3021,7 +2917,7 @@ focus_tree = {
 			add_ideas = SPA_italian_shipbuilding_expertise
 			add_tech_bonus = {
 				name = SPA_italian_shipbuilding_expertise
-				bonus = 1
+				bonus = 0.5
 				uses = 1
 				category = bb_tech
 			}
@@ -3079,10 +2975,10 @@ focus_tree = {
 		complete_tooltip = {
 			every_state = {
 				limit	= {	has_state_flag = SPA_expand_the_war_industry_2mil }
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -3135,9 +3031,9 @@ focus_tree = {
 		prerequisite = { focus = SPA_the_national_syndicalist_state focus = SPA_fuse_the_parties }
 		
 		icon = GFX_goal_generic_consumer_goods
-		x = -3
-		y = 1
-		relative_position_id = SPA_fuse_the_parties
+		x = 6
+		y = 0
+		relative_position_id = SPA_the_national_syndicalist_state
 		cost = 10
 
 		available_if_capitulated = yes
@@ -3154,7 +3050,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_timed_idea = { idea = SPA_national_recovery_1 days = 1825 }
+			add_timed_idea = { idea = SPA_national_recovery_1 days = 1000 }
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -3337,6 +3233,10 @@ focus_tree = {
 	focus = {
 		id = SPA_ensure_agricultural_self_sufficiency
 		available = {
+			OR = {
+				FRA = { has_capitulated = yes }
+				date > 1942.1.1
+			}
 		}
 		bypass = {
 		}
@@ -3425,29 +3325,6 @@ focus_tree = {
 #  # #  #  #  ###  ##  #  # #  # ### ### ##   #  ##             #   #  # #  # #  #  ##   ##  
 
 	focus = {
-		id = SPA_unify_the_nationalist_front
-		available = {
-			has_global_flag = spanish_civil_war
-		}
-		bypass = {
-		}
-		prerequisite = { focus = SPA_con_paquito }
-		mutually_exclusive = { focus = SPA_the_phalanx_ascendant focus = SPA_supremacy_of_the_communion }
-		
-		icon = GFX_focus_spa_unify_the_nationalist_front
-		x = 0
-		y = 1
-		relative_position_id = SPA_con_paquito
-		cost = 5
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_STABILITY}
-		completion_reward = {
-			add_stability = 0.1
-		}
-	}
-
-	focus = {
 		id = SPA_save_the_alcazar
 		available = {
 		}
@@ -3520,23 +3397,19 @@ focus_tree = {
 				kill_country_leader = yes
 				kill_ideology_leader = fascism
 			}
-			add_country_leader_role = {
-				character = "SPA_francisco_franco"
-				country_leader = {
-				  ideology=despotism
-				  traits = { caudillo_1 }
-				  expire="1965.1.1"
-				}
-				promote_leader = yes
+			create_country_leader = {
+				name = "Francisco Franco"
+				picture = "GFX_portrait_spain_francisco_franco"
+				ideology=despotism
+				traits = { caudillo_1 }
+				expire="1965.1.1"
 			}
-			add_country_leader_role = {
-				character = "SPA_francisco_franco"
-				country_leader = {
-				  ideology=fascism_ideology
-				  traits = { caudillo_1 }
-				  expire="1965.1.1"
-				}
-				promote_leader = yes
+			create_country_leader = {
+				name = "Francisco Franco"
+				picture = "GFX_portrait_spain_francisco_franco"
+				ideology=fascism_ideology
+				traits = { caudillo_1 }
+				expire="1965.1.1"
 			}
 		}
 	}
@@ -3830,6 +3703,9 @@ focus_tree = {
 		bypass = {
 			has_global_flag = scw_over
 		}
+		allow_branch = {
+			always = no
+		}
 		prerequisite = { focus = SPA_a_methodical_approach }
 		
 		icon = GFX_focus_generic_befriend_portugal
@@ -3989,7 +3865,8 @@ focus_tree = {
 		bypass = {
 			has_global_flag = SPR_carlist_uprising_flag
 		}
-		prerequisite = { focus = SPA_banish_the_party_leaders }
+		prerequisite = {focus = SPA_banish_the_party_leaders }
+		prerequisite = {focus = SPA_safeguard_the_freedom_of_worship }
 		
 		icon = GFX_focus_spa_fuse_the_parties
 		x = 0
@@ -4933,49 +4810,18 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SPA_la_division_azul
-		available = {
-			has_completed_focus = SPA_adopt_the_26_points
-		}
-		bypass = {
-		}
-		prerequisite = { focus = SPA_dictator_for_life focus = SPA_restore_the_monarchy }
-		
-		icon = GFX_goal_rhineland
-		x = 0
-		y = 1
-		relative_position_id = SPA_dictator_for_life
-		cost = 10
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			add_ideas = SPA_la_division_azul
-			if = {
-				limit = {
-					has_government = neutrality
-				}
-				set_rule = {
-					can_send_volunteers = yes
-				}
-			}
-		}
-	}
-
-	focus = {
 		id = SPA_the_tangiers_enclave
 		available = {
 			has_full_control_of_state = 290
 		}
 		bypass = {
 		}
-		prerequisite = { focus = SPA_la_division_azul }
-		prerequisite = { focus = SPA_stamp_out_the_maquis }
+		prerequisite = { focus = SPA_dictator_for_life }
 		
 		icon = GFX_goal_generic_position_armies
-		x = 0
+		x = -1
 		y = 1
-		relative_position_id = SPA_la_division_azul
+		relative_position_id = SPA_dictator_for_life
 		cost = 10
 
 		available_if_capitulated = yes
@@ -5119,7 +4965,9 @@ focus_tree = {
 		y = 1
 		relative_position_id = SPA_dictator_for_life
 		cost = 10
-
+		allow_branch = {
+			always = no
+		}
 		available_if_capitulated = yes
 
 		completion_reward = {
@@ -5133,12 +4981,12 @@ focus_tree = {
 		}
 		bypass = {
 		}
-		prerequisite = { focus = SPA_stamp_out_the_maquis }
+		prerequisite = { focus = SPA_dictator_for_life }
 		
 		icon = GFX_focus_generic_air_defense
-		x = 0
+		x = 1
 		y = 1
-		relative_position_id = SPA_stamp_out_the_maquis
+		relative_position_id = SPA_dictator_for_life
 		cost = 10
 
 		available_if_capitulated = yes
@@ -5234,6 +5082,7 @@ focus_tree = {
 				has_war_with = ENG
 				controls_state = 118
 			}
+			has_completed_focus = SPA_abandon_neutrality
 		}
 		bypass = {
 		}
@@ -5273,7 +5122,9 @@ focus_tree = {
 		cost = 10
 
 		available_if_capitulated = yes
-
+		allow_branch = {
+			always = no
+		}
 		completion_reward = {
 			add_state_claim = 557
 			add_state_claim = 272
@@ -5397,7 +5248,7 @@ focus_tree = {
 				remove_idea = SPA_carlism_1
 				add_idea = SPA_disjointed_carlist_juntas
 			}
-			activate_mission = SPA_fascist_crackdown_mission
+			#activate_mission = SPA_fascist_crackdown_mission
 			#remove_ideas = SPA_carlism_1
 			#add_ideas = SPA_disjointed_carlist_juntas
 		}
@@ -5555,26 +5406,26 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_decision = SPA_galicia_offensive
-						has_decision = SPA_asturias_offensive
-						has_decision = SPA_leon_offensive
-						has_decision = SPA_valladolid_offensive
-						has_decision = SPA_burgos_offensive
-						has_decision = SPA_pais_vasco_offensive
-						has_decision = SPA_navarra_offensive
-						has_decision = SPA_western_aragon_offensive
-						has_decision = SPA_eastern_aragon_offensive
-						has_decision = SPA_catalunya_offensive
-						has_decision = SPA_salamanca_offensive
-						has_decision = SPA_madrid_offensive
-						has_decision = SPA_guadalajara_offensive
-						has_decision = SPA_valencia_offensive
-						has_decision = SPA_extremadura_offensive
-						has_decision = SPA_ciudad_real_offensive
-						has_decision = SPA_murcia_offensive
-						has_decision = SPA_sevilla_offensive
-						has_decision = SPA_cordoba_offensive
-						has_decision = SPA_granada_offensive
+						#has_decision = SPA_galicia_offensive
+						#has_decision = SPA_asturias_offensive
+						#has_decision = SPA_leon_offensive
+						#has_decision = SPA_valladolid_offensive
+						#has_decision = SPA_burgos_offensive
+						#has_decision = SPA_pais_vasco_offensive
+						#has_decision = SPA_navarra_offensive
+						#has_decision = SPA_western_aragon_offensive
+						#has_decision = SPA_eastern_aragon_offensive
+						#has_decision = SPA_catalunya_offensive
+						#has_decision = SPA_salamanca_offensive
+						#has_decision = SPA_madrid_offensive
+						#has_decision = SPA_guadalajara_offensive
+						#has_decision = SPA_valencia_offensive
+						#has_decision = SPA_extremadura_offensive
+						#has_decision = SPA_ciudad_real_offensive
+						#has_decision = SPA_murcia_offensive
+						#has_decision = SPA_sevilla_offensive
+						#has_decision = SPA_cordoba_offensive
+						#has_decision = SPA_granada_offensive
 					}
 					has_country_flag = SPR_preparing_offensive_in_progress_flag
 				}
@@ -6631,11 +6482,11 @@ focus_tree = {
 
 		completion_reward = {
 			if = {
-				limit = {
-					FRA = {
-						has_completed_focus = FRA_the_legitimate_heir
-					}
-				}
+				#limit = {
+					#FRA = {
+					#	has_completed_focus = FRA_the_legitimate_heir
+					#}
+				#}
 				FRA = { country_event = { id = lar_spain.42 hours = 6 random_hours = 6 } }
 			}
 			else = {
@@ -6971,7 +6822,7 @@ focus_tree = {
 				popularity = 0.05
 			}
 			add_ideas = SPR_anarchist_society_1
-			activate_mission = SPR_government_crackdown_mission
+			#activate_mission = SPR_government_crackdown_mission
 		}
 	}
 
@@ -7196,10 +7047,10 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = SPR_the_maximum_concession
-			add_days_mission_timeout = {
-				mission = SPR_government_crackdown_mission
-				days = 70
-			}
+			#add_days_mission_timeout = {
+			#	mission = SPR_government_crackdown_mission
+			#	days = 70
+			#}
 		}
 	}
 
@@ -8749,7 +8600,7 @@ focus_tree = {
 				ideology = communism
 				popularity = 0.1
 			}
-			activate_mission = SPR_anarchist_uprising_mission
+			#activate_mission = SPR_anarchist_uprising_mission
 		}
 	}
 
@@ -8924,9 +8775,9 @@ focus_tree = {
 			show_ideas_tooltip = SPR_alexander_orlov
 			custom_effect_tooltip = SPR_hinder_nkvd_interference_tt
 			hidden_effect = {
-				set_variable = { var = SPR_communists_uprising_mission_var value = days_mission_timeout@SPR_anarchist_uprising_mission }
-				remove_mission = SPR_anarchist_uprising_mission
-				activate_mission = SPR_government_crackdown_mission
+				#set_variable = { var = SPR_communists_uprising_mission_var value = days_mission_timeout@SPR_anarchist_uprising_mission }
+				#remove_mission = SPR_anarchist_uprising_mission
+				#activate_mission = SPR_government_crackdown_mission
 			}
 		}
 	}
@@ -9173,10 +9024,10 @@ focus_tree = {
 		available_if_capitulated = yes
 		completion_reward = {
 			custom_effect_tooltip = SPR_anti_fascist_unity_tt
-			add_days_mission_timeout = {
-				mission = SPR_anarchist_uprising_mission
-				days = 140
-			}
+			#add_days_mission_timeout = {
+				#mission = SPR_anarchist_uprising_mission
+			#	days = 140
+			#}
 		}
 	}
 
@@ -10625,7 +10476,7 @@ focus_tree = {
 					any_country = {
 						original_tag = SOV
 						has_government = communism
-						NOT = { has_completed_focus = SOV_the_right_opposition }
+						#NOT = { has_completed_focus = SOV_the_right_opposition }
 					}
 				}
 				hidden_effect = {
@@ -10633,7 +10484,7 @@ focus_tree = {
 						limit = {
 							original_tag = SOV
 							has_government = communism
-							NOT = { has_completed_focus = SOV_the_right_opposition }
+							#NOT = { has_completed_focus = SOV_the_right_opposition }
 						}
 						ROOT = {
 							create_wargoal = {
@@ -11452,7 +11303,7 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 60
 			add_war_support = 0.05
-			activate_mission = SPR_anarchist_uprising_mission
+			#activate_mission = SPR_anarchist_uprising_mission
 			custom_effect_tooltip = available_military_high_command
 			show_ideas_tooltip = SPR_antonio_escobar_huerta
 		}
@@ -13068,6 +12919,271 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = SPR_the_anti_fascist_crusade
+		}
+	}
+
+	focus = {
+		id = SPA_abandon_neutrality
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SPA_has_not_national_recovery_tt
+				NOT = { has_idea = SPA_national_recovery_1 }			
+				NOT = { has_idea = SPA_national_recovery_2 }			
+				NOT = { has_idea = SPA_national_recovery_3 }			
+				NOT = { has_idea = SPA_national_recovery_4 }			
+				NOT = { has_idea = SPA_national_recovery_5 }			
+				NOT = { has_idea = SPA_national_recovery_6 }			
+				NOT = { has_idea = SPA_national_recovery_7 }				
+			}
+		}
+		prerequisite = { focus = SPA_ensure_agricultural_self_sufficiency }
+		mutually_exclusive = { focus = SPA_maintain_neutrality }
+		x = -1
+		y = 1
+		relative_position_id = SPA_ensure_agricultural_self_sufficiency
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			remove_ideas = SPA_neutrality_idea
+			add_war_support = -0.20
+			add_stability = -0.1
+		}
+	}
+
+	focus = {
+		id = SPA_formalize_axis_entry
+		available = {
+		}
+		prerequisite = { focus = SPA_abandon_neutrality }
+		
+		icon = GFX_goal_generic_dangerous_deal
+		x = 0
+		y = 1
+		relative_position_id = SPA_abandon_neutrality
+		cost = 5
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SPA_CIVIL_WAR}
+		completion_reward = {
+			add_ideas = SPA_axis_coop
+		}
+	}
+	
+	focus = {
+		id = SPA_unite_iberia
+		icon = GFX_focus_generic_attack_portugal
+		prerequisite = { focus = SPA_formalize_axis_entry }
+		x = 0
+		y = 1
+		relative_position_id = SPA_formalize_axis_entry
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = POR
+			}
+			POR = {
+				remove_ideas = SPA_neutrality_idea
+			}
+			add_timed_idea = {idea = SPR_subjugate_por days = 720}
+		}
+	}
+	
+	focus = {
+		id = SPA_maintain_neutrality
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = { focus = SPA_ensure_agricultural_self_sufficiency }
+		mutually_exclusive = { focus = SPA_abandon_neutrality }
+		x = 1
+		y = 1
+		relative_position_id = SPA_ensure_agricultural_self_sufficiency
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+
+	focus = {
+		id = SPA_la_division_azul
+		available = {
+		}
+		bypass = {
+		}
+		prerequisite = { focus = SPA_maintain_neutrality }
+		
+		icon = GFX_goal_rhineland
+		x = 0
+		y = 1
+		relative_position_id = SPA_maintain_neutrality
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = SPA_la_division_azul
+		}
+	}
+
+	
+	
+	focus = {
+		id = SPA_iberian_pact
+		icon = GFX_focus_generic_befriend_portugal
+		prerequisite = { focus = SPA_la_division_azul }
+		x = 0
+		y = 1
+		relative_position_id = SPA_la_division_azul
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			POR = {
+				give_resource_rights = { receiver = SPR state = 181 }
+				give_resource_rights = { receiver = SPR state = 112 }
+				give_resource_rights = { receiver = SPR state = 795 }
+			}
+		}
+	}
+
+	focus = {
+		id = SPA_expand_conscription
+		available = {
+		}
+		bypass = {
+		}
+		prerequisite = { focus = SPA_establish_the_directory focus = SPA_extol_the_martyrs_of_the_war }
+		
+		icon = GFX_goal_generic_axis_build_infantry
+		x = -3
+		y = 1
+		relative_position_id = SPA_extol_the_martyrs_of_the_war
+		cost = 10
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_MANPOWER}
+		completion_reward = {
+			add_ideas = SPA_expand_conscription
+		}
+	}
+
+	focus = {
+		id = SPA_safeguard_the_freedom_of_worship
+		available = {
+		}
+		bypass = {
+		}
+		prerequisite = { focus = SPA_establish_the_directory focus = SPA_extol_the_martyrs_of_the_war }
+		
+		icon = GFX_focus_generic_strike_at_democracy1
+		x = -1
+		y = 1
+		relative_position_id = SPA_extol_the_martyrs_of_the_war
+		cost = 10
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05
+			}
+			add_stability = 0.1
+			add_political_power = 60
+		}
+	}
+
+	focus = {
+		id = SPA_prepare_the_pyrenees_defenses
+		available = {
+			has_full_control_of_state = 792
+			has_full_control_of_state = 172
+			has_full_control_of_state = 166
+			has_full_control_of_state = 794
+			has_full_control_of_state = 165
+		}
+		bypass = {
+		}
+		prerequisite = { focus = SPA_establish_the_directory focus = SPA_extol_the_martyrs_of_the_war }
+		
+		icon = GFX_goal_generic_fortify_city
+		x = -2
+		y = 2
+		relative_position_id = SPA_extol_the_martyrs_of_the_war
+		cost = 10
+
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = SPA_prepare_the_pyrenees_defenses_tt
+			hidden_effect = {
+				792 = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							id = 6756
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				172 = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							id = 3737
+							id = 3931
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				166 = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							id = 11838
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				794 = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							id = 915
+							id = 899
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				165 = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							id = 3899
+							id = 3898
+							id = 11779
+							id = 9824
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
 		}
 	}
 
