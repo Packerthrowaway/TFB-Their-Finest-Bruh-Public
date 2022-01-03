@@ -2194,74 +2194,6 @@ country_event = {
 					transfer_state = 793
 					transfer_state = 794
 				}
-				# Switch leaders who do not have nationalist sympathies to the Republicans
-				every_unit_leader = {
-					limit = {
-						NOT = { has_trait = trait_SPA_nationalist_sympathies }
-					}
-					set_nationality = SPD
-				}
-				# Remove unnecessary traits from Nationalist commanders (no longer relevant to see for the player, as the SCW has started)
-				every_unit_leader = {
-					limit = {
-						has_trait = trait_SPA_nationalist_sympathies
-					}
-					remove_unit_leader_trait = trait_SPA_nationalist_sympathies
-				}
-				# Add various loyalist traits that now become relevant - indicating loyalties to the different subfactions
-				every_unit_leader = {
-					limit = {
-						OR = {
-							has_id = 1108
-							has_id = 1109
-							has_id = 1111
-							has_id = 1112
-							has_id = 1113
-						}
-					}
-					add_unit_leader_trait = trait_SPA_falangist_loyalties
-				}
-				every_unit_leader = {
-					limit = {
-						OR = {
-							has_id = 1114
-							has_id = 1115
-							has_id = 1116
-						}
-					}
-					add_unit_leader_trait = trait_SPA_carlist_loyalties
-					#retire = yes
-				}
-				SPD = {
-					every_unit_leader = {
-						limit = {
-							OR = {
-								has_id = 1101
-								has_id = 1102
-								has_id = 1103
-							}
-						}
-						add_unit_leader_trait = trait_SPR_republican_loyalties
-					}
-					every_unit_leader = {
-						limit = {
-							OR = {
-								has_id = 1104
-								has_id = 1105
-								has_id = 1106
-							}
-						}
-						# add_unit_leader_trait = trait_SPR_stalinist_loyalties
-						retire = yes
-					}
-					every_unit_leader = {
-						limit = {
-							#Clear out SPR_mohamed_meziane for some reason - This doesn't work right
-								has_id = 1109
-						}
-						retire = yes
-					}
-				}
 				transfer_units_fraction = {
 					target = SPD
 					size = 0.5 # Fallback in case one of the ratios below are not stipulated
@@ -2324,10 +2256,78 @@ country_event = {
 					set_stability = 0.6
 					set_war_support = 0.5
 					add_ideas = SPA_death_before_surrender
-					remove_ideas = SPA_carlism_1 # Not working
-					add_ideas = SPA_carlism_1 # Not working
 					remove_ideas = SPR_political_violence
 					remove_ideas = SPR_national_strikes_3
+				}
+				# Switch leaders who do not have nationalist sympathies to the Republicans
+				# every_unit_leader = {
+				# 	limit = {
+				# 		NOT = { has_trait = trait_SPA_nationalist_sympathies }
+				# 	}
+				# 	set_nationality = SPD
+				# }
+				# Remove unnecessary traits from Nationalist commanders (no longer relevant to see for the player, as the SCW has started)
+				every_unit_leader = {
+					limit = {
+						has_trait = trait_SPA_nationalist_sympathies
+					}
+					remove_unit_leader_trait = trait_SPA_nationalist_sympathies
+				}
+				# Add various loyalist traits that now become relevant - indicating loyalties to the different subfactions
+				every_unit_leader = {
+					limit = {
+						OR = {
+							has_id = 1108
+							has_id = 1109
+							has_id = 1111
+							has_id = 1112
+							has_id = 1113
+						}
+					}
+					add_unit_leader_trait = trait_SPA_falangist_loyalties
+				}
+				every_unit_leader = {
+					limit = {
+						OR = {
+							has_id = 1114
+							has_id = 1115
+							has_id = 1116
+						}
+					}
+					add_unit_leader_trait = trait_SPA_carlist_loyalties
+					#retire = yes
+				}
+				SPD = {
+					every_unit_leader = {
+						limit = {
+							OR = {
+								has_id = 1101
+								has_id = 1102
+								has_id = 1103
+							}
+						}
+						add_unit_leader_trait = trait_SPR_republican_loyalties
+					}
+					every_unit_leader = {
+						limit = {
+							OR = {
+								has_id = 1104
+								has_id = 1105
+								has_id = 1106
+							}
+						}
+						# add_unit_leader_trait = trait_SPR_stalinist_loyalties
+						retire = yes
+					}
+				}
+				SPD = {
+					every_unit_leader = {
+						limit = {
+							#Clear out SPR_mohamed_meziane for some reason - This doesn't work right
+								has_id = 1109
+						}
+						retire = yes
+					}
 				}
 				#every_unit_leader = {
 				#	limit = {
@@ -2393,72 +2393,72 @@ country_event = {
 						}
 					}
 				}
-				create_field_marshal = {
-					name = "Francisco Franco"
-					id = 1108
-					gfx = "GFX_portrait_spain_francisco_franco"
-					traits = { organisational_leader logistics_wizard expert_delegator offensive_doctrine trait_SPA_nationalist_sympathies }
-					skill = 4
-					attack_skill = 4
-					defense_skill = 3
-					planning_skill = 3
-					logistics_skill = 4
-				}
-				create_corps_commander = {
-					name = "Mohamed Meziane"
-					id = 1109
-					gfx = "GFX_portrait_SPA_mohamed_meziane"
-					traits = { harsh_leader career_officer trait_SPA_nationalist_sympathies }
-					skill = 4
-					attack_skill = 5
-					defense_skill = 2
-					planning_skill = 3
-					logistics_skill = 3
-				}
-				create_corps_commander = { # Could fit for all 3 factions
-					name = "Gonzalo Queipo de Llano"
-					id = 1110
-					gfx = "GFX_portrait_SPA_gonzalo_queipo_de_llano"
-					traits = { infantry_officer trait_SPA_nationalist_sympathies }
-					skill = 3
-					attack_skill = 3
-					defense_skill = 3
-					planning_skill = 2
-					logistics_skill = 2
-				}		
-				create_field_marshal = {
-					name = "Emilio Mola"
-					id = 1111
-					gfx = "GFX_portrait_SPA_emilio_mola"
-					traits = { organisational_leader trait_cautious thorough_planner trait_SPA_nationalist_sympathies }
-					skill = 3
-					attack_skill = 2
-					defense_skill = 2
-					planning_skill = 4
-					logistics_skill = 2
-				}
-				create_corps_commander = {
-					name = "Juan Yagüe"
-					id = 1112
-					gfx = "GFX_portrait_SPA_juan_yague"
-					traits = { brilliant_strategist trait_reckless trait_SPA_nationalist_sympathies }
-					skill = 3
-					attack_skill = 4
-					defense_skill = 2
-					planning_skill = 2
-					logistics_skill = 2
-				}
-				create_corps_commander = {
-					name = "Agustín Muñoz Grandes"
-					id = 1113
-					gfx = "GFX_portrait_SPA_augustin_muynoz_grandes"
-					traits = { infantry_officer trait_SPA_nationalist_sympathies }
-					skill = 3
-					attack_skill = 2
-					defense_skill = 3
-					planning_skill = 3
-					logistics_skill = 2	
-				}
+				# create_field_marshal = {
+				# 	name = "Francisco Franco"
+				# 	id = 1108
+				# 	gfx = "GFX_portrait_spain_francisco_franco"
+				# 	traits = { organisational_leader logistics_wizard expert_delegator offensive_doctrine trait_SPA_nationalist_sympathies }
+				# 	skill = 4
+				# 	attack_skill = 4
+				# 	defense_skill = 3
+				# 	planning_skill = 3
+				# 	logistics_skill = 4
+				# }
+				# create_corps_commander = {
+				# 	name = "Mohamed Meziane"
+				# 	id = 1109
+				# 	gfx = "GFX_portrait_SPA_mohamed_meziane"
+				# 	traits = { harsh_leader career_officer trait_SPA_nationalist_sympathies }
+				# 	skill = 4
+				# 	attack_skill = 5
+				# 	defense_skill = 2
+				# 	planning_skill = 3
+				# 	logistics_skill = 3
+				# }
+				# create_corps_commander = { # Could fit for all 3 factions
+				# 	name = "Gonzalo Queipo de Llano"
+				# 	id = 1110
+				# 	gfx = "GFX_portrait_SPA_gonzalo_queipo_de_llano"
+				# 	traits = { infantry_officer trait_SPA_nationalist_sympathies }
+				# 	skill = 3
+				# 	attack_skill = 3
+				# 	defense_skill = 3
+				# 	planning_skill = 2
+				# 	logistics_skill = 2
+				# }		
+				# create_field_marshal = {
+				# 	name = "Emilio Mola"
+				# 	id = 1111
+				# 	gfx = "GFX_portrait_SPA_emilio_mola"
+				# 	traits = { organisational_leader trait_cautious thorough_planner trait_SPA_nationalist_sympathies }
+				# 	skill = 3
+				# 	attack_skill = 2
+				# 	defense_skill = 2
+				# 	planning_skill = 4
+				# 	logistics_skill = 2
+				# }
+				# create_corps_commander = {
+				# 	name = "Juan Yagüe"
+				# 	id = 1112
+				# 	gfx = "GFX_portrait_SPA_juan_yague"
+				# 	traits = { brilliant_strategist trait_reckless trait_SPA_nationalist_sympathies }
+				# 	skill = 3
+				# 	attack_skill = 4
+				# 	defense_skill = 2
+				# 	planning_skill = 2
+				# 	logistics_skill = 2
+				# }
+				#create_corps_commander = {
+				#	name = "Agustín Muñoz Grandes"
+				#	id = 1113
+				#	gfx = "GFX_portrait_SPA_augustin_muynoz_grandes"
+				#	traits = { infantry_officer trait_SPA_nationalist_sympathies }
+				#	skill = 3
+				#	attack_skill = 2
+				#	defense_skill = 3
+				#	planning_skill = 3
+				#	logistics_skill = 2	
+				#}
 				# every_unit_leader = {
 				# 	limit = {
 				# 		OR = {
