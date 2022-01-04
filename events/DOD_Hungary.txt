@@ -1081,7 +1081,18 @@ country_event = {
 
 	option = { #Excellent!
 		name = DOD_hungary.42.a
-		remove_ideas = HUN_treaty_of_triannon
+		if = {
+			limit = {has_idea = HUN_treaty_of_triannon}
+			remove_ideas = HUN_treaty_of_triannon
+		}
+		if = {
+			limit = {has_idea = HUN_treaty_of_triannon_2}
+			remove_ideas = HUN_treaty_of_triannon_2
+		}
+		if = {
+			limit = {has_idea = HUN_treaty_of_triannon_3}
+			remove_ideas = HUN_treaty_of_triannon_3
+		}
 		news_event = { id = news.298 days = 1 }
 	}
 	
