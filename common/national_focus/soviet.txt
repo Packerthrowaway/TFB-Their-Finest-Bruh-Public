@@ -1939,6 +1939,65 @@
 			custom_effect_tooltip = SOV_defend_leningrad_tt
 		}
 	}
+
+	focus = {
+		id = SOV_the_road_of_life
+		icon = GFX_focus_SOV_the_road_of_life
+		prerequisite = { focus = SOV_defend_leningrad }
+		x = 2
+		y = 1
+		relative_position_id = SOV_defend_leningrad
+		cost = 5
+
+		available = {
+			OR = {
+				195 = { #LENINGRAD
+					is_controlled_by = ROOT
+					any_neighbor_state = {
+						is_owned_by = ROOT
+						NOT = { is_fully_controlled_by = ROOT }
+					}
+				}
+				219 = { #MOSCOW
+					is_controlled_by = ROOT
+					any_neighbor_state = {
+						is_owned_by = ROOT
+						NOT = { is_fully_controlled_by = ROOT }
+					}
+				}
+				217 = { #STALINGRAD
+					is_controlled_by = ROOT
+					any_neighbor_state = {
+						is_owned_by = ROOT
+						NOT = { is_fully_controlled_by = ROOT }
+					}
+				}
+				137 = { #SEVASTOPOL
+					is_controlled_by = ROOT
+					any_neighbor_state = {
+						is_owned_by = ROOT
+						NOT = { is_fully_controlled_by = ROOT }
+					}
+				}
+				202 = { #Kiev
+					is_controlled_by = ROOT
+					any_neighbor_state = {
+						is_owned_by = ROOT
+						NOT = { is_fully_controlled_by = ROOT }
+					}
+				}
+			}
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_the_road_of_life_ns
+				days = 730
+			}
+		}
+	}
 	
 	focus = {
 		id = SOV_order_270
@@ -2147,12 +2206,6 @@
 		completion_reward = {
 				
 			unlock_decision_tooltip = SOV_order_227
-			add_to_variable = { SOV_the_red_army_heat_attrition_factor = -0.1 }
-			add_to_variable = { SOV_the_red_army_winter_attrition_factor = -0.1 }
-			add_to_variable = { SOV_the_red_army_acclimatization_cold_climate_gain_factor = 0.15 }
-			add_to_variable = { SOV_the_red_army_acclimatization_hot_climate_gain_factor = 0.15 }
-			add_to_variable = { SOV_the_red_army_terrain_penalty_reduction = 0.05 }
-			custom_effect_tooltip = SOV_an_adaptable_army_ns_tt
 			custom_effect_tooltip = SOV_lessons_of_war_unlock_military_operations_tt
 		}
 	}
@@ -3991,41 +4044,33 @@
 		}
 		
 		completion_reward = {
-			add_political_power = -100
-			add_state_core = 97
-			add_state_core = 784
-			add_state_core = 96
-			add_state_core = 95
-			add_state_core = 94
-			add_state_core = 93
-			add_state_core = 91
-			add_state_core = 89
-			add_state_core = 11
-			add_state_core = 189
-			add_state_core = 12
-			add_state_core = 190
-			add_state_core = 13
-			add_state_core = 191
-			add_state_core = 808
-			add_state_core = 809
-			add_state_core = 810
-			add_state_core = 811
-			add_state_core = 812
-			add_state_core = 813
-			add_state_core = 814
-			add_state_core = 815
-			if = {
+			custom_effect_tooltip = SOV_CONQ_TT
+
+			every_controlled_state = {
 				limit = {
-					AND = {
-						owns_state = 78
-						owns_state = 766
-						owns_state = 80
-					}
+					is_core_of = POL
 				}
-				add_state_core = 78
-				add_state_core = 766
-				add_state_core = 80
+				add_compliance = 100
 			}
+			every_controlled_state = {
+				limit = {
+					is_core_of = LIT
+				}
+				add_compliance = 100
+			}
+			every_controlled_state = {
+				limit = {
+					is_core_of = LAT
+				}
+				add_compliance = 100
+			}
+			every_controlled_state = {
+				limit = {
+					is_core_of = EST
+				}
+				add_compliance = 100
+			}
+			
 		}
 	}
 	
@@ -4851,6 +4896,12 @@
 			add_to_variable = { SOV_the_red_army_mobilization_speed = 0.05 }
 			add_to_variable = { SOV_the_red_army_conscription_factor = 0.03 }
 			custom_effect_tooltip = SOV_strengthen_the_mobilization_plan_ns_tt
+			add_to_variable = { SOV_the_red_army_heat_attrition_factor = -0.1 }
+			add_to_variable = { SOV_the_red_army_winter_attrition_factor = -0.1 }
+			add_to_variable = { SOV_the_red_army_acclimatization_cold_climate_gain_factor = 0.15 }
+			add_to_variable = { SOV_the_red_army_acclimatization_hot_climate_gain_factor = 0.15 }
+			add_to_variable = { SOV_the_red_army_terrain_penalty_reduction = 0.05 }
+			custom_effect_tooltip = SOV_an_adaptable_army_ns_tt
 		}
 	}
 	
