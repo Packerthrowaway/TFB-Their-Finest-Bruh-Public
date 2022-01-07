@@ -24,7 +24,7 @@ focus_tree = {
 
 	default = no
 
-	continuous_focus_position = { x = 50 y = 2500 }
+	continuous_focus_position = { x = 50 y = 50 }
 
 #  #  ##  ### ###  ##  #  #  ##  #   ###  ## ###     ###  #  # ### #   ###     #  # ###  
 ## # #  #  #   #  #  # ## # #  # #    #  #    #      #  # #  #  #  #   #  #    #  # #  # 
@@ -46,7 +46,7 @@ focus_tree = {
 		bypass = {
 			has_global_flag = spanish_civil_war
 		}
-		mutually_exclusive = { focus = SPR_the_popular_front }
+		#mutually_exclusive = { focus = SPR_the_popular_front }
 
 		allow_branch = {
 			if = {
@@ -333,22 +333,23 @@ focus_tree = {
 	focus = {
 		id = SPR_the_popular_front
 		available = {
-			NOT = {
-				has_country_flag = SPR_spanish_elections_flag
-			}
-		}
-		
-		bypass = {
-			has_global_flag = spanish_civil_war
-		}
-		mutually_exclusive = { focus = SPA_a_great_spain }
-		cancel_if_invalid = yes
-		allow_branch = {
+			#NOT = {
+			#	has_country_flag = SPR_spanish_elections_flag
+			#}
 			always = no
 		}
 		
+		# bypass = {
+		# 	has_global_flag = spanish_civil_war
+		# }
+		#mutually_exclusive = { focus = SPA_a_great_spain }
+		cancel_if_invalid = yes
+		# allow_branch = {
+		# 	always = no
+		# }
+		
 		icon = GFX_goal_generic_national_unity
-		x = 33
+		x = 20
 		y = 0
 		offset = {
 			x = -19
@@ -402,7 +403,7 @@ focus_tree = {
 		mutually_exclusive = { focus = SPR_secure_the_guardia_civil }
 		
 		icon = GFX_goal_generic_political_pressure
-		x = 13
+		x = -1
 		y = 1
 		offset = {
 			x = -14
@@ -453,7 +454,7 @@ focus_tree = {
 		mutually_exclusive = { focus = SPR_secure_the_guardia_de_asalto }
 		
 		icon = GFX_focus_generic_support_the_left_right
-		x = 15
+		x = 1
 		y = 1
 		offset = {
 			x = -14
@@ -853,48 +854,45 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = SPA_the_corpo_truppe_volontarie
-		available = {
-			NOT = { has_global_flag = scw_over }
-			has_volunteers_amount_from = {
-				tag = ITA
-				count > 0
-			}
-		}
-		bypass = {
-		}
-		prerequisite = { focus = SPA_the_phalanx_ascendant focus = SPA_unify_the_nationalist_front }
-		allow_branch = {
-			always = no
-		}
-		icon = GFX_focus_befriend_italy
-		x = 4
-		y = 1
-		relative_position_id = SPA_the_phalanx_ascendant
-		cost = 5
+	# focus = {
+	# 	id = SPA_the_corpo_truppe_volontarie
+	# 	available = {
+	# 		NOT = { has_global_flag = scw_over }
+	# 		has_volunteers_amount_from = {
+	# 			tag = ITA
+	# 			count > 0
+	# 		}
+	# 	}
+	# 	bypass = {
+	# 	}
+	# 	prerequisite = { focus = SPA_the_phalanx_ascendant focus = SPA_unify_the_nationalist_front }
+	# 	icon = GFX_focus_befriend_italy
+	# 	x = 4
+	# 	y = 1
+	# 	relative_position_id = SPA_the_phalanx_ascendant
+	# 	cost = 5
 
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_RESEARCH}
-		completion_reward = {
-			ITA = {
-				add_timed_idea = { idea = SPA_spanish_civil_war_commitments days = 730 }
-				add_opinion_modifier = { target = ROOT modifier = SPA_spanish_civil_war_commitments }
-			}
-			add_tech_bonus = {
-				name = SPA_the_corpo_truppe_volontarie
-				bonus = 1.0
-				uses = 1
-				category = infantry_weapons
-			}
-			add_tech_bonus = {
-				name = SPA_the_corpo_truppe_volontarie
-				bonus = 1.0
-				uses = 1
-				category = artillery
-			}
-		}
-	}
+	# 	available_if_capitulated = yes
+	# 	search_filters = {FOCUS_FILTER_RESEARCH}
+	# 	completion_reward = {
+	# 		ITA = {
+	# 			add_timed_idea = { idea = SPA_spanish_civil_war_commitments days = 730 }
+	# 			add_opinion_modifier = { target = ROOT modifier = SPA_spanish_civil_war_commitments }
+	# 		}
+	# 		add_tech_bonus = {
+	# 			name = SPA_the_corpo_truppe_volontarie
+	# 			bonus = 1.0
+	# 			uses = 1
+	# 			category = infantry_weapons
+	# 		}
+	# 		add_tech_bonus = {
+	# 			name = SPA_the_corpo_truppe_volontarie
+	# 			bonus = 1.0
+	# 			uses = 1
+	# 			category = artillery
+	# 		}
+	# 	}
+	# }
 
 	focus = {
 		id = SPA_the_condor_legion
@@ -2806,10 +2804,11 @@ focus_tree = {
 	focus = {
 		id = SPA_support_the_war_industry
 		available = {
-			any_country = {
-				is_in_faction_with = ROOT
-				has_government = fascism
-				is_major = yes
+			OR = {
+				GER = { has_war_with = POL }
+				NOT = { country_exists = POL }
+				POL = { is_subject_of = GER}
+				date > 1940.1.1
 			}
 		}
 		bypass = {
@@ -3259,11 +3258,34 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-			}
+			}			
 		}
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
-			remove_ideas = SPA_recovering_from_civil_war_3
+			if = {
+				limit = {has_idea = SPA_recovering_from_civil_war_3}
+				remove_ideas = SPA_recovering_from_civil_war_3
+			}
+			if = {
+				limit = {has_idea = SPA_recovering_from_civil_war_2}
+				remove_ideas = SPA_recovering_from_civil_war_2
+			}
+			if = {
+				limit = {has_idea = SPA_recovering_from_civil_war}
+				remove_ideas = SPA_recovering_from_civil_war
+			}
+			if = {
+				limit = {
+					NOT = {
+						OR = { 
+							has_idea = SPA_recovering_from_civil_war_3
+							has_idea = SPA_recovering_from_civil_war_2
+							has_idea = SPA_recovering_from_civil_war
+						}
+					}
+				}
+				custom_effect_tooltip = SPA_recovering_tt
+			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -4865,16 +4887,12 @@ focus_tree = {
 		id = SPA_demand_french_north_africa
 		available = {
 			any_country = {
-				original_tag = FRA
 				has_focus_tree = vichy_french_focus
 				owns_state = 461
 				owns_state = 462
 				owns_state = 459
 				owns_state = 460
 				owns_state = 513
-				owns_state = 514
-				owns_state = 458
-				owns_state = 665
 			}
 			has_completed_focus = SPA_abandon_neutrality
 		}
@@ -4908,9 +4926,6 @@ focus_tree = {
 					owns_state = 459
 					owns_state = 460
 					owns_state = 513
-					owns_state = 514
-					owns_state = 458
-					owns_state = 665
 				}
 				country_event = { id = lar_spain.39 hours = 6 random_hours = 18 }
 			}
@@ -6768,7 +6783,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SPR_disband_the_army }
 		mutually_exclusive = { focus = SPR_the_anti_fascist_workers_revolution focus = SPR_maintain_the_second_republic }
-		
+		allow_branch = {
+			always = no
+		}
 		icon = GFX_focus_spr_regional_defense_council_of_aragon
 		x = -11
 		y = 1
@@ -8590,7 +8607,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SPR_disband_the_army }
 		mutually_exclusive = { focus = SPR_regional_defense_council_of_aragon focus = SPR_maintain_the_second_republic }
-		
+		allow_branch = {
+			always = no
+		}
 		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
 		x = 0
 		y = 1
@@ -11297,7 +11316,7 @@ focus_tree = {
 		mutually_exclusive = { focus = SPR_regional_defense_council_of_aragon focus = SPR_the_anti_fascist_workers_revolution }
 		
 		icon = GFX_focus_spr_maintain_the_republic
-		x = 11
+		x = 0
 		y = 1
 		relative_position_id = SPR_disband_the_army
 		cost = 5

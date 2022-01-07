@@ -82,7 +82,6 @@ country_event = {
 	picture = GFX_report_event_spain_civil_war_soldiers
 	is_triggered_only = yes
 
-	
 	immediate = {
 		hidden_effect = {
 			every_owned_state = {
@@ -2223,6 +2222,9 @@ country_event = {
 				# Unlock division templates for Republicans
 				SPD = {
 					every_state = {
+						limit = {
+							is_core_of = SPR
+						}
 						add_core_of = SPD
 					}
 					inherit_technology = SPA
@@ -3100,19 +3102,29 @@ country_event = {
 	
 	is_triggered_only = yes
 	
-	option = { # Accept
+	option = { # Accept just the Coast
 		name = lar_spain.39.a
 		ai_chance = {
-			base = 50
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = FROM ratio > 1 }
+			base = 0
+		}
+		effect_tooltip = {
+			FROM = {
+				transfer_state = 461
+				transfer_state = 462
 			}
-			modifier = {
-				factor = 5
-				NOT = { has_war_with = FROM }
-				has_war = yes
+		}
+		hidden_effect = {
+			set_country_flag = surrendered_french_north_africa
+			FROM = {
+				country_event = { id = lar_spain.400 hours = 18 random_hours = 6 }
 			}
+			news_event = { id = lar_news.14 days = 2 }
+		}
+	}
+	option = { # Accept everything but Tunisia
+		name = lar_spain.39.b
+		ai_chance = {
+			base = 100
 		}
 		effect_tooltip = {
 			FROM = {
@@ -3121,9 +3133,6 @@ country_event = {
 				transfer_state = 459
 				transfer_state = 460
 				transfer_state = 513
-				transfer_state = 514
-				transfer_state = 458
-				transfer_state = 665
 			}
 		}
 		hidden_effect = {
@@ -3134,37 +3143,10 @@ country_event = {
 			news_event = { id = lar_news.14 days = 2 }
 		}
 	}
-
 	option = { # Decline
-		name = lar_spain.39.b
+		name = lar_spain.39.d
 		ai_chance = {
-			base = 50
-			modifier = {
-				factor = 0.8
-				strength_ratio = { tag = FROM ratio < 0.5 }
-			}
-			modifier = {
-				factor = 0.8
-				has_opinion = { target = FROM value > 99 }
-			}
-			modifier = {
-				factor = 0.8
-				strength_ratio = { tag = FROM ratio < 0.3 }
-			}
-			modifier = {
-				factor = 0.8
-				strength_ratio = { tag = FROM ratio < 0.2 }
-			}
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = FROM ratio < 0.1 }
-			}
-			modifier = {
-				factor = 0
-				has_focus_tree = vichy_french_focus
-				NOT = { has_war_with = GER }
-				FROM = { is_in_faction_with = GER }
-			}
+			base = 0
 		}
 		effect_tooltip = {
 			FROM = {
@@ -3173,7 +3155,6 @@ country_event = {
 				add_state_claim = 459
 				add_state_claim = 460
 				add_state_claim = 513
-				add_state_claim = 514
 				add_state_claim = 458
 				add_state_claim = 665
 				# Lets remove this from MP
@@ -3193,7 +3174,23 @@ country_event = {
 	}
 }
 
-# Demand French North Africa - Event for Spain - France accepted
+# Demand French North Africa - Event for Spain - France accepted just the coast
+country_event = {
+	id = lar_spain.400
+	title = lar_spain.40.t
+	desc = lar_spain.400.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	is_triggered_only = yes
+	
+	option = { # Ok
+		name = lar_spain.400.a
+		transfer_state = 461
+		transfer_state = 462
+	}
+}
+
+# Demand French North Africa - Event for Spain - France accepted all but Tunisia
 country_event = {
 	id = lar_spain.40
 	title = lar_spain.40.t
@@ -3209,9 +3206,6 @@ country_event = {
 		transfer_state = 459
 		transfer_state = 460
 		transfer_state = 513
-		transfer_state = 514
-		transfer_state = 458
-		transfer_state = 665
 	}
 }
 
@@ -3231,9 +3225,10 @@ country_event = {
 		add_state_claim = 459
 		add_state_claim = 460
 		add_state_claim = 513
-		add_state_claim = 514
-		add_state_claim = 458
-		add_state_claim = 665
+		#Tunisia
+		#add_state_claim = 458
+		#add_state_claim = 665
+
 		# Lets remove this from MP
 		#create_wargoal = {
 		#	type = take_state_focus
