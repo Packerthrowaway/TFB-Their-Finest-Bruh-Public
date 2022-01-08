@@ -32,8 +32,28 @@ set_technology = {
 	CAS1 = 1
 	early_fighter = 1
 	naval_bomber1 = 1
-	early_bomber = 1
 	support_weapons = 1
+	early_bomber = 1
+	basic_train = 1
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
 }
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
@@ -63,6 +83,101 @@ if = {
 		basic_depth_charges = 1
 		coastal_defense_ships = 1
 		mtg_transport = 1
+	}
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "SWE_1939"
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			set_naval_oob = "SWE_1939_naval_mtg"
+		else = {
+			set_naval_oob = "SWE_1939_naval_legacy"
+		}
+	}
+
+	set_technology = {
+		early_bomber = 1
+		tactical_bomber1 = 1
+		gw_artillery = 1
+		interwar_artillery = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+
+		#doctrines
+		air_superiority = 1
+		grand_battle_plan = 1
+		trench_warfare = 1
+		fleet_in_being = 1
+		battlefleet_concentration = 1
+		submarine_operations = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		synth_oil_experiments = 1
+		fuel_silos = 1
+		oil_processing = 1
+		improved_oil_processing = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			improved_light_tank = 1
+			basic_medium_tank = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			
+			
+			improved_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+		}
+	}
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			basic_submarine = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			basic_ship_hull_cruiser = 1
+		}
 	}
 }
 
@@ -98,15 +213,31 @@ set_convoys = 25
 set_stability = 0.9
 
 
-
-
 recruit_character = SWE_per_albin_hansson
 recruit_character = SWE_sven_olov_lindholm
 recruit_character = SWE_sven_linderot
 recruit_character = SWE_axel_pehrssonbramstorp
+recruit_character = SWE_folke_hogberg
 recruit_character = SWE_erik_af_edholm
-recruit_character = SWE_folke_högberg
-recruit_character = SWE_claes_lindström
+recruit_character = SWE_claes_lindstrom
+recruit_character = SWE_per_sylvan
+recruit_character = SWE_gosta_ehrensvard
+recruit_character = SWE_torsten_friis
+recruit_character = SWE_erik_palmstierna
+recruit_character = SWE_helge_stromback
+recruit_character = SWE_helge_jung
+recruit_character = SWE_olof_thornell
+recruit_character = SWE_bengt_nordenskiold
+recruit_character = SWE_ivar_holmquist
+recruit_character = SWE_fabian_tamm
+recruit_character = SWE_charles_de_champs
+recruit_character = SWE_axel_rappe
+recruit_character = SWE_oscar_nygren
+recruit_character = SWE_axel_ljungdahl
+recruit_character = SWE_archibald_douglas
+recruit_character = SWE_ernst_wigforss
+recruit_character = SWE_thorwald_bergquist
+recruit_character = SWE_osten_unden
 
 
 ### VARIANTS ###
@@ -125,6 +256,47 @@ if = {
 		}
 	}
 }
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "Stridsvagn m/21"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 1
+		}
+		obsolete = yes #used for oob
+	}
+	create_equipment_variant = {
+		name = "Stridsvagn m/31"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 3
+		}
+	}
+}
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	# Submarines #
@@ -177,6 +349,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_1
 			fixed_ship_torpedo_slot = empty
 			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
 		}
 		obsolete = yes
 	}
@@ -192,7 +365,8 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = light_ship_engine_1
 			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_depth_charge_1
+			mid_1_custom_slot = ship_mine_layer_1
+			rear_1_custom_slot = ship_depth_charge_1
 		}
 		obsolete = yes
 	}
@@ -209,6 +383,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_1
 			fixed_ship_torpedo_slot = empty
 			mid_1_custom_slot = ship_mine_layer_1
+			rear_1_custom_slot = ship_mine_layer_1
 		}
 		obsolete = yes
 	}
@@ -224,7 +399,8 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = light_ship_engine_2
 			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_depth_charge_1
+			mid_1_custom_slot = ship_mine_layer_1
+			rear_1_custom_slot = ship_depth_charge_1
 		}
 	}
 	# Cruisers #
@@ -242,7 +418,8 @@ if = {
 			fixed_ship_armor_slot = ship_armor_cruiser_1
 			fixed_ship_secondaries_slot = empty
 			mid_1_custom_slot = ship_anti_air_1
-			front_1_custom_slot = ship_light_medium_battery_1
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_light_medium_battery_1
 		}
 		obsolete = yes
 	}
@@ -260,6 +437,7 @@ if = {
 			fixed_ship_armor_slot = ship_armor_cruiser_2
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
 			rear_1_custom_slot = empty
 		}
 		obsolete = yes
@@ -278,7 +456,8 @@ if = {
 			fixed_ship_armor_slot = ship_armor_cruiser_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			mid_1_custom_slot = empty
-			front_1_custom_slot = ship_medium_battery_1
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_medium_battery_1
 		}
 		obsolete = yes
 	}
@@ -296,6 +475,7 @@ if = {
 			fixed_ship_armor_slot = ship_armor_cruiser_2
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			mid_1_custom_slot = ship_secondaries_1
+			mid_2_custom_slot = empty
 			rear_1_custom_slot = ship_medium_battery_1
 		}
 	}
@@ -313,7 +493,8 @@ if = {
 			fixed_ship_armor_slot = empty
 			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_airplane_launcher_1
-			rear_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_mine_layer_1
 		}
 	}
 }
