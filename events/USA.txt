@@ -1716,3 +1716,106 @@ country_event = {
 		clear_global_event_target = USA_congress_investment_state
 	}
 }
+
+# Divide up Japan
+country_event = {
+    id = usa.65
+    title = usa.65.t
+    desc = usa.65.desc
+    picture = GFX_report_event_ast_navy
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = USA
+        has_war_with = JAP
+        JAP = {
+            surrender_progress > 0.7
+        }
+    }
+
+    option = {
+        name = usa.65.a #Peace Conference
+        ai_chance = {
+            factor = 0
+        }
+		custom_effect_tooltip = japan.504.a_desc
+    }
+    option = {
+        name = usa.65.b #Larp with countries going free
+        ai_chance = {
+            factor = 100
+        }
+		set_global_flag = USA_split_japan
+		custom_effect_tooltip = japan.504.b_desc
+    }
+    option = {
+        name = usa.65.c #Countries occupied by the U.S.
+        ai_chance = {
+            factor = 1
+        }
+		set_global_flag = USA_occupy_japan
+		custom_effect_tooltip = japan.504.c_desc
+    }
+	option = {
+        name = usa.65.d #Carve up japan
+        ai_chance = {
+            factor = 0
+        }
+		set_global_flag = USA_carve_japan
+		custom_effect_tooltip = japan.504.d_desc
+		effect_tooltip = {
+			if = {
+				limit = {
+					original_tag = JAP
+					FROM = { tag = USA }
+					has_global_flag = USA_carve_japan
+				}
+				if = {
+					limit = { country_exists = NZL }
+					NZL = {
+						transfer_state = 684 #Caroline Islands
+						transfer_state = 646 #Saipan
+						transfer_state = 524 #Taiwan
+						transfer_state = 647 #Palau
+					}
+				}
+				SOV = {
+					transfer_state = 537 #South Sakhalin
+					transfer_state = 555 #Kuril Islands
+				}
+				RAJ = {
+					transfer_state = 325 #Yunnan
+					transfer_state = 747 #Dali
+					transfer_state = 601 #Xikang
+					transfer_state = 289 #Siam
+					transfer_state = 724 #Northern Malay
+				}
+				AST = {
+					transfer_state = 529 #Chugoku
+					transfer_state = 530 #Shikoku
+				}
+				USA = {
+					annex_country = {
+						target = MAN
+						transfer_troops = no
+					}
+					annex_country = {
+						target = SIA
+						transfer_troops = no
+					}
+					annex_country = {
+						target = JAP
+						transfer_troops = no
+					}
+				}					
+				FRA = { # Indochina incase Siam took it
+					transfer_state = 670 #Laos
+					transfer_state = 671 #North Vietnam
+					transfer_state = 741 #Cambodia
+					transfer_state = 286 #South Vietnam
+				}
+			}
+		}
+    }
+}

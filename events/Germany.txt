@@ -5823,3 +5823,466 @@ country_event = {
 		name = germany.2002.a
 	}
 }
+
+# Divide up Japan
+country_event = {
+    id = germany.504
+    title = germany.504.t
+    desc = germany.504.desc
+    picture = GFX_report_event_ast_navy
+
+    fire_only_once = yes
+
+    trigger = {
+        tag = GER
+        has_war_with = SOV
+        SOV = {
+            surrender_progress > 0.9
+        }
+    }
+
+    # option = {
+    #     name = germany.504.a #Peace Conference
+    #     ai_chance = {
+    #         factor = 0
+    #     }
+	# 	custom_effect_tooltip = germany.504.a_desc
+    # }
+    option = {
+        name = germany.504.b #Ger gives some, annexes the rest
+        ai_chance = {
+            factor = 100
+        }
+		set_global_flag = GER_take_most_sov
+		effect_tooltip = {
+			FIN = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 146
+							owns_state = 147
+						}
+					}
+					transfer_state = 146 #Karjala
+					transfer_state = 147 #Sala
+				}
+				transfer_state = 213 #Murmansk
+				transfer_state = 215 #Onega
+				transfer_state = 216 #Olonets
+			}
+			ROM = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 78 #Bessarabia
+							owns_state = 80 #Bucovina
+							owns_state = 766 #Southern Bessarabia
+						}
+					}
+					transfer_state = 78 #Bessarabia
+					transfer_state = 80 #Bucovina
+					transfer_state = 766 #Southern Bessarabia
+				}
+				transfer_state = 192 #Odessa
+				transfer_state = 198 #Vinnytsia
+				transfer_state = 834 #Balta-Tiraspol
+			}
+			JAP = {
+				if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						NOT = { has_war_with = SOV }
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+				}
+				else_if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						has_war_with = SOV
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+					MAN = {
+						transfer_state = 408 #Vladivostok
+						transfer_state = 409 #Khabarovsk
+					}
+				}
+			}
+			GER = {
+				annex_country = {
+					target = SOV
+					transfer_troops = no
+				}
+				annex_country = {
+					target = MON
+					transfer_troops = no
+				}
+			}
+		}
+		#custom_effect_tooltip = germany.504.b_desc
+    }
+    option = {
+        name = germany.504.c #Ger gives a lot, annexes the rest
+        ai_chance = {
+            factor = 1
+        }
+		set_global_flag = GER_take_some_sov
+		effect_tooltip = {
+			FIN = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 146
+							owns_state = 147
+						}
+					}
+					transfer_state = 146 #Karjala
+					transfer_state = 147 #Sala
+				}
+				transfer_state = 213 #Murmansk
+				transfer_state = 215 #Onega
+				transfer_state = 216 #Olonets
+				#More Russian Territory
+				transfer_state = 214 #Arkhangelsk
+				#Estonia
+				transfer_state = 13 #Harju
+				transfer_state = 191 #Tartu
+				transfer_state = 811 #Saaremaa
+				transfer_state = 812 #Tallinn
+				transfer_state = 813 #Virumaa
+			}
+			ROM = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 78 #Bessarabia
+							owns_state = 80 #Bucovina
+							owns_state = 766 #Southern Bessarabia
+						}
+					}
+					transfer_state = 78 #Bessarabia
+					transfer_state = 80 #Bucovina
+					transfer_state = 766 #Southern Bessarabia
+				}
+				transfer_state = 192 #Odessa
+				transfer_state = 198 #Vinnytsia
+				transfer_state = 834 #Balta-Tiraspol
+				#More Russian Land
+				transfer_state = 259 #Poltava
+				transfer_state = 203 #Cherkasy
+				transfer_state = 197 #Mykolaiv
+				transfer_state = 226 #Dnipropetrovsk
+				transfer_state = 200 #Zaporozhe
+				transfer_state = 196 #Kherson
+				transfer_state = 137 #Crimea
+			}
+			JAP = {
+				if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						NOT = { has_war_with = SOV }
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+				}
+				else_if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						has_war_with = SOV
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+
+					if = {
+						limit = {
+							country_exists = MAN
+						}
+						MAN = {
+							transfer_state = 819 #Dornod
+							transfer_state = 560 #Nikolayevsk
+							transfer_state = 561 #Amur
+							transfer_state = 657 #Birobdzhan
+							transfer_state = 408 #Vladivostok
+							transfer_state = 409 #Khabarovsk
+						}
+					}
+				}
+			}
+			GER = {
+				annex_country = {
+					target = SOV
+					transfer_troops = no
+				}
+				annex_country = {
+					target = MON
+					transfer_troops = no
+				}
+			}
+		}
+		#custom_effect_tooltip = japan.504.c_desc
+    }
+	option = {
+        name = germany.504.d #Ger gives some, puppets the rest
+        ai_chance = {
+            factor = 0
+        }
+		set_global_flag = GER_take_most_puppet_sov
+		effect_tooltip = {
+			FIN = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 146
+							owns_state = 147
+						}
+					}
+					transfer_state = 146 #Karjala
+					transfer_state = 147 #Sala
+				}
+				transfer_state = 213 #Murmansk
+				transfer_state = 215 #Onega
+				transfer_state = 216 #Olonets
+			}
+			ROM = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 78 #Bessarabia
+							owns_state = 80 #Bucovina
+							owns_state = 766 #Southern Bessarabia
+						}
+					}
+					transfer_state = 78 #Bessarabia
+					transfer_state = 80 #Bucovina
+					transfer_state = 766 #Southern Bessarabia
+				}
+				transfer_state = 192 #Odessa
+				transfer_state = 198 #Vinnytsia
+				transfer_state = 834 #Balta-Tiraspol
+			}
+			JAP = {
+				if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						NOT = { has_war_with = SOV }
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+				}
+				else_if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						has_war_with = SOV
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+					MAN = {
+						transfer_state = 408 #Vladivostok
+						transfer_state = 409 #Khabarovsk
+					}
+				}
+			}
+			GER = {
+				#Eastern Poland
+				transfer_state = 96  # Wilejka
+				transfer_state = 95  # Nowogrodek
+				transfer_state = 94  # Polesie
+				transfer_state = 93  # Wolyn
+				transfer_state = 91  # Lwow
+				transfer_state = 89  # Stanislawow
+				transfer_state = 784 # Wilno
+				#LIT
+				transfer_state = 814 # Suduva
+				transfer_state = 189 # Siauliai			
+				transfer_state = 11  # Kaunas
+				transfer_state = 815 # Aukstaitija
+				#LAT
+				transfer_state = 190
+				transfer_state = 809
+				#Soviet land
+				transfer_state = 199 # Khmelnytskyi
+				transfer_state = 201 # Zhytomyr
+				transfer_state = 202 # Kiev
+				transfer_state = 194 # Mozyr
+				transfer_state = 204 # Bobruysk
+				transfer_state = 206 # Minsk
+				transfer_state = 207 # Vibtesk
+				transfer_state = 201 # Mozyr
+
+				puppet = SOV
+				puppet = MON
+			}
+		}
+		#custom_effect_tooltip = germany.504.d_desc
+    }
+	option = {
+        name = germany.504.e #Ger gives a lot, puppets the rest
+        ai_chance = {
+            factor = 0
+        }
+		set_global_flag = GER_take_some_puppet_sov
+		effect_tooltip = {
+			FIN = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 146
+							owns_state = 147
+						}
+					}
+					transfer_state = 146 #Karjala
+					transfer_state = 147 #Sala
+				}
+				transfer_state = 213 #Murmansk
+				transfer_state = 215 #Onega
+				transfer_state = 216 #Olonets
+				#More Russian Territory
+				transfer_state = 214 #Arkhangelsk
+				#Estonia
+				transfer_state = 13 #Harju
+				transfer_state = 191 #Tartu
+				transfer_state = 811 #Saaremaa
+				transfer_state = 812 #Tallinn
+				transfer_state = 813 #Virumaa
+			}
+			ROM = {
+				if = {
+					limit = {
+						SOV = {
+							owns_state = 78 #Bessarabia
+							owns_state = 80 #Bucovina
+							owns_state = 766 #Southern Bessarabia
+						}
+					}
+					transfer_state = 78 #Bessarabia
+					transfer_state = 80 #Bucovina
+					transfer_state = 766 #Southern Bessarabia
+				}
+				transfer_state = 192 #Odessa
+				transfer_state = 198 #Vinnytsia
+				transfer_state = 834 #Balta-Tiraspol
+				#More Russian Land
+				transfer_state = 259 #Poltava
+				transfer_state = 203 #Cherkasy
+				transfer_state = 197 #Mykolaiv
+				transfer_state = 226 #Dnipropetrovsk
+				transfer_state = 200 #Zaporozhe
+				transfer_state = 196 #Kherson
+				transfer_state = 137 #Crimea
+			}
+			JAP = {
+				if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						NOT = { has_war_with = SOV }
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+				}
+				else_if = {
+					limit = {
+						country_exists = JAP
+						surrender_progress < 0.30
+						has_war_with = SOV
+						JAP = {
+							OR = {
+								has_government = neutrality
+								has_government = fascism
+							}
+						}
+					}
+					transfer_state = 655 #North Sakhalin
+
+					if = {
+						limit = {
+							country_exists = MAN
+						}
+						MAN = {
+							transfer_state = 819 #Dornod
+							transfer_state = 560 #Nikolayevsk
+							transfer_state = 561 #Amur
+							transfer_state = 657 #Birobdzhan
+							transfer_state = 408 #Vladivostok
+							transfer_state = 409 #Khabarovsk
+						}
+					}
+				}
+			}
+			GER = {
+				#Eastern Poland
+				transfer_state = 97  # Bialystok
+				transfer_state = 96  # Wilejka
+				transfer_state = 95  # Nowogrodek
+				transfer_state = 94  # Polesie
+				transfer_state = 93  # Wolyn
+				transfer_state = 91  # Lwow
+				transfer_state = 89  # Stanislawow
+				transfer_state = 784 # Wilno
+				#LIT
+				transfer_state = 814 # Suduva
+				transfer_state = 189 # Siauliai			
+				transfer_state = 11  # Kaunas
+				transfer_state = 815 # Aukstaitija
+				#LAT
+				transfer_state = 190
+				transfer_state = 809
+				#Soviet land
+				transfer_state = 199 # Khmelnytskyi
+				transfer_state = 201 # Zhytomyr
+				transfer_state = 202 # Kiev
+				transfer_state = 194 # Mozyr
+				transfer_state = 204 # Bobruysk
+				transfer_state = 206 # Minsk
+				transfer_state = 207 # Vibtesk
+				transfer_state = 201 # Mozyr
+
+				puppet = SOV
+				puppet = MON
+			}
+		}
+		#custom_effect_tooltip = germany.504.e_desc
+    }
+}
