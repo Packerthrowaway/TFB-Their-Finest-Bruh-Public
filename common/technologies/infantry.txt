@@ -1132,6 +1132,11 @@ technologies = {
 		enable_equipments = {
 			squad_equipment_0
 		}
+		enable_equipment_modules = {
+			secondary_turret_hmg
+			tank_heavy_machine_gun
+			additional_machine_guns
+		}
 		
 		path = {
 			leads_to_tech = support_weapons2
@@ -1179,6 +1184,9 @@ technologies = {
 		
 		enable_equipments = {
 			squad_equipment_2
+		}
+		enable_equipment_modules = {
+			additional_heavy_machine_guns
 		}
 		
 		path = {
@@ -1483,6 +1491,28 @@ technologies = {
 		}
 	}
 	
+	amphibious_tank = {
+
+		enable_equipment_modules = {
+			amphibious_drive
+		}
+
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = infantry_folder
+			position = { x = 6 y = @1942 }
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+			tp_tech
+		}
+		
+	}
+	
 	mechanised_infantry2 = {
 
 		enable_equipments = {
@@ -1549,7 +1579,10 @@ technologies = {
 	armored_car1 = {
 
 		enable_equipments = {
-			gw_armored_car_equipment
+			gw_armored_car_chassis
+		}
+		enable_equipment_modules = {
+			tank_ac_turret_1
 		}
 		allow_branch = { has_dlc = "La Resistance" }
 		path = {
@@ -1574,7 +1607,10 @@ technologies = {
 	armored_car2 = {
 
 		enable_equipments = {
-			armored_car_equipment_1
+			armored_car_chassis_1
+		}
+		enable_equipment_modules = {
+			tank_ac_turret_2
 		}
 		
 		path = {
@@ -1599,7 +1635,10 @@ technologies = {
 	armored_car3 = {
 
 		enable_equipments = {
-			armored_car_equipment_2
+			armored_car_chassis_2
+		}
+		enable_equipment_modules = {
+			tank_ac_turret_open
 		}
 
 		research_cost = 2
@@ -1608,47 +1647,6 @@ technologies = {
 			name = infantry_folder
 			position = { x = 2 y = @1942 }
 		}
-		
-		categories = {
-			motorized_equipment
-			armor
-		}
-		
-		sub_technologies = {
-			armored_car_at_upgrade
-			armored_car_aa_upgrade
-		}
-
-	}
-
-	armored_car_at_upgrade = {
-
-		enable_equipments = {
-			armored_car_at_equipment
-		}
-
-		research_cost = 1
-		start_year = 1942
-		
-		sub_tech_index = 1
-		
-		categories = {
-			motorized_equipment
-			armor
-		}
-
-	}
-	
-	armored_car_aa_upgrade = {
-
-		enable_equipments = {
-			armored_car_aa_equipment
-		}
-
-		research_cost = 1
-		start_year = 1942
-		
-		sub_tech_index = 2
 		
 		categories = {
 			motorized_equipment

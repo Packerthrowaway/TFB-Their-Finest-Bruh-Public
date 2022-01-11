@@ -2585,3 +2585,236 @@ prospect_for_resources = {
 	}
 
 }
+
+JAP_propaganda_campaigns = {
+	JAP_china_prop = { # ID = 2
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = JAP_running_prop
+			}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			compliance_gain = 0.01
+			resistance_target = -0.05
+		}
+
+		complete_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 2 }
+			set_country_flag = JAP_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 1 }
+			clr_country_flag = JAP_running_prop
+		}
+	}
+
+	JAP_tech_prop = { # ID = 3
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = JAP_running_prop
+			}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			research_speed_factor = 0.075
+		}
+
+		complete_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 3 }
+			set_country_flag = JAP_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 1 }
+			clr_country_flag = JAP_running_prop
+		}
+	}
+
+	JAP_air_prop = { # ID = 4
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = JAP_running_prop
+			}
+			has_war = yes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			air_power_projection_factor = 0.25
+			air_untrained_pilots_penalty_factor = -0.5
+		}
+
+		complete_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 4 }
+			set_country_flag = JAP_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 1 }
+			clr_country_flag = JAP_running_prop
+		}
+	}
+
+	JAP_tank_prop = { # ID = 5
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = JAP_running_prop
+			}
+			has_war = yes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			industrial_capacity_factory = 0.05
+			production_lack_of_resource_penalty_factor = 0.2
+		}
+
+		complete_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 5 }
+			set_country_flag = JAP_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 1 }
+			clr_country_flag = JAP_running_prop
+		}
+	}
+
+	JAP_strike_prop = { # ID = 6
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = JAP_running_prop
+			}
+			has_completed_focus = JAP_strike_the_west
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			navy_max_range_factor = 0.25
+			naval_strike = 0.1
+			naval_speed_factor = 0.1
+			naval_has_potf_in_combat_attack = 0.1
+		}
+
+		complete_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 6 }
+			set_country_flag = JAP_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 1 }
+			clr_country_flag = JAP_running_prop
+		}
+	}
+
+	JAP_bombing_prop = { # ID = 7
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = JAP_running_prop
+			}
+			OR = {
+				has_war_with = USA
+				has_war_with = ENG
+			}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			industry_air_damage_factor = -0.25
+			static_anti_air_hit_chance_factor = 0.1
+			industry_repair_factor = 0.25
+		}
+
+		complete_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 7 }
+			set_country_flag = JAP_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { JAP_poster_center_icon_frame = 1 }
+			clr_country_flag = JAP_running_prop
+		}
+	}
+}
