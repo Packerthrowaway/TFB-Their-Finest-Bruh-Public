@@ -3009,6 +3009,40 @@ focus_tree = {
 				idea = GER_barbarossa
 				days = 120
 			}
+			
+			if = {
+				limit = {
+					SOV = {has_completed_focus = SOV_secure_new_conquests}
+				}
+				SOV = {
+					every_controlled_state = {
+					limit = {
+						is_core_of = POL
+					}
+					add_compliance = -40
+					}
+					every_controlled_state = {
+						limit = {
+							is_core_of = LIT
+						}
+						add_compliance = -20
+					}
+					every_controlled_state = {
+						limit = {
+							is_core_of = LAT
+						}
+						add_compliance = -20
+					}
+					every_controlled_state = {
+						limit = {
+							is_core_of = EST
+						}
+						add_compliance = -20
+					}
+				}
+			}
+
+				
 			remove_ideas = GER_good_weather_army
 			
 			activate_mission = GER_barbarossa_mission_moscow
