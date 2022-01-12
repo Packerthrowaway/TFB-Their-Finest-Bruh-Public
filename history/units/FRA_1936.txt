@@ -181,6 +181,9 @@ units = {
 		location = 11502
 		division_template = "Brigade de Chars de Combat" 		# FT-17s
 		start_experience_factor = 0.2
+		force_equipment_variants = {
+			fra_light_tank_chassis_ft = { owner = FRA version_name = "FT-17" }
+		}
 	}
 
 	# Xe Corps d'Armée (Région Militaire in 1936) -- Strassbourg
@@ -253,6 +256,9 @@ units = {
 		location = 11516
 		division_template = "Brigade de Chars de Combat" 		# FT-17s
 		start_experience_factor = 0.2
+		force_equipment_variants = {
+			fra_light_tank_chassis_ft = { owner = FRA version_name = "FT-17" }
+		}
 	}
 
 	# Ie Corps d'Armée (Région Militaire in 1936) -- Lille
@@ -317,6 +323,9 @@ units = {
 		location = 13011
 		division_template = "Division Légère Mécanique" 	# DLM is frontline, best equipment, L Arm = H-35
 		start_experience_factor = 0.3
+		force_equipment_variants = {
+			fra_light_tank_chassis_h35 = { owner = FRA version_name = "Hotchkiss H35" }
+		}
 	}
 
 	# IVe Corps d'Armée (Région Militaire in 1936) -- Le Mans
@@ -400,6 +409,9 @@ units = {
 		location = 11465
 		division_template = "Brigade de Chars de Combat" 		# R-35s
 		start_experience_factor = 0.2
+		force_equipment_variants = {
+			fra_light_tank_chassis_ft = { owner = FRA version_name = "FT-17" }
+		}
 	}
 
 	# Région Militaire de Paris -- Paris
@@ -452,6 +464,9 @@ units = {
 		division_template = "Brigade de Chars de Combat" 		# R-35s
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.95
+		force_equipment_variants = {
+			fra_light_tank_chassis_r35 = { owner = FRA version_name = "Renault R35" }
+		}
 	}
 
 	# VIIe Corps d'Armée (Région Militaire in 1936) -- Besançon
@@ -666,6 +681,9 @@ units = {
 		location = 6613
 		division_template = "Brigade de Chars de Combat" 			# FT-17s
 		start_experience_factor = 0.2
+		force_equipment_variants = {
+			fra_light_tank_chassis_ft = { owner = FRA version_name = "FT-17" }
+		}
 	}
 
 
@@ -905,7 +923,7 @@ units = {
 		division_template = "Brigade Coloniale" 	# Miltia unit, reserve equipment
 		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
 		start_equipment_factor = 0.15
-
+		
 	}
 
 
@@ -1075,13 +1093,18 @@ instant_effect = {
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
-		type = light_tank_chassis_1
-		amount = 400
+		type = horse_equipment_0
+		amount = 2000
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
-		type = horse_equipment_0
-		amount = 2000
+		type = fra_light_tank_chassis_ft
+		amount = 600
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = fra_heavy_tank_chassis_2c
+		amount = 10
 		producer = FRA
 	}
 

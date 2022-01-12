@@ -1134,6 +1134,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = GER_rad
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = GER_reichsarbeit_prop
 		}
 	}
 	
@@ -1947,14 +1949,16 @@ focus_tree = {
 			add_tech_bonus = {
 				name = art_bonus
 				bonus = 0.75
-				uses = 1
-				technology = heavy_antiair
+				uses = 2
+				category = heavy_artillery
 			}
 			add_tech_bonus = {
 				name = art_bonus
 				bonus = 0.75
+				ahead_reduction = 2
 				uses = 1
-				technology = heavy_antitank
+				technology = railway_gun
+				technology = railway_gun_2
 			}
 			set_technology = {
 				art_radio1 = 1
@@ -2071,7 +2075,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = tnk_bonus
 				bonus = 0.5
-				uses = 1
+				uses = 2
 				category = cat_medium_armor
 			}
 		}
@@ -2095,7 +2099,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = tnk_bonus
 				bonus = 0.5
-				uses = 1
+				uses = 2
 				category = cat_heavy_armor
 			}
 		}
@@ -2116,19 +2120,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = art_bonus
-				bonus = 0.75
-				uses = 1
-				category = artillery
-			}
-			add_tech_bonus = {
-				name = art_bonus
-				bonus = 0.75
-				uses = 1
-				category = artillery
-			}
+			add_ideas = HUN_assault_gun_idea
 		}
 	}	
 
@@ -3789,6 +3781,8 @@ focus_tree = {
 			}
 			add_named_threat = { threat = 5 name = GER_end_of_czechoslovakia }
 			hidden_effect = {
+				set_technology = { ger_cze_tank_1 = 1 }
+				set_technology = { ger_cze_tank_2 = 1 }
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_1
 					amount = 10000
@@ -3814,11 +3808,22 @@ focus_tree = {
 					amount = 2000
 					producer = CZE
 				}
+				create_equipment_variant = {
+					name = "PzKpfw 38(t)"
+					type = ger_light_tank_chassis_p38
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_small_gun_2
+						turret_type_slot = tank_light_turret_2
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+					}
+					icon = "gfx/interface/technologies/tanks/ger/ger_cze_tank_2.dds"
+				}
 				add_equipment_to_stockpile = {
-					type = light_tank_chassis_1
-					amount = 1500
+					type = ger_light_tank_chassis_p38
+					amount = 200
 					producer = CZE
-					variant_name = "LT vz. 35"
 				}
 			}
 		}
@@ -4268,6 +4273,11 @@ focus_tree = {
 			add_equipment_to_stockpile = {
 				type = light_tank_chassis_1
 				amount = 500
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 250
 				producer = FRA
 			}
 		}
@@ -5514,6 +5524,8 @@ focus_tree = {
 		}
 		
 		completion_reward = {
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = GER_ensieg_prop
 			add_ideas = GER_volksturm_idea
 			set_technology = {
 				militia_tech = 1
