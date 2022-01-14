@@ -318,7 +318,9 @@ units = {
 		division_template = "Mekhanizirovaniy Korpus"		# 1x Tank Bge, 2x Mekh Bge
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.9
-
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 	}
 
 	### Leningraskaya Gruppa Armiya (Leningrad Army Group) -- Leningrad ###
@@ -352,6 +354,9 @@ units = {
 		location = 6174
 		division_template = "Mekhanizirovaniy Korpus"		# 2x Mekh Bge, 1x Mot Bge
 		start_experience_factor = 0.3
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 	}
 	# Subordinate to AG
 	division= {			
@@ -359,6 +364,9 @@ units = {
 		location = 149
 		division_template = "Mekhanizirovaniy Korpus"		# 2x Mekh Bge
 		start_experience_factor = 0.3
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 	}
 	
 		
@@ -403,6 +411,9 @@ units = {
 		division_template = "Mekhanizirovaniy Korpus"		# 3x Mekh Bge
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.90
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 
 	}
 
@@ -446,6 +457,9 @@ units = {
 		division_template = "Mekhanizirovaniy Korpus"		# 1x Tank Bge, 2x Mekh Bge
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.90
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 
 	}
 
@@ -610,6 +624,9 @@ units = {
 		division_template = "Mekhanizirovaniy Korpus"		# 3x Mekh Bge
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.90
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 
 	}
 
@@ -681,6 +698,9 @@ units = {
 		location = 6380
 		division_template = "Mekhanizirovaniy Korpus"		# 2x Mekh Bge, 1x Mot Bge
 		start_experience_factor = 0.3
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 	}
 
 
@@ -1216,6 +1236,9 @@ units = {
 		division_template = "Mekhanizirovaniy Korpus"		# 1x Tank Bge, 2x Mekh Bge
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.90
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 
 	}
 
@@ -1259,6 +1282,9 @@ units = {
 		division_template = "Mekhanizirovaniy Korpus"		# 1x H Tank Bge, 2x Mekh Bge
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.90
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 
 	}
 
@@ -1327,6 +1353,9 @@ units = {
 		location = 11437
 		division_template = "Mekhanizirovaniy Korpus"		# 2x Mekh Bge, 1x Mot Bge
 		start_experience_factor = 0.3
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 	}
 
 
@@ -1923,6 +1952,9 @@ units = {
 		division_template = "Mekhanizirovaniy Korpus"		# 3x Mekh Bge
 		start_experience_factor = 0.2
 		start_equipment_factor = 0.90
+		force_equipment_variants = {
+			sov_light_tank_chassis_t26 = { owner = SOV version_name = "T-26 m.31" }
+		}
 
 	}
 
@@ -2208,8 +2240,9 @@ instant_effect = {
 
 	add_equipment_production = {
 		equipment = {
-			type = sov_bt_tank_equipment_1
-			creator = "SOV" 
+			type = sov_light_tank_chassis_bt7
+			creator = "SOV"
+			version_name = "BT-7"
 		}
 		requested_factories = 3
 		progress = 0.4
@@ -2266,13 +2299,28 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		type = sov_light_tank_equipment_1
-		amount = 1000
+		type = sov_light_tank_chassis_t26
+		amount = 2000
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		type = sov_bt_tank_equipment_1
+		type = sov_light_tank_chassis_bt5
+		amount = 1500
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = sov_light_tank_chassis_bt7
 		amount = 500
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = sov_medium_tank_chassis_t28
+		amount = 400
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = sov_heavy_tank_chassis_t35
+		amount = 50
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {

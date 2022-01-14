@@ -58,38 +58,6 @@ country_event = {
 			}
 		}
 	}
-	option = {
-		name = tfv_south_africa.1.c # ENG compromises
-		trigger = {
-			KEN = { exists = no }
-			ZIM = { exists = no }
-			BOT = { exists = no }
-			ZAM = { exists = no }
-			MLW = { exists = no }
-			TZN = { exists = no }
-			UGA = { exists = no }
-		}
-		
-		ai_chance = {
-			base = 20
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0 #don't do this if we are historical!
-			}
-			modifier = {
-				SAF = { NOT = { has_government = democratic} }
-				factor = 4
-			}
-		}
-		effect_tooltip = {
-			custom_effect_tooltip = SAF_colonies_tt
-		}
-		hidden_effect = {
-			SAF = {
-				country_event = { id = tfv_south_africa.4 }
-			}
-		}
-	}
 }
 
 #ENG transfers colonies
@@ -103,111 +71,13 @@ country_event = {
 	
 	option = {
 		name = tfv_south_africa.2.a
-		if = {
-			limit = { 
-				ZIM = { exists = no }
-			}
-			transfer_state = 545
-		}
-		if = {
-			limit = { 
-				ZIM = {
-					exists = yes
-					is_subject_of = ENG
-				}
-			}
-			puppet = ZIM
-		}
-		if = {
-			limit = { 
-				BOT = { exists = no }
-			}
-			transfer_state = 542
-		}
-		if = {
-			limit = { 
-				BOT = {
-					exists = yes
-					is_subject_of = ENG
-				}
-			}
-			puppet = BOT
-		}
-		if = {
-			limit = { 
-				ZAM = { exists = no }
-			}
-			transfer_state = 771
-		}
-		if = {
-			limit = { 
-				ZAM = {
-					exists = yes
-					is_subject_of = ENG
-				}
-			}
-			puppet = ZAM
-		}
-		if = {
-			limit = { 
-				MLW = { exists = no }
-			}
-			transfer_state = 770
-		}
-		if = {
-			limit = { 
-				MLW = {
-					exists = yes
-					is_subject_of = ENG
-				}
-			}
-			puppet = MLW
-		}
-		if = {
-			limit = { 
-				TZN = { exists = no }
-			}
-			transfer_state = 546
-		}
-		if = {
-			limit = { 
-				TZN = {
-					exists = yes
-					is_subject_of = ENG
-				}
-			}
-			puppet = TZN
-		}
-		if = {
-			limit = { 
-				KEN = { exists = no }
-			}
-			transfer_state = 547
-		}
-		if = {
-			limit = { 
-				KEN = {
-					exists = yes
-					is_subject_of = ENG
-				}
-			}
-			puppet = KEN
-		}
-		if = {
-			limit = { 
-				UGA = { exists = no }
-			}
-			transfer_state = 548
-		}
-		if = {
-			limit = { 
-				UGA = {
-					exists = yes
-					is_subject_of = ENG
-				}
-			}
-			puppet = UGA
-		}
+		transfer_state = 545
+		transfer_state = 542
+		transfer_state = 771
+		transfer_state = 770
+		transfer_state = 546
+		transfer_state = 547
+		transfer_state = 548
 		hidden_effect = {
 			news_event = { id = news.260 hours = 6 }
 		}
@@ -239,77 +109,8 @@ country_event = {
 	
 	option = {
 		name = tfv_south_africa.4.a
-		if = {
-			limit = { 
-				BOT = { exists = no }	
-			}
-			release = BOT
-			ENG = {
-				puppet = BOT
-			}
-		}
-		if = {
-			limit = { 
-				ZIM = { exists = no }	
-			}
-			release = ZIM
-			ENG = {
-				puppet = ZIM
-			}
-		}
-		if = {
-			limit = { 
-				ZAM = { exists = no }	
-			}
-			release = ZAM
-			ENG = {
-				puppet = ZAM
-			}
-		}
-		if = {
-			limit = { 
-				MLW = { exists = no }	
-			}
-			release = MLW
-			ENG = {
-				puppet = MLW
-			}
-		}
-		if = {
-			limit = { 
-				TZN = { exists = no }	
-			}
-			release = TZN
-			ENG = {
-				puppet = TZN
-			}
-		}
-		if = {
-			limit = { 
-				KEN = { exists = no } 
-			}
-			release = KEN			
-			ENG = { 
-				puppet = KEN 
-			}
-		}
-		if = {
-			limit = { 
-				UGA = { exists = no }	
-			}
-			release = UGA
-			ENG = {
-				puppet = UGA
-			}
-		}
-		SAF = { transfer_state = 542 }
-		hidden_effect = {
-			news_event = { id = news.261 hours = 6 }
-			}
-		}
-
-		
 	}
+}
 
 
 # SAF_support_the_german_coup completed
@@ -411,41 +212,6 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-		
-		trigger = {
-			OR = {
-				is_ai = yes
-				has_equipment = {
-					fighter_equipment_1 > 19
-				}
-			}
-		}
-		
-		SAF = { 
-			set_country_flag = GER_sent_support
-			set_country_flag = shipment_of_airplanes
-			
-			country_event = { id = tfv_south_africa.15 }
-		}
-		
-		effect_tooltip = {
-			SAF_german_coup_equipment_GER_fighters_20 = yes
-		}
-		
-		SAF_send_equipment_flag_counter = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = SAF_sent_equipment_3 }
-			}
-			# repeat event within 21-28 days
-			country_event = { id = tfv_south_africa.11 days = 21 random_days = 7 } 
-			
-			else = {
-				clr_country_flag = SAF_sent_equipment_1
-				clr_country_flag = SAF_sent_equipment_2
-				clr_country_flag = SAF_sent_equipment_3
-			}
-		}
 	}
 	
 	option = {
@@ -453,41 +219,6 @@ country_event = {
 		
 		ai_chance = {
 			base = 10
-		}
-		
-		trigger = {
-			OR = {
-				is_ai = yes
-				has_equipment = {
-					light_tank_equipment_1 > 19
-				}
-			}
-		}
-		
-		SAF = {
-			set_country_flag = GER_sent_support
-			set_country_flag = shipment_of_tanks
-			
-			country_event = { id = tfv_south_africa.15 }
-		}
-		
-		effect_tooltip = {			
-			SAF_german_coup_equipment_GER_light_tank_20 = yes
-		}
-		
-		SAF_send_equipment_flag_counter = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = SAF_sent_equipment_3 }
-			}
-			# repeat event within 21-28 days
-			country_event = { id = tfv_south_africa.11 days = 21 random_days = 7 } 
-			
-			else = {
-				clr_country_flag = SAF_sent_equipment_1
-				clr_country_flag = SAF_sent_equipment_2
-				clr_country_flag = SAF_sent_equipment_3
-			}
 		}
 	}
 	
@@ -497,75 +228,10 @@ country_event = {
 		ai_chance = {
 			base = 50
 		}
-		
-		trigger = {
-			OR = {
-				is_ai = yes
-				AND = {
-					has_equipment = {
-						infantry_equipment_1 > 199
-					}
-					has_equipment = {
-						artillery_equipment_1 > 9
-					}
-				}
-			}
-		}
-		
-		SAF = { 
-			set_country_flag = GER_sent_support
-			
-			country_event = { id = tfv_south_africa.15 }
-		}
-		
-		effect_tooltip = {
-			SAF_german_coup_inf_GER_equipment_200 = yes
-		}
-		
-		SAF_send_equipment_flag_counter = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = SAF_sent_equipment_3 }
-			}
-			# repeat event within 21-28 days
-			country_event = { id = tfv_south_africa.11 days = 21 random_days = 7 } 
-			
-			else = {
-				clr_country_flag = SAF_sent_equipment_1
-				clr_country_flag = SAF_sent_equipment_2
-				clr_country_flag = SAF_sent_equipment_3
-			}
-		}
 	}
 	
 	option = {
 		name = tfv_south_africa.11.e # We can't spare anything
-		
-		ai_chance = {
-			base = 0
-			
-			modifier = {
-				add = 0
-				NOT = {
-					OR = {
-						has_equipment = {
-							artillery_equipment_1 > 9
-						}
-						has_equipment = {
-							infantry_equipment_1 > 199
-						}
-					}
-					has_equipment = {
-						light_tank_equipment_1 > 19
-					}
-					has_equipment = {
-						fighter_equipment_1 > 19
-					}
-				}
-			}
-		}
-		
-		SAF = { country_event = { id = tfv_south_africa.13 } }
 	}
 }
 
@@ -592,162 +258,6 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-		
-		trigger = {
-			OR = {
-				is_ai = yes
-				has_equipment = {
-					fighter_equipment_1 > 19
-				}
-			}
-		}
-		
-		SAF = { 
-			set_country_flag = HOL_sent_support
-			set_country_flag = shipment_of_airplanes
-			
-			country_event = { id = tfv_south_africa.16 }
-		}
-		
-		effect_tooltip = {
-			SAF_german_coup_equipment_HOL_fighters_20 = yes
-		}
-		
-		SAF_send_equipment_flag_counter = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = SAF_sent_equipment_3 }
-			}
-			# repeat event within 21-28 days
-			country_event = { id = tfv_south_africa.12 days = 21 random_days = 7 } 
-			
-			else = {
-				clr_country_flag = SAF_sent_equipment_1
-				clr_country_flag = SAF_sent_equipment_2
-				clr_country_flag = SAF_sent_equipment_3
-			}
-		}
-	}
-	
-	option = {
-		name = tfv_south_africa.12.b # Give them panzers
-		
-		ai_chance = {
-			base = 10
-		}
-		
-		trigger = {
-			OR = {
-				is_ai = yes
-				has_equipment = {
-					light_tank_equipment_1 > 19
-				}
-			}
-		}
-		
-		SAF = { 
-			set_country_flag = HOL_sent_support
-			set_country_flag = shipment_of_tanks
-			
-			country_event = { id = tfv_south_africa.16 }
-		}
-		
-		effect_tooltip = {
-			SAF_german_coup_equipment_HOL_light_tank_20 = yes
-		}
-		
-		SAF_send_equipment_flag_counter = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = SAF_sent_equipment_3 }
-			}
-			# repeat event within 21-28 days
-			country_event = { id = tfv_south_africa.12 days = 21 random_days = 7 } 
-			
-			else = {
-				clr_country_flag = SAF_sent_equipment_1
-				clr_country_flag = SAF_sent_equipment_2
-				clr_country_flag = SAF_sent_equipment_3
-			}
-		}
-	}
-	
-	option = {
-		name = tfv_south_africa.12.c # Send infantry equipment
-		
-		ai_chance = {
-			base = 10
-		}
-		
-		trigger = {
-			OR = {
-				is_ai = yes
-				AND = {
-					has_equipment = {
-						infantry_equipment_1 > 199
-					}
-					has_equipment = {
-						artillery_equipment_1 > 9
-					}
-				}
-			}
-		}
-		
-		SAF = { 
-			set_country_flag = HOL_sent_support
-			
-			country_event = { id = tfv_south_africa.16 }
-		}
-		
-		effect_tooltip = {
-			SAF_german_coup_inf_HOL_equipment_200 = yes
-		}
-		
-		SAF_send_equipment_flag_counter = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = SAF_sent_equipment_3 }
-			}
-			# repeat event within 21-28 days
-			country_event = { id = tfv_south_africa.12 days = 21 random_days = 7 } 
-			
-			else = {
-				clr_country_flag = SAF_sent_equipment_1
-				clr_country_flag = SAF_sent_equipment_2
-				clr_country_flag = SAF_sent_equipment_3
-			}
-		}
-	}
-	
-	
-	option = {
-		name = tfv_south_africa.12.e # We can't spare anything
-		
-		ai_chance = {
-			base = 0
-			
-			modifier = {
-				add = 100
-				NOT = {
-					OR = {
-						has_equipment = {
-							artillery_equipment_1 > 9
-						}
-						has_equipment = {
-							infantry_equipment_1 > 199
-						}
-					}
-					has_equipment = {
-						light_tank_equipment_1 > 19
-					}
-					has_equipment = {
-						fighter_equipment_1 > 19
-					}
-				}
-			}
-		}
-		
-		SAF = { country_event = { id = tfv_south_africa.14 } }
 	}
 }
 
@@ -851,29 +361,6 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = tfv_south_africa.15.a # received planes
-		trigger = { has_country_flag = shipment_of_airplanes }
-		
-		clr_country_flag = shipment_of_airplanes
-		GER = { SAF_german_coup_equipment_GER_fighters_20 = yes }		
-	}
-	
-	option = {
-		name = tfv_south_africa.15.b # received tanks
-		trigger = { has_country_flag = shipment_of_tanks }
-		
-		clr_country_flag = shipment_of_tanks
-		
-		GER = { SAF_german_coup_equipment_GER_light_tank_20 = yes }		
-	}
-	
-	option = {
-		name = tfv_south_africa.15.c # received rifles
-		trigger = {
-			NOT = { has_country_flag = shipment_of_airplanes }
-			NOT = { has_country_flag = shipment_of_tanks }
-		}
-		GER = { SAF_german_coup_inf_GER_equipment_200 = yes }
 	}
 }
 
@@ -897,28 +384,6 @@ country_event = {
 	
 	option = {
 		name = tfv_south_africa.16.a # received planes
-		trigger = { has_country_flag = shipment_of_airplanes }
-
-		clr_country_flag = shipment_of_airplanes
-		
-		HOL = { SAF_german_coup_equipment_HOL_fighters_20 = yes }
-	}
-	
-	option = {
-		name = tfv_south_africa.16.b # received tanks
-		trigger = { has_country_flag = shipment_of_tanks }
-		
-		clr_country_flag = shipment_of_tanks	
-		HOL = { SAF_german_coup_equipment_HOL_light_tank_20 = yes }
-	}
-	
-	option = {
-		name = tfv_south_africa.16.c # received rifles
-		trigger = {
-			NOT = { has_country_flag = shipment_of_airplanes }
-			NOT = { has_country_flag = shipment_of_tanks }
-		}
-		HOL = { SAF_german_coup_inf_HOL_equipment_200 = yes }
 	}
 }
 
@@ -1298,43 +763,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-			ANG = { 
-				if = {
-				limit = { 
-					SAF = { controls_state = 540 } 
-						}
-					transfer_state = 540
-					}
-				}
-			SAF = { puppet = ANG }
-			set_country_flag = SAF_released_ANG
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.60.b
-		ai_chance = {
-			base = 0
-		}
-		ANG = { 
-			if = {
-				limit = { 
-					SAF = { controls_state = 540 } 
-				}
-				transfer_state = 540
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-						ideology = communism
-						popularity = 0.75
-				}
-			}
-		}
-		set_country_flag = SAF_released_ANG
-		SAF = { add_to_faction = ANG }
 	}		
 }
 	
@@ -1351,44 +779,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-			MZB = { 
-				if = {
-				limit = { 
-					SAF = { controls_state = 544 } 
-						}
-					transfer_state = 544
-					}
-				}
-			SAF = { puppet = MZB }
-			set_country_flag = SAF_released_MZB
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.61.b
-		ai_chance = {
-			base = 0
-		}
-			MZB = { 
-				if = {
-					limit = { 
-						SAF = { controls_state = 544 } 
-					}
-					transfer_state = 544
-				}
-				hidden_effect = {
-					set_politics = {
-						ruling_party = communism
-						elections_allowed = no
-					}
-					add_popularity = {
-						ideology = communism
-						popularity = 0.75
-					}
-				}
-			}
-
-		set_country_flag = SAF_released_MZB
-		SAF = { add_to_faction = MZB }		
 	}	
 }
 
@@ -1405,58 +795,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-			COG = { 
-				if = {
-					limit = { 
-						SAF = { 
-							controls_state = 295 
-							controls_state = 538 
-							controls_state = 718 
-							} 
-
-						}
-							transfer_state = 295
-							transfer_state = 538
-							transfer_state = 718
-					}
-				}
-			SAF = { puppet = COG }
-			set_country_flag = SAF_released_COG
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.61.b
-		ai_chance = {
-			base = 0
-		}
-			COG = { 
-				if = {
-					limit = { 
-						SAF = { 
-							controls_state = 295 
-							controls_state = 538 
-							controls_state = 718 
-							} 
-
-						}
-						transfer_state = 295
-						transfer_state = 538
-						transfer_state = 718
-					}
-				hidden_effect = {
-					set_politics = {
-						ruling_party = communism
-						elections_allowed = no
-					}
-					add_popularity = {
-						ideology = communism
-						popularity = 0.75
-					}
-				}	
-			}
-						
-			set_country_flag = SAF_released_COG
-			SAF = { add_to_faction = COG }		
 	}		
 }
 
@@ -1474,52 +812,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-			ZIM = { 
-				if = {
-				limit = { 
-					SAF = { 
-						controls_state = 545  
-						} 
-
-					}
-						transfer_state = 545
-					}
-				}
-			SAF = { puppet = ZIM }
-			set_country_flag = SAF_released_ZIM
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.63.b
-		ai_chance = {
-			base = 0
-		}
-			ZIM = { 
-				if = {
-					limit = { 
-						SAF = { 
-							controls_state = 545 
-							
-							} 
-
-						}
-						transfer_state = 545
-						
-					}
-				hidden_effect = {
-					set_politics = {
-						ruling_party = communism
-						elections_allowed = no
-					}
-					add_popularity = {
-						ideology = communism
-						popularity = 0.75
-					}
-				}
-			}
-
-			set_country_flag = SAF_released_ZIM
-			SAF = { add_to_faction = ZIM }		
 	}
 	
 }
@@ -1537,49 +829,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-			KEN = { 
-				if = {
-				limit = { 
-					SAF = { 
-						controls_state = 547
-						} 
-
-					}
-						transfer_state = 547
-					}
-				}
-			SAF = { puppet = KEN }
-			set_country_flag = SAF_released_KEN
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-			KEN = { 
-				if = {
-					limit = { 
-						SAF = { 
-							controls_state = 547 
-							} 
-
-						}
-						transfer_state = 547
-					}
-				hidden_effect = {
-					set_politics = {
-						ruling_party = communism
-						elections_allowed = no
-					}
-					add_popularity = {
-						ideology = communism
-						popularity = 0.75
-					}
-				}
-			}			
-			set_country_flag = SAF_released_KEN
-			SAF = { add_to_faction = KEN }		
 	}
 }
 
@@ -1596,53 +845,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		MAD = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 543
-						controls_state = 706
-						controls_state = 708
-					} 
-				}
-				transfer_state = 543
-				transfer_state = 706
-				transfer_state = 708
-			}
-		}
-		SAF = { puppet = MAD }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		MAD = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 543
-						controls_state = 706
-						controls_state = 708 
-					} 
-				}
-				transfer_state = 543
-				transfer_state = 706
-				transfer_state = 708
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = MAD }		
 	}
 }
 
@@ -1659,17 +861,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		BOT = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 542
-					} 
-				}
-				transfer_state = 542
-			}
-		}
-		SAF = { puppet = BOT }
 	}
 
 	option = { #full freedom
@@ -1677,27 +868,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		BOT = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 542
-					}
-				}
-				transfer_state = 542
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = BOT }		
 	}
 }
 
@@ -1714,17 +884,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		ZAM = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 771
-					} 
-				}
-				transfer_state = 771
-			}
-		}
-		SAF = { puppet = ZAM }
 	}
 
 	option = { #full freedom
@@ -1732,27 +891,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		ZAM = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 771
-					}
-				}
-				transfer_state = 771
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = ZAM }		
 	}
 }
 
@@ -1769,45 +907,13 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		MLW = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 770
-					} 
-				}
-				transfer_state = 770
-			}
-		}
-		SAF = { puppet = MLW }
 	}
 
 	option = { #full freedom
 		name = tfv_south_africa.64.b
 		ai_chance = {
 			base = 0
-		}
-		MLW = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 770
-					}
-				}
-				transfer_state = 770
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = MLW }		
+		}	
 	}
 }
 
@@ -1824,17 +930,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		TZN = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 546
-					} 
-				}
-				transfer_state = 546
-			}
-		}
-		SAF = { puppet = TZN }
 	}
 
 	option = { #full freedom
@@ -1842,27 +937,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		TZN = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 546
-					}
-				}
-				transfer_state = 546
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = TZN }		
 	}
 }
 
@@ -1879,17 +953,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		UGA = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 548
-					} 
-				}
-				transfer_state = 548
-			}
-		}
-		SAF = { puppet = UGA }
 	}
 
 	option = { #full freedom
@@ -1897,27 +960,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		UGA = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 548
-					}
-				}
-				transfer_state = 548
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = UGA }		
 	}
 }
 
@@ -1934,21 +976,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		SUD = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 549
-						controls_state = 551
-						controls_state = 767
-					} 
-				}
-				transfer_state = 549
-				transfer_state = 551
-				transfer_state = 767
-			}
-		}
-		SAF = { puppet = SUD }
 	}
 
 	option = { #full freedom
@@ -1956,31 +983,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		SUD = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 549
-						controls_state = 551
-						controls_state = 767
-					}
-				}
-				transfer_state = 549
-				transfer_state = 551
-				transfer_state = 767
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = SUD }		
 	}
 }
 
@@ -1997,29 +999,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		EGY = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 552
-						controls_state = 456
-						controls_state = 457
-						controls_state = 447
-						controls_state = 452
-						controls_state = 446
-						controls_state = 453
-					} 
-				}
-				transfer_state = 552
-				transfer_state = 456
-				transfer_state = 457
-				transfer_state = 447
-				transfer_state = 452
-				transfer_state = 446
-				transfer_state = 453
-			}
-		}
-		SAF = { puppet = EGY }
 	}
 
 	option = { #full freedom
@@ -2027,39 +1006,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		EGY = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 552
-						controls_state = 456
-						controls_state = 457
-						controls_state = 447
-						controls_state = 452
-						controls_state = 446
-						controls_state = 453
-					}
-				}
-				transfer_state = 552
-				transfer_state = 456
-				transfer_state = 457
-				transfer_state = 447
-				transfer_state = 452
-				transfer_state = 446
-				transfer_state = 453
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = EGY }		
 	}
 }
 
@@ -2076,17 +1022,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		ERI = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 550
-					} 
-				}
-				transfer_state = 550
-			}
-		}
-		SAF = { puppet = ERI }
 	}
 
 	option = { #full freedom
@@ -2094,27 +1029,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		ERI = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 550
-					}
-				}
-				transfer_state = 550
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = ERI }		
 	}
 }
 
@@ -2131,17 +1045,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		ETH = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 271
-					} 
-				}
-				transfer_state = 271
-			}
-		}
-		SAF = { puppet = ETH }
 	}
 
 	option = { #full freedom
@@ -2149,27 +1052,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		ETH = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 271
-					}
-				}
-				transfer_state = 271
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = ETH }		
 	}
 }
 
@@ -2186,17 +1068,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		DJI = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 268
-					} 
-				}
-				transfer_state = 268
-			}
-		}
-		SAF = { puppet = DJI }
 	}
 
 	option = { #full freedom
@@ -2204,27 +1075,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		DJI = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 268
-					}
-				}
-				transfer_state = 268
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = DJI }		
 	}
 }
 
@@ -2241,19 +1091,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		SOM = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 269
-						controls_state = 559
-					} 
-				}
-				transfer_state = 269
-				transfer_state = 559
-			}
-		}
-		SAF = { puppet = SOM }
 	}
 
 	option = { #full freedom
@@ -2261,29 +1098,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		SOM = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 269
-						controls_state = 559
-					}
-				}
-				transfer_state = 269
-				transfer_state = 559
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = SOM }		
 	}
 }
 
@@ -2300,17 +1114,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		RWA = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 768
-					} 
-				}
-				transfer_state = 768
-			}
-		}
-		SAF = { puppet = RWA }
 	}
 
 	option = { #full freedom
@@ -2318,27 +1121,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		RWA = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 768
-					}
-				}
-				transfer_state = 768
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = RWA }		
 	}
 }
 
@@ -2355,17 +1137,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		BRD = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 769
-					} 
-				}
-				transfer_state = 769
-			}
-		}
-		SAF = { puppet = BRD }
 	}
 
 	option = { #full freedom
@@ -2373,27 +1144,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		BRD = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 769
-					}
-				}
-				transfer_state = 769
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = BRD }		
 	}
 }
 
@@ -2410,17 +1160,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		RCG = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 772
-					} 
-				}
-				transfer_state = 772
-			}
-		}
-		SAF = { puppet = RCG }
 	}
 
 	option = { #full freedom
@@ -2428,27 +1167,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		RCG = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 772
-					}
-				}
-				transfer_state = 772
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = RCG }		
 	}
 }
 
@@ -2465,17 +1183,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		GAB = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 539
-					} 
-				}
-				transfer_state = 539
-			}
-		}
-		SAF = { puppet = GAB }
 	}
 
 	option = { #full freedom
@@ -2483,27 +1190,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		GAB = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 539
-					}
-				}
-				transfer_state = 539
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = GAB }		
 	}
 }
 
@@ -2520,17 +1206,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		EQG = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 297
-					} 
-				}
-				transfer_state = 297
-			}
-		}
-		SAF = { puppet = EQG }
 	}
 
 	option = { #full freedom
@@ -2538,27 +1213,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		EQG = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 297
-					}
-				}
-				transfer_state = 297
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = EQG }		
 	}
 }
 
@@ -2575,17 +1229,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		CMR = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 773
-					} 
-				}
-				transfer_state = 773
-			}
-		}
-		SAF = { puppet = CMR }
 	}
 
 	option = { #full freedom
@@ -2593,27 +1236,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		CMR = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 773
-					}
-				}
-				transfer_state = 773
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = CMR }		
 	}
 }
 
@@ -2630,17 +1252,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		CAR = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 660
-					} 
-				}
-				transfer_state = 660
-			}
-		}
-		SAF = { puppet = CAR }
 	}
 
 	option = { #full freedom
@@ -2648,27 +1259,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		CAR = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 660
-					}
-				}
-				transfer_state = 660
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = CAR }		
 	}
 }
 
@@ -2685,19 +1275,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		CHA = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 774
-						controls_state = 775
-					} 
-				}
-				transfer_state = 774
-				transfer_state = 775
-			}
-		}
-		SAF = { puppet = CHA }
 	}
 
 	option = { #full freedom
@@ -2705,29 +1282,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		CHA = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 774
-						controls_state = 775
-					}
-				}
-				transfer_state = 774
-				transfer_state = 775
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = CHA }		
 	}
 }
 
@@ -2744,17 +1298,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		NGA = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 558
-					} 
-				}
-				transfer_state = 558
-			}
-		}
-		SAF = { puppet = NGA }
 	}
 
 	option = { #full freedom
@@ -2762,27 +1305,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		NGA = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 558
-					}
-				}
-				transfer_state = 558
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = NGA }		
 	}
 }
 
@@ -2799,19 +1321,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		NGR = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 781
-						controls_state = 515
-					} 
-				}
-				transfer_state = 781
-				transfer_state = 515
-			}
-		}
-		SAF = { puppet = NGR }
 	}
 
 	option = { #full freedom
@@ -2819,29 +1328,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		NGR = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 781
-						controls_state = 515
-					}
-				}
-				transfer_state = 781
-				transfer_state = 515
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = NGR }		
 	}
 }
 
@@ -2858,17 +1344,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		DAH = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 776
-					} 
-				}
-				transfer_state = 776
-			}
-		}
-		SAF = { puppet = DAH }
 	}
 
 	option = { #full freedom
@@ -2876,27 +1351,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		DAH = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 776
-					}
-				}
-				transfer_state = 776
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = DAH }		
 	}
 }
 
@@ -2913,17 +1367,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		TOG = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 777
-					} 
-				}
-				transfer_state = 777
-			}
-		}
-		SAF = { puppet = TOG }
 	}
 
 	option = { #full freedom
@@ -2931,27 +1374,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		TOG = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 777
-					}
-				}
-				transfer_state = 777
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = TOG }		
 	}
 }
 
@@ -2968,45 +1390,13 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		GHA = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 274
-					} 
-				}
-				transfer_state = 274
-			}
-		}
-		SAF = { puppet = GHA }
 	}
 
 	option = { #full freedom
 		name = tfv_south_africa.64.b
 		ai_chance = {
 			base = 0
-		}
-		GHA = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 274
-					}
-				}
-				transfer_state = 274
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = GHA }		
+		}	
 	}
 }
 
@@ -3023,17 +1413,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		IVO = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 779
-					} 
-				}
-				transfer_state = 779
-			}
-		}
-		SAF = { puppet = IVO }
 	}
 
 	option = { #full freedom
@@ -3041,27 +1420,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		IVO = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 779
-					}
-				}
-				transfer_state = 779
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = IVO }		
 	}
 }
 
@@ -3078,17 +1436,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		VOL = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 778
-					} 
-				}
-				transfer_state = 778
-			}
-		}
-		SAF = { puppet = VOL }
 	}
 
 	option = { #full freedom
@@ -3096,27 +1443,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		VOL = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 778
-					}
-				}
-				transfer_state = 778
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = VOL }		
 	}
 }
 
@@ -3133,19 +1459,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		MLI = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 556
-						controls_state = 782
-					} 
-				}
-				transfer_state = 556
-				transfer_state = 782
-			}
-		}
-		SAF = { puppet = MLI }
 	}
 
 	option = { #full freedom
@@ -3153,29 +1466,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		MLI = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 556
-						controls_state = 782
-					}
-				}
-				transfer_state = 556
-				transfer_state = 782
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = MLI }		
 	}
 }
 
@@ -3192,17 +1482,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		SIE = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 700
-					} 
-				}
-				transfer_state = 700
-			}
-		}
-		SAF = { puppet = SIE }
 	}
 
 	option = { #full freedom
@@ -3210,27 +1489,6 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
-		SIE = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 700
-					}
-				}
-				transfer_state = 700
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = SIE }		
 	}
 }
 
@@ -3247,45 +1505,13 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		GNA = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 780
-					} 
-				}
-				transfer_state = 780
-			}
-		}
-		SAF = { puppet = GNA }
 	}
 
 	option = { #full freedom
 		name = tfv_south_africa.64.b
 		ai_chance = {
 			base = 0
-		}
-		GNA = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 780
-					}
-				}
-				transfer_state = 780
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = GNA }		
+		}	
 	}
 }
 
@@ -3302,45 +1528,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		GNB = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 296
-					} 
-				}
-				transfer_state = 296
-			}
-		}
-		SAF = { puppet = GNB }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		GNB = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 296
-					}
-				}
-				transfer_state = 296
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = GNB }		
 	}
 }
 
@@ -3357,45 +1544,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		SEN = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 272
-					} 
-				}
-				transfer_state = 272
-			}
-		}
-		SAF = { puppet = SEN }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		SEN = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 272
-					}
-				}
-				transfer_state = 272
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = SEN }		
 	}
 }
 
@@ -3412,45 +1560,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		GAM = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 701
-					} 
-				}
-				transfer_state = 701
-			}
-		}
-		SAF = { puppet = GAM }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		GAM = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 701
-					}
-				}
-				transfer_state = 701
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = GAM }		
 	}
 }
 
@@ -3466,46 +1575,7 @@ country_event = {
 		name = tfv_south_africa.64.a
 		ai_chance = {
 			base = 100
-		}
-		LIB = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 298
-					} 
-				}
-				transfer_state = 298
-			}
-		}
-		SAF = { puppet = LIB }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		LIB = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 298
-					}
-				}
-				transfer_state = 298
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = LIB }		
+		}	
 	}
 }
 
@@ -3522,49 +1592,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		MRT = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 557
-						controls_state = 786
-					} 
-				}
-				transfer_state = 557
-				transfer_state = 786
-			}
-		}
-		SAF = { puppet = MRT }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		MRT = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 557
-						controls_state = 786
-					}
-				}
-				transfer_state = 557
-				transfer_state = 786
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = MRT }		
 	}
 }
 
@@ -3581,45 +1608,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		WES = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 699
-					} 
-				}
-				transfer_state = 699
-			}
-		}
-		SAF = { puppet = WES }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		WES = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 699
-					}
-				}
-				transfer_state = 699
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = WES }		
 	}
 }
 
@@ -3636,57 +1624,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		ALG = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 459
-						controls_state = 460
-						controls_state = 513
-						controls_state = 514
-					} 
-				}
-				transfer_state = 459
-				transfer_state = 460
-				transfer_state = 513
-				transfer_state = 514
-			}
-		}
-		SAF = { puppet = ALG }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		ALG = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 459
-						controls_state = 460
-						controls_state = 513
-						controls_state = 514
-					}
-				}
-				transfer_state = 459
-				transfer_state = 460
-				transfer_state = 513
-				transfer_state = 514
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = ALG }		
 	}
 }
 
@@ -3703,57 +1640,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		MOR = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 290
-						controls_state = 461
-						controls_state = 462
-						controls_state = 783
-					} 
-				}
-				transfer_state = 290
-				transfer_state = 461
-				transfer_state = 462
-				transfer_state = 783
-			}
-		}
-		SAF = { puppet = MOR }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		MOR = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 290
-						controls_state = 461
-						controls_state = 462
-						controls_state = 783
-					}
-				}
-				transfer_state = 290
-				transfer_state = 461
-				transfer_state = 462
-				transfer_state = 783
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = MOR }		
 	}
 }
 
@@ -3770,49 +1656,6 @@ country_event = {
 		ai_chance = {
 			base = 100
 		}
-		TUN = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 458
-						controls_state = 665
-					} 
-				}
-				transfer_state = 458
-				transfer_state = 665
-			}
-		}
-		SAF = { puppet = TUN }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		TUN = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 458
-						controls_state = 665
-					}
-				}
-				transfer_state = 458
-				transfer_state = 665
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = TUN }		
 	}
 }
 
@@ -3828,73 +1671,6 @@ country_event = {
 		name = tfv_south_africa.64.a
 		ai_chance = {
 			base = 100
-		}
-		LBA = { 
-			if = {
-				limit = { 
-					SAF = { 
-						controls_state = 448
-						controls_state = 449
-						controls_state = 450
-						controls_state = 451
-						controls_state = 661
-						controls_state = 662
-						controls_state = 663
-						controls_state = 273
-					} 
-				}
-				transfer_state = 448
-				transfer_state = 449
-				transfer_state = 450
-				transfer_state = 451
-				transfer_state = 661
-				transfer_state = 662
-				transfer_state = 663
-				transfer_state = 273
-			}
-		}
-		SAF = { puppet = LBA }
-	}
-
-	option = { #full freedom
-		name = tfv_south_africa.64.b
-		ai_chance = {
-			base = 0
-		}
-		LBA = {
-			if = {
-				limit = {
-					SAF = {
-						controls_state = 448
-						controls_state = 449
-						controls_state = 450
-						controls_state = 451
-						controls_state = 661
-						controls_state = 662
-						controls_state = 663
-						controls_state = 273
-					}
-				}
-				transfer_state = 448
-				transfer_state = 449
-				transfer_state = 450
-				transfer_state = 451
-				transfer_state = 661
-				transfer_state = 662
-				transfer_state = 663
-				transfer_state = 273
-			}
-			hidden_effect = {
-				set_politics = {
-					ruling_party = communism
-					elections_allowed = no
-				}
-				add_popularity = {
-					ideology = communism
-					popularity = 0.75
-				}
-			}
-		}			
-		SAF = { add_to_faction = LBA }		
+		}	
 	}
 }

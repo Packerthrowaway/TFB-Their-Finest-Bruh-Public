@@ -1,19 +1,6 @@
 ﻿capital = 107
 
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "No Step Back"
-		}
-	}
-	set_oob = "YUG_1936"
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_oob = "YUG_1936_nsb"
-}
+oob = "YUG_1936"
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "YUG_1936_naval_mtg"
@@ -45,31 +32,14 @@ set_technology = {
 	tech_mountaineers = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
-	interwar_antitank = 1
+	
+	light_tank_1 = 1
 	gw_artillery = 1
-	interwar_antiair = 1
+	
 	superior_firepower = 1
 	support_weapons = 1
 	basic_train = 1
 }
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-	}
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-	}
-}
-
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
@@ -170,8 +140,6 @@ if = {
 		early_bomber = 1
 		tactical_bomber1 = 1
 		CAS1 = 1
-		naval_bomber1 = 1
-		interwar_artillery = 1
 		infantry_weapons2 = 1
 		support_weapons = 1
 
@@ -266,6 +234,18 @@ recruit_character = YUG_milan_nedic
 recruit_character = YUG_ivan_ribar
 recruit_character = YUG_dimitrije_ljotic
 recruit_character = YUG_ivo_lola_ribar
+
+create_equipment_variant = {
+	name = "FT-17"
+	type = fra_light_tank_chassis_ft
+	parent_version = 0
+	modules = {
+		main_armament_slot = tank_small_gun_1
+		turret_type_slot = tank_light_turret_1
+		armor_type_slot = tank_riveted_armor
+		engine_type_slot = tank_gasoline_engine
+	}
+}
 
 ### VARIANTS ###
 # 1936 Start #

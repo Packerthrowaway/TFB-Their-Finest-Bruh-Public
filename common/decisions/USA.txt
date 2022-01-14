@@ -1789,3 +1789,236 @@ USA_special_research = {
 		}
 	}
 }
+
+USA_propaganda_campaigns = {
+	USA_man_the_guns = { # ID = 2
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = USA_running_prop
+			}
+			has_completed_focus = USA_two_ocean_navy_act
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			industrial_capacity_dockyard = 0.1
+		}
+
+		complete_effect = {
+			set_variable = { USA_poster_center_icon_frame = 2 }
+			set_country_flag = USA_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { USA_poster_center_icon_frame = 1 }
+			clr_country_flag = USA_running_prop
+		}
+	}
+
+	USA_buy_extra_bonds = { # ID = 3
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = USA_running_prop
+			}
+			has_completed_focus = USA_the_giant_wakes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			consumer_goods_factor = -0.025
+		}
+
+		complete_effect = {
+			set_variable = { USA_poster_center_icon_frame = 3 }
+			set_country_flag = USA_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { USA_poster_center_icon_frame = 1 }
+			clr_country_flag = USA_running_prop
+		}
+	}
+
+	USA_keep_em_firing = { # ID = 4
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = USA_running_prop
+			}
+			has_completed_focus = USA_fair_labour_standards_act
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			industrial_capacity_factory = 0.075
+		}
+
+		complete_effect = {
+			set_variable = { USA_poster_center_icon_frame = 4 }
+			set_country_flag = USA_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { USA_poster_center_icon_frame = 1 }
+			clr_country_flag = USA_running_prop
+		}
+	}
+
+	USA_united_we_are_strong = { # ID = 5
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = USA_running_prop
+			}
+			is_in_faction = yes
+			has_war = yes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			stability_weekly_factor = 0.005
+			command_power_gain_mult = 0.25
+		}
+
+		complete_effect = {
+			set_variable = { USA_poster_center_icon_frame = 5 }
+			set_country_flag = USA_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { USA_poster_center_icon_frame = 1 }
+			clr_country_flag = USA_running_prop
+		}
+	}
+
+	USA_death_on_subs = { # ID = 6
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = USA_running_prop
+			}
+			OR = {
+				has_war_with = GER
+				has_war_with = ITA
+				has_war_with = JAP
+			}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			naval_detection = 0.25
+			convoy_escort_efficiency = 0.25
+			convoy_retreat_speed = 0.25
+		}
+
+		complete_effect = {
+			set_variable = { USA_poster_center_icon_frame = 6 }
+			set_country_flag = USA_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { USA_poster_center_icon_frame = 1 }
+			clr_country_flag = USA_running_prop
+		}
+	}
+
+	USA_we_can_do_it = { # ID = 7
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = USA_running_prop
+			}
+			has_completed_focus = USA_wartime_industry
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.1
+			line_change_production_efficiency_factor = 0.1
+		}
+
+		complete_effect = {
+			set_variable = { USA_poster_center_icon_frame = 7 }
+			set_country_flag = USA_running_prop
+		}
+
+		remove_effect = {
+			set_variable = { USA_poster_center_icon_frame = 1 }
+			clr_country_flag = USA_running_prop
+		}
+	}
+}

@@ -9,4 +9,8 @@ tags={
 }
 name="Their Finest Bruh DEV "
 picture="thumbnail.png"
+replace_path="common/ai_equipment"
+replace_path="common/ai_strategy"
+replace_path="common/ai_strategy_plans"
+replace_path="gfx/interface/equipmentdesigner/tanks/designer"
 supported_version="1.11.*"

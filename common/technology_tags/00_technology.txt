@@ -92,6 +92,7 @@ technology_categories = {
 	cat_production
 	cat_synth_rubber
 	cat_synth_oil
+	heavy_artillery
 }
 
 technology_folders = {
@@ -104,14 +105,7 @@ technology_folders = {
 	nsb_armour_folder = {
 		ledger = army
 		available = {
-			has_dlc = "No Step Back"
-		}
-	}
-	armour_folder = {
-		ledger = army
-        available = {
-            NOT = { 
-				has_dlc = "No Step Back"
+			NOT = { 
 				original_tag = GER
 				original_tag = SOV
 				original_tag = MON
@@ -122,87 +116,47 @@ technology_folders = {
 				original_tag = SAF
 				original_tag = AST
 				original_tag = NZL
-				original_tag = ROM
-				original_tag = HUN
-				original_tag = ITA
-				original_tag = JAP
-				original_tag = FIN
-				original_tag = BUL
-				original_tag = SPR
-				original_tag = BRA
-				original_tag = MEX				
-		  }
+		    }
 		}
 	}
-	armour_ger_folder = {
+	armour_folder = {
 		ledger = army
-        available = { 
-			NOT = {
-				has_dlc = "No Step Back"
-			}
+        available = {
+            always = no
+		}
+	}
+	ger_armour_folder = {
+		ledger = army
+        available = {
 			original_tag = GER
 		}
 	}
-	armour_sov_folder = {
+	sov_armour_folder = {
 		ledger = army
-        available = { 
-			NOT = {
-				has_dlc = "No Step Back"
-			}
+        available = {
 			OR = {
 				original_tag = SOV
 				original_tag = MON
 			}
 		}
 	}
-	armour_usa_folder = {
+	eng_armour_folder = {
 		ledger = army
-        available = { 
-			NOT = {
-				has_dlc = "No Step Back"
-			}
+        available = {
 			OR = {
-			original_tag = USA
-			original_tag = BRA
-			original_tag = MEX
-			}
-		}
-	}
-	armour_eng_folder = {
-		ledger = army
-        available = { 
-			NOT = {
-				has_dlc = "No Step Back"
-			}
-			OR = {
-				original_tag = ENG 
+				original_tag = ENG
 				original_tag = CAN
-				original_tag = RAJ 
-				original_tag = SAF
-				original_tag = AST
 				original_tag = NZL
-				original_tag = IRE
+				original_tag = AST
+				original_tag = RAJ
+				original_tag = SAF
 			}
 		}
 	}
-	armour_axis_folder = {
+	usa_armour_folder = {
 		ledger = army
-        available = { 
-			NOT = {
-				has_dlc = "No Step Back"
-			}
-			OR = {
-				original_tag = ROM
-				original_tag = HUN
-				original_tag = ITA
-				original_tag = JAP
-				original_tag = FIN
-				original_tag = BUL
-				original_tag = SPR
-				original_tag = YUG
-				original_tag = MAN
-				original_tag = SIA
-			}
+        available = {
+			original_tag = USA
 		}
 	}
 	artillery_folder = {
@@ -212,16 +166,16 @@ technology_folders = {
 		ledger = air
 	}
 	naval_folder = {
-		ledger = navy
 		available = {
 			not = { has_dlc = "Man the Guns" }
 		}
+		ledger = navy
 	}
 	mtgnavalfolder = {
-		ledger = navy
 		available = {
 			has_dlc = "Man the Guns"
 		}
+		ledger = navy
 	}
 	industry_folder = {
 		ledger = civilian

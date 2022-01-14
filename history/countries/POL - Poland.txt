@@ -20,47 +20,16 @@ set_technology = {
 	tech_engineers = 1
 	tech_recon = 1
 	gw_artillery = 1
-	interwar_antiair = 1
 	early_fighter = 1
 	early_bomber = 1
 	CAS1 = 1
 	trench_warfare = 1
+	support_weapons = 1
 	fuel_silos = 1
 	synth_oil_experiments = 1
 	basic_train = 1
 }
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-	}
-}
-if = {
-	limit = {
-		NOT = { has_dlc = "No Step Back" }
-	}
-	set_technology = {
-		gwtank = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_technology = {
-		gwtank_chassis = 1
-	}
-}
+
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
@@ -182,7 +151,6 @@ if = {
 		tactical_bomber1 = 1
 		motorised_infantry = 1
 		support_weapons = 1
-		interwar_artillery = 1
 
 		#doctrines
 		air_superiority = 1
@@ -222,9 +190,6 @@ if = {
 				has_dlc = "No Step Back"
 			}
 		}
-		set_technology = {
-			basic_light_tank = 1
-		}
 		set_oob = "POL_1939"
 	}
 	if = {
@@ -232,9 +197,6 @@ if = {
 			
 			has_dlc = "No Step Back"
 			
-		}
-		set_technology = {
-			basic_light_tank_chassis = 1
 		}
 		set_oob = "POL_1939_nsb"
 	}
@@ -401,70 +363,6 @@ create_equipment_variant = {
 
 ### VARIANTS ###
 # 1936 Start #
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	create_equipment_variant = {
-		name = "TKS"
-		type = light_tank_chassis_0
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_heavy_machine_gun
-			turret_type_slot = tank_light_fixed_superstructure_turret
-			suspension_type_slot = tank_bogie_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_gasoline_engine
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 1
-			tank_nsb_engine_upgrade = 1
-		}
-		obsolete = yes #used for oob
-		icon = "gfx/interface/technologies/POL_basic_light_tank.dds"
-	}
-	create_equipment_variant = {
-		name = "7TP dw"
-		type = light_tank_chassis_0
-		parent_version = 1
-		modules = {
-			main_armament_slot = tank_heavy_machine_gun
-			turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_bogie_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			special_type_slot_1 = secondary_turret_hmg
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 2
-		}
-		icon = "gfx/interface/technologies/POL_imp_light_tank.dds"
-	}
-	create_equipment_variant = {
-		name = "7TP jw"
-		type = light_tank_chassis_0
-		parent_version = 2
-		modules = {
-			main_armament_slot = tank_high_velocity_cannon
-			turret_type_slot = tank_light_two_man_tank_turret
-			suspension_type_slot = tank_bogie_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			special_type_slot_1 = empty
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 2
-		}
-		icon = "gfx/interface/technologies/POL_imp_light_tank.dds"
-	}
-#	add_equipment_to_stockpile = {
-#		type = light_tank_chassis_0
-#		amount = 550
-#		variant_name = "TKS"
-#	}
-}
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	### Ship Variants ###
