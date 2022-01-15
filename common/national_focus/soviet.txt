@@ -2360,9 +2360,34 @@
 
 		completion_reward = {
 			add_ideas = SOV_gulag_workers
+			custom_effect_tooltip = SOV_penal_battalions_spawn_tt
 			add_offsite_building = { type = industrial_complex level = 30 }
 			add_offsite_building = { type = arms_factory level = 30 }
 			unlock_decision_tooltip = SOV_raise_penal_units
+			hidden_effect = {
+				set_technology = { penal_infantry = 1 popup = no }
+
+				division_template = {
+					name = "Shtrafnaya Chast"
+					division_names_group = SOV_PEN_01
+					is_locked = yes
+
+					regiments = {
+						penal_battalion = { x = 0 y = 0 }
+						penal_battalion = { x = 0 y = 1 }
+						penal_battalion = { x = 0 y = 2 }
+						penal_battalion = { x = 1 y = 0 }
+						penal_battalion = { x = 1 y = 1 }
+						penal_battalion = { x = 1 y = 2 }
+						penal_battalion = { x = 2 y = 0 }
+						penal_battalion = { x = 2 y = 1 }
+						penal_battalion = { x = 2 y = 2 }
+						penal_battalion = { x = 3 y = 0 }
+					}
+				}
+
+				SOV_spawn_penal_divisions_effect = yes
+			}
 		}
 	}
 	
