@@ -33,7 +33,10 @@ operations = {
 			add_war_support = 0.2
 			add_stability = 0.2
 			add_political_power = 100
-			complete_national_focus = SPA_caudillo_of_spain
+			if = {
+				limit = {NOT = {has_completed_focus = SPA_caudillo_of_spain}}
+				complete_national_focus = SPA_caudillo_of_spain
+			}
 		}
 
 		timeout_effect = {
