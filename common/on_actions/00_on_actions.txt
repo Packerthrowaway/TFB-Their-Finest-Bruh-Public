@@ -394,7 +394,20 @@ on_actions = {
 			}
 		}
 	}
-
+	on_war = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { original_tag = GER }
+					ROOT = { GER_has_mefo_bills = yes }
+				}
+				ROOT = {
+					GER_remove_mefo_bills = yes
+					set_country_flag = mefo_bills_removed_through_war
+				}
+			}
+		}
+	}
 	#FROM is war target
 	on_declare_war = {
 		effect = {
