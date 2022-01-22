@@ -171,7 +171,14 @@ technologies = {
 			leads_to_tech = eng_medium_tank_4
 			research_cost_coeff = 1
 		}
-		
+		path = {
+			leads_to_tech = ast_medium_tank_1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = can_medium_tank_1
+			research_cost_coeff = 1
+		}
 		research_cost = 2
 		start_year = 1939
 		folder = {
@@ -223,6 +230,15 @@ technologies = {
 
 	eng_crusader_upgrade = {
 
+		allow_branch = {
+			NOT = {
+				OR = {
+					tag = CAN
+					tag = AST
+					tag = NZL
+				}
+			}
+		}
 		on_research_complete = {
 			custom_effect_tooltip = crusader_upgrade_1_tt
 		}
@@ -231,7 +247,7 @@ technologies = {
 			tank_medium_turret_3
 		}
 		
-		research_cost = 0.5
+		research_cost = 1.0
 		start_year = 1941
 		folder = {
 			name = eng_armour_folder
@@ -253,7 +269,9 @@ technologies = {
 		enable_equipments = {
 			eng_medium_tank_chassis_a27
 		}
-		
+		enable_equipment_modules = {
+			tank_medium_turret_3
+		}
 		path = {
 			leads_to_tech = eng_medium_tank_6
 			research_cost_coeff = 1
@@ -262,8 +280,11 @@ technologies = {
 			leads_to_tech = eng_medium_tank_7
 			research_cost_coeff = 1
 		}
-		
-		research_cost = 1.5
+		path = {
+			leads_to_tech = eng_heavy_tank_7
+			research_cost_coeff = 1
+		}
+		research_cost = 2.0
 		start_year = 1943
 		folder = {
 			name = eng_armour_folder
@@ -305,7 +326,37 @@ technologies = {
 			factor = 0
 		}
 	}
+	eng_heavy_tank_7 = {
+	
+		allow_branch = {
+			NOT = {
+				OR = {
+					tag = AST
+					tag = NZL
+				}
+			}
+		}
 
+		enable_equipments = {
+			eng_heavy_tank_chassis_a33
+		}
+		
+		research_cost = 2.0
+		start_year = 1943
+		folder = {
+			name = eng_armour_folder
+			position = { x = 3 y = 14 }
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	eng_medium_tank_7 = {
 
 		enable_equipments = {
@@ -524,6 +575,150 @@ technologies = {
 		categories = {
 			armor
 			cat_heavy_armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ast_medium_tank_1 = {
+	
+		allow_branch = {
+			OR = {
+				tag = AST
+				tag = NZL
+			}
+		}
+
+		enable_equipments = {
+			eng_medium_tank_chassis_ac1
+		}
+	
+		path = {
+			leads_to_tech = ast_medium_tank_2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = eng_armour_folder
+			position = { x = 2 y = 10 }
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ast_medium_tank_2 = {
+
+		enable_equipments = {
+			eng_medium_tank_chassis_ac3
+		}
+		enable_equipment_modules = {
+			tank_medium_turret_3
+		}
+	
+		path = {
+			leads_to_tech = ast_medium_tank_3
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = eng_armour_folder
+			position = { x = 2 y = 12 }
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ast_medium_tank_3 = {
+
+		enable_equipment_modules = {
+			tank_medium_turret_4
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = eng_armour_folder
+			position = { x = 2 y = 14 }
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	can_medium_tank_1 = {
+	
+		allow_branch = {
+			tag = CAN
+		}
+
+		enable_equipments = {
+			eng_medium_tank_chassis_ram
+		}
+	
+		path = {
+			leads_to_tech = can_medium_tank_2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1941
+		folder = {
+			name = eng_armour_folder
+			position = { x = 2 y = 10 }
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	can_medium_tank_2 = {
+
+		enable_equipment_modules = {
+			tank_medium_turret_3
+		}
+		
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = eng_armour_folder
+			position = { x = 2 y = 12 }
+		}
+		
+		categories = {
+			armor
+			cat_medium_armor
 		}
 		
 		ai_will_do = {

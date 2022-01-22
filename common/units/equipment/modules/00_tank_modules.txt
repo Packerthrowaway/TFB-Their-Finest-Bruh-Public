@@ -116,6 +116,20 @@ equipment_modules = {
 
 	### Truck Turrets ###
 	
+	# Scrapped Choking concept for Artillery Tractors
+	# tank_heavy_superstructure_spg = { ## TIER 7 ##
+	# 	abbreviation = "sps"
+	# 	category = tank_heavy_turret_type_spg
+	# 	sfx = sfx_ui_sd_module_turret
+	# 	forbid_equipment_type = anti_air
+	# 	forbid_equipment_type = anti_tank
+	# 	forbid_equipment_type = flame
+	# 	forbid_equipment_type_exact_match = armor
+	# 	build_cost_resources = {
+	# 		steel = 5
+	# 	}
+	# }
+
 	tank_light_superstructure_zis = { ## TIER 3 ##
 		abbreviation = "lfs"
 		category = tank_light_turret_type_zis
@@ -128,6 +142,38 @@ equipment_modules = {
 			steel = 5
 		}
 	}
+
+	# Scrapped Choking concept for a Naval Gun
+	# tank_medium_superstructure_navy = { ## TIER 7 ##
+	# 	abbreviation = "lfs"
+	# 	category = tank_medium_turret_type_navy
+	# 	sfx = sfx_ui_sd_module_turret
+	# 	forbid_equipment_type = artillery
+	# 	forbid_equipment_type = flame
+	# 	forbid_equipment_type_exact_match = armor
+		
+	# 	allowed_module_categories = {
+	# 		main_armament_slot = {
+	# 			tank_armament_tier_6
+	# 			tank_armament_tier_7
+	# 		}
+	# 	}
+		
+	# 	add_stats = {
+	# 		build_cost_ic = 4
+	# 		hardness = -0.4
+	# 	}
+		
+	# 	multiply_stats = {
+	# 		armor_value = -0.75
+	# 		maximum_speed = 0.1
+	# 		reliability = -0.05
+	# 	}
+
+	# 	build_cost_resources = {
+	# 		steel = 5
+	# 	}
+	# }
 	
 	tank_light_superstructure_cv33 = { ## TIER 3 ##
 		abbreviation = "lfs"
@@ -339,6 +385,7 @@ equipment_modules = {
 		category = tank_light_turret_type_3
 		sfx = sfx_ui_sd_module_turret
 		forbid_equipment_type_exact_match = armor
+		forbid_equipment_type = flame
 
 		allowed_module_categories = {
 			main_armament_slot = {
@@ -350,7 +397,7 @@ equipment_modules = {
 
 		
 		add_stats = {
-			hardness = -0.3
+			hardness = -0.35
 		}
 
 		multiply_stats = {
@@ -358,6 +405,7 @@ equipment_modules = {
 			build_cost_ic = -0.1
 			breakthrough = -0.2
 			maximum_speed = 0.25
+			air_attack = -0.2
 		}
 	}
 
@@ -524,6 +572,7 @@ equipment_modules = {
 		category = tank_medium_turret_type_4
 		sfx = sfx_ui_sd_module_turret
 		forbid_equipment_type_exact_match = armor
+		forbid_equipment_type = flame
 
 		allowed_module_categories = {
 			main_armament_slot = {
@@ -536,7 +585,7 @@ equipment_modules = {
 
 		
 		add_stats = {
-			hardness = -0.25
+			hardness = -0.3
 		}
 
 		multiply_stats = {
@@ -544,6 +593,7 @@ equipment_modules = {
 			build_cost_ic = -0.1
 			breakthrough = -0.25
 			maximum_speed = 0.25
+			air_attack = -0.2
 		}
 
 	}
@@ -633,6 +683,13 @@ equipment_modules = {
 
 		add_stats = {
 			build_cost_ic = 18
+			hardness = 0.025
+		}
+		allowed_module_categories = {
+			main_armament_slot = {
+				tank_armament_tier_6
+				tank_armament_tier_7
+			}
 		}
 		
 		multiply_stats = {
@@ -664,6 +721,7 @@ equipment_modules = {
 		
 		add_stats = {
 			build_cost_ic = 12
+			hardness = 0.075
 		}
 		
 		multiply_stats = {
@@ -1155,6 +1213,30 @@ equipment_modules = {
 			chromium = 5
 		}
 	}
+
+	# Scrapped Choking Naval Gun
+	# tank_heavy_gun_naval = { ###7
+	# 	abbreviation = "hv2"
+	# 	category = tank_armament_tier_7
+	# 	sfx = sfx_ui_sd_module_turret
+	# 	allow_equipment_type = anti_tank
+	# 	parent = tank_heavy_gun_1
+
+	# 	add_stats = {
+	# 		soft_attack = 70
+	# 		hard_attack = 40
+	# 		ap_attack = 95
+	# 		build_cost_ic = 18
+	# 	}
+	# 	multiply_stats = {
+	# 		maximum_speed = -0.35
+	# 	}
+	# 	build_cost_resources = {
+	# 		tungsten = 5
+	# 		steel = 15
+	# 		chromium = 5
+	# 	}
+	# }
 
 	tank_heavy_hv_gun_1 = { ###6
 		abbreviation = "hh1"
