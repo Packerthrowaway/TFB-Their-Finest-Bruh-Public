@@ -999,41 +999,6 @@ special_projects = {
 		}
 	}
 
-	ENG_tank_puchases = {
-		icon = generic_prepare_civil_war
-		available = {
-			NOT = { has_country_flag = ENG_buying_equipment_flag }
-		}
-		visible = {
-			has_completed_focus = ENG_arms_purchases
-		}
-		days_remove = 120
-		cost = 150
-		complete_effect = {
-			USA = {
-				add_offsite_building = { type = industrial_complex level = 10 }
-			}
-			set_country_flag = { flag = ENG_buying_equipment_flag value = 1 days = 120 } 
-		}
-		
-		modifier = {
-			civilian_factory_use = 15
-		}
-		
-		
-		
-		remove_effect = {
-			add_equipment_to_stockpile = {
-				type = medium_tank_chassis
-				amount = 300
-			}
-			
-			USA = {
-				add_offsite_building = { type = industrial_complex level = -10 }
-			}			
-		}
-
-	}
 }
 
 ENG_enforce_the_naval_treaties = {
