@@ -822,10 +822,16 @@ leader_traits = {
 	
 	skilled_staffer = { 
 		type = corps_commander
-		gain_xp = {
-			check_variable = { num_units > 20 }
+		gain_xp_leader = {
+			if = {
+				limit = { is_leading_army_group = yes }
+				check_variable = { num_units > 75 }
+			}
+			else = {
+				check_variable = { num_units > 25 }
+			}
 		}
-		custom_gain_xp_trigger_tooltip = fighting_with_at_least_20_units
+		custom_gain_xp_trigger_tooltip = fighting_with_enough_units
 		
 		cost = 2000
 		
