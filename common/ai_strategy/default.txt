@@ -758,6 +758,7 @@ default_area_priority_non_africa = {
     enable = {
         NOT = { original_tag = ITA }
         NOT = { original_tag = FRA }
+		NOT = { original_tag = USA }
         NOT = { original_tag = ENG }
         NOT = { is_subject_of = ENG }
         NOT = { capital_scope = { is_on_continent = africa } }
@@ -826,7 +827,17 @@ dont_build_capitals_if_on_treaty = {
 
 DEFAULT_template_design = {
 	enable = {
-		NOT = { OR = { tag = GER tag = ENG tag = SOV tag = ITA tag = JAP tag = USA tag = POL } }	
+		NOT = {
+			OR = {
+				tag = GER
+				tag = ENG
+				tag = SOV
+				tag = ITA
+				tag = JAP
+				tag = USA
+				tag = POL
+			}
+		}	
 		date < 1940.1.1				
 	}
 	abort = { 
@@ -878,7 +889,17 @@ DEFAULT_template_design = {
 
 DEFAULT_template_design = {
 	enable = {
-		NOT = { OR = { tag = GER tag = ENG tag = SOV tag = ITA tag = JAP tag = USA tag = POL } }
+		NOT = {
+			OR = {
+				tag = GER
+				tag = ENG
+				tag = SOV
+				tag = ITA
+				tag = JAP
+				tag = USA
+				tag = POL
+			}
+		}
 		date > 1940.1.1				
 	}
 

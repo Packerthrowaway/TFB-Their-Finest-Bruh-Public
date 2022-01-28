@@ -245,6 +245,7 @@ technologies = {
 		show_effect_as_desc = yes
 		enable_equipment_modules = {
 			tank_medium_turret_3
+			armor_skirts
 		}
 		
 		research_cost = 1.0
@@ -340,6 +341,9 @@ technologies = {
 		enable_equipments = {
 			eng_heavy_tank_chassis_a33
 		}
+		enable_equipment_modules = {
+			armor_skirts
+		}
 		
 		research_cost = 2.0
 		start_year = 1943
@@ -363,7 +367,8 @@ technologies = {
 			eng_medium_tank_chassis_a41
 		}
 		enable_equipment_modules = {
-			tank_modern_turret
+			tank_modern_tank_turret
+			armor_skirts
 		}
 		
 		research_cost = 2.0
@@ -501,7 +506,10 @@ technologies = {
 		enable_equipments = {
 			eng_heavy_tank_chassis_a22
 		}
-	
+		enable_equipment_modules = {
+			tank_heavy_superstructure
+		}
+
 		path = {
 			leads_to_tech = eng_heavy_tank_5
 			research_cost_coeff = 1
@@ -531,14 +539,16 @@ technologies = {
 		}
 		enable_equipment_modules = {
 			tank_heavy_turret_1
-			tank_heavy_superstructure
 		}
 		
 		path = {
 			leads_to_tech = eng_heavy_tank_6
 			research_cost_coeff = 1
 		}
-		
+		path = {
+			leads_to_tech = eng_heavy_tank_8
+			research_cost_coeff = 1
+		}
 		research_cost = 2
 		start_year = 1943
 		folder = {
@@ -569,7 +579,33 @@ technologies = {
 		start_year = 1944
 		folder = {
 			name = eng_armour_folder
-			position = { x = 6 y = 16 }
+			position = { x = 8 y = 16 }
+		}
+		
+		categories = {
+			armor
+			cat_heavy_armor
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	eng_heavy_tank_8 = {
+
+		enable_equipments = {
+			eng_heavy_tank_chassis_a45
+		}
+		enable_equipment_modules = {
+			tank_modern_tank_turret
+		}
+		
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = eng_armour_folder
+			position = { x = 6 y = 18 }
 		}
 		
 		categories = {

@@ -1659,6 +1659,21 @@ on_actions = {
 					state_event = { id = mtg_usa_civil_war_fascists.1000 trigger_for = controller }
 				}
 			}
+			if = {
+				limit = {
+					FROM.FROM = {
+						state = 85
+						has_dynamic_modifier = { modifier = international_city }
+					}
+					FROM = {
+						OR = {
+							original_tag = POL 
+							tag = POL 
+						}
+					}
+				}
+				FROM.FROM = { remove_dynamic_modifier = { modifier = international_city } }
+			}
 		}
 	}
 	
