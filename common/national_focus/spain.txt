@@ -13038,6 +13038,16 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 100
 			set_rule = { can_send_volunteers = yes }
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 165
+						state = 171
+						state = 792
+					}
+				}
+				remove_dynamic_modifier = { modifier = autonomous_state }
+			}
 		}
 	}
 

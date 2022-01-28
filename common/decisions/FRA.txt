@@ -509,80 +509,80 @@ FRA_spanish_intervention_category = {
 		}
 	}
 
-	FRA_intervene_on_side_of_FROM = {
-		available = { has_war_support > 0.25 }
+	# FRA_intervene_on_side_of_FROM = {
+	# 	available = { has_war_support > 0.25 }
 
-		visible = { has_war = no }
+	# 	visible = { has_war = no }
 
-		targets = { SPD SPA SPC SPB SPR }
+	# 	targets = { SPD SPA SPC SPB SPR }
 
-		target_trigger = { 
-			FROM = {
-				original_tag = SPR
-				has_government = ROOT
-			}
-		}
+	# 	target_trigger = { 
+	# 		FROM = {
+	# 			original_tag = SPR
+	# 			has_government = ROOT
+	# 		}
+	# 	}
 
-		complete_effect = { 
-			every_country = {
-				limit = { has_war_with = FROM }
-				ROOT = {
-					declare_war_on = {
-						target = PREV
-						type = topple_government
-					}
-				}
-			}
-			if = {
-				limit = {
-					is_faction_leader = yes
-				}
-				add_to_faction = FROM
-			}
-			clr_country_flag = FRA_non_intervention
-			if = {
-				limit = {
-					has_country_flag = FRA_covert_intervention_allowed
-				}
-				clr_country_flag = FRA_covert_intervention_allowed 
-			}
-			if = {
-				limit = {
-					has_country_flag = FRA_volunteer_work_allowed
-				}
-				clr_country_flag = FRA_volunteer_work_allowed 
-			}
-			if = {
-				limit = {
-					has_country_flag = FRA_sending_weapons_allowed
-				}
-				clr_country_flag = FRA_sending_weapons_allowed 
-			}
-			if = { 
-				limit = { has_country_flag = FRA_non_military_aid_allowed }
-				clr_country_flag = FRA_non_military_aid_allowed
-			}
-			if = { 
-				limit = { has_country_flag = FRA_arms_purchases_allowed }
-				clr_country_flag = FRA_arms_purchases_allowed
-			}
+	# 	complete_effect = { 
+	# 		every_country = {
+	# 			limit = { has_war_with = FROM }
+	# 			ROOT = {
+	# 				declare_war_on = {
+	# 					target = PREV
+	# 					type = topple_government
+	# 				}
+	# 			}
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				is_faction_leader = yes
+	# 			}
+	# 			add_to_faction = FROM
+	# 		}
+	# 		clr_country_flag = FRA_non_intervention
+	# 		if = {
+	# 			limit = {
+	# 				has_country_flag = FRA_covert_intervention_allowed
+	# 			}
+	# 			clr_country_flag = FRA_covert_intervention_allowed 
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				has_country_flag = FRA_volunteer_work_allowed
+	# 			}
+	# 			clr_country_flag = FRA_volunteer_work_allowed 
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				has_country_flag = FRA_sending_weapons_allowed
+	# 			}
+	# 			clr_country_flag = FRA_sending_weapons_allowed 
+	# 		}
+	# 		if = { 
+	# 			limit = { has_country_flag = FRA_non_military_aid_allowed }
+	# 			clr_country_flag = FRA_non_military_aid_allowed
+	# 		}
+	# 		if = { 
+	# 			limit = { has_country_flag = FRA_arms_purchases_allowed }
+	# 			clr_country_flag = FRA_arms_purchases_allowed
+	# 		}
 			
-		}
+	# 	}
 
-		cost = 25
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 0
-			}
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
-		}
+	# 	cost = 25
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 		modifier = {
+	# 			has_war = yes
+	# 			factor = 0
+	# 		}
+	# 		modifier = {
+	# 			is_historical_focus_on = yes
+	# 			factor = 0
+	# 		}
+	# 	}
 		
-	}
+	# }
 }
 economy_decisions = {
 
