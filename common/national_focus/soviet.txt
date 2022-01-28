@@ -1102,6 +1102,26 @@
 			add_ideas = SOV_pcdi_idea
 		}
 	}
+	focus = {
+		id = SOV_germans_are_coming
+		icon = GFX_SOV_increase_production
+		prerequisite = { focus = SOV_pcdi	}
+		cost = 2
+		relative_position_id = SOV_pcdi
+		x = 0
+		y = 1
+		available = { 
+			has_war = no
+			date > 1941.8.1
+		}
+		completion_reward = {
+		swap_ideas = {
+			remove_idea = SOV_3_5_plan
+			add_idea = SOV_3_5_plan_ger
+		}	
+
+		}
+	}
 	
 	focus = {
 		id = SOV_arms_factories
