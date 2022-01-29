@@ -918,41 +918,6 @@
 		}
 	}
 	
-	
-	focus = {
-		id = SOV_aluminium
-		icon = GFX_focus_generic_aluminum
-		prerequisite = { focus = SOV_rare_metal }
-		x = 0
-		y = 1
-		relative_position_id = SOV_rare_metal
-		cost = 6
-		ai_will_do = {
-			factor = 5
-		}
-
-		complete_tooltip = {
-		}
-
-		completion_reward = {
-			add_resource = {
-				type = aluminium
-				amount = 200
-				state = 400
-			}
-			add_resource = {
-				type = aluminium
-				amount = 300
-				state = 398
-			}
- 			add_resource = {
-				type = aluminium
-				amount = 180
-				state = 586
-			}
-		}
-	}
-	
 	focus = {
 		id = SOV_petrochemical
 		icon = GFX_SOV_transformation_of_nature
@@ -1028,6 +993,39 @@
         	   resource = tungsten
         	   amount = 20
         	}
+		}
+	}
+	focus = {
+		id = SOV_aluminium
+		icon = GFX_focus_generic_aluminum
+		prerequisite = { focus = SOV_rare_metal }
+		x = 0
+		y = 1
+		relative_position_id = SOV_rare_metal
+		cost = 6
+		ai_will_do = {
+			factor = 5
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_resource = {
+				type = aluminium
+				amount = 200
+				state = 400
+			}
+			add_resource = {
+				type = aluminium
+				amount = 300
+				state = 398
+			}
+ 			add_resource = {
+				type = aluminium
+				amount = 180
+				state = 586
+			}
 		}
 	}
 	
@@ -2261,7 +2259,7 @@
 		}
 
 		bypass = {
-			has_completed_focus = SOV_depoliticize_the_military
+			#has_completed_focus = SOV_depoliticize_the_military
 		}
 		
 		search_filters = {}
@@ -2304,7 +2302,7 @@
 		}
 
 		bypass = {
-			has_completed_focus = SOV_depoliticize_the_military
+			#has_completed_focus = SOV_depoliticize_the_military
 		}
 		
 		search_filters = {FOCUS_FILTER_ARMY_XP}
@@ -2425,7 +2423,8 @@
 					rule = obsolete_focus_branches_visibility
 					option = HIDE
 				}
-				has_completed_focus = SOV_beaten_but_not_defeated
+				#has_completed_focus = SOV_beaten_but_not_defeated
+				always = no
 			}
 		}
 		cost = 1
@@ -2439,7 +2438,7 @@
 						option = HIDE
 					}
 				}
-				NOT = { has_completed_focus = SOV_the_hands_do }
+				#NOT = { has_completed_focus = SOV_the_hands_do }
 			}
 		}
 
@@ -2474,8 +2473,9 @@
 					rule = obsolete_focus_branches_visibility
 					option = HIDE
 				}
-				has_completed_focus = SOV_beaten_but_not_defeated
-				NOT = { has_completed_focus = SOV_the_hands_do }
+				#has_completed_focus = SOV_beaten_but_not_defeated
+				always = no
+				#NOT = { has_completed_focus = SOV_the_hands_do }
 			}
 		}
 		relative_position_id = SOV_the_path_of_marxism_leninism
@@ -2492,18 +2492,19 @@
 					}
 				}
 				NOT = {
-					AND = {
-						has_completed_focus = SOV_the_left_opposition
-						has_completed_focus = SOV_left_opposition_coup
-					}
-					AND = {
-						has_completed_focus = SOV_the_right_opposition
-						has_completed_focus = SOV_coup_detat
-					}
-					AND = {
-						has_completed_focus = SOV_beaten_but_not_defeated
-						has_completed_focus = SOV_the_hands_do
-					}
+					always = no
+					# AND = {
+					# 	has_completed_focus = SOV_the_left_opposition
+					# 	has_completed_focus = SOV_left_opposition_coup
+					# }
+					# AND = {
+					# 	has_completed_focus = SOV_the_right_opposition
+					# 	has_completed_focus = SOV_coup_detat
+					# }
+					# AND = {
+					# 	has_completed_focus = SOV_beaten_but_not_defeated
+					# 	has_completed_focus = SOV_the_hands_do
+					# }
 				}
 			}
 		}
@@ -4856,7 +4857,7 @@
 		id = SOV_popov
 		icon = GFX_SOV_improve_signals
 		prerequisite = { focus = SOV_extra_tech_slot }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = SOV_extra_tech_slot
 		
@@ -4877,6 +4878,47 @@
 				uses = 3
 				category = electronics
 			}
+		}
+	}
+	focus = {
+		id = SOV_soviet_atomic_bomb_project
+		icon = GFX_focus_wonderweapons
+		prerequisite = { focus = SOV_extra_tech_slot }
+		x = -1
+		y = 1
+		relative_position_id = SOV_extra_tech_slot
+		cost = 10
+
+		available = {
+		}
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SOV_soviet_atomic_bomb_project_tech_bonus_name
+				bonus = 0.5
+				uses = 1
+				ahead_reduction = 0.5
+				category = nuclear
+			}
+
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				create_operative_leader = {
+					name = "Ursula Kuczynski"
+					GFX = GFX_Portrait_ursula_kuczynski
+					female = yes
+					traits = { operative_safe_cracker operative_infiltrator }
+					bypass_recruitment = no
+					available_to_spy_master = yes
+					nationalities = { SOV GER }
+				}
+				add_ideas = SOV_soviet_atomic_bomb_project_ns
+			}
+			custom_effect_tooltip = SOV_soviet_atomic_bomb_project_unlock_operation_tt
 		}
 	}
 	
@@ -5976,7 +6018,7 @@
 		id = SOV_found_the_jet_institute
 
 		icon = GFX_goal_generic_build_airforce
-		prerequisite = { focus = SOV_the_ussr_academy_of_sciences }
+		#prerequisite = { focus = SOV_the_ussr_academy_of_sciences }
 		prerequisite = { focus = SOV_merge_aircraft_plants }
 		x = 0
 		y = 2
@@ -6091,7 +6133,7 @@
 		available = {
 			OR = {
 				has_completed_focus = SOV_the_path_of_marxism_leninism
-				has_completed_focus = SOV_womens_fascist_movement
+				#has_completed_focus = SOV_womens_fascist_movement
 			}
 		}
 		
