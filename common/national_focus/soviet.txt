@@ -2121,26 +2121,54 @@
 						logistics_company_horse = { x = 1 y = 1 }
 					}
 				}
-				every_state = {
-					limit = {	
-						AND = {
-							any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR } }
-							is_controlled_by = SOV
+				if = {
+					limit = {
+						has_war_with = JAP
+					}
+					every_state = {
+						limit = {	
+							AND = {
+								any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR is_controlled_by = VIC is_controlled_by = YUG is_controlled_by = JAP is_controlled_by = MAN is_controlled_by = SIA} }
+								is_controlled_by = SOV
+							}
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
 						}
 					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = SOV
-					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = SOV
-					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = SOV
+				}
+				else = {
+					every_state = {
+						limit = {	
+							AND = {
+								any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR is_controlled_by = VIC is_controlled_by = YUG} }
+								is_controlled_by = SOV
+							}
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
+						}
 					}
 				}
+
 			}
 			custom_effect_tooltip = SOV_frontline_mob_tt
 		}
@@ -2190,21 +2218,44 @@
 						logistics_company_horse = { x = 1 y = 1 }
 					}
 				}
-				every_state = {
-					limit = {	
-						AND = {
-							any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR } }
-							is_controlled_by = SOV
+				if = {
+					limit = {
+						has_war_with = JAP
+					}
+					every_state = {
+						limit = {	
+							AND = {
+								any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR is_controlled_by = VIC is_controlled_by = YUG is_controlled_by = JAP is_controlled_by = MAN is_controlled_by = SIA} }
+								is_controlled_by = SOV
+							}
 						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+							owner = SOV
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+							owner = SOV
+						}						
 					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-						owner = SOV
+				}
+				else = {
+					every_state = {
+						limit = {	
+							AND = {
+								any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR is_controlled_by = VIC is_controlled_by = YUG} }
+								is_controlled_by = SOV
+							}
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+							owner = SOV
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+							owner = SOV
+						}						
 					}
-					create_unit = {
-						division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-						owner = SOV
-					}						
 				}
 			}
 			custom_effect_tooltip = SOV_frontline_mob_tt2
