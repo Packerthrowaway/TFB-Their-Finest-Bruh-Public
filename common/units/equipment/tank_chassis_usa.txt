@@ -6,7 +6,21 @@ equipments = {
 		year = 1935
 		archetype = light_tank_chassis
 		priority = 2000
-		module_slots = inherit
+		module_slots = {
+			main_armament_slot = inherit
+			turret_type_slot = 	{	
+				required = yes	
+				allowed_module_categories = {
+					tank_light_turret_type
+					tank_light_turret_type_1
+					tank_light_turret_type_2
+					tank_light_turret_type_3
+				}
+			}
+			armor_type_slot = inherit
+			engine_type_slot = inherit
+			special_type_slot_1 = inherit
+		}
 		maximum_speed = 6.0
 		build_cost_ic = 10.5
 		reliability = 0.85
@@ -107,7 +121,20 @@ equipments = {
 		year = 1939
 		archetype = medium_tank_chassis
 		priority = 2000
-		module_slots = inherit
+		module_slots = {
+			main_armament_slot = inherit
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_medium_turret_type
+				}
+			}
+			armor_type_slot = inherit
+			engine_type_slot = inherit
+			special_type_slot_1 = inherit
+			special_type_slot_2 = inherit
+
+		}
 		maximum_speed = 5.0
 		build_cost_ic = 16
 		reliability = 0.8
@@ -172,6 +199,7 @@ equipments = {
 			engine_type_slot = inherit
 			special_type_slot_1 = inherit
 			special_type_slot_2 = inherit
+			special_type_slot_3 = inherit
 		}
 		upgrades = {
 			tank_nsb_med_armor_1_upgrade
@@ -203,6 +231,7 @@ equipments = {
 			engine_type_slot = inherit
 			special_type_slot_1 = inherit
 			special_type_slot_2 = inherit
+			special_type_slot_3 = inherit
 		}
 		maximum_speed = 5.5
 		build_cost_ic = 42
@@ -231,6 +260,7 @@ equipments = {
 				}
 			}
 			special_type_slot_3 = inherit
+			special_type_slot_4 = inherit
 		}
 		maximum_speed = 4.5
 		build_cost_ic = 44
@@ -259,6 +289,7 @@ equipments = {
 			special_type_slot_1 = inherit
 			special_type_slot_2 = inherit
 			special_type_slot_3 = inherit
+			special_type_slot_4 = inherit
 		}
 		maximum_speed = 5.5
 		build_cost_ic = 70
@@ -287,6 +318,7 @@ equipments = {
 			special_type_slot_1 = inherit
 			special_type_slot_2 = inherit
 			special_type_slot_3 = inherit
+			special_type_slot_4 = inherit
 		}
 		maximum_speed = 3.5
 		build_cost_ic = 74
