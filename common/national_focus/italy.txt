@@ -3263,14 +3263,33 @@
 			show_ideas_tooltip = ITA_vittorio_ambrosio
 		}
 	}
-	
 	focus = {
-		id = ITA_reform_the_arditi
-		icon = GFX_goal_ita_armir
+		id = ITA_embrace_tradition
+		icon = GFX_ww1_tactics
 		prerequisite = { focus = ITA_reject_innovation }
 		x = 0
 		y = 1
 		relative_position_id = ITA_reject_innovation
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_ideas = ITA_WW1_Tactics
+		}
+	}
+	focus = {
+		id = ITA_reform_the_arditi
+		icon = GFX_goal_ita_armir
+		prerequisite = { focus = ITA_expand_shock_tactics }
+		x = 0
+		y = 1
+		relative_position_id = ITA_expand_shock_tactics
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -3289,7 +3308,49 @@
 			custom_effect_tooltip = ITA_arditi_tt
 		}
 	}
-	
+	focus = {
+		id = ITA_expand_shock_tactics
+		icon = GFX_superior_tactics
+		prerequisite = { focus = ITA_old_guard }
+		x = -2
+		y = 0
+		relative_position_id = ITA_army_traditions
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_ideas = ITA_shock_tactics
+		}
+	}
+	focus = {
+		id = ITA_arditi_camouflage_tactics
+		icon = GFX_arditi_camo
+		prerequisite = { focus = ITA_reform_the_arditi }
+		x = 0
+		y = 1
+		relative_position_id = ITA_reform_the_arditi
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			swap_ideas = {
+				add_idea = ITA_shock_tactics2
+				remove_idea = ITA_shock_tactics
+			}
+		}
+	}
 	focus = {
 		id = ITA_riforma_gentile
 		icon = GFX_goal_generic_propaganda
