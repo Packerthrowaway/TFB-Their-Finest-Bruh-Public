@@ -1,7 +1,169 @@
 ideas = {
 
 	country = {
+		
+		USA_germany_first_idea = {
+			allowed = {
+				always = no
+			}
+			picture = FRA_scw_intervention_nationalists_focus
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = -0.05
+				supply_consumption_factor = -0.1
+			}
+		}
+
+		USA_japan_first_idea = {
+			allowed = {
+				always = no
+			}
+			picture = generic_japanese_conflict
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = 0.1
+				naval_invasion_capacity = 5
+			}
+		}
 	
+		USA_full_mob_idea = {
+			allowed = {
+				always = no
+			}
+			picture = chi_army_corruption3
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.02
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				stability_factor = -0.1
+			}
+		}
+
+		USA_final_push_idea = {
+			allowed = {
+				always = no
+			}
+			picture = generic_victors_of_ww1
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.1
+			}
+		}
+		
+		USA_tax_increase_idea = {
+			allowed = {
+				always = no
+			}
+			picture = EST_exploit_the_banks
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+	
+		USA_supreme_command_1 = {
+			allowed = {
+				always = no
+			}
+			picture = usa_war_department
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 0.2
+				max_command_power_mult = 0.1
+				max_planning_factor = 0.025
+				planning_speed = 0.1
+			}
+		}
+		
+		USA_supreme_command_2 = {
+			allowed = {
+				always = no
+			}
+			picture = usa_war_department
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 0.4
+				max_command_power_mult = 0.2
+				max_planning_factor = 0.05
+				planning_speed = 0.2
+			}
+		}
+		
+		USA_supreme_command_3 = {
+			allowed = {
+				always = no
+			}
+			picture = usa_war_department
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 0.6
+				max_command_power_mult = 0.3
+				max_planning_factor = 0.075
+				planning_speed = 0.3
+			}
+		}
+		
+		USA_supreme_command_4 = {
+			allowed = {
+				always = no
+			}
+			picture = usa_war_department
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 0.8
+				max_command_power_mult = 0.4
+				max_planning_factor = 0.1
+				planning_speed = 0.4
+			}
+		}
+		
+		USA_supreme_command_5 = {
+			allowed = {
+				always = no
+			}
+			picture = usa_war_department
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 1.0
+				max_command_power_mult = 0.5
+				max_planning_factor = 0.125
+				planning_speed = 0.5
+			}
+		}
+		
+		USA_supreme_command_6 = {
+			allowed = {
+				always = no
+			}
+			picture = usa_war_department
+			removal_cost = -1
+
+			modifier = {
+				command_power_gain_mult = 1.25
+				max_command_power_mult = 0.6
+				max_planning_factor = 0.15
+				planning_speed = 0.6
+			}
+		}
+
 		USA_vic_plan = {
 			allowed = {
 				always = no
@@ -515,8 +677,50 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+				command_power_gain_mult = -0.25
+				industrial_capacity_factory = -0.5
+			}
+			rule = {
+				can_join_factions = no
+			}
+		}
+		USA_neutrality_idea_2 = {
+			picture = neutrality_idea
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+			
+			modifier = {
 				command_power_gain_mult = -0.2
 				industrial_capacity_factory = -0.3
+			}
+			rule = {
+				can_join_factions = no
+			}
+		}
+		USA_neutrality_idea_3 = {
+			picture = neutrality_idea
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				command_power_gain_mult = -0.1
+				industrial_capacity_factory = -0.15
 			}
 			rule = {
 				can_join_factions = no
@@ -670,7 +874,7 @@ ideas = {
 			}
 		}
 		USA_war_department = {	
-			picture = usa_war_department
+			picture = generic_manpower_bonus
 			allowed = {
 				always = no
 			}
@@ -997,6 +1201,66 @@ ideas = {
 				mobilization_speed = 0.5
 			}
 		}
+		final_table = {
+			
+			allowed = {
+				always = no
+			}
+			
+			picture = spr_anti_fascist_crusade
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				industrial_capacity_dockyard = 0.1
+				industrial_capacity_factory = 0.1
+				stability_factor = 0.10
+			}
+		}
+		all_in = {
+			
+			allowed = {
+				always = no
+			}
+			
+			picture = eng_imperial_conscription
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				stability_weekly = -0.01
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_speed_factor = 0.1
+			}
+		}
+		third_man = {
+			
+			allowed = {
+				always = no
+			}
+			
+			picture = spr_the_popular_front
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				stability_factor = 0.10
+			}
+		}
 		new_deal = {
 			
 			
@@ -1030,14 +1294,13 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_infrastructure_factor = 0.60
-				production_speed_industrial_complex_factor = 0.30
+				production_speed_infrastructure_factor = 0.50
+				production_speed_industrial_complex_factor = 0.20
 				stability_factor = 0.10
 			}
 		}
 
 		wilkies_new_deal = {
-			
 			
 			allowed = {
 				always = no
@@ -1050,12 +1313,28 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_infrastructure_factor = 0.1
-				political_power_gain = 0.2
-				stability_factor = 0.15
+				consumer_goods_factor = -0.025
+				stability_factor = 0.05
 			}
 		}
-		
+		landons_deal = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = 0.2
+				stability_factor = 0.2
+				production_speed_industrial_complex_factor = 0.25
+			}
+		}
 		full_employment = {
 			
 			
@@ -1096,9 +1375,9 @@ ideas = {
 				conversion_cost_civ_to_mil_factor= -0.30
 				global_building_slots_factor = 0.3
 				production_factory_max_efficiency_factor = 0.05
-				production_speed_synthetic_rubber_refinery_factor = 0.1
+				production_speed_synthetic_rubber_refinery_factor = 0.25
 				production_factory_efficiency_gain_factor = 0.25
-				production_speed_dockyard_factor = 0.1
+				production_speed_dockyard_factor = 0.25
 			}
 		}
 	
@@ -1461,6 +1740,10 @@ ideas = {
 			modifier = {
 				drift_defence_factor = 0.2
 				ai_badass_factor = 0.03 # cares for 3% of normal threat
+			}
+			targeted_modifier = {
+				tag = CAN
+				trade_cost_for_target_factor = -0.5
 			}
 		}
 
