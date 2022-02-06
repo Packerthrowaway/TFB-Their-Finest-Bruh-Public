@@ -607,8 +607,11 @@ characters = {
 			allowed = {
 				original_tag = POL
 			}
+			available = {
+				has_completed_focus = POL_new_cav
+			}
 			traits = {
-				army_cavalry_1
+				army_cavalry_2
 			}
 			cost = 100
 			ai_will_do = {
@@ -617,7 +620,7 @@ characters = {
 		}
 		
 		corps_commander = {
-			traits = { armor_officer }
+			traits = { calvary_officer }
 			skill=4
 			attack_skill=4
 			defense_skill=3
@@ -635,8 +638,25 @@ characters = {
 				small = GFX_portrait_Roman_Abraham_small
 			}
 		}
+		advisor = {
+			slot = army_chief
+			idea_token = POL_roman_abraham
+			allowed = {
+					original_tag = POL
+				}
+				traits = {
+					army_chief_offensive_2
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
+			available = {
+				has_completed_focus = POL_modernize_our_army
+			}
+		}
 		corps_commander = {
-			traits = { POL_sanation_right_leader }
+			traits = { POL_sanation_right_leader armor_officer }
 			skill=4
 			attack_skill=3
 			defense_skill=4
@@ -942,6 +962,9 @@ characters = {
 			allowed = {
 				original_tag = POL
 			}
+			available = {
+				has_completed_focus = POL_new_tank
+			}
 			traits = {
 				army_armored_2
 			}
@@ -967,7 +990,10 @@ characters = {
 				original_tag = POL
 			}
 			traits = {
-				air_air_superiority_2
+				army_commando_3
+			}
+			available = {
+				has_completed_focus = POL_spec_ops
 			}
 			cost = 100
 			ai_will_do = {

@@ -2464,11 +2464,20 @@
 		prerequisite = { focus = ITA_pact_of_steel }
 		available = {
 			is_in_faction_with = GER
-			GER = { 
-				controls_state = 16 				
-				GER = { is_faction_leader = yes }
+			16 = {
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						AND = {
+							original_tag = FRA
+							has_government = fascism
+						}
+						is_subject_of = GER
+					}
+				}
 			}
 			OR = {
+				
 				1 = {
 					CONTROLLER = {
 						OR = {
