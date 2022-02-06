@@ -55,6 +55,7 @@ technologies = {
 					tag = HUN
 					tag = MAN
 					tag = SIA
+					tag = VIC
 				}
 			}
 		}
@@ -281,7 +282,10 @@ technologies = {
 		}
 		
 		allow_branch = {
-			tag = FRA
+			OR = {
+				tag = FRA
+				tag = VIC
+			}
 		}
 
 		categories = {
@@ -295,7 +299,10 @@ technologies = {
 		enable_equipment_modules = {
 			tank_light_turret_2
 		}
-
+		path = {
+			leads_to_tech = fra_light_tank_3
+			research_cost_coeff = 1
+		}
 		research_cost = 1
 		start_year = 1939
 		folder = {
@@ -309,6 +316,28 @@ technologies = {
 		}
 	}
 	
+	fra_light_tank_3 = {
+
+		enable_equipments = {
+			fra_light_tank_chassis_x13
+		}
+		enable_equipment_modules = {
+			tank_light_turret_3
+		}
+
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = nsb_armour_folder
+			position = { x = -4 y = 18 }
+		}
+
+		categories = {
+			armor
+			cat_light_armor
+		}
+	}
+
 	fra_medium_tank_1 = {
 
 		enable_equipments = {
@@ -345,6 +374,11 @@ technologies = {
 			tank_medium_turret_3
 		}
 
+		path = {
+			leads_to_tech = fra_medium_tank_3
+			research_cost_coeff = 1
+		}
+
 		research_cost = 2
 		start_year = 1940
 		folder = {
@@ -358,6 +392,55 @@ technologies = {
 		}
 	}
 	
+	fra_medium_tank_3 = {
+
+		enable_equipments = {
+			fra_medium_tank_chassis_s42
+		}
+		enable_equipment_modules = {
+			tank_medium_turret_4
+		}
+
+		path = {
+			leads_to_tech = fra_medium_tank_4
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 0 y = 12 }
+		}
+
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	fra_medium_tank_4 = {
+
+		enable_equipments = {
+			fra_medium_tank_chassis_x4
+		}
+		enable_equipment_modules = {
+			tank_modern_tank_turret
+		}
+
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 0 y = 18 }
+		}
+
+		categories = {
+			armor
+			cat_medium_armor
+		}
+	}
+
 	fra_heavy_tank_1 = {
 
 		enable_equipments = {

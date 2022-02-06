@@ -920,7 +920,6 @@
 			add_named_threat = { threat = 5 name = JAP_intervene_in_china }
 			add_ideas = JAP_intervene_in_china_5
 			unlock_decision_tooltip = JAP_china_step_up_war_effort
-			hidden_effect = { USA = { add_ideas = isolation } }
 			MAN = { add_ideas = MAN_intervene_in_china_5 }
 			unlock_decision_tooltip = { decision = MAN_china_step_up_war_effort show_effect_tooltip = yes }
 		}
@@ -1613,10 +1612,67 @@
 	}
 	
 	focus = {
+		id = JAP_island_defences
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = JAP_strike_the_west }
+		x = -1
+		y = 1
+		relative_position_id = JAP_strike_the_west
+
+		cost = 5
+
+		available = {
+			OR = {
+				has_idea = JAP_island_hopping4
+				has_idea = JAP_island_hopping5
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_full_control_of_state = 645
+				}
+				645 = {
+					add_dynamic_modifier = { modifier = island_defences }
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 647
+				}
+				647 = {
+					add_dynamic_modifier = { modifier = island_defences }
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 526
+				}
+				526 = {
+					add_dynamic_modifier = { modifier = island_defences }
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 646
+				}
+				646 = {
+					add_dynamic_modifier = { modifier = island_defences }
+				}
+			}
+		}
+	}
+
+	focus = {
 		id = JAP_warrior_spirit
 		icon = GFX_goal_JAP_WAY
 		prerequisite = { focus = JAP_strike_the_west }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = JAP_strike_the_west
 

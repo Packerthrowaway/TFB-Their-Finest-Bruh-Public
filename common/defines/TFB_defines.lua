@@ -397,8 +397,8 @@ NDefines.NSupply.RAILWAY_FLOW_PENALTY_PER_DAMAGED = 7.0 -- penalty to flow per d
 NDefines.NSupply.RAILWAY_MIN_FLOW = 5.0 		-- minimum railway flow can be reduced to
 NDefines.NSupply.BASE_TRUCK_HP = 300.0
 NDefines.NSupply.BASE_TRAIN_HP = 500.0
-NDefines.NSupply.RIVER_RAILWAY_LEVEL = 2
-NDefines.NSupply.VP_TO_SUPPLY_BASE = 0.35
+NDefines.NSupply.RIVER_RAILWAY_LEVEL = 1
+NDefines.NSupply.VP_TO_SUPPLY_BASE = 0.7
 
 
 NDefines.NGraphics.WEATHER_DISTANCE_CUTOFF = 1200 -- At what distance weather effects are hidden
