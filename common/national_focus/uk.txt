@@ -21,6 +21,8 @@ focus_tree = {
 	
 	continuous_focus_position = { x = 50 y = 1500 }
 
+	shared_focus = COM_commonwealth_command
+	
 	focus = {
 		id = limited_rearmament_focus
 		icon = GFX_goal_generic_build_tank
@@ -572,6 +574,7 @@ focus_tree = {
 		id = ENG_fund_private
 		icon = GFX_goal_generic_production2
 		prerequisite = { focus = ENG_royal_ordnance }
+		mutually_exclusive = { focus = ENG_rof }
 		x = -1
 		y = 1
 		cost = 5
@@ -612,10 +615,10 @@ focus_tree = {
 		}	
 		completion_reward = {
 			128 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -635,10 +638,10 @@ focus_tree = {
 		}	
 		completion_reward = {
 			128 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -649,6 +652,7 @@ focus_tree = {
 		id = ENG_rof
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = ENG_royal_ordnance }
+		mutually_exclusive = { focus = ENG_fund_private }
 		x = 1
 		y = 1
 		cost = 5
@@ -688,14 +692,6 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			126 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
 			custom_effect_tooltip = available_designer
 			show_ideas_tooltip = rsaf_enfield
 		}
@@ -790,7 +786,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = at_bonus
 				bonus = 0.75
-				uses = 1
+				uses = 2
 				technology = antitank2
 				technology = antitank3
 				technology = antitank5
@@ -859,8 +855,7 @@ focus_tree = {
 	focus = {
 		id = ENG_expand_the_army
 		icon = GFX_focus_generic_little_entente
-		prerequisite = { focus = ENG_mechanise_army }
-		prerequisite = { focus = ENG_special_arty }
+		prerequisite = { focus = ENG_mechanise_army focus = ENG_special_arty }
 		x = -1
 		y = 1
 		cost = 5
@@ -960,7 +955,6 @@ focus_tree = {
 		id = ENG_centurion
 		icon = GFX_doctrine_tank_warfare
 		prerequisite = { focus = ENG_cruiser_tanks2 }
-		allow_branch = {always = no}
 		x = 0
 		y = 1
 		cost = 5
@@ -2252,6 +2246,14 @@ focus_tree = {
 					}
 				}
 			}
+			836 = {
+				CONTROLLER = {
+					OR = {
+						tag = ENG
+						is_subject_of = ENG
+					}
+				}
+			}
 		}
 
 		available_if_capitulated = yes
@@ -2260,7 +2262,7 @@ focus_tree = {
 			447 = {
 				set_building_level = {
 					type = coastal_bunker
-					level = 2
+					level = 3
 					province = 4076
 					instant_build = yes
 				}
@@ -2279,7 +2281,7 @@ focus_tree = {
 			836 = {
 				set_building_level = {
 					type = bunker
-					level = 4
+					level = 5
 					province = 1071
 					instant_build = yes
 				}

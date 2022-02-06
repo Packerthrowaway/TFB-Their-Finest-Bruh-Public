@@ -19,7 +19,7 @@ focus_tree = {
 	
 	default = no
 
-
+	shared_focus = COM_commonwealth_command
 
 #	focus = {
 #		id = SAF_
@@ -195,8 +195,8 @@ focus_tree = {
 		id = SAF_reconstitute_the_cape_corps
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = SAF_cape_garrison_artillery}
-		x = -2
-		y = 4
+		x = -1
+		y = 3
 		relative_position_id = SAF_war_measures_act
 
 		cost = 10
@@ -233,8 +233,8 @@ focus_tree = {
 		id = SAF_expand_the_cape_corps
 		icon = GFX_goal_generic_demand_territory
 		prerequisite = { focus = SAF_reconstitute_the_cape_corps }
-		x = -2
-		y = 5
+		x = -1
+		y = 4
 		relative_position_id = SAF_war_measures_act
 
 		cost = 10
@@ -270,7 +270,7 @@ focus_tree = {
 		prerequisite = { focus = SAF_work_for_all_poor }
 		prerequisite = { focus = SAF_suppress_the_stormjaers }
 		x = 3
-		y = 5
+		y = 4
 		relative_position_id = SAF_war_measures_act
 
 		cost = 10
@@ -387,7 +387,7 @@ focus_tree = {
 		id = SAF_police_windhoek
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = SAF_support_the_policy_of_appeasement }
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = SAF_support_the_policy_of_appeasement
 
@@ -426,7 +426,7 @@ focus_tree = {
 		id = SAF_desert_equipment
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = SAF_csir }
-		x = -4
+		x = -3
 		y = 3
 		relative_position_id = SAF_support_the_policy_of_appeasement
 
@@ -460,10 +460,9 @@ focus_tree = {
 	focus = {
 		id = SAF_suppress_the_stormjaers
 		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = SAF_csir }
 		prerequisite = { focus = SAF_police_windhoek }
-		x = -2
-		y = 3
+		x = -1
+		y = 2
 		relative_position_id = SAF_support_the_policy_of_appeasement
 
 		cost = 10
@@ -496,7 +495,6 @@ focus_tree = {
 	focus = {
 		id = SAF_secure_interests_in_africa
 		icon = GFX_goal_tfv_saf_secure_interests_in_africa
-		prerequisite = { focus = SAF_suppress_the_stormjaers }
 		prerequisite = { focus = SAF_desert_equipment }
 		x = -3
 		y = 4
@@ -1341,6 +1339,35 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = SAF_queen_of_the_desert
+		icon = GFX_goal_ENG_queen_of_the_desert
+		prerequisite = { focus = SAF_q_services_corps }
+		x = 1
+		y = 1
+		relative_position_id = SAF_q_services_corps
+
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_q_services_corps
+				bonus = 0.75
+				ahead_reduction = 0.5
+				uses = 1
+				technology = eng_heavy_tank_2
+			}
+		}
+	}
+	
 	focus = {
 		id = SAF__south_african_military_college
 		icon = GFX_goal_generic_military_sphere

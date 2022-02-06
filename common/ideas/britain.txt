@@ -162,6 +162,7 @@ ideas = {
 				naval_strike_targetting_factor = 0.075
 				air_night_penalty = -0.15
 				air_range_factor = 0.10
+				air_home_defence_factor = 0.2
 			}
 		}
 	
@@ -1652,6 +1653,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.05
 				industrial_capacity_dockyard = 0.05
+				production_factory_start_efficiency_factor = 0.1
 			}
 
 			picture = generic_war_preparation
@@ -1674,6 +1676,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.02
 				industrial_capacity_dockyard = 0.02
+				production_factory_start_efficiency_factor = 0.02
 			}
 
 			picture = generic_war_preparation
@@ -1696,6 +1699,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.04
 				industrial_capacity_dockyard = 0.04
+				production_factory_start_efficiency_factor = 0.04
 			}
 
 			picture = generic_war_preparation
@@ -1718,6 +1722,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.06
 				industrial_capacity_dockyard = 0.06
+				production_factory_start_efficiency_factor = 0.06
 			}
 
 			picture = generic_war_preparation
@@ -1740,6 +1745,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.08
 				industrial_capacity_dockyard = 0.08
+				production_factory_start_efficiency_factor = 0.08
 			}
 
 			picture = generic_war_preparation
@@ -1762,6 +1768,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.10
 				industrial_capacity_dockyard = 0.10
+				production_factory_start_efficiency_factor = 0.10
 			}
 
 			picture = generic_war_preparation
@@ -2010,9 +2017,9 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				experience_gain_air = 0.05
-				experience_gain_air_factor = 0.1
-				air_mission_xp_gain_factor = 0.1
+				experience_gain_air = 0.1
+				experience_gain_air_factor = 0.2
+				air_mission_xp_gain_factor = 0.2
 				air_training_xp_gain_factor = 0.25
 			}
 		}
@@ -2040,9 +2047,9 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				experience_gain_air = 0.05
-				experience_gain_air_factor = 0.1
-				air_mission_xp_gain_factor = 0.15
+				experience_gain_air = 0.1
+				experience_gain_air_factor = 0.2
+				air_mission_xp_gain_factor = 0.2
 				air_training_xp_gain_factor = 0.3
 			}
 		}
@@ -2282,24 +2289,6 @@ ideas = {
 			}
 		}
 		
-		vauxhall = {
-			
-			allowed = {
-				original_TAG = ENG
-			}
-			
-
-			
-			research_bonus = {
-				motorized_equipment = 0.15
-			}
-			
-			traits = { motorized_equipment_manufacturer }
-			
-			modifier = {
-			}
-		}
-		
 		royal_arsenal = {
 			
 			allowed = {
@@ -2381,6 +2370,22 @@ ideas = {
 			}
 			
 			traits = { medium_tank_manufacturer }
+			
+			modifier = {
+			}
+		}
+		vauxhall = {
+			
+			allowed = {
+				original_TAG = ENG
+			}
+			
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			traits = { medium_tank_manufacturer }
+			traits = { vauxhall_trait }
 			
 			modifier = {
 			}
