@@ -71,62 +71,6 @@
 		}
 	}
 	
-	focus = {
-		id = SOV_seize_assets
-		icon = GFX_SOV_borrow_spanish_gold
-		prerequisite = { focus = SOV_socialist_realism }
-		x = 5
-		y = 1
-		relative_position_id = SOV_socialist_realism
-		cost = 5
-		ai_will_do = {
-			factor = 5
-		}
-
-		available_if_capitulated = yes
-
-		bypass = {
-		}
-
-		complete_tooltip = {
-		}
-
-		completion_reward = {
-			add_timed_idea = {
-				idea = SOV_church_gold
-				days = 365
-			}
-			add_ideas = SOV_childcare_idea
-		}
-	}
-	
-	focus = {
-		id = SOV_women
-		icon = GFX_SOV_goal_women
-		prerequisite = { focus = SOV_seize_assets }
-		x = 0
-		y = 1
-		relative_position_id = SOV_seize_assets
-		cost = 5
-		ai_will_do = {
-			factor = 5
-		}
-
-		available_if_capitulated = yes
-
-		bypass = {
-		}
-
-		complete_tooltip = {
-		}
-
-		completion_reward = {
-			swap_ideas = {
-				add_idea = SOV_women_idea
-				remove_idea = SOV_childcare_idea
-			}
-		}
-	}
 
 	focus = {
 		id = SOV_railway_5
@@ -1085,6 +1029,34 @@
 			}
 		}
 	}
+
+	focus = {
+		id = SOV_seize_assets
+		icon = GFX_SOV_borrow_spanish_gold
+		prerequisite = { focus = SOV_aluminium focus = SOV_tolkach }
+		x = 0
+		y = 1
+		relative_position_id = SOV_railway_5
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_church_gold
+				days = 365
+			}
+		}
+	}
 	
 	focus = {
 		id = SOV_finish_2_plan
@@ -1175,6 +1147,32 @@
 			add_idea = SOV_3_5_plan_ger
 		}	
 
+		}
+	}
+	focus = {
+		id = SOV_women
+		icon = GFX_SOV_goal_women
+		prerequisite = { focus = SOV_start_3_plan }
+		x = 3
+		y = 1
+		relative_position_id = SOV_start_3_plan
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_ideas =	{
+				 SOV_women_idea
+			} 
 		}
 	}
 	
@@ -1392,6 +1390,7 @@
 						instant_build = yes
 					}
 					add_dynamic_modifier = { modifier = SOV_armored_battery_35 scope = SOV }
+					add_dynamic_modifier = { modifier = SOV_defend_city }
 				}
 			}
 		}
@@ -2035,10 +2034,10 @@
 	focus = {
 		id = SOV_the_road_of_life
 		icon = GFX_focus_SOV_the_road_of_life
-		prerequisite = { focus = SOV_defend_leningrad }
-		x = 1
+		prerequisite = { focus = SOV_war_mobilisation }
+		x = 4
 		y = 1
-		relative_position_id = SOV_defend_leningrad
+		relative_position_id = SOV_war_mobilisation
 		cost = 5
 
 		available = {
@@ -2415,27 +2414,6 @@
 					add_idea = SOV_politicized_military_keep_humanism
 				}
 			}
-		}
-	}
-
-	focus = {
-		id = SOV_reorganise_command
-		icon = GFX_SOV_dual_command
-		prerequisite = { focus = SOV_order_270 }
-		x = 2
-		y = 1
-		relative_position_id = SOV_order_270
-		cost = 5
-		
-		available = {
-			has_army_experience > 100
-		}
-
-		completion_reward = {
-			every_army_leader = {
-				add_skill_level = 1
-			}
-			army_experience = -100
 		}
 	}
 
