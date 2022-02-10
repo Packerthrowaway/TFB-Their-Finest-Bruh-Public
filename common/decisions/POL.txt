@@ -876,3 +876,65 @@ POL_defensive_plans = {
 		}
 	}
 }
+
+POL_war_decisions = {
+	POL_morale = {
+		icon = generic_operation
+
+		allowed = {
+			tag = POL
+		}
+
+		available = {
+			has_capitulated = yes
+		}
+
+		activation = {
+			has_war_with = GER
+		}
+
+		is_good = no
+
+		fire_only_once = no
+
+		selectable_mission = no
+
+		days_mission_timeout = 30
+
+		timeout_effect = {
+			if = {
+				limit = {
+					not = {
+						has_idea = POL_alone_1
+						has_idea = POL_alone_2
+						has_idea = POL_alone_3
+					}
+				}
+				add_ideas = POL_alone_1
+
+			}
+			if = {
+				limit = {
+					has_idea = POL_alone_1
+				}
+				swap_ideas = {
+					remove_idea = POL_alone_1
+					add_ideas = POL_alone_2
+				}
+
+			}
+			if = {
+				limit = {
+					has_idea = POL_alone_2
+				}
+				swap_ideas = {
+					remove_idea = POL_alone_2
+					add_ideas = POL_alone_3
+				}
+
+			}
+			
+		}
+		 
+	}
+}
