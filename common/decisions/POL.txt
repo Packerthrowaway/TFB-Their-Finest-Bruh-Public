@@ -890,7 +890,7 @@ POL_war_decisions = {
 		}
 
 		activation = {
-			has_war_with = GER
+			has_war_with = GER			
 		}
 
 		is_good = no
@@ -913,28 +913,34 @@ POL_war_decisions = {
 				add_ideas = POL_alone_1
 
 			}
-			if = {
+			else_if = {
 				limit = {
 					has_idea = POL_alone_1
 				}
 				swap_ideas = {
+					add_idea = POL_alone_2
 					remove_idea = POL_alone_1
-					add_ideas = POL_alone_2
+
+				}
+
+			}
+			else_if = {
+				limit = {
+					has_idea = POL_alone_2
+				}
+				swap_ideas = {
+					add_idea = POL_alone_3
+					remove_idea = POL_alone_2
 				}
 
 			}
 			if = {
 				limit = {
-					has_idea = POL_alone_2
+					NOT = {has_idea = POL_alone_3}
 				}
-				swap_ideas = {
-					remove_idea = POL_alone_2
-					add_ideas = POL_alone_3
-				}
-
+				activate_mission = POL_morale
 			}
-			
+
 		}
-		 
 	}
 }
