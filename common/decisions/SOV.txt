@@ -6461,7 +6461,7 @@ SOV_merge_designers_dec_cat = {
 		days_remove = SOV_merge_designers_time
 
 		modifier = {
-			civilian_factory_use = 1
+			civilian_factory_use = 10
 		}
 
 		complete_effect = {
@@ -6519,7 +6519,7 @@ SOV_merge_designers_dec_cat = {
 		days_remove = SOV_merge_designers_time
 
 		modifier = {
-			civilian_factory_use = 1
+			civilian_factory_use = 10
 		}
 
 		complete_effect = {
@@ -6583,7 +6583,7 @@ SOV_merge_designers_dec_cat = {
 		days_remove = SOV_merge_designers_time
 
 		modifier = {
-			civilian_factory_use = 1
+			civilian_factory_use = 10
 		}
 
 		complete_effect = {
@@ -7222,7 +7222,7 @@ SOV_industry_relocation = {
 
 		target_root_trigger = {
 			original_tag = SOV
-			has_completed_focus = SOV_ural_move
+			has_completed_focus = SOV_ural_factories
 			has_civil_war = no
 		}
 
@@ -7414,7 +7414,7 @@ SOV_industry_relocation = {
 		}
 
 		visible = {
-			has_completed_focus = SOV_ural_move
+			has_completed_focus = SOV_ural_factories
 			controls_state = 195
 			controls_state = 569
 			195 = { has_state_flag = leningrad_aluminium_developed }
@@ -9164,7 +9164,7 @@ operations = {
 			add_stability = 0.05
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
 				category = land_doctrine
 			}
@@ -9475,6 +9475,66 @@ political_actions = {
 
 		ai_will_do = {
 			factor = 0
+		}
+	}
+
+}
+
+SOV_organise_partisans = {
+
+	SOV_generic_partisans = {
+		priority = 10
+
+		icon = generic_ignite_civil_war
+
+		state_target = yes
+
+		#targets = { core_states }
+
+		target_trigger = {
+			FROM = {
+				is_owned_by = ROOT
+				is_core_of = ROOT
+				is_on_continent = europe
+				NOT = {
+					is_controlled_by = ROOT
+				}
+			}
+		}
+
+		target_root_trigger = {
+			original_tag = SOV
+			has_completed_focus = SOV_partisan_organisation
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			NOT = { has_country_flag = SOV_partisan_operation_progress }
+		}
+
+		cancel_if_not_visible = no
+
+		cost = 25
+
+		days_remove = 90
+		
+		days_re_enable = 80
+
+		complete_effect = {
+			FROM = {
+				add_dynamic_modifier = { modifier = SOV_partisan_op }
+			}
+			set_country_flag = SOV_partisan_operation_progress
+		}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SOV_partisan_op }
+			}
+			clr_country_flag = SOV_partisan_operation_progress
 		}
 	}
 

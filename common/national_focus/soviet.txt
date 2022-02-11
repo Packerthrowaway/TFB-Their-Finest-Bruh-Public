@@ -12,7 +12,7 @@
 	
 	default = no
 	
-	continuous_focus_position = { x = 1500 y = 1850 }
+	continuous_focus_position = { x = 1700 y = 1850 }
 
 	focus = {
 		id = SOV_socialist_realism
@@ -43,7 +43,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_socialist_realism
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -71,6 +71,7 @@
 		}
 	}
 	
+
 	focus = {
 		id = SOV_railway_5
 		icon = GFX_goal_socialist_realism
@@ -741,7 +742,7 @@
 		x = 3
 		y = 1
 		relative_position_id = SOV_heavy_industry_expansion
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -776,7 +777,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_auto_industry
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -819,7 +820,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_plant_expansion
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -862,7 +863,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_society_urbanisation
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -882,7 +883,7 @@
 		x = -3
 		y = 1
 		relative_position_id = SOV_heavy_industry_expansion
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -925,7 +926,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_steel
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -964,7 +965,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_petrochemical
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -1002,7 +1003,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_rare_metal
-		cost = 6
+		cost = 5
 		ai_will_do = {
 			factor = 5
 		}
@@ -1025,6 +1026,34 @@
 				type = aluminium
 				amount = 180
 				state = 586
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_seize_assets
+		icon = GFX_SOV_borrow_spanish_gold
+		prerequisite = { focus = SOV_aluminium focus = SOV_tolkach }
+		x = 0
+		y = 1
+		relative_position_id = SOV_railway_5
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_church_gold
+				days = 365
 			}
 		}
 	}
@@ -1102,7 +1131,7 @@
 	}
 	focus = {
 		id = SOV_germans_are_coming
-		icon = GFX_SOV_increase_production
+		icon = GFX_focus_SOV_the_supreme_soviet
 		prerequisite = { focus = SOV_pcdi	}
 		cost = 2
 		relative_position_id = SOV_pcdi
@@ -1118,6 +1147,32 @@
 			add_idea = SOV_3_5_plan_ger
 		}	
 
+		}
+	}
+	focus = {
+		id = SOV_women
+		icon = GFX_SOV_goal_women
+		prerequisite = { focus = SOV_start_3_plan }
+		x = 3
+		y = 1
+		relative_position_id = SOV_start_3_plan
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+		}
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			add_ideas =	{
+				 SOV_women_idea
+			} 
 		}
 	}
 	
@@ -1171,7 +1226,7 @@
 		icon = GFX_SOV_production_speed
 		prerequisite = { focus = SOV_arms_factories }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = SOV_arms_factories
 		cost = 5
 
@@ -1237,6 +1292,8 @@
 					instant_build = yes
 				}
 			}
+			set_country_flag = sov_ural_move
+			custom_effect_tooltip = SOV_ural_move_tt
 		}
 	}
 	
@@ -1246,7 +1303,7 @@
 		icon = GFX_SOV_narkom_for_heavy_industry
 		prerequisite = { focus = SOV_ural_factories }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = SOV_ural_factories
 		cost = 5
 
@@ -1270,20 +1327,19 @@
 		}
 	}
 	
-	focus = {
-		id = SOV_ural_move
-		icon = GFX_goal_generic_construct_civilian
-		prerequisite = { focus = SOV_ural_factories }
-		x = 1
-		y = 1
-		relative_position_id = SOV_ural_factories
-		cost = 5
+	# focus = {
+	# 	id = SOV_ural_move
+	# 	icon = GFX_goal_generic_construct_civilian
+	# 	prerequisite = { focus = SOV_ural_factories }
+	# 	x = 1
+	# 	y = 1
+	# 	relative_position_id = SOV_ural_factories
+	# 	cost = 5
 
-		completion_reward = {
-			set_country_flag = sov_ural_move
-			custom_effect_tooltip = SOV_ural_move_tt
-		}
-	}
+	# 	completion_reward = {
+
+	# 	}
+	# }
 	
 	focus = {
 		id = SOV_war_mobilisation
@@ -1334,6 +1390,7 @@
 						instant_build = yes
 					}
 					add_dynamic_modifier = { modifier = SOV_armored_battery_35 scope = SOV }
+					add_dynamic_modifier = { modifier = SOV_defend_city }
 				}
 			}
 		}
@@ -1396,7 +1453,7 @@
 		id = SOV_technical_assistance
 		icon = GFX_SOV_usa_sov_agreement
 		prerequisite = { focus = SOV_war_mobilisation }
-		x = 6
+		x = 7
 		y = 1
 		relative_position_id = SOV_war_mobilisation
 		cost = 5
@@ -1679,12 +1736,17 @@
 				amount = 3000
 				producer = ENG
 			}
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 200
+				producer = USA
+			}
 		}
 	}
 
 	focus = {
 		id = SOV_defend_moscow
-		icon = GFX_SOV_defend_city
+		icon = GFX_focus_SOV_the_defense_of_moscow
 		prerequisite = { focus = SOV_war_mobilisation }
 		x = 2
 		y = 1
@@ -1704,6 +1766,7 @@
 
 		completion_reward = {
 			219 = {
+				add_dynamic_modifier = { modifier = SOV_defend_city }
 				add_building_construction = {
 					type = bunker
 					level = 5
@@ -1782,6 +1845,7 @@
 
 		completion_reward = {
 			217 = {
+				add_dynamic_modifier = { modifier = SOV_defend_city }
 				add_building_construction = {
 					type = bunker
 					level = 5
@@ -1872,6 +1936,7 @@
 
 		completion_reward = {
 			195 = {
+				add_dynamic_modifier = { modifier = SOV_defend_city }
 				add_building_construction = {
 					type = bunker
 					level = 3
@@ -1969,10 +2034,10 @@
 	focus = {
 		id = SOV_the_road_of_life
 		icon = GFX_focus_SOV_the_road_of_life
-		prerequisite = { focus = SOV_defend_leningrad }
-		x = 2
+		prerequisite = { focus = SOV_war_mobilisation }
+		x = 4
 		y = 1
-		relative_position_id = SOV_defend_leningrad
+		relative_position_id = SOV_war_mobilisation
 		cost = 5
 
 		available = {
@@ -2075,13 +2140,28 @@
 		}
 	}
 	
-	
+	focus = {
+		id = SOV_partisan_organisation
+		icon = GFX_focus_prc_infiltration
+		prerequisite = { focus = SOV_order_270 }
+		x = -2
+		y = 1
+		relative_position_id = SOV_order_270
+		cost = 5
+		
+		available = {
+		}
+
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_organise_partisans
+		}
+	}
 	
 	focus = {
 		id = SOV_frontline_mob
-		icon = GFX_focus_YUG_pan_slavic_congress
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_communism
 		prerequisite = { focus = SOV_order_270 }
-		x = -3
+		x = -4
 		y = 1
 		relative_position_id = SOV_order_270
 		cost = 1
@@ -2176,7 +2256,7 @@
 
 		focus = {
 		id = SOV_fareast_reserves
-		icon = GFX_focus_YUG_pan_slavic_congress
+		icon = GFX_focus_SOV_restore_cossack_units
 		prerequisite = { focus = SOV_frontline_mob }
 		x = 0
 		y = 1
@@ -2392,7 +2472,7 @@
 		id = SOV_coordinate_industry
 		icon = GFX_SOV_increase_production
 		prerequisite = { focus = SOV_order_270 }
-		x = 3
+		x = 4
 		y = 1
 		relative_position_id = SOV_order_270
 		cost = 5
@@ -5076,7 +5156,7 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
 				category = cat_mass_assault
 			}
@@ -5372,7 +5452,7 @@
 	
 	focus = {
 		id = SOV_nkvd_divisions
-		icon = GFX_goal_generic_military_deal
+		icon = GFX_focus_SOV_organization_centralization_discipline
 		prerequisite = { focus = SOV_infantry2 }
 		mutually_exclusive = { focus = SOV_rehabilitated_army }
 		x = -1
@@ -5401,7 +5481,7 @@
 	
 	focus = {
 		id = SOV_rehabilitated_army
-		icon = GFX_goal_generic_small_arms
+		icon = GFX_focus_SOV_builder_of_the_red_army
 		prerequisite = { focus = SOV_infantry2 }
 		mutually_exclusive = { focus = SOV_nkvd_divisions }
 		x = 1
@@ -5472,7 +5552,7 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_superior_firepower
 				category = cat_mobile_warfare
@@ -5502,7 +5582,7 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_mobile_warfare
 			}
@@ -5556,13 +5636,13 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_mobile_warfare
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
 				category = cat_battlefield_support 
 			}
@@ -5721,7 +5801,7 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_superior_firepower
 			}
@@ -5775,13 +5855,13 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_superior_firepower
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
 				category = air_doctrine 
 			}

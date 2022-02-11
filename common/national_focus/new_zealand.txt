@@ -21,6 +21,8 @@ focus_tree = {
 	
 	continuous_focus_position = { x = 50 y = 1200 }
 
+	shared_focus = COM_commonwealth_command
+
 #	focus = {
 #		id = NZL_
 #		icon = GFX_
@@ -118,7 +120,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = NZL_transfer_the_new_zealand_division
 
-		cost = 11.5
+		cost = 5
 
 		ai_will_do = {
 			factor = 25
@@ -144,7 +146,7 @@ focus_tree = {
 			navy_experience = 25
 			add_doctrine_cost_reduction = {
 				name = NZL_form_the_rnzn
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
 				category = naval_doctrine
 			}
@@ -568,7 +570,7 @@ focus_tree = {
 			}
 			add_doctrine_cost_reduction = {
 				name = NZL_expand_the_nzpaf
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = air_doctrine
 			}
@@ -592,7 +594,7 @@ focus_tree = {
 			}
 			add_doctrine_cost_reduction = {
 				name = NZL_expand_the_nzpaf
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = air_doctrine
 			}
@@ -901,7 +903,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = NZL_national_roads_board
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 100
@@ -930,6 +932,22 @@ focus_tree = {
 					amount = 200
 				}
 			}
+			random_owned_controlled_state = {
+				prioritize = { 284 723 }
+				limit = {				
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -941,7 +959,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = NZL_national_roads_board
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 50
@@ -1024,7 +1042,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = NZL_national_roads_board
 
-		cost = 12
+		cost = 10
 
 		ai_will_do = {
 			factor = 100
@@ -1317,7 +1335,7 @@ focus_tree = {
 		x = 28
 		y = 0
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 2
@@ -1343,7 +1361,7 @@ focus_tree = {
 			army_experience = 25
 			add_doctrine_cost_reduction = {
 				name = NZL_army_reforms
-				cost_reduction = 0.75
+				cost_reduction = 0.40
 				uses = 1
 				category = land_doctrine
 			}
@@ -1428,7 +1446,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = NZL_charlton_automatic_rifle
 				bonus = 0.75
-				uses = 1
+				uses = 2
 				category = infantry_weapons
 			}
 		}
@@ -1577,7 +1595,7 @@ focus_tree = {
 		y = 3
 		relative_position_id = NZL_army_reforms
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 25
@@ -1699,7 +1717,7 @@ focus_tree = {
 		y = 5
 		relative_position_id = NZL_army_reforms
 
-		cost = 13.5
+		cost = 10
 
 		ai_will_do = {
 			factor = 35
@@ -1736,7 +1754,7 @@ focus_tree = {
 		x = 8
 		y = 0
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 30
@@ -1775,7 +1793,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = NZL_the_first_labor_government
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 35
@@ -1847,7 +1865,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = NZL_ratana_alliance
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 25
@@ -1924,7 +1942,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = NZL_ratana_alliance
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 8
@@ -2072,7 +2090,7 @@ focus_tree = {
 		y = 5
 		relative_position_id = NZL_ratana_alliance
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 25
@@ -2108,7 +2126,7 @@ focus_tree = {
 		y = 6
 		relative_position_id = NZL_ratana_alliance
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 25
@@ -2131,38 +2149,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			division_template = {
-				is_locked = no
-				name = "Maori Volunteers"
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-        			infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-        			infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 2 y = 2 }
-		
-					artillery_brigade = { x = 3 y = 0 }
-					artillery_brigade = { x = 3 y = 1 }
-				}
-				support = {
-					engineer = { x = 0 y = 0 }
-					hq_company = { x = 0 y = 1 }
-					recon = { x = 0 y = 2 }
-					logistics_company = { x = 0 y = 3 }
-
-				}
-			}
-			random_owned_controlled_state = {
-				prioritize = { 284 723 }
-				create_unit = {
-					division = " name = \"Maori Volunteers\" division_template = \"Maori Volunteers\" start_experience_factor = 0.0"
-					owner = NZL
-				}
-			}
+			add_manpower = 50000
 		}
 	}
 
@@ -2237,7 +2224,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = NZL_strengthen_the_commonwealth #for visuals
 
-		cost = 4.4
+		cost = 5
 
 		ai_will_do = {
 			factor = 25
@@ -2307,7 +2294,6 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			set_rule = { can_create_factions = yes }
 			add_ideas = NZL_2nzef
 		}
 	}
