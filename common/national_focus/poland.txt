@@ -5019,45 +5019,6 @@
 	}
 
 	focus = {
-		id = POL_learn_from_defeat
-		icon = GFX_focus_generic_military_academy
-		prerequisite = { focus = POL_foreign_army_support }
-		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
-			
-		}
-
-		x = 0
-		y = 1
-		relative_position_id = POL_foreign_army_support
-		cost = 10
-
-		ai_will_do = {
-			factor = 10
-		}
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = POL_learn_from_defeat
-				cost_reduction = 0.25
-				uses = 2
-				category = land_doctrine
-			}
-		}
-	}
-
-	focus = {
 		id = POL_modernize_our_army
 		icon = GFX_goal_generic_air_doctrine
 		prerequisite = { focus = POL_learn_from_defeat }

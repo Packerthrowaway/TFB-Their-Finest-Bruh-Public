@@ -3293,6 +3293,26 @@
 		}
 	}
 	focus = {
+		id = ITA_expand_shock_tactics
+		icon = GFX_superior_tactics
+		prerequisite = { focus = ITA_old_guard }
+		x = -2
+		y = 0
+		relative_position_id = ITA_army_traditions
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_ideas = ITA_shock_tactics
+		}
+	}
+	focus = {
 		id = ITA_reform_the_arditi
 		icon = GFX_goal_ita_armir
 		prerequisite = { focus = ITA_expand_shock_tactics }
@@ -3315,26 +3335,6 @@
 				}
 			}
 			custom_effect_tooltip = ITA_arditi_tt
-		}
-	}
-	focus = {
-		id = ITA_expand_shock_tactics
-		icon = GFX_superior_tactics
-		prerequisite = { focus = ITA_old_guard }
-		x = -2
-		y = 0
-		relative_position_id = ITA_army_traditions
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
-			add_ideas = ITA_shock_tactics
 		}
 	}
 	focus = {
