@@ -78,6 +78,7 @@ on_actions = {
 		}
 	}
 	
+	#Sun Never Sets Europe
 	on_state_control_changed = {
 		effect = {
 			if = {
@@ -144,4 +145,155 @@ on_actions = {
 			}
 		}
 	}
+
+
+	#Sun Never Sets Pacific
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { 
+						OR = {
+							is_in_faction_with = ENG 
+							is_in_faction_with = USA 
+							tag = ENG
+							tag = USA
+						}
+					}
+					ROOT = { 
+						OR = { 
+							is_in_faction_with = GER 
+							is_in_faction_with = JAP 
+							tag = GER
+							tag = JAP
+							tag = ITA
+						} 
+					}
+					FROM.FROM = {
+						has_state_flag = ASN_ALLIES_controls
+					}
+				}
+				FROM.FROM = {  
+				 	set_state_flag = NOT_ASN_ALLIES_controls
+				 	clr_state_flag = ASN_ALLIES_controls
+				}
+				NZL = { 
+					ASN_ALLIES_bases_level_down = yes
+			 	}
+				AST = { 
+					ASN_ALLIES_bases_level_down = yes
+			 	}
+			}
+		}
+	}
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { 
+						OR = { 
+							is_in_faction_with = GER 
+							is_in_faction_with = JAP 
+							tag = GER
+							tag = JAP
+							tag = ITA
+						} 
+					}
+					ROOT = {
+						OR = {
+							is_in_faction_with = ENG 
+							is_in_faction_with = USA 
+							tag = ENG
+							tag = USA
+						}
+					}
+					FROM.FROM = {
+						has_state_flag = NOT_ASN_ALLIES_controls
+					}
+				}
+				FROM.FROM = { 
+				 	set_state_flag = ASN_ALLIES_controls 
+				 	clr_state_flag = NOT_ASN_ALLIES_controls 
+				}
+				NZL = {
+					ASN_ALLIES_bases_level_up = yes
+		 		} 
+				AST = {
+					ASN_ALLIES_bases_level_up = yes
+		 		} 
+			}
+		}
+	}
+
+		#Sun Never Sets RAJ
+		on_state_control_changed = {
+			effect = {
+				if = {
+					limit = {
+						FROM = { 
+							OR = {
+								is_in_faction_with = ENG 
+								is_in_faction_with = USA 
+								tag = ENG
+								tag = USA
+							}
+						}
+						ROOT = { 
+							OR = { 
+								is_in_faction_with = GER 
+								is_in_faction_with = JAP 
+								tag = GER
+								tag = JAP
+								tag = ITA
+							} 
+						}
+						FROM.FROM = {
+							has_state_flag = RAJ_controls
+						}
+					}
+					FROM.FROM = {  
+						 set_state_flag = NOT_RAJ_controls
+						 clr_state_flag = RAJ_ALLIES_controls
+					}
+					RAJ = { 
+						RAJ_bases_level_down = yes
+					}
+				}
+			}
+		}
+		on_state_control_changed = {
+			effect = {
+				if = {
+					limit = {
+						FROM = { 
+							OR = { 
+								is_in_faction_with = GER 
+								is_in_faction_with = JAP 
+								tag = GER
+								tag = JAP
+								tag = ITA
+							} 
+						}
+						ROOT = {
+							OR = {
+								is_in_faction_with = ENG 
+								is_in_faction_with = USA 
+								tag = ENG
+								tag = USA
+							}
+						}
+						FROM.FROM = {
+							has_state_flag = NOT_RAJ_controls
+						}
+					}
+					FROM.FROM = { 
+						 set_state_flag = RAJ_controls 
+						 clr_state_flag = NOT_RAJ_controls 
+					}
+					RAJ = {
+						RAJ_bases_level_up = yes
+					} 
+				}
+			}
+		}
 }
