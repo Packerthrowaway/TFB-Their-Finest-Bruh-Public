@@ -1938,7 +1938,7 @@ focus_tree = {
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -1948,7 +1948,7 @@ focus_tree = {
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -1958,9 +1958,15 @@ focus_tree = {
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
+			}
+			build_railway = { #Delhi - Karachi
+				path = { 2086 2054 1908 4984 10847 1980 4110 10108 3456 }
+			}
+			build_railway = { #Delhi - Ahmadabad - Bombay
+				path = { 1908 4149 12886 1103 9975 11952 7150 4187 7013 1349 }
 			}
 		}
 
@@ -1970,12 +1976,12 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				set_state_flag = RAJ_great_indian_peninsula_railway_Inf1
@@ -1985,12 +1991,12 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				set_state_flag = RAJ_great_indian_peninsula_railway_Inf2
@@ -2000,15 +2006,21 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				set_state_flag = RAJ_great_indian_peninsula_railway_Inf3
+			}
+			build_railway = { #Delhi - Karachi
+				path = { 2086 2054 1908 4984 10847 1980 4110 10108 3456 }
+			}
+			build_railway = { #Delhi - Ahmadabad - Bombay
+				path = { 1908 4149 12886 1103 9975 11952 7150 4187 7013 1349 }
 			}
 		}
 	}
@@ -2715,12 +2727,12 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -2729,12 +2741,12 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -2743,12 +2755,12 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -2757,13 +2769,44 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 640
+					controls_state = 288
+				}
+				build_railway = {
+					path = { #Rangoon - Mandalay - Myitkyina
+						1330 12127 1417 12256 4626 4585 1492 7469 12464 1082 4425
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 430
+				}
+				build_railway = { #connects railway around Dacca to the rest of the network
+					path = {
+						11968 9993 4616
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 430
+				}
+				build_railway = { #connects Bhutan to the Indian Rail network
+					path = {
+						12338 8010
+					}
 				}
 			}
 		}
@@ -2802,7 +2845,7 @@ focus_tree = {
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -2812,8 +2855,31 @@ focus_tree = {
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 429
+					controls_state = 427
+				}
+				build_railway = { #Bombay - Hyderabad - East Coast
+					path = {
+						1349 10270 4353 12142 1359 10324 8087 4472 12114 4280 7340
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 438
+					controls_state = 436
+					controls_state = 429
+				}
+				build_railway = { #Lucknow - Bombay
+					path = {
+						1349 7013 4072 7060 7430 10030 4950 11995 4953 5096 5040 4045 2036 12137
+					}
 				}
 			}
 		}
@@ -2824,12 +2890,12 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				set_state_flag = RAJ_integrate_princely_railways_Inf1
@@ -2839,12 +2905,12 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 				set_state_flag = RAJ_integrate_princely_railways_Inf2
@@ -2853,13 +2919,103 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = infrastructure
-						size > 1
+						size > 0
 					}
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 429
+					controls_state = 427
+				}
+				build_railway = { #Bombay - Hyderabad - East Coast
+					path = {
+						1349 10270 4353 12142 1359 10324 8087 4472 12114 4280 7340
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 438
+					controls_state = 436
+					controls_state = 429
+				}
+				build_railway = { #Lucknow - Bombay
+					path = {
+						1349 7013 4072 7060 7430 10030 4950 11995 4953 5096 5040 4045 2036 12137
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = RAJ_burma_rail
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = RAJ_integrate_princely_railways }
+		x = 0
+		y = 1
+		relative_position_id = RAJ_integrate_princely_railways
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					controls_state = 430
+					controls_state = 288
+				}
+				build_railway = { #Dacca - Rangoon
+					path = {
+						9991 1142 12090 1014 1333 10344
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 432
+					controls_state = 640
+				}
+				build_railway = { #Assam - Mandalay
+					path = {
+						12366 12395 1553 4087 4588 1082
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 288
+					controls_state = 430
+					controls_state = 640
+				}
+				build_railway = { #East Bengal - Mandalay
+					path = {
+						9991 7122 11966 7534 12335 12492 12464
+					}
 				}
 			}
 		}
