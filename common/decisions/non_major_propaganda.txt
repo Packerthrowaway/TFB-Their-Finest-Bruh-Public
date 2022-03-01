@@ -31,8 +31,8 @@ AXIS_propaganda_campaigns = {
 		cost = 50
 
 		modifier = {
-			compliance_gain = 0.01
-			resistance_target = -0.05
+			compliance_gain = 0.005
+			resistance_target = -0.025
 		}
 
 		complete_effect = {
@@ -68,6 +68,7 @@ AXIS_propaganda_campaigns = {
 			NOT = {
 				has_country_flag = AXIS_running_prop
 			}
+			has_war = yes
 		}
 
 		days_remove = 365
@@ -113,6 +114,10 @@ AXIS_propaganda_campaigns = {
 		available = {
 			NOT = {
 				has_country_flag = ENG_running_prop
+			}
+			OR = {
+				has_war_with = ENG
+				has_war_with = USA
 			}
 		}
 
@@ -251,6 +256,9 @@ AXIS_propaganda_campaigns = {
 		available = {
 			NOT = {
 				has_country_flag = AXIS_running_prop
+			}
+			GER = {
+				has_completed_focus = GER_reichsarbeit
 			}
 		}
 
