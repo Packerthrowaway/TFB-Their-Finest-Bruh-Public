@@ -261,6 +261,45 @@ on_actions = {
 	# ROOT is capitulated country, FROM is winner
 	on_capitulation = {
 		effect = {
+			if = { 
+				limit = {
+					original_tag = BEL
+					NOT = {
+						SAF = {
+							controls_state = 295
+							controls_state = 538
+							controls_state = 718
+							controls_state = 769
+							controls_state = 768
+						}
+					}
+					NOT = {
+						BEL = {
+							controls_state = 295
+							controls_state = 538
+							controls_state = 718
+							controls_state = 769
+							controls_state = 768
+						}
+					}
+					NOT = {
+						ENG = {
+							controls_state = 295
+							controls_state = 538
+							controls_state = 718
+							controls_state = 769
+							controls_state = 768
+						}
+					}
+				}
+			}
+			BEL = {
+				transfer_state = 295
+				transfer_state = 538
+				transfer_state = 718
+				transfer_state = 769
+				transfer_state = 768
+			}
 		}
 	}
 
