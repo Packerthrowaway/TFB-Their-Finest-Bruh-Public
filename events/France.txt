@@ -513,6 +513,158 @@ country_event = {
 				}
 				set_nationality = FRA
 			}
+			generate_character = {
+				token_base = generic_fascist_demagogue # token will be TAG_token_base
+				advisor = {
+					slot = political_advisor
+					traits = { fascist_demagogue }
+					available = {
+						if = {
+							limit = { has_dlc = "Man the Guns" }	
+							NOT = { has_autonomy_state = autonomy_supervised_state }
+						}				
+					}
+					ai_will_do = {
+						factor = 0
+					}
+				}
+				portraits = { 
+					army = { small = GFX_idea_generic_fascist_demagogue }
+				}
+			}
+			generate_character = {
+				token_base = generic_paramilitary_leader # token will be TAG_token_base
+				advisor = {
+					slot = political_advisor
+					traits = { paramilitary_leader }
+				}
+				portraits = { 
+					army = { small = GFX_idea_viktor_schutze }
+				}
+			}
+			generate_character = {
+				token_base = generic_reorganiser # token will be TAG_token_base
+				advisor = {
+					slot = political_advisor
+					traits = { reorganiser }
+				}
+				portraits = { 
+					army = { small = GFX_idea_viktor_schutze }
+				}
+			}
+			generate_character = {
+				token_base = generic_silent_workhorse # token will be TAG_token_base
+				advisor = {
+					slot = political_advisor
+					traits = { silent_workhorse }
+				}
+				portraits = { 
+					army = { small = GFX_idea_heisenberg }
+				}
+			}
+			generate_character = {
+				token_base = generic_prince_of_terror # token will be TAG_token_base
+				advisor = {
+					slot = political_advisor
+					traits = { prince_of_terror }
+				}
+				portraits = { 
+					army = { small = GFX_idea_viktor_schutze }
+				}
+			}
+			generate_character = {
+				token_base = generic_popular_figurehead # token will be TAG_token_base
+				advisor = {
+					slot = political_advisor
+					traits = { popular_figurehead }
+				}
+				portraits = { 
+					army = { small = GFX_idea_martial_valin }
+				}
+			}
+			generate_character = {
+				token_base = generic_army_art # token will be TAG_token_base
+				advisor = {
+					slot = high_command
+					traits = { army_artillery_1 }
+				}
+				portraits = { 
+					army = { small = GFX_idea_martial_valin }
+				}
+			}
+			generate_character = {
+				token_base = generic_navy_fleet_log # token will be TAG_token_base
+				advisor = {
+					slot = high_command
+					traits = { navy_fleet_logistics_1 }
+				}
+				portraits = { 
+					army = { small = GFX_idea_viktor_schutze }
+				}
+			}
+			generate_character = {
+				token_base = generic_air_air_combat_trainer # token will be TAG_token_base
+				advisor = {
+					slot = high_command
+					traits = { air_air_combat_training_2 }
+					cost = 100
+				}
+				portraits = { 
+					army = { small = GFX_idea_dudley_pound }
+				}
+			}
+			generate_character = {
+				token_base = generic_air_close_air_sup # token will be TAG_token_base
+				advisor = {
+					slot = air_chief
+					traits = { air_close_air_support_2 }
+					cost = 100
+				}
+				portraits = { 
+					army = { small = GFX_idea_viktor_schutze }
+				}
+			}
+			generate_character = {
+				token_base = generic_air_chief_all_weather # token will be TAG_token_base
+				advisor = {
+					slot = air_chief
+					traits = { air_chief_all_weather_2 }
+					cost = 100
+				}
+				portraits = { 
+					army = { small = GFX_idea_viktor_schutze }
+				}
+			}
+			generate_character = {
+				token_base = generic_military_theorist # token will be TAG_token_base
+				advisor = {
+					slot = theorist
+					traits = { military_theorist }
+				}
+				portraits = { 
+					army = { small = GFX_idea_martial_valin }
+				}
+			}
+			generate_character = {
+				token_base = generic_naval_theorist # token will be TAG_token_base
+				advisor = {
+					slot = theorist
+					traits = { naval_theorist }
+				}
+				portraits = { 
+					army = { small = GFX_idea_heisenberg }
+				}
+			}
+			generate_character = {
+				token_base = generic_air_warfare_theorist # token will be TAG_token_base
+				advisor = {
+					slot = theorist
+					traits = { air_warfare_theorist }
+				}
+				portraits = { 
+					army = { small = GFX_idea_viktor_schutze }
+				}
+			}
 			every_army_leader = {
 				limit = {
 					NOT = { has_trait = old_guard }
