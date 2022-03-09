@@ -1572,9 +1572,14 @@
 				target = AST
 				type = annex_everything
 			}
-			declare_war_on = {
-				target = NZL
-				type = annex_everything
+			if = {
+				limit = {
+					NZL = { exists = yes }
+				}
+				declare_war_on = {
+					target = NZL
+					type = annex_everything
+				}
 			}
 			declare_war_on = {
 				target = RAJ
@@ -1588,6 +1593,10 @@
 						type = annex_everything
 					}
 				}	
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = FRA
 			}
 			hidden_effect = {
 				if = {

@@ -21,6 +21,7 @@ add_namespace = NSB_soviet_for_the_common_good
 add_namespace = NSB_soviet_civil_war_common
 add_namespace = NSB_soviet_fascist_tsarist
 add_namespace = NSB_soviet_nationalist
+add_namespace = soviet
 
 
 #########################
@@ -12453,5 +12454,32 @@ country_event = {
 				set_nationality = GER
 			}
 		}
+	}
+}
+
+#####JAPAN PEACE#####
+country_event = {
+	id = soviet.1111
+	title = soviet.1111.t
+	desc = soviet.1111.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = soviet.1111.a
+		diplomatic_relation = {
+			country = SOV
+			relation = non_aggression_pact
+			active = yes
+		}
+		set_truce = {
+			target = SOV
+			days = 730
+		}
+	}
+	
+	option = {
+		name = soviet.1111.b
 	}
 }
