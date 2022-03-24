@@ -322,3 +322,68 @@
 			}
 		}
 	}
+
+# France
+FRA_pick_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { FRA_poster_left_icon_frame = FRA_propaganda_empty_slot_index }
+			}
+			set_variable = { FRA_poster_left_icon_frame = FRA_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { FRA_propaganda_left_poster_to_age = FRA_poster_left_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+		}
+		else_if = {
+			limit = {
+				check_variable = { FRA_poster_center_icon_frame = FRA_propaganda_empty_slot_index }
+			}
+			set_variable = { FRA_poster_center_icon_frame = FRA_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { FRA_propaganda_center_poster_to_age = FRA_poster_center_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+		}
+		set_variable = { FRA_new_propaganda_campaign = 0 } # Reset var
+		add_to_variable = { FRA_propaganda_campaigns_taken = 1 } #Update propaganda campaigns counter
+	}
+}
+
+FRA_reset_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { FRA_poster_left_icon_frame = FRA_propaganda_campaign_to_remove }
+			}
+			set_variable = { FRA_poster_left_icon_frame = FRA_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = FRA_propaganda_left_poster_to_age
+			clr_country_flag = FRA_propaganda_left_slot_is_old_flag
+		}
+		else_if = {
+			limit = {
+				check_variable = { FRA_poster_center_icon_frame = FRA_propaganda_campaign_to_remove }
+			}
+			set_variable = { FRA_poster_center_icon_frame = FRA_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = FRA_propaganda_center_poster_to_age
+			clr_country_flag = FRA_propaganda_center_slot_is_old_flag
+		}
+		set_variable = { FRA_propaganda_campaign_to_remove = 0 } # Reset var
+	}
+}
+
+FRA_unlock_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { FRA_poster_left_icon_frame = FRA_propaganda_locked_slot_index }
+			}
+			set_variable = { FRA_poster_left_icon_frame = FRA_propaganda_empty_slot_index }
+		}
+		else_if = {
+			limit = {
+				check_variable = { FRA_poster_center_icon_frame = FRA_propaganda_locked_slot_index }
+			}
+			set_variable = { FRA_poster_center_icon_frame = FRA_propaganda_empty_slot_index }
+		}
+	}
+}

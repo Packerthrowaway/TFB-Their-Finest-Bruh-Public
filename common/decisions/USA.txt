@@ -2017,6 +2017,237 @@ USA_propaganda_campaigns = {
 			USA_reset_propaganda_campaign_slot_effect = yes
 		}
 	}
+	
+	USA_convoy_prop = { # ID = 8
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			USA_propaganda_poster_slot_available = yes
+			ENG = { has_war_with = GER}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		targeted_modifier = {
+			tag = ENG
+			license_purchase_cost = -0.2
+			license_production_speed = 0.2
+			license_tech_difference_speed = 0.2
+			trade_cost_for_target_factor = -0.2
+		}
+
+
+		complete_effect = {
+			set_variable = { USA_new_propaganda_campaign = 8 }
+			USA_pick_propaganda_campaign_slot_effect = yes
+			ENG = { add_ideas = USA_convoys }
+		}
+
+		remove_effect = {
+			set_variable = { USA_propaganda_campaign_to_remove = 8 }
+			USA_reset_propaganda_campaign_slot_effect = yes
+			ENG = { remove_ideas = USA_convoys }
+		}
+	}
+	
+	USA_nurse_prop = { # ID = 9
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			USA_propaganda_poster_slot_available = yes
+			has_war = yes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			experience_loss_factor = -0.50
+		}
+
+		complete_effect = {
+			set_variable = { USA_new_propaganda_campaign = 9 }
+			USA_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { USA_propaganda_campaign_to_remove = 9 }
+			USA_reset_propaganda_campaign_slot_effect = yes
+		}
+	}	
+
+	USA_alter_prop = { # ID = 10
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			USA_propaganda_poster_slot_available = yes
+			has_war = yes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			refit_speed = 0.20
+			refit_ic_cost = -0.20
+			repair_speed_factor = 0.20
+			equipment_conversion_speed = 0.20
+			equipment_upgrade_xp_cost = -0.10
+		}
+
+		complete_effect = {
+			set_variable = { USA_new_propaganda_campaign = 10 }
+			USA_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { USA_propaganda_campaign_to_remove = 10 }
+			USA_reset_propaganda_campaign_slot_effect = yes
+		}
+	}	
+
+	USA_marines_prop = { # ID = 11
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			USA_propaganda_poster_slot_available = yes
+			has_completed_focus = USA_expand_the_USMC
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			experience_gain_navy = 0.04
+			experience_gain_army = 0.04
+			trait_naval_invader_xp_gain_factor = 0.2
+			naval_invasion_prep_speed = 0.1
+			naval_invasion_capacity = 10
+			amphibious_invasion = 0.1
+		}
+
+		complete_effect = {
+			set_variable = { USA_new_propaganda_campaign = 11 }
+			USA_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { USA_propaganda_campaign_to_remove = 11 }
+			USA_reset_propaganda_campaign_slot_effect = yes
+		}
+	}	
+
+	USA_intel_prop = { # ID = 12
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			USA_propaganda_poster_slot_available = yes
+			has_war = yes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			local_intel_to_enemies = -0.2
+			own_operative_intel_extraction_rate = -0.2
+			intelligence_agency_defense = 1
+		}
+
+		complete_effect = {
+			set_variable = { USA_new_propaganda_campaign = 12 }
+			USA_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { USA_propaganda_campaign_to_remove = 12 }
+			USA_reset_propaganda_campaign_slot_effect = yes
+		}
+	}	
+
+	USA_army_prop = { # ID = 13
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = USA
+		}
+
+		available = {
+			USA_propaganda_poster_slot_available = yes
+			has_completed_focus = USA_army_of_the_united_states
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			experience_gain_army = 0.15
+			experience_gain_army_factor = 0.10
+			training_time_army_factor = -0.10
+			army_advisor_cost_factor = -0.15
+		}
+
+		complete_effect = {
+			set_variable = { USA_new_propaganda_campaign = 13 }
+			USA_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { USA_propaganda_campaign_to_remove = 13 }
+			USA_reset_propaganda_campaign_slot_effect = yes
+		}
+	}
 }
 USA_election_campaigns = {
 
