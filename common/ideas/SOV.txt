@@ -5323,11 +5323,28 @@ ideas = {
 			}
 
 			visible = {
-				
+				OR = {
+					tag = SOV
+					tag = CHI
+					NOT = { tag = MAN}
+				}
+
 			}
 
 			available = {
-				has_completed_focus = SOV_medium_tank2
+				if = {
+					limit = {
+						tag = SOV
+					}
+					has_completed_focus = SOV_medium_tank2
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_completed_focus = CHI_hire_soviet_designer
+				}
+
 			}
 
 			removal_cost = -1
