@@ -823,7 +823,7 @@
 		y = 1
 		relative_position_id = JAP_liaison_conference
 
-		cost = 2
+		cost = 1
 
 		available = { 
 			is_puppet = no 
@@ -1557,6 +1557,7 @@
 		prerequisite = { focus = JAP_build_up_islands focus = JAP_build_up_china }
 		prerequisite = { focus = JAP_befriend_siam focus = JAP_pressure_siam }
 		prerequisite = { focus = JAP_expand_army focus = JAP_expand_marines }
+		will_lead_to_war_with = ENG
 		x = 0
 		y = 2
 		cost = 5
@@ -1571,23 +1572,32 @@
 				target = AST
 				type = annex_everything
 			}
-			declare_war_on = {
-				target = NZL
-				type = annex_everything
+			if = {
+				limit = {
+					NZL = { exists = yes }
+				}
+				declare_war_on = {
+					target = NZL
+					type = annex_everything
+				}
 			}
 			declare_war_on = {
 				target = RAJ
 				type = annex_everything
 			}
 			random_country = { 
-			limit = { original_tag = HOL  has_government = democratic}
-			JAP = {
-						declare_war_on = {
-							target = PREV
-							type = annex_everything
-						}
-					}	
-				}
+				limit = { original_tag = HOL  has_government = democratic}
+				JAP = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}	
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = FRA
+			}
 			hidden_effect = {
 				if = {
 					limit = {

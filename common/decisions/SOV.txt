@@ -7241,12 +7241,12 @@ SOV_industry_relocation = {
 
 		visible = {
 			FROM = {
-				OR = { #Has at least 2 factories
-					arms_factory > 1
-					industrial_complex > 1
+				OR = { #Has at least 4 factories
+					arms_factory > 3
+					industrial_complex > 3
 					AND = {
-						arms_factory > 0
-						industrial_complex > 0
+						arms_factory > 1
+						industrial_complex > 1
 					}
 				}
 			}
@@ -7258,7 +7258,7 @@ SOV_industry_relocation = {
 
 		days_remove = SOV_industrial_relocation_days
 
-		complete_effect = {  #Attempt to remove 2 CIVS & 2 MILS
+		complete_effect = {  #Attempt to remove 5 CIVS & 5 MILS
 			hidden_effect = {
 				add_equipment_to_stockpile = {
 					type = train_equipment
@@ -7275,7 +7275,7 @@ SOV_industry_relocation = {
 
 					#Attempt to relocate 50%-50% of mils-civs
 					set_temp_variable = { SOV_half_the_factories_to_relocate = SOV.SOV_industrial_relocation_max_factories }
-					divide_temp_variable = { SOV_half_the_factories_to_relocate = 2 }
+					divide_temp_variable = { SOV_half_the_factories_to_relocate = 5 }
 					while_loop_effect = {
 						limit = {
 							check_variable = { SOV_factories_counter = SOV.SOV_industrial_relocation_max_factories compare = less_than }
@@ -7379,7 +7379,7 @@ SOV_industry_relocation = {
 				set_temp_variable = { SOV_factories_counter = 0 }
 				#Factories attempt to get relocated in 2 different states
 				set_temp_variable = { SOV_half_the_factories_to_relocate = SOV.SOV_industrial_relocation_max_factories }
-				divide_temp_variable = { SOV_half_the_factories_to_relocate = 2 }
+				divide_temp_variable = { SOV_half_the_factories_to_relocate = 5 }
 				while_loop_effect = { #NOTE: Due to the seed not changing during the execution of this effect, the same state will always be chosen, UNLESS it runs out of slots -> That's the reason for this 
 					limit = {
 						check_variable = { SOV_factories_counter = SOV_half_the_factories_to_relocate compare = less_than }
