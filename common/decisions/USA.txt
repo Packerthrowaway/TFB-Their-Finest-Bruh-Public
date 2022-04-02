@@ -2081,7 +2081,7 @@ USA_propaganda_campaigns = {
 		cost = 25
 
 		modifier = {
-			experience_loss_factor = -0.50
+			experience_loss_factor = -0.25
 		}
 
 		complete_effect = {
@@ -2116,11 +2116,9 @@ USA_propaganda_campaigns = {
 		cost = 25
 
 		modifier = {
-			refit_speed = 0.20
-			refit_ic_cost = -0.20
-			repair_speed_factor = 0.20
+			repair_speed_factor = 0.25
 			equipment_conversion_speed = 0.20
-			equipment_upgrade_xp_cost = -0.10
+			equipment_upgrade_xp_cost = -0.25
 		}
 
 		complete_effect = {
@@ -2223,6 +2221,10 @@ USA_propaganda_campaigns = {
 		available = {
 			USA_propaganda_poster_slot_available = yes
 			has_completed_focus = USA_army_of_the_united_states
+			or = {
+				has_war = yes
+				date > 1941.1.1
+			}
 		}
 
 		days_remove = 365
