@@ -116,7 +116,14 @@ set_variable = { var = ger_gateway_to_europe_influence value = 0 }
 
 set_variable = { var = wehrmacht_anger value = 0 }
 set_variable = { var = ss_anger value = 0 }
-set_variable = { GER_poster_center_icon_frame = 1 }
+#set_variable = { GER_poster_center_icon_frame = 1 }
+set_variable = { GER_new_propaganda_campaign = 0 } #Used to pick a poster slot
+set_variable = { GER_propaganda_campaign_to_remove = 0 } #Used to reset a poster slot
+#set_variable = { SOV_propaganda_locked_slot_index = 1 } #### === INSERT LOCKED SLOT INDEX IN STRIPE HERE === ####
+set_variable = { GER_propaganda_empty_slot_index = 1 } #### === INSERT EMPTY SLOT INDEX IN STRIPE HERE === ####
+set_variable = { GER_poster_left_icon_frame = GER_propaganda_empty_slot_index } #Set up the appropriate empty slot GFX
+set_variable = { GER_poster_center_icon_frame = GER_propaganda_empty_slot_index } #Set up the appropriate locked slot GFX
+#set_variable = { SOV_poster_right_icon_frame = SOV_propaganda_locked_slot_index } #Set up the appropriate locked slot GFX
 set_research_slots = 6
 set_convoys = 200
 set_stability = 0.75 
