@@ -4204,7 +4204,7 @@
 		icon = GFX_SOV_goal_NKVD
 		prerequisite = { focus = SOV_dismantle_stalin_line }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = SOV_dismantle_stalin_line
 		cost = 5
 		ai_will_do = {
@@ -4270,10 +4270,10 @@
 	focus = {
 		id = SOV_molotov_line
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = SOV_secure_new_conquests }
+		prerequisite = { focus = SOV_secure_new_conquests focus = SOV_plunder_new_conquests }
 		x = 0
-		y = 1
-		relative_position_id = SOV_secure_new_conquests
+		y = 4
+		relative_position_id = SOV_claim_bessarabia
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -4446,17 +4446,43 @@
 						any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN } }
 						is_owned_by = SOV
 					}
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
+				}				
 				add_building_construction = {
 					type = air_base
-					level = 2
+					level = 4
 					instant_build = yes
 				}
+			}
+
+			build_railway = {
+				path = { 9340 6222 6342 9483 }
+			}
+			build_railway = {
+				path = { 9483 6229 6360 6296 }
+			}
+			build_railway = {
+				path = { 6296 327 3320 }
+			}
+			build_railway = {
+				path = { 6296 327 3320 }
+			}
+			build_railway = {
+				path = { 11370 11216 9236 9304 }
+			}
+			build_railway = {
+				path = { 11370 11216 9236 9304 }
+			}
+			build_railway = {
+				path = { 9304 3309 318 347 11301 }
+			}
+			build_railway = {
+				path = { 11301 11247 3392 }
+			}
+			build_railway = {
+				path = { 525 504 11490 9481 476  }
+			}
+			build_railway = {
+				path = { 476 6429 462 438 11427 491 11479 }
 			}
 		}
 	}
@@ -4493,7 +4519,7 @@
 		y = 1
 		relative_position_id = SOV_claim_bessarabia
 		mutually_exclusive = { focus = SOV_dismantle_stalin_line }
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			factor = 1
 		}
@@ -4709,7 +4735,7 @@
 		x = 0
 		y = 1
 		relative_position_id = SOV_improve_stalin_line
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			factor = 1
 		}
@@ -4807,6 +4833,95 @@
 					province = 1157
 				}
 			}
+		}
+	}
+
+	focus = {
+		id = SOV_plunder_new_conquests
+		icon = GFX_SOV_capitals_of_socialism_1
+		prerequisite = { focus =  SOV_dnieper_defences }
+		cost = 4
+		x = 0
+		y = 1
+		relative_position_id = SOV_dnieper_defences
+
+		available = {
+			NOT = {
+				has_war_with = GER
+			}			
+		}
+		completion_reward = {
+			13 = {
+				remove_building = {
+					type = arms_factory
+					level = 5
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 5
+				}
+			}
+
+			12 = {
+				remove_building = {
+					type = arms_factory
+					level = 5
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 5
+				}
+			}
+
+			11 = {
+				remove_building = {
+					type = arms_factory
+					level = 3
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 5
+				}
+			}
+
+			248 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes 
+				}
+				add_extra_state_shared_building_slots = 8
+			}
+
+			253 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+				}
+				add_extra_state_shared_building_slots = 8
+			}
+			255 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+				}
+				add_extra_state_shared_building_slots = 6
+			}
+
+
 		}
 	}
 
