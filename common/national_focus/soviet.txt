@@ -1424,7 +1424,23 @@
 		cost = 5
 
 		available = {
-			surrender_progress > 0.3
+			or = {
+				AND = {
+					surrender_progress > 0.36
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.3 
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_improve_stalin_line
+						has_completed_focus = SOV_dismantle_stalin_line
+					}
+					surrender_progress > 0.3
+				}
+			}
 		}
 
 		completion_reward = {
@@ -1681,7 +1697,22 @@
 		cost = 5
 
 		available = {
-			surrender_progress > 0.4
+			or = {
+				AND = {
+					surrender_progress > 0.46
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.4
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_improve_stalin_line
+					}
+					surrender_progress > 0.4
+				}
+			}
 		}
 
 		ai_will_do = {
@@ -2100,8 +2131,24 @@
 		cost = 1
 		
 		available = {
+			or = {
+				AND = {
+					surrender_progress > 0.28
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.22 
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_dismantle_stalin_line
+						has_completed_focus = SOV_improve_stalin_line
+					}
+					surrender_progress > 0.22
+				}
+			}
 			
-			surrender_progress > 0.20
 			casualties > 500000
 		}
 
@@ -2168,7 +2215,23 @@
 		
 		available = {
 			casualties > 2000000
-			surrender_progress > 0.3
+			or = {
+				AND = {
+					surrender_progress > 0.38
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.32 
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_dismantle_stalin_line
+						has_completed_focus = SOV_improve_stalin_line
+					}
+					surrender_progress > 0.32
+				}
+			}
 		}
 
 		completion_reward = {
@@ -2265,7 +2328,23 @@
 		
 		available = {
 			casualties > 3000000
-			surrender_progress > 0.5
+			or = {
+				AND = {
+					surrender_progress > 0.53
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.47 
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_dismantle_stalin_line
+						has_completed_focus = SOV_improve_stalin_line
+					}
+					surrender_progress > 0.47
+				}
+			}
 		}
 
 		completion_reward = {
@@ -2349,7 +2428,23 @@
 		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = SOV_order_270 }
 		available = {
-			surrender_progress > 0.3
+			or = {
+				AND = {
+					surrender_progress > 0.33
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.27 
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_dismantle_stalin_line
+						has_completed_focus = SOV_improve_stalin_line
+					}
+					surrender_progress > 0.27
+				}
+			}
 			
 		}
 		x = 0
@@ -2478,7 +2573,23 @@
 		cost = 5
 		
 		available = {
-			surrender_progress > 0.2
+			or = {
+				AND = {
+					surrender_progress > 0.28
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.25 
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_dismantle_stalin_line
+						has_completed_focus = SOV_improve_stalin_line
+					}
+					surrender_progress > 0.25
+				}
+			}
 			casualties > 1000000
 		}
 
@@ -2504,7 +2615,23 @@
 		available_if_capitulated = yes
 		
 		available = {
-			surrender_progress > 0.3
+			or = {
+				AND = {
+					surrender_progress > 0.36
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				AND = {
+					surrender_progress > 0.3 
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				AND = {
+					NOT = {
+						has_completed_focus = SOV_dismantle_stalin_line
+						has_completed_focus = SOV_improve_stalin_line
+					}
+					surrender_progress > 0.3
+				}
+			}
 		}
 
 		completion_reward = {
