@@ -1424,25 +1424,20 @@
 		cost = 5
 
 		available = {
-			or = {
-				AND = {
-					surrender_progress > 0.36
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.3 
+				surrender_progress > 0.36
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_improve_stalin_line
-						has_completed_focus = SOV_dismantle_stalin_line
-					}
-					surrender_progress > 0.3
-				}
+				surrender_progress > 0.3 
+			} else = {
+				surrender_progress > 0.3
 			}
 		}
-
 		completion_reward = {
 			add_ideas = SOV_tankograd_idea
 			set_technology = {
@@ -1697,21 +1692,18 @@
 		cost = 5
 
 		available = {
-			or = {
-				AND = {
-					surrender_progress > 0.46
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.4
+				surrender_progress > 0.46
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_improve_stalin_line
-					}
-					surrender_progress > 0.4
-				}
+				surrender_progress > 0.4 
+			} else = {
+				surrender_progress > 0.4
 			}
 		}
 
@@ -2131,24 +2123,19 @@
 		cost = 1
 		
 		available = {
-			or = {
-				AND = {
-					surrender_progress > 0.28
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.22 
+				surrender_progress > 0.28
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_dismantle_stalin_line
-						has_completed_focus = SOV_improve_stalin_line
-					}
-					surrender_progress > 0.22
-				}
+				surrender_progress > 0.22 
+			} else = {
+				surrender_progress > 0.22
 			}
-			
 			casualties > 500000
 		}
 
@@ -2215,22 +2202,18 @@
 		
 		available = {
 			casualties > 2000000
-			or = {
-				AND = {
-					surrender_progress > 0.38
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.32 
+				surrender_progress > 0.38
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_dismantle_stalin_line
-						has_completed_focus = SOV_improve_stalin_line
-					}
-					surrender_progress > 0.32
-				}
+				surrender_progress > 0.32 
+			} else = {
+				surrender_progress > 0.32
 			}
 		}
 
@@ -2328,22 +2311,18 @@
 		
 		available = {
 			casualties > 3000000
-			or = {
-				AND = {
-					surrender_progress > 0.53
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.47 
+				surrender_progress > 0.53
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_dismantle_stalin_line
-						has_completed_focus = SOV_improve_stalin_line
-					}
-					surrender_progress > 0.47
-				}
+				surrender_progress > 0.47 
+			} else = {
+				surrender_progress > 0.47
 			}
 		}
 
@@ -2428,24 +2407,19 @@
 		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = SOV_order_270 }
 		available = {
-			or = {
-				AND = {
-					surrender_progress > 0.33
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.27 
+				surrender_progress > 0.33
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_dismantle_stalin_line
-						has_completed_focus = SOV_improve_stalin_line
-					}
-					surrender_progress > 0.27
-				}
+				surrender_progress > 0.27 
+			} else = {
+				surrender_progress > 0.27
 			}
-			
 		}
 		x = 0
 		y = 1
@@ -2573,22 +2547,18 @@
 		cost = 5
 		
 		available = {
-			or = {
-				AND = {
-					surrender_progress > 0.28
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.25 
+				surrender_progress > 0.28
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_dismantle_stalin_line
-						has_completed_focus = SOV_improve_stalin_line
-					}
-					surrender_progress > 0.25
-				}
+				surrender_progress > 0.25 
+			} else = {
+				surrender_progress > 0.25
 			}
 			casualties > 1000000
 		}
@@ -2615,22 +2585,18 @@
 		available_if_capitulated = yes
 		
 		available = {
-			or = {
-				AND = {
-					surrender_progress > 0.36
+			if = {
+				limit = {
 					has_completed_focus = SOV_dismantle_stalin_line
 				}
-				AND = {
-					surrender_progress > 0.3 
+				surrender_progress > 0.36
+			} else_if = {
+				limit = {
 					has_completed_focus = SOV_improve_stalin_line
 				}
-				AND = {
-					NOT = {
-						has_completed_focus = SOV_dismantle_stalin_line
-						has_completed_focus = SOV_improve_stalin_line
-					}
-					surrender_progress > 0.3
-				}
+				surrender_progress > 0.3 
+			} else = {
+				surrender_progress > 0.3
 			}
 		}
 
@@ -4323,6 +4289,7 @@
 					province = 6242
 				}
 			}
+			custom_effect_tooltip = dismantle_surrender_tt
 		}
 	}
 	
