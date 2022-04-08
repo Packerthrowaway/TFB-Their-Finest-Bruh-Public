@@ -13,13 +13,17 @@ focus_tree = {
 	
 	default = no
 	
-	continuous_focus_position = { x = 0 y = 1300 }
-	
+	continuous_focus_position = { x = 0 y = 850 }
+
+  ############################
+  #### POLITICAL SECTION #####
+  ############################
+
 	focus = {
 		id = BRA_stay_with_vargas
 		icon = GFX_focus_generic_self_management
 		mutually_exclusive = { focus = BRA_adopt_federalism }
-		x = 3
+		x = 2
 		y = 0
 
 		cost = 10
@@ -41,7 +45,7 @@ focus_tree = {
 		id = BRA_adopt_federalism
 		icon = GFX_goal_support_democracy
 		mutually_exclusive = { focus = BRA_stay_with_vargas }
-		x = 5
+		x = 4
 		y = 0
 
 		cost = 10
@@ -355,11 +359,15 @@ focus_tree = {
 			}
 		}
 	}
-	
+
+  ############################
+  ##### INDUSTRY SECTION #####
+  ############################
+
 	focus = {
 		id = BRA_begin_industrial_centralisation
 		icon = GFX_goal_generic_construction
-		x = 12
+		x = 11
 		y = 0
 
 		cost = 10
@@ -863,11 +871,15 @@ focus_tree = {
 			add_research_slot = 1
 		}
 	}
-	
+
+  ############################
+  ###### ARMY SECTION ########
+  ############################
+
 	focus = {
 		id = BRA_armed_forces
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 17
+		x = 16
 		y = 0
 
 		cost = 5
@@ -1099,4 +1111,275 @@ focus_tree = {
 		}
 	}
 
+
+  ############################
+  ###### NAVY SECTION ########
+  ############################
+
+	focus = {
+		id = BRA_form_the_rbn
+		icon = GFX_goal_generic_build_navy
+		x = 22
+		y = 0
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			navy_experience = 25
+			add_doctrine_cost_reduction = {
+				name = NZL_form_the_rnzn
+				cost_reduction = 0.25
+				uses = 2
+				category = naval_doctrine
+			}
+			add_tech_bonus = {
+				name = ships_bonus
+				bonus = 0.5
+				uses = 2
+				category = naval_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = BRA_expand_bangkok_naval_base
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = BRA_form_the_rbn }
+		x = -1
+		y = 1
+        relative_position_id = BRA_form_the_rbn
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			501 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = dockyard
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRA_coastal_defense
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = BRA_form_the_rbn }
+		relative_position_id = BRA_form_the_rbn
+
+		x = 1
+		y = 1
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			500 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 10980
+					level = 2
+					instant_build = yes
+				}
+			}
+			502 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 10447
+					level = 1
+					instant_build = yes
+				}
+			}
+			501 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 5112
+					level = 1
+					instant_build = yes
+				}
+			}
+			499 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 10946
+					level = 1
+					instant_build = yes
+				}
+			}
+			497 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 12853
+					level = 1
+					instant_build = yes
+				}
+			}
+			496 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 10999
+					level = 1
+					instant_build = yes
+				}
+			}
+			498 = {
+				add_building_construction = {
+					type = coastal_bunker
+					province = 5168
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = 5107
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRA_destroyer_effort
+		icon = GFX_goal_generic_navy_anti_submarine
+		prerequisite = { focus = BRA_expand_bangkok_naval_base }
+		mutually_exclusive = { focus = BRA_submarine_effort }
+		x = -1
+		y = 1
+		relative_position_id = BRA_expand_bangkok_naval_base
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = BRA_destroyer_effort
+				bonus = 0.5
+				ahead_reduction = 0.5
+				uses = 1
+				category = dd_tech
+			}
+		}
+	}
+
+	focus = {
+		id = BRA_submarine_effort
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = BRA_expand_bangkok_naval_base }
+		mutually_exclusive = { focus = BRA_destroyer_effort }
+		x = 1
+		y = 1
+		relative_position_id = BRA_expand_bangkok_naval_base
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = BRA_submarine_effort
+				bonus = 0.5
+				ahead_reduction = 0.5
+				uses = 1
+				category = ss_tech
+			}
+		}
+	}
+
+	focus = {
+		id = BRA_light_cruiser_effort
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = BRA_destroyer_effort focus = BRA_submarine_effort }
+		x = 0
+		y = 1
+		relative_position_id = BRA_destroyer_effort
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = BRA_light_cruiser_effort
+				bonus = 0.5
+				ahead_reduction = 0.5
+				uses = 1
+				category = cl_tech
+			}
+		}
+	}
+
+	focus = {
+		id = BRA_capital_ship_effort
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = BRA_destroyer_effort focus = BRA_submarine_effort }
+		x = 0
+		y = 1
+		relative_position_id = BRA_submarine_effort
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = BRA_capital_ship_effort
+				bonus = 0.5
+				ahead_reduction = 0.5
+				uses = 1
+				category = bb_tech
+				category = cv_tech
+			}
+		}
+	}
 }		
