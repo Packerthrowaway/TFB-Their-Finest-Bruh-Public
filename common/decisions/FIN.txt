@@ -86,7 +86,11 @@ operations = {
 				country = SOV
 				relation = non_aggression_pact
 			}
-			
+			hidden_effect = {
+				MON = {
+					remove_ideas = MON_brothers_war
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 20
@@ -106,24 +110,23 @@ operations = {
 		}
 		
 
-		available = {
-			
-		has_war_with = SOV
-		NOT = { has_war_with = GER }
-		OR = {
-			SOV = {
-				casualties > 350000
-			}
-			
-			195 = {
-				CONTROLLER = {
-					OR = {
-						tag = FIN
-						is_subject_of = FIN
+		available = {		
+			has_war_with = SOV
+			NOT = { has_war_with = GER }
+			OR = {
+				SOV = {
+					casualties > 350000
+				}
+				
+				195 = {
+					CONTROLLER = {
+						OR = {
+							tag = FIN
+							is_subject_of = FIN
+						}
 					}
 				}
 			}
-		}
 		}
 		days_remove = 7
 		remove_effect = {
@@ -136,10 +139,12 @@ operations = {
 				country = SOV
 				relation = non_aggression_pact
 			}
-			
 			set_global_flag =  FIN_winter_victory
-			
-
+			hidden_effect = {
+				MON = {
+					remove_ideas = MON_brothers_war
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 50
