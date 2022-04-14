@@ -7617,9 +7617,9 @@ SOV_great_patriotic_war = {
 		icon = generic_prepare_civil_war
 
 		ai_will_do = {
-			base = 0.1
+			base = 0
 			modifier = {
-				factor = 15
+				add = 15
 				FROM = {
 					OR = {
 						state = 219 #MOSCOW
@@ -7630,6 +7630,7 @@ SOV_great_patriotic_war = {
 						state = 202 #KIEV
 					}
 				}
+				#ROOT = { manpower_per_military_factory > 15000 } #Don't waste if we need better manpower laws
 			}
 		}
 
@@ -7650,7 +7651,7 @@ SOV_great_patriotic_war = {
 			has_completed_focus = SOV_war_mobilisation
 		}
 
-		allowed = { 
+		allowed = {
 			original_tag = SOV
 		}
 
@@ -7662,7 +7663,7 @@ SOV_great_patriotic_war = {
 
 		visible = {
 			any_enemy_country = { SOV_is_major_not_original_sov = yes }
-			NOT = { has_country_flag = SOV_order_227_flag }			
+			NOT = { has_country_flag = SOV_order_227_flag }
 			FROM = {
 				is_controlled_by = ROOT
 				any_neighbor_state = {
@@ -7671,6 +7672,7 @@ SOV_great_patriotic_war = {
 			}
 		}
 
+		ai_hint_pp_cost = 25
 		custom_cost_trigger = {
 			command_power > 24
 			has_political_power > 24
@@ -7689,6 +7691,10 @@ SOV_great_patriotic_war = {
 
 		complete_effect = {
 			hidden_effect = {
+				#Cost
+				add_command_power = -25
+				add_political_power = -25
+				
 				FROM = {
 					add_dynamic_modifier = {
 						modifier = SOV_factory_worker_militias_raised
@@ -9265,7 +9271,7 @@ operations = {
 			}
 			FIN = { set_country_flag = winter_war_finished }
 			diplomatic_relation = {
-				country = SOV
+				country = FIN
 				relation = non_aggression_pact
 			}
 			hidden_effect = {
