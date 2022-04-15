@@ -7667,7 +7667,11 @@ SOV_great_patriotic_war = {
 			FROM = {
 				is_controlled_by = ROOT
 				any_neighbor_state = {
-					controller = { has_war_with = ROOT }
+					ROOT = {
+						any_enemy_country = {
+							controls_state = PREV.PREV      
+						}
+					}
 				}
 			}
 		}
