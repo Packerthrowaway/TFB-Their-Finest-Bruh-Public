@@ -219,7 +219,10 @@ war_measures = {
 
 		available = {
 			has_war = yes
-			607 = { is_controlled_by = ROOT }
+			NOT = {
+				controls_state = 608
+				controls_state = 614
+			}
 		}
 
 		cost = 0
@@ -228,7 +231,26 @@ war_measures = {
 
 		days_remove = 7
 
-		highlight_states = {
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					NOT = {
+						controls_state = 597
+					}
+					NOT = {
+						controls_state = 615
+					}
+					NOT = {
+						controls_state = 607
+					}
+					
+				}	
+				factor = 100
+			}
+		}
+
+		
 			highlight_provinces = {
 				7656
 				10098
@@ -250,7 +272,7 @@ war_measures = {
 				11916
 				9958
 			}
-		}
+		
 		
 		visible = {
 			has_war_with = JAP
