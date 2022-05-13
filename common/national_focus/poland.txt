@@ -241,6 +241,7 @@
 						size > 0
 						include_locked = yes
 					}
+					is_owned_and_controlled_by = ROOT
 				}
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -258,6 +259,7 @@
 						size > 0
 						include_locked = yes
 					}
+					is_owned_and_controlled_by = ROOT
 				}
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -445,11 +447,9 @@
 		available = {
 			
 			762 = {
-				owner = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
+				owns_or_subject_of = yes
+				controller = {
+					tag = PREV.OWNER
 				}
 			}
 		}
@@ -1608,10 +1608,6 @@
 
 		available_if_capitulated = yes
 
-		bypass = {
-			has_capitulated = yes
-		}
-
 		complete_tooltip = {
 			random_state = {
 				limit = { has_state_flag = POL_air_base_expansion_1 }
@@ -1891,6 +1887,7 @@
 				}
 			}
 		}
+		available = { is_subject = no }
 
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -1994,7 +1991,7 @@
 			if = {
 				limit = {
 					has_country_leader = {
-						name = "Ignacy Mościcki"
+						character = POL_ignacy_moscicki
 						ruling_only = yes
 					}
 				}
@@ -2110,7 +2107,7 @@
 		completion_reward = {
 			POL_sanation_left_opposition_down = yes 
 			POL_sanation_right_opposition_down = yes
-			random_state = {
+			random_owned_controlled_state = {
 				prioritize = { 89 }
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -2371,6 +2368,7 @@
 		cost = 5
 		
 		available = {
+			has_government = neutrality
 		}
 
 		ai_will_do = {
@@ -2577,6 +2575,7 @@
 		cost = 10
 		
 		available = {
+			has_government = neutrality
 		}
 
 		ai_will_do = {
@@ -4086,6 +4085,12 @@
 				limit = {
 					94 = {
 						owns_or_subject_of = yes
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
 					}
 				}
 				94 = {
@@ -4104,6 +4109,12 @@
 				limit = {
 					95 = {
 						owns_or_subject_of = yes
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
 					}
 				}
 				95 = {
@@ -4122,6 +4133,12 @@
 				limit = {
 					96 = {
 						owns_or_subject_of = yes
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
 					}
 				}
 				96 = {
@@ -4154,6 +4171,20 @@
 
 		available = {
 			NOT = { has_completed_focus = POL_complete_plan_east }
+			OR = {
+				91 = {
+					owns_or_subject_of = yes
+					controller = {
+						tag = PREV.OWNER
+					}
+				}
+				93 = {
+					owns_or_subject_of = yes
+					controller = {
+						tag = PREV.OWNER
+					}
+				}
+			}
 		}
 		
 		bypass = {
@@ -4182,6 +4213,12 @@
 				limit = {
 					91 = {
 						owns_or_subject_of = yes
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
 					}
 				}
 				91 = {
@@ -4200,6 +4237,12 @@
 				limit = {
 					93 = {
 						owns_or_subject_of = yes
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
 					}
 				}
 				93 = {
@@ -4402,6 +4445,7 @@
 		}
 		
 		available = {
+			is_subject = no 
 			any_other_country = {
 				NOT = { has_war_with = ROOT }
 				is_faction_leader = yes
@@ -4553,6 +4597,7 @@
 		}
 		
 		available = {
+			is_subject = no 
 			LIT = { 
 				exists = yes
 				has_capitulated = no
@@ -4609,6 +4654,7 @@
 			factor = 10
 		}
 		available = {
+			is_subject = no 
 			is_in_faction = yes
 			LIT = { 
 				exists = yes
@@ -4702,7 +4748,17 @@
 			factor = 10
 		}
 
+		bypass = {
+			ROOT = {
+				controls_state = 814
+				controls_state = 11
+				controls_state = 815
+				controls_state = 189
+				controls_state = 784
+			}			
+		}
 		available = {
+			is_subject = no 
 			LIT = { 
 				exists = yes
 				has_capitulated = no
@@ -5701,7 +5757,6 @@
 		}
 	}
 
-
 	####################
 	### NAVY SECTION ###
 	####################
@@ -5835,6 +5890,13 @@
 
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			any_owned_state = {
+				is_coastal = yes 
+				NOT = { state = 85 }
+				is_controlled_by = ROOT
+			}
 		}
 
 		available_if_capitulated = yes
@@ -6015,6 +6077,13 @@
 
 		ai_will_do = {
 			factor = 10
+		}
+		available = {
+			any_owned_state = {
+				is_coastal = yes 
+				NOT = { state = 85 }
+				is_controlled_by = ROOT
+			}
 		}
 
 		available_if_capitulated = yes
@@ -6366,4 +6435,4 @@
 		}
 	}
 
-}		
+}
