@@ -1365,6 +1365,66 @@ JAP_southern_expansion = {
 # }
 
 political_actions = {
+	JAP_annex_man = {
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			date > 1939.1.1
+			NOT = { country_exists = CHI }
+			MAN = {is_ai = YES}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		complete_effect = {
+			annex_country = { target = MAN transfer_troops = yes }
+			328 = { set_compliance = 60 }
+			610 = { set_compliance = 60 }
+			611 = { set_compliance = 60 }
+			612 = { set_compliance = 60 }
+			714 = { set_compliance = 60 }
+			715 = { set_compliance = 60 }
+			716 = { set_compliance = 60 }
+			717 = { set_compliance = 60 }
+			761 = { set_compliance = 60 }
+		}
+	}
+
+	JAP_annex_chi = {
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP = {is_ai = YES}
+			MAN = {is_ai = YES} 
+			CHI = { is_puppet = YES}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			JAP = {is_ai = YES}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			annex_country = { target = CHI transfer_troops = no }
+
+		}
+	}
+
 	JAP_break_the_london_naval_treaty = {
 
 		icon = generic_break_treaty
