@@ -1289,184 +1289,184 @@ on_actions = {
 		}
 	}
 
-	on_weekly_BUL = {
-		effect = {
-			# FATHERLAND FRONT
-			if = {
-				limit = {
-					NOT = { has_country_flag = BUL_fatherland_front_formed_flag }
-					date > 1942.6.1 #Previously date > 1940.1.1 but it felt too punishing
-				}
-				BUL_communists_try_to_form_ff_effect = yes
-			}
-			else_if = {
-				limit = {
-					NOT = { has_country_flag = BUL_ff_civil_war_flag }
-					NOT = { has_country_flag = BUL_ff_destroyed_flag }
-					has_country_flag = { flag = BUL_fatherland_front_formed_flag days > 60 } #Give the player some time after FF formation
-					OR = {
-						NOT = { has_country_flag = BUL_ff_approaching_faction_flag }
-						has_country_flag = { flag = BUL_ff_approaching_faction_flag days > 30 }
-					}
-				}
-				log = "checking if FF approaches someone"
-				# CHECK IF FF APPROACHES ANY BULARIAN INTERNAL FACTION
-				BUL_ff_approaches_a_faction_effect = yes #Random chance
+	# on_weekly_BUL = {
+	# 	effect = {
+	# 		# FATHERLAND FRONT
+	# 		if = {
+	# 			limit = {
+	# 				NOT = { has_country_flag = BUL_fatherland_front_formed_flag }
+	# 				date > 1942.6.1 #Previously date > 1940.1.1 but it felt too punishing
+	# 			}
+	# 			BUL_communists_try_to_form_ff_effect = yes
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				NOT = { has_country_flag = BUL_ff_civil_war_flag }
+	# 				NOT = { has_country_flag = BUL_ff_destroyed_flag }
+	# 				has_country_flag = { flag = BUL_fatherland_front_formed_flag days > 60 } #Give the player some time after FF formation
+	# 				OR = {
+	# 					NOT = { has_country_flag = BUL_ff_approaching_faction_flag }
+	# 					has_country_flag = { flag = BUL_ff_approaching_faction_flag days > 30 }
+	# 				}
+	# 			}
+	# 			log = "checking if FF approaches someone"
+	# 			# CHECK IF FF APPROACHES ANY BULARIAN INTERNAL FACTION
+	# 			BUL_ff_approaches_a_faction_effect = yes #Random chance
 
-				if = { # Check if FF approaches BROAD SOCIALISTS
-					limit = { 
-						NOT = { has_country_flag = BUL_bs_joined_ff_flag }
-						NOT = { has_country_flag = BUL_bs_destroyed_flag }
-						NOT = { has_country_flag = BUL_bs_integrated_flag }
-					}
-					set_temp_variable = { BUL_bs_loyalty_factor = 100 }
-					subtract_from_temp_variable = { BUL_bs_loyalty_factor = BUL_bs_loyalty }
-					if = {
-						limit = {
-							check_variable = { BUL_bs_loyalty_factor = BUL_random_ff_approaching_faction_chance compare = greater_than_or_equals }
-						}
-						if = {
-							limit = { has_country_flag = BUL_ff_approaching_faction_flag }
-							clr_country_flag = BUL_ff_approaching_faction_flag
-						}
-						set_country_flag = BUL_bs_joined_ff_flag
-						set_country_flag = BUL_ff_approaching_faction_flag
-						activate_mission = BUL_ff_approaching_bs_mission
+	# 			if = { # Check if FF approaches BROAD SOCIALISTS
+	# 				limit = { 
+	# 					NOT = { has_country_flag = BUL_bs_joined_ff_flag }
+	# 					NOT = { has_country_flag = BUL_bs_destroyed_flag }
+	# 					NOT = { has_country_flag = BUL_bs_integrated_flag }
+	# 				}
+	# 				set_temp_variable = { BUL_bs_loyalty_factor = 100 }
+	# 				subtract_from_temp_variable = { BUL_bs_loyalty_factor = BUL_bs_loyalty }
+	# 				if = {
+	# 					limit = {
+	# 						check_variable = { BUL_bs_loyalty_factor = BUL_random_ff_approaching_faction_chance compare = greater_than_or_equals }
+	# 					}
+	# 					if = {
+	# 						limit = { has_country_flag = BUL_ff_approaching_faction_flag }
+	# 						clr_country_flag = BUL_ff_approaching_faction_flag
+	# 					}
+	# 					set_country_flag = BUL_bs_joined_ff_flag
+	# 					set_country_flag = BUL_ff_approaching_faction_flag
+	# 					activate_mission = BUL_ff_approaching_bs_mission
 
-						log = "FF approaches BS: [?BUL.BUL_bs_loyalty_factor] is greater than [?BUL.BUL_random_ff_approaching_faction_chance]"
-					}
-					else = {
-						log = "FF DOES NOT approach BS: [?BUL.BUL_bs_loyalty_factor] is lower than [?BUL.BUL_random_ff_approaching_faction_chance]"
-					}
-				}
-				else_if = { # Check if FF approaches AGRARIAN NATIONAL UNION
-					limit = {
-						NOT = { has_country_flag = BUL_bzns_joined_ff_flag }
-						NOT = { has_country_flag = BUL_bzns_destroyed_flag }
-						NOT = { has_country_flag = BUL_bzns_integrated_flag }
-					}
-					set_temp_variable = { BUL_bzns_loyalty_factor = 100 }
-					subtract_from_temp_variable = { BUL_bzns_loyalty_factor = BUL_bs_loyalty }
-					if = {
-						limit = {
-							check_variable = { BUL_bzns_loyalty_factor = BUL_random_ff_approaching_faction_chance compare = greater_than_or_equals }
-						}
-						if = {
-							limit = { has_country_flag = BUL_ff_approaching_faction_flag }
-							clr_country_flag = BUL_ff_approaching_faction_flag
-						}
-						set_country_flag = BUL_bzns_joined_ff_flag
-						set_country_flag = BUL_ff_approaching_faction_flag
-						activate_mission = BUL_ff_approaching_bzns_mission
+	# 					log = "FF approaches BS: [?BUL.BUL_bs_loyalty_factor] is greater than [?BUL.BUL_random_ff_approaching_faction_chance]"
+	# 				}
+	# 				else = {
+	# 					log = "FF DOES NOT approach BS: [?BUL.BUL_bs_loyalty_factor] is lower than [?BUL.BUL_random_ff_approaching_faction_chance]"
+	# 				}
+	# 			}
+	# 			else_if = { # Check if FF approaches AGRARIAN NATIONAL UNION
+	# 				limit = {
+	# 					NOT = { has_country_flag = BUL_bzns_joined_ff_flag }
+	# 					NOT = { has_country_flag = BUL_bzns_destroyed_flag }
+	# 					NOT = { has_country_flag = BUL_bzns_integrated_flag }
+	# 				}
+	# 				set_temp_variable = { BUL_bzns_loyalty_factor = 100 }
+	# 				subtract_from_temp_variable = { BUL_bzns_loyalty_factor = BUL_bs_loyalty }
+	# 				if = {
+	# 					limit = {
+	# 						check_variable = { BUL_bzns_loyalty_factor = BUL_random_ff_approaching_faction_chance compare = greater_than_or_equals }
+	# 					}
+	# 					if = {
+	# 						limit = { has_country_flag = BUL_ff_approaching_faction_flag }
+	# 						clr_country_flag = BUL_ff_approaching_faction_flag
+	# 					}
+	# 					set_country_flag = BUL_bzns_joined_ff_flag
+	# 					set_country_flag = BUL_ff_approaching_faction_flag
+	# 					activate_mission = BUL_ff_approaching_bzns_mission
 
-						log = "FF approaches BZN: [?BUL.BUL_bzns_loyalty_factor] is greater than [?BUL.BUL_random_ff_approaching_faction_chance]"
-					}
-					else = {
-						log = "FF DOES NOT approach BZNS: [?BUL.BUL_bzns_loyalty_factor] is lower than [?BUL.BUL_random_ff_approaching_faction_chance]"
-					}
-				}
-				else_if = { # Check if FF approaches ZVENO
-					limit = { 
-						NOT = { has_country_flag = BUL_zveno_joined_ff_flag }
-						NOT = { has_country_flag = BUL_zveno_coup_flag }
-						NOT = { has_country_flag = BUL_zveno_destroyed_flag }
-						NOT = { has_country_flag = BUL_zveno_integrated_flag }
-					}
-					set_temp_variable = { BUL_zveno_loyalty_factor = 100 }
-					subtract_from_temp_variable = { BUL_zveno_loyalty_factor = BUL_zveno_loyalty }
-					if = {
-						limit = {
-							check_variable = { BUL_zveno_loyalty_factor = BUL_random_ff_approaching_faction_chance compare = greater_than_or_equals }
-						}
-						if = {
-							limit = { has_country_flag = BUL_ff_approaching_faction_flag }
-							clr_country_flag = BUL_ff_approaching_faction_flag
-						}
-						set_country_flag = BUL_zveno_joined_ff_flag
-						set_country_flag = BUL_ff_approaching_faction_flag
-						activate_mission = BUL_ff_approaching_zveno_mission
+	# 					log = "FF approaches BZN: [?BUL.BUL_bzns_loyalty_factor] is greater than [?BUL.BUL_random_ff_approaching_faction_chance]"
+	# 				}
+	# 				else = {
+	# 					log = "FF DOES NOT approach BZNS: [?BUL.BUL_bzns_loyalty_factor] is lower than [?BUL.BUL_random_ff_approaching_faction_chance]"
+	# 				}
+	# 			}
+	# 			else_if = { # Check if FF approaches ZVENO
+	# 				limit = { 
+	# 					NOT = { has_country_flag = BUL_zveno_joined_ff_flag }
+	# 					NOT = { has_country_flag = BUL_zveno_coup_flag }
+	# 					NOT = { has_country_flag = BUL_zveno_destroyed_flag }
+	# 					NOT = { has_country_flag = BUL_zveno_integrated_flag }
+	# 				}
+	# 				set_temp_variable = { BUL_zveno_loyalty_factor = 100 }
+	# 				subtract_from_temp_variable = { BUL_zveno_loyalty_factor = BUL_zveno_loyalty }
+	# 				if = {
+	# 					limit = {
+	# 						check_variable = { BUL_zveno_loyalty_factor = BUL_random_ff_approaching_faction_chance compare = greater_than_or_equals }
+	# 					}
+	# 					if = {
+	# 						limit = { has_country_flag = BUL_ff_approaching_faction_flag }
+	# 						clr_country_flag = BUL_ff_approaching_faction_flag
+	# 					}
+	# 					set_country_flag = BUL_zveno_joined_ff_flag
+	# 					set_country_flag = BUL_ff_approaching_faction_flag
+	# 					activate_mission = BUL_ff_approaching_zveno_mission
 
-						log = "FF approaches ZVENO: [?BUL.BUL_zveno_loyalty_factor] is greater than [?BUL.BUL_random_ff_approaching_faction_chance]"
-					}
-					else = {
-						log = "FF DOES NOT approach ZVENO: [?BUL.BUL_zveno_loyalty_factor] is lower than [?BUL.BUL_random_ff_approaching_faction_chance]"
-					}
-				}
-				if = {
-					limit = {
-						has_country_flag = BUL_ff_coup_planned_flag
-						date > 1943.1.1
-					}
-					BUL_ff_tries_to_stage_a_coup_effect = yes #Check if the FF starts the CW
-				}					
-			}
+	# 					log = "FF approaches ZVENO: [?BUL.BUL_zveno_loyalty_factor] is greater than [?BUL.BUL_random_ff_approaching_faction_chance]"
+	# 				}
+	# 				else = {
+	# 					log = "FF DOES NOT approach ZVENO: [?BUL.BUL_zveno_loyalty_factor] is lower than [?BUL.BUL_random_ff_approaching_faction_chance]"
+	# 				}
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					has_country_flag = BUL_ff_coup_planned_flag
+	# 					date > 1943.1.1
+	# 				}
+	# 				BUL_ff_tries_to_stage_a_coup_effect = yes #Check if the FF starts the CW
+	# 			}					
+	# 		}
 
-			# BULGARIAN CLAIMS IN THE BALKANS
-			if = {
-				limit = {
-					has_global_flag = BUL_germany_recognizes_bulgarian_claims_flag
-					is_in_faction_with = GER
-					any_state = {
-						has_state_flag = BUL_bulgarian_claim_warranted_flag
-						OR = {
-							is_controlled_by = GER
-							controller = {
-								is_in_faction_with = GER
-								NOT = { tag = BUL }
-								NOT = { owns_state = PREV } #Not owner (it should be actually occupating the state -> Also prevents the issue in YUG with IMRO removing the core)
-								NOT = { PREV = { is_core_of = PREV } }
-							}
-						}
-					}
-				}
-				country_event = bftb_bulgarian_claims.4
-			}
-		}
-		#Check for any subject not having the appropriate NS while Ferdinand I is ruling (ie. released nations)
-		effect = {
-			if = {
-				limit = {
-					has_country_leader = {
-						character = BUL_ferdinand_i 
-						ruling_only = yes
-					}
-					any_country = {
-						is_subject_of = ROOT
-						NOT = { has_idea = BUL_ferdinands_puppet }
-					}
-				}
-				every_country = {
-					limit = {
-						is_subject_of = ROOT
-						NOT = { has_idea = BUL_ferdinands_puppet }
-					}
-					add_ideas = BUL_ferdinands_puppet
-				}		
-			}
-		}
+	# 		# BULGARIAN CLAIMS IN THE BALKANS
+	# 		if = {
+	# 			limit = {
+	# 				has_global_flag = BUL_germany_recognizes_bulgarian_claims_flag
+	# 				is_in_faction_with = GER
+	# 				any_state = {
+	# 					has_state_flag = BUL_bulgarian_claim_warranted_flag
+	# 					OR = {
+	# 						is_controlled_by = GER
+	# 						controller = {
+	# 							is_in_faction_with = GER
+	# 							NOT = { tag = BUL }
+	# 							NOT = { owns_state = PREV } #Not owner (it should be actually occupating the state -> Also prevents the issue in YUG with IMRO removing the core)
+	# 							NOT = { PREV = { is_core_of = PREV } }
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 			country_event = bftb_bulgarian_claims.4
+	# 		}
+	# 	}
+	# 	#Check for any subject not having the appropriate NS while Ferdinand I is ruling (ie. released nations)
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				has_country_leader = {
+	# 					character = BUL_ferdinand_i 
+	# 					ruling_only = yes
+	# 				}
+	# 				any_country = {
+	# 					is_subject_of = ROOT
+	# 					NOT = { has_idea = BUL_ferdinands_puppet }
+	# 				}
+	# 			}
+	# 			every_country = {
+	# 				limit = {
+	# 					is_subject_of = ROOT
+	# 					NOT = { has_idea = BUL_ferdinands_puppet }
+	# 				}
+	# 				add_ideas = BUL_ferdinands_puppet
+	# 			}		
+	# 		}
+	# 	}
 
-		# #Retire Generals that do not agree with pro-German policies
-		# effect = {
-		# 	if = {
-		# 		limit = {
-		# 			is_in_faction_with = GER
-		# 			GER = { has_government = fascism }
-		# 		}
-		# 		random_unit_leader = {
-		# 			limit = {
-		# 				has_id = 1203 #Hadzipetkov
-		# 			}
-		# 			retire = yes
-		# 		}
-		# 		random_unit_leader = {
-		# 			limit = {
-		# 				has_id = 1204 #Boydev
-		# 			}
-		# 			retire = yes
-		# 		}
-		# 	}
-		# }
-	}
+	# 	# #Retire Generals that do not agree with pro-German policies
+	# 	# effect = {
+	# 	# 	if = {
+	# 	# 		limit = {
+	# 	# 			is_in_faction_with = GER
+	# 	# 			GER = { has_government = fascism }
+	# 	# 		}
+	# 	# 		random_unit_leader = {
+	# 	# 			limit = {
+	# 	# 				has_id = 1203 #Hadzipetkov
+	# 	# 			}
+	# 	# 			retire = yes
+	# 	# 		}
+	# 	# 		random_unit_leader = {
+	# 	# 			limit = {
+	# 	# 				has_id = 1204 #Boydev
+	# 	# 			}
+	# 	# 			retire = yes
+	# 	# 		}
+	# 	# 	}
+	# 	# }
+	# }
 	
 	#ROOT = attacking side
 	#FROM = defending side
