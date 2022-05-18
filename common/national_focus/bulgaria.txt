@@ -1,15 +1,6 @@
-### search_filters = {FOCUS_FILTER_POLITICAL}
-### search_filters = {FOCUS_FILTER_RESEARCH}
-### search_filters = {FOCUS_FILTER_INDUSTRY}
-### search_filters = {FOCUS_FILTER_STABILITY}
-### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
-### search_filters = {FOCUS_FILTER_MANPOWER}
-### search_filters = {FOCUS_FILTER_ANNEXATION}
-### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
-
 focus_tree = {
 	id = bulgarian_focus
-
+	
 	country = {
 		factor = 0
 		
@@ -2590,25 +2581,8 @@ focus_tree = {
 
 		available = {
 			has_civil_war = no
-			if = {
-				limit = {
-					has_dlc = "La Resistance"
-				}
-				SPR_scw_in_progress = yes
-				country_exists = SPA
-				NOT = { has_war_with = SPA }
-			}
-			else = {
-				any_country = {
-					original_tag = SPR
-					has_civil_war = yes
-					NOT = { has_war_with = ROOT }
-					OR = {
-						has_government = fascism
-						has_government = neutrality
-					}
-				}
-			}
+			SPR_scw_in_progress = yes
+			NOT = { has_war_with = SPA }
 			OR = {
 				has_government = fascism
 				has_government = neutrality
@@ -2934,11 +2908,6 @@ focus_tree = {
 			add_ai_strategy = {
 				type = befriend
 				id = GER
-				value = 20
-			}
-			add_ai_strategy = {
-				type = befriend
-				id = ITA
 				value = 20
 			}
 		}
