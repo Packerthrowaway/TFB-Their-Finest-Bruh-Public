@@ -1,3 +1,11 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
 focus_tree = {
 	id = indian_focus
 	
@@ -9,12 +17,6 @@ focus_tree = {
 			tag = RAJ
 			has_dlc = "Together for Victory"
 		}
-
-		#modifier = {
-		#	add = 10
-		#	original_tag = RAJ
-		#	has_dlc = "Together for Victory"
-		#}
 	}
 	
 	default = no
@@ -24,7 +26,7 @@ focus_tree = {
 	############################
 	## THE BIG QUEEN SECTION ###
 	############################
-	
+
 	focus = {
 		id = RAJ_provincial_elections
 		icon = GFX_goal_generic_forceful_treaty
@@ -45,10 +47,8 @@ focus_tree = {
 		continue_if_invalid = yes
 		available_if_capitulated = no
 
-		complete_tooltip = {
 
-		}
-
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_political_power = 100			
 			add_autonomy_ratio = {
@@ -88,10 +88,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
 
-		}
-
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_autonomy_ratio = {
 				value = 0.2
@@ -103,7 +101,7 @@ focus_tree = {
 			hidden_effect = { news_event = { id = news.283 hours = 12 } }
 		}
 	}
-	
+
 	focus = {
 		id = RAJ_quit_india_movement
 		icon = GFX_goal_tfv_sever_ties_with_uk
@@ -123,16 +121,22 @@ focus_tree = {
 			is_subject = yes
 		}
 
+		bypass = {
+
+		}
+
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_ideas = RAJ_quit_india_movement
 			set_country_flag = RAJ_quit_india_movement
 			custom_effect_tooltip = "tfv_raj_quit_india_unrest_tt"
 			hidden_effect = {
-				country_event = { id = tfv_raj.210 days = 15 random = 20 }
+				country_event = { id = tfv_raj.210 days = 15 random_days = 20 }
 				news_event = { id = news.282 hours = 6 }
 			}
 			if = { limit = { is_ai = no }
@@ -142,7 +146,7 @@ focus_tree = {
 			}
 		}
 	}
-	
+
 	focus = {
 		id = RAJ_cripps_mission
 		icon = GFX_focus_generic_diplomatic_treaty
@@ -176,7 +180,7 @@ focus_tree = {
 		 	}
 		}
 	}
-	
+
 	focus = {
 		id = RAJ_limited_autonomy
 		icon = GFX_focus_RAJ_two_nation_theory
@@ -253,7 +257,7 @@ focus_tree = {
 			add_state_core = 442
 		}
 	}
-	
+
 	focus = {
 		id = RAJ_pakistan_investments
 		icon = GFX_focus_generic_concessions
@@ -367,15 +371,13 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
 
-		}
-
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			remove_ideas = RAJ_marginalized_muslim_community_angry
 		}
 	}
-	
+
 	focus = {
 		id = RAJ_empower_the_congress
 		icon = GFX_goal_generic_propaganda
@@ -406,7 +408,7 @@ focus_tree = {
 			add_political_power = 200
 		}
 	}
-	
+
 	focus = {
 		id = RAJ_indian_investments
 		icon = GFX_focus_generic_industry_3
@@ -1261,6 +1263,10 @@ focus_tree = {
 	}
 
 
+	############################
+	# ARMOR/MECH/STUFF SECTION #
+	############################
+
 	focus = {
 		id = RAJ_the_bangalore_torpedo
 		icon = GFX_goal_generic_position_armies
@@ -1287,10 +1293,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_the_bangalore_torpedo
@@ -1327,10 +1330,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_vickers_berthier_gun
@@ -1367,10 +1367,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			army_experience = 10
 			add_tech_bonus = {
@@ -1408,10 +1405,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_army_motorization
@@ -1451,10 +1445,6 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 			add_tech_bonus = {
@@ -1499,10 +1489,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_indian_armor
@@ -1546,10 +1533,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = RAJ_modernizing_army
@@ -1587,10 +1571,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -1632,10 +1613,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			air_experience = 25
 			add_doctrine_cost_reduction = {
@@ -1757,10 +1735,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {			
 			add_tech_bonus = {
 				name = RAJ_air_support_effort
@@ -1799,10 +1774,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_fighter_effort
@@ -1847,10 +1819,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			air_experience = 25
 			add_doctrine_cost_reduction = {
@@ -1896,10 +1865,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_the_smiling_buddha
@@ -2029,7 +1995,9 @@ focus_tree = {
 				path = { 2086 2054 1908 4984 10847 1980 4110 10108 3456 }
 			}
 			build_railway = { #Delhi - Ahmadabad - Bombay
-				path = { 1908 4149 12886 1103 9975 11952 7150 4187 7013 1349 }
+				path = {
+					1908 4149 12886 1103 9975 11952 7150 4187 7013 1349
+				}
 			}
 		}
 	}
@@ -2060,6 +2028,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -2141,10 +2110,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
 
-		}
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			429 = {
 				add_resource = {
@@ -2193,10 +2160,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
 
-		}
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			432 = {
 				add_resource = {
@@ -2234,10 +2199,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
 
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -2269,10 +2232,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
 
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			custom_effect_tooltip = available_theorist
 			show_ideas_tooltip = RAJ_homi_j_bhabha
@@ -2316,6 +2277,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -2397,6 +2359,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -2479,10 +2442,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = RAJ_royal_indian_navy
@@ -2519,10 +2479,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_screening_effort
@@ -2560,10 +2517,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_cruiser_effort
@@ -2601,10 +2555,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_submarine_effort
@@ -2641,10 +2592,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = RAJ_capital_ship_effort
@@ -2682,10 +2630,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = RAJ_modernizing_navy
@@ -2727,8 +2672,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		
 
 		completion_reward = {
 			random_owned_controlled_state = {
@@ -3056,6 +3001,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -3145,6 +3091,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -3310,6 +3257,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
