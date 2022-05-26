@@ -4981,15 +4981,15 @@ focus_tree = {
 		prerequisite = { focus = GER_avenge_versailles }
 		available = {
 			ITA = { 
-			OR = {
-			surrender_progress > 0.05
-			AND = {
-			 NOT	= { controls_state = 115 }
-			 NOT	= { controls_state = 450 }
-			 NOT	= { controls_state = 448 }
-			}
-			}
-		} 
+				OR = {
+					surrender_progress > 0.05
+						AND = {
+							NOT	= { controls_state = 115 }
+							NOT	= { controls_state = 450 }
+							NOT	= { controls_state = 448 }
+						}
+				}
+			} 
 		}
 		bypass = {
 		}
@@ -5010,16 +5010,11 @@ focus_tree = {
 				}
 				transfer_state = 39
 			}
-			set_autonomy = {
-				target = ITA
-				autonomy_state = autonomy_satellite
-			}
-				
 			ITA = { 
-			set_cosmetic_tag = ITA_ISR 
-			remove_ideas = victor_emmanuel
-			add_ideas = ITA_german_occupation
-			set_capital =  { state = 159 }
+				set_cosmetic_tag = ITA_ISR 
+				remove_ideas = victor_emmanuel
+				add_ideas = ITA_german_occupation
+				set_capital =  { state = 159 }
 			}
 			ITA = {
 				custom_effect_tooltip = unlock_propaganda_campaign_tt
