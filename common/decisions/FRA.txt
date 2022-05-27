@@ -2175,57 +2175,121 @@ FRA_propaganda_campaigns = {
 		}
 
 		complete_effect = {
-			set_variable = { FRA_new_propaganda_campaign = 5 }
-			FRA_pick_propaganda_campaign_slot_effect = yes
-			add_ideas = FRA_gun_prop
-			hidden_effect = {
+			if = {
+				limit = {
+					NOT = { TAG = VIC }
+				}
+				set_variable = { FRA_new_propaganda_campaign = 5 }
+				FRA_pick_propaganda_campaign_slot_effect = yes
+				add_ideas = FRA_gun_prop
+				hidden_effect = {
+					310 = {
+						set_variable = { SOV_steel_bonus = 0 }
+						set_variable = { SOV_aluminium_bonus = 0 }
+						set_variable = { SOV_chromium_bonus = 0 }
+						set_variable = { SOV_tungsten_bonus = 0 }
+					}
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = steel
+								amount > 0
+							}
+						}
+						310 = { add_to_variable = { SOV_steel_bonus = 10 } }
+					}
+
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 0
+							}
+						}
+						310 = { add_to_variable = { SOV_aluminium_bonus = 10 } }
+					}
+
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 0
+							}
+						}
+						310 = { add_to_variable = { SOV_chromium_bonus = 10 } }
+					}
+
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 0
+							}
+						}
+						310 = { add_to_variable = { SOV_tungsten_bonus = 10 } }
+					}
+				}
+
 				310 = {
-					set_variable = { SOV_steel_bonus = 0 }
+					add_dynamic_modifier = { modifier = SOV_increased_metals_production }
 				}
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = steel
-							amount > 0
-						}
+			} else = {
+				set_variable = { FRA_new_propaganda_campaign = 5 }
+				FRA_pick_propaganda_campaign_slot_effect = yes
+				add_ideas = FRA_gun_prop
+				hidden_effect = {
+					22 = {
+						set_variable = { SOV_steel_bonus = 0 }
+						set_variable = { SOV_aluminium_bonus = 0 }
+						set_variable = { SOV_chromium_bonus = 0 }
+						set_variable = { SOV_tungsten_bonus = 0 }
 					}
-					310 = { add_to_variable = { SOV_steel_bonus = 10 } }
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = steel
+								amount > 0
+							}
+						}
+						22 = { add_to_variable = { SOV_steel_bonus = 10 } }
+					}
+
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 0
+							}
+						}
+						22 = { add_to_variable = { SOV_aluminium_bonus = 10 } }
+					}
+
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 0
+							}
+						}
+						22 = { add_to_variable = { SOV_chromium_bonus = 10 } }
+					}
+
+					every_controlled_state = {
+						limit = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 0
+							}
+						}
+						22 = { add_to_variable = { SOV_tungsten_bonus = 10 } }
+					}
 				}
 
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = aluminium
-							amount > 0
-						}
-					}
-					310 = { add_to_variable = { SOV_aluminium_bonus = 10 } }
-				}
-
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = chromium
-							amount > 0
-						}
-					}
-					310 = { add_to_variable = { SOV_chromium_bonus = 10 } }
-				}
-
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = tungsten
-							amount > 0
-						}
-					}
-					310 = { add_to_variable = { SOV_tungsten_bonus = 10 } }
+				22 = {
+					add_dynamic_modifier = { modifier = SOV_increased_metals_production }
 				}
 			}
-
-			310 = {
-				add_dynamic_modifier = { modifier = SOV_increased_metals_production }
-			}
+			
 
 			custom_effect_tooltip = SOV_propaganda_more_metal_tt
 		}
@@ -2235,9 +2299,19 @@ FRA_propaganda_campaigns = {
 			FRA_reset_propaganda_campaign_slot_effect = yes
 			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 			remove_ideas = FRA_gun_prop
-			310 = {
-				remove_dynamic_modifier = { modifier = SOV_increased_metals_production }
+			if = {
+				limit = {
+					NOT = { TAG = VIC }
+				}
+				310 = {
+					remove_dynamic_modifier = { modifier = SOV_increased_metals_production }
+				}
+			} else = {
+				22 = {
+					remove_dynamic_modifier = { modifier = SOV_increased_metals_production }
+				}
 			}
+
 		}
 
 	}
