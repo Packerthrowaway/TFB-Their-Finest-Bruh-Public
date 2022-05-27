@@ -328,6 +328,9 @@ NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 30.0		-- each shi
 NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT 											= 30		-- Amount of in-game-hours that takes the submarine (with position unrevealed) to hide.
 NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT 										= 24		-- Amount of in-game-hours that makes the submarine visible if it is on the defender side.
 NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.045		-- Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
+NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
+NDefines.NNavy.RESOURCE_LENDLEASE_PRIORITY = 3
+NDefines.NNavy.RESOURCE_ORIGIN_PRIORITY = 3
 
 
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
