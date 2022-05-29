@@ -918,9 +918,18 @@
 				}
 			}
 			add_named_threat = { threat = 5 name = JAP_intervene_in_china }
-			add_ideas = JAP_intervene_in_china_5
+			
 			unlock_decision_tooltip = JAP_china_step_up_war_effort
-			MAN = { add_ideas = MAN_intervene_in_china_5 }
+			if = {
+				limit = {
+					OR = { 
+						JAP = { is_ai = no }
+						MAN = { is_ai = no } 
+					}
+				}
+				add_ideas = JAP_intervene_in_china_5
+				MAN = { add_ideas = MAN_intervene_in_china_5 }
+			}
 			unlock_decision_tooltip = { decision = MAN_china_step_up_war_effort show_effect_tooltip = yes }
 		}
 	}
@@ -1462,6 +1471,10 @@
 		y = 2
 		cost = 5
 		relative_position_id = JAP_strike_south_doctrine
+
+		available = {
+			NOT = { has_war_with = CHI }
+		}
 
 		completion_reward = {
 			declare_war_on = {
