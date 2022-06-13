@@ -1498,7 +1498,7 @@
 				target = RAJ
 				type = annex_everything
 			}
-			declare_war_on = {
+			create_wargoal = {
 				target = CAN
 				type = annex_everything
 			}
@@ -1510,9 +1510,14 @@
 				target = MAL
 				type = annex_everything
 			}
-			declare_war_on = {
-				target = INS
-				type = annex_everything
+			if = {
+				limit = {
+					INS = { exists = yes }
+				}
+				declare_war_on = {
+					target = INS
+					type = annex_everything
+				}
 			}
 			random_country = { 
 				limit = { original_tag = HOL  has_government = democratic}
@@ -1524,8 +1529,8 @@
 				}	
 			}
 			create_wargoal = {
-				type = annex_everything
 				target = FRA
+				type = annex_everything
 			}
 			hidden_effect = {
 				if = {
