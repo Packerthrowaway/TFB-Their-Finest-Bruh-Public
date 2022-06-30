@@ -3840,6 +3840,32 @@
 			}
 		}
 	}
+
+	focus = {
+		id = ITA_trench_warfare
+		icon = GFX_focus_generic_provoke_border_clashes
+		prerequisite = { focus = ITA_alpini focus = ITA_new_artillery }
+		x = -1
+		y = 1
+		relative_position_id = ITA_alpini
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = sf_bonus
+				cost_reduction = 0.25
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
 	
 	focus = {
 		id = ITA_folgore_division
@@ -3877,31 +3903,7 @@
 		}
 	}
 	
-	focus = {
-		id = ITA_trench_warfare
-		icon = GFX_focus_generic_provoke_border_clashes
-		prerequisite = { focus = ITA_alpini focus = ITA_new_artillery }
-		x = -1
-		y = 1
-		relative_position_id = ITA_alpini
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
 
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = sf_bonus
-				cost_reduction = 0.25
-				uses = 2
-				category = land_doctrine
-			}
-		}
-	}
 	
 	focus = {
 		id = ITA_assault_tactics
