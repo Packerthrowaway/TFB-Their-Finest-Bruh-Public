@@ -7,6 +7,16 @@ officer_training = {
 		available = {
 			has_idea = inventive_leadership_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				skill < 4
+				NOT = {
+					OR = {
+						has_trait = naval_invader
+						has_trait = commando
+						has_trait = trickster
+					}
+				}
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -72,6 +82,9 @@ officer_training = {
 		available = {
 			has_idea = best_of_the_best_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				skill < 3
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -120,6 +133,9 @@ officer_training = {
 		available = {
 			has_idea = bold_attack_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				attack_skill_level < 3
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -168,6 +184,9 @@ officer_training = {
 		available = {
 			has_idea = tenacious_defense_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				defense_skill_level < 3
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -216,6 +235,9 @@ officer_training = {
 		available = {
 			has_idea = meticulous_preparation_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				planning_skill_level < 3
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -271,6 +293,21 @@ officer_training = {
 		available = {
 			has_idea = theatre_training_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				skill < 3
+					NOT = {
+						OR = {
+							has_trait = desert_fox
+							has_trait = swamp_fox
+							has_trait = trait_mountaineer
+							has_trait = hill_fighter
+							has_trait = jungle_rat
+							has_trait = ranger
+							has_trait = urban_assault_specialist
+							has_trait = winter_specialist
+						}
+					}
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -356,6 +393,10 @@ officer_training = {
 		available = {
 			has_idea = mass_assault_academy_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				has_trait = infantry_officer
+				skill < 4
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -405,6 +446,10 @@ officer_training = {
 		available = {
 			has_idea = mobile_warfare_academy_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				has_trait = armor_officer
+				skill < 4
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -454,6 +499,9 @@ officer_training = {
 		available = {
 			has_idea = superior_firepower_academy_spirit
 			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				skill < 4
+			}
 		}
 		
 		custom_cost_trigger = {
