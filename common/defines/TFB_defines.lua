@@ -393,9 +393,9 @@ NDefines.NIntel.ARMY_ARMY_COUNT_RANGE_INTEL_MIN = 0.1
 NDefines.NIntel.NAVAL_SUPREMACY_INTEL_LOW = 0.3								-- we need more intel than this to get any supremacy
 NDefines.NIntel.NAVY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.1
 
-NDefines.NIntel.RECON_PLANE_INTEL_BASE = 0.02 				-- intel base amount for a strategic area per plane
-NDefines.NIntel.RECON_PLANE_LAND_DISTRIBUTION = { 10.0, 6.0, 0.0, 3.0 }    -- controls for land and sea zones how much of each intel typee is given (civ, army, navy, air)
-NDefines.NIntel.RECON_PLANE_SEA_DISTRIBUTION = { 0.0, 0.0, 10.0, 0.0 }
+NDefines.NIntel.RECON_PLANE_INTEL_BASE = 0.08 				-- intel base amount for a strategic area per plane
+NDefines.NIntel.RECON_PLANE_LAND_DISTRIBUTION = { 15.0, 10.0, 0.0, 10.0 }    -- controls for land and sea zones how much of each intel typee is given (civ, army, navy, air)
+NDefines.NIntel.RECON_PLANE_SEA_DISTRIBUTION = { 0.0, 0.0, 15.0, 0.0 }
 
 NDefines.NSupply.CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.2 -- supply from one civilian factory
 NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.3 -- supply from one military factory
