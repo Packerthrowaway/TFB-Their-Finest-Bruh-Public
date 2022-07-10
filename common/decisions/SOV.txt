@@ -9286,6 +9286,78 @@ operations = {
 		}
 	}
 
+	SOV_bessarabia_lessons = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			has_war_with = ROM
+			ROM = { NOT = { has_country_flag = bessarabia_finished  } }
+		}
+
+		available = {
+			has_war_with = ROM
+			casualties > 125000
+		}
+
+		fire_only_once = yes
+
+		days_remove = 7
+
+		remove_effect = {
+			add_timed_idea = {
+				idea = SOV_bessarabia_adapt
+				days = 90
+			}
+		}
+
+	}
+
+	SOV_bessarabia_victory = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			has_war_with = ROM
+			ROM = { NOT = { has_country_flag = bessarabia_finished  } }
+		}
+
+		available = {
+			has_war_with = ROM
+			OR = {
+				ROM = {
+					casualties > 75000
+				}
+				ROM = {
+					surrender_progress > 0.3
+				}
+			}
+		}
+
+		days_remove = 7
+		fire_only_once = yes
+
+		remove_effect = {
+			SOV = {
+				white_peace = ROM
+ 				transfer_state = 78
+				transfer_state = 80
+ 				transfer_state = 766
+			}
+			ROM = { set_country_flag = bessarabia_finished }
+			diplomatic_relation = {
+				country = SOV
+				relation = non_aggression_pact
+			}
+		}
+	}
+
 }
 
 # political_actions = {
