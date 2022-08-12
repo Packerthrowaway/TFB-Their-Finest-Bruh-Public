@@ -1421,7 +1421,7 @@
 		x = -2
 		y = 1
 		relative_position_id = SOV_war_mobilisation
-		cost = 5
+		cost = 4
 
 		available = {
 			if = {
@@ -1443,6 +1443,41 @@
 			set_technology = {
 				sov_zis30_tech = 1
 			}
+		}
+	}
+
+	focus = {
+		id = SOV_slacken_armor
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_communism
+		prerequisite = { focus = SOV_tankograd }		
+		cost = 4
+		x = 0
+		y = 2
+		relative_position_id = SOV_tankograd
+		available = {
+			casualties > 2000000
+			if = {
+				limit = {
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				surrender_progress > 0.38
+			} else_if = {
+				limit = {
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				surrender_progress > 0.32 
+			} else = {
+				surrender_progress > 0.32
+			}
+		}
+		completion_reward = {
+			hidden_effect = {
+				set_technology = {
+					sov_slacken_armor_tech = 1
+				}
+
+			}			
+			custom_effect_tooltip = SOV_slacken_armor_tt
 		}
 	}
 	
@@ -1745,12 +1780,12 @@
 				producer = ENG
 			}
 			add_equipment_to_stockpile = {
-				type = anti_tank_equipment_1
+				type = anti_tank_equipment
 				amount = 3000
 				producer = USA
 			}
 			add_equipment_to_stockpile = {
-				type = artillery_equipment_1
+				type = artillery_equipment
 				amount = 3000
 				producer = USA
 			}
@@ -2226,17 +2261,19 @@
 						infantry = { x = 0 y = 0 }
 						infantry = { x = 0 y = 1 }
 						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
 
 						infantry = { x = 1 y = 0 }
 						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
+						infantry = { x = 1 y = 2 }						
 
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
+						artillery_brigade = { x = 2 y = 0}
+						artillery_brigade = { x = 2 y = 1}
+						artillery_brigade = { x = 2 y = 2}
 
-						artillery_brigade = { x = 3 y = 0}
+						anti_tank_brigade = { x = 3 y = 0}
 						anti_tank_brigade = { x = 3 y = 1}
+						anti_tank_brigade = { x = 3 y = 2}
 					}
 					support = {
 						hq_company = { x = 0 y = 0 } 
@@ -2257,6 +2294,10 @@
 								any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR is_controlled_by = VIC is_controlled_by = YUG is_controlled_by = JAP is_controlled_by = MAN is_controlled_by = SIA} }
 								is_controlled_by = SOV
 							}
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
 						}
 						create_unit = {
 							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
@@ -2292,6 +2333,10 @@
 							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
 							owner = SOV
 						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+							owner = SOV
+						}
 					}
 				}
 
@@ -2300,7 +2345,7 @@
 		}
 	}
 
-		focus = {
+	focus = {
 		id = SOV_fareast_reserves
 		icon = GFX_focus_SOV_restore_cossack_units
 		prerequisite = { focus = SOV_frontline_mob }
@@ -2335,17 +2380,19 @@
 						infantry = { x = 0 y = 0 }
 						infantry = { x = 0 y = 1 }
 						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
 
 						infantry = { x = 1 y = 0 }
 						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
+						infantry = { x = 1 y = 2 }						
 
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
+						artillery_brigade = { x = 2 y = 0}
+						artillery_brigade = { x = 2 y = 1}
+						artillery_brigade = { x = 2 y = 2}
 
-						artillery_brigade = { x = 3 y = 0}
+						anti_tank_brigade = { x = 3 y = 0}
 						anti_tank_brigade = { x = 3 y = 1}
+						anti_tank_brigade = { x = 3 y = 2}
 					}
 					support = {
 						hq_company = { x = 0 y = 0 } 
@@ -2374,6 +2421,10 @@
 						create_unit = {
 							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
 							owner = SOV
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+							owner = SOV
 						}						
 					}
 				}
@@ -2384,6 +2435,10 @@
 								any_neighbor_state = { OR = { is_controlled_by = GER is_controlled_by = ROM is_controlled_by = HUN is_controlled_by = FIN is_controlled_by = ITA is_controlled_by = BUL  is_controlled_by = SPR is_controlled_by = VIC is_controlled_by = YUG} }
 								is_controlled_by = SOV
 							}
+						}
+						create_unit = {
+							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+							owner = SOV
 						}
 						create_unit = {
 							division = "division_template = \"Strelki\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
@@ -2534,6 +2589,41 @@
 					}
 				}
 			}
+		}
+	}
+
+	focus = {
+		id = SOV_slacken_inf
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		prerequisite = { focus = SOV_order_270 }		
+		cost = 4
+		x = 2
+		y = 1
+		relative_position_id = SOV_order_270
+		available = {
+			casualties > 2000000
+			if = {
+				limit = {
+					has_completed_focus = SOV_dismantle_stalin_line
+				}
+				surrender_progress > 0.38
+			} else_if = {
+				limit = {
+					has_completed_focus = SOV_improve_stalin_line
+				}
+				surrender_progress > 0.32 
+			} else = {
+				surrender_progress > 0.32
+			}
+		}
+		completion_reward = {
+			hidden_effect = {
+				set_technology = {
+					slacken_inf_tech = 1
+				}
+
+			}
+			custom_effect_tooltip = SOV_slacken_inf_tt
 		}
 	}
 	
