@@ -752,18 +752,18 @@
 
 		completion_reward = {
 			264 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
 			247 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -787,26 +787,26 @@
 
 		completion_reward = {
 			249 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
 			251 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
 			252 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -830,26 +830,26 @@
 
 		completion_reward = {
 			217 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
 			219 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
 			195 = {
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -1853,6 +1853,17 @@
 			hidden_effect = {
 				load_oob = SOV_Moscow
 			}
+			if = {
+				limit = {
+					GER = {has_idea = GER_barbarossa}
+				}
+				GER = {
+					remove_ideas = {
+						GER_barbarossa
+					}
+				}
+			}
+
 			custom_effect_tooltip = SOV_defend_moscow_tt
 		}
 	}
@@ -1943,6 +1954,16 @@
 			}
 			hidden_effect = {
 				load_oob = SOV_Stalingrad
+			}
+			if = {
+				limit = {
+					GER = {has_idea = GER_barbarossa}
+				}
+				GER = {
+					remove_ideas = {
+						GER_barbarossa
+					}
+				}
 			}
 			custom_effect_tooltip = SOV_defend_stalingrad_tt
 		}
@@ -2153,6 +2174,16 @@
 
 			custom_effect_tooltip = SOV_lessons_of_war_ns_tt
 
+			if = {
+				limit = {
+					GER = {has_idea = GER_barbarossa}
+				}
+				GER = {
+					remove_ideas = {
+						GER_barbarossa
+					}
+				}
+			}
 
 			custom_effect_tooltip = SOV_lessons_of_war_cowed_trait_tt
 			hidden_effect = {
@@ -2757,10 +2788,10 @@
 		completion_reward = {
 			add_to_variable = { SOV_the_politburo_communism_drift = 0.05 }
 			add_to_variable = { SOV_the_politburo_drift_defence_factor = 0.05 } 
-			add_to_variable = { SOV_the_politburo_defensive_war_stability_factor = 0.25 } 
+			#add_to_variable = { SOV_the_politburo_defensive_war_stability_factor = 0.25 } 
 			custom_effect_tooltip = SOV_socialism_in_one_country_ns_tt
 
-			add_political_power = 15
+			#add_political_power = 15
 
 			SOV_paranoia_low_decrease_effect = yes
 		}
@@ -5380,7 +5411,7 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = tank_bonus
-				bonus = 0.75
+				bonus = 0.50
 				uses = 1
 				category = armor
 			}
@@ -5653,7 +5684,7 @@
 
 		completion_reward = {
 			add_to_variable = { SOV_the_red_army_cas_damage_reduction = 0.05 }
-			add_to_variable = { SOV_the_red_army_max_dig_in = 1 }
+			#add_to_variable = { SOV_the_red_army_max_dig_in = 1 }
 			add_to_variable = { SOV_the_red_army_dig_in_speed_factor = 0.05 }
 			custom_effect_tooltip = SOV_experts_in_camouflage_ns_tt
 		}
@@ -7632,40 +7663,40 @@
 		}
 	}
 
-	focus = {
-		id = SOV_mine_warfare
+	# focus = {
+	# 	id = SOV_mine_warfare
 
-		icon = GFX_focus_generic_mine_warfare
-		prerequisite = { focus = SOV_surface_warfare focus = SOV_submarine_warfare }
-		x = -1
-		y = 1
-		relative_position_id = SOV_submarine_warfare
-		cost = 5
+	# 	icon = GFX_focus_generic_mine_warfare
+	# 	prerequisite = { focus = SOV_surface_warfare focus = SOV_submarine_warfare }
+	# 	x = -1
+	# 	y = 1
+	# 	relative_position_id = SOV_submarine_warfare
+	# 	cost = 5
 
-		available = {
+	# 	available = {
 
-		}
+	# 	}
 		
-		search_filters = {FOCUS_FILTER_RESEARCH}
+	# 	search_filters = {FOCUS_FILTER_RESEARCH}
 
-		completion_reward = {
-			add_ideas = SOV_mine_warfare_ns
+	# 	completion_reward = {
+	# 		add_ideas = SOV_mine_warfare_ns
 
-			add_tech_bonus = {
-				name = SOV_mine_warfare
-				bonus = 1.0
-				uses = 2
-				category = naval_mines
-			}
-		}
-	}
+	# 		add_tech_bonus = {
+	# 			name = SOV_mine_warfare
+	# 			bonus = 1.0
+	# 			uses = 2
+	# 			category = naval_mines
+	# 		}
+	# 	}
+	# }
 
 	focus = {
 		id = SOV_long_range_raiders
 
 		icon = GFX_goal_generic_navy_anti_submarine
 		prerequisite = { focus = SOV_submarine_warfare }
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = SOV_submarine_warfare
 		cost = 5
