@@ -788,7 +788,7 @@
 	focus = {
 		id = FRA_begin_rearmament
 		icon = GFX_goal_generic_construct_mil_factory
-		x = 16
+		x = 15
 		y = 0
 		offset = {
 			x = 0
@@ -854,6 +854,8 @@
 		completion_reward = {
 			custom_effect_tooltip = available_chief_of_army
 			show_ideas_tooltip = maxime_weygand
+			set_global_flag = FRA_DEFENSIVE
+			army_experience = 10
 		}
 	}
 	focus = {
@@ -872,7 +874,8 @@
 		completion_reward = {
 			custom_effect_tooltip = available_chief_of_army
 			show_ideas_tooltip = maurice_gamelin
-			army_experience = 25
+			set_global_flag = FRA_AGGRESSIVE
+			army_experience = 10
 		}
 	}
 	focus = {
@@ -928,7 +931,7 @@
 		id = FRA_fusiliers_marine
 		icon = GFX_goal_generic_amphibious_assault
 		x = 0
-		y = 1
+		y = 2
 		offset = {
 			x = 0
 			y = 0
@@ -984,7 +987,7 @@
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = FRA_fortification_focus }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = FRA_fortification_focus
 		cost = 5
 
@@ -999,6 +1002,27 @@
 					target = ROOT
 					modifier = FRA_alpine_forts
 				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_heavy_armor_focus
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = FRA_fortification_focus focus = FRA_special_forces}
+		x = -1
+		y = 1
+		relative_position_id = FRA_fortification_focus
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = FRA_heavy_armor_focus
+				bonus = 0.5
+				uses = 1
+				category = cat_heavy_armor
 			}
 		}
 	}
@@ -1077,7 +1101,7 @@
 		icon = GFX_goal_generic_build_tank
 		prerequisite = { focus = FRA_motorized_focus }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = FRA_motorized_focus
 		cost = 5
 		completion_reward = {
@@ -1156,29 +1180,6 @@
 		}
 	}
 
-
-
-	focus = {
-		id = FRA_heavy_armor_focus
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = FRA_light_medium_armor }
-		x = 0
-		y = 1
-		relative_position_id = FRA_light_medium_armor
-		cost = 5
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			army_experience = 5
-			add_tech_bonus = {
-				name = FRA_heavy_armor_focus
-				bonus = 0.5
-				uses = 1
-				category = cat_heavy_armor
-			}
-		}
-	}
 	focus = {
 		id = FRA_firepower_kills
 		icon = GFX_goal_generic_army_artillery
@@ -1224,11 +1225,47 @@
 			}
 		}
 	}
+
+	focus = {
+		id = FRA_tank_radios
+		icon = GFX_SOV_improve_signals
+		prerequisite = { focus = FRA_light_medium_armor focus = FRA_firepower_kills}
+		x = 1
+		y = 1
+		relative_position_id = FRA_light_medium_armor
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_technology = {
+				#mot_radio = 1
+				mot_radio2 = 1
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_tank_refit
+		icon = GFX_goal_continuous_armor_production
+		prerequisite = { focus = FRA_light_medium_armor }
+		x = 0
+		y = 2
+		relative_position_id = FRA_light_medium_armor
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = FRA_tank_conversion_spirit
+		}
+	}
+
 	focus = {
 		id = FRA_infantry_tanks
 		icon = GFX_focus_generic_combined_arms
 		x = 0
-		y = 1
+		y = 2
 		offset = {
 			x = 0
 			y = 0
@@ -1262,7 +1299,7 @@
 	focus = {
 		id = FRA_upgrade_tanks
 		icon = GFX_focus_generic_tank_production
-		prerequisite = { focus = FRA_infantry_tanks focus = FRA_heavy_armor_focus}
+		prerequisite = { focus = FRA_infantry_tanks focus = FRA_tank_refit}
 		x = -1
 		y = 1
 		relative_position_id = FRA_infantry_tanks
@@ -1278,7 +1315,7 @@
 	focus = {
 		id = FRA_extend_the_maginot_line
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = FRA_mechanized_focus focus = FRA_alpine_forts focus = FRA_heavy_armor_focus}
+		prerequisite = { focus = FRA_mechanized_focus focus = FRA_alpine_forts focus = FRA_tank_refit}
 		x = 0
 		y = 1
 		relative_position_id = FRA_mechanized_focus

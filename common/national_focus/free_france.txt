@@ -15,7 +15,7 @@
 	focus = {
 		id = FRA_appeal_to_the_french_nation
 		icon = GFX_goal_generic_propaganda
-		x = 15
+		x = 10
 		y = 0
 		offset = {
 			x = 0
@@ -683,7 +683,7 @@
 	focus = {
 		id = FRA_refus_absurde
 		icon = GFX_goal_generic_demand_territory
-		x = 8
+		x = 3
 		y = 0
 		offset = {
 			x = 0
@@ -719,19 +719,59 @@
 			remove_ideas = { FRA_defeatism }
 		}
 	}
+	# focus = {
+	# 	id = FRA_the_maquis
+	# 	icon = GFX_focus_focus_fra_maquis
+	# 	x = -2
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = FRA_refus_absurde
+	# 	}
+	# 	relative_position_id = FRA_refus_absurde
+		
+	# 	cost = 5
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = yes
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	completion_reward = {
+	# 		add_ideas = { FRA_maquis }
+	# 		every_state = {
+	# 			limit = {
+	# 				is_core_of = ROOT
+	# 				not = { is_controlled_by = ROOT }
+	# 				infrastructure < 7
+	# 			}
+	# 			add_resistance_target = {
+	# 				amount = 15
+	# 				tooltip = FRA_the_maquis
+	# 			}
+	# 		}
+	# 	}
+	# }
 	focus = {
-		id = FRA_the_maquis
-		icon = GFX_focus_focus_fra_maquis
+		id = FRA_agency_boost
+		icon = GFX_focus_prc_infiltration
 		x = -2
 		y = 2
-		offset = {
-			x = 0
-			y = 0
-		}
-		prerequisite = { 
+	 	prerequisite = { 
 			focus = FRA_refus_absurde
-		}
-		relative_position_id = FRA_refus_absurde
+	 	}
+	 	relative_position_id = FRA_refus_absurde
 		
 		cost = 5
 		ai_will_do = {
@@ -747,22 +787,11 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = { FRA_maquis }
-			every_state = {
-				limit = {
-					is_core_of = ROOT
-					not = { is_controlled_by = ROOT }
-					infrastructure < 7
-				}
-				add_resistance_target = {
-					amount = 15
-					tooltip = FRA_the_maquis
-				}
-			}
+			add_ideas = FRA_expand_intelligence_idea
 		}
 	}
+
 	focus = {
 		id = FRA_reach_out_to_trade_unions
 		icon = GFX_goal_generic_major_alliance
