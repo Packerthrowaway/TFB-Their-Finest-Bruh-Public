@@ -1220,7 +1220,7 @@
 			add_tech_bonus = {
 				name = FRA_artillery_focus
 				bonus = 0.5
-				uses = 1
+				uses = 2
 				category = heavy_artillery
 			}
 		}
@@ -1507,7 +1507,7 @@
 	focus = {
 		id = FRA_form_the_popular_front
 		icon = GFX_goal_generic_intelligence_exchange
-		x = 30
+		x = 28
 		y = 0
 
 		cost = 6
@@ -1750,8 +1750,8 @@
 	focus = {
 		id = FRA_promote_entrepeneurship
 		icon = GFX_goal_generic_propaganda
-		x = -3
-		y = 1
+		x = -2
+		y = 2
 		prerequisite = { focus = FRA_general_work_council }
 		
 		relative_position_id = FRA_general_work_council
@@ -1781,8 +1781,8 @@
 	focus = {
 		id = FRA_stimulate_the_dynamic_market
 		icon = GFX_goal_generic_construct_civilian
-		x = 3
-		y = 1
+		x = 2
+		y = 2
 		prerequisite = { focus = FRA_general_work_council }
 		
 		relative_position_id = FRA_general_work_council
@@ -3154,9 +3154,9 @@
 	focus = {
 		id = FRA_naval_rearmament
 		icon = GFX_goal_generic_construct_naval_dockyard
-		x = 41
+		x = 38
 		y = 0
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -3203,10 +3203,10 @@
 		id = FRA_colonial_naval_bases
 		icon = GFX_goal_generic_build_navy
 	 	prerequisite = { focus = FRA_naval_rearmament }
-		x = -3
+		x = -2
 		y = 1
 		relative_position_id = FRA_naval_rearmament
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = yes
 
@@ -3269,7 +3269,7 @@
 		x = 0
 		y = 1
 		relative_position_id = FRA_colonial_naval_bases
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -3314,11 +3314,11 @@
 		id = FRA_the_old_school
 		icon = GFX_focus_generic_navy_battleship2
 	 	prerequisite = { focus = FRA_naval_rearmament }
-	 	mutually_exclusive = { focus = FRA_the_young_school }
-		x = 0
+	 	#mutually_exclusive = { focus = FRA_the_young_school }
+		x = 1
 		y = 1
 		relative_position_id = FRA_naval_rearmament
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -3347,7 +3347,7 @@
 		x = -1
 		y = 1
 		relative_position_id = FRA_the_old_school
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = yes
 
@@ -3370,7 +3370,7 @@
 		x = 1
 		y = 1
 		relative_position_id = FRA_the_old_school
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = yes
 
@@ -3392,7 +3392,7 @@
 		x = -1
 		y = 1
 		relative_position_id = FRA_carrier_focus
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = yes
 
@@ -3414,7 +3414,7 @@
 		x = 0
 		y = 2
 		relative_position_id = FRA_capital_ship_focus
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = no
 
@@ -3474,7 +3474,7 @@
 		x = 0
 		y = 2
 		relative_position_id = FRA_carrier_focus
-		cost = 10
+		cost = 6
 
 		available_if_capitulated = no
 
@@ -3528,12 +3528,12 @@
 	focus = {
 		id = FRA_the_young_school
 		icon = GFX_goal_generic_navy_cruiser
-	 	prerequisite = { focus = FRA_naval_rearmament }
-	 	mutually_exclusive = { focus = FRA_the_old_school }
-		x = 4
+	 	prerequisite = { focus = FRA_develop_colonial_dockyards }
+	 	#mutually_exclusive = { focus = FRA_the_old_school }
+		x = 0
 		y = 1
-		relative_position_id = FRA_naval_rearmament
-		cost = 10
+		relative_position_id = FRA_develop_colonial_dockyards
+		cost = 6
 
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -3542,106 +3542,40 @@
 		}
 	}
 
-	focus = {
-		id = FRA_undersea_combat
-		icon = GFX_goal_generic_navy_submarine
-	 	prerequisite = { focus = FRA_the_young_school }
-		x = -1
-		y = 1
-		relative_position_id = FRA_the_young_school
-		cost = 10
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			navy_experience = 25
-			add_tech_bonus = {
-				name = FRA_undersea_combat
-				bonus = 0.5
-				uses = 2
-				category = ss_tech
-			}
-		}
-	}
-
-	focus = {
-		id = FRA_surface_combat
-		icon = GFX_focus_generic_destroyer
-	 	prerequisite = { focus = FRA_the_young_school }
-		x = 1
-		y = 1
-		relative_position_id = FRA_the_young_school
-		cost = 10
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			navy_experience = 25
-			add_tech_bonus = {
-				name = FRA_surface_combat
-				bonus = 0.75
-				uses = 1
-				category = dd_tech
-			}
-		}
-	}
-	focus = {
-		id = FRA_improved_screen_ships
-		icon = GFX_goal_generic_navy_cruiser
-	 	prerequisite = { focus = FRA_surface_combat }
-	 	prerequisite = { focus = FRA_undersea_combat }
-		x = 0
-		y = 2
-		relative_position_id = FRA_surface_combat
-		cost = 10
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			navy_experience = 25
-			add_tech_bonus = {
-				name = FRA_improved_screen_ships
-				bonus = 0.75
-				uses = 1
-				category = cl_tech
-			}
-		}
-	}
-
 	
 
-	focus = {
-		id = FRA_naval_doctrine
-		icon = GFX_goal_generic_navy_doctrines_tactics
-	 	prerequisite = { 
-	 		focus = FRA_prioritize_the_joffre
-	 		focus = FRA_rush_the_richelieus
-	 		focus = FRA_improved_screen_ships
-	 	}
-		x = 3
-		y = 1
-		relative_position_id = FRA_rush_the_richelieus
-		cost = 10
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		available_if_capitulated = yes
+	# focus = {
+	# 	id = FRA_naval_doctrine
+	# 	icon = GFX_goal_generic_navy_doctrines_tactics
+	#  	prerequisite = { 
+	#  		focus = FRA_prioritize_the_joffre
+	#  		focus = FRA_rush_the_richelieus
+	#  		focus = FRA_improved_screen_ships
+	#  	}
+	# 	x = 1
+	# 	y = 1
+	# 	relative_position_id = FRA_rush_the_richelieus
+	# 	cost = 6
+	# 	search_filters = { FOCUS_FILTER_RESEARCH }
+	# 	available_if_capitulated = yes
 
-		completion_reward = {
+	# 	completion_reward = {
 
-			add_doctrine_cost_reduction = {
-				name = FRA_naval_doctrine
-				cost_reduction = 0.25
-				uses = 2
-				category = naval_doctrine
-			}
-		}
-	}
+	# 		add_doctrine_cost_reduction = {
+	# 			name = FRA_naval_doctrine
+	# 			cost_reduction = 0.25
+	# 			uses = 2
+	# 			category = naval_doctrine
+	# 		}
+	# 	}
+	# }
 
 	
 
 	focus = {
 		id = FRA_air_focus
 		icon = GFX_goal_generic_build_airforce
-		x = 51
+		x = 45
 		y = 0
 		cost = 10
 
