@@ -944,6 +944,70 @@ ideas = {
 				legitimacy_gain_factor = -0.5
 			}
 		}
+		FRA_expand_intelligence_idea = {
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+	
+			allowed_civil_war = {
+				always = yes
+			}
+	
+			removal_cost = -1
+	
+			picture = generic_spy_intel
+	
+			modifier = {
+				agency_upgrade_time = -0.25
+				operative_slot = 1
+				intelligence_agency_defense = 0.50
+			}
+		}
+		FRA_expand_intelligence_idea2 = {
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+	
+			allowed_civil_war = {
+				always = yes
+			}
+	
+			removal_cost = -1
+	
+			picture = generic_spy_intel
+	
+			modifier = {
+				# Better Agents
+				intel_network_gain_factor = 0.15
+				intel_from_operatives_factor = 0.15
+				own_operative_detection_chance = -0.15
+				operative_death_on_capture_chance = 0.15
+			}
+		}
+		FRA_expand_intelligence_idea3 = {
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+	
+			allowed_civil_war = {
+				always = yes
+			}
+	
+			removal_cost = -1
+	
+			picture = generic_spy_intel
+	
+			modifier = {
+				# Prep the French Resistance
+				subversive_activites_upkeep = -0.25
+				target_sabotage_factor = 0.25
+				boost_resistance_factor = 0.25
+				resistance_decay_on_our_occupied_states = -0.1
+			}
+		}
 		FRA_maquis = {
 			picture = MEX_politicised_army
 			allowed = {
@@ -975,7 +1039,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				resistance_growth_on_our_occupied_states  = 0.1 
+				resistance_growth_on_our_occupied_states  = 0.15 
 			}
 		}
 		FRA_communist_cooperation = {
@@ -1014,7 +1078,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				resistance_growth_on_our_occupied_states = 0.1 
+				resistance_growth_on_our_occupied_states = 0.15 
 			}
 		}
 		FRA_industrialist_connections = {
@@ -1103,9 +1167,182 @@ ideas = {
 			modifier = {
 				non_core_manpower = 0.2
 				experience_gain_army_unit_factor = 0.25
-				training_time_army_factor = -0.33
+				#training_time_army_factor = -0.33
 			}
 		}
+
+		FRA_special_forces = {
+			picture = generic_manpower_bonus
+			allowed = {
+				original_tag = FRA 
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				special_forces_cap = 0.15
+				special_forces_training_time_factor = -0.20
+			}
+			equipment_bonus = {
+				sf_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+
+		FRA_special_forces3 = {
+			picture = generic_manpower_bonus
+			allowed = {
+				original_tag = FRA 
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				special_forces_no_supply_grace = 120
+				special_forces_out_of_supply_factor = -0.1
+				special_forces_attack_factor = 0.05
+				special_forces_defence_factor = 0.05
+			}
+		}
+
+		FRA_lower_resource_loss = {
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_flexible_foreign_policy
+
+			modifier = {
+				production_lack_of_resource_penalty_factor = -0.25
+			}
+		}
+
+		FRA_supply_consumption_spirit = {
+
+			picture = SOV_the_road_of_life
+			
+			removal_cost = -1
+			
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			modifier = {
+				out_of_supply_factor = -0.1
+				supply_node_range = 0.15
+			}
+		}
+
+		FRA_infantry_bonuses = {
+			picture = HUN_secret_rearmament
+			
+			removal_cost = -1
+			
+
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			equipment_bonus = {
+				squad_equipment = {
+					build_cost_ic = -0.075 instant = yes
+				}
+				anti_tank_equipment = {
+					build_cost_ic = -0.075 instant = yes
+				}
+				anti_air_equipment = {
+					build_cost_ic = -0.075 instant = yes
+				}
+			}
+
+		}
+
+		FRA_infantry_supremacy = {
+			picture = generic_infantry_bonus
+			
+			removal_cost = -1
+			
+
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			modifier = {
+				army_infantry_attack_factor = 0.10
+				army_infantry_defence_factor = 0.10
+				army_armor_attack_factor = -0.30
+				army_armor_defence_factor = -0.30
+			}
+		}
+
+		FRA_tank_supremacy = {
+			picture = generic_armor
+			
+			removal_cost = -1
+			
+
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			modifier = {
+				army_armor_attack_factor = 0.10
+				army_armor_defence_factor = 0.10
+				army_infantry_attack_factor = -0.30
+				army_infantry_defence_factor = -0.30
+			}
+
+			equipment_bonus = {
+				anti_tank_equipment = {
+					build_cost_ic = 0.15 instant = yes
+				}
+				anti_air_equipment = {
+					build_cost_ic = 0.15 instant = yes
+				}
+			}
+		}
+
+		FRA_army_capstone = {
+			picture = FRA_undividable
+			
+			removal_cost = -1
+			
+
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			modifier = {
+				army_morale_factor = 0.05
+				attrition = -0.1
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+			}
+		}
+
 
 		FRA_victors_of_wwi = {
 			
@@ -1168,7 +1405,7 @@ ideas = {
 			picture = generic_navy_bonus
 			
 			modifier = {
-				industrial_capacity_dockyard = 0.05
+				industrial_capacity_dockyard = 0.10
 			}
 		}
 
@@ -1503,6 +1740,24 @@ ideas = {
 				
 			}
 		}
+
+		FRA_tank_conversion_spirit = {
+			picture = generic_armor
+			allowed = {
+				original_tag = FRA
+				always = no
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				armor = {
+					instant = yes
+					build_cost_ic = -0.075
+				}
+			}
+
+		}
 		
 	}
 	
@@ -1712,7 +1967,7 @@ ideas = {
 			allowed = {
 				original_tag = FRA
 			}
-			visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }	
+			visible = { has_completed_focus = FRA_form_the_state_arsenals }	
 			available = { has_country_flag = FRA_SNCAN_formed }	
 			research_bonus = {
 				air_equipment = 0.2
@@ -1725,7 +1980,7 @@ ideas = {
 			allowed = {
 				original_tag = FRA
 			}
-			visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }	
+			visible = { has_completed_focus = FRA_form_the_state_arsenals }	
 			available = { has_country_flag = FRA_SNCAO_formed }	
 			research_bonus = {
 				air_equipment = 0.2
@@ -1738,7 +1993,7 @@ ideas = {
 			allowed = {
 				original_tag = FRA
 			}
-			visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }	
+			visible = { has_completed_focus = FRA_form_the_state_arsenals }	
 			available = { has_country_flag = FRA_SNCASE_formed }	
 			research_bonus = {
 				air_equipment = 0.2
@@ -1751,7 +2006,7 @@ ideas = {
 			allowed = {
 				original_tag = FRA
 			}
-			visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }	
+			visible = { has_completed_focus = FRA_form_the_state_arsenals }	
 			available = { has_country_flag = FRA_SNCASO_formed }	
 			research_bonus = {
 				air_equipment = 0.2
@@ -1764,7 +2019,7 @@ ideas = {
 			allowed = {
 				original_tag = FRA
 			}
-			visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }	
+			visible = { has_completed_focus = FRA_form_the_state_arsenals }	
 			available = { has_country_flag = FRA_SNCAC_formed }	
 			research_bonus = {
 				air_equipment = 0.3
