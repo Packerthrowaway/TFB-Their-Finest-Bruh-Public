@@ -257,7 +257,12 @@ DIPLOMACY_MILACC_ENABLE_TRIGGER = {
 		}
 		OR = {
 			NOT = { tag = USA }
-			NOT = { has_idea = USA_neutrality_idea }
+			AND = {
+				NOT = { has_idea = USA_neutrality_idea }
+				NOT = { has_idea = USA_neutrality_idea_2 }
+				NOT = { has_idea = USA_neutrality_idea_3 }
+			}
+			
 		}
 	}
 	if = {
@@ -295,9 +300,19 @@ DIPLOMACY_OFFER_MILACC_ENABLE_TRIGGER = {
 		}
 		OR = {
 			NOT = { tag = USA }
-			NOT = { has_idea = USA_neutrality_idea }
+			AND = {
+				NOT = { has_idea = USA_neutrality_idea }
+				NOT = { has_idea = USA_neutrality_idea_2 }
+				NOT = { has_idea = USA_neutrality_idea_3 }
+			}
 		}
-		USA = { NOT = { has_idea = USA_neutrality_idea } }
+		# USA = { 				
+		# 	AND = {
+		# 		NOT = { has_idea = USA_neutrality_idea }
+		# 		NOT = { has_idea = USA_neutrality_idea_2 }
+		# 		NOT = { has_idea = USA_neutrality_idea_3 } 
+		# 	}	
+		# }
 	}
 	if = {
 		limit = {
@@ -334,7 +349,11 @@ DIPLOMACY_DOCKING_RIGHTS_ENABLE_TRIGGER = {
 		}
 		OR = {
 			NOT = { tag = USA }
-			NOT = { has_idea = USA_neutrality_idea }
+			AND = {
+				NOT = { has_idea = USA_neutrality_idea }
+				NOT = { has_idea = USA_neutrality_idea_2 }
+				NOT = { has_idea = USA_neutrality_idea_3 }
+			}
 		}
 	}
 	if = {
@@ -372,9 +391,22 @@ DIPLOMACY_OFFER_DOCKING_RIGHTS_ENABLE_TRIGGER = {
 		}
 		OR = {
 			NOT = { tag = USA }
-			NOT = { has_idea = USA_neutrality_idea }
+			AND = {
+				NOT = { has_idea = USA_neutrality_idea }
+				NOT = { has_idea = USA_neutrality_idea_2 }
+				NOT = { has_idea = USA_neutrality_idea_3 }
+			}
 		}
-		USA = { NOT = { has_idea = USA_neutrality_idea } }
+		# FROM = {
+		# 	tag = USA
+		# 	USA = { 			
+		# 		AND = {
+		# 			NOT = { has_idea = USA_neutrality_idea }
+		# 			NOT = { has_idea = USA_neutrality_idea_2 }
+		# 			NOT = { has_idea = USA_neutrality_idea_3 } 
+		# 		}	
+		# 	}
+		# }
 	}
 	if = {
 		limit = {
