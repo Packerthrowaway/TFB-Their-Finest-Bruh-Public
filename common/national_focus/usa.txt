@@ -1047,6 +1047,17 @@ focus_tree = {
 		available = {
 			if = {
 				limit = {
+					has_war = yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_war_support > 0.6
+				}
+				congress_low_support_trigger = yes
+			}
+			else_if = {
+				limit = {
 					has_war_support > 0.4
 				}
 				congress_medium_support_trigger = yes
@@ -1065,6 +1076,7 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = {FOCUS_FILTER_USA_CONGRESS}
 		completion_reward = {
+			custom_effect_tooltip = USA_congress_focus_support3_tt
 			if = {
 				limit = { has_completed_focus = USA_neutrality_act }
 				swap_ideas = {
@@ -1087,7 +1099,7 @@ focus_tree = {
 					has_war_support > 0.4
 					has_war = no
 				}
-				USA_congress_small_opposition = yes
+				USA_congress_medium_opposition = yes
 			}
 			else_if = {
 				limit = {
@@ -1095,9 +1107,6 @@ focus_tree = {
 					has_war = no
 				}
 				USA_congress_large_opposition = yes
-			}
-			else = {
-				USA_congress_medium_opposition = yes
 			}
 			USA_neutrality_level_up = yes
 		}
@@ -3137,6 +3146,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+			custom_effect_tooltip = USA_congress_focus_support_tt
 			if = {
 				limit = {
 					threat < 0.15
@@ -3213,6 +3223,7 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_USA_CONGRESS}
 		completion_reward = {
+			custom_effect_tooltip = USA_congress_focus_support2_tt
 			if = {
 				limit = {
 					threat < 0.2
@@ -3953,6 +3964,7 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_USA_CONGRESS}
 		completion_reward = {
+			custom_effect_tooltip = USA_congress_focus_support2_tt
 			if = {
 				limit = {
 					threat < 0.2
