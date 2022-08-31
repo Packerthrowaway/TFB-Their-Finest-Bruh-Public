@@ -1482,6 +1482,32 @@ on_actions = {
 						country_event = NSB_soviet_five_year_plan.01
 					}
 				}
+				if = {
+					limit = {
+						SOV = { has_completed_focus = SOV_ural_factories}
+					}
+					SOV = { country_event = soviet.2222 }
+				}
+		
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							FROM = { original_tag = GER }
+							ROOT = { original_tag = SOV }
+							GER = { has_idea = GER_good_weather_army }	
+						}
+						AND = {
+							FROM = { original_tag = SOV }
+							ROOT = { original_tag = GER }
+							GER = { has_idea = GER_good_weather_army }	
+						}
+					}
+				}
+				GER = { remove_ideas = GER_good_weather_army }
 			}
 		}
 
