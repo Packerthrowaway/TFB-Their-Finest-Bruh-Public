@@ -34,7 +34,7 @@ NDefines.NCountry.MIN_MAJOR_COUNTRIES	= 6						-- MIN_MAJOR_COUNTRIES countries 
 NDefines.NCountry.MIN_SURRENDER_LIMIT = 0.1						-- Minimum non-forced surrender limit. valid 0-1
 NDefines.NCountry.MAX_PROPAGANDA_STABILITY_IMPACT = -0.001			-- Max total penalty from operative performing the propaganda mission in a country
 NDefines.NCountry.MAX_PROPAGANDA_WAR_SUPPORT_IMPACT = -0.001		-- Max total penalty from operative performing the propaganda mission in a country
-NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.05				-- Conversion scale for planes to air supply
+NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.07				-- Conversion scale for planes to air supply
 NDefines.NCountry.BASE_MAX_COMMAND_POWER = 250.0					-- base value for maximum command power
 NDefines.NCountry.BASE_COMMAND_POWER_GAIN = 0.2				-- base value for daily command power gain
 NDefines.NCountry.ATTACHE_XP_SHARE = 0.15							-- Country received xp from attaches
@@ -272,6 +272,40 @@ NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.05
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_MITIGATION = 6.0 -- Multiply Train Damage by (Smooth / (Smooth + (Disruption * Mitigation)))
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_SMOOTHING = 5.0
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_RAILWAY_DAMAGE_SPILL_FACTOR = 0.003 -- Portion of train damage to additionally deal to railways
+NDefines.NAir.MISSION_FUEL_COSTS = {  -- fuel cost per plane for each mission
+1.0, -- AIR_SUPERIORITY
+1.0, -- CAS
+0.2, -- INTERCEPTION
+1.0, -- STRATEGIC_BOMBER
+1.0, -- NAVAL_BOMBER
+1.0, -- DROP_NUKE
+1.0, -- PARADROP
+0.75, -- NAVAL_KAMIKAZE
+1.2, -- PORT_STRIKE
+1.2, -- ATTACK_LOGISTICS
+1.2, -- AIR_SUPPLY
+0.6, -- TRAINING
+1.0, -- NAVAL_MINES_PLANTING
+1.0, -- NAVAL_MINES_SWEEPING
+1.0, -- MISSION_RECON
+}
+NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane to create a mission
+0.0, -- AIR_SUPERIORITY
+0.0, -- CAS
+0.0, -- INTERCEPTION
+0.0, -- STRATEGIC_BOMBER
+0.0, -- NAVAL_BOMBER
+0.0, -- DROP_NUKE
+0.0, -- PARADROP
+0.0, -- NAVAL_KAMIKAZE
+0.0, -- PORT_STRIKE
+0.0, -- ATTACK_LOGISTICS
+0.25, -- AIR_SUPPLY
+0.0, -- TRAINING
+0.0, -- NAVAL_MINES_PLANTING
+0.0, -- NAVAL_MINES_SWEEPING
+0.0, -- MISSION_RECON
+},
 
 NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
 NDefines.NNavy.COMBAT_BASE_HIT_CHANCE = 0.07									-- base chance for hit
