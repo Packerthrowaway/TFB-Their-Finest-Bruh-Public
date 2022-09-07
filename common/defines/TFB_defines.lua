@@ -450,6 +450,10 @@ NDefines.NSupply.BASE_TRUCK_HP = 300.0
 NDefines.NSupply.BASE_TRAIN_HP = 500.0
 NDefines.NSupply.RIVER_RAILWAY_LEVEL = 1
 NDefines.NSupply.VP_TO_SUPPLY_BASE = 0.7
+-- defines that are used for supply reach for floating harbors
+NDefines.NSupply.FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 3.0
+NDefines.NSupply.FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 0.6
+NDefines.NSupply.FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 0.6
 
 
 NDefines.NGraphics.WEATHER_DISTANCE_CUTOFF = 1200 -- At what distance weather effects are hidden
