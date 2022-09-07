@@ -305,7 +305,7 @@ NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane t
 0.0, -- NAVAL_MINES_PLANTING
 0.0, -- NAVAL_MINES_SWEEPING
 0.0, -- MISSION_RECON
-},
+}
 
 NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
 NDefines.NNavy.COMBAT_BASE_HIT_CHANCE = 0.07									-- base chance for hit
