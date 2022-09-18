@@ -1,4 +1,4 @@
-version="2.11.45"
+version="2.12.01"
 tags={
 	"Balance"
 	"Events"
@@ -16,4 +16,4 @@ replace_path="map"
 replace_path="map/strategicregions"
 replace_path="history/states"
 replace_path="gfx/interface/equipmentdesigner/tanks/designer"
-supported_version="1.11.*"
+supported_version="1.12.*"
