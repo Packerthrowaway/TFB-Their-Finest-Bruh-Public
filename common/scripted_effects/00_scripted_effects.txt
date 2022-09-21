@@ -483,8 +483,18 @@ print_variable_log_effect = {
 }
 
 get_best_alliance_match_democratic_effect = { #arguably a trigger, but it does stuff so we keep it in here. If this is your first time seeing this, welcome to my personal hell.
-	set_temp_variable = { best_leader = 0 }
-	set_temp_variable = { best_leader_score = 0 }
+	if = {
+		limit = {
+			any_other_country = {
+				is_faction_leader = yes
+				is_major = yes
+				has_government = democratic
+				not = { has_war_with = ROOT }
+				set_temp_variable = { ROOT.best_leader = this }
+				set_temp_variable = { ROOT.best_leader_score = 0 }
+			}
+		}
+	}
 	if = {
 		limit = {
 			all_other_country = {
