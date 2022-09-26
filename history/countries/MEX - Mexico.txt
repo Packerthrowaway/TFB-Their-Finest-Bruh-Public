@@ -17,9 +17,6 @@ set_technology = {
 	tech_engineers = 1
 	tech_recon = 1
 	gw_artillery = 1
-	early_fighter = 1
-	early_bomber = 1
-	CAS1 = 1
 	fuel_silos = 1
 	fuel_refining = 1
 	basic_train = 1
@@ -43,6 +40,24 @@ if = {
 		basic_battery = 1
 		#basic_secondary_battery = 1
 		coastal_defense_ships = 1
+	}
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_technology = {
+		aa_lmg = 1
+		engines_1 = 1
+		early_bombs = 1
+		aircraft_construction = 1
+		iw_small_airframe = 1
+	}
+	else = {		
+		set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+			CAS1 = 1
+
+		}
 	}
 }
 
