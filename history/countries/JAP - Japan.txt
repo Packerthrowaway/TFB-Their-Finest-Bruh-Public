@@ -59,12 +59,6 @@ set_technology = {
 	marines  = 1
 	jap_light_tank_1 = 1
 	gw_artillery = 1
-	cv_early_fighter = 1
-	cv_CAS1 = 1
-	naval_bomber1 = 1
-	early_fighter = 1
-	early_bomber = 1
-	CAS1 = 1
 	basic_train = 1
 	trench_warfare = 1
 	base_strike = 1
@@ -98,12 +92,10 @@ if = {
 		basic_ship_hull_carrier = 1
 		mtg_transport = 1
 		coastal_defense_ships = 1
-		basic_secondary_battery = 1
 		basic_depth_charges = 1
 		basic_cruiser_armor_scheme = 1
 		cruiser_submarines = 1
 		ship_hull_super_heavy = 1
-		improved_secondary_battery = 1
 		improved_heavy_battery = 1
 		advanced_heavy_battery = 1
 		improved_airplane_launcher = 1
@@ -129,6 +121,32 @@ if = {
 		transport = 1
 	}
 	set_naval_oob = "JAP_1936_naval_legacy"
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "JAP_1936_air_bba"
+		set_technology = {
+			aa_lmg = 1
+			engines_1 = 1
+			engines_2 = 1
+			early_bombs = 1
+			aircraft_construction = 1
+			iw_small_airframe = 1
+			iw_medium_airframe = 1
+			basic_small_airframe = 1
+		}
+	else = {
+		set_air_oob = "JAP_1936_air_legacy"
+		set_technology = {
+			cv_early_fighter = 1
+			cv_CAS1 = 1
+			#cv_naval_bomber1 = 1
+			early_fighter = 1
+			naval_bomber1 = 1
+			early_bomber = 1
+			CAS1 = 1
+		}
+	}
 }
 
 add_equipment_to_stockpile = {
@@ -511,7 +529,7 @@ if = {
 		create_equipment_variant = {
 			name = "Nagato Class"
 			name_group = JAP_BB_HISTORICAL
-			type = ship_hull_heavy_0
+			type = ship_hull_heavy_1
 			parent_version = 0
 			modules = {
 				fixed_ship_battery_slot = ship_heavy_battery_triple_4
@@ -530,7 +548,7 @@ if = {
 		create_equipment_variant = {
 			name = "Kongo Class"
 			name_group = JAP_BB_HISTORICAL
-			type = ship_hull_heavy_0
+			type = ship_hull_heavy_1
 			parent_version = 0
 			modules = {
 				fixed_ship_battery_slot = ship_heavy_battery_triple_2
@@ -547,7 +565,7 @@ if = {
 		}
 		create_equipment_variant = {
 			name = "Fuso/Ise Class"
-			type = ship_hull_heavy_0
+			type = ship_hull_heavy_1
 			name_group = JAP_BB_HISTORICAL
 			parent_version = 0
 			modules = {
@@ -710,6 +728,7 @@ if = {
 				fixed_ship_radar_slot = empty
 				fixed_ship_engine_slot = cruiser_ship_engine_1
 				fixed_ship_armor_slot = ship_armor_cruiser_1
+				front_1_custom_slot = ship_light_battery_1
 				mid_1_custom_slot = ship_torpedo_3
 				rear_1_custom_slot = ship_torpedo_3
 			}
@@ -727,6 +746,7 @@ if = {
 				fixed_ship_radar_slot = empty
 				fixed_ship_engine_slot = cruiser_ship_engine_1
 				fixed_ship_armor_slot = ship_armor_cruiser_1
+				front_1_custom_slot = ship_light_battery_1
 				mid_1_custom_slot = ship_torpedo_3
 				rear_1_custom_slot = ship_torpedo_3
 			}
@@ -744,6 +764,7 @@ if = {
 				fixed_ship_radar_slot = empty
 				fixed_ship_engine_slot = cruiser_ship_engine_1
 				fixed_ship_armor_slot = ship_armor_cruiser_1
+				front_1_custom_slot = ship_light_battery_1
 				mid_1_custom_slot = ship_torpedo_3
 				rear_1_custom_slot = ship_torpedo_3
 			}
@@ -761,6 +782,7 @@ if = {
 				fixed_ship_radar_slot = empty
 				fixed_ship_engine_slot = cruiser_ship_engine_1
 				fixed_ship_armor_slot = ship_armor_cruiser_1
+				front_1_custom_slot = ship_light_battery_1
 				mid_1_custom_slot = ship_torpedo_3
 				rear_1_custom_slot = ship_torpedo_3
 			}
@@ -777,7 +799,8 @@ if = {
 				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
 				fixed_ship_radar_slot = empty
 				fixed_ship_engine_slot = cruiser_ship_engine_1
-				fixed_ship_armor_slot = empty
+				fixed_ship_armor_slot = ship_armor_cruiser_1
+				front_1_custom_slot = ship_light_battery_1
 				mid_1_custom_slot = ship_torpedo_3
 				rear_1_custom_slot = ship_torpedo_3
 			}
@@ -878,6 +901,90 @@ if = {
 				#rear_1_custom_slot = ship_mine_layer_sub
 			}
 		}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Ki-10"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Ki-2"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = small_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = lmg_defense_turret
+		}
+		icon = "GFX_JAP_CAS1_medium"
+	}
+	create_equipment_variant = {
+		name = "Ki-1"
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Ki-3"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = lmg_defense_turret
+		}
+		icon = "GFX_JAP_CAS1_medium"
+	}
+	create_equipment_variant = {
+		name = "Aichi D1A2"
+		type = cv_small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = dive_brakes_small
+		}
+		icon = "GFX_JAP_CAS1_medium"
+	}
+	create_equipment_variant = {
+		name = "A4N"
+		type = cv_small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "B2M"
+		type = cv_small_plane_naval_bomber_airframe_0
+		modules = {
+			fixed_main_weapon_slot = torpedo_mounting
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_JAP_cv_naval_bomber1_medium"
+	}
+	create_equipment_variant = {
+		name = "B4Y"
+		type = cv_small_plane_naval_bomber_airframe_1
+		modules = {
+			fixed_main_weapon_slot = torpedo_mounting
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_JAP_cv_naval_bomber1_medium"
+	}
 }
 	# 1939 Start #			
 	1939.1.1 = {

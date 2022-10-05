@@ -3,6 +3,12 @@ equipments = {
 	ship_hull_cruiser = {
 		year = 1922
 
+		can_be_produced = {
+			NOT = {
+				has_idea = BUL_army_restrictions
+			}
+		}
+
 		is_archetype = yes
 		is_buildable = no
 		type = screen_ship
@@ -13,15 +19,15 @@ equipments = {
 		module_slots = {
 			fixed_ship_battery_slot = {
 				required = yes
-				allowed_module_categories = { ship_medium_battery ship_light_battery }
+				allowed_module_categories = { ship_light_battery dp_light_battery ship_light_medium_battery ship_medium_battery}
 			}
 			fixed_ship_anti_air_slot = {
-				required = yes
+				required = no
 				allowed_module_categories = { ship_anti_air }
 			}
 			fixed_ship_secondaries_slot = {
 				required = no
-				allowed_module_categories = { ship_anti_air }
+				allowed_module_categories = { ship_anti_air ship_secondaries ship_dp_secondaries}
 			}
 			fixed_ship_fire_control_system_slot = {
 				required = yes
@@ -44,6 +50,7 @@ equipments = {
 				allowed_module_categories = {
 					ship_anti_air
 					ship_light_battery
+					ship_medium_battery
 					ship_airplane_launcher
 					ship_depth_charge
 					ship_torpedo
@@ -109,7 +116,7 @@ equipments = {
 		surface_detection = 20
 		sub_detection = 1
 		surface_visibility = 15
-		naval_speed = 20
+		naval_speed = 27
 		reliability = 0.80
 		
 		naval_range = 2500
@@ -125,9 +132,12 @@ equipments = {
 		}
 		
 		manpower = 600
+
+		naval_supremacy_factor = 2.3
 	}
 
 	ship_hull_cruiser_1 = {
+		abbreviation = "hba"
 		year = 1922
 		visual_level = 0
 		archetype = ship_hull_cruiser
@@ -138,13 +148,14 @@ equipments = {
 	}
 
 	ship_hull_cruiser_2 = {
+		abbreviation = "hbb"
 		year = 1936
 		visual_level = 1
 		archetype = ship_hull_cruiser
 		priority = 1900
 		parent = ship_hull_cruiser_1
 		manpower = 800
-		naval_speed = 23
+		naval_speed = 30
 		reliability = 0.85
 		build_cost_ic = 900
 		naval_range = 3000
@@ -155,10 +166,10 @@ equipments = {
 		module_slots = {
 			fixed_ship_battery_slot = inherit
 			fixed_ship_anti_air_slot = inherit
-			fixed_ship_secondaries_slot = inherit
 			fixed_ship_fire_control_system_slot = inherit
 			fixed_ship_radar_slot = inherit
 			fixed_ship_engine_slot = inherit
+			fixed_ship_secondaries_slot = inherit
 			fixed_ship_armor_slot = inherit
 			front_1_custom_slot = {
 				required = yes
@@ -170,6 +181,7 @@ equipments = {
 					ship_torpedo
 				}
 			}
+			
 			mid_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
@@ -203,7 +215,7 @@ equipments = {
 		archetype = ship_hull_cruiser
 		priority = 1900
 		parent = ship_hull_cruiser_2
-		naval_speed = 26
+		naval_speed = 32
 		build_cost_ic = 1000
 		reliability = 0.90
 		max_strength = 120
@@ -215,10 +227,10 @@ equipments = {
 		module_slots = {
 			fixed_ship_battery_slot = inherit
 			fixed_ship_anti_air_slot = inherit
-			fixed_ship_secondaries_slot = inherit
 			fixed_ship_fire_control_system_slot = inherit
 			fixed_ship_radar_slot = inherit
 			fixed_ship_engine_slot = inherit
+			fixed_ship_secondaries_slot = inherit
 			fixed_ship_armor_slot = inherit
 			front_1_custom_slot = {
 				required = yes
@@ -230,6 +242,7 @@ equipments = {
 					ship_torpedo
 				}
 			}
+			
 			mid_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
@@ -268,12 +281,13 @@ equipments = {
 	}
 
 	ship_hull_cruiser_4 = {
+		abbreviation = "hbd"
 		year = 1944
 		visual_level = 1
 		archetype = ship_hull_cruiser
 		priority = 1900
 		parent = ship_hull_cruiser_3
-		naval_speed = 28
+		naval_speed = 33
 		reliability = 0.95
 		manpower = 1400
 		build_cost_ic = 1100
@@ -285,10 +299,10 @@ equipments = {
 		module_slots = {
 			fixed_ship_battery_slot = inherit
 			fixed_ship_anti_air_slot = inherit
-			fixed_ship_secondaries_slot = inherit
 			fixed_ship_fire_control_system_slot = inherit
 			fixed_ship_radar_slot = inherit
 			fixed_ship_engine_slot = inherit
+			fixed_ship_secondaries_slot = inherit
 			fixed_ship_armor_slot = inherit
 			front_1_custom_slot = {
 				required = yes
@@ -310,6 +324,7 @@ equipments = {
 					ship_torpedo
 				}
 			}
+			
 			mid_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
@@ -389,7 +404,7 @@ equipments = {
 		surface_detection = 15
 		sub_detection = 5
 		surface_visibility = 15
-		naval_speed = 20
+		naval_speed = 25
 		reliability = 0.8
 		resources = {
 			#oil = 1
@@ -426,7 +441,7 @@ equipments = {
 		
 		surface_detection = 20
 		sub_detection = 5
-		naval_speed = 25
+		naval_speed = 30
 		reliability = 0.85
 
 		naval_range = 3000
@@ -477,7 +492,7 @@ equipments = {
 		
 		surface_detection = 30
 		sub_detection = 10
-		naval_speed = 28
+		naval_speed = 33
 		reliability = 0.90
 
 		naval_range = 4000
@@ -529,7 +544,7 @@ equipments = {
 		
 		surface_detection = 40
 		sub_detection = 10
-		naval_speed = 30
+		naval_speed = 35
 		reliability = 0.92
 
 		naval_range = 4500
@@ -586,8 +601,11 @@ equipments = {
 					ship_torpedo
 					ship_anti_air
 					ship_light_battery
+					dp_light_battery
 					ship_medium_battery
+					ship_light_medium_battery
 					ship_secondaries
+					ship_dp_secondaries
 					ship_airplane_launcher
 				}
 			}
@@ -600,7 +618,9 @@ equipments = {
 					ship_airplane_launcher
 					ship_torpedo
 					ship_light_battery
+					dp_light_battery
 					ship_medium_battery
+					ship_light_medium_battery
 				}
 			}
 			rear_2_custom_slot = {
@@ -642,7 +662,7 @@ equipments = {
 		surface_detection = 12
 		sub_detection = 5
 		surface_visibility = 15
-		naval_speed = 24
+		naval_speed = 29
 		reliability = 0.80
 		
 		naval_range = 3000
@@ -775,8 +795,8 @@ equipments = {
 			fixed_ship_engine_slot = cruiser_ship_engine_2
 			front_1_custom_slot = ship_anti_air_4
 			fixed_ship_secondaries_slot = ship_secondaries_1
-			mid_1_custom_slot = dp_ship_secondaries
-			mid_2_custom_slot = dp_ship_secondaries
+			mid_1_custom_slot = dp_ship_secondaries_3
+			mid_2_custom_slot = dp_ship_secondaries_3
 			rear_1_custom_slot = ship_medium_battery_4
 			rear_2_custom_slot = ship_anti_air_4
 		}
@@ -815,6 +835,7 @@ equipments = {
 	###### SPECIAL JAP TECH FROM FOCUS ######	
 
 	torpedo_cruiser = {
+		abbreviation = "hbh"
 		year = 1940
 
 		archetype = ship_hull_cruiser
@@ -833,6 +854,7 @@ equipments = {
 				required = no
 				allowed_module_categories = {	
 					ship_medium_battery
+					ship_light_medium_battery
 				}
 			}
 			fixed_ship_anti_air_slot = {
@@ -928,6 +950,7 @@ equipments = {
 
 	###special snowflake hulls
 	ship_hull_torpedo_cruiser = {
+		abbreviation = "hbe"
 		year = 1940
 		visual_level = 0
 		archetype = ship_hull_cruiser
@@ -1000,7 +1023,7 @@ equipments = {
 		surface_detection = 20
 		sub_detection = 1
 		surface_visibility = 15
-		naval_speed = 25
+		naval_speed = 30
 		reliability = 0.9
 		
 		naval_range = 4000
@@ -1018,13 +1041,14 @@ equipments = {
 		manpower = 960
 	}
 	ship_hull_cruiser_panzerschiff = {
+		abbreviation = "hbf"
 		year = 1929
 		visual_level = 0
 		archetype = ship_hull_cruiser
 		priority = 1850
 		manpower = 1800
 		build_cost_ic = 3500
-		naval_speed = 20
+		naval_speed = 23
 		surface_visibility = 22
 		naval_range = 7500
 		resources = {
@@ -1053,6 +1077,7 @@ equipments = {
 					ship_heavy_battery
 				}
 			}
+			
 			mid_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
@@ -1087,6 +1112,7 @@ equipments = {
 		}
 	}
 	ship_hull_cruiser_coastal_defense_ship = {
+		abbreviation = "hbg"
 		year = 1929
 		visual_level = 0
 		archetype = ship_hull_cruiser
@@ -1099,7 +1125,7 @@ equipments = {
 		}
 
 		hg_attack = 0
-		naval_speed = 15
+		naval_speed = 20
 		reliability = 0.80
 		surface_visibility = 20
 		naval_range = 1500
@@ -1119,6 +1145,7 @@ equipments = {
 				allowed_module_categories = {
 					ship_torpedo
 					ship_light_battery
+					ship_medium_battery
 					ship_secondaries
 				}
 			}
@@ -1129,6 +1156,9 @@ equipments = {
 					ship_torpedo
 					ship_light_battery
 					ship_anti_air
+					ship_secondaries 
+					ship_dp_secondaries
+					ship_airplane_launcher
 				}
 			}
 			mid_2_custom_slot = mid_1_custom_slot
