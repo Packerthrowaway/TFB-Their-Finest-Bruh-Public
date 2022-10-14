@@ -239,6 +239,10 @@ NDefines.NMilitary.DAMAGE_SPLIT_ON_FIRST_TARGET = 0.2				--% of damage dealt to 
 NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 120
 NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 120
 NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 120
+NDefines.Nair.TOP_SPEED_DAMAGE_BONUS_FACTOR = 0.2,				-- A factor for scaling the top speed of a plane into damage buff --Vanilla is .02
+NDefines.Nair.COMBAT_DAMAGE_STATS_MULTILPIER = 0.3,	
+NDefines.Nair.BIGGEST_AGILITY_FACTOR_DIFF = 4.0,					-- biggest factor difference in agility for doing damage (caps to this) -- Vanilla is 3.0
+NDefines.Nair.BIGGEST_SPEED_FACTOR_DIFF = 3.0,					-- biggest factor difference in speed for doing damage (caps to this)	-- Vanilla is 2.5	
 NDefines.NAir.AIR_WING_BOMB_DAMAGE_FACTOR = 2					-- Used to balance the damage done while bombing.
 NDefines.NAir.COMBAT_MULTIPLANE_CAP = 2.5						-- How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.05							-- Higher value = more shot down planes
@@ -272,6 +276,8 @@ NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.05
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_MITIGATION = 6.0 -- Multiply Train Damage by (Smooth / (Smooth + (Disruption * Mitigation)))
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_SMOOTHING = 5.0
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_RAILWAY_DAMAGE_SPILL_FACTOR = 0.003 -- Portion of train damage to additionally deal to railways
+NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 1
+NDefines.NAir.BASE_UNIT_WEIGHT_IN_TRANSPORT_PLANES = 1
 NDefines.NAir.MISSION_FUEL_COSTS = {  -- fuel cost per plane for each mission
 1.0, -- AIR_SUPERIORITY
 1.0, -- CAS
