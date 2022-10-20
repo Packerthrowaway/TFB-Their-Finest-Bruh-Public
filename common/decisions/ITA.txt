@@ -119,6 +119,35 @@ prospect_for_resources = {
 
 political_actions = {
 
+	ITA_annex_bul = {
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		available = {
+			ITA = { has_war = yes }
+			BUL = {is_ai = YES}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		complete_effect = {
+			annex_country = { target = BUL transfer_troops = yes }
+			48 = { set_compliance = 60 }
+			211 = { set_compliance = 60 }
+			212 = { set_compliance = 60 }
+			801 = { set_compliance = 60 }
+
+		}
+	}
+
 	ITA_go_to_war_with_france = {
 		priority = 100
 		allowed = { tag = ITA }
