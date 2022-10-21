@@ -312,7 +312,7 @@ NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane t
 0.0, -- NAVAL_MINES_SWEEPING
 0.0, -- MISSION_RECON
 }
-NDefines.NAir.CARRIER_SIZE_STAT_INCREMENT = 1					-- Each Point of carrier_size state adds capacity for this many planes
+NDefines.NAir.CARRIER_SIZE_STAT_INCREMENT = 10					-- Each Point of carrier_size state adds capacity for this many planes
 
 NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
 NDefines.NNavy.COMBAT_BASE_HIT_CHANCE = 0.07									-- base chance for hit
@@ -328,7 +328,7 @@ NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.005								-- Balancing value to co
 NDefines.NNavy.BASE_CARRIER_SORTIE_EFFICIENCY = 0.75							-- factor of planes that can sortie by default from a carrier
 NDefines.NNavy.NAVAL_SPEED_MODIFIER = 0.08	                    				-- basic speed control
 NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE = 0.6								-- required naval supremacy to perform invasions on an area
-NDefines.NNavy.CARRIER_STACK_PENALTY = 99										-- The most efficient is 4 carriers in combat. 5+ brings the penalty to the amount of wings in battle.
+NDefines.NNavy.CARRIER_STACK_PENALTY = 12										-- The most efficient is 4 carriers in combat. 5+ brings the penalty to the amount of wings in battle.
 NDefines.NNavy.ANTI_AIR_TARGETING = 0.5                                       -- how good ships are at hitting aircraft
 NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 12                          -- hours from start of combat when only carriers capitals and subs get to attack
 NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 24                                    -- hours where all get to attack
@@ -336,7 +336,7 @@ NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN = 48 -- minimum cooldown time
 NDefines.NNavy.SUPREMACY_PER_SHIP_PER_MANPOWER = 0.08							-- supremacy of a ship is calculated using its IC manpower and a base define
 NDefines.NNavy.SUPREMACY_PER_SHIP_PER_IC = 0.008
 NDefines.NNavy.SUPREMACY_PER_SHIP_BASE = 20.0
-NDefines.NNavy.NAVAL_MINES_IN_REGION_MAX = 100.0								-- Max number of mines that can be layed by the ships. The value should be hidden from the user as we present % so it's an abstract value that should be used for balancing.
+NDefines.NNavy.NAVAL_MINES_IN_REGION_MAX = 1.0								-- Max number of mines that can be layed by the ships. The value should be hidden from the user as we present % so it's an abstract value that should be used for balancing.
 NDefines.NNavy.NAVAL_MINES_PLANTING_SPEED_MULT = 0.001						-- Value used to overall balance of the speed of planting naval mines
 NDefines.NNavy.BASE_ESCAPE_SPEED = 0.060										-- daily base escape speed (gained as percentagE)
 NDefines.NNavy.SPEED_TO_ESCAPE_SPEED = 1.15									-- ratio to converstion from ship speed to escape speed (divided by hundred)
