@@ -42,7 +42,7 @@ equipments = {
 			}
 			fixed_ship_torpedo_slot = {
 				required = no
-				allowed_module_categories = { ship_torpedo ship_depth_charge }
+				allowed_module_categories = { ship_torpedo }
 			}
 			fixed_ship_engine_slot = {
 				required = yes
@@ -55,11 +55,11 @@ equipments = {
 					ship_torpedo
 					ship_mine_warfare
 					ship_mine_layer
-					ship_depth_charge
 					ship_anti_air
-					ship_light_battery
+					ship_depth_charge
 				}
 			}
+			rear_1_custom_slot = mid_1_custom_slot
 		}
 		
 		module_count_limit = {
@@ -158,6 +158,7 @@ equipments = {
 					dp_light_battery
 				}
 			}
+			rear_1_custom_slot = mid_1_custom_slot
 		}
 
 		default_modules = {
@@ -194,6 +195,15 @@ equipments = {
 			fixed_ship_torpedo_slot = inherit
 			fixed_ship_engine_slot = inherit
 
+			front_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_depth_charge
+					ship_anti_air
+					ship_light_battery
+					dp_light_battery
+				}
+			}
 			mid_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
@@ -203,9 +213,21 @@ equipments = {
 					ship_depth_charge
 					ship_anti_air
 					ship_light_battery
+					dp_light_battery
 				}
 			}
-			rear_1_custom_slot = mid_1_custom_slot
+			rear_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_torpedo
+					ship_mine_warfare
+					ship_mine_layer
+					ship_depth_charge
+					ship_anti_air
+					ship_light_battery
+					dp_light_battery
+				}
+			}
 		}
 
 		
@@ -244,6 +266,15 @@ equipments = {
 			fixed_ship_radar_slot = inherit
 			fixed_ship_torpedo_slot = inherit
 			fixed_ship_engine_slot = inherit
+			front_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_depth_charge
+					ship_anti_air
+					ship_light_battery
+					dp_light_battery
+				}
+			}
 			mid_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
@@ -253,10 +284,22 @@ equipments = {
 					ship_depth_charge
 					ship_anti_air
 					ship_light_battery
+					dp_light_battery
 				}
 			}
-			rear_1_custom_slot = mid_1_custom_slot
-			rear_2_custom_slot = mid_1_custom_slot
+			mid_2_custom_slot = mid_1_custom_slot
+			rear_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_torpedo
+					ship_mine_warfare
+					ship_mine_layer
+					ship_depth_charge
+					ship_anti_air
+					ship_light_battery
+					dp_light_battery
+				}
+			}
 		}
 
 
@@ -313,7 +356,7 @@ equipments = {
 		build_cost_ic = 400
 		resources = {
 			#oil = 1
-			steel = 2
+			steel = 20
 		}
 		
 		manpower = 250
@@ -365,7 +408,7 @@ equipments = {
 		build_cost_ic = 500
 		resources = {
 			#oil = 1
-			steel = 3
+			steel = 20
 		}		
 		manpower = 325
 	}
@@ -416,7 +459,7 @@ equipments = {
 		build_cost_ic = 500
 		resources = {
 			#oil = 2
-			steel = 3
+			steel = 20
 		}
 		manpower = 400
 	}
@@ -468,8 +511,7 @@ equipments = {
 		build_cost_ic = 500
 		resources = {
 			#oil = 2
-			steel = 4
-			chromium = 1
+			steel = 20
 		}		
 		manpower = 500
 	}
