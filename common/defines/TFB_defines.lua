@@ -315,6 +315,8 @@ NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane t
 0.0, -- MISSION_RECON
 }
 NDefines.NAir.CARRIER_SIZE_STAT_INCREMENT = 10					-- Each Point of carrier_size state adds capacity for this many planes
+NDefines.NAir.AIR_DEPLOYMENT_DAYS = 1							-- Days to deploy one air wing
+NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.20					-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
 NDefines.NNavy.COMBAT_DAMAGE_RANDOMNESS = 0.25								-- random factor in damage. So if max damage is fe. 10 and randomness is 30% then damage will be between 7-10.
 NDefines.NNavy.COMBAT_MAX_GROUPS = 2										-- Max amount of "Fire Exchange" groups (FEX).
