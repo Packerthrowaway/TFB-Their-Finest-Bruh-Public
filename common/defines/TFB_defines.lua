@@ -366,6 +366,8 @@ NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
 NDefines.NNavy.RESOURCE_LENDLEASE_PRIORITY = 3
 NDefines.NNavy.RESOURCE_ORIGIN_PRIORITY = 3
 NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.01 													-- multiplies supply usage
+NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 1.5												-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
+NDefines.NNavy.HIT_PROFILE_SPEED_BASE = 15													-- Base value added to hitprofile speed calulation
 
 
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
