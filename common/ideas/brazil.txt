@@ -60,7 +60,7 @@ ideas = {
 			
 			modifier = {
 				stability_factor = -0.05
-				production_speed_buildings_factor = -0.05
+				production_speed_buildings_factor = 0
 			}
 		}
 		
@@ -75,7 +75,7 @@ ideas = {
 			}
 			
 			modifier = {
-				production_speed_buildings_factor = 0.1
+				production_speed_industrial_complex_factor = 0.20
 			}
 		}
 		
@@ -124,7 +124,7 @@ ideas = {
 			modifier = {
 				heat_attrition_factor = -0.25
 				acclimatization_hot_climate_gain_factor = 0.5
-				training_time_army_factor = 0.25
+				training_time_army_factor = 0.20
 				minimum_training_level = 0.1
 				army_org_factor = 0.05
 				army_morale_factor = 0.1
@@ -146,6 +146,62 @@ ideas = {
 				acclimatization_hot_climate_gain_factor = 1.0
 				supply_consumption_factor = -0.2
 				no_supply_grace = 24
+			}
+		}
+
+		BRA_industrialization1 = {
+
+			picture = generic_goods_red_bonus
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+		}
+
+		BRA_special_forces_divisions = {
+			picture = usa_airborne_divisions
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				special_forces_cap = 0.05
+			}
+		}
+
+		BRA_mechanise_army = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = FRA_motorized_focus
+			
+			equipment_bonus = {
+				mechanized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
 			}
 		}
 	}
