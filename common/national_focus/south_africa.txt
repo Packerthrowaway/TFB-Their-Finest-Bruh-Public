@@ -1277,6 +1277,44 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SAF_armor_effort
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = SAF_special_service_battalion }
+		mutually_exclusive = { focus = SAF_improve_the_three_oh_three }
+		x = 3
+		y = 2
+		relative_position_id = SAF_special_service_battalion
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+        search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_armor_effort
+				bonus = 0.50
+				uses = 1
+				category = armor
+			}
+		}
+	}
+
+	focus = {
 		id = SAF_queen_of_the_desert
 		icon = GFX_goal_ENG_queen_of_the_desert
 		prerequisite = {focus = SAF_armor_effort}
@@ -1417,6 +1455,44 @@ focus_tree = {
 				bonus = 0.5
 				uses = 1
 				category = support_tech
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_south_african_special_forces
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = SAF_improve_the_three_oh_three}
+		x = 0
+		y = 1
+		relative_position_id = SAF_improve_the_three_oh_three
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+        search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_south_african_special_forces
+				bonus = 0.5
+				uses = 2
+				category = marine_tech
+				category = mountaineers_tech
 			}
 		}
 	}
@@ -1606,82 +1682,6 @@ focus_tree = {
 				uses = 2
 				category = artillery
 				category = cat_anti_tank
-			}
-		}
-	}
-
-	focus = {
-		id = SAF_south_african_special_forces
-		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = SAF_improve_the_three_oh_three}
-		x = 0
-		y = 1
-		relative_position_id = SAF_improve_the_three_oh_three
-
-		cost = 5
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-        search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = SAF_south_african_special_forces
-				bonus = 0.5
-				uses = 2
-				category = marine_tech
-				category = mountaineers_tech
-			}
-		}
-	}
-
-	focus = {
-		id = SAF_armor_effort
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = SAF_special_service_battalion }
-		mutually_exclusive = { focus = SAF_improve_the_three_oh_three }
-		x = 3
-		y = 2
-		relative_position_id = SAF_special_service_battalion
-
-		cost = 5
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-        search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = SAF_armor_effort
-				bonus = 0.50
-				uses = 1
-				category = armor
 			}
 		}
 	}
