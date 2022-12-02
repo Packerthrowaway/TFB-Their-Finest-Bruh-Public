@@ -1166,7 +1166,7 @@ focus_tree = {
 	focus = {
 		id = SAF_special_service_battalion
 		icon = GFX_goal_generic_army_doctrines
-		x = 18
+		x = 17
 		y = 0
 
 		cost = 5
@@ -1200,7 +1200,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SAF_old_way
+		id = SAF_improve_the_three_oh_three
 		icon = GFX_goal_generic_small_arms
 		prerequisite = { focus = SAF_special_service_battalion }
 		mutually_exclusive = { focus = SAF_armor_effort }
@@ -1230,7 +1230,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = SAF_improve_the_three_oh_three
 				bonus = 0.5
-				uses = 3
+				uses = 2
 				category = infantry_weapons
 			}
 		}
@@ -1240,7 +1240,7 @@ focus_tree = {
 		id = SAF_q_services_corps
 		icon = GFX_goal_generic_army_motorized
 		prerequisite = { focus = SAF_special_service_battalion }
-		x = 17
+		x = 16
 		y = 1
 
 		cost = 5
@@ -1313,8 +1313,8 @@ focus_tree = {
 	focus = {
 		id = SAF__south_african_military_college
 		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = SAF_old_way focus = SAF_armor_effort }
-		x = 18
+		prerequisite = { focus = SAF_improve_the_three_oh_three focus = SAF_armor_effort }
+		x = 17
 		y = 3
 
 		cost = 5
@@ -1347,49 +1347,49 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = SAF_expand_the_south_african_artillery
-		icon = GFX_goal_generic_army_artillery2
-		prerequisite = { focus = SAF_old_way  }
-		x = -1
-		y = 1
+	# focus = {
+	# 	id = SAF_expand_the_south_african_artillery
+	# 	icon = GFX_goal_generic_army_artillery2
+	# 	prerequisite = { focus = SAF_improve_the_three_oh_three  }
+	# 	x = 1
+	# 	y = 1
 	
-		relative_position_id = SAF_old_way
+	# 	relative_position_id = SAF_improve_the_three_oh_three
 
-		cost = 5
+	# 	cost = 5
 
-		ai_will_do = {
-			factor = 1
-		}
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
 
-		available = {
+	# 	available = {
 
-		}
+	# 	}
 		
-		bypass = {
+	# 	bypass = {
 
-		}
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-        search_filters = { FOCUS_FILTER_RESEARCH }
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = yes
+    #     search_filters = { FOCUS_FILTER_RESEARCH }
 
-		completion_reward = {
-			add_tech_bonus = {
-				name = SAF_expand_the_south_african_artillery
-				bonus = 0.5
-				uses = 1
-				category = artillery
-			}
-		}
-	}
+	# 	completion_reward = {
+	# 		add_tech_bonus = {
+	# 			name = SAF_expand_the_south_african_artillery
+	# 			bonus = 0.5
+	# 			uses = 1
+	# 			category = artillery
+	# 		}
+	# 	}
+	# }
 
 	focus = {
 		id = SAF_sa_engineer_corps
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = SAF_special_service_battalion }
-		x = 19
+		x = 18
 		y = 1
 
 		cost = 5
@@ -1420,10 +1420,10 @@ focus_tree = {
 			}
 		}
 	}
-
+	
 	focus = {
 		id = SAF_equipment_effort
-		icon = GFX_goal_generic_army_artillery
+		icon = GFX_focus_generic_combined_arms
 		prerequisite = { focus = SAF_south_african_special_forces }
 		x = 0
 		y = 1
@@ -1460,7 +1460,7 @@ focus_tree = {
 
 	focus = {
 		id = SAF_heavy_AT_bonus
-		icon = GFX_goal_generic_army_artillery2
+		icon = GFX_goal_generic_army_artillery
 		prerequisite = { focus = SAF_equipment_effort }
 		x = 1
 		y = 1
@@ -1498,7 +1498,7 @@ focus_tree = {
 
 
 	focus = {
-		id = SAF_focus_heavy_artillery
+		id = SAF_expand_the_south_african_artillery
 		icon = GFX_goal_generic_army_artillery2
 		prerequisite = { focus = SAF_equipment_effort }
 		x = -1
@@ -1525,6 +1525,12 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = SAF_heavy_artillery2
+			add_tech_bonus = {
+				name = SAF_expand_the_south_african_artillery
+				bonus = 0.5
+				uses = 1
+				category = artillery
+			}
 		}
 	}
 
@@ -1597,7 +1603,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = SAF_anti_tank_guns
 				bonus = 0.5
-				uses = 1
+				uses = 2
 				category = artillery
 				category = cat_anti_tank
 			}
@@ -1607,10 +1613,10 @@ focus_tree = {
 	focus = {
 		id = SAF_south_african_special_forces
 		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = SAF_old_way focus = SAF_expand_the_south_african_artillery}
+		prerequisite = { focus = SAF_improve_the_three_oh_three}
 		x = 0
-		y = 2
-		relative_position_id = SAF_old_way
+		y = 1
+		relative_position_id = SAF_improve_the_three_oh_three
 
 		cost = 5
 
@@ -1646,8 +1652,8 @@ focus_tree = {
 		id = SAF_armor_effort
 		icon = GFX_goal_generic_army_tanks
 		prerequisite = { focus = SAF_special_service_battalion }
-		mutually_exclusive = { focus = SAF_old_way }
-		x = 4
+		mutually_exclusive = { focus = SAF_improve_the_three_oh_three }
+		x = 3
 		y = 2
 		relative_position_id = SAF_special_service_battalion
 
@@ -1675,7 +1681,7 @@ focus_tree = {
 				name = SAF_armor_effort
 				bonus = 0.50
 				uses = 1
-				category = cat_medium_armor
+				category = armor
 			}
 		}
 	}
@@ -1687,7 +1693,7 @@ focus_tree = {
 	focus = {
 		id = SAF_commit_to_the_five_year_plan
 		icon = GFX_goal_generic_build_airforce
-		x = 26
+		x = 24
 		y = 0	
 
 		cost = 10
@@ -1994,7 +2000,7 @@ focus_tree = {
 	focus = {
 		id = SAF_seaward_defence_force
 		icon = GFX_goal_generic_navy_doctrines_tactics
-		x = 30
+		x = 28
 		y = 0		
 
 		cost = 5
