@@ -108,10 +108,10 @@ focus_tree = {
 	focus = {
 		id = BRA_great_depression_recovery
 		icon = GFX_focus_generic_concessions
-		prerequisite = { focus = BRA_stay_with_vargas focus = BRA_adopt_federalism }
-		x = -3
-		y = -1
-		relative_position_id = BRA_new_constitution
+		prerequisite = { focus = BRA_declare_third_republic }
+		x = -2
+		y = 1
+		relative_position_id = BRA_declare_third_republic
 		
 		available = {
 			threat > 0.1
@@ -161,10 +161,10 @@ focus_tree = {
 	focus = {
 		id = BRA_align_with_america
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = BRA_stay_with_vargas focus = BRA_adopt_federalism }
-		x = 3
-		y = -1
-		relative_position_id = BRA_new_constitution
+		prerequisite = { focus = BRA_declare_third_republic }
+		x = 2
+		y = 1
+		relative_position_id = BRA_declare_third_republic
 
 		cost = 10
 		
@@ -207,9 +207,11 @@ focus_tree = {
 		id = BRA_join_the_allies
 		icon = GFX_focus_hol_the_fourth_ally
 		prerequisite = { focus = BRA_deterrence }
+		prerequisite = { focus = BRA_new_constitution }
+		prerequisite = { focus = BRA_full_econonmic_recovery }
 		x = 0
-		y = 1
-		relative_position_id = BRA_deterrence
+		y = 2
+		relative_position_id = BRA_new_constitution
 
 		cost = 5
 		
@@ -278,11 +280,9 @@ focus_tree = {
 		id = BRA_appease_the_coffee_oligarchs
 		icon = GFX_focus_CZE_german_puppet
 		prerequisite = { focus = BRA_stay_with_vargas}
-		prerequisite = {focus = BRA_declare_third_republic}
-		mutually_exclusive = { focus = BRA_curtail_the_coffe_oligarchs }
-		x = -1
-		y = 1
-		relative_position_id = BRA_new_constitution
+		x = -4
+		y = 0
+		relative_position_id = BRA_declare_third_republic
 
 		cost = 10
 
@@ -335,11 +335,9 @@ focus_tree = {
 		id = BRA_curtail_the_coffe_oligarchs
 		icon = GFX_focus_por_recover_latin_america
 		prerequisite = { focus = BRA_adopt_federalism }
-		prerequisite = { focus = BRA_declare_third_republic}
-		mutually_exclusive = { focus = BRA_appease_the_coffee_oligarchs }
-		x = 1
-		y = 1
-		relative_position_id = BRA_new_constitution
+		x = 4
+		y = 0
+		relative_position_id = BRA_declare_third_republic
 
 		cost = 10
 
@@ -944,7 +942,7 @@ focus_tree = {
 	focus = {
 		id = BRA_armed_forces
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 20
+		x = 19
 		y = 0
 
 		cost = 5
@@ -1316,7 +1314,7 @@ focus_tree = {
 	focus = {
 		id = BRA_form_the_bn
 		icon = GFX_goal_generic_build_navy
-		x = 28
+		x = 27
 		y = 0
 
 		cost = 5
