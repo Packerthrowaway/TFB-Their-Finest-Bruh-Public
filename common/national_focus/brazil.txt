@@ -108,9 +108,9 @@ focus_tree = {
 	focus = {
 		id = BRA_great_depression_recovery
 		icon = GFX_focus_generic_concessions
-		prerequisite = { focus = BRA_new_constitution }
+		prerequisite = { focus = BRA_stay_with_vargas focus = BRA_adopt_federalism }
 		x = -3
-		y = 1
+		y = -1
 		relative_position_id = BRA_new_constitution
 		
 		available = {
@@ -161,9 +161,9 @@ focus_tree = {
 	focus = {
 		id = BRA_align_with_america
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = BRA_new_constitution }
-		x = -1
-		y = 1
+		prerequisite = { focus = BRA_stay_with_vargas focus = BRA_adopt_federalism }
+		x = 3
+		y = -1
 		relative_position_id = BRA_new_constitution
 
 		cost = 10
@@ -277,9 +277,10 @@ focus_tree = {
 	focus = {
 		id = BRA_appease_the_coffee_oligarchs
 		icon = GFX_focus_CZE_german_puppet
-		prerequisite = { focus = BRA_new_constitution }
+		prerequisite = { focus = BRA_stay_with_vargas}
+		prerequisite = {focus = BRA_declare_third_republic}
 		mutually_exclusive = { focus = BRA_curtail_the_coffe_oligarchs }
-		x = 1
+		x = -1
 		y = 1
 		relative_position_id = BRA_new_constitution
 
@@ -294,13 +295,49 @@ focus_tree = {
 			show_ideas_tooltip = BRA_estavao_alves_correa
 		}
 	}
+
+	focus = {
+		id = BRA_industrialization
+		icon = GFX_focus_generic_industry_2
+		prerequisite = { focus = BRA_appease_the_coffee_oligarchs }
+		x = 0
+		y = 1
+		relative_position_id = BRA_appease_the_coffee_oligarchs
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 8
+		}
+
+		completion_reward = {
+
+			add_ideas = BRA_industrialization1
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
 	
 	focus = {
 		id = BRA_curtail_the_coffe_oligarchs
 		icon = GFX_focus_por_recover_latin_america
-		prerequisite = { focus = BRA_new_constitution }
+		prerequisite = { focus = BRA_adopt_federalism }
+		prerequisite = { focus = BRA_declare_third_republic}
 		mutually_exclusive = { focus = BRA_appease_the_coffee_oligarchs }
-		x = 3
+		x = 1
 		y = 1
 		relative_position_id = BRA_new_constitution
 
@@ -370,7 +407,7 @@ focus_tree = {
 		x = 11
 		y = 0
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 8
@@ -786,6 +823,33 @@ focus_tree = {
 			}
 		}
 	}
+
+	focus = {
+		id = BRA_rubber_boom
+		icon = GFX_focus_generic_rubber
+		prerequisite = { focus = BRA_amazonian_rubber }
+		x = 1
+		y = 1
+		relative_position_id = BRA_amazonian_rubber
+
+		cost = 10
+
+		available = {
+			is_in_faction_with = USA
+		}
+
+		ai_will_do = {
+			factor = 8
+		}
+
+		completion_reward = {
+			add_resource = {
+				type = rubber
+				amount = 200
+				state = 495
+			}
+		}
+	}
 	
 	focus = {
 		id = BRA_brazilian_arms_investments
@@ -816,6 +880,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
+			
 			}
 		}
 	}
@@ -879,7 +944,7 @@ focus_tree = {
 	focus = {
 		id = BRA_armed_forces
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 16
+		x = 20
 		y = 0
 
 		cost = 5
@@ -889,7 +954,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			army_experience = 25
+			army_experience = 50
 		}
 	}
 	
@@ -918,37 +983,40 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = BRA_new_rifles
-		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = BRA_military_modernisation }
-		x = -1
+		id = BRA_special_forces_divisions
+		icon = GFX_focus_generic_paratrooper
+		mutually_exclusive = { focus = BRA_motorisation_effort }
+		x = -2
 		y = 1
+		prerequisite = { focus = BRA_military_modernisation }
 		relative_position_id = BRA_military_modernisation
-
 		cost = 5
 
 		ai_will_do = {
-			factor = 8
+			factor = 1
 		}
 
 		completion_reward = {
-			army_experience = 10
+			add_ideas = BRA_special_forces_divisions
+
 			add_tech_bonus = {
-				name = inf_bonus
+				name = mar_bonus
 				bonus = 0.5
 				uses = 2
-				category = infantry_weapons
+				category = marine_tech
+				category = mountaineers_tech
 			}
+
 		}
 	}
 	
 	focus = {
 		id = BRA_artillery_experiments
 		icon = GFX_goal_generic_army_artillery
-		prerequisite = { focus = BRA_new_rifles }
-		x = 0
+		prerequisite = { focus = BRA_special_forces_divisions }
+		x = 2
 		y = 1
-		relative_position_id = BRA_new_rifles
+		relative_position_id = BRA_special_forces_divisions
 
 		cost = 5
 
@@ -957,7 +1025,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			army_experience = 10
+			army_experience = 20
 			add_tech_bonus = {
 				name = art_bonus
 				bonus = 0.5
@@ -971,7 +1039,8 @@ focus_tree = {
 		id = BRA_motorisation_effort
 		icon = GFX_goal_generic_army_motorized
 		prerequisite = { focus = BRA_military_modernisation }
-		x = 1
+		mutually_exclusive = { focus = BRA_special_forces_divisions }
+		x = 2
 		y = 1
 		relative_position_id = BRA_military_modernisation
 
@@ -982,7 +1051,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			army_experience = 10
+			army_experience = 20
 			add_tech_bonus = {
 				name = tnk_bonus
 				bonus = 0.5
@@ -991,12 +1060,66 @@ focus_tree = {
 			}
 		}
 	}
+
+	focus = {
+		id = BRA_mechanise_army
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = BRA_expand_logistics_companies }
+		x = 1
+		y = 2
+		cost = 5
+		relative_position_id = BRA_motorisation_effort
+
+		available = {
+			is_in_faction_with = USA
+			has_war = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}	
+		completion_reward = {
+			add_tech_bonus = {
+				name = at_bonus
+				bonus = 0.75
+				uses = 1
+				category = cat_mechanized_equipment
+			}
+
+			add_ideas = BRA_mechanise_army
+		}
+	}
 	
 	focus = {
-		id = BRA_support_companies
+		id = BRA_support_tanks
 		icon = GFX_focus_generic_combined_arms
 		prerequisite = { focus = BRA_motorisation_effort }
-		x = 0
+		x = -1
+		y = 2
+		relative_position_id = BRA_motorisation_effort
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 8
+		}
+
+		completion_reward = {
+			army_experience = 20
+			add_tech_bonus = {
+				name = tnk_bonus
+				bonus = 0.5
+				uses = 1
+				category = cat_light_armor
+			}
+		}
+	}
+
+	focus = {
+		id = BRA_expand_logistics_companies
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = BRA_motorisation_effort }
+		x = 1
 		y = 1
 		relative_position_id = BRA_motorisation_effort
 
@@ -1007,12 +1130,15 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			army_experience = 10
+			army_experience = 20
 			add_tech_bonus = {
 				name = tnk_bonus
 				bonus = 0.5
-				uses = 1
-				category = support_tech
+				uses = 2
+				technology = tech_logistics_company
+				technology = tech_logistics_company2
+				technology = tech_logistics_company3
+				technology = tech_logistics_company4
 			}
 		}
 	}
@@ -1020,11 +1146,11 @@ focus_tree = {
 	focus = {
 		id = BRA_brazilian_expeditionary_force
 		icon = GFX_focus_generic_little_entente
-		prerequisite = { focus = BRA_support_companies }
-		prerequisite = { focus = BRA_artillery_experiments }
+		prerequisite = { focus = BRA_support_tanks focus = BRA_artillery_experiments}
+
 		x = -1
 		y = 1
-		relative_position_id = BRA_support_companies
+		relative_position_id = BRA_support_tanks
 
 		cost = 5
 		
@@ -1040,8 +1166,77 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = BRA_mark_clark
+
+			custom_effect_tooltip = tooltip_brazil_expedionary_forces
+
+			hidden_effect = {
+				division_template = {
+					name = "Brazil Expeditionary Force"
+					division_names_group = BRA_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 500 }
+					create_unit = {
+						division = "division_template = \"Brazil Expeditionary Force\" start_experience_factor = 0.1"
+						owner = BRA
+					}
+				} 
+
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 500 }
+					create_unit = {
+						division = "division_template = \"Brazil Expeditionary Force\" start_experience_factor = 0.1"
+						owner = BRA
+					}
+				} 
+
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 500 }
+					create_unit = {
+						division = "division_template = \"Brazil Expeditionary Force\" start_experience_factor = 0.1"
+						owner = BRA
+					}
+				} 
+
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 500 }
+					create_unit = {
+						division = "division_template = \"Brazil Expeditionary Force\" start_experience_factor = 0.1"
+						owner = BRA
+					}
+				} 
+
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 500 }
+					create_unit = {
+						division = "division_template = \"Brazil Expeditionary Force\" start_experience_factor = 0.1"
+						owner = BRA
+					}
+				}   
+
+			}
 		}
-	}
+		
+
+}	
+
 	
 	focus = {
 		id = BRA_american_advisors
@@ -1058,6 +1253,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			army_experience = 50
 			add_to_tech_sharing_group = us_research
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
@@ -1066,16 +1262,17 @@ focus_tree = {
 				category = land_doctrine
 			}
 			add_ideas = BRA_usa_license
+			
 		}
 	}
 	
 	focus = {
 		id = BRA_pracinhas
 		icon = GFX_focus_prc_infiltration
-		prerequisite = { focus = BRA_american_advisors }
+		prerequisite = { focus = BRA_special_forces_divisions }
 		mutually_exclusive = { focus = BRA_bandeirantes }
-		x = 1
-		y = 1
+		x = -2
+		y = -3
 		relative_position_id = BRA_american_advisors
 
 		cost = 5
@@ -1092,10 +1289,10 @@ focus_tree = {
 	focus = {
 		id = BRA_bandeirantes
 		icon = GFX_focus_generic_manpower
-		prerequisite = { focus = BRA_american_advisors }
+		prerequisite = { focus = BRA_special_forces_divisions }
 		mutually_exclusive = { focus = BRA_pracinhas }
-		x = -1
-		y = 1
+		x = -4
+		y = -3
 		relative_position_id = BRA_american_advisors
 
 		cost = 5
@@ -1119,7 +1316,7 @@ focus_tree = {
 	focus = {
 		id = BRA_form_the_bn
 		icon = GFX_goal_generic_build_navy
-		x = 22
+		x = 28
 		y = 0
 
 		cost = 5
@@ -1157,7 +1354,7 @@ focus_tree = {
 		y = 1
         relative_position_id = BRA_form_the_bn
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -1188,7 +1385,7 @@ focus_tree = {
 		x = 1
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 2
@@ -1273,7 +1470,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = BRA_expand_sao_paulo_naval_base
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 2
@@ -1303,7 +1500,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = BRA_expand_sao_paulo_naval_base
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 2
@@ -1332,7 +1529,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = BRA_destroyer_effort
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -1361,7 +1558,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = BRA_submarine_effort
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
