@@ -278,7 +278,7 @@ NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.05
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_MITIGATION = 6.0 -- Multiply Train Damage by (Smooth / (Smooth + (Disruption * Mitigation)))
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_SMOOTHING = 5.0
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_RAILWAY_DAMAGE_SPILL_FACTOR = 0.003 -- Portion of train damage to additionally deal to railways
-NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 25
+NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 10
 NDefines.NAir.BASE_UNIT_WEIGHT_IN_TRANSPORT_PLANES = 20
 NDefines.NAir.MISSION_FUEL_COSTS = {  -- fuel cost per plane for each mission
 1.0, -- AIR_SUPERIORITY
@@ -316,7 +316,7 @@ NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane t
 }
 NDefines.NAir.CARRIER_SIZE_STAT_INCREMENT = 10					-- Each Point of carrier_size state adds capacity for this many planes
 NDefines.NAir.AIR_DEPLOYMENT_DAYS = 1							-- Days to deploy one air wing
-NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.20					-- Global speed multiplier for airplanes (affects fe.transferring to another base)
+NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02					-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
 NDefines.NNavy.COMBAT_DAMAGE_RANDOMNESS = 0.25								-- random factor in damage. So if max damage is fe. 10 and randomness is 30% then damage will be between 7-10.
 NDefines.NNavy.COMBAT_MAX_GROUPS = 2										-- Max amount of "Fire Exchange" groups (FEX).
@@ -455,6 +455,8 @@ NDefines.NSupply.VP_TO_SUPPLY_BASE = 0.7
 NDefines.NSupply.FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 3.0
 NDefines.NSupply.FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 0.6
 NDefines.NSupply.FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 0.6
+NDefines.NSupply.NAVAL_BASE_FLOW = 15
+NDefines.NSupply.NAVAL_FLOW_PER_LEVEL = 5
 
 
 NDefines.NGraphics.WEATHER_DISTANCE_CUTOFF = 1200 -- At what distance weather effects are hidden
