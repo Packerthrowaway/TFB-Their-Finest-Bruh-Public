@@ -3779,31 +3779,31 @@ focus_tree = {
 		}
 	}
 
-	#focus = {
-	#	id = USA_CAS
-	#	text = CAS_effort
-	#	icon = GFX_goal_generic_CAS
-	#	prerequisite = { focus = USA_air_support }
-	#	x = -1
-	#	y = 1
-	#	relative_position_id = USA_air_support
-	#	cost = 5
+	focus = {
+		id = USA_CAS
+		text = CAS_effort
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = USA_air_support }
+		x = -1
+		y = 1
+		relative_position_id = USA_air_support
+		cost = 5
 		#ai_will_do = {
 		#	factor = 1
 		#}
 
-	#	available_if_capitulated = yes
-	#	search_filters = {FOCUS_FILTER_RESEARCH}
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_RESEARCH}
 
-	#	completion_reward = {
-	#		add_tech_bonus = {
-	#			name = CAS_effort
-	#			uses = 2
-	#			bonus = 0.5
-	#			category = cas_bomber
-	#		}
-	#	}
-	#}
+		completion_reward = {
+			add_tech_bonus = {
+				name = CAS_effort
+				uses = 2
+				bonus = 0.5
+				category = cas_bomber
+			}
+		}
+	}
 
 	focus = {
 		id = USA_combined_bomber_offensive
@@ -3836,7 +3836,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = USA_combined_bomber_offensive
 				bonus = 0.5
-				uses = 2
+				uses = 1
 				category = heavy_air
 			}
 			add_ideas = combined_bomber_offensive
@@ -3873,16 +3873,18 @@ focus_tree = {
 				name = USA_escort_fighters
 				bonus = 0.75
 				uses = 2
-				category = light_air
+				technology = heavy_fighter1
+				technology = heavy_fighter2
+				technology = heavy_fighter3
 			}
 		}
 	}
 	focus = {
 		id = USA_us_army_airforce
 		icon = GFX_focus_generic_strike_at_democracy1
-		x = 0
+		x = -1
 		y = 4
-		prerequisite = { focus = USA_TAC focus = USA_combined_bomber_offensive }
+		prerequisite = { focus = USA_TAC }
 		relative_position_id = USA_air_war_plans_division
 		cost = 5
 
@@ -4127,8 +4129,8 @@ focus_tree = {
 			add_doctrine_cost_reduction = {
 				name = USA_advanced_mahanian_doctrine
 				cost_reduction = 0.25
-				uses = 3
-				category = cat_fleet_in_being
+				uses = 2
+				category = cat_base_strike
 			}
 		}
 	}
@@ -4229,11 +4231,12 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = USA_advanced_mahanian_doctrine
-				cost_reduction = 0.25
-				uses = 3
-				category = cat_base_strike
+			add_tech_bonus = {
+				name = USA_bureau_of_aeronautics
+				bonus = 0.5
+				uses = 1
+				category = naval_bomber
+				category = naval_air
 			}
 		}
 	}
