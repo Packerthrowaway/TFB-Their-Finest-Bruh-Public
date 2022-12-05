@@ -3155,7 +3155,6 @@ focus_tree = {
 
 	focus = {
 		id = HOL_the_battlecruiser_plan
-		custom_effect_tooltip = HOL_the_battlecruiser_plan_tt
 		prerequisite = { focus = HOL_rely_on_submarines focus = HOL_modernize_the_cruiser_fleet }
 		available = {
 			GER = {
@@ -5073,53 +5072,6 @@ focus_tree = {
 			}
 		}
 	}
-
-	focus = {
-		id = HOL_replace_the_defeatist_government
-		prerequisite = { focus = HOL_unity_through_democracy }
-		available = {
-			threat = 0.30
-		}
-		bypass = {
-			has_government = neutrality
-		}
-		icon = GFX_goal_generic_political_pressure
-		x = -1
-		y = 1
-		relative_position_id = HOL_unity_through_democracy
-		cost = 10
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT}
-
-		completion_reward = {
-			country_event = { id = mtg_netherlands.14 }
-			effect_tooltip = {
-				add_popularity = {
-				    ideology = democratic
-				    popularity = -0.05
-				}
-				retire_country_leader = yes
-				create_country_leader = {
-					name = "Pieter Sjoerds Gerbrandy"
-					desc = "POLITICS_PIETER_SJOERDS_GERBRANDY_DESC"
-					picture = "portrait_hol_pieter_sjoerds_gerbrandy.dds"
-					expire = "1965.1.1"
-					ideology = conservatism
-					traits = {
-						little_churchill
-					}
-				}
-				if = {
-					limit = {
-						has_idea = HOL_weak_government
-					}
-					remove_ideas = HOL_weak_government
-				}
-			}
-		}
-	}
-
 	focus = {
 		allow_branch { always = no }
 		id = HOL_the_only_man_in_the_dutch_government
@@ -5569,7 +5521,51 @@ focus_tree = {
 			}
 		}
 	}
+	focus = {
+		id = HOL_replace_the_defeatist_government
+		prerequisite = { focus = HOL_unity_through_democracy }
+		available = {
+			threat > 0.30
+		}
+		bypass = {
+			has_government = neutrality
+		}
+		icon = GFX_goal_generic_political_pressure
+		x = -1
+		y = 1
+		relative_position_id = HOL_unity_through_democracy
+		cost = 10
 
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT}
+
+		completion_reward = {
+			country_event = { id = mtg_netherlands.14 }
+			effect_tooltip = {
+				add_popularity = {
+				    ideology = democratic
+				    popularity = -0.05
+				}
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Pieter Sjoerds Gerbrandy"
+					desc = "POLITICS_PIETER_SJOERDS_GERBRANDY_DESC"
+					picture = "portrait_hol_pieter_sjoerds_gerbrandy.dds"
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = {
+						little_churchill
+					}
+				}
+				if = {
+					limit = {
+						has_idea = HOL_weak_government
+					}
+					remove_ideas = HOL_weak_government
+				}
+			}
+		}
+	}
  ##   ##      #   # ### ### #  #     ###  ###  ### ###  ##  ### #  # 
 #    #  #     #   #  #   #  #  #     #  # #  #  #   #  #  #  #  ## # 
 # ## #  #     # # #  #   #  ####     ###  ###   #   #  ####  #  # ## 
