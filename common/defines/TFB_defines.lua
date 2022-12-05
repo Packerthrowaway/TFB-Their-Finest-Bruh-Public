@@ -249,7 +249,7 @@ NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.05							-- Higher value = more shot down 
 NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2          -- how often carrier planes do battle inside naval combat
 NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.4			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
 NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 1.5					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
-NDefines.NAir.NAVAL_STRIKE_CARRIER_MULTIPLIER = 7.0              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
+NDefines.NAir.NAVAL_STRIKE_CARRIER_MULTIPLIER = 3.0              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 NDefines.NAir.ACE_EARN_CHANCE_BASE = 0.01						-- Base chance % for ace pilot to be created. Happens only when successfully kill airplane/ship or damage the buildings.
 NDefines.NAir.ACE_EARN_CHANCE_PLANES_MULT = 0.002				-- The more airplanes the wing shots the higher chance of earning Ace.
 NDefines.NAir.AIR_NAVAL_KAMIKAZE_DAMAGE_MULT = 10.0				-- Balancing value to increase usual damage to Strength for Kamikaze
@@ -368,8 +368,8 @@ NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
 NDefines.NNavy.RESOURCE_LENDLEASE_PRIORITY = 3
 NDefines.NNavy.RESOURCE_ORIGIN_PRIORITY = 3
 NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.01 													-- multiplies supply usage
-NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 1.5												-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
-NDefines.NNavy.HIT_PROFILE_SPEED_BASE = 15													-- Base value added to hitprofile speed calulation
+NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 1.0												-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
+NDefines.NNavy.HIT_PROFILE_SPEED_BASE = 5													-- Base value added to hitprofile speed calulation
 
 
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
