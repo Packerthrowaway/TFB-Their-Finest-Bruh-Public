@@ -10,7 +10,7 @@ focus_tree = {
 		}
 		
 	}
-	
+	continuous_focus_position = { x = 50 y = 850 }
 	default = no
 	
 	focus = {
@@ -421,6 +421,19 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 27
+		}
+
+		bypass = {
+			NOT = {
+				146 = {
+					CONTROLLER = {
+						OR = {
+							tag = FIN
+							is_subject_of = FIN
+						}
+					}
+				}
+			}
 		}
 
 		completion_reward = {
@@ -904,9 +917,10 @@ focus_tree = {
 				producer = GER
 			}
 			add_equipment_to_stockpile = {
-				type = light_tank_chassis
+				type = ger_light_tank_chassis_p2
 				amount = 400
-				producer = GER
+				producer = GER 
+				variant_name = "PzKpfw II A"
 			}
 		}
 	}

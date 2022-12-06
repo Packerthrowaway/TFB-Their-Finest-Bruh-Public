@@ -171,7 +171,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -234,7 +234,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 5
 		}
@@ -297,7 +297,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -327,7 +327,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -357,7 +357,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -388,7 +388,7 @@ JAP_interservice_rivalry = {
 			}
 		}
 		cost = 50
-		days_remove = 180
+		days_remove = -1
 		fire_only_once = yes
 		ai_will_do = {
 			factor = 3
@@ -422,7 +422,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -454,7 +454,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -518,7 +518,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -578,7 +578,7 @@ JAP_interservice_rivalry = {
 		}
 		cost = 50
 		fire_only_once = yes
-		days_remove = 180
+		days_remove = -1
 		ai_will_do = {
 			factor = 1
 		}
@@ -998,373 +998,433 @@ JAP_southern_expansion = {
 #Category allowed for JAP
 #Visible when has completed JAP_pacific_guardian focus.
 #Visible if independent
-JAP_pacific_guardian = {
+# JAP_pacific_guardian = {
 
-	JAP_release_korea = {
+# 	JAP_release_korea = {
 
-		icon = generic_independence
+# 		icon = generic_independence
 
-		available = {
-			country_exists = KOR
-		}
+# 		available = {
+# 			country_exists = KOR
+# 		}
 
-		days_mission_timeout = 180
+# 		days_mission_timeout = 180
 
-		fire_only_once = yes
-		is_good = no 
-		activation = {
-			always = no
-			has_full_control_of_state = 525
-			has_full_control_of_state = 527
-			KOR = { exists = no }
-		}
+# 		fire_only_once = yes
+# 		is_good = no 
+# 		activation = {
+# 			always = no
+# 			has_full_control_of_state = 525
+# 			has_full_control_of_state = 527
+# 			KOR = { exists = no }
+# 		}
 
-		complete_effect = {
-			add_political_power = 50
-		}
-		timeout_effect = {
-			add_stability = -0.1 #naughty
-		}
-	}
+# 		complete_effect = {
+# 			add_political_power = 50
+# 		}
+# 		timeout_effect = {
+# 			add_stability = -0.1 #naughty
+# 		}
+# 	}
 
-	JAP_guardian_of_INS = {
+# 	JAP_guardian_of_INS = {
 
-		icon = jap_pacific_guardian
+# 		icon = jap_pacific_guardian
 
-		available = {
-			HOL = {
-				#has_capitulated = yes
-			}
-			"INS" = {
-				is_puppet_of = HOL
-			}
-		}
+# 		available = {
+# 			HOL = {
+# 				#has_capitulated = yes
+# 			}
+# 			"INS" = {
+# 				is_puppet_of = HOL
+# 			}
+# 		}
 
-		fire_only_once = yes
-
-
-		modifier = {
-
-		}
-
-		days_remove = 0
-		days_re_enable = 0
-
-		cost = 50
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		complete_effect = {
-			HOL = { country_event = { id = wtt_japan.1 } }
-		}
-	}
-
-	JAP_guardian_of_MAL = {
-
-		icon = jap_pacific_guardian
-
-		available = {
-			ENG = {
-				#has_capitulated = yes
-			}
-			MAL = {
-				is_puppet_of = ENG
-			}
-		}
-
-		fire_only_once = yes
+# 		fire_only_once = yes
 
 
-		modifier = {
+# 		modifier = {
 
-		}
+# 		}
 
-		days_remove = 0
-		days_re_enable = 0
+# 		days_remove = 0
+# 		days_re_enable = 0
 
-		cost = 50
+# 		cost = 50
 
-		ai_will_do = {
-			factor = 1
-		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
 
-		complete_effect = {
-			ENG = { country_event = { id = wtt_japan.1 } }
-		}
-	}
+# 		complete_effect = {
+# 			HOL = { country_event = { id = wtt_japan.1 } }
+# 		}
+# 	}
 
-	JAP_guardian_of_indochina = {
+# 	JAP_guardian_of_MAL = {
 
-		icon = jap_pacific_guardian
+# 		icon = jap_pacific_guardian
 
-		available = {
-			FRA = {
-				#has_capitulated = yes
-				OR = {
-					has_full_control_of_state = 670
-					has_full_control_of_state = 671
-					has_full_control_of_state = 286
-					has_full_control_of_state = 741
-				}
-			}
-		}
+# 		available = {
+# 			ENG = {
+# 				#has_capitulated = yes
+# 			}
+# 			MAL = {
+# 				is_puppet_of = ENG
+# 			}
+# 		}
 
-		fire_only_once = yes
+# 		fire_only_once = yes
 
 
-		modifier = {
+# 		modifier = {
 
-		}
+# 		}
 
-		days_remove = 0
-		days_re_enable = 0
+# 		days_remove = 0
+# 		days_re_enable = 0
 
-		cost = 50
+# 		cost = 50
 
-		ai_will_do = {
-			factor = 1
-		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
 
-		complete_effect = {
-			FRA = { country_event = { id = wtt_japan.1 } }
-		}
-	}
-}
+# 		complete_effect = {
+# 			ENG = { country_event = { id = wtt_japan.1 } }
+# 		}
+# 	}
 
-JAP_colonial_independence = {
-	JAP_return_manchuria = {
+# 	JAP_guardian_of_indochina = {
 
-		icon = generic_independence
+# 		icon = jap_pacific_guardian
+
+# 		available = {
+# 			FRA = {
+# 				#has_capitulated = yes
+# 				OR = {
+# 					has_full_control_of_state = 670
+# 					has_full_control_of_state = 671
+# 					has_full_control_of_state = 286
+# 					has_full_control_of_state = 741
+# 				}
+# 			}
+# 		}
+
+# 		fire_only_once = yes
+
+
+# 		modifier = {
+
+# 		}
+
+# 		days_remove = 0
+# 		days_re_enable = 0
+
+# 		cost = 50
+
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+
+# 		complete_effect = {
+# 			FRA = { country_event = { id = wtt_japan.1 } }
+# 		}
+# 	}
+# }
+
+# JAP_colonial_independence = {
+# 	JAP_return_manchuria = {
+
+# 		icon = generic_independence
+
+# 		allowed = {
+# 			original_tag = JAP
+# 		}
+
+# 		available = {
+# 			609 = {
+# 				is_fully_controlled_by = controller
+# 				CONTROLLER = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			610 = {
+# 				is_fully_controlled_by = controller
+# 				CONTROLLER = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			716 = {
+# 				is_fully_controlled_by = controller
+# 				CONTROLLER = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			715 = {
+# 				is_fully_controlled_by = controller
+# 				CONTROLLER = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			328 = {
+# 				is_fully_controlled_by = controller
+# 				CONTROLLER = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			717 = {
+# 				is_fully_controlled_by = controller
+# 				CONTROLLER = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			714 = {
+# 				is_fully_controlled_by = controller
+# 				CONTROLLER = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		visible = {
+# 			always = no
+# 			609 = {
+# 				owner = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			610 = {
+# 				owner = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			716 = {
+# 				owner = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			715 = {
+# 				owner = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			328 = {
+# 				owner = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			717 = {
+# 				owner = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 			714 = {
+# 				owner = {
+# 					OR = {
+# 						is_puppet_of = JAP
+# 						original_tag = JAP
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		fire_only_once = yes
+
+
+# 		modifier = {
+
+# 		}
+
+# 		days_remove = 0
+# 		days_re_enable = 0
+
+# 		cost = 0
+
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+
+# 		complete_effect = {
+# 			if = {
+# 				limit = {
+# 					country_exists = event_target:WTT_current_china_leader
+# 				}
+# 				event_target:WTT_current_china_leader = { 
+# 					transfer_state = 609
+# 					transfer_state = 610
+# 					transfer_state = 716
+# 					transfer_state = 715
+# 					transfer_state = 328
+# 					transfer_state = 717
+# 					transfer_state = 714
+# 					transfer_state = 761
+# 					transfer_state = 745
+# 					transfer_state = 612
+# 					transfer_state = 611
+# 					country_event = { id = wtt_japan.101 days = 1 }
+# 					custom_effect_tooltip = JAP_liberate_manchuria_alliance_tt
+# 				}
+# 			}
+# 			if = {
+# 				limit = {
+# 					country_exists = event_target:WTT_communist_china
+# 					NOT = { country_exists = event_target:WTT_current_china_leader }
+# 				}
+# 				event_target:WTT_communist_china = { 
+# 					transfer_state = 609
+# 					transfer_state = 610
+# 					transfer_state = 716
+# 					transfer_state = 715
+# 					transfer_state = 328
+# 					transfer_state = 717
+# 					transfer_state = 714
+# 					transfer_state = 761
+# 					transfer_state = 745
+# 					transfer_state = 612
+# 					transfer_state = 611
+# 					country_event = { id = wtt_japan.101 days = 1 }
+# 				}
+# 			}
+# 			if = {
+# 				limit = {
+# 					NOT = { country_exists = event_target:WTT_communist_china }
+# 					NOT = { country_exists = event_target:WTT_current_china_leader }
+# 				}
+# 				random_other_country = {
+# 					limit = {
+# 						OR = {
+# 							original_tag = GXC
+# 							original_tag = YUN
+# 							original_tag = XSM
+# 							original_tag = SIK
+# 							original_tag = SHX
+# 							original_tag = MEN
+# 						}
+# 						NOT = {
+# 							has_government = communism
+# 							has_government = fascism
+# 						}
+# 					}
+# 					transfer_state = 609
+# 					transfer_state = 610
+# 					transfer_state = 716
+# 					transfer_state = 715
+# 					transfer_state = 328
+# 					transfer_state = 717
+# 					transfer_state = 714
+# 					transfer_state = 761
+# 					transfer_state = 745
+# 					transfer_state = 612
+# 					transfer_state = 611
+# 					country_event = { id = wtt_japan.101 days = 1 }
+# 					custom_effect_tooltip = JAP_liberate_manchuria_alliance_tt
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+
+political_actions = {
+	JAP_annex_man = {
 
 		allowed = {
 			original_tag = JAP
 		}
 
 		available = {
-			609 = {
-				is_fully_controlled_by = controller
-				CONTROLLER = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			610 = {
-				is_fully_controlled_by = controller
-				CONTROLLER = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			716 = {
-				is_fully_controlled_by = controller
-				CONTROLLER = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			715 = {
-				is_fully_controlled_by = controller
-				CONTROLLER = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			328 = {
-				is_fully_controlled_by = controller
-				CONTROLLER = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			717 = {
-				is_fully_controlled_by = controller
-				CONTROLLER = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			714 = {
-				is_fully_controlled_by = controller
-				CONTROLLER = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
+			date > 1939.1.1
+			NOT = { country_exists = CHI }
+			MAN = {is_ai = YES}
+		}
+
+		ai_will_do = {
+			factor = 0
 		}
 
 		visible = {
-			always = no
-			609 = {
-				owner = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			610 = {
-				owner = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			716 = {
-				owner = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			715 = {
-				owner = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			328 = {
-				owner = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			717 = {
-				owner = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
-			714 = {
-				owner = {
-					OR = {
-						is_puppet_of = JAP
-						original_tag = JAP
-					}
-				}
-			}
+			always = yes
 		}
-
 		fire_only_once = yes
-
-
-		modifier = {
-
-		}
-
-		days_remove = 0
-		days_re_enable = 0
-
-		cost = 0
-
-		ai_will_do = {
-			factor = 1
-		}
-
 		complete_effect = {
-			if = {
-				limit = {
-					country_exists = event_target:WTT_current_china_leader
-				}
-				event_target:WTT_current_china_leader = { 
-					transfer_state = 609
-					transfer_state = 610
-					transfer_state = 716
-					transfer_state = 715
-					transfer_state = 328
-					transfer_state = 717
-					transfer_state = 714
-					transfer_state = 761
-					transfer_state = 745
-					transfer_state = 612
-					transfer_state = 611
-					country_event = { id = wtt_japan.101 days = 1 }
-					custom_effect_tooltip = JAP_liberate_manchuria_alliance_tt
-				}
-			}
-			if = {
-				limit = {
-					country_exists = event_target:WTT_communist_china
-					NOT = { country_exists = event_target:WTT_current_china_leader }
-				}
-				event_target:WTT_communist_china = { 
-					transfer_state = 609
-					transfer_state = 610
-					transfer_state = 716
-					transfer_state = 715
-					transfer_state = 328
-					transfer_state = 717
-					transfer_state = 714
-					transfer_state = 761
-					transfer_state = 745
-					transfer_state = 612
-					transfer_state = 611
-					country_event = { id = wtt_japan.101 days = 1 }
-				}
-			}
-			if = {
-				limit = {
-					NOT = { country_exists = event_target:WTT_communist_china }
-					NOT = { country_exists = event_target:WTT_current_china_leader }
-				}
-				random_other_country = {
-					limit = {
-						OR = {
-							original_tag = GXC
-							original_tag = YUN
-							original_tag = XSM
-							original_tag = SIK
-							original_tag = SHX
-							original_tag = MEN
-						}
-						NOT = {
-							has_government = communism
-							has_government = fascism
-						}
-					}
-					transfer_state = 609
-					transfer_state = 610
-					transfer_state = 716
-					transfer_state = 715
-					transfer_state = 328
-					transfer_state = 717
-					transfer_state = 714
-					transfer_state = 761
-					transfer_state = 745
-					transfer_state = 612
-					transfer_state = 611
-					country_event = { id = wtt_japan.101 days = 1 }
-					custom_effect_tooltip = JAP_liberate_manchuria_alliance_tt
-				}
-			}
+			annex_country = { target = MAN transfer_troops = yes }
+			328 = { set_compliance = 60 }
+			610 = { set_compliance = 60 }
+			611 = { set_compliance = 60 }
+			612 = { set_compliance = 60 }
+			714 = { set_compliance = 60 }
+			715 = { set_compliance = 60 }
+			716 = { set_compliance = 60 }
+			717 = { set_compliance = 60 }
+			761 = { set_compliance = 60 }
 		}
 	}
-}
 
-political_actions = {
+	JAP_annex_chi = {
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP = {is_ai = YES}
+			MAN = {is_ai = YES} 
+			CHI = { is_puppet = YES}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			JAP = {is_ai = YES}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			annex_country = { target = CHI transfer_troops = no }
+
+		}
+	}
+
 	JAP_break_the_london_naval_treaty = {
 
 		icon = generic_break_treaty
@@ -1416,107 +1476,107 @@ political_actions = {
 operations = {
 
 	
-	SOV_border_war_JAP = {
+	# SOV_border_war_JAP = {
 
-		icon = border_war
+	# 	icon = border_war
 
-		allowed = { always = no }
+	# 	allowed = { always = no }
 
-		available = {
-			any_other_country = {
-				original_tag = TIB
-				has_government = fascism
-				has_war = no
-			}
-		}
+	# 	available = {
+	# 		any_other_country = {
+	# 			original_tag = TIB
+	# 			has_government = fascism
+	# 			has_war = no
+	# 		}
+	# 	}
 
-		days_mission_timeout = 90
+	# 	days_mission_timeout = 90
 
-		fire_only_once = yes
+	# 	fire_only_once = yes
 
-		is_good = no
+	# 	is_good = no
 		
-		complete_effect = {
-			country_event = soviet.1113
-		}
-	}
+	# 	complete_effect = {
+	# 		country_event = soviet.1113
+	# 	}
+	# }
 	
-	SOV_border_war_TIB = {
+	# SOV_border_war_TIB = {
 
-		icon = border_war
+	# 	icon = border_war
 
-		allowed = { always = no }
+	# 	allowed = { always = no }
 
-		available = {
-			has_war = no
-		}
+	# 	available = {
+	# 		has_war = no
+	# 	}
 
-		days_mission_timeout = 88
+	# 	days_mission_timeout = 88
 
-		fire_only_once = yes
+	# 	fire_only_once = yes
 
-		is_good = no
+	# 	is_good = no
 		
-		timeout_effect = {
-			if = {
-				limit = {
-					322 = {
-						CONTROLLER = {
-							has_government = fascism			
-						}
-					}
-				}
-				TIB = {
-					transfer_state = 322
-				}
-			}
-			if = {
-				limit = {
-					758 = {
-						CONTROLLER = {
-							has_government = fascism				
-						}
-					}
-				}	
-				TIB = {
-					transfer_state = 758
-				}
-			}
-			random_other_country = {
-				limit = {
-					original_tag = TIB
-					has_government = communism
-				}
-				white_peace = TIB
-			}
+	# 	timeout_effect = {
+	# 		if = {
+	# 			limit = {
+	# 				322 = {
+	# 					CONTROLLER = {
+	# 						has_government = fascism			
+	# 					}
+	# 				}
+	# 			}
+	# 			TIB = {
+	# 				transfer_state = 322
+	# 			}
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				758 = {
+	# 					CONTROLLER = {
+	# 						has_government = fascism				
+	# 					}
+	# 				}
+	# 			}	
+	# 			TIB = {
+	# 				transfer_state = 758
+	# 			}
+	# 		}
+	# 		random_other_country = {
+	# 			limit = {
+	# 				original_tag = TIB
+	# 				has_government = communism
+	# 			}
+	# 			white_peace = TIB
+	# 		}
 
-		}
-	}
+	# 	}
+	# }
 	
-	SOV_border_war_warning_JAP = {
+	# SOV_border_war_warning_JAP = {
 
-		icon = border_war
+	# 	icon = border_war
 		
-		allowed = {
-			always = no
-		}
+	# 	allowed = {
+	# 		always = no
+	# 	}
 
-		available = {
-			TIB = {
-				has_war = yes
-			}
-		}
+	# 	available = {
+	# 		TIB = {
+	# 			has_war = yes
+	# 		}
+	# 	}
 
-		days_mission_timeout = 180
-		fire_only_once = yes
+	# 	days_mission_timeout = 180
+	# 	fire_only_once = yes
 
-		is_good = no
+	# 	is_good = no
 
-		timeout_effect = {
-			add_war_support = -0.1
-			add_stability = -0.1
-		}
-	}
+	# 	timeout_effect = {
+	# 		add_war_support = -0.1
+	# 		add_stability = -0.1
+	# 	}
+	# }
 
 
 	#first border incident
@@ -1534,6 +1594,8 @@ operations = {
 			NOT = {
 				has_war_with = SOV
 				is_in_faction_with = SOV
+				has_non_aggression_pact_with = SOV	
+				SOV = { is_puppet_of = JAP }
 			}
 			527 = {
 				any_neighbor_state = {
@@ -1560,6 +1622,13 @@ operations = {
 			modifier = {
 				is_historical_focus_on = yes
 				date < 1939.1.1
+				factor = 0	
+			}	
+			modifier = { # We won't do this if we are supporting the opposition	
+				OR = {	
+					SOV = { has_country_flag = SOV_CSW_transfer_vladivostok_flag }	
+					SOV = { has_country_flag = SOV_CSW_transfer_sakhalin_flag }	
+				}
 				factor = 0
 			}
 		}
@@ -1641,15 +1710,14 @@ operations = {
 		icon = border_war
 
 		allowed = { always = no } #Activated from effect
+		visible = { hidden_trigger = { NOT = { has_border_war_with = JAP } } }	
+		cancel_if_not_visible = yes 
 
 		available = {
 			#var:ROOT.defender_state_vs_@FROM = {
 			#	has_ROOT_at_least_1_div_in_current_state_scope = yes
 			#}
 			hidden_trigger = { always = no }
-		}
-
-		highlight_states = {
 		}
 
 		war_with_target_on_timeout = yes
@@ -1693,10 +1761,7 @@ operations = {
 		allowed = { always = no } #Activated from effect
 
 		available = {
-			#var:ROOT.defender_state_vs_@FROM = {
-			#	has_ROOT_at_least_1_div_in_current_state_scope = yes
-			#}
-			hidden_trigger = { always = no }
+			has_border_war_with = SOV # Japan shouldn't lose war support if they actually use the window of opportunity
 		}
 
 		highlight_states = {
@@ -1858,7 +1923,7 @@ operations = {
 	#Decision to escalate conflict further
 	JAP_border_conflict_escalate_conflict = {
 
-		icon = decision_generic_ignite_civil_war
+		icon = generic_ignite_civil_war
 
 		allowed = { always = no } #Activated from effect
 
@@ -1868,84 +1933,127 @@ operations = {
 
 		highlight_states = {
 			highlight_state_targets = {
-					state = 527
-					state = 408
-			}
+				state = 527
+				state = 408
+			} 
 		}
 
 		cost = 200
 
 		ai_will_do = {
 			base = 0
-			modifier = {
-				
-			}
+			# modifier = {
+			# 	add = 100 	
+			# 	is_historical_focus_on = no 	
+			# }	
+			# modifier = {	
+			# 	add = 50 	
+			# 	AND = {	
+			# 		tag = JAP 	
+			# 		has_completed_focus = JAP_support_the_kodoha_faction	
+			# 	}	
+			# }	
+			# modifier = {	
+			# 	factor = 0	
+			# 	has_war = yes 	
+			# }
 		}
 
 		fire_only_once = yes #Reactivation handled in effect
 
 		complete_effect = {
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				set_border_war_data = {
 					attacker = 527
 					defender = 408
 					defender_modifier = 0.15
 					combat_width = 100
-				}
+				}	
+				JAP = {	
+					set_country_flag = {	
+						flag = WTT_border_conflict_escalate_to_war_cooldown	
+						days = 60	
+						value = 1	
+					}	
+					remove_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_conflict }	
+				}	
+				set_country_flag = {	
+					flag = WTT_border_conflict_escalate_to_war_cooldown	
+					days = 60	
+					value = 1	
+				}	
+				custom_effect_tooltip = in_60_days	
+				activate_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_to_war }
 			}
-			else = {
-				set_border_war_data = {
-					attacker = 527
-					defender = 408
-					attacker_modifier = 0.15
-					combat_width = 100
-				}
-			}
-			SOV = {
-				set_country_flag = {
-					flag = WTT_border_conflict_escalate_to_war_cooldown_@ROOT
-					days = 60
-					value = 1
-				}
-				remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_conflict }
-			}
-			set_country_flag = {
-				flag = WTT_border_conflict_escalate_to_war_cooldown_@SOV
-				days = 60
-				value = 1
-			}
-			custom_effect_tooltip = in_60_days
-			activate_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_to_war }
+			else = {	
+				set_border_war_data = {	
+					attacker = 527	
+					defender = 408	
+					attacker_modifier = 0.15	
+					combat_width = 100	
+				}	
+				SOV = {	
+					set_country_flag = {	
+						flag = WTT_border_conflict_escalate_to_war_cooldown	
+						days = 60	
+						value = 1	
+					}	
+					remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_conflict }	
+				}	
+				set_country_flag = {	
+					flag = WTT_border_conflict_escalate_to_war_cooldown	
+					days = 60	
+					value = 1	
+				}	
+				custom_effect_tooltip = in_60_days	
+				activate_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_to_war }	
+			}	
+			
 		}
 	}
 
 	#Decision to escalate conflict further
 	JAP_border_conflict_escalate_to_war = {
 
-		icon = decision_generic_ignite_civil_war
+		icon = generic_ignite_civil_war
 
 		allowed = { always = no } #Activated from effect
 
 		visible = {
-			NOT = { has_country_flag = WTT_border_conflict_escalate_to_war_cooldown_@FROM }
+			NOT = { has_country_flag = WTT_border_conflict_escalate_to_war_cooldown }
 			has_border_war_with = FROM
+		}
+		cancel_trigger = {	
+			NOT = { has_border_war = yes }	
 		}
 
 		highlight_states = {
-			highlight_state_targets = {
-					state = 408
-					state = 527
-			}
+ 			highlight_state_targets = {
+				state = 408
+				state = 527
+			} 
 		}
 
 		cost = 150
 
 		ai_will_do = {
 			base = 0
-			modifier = {
-				
-			}
+			# modifier = {	
+			# 	add = 100 	
+			# 	is_historical_focus_on = no 	
+			# }	
+			# modifier = {	
+			# 	add = 50 	
+			# 	AND = {	
+			# 		tag = JAP 	
+			# 		has_completed_focus = JAP_support_the_kodoha_faction	
+			# 	}	
+			# }	
+			# modifier = {	
+			# 	factor = 0	
+			# 	has_war = yes 	
+			# }
 		}
 
 		days_remove = 15
@@ -1956,20 +2064,26 @@ operations = {
 
 		complete_effect = {
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				408 = { save_event_target_as = their_state }
 				527 = { save_event_target_as = our_state }
+				JAP = {	
+					country_event = { id = japan_border_conflict.6 hours = 1 }	
+					hidden_effect = {	
+						remove_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_to_war }	
+					}	
+			 	}
 			}
 			else = {
 				527 = { save_event_target_as = our_state }
 				408 = { save_event_target_as = their_state }
-			}
-			SOV = {
-				country_event = { id = japan_border_conflict.5 }
-				hidden_effect = {
-					remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_to_war }
+				SOV = {	
+					country_event = { id = japan_border_conflict.5 hours = 1 }	
+					hidden_effect = {	
+						remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_to_war }	
+					}	
 				}
-		 	}
+			}
 		}
 
 		remove_effect = {
@@ -1980,7 +2094,7 @@ operations = {
 			}
 			declare_war_on = { target = FROM type = annex_everything }
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				527 = {
 					clr_state_flag = border_incident_active
 				}
@@ -2013,9 +2127,9 @@ operations = {
 
 		highlight_states = {
 			highlight_state_targets = {
-					state = 527
-					state = 408
-			}
+				state = 527
+				state = 408
+			} 
 		}
 
 		ai_will_do = {
@@ -2029,7 +2143,7 @@ operations = {
 
 		complete_effect = {
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				finalize_border_war = {
 					attacker_win = yes
 					attacker = 527
@@ -2590,7 +2704,7 @@ prospect_for_resources = {
 
 JAP_propaganda_campaigns = {
 	JAP_china_prop = { # ID = 2
-		priority = 2
+		priority = 12
 
 		icon = eng_propaganda_campaigns
 
@@ -2599,9 +2713,7 @@ JAP_propaganda_campaigns = {
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = JAP_running_prop
-			}
+			JAP_propaganda_poster_slot_available = yes
 		}
 
 		days_remove = 365
@@ -2611,23 +2723,24 @@ JAP_propaganda_campaigns = {
 		cost = 25
 
 		modifier = {
-			compliance_gain = 0.01
+			compliance_gain = 0.02
 			resistance_target = -0.05
 		}
 
 		complete_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 2 }
-			set_country_flag = JAP_running_prop
+			set_variable = { JAP_new_propaganda_campaign = 2 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 
 		remove_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 1 }
-			clr_country_flag = JAP_running_prop
+			set_variable = { JAP_propaganda_campaign_to_remove = 2 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	JAP_tech_prop = { # ID = 3
-		priority = 2
+		priority = 11
 
 		icon = eng_propaganda_campaigns
 
@@ -2636,9 +2749,7 @@ JAP_propaganda_campaigns = {
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = JAP_running_prop
-			}
+			JAP_propaganda_poster_slot_available = yes
 		}
 
 		days_remove = 365
@@ -2652,18 +2763,19 @@ JAP_propaganda_campaigns = {
 		}
 
 		complete_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 3 }
-			set_country_flag = JAP_running_prop
+			set_variable = { JAP_new_propaganda_campaign = 3 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 
 		remove_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 1 }
-			clr_country_flag = JAP_running_prop
+			set_variable = { JAP_propaganda_campaign_to_remove = 3 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	JAP_air_prop = { # ID = 4
-		priority = 2
+		priority = 10
 
 		icon = eng_propaganda_campaigns
 
@@ -2672,9 +2784,7 @@ JAP_propaganda_campaigns = {
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = JAP_running_prop
-			}
+			JAP_propaganda_poster_slot_available = yes
 			has_war = yes
 		}
 
@@ -2690,18 +2800,19 @@ JAP_propaganda_campaigns = {
 		}
 
 		complete_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 4 }
-			set_country_flag = JAP_running_prop
+			set_variable = { JAP_new_propaganda_campaign = 4 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 
 		remove_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 1 }
-			clr_country_flag = JAP_running_prop
+			set_variable = { JAP_propaganda_campaign_to_remove = 4 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	JAP_tank_prop = { # ID = 5
-		priority = 2
+		priority = 9
 
 		icon = eng_propaganda_campaigns
 
@@ -2710,9 +2821,7 @@ JAP_propaganda_campaigns = {
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = JAP_running_prop
-			}
+			JAP_propaganda_poster_slot_available = yes
 			has_war = yes
 		}
 
@@ -2728,18 +2837,19 @@ JAP_propaganda_campaigns = {
 		}
 
 		complete_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 5 }
-			set_country_flag = JAP_running_prop
+			set_variable = { JAP_new_propaganda_campaign = 5 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 
 		remove_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 1 }
-			clr_country_flag = JAP_running_prop
+			set_variable = { JAP_propaganda_campaign_to_remove = 5 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	JAP_strike_prop = { # ID = 6
-		priority = 2
+		priority = 8
 
 		icon = eng_propaganda_campaigns
 
@@ -2748,9 +2858,7 @@ JAP_propaganda_campaigns = {
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = JAP_running_prop
-			}
+			JAP_propaganda_poster_slot_available = yes
 			has_completed_focus = JAP_strike_the_west
 		}
 
@@ -2768,18 +2876,19 @@ JAP_propaganda_campaigns = {
 		}
 
 		complete_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 6 }
-			set_country_flag = JAP_running_prop
+			set_variable = { JAP_new_propaganda_campaign = 6 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 
 		remove_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 1 }
-			clr_country_flag = JAP_running_prop
+			set_variable = { JAP_propaganda_campaign_to_remove = 6 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	JAP_bombing_prop = { # ID = 7
-		priority = 2
+		priority = 7
 
 		icon = eng_propaganda_campaigns
 
@@ -2788,9 +2897,7 @@ JAP_propaganda_campaigns = {
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = JAP_running_prop
-			}
+			JAP_propaganda_poster_slot_available = yes
 			OR = {
 				has_war_with = USA
 				has_war_with = ENG
@@ -2810,13 +2917,285 @@ JAP_propaganda_campaigns = {
 		}
 
 		complete_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 7 }
-			set_country_flag = JAP_running_prop
+			set_variable = { JAP_new_propaganda_campaign = 7 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 
 		remove_effect = {
-			set_variable = { JAP_poster_center_icon_frame = 1 }
-			clr_country_flag = JAP_running_prop
+			set_variable = { JAP_propaganda_campaign_to_remove = 7 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
+		}
+	}
+	
+	JAP_big_china_prop = { # ID = 8
+		priority = 6
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP_propaganda_poster_slot_available = yes
+			MAN = { has_completed_focus = MAN_the_two_emperors}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			research_sharing_per_country_bonus_factor = 0.5
+			command_power_gain_mult = 0.25
+		}
+
+		complete_effect = {
+			set_variable = { JAP_new_propaganda_campaign = 8 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
+			MAN = { add_ideas = JAP_man_prop}
+			SIA = { add_ideas = JAP_man_prop}
+		}
+
+		remove_effect = {
+			set_variable = { JAP_propaganda_campaign_to_remove = 8 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
+			MAN = { remove_ideas = JAP_man_prop}
+			SIA = { remove_ideas = JAP_man_prop}
+		}
+	}
+
+	JAP_air2_prop = { # ID = 9
+		priority = 5
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = JAP_air_innovations
+				has_completed_focus = JAP_ground_support
+				has_completed_focus = JAP_the_zero
+			}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+
+		}
+
+		complete_effect = {
+			set_variable = { JAP_new_propaganda_campaign = 9 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
+			add_ideas = ENG_air_prod
+		}
+
+		remove_effect = {
+			set_variable = { JAP_propaganda_campaign_to_remove = 9 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
+			add_ideas = ENG_air_prod
+		}
+	}	
+
+	JAP_commonwealth_prop = { # ID = 10
+		priority = 4
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP_propaganda_poster_slot_available = yes
+			has_war_with = ENG
+			has_war_with = USA
+			NOT = {
+				has_idea = JAP_tora_tora_tora_idea
+				has_idea = for_the_emperor_idea
+			}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		targeted_modifier = {
+			tag = USA
+			attack_bonus_against = -0.20
+		}
+		targeted_modifier = {
+			tag = ENG
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = AST
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = RAJ
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = NZL
+			attack_bonus_against = 0.10
+		}
+		complete_effect = {
+			set_variable = { JAP_new_propaganda_campaign = 10 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { JAP_propaganda_campaign_to_remove = 10 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
+		}
+	}	
+
+	JAP_intel_prop = { # ID = 11
+		priority = 3
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP_propaganda_poster_slot_available = yes
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		modifier = {
+			intelligence_agency_defense = 0.5
+			civilian_intel_to_others = -10
+			airforce_intel_to_others = -10
+			navy_intel_to_others = -10
+			army_intel_to_others = -10
+		}
+
+		complete_effect = {
+			set_variable = { JAP_new_propaganda_campaign = 11 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { JAP_propaganda_campaign_to_remove = 11 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
+		}
+	}	
+
+	JAP_tank2_prop = { # ID = 12
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP_propaganda_poster_slot_available = yes
+			has_completed_focus = JAP_tank_lessons
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		complete_effect = {
+			set_variable = { JAP_new_propaganda_campaign = 12 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
+			add_ideas = JAP_tank
+		}
+
+		remove_effect = {
+			set_variable = { JAP_propaganda_campaign_to_remove = 12 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
+			remove_ideas = JAP_tank
+		}
+	}	
+
+	JAP_usa_prop = { # ID = 13
+		priority = 1
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = JAP
+		}
+
+		available = {
+			JAP_propaganda_poster_slot_available = yes
+			has_war_with = ENG
+			has_war_with = USA
+			NOT = {
+				has_idea = JAP_tora_tora_tora_idea
+				has_idea = for_the_emperor_idea
+			}
+		}
+
+		days_remove = 365
+
+		days_re_enable = 360
+
+		cost = 25
+
+		targeted_modifier = {
+			tag = USA
+			attack_bonus_against = 0.20
+		}
+		targeted_modifier = {
+			tag = ENG
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = AST
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = RAJ
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = NZL
+			attack_bonus_against = -0.10
+		}
+
+		complete_effect = {
+			set_variable = { JAP_new_propaganda_campaign = 13 }
+			JAP_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { JAP_propaganda_campaign_to_remove = 13 }
+			JAP_reset_propaganda_campaign_slot_effect = yes
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 }

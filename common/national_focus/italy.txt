@@ -12,7 +12,7 @@
 	
 	default = no
 
-	continuous_focus_position = { x = 50 y = 1800 }
+	continuous_focus_position = { x = 20 y = 1100 }
 
 	focus = {
 		id = ITA_denounce_the_sanctions
@@ -388,7 +388,7 @@
 						}
 						is_core_of = ROM
 					}
-					prioritize = { 81 }
+					prioritize = { 81 46 79 84}
 					add_extra_state_shared_building_slots = 3
 					add_building_construction = {
 						type = industrial_complex
@@ -704,6 +704,7 @@
 
 		completion_reward = {
 			random_owned_controlled_state = {
+				prioritize = { 736 }
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
@@ -720,6 +721,7 @@
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 156 }
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
@@ -2596,18 +2598,21 @@
 				limit = {
 					is_core_of = YUG
 					NOT = { is_core_of = CRO }
+					NOT = { is_core_of = ITA }
 				}
 				add_dynamic_modifier = { modifier = autonomous_state }
 			}
 			every_controlled_state = {
 				limit = {
 					is_core_of = CRO
+					NOT = { is_core_of = ITA }
 				}
 				add_dynamic_modifier = { modifier = semi_autonomous_state }
 			}
 			every_controlled_state = {
 				limit = {
 					is_core_of = YUG
+					NOT = { is_core_of = ITA }
 				}
 				add_compliance = 80
 			}
@@ -2650,10 +2655,11 @@
 			every_controlled_state = {
 				limit = {
 					is_core_of = YUG
+					NOT = { is_core_of = ITA }
 				}
 				add_dynamic_modifier = { modifier = italianisation }
 			}
-			set_country_flag = { flag = ITA_cro_italy value = 1 days = 730 }
+			set_country_flag = ITA_yug_italy
 			custom_effect_tooltip = ITA_italianisation_tt
 		}
 		
@@ -2671,13 +2677,24 @@
 			factor = 1
 		}
 		available = {
-			NOT = { has_country_flag = ITA_cro_italy }
+			has_country_flag = {
+				flag = ITA_yug_italy
+				days > 730
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_yug_italy_tt
+				has_country_flag = {
+					flag = ITA_yug_italy
+					days > 730
+				}
+			}
 		}
 		
 		completion_reward = {
 			every_controlled_state = {
 				limit = {
 					is_core_of = YUG
+					NOT = { is_core_of = ITA }
 				}
 				remove_dynamic_modifier = { modifier = italianisation }
 				add_dynamic_modifier = { modifier = italianised }
@@ -2757,7 +2774,7 @@
 				}
 				add_dynamic_modifier = { modifier = italianisation }
 			}
-			set_country_flag = { flag = ITA_gre_italy value = 1 days = 730 }
+			set_country_flag = ITA_gre_italy
 			custom_effect_tooltip = ITA_italianisation_tt
 		}
 		
@@ -2775,7 +2792,17 @@
 			factor = 1
 		}
 		available = {
-			NOT = { has_country_flag = ITA_gre_italy }
+			has_country_flag = {
+				flag = ITA_gre_italy
+				days > 730
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_gre_italy_tt
+				has_country_flag = {
+					flag = ITA_gre_italy
+					days > 730
+				}
+			}
 		}
 		
 		completion_reward = {
@@ -2868,7 +2895,7 @@
 				}
 				add_dynamic_modifier = { modifier = italianisation }
 			}
-			set_country_flag = { flag = ITA_fra_italy value = 1 days = 730 }
+			set_country_flag = ITA_fra_italy
 			custom_effect_tooltip = ITA_italianisation_tt
 		}
 		
@@ -2886,7 +2913,17 @@
 			factor = 1
 		}
 		available = {
-			NOT = { has_country_flag = ITA_fra_italy }
+			has_country_flag = {
+				flag = ITA_fra_italy
+				days > 730
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_fra_italy_tt
+				has_country_flag = {
+					flag = ITA_fra_italy
+					days > 730
+				}
+			}
 		}
 		
 		completion_reward = {
@@ -3450,6 +3487,11 @@
 				load_oob = ITA_blackshirts
 			}
 			custom_effect_tooltip = ITA_blackshirts_tt
+			hidden_effect = {
+				ITA = {
+					scoped_sound_effect = "BlackShirts"
+				}
+			}
 		}
 	}
 	
@@ -3667,7 +3709,6 @@
 				add_idea = ITA_new_army_idea
 				remove_idea = ITA_general_staff_idea
 			}
-			remove_ideas = ITA_old_guard_ino_2
 			every_army_leader = {
 				add_skill_level = 1
 			}
@@ -3804,14 +3845,40 @@
 			}
 		}
 	}
+
+	focus = {
+		id = ITA_trench_warfare
+		icon = GFX_focus_generic_provoke_border_clashes
+		prerequisite = { focus = ITA_alpini focus = ITA_new_artillery }
+		x = -1
+		y = 1
+		relative_position_id = ITA_alpini
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = sf_bonus
+				cost_reduction = 0.25
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
 	
 	focus = {
 		id = ITA_folgore_division
 		icon = GFX_focus_generic_paratrooper
-		prerequisite = { focus = ITA_alpini }
-		x = 1
-		y = 1
-		relative_position_id = ITA_alpini
+		prerequisite = { focus = ITA_trench_warfare }
+		x = -3
+		y = 2
+		relative_position_id = ITA_trench_warfare
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -3841,38 +3908,14 @@
 		}
 	}
 	
-	focus = {
-		id = ITA_trench_warfare
-		icon = GFX_focus_generic_provoke_border_clashes
-		prerequisite = { focus = ITA_alpini focus = ITA_new_artillery }
-		x = -1
-		y = 1
-		relative_position_id = ITA_alpini
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
 
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = sf_bonus
-				cost_reduction = 0.25
-				uses = 2
-				category = cat_grand_battle_plan
-			}
-		}
-	}
 	
 	focus = {
 		id = ITA_assault_tactics
 		icon = GFX_focus_generic_manpower
 		prerequisite = { focus = ITA_trench_warfare }
 		mutually_exclusive = { focus = ITA_infiltration_tactics }
-		x = -3
+		x = -1
 		y = 1
 		relative_position_id = ITA_trench_warfare
 		cost = 5
@@ -3887,14 +3930,9 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.40
+				cost_reduction = 0.25
 				uses = 2
-				technology = grand_mechanized_offensive
-				technology = assault_concentration
-				technology = branch_interoperation
-				technology = assault_breakthrough
-				technology = armored_operations
-				technology = c3i_theory
+				category = cat_grand_battle_plan
 			}
 		}
 	}
@@ -3928,7 +3966,7 @@
 		icon = GFX_focus_prc_infiltration
 		prerequisite = { focus = ITA_trench_warfare }
 		mutually_exclusive = { focus = ITA_assault_tactics }
-		x = -1
+		x = 1
 		y = 1
 		relative_position_id = ITA_trench_warfare
 		cost = 5
@@ -3943,14 +3981,9 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.40
+				cost_reduction = 0.25
 				uses = 2
-				technology = infantry_offensive
-				technology = central_planning
-				technology = infiltration_assault
-				technology = night_assault_tactics
-				technology = attritional_containment
-				technology = infiltration_in_depth
+				category = cat_superior_firepower
 			}
 		}
 	}
@@ -3983,36 +4016,10 @@
 	}
 	
 	focus = {
-		id = ITA_mobile_bunkers
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = ITA_trench_warfare }
-		x = 1
-		y = 1
-		relative_position_id = ITA_trench_warfare
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = doc_bonus
-				bonus = 0.50
-				uses = 2
-				category = cat_heavy_armor
-			}
-		}
-	}
-	
-	focus = {
 		id = ITA_learn_from_war
 		icon = GFX_focus_chi_army_reform
 		prerequisite = { focus = ITA_trench_warfare }
-		x = 2
+		x = 3
 		y = 2
 		relative_position_id = ITA_trench_warfare
 		cost = 5
@@ -4062,14 +4069,8 @@
 			add_tech_bonus = {
 				name = at_bonus
 				bonus = 0.5
-				uses = 2
-				category = cat_mechanized_equipment
-			}
-			add_tech_bonus = {
-				name = at_bonus
-				bonus = 0.5
 				uses = 1
-				category = cat_light_armor
+				category = cat_mechanized_equipment
 			}
 		}
 	}
@@ -4121,7 +4122,7 @@
 			add_tech_bonus = {
 				name = arm_bonus
 				bonus = 0.75
-				uses = 1
+				uses = 2
 				category = armor
 			}
 		}
@@ -4171,16 +4172,10 @@
 
 		completion_reward = {
 			add_tech_bonus = {
-				name = mot_bonus
+				name = at_bonus
 				bonus = 0.5
-				uses = 2
-				category = motorized_equipment
-			}
-			add_doctrine_cost_reduction = {
-				name = mw_bonus
-				cost_reduction = 0.40
 				uses = 1
-				category = cat_mobile_warfare
+				category = cat_mechanized_equipment
 			}
 		}
 	}
@@ -4188,17 +4183,17 @@
 	focus = {
 		id = ITA_learn_from_wehrmacht
 		icon = GFX_focus_ger_oppose_hitler
-		prerequisite = { focus = ITA_bersaglieri focus = ITA_new_armour }
-		x = -1
+		prerequisite = { focus = ITA_new_army }
+		x = 0
 		y = 1
-		relative_position_id = ITA_bersaglieri
+		relative_position_id = ITA_new_army
 		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
 		
 		available = {
-			is_in_faction_with = GER
+			
 		}
 
 		available_if_capitulated = yes
@@ -4218,12 +4213,6 @@
 				uses = 2
 				category = battlefield_support_tree
 			}
-			add_tech_bonus = {
-				name = sf_bonus
-				bonus = 1
-				uses = 1
-				technology = mot_radio2
-			}
 			add_ideas = german_cooperation_focus 
 		}
 	}
@@ -4231,10 +4220,10 @@
 	focus = {
 		id = ITA_csir
 		icon = GFX_focus_generic_little_entente
-		prerequisite = { focus = ITA_learn_from_wehrmacht }
-		x = -1
-		y = 1
-		relative_position_id = ITA_learn_from_wehrmacht
+		prerequisite = { focus = ITA_bersaglieri focus = ITA_new_armour }
+		x = 0
+		y = 3
+		relative_position_id = ITA_cavalry_modernisation
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -4294,32 +4283,6 @@
 			swap_ideas = {
 				add_idea = ITA_armir_idea
 				remove_idea = ITA_csir_idea
-			}
-		}
-	}
-	
-	focus = {
-		id = ITA_german_tanks
-		icon = GFX_GER_heavy_tiger_cats
-		prerequisite = { focus = ITA_learn_from_wehrmacht }
-		x = 1
-		y = 1
-		relative_position_id = ITA_learn_from_wehrmacht
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = ger_bonus
-				bonus = 0.50
-				uses = 2
-				category = cat_medium_armor
 			}
 		}
 	}
@@ -4499,7 +4462,7 @@
 				technology = advanced_medium_battery
 				technology = improved_heavy_battery
 				technology = advanced_heavy_battery
-				technology = modern_heavy_battery
+				#technology = modern_heavy_battery
 			}
 		}
 	}

@@ -53,6 +53,8 @@
  SOV_war_mobilisation_desc:0 "This is not a war for conquest, for honor, or for glory. This is a war of survival. We have seen what the Germans do to their fallen foes. The Russian people must survive only by resisting. Mobilise the nation!"
  SOV_tankograd:0 "Tankograd"
  SOV_tankograd_desc:0 "The Chelyabinsk Tractor Plant, colloquially known as Tankograd, is the single most productive factory in the Soviet Union. We must ensure its operations continue running smoothly."
+ SOV_slacken_armor:0 "Slacken Armor Standards"
+ SOV_slacken_armor_desc:0 "Sometimes in war you have to settle with 'good enough'"
  SOV_closed_city:0 "Closed City Network"
  SOV_closed_city_desc:0 "A system of secret research installations, the Closed City Network will provide us with necessary intelligence to continue the Great Patriotic War."
  SOV_technical_assistance:0 "American Technical Assistance"
@@ -88,6 +90,8 @@
  SOV_invade_germany_desc:0 "The traitor must be crushed."
  SOV_dnieper_defences:0 "Defences on the Dnieper"
  SOV_dnieper_defences_desc:0 "There are many ways to defeat a tank, but none are so simple as a river. Let us fortify the erstwhile side of the Dnieper and await their move."
+ SOV_plunder_new_conquests:0 "Plunder the Baltics"
+ SOV_plunder_new_conquests_desc:0 "We should use our newly conquered industry to bolster our industrial efforts around Moscow"
  SOV_japan_peace:0 "Truce with Japan"
  SOV_japan_peace_desc:0 "The Germans are trouble enough on their own. We cannot make the same mistake of the fallen Kaiser in the Great War; wars must be fought on single fronts alone."
  SOV_red_army:0 "Red Army"
@@ -177,6 +181,8 @@
  SOV_fareast_reserves:0 "Divert All Far East Reserves"
  SOV_fareast_reserves_desc:0 "The survival of the entire Soviet Union is now in doubt. We must deploy all troops left on the Far East border to the frontline in a last ditch attempt to survive."
  SOV_reorganise_command:0 "Reorganise High Command" #not a focus
+ SOV_slacken_inf:0 "Slacken Infantry Standards"
+ SOV_slacken_inf:0 "While other armies may struggle, Soviet soldiers know how to make do"
  SOV_coordinate_industry:0 "Improve Industry Coordination"
  SOV_coordinate_industry_desc:0 "The time has come to be heavy-handed. Any collectivization left to do must be done."
  SOV_focus_forced_labour:0 "Mobilise Gulag Workers"
@@ -198,7 +204,7 @@
  SOV_generic_partisans:0 "Coordinate Partisans"
  SOV_organise_partisans:0 "Partisan Coordination"
  SOV_partisan_organisation:0 "Organise the Partisans"
- SOV_nkvd_upgrade_tooltip:1 "Enables §HKNVD Integration§!\n§HAll Military Police:\n   £organization_texticon Organization: §G+40§!\n   £army_morale_texticon Recovery Rate: §G+0.2§!\n   £trickleback_texticon Trickleback: §R-20%§!"
+ SOV_nkvd_upgrade_tooltip:1 "Enables §HKNVD Integration§!\n§HAll Military Police:§!\n   £organization_texticon Organization: §G+40§!\n   £army_morale_texticon Recovery Rate: §G+0.2§!\n   £trickleback_texticon Trickleback: §R-20%§!"
 
  #### EVENTS ####
  soviet.26.c1:0 "Zhukov and Tukhachevsky's Deep Battle ideas must be overturned."
@@ -209,6 +215,12 @@
  soviet.1111.d:0 "The Presidium of the Supreme Soviet of the Union of Soviet Socialist Republics and His Majesty the Emperor of Japan, guided by a desire to strengthen peaceful and friendly relations between the two countries, have decided to conclude a pact on neutrality."
  soviet.1111.a:0 "Sure"
  soviet.1111.b:0 "No"
+ soviet.2222.t:0 "Industry Evacuation"
+ soviet.2222.d:0 "Industry Evacuation is now available in the Decisions Tab"
+ soviet.2222.a:0 "Okay"
+ soviet.2223.t:0 "Propaganda"
+ soviet.2223.d:0 "Sweep Out Scum and Death to Invaders now available as Propaganda Missions"
+ soviet.2223.a:0 "Okay"
  
  ### IDEAS ###
  mikhail_tukhachevsky_1:0 "Mikhail Tukhachevsky"
@@ -254,6 +266,7 @@
  kharkiv:0 "Versatile Tank Desginer"
  SOV_winter_war_adapt:0 "Adapt Against the Fins"
  SOV_assure_competency:0 "Assure Public of Our Competency"
+ SOV_bessarabia_adapt:0 "Adapt Against the Romanians"
  
 
  #### DECISIONS ####
@@ -289,6 +302,8 @@
  SOV_winter_war:0 "Subdue the Fins"
  SOV_winter_war_victory:0 "Force Finland to Accept Terms"
  SOV_winter_war_lessons:0 "Learn From Our Failures"
+ SOV_bessarabia_victory:0 "Force Romania to Accept Terms"
+ SOV_bessarabia_lessons:0 "Learn From Our Failures"
  SOV_purge:0 "§RPurge has Begun§!\n"
  SOV_industry_relocation_complete_effect_tt:0 "Up to §Y10 Military or Civilian Factories§! will be removed from §Y[FROM.GetName]§!.\n"
  
@@ -302,10 +317,14 @@
  SOV_relocate_industry_from_minsk_tt:0 "§RThese effects require control of Minsk when the decision times out.§!"
  SOV_relocate_industry_from_kiev_tt:0 "§RThese effects require control of Kiev when the decision times out.§!"
  SOV_defend_leningrad_tt:0 "Mobilise local reservists in the city, Spawning §Y20 Reservist Divisions§!"
- SOV_defend_stalingrad_tt:0 "Mobilise local reservists in the city, Spawning §Y25 Reservist Divisions§!"
+ SOV_defend_stalingrad_tt:0 "Mobilise local reservists in the city, Spawning §Y40 Reservist Divisions§!"
  SOV_defend_moscow_tt:0 "Mobilise local reservists in the city, Spawning §Y30 Reservist Divisions§!"
+ SOV_slacken_inf_tt:0 "§GReduces the cost of all infantry battalions by 20 guns and 5 squad equipment as well as Garrisons/Militia by 15 guns§!"
+ SOV_slacken_armor_tt:0 "§GReduces the equipment required for all frontline armor, motorized, and mechanized battalions by 20%§!"
  sov_ural_move:0 "Our Industry has been prepared for evacuation"
- SOV_frontline_mob_tt:0 "Creates §Y3 Infantry Divsions§! in every frontline state"
- SOV_frontline_mob_tt2:0 "Creates §Y2 Infantry Divsions§! in every frontline state"
+ SOV_frontline_mob_tt:0 "Creates §Y4 Infantry Divsions§! in every frontline state"
+ SOV_frontline_mob_tt2:0 "Creates §Y3 Infantry Divsions§! in every frontline state"
  SOV_propaganda_more_metal_tt:0 "Providing §G+10§! §Y$state_resource_aluminium$§!, §Y$state_resource_tungsten$§!, §Y$state_resource_steel$§! or §Y$state_resource_chromium$§! for each state producing any of those resources."
  SOV_CONQ_TT:0 "Gives 80% Compliance on all controlled Molotov States that will decrease during Barbarossa"
+ SOV_cowed_by_stalin_trait_tt:0 "This Trait will be removed upon completion of the focus §Y$SOV_order_270$§!."
+ dismantle_surrender_tt:0 "§RTaking this path will increase the Surrender Progress Threshold for some focuses, to compensate for gaining a large number of VP's cored.§!"

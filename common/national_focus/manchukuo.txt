@@ -13,7 +13,7 @@
 
 	default = no
 
-	continuous_focus_position = { x = 20 y = 1600 }
+	continuous_focus_position = { x = 20 y = 1200 }
 
 #	focus = {
 #		id = CHI_
@@ -152,6 +152,8 @@
 		y = 1
 		relative_position_id = MAN_alliance_with_kwantung
 
+		
+
 		cost = 5
 
 		available = {
@@ -163,6 +165,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
+		custom_effect_tooltip = MAN_vassalize_meng_tt
 		add_equipment_to_stockpile = {
 
 		type = infantry_equipment_0
@@ -307,6 +310,38 @@
 			add_ideas = MAN_militarism
 		}
 	}
+
+	focus = {
+        id = MAN_japanese_warfare
+        icon = GFX_goal_JAP_WAY
+        prerequisite = { focus = MAN_embrace_bushido }
+        x = 0
+        y = 1
+        relative_position_id = MAN_embrace_bushido
+
+        cost = 5
+
+        available = {
+
+        }
+        ai_will_do = {
+            factor = 100
+        }
+
+        cancel_if_invalid = yes
+        continue_if_invalid = no
+        available_if_capitulated = yes
+
+        completion_reward = {
+            hidden_effect = {
+                set_rule = {
+                    can_use_kamikaze_pilots = yes
+                }
+            }
+            custom_effect_tooltip = kamikaze_focus_tooltip
+        }
+    }
+
 	
 	focus = {
 		id = MAN_5_year_plan
@@ -1562,6 +1597,8 @@
 					target = MAN
 					autonomy_state = autonomy_wtt_imperial_subject
 				}
+				custom_effect_tooltip = unlock_propaganda_campaign_tt
+				unlock_decision_tooltip = JAP_big_china_prop
 			}
 		}
 	}
@@ -2104,6 +2141,7 @@
 		available_if_capitulated = yes
 
 completion_reward = {
+		custom_effect_tooltip = MAN_vassalize_meng_tt
 		add_equipment_to_stockpile = {
 
 		type = infantry_equipment_0

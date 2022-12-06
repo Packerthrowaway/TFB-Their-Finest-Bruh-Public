@@ -14,7 +14,7 @@ focus_tree = {
 	
 	default = no
 
-	continuous_focus_position = { x = 50 y = 1100 }
+	continuous_focus_position = { x = 50 y = 1000 }
 
 #	focus = {
 #		id = ROM_
@@ -50,7 +50,7 @@ focus_tree = {
 #		completion_reward = {
 #
 #		}
-#	}
+#	} 
 
 	############################
 	##### CATEGORY HERE ! ######
@@ -85,9 +85,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 			add_ideas = ROM_preserve_greater_romania
@@ -104,13 +101,8 @@ focus_tree = {
 
 		cost = 10
 
-		
 		ai_will_do = {
 			factor = 5
-			modifier = { 
-				factor = 0.1
-				NOT = { is_in_faction_with = SOV }
-			}
 		}
 
 		available = {
@@ -118,6 +110,7 @@ focus_tree = {
 			SOV = {
 				exists = yes
 				is_puppet = no
+				has_civil_war = no
 			}
 		}
 
@@ -128,10 +121,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
 			add_popularity = { ideology = communism popularity = 0.1 }
@@ -187,14 +177,6 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 9
-			modifier = {
-	     		factor = 0.5
-	     		date < 1939.10.1
-			}
-			modifier = {
-	     		factor = 0.2
-	     		date < 1938.1.1
-			}
 		}
 
 		available = {
@@ -208,10 +190,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
 			add_popularity = { ideology = fascism popularity = 0.05 }
@@ -245,10 +224,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
 			custom_effect_tooltip = ROM_invite_german_advisors_tt
@@ -292,9 +268,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 			add_relation_modifier = {
@@ -314,23 +287,6 @@ focus_tree = {
 		relative_position_id = ROM_trade_treaty_with_germany
 
 		cost = 10
-		
-		historical_ai = {
-			date > 1940.10.1
-			NOT = {
-				GER = {
-					has_capitulated = yes
-				}
-			}
-			OR = { 
-				FRA = { has_capitulated = yes }
-				FRA = { exists = no }
-				FRA = { is_puppet = yes }
-				FRA = { has_government = fascism }
-				FRA = { is_in_faction_with = GER }
-				FRA = { surrender_progress > 0.5 }
-			}
-		}
 
 		ai_will_do = {
 			factor = 1
@@ -339,10 +295,6 @@ focus_tree = {
 				GER = {
 					has_capitulated = yes
 				}
-			}
-			modifier = {
-				factor = 3
-				date > 1939.9.1
 			}
 		}
 
@@ -370,9 +322,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 			GER = {
@@ -411,18 +360,15 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			remove_ideas = ROM_undeveloped_export_industry
 			random_owned_controlled_state = {
+				prioritize = { 46 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 				}
-				prioritize = { 46 }
 				add_resource = {
 					type = oil
 					amount = 240
@@ -444,7 +390,7 @@ focus_tree = {
 			}
 		}
 	}
-	
+
 	focus = {
 		id = ROM_national_humiliation
 		icon = GFX_focus_CZE_german_puppet
@@ -624,6 +570,7 @@ focus_tree = {
 				controls_state = 766
 				controls_state = 80
 			}
+			has_country_flag = bessarabia_ceded
 		}
 
 		bypass = {
@@ -719,10 +666,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			add_tech_bonus = {
@@ -758,7 +702,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -851,10 +795,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			add_ideas = ROM_agrarian_reform
@@ -886,7 +827,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -1014,7 +955,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_owned_controlled_state = {
 				limit = {
@@ -1096,9 +1037,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 			country_event = DOD_romania.120
@@ -1130,7 +1068,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			
 		}
@@ -1179,7 +1117,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -1245,10 +1183,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			46 = {
@@ -1479,7 +1414,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_political_power = 200
 		}
@@ -1515,7 +1450,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			swap_ideas = {
 				add_idea = ROM_the_sentinel_of_the_motherland_2
@@ -1554,7 +1489,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			swap_ideas = {
 				add_idea = ROM_king_carol_ii_handled
@@ -1628,7 +1563,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
 			add_research_slot = 1
@@ -1690,7 +1625,6 @@ focus_tree = {
 			GER = {
 				is_faction_leader = yes
 				has_government = fascism
-				NOT = { has_war_with = ROM }
 			}
 		}
 
@@ -1701,7 +1635,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			#Remove ideas or display tooltip warning that it will happen
 			if = {
@@ -1825,6 +1759,7 @@ focus_tree = {
 				fascism > 0.35
 			}
 			is_subject = no
+			
 		}
 
 		bypass = {
@@ -1834,7 +1769,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			#Removes king carol and makes the most popular party the ruling one
 			if = {
@@ -1931,6 +1866,7 @@ focus_tree = {
 		completion_reward = {
 			air_experience = 25
 			random_owned_controlled_state = {
+				prioritize = { 46 79 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 					free_building_slots = {
@@ -1946,6 +1882,7 @@ focus_tree = {
 				set_state_flag = ROM_expand_the_air_force_AB
 			}
 			random_owned_controlled_state = {
+				prioritize = { 46 79 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 					free_building_slots = {
@@ -1964,12 +1901,47 @@ focus_tree = {
 	}
 
 	focus = {
+		id = ROM_white_squadron_focus
+		icon = GFX_goal_generic_build_airforce
+		x = 0
+		y = 1
+		prerequisite = { focus = ROM_expand_the_air_force }
+		relative_position_id = ROM_expand_the_air_force
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war = yes
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+			add_ideas = ROM_white_squadron
+		}
+
+		completion_reward = {
+			add_ideas = ROM_white_squadron
+		}
+	}
+	
+
+	focus = {
 		id = ROM_acquire_licenses
 		icon = GFX_focus_generic_license_production
 		prerequisite = { focus = ROM_expand_the_air_force }
 		mutually_exclusive = { focus = ROM_local_development }
 		x = -2
-		y = 1
+		y = 2
 		relative_position_id = ROM_expand_the_air_force
 
 		cost = 10
@@ -1989,10 +1961,6 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 			add_ideas = ROM_acquire_licenses
@@ -2025,11 +1993,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = ROM_ground_support
@@ -2066,11 +2030,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = ROM_ground_support
@@ -2106,11 +2066,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_medium_bombers
@@ -2197,10 +2153,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			country_event = DOD_romania.150
 		}
@@ -2212,7 +2164,7 @@ focus_tree = {
 		prerequisite = { focus = ROM_expand_the_air_force }
 		mutually_exclusive = { focus = ROM_acquire_licenses }
 		x = 2
-		y = 1
+		y = 2
 		relative_position_id = ROM_expand_the_air_force
 
 		cost = 10
@@ -2232,10 +2184,6 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 			add_ideas = ROM_local_development
@@ -2268,11 +2216,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = ROM_air_superiority
@@ -2307,12 +2251,8 @@ focus_tree = {
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
-		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		available_if_capitulated = no 
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_cas
@@ -2348,11 +2288,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			#Give generic fighter bonus if fighter_2 already researched
 				add_tech_bonus = {
@@ -2391,11 +2327,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_strategic_bomber_force
@@ -2431,11 +2363,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_heavy_bombers
@@ -2471,11 +2399,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_nuclear_bomb_project
@@ -2514,10 +2438,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			army_experience = 55
 		}
@@ -2548,10 +2468,6 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
 
 		completion_reward = {
 		    if = { limit = { is_ai = no } 
@@ -2598,11 +2514,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_the_zb_53
@@ -2638,19 +2550,14 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			custom_effect_tooltip = ROM_vanatori_de_munte_unit_tt
 			hidden_effect = {
 				division_template = {
 					name = "Vanatori de munte"
-					division_names_group = ROM_MTN_01
 					priority = 2
-	
+					division_names_group = ROM_MTN_01
 					regiments = {
 						mountaineers = { x = 0 y = 0 }
 						mountaineers = { x = 0 y = 1 }
@@ -2724,11 +2631,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_artillery_modernization
@@ -2765,11 +2668,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_modern_at_guns
@@ -2842,10 +2741,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			set_technology = {
 				mountain_arty = 1
@@ -2858,7 +2753,6 @@ focus_tree = {
 				category = artillery
 			}
 		}
-		
 	}
 
 	focus = {
@@ -2887,10 +2781,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			custom_effect_tooltip = ROM_royal_guards_divisions_tt
 			hidden_effect = {
@@ -2900,9 +2790,8 @@ focus_tree = {
 					}
 					division_template = {
 						name = "Royal Guards Division"
-						division_names_group = ROM_INF_01
 						priority = 2
-		
+						division_names_group = ROM_INF_01
 						regiments = {
 							infantry = { x = 0 y = 0 }
 							infantry = { x = 0 y = 1 }
@@ -2926,9 +2815,8 @@ focus_tree = {
 					else = {
 						division_template = {
 							name = "Royal Guards Division"
-							division_names_group = ROM_INF_01
 							priority = 2
-			
+							division_names_group = ROM_INF_01
 							regiments = {
 								infantry = { x = 0 y = 0 }
 								infantry = { x = 0 y = 1 }
@@ -2988,11 +2876,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			add_ideas = ROM_reserve_divisions
 		}
@@ -3065,10 +2949,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			add_ideas = ROM_acquire_modern_tanks
 		}
@@ -3102,10 +2982,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			custom_effect_tooltip = available_designer
 			show_ideas_tooltip = ROM_leonidas_works
@@ -3137,11 +3013,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_the_maresal
@@ -3179,7 +3051,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			navy_experience = 25
 			random_state = {
@@ -3197,6 +3069,7 @@ focus_tree = {
 		completion_reward = {
 			navy_experience = 25
 			random_owned_controlled_state = {
+				prioritize = { 46 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 					free_building_slots = {
@@ -3243,10 +3116,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			custom_effect_tooltip = available_designer
 			show_ideas_tooltip = ROM_coastal_defense_navy_designer
@@ -3279,10 +3148,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			add_ideas = ROM_coastal_defense_ships
 			#custom_effect_tooltip = ROM_coastal_defense_ships_tech_tt
@@ -3314,11 +3179,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_torpedo_bombers
@@ -3355,10 +3216,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			swap_ideas = {
 				add_idea = ROM_coastal_defense_ships_2
@@ -3392,11 +3249,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_modern_submarines
@@ -3434,10 +3287,6 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {			
 			custom_effect_tooltip = available_designer
 			show_ideas_tooltip = ROM_black_sea_dominance_designer
@@ -3469,11 +3318,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_capital_ships
@@ -3511,11 +3356,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_torpedo_bombers
@@ -3551,11 +3392,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
-		complete_tooltip = {
-
-		}
-
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = ROM_expand_the_marine_regiment

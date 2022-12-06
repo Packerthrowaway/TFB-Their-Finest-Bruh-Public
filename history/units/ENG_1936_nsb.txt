@@ -483,77 +483,6 @@ units = {
 }
 
 
-air_wings = {
-	### RAF Fighter Command ###
-	129 = { 
-		### No. 11 Fighter Command, Middlesex area -- Hawker Demons, Furys, Gloster Gauntlets
-		fighter_equipment_0 = {
-			owner = "ENG" 
-			amount = 200
-		}
-	}
-	130 = { 
-		### No. 11 Fighter Command, Essex area -- Hawker Demons, Furys, Gloster Gauntlets
-		fighter_equipment_0 = {
-			owner = "ENG" 
-			amount = 200
-		}
-	}	
-	127 = { 
-		### No. 12 Fighter Command, Nottingham area -- Hawker Demons, Furys, Gloster Gauntlets
-		fighter_equipment_0 = {
-			owner = "ENG" 
-			amount = 100
-		}
-	}	
-	
-	### RAF Bomber Command ###
-	125 = { 
-		### No. 1 Bomber Command, East Anglia area -- Fairey Gordons, Battles
-		CAS_equipment_1 = {
-			owner = "ENG" 
-			amount = 100
-		}
-	}
-	126 = { 
-		### No. 3 Bomber Command, Suffolk area -- HP Heyford, Harrows, AW Whitleys
-		tac_bomber_equipment_0 = {
-			owner = "ENG" 
-			amount = 100
-		}
-	}
-
-	### RAF Middle East and Africa
-	447 = { 
-		### AHQ Egypt
-		fighter_equipment_0 = {
-			owner = "ENG" 
-			amount = 100
-		}
-		tac_bomber_equipment_0 = {
-			owner = "ENG" 
-			amount = 100
-		}
-		CAS_equipment_1 = {
-			owner = "ENG" 
-			amount = 100
-		}
-	}
-
-	### RAF Far East
-	336 = { 
-		### RAF Far East
-		cv_nav_bomber_equipment_1 = {
-			owner = "ENG" 
-			amount = 100
-		}
-		CAS_equipment_1 = {
-			owner = "ENG" 
-			amount = 100
-		}
-	}
-}
-
 	#########################
 	## STARTING PRODUCTION ##
 	#########################
@@ -629,6 +558,17 @@ instant_effect = {
 		progress = 0.3
 		efficiency = 50
 	}
+
+	add_equipment_production = { 
+		equipment = { 
+			type = motorized_equipment_1 
+			creator = "ENG" 
+		} 
+
+		requested_factories = 1 
+		progress = 0.1 
+		efficiency = 50 
+	} 
 	
 	add_equipment_production = {
 		equipment = {
@@ -669,6 +609,16 @@ instant_effect = {
 		type = eng_heavy_tank_chassis_1
 		amount = 100
 		producer = ENG
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = train_equipment_1
+			creator = "ENG" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
 	}
 }
 	#####################

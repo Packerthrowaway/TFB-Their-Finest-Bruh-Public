@@ -81,7 +81,7 @@ focus_tree = {
 		x = -3
 		y = 1
 		relative_position_id = HOL_obtain_foreign_colonial_investments
-		cost = 10
+		cost = 5
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -281,6 +281,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_pre_empt_venezuelan_aggression
 		available = {
 			custom_trigger_tooltip = {
@@ -884,12 +885,16 @@ focus_tree = {
 	focus = {
 		id = HOL_colonial_shipbuilding
 		available = {
-			controls_state = 335
-			controls_state = 672
-			controls_state = 334
-			controls_state = 673
-			controls_state = 667
-			controls_state = 309
+			OR = {
+				AND = {
+					has_full_control_of_state = 335
+					has_full_control_of_state = 672
+				}
+				AND = {
+					has_full_control_of_state = 673
+					has_full_control_of_state = 668
+				}
+			}
 		}
 		prerequisite = { focus = HOL_a_western_capital }
 		prerequisite = { focus = HOL_the_foundations_of_defense }
@@ -906,6 +911,7 @@ focus_tree = {
 				if = {
 					limit = {
 						335 = {
+							is_controlled_by = HOL
 							free_building_slots = {
 								building = dockyard
 								size > 0
@@ -925,6 +931,7 @@ focus_tree = {
 				if = {
 					limit = {
 						672 = {
+							is_controlled_by = HOL
 							free_building_slots = {
 								building = dockyard
 								size > 0
@@ -944,6 +951,7 @@ focus_tree = {
 				if = {
 					limit = {
 						334 = {
+							is_controlled_by = HOL
 							free_building_slots = {
 								building = dockyard
 								size > 0
@@ -963,6 +971,7 @@ focus_tree = {
 				if = {
 					limit = {
 						673 = {
+							is_controlled_by = HOL
 							free_building_slots = {
 								building = dockyard
 								size > 0
@@ -982,6 +991,7 @@ focus_tree = {
 				if = {
 					limit = {
 						667 = {
+							is_controlled_by = HOL
 							free_building_slots = {
 								building = dockyard
 								size > 0
@@ -1001,6 +1011,7 @@ focus_tree = {
 				if = {
 					limit = {
 						309 = {
+							is_controlled_by = HOL
 							free_building_slots = {
 								building = dockyard
 								size > 0
@@ -1137,7 +1148,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = HOL_prepare_for_our_return
-		cost = 10
+		cost = 1
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY}
@@ -1947,6 +1958,7 @@ focus_tree = {
 
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_prepare_the_inundation_lines
 		prerequisite = { focus = HOL_overturn_military_budget_cuts }
 		icon = GFX_focus_hol_prepare_the_inundation_lines
@@ -1965,6 +1977,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_protect_against_britain
 		available = {
 			threat > 0.1
@@ -2038,6 +2051,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_further_reinforce_the_ports
 		available = {
 			threat > 0.15
@@ -2098,6 +2112,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_southward_defenses
 		available = {
 			threat > 0.2
@@ -2176,12 +2191,12 @@ focus_tree = {
 				}
 			}
 		}
-		prerequisite = { focus = HOL_prepare_the_inundation_lines }
+		prerequisite = { focus = HOL_overturn_military_budget_cuts }
 		mutually_exclusive = { focus = HOL_protect_against_britain }
 		icon = GFX_focus_attack_germany
-		x = 1
+		x = -6
 		y = 1
-		relative_position_id = HOL_prepare_the_inundation_lines
+		relative_position_id = HOL_overturn_military_budget_cuts
 		cost = 5
 
 		available_if_capitulated = yes
@@ -2232,7 +2247,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = HOL_germany_is_the_greater_threat }
 		icon = GFX_goal_generic_fortify_city
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = HOL_germany_is_the_greater_threat
 		cost = 5
@@ -2290,7 +2305,7 @@ focus_tree = {
 		prerequisite = { focus = HOL_fortress_holland }
 		icon = GFX_goal_generic_construct_military
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = HOL_fortress_holland
 		cost = 5
 
@@ -2316,13 +2331,13 @@ focus_tree = {
 	focus = {
 		id = HOL_war_on_pacifism
 		available = {
-			threat > 0.15
+			threat > 0.11
 		}
-		prerequisite = { focus = HOL_protect_against_britain focus = HOL_germany_is_the_greater_threat }
+		prerequisite = { focus = HOL_germany_is_the_greater_threat }
 		icon = GFX_focus_hol_war_on_pacifism
-		x = 1
-		y = 3
-		relative_position_id = HOL_protect_against_britain
+		x = -1
+		y = 2
+		relative_position_id = HOL_germany_is_the_greater_threat
 		cost = 10
 
 		cancel_if_invalid = no
@@ -2360,21 +2375,23 @@ focus_tree = {
 				uses = 2
 				category = land_doctrine
 			}
-			remove_ideas = HOL_izaak_reijnders
+			retire_character = HOL_izaak_reijnders
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = HOL_henri_winkelman
-			remove_unit_leader = 980 #izaak_reijnders
 			custom_effect_tooltip = HOL_appoint_new_supreme_commander_tt
 			hidden_effect = {
-				create_field_marshal = {
-					name = "Henri Winkelman"
-					gfx = "GFX_portrait_hol_henri_winkelman"
-					traits = { defensive_doctrine trait_cautious unyielding_defender }
-					skill = 4
-					attack_skill = 2
-					defense_skill = 4
-					planning_skill = 4
-					logistics_skill = 3
+				add_field_marshal_role = {
+					character = "HOL_henri_winkelman"
+						traits = { 
+							defensive_doctrine 
+							trait_cautious 
+							unyielding_defender 
+						}
+						skill = 4
+						attack_skill = 2
+						defense_skill = 4
+						planning_skill = 4
+						logistics_skill = 3
 				}
 			}
 		}
@@ -2425,10 +2442,6 @@ focus_tree = {
 		id = HOL_production_under_license
 		prerequisite = { focus = HOL_appoint_new_supreme_commander }
 		mutually_exclusive = { focus = HOL_modernize_our_infantry_equipment }
-
-		allow_branch = {
-			has_dlc = "Death or Dishonor"
-		}
 
 		available = {
 		}
@@ -2508,12 +2521,7 @@ focus_tree = {
 	focus = {
 		id = HOL_secret_staff_talks
 		available = {
-			threat > 0.15
-			OR = {
-				GER = { has_added_tension_amount > 10 }
-				ENG = { has_added_tension_amount > 10 }
-				FRA = { has_added_tension_amount > 10 }
-			}
+			threat > 0.11
 			has_war = no
 		}
 		prerequisite = { focus = HOL_modernize_our_infantry_equipment focus = HOL_production_under_license }
@@ -2530,6 +2538,7 @@ focus_tree = {
 		relative_position_id = HOL_modernize_our_infantry_equipment
 		cost = 10
 
+		cancel_if_invalid = no
 		available_if_capitulated = yes
 
 		completion_reward = {
@@ -2994,11 +3003,12 @@ focus_tree = {
 		id = HOL_prepare_naval_expansion
 		prerequisite = { focus = HOL_overturn_military_budget_cuts }
 		available = {
-			OR = {
-				has_full_control_of_state = 7
-				has_full_control_of_state = 35
-				has_full_control_of_state = 36
-			}
+			has_full_control_of_state = 35
+		}
+		bypass = {
+			NOT = { controls_state = 7 }
+			NOT = { controls_state = 35 }
+			NOT = { controls_state = 36 }
 		}
 		icon = GFX_goal_generic_construct_naval_dockyard
 		x = 8
@@ -3113,7 +3123,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = HOL_rely_on_submarines
 				bonus = 1
-				uses = 2
+				uses = 1
 				category = ss_tech
 			}
 		}
@@ -3145,12 +3155,11 @@ focus_tree = {
 
 	focus = {
 		id = HOL_the_battlecruiser_plan
-		prerequisite = { focus = HOL_rely_on_submarines focus = HOL_modernize_the_cruiser_fleet focus = HOL_join_germany }
+		prerequisite = { focus = HOL_rely_on_submarines focus = HOL_modernize_the_cruiser_fleet }
 		available = {
 			GER = {
 				AND = {
-						country_exists = GER
-						has_opinion = { target = HOL value > 74 } 
+						country_exists = GER 
 				}
 			}
 		}
@@ -3171,7 +3180,7 @@ focus_tree = {
 					basic_ship_hull_heavy = 1
 					antiair2 = 1
 					improved_fire_control_system = 1
-					dp_secondary_battery = 1
+					#dp_secondary_battery = 1
 				}
 				create_equipment_variant = {
 					name = "Design 1047 Battlecruiser"
@@ -3183,11 +3192,11 @@ focus_tree = {
 						fixed_ship_fire_control_system_slot = ship_fire_control_system_2
 						fixed_ship_radar_slot = empty
 						fixed_ship_engine_slot = heavy_ship_engine_2
-						fixed_ship_secondaries_slot = dp_ship_secondaries
+						fixed_ship_secondaries_slot = dp_ship_secondaries_2
 						fixed_ship_armor_slot = ship_armor_bb_1
 						front_1_custom_slot = ship_heavy_battery_1
 						mid_1_custom_slot = ship_anti_air_2
-						mid_2_custom_slot = dp_ship_secondaries
+						mid_2_custom_slot = dp_ship_secondaries_2
 						rear_1_custom_slot = ship_heavy_battery_1
 					}
 				}
@@ -3279,7 +3288,7 @@ focus_tree = {
 			has_capitulated = yes
 		}
 		icon = GFX_goal_generic_improve_relations
-		x = 27
+		x = 20
 		y = 0
 		relative_position_id = HOL_abandon_the_gold_standard
 		cost = 10
@@ -3330,6 +3339,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_cave_to_the_germans
 		prerequisite = { focus = HOL_gateway_to_europe }
 		mutually_exclusive = { focus = HOL_maintain_trade_neutrality focus = HOL_cave_to_the_british }
@@ -3410,6 +3420,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_maintain_trade_neutrality
 		prerequisite = { focus = HOL_gateway_to_europe }
 		mutually_exclusive = { focus = HOL_cave_to_the_germans focus = HOL_cave_to_the_british }
@@ -3479,16 +3490,6 @@ focus_tree = {
 		id = HOL_cave_to_the_british
 		prerequisite = { focus = HOL_gateway_to_europe }
 		mutually_exclusive = { focus = HOL_cave_to_the_germans focus = HOL_maintain_trade_neutrality }
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = HOL_cave_to_the_british2_tt
-				check_variable = { var = ENG.eng_gateway_to_europe_influence value = 25 compare = greater_than_or_equals }
-			}
-			custom_trigger_tooltip = {
-				tooltip = HOL_cave_to_the_british_tt
-				check_variable = { var = eng_temp_trade_influence value = 15 compare = greater_than_or_equals }
-			}
-		}
 		bypass = {
 			OR = {
 				ENG = { NOT = { has_government = democratic } }
@@ -3511,7 +3512,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_trade
 		cancel_if_invalid = no
-		x = 4
+		x = 0
 		y = 1
 		relative_position_id = HOL_gateway_to_europe
 		cost = 5
@@ -3562,6 +3563,7 @@ focus_tree = {
 #   #  # ##   ##  ### #   # 
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_volk_en_vaderland
 		prerequisite = { focus = HOL_cave_to_the_germans }
 		icon = GFX_goal_support_fascism
@@ -3580,6 +3582,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_de_jeugdstorm
 		available = {
 			has_government = fascism
@@ -3604,6 +3607,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_strength_over_blood
 		available = {
 			has_government = fascism
@@ -3637,6 +3641,7 @@ focus_tree = {
 
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_join_germany
 		available = {
 			GER = { has_government = fascism }
@@ -3667,6 +3672,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_german_technological_exchange
 		prerequisite = { focus = HOL_join_germany }
 		icon = GFX_goal_tfv_generic_tech_sharing
@@ -3689,6 +3695,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_beginnings_of_a_dutch_blitzkrieg
 		prerequisite = { focus = HOL_german_technological_exchange }
 		mutually_exclusive = { focus = HOL_assume_the_naval_burden }
@@ -3708,6 +3715,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_placate_the_japanese
 		available = {
 			JAP = { has_government = fascism }
@@ -3769,6 +3777,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_assume_the_naval_burden
 		available = {
 			has_full_control_of_state = 7
@@ -3853,6 +3862,7 @@ focus_tree = {
 #  # ###  #  #  # ### #  # ### #  # #  # ###  ##      #   ### #  # ##   #  
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_the_netherlands_first
 		available = {
 			NOT = {
@@ -3876,6 +3886,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_implement_the_program
 		prerequisite = { focus = HOL_the_netherlands_first }
 		icon = GFX_goal_generic_military_sphere
@@ -3945,6 +3956,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_taking_back_french_flanders
 		prerequisite = { focus = HOL_implement_the_program }
 		icon = GFX_goal_generic_occupy_states_ongoing_war
@@ -3975,6 +3987,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_the_united_netherlands
 		available = {
 			NOT = { is_in_faction_with = BEL }
@@ -4023,6 +4036,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_taking_back_our_old_colonies
 		available = {
 			NOT = { is_in_faction_with = FRA }
@@ -4086,6 +4100,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_imperial_ambitions
 		available = {
 			NOT = { is_in_faction_with = USA }
@@ -4130,6 +4145,7 @@ focus_tree = {
  ##   ##  #   # #   #  ##  #  # ### ##  #   # 
 
  	focus = {
+		allow_branch { always = no }
 		id = HOL_legacy_of_the_de_zeven_provincien_mutiny
 		prerequisite = { focus = HOL_maintain_trade_neutrality }
 		mutually_exclusive = { focus = HOL_oranje_boven }
@@ -4238,6 +4254,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_decolonization
 		available = {
 			has_government = communism
@@ -4437,6 +4454,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_red_is_the_new_orange
 		available = {
 			has_government = communism
@@ -4470,6 +4488,7 @@ focus_tree = {
 #  # #   #   ### #  # #   #     ###  ##    #   #  # ###  #    #        #   ##      #   #  ##  ##   ##   ##   # #  
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_affirm_loyalty_to_moscow
 		available = {
 			NOT = { has_war_with = SOV }
@@ -4507,6 +4526,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_soviet_technical_teams
 		prerequisite = { focus = HOL_affirm_loyalty_to_moscow }
 		icon = GFX_goal_generic_production2
@@ -4523,6 +4543,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_making_the_ends_of_europe_meet
 		available = {
 			NOT = { is_in_faction_with = GER }
@@ -4556,6 +4577,7 @@ focus_tree = {
  ##   ##  ### #  #      #  #  # ###     #   #  # ### #  #  ##  #  # 
 
  	focus = {
+		allow_branch { always = no }
 		id = HOL_join_the_french
 		available = {
 			NOT = { has_war_with = FRA }
@@ -4626,6 +4648,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_french_military_mission
 		prerequisite = { focus = HOL_join_the_french }
 		icon = GFX_goal_generic_army_doctrines
@@ -4649,6 +4672,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_socialist_industrial_support
 		prerequisite = { focus = HOL_affirm_loyalty_to_moscow focus = HOL_join_the_french }
 		icon = GFX_goal_generic_soviet_construction
@@ -4665,6 +4689,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_for_the_common_good
 		prerequisite = { focus = HOL_socialist_industrial_support }
 		icon = GFX_focus_generic_socialist_science
@@ -4712,6 +4737,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_mobilize_the_masses
 		prerequisite = { focus = HOL_socialist_industrial_support }
 		icon = GFX_goal_generic_allies_build_infantry
@@ -4734,6 +4760,7 @@ focus_tree = {
 ###  #  # ##   #  ###  ##  #  #      ##  #        #  #  #  ##  ###      ##   ##  #   # #   #  ##  #  # ### ##  #   # 
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_bastion_of_true_communism
 		available = {
 			NOT = { is_in_faction_with = SOV }
@@ -4812,6 +4839,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_bring_socialism_south
 		available = {
 			NOT = { is_in_faction_with = BEL }
@@ -4861,6 +4889,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_enemies_on_all_fronts
 		prerequisite = { focus = HOL_bastion_of_true_communism }
 		icon = GFX_goal_generic_allies_build_infantry
@@ -4877,6 +4906,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_haven_of_tolerance
 		prerequisite = { focus = HOL_enemies_on_all_fronts }
 		icon = GFX_goal_support_communism
@@ -4895,6 +4925,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_pre_empt_western_intervention
 		available = {
 			OR = {
@@ -5002,6 +5033,7 @@ focus_tree = {
 #   #  ##  #  # #  # #  #  ##  #  # ### ##  #   #    #  # ###  ##   #  #  # #  # ### ###  #    #   
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_oranje_boven
 		available = {
 			NOT = { has_completed_focus = HOL_curtail_colonial_autonomy }
@@ -5022,6 +5054,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_symbol_of_resistance
 		prerequisite = { focus = HOL_oranje_boven }
 		icon = GFX_focus_generic_support_the_left_right
@@ -5039,54 +5072,8 @@ focus_tree = {
 			}
 		}
 	}
-
 	focus = {
-		id = HOL_replace_the_defeatist_government
-		prerequisite = { focus = HOL_oranje_boven focus = HOL_unity_through_democracy }
-		available = {
-			has_war = yes
-		}
-		bypass = {
-			has_government = neutrality
-		}
-		icon = GFX_goal_generic_political_pressure
-		x = 1
-		y = 1
-		relative_position_id = HOL_oranje_boven
-		cost = 10
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT}
-
-		completion_reward = {
-			country_event = { id = mtg_netherlands.14 }
-			effect_tooltip = {
-				add_popularity = {
-				    ideology = democratic
-				    popularity = -0.05
-				}
-				retire_country_leader = yes
-				create_country_leader = {
-					name = "Pieter Sjoerds Gerbrandy"
-					desc = "POLITICS_PIETER_SJOERDS_GERBRANDY_DESC"
-					picture = "portrait_hol_pieter_sjoerds_gerbrandy.dds"
-					expire = "1965.1.1"
-					ideology = conservatism
-					traits = {
-						little_churchill
-					}
-				}
-				if = {
-					limit = {
-						has_idea = HOL_weak_government
-					}
-					remove_ideas = HOL_weak_government
-				}
-			}
-		}
-	}
-
-	focus = {
+		allow_branch { always = no }
 		id = HOL_the_only_man_in_the_dutch_government
 		available = {
 			neutrality > 0.45
@@ -5122,6 +5109,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_de_vernieuwing
 		prerequisite = { focus = HOL_the_only_man_in_the_dutch_government }
 		icon = GFX_goal_generic_demand_territory
@@ -5175,6 +5163,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_depillarization
 		prerequisite = { focus = HOL_the_only_man_in_the_dutch_government }
 		icon = GFX_goal_generic_national_unity
@@ -5192,6 +5181,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_a_new_dutch_unity
 		prerequisite = { focus = HOL_de_vernieuwing }
 		prerequisite = { focus = HOL_depillarization }
@@ -5209,7 +5199,10 @@ focus_tree = {
 		}
 	}
 
+### unite benelux focus 
+
 	focus = {
+		allow_branch { always = no }
 		id = HOL_revive_the_buffer_state_proposal
 		available = {
 			is_in_faction_with = ENG
@@ -5259,6 +5252,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_royal_arms_purchases
 		available = {
 			
@@ -5278,6 +5272,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_develop_the_south
 		available = {
 			has_full_control_of_state = 6
@@ -5366,6 +5361,7 @@ focus_tree = {
 	}
 
 	focus = {
+		allow_branch { always = no }
 		id = HOL_wilhelminism
 		available = {
 			AND = {
@@ -5485,7 +5481,7 @@ focus_tree = {
 		id = HOL_unity_through_democracy
 		prerequisite = { focus = HOL_cave_to_the_british }
 		icon = GFX_goal_support_democracy
-		x = 3
+		x = 0
 		y = 1
 		relative_position_id = HOL_cave_to_the_british
 		cost = 10
@@ -5525,7 +5521,51 @@ focus_tree = {
 			}
 		}
 	}
+	focus = {
+		id = HOL_replace_the_defeatist_government
+		prerequisite = { focus = HOL_unity_through_democracy }
+		available = {
+			threat > 0.30
+		}
+		bypass = {
+			has_government = neutrality
+		}
+		icon = GFX_goal_generic_political_pressure
+		x = -1
+		y = 1
+		relative_position_id = HOL_unity_through_democracy
+		cost = 10
 
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT}
+
+		completion_reward = {
+			country_event = { id = mtg_netherlands.14 }
+			effect_tooltip = {
+				add_popularity = {
+				    ideology = democratic
+				    popularity = -0.05
+				}
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Pieter Sjoerds Gerbrandy"
+					desc = "POLITICS_PIETER_SJOERDS_GERBRANDY_DESC"
+					picture = "portrait_hol_pieter_sjoerds_gerbrandy.dds"
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = {
+						little_churchill
+					}
+				}
+				if = {
+					limit = {
+						has_idea = HOL_weak_government
+					}
+					remove_ideas = HOL_weak_government
+				}
+			}
+		}
+	}
  ##   ##      #   # ### ### #  #     ###  ###  ### ###  ##  ### #  # 
 #    #  #     #   #  #   #  #  #     #  # #  #  #   #  #  #  #  ## # 
 # ## #  #     # # #  #   #  ####     ###  ###   #   #  ####  #  # ## 
@@ -5537,7 +5577,7 @@ focus_tree = {
 		id = HOL_go_with_britain
 		available = {
 			ENG = { has_government = democratic }
-			threat > 0.25
+			has_war = yes
 			is_ai = no
 		}
 		bypass = {
@@ -5549,12 +5589,12 @@ focus_tree = {
 				}
 			}
 		}
-		prerequisite = { focus = HOL_oranje_boven focus = HOL_unity_through_democracy }
+		prerequisite = { focus = HOL_unity_through_democracy }
 		mutually_exclusive = { focus = HOL_lead_the_minor_democracies }
 		icon = GFX_focus_chi_british_cooperation
-		x = 3
+		x = 1
 		y = 1
-		relative_position_id = HOL_oranje_boven
+		relative_position_id = HOL_unity_through_democracy
 		cost = 10
 
 		available_if_capitulated = yes
@@ -5570,7 +5610,7 @@ focus_tree = {
 		prerequisite = { focus = HOL_replace_the_defeatist_government }
 		prerequisite = { focus = HOL_go_with_britain }
 		icon = GFX_goal_generic_propaganda
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = HOL_replace_the_defeatist_government
 		cost = 10
@@ -5590,6 +5630,7 @@ focus_tree = {
 			OR = {
 				has_capitulated = no
 				has_legitimacy > 40
+				has_war_with = JAP 
 			}
 		}
 		prerequisite = { focus = HOL_de_vaarplicht }
@@ -5626,7 +5667,7 @@ focus_tree = {
 			NOT = { has_completed_focus = HOL_oranje_boven }
 		}
 		icon = GFX_goal_generic_navy_doctrines_tactics
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = HOL_go_with_britain
 		cost = 5
@@ -5807,6 +5848,7 @@ focus_tree = {
 			OR = {
 				has_capitulated = no
 				has_legitimacy > 80
+				has_war_with = JAP 
 			}
 		}
 		prerequisite = { focus = HOL_request_allied_favors }

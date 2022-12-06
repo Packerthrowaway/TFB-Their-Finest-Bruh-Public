@@ -219,7 +219,10 @@ war_measures = {
 
 		available = {
 			has_war = yes
-			607 = { is_controlled_by = ROOT }
+			NOT = {
+				controls_state = 608
+				controls_state = 614
+			}
 		}
 
 		cost = 0
@@ -227,6 +230,25 @@ war_measures = {
 		fire_only_once = yes
 
 		days_remove = 7
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					NOT = {
+						controls_state = 597
+					}
+					NOT = {
+						controls_state = 615
+					}
+					NOT = {
+						controls_state = 607
+					}
+					
+				}	
+				factor = 100
+			}
+		}
 
 		highlight_states = {
 			highlight_provinces = {
@@ -412,6 +434,8 @@ war_measures = {
 			any_owned_state = {
 				is_controlled_by = ROOT
 				infrastructure > 0
+				NOT = { state = 601 }
+				NOT = { state = 604 }
 				any_neighbor_state = {
 					NOT = { is_fully_controlled_by = ROOT }
 					controller = { has_war_with = CHI }
@@ -436,6 +460,8 @@ war_measures = {
 				limit = {
 					is_controlled_by = CHI
 					infrastructure > 0
+					NOT = { state = 601 }
+					NOT = { state = 604 }
 					any_neighbor_state = {
 						NOT = { is_fully_controlled_by = CHI }
 						controller = { has_war_with = CHI }
@@ -495,7 +521,6 @@ CHI_industrial_evacuations = {
 		modifier = {}
 
 		remove_effect = {
-			
 			if = {
 				limit = {
 					controls_state = 591
@@ -591,8 +616,6 @@ CHI_industrial_evacuations = {
 			}
 			custom_effect_tooltip = relocate_industry_repair
 		}
-			
-		
 
 		ai_will_do = {
 			factor = 1
@@ -1134,314 +1157,314 @@ CHI_industrial_evacuations = {
 
 #Category allowed for all potential nationalist china
 #Visible for nationalist china if has warlords as subjects
-CHI_integrate_the_warlords = {
+# CHI_integrate_the_warlords = {
 	
-	CHI_integrate_the_army = {
-		icon = generic_prepare_civil_war
-		available = {
-			FROM = { compare_autonomy_state < autonomy_colony }
-			#NOT = {
-			#	has_country_flag = CHI_integrate_the_army
-			#}
-		}
+# 	CHI_integrate_the_army = {
+# 		icon = generic_prepare_civil_war
+# 		available = {
+# 			FROM = { compare_autonomy_state < autonomy_colony }
+# 			#NOT = {
+# 			#	has_country_flag = CHI_integrate_the_army
+# 			#}
+# 		}
 
-		visible = {
-			FROM = { is_subject_of = ROOT }
-			NOT = {
-				has_country_flag = CHI_integrate_the_army
-			}
-		}
-		cancel_if_not_visible = yes
+# 		visible = {
+# 			FROM = { is_subject_of = ROOT }
+# 			NOT = {
+# 				has_country_flag = CHI_integrate_the_army
+# 			}
+# 		}
+# 		cancel_if_not_visible = yes
 
-		cost = 150
+# 		cost = 150
 
-		target_root_trigger = {
-			always = no
-		}
-		target_array = subjects
+# 		target_root_trigger = {
+# 			always = no
+# 		}
+# 		target_array = subjects
 
 
-		target_trigger = {
-			FROM = {
-				is_subject_of = ROOT
-				OR = {
-					tag = GXC
-					tag = YUN
-					tag = SHX
-					tag = XSM
-					tag = SIK
-				}
-			}
-		}
+# 		target_trigger = {
+# 			FROM = {
+# 				is_subject_of = ROOT
+# 				OR = {
+# 					tag = GXC
+# 					tag = YUN
+# 					tag = SHX
+# 					tag = XSM
+# 					tag = SIK
+# 				}
+# 			}
+# 		}
 
-		days_remove = 90
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				OR = {
-					has_idea = CHI_warlord_integration_3
-					has_idea = CHI_warlord_integration_4
-					has_idea = CHI_warlord_integration_5
-				}
-				factor = 0
-				#TODO_WTT_CODE need a trigger for daily increase of PP to see if it's okay to reduce	
-			}
-		}
+# 		days_remove = 90
+# 		fire_only_once = yes
+# 		ai_will_do = {
+# 			factor = 10
+# 			modifier = {
+# 				OR = {
+# 					has_idea = CHI_warlord_integration_3
+# 					has_idea = CHI_warlord_integration_4
+# 					has_idea = CHI_warlord_integration_5
+# 				}
+# 				factor = 0
+# 				#TODO_WTT_CODE need a trigger for daily increase of PP to see if it's okay to reduce	
+# 			}
+# 		}
 
-		remove_effect = {
-			FROM = { set_country_flag = CHI_integrate_the_army }
+# 		remove_effect = {
+# 			FROM = { set_country_flag = CHI_integrate_the_army }
 
-			CHI_warlord_integration_up = yes
-			if = {
-				limit = { FROM = { tag = GXC } }
-				if = {
-					limit = {
-						FROM = {
-							not = {
-								always = no
-							}
-						}
-					}
-					create_corps_commander = {
-						name = "Li Zongren"
-						gfx = GFX_portrait_li_zongren
-						skill = 3
-						attack_skill = 3
-						defense_skill = 3
-						planning_skill = 2
-						logistics_skill = 2
-					}
-				}
-				FROM = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}
-			}
-			else_if = {
-				limit = { FROM = { tag = YUN } }
-				if = {
-					limit = {
-						FROM = {
-							not = {
-								always = no
-							}
-						}
-					}
-					create_corps_commander = {
-						name = "Long Yun"
-						gfx = GFX_portrait_yun_long_yun				
-						skill = 3
-						attack_skill = 2
-						defense_skill = 3
-						planning_skill = 3
-						logistics_skill = 2
-					}
-				}
-				FROM = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}
-			}
-			else_if = {
-				limit = { FROM = { tag = SHX } }
-				if = {
-					limit = {
-						FROM = {
-							not = {
-								always = no
-							}
-						}
-					}
-					create_corps_commander = {
-						name = "Yan Xishan"
-						gfx = GFX_portrait_yan_xishan
-						skill = 3
-						attack_skill = 2
-						defense_skill = 3
-						planning_skill = 3
-						logistics_skill = 2
-					}
-				}
-				FROM = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}
-			}
-			else_if = {
-				limit = { FROM = { tag = XSM } }
-				if = {
-					limit = {
-						FROM = {
-							not = {
-								always = no
-							}
-						}
-					}
-					create_corps_commander = {
-						name = "Ma Bufang"
-						gfx = GFX_portrait_xsm_ma_bufang
-						skill = 3
-						attack_skill = 4
-						defense_skill = 2
-						planning_skill = 2
-						logistics_skill = 2
-					}
-				}
-				FROM = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}
-			}
-			else_if = {
-				limit = { FROM = { tag = SIK } }
-				if = {
-					limit = {
-						FROM = {
-							not = {
-								always = no
-							}
-						}
-					}
-					create_corps_commander = {
-						name = "Sheng Shicai"
-						gfx = GFX_portrait_sheng_shicai
-						skill = 3
-						attack_skill = 2
-						defense_skill = 4
-						planning_skill = 2
-						logistics_skill = 2
-					}
-				}
-				FROM = {
-					every_unit_leader = {
-						set_nationality = ROOT
-					}
-				}
-			}
-		}
-	}	
+# 			CHI_warlord_integration_up = yes
+# 			if = {
+# 				limit = { FROM = { tag = GXC } }
+# 				if = {
+# 					limit = {
+# 						FROM = {
+# 							not = {
+# 								always = no
+# 							}
+# 						}
+# 					}
+# 					create_corps_commander = {
+# 						name = "Li Zongren"
+# 						gfx = GFX_portrait_li_zongren
+# 						skill = 3
+# 						attack_skill = 3
+# 						defense_skill = 3
+# 						planning_skill = 2
+# 						logistics_skill = 2
+# 					}
+# 				}
+# 				FROM = {
+# 					every_unit_leader = {
+# 						set_nationality = ROOT
+# 					}
+# 				}
+# 			}
+# 			else_if = {
+# 				limit = { FROM = { tag = YUN } }
+# 				if = {
+# 					limit = {
+# 						FROM = {
+# 							not = {
+# 								always = no
+# 							}
+# 						}
+# 					}
+# 					create_corps_commander = {
+# 						name = "Long Yun"
+# 						gfx = GFX_portrait_yun_long_yun				
+# 						skill = 3
+# 						attack_skill = 2
+# 						defense_skill = 3
+# 						planning_skill = 3
+# 						logistics_skill = 2
+# 					}
+# 				}
+# 				FROM = {
+# 					every_unit_leader = {
+# 						set_nationality = ROOT
+# 					}
+# 				}
+# 			}
+# 			else_if = {
+# 				limit = { FROM = { tag = SHX } }
+# 				if = {
+# 					limit = {
+# 						FROM = {
+# 							not = {
+# 								always = no
+# 							}
+# 						}
+# 					}
+# 					create_corps_commander = {
+# 						name = "Yan Xishan"
+# 						gfx = GFX_portrait_yan_xishan
+# 						skill = 3
+# 						attack_skill = 2
+# 						defense_skill = 3
+# 						planning_skill = 3
+# 						logistics_skill = 2
+# 					}
+# 				}
+# 				FROM = {
+# 					every_unit_leader = {
+# 						set_nationality = ROOT
+# 					}
+# 				}
+# 			}
+# 			else_if = {
+# 				limit = { FROM = { tag = XSM } }
+# 				if = {
+# 					limit = {
+# 						FROM = {
+# 							not = {
+# 								always = no
+# 							}
+# 						}
+# 					}
+# 					create_corps_commander = {
+# 						name = "Ma Bufang"
+# 						gfx = GFX_portrait_xsm_ma_bufang
+# 						skill = 3
+# 						attack_skill = 4
+# 						defense_skill = 2
+# 						planning_skill = 2
+# 						logistics_skill = 2
+# 					}
+# 				}
+# 				FROM = {
+# 					every_unit_leader = {
+# 						set_nationality = ROOT
+# 					}
+# 				}
+# 			}
+# 			else_if = {
+# 				limit = { FROM = { tag = SIK } }
+# 				if = {
+# 					limit = {
+# 						FROM = {
+# 							not = {
+# 								always = no
+# 							}
+# 						}
+# 					}
+# 					create_corps_commander = {
+# 						name = "Sheng Shicai"
+# 						gfx = GFX_portrait_sheng_shicai
+# 						skill = 3
+# 						attack_skill = 2
+# 						defense_skill = 4
+# 						planning_skill = 2
+# 						logistics_skill = 2
+# 					}
+# 				}
+# 				FROM = {
+# 					every_unit_leader = {
+# 						set_nationality = ROOT
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}	
 
-	CHI_integrate_the_administration = {
-		icon = generic_political_discourse
-		available = {
-			FROM = { 
-				compare_autonomy_state < autonomy_colony 
-			}
-		}
+# 	CHI_integrate_the_administration = {
+# 		icon = generic_political_discourse
+# 		available = {
+# 			FROM = { 
+# 				compare_autonomy_state < autonomy_colony 
+# 			}
+# 		}
 
-		visible = {
-			FROM = { 
-				is_subject_of = ROOT 
-				has_country_flag = CHI_integrate_the_army
-				NOT = { has_country_flag = CHI_integrate_the_administration}
-			}
-		}
-		cancel_if_not_visible = yes
+# 		visible = {
+# 			FROM = { 
+# 				is_subject_of = ROOT 
+# 				has_country_flag = CHI_integrate_the_army
+# 				NOT = { has_country_flag = CHI_integrate_the_administration}
+# 			}
+# 		}
+# 		cancel_if_not_visible = yes
 
-		cost = 150
+# 		cost = 150
 
-		target_array = subjects
+# 		target_array = subjects
 
-		target_trigger = {
-			FROM = {
-				has_country_flag = CHI_integrate_the_army
-				is_subject_of = ROOT
-				OR = {
-					tag = GXC
-					tag = YUN
-					tag = SHX
-					tag = XSM
-					tag = SIK
-				}
-			}
-		}
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				OR = {
-					has_idea = CHI_warlord_integration_3
-					has_idea = CHI_warlord_integration_4
-					has_idea = CHI_warlord_integration_5
-				}
-				factor = 0
-				#TODO_WTT_CODE need a trigger for daily increase of PP to see if it's okay to reduce
-			}
-		}
+# 		target_trigger = {
+# 			FROM = {
+# 				has_country_flag = CHI_integrate_the_army
+# 				is_subject_of = ROOT
+# 				OR = {
+# 					tag = GXC
+# 					tag = YUN
+# 					tag = SHX
+# 					tag = XSM
+# 					tag = SIK
+# 				}
+# 			}
+# 		}
+# 		fire_only_once = yes
+# 		ai_will_do = {
+# 			factor = 10
+# 			modifier = {
+# 				OR = {
+# 					has_idea = CHI_warlord_integration_3
+# 					has_idea = CHI_warlord_integration_4
+# 					has_idea = CHI_warlord_integration_5
+# 				}
+# 				factor = 0
+# 				#TODO_WTT_CODE need a trigger for daily increase of PP to see if it's okay to reduce
+# 			}
+# 		}
 
-		days_remove = 90
-		remove_effect = {
-			FROM = {
-				set_country_flag = CHI_integrate_the_administration
-			}
+# 		days_remove = 90
+# 		remove_effect = {
+# 			FROM = {
+# 				set_country_flag = CHI_integrate_the_administration
+# 			}
 
-			FROM = {
-				every_state = {
-					limit = { is_core_of = FROM }
-					FROM = { remove_state_core = PREV }
-				}
-			}
-		}
-	}
+# 			FROM = {
+# 				every_state = {
+# 					limit = { is_core_of = FROM }
+# 					FROM = { remove_state_core = PREV }
+# 				}
+# 			}
+# 		}
+# 	}
 
-	CHI_full_integration = {
-		icon = oppression
-		available = {
-			FROM = {
-				FROM = { compare_autonomy_state < autonomy_colony }
-			}
-		}
+# 	CHI_full_integration = {
+# 		icon = oppression
+# 		available = {
+# 			FROM = {
+# 				FROM = { compare_autonomy_state < autonomy_colony }
+# 			}
+# 		}
 
-		visible = {
-			FROM = { is_subject_of = ROOT }
-		}
-		cancel_if_not_visible = yes
+# 		visible = {
+# 			FROM = { is_subject_of = ROOT }
+# 		}
+# 		cancel_if_not_visible = yes
 
-		cost = 150
+# 		cost = 150
 
-		target_array = subjects
+# 		target_array = subjects
 
-		target_trigger = {
-			FROM = {
-				has_country_flag = CHI_integrate_the_administration
-				is_subject_of = ROOT
-				OR = {
-					tag = GXC
-					tag = YUN
-					tag = SHX
-					tag = XSM
-					tag = SIK
-				}
-			}
-		}
-		days_remove = 90
+# 		target_trigger = {
+# 			FROM = {
+# 				has_country_flag = CHI_integrate_the_administration
+# 				is_subject_of = ROOT
+# 				OR = {
+# 					tag = GXC
+# 					tag = YUN
+# 					tag = SHX
+# 					tag = XSM
+# 					tag = SIK
+# 				}
+# 			}
+# 		}
+# 		days_remove = 90
 
-		remove_effect = {
-			CHI_warlord_integration_down = yes
-			if = {
-				limit = {
-					FROM = {
-						OR = {
-							tag = YUN
-							tag = GXC
-						}
-					}
-				}
-				set_country_flag = achievement_romance_of_the_three_kingdoms_@FROM
-			}
-			annex_country = { target = FROM transfer_troops = yes }
-		}
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 10			
-		}
-	}
-}
+# 		remove_effect = {
+# 			CHI_warlord_integration_down = yes
+# 			if = {
+# 				limit = {
+# 					FROM = {
+# 						OR = {
+# 							tag = YUN
+# 							tag = GXC
+# 						}
+# 					}
+# 				}
+# 				set_country_flag = achievement_romance_of_the_three_kingdoms_@FROM
+# 			}
+# 			annex_country = { target = FROM transfer_troops = yes }
+# 		}
+# 		fire_only_once = yes
+# 		ai_will_do = {
+# 			factor = 10			
+# 		}
+# 	}
+# }
 
 
 ### #  # ### ### #  ### ###   ##  ### ###  ##  #  #
@@ -1453,688 +1476,688 @@ CHI_integrate_the_warlords = {
 #Category allowed for all potential nationalist china
 #Visible when another country had completed focus PRC_infiltration
 @REMOVE_INFILTRATION_PP_COST = 10
-CHI_communist_infiltration = {
+# CHI_communist_infiltration = {
 
-	CHI_detect_infiltration = {
-		icon = oppression
-		available = {
+# 	CHI_detect_infiltration = {
+# 		icon = oppression
+# 		available = {
 
-		}	
+# 		}	
 
 
-		days_remove = 0
-		days_re_enable = 30
+# 		days_remove = 0
+# 		days_re_enable = 30
 
-		fixed_random_seed = no
+# 		fixed_random_seed = no
 	
-		cost = 100
+# 		cost = 100
 
-		ai_will_do = {
-			base = 0
-			modifier = {
-				has_political_power < 150
-				factor = 0
-			}
-			#Focus on political struggle first
-			modifier = {
-				factor = 0
-				any_other_country = {
-					has_country_flag = wtt_political_struggle
-				}
-			}
-			modifier = {
-				add = 75
-				any_other_country = {
-					is_potentially_communist_china = yes
-					always = no
-					NOT = { has_country_flag = CHI_delay_sweep_for_communists }
-				}
-			}
+# 		ai_will_do = {
+# 			base = 0
+# 			modifier = {
+# 				has_political_power < 150
+# 				factor = 0
+# 			}
+# 			#Focus on political struggle first
+# 			modifier = {
+# 				factor = 0
+# 				any_other_country = {
+# 					has_country_flag = wtt_political_struggle
+# 				}
+# 			}
+# 			modifier = {
+# 				add = 75
+# 				any_other_country = {
+# 					is_potentially_communist_china = yes
+# 					always = no
+# 					NOT = { has_country_flag = CHI_delay_sweep_for_communists }
+# 				}
+# 			}
 
-			#Surely there must be commies somewhere
-			modifier = {
-				add = 85
-				NOT = {
-					any_state = {
-						OR = {
-							state = 283
-							state = 597
-							state = 598
-							state = 607
-							state = 608
-							state = 614
-							state = 615
-							state = 621
-							state = 744
-							state = 746
-						}
-						has_state_flag = discovered_infiltration
-					}
-				}
-			}
-		}
+# 			#Surely there must be commies somewhere
+# 			modifier = {
+# 				add = 85
+# 				NOT = {
+# 					any_state = {
+# 						OR = {
+# 							state = 283
+# 							state = 597
+# 							state = 598
+# 							state = 607
+# 							state = 608
+# 							state = 614
+# 							state = 615
+# 							state = 621
+# 							state = 744
+# 							state = 746
+# 						}
+# 						has_state_flag = discovered_infiltration
+# 					}
+# 				}
+# 			}
+# 		}
 	
-		complete_effect = {
-			custom_effect_tooltip = CHI_detect_infiltration_tooltip
-			hidden_effect = {
-				country_event = wtt_infiltration.1
-			}
-		}
-	}
+# 		complete_effect = {
+# 			custom_effect_tooltip = CHI_detect_infiltration_tooltip
+# 			hidden_effect = {
+# 				country_event = wtt_infiltration.1
+# 			}
+# 		}
+# 	}
 
-	CHI_communist_infiltration_in_gansu = {
-		icon = infiltrate_state
-		visible = { #TODO_WTT_CD merge the 2 visible triggers for all of these. Maybe for JAP as well.
-			283 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
+# 	CHI_communist_infiltration_in_gansu = {
+# 		icon = infiltrate_state
+# 		visible = { #TODO_WTT_CD merge the 2 visible triggers for all of these. Maybe for JAP as well.
+# 			283 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
 
-		highlight_states = {
-			state = 283
-		}
+# 		highlight_states = {
+# 			state = 283
+# 		}
 		
-		visible = {
-			283 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
-
-		
-		modifier = {
-			command_power_gain = -0.1
-		}
-		
-		days_remove = 30
-		days_re_enable = 0
-		
-
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
-
-		cost = @REMOVE_INFILTRATION_PP_COST
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
-
-		remove_effect = {
-			283 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}
-
-	CHI_communist_infiltration_in_shandong = {
-		icon = infiltrate_state
-		visible = {
-			597 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		highlight_states = {
-			state = 597
-		}
-		
-		visible = {
-			597 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
+# 		visible = {
+# 			283 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
 
 		
-		modifier = {
-			command_power_gain = -0.1
-		}
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
 		
-		days_remove = 30
-		days_re_enable = 0
-		
-		cost = @REMOVE_INFILTRATION_PP_COST
-
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
-
-		remove_effect = {
-			597 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}
-
-	CHI_communist_infiltration_in_jiangsu = {
-		icon = infiltrate_state
-		visible = {
-			598 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-
-		highlight_states = {
-			state = 598
-		}
-		
-		visible = {
-			598 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
-
-		
-		modifier = {
-			command_power_gain = -0.1
-		}
-		
-		days_remove = 30
-		days_re_enable = 0
+# 		days_remove = 30
+# 		days_re_enable = 0
 		
 
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
-		cost = @REMOVE_INFILTRATION_PP_COST
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
 
-		remove_effect = {
-			598 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}
+# 		cost = @REMOVE_INFILTRATION_PP_COST
+		
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
 
-	CHI_communist_infiltration_in_henan = {
-		icon = infiltrate_state
-		visible = {
-			607 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		
-		visible = {
-			607 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
-		highlight_states = {
-			state = 607
-		}
+# 		remove_effect = {
+# 			283 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}
 
+# 	CHI_communist_infiltration_in_shandong = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			597 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
+# 		highlight_states = {
+# 			state = 597
+# 		}
 		
-		modifier = {
-			command_power_gain = -0.1
-		}
-		
-		days_remove = 30
-		days_re_enable = 0
-		
-		cost = @REMOVE_INFILTRATION_PP_COST
-
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
-
-		remove_effect = {
-			607 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}
-
-	CHI_communist_infiltration_in_beijing = {
-		icon = infiltrate_state
-		visible = {
-			608 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		highlight_states = {
-			state = 608
-		}
-		
-		visible = {
-			608 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
+# 		visible = {
+# 			597 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
 
 		
-		modifier = {
-			command_power_gain = -0.1
-		}
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
 		
-		days_remove = 30
-		days_re_enable = 0
+# 		days_remove = 30
+# 		days_re_enable = 0
 		
-		cost = @REMOVE_INFILTRATION_PP_COST
+# 		cost = @REMOVE_INFILTRATION_PP_COST
 
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
 		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
 
-		remove_effect = {
-			608 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}
+# 		remove_effect = {
+# 			597 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}
 
-	CHI_communist_infiltration_in_hebei = {
-		icon = infiltrate_state
-		visible = {
-			614 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		highlight_states = {
-			state = 614
-		}
-		
-		visible = {
-			614 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
+# 	CHI_communist_infiltration_in_jiangsu = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			598 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
 
+# 		highlight_states = {
+# 			state = 598
+# 		}
 		
-		modifier = {
-			command_power_gain = -0.1
-		}
-		
-		days_remove = 30
-		days_re_enable = 0
-		
-		cost = @REMOVE_INFILTRATION_PP_COST
-
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
-
-		remove_effect = {
-			614 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}
-
-	CHI_communist_infiltration_in_shanxi = {
-		icon = infiltrate_state
-		visible = {
-			615 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		highlight_states = {
-			state = 615
-		}
-		
-		visible = {
-			615 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
+# 		visible = {
+# 			598 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
 
 		
-		modifier = {
-			command_power_gain = -0.1
-		}
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
 		
-		days_remove = 30
-		days_re_enable = 0
+# 		days_remove = 30
+# 		days_re_enable = 0
 		
-		cost = @REMOVE_INFILTRATION_PP_COST
 
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
+# 		cost = @REMOVE_INFILTRATION_PP_COST
 		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
 
-		remove_effect = {
-			615 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}
+# 		remove_effect = {
+# 			598 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}
 
-	CHI_communist_infiltration_in_suiyuan = {
-		icon = infiltrate_state
-		visible = {
-			621 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		highlight_states = {
-			state = 621
-		}
+# 	CHI_communist_infiltration_in_henan = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			607 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
 		
-		visible = {
-			621 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
-
-		
-		modifier = {
-			command_power_gain = -0.1
-		}
-		
-		days_remove = 30
-		days_re_enable = 0
-		
-		cost = @REMOVE_INFILTRATION_PP_COST
-
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
-
-		remove_effect = {
-			621 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
-		}
-	}	
-
-	CHI_communist_infiltration_in_xian = {
-		icon = infiltrate_state
-		visible = {
-			744 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		highlight_states = {
-			state = 744
-		}
-		
-		visible = {
-			744 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
+# 		visible = {
+# 			607 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
+# 		highlight_states = {
+# 			state = 607
+# 		}
 
 		
-		modifier = {
-			command_power_gain = -0.1
-		}
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
 		
-		days_remove = 30
-		days_re_enable = 0
+# 		days_remove = 30
+# 		days_re_enable = 0
 		
-		cost = @REMOVE_INFILTRATION_PP_COST
+# 		cost = @REMOVE_INFILTRATION_PP_COST
 
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
 		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
 
-		remove_effect = {
-			744 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 }
-		}
-	}
+# 		remove_effect = {
+# 			607 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}
 
-	CHI_communist_infiltration_in_ordos = {
-		icon = infiltrate_state
-		visible = {
-			746 = {
-				is_controlled_by = ROOT
-				has_any_PRC_infiltration_flag = yes
-			}
-		}
-		available = {
-			has_equipment = { infantry_equipment > 999 }
-		}
-		highlight_states = {
-			state = 746
-		}
+# 	CHI_communist_infiltration_in_beijing = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			608 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
+# 		highlight_states = {
+# 			state = 608
+# 		}
 		
-		visible = {
-			746 = {
-				is_controlled_by = ROOT
-				has_state_flag = {
-					flag = discovered_infiltration
-					value > 0
-				}
-			}
-		}
+# 		visible = {
+# 			608 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
 
 		
-		modifier = {
-			command_power_gain = -0.1
-		}
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
 		
-		days_remove = 30
-		days_re_enable = 0
+# 		days_remove = 30
+# 		days_re_enable = 0
 		
-		cost = @REMOVE_INFILTRATION_PP_COST
+# 		cost = @REMOVE_INFILTRATION_PP_COST
 
-		ai_will_do = {
-			base = 100
-			#Pretty damn important
-			modifier = {
-				add = 100
-				always = yes
-			}
-		}
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
 		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = -1000
-			}
-		}
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
 
-		remove_effect = {
-			746 = {
-				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
-				save_event_target_as = infiltrated_state
-				CHI_infiltration_flag_down_2 = yes
-			}
-			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 }
-		}
-	}
-}
+# 		remove_effect = {
+# 			608 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}
+
+# 	CHI_communist_infiltration_in_hebei = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			614 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
+# 		highlight_states = {
+# 			state = 614
+# 		}
+		
+# 		visible = {
+# 			614 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
+
+		
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
+		
+# 		days_remove = 30
+# 		days_re_enable = 0
+		
+# 		cost = @REMOVE_INFILTRATION_PP_COST
+
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
+		
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
+
+# 		remove_effect = {
+# 			614 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}
+
+# 	CHI_communist_infiltration_in_shanxi = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			615 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
+# 		highlight_states = {
+# 			state = 615
+# 		}
+		
+# 		visible = {
+# 			615 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
+
+		
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
+		
+# 		days_remove = 30
+# 		days_re_enable = 0
+		
+# 		cost = @REMOVE_INFILTRATION_PP_COST
+
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
+		
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
+
+# 		remove_effect = {
+# 			615 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}
+
+# 	CHI_communist_infiltration_in_suiyuan = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			621 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
+# 		highlight_states = {
+# 			state = 621
+# 		}
+		
+# 		visible = {
+# 			621 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
+
+		
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
+		
+# 		days_remove = 30
+# 		days_re_enable = 0
+		
+# 		cost = @REMOVE_INFILTRATION_PP_COST
+
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
+		
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
+
+# 		remove_effect = {
+# 			621 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 } 
+# 		}
+# 	}	
+
+# 	CHI_communist_infiltration_in_xian = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			744 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
+# 		highlight_states = {
+# 			state = 744
+# 		}
+		
+# 		visible = {
+# 			744 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
+
+		
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
+		
+# 		days_remove = 30
+# 		days_re_enable = 0
+		
+# 		cost = @REMOVE_INFILTRATION_PP_COST
+
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
+		
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
+
+# 		remove_effect = {
+# 			744 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 }
+# 		}
+# 	}
+
+# 	CHI_communist_infiltration_in_ordos = {
+# 		icon = infiltrate_state
+# 		visible = {
+# 			746 = {
+# 				is_controlled_by = ROOT
+# 				has_any_PRC_infiltration_flag = yes
+# 			}
+# 		}
+# 		available = {
+# 			has_equipment = { infantry_equipment > 999 }
+# 		}
+# 		highlight_states = {
+# 			state = 746
+# 		}
+		
+# 		visible = {
+# 			746 = {
+# 				is_controlled_by = ROOT
+# 				has_state_flag = {
+# 					flag = discovered_infiltration
+# 					value > 0
+# 				}
+# 			}
+# 		}
+
+		
+# 		modifier = {
+# 			command_power_gain = -0.1
+# 		}
+		
+# 		days_remove = 30
+# 		days_re_enable = 0
+		
+# 		cost = @REMOVE_INFILTRATION_PP_COST
+
+# 		ai_will_do = {
+# 			base = 100
+# 			#Pretty damn important
+# 			modifier = {
+# 				add = 100
+# 				always = yes
+# 			}
+# 		}
+		
+# 		complete_effect = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment
+# 				amount = -1000
+# 			}
+# 		}
+
+# 		remove_effect = {
+# 			746 = {
+# 				CHI_show_state_uprising_effect_after_infiltration_level_down = yes
+# 				save_event_target_as = infiltrated_state
+# 				CHI_infiltration_flag_down_2 = yes
+# 			}
+# 			event_target:WTT_communist_china = { country_event = wtt_infiltration.6 }
+# 		}
+# 	}
+# }
 
 
 ###  ##  ###  ### ###  ##  #  #      ## #  # ###  ###   ##  ###  ### 
@@ -2640,87 +2663,87 @@ political_actions = {
 	}
 }
 
-CHI_xian_incident = {
-	CHI_instigate_xian_incident = {
-		icon = generic_political_discourse
-		available = {			
-			NOT = {
-				has_global_flag = CHI_xian_fired
-			}
-			CHI = {
-				NOT = {
-					is_in_faction_with = PRC
-				}
-				NOT = {
-					has_war_with = PRC
-				}
-				NOT = {
-					has_completed_focus = CHI_foreign_threats
-				}
-			}
-			PRC = {
-				NOT = {
-					has_war_with = CHI
-				}
-				is_in_faction = no
-			}
-			NOT = {
-				has_war_with = CHI
-			}
-			NOT = {
-				has_war_with = PRC
-			}
-		}
+# CHI_xian_incident = {
+# 	CHI_instigate_xian_incident = {
+# 		icon = generic_political_discourse
+# 		available = {			
+# 			NOT = {
+# 				has_global_flag = CHI_xian_fired
+# 			}
+# 			CHI = {
+# 				NOT = {
+# 					is_in_faction_with = PRC
+# 				}
+# 				NOT = {
+# 					has_war_with = PRC
+# 				}
+# 				NOT = {
+# 					has_completed_focus = CHI_foreign_threats
+# 				}
+# 			}
+# 			PRC = {
+# 				NOT = {
+# 					has_war_with = CHI
+# 				}
+# 				is_in_faction = no
+# 			}
+# 			NOT = {
+# 				has_war_with = CHI
+# 			}
+# 			NOT = {
+# 				has_war_with = PRC
+# 			}
+# 		}
 
-		visible = {
-			NOT = {
-				has_global_flag = CHI_xian_fired
-			}
-			CHI = {
-				NOT = {
-					is_in_faction_with = PRC
-				}
-			}
-			PRC = {
-				NOT = {
-					has_war_with = PRC
-				}
-			}
-			is_literally_china = yes
-			NOT = {
-				OR = {
-					original_tag = CHI
-					original_tag = PRC
-				}
-			}
-			event_target:WTT_current_china_leader = { tag = CHI }
-		}
-		cost = 25
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				threat > 0.1
-				factor = 2
-			}
-			modifier = {
-				JAP = {
-					NOT = {
-						has_government = fascism
-					}
-				}
-				factor = 0
-			}
-		}
-		complete_effect = {
-			set_country_flag = CHI_xian_instigator_flag
-			set_global_flag = CHI_xian_fired
-			CHI = {
-				country_event = wtt_xian_incident.1
-			}
-		}
-	}
-}
+# 		visible = {
+# 			NOT = {
+# 				has_global_flag = CHI_xian_fired
+# 			}
+# 			CHI = {
+# 				NOT = {
+# 					is_in_faction_with = PRC
+# 				}
+# 			}
+# 			PRC = {
+# 				NOT = {
+# 					has_war_with = PRC
+# 				}
+# 			}
+# 			is_literally_china = yes
+# 			NOT = {
+# 				OR = {
+# 					original_tag = CHI
+# 					original_tag = PRC
+# 				}
+# 			}
+# 			event_target:WTT_current_china_leader = { tag = CHI }
+# 		}
+# 		cost = 25
+# 		fire_only_once = yes
+# 		ai_will_do = {
+# 			factor = 1
+# 			modifier = {
+# 				threat > 0.1
+# 				factor = 2
+# 			}
+# 			modifier = {
+# 				JAP = {
+# 					NOT = {
+# 						has_government = fascism
+# 					}
+# 				}
+# 				factor = 0
+# 			}
+# 		}
+# 		complete_effect = {
+# 			set_country_flag = CHI_xian_instigator_flag
+# 			set_global_flag = CHI_xian_fired
+# 			CHI = {
+# 				country_event = wtt_xian_incident.1
+# 			}
+# 		}
+# 	}
+# }
 
 operations = {
 	

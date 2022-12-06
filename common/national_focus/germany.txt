@@ -10,7 +10,7 @@ focus_tree = {
 		}
 	}
 
-	continuous_focus_position = { x = 0 y = 1300 }
+	continuous_focus_position = { x = 0 y = 1000 }
 	
 	default = no
 
@@ -115,6 +115,7 @@ focus_tree = {
 		
 		completion_reward = {
 			random_owned_controlled_state = {
+				prioritize = { 63 }
 				limit = {
 					free_building_slots = {
 						building = synthetic_refinery
@@ -130,6 +131,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 60 }
 				limit = {
 					free_building_slots = {
 						building = synthetic_refinery
@@ -145,6 +147,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 65 }
 				limit = {
 					free_building_slots = {
 						building = synthetic_refinery
@@ -179,6 +182,7 @@ focus_tree = {
 		
 		completion_reward = {
 			random_owned_controlled_state = {
+				prioritize = { 51 }
 				limit = {
 					free_building_slots = {
 						building = fuel_silo
@@ -194,6 +198,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 63 }
 				limit = {
 					free_building_slots = {
 						building = fuel_silo
@@ -209,6 +214,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 59 }
 				limit = {
 					free_building_slots = {
 						building = fuel_silo
@@ -224,6 +230,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 60 }
 				limit = {
 					free_building_slots = {
 						building = fuel_silo
@@ -239,6 +246,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 65 }
 				limit = {
 					free_building_slots = {
 						building = fuel_silo
@@ -254,6 +262,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 67 }
 				limit = {
 					free_building_slots = {
 						building = fuel_silo
@@ -310,6 +319,7 @@ focus_tree = {
 		
 		completion_reward = {
 			random_owned_controlled_state = {
+				prioritize = { 67 }
 				limit = {
 					free_building_slots = {
 						building = synthetic_refinery
@@ -325,6 +335,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 59 }
 				limit = {
 					free_building_slots = {
 						building = synthetic_refinery
@@ -1042,6 +1053,7 @@ focus_tree = {
 
 		completion_reward = {
 			random_owned_controlled_state = {
+				prioritize = { 51 }
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
@@ -1057,6 +1069,7 @@ focus_tree = {
 				}
 			}
 			random_owned_controlled_state = {
+				prioritize = { 59 }
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
@@ -1354,7 +1367,7 @@ focus_tree = {
 				name = air_sup_bonus
 				cost_reduction = 0.40
 				uses = 2
-				category = battlefield_support_tree
+				category = air_doctrine
 			}
 
 			if = {
@@ -2141,6 +2154,7 @@ focus_tree = {
 			factor = 10
 		}	
 		completion_reward = {
+			set_global_flag = rhineland_remilitarized
 			42 = { set_demilitarized_zone = no }
 			51 = { set_demilitarized_zone = no }
 			custom_effect_tooltip = GER_rhineland_ultimatum
@@ -2258,6 +2272,8 @@ focus_tree = {
 			
 		completion_reward = {
 			add_ideas = GER_abwehr_idea
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = GER_intel_prop
 		}
 	}
 	
@@ -2955,6 +2971,12 @@ focus_tree = {
 					date < 1946.8.1
 				}
 			}
+			if = {
+				limit = {
+					GER  = { is_ai = yes }
+				}
+				FRA  = { has_capitulated = yes }
+			}
 		}
 
 		bypass = {
@@ -2973,42 +2995,9 @@ focus_tree = {
 			}
 			add_timed_idea = {
 				idea = GER_barbarossa
-				days = 120
+				days = 150
 			}
-			
-			if = {
-				limit = {
-					SOV = {has_completed_focus = SOV_secure_new_conquests}
-				}
-				SOV = {
-					every_controlled_state = {
-					limit = {
-						is_core_of = POL
-					}
-					add_compliance = -40
-					}
-					every_controlled_state = {
-						limit = {
-							is_core_of = LIT
-						}
-						add_compliance = -20
-					}
-					every_controlled_state = {
-						limit = {
-							is_core_of = LAT
-						}
-						add_compliance = -20
-					}
-					every_controlled_state = {
-						limit = {
-							is_core_of = EST
-						}
-						add_compliance = -20
-					}
-				}
-			}
-
-				
+							
 			remove_ideas = GER_good_weather_army
 			
 			activate_mission = GER_barbarossa_mission_moscow
@@ -3853,6 +3842,18 @@ focus_tree = {
 					producer = CZE
 				}
 				create_equipment_variant = {
+					name = "LT-35"
+					type = ger_light_tank_chassis_p35
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_small_gun_1
+						turret_type_slot = tank_light_turret_1
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+					}
+					icon = "gfx/interface/technologies/tanks/ger/ger_cze_tank_1.dds"
+				}
+				create_equipment_variant = {
 					name = "PzKpfw 38(t)"
 					type = ger_light_tank_chassis_p38
 					parent_version = 0
@@ -3866,9 +3867,10 @@ focus_tree = {
 				}
 				add_equipment_to_stockpile = {
 					type = ger_light_tank_chassis_p38
-					amount = 200
+					amount = 300
 					producer = CZE
 				}
+				
 			}
 		}
 	}
@@ -3903,6 +3905,14 @@ focus_tree = {
 				country_event = { id = germany.11 days = 1 }
 				custom_effect_tooltip = GER_mol_rib_pact_tt
 				custom_effect_tooltip = needs_approval
+			}
+			hidden_effect = {
+				# GER = {
+				# 	scoped_sound_effect = "Poland"
+				# }
+				SOV = {
+					scoped_sound_effect = "Poland"
+				}
 			}
 		}
 	}
@@ -4998,15 +5008,15 @@ focus_tree = {
 		prerequisite = { focus = GER_avenge_versailles }
 		available = {
 			ITA = { 
-			OR = {
-			surrender_progress > 0.05
-			AND = {
-			 NOT	= { controls_state = 115 }
-			 NOT	= { controls_state = 450 }
-			 NOT	= { controls_state = 448 }
-			}
-			}
-		} 
+				OR = {
+					surrender_progress > 0.05
+						AND = {
+							NOT	= { controls_state = 115 }
+							NOT	= { controls_state = 450 }
+							NOT	= { controls_state = 448 }
+						}
+				}
+			} 
 		}
 		bypass = {
 		}
@@ -5027,18 +5037,16 @@ focus_tree = {
 				}
 				transfer_state = 39
 			}
-			set_autonomy = {
-				target = ITA
-				autonomy_state = autonomy_satellite
-			}
-				
 			ITA = { 
-			set_cosmetic_tag = ITA_ISR 
-			remove_ideas = victor_emmanuel
-			add_ideas = ITA_german_occupation
-			set_capital =  { state = 159 }
+				set_cosmetic_tag = ITA_ISR 
+				remove_ideas = victor_emmanuel
+				add_ideas = ITA_german_occupation
+				set_capital =  { state = 159 }
 			}
-			
+			ITA = {
+				custom_effect_tooltip = unlock_propaganda_campaign_tt
+				unlock_decision_tooltip = ITA_serivizio_prop
+			}
 		}
 	}
 
@@ -5358,6 +5366,8 @@ focus_tree = {
 		
 		completion_reward = {
 			add_political_power = 200
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = GER_plow_prop
 		}
 	}
 	
@@ -6054,7 +6064,7 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = available_chief_of_navy
-			show_ideas_tooltip = raeder
+			show_ideas_tooltip = GER_erich_raeder
 			add_tech_bonus = {
 				name = bb_bonus
 				bonus = 0.5

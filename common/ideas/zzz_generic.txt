@@ -2,6 +2,21 @@ ideas = {
 
 	hidden_ideas = {
 	
+		league_of_nations_member_idea = { 
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+			}
+		}
+		
 		stupid_ai = {
 
 			picture = FRA_factory_strikes
@@ -148,6 +163,82 @@ ideas = {
 
 	# Special ones that can be applied on other countries through focus system.
 	country = {
+	
+		TO_chose_neutrality = {
+
+			picture = generic_pp_unity_bonus
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			#on_add = {
+			#	set_rule = { can_join_factions = no }
+			#}
+			#
+			#on_remove = {
+			#	set_rule = { can_join_factions = yes }
+			#}
+
+			modifier = {
+				trade_opinion_factor = 0.25
+				democratic_acceptance = -300
+				communism_acceptance = 100
+				#custom_modifier_tooltip = SOV_shocked_by_surprise_attack_cant_join_factions_tt
+			}
+		}
+		
+		TO_nato_ratified = {
+
+			picture = generic_democratic_drift_bonus
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				operative_slot = 1
+				communism_acceptance = -15
+			}
+		}
+		
+		father_check = {	
+
+			picture = eng_tackle_capitalism
+			removal_cost = -1	
+			
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			equipment_bonus = {
+				submarine = {
+					build_cost_ic = 2.00 instant = yes
+				}
+				strat_bomber_equipment = {
+					build_cost_ic = 2.00 instant = yes
+				}
+				cv_nav_bomber_equipment = {
+					instant = yes
+					build_cost_ic = 1.00
+				}
+				flying_boat_equipment = {
+					instant = yes
+					build_cost_ic = 2.00
+				}
+				tac_bomber_equipment = {
+					instant = yes
+					build_cost_ic = 2.00
+				}
+			}
+		}
 	
 		allied_vic_plan = {
 				allowed = {
@@ -1234,6 +1325,22 @@ ideas = {
 				industrial_capacity_dockyard = -0.10
 			}
 		}
+		
+		organization_of_african_unity_member_idea = { 
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+			#TODO_ASD: Set correct icon - idea_generic_org_of_african_unity
+			modifier = {
+			}
+		}
 	}
 
 	# TECHNOLOGY
@@ -1660,4 +1767,5 @@ ideas = {
 			traits = { artillery_manufacturer }
 		}
 	}
+
 }

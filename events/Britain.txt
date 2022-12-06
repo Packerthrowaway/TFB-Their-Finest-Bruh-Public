@@ -32,31 +32,32 @@ country_event = {
 			uses = 2
 			category = radar_tech
 		}
+		add_ideas = USA_tizard
 	}
 	
-	option = {
-		name = britain.1.b	#no way 
-		ai_chance = { factor = 10 }
-		#add_opinion_modifier = { target = ENG modifier = tizard_refused }
-		ENG = {
-			country_event = { days = 1 id = britain.3 }
-		}
-	}
+	# option = {
+	# 	name = britain.1.b	#no way 
+	# 	ai_chance = { factor = 10 }
+	# 	#add_opinion_modifier = { target = ENG modifier = tizard_refused }
+	# 	ENG = {
+	# 		country_event = { days = 1 id = britain.3 }
+	# 	}
+	# }
 
-	option = {
-		name = britain.1.c	#tech_sharing
-		trigger = { has_dlc = "Together for Victory"}
-		ai_chance = { factor = 90 }
-		add_political_power = -10
-		ENG = {
-			country_event = { days = 1 id = britain.21 }
-			add_opinion_modifier = {
-				target = ROOT
-				modifier = tizard_relations
-			}
-		}
-		add_to_tech_sharing_group = tizard_mission
-	}
+	# option = {
+	# 	name = britain.1.c	#tech_sharing
+	# 	trigger = { has_dlc = "Together for Victory"}
+	# 	ai_chance = { factor = 90 }
+	# 	add_political_power = -10
+	# 	ENG = {
+	# 		country_event = { days = 1 id = britain.21 }
+	# 		add_opinion_modifier = {
+	# 			target = ROOT
+	# 			modifier = tizard_relations
+	# 		}
+	# 	}
+	# 	add_to_tech_sharing_group = tizard_mission
+	# }
 }
 
 # USA helps
@@ -920,5 +921,26 @@ country_event = {
 	
 	option = {
 		name = britain.501.b
+	}
+}
+
+country_event = {
+	id = britain.504
+	title = britain.504.t
+	desc = britain.504.d
+	picture = GFX_report_event_indian_soldiers
+
+	is_triggered_only = yes
+	
+	option = {
+		name = britain.504.a
+		effect_tooltip = {
+			ENG = {
+				create_wargoal = {
+					type = topple_government
+					target = ITA
+				}
+			}
+		}
 	}
 }

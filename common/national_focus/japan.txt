@@ -12,7 +12,7 @@
 
 	default = no
 
-	continuous_focus_position = { x = 20 y = 1600 }
+	continuous_focus_position = { x = 20 y = 1400 }
 
 	focus = {
 		id = JAP_arrest_the_traitors
@@ -276,6 +276,10 @@
 				ideology = fascism
 				popularity = 0.2
 			}
+			swap_ideas = {
+				add_idea = JAP_kodoha2
+				remove_idea = JAP_kodoha
+			}
 		}
 	}
 	
@@ -486,14 +490,10 @@
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			swap_ideas = {
-				add_idea = JAP_kodoha2
-				remove_idea = JAP_kodoha
-			}
 			create_country_leader = {
 				name = "Hirohito"
 				desc = "POLITICS_Hirohito_DESC"
-				picture = "new_japan_portrait.dds"
+				picture = "Portrait_Japan_Hirohito.dds"
 				expire = "1989.1.1"
 				ideology = fascism_ideology
 				traits = {
@@ -918,9 +918,18 @@
 				}
 			}
 			add_named_threat = { threat = 5 name = JAP_intervene_in_china }
-			add_ideas = JAP_intervene_in_china_5
+			
 			unlock_decision_tooltip = JAP_china_step_up_war_effort
-			MAN = { add_ideas = MAN_intervene_in_china_5 }
+			if = {
+				limit = {
+					OR = { 
+						JAP = { is_ai = no }
+						MAN = { is_ai = no } 
+					}
+				}
+				add_ideas = JAP_intervene_in_china_5
+				MAN = { add_ideas = MAN_intervene_in_china_5 }
+			}
 			unlock_decision_tooltip = { decision = MAN_china_step_up_war_effort show_effect_tooltip = yes }
 		}
 	}
@@ -1070,6 +1079,8 @@
 			army_experience = -25
 			custom_effect_tooltip = JAP_adaptable_armor_designs
 			hidden_effect = { set_technology = { adaptable_armor_designs = 1 } }
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = JAP_tank2_prop
 		}
 	}
 	
@@ -1109,7 +1120,7 @@
 		relative_position_id = JAP_lessons_of_war
 
 		available = {
-			has_army_experience > 25
+			has_air_experience > 25
 		}
 
 		cancel_if_invalid = yes
@@ -1131,6 +1142,8 @@
 				technology = fighter4
 			}
 			army_experience = -25
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = JAP_air2_prop
 		}
 	}
 	
@@ -1144,7 +1157,7 @@
 		relative_position_id = JAP_lessons_of_war
 
 		available = {
-			has_army_experience > 25
+			has_air_experience > 25
 		}
 
 		cancel_if_invalid = yes
@@ -1163,6 +1176,8 @@
 				category = cas_bomber
 			}
 			army_experience = -25
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = JAP_air2_prop
 		}
 	}
 	
@@ -1195,113 +1210,7 @@
 			USA = { add_war_support = 0.10 }	
 			add_timed_idea = { idea = JAP_ichi_go days = 365 }
 		}
-	}
-
-	focus = {
-		id = JAP_pacify_china
-		icon = GFX_goal_generic_propaganda
-		cost = 5
-		x = 0
-		y = 1
-		prerequisite = { focus =  JAP_secure_china }
-		relative_position_id = JAP_secure_china
-		available = {
-			NOT = { country_exists = CHI }
-		}
-		bypass = {
-			MAN = {
-				has_completed_focus = MAN_treaty_with_the_bandits
-			}
-		}
-		completion_reward = {
-			custom_effect_tooltip = JAP_pacify_china_tt
-			every_controlled_state = {
-				limit = {
-					is_core_of = CHI
-				}
-				add_compliance = 20
-			}
-		}
-	}
-
-	focus = {
-		id = JAP_develop_china
-		icon = GFX_goal_generic_build_tank
-		prerequisite = { focus = JAP_pacify_china }
-		x = 0
-		y = 2
-		cost = 10
-		relative_position_id = JAP_secure_china
-
-		available = {
-			NOT = { country_exists = CHI }
-		}
-
-		completion_reward = {
-			613 = {
-				add_extra_state_shared_building_slots = 5
-				add_building_construction = {
-					type = industrial_complex
-					level = 5
-					instant_build = yes
-				}
-			}
-
-			592 = {
-				add_extra_state_shared_building_slots = 5
-				add_building_construction = {
-					type = industrial_complex
-					level = 5
-					instant_build = yes
-				}
-			}
-
-			597 = {
-				add_extra_state_shared_building_slots = 5
-				add_building_construction = {
-					type = industrial_complex
-					level = 5
-					instant_build = yes
-				}
-			}
-
-			594 = {
-				add_extra_state_shared_building_slots = 5
-				add_building_construction = {
-					type = arms_factory
-					level = 5
-					instant_build = yes
-				}
-			}
-
-			599 = {
-				add_extra_state_shared_building_slots = 5
-				add_building_construction = {
-					type = arms_factory
-					level = 5
-					instant_build = yes
-				}
-			}
-
-			593 = {
-				add_extra_state_shared_building_slots = 5
-				add_building_construction = {
-					type = arms_factory
-					level = 5
-					instant_build = yes
-				}
-			}
-
-			591 = {
-				add_extra_state_shared_building_slots = 5
-				add_building_construction = {
-					type = arms_factory
-					level = 5
-					instant_build = yes
-				}
-			}
-		}
-	}
+	}	
 
 	focus = {
 		id = JAP_strike_south_doctrine
@@ -1563,6 +1472,10 @@
 		cost = 5
 		relative_position_id = JAP_strike_south_doctrine
 
+		available = {
+			NOT = { has_war_with = CHI }
+		}
+
 		completion_reward = {
 			declare_war_on = {
 				target = ENG
@@ -1585,6 +1498,27 @@
 				target = RAJ
 				type = annex_everything
 			}
+			create_wargoal = {
+				target = CAN
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = SAF
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = MAL
+				type = annex_everything
+			}
+			if = {
+				limit = {
+					INS = { exists = yes }
+				}
+				declare_war_on = {
+					target = INS
+					type = annex_everything
+				}
+			}
 			random_country = { 
 				limit = { original_tag = HOL  has_government = democratic}
 				JAP = {
@@ -1595,8 +1529,8 @@
 				}	
 			}
 			create_wargoal = {
-				type = annex_everything
 				target = FRA
+				type = annex_everything
 			}
 			hidden_effect = {
 				if = {
@@ -2857,33 +2791,28 @@
 				category = ca_tech	
 			}
 		}
-	}
-	
-	focus = {
-		id = JAP_takao_cruiser
-		icon = GFX_goal_generic_navy_cruiser
-		prerequisite = { focus = JAP_cruiser_modernization focus = JAP_modern_subs }
-		x = -1
-		y = 1
-		relative_position_id = JAP_cruiser_modernization
-
-		cost = 5
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_ideas = JAP_takao_idea
-		}
 	}	
+
+	focus = {
+		id = JAP_asw_train
+		icon = GFX_goal_generic_occupy_states_coastal
+		prerequisite = { focus = JAP_cruiser_modernization focus = JAP_modern_subs focus = JAP_modern_escorts}
+		x = 1
+		y = 1
+		relative_position_id = JAP_modern_escorts
+
+		cost = 10
+
+		completion_reward = {
+			add_ideas = asw_training
+		}
+	}
 	
 	focus = {
 		id = JAP_long_lance_torpedoes
 		icon = GFX_goal_generic_occupy_start_war
 		prerequisite = { focus = JAP_cruiser_modernization focus = JAP_modern_subs focus = JAP_modern_escorts}
-		x = -1
+		x = 1
 		y = 1
 		relative_position_id = JAP_modern_subs
 
@@ -2979,9 +2908,9 @@
 		id = JAP_the_zero
 		icon = GFX_focus_jap_zero
 		prerequisite = { focus = JAP_first_air_fleet focus = JAP_escort_carriers }
-		x = 1
-		y = 1
-		relative_position_id = JAP_long_lance_torpedoes
+		x = 0
+		y = 2
+		relative_position_id = JAP_modern_subs
 
 		cost = 5
 		
@@ -3004,6 +2933,8 @@
 			}
 			custom_effect_tooltip = available_designer
 			show_ideas_tooltip = mitsubishi
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = JAP_air2_prop
 		}
 	}
 

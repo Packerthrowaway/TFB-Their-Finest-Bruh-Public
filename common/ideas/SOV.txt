@@ -89,6 +89,31 @@ ideas = {
 				planning_speed = 0.15
 			}
 		}
+
+		SOV_bessarabia_adapt = {
+
+			picture = generic_intel_bonus
+
+			allowed = {
+				always = no
+			}
+
+			cancel = {
+				has_war = no
+			}
+
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = ROM
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+			modifier = {
+				max_planning = 0.15
+				planning_speed = 0.15
+			}
+		}
 		
 		SOV_modernisation_mech_1 = {
 		
@@ -2387,8 +2412,8 @@ ideas = {
 			picture = eng_spirit_of_the_industrial_revolution
 			
 			modifier = {
-				line_change_production_efficiency_factor = 0.1
-				production_factory_efficiency_gain_factor = 0.1
+				line_change_production_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
 				global_building_slots_factor = 0.20
 			}
 		}
@@ -2467,7 +2492,7 @@ ideas = {
 			picture = man_five_year_plan_industry
 			
 			modifier = {
-				production_speed_arms_factory_factor = 0.3
+				production_speed_arms_factory_factor = 0.35
 				political_power_gain = -0.1
 				production_speed_bunker_factor = -0.25
 			}
@@ -2572,6 +2597,9 @@ ideas = {
 				heavy_assault_gun_chassis = {
 					build_cost_ic = -0.05 instant = yes
 				}
+			}
+			modifier = {
+				equipment_conversion_speed = 0.4
 			}
 		}
 
@@ -2962,6 +2990,7 @@ ideas = {
 				out_of_supply_factor = -0.5
 				max_dig_in_factor = 0.33
 				dig_in_speed_factor = 0.5
+				army_morale_factor = 0.05
 			}
 		}
 
@@ -3333,6 +3362,26 @@ ideas = {
 			modifier = {
 				refit_ic_cost = -0.5
 				refit_speed = 0.5
+			}
+		}
+
+		SOV_modernize_the_far_eastern_fleet_vanilla = { #Non-MTG version of the NS above
+			name = SOV_modernize_the_far_eastern_fleet
+
+			picture = generic_navy_bonus
+
+			removal_cost = -1
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				original_tag = SOV
+			}
+
+			modifier = {
+				repair_speed_factor = 0.25
 			}
 		}
 

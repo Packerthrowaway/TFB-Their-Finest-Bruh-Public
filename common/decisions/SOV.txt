@@ -161,7 +161,43 @@ debug_decisions = { #TODO_Manu: Comment these out
 	}
 }
 
+foreign_politics = {
+	SOV_annex_mon = {
 
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			SOV = { has_completed_focus = SOV_claim_bessarabia }
+			MON = {is_ai = YES}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		complete_effect = {
+			annex_country = { target = MON transfer_troops = yes }
+			287 = { set_compliance = 60 }
+			329 = { set_compliance = 60 }
+			330 = { set_compliance = 60 }
+			617 = { set_compliance = 60 }
+			618 = { set_compliance = 60 }
+			619 = { set_compliance = 60 }
+			759 = { set_compliance = 60 }
+			760 = { set_compliance = 60 }
+			817 = { set_compliance = 60 }
+			818 = { set_compliance = 60 }
+			819 = { set_compliance = 60 }
+			820 = { set_compliance = 60 }
+		}
+	}
+}
 
 ########     ###    ########     ###    ##    ##  #######  ####    ###    
 ##     ##   ## ##   ##     ##   ## ##   ###   ## ##     ##  ##    ## ##   
@@ -1855,7 +1891,7 @@ SOV_propaganda_campaigns = {
 	SOV_propaganda_motherland_calls = { # ID = 3
 		priority = 2
 
-		icon = eng_propaganda_campaigns
+		icon = generic_army_support
 
 		ai_will_do = {
 			base = 0
@@ -1930,13 +1966,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_victory_at_hand = { # ID = 4
 		priority = 3
 
-		icon = eng_propaganda_campaigns
+		icon = generic_prepare_civil_war
 
 		ai_will_do = {
 			base = 1
@@ -2009,13 +2046,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_defend_moscow = { # ID = 5
 		priority = 4
 
-		icon = eng_propaganda_campaigns
+		icon = generic_prepare_civil_war
 
 		ai_will_do = {
 			base = 500
@@ -2094,13 +2132,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_fight_to_the_last = { # ID = 6
 		priority = 5
 
-		icon = eng_propaganda_campaigns
+		icon = generic_prepare_civil_war
 
 		ai_will_do = {
 			base = 0.75
@@ -2183,13 +2222,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_hit_of_hammer = { # ID = 7
 		priority = 6
 
-		icon = eng_propaganda_campaigns
+		icon = generic_factory
 
 		ai_will_do = {
 			base = 10
@@ -2251,13 +2291,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_transport = { # ID = 8
 		priority = 7
 
-		icon = eng_propaganda_campaigns
+		icon = generic_construction
 
 		ai_will_do = {
 			base = 0.7
@@ -2318,13 +2359,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_oil_for_the_motherland = { # ID = 9
 		priority = 8
 
-		icon = eng_propaganda_campaigns
+		icon = oil
 
 		ai_will_do = {
 			base = 1
@@ -2396,13 +2438,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_more_metal = { # ID = 10
 		priority = 9
 
-		icon = eng_propaganda_campaigns
+		icon = steel
 
 		ai_will_do = {
 			base = 0.8
@@ -2535,13 +2578,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_high_yield = { # ID = 11
 		priority = 10
 
-		icon = eng_propaganda_campaigns
+		icon = generic_construction
 
 		ai_will_do = {
 			base = 10
@@ -2602,13 +2646,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_for_the_motherland = { # ID = 12
 		priority = 11
 
-		icon = eng_propaganda_campaigns
+		icon = generic_prepare_civil_war
 
 		ai_will_do = {
 			base = 1
@@ -2685,13 +2730,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_heroes_forward = { # ID = 13
 		priority = 12
 
-		icon = eng_propaganda_campaigns
+		icon = generic_prepare_civil_war
 
 		ai_will_do = {
 			base = 10
@@ -2794,6 +2840,7 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
@@ -3050,13 +3097,14 @@ SOV_propaganda_campaigns = {
 	# 		clear_variable = SOV_propaganda_cost
 
 	# 		custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+	#		hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 	# 	}
 	# }
 
 	SOV_propaganda_anti_fascism = { # ID = 15
 		priority = 14
 
-		icon = eng_propaganda_campaigns
+		icon = generic_prepare_civil_war
 
 		ai_will_do = {
 			base = 1
@@ -3306,13 +3354,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_treacherous_enemy = { # ID = 16
 		priority = 15
 
-		icon = eng_propaganda_campaigns
+		icon = generic_political_actions
 
 		ai_will_do = {
 			base = 1
@@ -3381,13 +3430,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_do_not_blab = { # ID = 17
 		priority = 16
 
-		icon = eng_propaganda_campaigns
+		icon = generic_political_actions
 
 		ai_will_do = {
 			base = 1
@@ -3441,11 +3491,11 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_do_not_blab_cost
 
 		modifier = {
-			army_intel_to_others = -50
-			navy_intel_to_others = -50
-			airforce_intel_to_others = -50
-			civilian_intel_to_others = -50
-			foreign_subversive_activites = -0.25
+			army_intel_to_others = -30
+			navy_intel_to_others = -30
+			airforce_intel_to_others = -30
+			civilian_intel_to_others = -30
+			foreign_subversive_activites = -0.20
 		}
 
 		complete_effect = {
@@ -3464,13 +3514,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_sweep_scum_out = { # ID = 18
 		priority = 17
 
-		icon = eng_propaganda_campaigns
+		icon = generic_prepare_civil_war
 
 		ai_will_do = {
 			base = 0.5
@@ -3545,6 +3596,7 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
@@ -3614,6 +3666,7 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
@@ -3701,13 +3754,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_glory_to_partisans = { # ID = 21
 		priority = 20
 
-		icon = eng_propaganda_campaigns
+		icon = generic_political_actions
 
 		ai_will_do = {
 			base = 0.1
@@ -3785,13 +3839,14 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
 	SOV_propaganda_death_to_invaders = { # ID = 22
 		priority = 21
 
-		icon = eng_propaganda_campaigns
+		icon = generic_scorched_earth
 
 		ai_will_do = {
 			base = 1
@@ -3880,7 +3935,7 @@ SOV_propaganda_campaigns = {
 		}
 
 		remove_effect = {
-			every_controlled_state = {
+			every_owned_state = {
 				limit = {
 					has_dynamic_modifier = { modifier = SOV_invaders_must_die }
 				}
@@ -3898,6 +3953,7 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
@@ -3970,6 +4026,7 @@ SOV_propaganda_campaigns = {
 			clear_variable = SOV_propaganda_cost
 
 			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
 
@@ -4040,6 +4097,7 @@ SOV_propaganda_campaigns = {
 	# 		clear_variable = SOV_propaganda_cost
 
 	# 		custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+	#		hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 	# 	}
 	# }
 
@@ -4127,6 +4185,7 @@ SOV_propaganda_campaigns = {
 	# 		clear_variable = SOV_propaganda_cost
 
 	# 		custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+	#		hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 	# 	}
 	# }
 
@@ -4210,6 +4269,7 @@ SOV_propaganda_campaigns = {
 	# 		clear_variable = SOV_propaganda_cost
 
 	# 		custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+	#		hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 	# 	}
 	# }
 }
@@ -7593,9 +7653,9 @@ SOV_great_patriotic_war = {
 		icon = generic_prepare_civil_war
 
 		ai_will_do = {
-			base = 0.1
+			base = 0
 			modifier = {
-				factor = 15
+				add = 15
 				FROM = {
 					OR = {
 						state = 219 #MOSCOW
@@ -7606,6 +7666,7 @@ SOV_great_patriotic_war = {
 						state = 202 #KIEV
 					}
 				}
+				#ROOT = { manpower_per_military_factory > 15000 } #Don't waste if we need better manpower laws
 			}
 		}
 
@@ -7626,27 +7687,32 @@ SOV_great_patriotic_war = {
 			has_completed_focus = SOV_war_mobilisation
 		}
 
-		allowed = { 
+		allowed = {
 			original_tag = SOV
 		}
 
 		available = {
 			FROM = {
-				NOT = { has_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense } }
+				NOT = { has_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense_mod } }
 			}
 		}
 
 		visible = {
 			any_enemy_country = { SOV_is_major_not_original_sov = yes }
-			NOT = { has_country_flag = SOV_order_227_flag }			
+			NOT = { has_country_flag = SOV_order_227_flag }
 			FROM = {
 				is_controlled_by = ROOT
 				any_neighbor_state = {
-					controller = { has_war_with = ROOT }
+					ROOT = {
+						any_enemy_country = {
+							controls_state = PREV.PREV      
+						}
+					}
 				}
 			}
 		}
 
+		ai_hint_pp_cost = 25
 		custom_cost_trigger = {
 			command_power > 24
 			has_political_power > 24
@@ -7665,6 +7731,10 @@ SOV_great_patriotic_war = {
 
 		complete_effect = {
 			hidden_effect = {
+				#Cost
+				add_command_power = -25
+				add_political_power = -25
+
 				FROM = {
 					add_dynamic_modifier = {
 						modifier = SOV_factory_worker_militias_raised
@@ -7765,7 +7835,7 @@ SOV_great_patriotic_war = {
 
 		cancel_effect = {
 			FROM = {
-				remove_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense }
+				remove_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense_mod }
 			}
 		}
 
@@ -7773,7 +7843,7 @@ SOV_great_patriotic_war = {
 			hidden_effect = {
 				FROM = {
 					add_dynamic_modifier = {
-						modifier = SOV_civilian_labor_in_defense
+						modifier = SOV_civilian_labor_in_defense_mod
 						scope = SOV
 					}
 				}
@@ -7783,7 +7853,7 @@ SOV_great_patriotic_war = {
 
 		remove_effect = {
 			FROM = {
-				remove_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense }
+				remove_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense_mod }
 			}
 		}
 	}
@@ -9144,8 +9214,8 @@ operations = {
 		is_good = no
 
 		timeout_effect = {
-			add_war_support = -0.3
-			add_stability = -0.3
+			add_war_support = -0.15
+			add_stability = -0.15
 			add_timed_idea = {
 				idea = SOV_assure_competency
 				days = 150
@@ -9157,6 +9227,11 @@ operations = {
 			FIN = { set_country_flag = winter_war_finished }
 			white_peace = FIN
 			set_global_flag =  FIN_winter_victory
+			hidden_effect = {
+				MON = {
+					remove_ideas = MON_brothers_war
+				}
+			}
 		}
 
 		complete_effect = {
@@ -9225,6 +9300,10 @@ operations = {
 			}
 		}
 
+		cancel_trigger = {
+			NOT = { has_war_with = SOV }
+		}
+
 		days_remove = 7
 		fire_only_once = yes
 
@@ -9236,249 +9315,321 @@ operations = {
 			}
 			FIN = { set_country_flag = winter_war_finished }
 			diplomatic_relation = {
+				country = FIN
+				relation = non_aggression_pact
+			}
+			hidden_effect = {
+				MON = {
+					remove_ideas = MON_brothers_war
+				}
+			}
+		}
+	}
+
+	SOV_bessarabia_lessons = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			has_war_with = ROM
+			ROM = { NOT = { has_country_flag = bessarabia_finished  } }
+		}
+
+		available = {
+			has_war_with = ROM
+			casualties > 125000
+		}
+
+		fire_only_once = yes
+
+		days_remove = 7
+
+		remove_effect = {
+			add_timed_idea = {
+				idea = SOV_bessarabia_adapt
+				days = 90
+			}
+		}
+
+	}
+
+	SOV_bessarabia_victory = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			has_war_with = ROM
+			ROM = { NOT = { has_country_flag = bessarabia_finished  } }
+		}
+
+		available = {
+			has_war_with = ROM
+			OR = {
+				ROM = {
+					casualties > 75000
+				}
+				ROM = {
+					surrender_progress > 0.3
+				}
+			}
+		}
+
+		days_remove = 7
+		fire_only_once = yes
+
+		remove_effect = {
+			SOV = {
+				white_peace = ROM
+ 				transfer_state = 78
+				transfer_state = 80
+ 				transfer_state = 766
+			}
+			ROM = { set_country_flag = bessarabia_finished }
+			diplomatic_relation = {
 				country = SOV
 				relation = non_aggression_pact
 			}
+		}
+	}
+
+}
+
+# political_actions = {
+
+# 	demand_tribute_from_new_communist_china = {
+
+# 		icon = generic_civil_support
+
+# 		allowed = {
+# 			tag = SOV
+# 		}
+
+# 		icon = generic_political_actions
+
+# 		available = {
 			
-		}
-	}
+# 		}
 
-}
+# 		ai_will_do = {
+# 			base = 0
+# 			modifier = {
+# 				add = 150
+# 					#Has somewhat won against CHI and JAP
+# 				count_triggers = {
+# 					amount = 10
+# 					595 = { is_controlled_by = FROM }
+# 					596 = { is_controlled_by = FROM }
+# 					597 = { is_controlled_by = FROM }
+# 					598 = { is_controlled_by = FROM }
+# 					600 = { is_controlled_by = FROM }
+# 					601 = { is_controlled_by = FROM }
+# 					602 = { is_controlled_by = FROM }
+# 					603 = { is_controlled_by = FROM }
+# 					605 = { is_controlled_by = FROM }
+# 					606 = { is_controlled_by = FROM }
+# 					607 = { is_controlled_by = FROM }
+# 					608 = { is_controlled_by = FROM }
+# 					613 = { is_controlled_by = FROM }
+# 					614 = { is_controlled_by = FROM }
+# 					620 = { is_controlled_by = FROM }				
+# 				}
+# 			}
 
-political_actions = {
+# 		}
 
-}
+# 		cost = 10
 
-political_actions = {
+# 		visible = {
+# 			has_government = communism
+# 			FROM = {
+# 				has_country_flag = WTT_support_from_soviet
+# 				NOT = { has_war_with = ROOT }
+# 				NOT = { is_subject_of = ROOT }
+# 				NOT = {	has_idea = PRC_soviet_tribute_6 }
+# 			}
+# 		}
 
-	demand_tribute_from_new_communist_china = {
+# 		targets = { CHI PRC GXC YUN SHX XSM SIK }
+# 		targets_dynamic = yes
 
-		icon = generic_civil_support
+# 		target_trigger = {
+# 			FROM = { 
+# 				tag = event_target:WTT_communist_china
+# 				has_country_flag = WTT_support_from_soviet 
+# 			}
+# 		}
 
-		allowed = {
-			tag = SOV
-		}
+# 		fire_only_once = no
 
-		icon = generic_political_actions
+# 		days_re_enable = 180
 
-		available = {
-			
-		}
+# 		complete_effect = {
+# 			FROM = {
+# 				country_event = { id = wtt_warlord_vs_prc.21 }
+# 				custom_effect_tooltip = if_they_accept
+# 				effect_tooltip = {
+# 					PRC_soviet_tribute_level_up = yes	
+# 				}
+# 			}
+# 		}
+# 	}
 
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 150
-					#Has somewhat won against CHI and JAP
-				count_triggers = {
-					amount = 10
-					595 = { is_controlled_by = FROM }
-					596 = { is_controlled_by = FROM }
-					597 = { is_controlled_by = FROM }
-					598 = { is_controlled_by = FROM }
-					600 = { is_controlled_by = FROM }
-					601 = { is_controlled_by = FROM }
-					602 = { is_controlled_by = FROM }
-					603 = { is_controlled_by = FROM }
-					605 = { is_controlled_by = FROM }
-					606 = { is_controlled_by = FROM }
-					607 = { is_controlled_by = FROM }
-					608 = { is_controlled_by = FROM }
-					613 = { is_controlled_by = FROM }
-					614 = { is_controlled_by = FROM }
-					620 = { is_controlled_by = FROM }				
-				}
-			}
+# 	demand_full_integration = {
 
-		}
+# 		icon = generic_civil_support
 
-		cost = 10
+# 		allowed = {
+# 			tag = SOV			
+# 		}
 
-		visible = {
-			has_government = communism
-			FROM = {
-				has_country_flag = WTT_support_from_soviet
-				NOT = { has_war_with = ROOT }
-				NOT = { is_subject_of = ROOT }
-				NOT = {	has_idea = PRC_soviet_tribute_6 }
-			}
-		}
+# 		icon = generic_political_actions
 
-		targets = { CHI PRC GXC YUN SHX XSM SIK }
-		targets_dynamic = yes
+# 		available = {
+# 			FROM = { has_soviet_tribute = yes }
+# 		}
 
-		target_trigger = {
-			FROM = { 
-				tag = event_target:WTT_communist_china
-				has_country_flag = WTT_support_from_soviet 
-			}
-		}
+# 		cost = WTT_communist_china_integration_cost?300
 
-		fire_only_once = no
+# 		visible = {
+# 			has_government = communism
+# 			FROM = { has_country_flag = WTT_support_from_soviet }
+# 		}
 
-		days_re_enable = 180
+# 		targets = { CHI PRC GXC YUN SHX XSM SIK }
+# 		targets_dynamic = yes
 
-		complete_effect = {
-			FROM = {
-				country_event = { id = wtt_warlord_vs_prc.21 }
-				custom_effect_tooltip = if_they_accept
-				effect_tooltip = {
-					PRC_soviet_tribute_level_up = yes	
-				}
-			}
-		}
-	}
+# 		target_trigger = {
+# 			FROM = { has_country_flag = WTT_support_from_soviet }
+# 		}
 
-	demand_full_integration = {
+# 		ai_will_do = {
+# 			base = 0
+# 			modifier = {
+# 				add = 100
+# 				#Has won against CHI and JAP
+# 				595 = { is_controlled_by = FROM }
+# 				596 = { is_controlled_by = FROM }
+# 				597 = { is_controlled_by = FROM }
+# 				598 = { is_controlled_by = FROM }
+# 				600 = { is_controlled_by = FROM }
+# 				601 = { is_controlled_by = FROM }
+# 				602 = { is_controlled_by = FROM }
+# 				603 = { is_controlled_by = FROM }
+# 				605 = { is_controlled_by = FROM }
+# 				606 = { is_controlled_by = FROM }
+# 				607 = { is_controlled_by = FROM }
+# 				608 = { is_controlled_by = FROM }
+# 				613 = { is_controlled_by = FROM }
+# 				614 = { is_controlled_by = FROM }
+# 				620 = { is_controlled_by = FROM }
+# 			}
+# 			modifier = {
+# 				add = 50
+# 				FROM = {
+# 					check_variable = { WTT_communist_china_integration_cost < 200 }
+# 				}
+# 			}
+# 			modifier = {
+# 				add = 50
+# 				FROM = {
+# 					check_variable = { WTT_communist_china_integration_cost < 150 }
+# 				}
+# 			}
+# 			modifier = {
+# 				add = 50
+# 				FROM = {
+# 					check_variable = { WTT_communist_china_integration_cost < 100 }
+# 				}
+# 			}
+# 		}
 
-		icon = generic_civil_support
+# 		fire_only_once = yes
 
-		allowed = {
-			tag = SOV			
-		}
+# 		complete_effect = {
+# 			FROM = { country_event = { id = wtt_warlord_vs_prc.31 } }
+# 		}
+# 	}	
 
-		icon = generic_political_actions
+# 	#SOVIET MISSION TO OCCUPY TURKEY
+# 	SOV_set_up_puppet_state_in_turkey = {
 
-		available = {
-			FROM = { has_soviet_tribute = yes }
-		}
+# 		icon = generic_civil_support
 
-		cost = WTT_communist_china_integration_cost?300
+# 		allowed = {
+# 			has_dlc = "Battle for the Bosporus"
+# 			tag = SOV
+# 		}
 
-		visible = {
-			has_government = communism
-			FROM = { has_country_flag = WTT_support_from_soviet }
-		}
+# 		available = {
+# 			NOT = { army_manpower_in_state = { state = 354 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 353 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 352 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 349 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 350 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 355 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 800 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 344 amount < 28800 } }
+# 			NOT = { army_manpower_in_state = { state = 348 amount < 48000 } }
+# 			NOT = { army_manpower_in_state = { state = 356 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 346 amount < 9600 } }
+# 			NOT = { army_manpower_in_state = { state = 345 amount < 28800 } }
+# 			NOT = { army_manpower_in_state = { state = 343 amount < 48000 } }
+# 			NOT = { army_manpower_in_state = { state = 347 amount < 48000 } }
+# 			NOT = { army_manpower_in_state = { state = 339 amount < 48000 } }
+# 			NOT = { army_manpower_in_state = { state = 342 amount < 48000 } }
+# 			NOT = { army_manpower_in_state = { state = 343 amount < 48000 } }
+# 			NOT = { army_manpower_in_state = { state = 49 amount < 124000 } }
+# 		}
 
-		targets = { CHI PRC GXC YUN SHX XSM SIK }
-		targets_dynamic = yes
+# 		target_trigger = {
+# 			FROM = {
+# 				original_tag = TUR
+# 			}
+# 		}
 
-		target_trigger = {
-			FROM = { has_country_flag = WTT_support_from_soviet }
-		}
+# 		cost = 50
 
-		ai_will_do = {
-			base = 0
-			modifier = {
-				add = 100
-				#Has won against CHI and JAP
-				595 = { is_controlled_by = FROM }
-				596 = { is_controlled_by = FROM }
-				597 = { is_controlled_by = FROM }
-				598 = { is_controlled_by = FROM }
-				600 = { is_controlled_by = FROM }
-				601 = { is_controlled_by = FROM }
-				602 = { is_controlled_by = FROM }
-				603 = { is_controlled_by = FROM }
-				605 = { is_controlled_by = FROM }
-				606 = { is_controlled_by = FROM }
-				607 = { is_controlled_by = FROM }
-				608 = { is_controlled_by = FROM }
-				613 = { is_controlled_by = FROM }
-				614 = { is_controlled_by = FROM }
-				620 = { is_controlled_by = FROM }
-			}
-			modifier = {
-				add = 50
-				FROM = {
-					check_variable = { WTT_communist_china_integration_cost < 200 }
-				}
-			}
-			modifier = {
-				add = 50
-				FROM = {
-					check_variable = { WTT_communist_china_integration_cost < 150 }
-				}
-			}
-			modifier = {
-				add = 50
-				FROM = {
-					check_variable = { WTT_communist_china_integration_cost < 100 }
-				}
-			}
-		}
+# 		fire_only_once = yes
 
-		fire_only_once = yes
+# 		days_remove = 90
 
-		complete_effect = {
-			FROM = { country_event = { id = wtt_warlord_vs_prc.31 } }
-		}
-	}	
+# 		visible = {
+# 			has_government = communism
+# 			has_global_flag = GRE_turkey_surrenders
+# 			FROM = {
+# 				NOT = { 
+# 					is_subject_of = SOV 
+# 					is_subject_of = GRE
+# 				}
+# 			}
+# 		}
 
-	#SOVIET MISSION TO OCCUPY TURKEY
-	SOV_set_up_puppet_state_in_turkey = {
+# 		cancel_if_not_visible = yes
 
-		icon = generic_civil_support
+# 		remove_effect = {
+# 		}
 
-		allowed = {
-			has_dlc = "Battle for the Bosporus"
-			tag = SOV
-		}
+# 		complete_effect = {
+# 			TUR = {
+# 				country_event = { id = bftb_greece.34 }
+# 			}
+# 			hidden_effect = {
+# 				clr_global_flag = GRE_turkey_surrenders
+# 			}
+# 		}
 
-		available = {
-			NOT = { army_manpower_in_state = { state = 354 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 353 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 352 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 349 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 350 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 355 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 800 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 344 amount < 28800 } }
-			NOT = { army_manpower_in_state = { state = 348 amount < 48000 } }
-			NOT = { army_manpower_in_state = { state = 356 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 346 amount < 9600 } }
-			NOT = { army_manpower_in_state = { state = 345 amount < 28800 } }
-			NOT = { army_manpower_in_state = { state = 343 amount < 48000 } }
-			NOT = { army_manpower_in_state = { state = 347 amount < 48000 } }
-			NOT = { army_manpower_in_state = { state = 339 amount < 48000 } }
-			NOT = { army_manpower_in_state = { state = 342 amount < 48000 } }
-			NOT = { army_manpower_in_state = { state = 343 amount < 48000 } }
-			NOT = { army_manpower_in_state = { state = 49 amount < 124000 } }
-		}
+# 		ai_will_do = {
+# 			factor = 0
+# 		}
+# 	}
 
-		target_trigger = {
-			FROM = {
-				original_tag = TUR
-			}
-		}
-
-		cost = 50
-
-		fire_only_once = yes
-
-		days_remove = 90
-
-		visible = {
-			has_government = communism
-			has_global_flag = GRE_turkey_surrenders
-			FROM = {
-				NOT = { 
-					is_subject_of = SOV 
-					is_subject_of = GRE
-				}
-			}
-		}
-
-		cancel_if_not_visible = yes
-
-		remove_effect = {
-		}
-
-		complete_effect = {
-			TUR = {
-				country_event = { id = bftb_greece.34 }
-			}
-			hidden_effect = {
-				clr_global_flag = GRE_turkey_surrenders
-			}
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-
-}
+# }
 
 SOV_organise_partisans = {
 

@@ -1,6 +1,15 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+
 focus_tree = {
 	id = bulgarian_focus
-	
+
 	country = {
 		factor = 0
 		
@@ -12,7 +21,8 @@ focus_tree = {
 	}
 	
 	default = no
-	
+	continuous_focus_position = { x = 20 y = 1000 }
+
 	focus = {
 		id = BUL_kings_government
 		text = BUL_acquire_modern_tools
@@ -2580,8 +2590,25 @@ focus_tree = {
 
 		available = {
 			has_civil_war = no
-			SPR_scw_in_progress = yes
-			NOT = { has_war_with = SPA }
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				SPR_scw_in_progress = yes
+				country_exists = SPA
+				NOT = { has_war_with = SPA }
+			}
+			else = {
+				any_country = {
+					original_tag = SPR
+					has_civil_war = yes
+					NOT = { has_war_with = ROOT }
+					OR = {
+						has_government = fascism
+						has_government = neutrality
+					}
+				}
+			}
 			OR = {
 				has_government = fascism
 				has_government = neutrality
@@ -2909,6 +2936,11 @@ focus_tree = {
 				id = GER
 				value = 20
 			}
+			add_ai_strategy = {
+				type = befriend
+				id = ITA
+				value = 20
+			}
 		}
 	}
 
@@ -3133,6 +3165,10 @@ focus_tree = {
 
 		cost = 5
 
+		available = {
+			controls_state = 77
+		}
+
 		ai_will_do = {
 			factor = 27
 		}
@@ -3140,6 +3176,7 @@ focus_tree = {
 		completion_reward = {
 			add_state_core = 77
 			remove_state_claim = 77
+			transfer_state = 77
 		}
 	}
 	
@@ -3157,11 +3194,18 @@ focus_tree = {
 			factor = 27
 		}
 
+		available = {
+			controls_state = 184
+			controls_state = 731
+		}
+
 		completion_reward = {
 			add_state_core = 184
 			remove_state_claim = 184
+			transfer_state = 184
 			add_state_core = 731
 			remove_state_claim = 731
+			transfer_state = 731
 		}
 	}
 	
@@ -3179,11 +3223,18 @@ focus_tree = {
 			factor = 27
 		}
 
+		available = {
+			controls_state = 106
+			controls_state = 803
+		}
+
 		completion_reward = {
 			add_state_core = 106
 			remove_state_claim = 106
+			transfer_state = 106
 			add_state_core = 803
 			remove_state_claim = 803
+			transfer_state = 803
 		}
 	}
 	

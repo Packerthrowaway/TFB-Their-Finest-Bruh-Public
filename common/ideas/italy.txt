@@ -12,9 +12,16 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				surrender_limit = 0.5
+				surrender_limit = 0.15
+				max_surrender_limit_offset = 0.05
 				army_core_attack_factor = 0.05
 				army_core_defence_factor = 0.15
+			}
+
+			targeted_modifier = {
+				tag = GER
+				cic_to_target_factor = 0.2
+				mic_to_target_factor = 0.2
 			}
 		}	
 	
@@ -151,10 +158,12 @@ ideas = {
 			picture = generic_manpower_bonus
 			
 			modifier = {
-				army_org_factor = 0.025
+				army_org_factor = 0.05
 				planning_speed = 0.10
 				army_leader_start_level = 1
 				military_leader_cost_factor = -0.50
+				experience_loss_factor = -0.1
+				experience_gain_army_unit_factor = 0.10
 			}
 		}
 	
@@ -185,7 +194,7 @@ ideas = {
 			picture = generic_purge
 			
 			modifier = {
-				command_power_gain_mult = -0.4
+				command_power_gain_mult = -0.33
 				political_power_gain = -0.25
 			}
 		}
@@ -382,10 +391,10 @@ ideas = {
 				experience_gain_factor = -0.25
 				planning_speed = -0.25
 				max_planning = 0.20
-				cat_mobile_warfare_cost_factor = 0.30
-				cat_superior_firepower_cost_factor = 0.30
-				cat_mass_assault_cost_factor = 0.30
-				cat_grand_battle_plan_cost_factor = -0.20
+				cat_mobile_warfare_cost_factor = 0.25
+				cat_superior_firepower_cost_factor = 0.25
+				cat_mass_assault_cost_factor = 0.25
+				cat_grand_battle_plan_cost_factor = -0.15
 				
 			}
 		}
@@ -404,10 +413,10 @@ ideas = {
 				max_dig_in = 2.5
 				experience_gain_factor = -0.20
 				planning_speed = -0.20
-				cat_mobile_warfare_cost_factor = 0.15
-				cat_superior_firepower_cost_factor = 0.15
-				cat_mass_assault_cost_factor = 0.15
-				cat_grand_battle_plan_cost_factor = -0.05
+				cat_mobile_warfare_cost_factor = 0.25
+				cat_superior_firepower_cost_factor = -0.1
+				cat_mass_assault_cost_factor = 0.25
+				cat_grand_battle_plan_cost_factor = 0.25
 			}
 		}
 		
@@ -427,10 +436,10 @@ ideas = {
 				planning_speed = -0.10
 				max_planning = 0.15
 				fascism_drift = 0.10
-				cat_mobile_warfare_cost_factor = 0.10
-				cat_superior_firepower_cost_factor = 0.10
-				cat_mass_assault_cost_factor = 0.10
-				cat_grand_battle_plan_cost_factor = -0.05
+				cat_mobile_warfare_cost_factor = 0.25
+				cat_superior_firepower_cost_factor = -0.25
+				cat_mass_assault_cost_factor = 0.25
+				cat_grand_battle_plan_cost_factor = 0.25
 			}
 		}
 		
@@ -448,8 +457,9 @@ ideas = {
 				experience_gain_factor = -0.10
 				planning_speed = -0.10
 				cat_mobile_warfare_cost_factor = -0.05
-				cat_superior_firepower_cost_factor = -0.05
-				cat_mass_assault_cost_factor = -0.05
+				cat_superior_firepower_cost_factor = 0.25
+				cat_mass_assault_cost_factor = 0.25
+				cat_grand_battle_plan_cost_factor = 0.25
 			}
 		}
 		
@@ -464,8 +474,12 @@ ideas = {
 			picture = italian_general_staff
 			
 			modifier = {
-				experience_gain_factor = -0.05
-				planning_speed = -0.05
+				experience_gain_factor = 0.15
+				planning_speed = 0.1
+				cat_mobile_warfare_cost_factor = -0.05
+				cat_superior_firepower_cost_factor = 0.25
+				cat_mass_assault_cost_factor = 0.25
+				cat_grand_battle_plan_cost_factor = 0.25
 			}
 		}
 	
@@ -705,7 +719,7 @@ ideas = {
 			}
 		}
 	
-		victor_emmanuel = {
+		vittorio_emanuele = {
 			
 			
 			allowed = {
@@ -811,7 +825,6 @@ ideas = {
 			naval_speed_factor = 0.1	}
 		}	
 	
-		
 	}
 	
 		
@@ -954,7 +967,44 @@ ideas = {
 	}
 	
 	industrial_concern = {
-	
+		ITA_ferrovie_dello_stato_italiane = {
+
+			picture = ITA_ferrovie_dello_stato_italiane
+			
+			allowed = {
+				original_tag = ITA
+			}
+
+			available = {
+				has_completed_focus = ITA_railway_expansion
+			}
+			
+			cost = 75
+
+			research_bonus = {
+				train_tech = 0.15
+			}
+			
+			traits = { railway_company }
+		}
+
+		ITA_agip = {
+
+			picture = ITA_agip
+			
+			allowed = {
+				original_tag = ITA
+			}
+
+			research_bonus = {
+				synth_resources = 0.1
+				industry = 0.05
+			}
+			
+			traits = { refinery_concern }
+		}		
+
+
 		danieli = {
 			
 			allowed = {
@@ -967,7 +1017,43 @@ ideas = {
 			}
 			
 			traits = { industrial_concern }
-		}		
+		}	
+		
+		ITA_italcementi = { #NORTH
+
+			picture = ITA_italcementi
+			
+			allowed = {
+				original_tag = ITA
+			}
+
+			available = {
+				controls_state = 158 #PIEDMONT
+				ITA_is_northern_designer = yes
+			}
+
+			traits = { construction_company }
+		}
+
+		ITA_ducati_energia = { #NORTH
+
+			picture = ITA_ducati_energia
+			
+			allowed = {
+				original_tag = ITA
+			}
+
+
+			available = {
+
+			}
+
+			research_bonus = {
+				electronics = 0.15
+			}
+			
+			traits = { electronics_concern }
+		}
 	}
 	
 	
@@ -987,6 +1073,82 @@ ideas = {
 			
 			traits = { naval_manufacturer }
 		}
+
+		
+		ITA_cantiere_oto = { #NORTH
+			picture	= ITA_oto
+
+			allowed = {
+				original_tag = ITA
+			}
+
+
+			available = {
+				has_completed_focus = ITA_green_water_navy
+			}
+						
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			traits = { mediterranean_naval_manufacturer }
+		}
+
+		ITA_navalmeccanica = { #SOUTH
+			picture	= ITA_navalmeccanica
+
+			allowed = {
+				original_tag = ITA
+			}
+
+			available = {
+				has_completed_focus = ITA_convoy_defence
+			}
+						
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			traits = { convoy_escort_naval_manufacturer }
+		}
+
+		ITA_cantiere_navale_di_ancona = { #SOUTH
+			picture	= ITA_cantera_navale_di_ancona
+
+			allowed = {
+				original_tag = ITA
+			}
+
+
+			available = {
+				has_completed_focus = ITA_new_cruisers
+			}
+						
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			traits = { raiding_fleet_naval_manufacturer }
+		}
+
+		ITA_cantieri_navali_tosi = { #SOUTH
+			picture	= ITA_cantieri_navali_tosi
+
+			allowed = {
+				original_tag = ITA
+			}
+
+			available = {
+				has_completed_focus = ITA_sub_raiders
+			}
+						
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			traits = { submarine_manufacturer }
+		}
+
 	}
 	
 }	

@@ -53,6 +53,10 @@ operations = {
 			NOT = { has_country_flag = winter_war_finished  }
 		}
 
+		cancel_trigger = {
+			NOT = { has_war_with = SOV }
+		}
+
 		days_remove = 7
 
 		available = {
@@ -86,7 +90,11 @@ operations = {
 				country = SOV
 				relation = non_aggression_pact
 			}
-			
+			hidden_effect = {
+				MON = {
+					remove_ideas = MON_brothers_war
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 20
@@ -105,41 +113,53 @@ operations = {
 			
 		}
 		
+		cancel_trigger = {
+			NOT = { has_war_with = SOV }
+		}
 
-		available = {
-			
-		has_war_with = SOV
-		NOT = { has_war_with = GER }
-		OR = {
-			SOV = {
-				casualties > 350000
-			}
-			
-			195 = {
-				CONTROLLER = {
-					OR = {
-						tag = FIN
-						is_subject_of = FIN
+		available = {		
+			has_war_with = SOV
+			NOT = { has_war_with = GER }
+			OR = {
+				SOV = {
+					casualties > 350000
+				}
+				
+				195 = {
+					CONTROLLER = {
+						OR = {
+							tag = FIN
+							is_subject_of = FIN
+						}
 					}
 				}
 			}
 		}
-		}
 		days_remove = 7
 		remove_effect = {
-			SOV = {
-				white_peace = FIN
-				
+			hidden_effect = {
+				MON = {
+					remove_ideas = MON_brothers_war
+				}
+				SOV = {
+					add_days_mission_timeout = {
+						mission = SOV_winter_war
+						days = -300
+					}
+				}
 			}
-			FIN = { set_country_flag = winter_war_finished }
-			diplomatic_relation = {
-				country = SOV
-				relation = non_aggression_pact
-			}
-			
-			set_global_flag =  FIN_winter_victory
-			
+			effect_tooltip = {
+				SOV = {
+					white_peace = FIN
+				}
+				FIN = { set_country_flag = winter_war_finished }
+				diplomatic_relation = {
+					country = SOV
+					relation = non_aggression_pact
+				}
+				set_global_flag =  FIN_winter_victory
 
+			}
 		}
 		ai_will_do = {
 			factor = 50
@@ -147,167 +167,6 @@ operations = {
 
 
 
-	}
-
-	FIN_capture_t26 = {
-
-		icon = generic_operation
-
-		allowed = {
-			tag = FIN
-		}
-
-		available = {
-			has_equipment = {
-				sov_light_tank_chassis_t26 > 24
-			}
-		}
-
-		fire_only_once = yes
-
-		days_remove = 30
-		
-		modifier = {
-			industrial_capacity_factory = -0.05
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = sov_light_tank_chassis_t26
-				amount = -25
-				producer = SOV
-			}
-		}
-
-		remove_effect = {
-			set_technology = {
-				sov_light_tank_1 = 1
-				sov_t26_upgrade = 1
-			}
-		}
-	}
-
-	FIN_capture_t28 = {
-
-		icon = generic_operation
-
-		allowed = {
-			tag = FIN
-		}
-
-		available = {
-			has_equipment = {
-				sov_medium_tank_chassis_t28 > 24
-			}
-		}
-
-		fire_only_once = yes
-
-		days_remove = 30
-		
-		modifier = {
-			industrial_capacity_factory = -0.05
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = sov_medium_tank_chassis_t28
-				amount = -25
-				producer = SOV
-			}
-		}
-
-		remove_effect = {
-			set_technology = {
-				sov_heavy_tank_1 = 1
-			}
-		}
-	}
-
-	FIN_capture_bt = {
-
-		icon = generic_operation
-
-		allowed = {
-			tag = FIN
-		}
-
-		available = {
-			OR = {
-				has_equipment = {
-					sov_light_tank_chassis_bt5 > 24
-				}
-				has_equipment = {
-					sov_light_tank_chassis_bt7 > 24
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		days_remove = 30
-		
-		modifier = {
-			industrial_capacity_factory = -0.05
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = sov_light_tank_chassis_bt7
-				amount = -25
-				producer = SOV
-			}
-			add_equipment_to_stockpile = {
-				type = sov_light_tank_chassis_bt5
-				amount = -25
-				producer = SOV
-			}
-		}
-
-		remove_effect = {
-			set_technology = {
-				sov_bt_tank_1 = 1
-				sov_bt_tank_2 = 1
-			}
-		}
-	}
-
-	FIN_capture_t34 = {
-
-		icon = generic_operation
-
-		allowed = {
-			tag = FIN
-		}
-
-		available = {
-			has_equipment = {
-				sov_medium_tank_chassis_t34 > 24
-			}
-		}
-
-		fire_only_once = yes
-
-		days_remove = 30
-		
-		modifier = {
-			industrial_capacity_factory = -0.05
-		}
-		
-		complete_effect = {
-			add_equipment_to_stockpile = {
-				type = sov_medium_tank_chassis_t34
-				amount = -25
-				producer = SOV
-			}
-		}
-
-		remove_effect = {
-			set_technology = {
-				sov_medium_tank_1 = 1
-				sov_medium_tank_2 = 1
-			}
-		}
 	}
 }
 

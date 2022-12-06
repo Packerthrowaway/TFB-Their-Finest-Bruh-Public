@@ -223,7 +223,7 @@ ideas = {
 			ledger = army
 			modifier = {
 				army_fuel_capacity_factor = 1.0
-				army_armor_speed_factor = 0.05
+				army_morale_factor = 0.06
 			}
 			ai_will_do = {
 				factor = 1
@@ -245,7 +245,7 @@ ideas = {
 			visible = { has_tech = trench_warfare }
 			ledger = army
 			modifier = {
-				special_forces_no_supply_grace = 240
+				special_forces_no_supply_grace = 168
 				special_forces_out_of_supply_factor = -0.2
 				amphibious_invasion_defence = 0.2
 			}
@@ -264,6 +264,20 @@ ideas = {
 				factor = 1
 			}
 		}
+		
+		heritage_of_accomplishment = {
+			ledger = army
+			available = { has_dlc = "By Blood Alone" }
+			visible = { has_dlc = "By Blood Alone" }
+			modifier = {
+				grant_medal_cost_factor = -0.5
+				field_officer_promotion_penalty = -1.0
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
 	}
 
 	division_command_spirit = {
@@ -332,8 +346,9 @@ ideas = {
 			visible = { has_tech = mobile_warfare }
 			modifier = {
 				tactic_unexpected_thrust_preferred_weight_factor = 1
-				army_speed_factor = 0.05
+				org_loss_when_moving = -0.1
 				coordination_bonus = 0.05
+				army_armor_attack_factor = 0.05
 			}
 			ai_will_do = {
 				factor = 1
@@ -370,7 +385,7 @@ ideas = {
 			visible = { has_tech = mass_assault }
 			modifier = {
 				tactic_relentless_assault_preferred_weight_factor = 1
-				no_supply_grace = 168
+				no_supply_grace = 72
 				out_of_supply_factor = -0.2
 			}
 			ai_will_do = {

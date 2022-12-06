@@ -11,11 +11,6 @@ set_technology = {
 	tech_recon = 1
 	tech_support = 1		
 	tech_engineers = 1
-	tech_maintenance_company = 1
-	tech_military_police = 1
-	tech_logistics_company = 1
-	tech_field_hospital = 1
-	tech_signal_company = 1
 	motorised_infantry = 1
 	marines = 1
 	ger_cze_tank_1 = 1
@@ -79,12 +74,6 @@ amount = 1000
 producer = CZE
 }
 
-add_equipment_to_stockpile = {
-
-type = light_tank_chassis
-amount = 500
-producer = CZE
-}
 
 set_research_slots = 3
 
@@ -143,6 +132,19 @@ create_equipment_variant = {
 		engine_type_slot = tank_gasoline_engine
 	}
 	icon = "gfx/interface/technologies/tanks/ger/ger_cze_tank_1.dds"
+}
+
+create_equipment_variant = {
+	name = "PzKpfw 38(t)"
+	type = ger_light_tank_chassis_p38
+	parent_version = 0
+	modules = {
+		main_armament_slot = tank_small_gun_2
+		turret_type_slot = tank_light_turret_2
+		armor_type_slot = tank_riveted_armor
+		engine_type_slot = tank_gasoline_engine
+	}
+	icon = "gfx/interface/technologies/tanks/ger/ger_cze_tank_2.dds"
 }
 
 if = {

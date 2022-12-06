@@ -221,6 +221,8 @@ focus_tree = {
 		}	
 		completion_reward = {
 			add_ideas = british_fighter_discount
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = ENG_air_production_prop
 		}
 	}
 	
@@ -1184,6 +1186,8 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = ENG_oil_prop
 		}
 	}
 	
@@ -3108,6 +3112,14 @@ focus_tree = {
 		prerequisite = { focus = ENG_war_cabinet }
 		available = {
 			FRA = { has_capitulated = yes }
+			OR = {
+				controls_state = 126
+				controls_state = 127
+				controls_state = 123
+				controls_state = 338
+				controls_state = 125
+				controls_state = 122
+			}
 		}
 
 		available_if_capitulated = yes
@@ -3121,9 +3133,54 @@ focus_tree = {
 		}	
 		
 		completion_reward = {
-		custom_effect_tooltip = ENG_equip_foreign_exiles_tt
+			custom_effect_tooltip = ENG_equip_foreign_exiles_tt
 			hidden_effect = {
-				load_oob = ENG_foreign_exiles
+				division_template = {
+					name = "Foreign Exiles"
+					division_names_group = ENG_INF_01
+						regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 1 y = 3 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+						infantry = { x = 2 y = 3 }
+						artillery_brigade = { x = 3 y = 0 }
+						artillery_brigade = { x = 3 y = 1 }
+						artillery_brigade = { x = 3 y = 2 }
+						anti_tank_brigade = { x = 4 y = 0 }
+						anti_tank_brigade = { x = 4 y = 1 }
+						anti_tank_brigade = { x = 4 y = 2 }
+					}
+					support = {
+						hq_company = { x = 0 y = 0 } 
+						engineer = { x = 0 y = 1 }   
+						recon = { x = 0 y = 2 }
+						logistics_company  = { x = 0 y = 3 }
+						anti_air = { x = 1 y = 0 }
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 126 127 123 338 125 122 }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3" owner = ENG }
+				}
 			}	
 		}
 	}
@@ -3252,7 +3309,161 @@ focus_tree = {
 		}	
 		completion_reward = {
 			hidden_effect = {
-				load_oob = ENG_home_guard
+				hidden_effect = {
+					division_template = {
+						name = "Home Guard"
+						is_locked = yes
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+					
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+					
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+					
+							artillery_brigade = { x = 3 y = 0}
+							anti_tank_brigade = { x = 3 y = 1}
+					
+						}
+						support = {
+							engineer = { x = 0 y = 0 }   
+							anti_air = { x = 0 y = 1 }
+						}
+					}
+					# 40 Spawn Ins
+					126 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					125 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					122 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					127 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					123 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					338 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					253 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					128 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					129 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					130 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					132 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					131 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					133 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					121 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					120 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					136 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+					119 = {
+						if = {					
+							limit = { is_controlled_by = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } }" owner = ENG }
+						}
+					}
+				}
 			}
 			custom_effect_tooltip = ENG_home_guard_tt
 		}

@@ -553,7 +553,7 @@ technologies = {
 			default_morale = 0.2
 		}
 		org_loss_when_moving = -0.15
-		air_close_air_support_attack_factor	= 0.05
+		air_cas_present_factor = 0.05
 		
 		xp_research_type = army
 		xp_unlock_cost = 100
@@ -702,9 +702,13 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		category_front_line = {
-			 soft_attack = 0.10
-			 hard_attack = 0.10
+		category_all_infantry = {
+			soft_attack = 0.1
+			hard_attack = 0.1
+		}
+		category_militia = {
+			soft_attack = 0.1
+			hard_attack = 0.1
 		}
 		
 		enable_tactic = tactic_barrage
@@ -736,7 +740,7 @@ technologies = {
 	sup_delay = {
 
 		category_all_infantry = {
-			max_organisation = 10
+			max_organisation = 5
 		}
 		category_militia = {
 			max_organisation = 5
@@ -773,10 +777,10 @@ technologies = {
 	mobile_defence = {
 
 		category_all_infantry = {
-			defense = 0.2			
+			defense = 0.1			
 		}
 		category_militia = {
-			defense = 0.2			
+			defense = 0.1			
 		}
 		
 		enable_tactic = tactic_elastic_defense		
@@ -972,7 +976,7 @@ technologies = {
 
 		category_all_armor = {
 			breakthrough = 0.10
-			max_strength = 2
+			max_strength = 0.5
 		}
 		
 		enable_tactic = tactic_blitz
@@ -1016,7 +1020,7 @@ technologies = {
 		}
 
 		category_army = {
-			hard_attack = 0.10
+			hard_attack = 0.05
 		}
 		
 		path = {
@@ -1051,7 +1055,6 @@ technologies = {
 
 		category_army = {
 			hard_attack = 0.05
-			soft_attack = 0.05
 		}
 		max_planning = 0.05
 		
@@ -1125,7 +1128,7 @@ technologies = {
 			
 		#combat advantage when air superior
 		army_bonus_air_superiority_factor = 0.15
-		air_close_air_support_attack_factor	= 0.15
+		air_cas_present_factor = 0.15
 		
 		xp_research_type = army
 		xp_unlock_cost = 100
@@ -1270,7 +1273,7 @@ technologies = {
 	shock_and_awe = {
 
 		category_army = { 
-			soft_attack = 0.10
+			soft_attack = 0.05
 		}
 		
 		enable_tactic = tactic_breakthrough
@@ -1381,7 +1384,12 @@ technologies = {
 	
 	prepared_defense = {
 
-		category_light_infantry = {
+		category_all_infantry = {
+			defense = 0.10
+			max_organisation = 5
+		}
+
+		category_militia = {
 			defense = 0.10
 			max_organisation = 5
 		}
@@ -1833,6 +1841,7 @@ technologies = {
 
 		category_light_infantry = {
 			max_organisation = 10
+			experience_loss_factor = -0.1
 		}
 
 		enable_tactic = tactic_elastic_defense
@@ -1940,7 +1949,7 @@ technologies = {
 		
 		pocket_penalty = -0.1
 		
-		no_supply_grace = 48
+		no_supply_grace = 36
 
 		path = {
 			leads_to_tech = defence_in_depth
@@ -2276,7 +2285,7 @@ technologies = {
 		}
 		army_fuel_capacity_factor = 0.10
 		
-		no_supply_grace = 48
+		no_supply_grace = 36
 		
 		enable_tactic = tactic_backhand_blow
 

@@ -1,4 +1,12 @@
-﻿focus_tree = {
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
+focus_tree = {
 	id = hungarian_focus
 	
 	country = {
@@ -14,7 +22,7 @@
 	
 	default = no
 
-	continuous_focus_position = { x = 50 y = 2000 }
+	continuous_focus_position = { x = 850 y = 1100 }
 
 #	focus = {
 #		id = HUN_
@@ -55,7 +63,7 @@
 	############################
 	##### BALANCED BUDGET ######
 	############################
-	
+
 	focus = {
 		id = HUN_new_pm
 		icon = GFX_goal_tripartite_pact
@@ -784,53 +792,53 @@
 	}
 
 
-	focus = {
-		id = HUN_trade_deal_with_germany
-		icon = GFX_goal_generic_trade
-		prerequisite = { focus = HUN_renounce_the_treaty_of_trianon }
-		x = 1
-		y = 1
-		relative_position_id = HUN_renounce_the_treaty_of_trianon
+	# focus = {
+	# 	id = HUN_trade_deal_with_germany
+	# 	icon = GFX_goal_generic_trade
+	# 	prerequisite = { focus = HUN_renounce_the_treaty_of_trianon }
+	# 	x = 1
+	# 	y = 1
+	# 	relative_position_id = HUN_renounce_the_treaty_of_trianon
 
-		cost = 5
+	# 	cost = 5
 
-		ai_will_do = {
-			factor = 80
-		}
+	# 	ai_will_do = {
+	# 		factor = 80
+	# 	}
 
-		available = {
-			NOT = { has_war_with = GER }
-			NOT = { GER = { has_government = communism } }
-		}
+	# 	available = {
+	# 		NOT = { has_war_with = GER }
+	# 		NOT = { GER = { has_government = communism } }
+	# 	}
 
-		bypass = {
+	# 	bypass = {
 
-		}
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
 
-		complete_tooltip = {
+	# 	complete_tooltip = {
 
-		}
+	# 	}
 
-		completion_reward = {
-			add_opinion_modifier = { target = GER modifier = HUN_trade_deal_with_germany }
-			reverse_add_opinion_modifier = { target = GER modifier = HUN_trade_deal_with_germany }
-			swap_ideas = {
-				add_idea = HUN_interventionism_2
-				remove_idea = HUN_interventionism
-			}
-		}
-	}
+	# 	completion_reward = {
+	# 		add_opinion_modifier = { target = GER modifier = HUN_trade_deal_with_germany }
+	# 		reverse_add_opinion_modifier = { target = GER modifier = HUN_trade_deal_with_germany }
+	# 		swap_ideas = {
+	# 			add_idea = HUN_interventionism_2
+	# 			remove_idea = HUN_interventionism
+	# 		}
+	# 	}
+	# }
 
 	focus = {
 		id = HUN_joint_aluminum_mining_company
 		icon = GFX_goal_generic_construction2
-		prerequisite = { focus = HUN_trade_deal_with_germany }
+		prerequisite = { focus = HUN_renounce_the_treaty_of_trianon }
 		x = 1
-		y = 2
+		y = 1
 		relative_position_id = HUN_renounce_the_treaty_of_trianon
 
 		cost = 5
@@ -862,6 +870,8 @@
 					amount = 250
 				}
 			}
+			add_opinion_modifier = { target = GER modifier = HUN_trade_deal_with_germany }
+	 		reverse_add_opinion_modifier = { target = GER modifier = HUN_trade_deal_with_germany }
 		}
 	}
 
@@ -870,7 +880,7 @@
 		icon = GFX_focus_chi_mission_to_germany
 		prerequisite = { focus = HUN_joint_aluminum_mining_company }
 		x = 1
-		y = 3
+		y = 2
 		relative_position_id = HUN_renounce_the_treaty_of_trianon
 
 		cost = 5
@@ -942,7 +952,7 @@
 		icon = GFX_focus_generic_license_production
 		prerequisite = { focus = HUN_join_axis }
 		x = 1
-		y = 4
+		y = 3
 		relative_position_id = HUN_renounce_the_treaty_of_trianon
 		cost = 5
 		ai_will_do = {
@@ -1384,8 +1394,7 @@
 	focus = {
 		id = HUN_institute_for_industrial_techniques
 		icon = GFX_focus_research
-		prerequisite = { focus = HUN_support_urbanization }
-		prerequisite = { focus = HUN_support_domestic_industry }
+		prerequisite = { focus = HUN_support_urbanization focus = HUN_support_domestic_industry }
 		x = 0
 		y = 3
 		relative_position_id = HUN_industrial_revitalization
@@ -2558,7 +2567,7 @@
 		id = HUN_army_maneuvers
 		icon = GFX_goal_generic_army_doctrines
 		prerequisite = { focus = HUN_war_games }
-		x = 6
+		x = 4
 		y = 1
 		relative_position_id = HUN_war_games
 
@@ -3112,7 +3121,7 @@
 		id = HUN_naval_warfare
 		icon = GFX_goal_generic_build_navy
 		prerequisite = { focus = HUN_secret_rearmament }
-		x = 14
+		x = 12
 		y = 1
 		relative_position_id = HUN_secret_rearmament
 

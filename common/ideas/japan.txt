@@ -88,8 +88,8 @@ ideas = {
 			modifier = {
 				consumer_goods_factor = 0.025
 				political_power_gain = -0.1
-				war_support_factor = -0.1
-				stability_factor = -0.1
+				war_support_factor = -0.10
+				stability_factor = -0.10
 			}
 		}
 		JAP_island_hopping7 = {
@@ -149,8 +149,8 @@ ideas = {
 			modifier = {
 				consumer_goods_factor = -0.02
 				political_power_gain = 0.10
-				war_support_factor = 0.1
-				stability_factor = 0.1
+				war_support_factor = 0.10
+				stability_factor = 0.10
 				army_core_attack_factor = 0.7
 				army_core_defence_factor = 0.7
 			}
@@ -175,15 +175,14 @@ ideas = {
 			allowed = {
 				always = no
 			}
-			name = jap_island_hopping
 			picture = jap_island_hopping
 			removal_cost = -1
 
 			modifier = {
 				consumer_goods_factor = -0.04
 				political_power_gain = 0.20
-				war_support_factor = 0.2
-				stability_factor = 0.2
+				war_support_factor = 0.20
+				stability_factor = 0.20
 				army_core_attack_factor = 0.8
 				army_core_defence_factor = 0.8
 			}
@@ -547,6 +546,26 @@ ideas = {
 				naval_torpedo_screen_penetration_factor = 0.25
 			}
 		}
+
+		asw_training = {
+
+			picture = SPR_international_brigades
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				navy_submarine_detection_factor = 0.1
+				convoy_escort_efficiency = 0.2
+			}
+		}
 		
 		imperial_glory_idea = {
 			
@@ -623,28 +642,6 @@ ideas = {
 			
 			modifier = {
 				sortie_efficiency = 0.2
-			}
-		}
-		
-		JAP_takao_idea = {
-
-			allowed = {
-				always = no
-			}
-
-			allowed_civil_war = {
-				always = yes
-			}
-			
-			removal_cost = -1
-
-			picture = idea_generic_coastal_defense_ships
-			
-			equipment_bonus = {
-				ship_hull_cruiser = {
-					lg_attack = 0.05 instant = yes
-					hg_attack = 0.05 instant = yes
-				}
 			}
 		}		
 
@@ -1400,6 +1397,10 @@ ideas = {
 				defense_bonus_against = 0.15
 			}
 
+			cancel = {
+				has_war = no
+			}
+
 			modifier = {
 				supply_consumption_factor = -0.2
 				no_supply_grace = 48
@@ -1577,6 +1578,33 @@ ideas = {
 				cv_nav_bomber_equipment = {
 					build_cost_ic = -0.1 instant = yes
 				}
+			}
+		}
+
+		JAP_tank = {
+			removal_cost = -1
+			
+			allowed = {
+				always = no
+			}
+			equipment_bonus = {
+				armor = {
+					instant = yes
+					build_cost_ic = -0.1
+				}
+			}
+		}
+
+		JAP_man_prop = {
+			removal_cost = -1
+			
+			allowed = {
+				always = no
+			}
+			modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				command_power_gain_mult = 0.25
 			}
 		}
 	}
@@ -1772,6 +1800,25 @@ ideas = {
 			
 			traits = { motorized_equipment_manufacturer }
 		}
+
+		osaka_artillery_arsenal = {
+			
+			allowed = {
+				original_tag = JAP
+			}
+
+			available = {
+				has_completed_focus = JAP_artillery_lessons
+			}
+				
+			research_bonus = {
+				artillery = 0.15
+			}
+			
+			traits = { artillery_manufacturer }
+		}	
+
+		
 	}
 	
 	

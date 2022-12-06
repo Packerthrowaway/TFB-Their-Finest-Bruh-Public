@@ -13,12 +13,14 @@ focus_tree = {
 	
 	default = no
 	
-	continuous_focus_position = { x = 50 y = 1500 }
+	continuous_focus_position = { x = 700 y = 800 }
 	
+  # Collectivization Tree
+
 	focus = {
 		id = MON_collectivisation
 		icon = GFX_focus_prc_agrarian_socialism
-		x = 3
+		x = 1
 		y = 0
 		cost = 10
 
@@ -310,7 +312,7 @@ focus_tree = {
 	}
 	
 
-	
+  # University Sub Path
 
 	
 	focus = {
@@ -435,13 +437,13 @@ focus_tree = {
 		}
 	}
 	
-
+  # Industrail Deveoplment
 	
 	focus = {
 		id = MON_industrial_development
 		icon = GFX_focus_generic_industry_3
 		mutually_exclusive = { focus = MON_traditional_way }
-		x = 7
+		x = 4
 		y = 0
 		cost = 10
 
@@ -491,9 +493,9 @@ focus_tree = {
 
 		completion_reward = {
 			330 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 			}
-			add_stability = -0.2
+			add_stability = -0.15
 		}
 	}
 	
@@ -657,11 +659,13 @@ focus_tree = {
 		}
 	}
 	
+  # The Traditional Way
+
 	focus = {
 		id = MON_traditional_way
 		icon = GFX_focus_generic_strike_at_democracy1
 		mutually_exclusive = { focus = MON_industrial_development }
-		x = 10
+		x = 7
 		y = 0
 		cost = 10
 		
@@ -738,11 +742,13 @@ focus_tree = {
 			add_ideas = MON_nomad_mob
 		}
 	}
-	
+
+  # Army
+
 	focus = {
 		id = MON_mongolia_people_army
 		icon = GFX_SOV_red_army
-		x = 16
+		x = 13
 		y = 0
 
 		cost = 10
@@ -931,9 +937,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = MON_spirit_of_genghis_idea
-			create_corps_commander = {
-				name = "Kublai Force Ghost"
-				picture = "portrait_kublai.dds"
+			add_corps_commander_role = {
+				character = MON_khan
 				traits = { cavalry_leader war_hero brilliant_strategist trait_engineer }
 				skill = 4
 				attack_skill = 4

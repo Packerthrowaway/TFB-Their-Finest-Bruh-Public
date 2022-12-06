@@ -14,8 +14,8 @@ technologies = {
 			tank_auto_cannon
 			tank_small_gun_1
 			tank_anti_air_gun_1
-			tank_med_gun_1
 			ship_anti_air_1
+			tank_med_cs_gun_1
 			secondary_turret_small_cannon
 			secondary_turret_howitzer
 			smoke_launchers
@@ -48,6 +48,7 @@ technologies = {
 
 	}
 
+	# Stat Buff Research
 	antiair1 = {
 
 		anti_air = {
@@ -64,15 +65,6 @@ technologies = {
 		}
 		medium_sp_anti_air_brigade  = {
 			air_attack = 0.1
-		}
-		anti_tank_brigade = {
-			hard_attack = 0.05
-		}
-		mot_anti_tank_brigade = {
-			hard_attack = 0.05
-		}
-		light_tank_destroyer_brigade = {
-			hard_attack = 0.05
 		}
 		enable_equipment_modules = {
 			ship_anti_air_2
@@ -104,6 +96,7 @@ technologies = {
 		}
 	}
 
+	# AA2
 	antiair2 = {
 	
 		enable_equipments = {
@@ -127,13 +120,14 @@ technologies = {
 		}
 	}
 	
+	# Pack AT 1
 	antitank_squeeze_1 = {
 		
 		enable_equipments = {
 			anti_tank_equipment_squeeze_1
 		}
 		enable_equipment_modules = { 
-			tank_small_gun_squeeze
+			tank_small_gun_3
 		}
 		
 		research_cost = 2.0
@@ -150,6 +144,7 @@ technologies = {
 		}
 	}
 
+	# Stat Buff Research 
 	antiair3 = {
 
 		anti_air = {
@@ -167,18 +162,12 @@ technologies = {
 		medium_sp_anti_air_brigade  = {
 			air_attack = 0.1
 		}
-		anti_tank_brigade = {
-			hard_attack = 0.05
-		}
-		mot_anti_tank_brigade = {
-			hard_attack = 0.05
-		}
-		light_tank_destroyer_brigade = {
-			hard_attack = 0.05
+		pack_antitank_brigade = {
+			hard_attack = 0.15
 		}
 		enable_equipment_modules = { 
 			ship_anti_air_4
-			tank_small_gun_3
+			tank_small_gun_squeeze
 		}
 		
 		path = {
@@ -204,6 +193,7 @@ technologies = {
 		}
 	}
 	
+	# AA3
 	antiair5 = {
 
 		enable_equipments = {
@@ -227,6 +217,7 @@ technologies = {
 		}
 	}
 
+	# Pack AT 2
 	antitank_squeeze_2 = {
 	
 		enable_equipments = {
@@ -255,6 +246,7 @@ technologies = {
 
 	
 	
+	# Stat Buff Research
 	artillery2 = {
 
 		artillery_brigade = {
@@ -263,18 +255,18 @@ technologies = {
 		mot_artillery_brigade = {
 			soft_attack = 0.05
 		}
-		light_sp_artillery_brigade  = {
-			soft_attack = 0.05
-		}
-		medium_sp_artillery_brigade  = {
-			soft_attack = 0.05
-		}
 		pack_artillery_brigade = {
 			soft_attack = 0.05
 		}
+		anti_tank_brigade = {
+			hard_attack = 0.05
+		}		
+		mot_anti_tank_brigade = {
+			hard_attack = 0.05
+		}
 		enable_equipment_modules = {
-			tank_med_cs_gun_1
 			tank_art_gun_1
+			tank_buster_1
 		}		
 		path = {
 			leads_to_tech = artillery3
@@ -303,6 +295,7 @@ technologies = {
 
 	}	
 	
+	# Stat Buff Research
 	artillery3 = {
 
 		artillery_brigade = {
@@ -311,15 +304,8 @@ technologies = {
 		mot_artillery_brigade = {
 			soft_attack = 0.05			
 		}
-		light_sp_artillery_brigade  = {
-			soft_attack = 0.05
-		}
-		medium_sp_artillery_brigade  = {
-			soft_attack = 0.05
-		}
 		pack_artillery_brigade = {
-			soft_attack = 0.05
-			
+			soft_attack = 0.05			
 		}
 		anti_tank_brigade = {
 			hard_attack = 0.05
@@ -339,6 +325,10 @@ technologies = {
 			leads_to_tech = dp_artillery
 			research_cost_coeff = 1
 		}
+
+		enable_equipment_modules = {
+			tank_med_cs_gun_2						
+		}
 		
 		research_cost = 1
 		
@@ -355,13 +345,15 @@ technologies = {
 
 	}
 
+	# Artillery 2
 	artillery1 = {
 	
 		enable_equipments = {
 			artillery_equipment_2
 		}
 		enable_equipment_modules = {
-			tank_med_gun_2
+			tank_art_gun_2
+			
 		}
 		
 		research_cost = 2.0
@@ -379,6 +371,7 @@ technologies = {
 
 	}
 
+	# Anti Tank 2
 	antitank2 = {
 		
 		enable_equipments = {
@@ -403,6 +396,7 @@ technologies = {
 	}
 	
 	
+	# Pack Artillery 2
 	pack_artillery_2 = { 
 
 		enable_equipments = {
@@ -423,6 +417,7 @@ technologies = {
 		}
 	}
 	
+	# Dual Purpose Artillery
 	dp_artillery = {
 	
 		enable_equipments = {
@@ -441,12 +436,14 @@ technologies = {
 		categories = {
 			artillery
 		}
+		enable_equipment_modules = {
+			tank_med_gun_1
+		}
 
 	}
 
+	# Stat Buff Research
 	artillery5 = {
-
-		
 
 		artillery_brigade = {
 			soft_attack = 0.05
@@ -459,12 +456,6 @@ technologies = {
 			fort = {
 				attack = 0.1
 			}
-		}
-		light_sp_artillery_brigade  = {
-			soft_attack = 0.05
-		}
-		medium_sp_artillery_brigade  = {
-			soft_attack = 0.05
 		}
 		pack_artillery_brigade = {
 			soft_attack = 0.05
@@ -489,9 +480,7 @@ technologies = {
 			hard_attack = 0.05
 		}
 		enable_equipment_modules = {
-			tank_med_cs_gun_2
-			tank_art_gun_2			
-			tank_med_gun_squeeze			
+			tank_buster_2
 		}
 		path = {
 			leads_to_tech = artillery4
@@ -521,13 +510,14 @@ technologies = {
 
 	}
 
+	# Artillery 3
 	artillery4 = {
 	
 		enable_equipments = {
 			artillery_equipment_3
 		}
 		enable_equipment_modules = {
-			tank_med_gun_3
+			tank_art_gun_3
 		}
 		
 		
@@ -545,6 +535,7 @@ technologies = {
 
 	}
 
+	# Anti Tank 3
 	antitank3 = {
 		
 		enable_equipments = {
@@ -553,6 +544,7 @@ technologies = {
 		
 		enable_equipment_modules = {
 			tank_med_hv_gun_2
+			tank_med_gun_squeeze
 		}
 		
 		research_cost = 2.0
@@ -569,6 +561,7 @@ technologies = {
 		}
 	}
 
+	# Stat Buff Research
 	artillery7 = {
 
 		artillery_brigade = {
@@ -582,12 +575,6 @@ technologies = {
 			fort = {
 				attack = 0.1
 			}
-		}
-		light_sp_artillery_brigade  = {
-			soft_attack = 0.05
-		}
-		medium_sp_artillery_brigade  = {
-			soft_attack = 0.05
 		}
 		pack_artillery_brigade = {
 			soft_attack = 0.05
@@ -612,8 +599,8 @@ technologies = {
 			hard_attack = 0.05
 		}
 		enable_equipment_modules = {
-			tank_art_gun_3
-			tank_med_gun_squeeze2
+			tank_med_cs_gun_3
+			tank_med_gun_2
 		}
 		path = {
 			leads_to_tech = artillery6
@@ -639,13 +626,14 @@ technologies = {
 
 	}
 	
+	# Artillery 4
 	artillery6 = {
 	
 		enable_equipments = {
 			artillery_equipment_4
 		}
 		enable_equipment_modules = {
-			tank_med_gun_4
+			tank_med_gun_3
 		}
 		
 		research_cost = 2.0
@@ -663,6 +651,7 @@ technologies = {
 
 	}
 
+	# Anti Tank 4
 	antitank5 = {
 	
 		enable_equipments = {
@@ -687,7 +676,7 @@ technologies = {
 		}
 	}
 	
-	
+	# Stat Buff Research
 	heavy_artillery5 = {
 
 		# Scrapped Choking Artillery Tractor
@@ -742,6 +731,7 @@ technologies = {
 
 	}
 	
+	# Heavy Artillery 2
 	heavy_artillery2 = {
 
 		enable_equipments = {
@@ -765,6 +755,7 @@ technologies = {
 
 	}
 
+	# Heavy Anti Air 1
 	heavy_antiair1 = {
 
 		enable_equipments = {
@@ -789,6 +780,7 @@ technologies = {
 		}
 	}
 	
+	# Stat Buff Research
 	heavy_artillery6 = {
 
 		# Scrapped Choking Artillery Tractor
@@ -818,6 +810,9 @@ technologies = {
 			hard_attack = 0.05
 		}
 		tech_air_damage_factor = -0.02
+		
+		enable_equipment_modules = {
+		}
 
 		path = {
 			leads_to_tech = heavy_artillery7
@@ -850,13 +845,13 @@ technologies = {
 
 	}
 	
+	# Heavy Artillery 3
 	heavy_artillery3 = {
 
 		enable_equipments = {
 			heavy_artillery_equipment_3
 		}
 		enable_equipment_modules = {
-			tank_heavy_cs_gun_1
 			tank_heavy_art_gun_2
 		}
 		
@@ -874,6 +869,7 @@ technologies = {
 		
 	}
 	
+	# Heavy Anti Tank 1
 	heavy_antitank = {
 
 		enable_equipments = {
@@ -881,7 +877,6 @@ technologies = {
 		}
 		enable_equipment_modules = {
 			tank_heavy_gun_1
-			tank_heavy_hv_gun_1
 		}
 		
 		research_cost = 2.0
@@ -898,6 +893,7 @@ technologies = {
 		}
 	}
 
+	# Heavy Anti Air 2
 	heavy_antiair2 = {
 
 		enable_equipments = {
@@ -906,6 +902,7 @@ technologies = {
 		enable_equipment_modules = {
 			tank_heavy_gun_2
 			tank_heavy_aa_gun_2
+			tank_heavy_hv_gun_1
 		}
 		
 		static_anti_air_damage_factor = 0.1
@@ -924,6 +921,7 @@ technologies = {
 		}
 	}
 
+	# Stat Buff Research
 	heavy_artillery7 = {
 
 		# Scrapped Choking Artillery Tractor
@@ -957,6 +955,10 @@ technologies = {
 			leads_to_tech = heavy_antitank2
 			research_cost_coeff = 1
 		}
+
+		enable_equipment_modules = {
+			tank_heavy_cs_gun_1
+		}
 		
 		research_cost = 1
 		start_year = 1942
@@ -972,6 +974,7 @@ technologies = {
 
 	}
 	
+	# Heavy Artillery 4
 	heavy_artillery4 = {
 
 		enable_equipments = {
@@ -995,6 +998,7 @@ technologies = {
 		
 	}
 
+	# Heavy Anti Tank 2
 	heavy_antitank2 = {
 
 		enable_equipments = {
@@ -1018,6 +1022,7 @@ technologies = {
 		}
 	}
 
+	# Stat Buff Research
 	mountain_gun = {
 
 		research_cost = 1
@@ -1040,13 +1045,16 @@ technologies = {
 		}
 	}
 	
+	# Rockey Artillery 1
 	rocket_artillery = {
 
 		enable_equipments = {
 			rocket_artillery_equipment_1
+			
 		}
 		enable_equipment_modules = {
 			tank_rocket_launcher
+			rocket_rails
 		}
 
 		path = {
@@ -1068,6 +1076,7 @@ technologies = {
 		}
 	}
 	
+	# Rockey Artillery 2
 	rocket_artillery4 = {
 	
 		enable_equipments = {
@@ -1096,6 +1105,7 @@ technologies = {
 		}
 	}
 	
+	# Stat Buff Research
 	rocket_artillery2 = {
 
 		rocket_artillery_brigade = {
@@ -1127,7 +1137,8 @@ technologies = {
 			rocketry
 		}
 	}
-	
+
+	# Stat Buff Research
 	rocket_artillery3 = {
 
 		rocket_artillery_brigade = {
@@ -1165,19 +1176,19 @@ technologies = {
 		}		
 	}
 
-	# carl_gerat = {
+	carl_gerat = {
 		
-	# 	allow = {
-	# 		always = no
-	# 	}
+		allow = {
+			always = no
+		}
 
-	# 	research_cost = 1
-	# 	start_year = 1936
+		research_cost = 1
+		start_year = 1936
 
-	# 	enable_equipments = {
-	# 		carl_gerat_equipment
-	# 	}		
-	# }
+		enable_equipments = {
+			railway_gun_equipment_3
+		}		
+	}
 
 	raketen = {
 		
@@ -1193,6 +1204,7 @@ technologies = {
 		}		
 	}
 
+	# Pack Artillery 3
 	mountain_arty = {
 		
 		allow = {

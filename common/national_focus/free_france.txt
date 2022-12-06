@@ -15,7 +15,7 @@
 	focus = {
 		id = FRA_appeal_to_the_french_nation
 		icon = GFX_goal_generic_propaganda
-		x = 15
+		x = 9
 		y = 0
 		offset = {
 			x = 0
@@ -467,8 +467,8 @@
 	}
 	focus = {
 		id = FRA_continue_the_fight
-		icon = GFX_goal_generic_major_war
-		x = 7
+		icon = GFX_focus_generic_support_the_left_right
+		x = 9
 		y = 1
 		offset = {
 			x = 0
@@ -519,12 +519,13 @@
 				planning_skill = 2
 				logistics_skill = 5
 			}
+			add_command_power = 30
 		}
 	}
 	focus = {
 		id = FRA_the_free_french_navy
 		icon = GFX_goal_generic_build_navy
-		x = -3
+		x = -5
 		y = 2
 		offset = {
 			x = 0
@@ -566,48 +567,145 @@
 			}
 		}
 	}
-	focus = {
-		id = FRA_colonial_recruitment
-		icon = GFX_goal_generic_allies_build_infantry
-		x = -1
-		y = 2
-		offset = {
-			x = 0
-			y = 0
-		}
-		prerequisite = { 
-			focus = FRA_continue_the_fight
-		}
-		relative_position_id = FRA_continue_the_fight
-		
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-		available = {
-			any_owned_state = {
-				is_controlled_by = ROOT
-				NOT = {
-					is_core_of = ROOT
-				}
-			}
-		}
-		
-		bypass = {
 
-		}
+	focus = {
+		id = FRA_surface_combat
+		icon = GFX_focus_generic_destroyer
+	 	prerequisite = { focus = FRA_the_free_french_navy }
+		x = 0
+		y = 1
+		relative_position_id = FRA_the_free_french_navy
+		cost = 6
+
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_MANPOWER }
+
 		completion_reward = {
-			add_ideas = { FRA_colonial_recruitment }
+			navy_experience = 25
+			add_tech_bonus = {
+				name = FRA_surface_combat
+				bonus = 0.75
+				uses = 1
+				category = dd_tech
+			}
 		}
 	}
 	focus = {
+		id = FRA_naval_doctrine
+		icon = GFX_goal_generic_navy_doctrines_tactics
+	 	prerequisite = { 
+	 		focus = FRA_surface_combat
+	 	}
+		x = 0
+		y = 1
+		relative_position_id = FRA_surface_combat
+		cost = 6
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+			add_doctrine_cost_reduction = {
+				name = FRA_naval_doctrine
+				cost_reduction = 0.40
+				uses = 3
+				category = naval_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_undersea_combat
+		icon = GFX_goal_generic_navy_submarine
+	 	prerequisite = { focus = FRA_naval_doctrine }
+		x = 0
+		y = 1
+		relative_position_id = FRA_naval_doctrine
+		cost = 6
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = FRA_undersea_combat
+				bonus = 0.5
+				uses = 2
+				category = ss_tech
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_improved_screen_ships
+		icon = GFX_goal_generic_navy_cruiser
+	 	prerequisite = { focus = FRA_undersea_combat }
+		x = 0
+		y = 1
+		relative_position_id = FRA_undersea_combat
+		cost = 6
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = FRA_improved_screen_ships
+				bonus = 0.75
+				uses = 1
+				category = cl_tech
+			}
+		}
+	}
+	# focus = {
+	# 	id = FRA_colonial_recruitment
+	# 	icon = GFX_goal_generic_allies_build_infantry
+	# 	x = -1
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = FRA_continue_the_fight
+	# 	}
+	# 	relative_position_id = FRA_continue_the_fight
+		
+	# 	cost = 5
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+	# 		any_owned_state = {
+	# 			is_controlled_by = ROOT
+	# 			NOT = {
+	# 				is_core_of = ROOT
+	# 			}
+	# 		}
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = yes
+	# 	search_filters = { FOCUS_FILTER_MANPOWER }
+	# 	completion_reward = {
+	# 		add_ideas = { FRA_colonial_recruitment }
+	# 	}
+	# }
+	focus = {
 		id = FRA_the_regiment_normandie
 		icon = GFX_focus_fra_regiment_normandie
-		x = 1
+		x = 5
 		y = 2
 		offset = {
 			x = 0
@@ -650,14 +748,367 @@
 	}
 
 	focus = {
+		id = FRA_defensive_focus2
+		icon = GFX_goal_generic_defence
+		mutually_exclusive = { focus = FRA_aggressive_focus2 }
+		prerequisite = { focus = FRA_continue_the_fight }
+		x = -1
+		y = 1
+		cost = 5
+
+		relative_position_id = FRA_continue_the_fight
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		available = {
+			if = {
+				limit = {
+					has_global_flag = FRA_AGGRESSIVE
+				}
+				has_political_power > 300
+			}else = {
+				always = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_global_flag = FRA_AGGRESSIVE
+				}
+				add_political_power = -300
+			}
+			add_ideas = FRA_infantry_supremacy
+			hidden_effect = {
+				set_technology = {
+					FRA_increase_armor_tech = 1
+				}
+
+			}			
+			custom_effect_tooltip = FRA_increase_armor_tt
+		}
+	}
+	focus = {
+		id = FRA_aggressive_focus2
+		icon = GFX_goal_generic_major_war
+		mutually_exclusive = { focus = FRA_defensive_focus2 }
+		prerequisite = { focus = FRA_continue_the_fight }
+
+		x = 1
+		y = 1
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		relative_position_id = FRA_continue_the_fight
+		available_if_capitulated = yes
+
+		available = {
+			if = {
+				limit = {
+					has_global_flag = FRA_DEFENSIVE
+				}
+				has_political_power > 300
+			}else = {
+				always = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 0.1
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_global_flag = FRA_DEFENSIVE
+				}
+				add_political_power = -300
+			}
+			add_ideas = FRA_tank_supremacy
+		}
+	}
+	focus = {
+		id = FRA_special_forces_cap
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = FRA_defensive_focus2 }
+		x = -1
+		y = 1
+		relative_position_id = FRA_defensive_focus2
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = { FRA_special_forces }
+		}
+	}
+	focus = {
+		id = FRA_colonial_recruitment
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = FRA_special_forces_cap }
+		x = 0
+		y = 1
+		relative_position_id = FRA_special_forces_cap
+		cost = 5
+
+		available = {
+			any_owned_state = {
+				is_controlled_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = { FRA_colonial_recruitment }
+		}
+	}
+	focus = {
+		id = FRA_infantry_doctrine
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = FRA_colonial_recruitment }
+		x = 0
+		y = 1
+		relative_position_id = FRA_colonial_recruitment
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = FRA_infantry_doctrine
+				cost_reduction = 0.30
+				uses = 2
+				category = cat_grand_battle_plan
+				category = cat_superior_firepower
+			}
+		}
+	}
+	focus = {
+		id = FRA_special_forces_bonuses
+		icon = GFX_goal_generic_amphibious_assault
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = FRA_infantry_doctrine }
+		mutually_exclusive = { }
+		relative_position_id = FRA_infantry_doctrine
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = FRA_special_forces3
+			add_tech_bonus = {
+				name = FRA_special_forces_bonuses
+				category = marine_tech
+				category = para_tech
+				category = mountaineers_tech
+				category = tp_tech
+				uses = 1
+				bonus = 0.75
+			}
+		}
+	}
+	focus = {
+		id = FRA_infantry_bonuses
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = FRA_special_forces_bonuses}
+		x = 0
+		y = 1
+		relative_position_id = FRA_special_forces_bonuses
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = FRA_infantry_bonuses
+		}
+	}
+	focus = {
+		id = FRA_terrain
+		icon = GFX_focus_por_luso_tropicalism
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = FRA_defensive_focus2 focus = FRA_aggressive_focus2 }
+		relative_position_id = FRA_defensive_focus2
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			country_event = { id = france.500 }
+		}
+	}
+	focus = {
+		id = FRA_motorized_focus2
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = FRA_terrain }
+		x = 0
+		y = 1
+		relative_position_id = FRA_terrain
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			hidden_effect = {
+				set_technology = {
+					FRA_slacken_transport_tech = 1
+				}
+
+			}			
+			custom_effect_tooltip = FRA_slacken_transport_tt
+		}
+	}
+	focus = {
+		id = FRA_methodical_battle2
+		icon = GFX_goal_generic_position_armies
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = FRA_motorized_focus2}
+		relative_position_id = FRA_motorized_focus2
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+				add_doctrine_cost_reduction = {
+					name = FRA_methodical_battle2
+					category = land_doctrine
+					uses = 2
+					cost_reduction = 0.20
+				}
+		}
+	}
+	focus = {
+		id = FRA_mechanized_focus2
+		icon = GFX_goal_generic_build_tank
+		prerequisite = { focus = FRA_methodical_battle2 }
+		x = 0
+		y = 1
+		relative_position_id = FRA_methodical_battle2
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		cost = 5
+		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_mechanized_focus2
+				bonus = 0.75
+				uses = 2
+				category = cat_mechanized_equipment
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_resource_reduction
+		icon = GFX_goal_generic_trade
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = FRA_aggressive_focus2 }
+		relative_position_id = FRA_aggressive_focus2
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = FRA_lower_resource_loss
+		}
+	}
+	
+	focus = {
 		id = FRA_allied_equipment
 		icon = GFX_focus_generic_combined_arms
-		prerequisite = { 
-			focus = FRA_continue_the_fight
-		}
-		relative_position_id = FRA_continue_the_fight
-		x = 3
-		y = 2
+		prerequisite = { focus = FRA_resource_reduction }
+		relative_position_id = FRA_resource_reduction
+		x = 0
+		y = 1
 		offset = {
 			x = 0
 			y = 0
@@ -681,9 +1132,261 @@
 	}
 
 	focus = {
+		id = FRA_tank_doctrine
+		icon = GFX_doctrine_tank_warfare
+		prerequisite = { focus = FRA_allied_equipment }
+		x = 0
+		y = 1
+		relative_position_id = FRA_allied_equipment
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = FRA_tank_doctrine
+				cost_reduction = 0.30
+				uses = 2
+				category = cat_mobile_warfare
+				category = cat_mass_assault
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_tank_radio2
+		icon = GFX_SOV_improve_signals
+		prerequisite = { focus = FRA_tank_doctrine }
+		x = 0
+		y = 1
+		relative_position_id = FRA_tank_doctrine
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_technology = {
+				mot_radio3 = 1
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_better_tanks
+		icon = GFX_focus_generic_army_tanks2
+		prerequisite = { focus = FRA_tank_radio2}
+		x = 0
+		y = 1
+		relative_position_id = FRA_tank_radio2
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			hidden_effect = {
+				set_technology = {
+					FRA_slacken_armor_tech = 1
+				}
+
+			}			
+			custom_effect_tooltip = FRA_slacken_armor_tt
+		}
+	}
+
+	focus = {
+		id = FRA_supply_consumption
+		icon = GFX_focus_SOV_the_road_of_life
+		prerequisite = { focus = FRA_mechanized_focus2 }
+		x = 0
+		y = 1
+		relative_position_id = FRA_mechanized_focus2
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = FRA_supply_consumption_spirit
+		}
+	}
+
+	focus = {
+		id = FRA_army_capstone
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { 
+			focus = FRA_supply_consumption
+		}
+		prerequisite = {
+			focus = FRA_infantry_bonuses 
+			focus = FRA_better_tanks 
+		}
+		x = 0
+		y = 1
+		relative_position_id = FRA_supply_consumption
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		available = {
+
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			army_experience = 100
+			add_ideas = FRA_army_capstone
+		}
+	}
+
+
+
+
+	focus = {
+		id = FRA_air_dominance
+		icon = GFX_goal_generic_air_fighter2
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = FRA_the_regiment_normandie }
+		relative_position_id = FRA_the_regiment_normandie
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = { FRA_air_dominance }
+		}
+	}
+	focus = {
+		id = FRA_cas_focus
+		icon = GFX_goal_generic_CAS
+		prerequisite = { 
+			focus = FRA_air_dominance
+		}
+		x = 0
+		y = 1
+		relative_position_id = FRA_air_dominance
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_cas_focus
+				bonus = 0.5
+				uses = 2
+				category = cas_bomber
+			}
+		}
+	}
+	focus = {
+		id = FRA_air_ground_cooperation
+		icon = GFX_goal_generic_air_bomber
+		x = 0
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = FRA_cas_focus }
+		mutually_exclusive = { }
+		relative_position_id = FRA_air_dominance
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = FRA_air_ground_cooperation
+				category = air_doctrine
+				uses = 2
+				cost_reduction = 0.25
+			}
+		}
+	}
+	focus = {
+		id = FRA_flying_artillery
+		icon = GFX_goal_poland_goal
+		x = 0
+		y = 3
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = FRA_air_ground_cooperation }
+		mutually_exclusive = { }
+		relative_position_id = FRA_air_dominance
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = { FRA_flying_artillery }
+		}
+	}
+
+
+
+
+	focus = {
 		id = FRA_refus_absurde
 		icon = GFX_goal_generic_demand_territory
-		x = 8
+		x = 2
 		y = 0
 		offset = {
 			x = 0
@@ -719,19 +1422,59 @@
 			remove_ideas = { FRA_defeatism }
 		}
 	}
+	# focus = {
+	# 	id = FRA_the_maquis
+	# 	icon = GFX_focus_focus_fra_maquis
+	# 	x = -2
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = FRA_refus_absurde
+	# 	}
+	# 	relative_position_id = FRA_refus_absurde
+		
+	# 	cost = 5
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = yes
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	completion_reward = {
+	# 		add_ideas = { FRA_maquis }
+	# 		every_state = {
+	# 			limit = {
+	# 				is_core_of = ROOT
+	# 				not = { is_controlled_by = ROOT }
+	# 				infrastructure < 7
+	# 			}
+	# 			add_resistance_target = {
+	# 				amount = 15
+	# 				tooltip = FRA_the_maquis
+	# 			}
+	# 		}
+	# 	}
+	# }
 	focus = {
-		id = FRA_the_maquis
-		icon = GFX_focus_focus_fra_maquis
+		id = FRA_agency_boost
+		icon = GFX_goal_generic_production2
 		x = -2
 		y = 2
-		offset = {
-			x = 0
-			y = 0
-		}
-		prerequisite = { 
+	 	prerequisite = { 
 			focus = FRA_refus_absurde
-		}
-		relative_position_id = FRA_refus_absurde
+	 	}
+	 	relative_position_id = FRA_refus_absurde
 		
 		cost = 5
 		ai_will_do = {
@@ -747,22 +1490,128 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = { FRA_maquis }
+			add_ideas = FRA_expand_intelligence_idea
+		}
+	}
+
+	focus = {
+		id = FRA_resistance_contacts
+		icon = GFX_goal_generic_national_unity
+		x = 0
+		y = 1
+	 	prerequisite = { 
+			focus = FRA_agency_boost
+	 	}
+	 	relative_position_id = FRA_agency_boost
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = FRA_expand_intelligence_idea2
+		}
+	}
+
+	focus = {
+		id = FRA_begin_operations
+		icon = GFX_goal_generic_demand_territory
+		x = 0
+		y = 1
+	 	prerequisite = { 
+			focus = FRA_resistance_contacts
+	 	}
+	 	relative_position_id = FRA_resistance_contacts
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = FRA_expand_intelligence_idea3
+		}
+	}
+
+	focus = {
+		id = FRA_resistance_sabotage
+		icon = GFX_focus_generic_manpower
+		x = 0
+		y = 1
+	 	prerequisite = { 
+			focus = FRA_begin_operations
+	 	}
+	 	relative_position_id = FRA_begin_operations
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		completion_reward = {
 			every_state = {
 				limit = {
-					is_core_of = ROOT
-					not = { is_controlled_by = ROOT }
-					infrastructure < 7
+					is_core_of = FRA
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = VIC
+						is_controlled_by = ITA
+					}				
 				}
-				add_resistance_target = {
-					amount = 15
-					tooltip = FRA_the_maquis
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+				# They do this one in Vanilla but it doesn't work for some reason ZZZ
+				 damage_building = {
+				 	type = rail_way
+				 	damage = 0.3
+				 }
+				damage_building = {
+					type = air_base
+					damage = 1
+				}
+				damage_building = {
+					type = anti_air_building
+					damage = 1
+				}
+				damage_building = {
+					type = radar_station
+					damage = 1
 				}
 			}
 		}
 	}
+
 	focus = {
 		id = FRA_reach_out_to_trade_unions
 		icon = GFX_goal_generic_major_alliance
