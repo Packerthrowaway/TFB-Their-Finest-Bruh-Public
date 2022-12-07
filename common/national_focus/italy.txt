@@ -2310,7 +2310,7 @@
 	
 	focus = {
 		id = ITA_albania_war_goal
-		icon = GFX_focus_ITA_albanian_irredentism
+		icon = GFX_goal_generic_more_territorial_claims
 		prerequisite = { focus = ITA_rome_berlin_axis }
 		will_lead_to_war_with = ALB
 		x = 1
@@ -2386,7 +2386,7 @@
 	
 	focus = {
 		id = ITA_greece_war_goal
-		icon = GFX_focus_generic_attack_greece
+		icon = GFX_goal_generic_occupy_states_ongoing_war
 		prerequisite = { focus = ITA_pact_of_steel }
 		available = {
 			country_exists = GRE
@@ -2529,7 +2529,7 @@
 	
 	focus = {
 		id = ITA_new_land
-		icon = GFX_focus_ITA_to_live_as_a_lion
+		icon = GFX_goal_generic_position_armies
 		prerequisite = { focus = ITA_pact_of_steel }
 		x = 0
 		y = 2
@@ -3817,7 +3817,7 @@
 	
 	focus = {
 		id = ITA_alpini
-		icon = GFX_focus_ITA_alpine_division
+		icon = GFX_focus_generic_strike_at_democracy1
 		prerequisite = { focus = ITA_sf_expansion }
 		x = 0
 		y = 1
@@ -4918,14 +4918,6 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = doc_bonus
-				bonus = 0.75
-				ahead_reduction = 0.5
-				uses = 1
-				technology = flying_boat1
-				technology = flying_boat2
-			}
-			add_tech_bonus = {
-				name = doc_bonus
 				bonus = 0.5
 				uses = 2
 				category = tactical_bomber
@@ -4950,12 +4942,8 @@
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = JAP_bomber_modernization
-				bonus = 0.5
-				uses = 2
-				category = naval_bomber			
-			}
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = caproni
 		}
 	}
 	
@@ -5006,9 +4994,9 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = doc_bonus
-				bonus = 0.50
+				bonus = 0.75
 				uses = 1
-				category = light_fighter
+				technology = improved_small_airframe
 			}
 		}
 	}
@@ -5032,9 +5020,9 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = doc_bonus
-				bonus = 0.75
+				bonus = 0.5
 				uses = 1
-				technology = fighter2
+				technology = advanced_small_airframe
 			}
 		}
 	}
@@ -5058,12 +5046,7 @@
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = bomber_bonus
-				bonus = 0.5
-				uses = 1
-				category = cas_bomber			
-			}
+			
 			add_doctrine_cost_reduction = {
 				name = GER_air_doc
 				cost_reduction = 0.40
@@ -5094,9 +5077,7 @@
 				name = bomber_bonus
 				bonus = 0.5
 				uses = 2
-				category = cat_strategic_bomber			
-				category = cas_bomber			
-				category = tactical_bomber			
+				category = cat_strategic_bomber							
 			}
 		}
 	}
