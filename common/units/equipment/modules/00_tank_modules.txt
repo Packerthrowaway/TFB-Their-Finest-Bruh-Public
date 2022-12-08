@@ -8,8 +8,9 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 
 		add_stats = {
-			fuel_consumption = 2.5
+			fuel_consumption = 2
 			maximum_speed = 1
+			fuel_capacity = 500
 		}
 		multiply_stats = {
 			maximum_speed = 0.1
@@ -25,6 +26,7 @@ equipment_modules = {
 		add_stats = {
 			fuel_consumption = 2
 			reliability = 0.1
+			fuel_capacity = 1080
 		}
 		multiply_stats = {  }
 	}
@@ -35,8 +37,9 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 
 		add_stats = {
-			fuel_consumption = 3
-			reliability = -0.05
+			fuel_consumption = 2
+			reliability = -0.1
+			fuel_capacity = 825
 		}
 		multiply_stats = {
 			build_cost_ic = 0.05
@@ -51,10 +54,11 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 
 		add_stats = {
-			build_cost_ic = 3
-			fuel_consumption = 5
+			build_cost_ic = 2
+			fuel_consumption = 4
 			reliability = -0.1
 			maximum_speed = 2
+			fuel_capacity = 1200
 		}
 
 		multiply_stats = {
@@ -228,7 +232,7 @@ equipment_modules = {
 		}
 		multiply_stats =  {
 			build_cost_ic = -0.1
-			maximum_speed = 0.5
+			maximum_speed = 0.1
 			hardness = -0.2
 		}
 	}
@@ -764,6 +768,7 @@ equipment_modules = {
 			main_armament_slot = {
 				tank_armament_tier_5
 				tank_armament_tier_6
+				tank_armament_tier_7
 			}
 		}
 
@@ -1503,8 +1508,8 @@ equipment_modules = {
 		allow_equipment_type = anti_tank
 
 		add_stats = {
-			soft_attack = 39
-			hard_attack = 31
+			soft_attack = 34
+			hard_attack = 26
 			ap_attack = 55
 			build_cost_ic = 6
 		}
@@ -1527,8 +1532,8 @@ equipment_modules = {
 		parent = tank_med_gun_1
 
 		add_stats = {
-			soft_attack = 45
-			hard_attack = 35
+			soft_attack = 40
+			hard_attack = 30
 			ap_attack = 70
 			build_cost_ic = 7
 		}
@@ -1551,8 +1556,8 @@ equipment_modules = {
 		parent = tank_med_gun_2
 
 		add_stats = {
-			soft_attack = 49
-			hard_attack = 39
+			soft_attack = 46
+			hard_attack = 34
 			ap_attack = 85
 			build_cost_ic = 8
 		}
@@ -1567,42 +1572,42 @@ equipment_modules = {
 		dismantle_cost_ic = 2
 	}
 
-	tank_med_gun_4 = { ###6
-		abbreviation = "mg4"
-		category = tank_armament_tier_6
-		sfx = sfx_ui_sd_module_turret
-		allow_equipment_type = anti_tank
-		parent = tank_med_gun_2
+	#tank_med_gun_4 = { ###6
+	#	abbreviation = "mg4"
+	#	category = tank_armament_tier_6
+	#	sfx = sfx_ui_sd_module_turret
+	#	allow_equipment_type = anti_tank
+	#	parent = tank_med_gun_2
 
-		add_stats = {
-			soft_attack = 49
-			hard_attack = 39
-			ap_attack = 85
-			build_cost_ic = 8
-		}
-		multiply_stats = {
-			maximum_speed = -0.125
-		}
+	#	add_stats = {
+	#		soft_attack = 49
+	#		hard_attack = 39
+	#		ap_attack = 85
+	#		build_cost_ic = 8
+	#	}
+	#	multiply_stats = {
+	#		maximum_speed = -0.125
+	#	}
 		
-		build_cost_resources = {
-			tungsten = 15
-			steel = 20
-		}
-		dismantle_cost_ic = 2
-	}
+	#	build_cost_resources = {
+	#		tungsten = 15
+	#		steel = 20
+	#	}
+	#	dismantle_cost_ic = 2
+	#}
 
 	tank_med_hv_gun_1 = { ###5
 		abbreviation = "mh1"
-		category = tank_armament_tier_5
+		category = tank_armament_tier_4
 		sfx = sfx_ui_sd_module_turret
 		allow_equipment_type = anti_tank
 		parent = tank_med_gun_2
 
 		add_stats = {
-			soft_attack = 28
-			hard_attack = 36
+			soft_attack = 26
+			hard_attack = 34
 			ap_attack = 60
-			build_cost_ic = 6.5
+			build_cost_ic = 7
 		}
 		multiply_stats = {
 			maximum_speed = -0.075
@@ -1617,16 +1622,16 @@ equipment_modules = {
 
 	tank_med_hv_gun_2 = { ###6
 		abbreviation = "mh2"
-		category = tank_armament_tier_6
+		category = tank_armament_tier_5
 		sfx = sfx_ui_sd_module_turret
 		allow_equipment_type = anti_tank
 		parent = tank_med_hv_gun_1
 
 		add_stats = {
-			soft_attack = 32
-			hard_attack = 42
+			soft_attack = 30
+			hard_attack = 38
 			ap_attack = 80
-			build_cost_ic = 7.5
+			build_cost_ic = 8
 		}
 		multiply_stats = {
 			maximum_speed = -0.1
@@ -1641,16 +1646,16 @@ equipment_modules = {
 
 	tank_med_hv_gun_3 = { ###7
 		abbreviation = "mh3"
-		category = tank_armament_tier_7
+		category = tank_armament_tier_6
 		sfx = sfx_ui_sd_module_turret
 		allow_equipment_type = anti_tank
 		parent = tank_med_hv_gun_2
 
 		add_stats = {
-			soft_attack = 36
-			hard_attack = 48
+			soft_attack = 34
+			hard_attack = 42
 			ap_attack = 95
-			build_cost_ic = 8.5
+			build_cost_ic = 9
 		}
 		multiply_stats = {
 			maximum_speed = -0.125
@@ -1665,14 +1670,14 @@ equipment_modules = {
 
 	tank_med_gun_squeeze = { ###6
 		abbreviation = "mgs"
-		category = tank_armament_tier_6
+		category = tank_armament_tier_5
 		sfx = sfx_ui_sd_module_turret
 		allow_equipment_type = anti_tank
 		parent = tank_med_hv_gun_1
 
 		add_stats = {
 			soft_attack = 20
-			hard_attack = 40
+			hard_attack = 42
 			ap_attack = 90
 			build_cost_ic = 9
 		}
@@ -1689,7 +1694,7 @@ equipment_modules = {
 
 	tank_med_gun_squeeze2 = { ###7
 		abbreviation = "mgs2"
-		category = tank_armament_tier_7
+		category = tank_armament_tier_6
 		sfx = sfx_ui_sd_module_turret
 		forbid_equipment_type_exact_match = armor
 		allow_equipment_type = anti_tank
@@ -1697,7 +1702,7 @@ equipment_modules = {
 
 		add_stats = {
 			soft_attack = 24
-			hard_attack = 46
+			hard_attack = 48
 			ap_attack = 100
 			build_cost_ic = 10
 		}
@@ -2377,7 +2382,7 @@ equipment_modules = {
 			defense = 10
 			build_cost_ic = 2
 		}
-		xp_cost = 1
+		
 		multiply_stats = {
 			
 		}
@@ -2412,4 +2417,5 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 1
 	}
+	
 }
