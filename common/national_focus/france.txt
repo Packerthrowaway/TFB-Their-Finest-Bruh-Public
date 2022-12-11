@@ -205,7 +205,7 @@
 			search_filters = { FOCUS_FILTER_STABILITY }
 			completion_reward = {
 				add_stability = 0.05
-				set_global_flag = FRA_mainland_2
+				#set_global_flag = FRA_mainland_2
 			}
 		}	
 	focus = {
@@ -824,7 +824,7 @@
 		cost = 6
 
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 
 		available = {
@@ -841,7 +841,7 @@
 
 		search_filters = { FOCUS_FILTER_POLITICAL  }
 		completion_reward = {
-			custom_effect_tooltip = FRA_nationalize_industry_tt
+			#custom_effect_tooltip = FRA_nationalize_industry_tt
 			create_country_leader = {
 				name = "Léon Blum"
 				desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
@@ -1069,7 +1069,6 @@
 				remove_idea = FRA_inefficient_economy_2
 				add_idea = FRA_inefficient_economy_1
 				}
-			set_global_flag = FRA_mainland
 		}
 
 	}
@@ -1106,6 +1105,7 @@
 				idea = FRA_raise_taxes1
 				days = 180
 			}
+			set_global_flag = FRA_mainland
 		}
 
 	}
@@ -1978,7 +1978,7 @@
 		cost = 6
 
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 
 		available = {
@@ -2016,14 +2016,12 @@
 		x = -1
 		y = 1
 
-		prerequisite = {
-			focus = FRA_form_the_popular_front
-		}
+		prerequisite = { focus = FRA_form_the_popular_front }
 		relative_position_id = FRA_form_the_popular_front
 		cost = 6
 
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 
 		available = {
@@ -2054,12 +2052,13 @@
 		x = 2
 		y = 1
 		relative_position_id = FRA_reform_the_labour_laws
-		mutually_exclusive = {}
-		prerequisite = {
-			focus = FRA_reform_the_labour_laws
-		}
+		prerequisite = { focus = FRA_reform_the_labour_laws }
 		cost = 6
 		mutually_exclusive = { focus = FRA_nationalize_key_industry }
+
+		ai_will_do = {
+			factor = 0
+		}
 		completion_reward = {
 			add_stability = 0.1
 			add_political_power = 120
@@ -2090,16 +2089,14 @@
 			x = 0
 			y = 0
 		}
-		prerequisite = {
-			focus = FRA_reform_the_labour_laws
-		}
+		prerequisite = { focus = FRA_reform_the_labour_laws }
 		relative_position_id = FRA_reform_the_labour_laws
 		cost = 6
 
 		mutually_exclusive = { focus = FRA_socialist_paradise_achieved }
 
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 
 		available = {
@@ -2117,7 +2114,7 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			custom_effect_tooltip = FRA_nationalize_industry_tt
+			#custom_effect_tooltip = FRA_nationalize_industry_tt
 			swap_ideas = {
 				remove_idea = FRA_inefficient_economy_2
 				add_idea = FRA_inefficient_economy_1
@@ -2296,10 +2293,7 @@
 			x = 0
 			y = 0
 		}
-		prerequisite = {
-			focus = FRA_form_the_state_arsenals
-			focus = FRA_socialist_paradise_achieved
-		}
+		prerequisite = { focus = FRA_form_the_state_arsenals focus = FRA_socialist_paradise_achieved }
 		relative_position_id = FRA_form_the_state_arsenals
 		cost = 6
 
@@ -2332,9 +2326,7 @@
 			x = 0
 			y = 0
 		}
-		prerequisite = {
-			focus = FRA_general_work_council
-		}
+		prerequisite = { focus = FRA_general_work_council }
 		relative_position_id = FRA_general_work_council
 		cost = 6
 
@@ -2373,34 +2365,6 @@
 			}
 		}
 	}
-	focus = {
-		id = FRA_ban_the_leagues
-		icon = GFX_goal_generic_forceful_treaty
-		x = 2
-		y = 1
-		relative_position_id = FRA_protect_the_rights_of_man
-		cost = 2
-
-		prerequisite = {
-			focus = FRA_protect_the_rights_of_man
-		}
-
-		available = {
-			has_idea = FRA_political_violence
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {FOCUS_FILTER_FRA_POLITICAL_VIOLENCE }
-		completion_reward = {
-			remove_ideas = { FRA_political_violence }
-			set_temp_variable = { FRA_rw_support = party_popularity@neutrality }
-			add_to_temp_variable = { FRA_rw_support = party_popularity@fascism }
-			multiply_temp_variable = { FRA_rw_support = -0.5 }
-			add_stability = FRA_rw_support
-		}
-	}
 	
 	focus = {
 		id = FRA_protect_the_rights_of_man
@@ -2412,7 +2376,7 @@
 		
 		relative_position_id = FRA_form_the_popular_front
 		
-		cost = 2
+		cost = 4
 
 		ai_will_do = {
 			factor = 1
@@ -2432,6 +2396,33 @@
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FRA_ban_the_leagues
+		icon = GFX_goal_generic_forceful_treaty
+		x = 2
+		y = 1
+		relative_position_id = FRA_protect_the_rights_of_man
+		cost = 4
+
+		prerequisite = { focus = FRA_protect_the_rights_of_man }
+
+		available = {
+			has_idea = FRA_political_violence
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_FRA_POLITICAL_VIOLENCE }
+		completion_reward = {
+			remove_ideas = { FRA_political_violence }
+			set_temp_variable = { FRA_rw_support = party_popularity@neutrality }
+			add_to_temp_variable = { FRA_rw_support = party_popularity@fascism }
+			multiply_temp_variable = { FRA_rw_support = -0.5 }
+			add_stability = FRA_rw_support
 		}
 	}
 	
@@ -2467,7 +2458,7 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
-			custom_effect_tooltip = FRA_blum_proposal_tt
+			#custom_effect_tooltip = FRA_blum_proposal_tt
 			add_state_core = 459
 			add_state_core = 460
 			add_state_core = 513
@@ -2530,9 +2521,7 @@
 			x = 0
 			y = 0
 		}
-		prerequisite = {
-			focus = FRA_expand_the_citizenship
-		}		
+		prerequisite = { focus = FRA_expand_the_citizenship }		
 		allow_branch = {
 			always = no
 		}
@@ -2584,9 +2573,7 @@
 			x = 0
 			y = 0
 		}
-		prerequisite = {
-			focus = FRA_france_undividable
-		}
+		prerequisite = { focus = FRA_france_undividable }
 		relative_position_id = FRA_france_undividable
 		cost = 6
 
@@ -2656,25 +2643,6 @@
 		}
 	}
 	focus = {
-		id = FRA_support_the_workers
-		icon = GFX_focus_generic_the_giant_wakes
-		x = 0
-		y = 2
-		relative_position_id = FRA_coalition_is_failing
-		cost = 6
-
-		prerequisite = {
-			focus = FRA_coalition_collapses
-		}
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = FRA_matignon_agreements_1
-				add_idea = FRA_matignon_agreements_2
-			}
-			add_stability = 0.1
-		}
-	}
-	focus = {
 		id = FRA_coalition_is_failing
 		icon = GFX_goal_generic_forceful_treaty
 		x = 2
@@ -2702,7 +2670,7 @@
 			focus = FRA_coalition_is_failing
 		}
 		completion_reward = {
-			custom_effect_tooltip = FRA_coalition_tt
+			#custom_effect_tooltip = FRA_coalition_tt
 			add_stability = -0.1
 			create_country_leader = {
 				name = "Édouard Daladier"
@@ -2714,6 +2682,25 @@
 					stout_defender
 				}
 			}
+		}
+	}
+	focus = {
+		id = FRA_support_the_workers
+		icon = GFX_focus_generic_the_giant_wakes
+		x = 0
+		y = 1
+		relative_position_id = FRA_coalition_collapses
+		cost = 6
+
+		prerequisite = {
+			focus = FRA_coalition_collapses
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = FRA_matignon_agreements_1
+				add_idea = FRA_matignon_agreements_2
+			}
+			add_stability = 0.1
 		}
 	}
 	focus = {
@@ -2760,7 +2747,7 @@
 		prerequisite = { focus = FRA_form_the_popular_front focus = FRA_settle_with_the_conservatives }
 		
 		relative_position_id = FRA_form_the_popular_front
-		cost = 4
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -3305,7 +3292,7 @@
 		prerequisite = {
 			focus = FRA_raise_taxes
 		}
-		mutually_exclusive = { focus = FRA_confirm_eastern_commitments }
+		#mutually_exclusive = { focus = FRA_confirm_eastern_commitments }
 		relative_position_id = FRA_general_work_council
 		cost = 5
 
@@ -3348,9 +3335,7 @@
 	focus = {
 		id = FRA_the_workers_are_striking
 		icon = GFX_goal_generic_production
-		prerequisite = {
-			focus = FRA_general_work_council focus = FRA_support_the_workers 
-		}
+		prerequisite = { focus = FRA_general_work_council focus = FRA_support_the_workers }
 		x = 3
 		y = 1
 		relative_position_id = FRA_general_work_council
@@ -3476,45 +3461,44 @@
 			ENG = { country_event = { id = britain.13 } }
 		}
 	}
-	focus = {
-		allow_branch = { always = no }
-		id = FRA_arms_purchases_in_the_us
-		icon = GFX_goal_generic_build_tank
-		x = 0
-		y = 1
-		prerequisite = {
-			focus = FRA_go_with_britain
-		}
-		relative_position_id = FRA_go_with_britain
-		cost = 6
+	# focus = {
+	# 	id = FRA_arms_purchases_in_the_us
+	# 	icon = GFX_goal_generic_build_tank
+	# 	x = 0
+	# 	y = 1
+	# 	prerequisite = {
+	# 		focus = FRA_go_with_britain
+	# 	}
+	# 	relative_position_id = FRA_go_with_britain
+	# 	cost = 6
 
-		ai_will_do = {
-			factor = 1
-		}
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
 
-		available = {
-			country_exists = USA
-			USA = {
-				OR = {
-					NOT = { has_completed_focus = USA_neutrality_act }
-					has_completed_focus = USA_lend_lease_act
-				}
-			}
-		}
+	# 	available = {
+	# 		country_exists = USA
+	# 		USA = {
+	# 			OR = {
+	# 				NOT = { has_completed_focus = USA_neutrality_act }
+	# 				has_completed_focus = USA_lend_lease_act
+	# 			}
+	# 		}
+	# 	}
 		
-		bypass = {
+	# 	bypass = {
 
-		}
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
 
-		completion_reward = {
-			USA = { country_event = lar_arms_purchases.1 }
-			unlock_decision_category_tooltip = FRA_weapons_purchases_category
-		}
-	}
+	# 	completion_reward = {
+	# 		USA = { country_event = lar_arms_purchases.1 }
+	# 		unlock_decision_category_tooltip = FRA_weapons_purchases_category
+	# 	}
+	# }
 	focus = {
 		id = FRA_france_leads
 		icon = GFX_goal_generic_demand_territory
