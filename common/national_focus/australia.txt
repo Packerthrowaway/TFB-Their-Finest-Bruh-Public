@@ -19,7 +19,7 @@ focus_tree = {
 	
 	default = no
 	
-	continuous_focus_position = { x = 50 y = 1000 }
+	continuous_focus_position = { x = 50 y = 850 }
 	
 	shared_focus = COM_commonwealth_command
 
@@ -66,7 +66,7 @@ focus_tree = {
 	focus = {
 		id = AST_additional_militia_training
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 2
+		x = 4
 		y = 0
 
 		cost = 5
@@ -99,10 +99,27 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AST_cruiser_tanks
+		icon = GFX_focus_generic_tank_production
+		prerequisite = { focus =AST_additional_militia_training}
+		mutually_exclusive = { focus = AST_hmas_assault}
+		x = -3
+		y = 2
+		relative_position_id = AST_additional_militia_training
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = HUN_assault_gun_idea
+		}
+	}
+
+	focus = {
 		id = AST_royal_australian_artillery
 		icon = GFX_goal_generic_army_artillery2
 		prerequisite = { focus = AST_additional_militia_training }
-		x = -1
+		x = 1
 		y = 1
 		relative_position_id = AST_additional_militia_training
 
@@ -138,9 +155,9 @@ focus_tree = {
 	focus = {
 		id = AST_promote_reservists
 		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { focus = AST_additional_militia_training }
-		x = 1
-		y = 1
+		prerequisite = { focus = AST_hmas_assault focus = AST_cruiser_tanks}
+		x = 0
+		y = 3
 		relative_position_id = AST_additional_militia_training
 
 		cost = 5
@@ -189,10 +206,10 @@ focus_tree = {
 	focus = {
 		id = AST_daimler_dingo
 		icon = GFX_goal_generic_army_motorized
-		prerequisite = { focus = AST_royal_australian_artillery }
-		x = -2
-		y = 2
-		relative_position_id = AST_additional_militia_training
+		prerequisite = { focus = AST_cruiser_tanks }
+		x = 1
+		y = 1
+		relative_position_id = AST_cruiser_tanks
 
 		cost = 8
 
@@ -226,8 +243,9 @@ focus_tree = {
 	focus = {
 		id = AST_hmas_assault
 		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { focus = AST_royal_australian_artillery focus = AST_promote_reservists }
-		x = 0
+		prerequisite = { focus = AST_additional_militia_training }
+		mutually_exclusive = { focus = AST_cruiser_tanks}
+		x = 3
 		y = 2
 		relative_position_id = AST_additional_militia_training
 
@@ -268,12 +286,12 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AST_specialize_equipment
+		id = AST_tank_pounder
 		icon = GFX_goal_generic_army_artillery
-		prerequisite = { focus = AST_promote_reservists }
-		x = 2
-		y = 2
-		relative_position_id = AST_additional_militia_training
+		prerequisite = { focus = AST_cruiser_tanks }
+		x = -1
+		y = 1
+		relative_position_id = AST_cruiser_tanks
 
 		cost = 5
 
@@ -296,7 +314,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_tech_bonus = {
-				name = AST_specialize_equipment
+				name = AST_tank_pounder
 				bonus = 0.5
 				uses = 1
 				category = infantry_weapons
@@ -310,8 +328,8 @@ focus_tree = {
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = AST_hmas_assault }
 		x = -1
-		y = 3
-		relative_position_id = AST_additional_militia_training
+		y = 1
+		relative_position_id = AST_hmas_assault
 
 		cost = 5
 
@@ -341,9 +359,9 @@ focus_tree = {
 	focus = {
 		id = AST_australian_army_catering_corps
 		icon = GFX_goal_generic_consumer_goods
-		prerequisite = { focus = AST_hmas_assault }
-		x = 0
-		y = 4
+		prerequisite = { focus = AST_additional_militia_training }
+		x = -1
+		y = 1
 		relative_position_id = AST_additional_militia_training
 
 		cost = 5
@@ -385,8 +403,8 @@ focus_tree = {
 		icon = GFX_goal_generic_small_arms
 		prerequisite = { focus = AST_hmas_assault }
 		x = 1
-		y = 3
-		relative_position_id = AST_additional_militia_training
+		y = 1
+		relative_position_id = AST_hmas_assault
 		
 		cost = 5
 
@@ -418,12 +436,62 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AST_jungle_blitz
+		icon = GFX_focus_generic_combined_arms
+		x = 1
+		y = 1
+		prerequisite = { focus = AST_tank_pounder }
+		prerequisite = { focus = AST_daimler_dingo}
+
+		mutually_exclusive = { }
+		relative_position_id = AST_tank_pounder
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = FRA_hotchkiss
+		}
+	}
+
+	focus = {
+		id = AST_tank_refit
+		icon = GFX_goal_continuous_armor_production
+		prerequisite = { focus = AST_jungle_blitz }
+		x = -1
+		y = 1
+		relative_position_id = AST_jungle_blitz
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = FRA_tank_conversion_spirit
+		}
+	}
+
+	focus = {
 		id = AST_sentinel_tank_project
 		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = AST_daimler_dingo }
-		x = -2
-		y = 4
-		relative_position_id = AST_additional_militia_training
+		prerequisite = { focus = AST_jungle_blitz }
+		x = 1
+		y = 1
+		relative_position_id = AST_jungle_blitz
 
 		cost = 5
 
@@ -454,51 +522,51 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = AST_airborne_defence
-		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = AST_specialize_equipment }
-		prerequisite = { focus = AST_volunteer_air_observers_corps }
-		x = 2
-		y = 4
-		relative_position_id = AST_additional_militia_training
+	# focus = {
+	# 	id = AST_airborne_defence
+	# 	icon = GFX_goal_generic_special_forces
+	# 	prerequisite = { focus = AST_tank_pounder }
+	# 	#prerequisite = { focus = AST_volunteer_air_observers_corps }
+	# 	x = 2
+	# 	y = 4
+	# 	relative_position_id = AST_additional_militia_training
 
-		cost = 5
+	# 	cost = 5
 
-		ai_will_do = {
-			factor = 1
-		}
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
 
-		available = {
+	# 	available = {
 
-		}
+	# 	}
 		
-		bypass = {
+	# 	bypass = {
 
-		}
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_RESEARCH  }
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = yes
+	# 	search_filters = { FOCUS_FILTER_RESEARCH  }
 
-		completion_reward = {
-			add_tech_bonus = {
-				name = AST_airborne_defence
-				bonus = 0.75
-				uses = 1
-				category = para_tech
-			}
-		}
-	}
+	# 	completion_reward = {
+	# 		add_tech_bonus = {
+	# 			name = AST_airborne_defence
+	# 			bonus = 0.75
+	# 			uses = 1
+	# 			category = para_tech
+	# 		}
+	# 	}
+	# }
 
 	focus = {
 		id = AST_introduce_unconventional_warfare
 		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { focus = AST_sentinel_tank_project focus = AST_airborne_defence }
+		prerequisite = { focus = AST_fund_owen_gun_research }
 		x = 0
-		y = 5
-		relative_position_id = AST_additional_militia_training
+		y = 1
+		relative_position_id = AST_fund_owen_gun_research
 
 		cost = 5
 
@@ -535,8 +603,8 @@ focus_tree = {
 		icon = GFX_goal_generic_amphibious_assault
 		prerequisite = { focus = AST_introduce_unconventional_warfare }
 		x = -1
-		y = 6
-		relative_position_id = AST_additional_militia_training
+		y = 1
+		relative_position_id = AST_introduce_unconventional_warfare
 
 		cost = 5
 
@@ -573,8 +641,8 @@ focus_tree = {
 		icon = GFX_goal_generic_special_forces
 		prerequisite = { focus = AST_introduce_unconventional_warfare }
 		x = 1
-		y = 6
-		relative_position_id = AST_additional_militia_training
+		y = 1
+		relative_position_id = AST_introduce_unconventional_warfare
 
 		cost = 5
 
@@ -614,7 +682,7 @@ focus_tree = {
 	focus = {
 		id = AST_expand_the_raaf
 		icon = GFX_goal_generic_build_airforce
-		x = 7
+		x = 12
 		y = 0
 		cost = 10
 
@@ -1220,7 +1288,7 @@ focus_tree = {
 	focus = {
 		id = AST_cockatoo_island_shipyards
 		icon = GFX_goal_generic_construct_naval_dockyard
-		x = 11
+		x = 16
 		y = 0
 
 		cost = 5
@@ -1618,7 +1686,7 @@ focus_tree = {
 	focus = {
 		id = AST_standard_gauge_railway
 		icon = GFX_goal_generic_construct_infrastructure
-		x = 14
+		x = 19
 		y = 0
 
 		cost = 10
@@ -2223,7 +2291,7 @@ focus_tree = {
 	focus = {
 		id = AST_establish_advisory_war_council
 		icon = GFX_goal_generic_demand_territory
-		x = 22
+		x = 27
 		y = 0
 
 		cost = 10
@@ -2447,11 +2515,10 @@ focus_tree = {
 	focus = {
 		id = AST_rats_of_tobruk
 		icon = GFX_focus_AST_rats_tobruk
-		prerequisite = { focus = AST_volunteer_defence_corps }
-		prerequisite = { focus = AST_strengthen_ties_with_uk }
-		x = 4
-		y = 2
-		relative_position_id = AST_establish_advisory_war_council
+		prerequisite = { focus = AST_promote_reservists }
+		x = 0
+		y = 1
+		relative_position_id = AST_promote_reservists
 
 		cost = 10
 
@@ -2761,7 +2828,7 @@ focus_tree = {
 	focus = {
 		id = AST_support_the_policy_of_appeasement
 		icon = GFX_goal_generic_improve_relations
-		x = 28
+		x = 32
 		y = 0
 
 		cost = 10
