@@ -131,7 +131,7 @@ focus_tree = {
 		id = AST_royal_australian_artillery
 		icon = GFX_goal_generic_army_artillery2
 		prerequisite = { focus = AST_additional_militia_training }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = AST_additional_militia_training
 
@@ -372,7 +372,7 @@ focus_tree = {
 		id = AST_australian_army_catering_corps
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = AST_additional_militia_training }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = AST_additional_militia_training
 
@@ -694,6 +694,47 @@ focus_tree = {
 				category = tp_tech
 			}
 			add_ideas = AST_m_special_unit_idea
+		}
+	}
+
+	focus = {
+		id = AST_central_bureau
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = AST_additional_militia_training }
+		x = 0
+		y = 1
+		relative_position_id = AST_additional_militia_training
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			is_in_faction_with = USA
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = AST_central_bureau
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 2
+				technology = tech_signal_company
+				technology = tech_signal_company2
+				technology = tech_signal_company3
+				technology = tech_signal_company4
+			}
 		}
 	}
 
