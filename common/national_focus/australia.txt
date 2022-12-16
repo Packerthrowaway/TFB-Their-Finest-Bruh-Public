@@ -111,8 +111,20 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = HUN_assault_gun_idea
+			add_tech_bonus = {
+				name = AST_cruiser
+				bonus = 0.50
+				uses = 1
+				category = armor
+			}
+			add_doctrine_cost_reduction = {
+				name = AST_additional_militia_training
+				cost_reduction = 0.25
+				uses = 1
+				category = land_doctrine
+			}
 		}
+		
 	}
 
 	focus = {
@@ -211,7 +223,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = AST_cruiser_tanks
 
-		cost = 8
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -316,8 +328,8 @@ focus_tree = {
 			add_tech_bonus = {
 				name = AST_tank_pounder
 				bonus = 0.5
-				uses = 1
-				category = infantry_weapons
+				uses = 2
+				category = cat_anti_tank
 				category = artillery
 			}
 		}
@@ -464,8 +476,14 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = FRA_hotchkiss
+			add_doctrine_cost_reduction = {
+				name = AST_additional_militia_training
+				cost_reduction = 0.25
+				uses = 1
+				category = land_doctrine
+			}
+			custom_effect_tooltip = AST_jungle_adaptable_armor_designs
+			hidden_effect = { set_technology = { jungle_adaptable_armor_designs = 1 } }
 		}
 	}
 
@@ -481,7 +499,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = FRA_tank_conversion_spirit
+			add_ideas = AST_tank_conversion_spirit
 		}
 	}
 
@@ -514,10 +532,11 @@ focus_tree = {
 
 		completion_reward = {
 			add_tech_bonus = {
-				name = AST_sentinel_tank_project
-				bonus = 0.5
-				uses = 2
-				category = armor
+				name = AST_sentinel_tank
+				bonus = 0.75
+				ahead_reduction = 0.5
+				uses = 1
+				technology = ast_medium_tank_1
 			}
 		}
 	}
@@ -589,6 +608,8 @@ focus_tree = {
 
 		completion_reward = {
 			army_experience = 10
+			custom_effect_tooltip = RAJ_jungle_training_effect
+			hidden_effect = { set_technology = { jungle_warfare = 1 } }
 			add_doctrine_cost_reduction = {
 				name = AST_introduce_unconventional_warfare
 				cost_reduction = 0.25
@@ -633,6 +654,7 @@ focus_tree = {
 				category = marine_tech
 				category = para_tech
 			}
+			add_ideas = AST_z_special_unit_idea
 		}
 	}
 
@@ -671,6 +693,7 @@ focus_tree = {
 				uses = 2
 				category = tp_tech
 			}
+			add_ideas = AST_m_special_unit_idea
 		}
 	}
 
