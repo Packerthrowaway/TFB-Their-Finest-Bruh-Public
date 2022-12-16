@@ -3,9 +3,8 @@ NEW_player_decisions = {
 	explain_standard_things = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+
 		}
 
 		visible = {
@@ -19,69 +18,83 @@ NEW_player_decisions = {
 			FROM = {news_event = { id = newPlayer.1 }}
 		}
 	}
-	explain_tfb_navy = {
-		icon = generic_propaganda
+	# explain_tfb_navy = {
+	# 	icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
-		}
+	# 	allowed = {
+	# 		is_ai = no
+	# 	}
 
-		visible = {
-			always = yes
-		}
+	# 	visible = {
+	# 		always = yes
+	# 	}
 
-		fire_only_once = no
-		cost = 0
+	# 	fire_only_once = no
+	# 	cost = 0
 
-		complete_effect = {
-			FROM = {news_event = { id = newPlayer.2 }}
-		}
-	}
-	explain_tfb_tanks = {
-		icon = generic_propaganda
+	# ai_will_do = {
+	# 	base = 0
+	# }
 
-		available = {
-			is_ai = no
-			is_debug = yes
-		}
+	# 	complete_effect = {
+	# 		FROM = {news_event = { id = newPlayer.2 }}
+	# 	}
+	# }
+	# explain_tfb_tanks = {
+	# 	icon = generic_propaganda
 
-		visible = {
-			always = yes
-		}
+	# 	allowed = {
+	# 		is_ai = no
+	# 	}
 
-		fire_only_once = no
-		cost = 0
+	# 	visible = {
+	# 		always = yes
+	# 	}
 
-		complete_effect = {
-			FROM = {news_event = { id = newPlayer.3 }}
-		}
-	}
-	explain_tfb_air = {
-		icon = generic_propaganda
+	# 	fire_only_once = no
+	# 	cost = 0
 
-		available = {
-			is_ai = no
-			is_debug = yes
-		}
+	# ai_will_do = {
+	# 	base = 0
+	# }
 
-		visible = {
-			always = yes
-		}
+	# 	complete_effect = {
+	# 		FROM = {news_event = { id = newPlayer.3 }}
+	# 	}
+	# }
+	# explain_tfb_air = {
+	# 	icon = generic_propaganda
 
-		fire_only_once = no
-		cost = 0
+	# 	allowed = {
+	# 		is_ai = no
+	# 	}
 
-		complete_effect = {
-			FROM = {news_event = { id = newPlayer.4 }}
-		}
-	}
+	# 	visible = {
+	# 		always = yes
+	# 	}
+
+	# 	fire_only_once = no
+	# 	cost = 0
+
+	# ai_will_do = {
+	# 	base = 0
+	# }
+
+	# 	complete_effect = {
+	# 		FROM = {news_event = { id = newPlayer.4 }}
+	# 	}
+	# }
 	explain_china_waves = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+			OR = {
+				original_tag = JAP
+				original_tag = CHI
+				original_tag = MAN
+				original_tag = SIA
+			}
+
 		}
 
 		visible = {
@@ -90,6 +103,10 @@ NEW_player_decisions = {
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.5 }}
@@ -98,9 +115,13 @@ NEW_player_decisions = {
 	explain_ww_finland = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+			OR = {
+				original_tag = FIN
+				original_tag = SOV
+				original_tag = MON
+			}
+
 		}
 
 		visible = {
@@ -109,6 +130,10 @@ NEW_player_decisions = {
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.6 }}
@@ -117,9 +142,13 @@ NEW_player_decisions = {
 	explain_ww_conditions = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+			OR = {
+				original_tag = FIN
+				original_tag = SOV
+				original_tag = MON
+			}
+
 		}
 
 		visible = {
@@ -128,6 +157,10 @@ NEW_player_decisions = {
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.12 }}
@@ -136,9 +169,13 @@ NEW_player_decisions = {
 	explain_ww_soviets = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+			OR = {
+				original_tag = FIN
+				original_tag = SOV
+				original_tag = MON
+			}
+
 		}
 
 		visible = {
@@ -147,6 +184,10 @@ NEW_player_decisions = {
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.7 }}
@@ -155,9 +196,11 @@ NEW_player_decisions = {
 	explain_hungarian_tanks = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+			OR = {
+				original_tag = HUN
+			}
+
 		}
 
 		visible = {
@@ -166,6 +209,10 @@ NEW_player_decisions = {
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.8 }}
@@ -174,9 +221,12 @@ NEW_player_decisions = {
 	explain_mountain_gun = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+			OR = {
+				original_tag = RAJ
+				original_tag = ROM
+			}
+
 		}
 
 		visible = {
@@ -185,6 +235,10 @@ NEW_player_decisions = {
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.9 }}
@@ -193,9 +247,11 @@ NEW_player_decisions = {
 	explain_spr_civil_war = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
+		allowed = {
+			OR = {
+				original_tag = SPR
+			}
+
 		}
 
 		visible = {
@@ -204,6 +260,10 @@ NEW_player_decisions = {
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.10 }}
@@ -212,17 +272,22 @@ NEW_player_decisions = {
 	explain_bul_rearm = {
 		icon = generic_propaganda
 
-		available = {
-			is_ai = no
-			is_debug = yes
-		}
+		allowed = {
+			OR = {
+				original_tag = BUL
+			}
 
+		}
 		visible = {
 			always = yes
 		}
 
 		fire_only_once = no
 		cost = 0
+
+		ai_will_do = {
+			base = 0
+		}
 
 		complete_effect = {
 			FROM = {news_event = { id = newPlayer.11 }}
