@@ -326,7 +326,20 @@ focus_tree = {
 		available = {
 			congress_medium_support_trigger = yes
 			has_government = democratic
-			not = { has_country_flag = USA_great_depression_cooldown }
+			OR = {
+				not = { has_country_flag = USA_great_depression_cooldown }
+				has_country_flag = {
+					flag = USA_great_depression_cooldown
+					days > 210
+				}
+				custom_trigger_tooltip = {
+					tooltip = USA_great_depression_timer_tt
+					has_country_flag = {
+						flag = USA_great_depression_cooldown
+						days > 210
+					}
+				}
+			}
 		}
 		
 		bypass = {
@@ -345,7 +358,7 @@ focus_tree = {
 		completion_reward = {
 			USA_great_depression_level_down = yes
 			USA_congress_medium_opposition = yes
-			set_country_flag = { flag = USA_great_depression_cooldown value = 1 days = 210 }
+			set_country_flag = USA_great_depression_cooldown
 			custom_effect_tooltip = USA_great_depression_cooldown_tt
 		}
 	}
@@ -712,7 +725,20 @@ focus_tree = {
 		available = {
 			congress_medium_support_trigger = yes
 			has_government = democratic
-			not = { has_country_flag = USA_great_depression_cooldown }
+			OR = {
+				not = { has_country_flag = USA_great_depression_cooldown }
+				has_country_flag = {
+					flag = USA_great_depression_cooldown
+					days > 210
+				}
+				custom_trigger_tooltip = {
+					tooltip = USA_great_depression_timer_tt
+					has_country_flag = {
+						flag = USA_great_depression_cooldown
+						days > 210
+					}
+				}
+			}
 		}
 
 		available_if_capitulated = yes
@@ -720,7 +746,7 @@ focus_tree = {
 		completion_reward = {
 			USA_great_depression_level_down = yes
 			USA_congress_medium_opposition = yes
-			set_country_flag = { flag = USA_great_depression_cooldown value = 1 days = 210 }
+			set_country_flag = USA_great_depression_cooldown
 			custom_effect_tooltip = USA_great_depression_cooldown_tt
 		}
 	}
@@ -1489,7 +1515,20 @@ focus_tree = {
 				JAP  = { has_war_with = CHI }
 				date > 1938.1.1
 			}
-			not = { has_country_flag = USA_great_depression_cooldown }
+			OR = {
+				not = { has_country_flag = USA_great_depression_cooldown }
+				has_country_flag = {
+					flag = USA_great_depression_cooldown
+					days > 210
+				}
+				custom_trigger_tooltip = {
+					tooltip = USA_great_depression_timer_tt
+					has_country_flag = {
+						flag = USA_great_depression_cooldown
+						days > 210
+					}
+				}
+			}
 		}
 		
 		bypass = {
@@ -1509,7 +1548,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY FOCUS_FILTER_USA_CONGRESS}
 		completion_reward = {
 			USA_great_depression_level_down = yes
-			set_country_flag = { flag = USA_great_depression_cooldown value = 1 days = 210 }
+			set_country_flag = USA_great_depression_cooldown
 			USA_congress_medium_opposition = yes
 			custom_effect_tooltip = USA_great_depression_cooldown_tt
 			unlock_decision_tooltip = { decision = USA_pay_farm_subsidies show_effect_tooltip = yes }
@@ -1531,7 +1570,17 @@ focus_tree = {
 		available = {
 			congress_medium_support_trigger = yes
 			has_government = democratic
-			not = { has_country_flag = USA_great_depression_cooldown }
+			has_country_flag = {
+				flag = USA_great_depression_cooldown
+				days > 210
+			}
+			custom_trigger_tooltip = {
+				tooltip = USA_great_depression_timer_tt
+				has_country_flag = {
+					flag = USA_great_depression_cooldown
+					days > 210
+				}
+			}
 			OR = {
 				threat > 0.5
 				ENG  = { has_war_with = GER }
@@ -1556,7 +1605,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY FOCUS_FILTER_USA_CONGRESS}
 		completion_reward = {
 			USA_great_depression_level_down = yes
-			set_country_flag = { flag = USA_great_depression_cooldown value = 1 days = 210 }
+			set_country_flag = USA_great_depression_cooldown
 			custom_effect_tooltip = USA_great_depression_cooldown_tt
 			USA_congress_medium_opposition = yes
 			custom_effect_tooltip = unlock_propaganda_campaign_tt
@@ -1590,7 +1639,17 @@ focus_tree = {
 		available = {
 			congress_medium_support_trigger = yes
 			has_government = democratic
-			not = { has_country_flag = USA_great_depression_cooldown }
+			has_country_flag = {
+				flag = USA_great_depression_cooldown
+				days > 210
+			}
+			custom_trigger_tooltip = {
+				tooltip = USA_great_depression_timer_tt
+				has_country_flag = {
+					flag = USA_great_depression_cooldown
+					days > 210
+				}
+			}
 			OR = {
 				threat > 0.99
 				FRA = { has_capitulated = yes }
@@ -1684,7 +1743,7 @@ focus_tree = {
 					set_state_flag = USA_federal_housing_act
 				}
 			}
-			set_country_flag = { flag = USA_great_depression_cooldown value = 1 days = 210 }
+			set_country_flag = USA_great_depression_cooldown
 			custom_effect_tooltip = USA_great_depression_cooldown_tt
 		}
 	}
