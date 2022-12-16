@@ -106,7 +106,7 @@ upgrades = {
 
 	tank_nsb_med_armor_1_upgrade = {
 		abbreviation = "arm"
-		max_level = 2 #each level represents ~10mm of armor 
+		max_level = 4 #each level represents ~10mm of armor 
 		cost = land
 
 		linear_cost = {
@@ -117,9 +117,15 @@ upgrades = {
 		level_requirements = {
 			1 = {
 				OR = {
-					has_tech = ger_p34_tank_3 # Second Wave Upgrade
+					has_tech = ger_p34_tank_2 # First Wave Upgrade
 					has_tech = eng_crusader_upgrade
 					has_tech = usa_medium_tank_5
+					
+				}
+			}
+			3 = {
+				OR = {
+					has_tech = ger_p34_tank_3 # Second Wave Upgrade
 					
 				}
 			}
@@ -131,12 +137,18 @@ upgrades = {
 				steel = 2
 			}
 			2 = {
-				steel = 5
+				steel = 4
+			}
+			3 = {
+				steel = 5 
+			}
+			4 = {
+				steel = 6 
 			}
 			
 		}
 
-		maximum_speed = -0.05
+		maximum_speed = -0.025
 		add_stats = {
 			breakthrough = 2.5
 			armor_value = 7.5
@@ -297,6 +309,49 @@ upgrades = {
 			breakthrough = 2.5
 			armor_value = 5
 			build_cost_ic = 1
+		}
+	}
+
+	tank_nsb_medium_hardness_1_upgrade = {
+		abbreviation = "arm"
+		max_level = 3 #each level represents ~10mm of armor 
+		cost = land
+
+		linear_cost = {
+			cost_by_level = 1
+			cost_by_level_for_licensed_equipment = 2
+		}
+
+		level_requirements = {
+			1 = {
+				OR = {
+					has_tech = ger_p34_tank_2
+					has_tech = sov_medium_tank_2
+				}
+			}			
+			3 = {
+				has_tech = sov_medium_tank_3
+			}
+		}
+
+		resource_cost_thresholds = { # resource values defined here are TOTAL added cost, not cumulative
+			1 = {
+				steel = 2
+			}
+			2 = {
+				steel = 4
+			}
+			3 = {
+				steel = 5
+			}
+			
+		}
+
+		
+		add_stats = {
+			hardness = 0.05
+			armor_value = 2.5
+			build_cost_ic = 2
 		}
 	}
 	tank_gun_upgrade = {
