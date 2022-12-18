@@ -82,6 +82,24 @@ equipment_modules = {
 
 		
 	}
+	engine_1_1x_ho = {
+		abbreviation = "e11o"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+
+		add_stats = {
+			maximum_speed = 350
+			thrust = 20
+			build_cost_ic = 60
+			fuel_consumption = 0.3
+		}
+		can_convert_from = {
+			module = engine_iw_1x
+			convert_cost_ic = 15
+		}
+
+		
+	}
 
 	engine_1_2x = {
 		abbreviation = "e12"
@@ -701,7 +719,7 @@ equipment_modules = {
 		add_equipment_type = fighter
 
 		add_stats = {
-			air_attack = 10
+			air_attack = 12
 			build_cost_ic = 3
 			air_agility = -3
 			weight = 4
@@ -711,7 +729,66 @@ equipment_modules = {
 			air_superiority
 			interception
 		}
+	
 	}
+
+	aircraft_cannon_1_1x_wing = {
+		abbreviation = "ac11w"
+		category = fighter_weapon_wing
+		gui_category = fighter_weapon
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = fighter
+
+		add_stats = {
+			air_attack = 6
+			build_cost_ic = 3
+			air_agility = -3
+			weight = 4
+		}
+		xp_cost = 1
+		allow_mission_type = {
+			air_superiority
+			interception
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+			}
+			add_stats = {
+				air_attack = 6
+			}
+
+			}
+	}
+	aircraft_cannon_1_2x_wing = {
+		abbreviation = "ac12w"
+		category = fighter_weapon_wing
+		gui_category = fighter_weapon
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = fighter
+
+		add_stats = {
+			air_attack = 12
+			build_cost_ic = 3
+			air_agility = -3
+			weight = 4
+		}
+		xp_cost = 1
+		allow_mission_type = {
+			air_superiority
+			interception
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+			}
+			add_stats = {
+				air_attack = 10
+			}
+
+			}
+	}
+
 
 	aircraft_cannon_1_2x = {
 		abbreviation = "ac12"
@@ -730,7 +807,7 @@ equipment_modules = {
 			air_superiority
 			interception
 		}
-		mission_type_stats = {
+		ion_type_stats = {
 			limit = {
 				attack_logistics
 			}
@@ -761,7 +838,12 @@ equipment_modules = {
 			air_superiority
 			interception
 		}
-	}
+		
+		}
+		
+	
+
+
 
 	aircraft_cannon_2_2x = {
 		abbreviation = "ac22"
@@ -793,6 +875,70 @@ equipment_modules = {
 			convert_cost_ic = 4
 		}
 	}
+	aircraft_cannon_2_1x_wing = {
+		abbreviation = "ac21w"
+		category = fighter_weapon_wing
+		sfx = sfx_ui_sd_module_turret
+		parent = aircraft_cannon_1_1x
+		add_equipment_type = fighter
+		add_stats = {
+			air_attack = 8
+			build_cost_ic = 4
+			air_agility = -3
+			weight = 5
+		}
+		xp_cost = 1
+		allow_mission_type = {
+			air_superiority
+			interception
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+			}
+			add_stats = {
+				air_attack = 8
+			}
+
+		}
+		
+	}
+	aircraft_cannon_2_2x_wing = {
+		abbreviation = "ac22w"
+		category = fighter_weapon_wing
+		sfx = sfx_ui_sd_module_turret
+		parent = aircraft_cannon_1_2x
+		add_equipment_type = fighter
+		add_stats = {
+			air_attack = 16
+			build_cost_ic = 8
+			air_agility = -6
+			weight = 10
+		}
+		xp_cost = 1
+		allow_mission_type = {
+			air_superiority
+			interception
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+			}
+			add_stats = {
+				air_attack = 16
+			}
+
+		}
+		
+	}
+
+
+
+
+
+
+
+
 
 	bomb_locks = {
 		abbreviation = "bol"
@@ -1304,6 +1450,31 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 4
 	}
+	schraege_musik = {
+		abbreviation = "smk"
+		category = plane_special_module_small
+		gui_category = fighter_weapon
+		add_equipment_type = fighter
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			build_cost_ic = 3 
+
+		}
+		mission_type_stats = {
+			limit = {
+				interception
+			}
+			add_stats = {
+				air_attack = 15
+			}
+		}
+		
+
+		}
+	
+		
+	
 
  ######  ########  ########  ######  ####    ###    ##          ##     ##  #######  ########  ##     ## ##       ########  ######                 ######  ##     ##    ###    ##       ##       
 ##    ## ##     ## ##       ##    ##  ##    ## ##   ##          ###   ### ##     ## ##     ## ##     ## ##       ##       ##    ##               ##    ## ###   ###   ## ##   ##       ##       
