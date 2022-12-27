@@ -495,6 +495,20 @@ war_measures = {
 			surrender_progress > 0.15
 			is_ai = yes
 			NOT = { JAP = { is_ai = yes } }
+			OR = {
+				has_game_rule = {
+					rule = allow_china_waves
+					option = ONEWAVES
+				}
+				has_game_rule = {
+					rule = allow_china_waves
+					option = TWOWAVES
+				}
+				has_game_rule = {
+					rule = allow_china_waves
+					option = THREEWAVES
+				}
+			}
 		}
 
 		ai_will_do = {
@@ -599,6 +613,16 @@ war_measures = {
 			surrender_progress > 0.3
 			is_ai = yes
 			NOT = { JAP = { is_ai = yes } }
+			OR = {
+				has_game_rule = {
+					rule = allow_china_waves
+					option = TWOWAVES
+				}
+				has_game_rule = {
+					rule = allow_china_waves
+					option = THREEWAVES
+				}
+			}
 		}
 
 		ai_will_do = {
@@ -706,6 +730,10 @@ war_measures = {
 			}
 			is_ai = yes
 			NOT = { JAP = { is_ai = yes } }
+			has_game_rule = {
+				rule = allow_china_waves
+				option = THREEWAVES
+			}
 		}
 
 		ai_will_do = {
