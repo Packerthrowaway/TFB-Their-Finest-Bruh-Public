@@ -268,6 +268,43 @@ focus_tree = {
 			330 = {
 				add_extra_state_shared_building_slots = 4
 			}
+
+			build_railway = {
+				path = { 6380 6414 }
+			}
+		}
+	}
+
+	focus = {
+		id = MON_soviet_transportation
+		icon = GFX_goal_generic_soviet_construction
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MON_finish_collectivisation }
+		relative_position_id = MON_finish_collectivisation
+		
+		available_if_capitulated = yes
+		
+		ai_will_do = {
+			factor = 50
+		}
+		
+		available = {
+		}
+
+		completion_reward = {
+			build_railway = {
+				path = { 4801 12605 7717 1762 }
+			}
+
+			build_railway = {
+				path = { 4801 4732 1798 10623 4697 7799 4777 10669 7773 1877 10627}
+			}
+
+			build_railway = {
+				path = { 10627 4680 7731 12628 4818 12691 }
+			}
 		}
 	}
 	
@@ -1388,6 +1425,10 @@ focus_tree = {
 				remove_idea = MON_nomad_1
 				add_idea = MON_nomad_0
 			}
+
+			add_ideas = { MON_nomadic_priortize_horses_ideas }
+
+			hidden_effect = { set_technology = { adaptable_cavalry_designs = 1 } }
 		}
 	}
 	
