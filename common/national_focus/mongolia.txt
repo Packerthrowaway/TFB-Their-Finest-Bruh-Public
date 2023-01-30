@@ -277,7 +277,7 @@ focus_tree = {
 
 	focus = {
 		id = MON_soviet_transportation
-		icon = GFX_goal_generic_soviet_construction
+		icon = GFX_goal_generic_soviet_infrastructure
 		x = 0
 		y = 1
 		cost = 10
@@ -295,14 +295,18 @@ focus_tree = {
 
 		completion_reward = {
 			build_railway = {
+				level = 2
 				path = { 4801 12605 7717 1762 }
 			}
+			
 
 			build_railway = {
+				level = 2
 				path = { 4801 4732 1798 10623 4697 7799 4777 10669 7773 1877 10627}
 			}
 
 			build_railway = {
+				level = 2
 				path = { 10627 4680 7731 12628 4818 12691 }
 			}
 		}
@@ -608,8 +612,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_stability = -0.1
-			add_war_support = 0.1
+			add_ideas = { MON_buddhist_compromise_idea }
 		}
 	}
 
@@ -656,7 +659,7 @@ focus_tree = {
 		icon = GFX_goal_generic_soviet_construction
 		x = 0
 		y = 1
-		cost = 5
+		cost = 10
 		prerequisite = { focus = MON_government_reforms }
 
 		available_if_capitulated = yes
@@ -709,7 +712,7 @@ focus_tree = {
 		icon = GFX_focus_YUG_pan_slavic_congress
 		x = 0
 		y = 1
-		cost = 5
+		cost = 10
 		prerequisite = { focus = MON_new_constitution }
 
 		available_if_capitulated = yes
@@ -863,10 +866,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MON_paving_the_road }
+		relative_position_id = MON_paving_the_road
 
 		available_if_capitulated = yes
 		
-		relative_position_id = MON_paving_the_road
+		
 		
 		ai_will_do = {
 			factor = 2
@@ -886,12 +890,11 @@ focus_tree = {
 		icon = GFX_goal_generic_soviet_infrastructure
 		x = 0
 		y = 1
-		cost = 5
+		cost = 10
 		prerequisite = { focus = MON_invite_soviet_scientists }
+		relative_position_id = MON_invite_soviet_scientists
 
 		available_if_capitulated = yes
-		
-		relative_position_id = MON_invite_soviet_scientists
 		
 		ai_will_do = {
 			factor = 2
@@ -941,7 +944,7 @@ focus_tree = {
 		icon = GFX_SOV_progress_cult
 		x = 2
 		y = 1
-		cost = 5
+		cost = 10
 		prerequisite = { focus = MON_new_constitution }
 
 		available_if_capitulated = yes  
@@ -966,7 +969,7 @@ focus_tree = {
 		icon = GFX_SOV_production_speed
 		x = 0
 		y = 1
-		cost = 5
+		cost = 10
 		prerequisite = { focus = MON_industrial_expansion }
 
 		available_if_capitulated = yes
@@ -1284,7 +1287,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = MON_search_for_scraps
+		id = MON_search_for_resources
 		icon = GFX_focus_generic_steel
 		x = -1
 		y = 1
@@ -1314,8 +1317,8 @@ focus_tree = {
 		x = 0
 		y = 1
 		cost = 10
-		prerequisite = { focus = MON_search_for_scraps }
-		relative_position_id = MON_search_for_scraps
+		prerequisite = { focus = MON_search_for_resources }
+		relative_position_id = MON_search_for_resources
 		
 		available_if_capitulated = yes
 		
@@ -1386,7 +1389,7 @@ focus_tree = {
 
 	focus = {
 		id = MON_self_sufficient
-		icon = GFX_focus_generic_steel
+		icon = GFX_SOV_tractor_factories
 		x = 1
 		y = 1
 		cost = 10
@@ -1423,11 +1426,12 @@ focus_tree = {
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = MON_nomad_1
-				add_idea = MON_nomad_0
+				add_idea = MON_nomad_3
 			}
 
 			add_ideas = { MON_nomadic_priortize_horses_ideas }
-
+			
+			custom_effect_tooltip = MON_adaptable_cavalry_designs
 			hidden_effect = { set_technology = { adaptable_cavalry_designs = 1 } }
 		}
 	}
