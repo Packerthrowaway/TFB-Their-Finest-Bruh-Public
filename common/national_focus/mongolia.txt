@@ -1132,7 +1132,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			add_ideas = MON_sov_investments
+			add_timed_idea = {idea = MON_sov_investments days = 365}
 		}
 	}
 	
@@ -1302,55 +1302,6 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_resource = {
-				type = steel
-				amount = 300
-				state = 330
-			}
-			
-		}
-	}
-
-	focus = {
-		id = MON_expansion_of_refineries
-		icon = GFX_rubber_2
-		x = 0
-		y = 1
-		cost = 10
-		prerequisite = { focus = MON_search_for_resources }
-		relative_position_id = MON_search_for_resources
-		
-		available_if_capitulated = yes
-		
-		ai_will_do = {
-			factor = 2
-		}
-
-		completion_reward = {
-			add_resource = {
-				type = rubber
-				amount = 300
-				state = 330
-			}
-		}
-	}
-
-	focus = {
-		id = MON_expansion_of_resources
-		icon = GFX_focus_generic_steel
-		x = 0
-		y = 1
-		cost = 10
-		prerequisite = { focus = MON_expansion_of_refineries }
-		relative_position_id = MON_expansion_of_refineries
-		
-		available_if_capitulated = yes
-		
-		ai_will_do = {
-			factor = 2
-		}
-
-		completion_reward = {
 			329 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -1384,6 +1335,31 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			
+		}
+	}
+
+	focus = {
+		id = MON_expansion_of_refineries
+		icon = GFX_rubber_2
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MON_search_for_resources }
+		relative_position_id = MON_search_for_resources
+		
+		available_if_capitulated = yes
+		
+		ai_will_do = {
+			factor = 2
+		}
+
+		completion_reward = {
+			add_resource = {
+				type = rubber
+				amount = 300
+				state = 330
+			}
 		}
 	}
 
@@ -1393,9 +1369,9 @@ focus_tree = {
 		x = 1
 		y = 1
 		cost = 10
-		prerequisite = { focus = MON_expansion_of_resources }
+		prerequisite = { focus = MON_expansion_of_refineries }
 		prerequisite = { focus = MON_mobilise_nomads }
-		relative_position_id = MON_expansion_of_resources
+		relative_position_id = MON_expansion_of_refineries
 		
 		available_if_capitulated = yes
 		
@@ -1435,35 +1411,35 @@ focus_tree = {
 			hidden_effect = { set_technology = { adaptable_cavalry_designs = 1 } }
 		}
 	}
-	
-	focus = {
-		id = MON_tribute_system
-		icon = GFX_goal_generic_national_unity
-		x = 0
-		y = 1
-		cost = 10
-		prerequisite = { focus = MON_encourage_nomadism }
-		relative_position_id = MON_encourage_nomadism
-		
-		available_if_capitulated = yes
-		
-		ai_will_do = {
-			factor = 2
-		}
-
-		completion_reward = {
-			activate_mission = MON_tribute
-		}
-	}
-	
+	##############################################################
+	#focus = {
+	#	id = MON_tribute_system
+	#	icon = GFX_goal_generic_national_unity
+	#	x = 0
+	#	y = 1
+	#	cost = 10
+	#	prerequisite = { focus = MON_encourage_nomadism }
+	#	relative_position_id = MON_encourage_nomadism
+	#	
+	#	available_if_capitulated = yes
+	#	
+	#	ai_will_do = {
+	#		factor = 2
+	#	}
+    #
+	#	completion_reward = {
+	#		activate_mission = MON_tribute
+	#	}
+	#}
+	######################################################
 	focus = {
 		id = MON_mobilise_nomads
 		icon = GFX_focus_generic_little_entente
 		x = 0
 		y = 1
 		cost = 10
-		prerequisite = { focus = MON_tribute_system }
-		relative_position_id = MON_tribute_system
+		prerequisite = { focus = MON_encourage_nomadism }
+		relative_position_id = MON_encourage_nomadism
 		
 		available_if_capitulated = yes
 		
