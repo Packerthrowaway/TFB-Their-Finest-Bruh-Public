@@ -51,36 +51,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = MON_volunteers
-		icon = GFX_goal_generic_position_armies
-		x = 0
-		y = 1
-		cost = 3
-		
-
-		prerequisite = { focus = MON_mongolia_people_army }
-
-		available_if_capitulated = yes
-		
-		relative_position_id = MON_mongolia_people_army
-		
-		available = {
-
-		}
-		
-		ai_will_do = {
-			factor = 2
-		}
-
-		complete_tooltip = {
-			
-		}
-
-		completion_reward = {
-			add_ideas = { MON_volunteers_idea }
-		}
-	}
+	
 	
 	focus = {
 		id = MON_buddhist_prosecution
@@ -892,6 +863,33 @@ focus_tree = {
 		}
 	}
 
+	
+
+	focus = {
+		id = MON_invite_soviet_scientists
+		icon = GFX_SOV_progress_cult
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = MON_new_constitution }
+
+		available_if_capitulated = yes  
+		
+		relative_position_id = MON_new_constitution
+		
+		ai_will_do = {
+			factor = 2
+		}
+
+		complete_tooltip = {
+			
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
 	focus = {
 		id = MON_industrial_expansion
 		icon = GFX_goal_generic_soviet_infrastructure
@@ -943,31 +941,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-		}
-	}
-
-	focus = {
-		id = MON_invite_soviet_scientists
-		icon = GFX_SOV_progress_cult
-		x = 2
-		y = 1
-		cost = 10
-		prerequisite = { focus = MON_new_constitution }
-
-		available_if_capitulated = yes  
-		
-		relative_position_id = MON_new_constitution
-		
-		ai_will_do = {
-			factor = 2
-		}
-
-		complete_tooltip = {
-			
-		}
-
-		completion_reward = {
-			add_research_slot = 1
 		}
 	}
 
@@ -1624,6 +1597,37 @@ focus_tree = {
 				uses = 3
 				category = land_doctrine
 			}
+		}
+	}
+
+	focus = {
+		id = MON_volunteers
+		icon = GFX_goal_generic_position_armies
+		x = 0
+		y = 1
+		cost = 3
+		
+
+		prerequisite = { focus = MON_mongolia_people_army }
+
+		available_if_capitulated = yes
+		
+		relative_position_id = MON_mongolia_people_army
+		
+		available = {
+
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+
+		complete_tooltip = {
+			
+		}
+
+		completion_reward = {
+			add_ideas = { MON_volunteers_idea }
 		}
 	}
 	
