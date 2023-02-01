@@ -338,6 +338,11 @@ focus_tree = {
 			add_political_power = 300
 			330 = {
 				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
 			}
 		}
 	}
@@ -460,37 +465,39 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = horse_equipment
-				amount = 20000
-				producer = MON
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
 			}
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 5000
-				producer = MON
-			}
-			add_equipment_to_stockpile = {
-				type = squad_equipment
-				amount = 2000
-				producer = MON
-			}
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = 1000
-				producer = MON
-			}
-			add_equipment_to_stockpile = {
-				type = motorized_equipment
-				amount = 1000
-				producer = MON
-			}
-			add_equipment_to_stockpile = {
-				type = radio_equipment
-				amount = 1000
-				producer = MON
-			}
+
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}			
 		}
+		
 	}
 	
 	focus = {
@@ -1255,6 +1262,9 @@ focus_tree = {
 
 		available = {
 			has_completed_focus = MON_soviet_model
+			NOT = {
+				has_idea = MON_sov_investments
+			}
 		}
 
 		completion_reward = {
