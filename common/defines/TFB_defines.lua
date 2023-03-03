@@ -218,6 +218,20 @@ NDefines.NMilitary.STRATEGIC_SPEED_RAIL_BASE = 10
 NDefines.NMilitary.BATALION_CHANGED_EXPERIENCE_DROP = 0.75			-- Division experience drop if unit has different batalion
 NDefines.NMilitary.ARMOR_VS_AVERAGE = 0.25			                -- how to weight in highest armor & pen vs the division average
 NDefines.NMilitary.PEN_VS_AVERAGE = 0.35
+NDefines.NMilitary.PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
+		1.00,
+		0.8,
+		0.6,
+		0.4,
+		0.0, --there isn't much point setting this higher than 0
+	}
+NDefines.NMilitary.PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
+		1.00,
+		0.70,
+		0.50,
+		0.30,
+		0.10,
+	}
 NDefines.NMilitary.LAND_EQUIPMENT_BASE_COST = 15					-- Cost in XP to upgrade a piece of equipment one level is base + ( total levels * ramp )
 NDefines.NMilitary.LAND_EQUIPMENT_RAMP_COST = 15					
 NDefines.NMilitary.AIR_EQUIPMENT_BASE_COST = 45
