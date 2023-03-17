@@ -8467,6 +8467,72 @@ SOV_great_patriotic_war = {
 		complete_effect = {
 			195 = { save_event_target_as = state }
 			country_event = wtt_soviet_hold_city.4
+			SOV_kliment_voroshilov = { 
+				remove_unit_leader_role = yes 
+			}
+			SOV_georgy_zhukov = { 
+				promote_leader = yes 
+			}
+		}
+	}
+
+	#209 "Pskov"
+	SOV_hold_pskov = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 209 }
+		}
+
+		days_mission_timeout = 60
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+			209 = {
+				is_controlled_by = ROOT
+				OR = {
+					any_neighbor_state = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+						OWNER = { tag = ROOT }
+					}
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			209 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.3
+		}
+		#Fail
+		complete_effect = {
+			209 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.4
+			SOV_kliment_voroshilov = { 
+				remove_unit_leader_role = yes 
+			}
+			SOV_georgy_zhukov = { 
+				promote_leader = yes 
+			}
 		}
 	}
 
@@ -8518,6 +8584,64 @@ SOV_great_patriotic_war = {
 		complete_effect = {
 			219 = { save_event_target_as = state }
 			country_event = wtt_soviet_hold_city.6
+		}
+	}
+
+	#202 "Kiev"
+	SOV_hold_kiev = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 202 }
+		}
+
+		days_mission_timeout = 90
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			202 = {
+				is_controlled_by = ROOT
+				OR = {
+					any_neighbor_state = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+						OWNER = { tag = ROOT }
+					}
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			202 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.5
+			
+		}
+		#Fail
+		complete_effect = {
+			202 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.6
+			SOV_semyon_budyonny = { 
+				remove_unit_leader_role = yes 
+			}
+			SOV_semyon_timoshenko = { 
+				promote_leader = yes 
+			}
 		}
 	}
 
@@ -9228,6 +9352,7 @@ operations = {
 			FIN = { set_country_flag = winter_war_finished }
 			white_peace = FIN
 			set_global_flag =  FIN_winter_victory
+			set_country_flag = SOV_winter_war_loss
 			hidden_effect = {
 				MON = {
 					remove_ideas = MON_brothers_war
@@ -9272,6 +9397,7 @@ operations = {
 			add_timed_idea = {
 				idea = SOV_winter_war_adapt
 				days = 90
+				set_country_flag = SOV_winter_war_incompetency
 			}
 		}
 
