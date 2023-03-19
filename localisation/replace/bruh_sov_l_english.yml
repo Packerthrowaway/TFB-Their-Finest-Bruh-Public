@@ -222,6 +222,7 @@
   SOV_reject_modernit_desc:0 "Kulik and Budyonny have agreed that the king of the steppe is cavalry, horse-drawn artillery and the infantryman and his rifle."
   SOV_tank_hunters:0 "Tank Hunters"
   SOV_tank_hunters_desc:0 "To stop larger tank pushes we can implement the use of more and better infantry anti-tank weapons in tank hunter squads."
+  tank_hunter_teams:0 "Tank Hunter Teams"
   tank_hunter_teams_tt:0 "Infantry Batallions will require §G 20 squad equipment§! which will give them more Piercing and AT per batallion."
   SOV_td_tactics:0 "Tank Destroyer Tactics"
   SOV_td_tactics_desc:0 "The tank destroyer is a new concept based on old traditions. Perhaps we can implement our old ideas better."
@@ -286,7 +287,7 @@
   SOV_kulik2:0 "Promote Kulik"
   SOV_kulik2_desc:0 ""
   SOV_kulik2_tt:0 "§GThis enables Superior Firepower Right Side§! \n§RThis integrates the NKVD§! §W§!\n\n"
-  SOV_tank_riders_tt:0 "§WMechanized Infantry Recovery Rate:§! §G +20%§!\n§W Mechanized Infantry Casualty Trickleback:§! §R -25%§! \n§YThis focus§ §G decreases§! §Y equipment requirement on mechanized units by§! §G 20 mechanized equipment §! §Y and §! §G 10 motorized equipment§!"
+  SOV_tank_riders_tt:0 "§WMechanized Infantry Recovery Rate:§! §G+20%§!\n§WMechanized Infantry Casualty Trickleback:§! §R-25%§!\n§YThis focus§ §G decreases§! §Yequipment requirement on mechanized units by§! §G20 mechanized equipment §! §Yand§! §G10 motorized equipment§!"
 
   #### EVENTS ####
   soviet.26.c1:0 "Zhukov and Tukhachevsky's Deep Battle ideas must be overturned."
@@ -303,6 +304,7 @@
   soviet.2223.t:0 "Propaganda"
   soviet.2223.d:0 "Sweep Out Scum and Death to Invaders now available as Propaganda Missions"
   soviet.2223.a:0 "Okay"
+  NSB_soviet_paranoia_system_events.29.b:0 "Blyukher begs for Tukachevskys life."
 
   #### IDEAS ####
   #mikhail_tukhachevsky_1:0 "Mikhail Tukhachevsky"
@@ -412,11 +414,37 @@
   SOV_generic_partisans:0 "Coordinate Partisans"
   SOV_organise_partisans:0 "Partisan Coordination"
 
+
+ SOV_test_the_japanese:0 "Test the Japanese"
+ SOV_test_the_japanese_desc:0 "We share a long border with Japan in Korea and Manchuria. A large number of potential flashpoints exist where our forces might clash at any moment. For us, this creates an opportunity to test the Japanese response to a minor provocation."
+ SOV_border_conflict_warning_JAP:0 "Border Provocation at Soviet Border"
+ SOV_border_conflict_warning_JAP_desc:0 "There has been a clash between our border guards and Soviet soldiers at our shared border in Korea. Intelligence sources in Moscow report that this may just be the first step in a larger confrontation. We should reinforce the border with the Soviets immediately."
+ SOV_border_conflict_escalation_warning_JAP:0 "Soviet preparations"
+ SOV_border_conflict_escalation_warning_JAP_desc:0 "Aerial recon has confirmed major troop movements at the Soviet side of the border. We don't know if or when the Soviets have decided to strike, but we must be ready."
+ SOV_border_incident_forgotten:0 "Window of Opportunity"
+ SOV_border_incident_forgotten_desc:1 "If we want to use the the incident at the Japanese border to Korea, we must strike quickly."
+ SOV_escalate_incident_to_border_conflict_JAP:0 "Escalate the Incident"
+ SOV_escalate_incident_to_border_conflict_JAP_desc:0 "It appears that the Japanese are not backing down from the conflict. At this point, we must either escalate to an armed confrontation or back down ourselves."
+ SOV_border_conflict_time_until_cancelled:0 "End the conflict"
+ SOV_border_conflict_time_until_cancelled_desc:0 "At the current rate, we can only sustain combat operations for so long before we need to break off combat."
+ SOV_border_conflict_escalate_conflict:0 "Escalate the Conflict"
+ SOV_border_conflict_escalate_conflict_desc:1 "The conflict at the border with Japan has stalled. Perhaps by escalating further and commiting more troops to the theater, we can still achieve a victory."
+ SOV_border_conflict_escalate_to_war:0 "Declare War"
+ SOV_border_conflict_escalate_to_war_desc:0 "Fighting in the disputed region has been going on for a while now, and shows no sign of stopping. We must be prepared to take the next step and see this conflict as the first step in a general war."
+ SOV_border_conflict_back_out_of_conflict:0 "Back down"
+ SOV_border_conflict_back_out_of_conflict_desc:0 "The danger of this conflict spiralling out of control and becoming a full-scale war between our countries is simply too big. We should cut our loses now and send out diplomatic feelers to the other side."
+ jap_sov_border_conflict_won:0 "Experience from the border clash in Vladivostok:"
+
   #### FLAG ####
   SOV_purge:0 "§RPurge has Begun§!\n"
   SOV_designer_patronage_tt:0 "§GThe effect of this focus changes depending on what field marshals are currently dominating the Red Army.§! \n"
   SOV_winter_war_incompetency:0 "Winter War Incompetency"
+  SOV_winter_war_win:0 "Won the Winter War"
   SOV_winter_war_loss:0 "Lost the Winter War"
+  SOV_border_war_loss:0 "Lost Japanese/Soviet Border War"
+  SOV_border_war_win:0 "Won Japanese/Soviet Border War"
+  border_war_in_progress:0 "Border War In Progress"
+  border_war_conclusive_winner:0 "Border Clash had a Conclusive Winner"
 
   #### TOOLTIP ####
   SOV_increase_weekly_paranoia_in_trait_tt:0 "§Y[ROOT.GetLeader]§!: Modify trait §Y$stalin_political_paranoia$§! by \nWeekly Political Paranoia: §R+2§!"
@@ -447,3 +475,7 @@
   SOV_pc_of_mortar_armament_ns_tt:0 "$SOV_modify_defense_industry_ns_intro$ \nArtillery Defense: §G+5.0%§! \n\n"
   SOV_industry_relocation_complete_effect_tt:0 "Up to §Y10 Military or Civilian Factories§! will be removed from §Y[FROM.GetName]§!.\n"
   SOV_shaposhnikov_reform_tt:0 "$SOV_modify_the_red_army_ns_intro$ \n£mobilisation_texticon  Mobilization speed: §G+5.00%§! \n£manpower_texticon  Training Speed Factor: §G30%§! \n Infantry & Artillery Brigade Design Cost: §G-30.00%§! \n\n"
+  SOV_spare_tukhachevsky_tt:0 "§0Tukhachevsky and Bluker will be jailed instead of killed, allowing you to bring them back based on Performance in the Border Conflict with Japan and Winter War.§!"
+  SOV_yegerov_reinstated_tt:0 "§3Reinstates Yegerov as a Field Marshall§!"
+  SOV_tukhachevsky_reinstated_tt:0 "§3Reinstates Tukhachevsky as a Field Marshall§!"
+  SOV_blucher_reinstated_tt:0 "§3Reinstates Blucher as a Field Marshall§!"

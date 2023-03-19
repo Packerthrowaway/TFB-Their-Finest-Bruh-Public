@@ -1176,27 +1176,27 @@
 		}
 	}
 
-	# focus = {
-	# 	id = SOV_germans_are_coming
-	# 	icon = GFX_focus_SOV_the_supreme_soviet
-	# 	prerequisite = { focus = SOV_pcdi	}
-	# 	cost = 2
-	# 	relative_position_id = SOV_pcdi
-	# 	x = 0
-	# 	y = 1
-	# 	available = { 
-	# 		has_war = no
-	# 		date > 1941.8.1
-	# 	}
-	# 	completion_reward = {
-	# 		swap_ideas = {
-	# 			remove_idea = SOV_3_5_plan
-	# 			add_idea = SOV_3_5_plan_ger
-	# 		}
+	focus = {
+		id = SOV_germans_are_coming
+		icon = GFX_focus_SOV_the_supreme_soviet
+		prerequisite = { focus = SOV_pcdi	}
+		cost = 2
+		relative_position_id = SOV_pcdi
+		x = 0
+		y = 1
+		available = { 
+			has_war = no
+			date > 1941.8.1
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_3_5_plan
+				add_idea = SOV_3_5_plan_ger
+			}
 
-	# 		SOV_increase_RG_cap = yes
-	# 	}
-	# }
+			SOV_increase_RG_cap = yes
+		}
+	}
 	
 	focus = {
 		id = SOV_arms_factories
@@ -2862,32 +2862,32 @@
 		icon = GFX_focus_SOV_the_path_of_marxism_leninism
 		x = 16
 		y = 0
-		offset = {
-			x = -8
-			y = 0
-			trigger = {
-				has_game_rule = {
-					rule = obsolete_focus_branches_visibility
-					option = HIDE
-				}
-				#has_completed_focus = SOV_beaten_but_not_defeated
-				always = no
-			}
-		}
+		# offset = {
+		# 	x = -8
+		# 	y = 0
+		# 	trigger = {
+		# 		has_game_rule = {
+		# 			rule = obsolete_focus_branches_visibility
+		# 			option = HIDE
+		# 		}
+		# 		#has_completed_focus = SOV_beaten_but_not_defeated
+		# 		always = no
+		# 	}
+		# }
 		cost = 1
 
 
-		allow_branch = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				#NOT = { has_completed_focus = SOV_the_hands_do }
-			}
-		}
+		# allow_branch = {
+		# 	if = {
+		# 		limit = {
+		# 			has_game_rule = {
+		# 				rule = obsolete_focus_branches_visibility
+		# 				option = HIDE
+		# 			}
+		# 		}
+		# 		#NOT = { has_completed_focus = SOV_the_hands_do }
+		# 	}
+		# }
 
 		available = {
 			
@@ -2915,46 +2915,46 @@
 		offset = {
 			x = 8
 			y = 1
-			trigger = {
-				has_game_rule = {
-					rule = obsolete_focus_branches_visibility
-					option = HIDE
-				}
-				#has_completed_focus = SOV_beaten_but_not_defeated
-				always = no
-				#NOT = { has_completed_focus = SOV_the_hands_do }
-			}
+			# trigger = {
+			# 	has_game_rule = {
+			# 		rule = obsolete_focus_branches_visibility
+			# 		option = HIDE
+			# 	}
+			# 	#has_completed_focus = SOV_beaten_but_not_defeated
+			# 	always = no
+			# 	#NOT = { has_completed_focus = SOV_the_hands_do }
+			# }
 		}
 		relative_position_id = SOV_the_path_of_marxism_leninism
 		cost = 2
 
 		
 
-		allow_branch = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				NOT = {
-					always = no
-					# AND = {
-					# 	has_completed_focus = SOV_the_left_opposition
-					# 	has_completed_focus = SOV_left_opposition_coup
-					# }
-					# AND = {
-					# 	has_completed_focus = SOV_the_right_opposition
-					# 	has_completed_focus = SOV_coup_detat
-					# }
-					# AND = {
-					# 	has_completed_focus = SOV_beaten_but_not_defeated
-					# 	has_completed_focus = SOV_the_hands_do
-					# }
-				}
-			}
-		}
+		# allow_branch = {
+		# 	if = {
+		# 		limit = {
+		# 			has_game_rule = {
+		# 				rule = obsolete_focus_branches_visibility
+		# 				option = HIDE
+		# 			}
+		# 		}
+		# 		NOT = {
+		# 			always = no
+		# 			# AND = {
+		# 			# 	has_completed_focus = SOV_the_left_opposition
+		# 			# 	has_completed_focus = SOV_left_opposition_coup
+		# 			# }
+		# 			# AND = {
+		# 			# 	has_completed_focus = SOV_the_right_opposition
+		# 			# 	has_completed_focus = SOV_coup_detat
+		# 			# }
+		# 			# AND = {
+		# 			# 	has_completed_focus = SOV_beaten_but_not_defeated
+		# 			# 	has_completed_focus = SOV_the_hands_do
+		# 			# }
+		# 		}
+		# 	}
+		# }
 
 		available = {
 			has_country_flag = SOV_purge 
@@ -3519,7 +3519,7 @@
 					has_character = SOV_mikhail_tukhachevsky
 				}
 				SOV_mikhail_tukhachevsky = {
-					set_character_flag = SOV_targeted_for_purge_flag
+					set_character_flag = SOV_tukhachevsky_targeted_for_purge_flag
 				}
 			}
 			else = {
@@ -3532,19 +3532,19 @@
 					has_character = SOV_aleksandr_yegorov
 				}
 				SOV_aleksandr_yegorov = {
-					set_character_flag = SOV_targeted_for_purge_flag
+					set_character_flag = SOV_POSSIBLE_targeted_for_purge_flag2
 				}
 			}
 			else = {
 				SOV_add_random_character_to_purge_targets_effect = yes
 			}
-			#Blyukher
+			# Blyukher
 			if = {
 				limit = {
 					has_character = SOV_vasily_blyukher
 				}
 				SOV_vasily_blyukher = {
-					set_character_flag = SOV_targeted_for_purge_flag
+					set_character_flag = SOV_blyukher_targeted_for_purge_flag
 				}
 			}
 			else = {
@@ -3577,6 +3577,12 @@
 					add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
 				} 
 				SOV_aleksandr_vasilevsky = {
+					add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
+				} 
+				SOV_mikhail_tukhachevsky = {
+					add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
+				} 
+				SOV_vasily_blyukher = {
 					add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
 				} 
 			}
@@ -5648,7 +5654,7 @@
 			custom_effect_tooltip = SOV_designer_patronage_tt
 			if = {
 				limit = { has_idea = SOV_modernisation_mech_2 }
-				show_ideas_tooltip = SOV_kirov
+				# show_ideas_tooltip = SOV_kirov
 				add_ideas = SOV_kirov
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5659,7 +5665,7 @@
 			}
 			if = {
 				limit = { has_idea = SOV_modernisation_mech_1 }
-				show_ideas_tooltip = SOV_morozov_design_bureau
+				# show_ideas_tooltip = SOV_morozov_design_bureau
 				add_ideas = SOV_morozov_design_bureau
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5670,12 +5676,12 @@
 			}
 			if = {
 				limit = { has_idea = SOV_modernisation_bal }
-				show_ideas_tooltip = SOV_astrov_design_bureau
+				# show_ideas_tooltip = SOV_astrov_design_bureau
 				add_ideas = SOV_astrov_design_bureau
 			}
 			if = {
 				limit = { has_idea = SOV_modernisation_cav_1 }
-				show_ideas_tooltip = SOV_okmo
+				# show_ideas_tooltip = SOV_okmo
 				add_ideas = SOV_okmo
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5687,7 +5693,7 @@
 		
 			if = {
 				limit = { has_idea = SOV_modernisation_cav_2 }
-				show_ideas_tooltip = SOV_mytishchy_machine_building_plant
+				# show_ideas_tooltip = SOV_mytishchy_machine_building_plant
 				add_ideas = SOV_mytishchy_machine_building_plant
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5851,7 +5857,7 @@
 			custom_effect_tooltip = SOV_designer_patronage_tt
 			if = {
 				limit = { has_idea = SOV_modernisation_mech_2 }
-				show_ideas_tooltip = SOV_gaz
+				#show_ideas_tooltip = SOV_gaz
 				add_ideas = SOV_gaz
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5862,7 +5868,7 @@
 			}
 			if = {
 				limit = { has_idea = SOV_modernisation_mech_1 }
-				show_ideas_tooltip = SOV_gaz
+				#show_ideas_tooltip = SOV_gaz
 				add_ideas = SOV_gaz
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5879,7 +5885,7 @@
 			}
 			if = {
 				limit = { has_idea = SOV_modernisation_bal }
-				show_ideas_tooltip = SOV_tula_arms_plant
+				#show_ideas_tooltip = SOV_tula_arms_plant
 				add_ideas = SOV_tula_arms_plant
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5890,7 +5896,7 @@
 			}
 			if = {
 				limit = { has_idea = SOV_modernisation_cav_1 }
-				show_ideas_tooltip = SOV_grabin_design_bureau
+				#show_ideas_tooltip = SOV_grabin_design_bureau
 				add_ideas = SOV_grabin_design_bureau
 				add_tech_bonus = {
 					name = doc_bonus
@@ -5902,7 +5908,7 @@
 		
 			if = {
 				limit = { has_idea = SOV_modernisation_cav_2 }
-				show_ideas_tooltip = SOV_grabin_design_bureau
+				#show_ideas_tooltip = SOV_grabin_design_bureau
 				add_ideas = SOV_grabin_design_bureau
 				add_tech_bonus = {
 					name = doc_bonus
@@ -6130,24 +6136,10 @@
 		}
 
 		available = {
-			if = {
-				limit = {
-					has_completed_focus = SOV_dismantle_stalin_line
-				}
-				surrender_progress > 0.28
-				casualties > 500000
-			} 
-			else_if = {
-				limit = {
-					has_completed_focus = SOV_improve_stalin_line
-				}
-				surrender_progress > 0.22
-				casualties > 500000
-			} 
-			else = {
+			OR = {
+				has_completed_focus = SOV_order_270
 				date > 1942.3.1
-			}
-			
+			}			
 		}
 
 		available_if_capitulated = yes
@@ -6157,6 +6149,23 @@
 
 		completion_reward = {
 			add_ideas = SOV_stavka_idea
+
+			custom_effect_tooltip = SOV_lessons_of_war_cowed_trait_tt
+			hidden_effect = {
+				every_army_leader = {
+					limit = {
+						has_trait = trait_SOV_cowed_by_stalin_army
+					}
+					remove_unit_leader_trait =  trait_SOV_cowed_by_stalin_army
+				}
+				every_navy_leader = {
+					limit = {
+						has_trait = trait_SOV_cowed_by_stalin_navy
+					}
+					remove_unit_leader_trait =  trait_SOV_cowed_by_stalin_navy
+				}
+				SOV = { country_event = soviet.2223 }
+			}
 		}
 	}
 
@@ -6281,7 +6290,8 @@
 		}
 
 		available = {
-				has_country_flag = SOV_winter_war_loss
+			has_global_flag = SOV_winter_war_loss
+			NOT = { has_global_flag = SOV_border_war_loss}
 		}
 
 		available_if_capitulated = yes
@@ -6290,9 +6300,11 @@
 		}
 
 		completion_reward = {
+			custom_effect_tooltip = SOV_blucher_reinstated_tt
 			SOV_vasily_blyukher = { 
-				promote_leader = yes 
-				}
+				promote_leader = yes
+				clr_character_flag = SOV_exiled_flag 
+			}
 		}
 	}
 	
@@ -6309,6 +6321,10 @@
 			factor = 5
 		}
 
+		available = {
+			has_global_flag = SOV_border_war_win
+			SOV_mikhail_tukhachevsky = { NOT = {has_character_flag = SOV_character_purged_flag } }
+		}
 		available_if_capitulated = yes
 
 		bypass = {
@@ -6316,6 +6332,7 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_tukachevsky_tt
+			custom_effect_tooltip = SOV_tukhachevsky_reinstated_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.75
@@ -6335,7 +6352,8 @@
 			}
 			SOV_mikhail_tukhachevsky = { 
 				promote_leader = yes 
-				}
+				clr_character_flag = SOV_exiled_flag
+			}
 		}
 	}
 	
@@ -6857,15 +6875,23 @@
 			factor = 5
 		}
 
+		available = {
+			has_global_flag = SOV_border_war_win
+			SOV_vasily_blyukher = {
+				NOT = {has_character_flag = SOV_character_purged_flag }
+			}
+		}
+
 		available_if_capitulated = yes
 
 		bypass = {
 		}
 
 		completion_reward = {
+			custom_effect_tooltip = SOV_blucher_reinstated_tt
 			SOV_vasily_blyukher = { 
-				promote_leader = yes 
-				}
+				clr_character_flag = SOV_exiled_flag
+			}
 		}
 	}
 	
@@ -7073,9 +7099,7 @@
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = SOV_winter_war_loss
-			}
+			has_global_flag = SOV_winter_war_win
 		}
 
 		available_if_capitulated = yes
@@ -7084,9 +7108,10 @@
 		}
 
 		completion_reward = {
-			SOV_kliment_voroshilov = { 
-				promote_leader = yes 
-				}
+			# SOV_kliment_voroshilov = { 
+			# 	promote_leader = yes 
+			# }
+			add_political_power = 100
 		}
 	}
 
@@ -7242,9 +7267,7 @@
 		}
 
 		available = {
-			NOT = {
-				has_country_flag = SOV_winter_war_loss
-			}
+			has_global_flag = SOV_winter_war_win
 			NOT = {
 				has_country_flag = SOV_winter_war_incompetency
 			}
@@ -7277,6 +7300,7 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_yegorov_tt
+			custom_effect_tooltip = SOV_yegerov_reinstated_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.75
@@ -7296,7 +7320,8 @@
 			}
 			SOV_aleksandr_yegorov = { 
 				promote_leader = yes 
-				}
+				clr_character_flag = SOV_exiled_flag 
+			}
 		}
 	}
 
@@ -7450,7 +7475,7 @@
 		id = SOV_transpolar_flights
 
 		icon = GFX_goal_generic_air_fighter2
-		x = 54
+		x = 48
 		y = 0
 		cost = 5
 
@@ -7962,7 +7987,7 @@
 		id = SOV_expand_the_red_fleet
 
 		icon = GFX_goal_generic_build_navy
-		x = 8
+		x = 6
 		y = 0
 		relative_position_id = SOV_transpolar_flights
 		cost = 5
