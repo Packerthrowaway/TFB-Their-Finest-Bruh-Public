@@ -306,7 +306,7 @@ ideas = {
 			picture = sov_mech_2
 
 			modifier = {
-				coordination_bonus = 0.1
+				coordination_bonus = 0.05
 			}
 
 			research_bonus = {
@@ -325,7 +325,7 @@ ideas = {
 
 			modifier = {
 				air_superiority_bonus_in_combat = 0.2
-				coordination_bonus = 0.1
+				coordination_bonus = 0.05
 				intel_from_combat_factor = 0.2
 			}
 
@@ -592,7 +592,7 @@ ideas = {
 					build_cost_ic = 0.10 instant = yes
 				}
 				motorized_equipment = {
-					build_cost_ic = 0.10 instant = yes
+					build_cost_ic = 0.05 instant = yes
 				}
 				mechanized_equipment = {
 					build_cost_ic = 0.15 instant = yes
@@ -624,13 +624,13 @@ ideas = {
 			
 			equipment_bonus = {
 				radio_equipment = {
-					build_cost_ic = 0.20 instant = yes
+					build_cost_ic = 0.10 instant = yes
 				}
 				medium_tank_chassis = {
 					build_cost_ic = 0.20 instant = yes
 				}
 				motorized_equipment = {
-					build_cost_ic = 0.15 instant = yes
+					build_cost_ic = 0.10 instant = yes
 				}
 				mechanized_equipment = {
 					build_cost_ic = 0.20 instant = yes
@@ -5852,7 +5852,14 @@ ideas = {
 					limit = {
 						tag = SOV
 					}
-					has_completed_focus = SOV_depoliticize_industry
+					OR = {
+						has_completed_focus = SOV_depoliticize_industry
+						AND = {
+							has_completed_focus = SOV_tank1
+							has_completed_focus = SOV_new_corps2
+						}
+					}
+
 				}
 				if = {
 					limit = {
@@ -5904,7 +5911,13 @@ ideas = {
 			}
 
 			available = {
-				has_completed_focus = SOV_depoliticize_industry
+				OR = {
+					has_completed_focus = SOV_depoliticize_industry
+					AND = {
+						has_completed_focus = SOV_tank1
+						has_completed_focus = SOV_new_corps3
+					}
+				}
 			}
 			
 			research_bonus = {
@@ -6157,7 +6170,13 @@ ideas = {
 				
 			}
 			available = {
-				has_completed_focus = SOV_depoliticize_industry
+				OR = {
+					has_completed_focus = SOV_depoliticize_industry
+					AND = {
+						has_completed_focus = SOV_tank1
+						has_completed_focus = SOV_new_corps4
+					}
+				}
 			}
 			
 			research_bonus = {
@@ -6500,7 +6519,13 @@ ideas = {
 			}
 
 			available = {
-				has_completed_focus = SOV_depoliticize_industry
+				OR = {
+					has_completed_focus = SOV_depoliticize_industry
+					AND = {
+						has_completed_focus = SOV_tank1
+						has_completed_focus = SOV_new_corps
+					}		
+				}
 			}
 			
 			research_bonus = {
