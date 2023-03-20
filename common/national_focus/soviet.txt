@@ -1488,8 +1488,8 @@
 		id = SOV_guards
 		icon = GFX_goal_soviet_guards
 		prerequisite = { focus = SOV_war_mobilisation }
-		x = -3
-		y = 2
+		x = 2
+		y = 1
 		relative_position_id = SOV_war_mobilisation
 		cost = 5
 
@@ -1497,6 +1497,29 @@
 			add_ideas = SOV_guards_ideas
 
 			SOV_increase_RG_cap_double = yes
+		}
+	}
+
+	focus = {
+		id = SOV_slacken_inf
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		prerequisite = { focus = SOV_guards }		
+		cost = 4
+		x = 0
+		y = 2
+		relative_position_id = SOV_guards
+		available = {
+			casualties > 2000000
+			surrender_progress > 0.32
+		}
+		completion_reward = {
+			hidden_effect = {
+				set_technology = {
+					slacken_inf_tech = 1
+				}
+
+			}
+			custom_effect_tooltip = SOV_slacken_inf_tt
 		}
 	}
 	
@@ -1799,8 +1822,8 @@
 		id = SOV_defend_moscow
 		icon = GFX_focus_SOV_the_defense_of_moscow
 		prerequisite = { focus = SOV_war_mobilisation }
-		x = 2
-		y = 1
+		x = 3
+		y = 2
 		relative_position_id = SOV_war_mobilisation
 		cost = 2
 		
@@ -1953,7 +1976,7 @@
 		id = SOV_defend_stalingrad
 		icon = GFX_SOV_defend_city
 		prerequisite = { focus = SOV_war_mobilisation }
-		x = 3
+		x = 5
 		y = 2
 		relative_position_id = SOV_war_mobilisation
 		cost = 2
@@ -2758,29 +2781,6 @@
 					}
 				}
 			}
-		}
-	}
-
-	focus = {
-		id = SOV_slacken_inf
-		icon = GFX_focus_SOV_builder_of_the_red_army
-		prerequisite = { focus = SOV_order_270 }		
-		cost = 4
-		x = 2
-		y = 1
-		relative_position_id = SOV_order_270
-		available = {
-			casualties > 2000000
-			surrender_progress > 0.32
-		}
-		completion_reward = {
-			hidden_effect = {
-				set_technology = {
-					slacken_inf_tech = 1
-				}
-
-			}
-			custom_effect_tooltip = SOV_slacken_inf_tt
 		}
 	}
 	
@@ -5652,7 +5652,16 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_designer_patronage_tt
+			custom_effect_tooltip = SOV_tank_designer_patronage_far_left_tt
+			custom_effect_tooltip = SOV_tank_designer_patronage_middle_left_tt
+			custom_effect_tooltip = SOV_tank_designer_patronage_middle_tt
+			custom_effect_tooltip = SOV_tank_designer_patronage_middle_right_tt
+			custom_effect_tooltip = SOV_tank_designer_patronage_far_right_tt
 			if = {
+				limit = { NOT = { has_completed_focus = SOV_lessons_of_war } }
+
+			}
+			else_if = {
 				limit = { has_idea = SOV_modernisation_mech_2 }
 				# show_ideas_tooltip = SOV_kirov
 				add_ideas = SOV_kirov
@@ -5663,7 +5672,7 @@
 					category = cat_medium_armor
 				}
 			}
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_mech_1 }
 				# show_ideas_tooltip = SOV_morozov_design_bureau
 				add_ideas = SOV_morozov_design_bureau
@@ -5674,12 +5683,12 @@
 					category = cat_medium_armor
 				}
 			}
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_bal }
 				# show_ideas_tooltip = SOV_astrov_design_bureau
 				add_ideas = SOV_astrov_design_bureau
 			}
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_cav_1 }
 				# show_ideas_tooltip = SOV_okmo
 				add_ideas = SOV_okmo
@@ -5690,8 +5699,7 @@
 					category = cat_heavy_armor
 				}
 			}
-		
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_cav_2 }
 				# show_ideas_tooltip = SOV_mytishchy_machine_building_plant
 				add_ideas = SOV_mytishchy_machine_building_plant
@@ -5840,7 +5848,7 @@
 		id = SOV_arty1
 		icon = GFX_goal_generic_army_artillery2
 		prerequisite = { focus = SOV_political_industry }
-		x = 0
+		x = -1
 		y = 1
 		cost = 3
 		relative_position_id = SOV_political_industry
@@ -5855,7 +5863,16 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_designer_patronage_tt
+			custom_effect_tooltip = SOV_equipment_designer_patronage_far_left_tt
+			custom_effect_tooltip = SOV_equipment_designer_patronage_middle_left_tt
+			custom_effect_tooltip = SOV_equipment_designer_patronage_middle_tt
+			custom_effect_tooltip = SOV_equipment_designer_patronage_middle_right_tt
+			custom_effect_tooltip = SOV_equipment_designer_patronage_far_right_tt
 			if = {
+				limit = { NOT = { has_completed_focus = SOV_lessons_of_war } }
+
+			}
+			else_if = {
 				limit = { has_idea = SOV_modernisation_mech_2 }
 				#show_ideas_tooltip = SOV_gaz
 				add_ideas = SOV_gaz
@@ -5866,7 +5883,7 @@
 					category = cat_mechanized_equipment
 				}
 			}
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_mech_1 }
 				#show_ideas_tooltip = SOV_gaz
 				add_ideas = SOV_gaz
@@ -5883,7 +5900,7 @@
 					category = rocketry
 				}
 			}
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_bal }
 				#show_ideas_tooltip = SOV_tula_arms_plant
 				add_ideas = SOV_tula_arms_plant
@@ -5894,7 +5911,7 @@
 					category = support_tech
 				}
 			}
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_cav_1 }
 				#show_ideas_tooltip = SOV_grabin_design_bureau
 				add_ideas = SOV_grabin_design_bureau
@@ -5905,8 +5922,7 @@
 					category = artillery
 				}
 			}
-		
-			if = {
+			else_if = {
 				limit = { has_idea = SOV_modernisation_cav_2 }
 				#show_ideas_tooltip = SOV_grabin_design_bureau
 				add_ideas = SOV_grabin_design_bureau
@@ -5923,11 +5939,11 @@
 	focus = {
 		id = SOV_arty2
 		icon = GFX_SOV_artillery_development
-		prerequisite = { focus = SOV_arty1 }
-		x = 0
+		prerequisite = { focus = SOV_political_industry }
+		x = 1
 		y = 1
 		cost = 3
-		relative_position_id = SOV_arty1
+		relative_position_id = SOV_political_industry
 		ai_will_do = {
 			factor = 5
 		}
@@ -6127,10 +6143,10 @@
 	focus = {
 		id = SOV_stavka
 		icon = GFX_SOV_army_revision_board
-		x = 1
-		y = 3
+		x = -2
+		y = -2
 		cost = 1
-		relative_position_id = SOV_popov
+		relative_position_id = SOV_frontline_mob
 		ai_will_do = {
 			factor = 5
 		}
@@ -6164,7 +6180,6 @@
 					}
 					remove_unit_leader_trait =  trait_SOV_cowed_by_stalin_navy
 				}
-				SOV = { country_event = soviet.2223 }
 			}
 		}
 	}
@@ -6201,8 +6216,8 @@
 		id = SOV_zhukov
 		icon = GFX_goal_timoshenkofocus
 		prerequisite = { focus = SOV_stavka }
-		x = 1
-		y = 1
+		x = 0
+		y = 2
 		cost = 1
 		relative_position_id = SOV_stavka
 		ai_will_do = {
@@ -6335,13 +6350,13 @@
 			custom_effect_tooltip = SOV_tukhachevsky_reinstated_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_mobile_warfare
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = armored_spearhead
 				technology = schwerpunk
@@ -6433,13 +6448,13 @@
 			custom_effect_tooltip = SOV_timoshenko2_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_mobile_warfare
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = mobile_infantry
 				technology = mass_motorization
@@ -6597,13 +6612,13 @@
 			custom_effect_tooltip = SOV_voroshilov2_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_grand_battle_plan
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = grand_mechanized_offensive
 				technology = assault_concentration
@@ -6641,13 +6656,13 @@
 
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_mass_assault
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = large_front_operations
 				technology = deep_operations
@@ -7138,13 +7153,13 @@
 			custom_effect_tooltip = SOV_budyonny2_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_mass_assault
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = peoples_army
 				technology = infantry_offensive
@@ -7181,13 +7196,13 @@
 			custom_effect_tooltip = SOV_kulik2_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_superior_firepower
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = intergrated_support
 				technology = regimental_combat_teams
@@ -7225,13 +7240,13 @@
 			custom_effect_tooltip = SOV_timoshenko_voroshilov_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_grand_battle_plan
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = infantry_offensive
 				technology = central_planning
@@ -7303,13 +7318,13 @@
 			custom_effect_tooltip = SOV_yegerov_reinstated_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_superior_firepower
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = dispersed_support
 				technology = overwhelming_firepower
@@ -7403,13 +7418,13 @@
 			custom_effect_tooltip = SOV_timoshenko_voroshilov_tt
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 3
 				category = cat_grand_battle_plan
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.75
+				cost_reduction = 0.4
 				uses = 4
 				technology = infantry_offensive
 				technology = central_planning
@@ -7593,7 +7608,7 @@
 		icon = GFX_focus_SOV_merge_plants
 		prerequisite = { focus = SOV_stavka }
 
-		x = 3
+		x = 1
 		y = 1
 		relative_position_id = SOV_stavka
 		cost = 1

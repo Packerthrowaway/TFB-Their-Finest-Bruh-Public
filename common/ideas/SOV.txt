@@ -159,15 +159,24 @@ ideas = {
 			picture = sov_mech_2
 
 			modifier = {
-				army_attack_speed_factor = 0.25
+				army_attack_speed_factor = 0.10
 			}
 
 			equipment_bonus = {
-				sov_light_tank_chassis_bt5 = {
-					build_cost_ic = -0.1
+				light_tank_chassis = {
+					build_cost_ic = -0.1 instant = yes
 				}
-				sov_light_tank_chassis_bt7 = {
-					build_cost_ic = -0.1
+				light_tank_artillery_chassis = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				light_tank_destroyer_chassis = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				light_tank_aa_chassis = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				light_assault_gun_chassis = {
+					build_cost_ic = -0.1 instant = yes
 				}
 			}
 		}
@@ -183,19 +192,28 @@ ideas = {
 			picture = sov_mech_2
 
 			modifier = {
-				army_attack_speed_factor = 0.25
+				army_attack_speed_factor = 0.1
 				breakthrough_factor = 0.1
 				army_morale_factor = 0.1
 				army_defence_against_minor_factor = 0.1
-				army_strength_factor = -0.25
+				army_strength_factor = -0.075
 			}
 
 			equipment_bonus = {
-				sov_light_tank_chassis_bt5 = {
-					build_cost_ic = -0.1
+				light_tank_chassis = {
+					build_cost_ic = -0.1 instant = yes
 				}
-				sov_light_tank_chassis_bt7 = {
-					build_cost_ic = -0.1
+				light_tank_artillery_chassis = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				light_tank_destroyer_chassis = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				light_tank_aa_chassis = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				light_assault_gun_chassis = {
+					build_cost_ic = -0.1 instant = yes
 				}
 			}
 
@@ -212,7 +230,7 @@ ideas = {
 			picture = sov_mech_2
 
 			modifier = {
-				coordination_bonus = -0.2
+				coordination_bonus = -0.1
 				army_morale_factor = 0.2
 			}
 
@@ -229,7 +247,7 @@ ideas = {
 			picture = sov_mech_2
 
 			modifier = {
-				coordination_bonus = -0.2
+				coordination_bonus = -0.1
 				army_morale_factor = 0.2
 				max_dig_in = 3
 				planning_speed = -0.2
@@ -250,7 +268,7 @@ ideas = {
 
 			modifier = {
 				mobilization_speed = 0.1
-				training_time_factor = -0.3
+				training_time_factor = -0.1
 				no_supply_grace = 30
 				army_org_factor = 0.1
 			}
@@ -269,7 +287,7 @@ ideas = {
 
 			modifier = {
 				mobilization_speed = 0.1
-				training_time_factor = -0.3
+				training_time_factor = -0.1
 				army_morale_factor = 0.15
 				no_supply_grace = 30
 				army_org_factor = 0.1
@@ -382,10 +400,10 @@ ideas = {
 			picture = sov_mech_2
 
 			modifier = {
-				land_reinforce_rate = 0.01
-				org_loss_when_moving = -0.15
+				land_reinforce_rate = 0.02
+				org_loss_when_moving = -0.25
 				army_armor_speed_factor = 0.05
-				army_fuel_capacity_factor = 0.30
+				army_fuel_capacity_factor = 0.15
 				}
 
 		}
@@ -3225,6 +3243,8 @@ ideas = {
 
 		SOV_nkvd = {
 			removal_cost = -1
+
+			picture = nkvd_2
 			
 			allowed = {
 				always = no # Added via focus
@@ -3244,6 +3264,8 @@ ideas = {
 
 		SOV_nkvd_dual_command = {
 			removal_cost = -1
+
+			picture = nkvd_2
 			
 			allowed = {
 				always = no # Added via focus
@@ -3261,13 +3283,15 @@ ideas = {
 				pocket_penalty = -0.15
 				initiative_factor = -0.1
 				army_core_defence_factor = 0.1
-				planning_speed = -0.4
-				max_planning = 0.25
+				planning_speed = -0.3
+				max_planning = 0.15
 			}
 		}
 
 		nkvd_2 = {
 			removal_cost = -1
+
+			picture = nkvd_2
 			
 			allowed = {
 				always = no # Added via focus
@@ -3301,7 +3325,7 @@ ideas = {
 			modifier = {
 				army_morale_factor = 0.10
 				experience_gain_factor = 0.25
-				training_time_army_factor = -0.2
+				training_time_army_factor = -0.1
 			}
 		}
 
@@ -3322,8 +3346,8 @@ ideas = {
 			modifier = {
 				army_morale_factor = 0.10
 				experience_gain_factor = 0.3
-				training_time_army_factor = -0.2
-				recon_factor = 0.2
+				training_time_army_factor = -0.1
+				out_of_supply_factor = -0.1
 				org_loss_when_moving = -0.2
 			}
 		}
@@ -6705,6 +6729,20 @@ ideas = {
 					soft_attack = 0.03
 				}
 			}
+		}
+
+		SOV_generic_tank_manufacturer = {
+
+			picture = generic_tank_manufacturer_1
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				armor = 0.08
+			}
+			
+			traits = { tank_manufacturer }
 		}
 	}
 
