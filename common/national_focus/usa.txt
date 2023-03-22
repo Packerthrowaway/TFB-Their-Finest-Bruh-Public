@@ -137,6 +137,56 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = USA_wpa
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = USA_continue_the_new_deal }
+		relative_position_id = USA_continue_the_new_deal
+		x = -1
+		y = 1
+		cost = 10
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 150
+		}
+	}
+
+	focus = {
+		id = USA_office_of_scientific_research_and_development
+		icon = GFX_focus_research
+		x = 0
+		y = 2
+		relative_position_id = USA_continue_the_new_deal
+		prerequisite = { focus = USA_neutrality_act }
+		prerequisite = { focus = USA_wpa }
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
 	# focus = {
 	# 	id = USA_rebuilding_the_nation
 	# 	icon = GFX_focus_usa_recruit_the_free_corps
@@ -2552,24 +2602,6 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = USA_wpa
-		icon = GFX_goal_generic_production
-		prerequisite = { focus = USA_continue_the_new_deal }
-		relative_position_id = USA_continue_the_new_deal
-		x = -1
-		y = 1
-		cost = 10
-		#ai_will_do = {
-		#	factor = 1
-		#}
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_POLITICAL}
-		completion_reward = {
-			add_political_power = 150
-		}
-	}
 
 	
 	focus = {
@@ -2829,36 +2861,7 @@ focus_tree = {
 			custom_effect_tooltip = USA_great_depression_cooldown_tt
 		}
 	}
-	focus = {
-		id = USA_office_of_scientific_research_and_development
-		icon = GFX_focus_research
-		x = 0
-		y = 2
-		relative_position_id = USA_continue_the_new_deal
-		prerequisite = { focus = USA_neutrality_act }
-		prerequisite = { focus = USA_wpa }
-		cost = 10
 
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {FOCUS_FILTER_RESEARCH}
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
 
 	# focus = {
 	# 	id = USA_election
