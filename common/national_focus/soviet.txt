@@ -1502,11 +1502,12 @@
 			surrender_progress > 0.32
 		}
 		completion_reward = {
+			
 			hidden_effect = {
 				set_technology = {
 					sov_slacken_armor_tech = 1
 				}
-
+				add_ideas = SOV_slacken_armor 
 			}			
 			custom_effect_tooltip = SOV_slacken_armor_tt
 		}
@@ -1550,11 +1551,12 @@
 			surrender_progress > 0.32
 		}
 		completion_reward = {
+			
 			hidden_effect = {
 				set_technology = {
 					slacken_inf_tech = 1
 				}
-
+				add_ideas = SOV_slacken_infantry 
 			}
 			custom_effect_tooltip = SOV_slacken_inf_tt
 		}
@@ -4876,7 +4878,7 @@
 		cost = 1
 
 		available_if_capitulated = yes
-		
+		will_lead_to_war_with = GER
 		available = { 
 			has_war = no
 			date > 1942.8.1
@@ -4886,6 +4888,10 @@
 			add_timed_idea = {
 				idea = SOV_invade_germany_idea
 				days = 120
+			}
+			declare_war_on = {
+				target = GER
+				type = annex_everything
 			}
 		}
 	}
@@ -5683,7 +5689,7 @@
 				name = doc_bonus
 				cost_reduction = 0.25
 				uses = 2
-				category = cat_mass_assault
+				category = land_doctrine
 			}
 		}
 	}
@@ -5722,7 +5728,7 @@
 				add_ideas = SOV_kirov
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.5
+					bonus = 0.75
 					uses = 1
 					category = cat_medium_armor
 				}
@@ -5733,7 +5739,7 @@
 				add_ideas = SOV_morozov_design_bureau
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.5
+					bonus = 0.75
 					uses = 1
 					category = cat_medium_armor
 				}
@@ -5749,7 +5755,7 @@
 				add_ideas = SOV_okmo
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.5
+					bonus = 0.75
 					uses = 1
 					category = cat_heavy_armor
 				}
@@ -5760,7 +5766,7 @@
 				add_ideas = SOV_mytishchy_machine_building_plant
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.5
+					bonus = 0.75
 					uses = 1
 					category = cat_light_armor
 				}
@@ -6409,13 +6415,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_mobile_warfare
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = armored_spearhead
 				technology = schwerpunk
 				technology = blitzkrieg
@@ -6507,13 +6513,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_mobile_warfare
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = mobile_infantry
 				technology = mass_motorization
 				technology = mechanised_offensive
@@ -6672,13 +6678,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_grand_battle_plan
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = grand_mechanized_offensive
 				technology = assault_concentration
 				technology = branch_interoperation
@@ -6717,13 +6723,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_mass_assault
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = large_front_operations
 				technology = deep_operations
 				technology = operational_concentration
@@ -7188,7 +7194,12 @@
 			# SOV_kliment_voroshilov = { 
 			# 	promote_leader = yes 
 			# }
-			army_experience = 50
+			add_tech_bonus = {
+				name = art_bonus
+				bonus = 0.75
+				uses = 3
+				category = heavy_artillery
+			}
 			SOV_refresh_RG_cap_heavy = yes
 		}
 	}
@@ -7217,18 +7228,19 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_mass_assault
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
-				technology = peoples_army
-				technology = infantry_offensive
-				technology = large_front_offensive
-				technology = human_wave_offensive
-				technology = guerilla_warfare
+				uses = 3
+				technology = large_front_operations
+				technology = deep_operations
+				technology = operational_concentration
+				technology = vast_offensives
+				technology = breakthrough_priority
+				technology = mechanized_wave
 			}
 			SOV_semyon_budyonny = { 
 				promote_leader = yes 
@@ -7260,13 +7272,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_superior_firepower
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = intergrated_support
 				technology = regimental_combat_teams
 				technology = centralized_fire_control
@@ -7304,13 +7316,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_grand_battle_plan
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = infantry_offensive
 				technology = central_planning
 				technology = infiltration_assault
@@ -7385,13 +7397,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_superior_firepower
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = dispersed_support
 				technology = overwhelming_firepower
 				technology = concentrated_fire_plans
@@ -7485,13 +7497,13 @@
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 3
+				uses = 1
 				category = cat_grand_battle_plan
 			}
 			add_doctrine_cost_reduction = {
 				name = doc_bonus
 				cost_reduction = 0.4
-				uses = 4
+				uses = 3
 				technology = infantry_offensive
 				technology = central_planning
 				technology = infiltration_assault
