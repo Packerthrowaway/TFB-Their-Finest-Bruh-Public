@@ -1194,7 +1194,17 @@
 				add_idea = SOV_3_5_plan_ger
 			}
 
-			SOV_increase_RG_cap = yes
+			if = {
+				limit = { has_country_flag = RG_armored_division_medium }
+				SOV_increase_RG_cap_medium = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_light }
+				SOV_increase_RG_cap_light = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_heavy }
+				SOV_increase_RG_cap_heavy = yes
+			}
+
 		}
 	}
 	
@@ -1385,7 +1395,16 @@
 			add_ideas = tot_economic_mobilisation
 			add_ideas = SOV_war_mob
 
-			SOV_increase_RG_cap = yes
+			if = {
+				limit = { has_country_flag = RG_armored_division_medium }
+				SOV_increase_RG_cap_medium = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_light }
+				SOV_increase_RG_cap_light = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_heavy }
+				SOV_increase_RG_cap_heavy = yes
+			}
 
 			custom_effect_tooltip = unlock_propaganda_campaign_tt
 			unlock_decision_tooltip = SOV_propaganda_treacherous_enemy
@@ -1455,7 +1474,16 @@
 				sov_zis30_tech = 1
 			}
 
-			SOV_increase_RG_cap = yes
+			if = {
+				limit = { has_country_flag = RG_armored_division_medium }
+				SOV_increase_RG_cap_medium = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_light }
+				SOV_increase_RG_cap_light = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_heavy }
+				SOV_increase_RG_cap_heavy = yes
+			}
 
 			add_ideas = SOV_tankograd_idea
 		}
@@ -1496,7 +1524,16 @@
 		completion_reward = {
 			add_ideas = SOV_guards_ideas
 
-			SOV_increase_RG_cap_double = yes
+			if = {
+				limit = { has_country_flag = RG_armored_division_medium }
+				SOV_increase_RG_cap_medium_double = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_light }
+				SOV_increase_RG_cap_light_double = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_heavy }
+				SOV_increase_RG_cap_heavy_double = yes
+			}
 		}
 	}
 
@@ -2557,7 +2594,16 @@
 			}
 			custom_effect_tooltip = SOV_frontline_mob_tt
 
-			SOV_increase_RG_cap = yes
+			if = {
+				limit = { has_country_flag = RG_armored_division_medium }
+				SOV_increase_RG_cap_medium = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_light }
+				SOV_increase_RG_cap_light = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_heavy }
+				SOV_increase_RG_cap_heavy = yes
+			}
 		}
 	}
 
@@ -5598,7 +5644,16 @@
 			add_to_variable = { SOV_the_red_army_terrain_penalty_reduction = 0.05 }
 			custom_effect_tooltip = SOV_an_adaptable_army_ns_tt
 
-			SOV_increase_RG_cap_double = yes
+			if = {
+				limit = { has_country_flag = RG_armored_division_medium }
+				SOV_increase_RG_cap_medium_double = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_light }
+				SOV_increase_RG_cap_light_double = yes
+			} else_if = {
+				limit = { has_country_flag = RG_armored_division_heavy }
+				SOV_increase_RG_cap_heavy_double = yes
+			}
 		}
 	}
 	
@@ -6315,6 +6370,7 @@
 		}
 
 		completion_reward = {
+			custom_effect_tooltip = SOV_red_guard_template_medium_tt
 			custom_effect_tooltip = SOV_blucher_reinstated_tt
 			SOV_vasily_blyukher = { 
 				promote_leader = yes
@@ -6581,10 +6637,11 @@
 		}
 
 		completion_reward = {
-			custom_effect_tooltip = available_political_advisor
-
+			#custom_effect_tooltip = available_political_advisor
+			custom_effect_tooltip = SOV_historical_tt
+			custom_effect_tooltip = SOV_red_guard_template_medium_tt
 			SOV_semyon_timoshenko = { 
-			promote_leader = yes 
+				promote_leader = yes 
 			}
 			
 		}
@@ -6652,6 +6709,7 @@
 		}
 
 		completion_reward = {
+			custom_effect_tooltip = SOV_historical_tt
 			custom_effect_tooltip = SOV_shaposhnikovfocus_tt
 
 			add_doctrine_cost_reduction = {
@@ -6674,7 +6732,7 @@
 			
 			SOV_boris_shaposhnikov = { 
 				promote_leader = yes 
-				}
+			}
 		}
 	}
 	
@@ -7123,10 +7181,13 @@
 		}
 
 		completion_reward = {
+			RG_armored_division_heavy = yes
+			SOV_swap_RG_medium_heavy = yes
 			# SOV_kliment_voroshilov = { 
 			# 	promote_leader = yes 
 			# }
 			add_political_power = 100
+			SOV_refresh_RG_cap_heavy = yes
 		}
 	}
 
@@ -7289,9 +7350,12 @@
 		}
 
 		completion_reward = {
+			RG_armored_division_light = yes
+			SOV_swap_RG_medium_light = yes
 			SOV_grigory_kulik = { 
 				promote_leader = yes 
-				}
+			}
+			SOV_refresh_RG_cap_light = yes
 		}
 	}
 
