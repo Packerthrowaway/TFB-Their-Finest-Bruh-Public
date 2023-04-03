@@ -2428,60 +2428,1537 @@ ideas = {
 	tank_manufacturer = { 
 		
 		designer = yes
-		
-		porsche = {
 
+		# porsche tank merge
+		# porsche tank merge
+		# skoda = 1 cairo = 2 paris = 3 kiev = 4
+		# porsche tank merge
+		# porsche tank merge
+
+		GER_POR = {
+			name = porsche
+
+			picture = porsche
 			
 			allowed = {
 				original_tag = GER
 			}
+
+			visible = {
+				hidden_trigger = {
+					NOT = { has_country_flag = GER_skoda_merge_POR }
+					NOT = { has_country_flag = GER_cairo_merge_POR }
+					NOT = { has_country_flag = GER_paris_merge_POR }
+					NOT = { has_country_flag = GER_kiev_merge_POR }
+				}
+			}
 			
 			research_bonus = {
-				armor = 0.2
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+			
+			modifier = {
+			}
+		}
+
+		GER_POR_1 = {
+			name = porsche
+
+			picture = porsche
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					NOT = { has_country_flag = GER_cairo_merge_POR }
+					NOT = { has_country_flag = GER_paris_merge_POR }
+					NOT = { has_country_flag = GER_kiev_merge_POR }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
 			}
 			
 			traits = { porsche_manufacturer }
 
-			ai_will_do = {
-				factor = 10
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
 			}
-
 		}
-		
-		henschel = {
 
+		GER_POR_1_2 = {
+			name = porsche
+
+			picture = porsche
 			
 			allowed = {
 				original_tag = GER
 			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					has_country_flag = GER_cairo_merge_POR
+					NOT = { has_country_flag = GER_paris_merge_POR }
+					NOT = { has_country_flag = GER_kiev_merge_POR }
+				}
+			}
 			
 			research_bonus = {
-				armor = 0.2
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_POR_1_3 = {
+			name = porsche
+
+			picture = porsche
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					has_country_flag = GER_paris_merge_POR
+					NOT = { has_country_flag = GER_cairo_merge_POR }
+					NOT = { has_country_flag = GER_kiev_merge_POR }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+			}
+		}
+
+		GER_POR_1_4 = {
+			name = porsche
+
+			picture = porsche
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					has_country_flag = GER_kiev_merge_POR
+					NOT = { has_country_flag = GER_cairo_merge_POR }
+					NOT = { has_country_flag = GER_skoda_merge_POR }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_POR_1_3_4 = {
+			name = porsche
+
+			picture = porsche
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					has_country_flag = GER_paris_merge_POR
+					NOT = { has_country_flag = GER_cairo_merge_POR }
+					has_country_flag = GER_kiev_merge_POR
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					soft_attack = 0.05
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_POR_1_2_3 = {
+			name = porsche
+
+			picture = porsche
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					has_country_flag = GER_cairo_merge_POR
+					has_country_flag = GER_paris_merge_POR
+					NOT = { has_country_flag = GER_kiev_merge_POR }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_POR_1_2_4 = {
+			name = porsche
+
+			picture = porsche
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					has_country_flag = GER_cairo_merge_POR
+					NOT = { has_country_flag = GER_paris_merge_POR }
+					has_country_flag = GER_kiev_merge_POR
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_POR_1_2_3_4 = {
+			name = porsche
+
+			picture = porsche
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_POR
+					has_country_flag = GER_cairo_merge_POR
+					has_country_flag = GER_paris_merge_POR
+					has_country_flag = GER_kiev_merge_POR
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { porsche_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+			}
+		}
+		
+		# henschel tank merge
+		# henschel tank merge
+		# skoda = 1 cairo = 2 paris = 3 kiev = 4
+		# henschel tank merge
+		# henschel tank merge
+
+		GER_HEN = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					NOT = { has_country_flag = GER_skoda_merge_HEN }
+					NOT = { has_country_flag = GER_cairo_merge_HEN }
+					NOT = { has_country_flag = GER_paris_merge_HEN }
+					NOT = { has_country_flag = GER_kiev_merge_HEN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
 			}
 			
 			traits = { henschel_manufacturer }
 			
-			ai_will_do = {
-				factor = 1
+			modifier = {
 			}
 		}
-		
+
+		GER_HEN_1 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					NOT = { has_country_flag = GER_cairo_merge_HEN }
+					NOT = { has_country_flag = GER_paris_merge_HEN }
+					NOT = { has_country_flag = GER_kiev_merge_HEN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					maximum_speed = 0.05
+				}
+			}
+		}
+
+		GER_HEN_1_2 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					has_country_flag = GER_cairo_merge_HEN
+					NOT = { has_country_flag = GER_paris_merge_HEN }
+					NOT = { has_country_flag = GER_kiev_merge_HEN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					maximum_speed = 0.05
+					reliability_factor = 0.05
+				}
+			}
+		}
+
+		GER_HEN_1_3 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					has_country_flag = GER_paris_merge_HEN
+					NOT = { has_country_flag = GER_cairo_merge_HEN }
+					NOT = { has_country_flag = GER_kiev_merge_HEN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					soft_attack = 0.05
+					maximum_speed = 0.05
+				}
+			}
+		}
+
+		GER_HEN_1_4 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					has_country_flag = GER_kiev_merge_HEN
+					NOT = { has_country_flag = GER_cairo_merge_HEN }
+					NOT = { has_country_flag = GER_skoda_merge_HEN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					hard_attack = 0.05
+				}
+			}
+		}
+
+		GER_HEN_1_3_4 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					has_country_flag = GER_paris_merge_HEN
+					NOT = { has_country_flag = GER_cairo_merge_HEN }
+					has_country_flag = GER_kiev_merge_HEN
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					soft_attack = 0.05
+					maximum_speed = 0.05
+					hard_attack = 0.05
+				}
+			}
+		}
+
+		GER_HEN_1_2_3 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					has_country_flag = GER_cairo_merge_HEN
+					has_country_flag = GER_paris_merge_HEN
+					NOT = { has_country_flag = GER_kiev_merge_HEN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					maximum_speed = 0.05
+					reliability_factor = 0.05
+					soft_attack = 0.05
+				}
+			}
+		}
+
+		GER_HEN_1_2_4 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					has_country_flag = GER_cairo_merge_HEN
+					NOT = { has_country_flag = GER_paris_merge_HEN }
+					has_country_flag = GER_kiev_merge_HEN
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					maximum_speed = 0.05
+					reliability_factor = 0.05
+					soft_attack = 0.05
+				}
+			}
+		}
+
+		GER_HEN_1_2_3_4 = {
+			name = henschel
+
+			picture = henschel
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_HEN
+					has_country_flag = GER_cairo_merge_HEN
+					has_country_flag = GER_paris_merge_HEN
+					has_country_flag = GER_kiev_merge_HEN
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { henschel_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					maximum_speed = 0.05
+					reliability_factor = 0.05
+					soft_attack = 0.05
+					hard_attack = 0.05
+				}
+			}
+		}
+
+		# man tank merge
+		# man tank merge
+		# skoda = 1 cairo = 2 paris = 3 kiev = 4
+		# man tank merge
+		# man tank merge
+
 		GER_MAN = {
+			name = GER_MAN
 
 			picture = GER_MAN
 			
 			allowed = {
 				original_tag = GER
 			}
+
+			visible = {
+				hidden_trigger = {
+					NOT = { has_country_flag = GER_skoda_merge_MAN }
+					NOT = { has_country_flag = GER_cairo_merge_MAN }
+					NOT = { has_country_flag = GER_paris_merge_MAN }
+					NOT = { has_country_flag = GER_kiev_merge_MAN }
+				}
+			}
 			
 			research_bonus = {
-				armor = 0.2
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer }
+			
+			modifier = {
+			}
+		}
+
+		GER_MAN_1 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					NOT = { has_country_flag = GER_cairo_merge_MAN }
+					NOT = { has_country_flag = GER_paris_merge_MAN }
+					NOT = { has_country_flag = GER_kiev_merge_MAN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
 			}
 			
 			traits = { man_manufacturer }
 
-			ai_will_do = {
-				factor = 1
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_MAN_1_2 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					has_country_flag = GER_cairo_merge_MAN
+					NOT = { has_country_flag = GER_paris_merge_MAN }
+					NOT = { has_country_flag = GER_kiev_merge_MAN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_MAN_1_3 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					has_country_flag = GER_paris_merge_MAN
+					NOT = { has_country_flag = GER_cairo_merge_MAN }
+					NOT = { has_country_flag = GER_kiev_merge_MAN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer}
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+			}
+		}
+
+		GER_MAN_1_4 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					has_country_flag = GER_kiev_merge_MAN
+					NOT = { has_country_flag = GER_cairo_merge_MAN }
+					NOT = { has_country_flag = GER_skoda_merge_MAN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_MAN_1_3_4 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					has_country_flag = GER_paris_merge_MAN
+					NOT = { has_country_flag = GER_cairo_merge_MAN }
+					has_country_flag = GER_kiev_merge_MAN
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					soft_attack = 0.05
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_MAN_1_2_3 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					has_country_flag = GER_cairo_merge_MAN
+					has_country_flag = GER_paris_merge_MAN
+					NOT = { has_country_flag = GER_kiev_merge_MAN }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_MAN_1_2_4 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					has_country_flag = GER_cairo_merge_MAN
+					NOT = { has_country_flag = GER_paris_merge_MAN }
+					has_country_flag = GER_kiev_merge_MAN
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_MAN_1_2_3_4 = {
+			name = GER_MAN
+
+			picture = GER_MAN
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_MAN
+					has_country_flag = GER_cairo_merge_MAN
+					has_country_flag = GER_paris_merge_MAN
+					has_country_flag = GER_kiev_merge_MAN
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { man_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		# alkett tank merge
+		# alkett tank merge
+		# skoda = 1 cairo = 2 paris = 3 kiev = 4
+		# alkett tank merge
+		# alkett tank merge
+
+		GER_ALK = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					NOT = { has_country_flag = GER_skoda_merge_ALK }
+					NOT = { has_country_flag = GER_cairo_merge_ALK }
+					NOT = { has_country_flag = GER_paris_merge_ALK }
+					NOT = { has_country_flag = GER_kiev_merge_ALK }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+			
+			modifier = {
+			}
+		}
+
+		GER_ALK_1 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					NOT = { has_country_flag = GER_cairo_merge_ALK }
+					NOT = { has_country_flag = GER_paris_merge_ALK }
+					NOT = { has_country_flag = GER_kiev_merge_ALK }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_ALK_1_2 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					has_country_flag = GER_cairo_merge_ALK
+					NOT = { has_country_flag = GER_paris_merge_ALK }
+					NOT = { has_country_flag = GER_kiev_merge_ALK }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_ALK_1_3 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					has_country_flag = GER_paris_merge_ALK
+					NOT = { has_country_flag = GER_cairo_merge_ALK }
+					NOT = { has_country_flag = GER_kiev_merge_ALK }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer}
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+			}
+		}
+
+		GER_ALK_1_4 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					has_country_flag = GER_kiev_merge_ALK
+					NOT = { has_country_flag = GER_cairo_merge_ALK }
+					NOT = { has_country_flag = GER_skoda_merge_ALK }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_ALK_1_3_4 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					has_country_flag = GER_paris_merge_ALK
+					NOT = { has_country_flag = GER_cairo_merge_ALK }
+					has_country_flag = GER_kiev_merge_ALK
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					soft_attack = 0.05
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_ALK_1_2_3 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					has_country_flag = GER_cairo_merge_ALK
+					has_country_flag = GER_paris_merge_ALK
+					NOT = { has_country_flag = GER_kiev_merge_ALK }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_ALK_1_2_4 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					has_country_flag = GER_cairo_merge_ALK
+					NOT = { has_country_flag = GER_paris_merge_ALK }
+					has_country_flag = GER_kiev_merge_ALK
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_ALK_1_2_3_4 = {
+			name = GER_ALK
+
+			picture = GER_ALK
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_ALK
+					has_country_flag = GER_cairo_merge_ALK
+					has_country_flag = GER_paris_merge_ALK
+					has_country_flag = GER_kiev_merge_ALK
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { alkett_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		# daimler tank merge
+		# daimler tank merge
+		# skoda = 1 cairo = 2 paris = 3 kiev = 4
+		# daimler tank merge
+		# daimler tank merge
+
+		GER_DAI = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					NOT = { has_country_flag = GER_skoda_merge_DAI }
+					NOT = { has_country_flag = GER_cairo_merge_DAI }
+					NOT = { has_country_flag = GER_paris_merge_DAI }
+					NOT = { has_country_flag = GER_kiev_merge_DAI }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+			
+			modifier = {
+			}
+		}
+
+		GER_DAI_1 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					NOT = { has_country_flag = GER_cairo_merge_DAI }
+					NOT = { has_country_flag = GER_paris_merge_DAI }
+					NOT = { has_country_flag = GER_kiev_merge_DAI }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_DAI_1_2 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					has_country_flag = GER_cairo_merge_DAI
+					NOT = { has_country_flag = GER_paris_merge_DAI }
+					NOT = { has_country_flag = GER_kiev_merge_DAI }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_DAI_1_3 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					has_country_flag = GER_paris_merge_DAI
+					NOT = { has_country_flag = GER_cairo_merge_DAI }
+					NOT = { has_country_flag = GER_kiev_merge_DAI }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer}
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+			}
+		}
+
+		GER_DAI_1_4 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					has_country_flag = GER_kiev_merge_DAI
+					NOT = { has_country_flag = GER_cairo_merge_DAI }
+					NOT = { has_country_flag = GER_skoda_merge_DAI }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_DAI_1_3_4 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					has_country_flag = GER_paris_merge_DAI
+					NOT = { has_country_flag = GER_cairo_merge_DAI }
+					has_country_flag = GER_kiev_merge_DAI
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis = {
+					soft_attack = 0.05
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_DAI_1_2_3 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					has_country_flag = GER_cairo_merge_DAI
+					has_country_flag = GER_paris_merge_DAI
+					NOT = { has_country_flag = GER_kiev_merge_DAI }
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+				}
+			}
+		}
+
+		GER_DAI_1_2_4 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					has_country_flag = GER_cairo_merge_DAI
+					NOT = { has_country_flag = GER_paris_merge_DAI }
+					has_country_flag = GER_kiev_merge_DAI
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
+			}
+		}
+
+		GER_DAI_1_2_3_4 = {
+			name = GER_DAI
+
+			picture = GER_DAI
+			
+			allowed = {
+				original_tag = GER
+			}
+
+			visible = {
+				hidden_trigger = {
+					has_country_flag = GER_skoda_merge_DAI
+					has_country_flag = GER_cairo_merge_DAI
+					has_country_flag = GER_paris_merge_DAI
+					has_country_flag = GER_kiev_merge_DAI
+				}
+			}
+			
+			research_bonus = {
+				armor = 0.20
+			}
+			
+			traits = { daimler_manufacturer }
+			
+			equipment_bonus = {
+				heavy_tank_chassis= {
+					armor_value = 0.05
+					soft_attack = 0.05
+					ap_attack = 0.05
+				}
+				heavy_tank_destroyer_chassis = {
+					armor_value = 0.05
+					ap_attack = 0.05
+				}
 			}
 		}
 	}

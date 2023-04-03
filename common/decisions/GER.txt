@@ -2720,3 +2720,1194 @@ GER_propaganda_campaigns = {
 		}
 	}	
 }
+
+#merge designers decisions skoda = 1 cairo = 2 paris = 3 kiev = 4
+GER_designer_merge_decisions = {
+	GER_merge_skoda_decision_HEN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 9 #bohemia
+			GER_has_active_tank_designer_henschel = yes
+			has_country_flag = GER_HEN_designer
+		}
+	
+		visible = {
+			has_completed_focus = GER_henschel
+			NOT = {
+				has_country_flag = GER_skoda_merge_HEN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_skoda_merge_HEN
+			add_ideas = GER_HEN_1
+		}
+	}
+
+	GER_merge_paris_decision_HEN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 16 #paris
+			GER_has_active_tank_designer_henschel = yes
+			has_country_flag = GER_HEN_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_HEN
+			NOT = {
+				has_country_flag = GER_paris_merge_HEN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_paris_merge_HEN
+			IF = {
+				limit = {
+					has_country_flag = GER_kiev_merge_HEN
+					has_country_flag = GER_cairo_merge_HEN
+				}
+				add_ideas = GER_HEN_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_HEN
+						NOT = { 
+							has_country_flag = GER_cairo_merge_HEN
+					 	}
+					}
+					add_ideas = GER_HEN_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_HEN
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_HEN
+							}
+						}
+					}
+					add_ideas = GER_HEN_1_3
+					else = {
+						add_ideas = GER_HEN_1_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_cairo_decision_HEN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			446 = { is_controlled_by = ITA }
+			GER_has_active_tank_designer_henschel = yes
+			has_country_flag = GER_HEN_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_HEN
+			NOT = {
+				has_country_flag = GER_cairo_merge_HEN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_cairo_merge_HEN
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_HEN
+					NOT = {
+						has_country_flag = GER_kiev_merge_HEN
+					}
+				}
+				add_ideas = GER_HEN_1_2_3
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_HEN
+						NOT = {
+							has_country_flag = GER_paris_merge_HEN
+						}
+					}
+					add_ideas = GER_HEN_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_paris_merge_HEN
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_HEN
+							}
+						}
+					add_ideas = GER_HEN_1_2
+					}
+					else = {
+						add_ideas = GER_HEN_1_2_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_kiev_decision_HEN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			controls_state = 202
+			GER_has_active_tank_designer_henschel = yes
+			has_country_flag = GER_HEN_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_HEN
+			NOT = {
+				has_country_flag = GER_kiev_merge_HEN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_kiev_merge_HEN
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_HEN
+					has_country_flag = GER_cairo_merge_HEN
+				}
+				add_ideas = GER_HEN_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_paris_merge_HEN
+						NOT = { 
+							has_country_flag = GER_cairo_merge_HEN
+					 	}
+					}
+					add_ideas = GER_HEN_1_3_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_HEN
+							}
+							NOT = {
+								has_country_flag = GER_paris_merge_HEN
+							}
+						}
+					}
+					add_ideas = GER_HEN_1_4
+					else = {
+						add_ideas = GER_HEN_1_2_4
+					}
+				}
+			}
+		}
+	}
+
+	#merge for porsche skoda = 1 cairo = 2 paris = 3 kiev = 4
+
+	GER_merge_skoda_decision_POR = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 9 #bohemia
+			GER_has_active_tank_designer_porsche = yes
+			has_country_flag = GER_POR_designer
+		}
+	
+		visible = {
+			has_completed_focus = GER_porsche
+			NOT = {
+				has_country_flag = GER_skoda_merge_POR
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_skoda_merge_POR
+			add_ideas = GER_POR_1
+		}
+	}
+
+	GER_merge_paris_decision_POR = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 16 #paris
+			GER_has_active_tank_designer_porsche = yes
+			has_country_flag = GER_POR_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_POR
+			NOT = {
+				has_country_flag = GER_paris_merge_POR
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_paris_merge_POR
+			IF = {
+				limit = {
+					has_country_flag = GER_kiev_merge_POR
+					has_country_flag = GER_cairo_merge_POR
+				}
+				add_ideas = GER_POR_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_POR
+						NOT = { 
+							has_country_flag = GER_cairo_merge_POR
+					 	}
+					}
+					add_ideas = GER_POR_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_POR
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_POR
+							}
+						}
+					}
+					add_ideas = GER_POR_1_3
+					else = {
+						add_ideas = GER_POR_1_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_cairo_decision_POR = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			446 = { is_controlled_by = ITA }
+			GER_has_active_tank_designer_porsche = yes
+			has_country_flag = GER_POR_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_POR
+			NOT = {
+				has_country_flag = GER_cairo_merge_POR
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_cairo_merge_POR
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_POR
+					NOT = {
+						has_country_flag = GER_kiev_merge_POR
+					}
+				}
+				add_ideas = GER_POR_1_2_3
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_POR
+						NOT = {
+							has_country_flag = GER_paris_merge_POR
+						}
+					}
+					add_ideas = GER_POR_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_paris_merge_POR
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_POR
+							}
+						}
+					add_ideas = GER_POR_1_2
+					}
+					else = {
+						add_ideas = GER_POR_1_2_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_kiev_decision_POR = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			controls_state = 202
+			GER_has_active_tank_designer_porsche = yes
+			has_country_flag = GER_POR_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_POR
+			NOT = {
+				has_country_flag = GER_kiev_merge_POR
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_kiev_merge_POR
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_POR
+					has_country_flag = GER_cairo_merge_POR
+				}
+				add_ideas = GER_POR_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_paris_merge_POR
+						NOT = { 
+							has_country_flag = GER_cairo_merge_POR
+					 	}
+					}
+					add_ideas = GER_POR_1_3_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_POR
+							}
+							NOT = {
+								has_country_flag = GER_paris_merge_POR
+							}
+						}
+					}
+					add_ideas = GER_POR_1_4
+					else = {
+						add_ideas = GER_POR_1_2_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_skoda_decision_DAI = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 9 #bohemia
+			GER_has_active_tank_designer_daimler = yes
+			has_country_flag = GER_DAI_designer
+		}
+	
+		visible = {
+			has_completed_focus = GER_daimler
+			NOT = {
+				has_country_flag = GER_skoda_merge_DAI
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_skoda_merge_DAI
+			add_ideas = GER_DAI_1
+		}
+	}
+
+	GER_merge_paris_decision_DAI = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 16 #paris
+			GER_has_active_tank_designer_daimler = yes
+			has_country_flag = GER_DAI_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_DAI
+			NOT = {
+				has_country_flag = GER_paris_merge_DAI
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_paris_merge_DAI
+			IF = {
+				limit = {
+					has_country_flag = GER_kiev_merge_DAI
+					has_country_flag = GER_cairo_merge_DAI
+				}
+				add_ideas = GER_DAI_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_DAI
+						NOT = { 
+							has_country_flag = GER_cairo_merge_DAI
+					 	}
+					}
+					add_ideas = GER_DAI_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_DAI
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_DAI
+							}
+						}
+					}
+					add_ideas = GER_DAI_1_3
+					else = {
+						add_ideas = GER_DAI_1_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_cairo_decision_DAI = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			446 = { is_controlled_by = ITA }
+			GER_has_active_tank_designer_daimler = yes
+			has_country_flag = GER_DAI_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_DAI
+			NOT = {
+				has_country_flag = GER_cairo_merge_DAI
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_cairo_merge_DAI
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_DAI
+					NOT = {
+						has_country_flag = GER_kiev_merge_DAI
+					}
+				}
+				add_ideas = GER_DAI_1_2_3
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_DAI
+						NOT = {
+							has_country_flag = GER_paris_merge_DAI
+						}
+					}
+					add_ideas = GER_DAI_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_paris_merge_DAI
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_DAI
+							}
+						}
+					add_ideas = GER_DAI_1_2
+					}
+					else = {
+						add_ideas = GER_DAI_1_2_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_kiev_decision_DAI = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			controls_state = 202
+			GER_has_active_tank_designer_daimler = yes
+			has_country_flag = GER_DAI_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_DAI
+			NOT = {
+				has_country_flag = GER_kiev_merge_DAI
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_kiev_merge_DAI
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_DAI
+					has_country_flag = GER_cairo_merge_DAI
+				}
+				add_ideas = GER_DAI_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_paris_merge_DAI
+						NOT = { 
+							has_country_flag = GER_cairo_merge_DAI
+					 	}
+					}
+					add_ideas = GER_DAI_1_3_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_DAI
+							}
+							NOT = {
+								has_country_flag = GER_paris_merge_DAI
+							}
+						}
+					}
+					add_ideas = GER_DAI_1_4
+					else = {
+						add_ideas = GER_DAI_1_2_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_skoda_decision_ALK = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 9 #bohemia
+			GER_has_active_tank_designer_alkett = yes
+			has_country_flag = GER_ALK_designer
+		}
+	
+		visible = {
+			has_completed_focus = GER_alkett
+			NOT = {
+				has_country_flag = GER_skoda_merge_ALK
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_skoda_merge_ALK
+			add_ideas = GER_ALK_1
+		}
+	}
+
+	GER_merge_paris_decision_ALK = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 16 #paris
+			GER_has_active_tank_designer_alkett = yes
+			has_country_flag = GER_ALK_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_ALK
+			NOT = {
+				has_country_flag = GER_paris_merge_ALK
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_paris_merge_ALK
+			IF = {
+				limit = {
+					has_country_flag = GER_kiev_merge_ALK
+					has_country_flag = GER_cairo_merge_ALK
+				}
+				add_ideas = GER_ALK_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_ALK
+						NOT = { 
+							has_country_flag = GER_cairo_merge_ALK
+					 	}
+					}
+					add_ideas = GER_ALK_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_ALK
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_ALK
+							}
+						}
+					}
+					add_ideas = GER_ALK_1_3
+					else = {
+						add_ideas = GER_ALK_1_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_cairo_decision_ALK = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			446 = { is_controlled_by = ITA }
+			GER_has_active_tank_designer_alkett = yes
+			has_country_flag = GER_ALK_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_ALK
+			NOT = {
+				has_country_flag = GER_cairo_merge_ALK
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_cairo_merge_ALK
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_ALK
+					NOT = {
+						has_country_flag = GER_kiev_merge_ALK
+					}
+				}
+				add_ideas = GER_ALK_1_2_3
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_ALK
+						NOT = {
+							has_country_flag = GER_paris_merge_ALK
+						}
+					}
+					add_ideas = GER_ALK_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_paris_merge_ALK
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_ALK
+							}
+						}
+					add_ideas = GER_ALK_1_2
+					}
+					else = {
+						add_ideas = GER_ALK_1_2_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_kiev_decision_ALK = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			controls_state = 202
+			GER_has_active_tank_designer_alkett = yes
+			has_country_flag = GER_ALK_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_ALK
+			NOT = {
+				has_country_flag = GER_kiev_merge_ALK
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_kiev_merge_ALK
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_ALK
+					has_country_flag = GER_cairo_merge_ALK
+				}
+				add_ideas = GER_ALK_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_paris_merge_ALK
+						NOT = { 
+							has_country_flag = GER_cairo_merge_ALK
+					 	}
+					}
+					add_ideas = GER_ALK_1_3_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_ALK
+							}
+							NOT = {
+								has_country_flag = GER_paris_merge_ALK
+							}
+						}
+					}
+					add_ideas = GER_ALK_1_4
+					else = {
+						add_ideas = GER_ALK_1_2_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_skoda_decision_MAN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 9 #bohemia
+			GER_has_active_tank_designer_man = yes
+			has_country_flag = GER_MAN_designer
+		}
+	
+		visible = {
+			has_completed_focus = GER_man_focus
+			NOT = {
+				has_country_flag = GER_skoda_merge_MAN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_skoda_merge_MAN
+			add_ideas = GER_MAN_1
+		}
+	}
+
+	GER_merge_paris_decision_MAN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			has_full_control_of_state = 16 #paris
+			GER_has_active_tank_designer_man = yes
+			has_country_flag = GER_MAN_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_MAN
+			NOT = {
+				has_country_flag = GER_paris_merge_MAN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_paris_merge_MAN
+			IF = {
+				limit = {
+					has_country_flag = GER_kiev_merge_MAN
+					has_country_flag = GER_cairo_merge_MAN
+				}
+				add_ideas = GER_MAN_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_MAN
+						NOT = { 
+							has_country_flag = GER_cairo_merge_MAN
+					 	}
+					}
+					add_ideas = GER_MAN_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_MAN
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_MAN
+							}
+						}
+					}
+					add_ideas = GER_MAN_1_3
+					else = {
+						add_ideas = GER_MAN_1_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_cairo_decision_MAN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			446 = { is_controlled_by = ITA }
+			GER_has_active_tank_designer_man = yes
+			has_country_flag = GER_MAN_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_MAN
+			NOT = {
+				has_country_flag = GER_cairo_merge_MAN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_cairo_merge_MAN
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_MAN
+					NOT = {
+						has_country_flag = GER_kiev_merge_MAN
+					}
+				}
+				add_ideas = GER_MAN_1_2_3
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_kiev_merge_MAN
+						NOT = {
+							has_country_flag = GER_paris_merge_MAN
+						}
+					}
+					add_ideas = GER_MAN_1_2_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_paris_merge_MAN
+							}
+							NOT = {
+								has_country_flag = GER_kiev_merge_MAN
+							}
+						}
+					add_ideas = GER_MAN_1_2
+					}
+					else = {
+						add_ideas = GER_MAN_1_2_3_4
+					}
+				}
+			}
+		}
+	}
+
+	GER_merge_kiev_decision_MAN = {
+		priority = 53
+
+		icon = GFX_decision_generic_merge_plant_tank
+
+		ai_will_do = {
+			base = 0.5
+		}
+	
+		allowed = {
+			original_tag = GER
+		}
+	
+		available = {
+			controls_state = 202
+			GER_has_active_tank_designer_man = yes
+			has_country_flag = GER_MAN_designer
+		}
+	
+		visible = {
+			has_country_flag = GER_skoda_merge_MAN
+			NOT = {
+				has_country_flag = GER_kiev_merge_MAN
+			}
+		}
+	
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = GER_kiev_merge_MAN
+			IF = {
+				limit = {
+					has_country_flag = GER_paris_merge_MAN
+					has_country_flag = GER_cairo_merge_MAN
+				}
+				add_ideas = GER_MAN_1_2_3_4
+			}
+			else = {
+				IF = {
+					limit = {
+						has_country_flag = GER_paris_merge_MAN
+						NOT = { 
+							has_country_flag = GER_cairo_merge_MAN
+					 	}
+					}
+					add_ideas = GER_MAN_1_3_4
+				}
+				else = {
+					IF = {
+						limit = {
+							NOT = {
+								has_country_flag = GER_cairo_merge_MAN
+							}
+							NOT = {
+								has_country_flag = GER_paris_merge_MAN
+							}
+						}
+					}
+					add_ideas = GER_MAN_1_4
+					else = {
+						add_ideas = GER_MAN_1_2_4
+					}
+				}
+			}
+		}
+	}
+}
+
