@@ -33,8 +33,14 @@
 			factor = 1
 		}
 		available = {
-			has_idea = FRA_economic_collapse_1
-			has_completed_focus = FRA_general_work_council
+			OR = {
+				AND = {
+					has_idea = FRA_economic_collapse_1
+					has_completed_focus = FRA_general_work_council
+				}
+				has_government = fascism
+			}
+
 		}
 		
 		bypass = {
@@ -69,6 +75,7 @@
 		available = {
 			has_idea = FRA_economic_collapse_1
 			has_completed_focus = FRA_support_the_workers
+			NOT = { has_government = fascism }
 		}
 
 		bypass = {
@@ -823,7 +830,7 @@
 		}
 
 		available = {
-			
+			NOT = { has_government = fascism }
 		}
 		
 		bypass = {
@@ -1982,7 +1989,7 @@
 		}
 
 		available = {
-			
+			NOT = { has_government = fascism }
 		}
 		
 		bypass = {
