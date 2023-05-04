@@ -47,87 +47,51 @@
 			else = {
 				add_manpower = 150000
 				add_legitimacy = 15
-		}
-	}
-}
-
-	focus = {
-		id = FRA_form_new_army
-		icon = GFX_focus_focus_fra_national_resistance_council
-		cost = 1
-		x = -2
-		y = 1
-		prerequisite = {
-			focus = FRA_appeal_to_the_french_nation
-		}
-		relative_position_id = FRA_appeal_to_the_french_nation
-
-		available = {
-			539 = { is_controlled_by = FRA }
-		}
-
-		completion_reward = { 
-			custom_effect_tooltip = FRA_form_new_army_tt
+			}
 			add_equipment_to_stockpile = {
 				type = train_equipment
 				amount = 25
 			}
-			hidden_effect = {
-				division_template = {
-					name = "Corps Expéditionnaire"
-					regiments = {
-					infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-					
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-					
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-					
-						artillery_brigade = { x = 3 y = 0}
-						anti_tank_brigade = { x = 3 y = 1}
-					
-					}
-					support = {
-						hq_company = { x = 0 y = 0 } 
-						engineer = { x = 0 y = 1 }   
-						recon = { x = 0 y = 2 }
-						logistics_company  = { x = 0 y = 3 }
-						anti_air = { x = 1 y = 0 }
-					}
-				}
-				539 = {
-					if = {					
-						limit = { is_controlled_by = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-					}
-				}
-				772 = {
-					if = {					
-						limit = { is_controlled_by = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-					}
-				}
-				773 = {
-					if = {
-						limit = { is_controlled_by = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-						create_unit = { division = "division_template = \"Corps Expéditionnaire\" " owner = FRA }
-					}
-				}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 20000
 			}
-		}
+			add_equipment_to_stockpile = {
+				type = squad_equipment
+				amount = 5000
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 1000
+			}
+			add_equipment_to_stockpile = {
+					type = horse_equipment
+					amount = 2500
+			}
+			add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 1000
+			}
+			add_equipment_to_stockpile = {
+					type = radio_equipment
+					amount = 1000
+			}
+			add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 1000
+			}
+			add_equipment_to_stockpile = {
+					type = light_tank_chassis
+					amount = 560
+			}
+			add_equipment_to_stockpile = {
+					type = medium_tank_chassis
+					amount = 280
+			}
+		}	
 	}
+
+	
 
 	focus = {
 		id = FRA_appeal_to_overseas_territories
