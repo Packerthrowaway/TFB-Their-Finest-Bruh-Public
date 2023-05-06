@@ -72,6 +72,30 @@ on_actions = {
 
 	on_capitulation = {
 		## Capitulation of China
+		# Going to the Peace Conference
+		effect = {
+			if = {
+				limit = {
+					original_tag = CHI
+					FROM = { tag = JAP }
+					AND = {
+						NOT = { has_global_flag = JAP_split_china}
+						NOT = { has_global_flag = JAP_take_china}
+						NOT = { has_global_flag = JAP_give_china}
+						NOT = { has_global_flag = JAP_puppet_china}
+					}
+					
+				}
+				if = {
+					limit = {
+						MAN = { has_completed_focus = MAN_crush_the_bandits }
+					}
+					MAN = {
+						add_ideas = MAN_assert_mills
+					}
+				}
+			}
+		}
 		# Japan and Manchu split China
 		effect = {
 			if = {
@@ -91,6 +115,14 @@ on_actions = {
 					transfer_state = 746 #Ordos
 					transfer_state = 755 #Haixi
 					transfer_state = 756 #Jinquan
+				}
+				if = {
+					limit = {
+						MAN = { has_completed_focus = MAN_crush_the_bandits }
+					}
+					MAN = {
+						add_ideas = MAN_assert_mills
+					}
 				}
 				JAP = {
 					annex_country = {
@@ -124,7 +156,15 @@ on_actions = {
 					}
 				}
 			}
+			if = {
+				limit = {
+					MAN = { has_completed_focus = MAN_crush_the_bandits }
+				}
+				MAN = {
+					add_ideas = MAN_assert_mills
+				}
 			}
+		}
 		# Manchu takes all of China
 		effect = {
 			if = {
@@ -138,6 +178,14 @@ on_actions = {
 					annex_country = {
 						target = CHI
 						transfer_troops = no
+					}
+				}
+				if = {
+					limit = {
+						MAN = { has_completed_focus = MAN_crush_the_bandits }
+					}
+					MAN = {
+						add_ideas = MAN_assert_mills
 					}
 				}
 				JAP = {
@@ -161,6 +209,14 @@ on_actions = {
 					add_named_threat = {
 						threat = 30
 						name = JAP_threat_treaty_of_nanjing
+					}
+				}
+				if = {
+					limit = {
+						MAN = { has_completed_focus = MAN_crush_the_bandits }
+					}
+					MAN = {
+						add_ideas = MAN_assert_mills
 					}
 				}
 			}
