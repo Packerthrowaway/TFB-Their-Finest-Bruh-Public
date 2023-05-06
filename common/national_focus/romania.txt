@@ -651,16 +651,20 @@ focus_tree = {
 
 		completion_reward = {
 			remove_ideas = ROM_undeveloped_export_industry
-			random_owned_controlled_state = {
-				prioritize = { 46 }
-				limit = {
-					ROOT = { has_full_control_of_state = PREV }
-				}
+			46 = {
 				add_resource = {
 					type = oil
 					amount = 240
 				}
 			}
+
+			81 = {
+				add_resource = {
+					type = oil
+					amount = 180
+				}
+			}
+
 			GER = {
 				random_owned_controlled_state = {
 					limit = {
@@ -722,7 +726,7 @@ focus_tree = {
 	focus = {
 		id = ROM_national_defense_industry
 		icon = GFX_goal_generic_construct_mil_factory
-		x = 3
+		x = 4
 		y = 1
 		relative_position_id = ROM_expand_oil_production
 		prerequisite = {
@@ -1022,7 +1026,7 @@ focus_tree = {
 		id = ROM_danubian_transport_network
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = ROM_expand_oil_production focus = ROM_seek_alternate_resource}
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = ROM_seek_alternate_resource
 
@@ -1539,12 +1543,6 @@ focus_tree = {
 				add_resource = {
 					type = oil
 					amount = 240
-				}
-			}
-			81 = {
-				add_resource = {
-					type = oil
-					amount = 180
 				}
 			}
 		}
@@ -2315,7 +2313,7 @@ focus_tree = {
 			focus = ROM_force_abdication
 		}
 		mutually_exclusive = { focus = ROM_expand_greater_romania }
-		x = 0
+		x = 2
 		y = 2
 
 		cost = 10
@@ -2524,7 +2522,7 @@ focus_tree = {
 			focus = ROM_force_abdication
 		}
 		mutually_exclusive = { focus = ROM_national_humiliation }
-		x = 2
+		x = 4
 		y = 2
 
 		cost = 10
@@ -2554,6 +2552,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_state_core = 764
+			unlock_decision_tooltip = ROM_expand_greater_romania
 		}
 	}
 
