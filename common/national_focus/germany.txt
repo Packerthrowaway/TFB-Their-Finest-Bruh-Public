@@ -1980,132 +1980,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = GER_choose_designer
-		icon = GFX_ger_achtung_panzer
-		cost = 1
-		relative_position_id = GER_heer
+		id = GER_bewegungskrieg
+		icon = GFX_doctrine_tank_warfare
 		prerequisite = { focus = GER_heer }
 		x = 3
 		y = 1
-		completion_reward = { 
-
-		}
-	}
-
-	focus = {
-		id = GER_alkett
-		prerequisite = { focus = GER_choose_designer }
-		relative_position_id = GER_choose_designer
-		icon = GFX_idea_rheinmetall
-		cost = 1
-		x = -2
-		y = 2
-
-		available = {
-			GER_has_active_tank_designer_alkett_focus = yes
-		}
-
-		completion_reward = {
-			set_country_flag = GER_ALK_designer
-			custom_effect_tooltip = GER_designer_merge
-		}
-	}
-
-	focus = {
-		id = GER_man_focus
-		prerequisite = { focus = GER_choose_designer }
-		relative_position_id = GER_choose_designer
-		mutually_exclusive = {
-			focus = GER_daimler
-		}
-		icon = GFX_idea_GER_MAN
-		cost = 1
-		x = 0
-		y = 2
-
-		available = {
-			GER_has_active_tank_designer_man_focus = yes
-		}
-		completion_reward = {
-			set_country_flag = GER_MAN_designer
-			custom_effect_tooltip = GER_designer_merge
-		}
-	}
-
-	focus = {
-		id = GER_porsche
-		prerequisite = { focus = GER_choose_designer }
-		relative_position_id = GER_choose_designer
-		mutually_exclusive = {
-			focus = GER_henschel
-		}
-		icon = GFX_idea_porsche
-		cost = 1
-		x = 2
-		y = 2
-
-		available = {
-			GER_has_active_tank_designer_porsche_focus = yes
-		}
-		
-		completion_reward = {
-			set_country_flag = GER_POR_designer
-			custom_effect_tooltip = GER_designer_merge
-		}
-	}
-
-	focus = {
-		id = GER_daimler
-		prerequisite = { focus = GER_choose_designer }
-		relative_position_id = GER_choose_designer
-		mutually_exclusive = {
-			focus = GER_man_focus
-		}
-		icon = GFX_idea_GER_DAI
-		cost = 1
-		x = -1
-		y = 3
-
-		available = {
-			GER_has_active_tank_designer_daimler_focus = yes
-		}
-
-		completion_reward = {
-			set_country_flag = GER_DAI_designer
-			custom_effect_tooltip = GER_designer_merge
-		}
-	}
-
-	focus = {
-		id = GER_henschel
-		prerequisite = { focus = GER_choose_designer }
-		relative_position_id = GER_choose_designer
-		mutually_exclusive = {
-			focus = GER_porsche
-		}
-		icon = GFX_idea_henschel
-		cost = 1
-		x = 1
-		y = 3
-
-		available = {
-			GER_has_active_tank_designer_henschel_focus = yes
-		}
-
-		completion_reward = {
-			set_country_flag = GER_HEN_designer
-			custom_effect_tooltip = GER_designer_merge
-		}
-		
-	}
-
-	focus = {
-		id = GER_bewegungskrieg
-		icon = GFX_doctrine_tank_warfare
-		prerequisite = { focus = GER_mech }
-		x = 0
-		y = 2
-		relative_position_id = GER_mech
+		relative_position_id = GER_heer
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -2120,19 +2000,22 @@ focus_tree = {
 				uses = 2
 				category = cat_mobile_warfare
 			}
-			set_technology = {
-				mot_radio2 = 1
+			add_tech_bonus = {
+				name = tnk_bonus
+				bonus = 0.5
+				uses = 1
+				category = cat_light_armor
 			}
 		}
 	}
-
+	
 	focus = {
 		id = GER_mech
 		icon = GFX_ger_hanomag
-		prerequisite = { focus = GER_choose_designer }
-		x = -3
+		prerequisite = { focus = GER_bewegungskrieg }
+		x = -1
 		y = 1
-		relative_position_id = GER_choose_designer
+		relative_position_id = GER_bewegungskrieg
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -2152,15 +2035,50 @@ focus_tree = {
 				mot_radio1 = 1
 			}
 		}
-	}	
+	}
+	
+	focus = {
+		id = GER_panzer
+		icon = GFX_ger_achtung_panzer
+		prerequisite = { focus = GER_bewegungskrieg }
+		x = 0
+		y = 2
+		relative_position_id = GER_bewegungskrieg
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
 
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = GER_designer_merge_TT
+			add_ideas = GER_cheap_designer
+			add_tech_bonus = {
+				name = tnk_bonus
+				bonus = 0.75
+				uses = 1
+				category = cat_medium_armor
+			}
+			add_tech_bonus = {
+				name = tnk_bonus
+				bonus = 0.5
+				uses = 2
+				category = cat_light_armor
+			}
+			set_technology = {
+				mot_radio2 = 1
+			}
+		}
+	}
+	
 	focus = {
 		id = GER_panzer2
 		icon = GFX_ger_second_gen_tanks
-		prerequisite = { focus = GER_daimler focus = GER_man_focus }
-		x = 1
-		y = 1
-		relative_position_id = GER_daimler
+		prerequisite = { focus = GER_panzer }
+		x = 0
+		y = 3
+		relative_position_id = GER_panzer
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -2181,10 +2099,10 @@ focus_tree = {
 	focus = {
 		id = GER_heavy_panzer
 		icon = GFX_GER_heavy_tiger_cats
-		prerequisite = { focus = GER_henschel focus = GER_porsche }
-		x = 0
+		prerequisite = { focus = GER_panzer }
+		x = 1
 		y = 2
-		relative_position_id = GER_porsche
+		relative_position_id = GER_panzer
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -2205,10 +2123,10 @@ focus_tree = {
 	focus = {
 		id = GER_panzer_support
 		icon = GFX_ger_support_tanks
-		prerequisite = { focus = GER_alkett }
-		x = 0
+		prerequisite = { focus = GER_panzer }
+		x = -1
 		y = 2
-		relative_position_id = GER_alkett
+		relative_position_id = GER_panzer
 		cost = 5
 		ai_will_do = {
 			factor = 1

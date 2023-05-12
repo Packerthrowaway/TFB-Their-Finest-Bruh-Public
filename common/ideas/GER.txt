@@ -18,6 +18,21 @@ ideas = {
 		
 		}
 
+		GER_cheap_designer = {
+			allowed = {
+				original_tag = GER
+			}
+
+			removal_cost = 1
+
+			picture = GFX_idea_man_five_year_plan_tank
+
+			modifier = {
+				tank_manufacturer_cost_factor = -0.33
+			}
+
+		}
+
 		GER_fast_bombers = {
 			allowed = {
 				original_tag = GER
@@ -2446,10 +2461,9 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					NOT = { has_country_flag = GER_skoda_merge_POR }
-					NOT = { has_country_flag = GER_cairo_merge_POR }
-					NOT = { has_country_flag = GER_paris_merge_POR }
-					NOT = { has_country_flag = GER_kiev_merge_POR }
+				NOT = {
+					has_country_flag = GER_UP_POR
+				}
 				}
 			}
 			
@@ -2474,10 +2488,8 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					NOT = { has_country_flag = GER_cairo_merge_POR }
-					NOT = { has_country_flag = GER_paris_merge_POR }
-					NOT = { has_country_flag = GER_kiev_merge_POR }
+					has_country_flag = GER_UP_POR
+					
 				}
 			}
 			
@@ -2490,254 +2502,16 @@ ideas = {
 			equipment_bonus = {
 				heavy_tank_chassis = {
 					armor_value = 0.05
+					ap_attack = 0.1
+					reliability = 0.15
+				}
+				heavy_tank_destroyer_chassis = {					
+					reliability = 0.15
 				}
 			}
 		}
 
-		GER_POR_1_2 = {
-			name = porsche
-
-			picture = porsche
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					has_country_flag = GER_cairo_merge_POR
-					NOT = { has_country_flag = GER_paris_merge_POR }
-					NOT = { has_country_flag = GER_kiev_merge_POR }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { porsche_manufacturer }
-
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					armor_value = 0.05
-				}
-				heavy_tank_destroyer_chassis = {
-					armor_value = 0.05
-				}
-			}
-		}
-
-		GER_POR_1_3 = {
-			name = porsche
-
-			picture = porsche
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					has_country_flag = GER_paris_merge_POR
-					NOT = { has_country_flag = GER_cairo_merge_POR }
-					NOT = { has_country_flag = GER_kiev_merge_POR }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { porsche_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					armor_value = 0.05
-					soft_attack = 0.05
-				}
-			}
-		}
-
-		GER_POR_1_4 = {
-			name = porsche
-
-			picture = porsche
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					has_country_flag = GER_kiev_merge_POR
-					NOT = { has_country_flag = GER_cairo_merge_POR }
-					NOT = { has_country_flag = GER_skoda_merge_POR }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { porsche_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					armor_value = 0.05
-					ap_attack = 0.05
-				}
-				heavy_tank_destroyer_chassis = {
-					ap_attack = 0.05
-				}
-			}
-		}
-
-		GER_POR_1_3_4 = {
-			name = porsche
-
-			picture = porsche
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					has_country_flag = GER_paris_merge_POR
-					NOT = { has_country_flag = GER_cairo_merge_POR }
-					has_country_flag = GER_kiev_merge_POR
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { porsche_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					soft_attack = 0.05
-					armor_value = 0.05
-					ap_attack = 0.05
-				}
-				heavy_tank_destroyer_chassis = {
-					ap_attack = 0.05
-				}
-			}
-		}
-
-		GER_POR_1_2_3 = {
-			name = porsche
-
-			picture = porsche
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					has_country_flag = GER_cairo_merge_POR
-					has_country_flag = GER_paris_merge_POR
-					NOT = { has_country_flag = GER_kiev_merge_POR }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { porsche_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis= {
-					armor_value = 0.05
-					soft_attack = 0.05
-				}
-				heavy_tank_destroyer_chassis = {
-					armor_value = 0.05
-				}
-			}
-		}
-
-		GER_POR_1_2_4 = {
-			name = porsche
-
-			picture = porsche
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					has_country_flag = GER_cairo_merge_POR
-					NOT = { has_country_flag = GER_paris_merge_POR }
-					has_country_flag = GER_kiev_merge_POR
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { porsche_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis= {
-					armor_value = 0.05
-					ap_attack = 0.05
-				}
-				heavy_tank_destroyer_chassis = {
-					armor_value = 0.05
-					ap_attack = 0.05
-				}
-			}
-		}
-
-		GER_POR_1_2_3_4 = {
-			name = porsche
-
-			picture = porsche
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_POR
-					has_country_flag = GER_cairo_merge_POR
-					has_country_flag = GER_paris_merge_POR
-					has_country_flag = GER_kiev_merge_POR
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { porsche_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis= {
-					armor_value = 0.05
-					soft_attack = 0.05
-					ap_attack = 0.05
-				}
-				heavy_tank_destroyer_chassis = {
-					armor_value = 0.05
-					ap_attack = 0.05
-				}
-			}
-		}
+		
 		
 		# henschel tank merge
 		# henschel tank merge
@@ -2756,10 +2530,9 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					NOT = { has_country_flag = GER_skoda_merge_HEN }
-					NOT = { has_country_flag = GER_cairo_merge_HEN }
-					NOT = { has_country_flag = GER_paris_merge_HEN }
-					NOT = { has_country_flag = GER_kiev_merge_HEN }
+					NOT = {
+						has_country_flag = GER_UP_HEN
+					}
 				}
 			}
 			
@@ -2784,10 +2557,7 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					NOT = { has_country_flag = GER_cairo_merge_HEN }
-					NOT = { has_country_flag = GER_paris_merge_HEN }
-					NOT = { has_country_flag = GER_kiev_merge_HEN }
+					has_country_flag = GER_UP_HEN
 				}
 			}
 			
@@ -2799,238 +2569,14 @@ ideas = {
 
 			equipment_bonus = {
 				heavy_tank_chassis = {
-					maximum_speed = 0.05
-				}
-			}
-		}
-
-		GER_HEN_1_2 = {
-			name = henschel
-
-			picture = henschel
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					has_country_flag = GER_cairo_merge_HEN
-					NOT = { has_country_flag = GER_paris_merge_HEN }
-					NOT = { has_country_flag = GER_kiev_merge_HEN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { henschel_manufacturer }
-
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					maximum_speed = 0.05
-					reliability_factor = 0.05
-				}
-			}
-		}
-
-		GER_HEN_1_3 = {
-			name = henschel
-
-			picture = henschel
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					has_country_flag = GER_paris_merge_HEN
-					NOT = { has_country_flag = GER_cairo_merge_HEN }
-					NOT = { has_country_flag = GER_kiev_merge_HEN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { henschel_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					soft_attack = 0.05
-					maximum_speed = 0.05
-				}
-			}
-		}
-
-		GER_HEN_1_4 = {
-			name = henschel
-
-			picture = henschel
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					has_country_flag = GER_kiev_merge_HEN
-					NOT = { has_country_flag = GER_cairo_merge_HEN }
-					NOT = { has_country_flag = GER_skoda_merge_HEN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { henschel_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					hard_attack = 0.05
-				}
-			}
-		}
-
-		GER_HEN_1_3_4 = {
-			name = henschel
-
-			picture = henschel
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					has_country_flag = GER_paris_merge_HEN
-					NOT = { has_country_flag = GER_cairo_merge_HEN }
-					has_country_flag = GER_kiev_merge_HEN
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { henschel_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis = {
-					soft_attack = 0.05
 					maximum_speed = 0.05
 					hard_attack = 0.05
+					reliability = 0.15
 				}
 			}
 		}
 
-		GER_HEN_1_2_3 = {
-			name = henschel
-
-			picture = henschel
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					has_country_flag = GER_cairo_merge_HEN
-					has_country_flag = GER_paris_merge_HEN
-					NOT = { has_country_flag = GER_kiev_merge_HEN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { henschel_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis= {
-					maximum_speed = 0.05
-					reliability_factor = 0.05
-					soft_attack = 0.05
-				}
-			}
-		}
-
-		GER_HEN_1_2_4 = {
-			name = henschel
-
-			picture = henschel
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					has_country_flag = GER_cairo_merge_HEN
-					NOT = { has_country_flag = GER_paris_merge_HEN }
-					has_country_flag = GER_kiev_merge_HEN
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { henschel_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis= {
-					maximum_speed = 0.05
-					reliability_factor = 0.05
-					soft_attack = 0.05
-				}
-			}
-		}
-
-		GER_HEN_1_2_3_4 = {
-			name = henschel
-
-			picture = henschel
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_HEN
-					has_country_flag = GER_cairo_merge_HEN
-					has_country_flag = GER_paris_merge_HEN
-					has_country_flag = GER_kiev_merge_HEN
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { henschel_manufacturer }
-			
-			equipment_bonus = {
-				heavy_tank_chassis= {
-					maximum_speed = 0.05
-					reliability_factor = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
+		
 
 		# man tank merge
 		# man tank merge
@@ -3048,12 +2594,16 @@ ideas = {
 			}
 
 			visible = {
-				hidden_trigger = {
-					NOT = { has_country_flag = GER_skoda_merge_MAN }
-					NOT = { has_country_flag = GER_cairo_merge_MAN }
-					NOT = { has_country_flag = GER_paris_merge_MAN }
-					NOT = { has_country_flag = GER_kiev_merge_MAN }
+				NOT= {
+					OR = {
+						has_country_flag = GER_MAN_UP_2
+						has_country_flag = GER_MAN_UP_3
+					}
 				}
+			}
+
+			available = {
+				has_country_flag = GER_MAN_UP_1
 			}
 			
 			research_bonus = {
@@ -3077,10 +2627,18 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					NOT = { has_country_flag = GER_cairo_merge_MAN }
-					NOT = { has_country_flag = GER_paris_merge_MAN }
-					NOT = { has_country_flag = GER_kiev_merge_MAN }
+					OR = {
+						has_country_flag = GER_MAN_UP_2
+						has_country_flag = GER_MAN_UP_3
+					}
+					
+				}
+			}
+
+			available = {
+				OR = {
+					has_country_flag = GER_MAN_UP_2
+					has_country_flag = GER_MAN_UP_3
 				}
 			}
 			
@@ -3092,239 +2650,21 @@ ideas = {
 
 			equipment_bonus = {
 				medium_tank_chassis = {
-					maximum_speed = 0.05
+					reliability = 0.1
+				}
+
+				light_tank_destroyer_chassis = {					
+					hard_attack = 0.1
+					ap_attack = 0.1
+					
+				}
+				medium_tank_destroyer_chassis = {
+					hard_attack = 0.1
+					ap_attack = 0.1
 				}
 			}
 		}
-
-		GER_MAN_1_2 = {
-			name = GER_MAN
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					has_country_flag = GER_cairo_merge_MAN
-					NOT = { has_country_flag = GER_paris_merge_MAN }
-					NOT = { has_country_flag = GER_kiev_merge_MAN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { man_manufacturer }
-
-			equipment_bonus = {
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					ap_attack = 0.05
-				}
-			}
-		}
-
-		GER_MAN_1_3 = {
-			name = GER_MAN
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					has_country_flag = GER_paris_merge_MAN
-					NOT = { has_country_flag = GER_cairo_merge_MAN }
-					NOT = { has_country_flag = GER_kiev_merge_MAN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { man_manufacturer}
-			
-			equipment_bonus = {
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-			}
-		}
-
-		GER_MAN_1_4 = {
-			name = GER_MAN
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					has_country_flag = GER_kiev_merge_MAN
-					NOT = { has_country_flag = GER_cairo_merge_MAN }
-					NOT = { has_country_flag = GER_skoda_merge_MAN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { man_manufacturer }
-			
-			equipment_bonus = {
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
-
-		GER_MAN_1_3_4 = {
-			name = GER_MAN
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					has_country_flag = GER_paris_merge_MAN
-					NOT = { has_country_flag = GER_cairo_merge_MAN }
-					has_country_flag = GER_kiev_merge_MAN
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { man_manufacturer }
-			
-			equipment_bonus = {
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
-
-		GER_MAN_1_2_3 = {
-			name = GER_MAN
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					has_country_flag = GER_cairo_merge_MAN
-					has_country_flag = GER_paris_merge_MAN
-					NOT = { has_country_flag = GER_kiev_merge_MAN }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { man_manufacturer }
-			
-			equipment_bonus = {
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					ap_attack = 0.05
-				}
-			}
-		}
-
-		GER_MAN_1_2_4 = {
-			name = GER_MAN
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					has_country_flag = GER_cairo_merge_MAN
-					NOT = { has_country_flag = GER_paris_merge_MAN }
-					has_country_flag = GER_kiev_merge_MAN
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { man_manufacturer }
-			
-			equipment_bonus = {
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					ap_attack = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
-
-		GER_MAN_1_2_3_4 = {
-			name = GER_MAN
-
-			picture = GER_MAN
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_MAN
-					has_country_flag = GER_cairo_merge_MAN
-					has_country_flag = GER_paris_merge_MAN
-					has_country_flag = GER_kiev_merge_MAN
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { man_manufacturer }
-			
-			equipment_bonus = {
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					ap_attack = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
+				
 
 		# alkett tank merge
 		# alkett tank merge
@@ -3343,10 +2683,8 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					NOT = { has_country_flag = GER_skoda_merge_ALK }
-					NOT = { has_country_flag = GER_cairo_merge_ALK }
-					NOT = { has_country_flag = GER_paris_merge_ALK }
-					NOT = { has_country_flag = GER_kiev_merge_ALK }
+					NOT = { has_country_flag = GER_UP_ALK }
+					
 				}
 			}
 			
@@ -3371,10 +2709,8 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					NOT = { has_country_flag = GER_cairo_merge_ALK }
-					NOT = { has_country_flag = GER_paris_merge_ALK }
-					NOT = { has_country_flag = GER_kiev_merge_ALK }
+					has_country_flag = GER_UP_ALK
+					
 				}
 			}
 			
@@ -3386,298 +2722,24 @@ ideas = {
 
 			equipment_bonus = {
 				light_assault_gun_chassis = {
+					soft_attack = 0.05
+					breakthrough = 0.05
 					maximum_speed = 0.05
 				}
 				medium_assault_gun_chassis = {
+					soft_attack = 0.05
+					breakthrough = 0.05
 					maximum_speed = 0.05
 				}
 				heavy_assault_gun_chassis = {
+					soft_attack = 0.05
+					breakthrough = 0.05
 					maximum_speed = 0.05
 				}
 			}
 		}
 
-		GER_ALK_1_2 = {
-			name = GER_ALK
-
-			picture = rheinmetall
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					has_country_flag = GER_cairo_merge_ALK
-					NOT = { has_country_flag = GER_paris_merge_ALK }
-					NOT = { has_country_flag = GER_kiev_merge_ALK }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { alkett_manufacturer }
-
-			equipment_bonus = {
-				light_assault_gun_chassis = {
-					maximum_speed = 0.05
-					breakthrough = 0.05
-				}
-				medium_assault_gun_chassis = {
-					maximum_speed = 0.05
-					breakthrough = 0.05
-				}
-				heavy_assault_gun_chassis = {
-					maximum_speed = 0.05
-				}
-			}
-		}
-
-		GER_ALK_1_3 = {
-			name = GER_ALK
-
-			picture = rheinmetall
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					has_country_flag = GER_paris_merge_ALK
-					NOT = { has_country_flag = GER_cairo_merge_ALK }
-					NOT = { has_country_flag = GER_kiev_merge_ALK }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { alkett_manufacturer}
-			
-			equipment_bonus = {
-				light_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-				medium_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-				heavy_assault_gun_chassis = {
-					maximum_speed = 0.05
-				}
-			}
-		}
-
-		GER_ALK_1_4 = {
-			name = GER_ALK
-
-			picture = rheinmetall
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					has_country_flag = GER_kiev_merge_ALK
-					NOT = { has_country_flag = GER_cairo_merge_ALK }
-					NOT = { has_country_flag = GER_skoda_merge_ALK }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { alkett_manufacturer }
-			
-			equipment_bonus = {
-				light_assault_gun_chassis = {
-					maximum_speed = 0.05
-				}
-				medium_assault_gun_chassis = {
-					maximum_speed = 0.05
-				}
-				heavy_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					breakthrough = 0.05
-				}
-			}
-		}
-
-		GER_ALK_1_3_4 = {
-			name = GER_ALK
-
-			picture = rheinmetall
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					has_country_flag = GER_paris_merge_ALK
-					NOT = { has_country_flag = GER_cairo_merge_ALK }
-					has_country_flag = GER_kiev_merge_ALK
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { alkett_manufacturer }
-			
-			equipment_bonus = {
-				light_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-				medium_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-				heavy_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					breakthrough = 0.05
-				}
-			}
-		}
-
-		GER_ALK_1_2_3 = {
-			name = GER_ALK
-
-			picture = rheinmetall
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					has_country_flag = GER_cairo_merge_ALK
-					has_country_flag = GER_paris_merge_ALK
-					NOT = { has_country_flag = GER_kiev_merge_ALK }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { alkett_manufacturer }
-			
-			equipment_bonus = {
-				light_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					breakthrough = 0.05
-				}
-				medium_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					breakthrough = 0.05
-				}
-				heavy_assault_gun_chassis = {
-					maximum_speed = 0.05
-				}
-			}
-		}
-
-		GER_ALK_1_2_4 = {
-			name = GER_ALK
-
-			picture = rheinmetall
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					has_country_flag = GER_cairo_merge_ALK
-					NOT = { has_country_flag = GER_paris_merge_ALK }
-					has_country_flag = GER_kiev_merge_ALK
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { alkett_manufacturer }
-			
-			equipment_bonus = {
-				light_assault_gun_chassis = {
-					maximum_speed = 0.05
-					breakthrough = 0.05
-				}
-				medium_assault_gun_chassis = {
-					maximum_speed = 0.05
-					breakthrough = 0.05
-				}
-				heavy_assault_gun_chassis = {
-					maximum_speed = 0.05
-					breakthrough = 0.05
-				}
-			}
-		}
-
-		GER_ALK_1_2_3_4 = {
-			name = GER_ALK
-
-			picture = rheinmetall
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_ALK
-					has_country_flag = GER_cairo_merge_ALK
-					has_country_flag = GER_paris_merge_ALK
-					has_country_flag = GER_kiev_merge_ALK
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { alkett_manufacturer }
-			
-			equipment_bonus = {
-				light_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					breakthrough = 0.05
-				}
-				medium_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					breakthrough = 0.05
-				}
-				heavy_assault_gun_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					breakthrough = 0.05
-				}
-			}
-		}
+		
 
 		# daimler tank merge
 		# daimler tank merge
@@ -3696,10 +2758,7 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					NOT = { has_country_flag = GER_skoda_merge_DAI }
-					NOT = { has_country_flag = GER_cairo_merge_DAI }
-					NOT = { has_country_flag = GER_paris_merge_DAI }
-					NOT = { has_country_flag = GER_kiev_merge_DAI }
+					NOT = { has_country_flag = GER_UP_DAI }
 				}
 			}
 			
@@ -3724,10 +2783,7 @@ ideas = {
 
 			visible = {
 				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					NOT = { has_country_flag = GER_cairo_merge_DAI }
-					NOT = { has_country_flag = GER_paris_merge_DAI }
-					NOT = { has_country_flag = GER_kiev_merge_DAI }
+					has_country_flag = GER_UP_DAI
 				}
 			}
 			
@@ -3739,269 +2795,19 @@ ideas = {
 
 			equipment_bonus = {
 				light_tank_chassis = {
+					soft_attack = 0.05
 					maximum_speed = 0.05
+					reliability = 0.05
 				}
 				medium_tank_chassis = {
+					soft_attack = 0.05
 					maximum_speed = 0.05
+					reliability = 0.05
 				}
 			}
 		}
 
-		GER_DAI_1_2 = {
-			name = GER_DAI
-
-			picture = GER_DAI
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					has_country_flag = GER_cairo_merge_DAI
-					NOT = { has_country_flag = GER_paris_merge_DAI }
-					NOT = { has_country_flag = GER_kiev_merge_DAI }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { daimler_manufacturer }
-
-			equipment_bonus = {
-				light_tank_chassis = {
-					maximum_speed = 0.05
-					hard_attack = 0.05
-				}
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
-
-		GER_DAI_1_3 = {
-			name = GER_DAI
-
-			picture = GER_DAI
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					has_country_flag = GER_paris_merge_DAI
-					NOT = { has_country_flag = GER_cairo_merge_DAI }
-					NOT = { has_country_flag = GER_kiev_merge_DAI }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { daimler_manufacturer}
-			
-			equipment_bonus = {
-				light_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-			}
-		}
-
-		GER_DAI_1_4 = {
-			name = GER_DAI
-
-			picture = GER_DAI
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					has_country_flag = GER_kiev_merge_DAI
-					NOT = { has_country_flag = GER_cairo_merge_DAI }
-					NOT = { has_country_flag = GER_skoda_merge_DAI }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { daimler_manufacturer }
-			
-			equipment_bonus = {
-				light_tank_chassis = {
-					maximum_speed = 0.05
-					hard_attack = 0.05
-				}
-				medium_tank_chassis = {
-					maximum_speed = 0.05 #no buff to medium for kiev because of phase out to panther by man
-				}
-			}
-		}
-
-		GER_DAI_1_3_4 = {
-			name = GER_DAI
-
-			picture = GER_DAI
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					has_country_flag = GER_paris_merge_DAI
-					NOT = { has_country_flag = GER_cairo_merge_DAI }
-					has_country_flag = GER_kiev_merge_DAI
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { daimler_manufacturer }
-			
-			equipment_bonus = {
-				light_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.05
-				}
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-				}
-			}
-		}
-
-		GER_DAI_1_2_3 = {
-			name = GER_DAI
-
-			picture = GER_DAI
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					has_country_flag = GER_cairo_merge_DAI
-					has_country_flag = GER_paris_merge_DAI
-					NOT = { has_country_flag = GER_kiev_merge_DAI }
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { daimler_manufacturer }
-			
-			equipment_bonus = {
-				light_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.05
-				}
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
-
-		GER_DAI_1_2_4 = {
-			name = GER_DAI
-
-			picture = GER_DAI
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					has_country_flag = GER_cairo_merge_DAI
-					NOT = { has_country_flag = GER_paris_merge_DAI }
-					has_country_flag = GER_kiev_merge_DAI
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { daimler_manufacturer }
-			
-			equipment_bonus = {
-				light_tank_chassis = {
-					maximum_speed = 0.05
-					hard_attack = 0.10
-				}
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
-
-		GER_DAI_1_2_3_4 = {
-			name = GER_DAI
-
-			picture = GER_DAI
-			
-			allowed = {
-				original_tag = GER
-			}
-
-			visible = {
-				hidden_trigger = {
-					has_country_flag = GER_skoda_merge_DAI
-					has_country_flag = GER_cairo_merge_DAI
-					has_country_flag = GER_paris_merge_DAI
-					has_country_flag = GER_kiev_merge_DAI
-				}
-			}
-			
-			research_bonus = {
-				armor = 0.20
-			}
-			
-			traits = { daimler_manufacturer }
-			
-			equipment_bonus = {
-				light_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.10
-				}
-				medium_tank_chassis = {
-					maximum_speed = 0.05
-					soft_attack = 0.05
-					hard_attack = 0.05
-				}
-			}
-		}
+		
 	}
 	
 	naval_manufacturer = { 
