@@ -73,7 +73,7 @@ NDefines.NResistance.GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.005 	-- Ratio of equi
 
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 5 	-- Max number of different strategic resources an equipment can be dependent on.
 NDefines.NProduction.EFFICIENCY_LOSS_PER_UNUSED_DAY = 0.5		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
-NDefines.NProduction.BASE_FACTORY_SPEED = 3 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED = 3.25 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 4.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 2.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 15	-- Base start efficiency for factories expressed in %.
@@ -81,7 +81,7 @@ NDefines.NProduction.MAX_MIL_FACTORIES_PER_LINE = 200
 NDefines.NProduction.ANNEX_FUEL_RATIO = 0.50	-- How much fuel will be transferred on annexation
 NDefines.NProduction.ANNEX_CONVOYS_RATIO = 0.25			-- How many convoys will be transferred on annexation
 NDefines.NProduction.MIN_FIELD_TO_TRAINING_MANPOWER_RATIO = 0.65	-- Ratio which % of army in field can be trained
-NDefines.NProduction.INFRA_MAX_CONSTRUCTION_COST_EFFECT = 1 		-- Building in a state with higher infrastructure will reduce the cost of shared buildings.
+NDefines.NProduction.INFRA_MAX_CONSTRUCTION_COST_EFFECT = 0.5 		-- Building in a state with higher infrastructure will reduce the cost of shared buildings.
 NDefines.NProduction.PRODUCTION_RESOURCE_LACK_PENALTY = -0.01			-- Penalty decrease while lack of resource per factory
 NDefines.NProduction.LICENSE_IC_COST_YEAR_INCREASE = 0.25					-- IC cost equipment for every year of equipment after 1936
 NDefines.NProduction.LICENSE_EQUIPMENT_BASE_SPEED = -0.20				-- base MIC speed modifier for licensed equipment
