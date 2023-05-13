@@ -1855,7 +1855,7 @@ focus_tree = {
 		id = GER_auftragstaktik
 		icon = GFX_goal_infantry_man_primacy
 		prerequisite = { focus = GER_heer }
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = GER_heer
 		cost = 5
@@ -1999,13 +1999,7 @@ focus_tree = {
 				cost_reduction = 0.40
 				uses = 2
 				category = cat_mobile_warfare
-			}
-			add_tech_bonus = {
-				name = tnk_bonus
-				bonus = 0.5
-				uses = 1
-				category = cat_light_armor
-			}
+			}			
 		}
 	}
 	
@@ -2052,6 +2046,10 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+			custom_effect_tooltip = GER_designer_merge_TT
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = GER_tank_industry_dynamic_modifier } 
+			}
 			add_tech_bonus = {
 				name = tnk_bonus
 				bonus = 0.75
