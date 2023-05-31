@@ -260,43 +260,20 @@ operations = {
 		fire_only_once = yes
 		
 		available = {
-			269 = {
-				CONTROLLER = {
-					OR = {
-						tag = ITA
-						is_subject_of = ITA
-					}
-				}
-			}
+			controls_state = 269
 			
 		}
 
 		visible = {
-			550 = {
-				CONTROLLER = {
-					is_subject_of = ITA
-				}
-			}
-			271 = {
-				CONTROLLER = {
-					is_subject_of = ITA
-				}
-			}
-			559 = {
-				CONTROLLER = {
-					is_subject_of = ITA
-				}
-			}
+            controls_state = 550
+            controls_state = 271
+			controls_state = 559
+			
 		}
 		
 		complete_effect = {
 			add_political_power = 100
-			ETH = {
-				transfer_state = 268
-				transfer_state = 269
-				add_state_core = 268
-				add_state_core = 269
-			}
+			269 = { add_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
 		}
 	}
 	
