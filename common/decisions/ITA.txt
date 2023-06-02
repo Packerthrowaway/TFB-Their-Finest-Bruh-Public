@@ -245,7 +245,9 @@ political_actions = {
 			ITA = {country_event = { id = italy.502 }}
 		}
 	}
-}
+
+	
+}	
 
 operations = {
 
@@ -275,7 +277,52 @@ operations = {
 			add_political_power = 100
 			269 = { add_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
 		}
+		
 	}
+
+	ITA_east_africa_supply = {
+		priority = 100
+		allowed = { tag = ITA }
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes		
+
+		visible = {
+			always = yes
+		}
+
+
+		activation = {
+			has_war_with = ENG
+		}
+
+		cancel_trigger = {
+			NOT = {
+				controls_state = 550
+				controls_state = 271
+				controls_state = 559
+				controls_state = 269 
+			}
+		}
+		
+		timeout_effect = {
+			custom_effect_tooltip = ITA_ea_supply
+			hidden_effect = {
+			271 = { remove_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
+			550 = { remove_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
+			559 = { remove_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
+			269 = { remove_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
+			}
+		}
+	}
+    
 	
 	# ITA_unify_colonies = {
 
@@ -363,6 +410,7 @@ operations = {
 	# 		}
 	# 	}
 	# }
+
 	ITA_demand_tunisia = {
 		icon = generic_nationalism
 
@@ -385,6 +433,7 @@ operations = {
 		}
 		
 	}
+
 	ITA_return_france = {
 		visible = {
 			country_exists = VIC
@@ -410,6 +459,7 @@ operations = {
 			}
 		}
 	}
+
 	
 }
 
