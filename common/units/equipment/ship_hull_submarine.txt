@@ -71,7 +71,7 @@ equipments = {
 		sub_detection = 0
 		surface_visibility = 1
 		sub_visibility = 25
-		naval_speed = 13
+		naval_speed = 12
 		reliability = 0.60
 		
 		naval_range = 2500
@@ -89,7 +89,7 @@ equipments = {
 		
 		manpower = 200
 
-		naval_supremacy_factor = 0.8
+		naval_supremacy_factor = 0.75
 	}
 
 	ship_hull_submarine_1 = {
@@ -127,7 +127,7 @@ equipments = {
 			fixed_ship_engine_slot = sub_ship_engine_2
 		}
 		sub_visibility = 22
-		naval_speed = 17
+		naval_speed = 14
 		reliability = 0.70
 
 		naval_range = 4000
@@ -137,10 +137,6 @@ equipments = {
 
 		
 		build_cost_ic = 300
-		resources = {
-			#oil = 1
-			steel = 20
-		}
 	}
 
 	ship_hull_submarine_3 = {
@@ -177,7 +173,7 @@ equipments = {
 		}
 		
 		sub_visibility = 20
-		naval_speed = 18
+		naval_speed = 16
 		reliability = 0.75
 		
 		naval_range = 5000
@@ -187,9 +183,6 @@ equipments = {
 
 		
 		build_cost_ic = 380
-		resources = {
-			steel = 20
-		}
 	}
 	ship_hull_submarine_4 = {
 		abbreviation = "hee"
@@ -241,103 +234,9 @@ equipments = {
 		}
 	}
 
-	ship_hull_cruiser_submarine = {
-		abbreviation = "hef"
-		year = 1940
-
-		archetype = ship_hull_submarine
-		priority = 2600
-		module_slots = {
-			fixed_ship_torpedo_slot = inherit 
-			fixed_ship_engine_slot = inherit
-			front_1_custom_slot = {
-				required = no
-				allowed_module_categories = {
-					ship_torpedo_sub
-					ship_airplane_launcher
-					ship_mine_layer_sub
-					ship_extra_fuel_tank
-				}
-			}
-			mid_1_custom_slot = {
-				required = no
-				allowed_module_categories = {
-					ship_radar
-					ship_sub_snorkel
-				}
-			}
-			rear_1_custom_slot = {
-				required = no
-				allowed_module_categories = {
-					ship_torpedo_sub
-					ship_mine_layer_sub
-					ship_airplane_launcher
-					ship_extra_fuel_tank
-				}
-			}
-		}
-
-		default_modules = {
-			front_1_custom_slot = empty
-			mid_1_custom_slot = empty
-			rear_1_custom_slot = empty
-		}
-		
-		sub_visibility = 20
-		naval_speed = 16
-		reliability = 0.75
-		
-		naval_range = 5000
-		
-		max_strength = 30
-
-
-		
-		build_cost_ic = 390
-		resources = {
-			steel = 20
-		}
-	}
-
-	ship_hull_midget_submarine = {
-		abbreviation = "ssm"
-		year = 1940
-
-		archetype = ship_hull_submarine
-		priority = 1500
-		module_slots = {
-			fixed_ship_engine_slot = inherit
-			fixed_ship_torpedo_slot = inherit #TODO_Manu: Could have a new Torpedo module for Midget Subs with lower stats
-			#rear_1_custom_slot = { #TODO_Manu: Potentially delete, this can cause Subs with 0 attack
-			#	allowed_module_categories = {
-			#		ship_torpedo_sub
-			#		ship_mine_layer_sub
-			#	}
-			#}
-		}
-
-		default_modules = {
-			#rear_1_custom_slot = empty #TODO_Manu: Possibly delete, see comment above
-			fixed_ship_torpedo_slot = inherit 
-			fixed_ship_engine_slot = inherit
-		}
-		
-		sub_visibility = 15
-		naval_speed = 8.3
-		reliability = 0.65
-		
-		naval_range = 500
-		
-		max_strength = 5
-
-		manpower = 100
-
-		
-		build_cost_ic = 100
-		resources = {
-			steel = 1
-		}
-	}
+   ###################################################
+   ### Prescripted designs for people without MtG  ###
+   ###################################################
 
 	submarine_1 = {
 		year = 1922
@@ -509,6 +408,106 @@ equipments = {
 			#oil = 2
 			steel = 3
 			chromium = 1
+		}
+	}
+
+  ### special snowflake hulls (unused) ###
+
+	ship_hull_cruiser_submarine = {
+		abbreviation = "hef"
+		year = 1940
+
+		archetype = ship_hull_submarine
+		priority = 2600
+		module_slots = {
+			fixed_ship_torpedo_slot = inherit 
+			fixed_ship_engine_slot = inherit
+			front_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_torpedo_sub
+					ship_airplane_launcher
+					ship_mine_layer_sub
+					ship_extra_fuel_tank
+				}
+			}
+			mid_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_radar
+					ship_sub_snorkel
+				}
+			}
+			rear_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_torpedo_sub
+					ship_mine_layer_sub
+					ship_airplane_launcher
+					ship_extra_fuel_tank
+				}
+			}
+		}
+
+		default_modules = {
+			front_1_custom_slot = empty
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		
+		sub_visibility = 20
+		naval_speed = 16
+		reliability = 0.75
+		
+		naval_range = 5000
+		
+		max_strength = 30
+
+
+		
+		build_cost_ic = 390
+		resources = {
+			steel = 20
+		}
+	}
+
+	ship_hull_midget_submarine = {
+		abbreviation = "ssm"
+		year = 1940
+
+		archetype = ship_hull_submarine
+		priority = 1500
+		module_slots = {
+			fixed_ship_engine_slot = inherit
+			fixed_ship_torpedo_slot = inherit #TODO_Manu: Could have a new Torpedo module for Midget Subs with lower stats
+			#rear_1_custom_slot = { #TODO_Manu: Potentially delete, this can cause Subs with 0 attack
+			#	allowed_module_categories = {
+			#		ship_torpedo_sub
+			#		ship_mine_layer_sub
+			#	}
+			#}
+		}
+
+		default_modules = {
+			#rear_1_custom_slot = empty #TODO_Manu: Possibly delete, see comment above
+			fixed_ship_torpedo_slot = inherit 
+			fixed_ship_engine_slot = inherit
+		}
+		
+		sub_visibility = 15
+		naval_speed = 8.3
+		reliability = 0.65
+		
+		naval_range = 500
+		
+		max_strength = 5
+
+		manpower = 100
+
+		
+		build_cost_ic = 100
+		resources = {
+			steel = 1
 		}
 	}
 }

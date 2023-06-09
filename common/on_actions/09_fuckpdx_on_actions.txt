@@ -1,5 +1,51 @@
 on_actions = {
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = ENABLED
+					}
+					GER = {has_war = no }
+					USA = {has_war = no }
+					ENG = {has_war = no }
+					
+				}
+				HMP_check_fleet_size = yes 
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = ENABLED
+					}
+					OR = {
+						GER = {has_war = yes }
+						USA = {has_war = yes }
+						ENG = {has_war = yes }
+					}
+				}
+				HMP_check_fleet_size = yes 
+			}
+		}
+	}
    on_startup = {
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = ENABLED
+					}
+				}
+				SWE = { HMP_startup_on_actions = yes }
+			}
+		}
 		effect = {
 			# every_country = { 
 			# 	limit = { tag = GER }
@@ -67,6 +113,11 @@ on_actions = {
 					id = startingevent.1001
 				}
 			}
+			every_country = { 
+				country_event = { 
+					id = startingevent.29
+				}
+			}	
 		}
 	}
 
