@@ -1591,77 +1591,77 @@
 		}
 	}
 
+	# focus = {
+	# 	id = SOV_preemptive_invasion_of_iran
+	# 	icon = GFX_focus_generic_attack_iran
+	# 	prerequisite = { focus = SOV_technical_assistance }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = SOV_technical_assistance
+	# 	cost = 5
+
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 		modifier = {
+	# 			factor = 0
+	# 			has_civil_war = yes
+	# 		}	
+	# 	}
+		
+	# 	available = {
+	# 		country_exists = PER
+	# 		NOT = { has_war_with = PER }
+	# 		is_subject = no
+	# 		any_enemy_country = { is_major = yes }
+	# 		291 = {
+	# 			controller = {
+	# 			is_in_faction_with = eng
+	# 			}
+				
+	# 		}
+
+	# 		444 = {
+	# 			controller = {
+	# 			is_in_faction_with = eng
+	# 			}
+				
+	# 		}
+	# 	}
+		
+	# 	search_filters = {}
+
+	# 	completion_reward = {
+	# 		PER = {
+	# 			set_country_flag = SOV_ultimatum_sent_flag
+	# 			country_event = { id = NSB_soviet_foreign_politics_events.210 hours = 16 random_hours = 8 }
+	# 		}
+
+	# 		effect_tooltip = {
+	# 			custom_effect_tooltip = if_they_accept_tt
+	# 			ROOT = {
+	# 				puppet = PER
+	# 			}
+
+	# 			custom_effect_tooltip = if_they_refuse_tt
+	# 			effect_tooltip = {
+	# 				activate_mission = SOV_preparations_for_operation_countenance
+	# 				custom_effect_tooltip = SOV_preparations_for_operation_countenance_tt
+	# 			}
+	# 			custom_effect_tooltip = SOV_preemptive_invasion_of_iran_tt
+	# 		}
+	# 	}
+	# }
+	
 	focus = {
-		id = SOV_preemptive_invasion_of_iran
-		icon = GFX_focus_generic_attack_iran
+		id = SOV_persian_corridor
+		icon = GFX_SOV_narkom_for_arms_industry
 		prerequisite = { focus = SOV_technical_assistance }
 		x = 0
 		y = 1
 		relative_position_id = SOV_technical_assistance
 		cost = 5
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_civil_war = yes
-			}	
-		}
 		
-		available = {
-			country_exists = PER
-			NOT = { has_war_with = PER }
-			is_subject = no
-			any_enemy_country = { is_major = yes }
-			291 = {
-				controller = {
-				is_in_faction_with = eng
-				}
-				
-			}
-
-			444 = {
-				controller = {
-				is_in_faction_with = eng
-				}
-				
-			}
-		}
-		
-		search_filters = {}
-
-		completion_reward = {
-			PER = {
-				set_country_flag = SOV_ultimatum_sent_flag
-				country_event = { id = NSB_soviet_foreign_politics_events.210 hours = 16 random_hours = 8 }
-			}
-
-			effect_tooltip = {
-				custom_effect_tooltip = if_they_accept_tt
-				ROOT = {
-					puppet = PER
-				}
-
-				custom_effect_tooltip = if_they_refuse_tt
-				effect_tooltip = {
-					activate_mission = SOV_preparations_for_operation_countenance
-					custom_effect_tooltip = SOV_preparations_for_operation_countenance_tt
-				}
-				custom_effect_tooltip = SOV_preemptive_invasion_of_iran_tt
-			}
-		}
-	}
-	
-	focus = {
-		id = SOV_persian_corridor
-		icon = GFX_SOV_narkom_for_arms_industry
-		prerequisite = { focus = SOV_preemptive_invasion_of_iran }
-		x = 0
-		y = 1
-		relative_position_id = SOV_preemptive_invasion_of_iran
-		cost = 5
-		
-		available = { }
+		available = { ENG = { has_completed_focus = ENG_operation_countenance }}
 		
 		completion_reward = {
 					every_controlled_state = {
