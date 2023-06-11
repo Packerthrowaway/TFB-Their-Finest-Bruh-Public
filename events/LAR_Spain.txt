@@ -2259,16 +2259,23 @@ country_event = {
 					set_stability = 0.6
 					set_war_support = 0.8
 				}
-				SPD = {
-					add_equipment_to_stockpile = {
-						type = motorized_equipment_1
-						amount = 1100
-						producer = SPD
+				if = {
+					limit = {
+						SPA = {
+							is_ai = no
+						}
 					}
-					add_equipment_to_stockpile = {
-						type = train_equipment_1
-						amount = 20
-						producer = SPD
+					SPD = {
+						add_equipment_to_stockpile = {
+							type = motorized_equipment_1
+							amount = 1100
+							producer = SPD
+						}
+						add_equipment_to_stockpile = {
+							type = train_equipment_1
+							amount = 20
+							producer = SPD
+						}
 					}
 				}
 				# SPA = {
