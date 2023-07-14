@@ -5988,7 +5988,7 @@
 
 		available = {
 			has_global_flag = SOV_winter_war_loss
-			NOT = { has_global_flag = SOV_border_war_loss}
+			# NOT = { has_global_flag = SOV_border_war_loss}
 			SOV_vasily_blyukher = {
 				NOT = {has_character_flag = SOV_character_purged_flag }
 			}
@@ -6023,7 +6023,7 @@
 		}
 
 		available = {
-			has_global_flag = SOV_border_war_win
+			# has_global_flag = SOV_border_war_win
 			SOV_mikhail_tukhachevsky = { NOT = {has_character_flag = SOV_character_purged_flag } }
 		}
 		available_if_capitulated = yes
@@ -6293,7 +6293,7 @@
 		id = SOV_shaposhnikovfocus
 		icon = GFX_goal_shaposhnikovfocus
 		prerequisite = { focus = SOV_timoshenko1 }
-		mutually_exclusive = { focus = SOV_voroshilov2 }
+		mutually_exclusive = { focus = SOV_voroshilov2  focus = SOV_blucher2 }
 		x = 0
 		y = 1
 		cost = 3
@@ -6745,6 +6745,7 @@
 		id = SOV_blucher2
 		icon = GFX_goal_blucherfocus
 		prerequisite = { focus = SOV_timoshenko1 }
+		mutually_exclusive = { focus = SOV_shaposhnikovfocus }
 		x = 2
 		y = 1
 		cost = 3
@@ -6754,7 +6755,7 @@
 		}
 
 		available = {
-			has_global_flag = SOV_border_war_win
+			# has_global_flag = SOV_border_war_win
 			SOV_vasily_blyukher = {
 				NOT = {has_character_flag = SOV_character_purged_flag }
 			}
@@ -6767,6 +6768,26 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_blucher_reinstated_tt
+			custom_effect_tooltip = SOV_shaposhnikovfocus_tt
+
+			add_doctrine_cost_reduction = {
+				name = doc_bonus
+				cost_reduction = 0.4
+				uses = 1
+				category = cat_mass_assault
+			}
+			add_doctrine_cost_reduction = {
+				name = doc_bonus
+				cost_reduction = 0.4
+				uses = 3
+				technology = large_front_operations
+				technology = deep_operations
+				technology = operational_concentration
+				technology = vast_offensives
+				technology = breakthrough_priority
+				technology = mechanized_wave
+			}
+
 			SOV_vasily_blyukher = { 
 				clr_character_flag = SOV_exiled_flag
 			}
