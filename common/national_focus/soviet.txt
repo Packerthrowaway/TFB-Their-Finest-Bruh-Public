@@ -5834,7 +5834,11 @@
 		available = {
 			OR = {
 				has_completed_focus = SOV_order_270
-				date > 1942.3.1
+				AND = {
+					date > 1942.2.1
+					NOT = { has_war_with = GER}
+				}
+				date > 1943.3.1
 			}			
 		}
 
@@ -5874,6 +5878,17 @@
 		relative_position_id = SOV_stavka
 		ai_will_do = {
 			factor = 5
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = SOV_order_270
+				AND = {
+					date > 1942.2.1
+					NOT = { has_war_with = GER}
+				}
+				date > 1944.1.1
+			}			
 		}
 
 		available_if_capitulated = yes
