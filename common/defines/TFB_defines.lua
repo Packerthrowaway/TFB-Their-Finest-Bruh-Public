@@ -280,7 +280,7 @@ NDefines.NAir.COMBAT_DAMAGE_STATS_MULTILPIER = 0.30
 NDefines.NAir.BIGGEST_AGILITY_FACTOR_DIFF = 5.0					-- biggest factor difference in agility for doing damage (caps to this) -- Vanilla is 3.0
 NDefines.NAir.BIGGEST_SPEED_FACTOR_DIFF = 3.0					-- biggest factor difference in speed for doing damage (caps to this)	-- Vanilla is 2.5	
 NDefines.NAir.AIR_WING_BOMB_DAMAGE_FACTOR = 10					-- Used to balance the damage done while bombing.
-NDefines.NAir.COMBAT_MULTIPLANE_CAP = 3						-- How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
+NDefines.NAir.COMBAT_MULTIPLANE_CAP = 2.5						-- How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.05						-- Higher value = more shot down planes
 NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 6          -- how often carrier planes do battle inside naval combat
 NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.4			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
@@ -361,13 +361,13 @@ NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.5
 NDefines.NAir.DISRUPTION_AGILITY_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_ATTACK_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_DETECTION_FACTOR = 1.0
-NDefines.NAir.ESCORT_FACTOR = 4.0
+NDefines.NAir.ESCORT_FACTOR = 5
 NDefines.NAir.ESCORT_SPEED_FACTOR = 1.0
 NDefines.NAir.ESCORT_AGILITY_FACTOR = 2.0
 NDefines.NAir.ESCORT_ATTACK_FACTOR = 2.0
-NDefines.NAir.DISRUPTION_DEFENCE_DEFENCE_FACTOR = 1.0
+NDefines.NAir.DISRUPTION_DEFENCE_DEFENCE_FACTOR = 0.9
 NDefines.NAir.DISRUPTION_DEFENCE_SPEED_FACTOR = 1.0
-NDefines.NAir.DISRUPTION_DEFENCE_ATTACK_FACTOR = 0.75         -- % how many max disrupted only planes are alloed to die in a single combat
+NDefines.NAir.DISRUPTION_DEFENCE_ATTACK_FACTOR = 0.8         -- % how many max disrupted only planes are alloed to die in a single combat
 
 NDefines.NNavy.COMBAT_DAMAGE_RANDOMNESS = 0.20								-- random factor in damage. So if max damage is fe. 10 and randomness is 30% then damage will be between 7-10.
 NDefines.NNavy.COMBAT_MAX_GROUPS = 2										-- Max amount of "Fire Exchange" groups (FEX).
