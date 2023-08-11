@@ -1134,6 +1134,29 @@ VIC_concessions_to_the_germans = {
 			clr_country_flag = VIC_send_guest_workers
 		}
 	}	
+
+	VIC_end_occupation_repeating = {
+
+		visible = {
+			has_global_flag = VIC_ask_later
+		}
+
+		available = {
+			has_global_flag = VIC_ask_later
+		}
+
+		cost = 1
+		ai_will_do = {
+			factor = 0
+		}
+		fire_only_once = no
+
+		complete_effect = {
+			GER = { 
+				country_event = lar_end_the_occupation.1
+			}
+		}
+	}
 }
 FRA_intervention_in_overseas_territories = {
 	FRA_promise_independence_to_north_africa = {

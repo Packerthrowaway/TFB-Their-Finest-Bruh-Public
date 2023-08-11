@@ -2882,9 +2882,18 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
+		name = lar_end_the_occupation.1.z #later
+		ai_chance = {
+			factor = 0
+		}
+		FROM = { country_event = lar_end_the_occupation.0 }
+		custom_effect_tooltip =  VIC_end_occupation_later_tt
+		set_global_flag = VIC_ask_later
+	}
+	option = {
 		name = lar_end_the_occupation.1.a #agree
 		ai_chance = {
-			factor = 80
+			factor = 100
 		}
 		FROM = { country_event = lar_end_the_occupation.2 }
 		effect_tooltip = {
@@ -2896,15 +2905,35 @@ country_event = {
 				FROM = { transfer_state = PREV }
 			}
 		}
+		clr_global_flag = VIC_ask_later
 	}
 	option = {
 		name = lar_end_the_occupation.1.b #refuse
 		ai_chance = {
-			factor = 20
+			factor = 0
 		}
-		FROM = { country_event = lar_end_the_occupation.3 }
+		custom_effect_tooltip =  VIC_end_occupation_never_tt
+		clr_global_flag = VIC_ask_later
+		#FROM = { country_event = lar_end_the_occupation.3 }
 	}
 }
+
+# Germany Ask again later
+country_event = {
+	id = lar_end_the_occupation.0
+	title = lar_end_the_occupation.0.t
+	desc = lar_end_the_occupation.0.desc
+	picture = GFX_report_event_german_reichstag_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = lar_end_the_occupation.0.a 
+		custom_effect_tooltip = VIC_end_occupation_later_tt
+	}
+
+}
+
 # Germany approves
 country_event = {
 	id = lar_end_the_occupation.2
