@@ -39,6 +39,39 @@ on_actions = {
 			if = {
 				limit = {
 					has_game_rule = {
+						rule = assault_gun
+						option = ASSAULT_GUN_SUPPORT
+					}
+				}
+				every_country = {
+					hidden_effect = {
+						set_technology = { 
+							assault_gun_support_company = 1 
+							popup = no
+						}
+					}
+				}
+			} else_if = {
+				limit = {
+					has_game_rule = {
+						rule = assault_gun
+						option = ASSAULT_GUN_LINE
+					}
+				}
+				every_country = {
+					hidden_effect = {
+						set_technology = { 
+							assault_gun_line_unit = 1 
+							popup = no
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
 						rule = navy_cap
 						option = ENABLED
 					}
