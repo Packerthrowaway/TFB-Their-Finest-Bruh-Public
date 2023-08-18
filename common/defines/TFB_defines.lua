@@ -243,6 +243,7 @@ NDefines.NMilitary.PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always r
 		0.20,
 		0.10,
 	}
+NDefines.NMilitary.COST_INCREASE_PER_ACTIVE_MEDAL = 0.2		-- Additional cost factor per active medal
 NDefines.NMilitary.LAND_EQUIPMENT_BASE_COST = 15					-- Cost in XP to upgrade a piece of equipment one level is base + ( total levels * ramp )
 NDefines.NMilitary.LAND_EQUIPMENT_RAMP_COST = 15					
 NDefines.NMilitary.AIR_EQUIPMENT_BASE_COST = 45
