@@ -75,6 +75,201 @@ officer_training = {
 		}
 	}
 
+	officer_incentive_leadership_invader = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_idea = inventive_leadership_spirit
+			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				skill < 4
+				NOT = {
+					OR = {
+						has_trait = naval_invader
+						has_trait = commando
+						has_trait = trickster
+					}
+				}
+			}
+		}
+		
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = decision_cost_CP_50
+		
+		days_remove = 730
+		
+		days_re_enable = 60
+
+		visible = {
+			has_idea = inventive_leadership_spirit					
+		}
+
+		complete_effect = {
+			set_country_flag = officer_training_flag
+			hidden_effect = {
+				add_command_power = -50
+			}
+			random_army_leader = {
+				limit = {
+					skill < 4
+					NOT = {
+						OR = {
+							has_trait = naval_invader
+							has_trait = commando
+							has_trait = trickster
+						}
+					}
+				}
+				set_character_flag = officer_incentive_leadership_flag
+			}
+			custom_effect_tooltip = off_incentive_invader_tt
+		}
+
+		remove_effect = {
+			random_army_leader = {
+				limit = {
+					has_character_flag = officer_incentive_leadership_flag
+				}
+				add_unit_leader_trait = naval_invader
+				clr_character_flag = officer_incentive_leadership_flag
+			}
+			clr_country_flag = officer_training_flag
+		}
+	}
+	
+	officer_incentive_leadership_commando = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_idea = inventive_leadership_spirit
+			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				skill < 4
+				NOT = {
+					OR = {
+						has_trait = naval_invader
+						has_trait = commando
+						has_trait = trickster
+					}
+				}
+			}
+		}
+		
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = decision_cost_CP_50
+		
+		days_remove = 730
+		
+		days_re_enable = 60
+
+		visible = {
+			has_idea = inventive_leadership_spirit					
+		}
+
+		complete_effect = {
+			set_country_flag = officer_training_flag
+			hidden_effect = {
+				add_command_power = -50
+			}
+			random_army_leader = {
+				limit = {
+					skill < 4
+					NOT = {
+						OR = {
+							has_trait = naval_invader
+							has_trait = commando
+							has_trait = trickster
+						}
+					}
+				}
+				set_character_flag = officer_incentive_leadership_flag
+			}
+			custom_effect_tooltip = off_incentive_commando_tt
+		}
+
+		remove_effect = {
+			random_army_leader = {
+				limit = {
+					has_character_flag = officer_incentive_leadership_flag
+				}
+				add_unit_leader_trait = commando
+				clr_character_flag = officer_incentive_leadership_flag
+			}
+			clr_country_flag = officer_training_flag
+		}
+	}
+	
+	officer_incentive_leadership_trickster = {
+
+		icon = ger_military_buildup
+
+		available = {
+			has_idea = inventive_leadership_spirit
+			NOT = { has_country_flag = officer_training_flag }
+			any_army_leader = {
+				skill < 4
+				NOT = {
+					OR = {
+						has_trait = naval_invader
+						has_trait = commando
+						has_trait = trickster
+					}
+				}
+			}
+		}
+		
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = decision_cost_CP_50
+		
+		days_remove = 730
+		
+		days_re_enable = 60
+
+		visible = {
+			has_idea = inventive_leadership_spirit					
+		}
+
+		complete_effect = {
+			set_country_flag = officer_training_flag
+			hidden_effect = {
+				add_command_power = -50
+			}
+			random_army_leader = {
+				limit = {
+					skill < 4
+					NOT = {
+						OR = {
+							has_trait = naval_invader
+							has_trait = commando
+							has_trait = trickster
+						}
+					}
+				}
+				set_character_flag = officer_incentive_leadership_flag
+			}
+			custom_effect_tooltip = off_incentive_trickster_tt
+		}
+
+		remove_effect = {
+			random_army_leader = {
+				limit = {
+					has_character_flag = officer_incentive_leadership_flag
+				}
+				add_unit_leader_trait = trickster
+				clr_character_flag = officer_incentive_leadership_flag
+			}
+			clr_country_flag = officer_training_flag
+		}
+	}
+
 	officer_best_of_the_best = {
 
 		icon = ger_military_buildup
