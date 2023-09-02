@@ -2562,7 +2562,11 @@
 		}
 		
 		available = {
-			YUG = { has_capitulated = yes }
+			OR = {
+				YUG = { has_capitulated = yes }
+				NOT = {country_exists = YUG}
+			}
+			
 		}
 		
 		completion_reward = {
@@ -2590,10 +2594,51 @@
 			factor = 1
 		}
 		
+		available = {
+			controls_state = 103
+			controls_state = 104
+			controls_state = 109
+			controls_state = 163
+			controls_state = 804
+		}
+		
 		completion_reward = {
+
+			103 = {
+				add_core_of = CRO
+			}
 			104 = {
 				add_core_of = CRO
 			}
+			109 = {
+				add_core_of = CRO
+			}
+			163 = {
+				add_core_of = CRO
+			}
+			804 = {
+				add_core_of = CRO
+			}
+
+		}
+		
+	}
+	
+	focus = {
+		id = ITA_croatian_legions
+		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		prerequisite = { focus = ITA_empower_ustase }
+		x = 0
+		y = 1
+		relative_position_id = ITA_empower_ustase
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_manpower = 100000
+			
 			every_controlled_state = {
 				limit = {
 					is_core_of = YUG
@@ -2616,24 +2661,6 @@
 				}
 				add_compliance = 80
 			}
-		}
-		
-	}
-	
-	focus = {
-		id = ITA_croatian_legions
-		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
-		prerequisite = { focus = ITA_empower_ustase }
-		x = 0
-		y = 1
-		relative_position_id = ITA_empower_ustase
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			add_manpower = 100000
 		}
 		
 	}
