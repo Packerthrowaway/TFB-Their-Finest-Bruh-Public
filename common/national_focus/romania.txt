@@ -1753,7 +1753,7 @@ focus_tree = {
 		id = ROM_trials_of_iron_guard
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = ROM_his_majestys_loyal_government }
-		x = -2
+		x = -1
 		y = 1
 		relative_position_id = ROM_his_majestys_loyal_government
 
@@ -1779,10 +1779,11 @@ focus_tree = {
 	focus = {
 		id = ROM_militarize_the_sentinels
 		icon = GFX_goal_generic_political_pressure
-		prerequisite = { focus = ROM_his_majestys_loyal_government }
+		prerequisite = { focus = ROM_trials_of_iron_guard }
+		prerequisite = { focus = ROM_fortify_the_borders }
 	
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = ROM_his_majestys_loyal_government
 
 		cost = 6
@@ -1818,10 +1819,10 @@ focus_tree = {
 	focus = {
 		id = ROM_fortify_the_borders
 		icon = GFX_goal_generic_construct_military
-		prerequisite = { focus = ROM_militarize_the_sentinels }
-		x = 2
+		prerequisite = { focus = ROM_his_majestys_loyal_government}
+		x = 1
 		y = 1
-		relative_position_id = ROM_militarize_the_sentinels
+		relative_position_id = ROM_his_majestys_loyal_government
 
 		cost = 6
 
@@ -1850,11 +1851,10 @@ focus_tree = {
 		id = ROM_fascist_economics
 		icon = GFX_focus_invite_romania
 		prerequisite = { focus = ROM_militarize_the_sentinels }
-		prerequisite = { focus = ROM_trials_of_iron_guard }
 	
-		x = -2
-		y = 2
-		relative_position_id = ROM_his_majestys_loyal_government
+		x = -1
+		y = 1
+		relative_position_id = ROM_militarize_the_sentinels
 
 		cost = 6
 
@@ -1898,8 +1898,7 @@ focus_tree = {
 	focus = {
 		id = ROM_all_parties_must_end
 		icon = GFX_focus_rom_parties_end
-		prerequisite = { focus = ROM_militarize_the_sentinels }
-		prerequisite = { focus = ROM_trials_of_iron_guard }
+		prerequisite = { focus = ROM_fascist_economics focus = ROM_the_royal_foundation }
 	
 		x = 0
 		y = 2
@@ -1939,10 +1938,10 @@ focus_tree = {
 	focus = {
 		id = ROM_the_royal_foundation
 		icon = GFX_focus_research
-		prerequisite = { focus = ROM_his_majestys_loyal_government }
-		x = 2
+		prerequisite = { focus = ROM_militarize_the_sentinels }
+		x = 1
 		y = 1
-		relative_position_id = ROM_his_majestys_loyal_government
+		relative_position_id = ROM_militarize_the_sentinels
 
 		cost = 6
 
@@ -2281,8 +2280,8 @@ focus_tree = {
 			focus = ROM_force_abdication
 		}
 		mutually_exclusive = { focus = ROM_expand_greater_romania }
-		x = 2
-		y = 2
+		x = 1
+		y = 1
 
 		cost = 10
 
@@ -2484,14 +2483,14 @@ focus_tree = {
 	focus = {
 		id = ROM_expand_greater_romania
 		icon = GFX_goal_demand_sudetenland
-		relative_position_id = ROM_all_parties_must_end
+		relative_position_id = ROM_force_abdication
 		prerequisite = {
 			focus = ROM_all_parties_must_end
 			focus = ROM_force_abdication
 		}
 		mutually_exclusive = { focus = ROM_national_humiliation }
-		x = 4
-		y = 2
+		x = -1
+		y = 1
 
 		cost = 10
 
@@ -2500,10 +2499,17 @@ focus_tree = {
 		}
 
 		available = {
-			controls_state = 764
-			controls_state = 76
-			controls_state = 77
+			controls_state = 46
 			controls_state = 78
+			controls_state = 80
+			controls_state = 81
+			controls_state = 82
+			controls_state = 83
+			controls_state = 84
+			controls_state = 766
+
+
+
 		}
 
 		bypass = {
@@ -2519,14 +2525,235 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_state_core = 764
 			unlock_decision_tooltip = ROM_expand_greater_romania
 		}
 	}
 
-	############################
+	focus = {
+		id = ROM_industrialise_transnistria
+		icon = GFX_focus_generic_industry_2
+		relative_position_id = ROM_expand_greater_romania
+		prerequisite = {
+			focus = ROM_expand_greater_romania
+		}
+		x = -1
+		y = 1
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_full_control_of_state = 192
+			has_full_control_of_state = 198
+			has_full_control_of_state = 834
+
+			192 = {
+					is_core_of = ROM
+			}
+			198 = {
+					is_core_of = ROM
+			}
+			834 = {
+					is_core_of = ROM
+			}
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+
+
+			192 = {			
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			198 = {			
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			834 = {			
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_continue_integration_efforts
+		icon = GFX_goal_generic_construct_infrastructure
+		relative_position_id = ROM_expand_greater_romania
+		prerequisite = {
+			focus = ROM_expand_greater_romania
+		}
+		x = 1
+		y = 1
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_full_control_of_state= 192
+			has_full_control_of_state = 198
+			has_full_control_of_state = 834
+			
+			192 = {
+					is_core_of = ROM
+			}
+			198 = {
+					is_core_of = ROM
+			}
+			834 = {
+					is_core_of = ROM
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+
+
+			192 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				remove_dynamic_modifier = { modifier = ROM_unintegrated_territory }
+				add_dynamic_modifier = { modifier = ROM_ongoing_integration }
+
+			}
+			198 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				remove_dynamic_modifier = { modifier = ROM_unintegrated_territory }			
+				add_dynamic_modifier = { modifier = ROM_ongoing_integration }
+			}
+			834 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				remove_dynamic_modifier = { modifier = ROM_unintegrated_territory }
+				add_dynamic_modifier = { modifier = ROM_ongoing_integration }
+			}
+		}
+	}
+	
+	focus = {
+		id =  ROM_finalize_incorporation
+		icon = GFX_focus_ger_reichskommisariats
+		relative_position_id = ROM_industrialise_transnistria 
+		prerequisite = { focus = ROM_industrialise_transnistria }
+		prerequisite = { focus = ROM_continue_integration_efforts }
+		x = 1
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_full_control_of_state = 192
+			has_full_control_of_state = 198
+			has_full_control_of_state = 834
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+
+
+			192 = {
+				remove_dynamic_modifier = { modifier = ROM_ongoing_integration }
+				add_dynamic_modifier = { modifier = ROM_transnistria_governorate }
+			}
+			198 = {
+				remove_dynamic_modifier = { modifier = ROM_ongoing_integration }			
+				add_dynamic_modifier = { modifier = ROM_transnistria_governorate }
+				}
+			834 = {
+				remove_dynamic_modifier = { modifier = ROM_ongoing_integration }
+				add_dynamic_modifier = { modifier = ROM_transnistria_governorate }
+			}
+		}
+	}
+
+
+
+	##################################
 	######## ANTONESCU BRANCH ########
-	############################
+	##################################
 
 	#focus = {
 	#	id = ROM_protest_against_king_dictatorship
