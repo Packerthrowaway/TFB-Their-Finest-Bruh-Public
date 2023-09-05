@@ -215,7 +215,7 @@
 			
 			add_timed_idea = {
 				idea = YUG_yugoslavian_reforms
-				days = 720
+				days = 365
 			}
 		}
 	}
@@ -616,7 +616,7 @@
 		}
 
 		available = {
-		NOT = { has_idea = YUG_yugoslavian_reforms}
+			date > 1939.09.01
 		}
 
 		bypass = {
@@ -641,6 +641,10 @@
 			}
 			news_event = { id = news.325 }
 			unlock_decision_tooltip = form_greater_yugo
+			create_wargoal = { 
+				type = annex_everything
+				target = BUL
+			}
 		}
 	}
 
@@ -2904,11 +2908,10 @@
 		}
 
 		completion_reward = {
-			effect_tooltip = { 
-				swap_ideas = {
-					remove_idea = YUG_idea_serbian_general_staff
-					add_idea = YUG_idea_yugoslavian_general_staff
-				}
+		
+			swap_ideas = {
+				remove_idea = YUG_idea_serbian_general_staff
+				add_idea = YUG_idea_yugoslavian_general_staff
 			}
 		}
 	}
