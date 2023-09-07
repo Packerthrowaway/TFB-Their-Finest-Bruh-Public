@@ -20,9 +20,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -35,20 +35,50 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					skill < 4
-					NOT = {
-						OR = {
-							has_trait = naval_invader
-							has_trait = commando
-							has_trait = trickster
+					any_army_leader = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
 						}
 					}
 				}
-				set_character_flag = officer_incentive_leadership_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
 			}
 			custom_effect_tooltip = off_incentive_tt
 		}
@@ -57,6 +87,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_incentive_leadership_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				random_list = {
 					33 = {
@@ -95,9 +131,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 730
 		
@@ -110,20 +146,50 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					skill < 4
-					NOT = {
-						OR = {
-							has_trait = naval_invader
-							has_trait = commando
-							has_trait = trickster
+					any_army_leader = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
 						}
 					}
 				}
-				set_character_flag = officer_incentive_leadership_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
 			}
 			custom_effect_tooltip = off_incentive_invader_tt
 		}
@@ -132,6 +198,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_incentive_leadership_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_unit_leader_trait = naval_invader
 				clr_character_flag = officer_incentive_leadership_flag
@@ -160,9 +232,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 730
 		
@@ -175,20 +247,50 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					skill < 4
-					NOT = {
-						OR = {
-							has_trait = naval_invader
-							has_trait = commando
-							has_trait = trickster
+					any_army_leader = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
 						}
 					}
 				}
-				set_character_flag = officer_incentive_leadership_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
 			}
 			custom_effect_tooltip = off_incentive_commando_tt
 		}
@@ -197,6 +299,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_incentive_leadership_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_unit_leader_trait = commando
 				clr_character_flag = officer_incentive_leadership_flag
@@ -225,9 +333,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 730
 		
@@ -240,20 +348,50 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					skill < 4
-					NOT = {
-						OR = {
-							has_trait = naval_invader
-							has_trait = commando
-							has_trait = trickster
+					any_army_leader = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
 						}
 					}
 				}
-				set_character_flag = officer_incentive_leadership_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 4
+						NOT = {
+							OR = {
+								has_trait = naval_invader
+								has_trait = commando
+								has_trait = trickster
+							}
+						}
+					}
+					set_character_flag = officer_incentive_leadership_flag
+				}
 			}
 			custom_effect_tooltip = off_incentive_trickster_tt
 		}
@@ -262,6 +400,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_incentive_leadership_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_unit_leader_trait = trickster
 				clr_character_flag = officer_incentive_leadership_flag
@@ -283,9 +427,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -298,13 +442,29 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					skill < 3
+					any_army_leader = {
+						has_trait = command_school
+						skill < 3
+					}
 				}
-				set_character_flag = officer_best_of_the_best_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 3
+					}
+					set_character_flag = officer_best_of_the_best_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 3
+					}
+					set_character_flag = officer_best_of_the_best_flag
+				}
 			}
 			custom_effect_tooltip = off_best_tt
 		}
@@ -313,6 +473,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_best_of_the_best_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_skill_level = 1
 				clr_character_flag = officer_incentive_leadership_flag
@@ -334,9 +500,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -349,13 +515,29 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					attack_skill_level < 3
+					any_army_leader = {
+						has_trait = command_school
+						skill < 3
+					}
 				}
-				set_character_flag = officer_bold_attack_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 3
+					}
+					set_character_flag = officer_bold_attack_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 3
+					}
+					set_character_flag = officer_bold_attack_flag
+				}
 			}
 			custom_effect_tooltip = off_bold_tt
 		}
@@ -364,6 +546,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_bold_attack_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_attack = 1
 				clr_character_flag = officer_bold_attack_flag
@@ -385,9 +573,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -400,13 +588,29 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					defense_skill_level < 3
+					any_army_leader = {
+						has_trait = command_school
+						defense_skill_level < 3
+					}
 				}
-				set_character_flag = officer_tenacious_defense_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						defense_skill_level < 3
+					}
+					set_character_flag = officer_tenacious_defense_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						defense_skill_level < 3
+					}
+					set_character_flag = officer_tenacious_defense_flag
+				}
 			}
 			custom_effect_tooltip = off_tenacious_tt
 		}
@@ -415,6 +619,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_tenacious_defense_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_defense = 1
 				clr_character_flag = officer_tenacious_defense_flag
@@ -436,9 +646,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -451,13 +661,35 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					planning_skill_level < 3
+					any_army_leader = {
+						has_trait = command_school
+						planning_skill_level < 3
+					}
 				}
-				set_character_flag = officer_meticulous_preparation_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						planning_skill_level < 3
+					}
+					set_character_flag = officer_meticulous_preparation_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						planning_skill_level < 3
+					}
+					if = {
+						limit = {
+							has_trait = command_school
+						}
+						remove_unit_leader_trait = command_school
+					}
+					set_character_flag = officer_meticulous_preparation_flag
+				}
 			}
 			custom_effect_tooltip = off_meticulous_tt
 		}
@@ -466,6 +698,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_meticulous_preparation_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_planning = 1
 				add_unit_leader_trait = organizer
@@ -500,9 +738,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -515,25 +753,65 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					skill < 3
-					NOT = {
-						OR = {
-							has_trait = desert_fox
-							has_trait = swamp_fox
-							has_trait = trait_mountaineer
-							has_trait = hill_fighter
-							has_trait = jungle_rat
-							has_trait = ranger
-							has_trait = urban_assault_specialist
-							has_trait = winter_specialist
+					any_army_leader = {
+						has_trait = command_school
+						skill < 3
+						NOT = {
+							OR = {
+								has_trait = desert_fox
+								has_trait = swamp_fox
+								has_trait = trait_mountaineer
+								has_trait = hill_fighter
+								has_trait = jungle_rat
+								has_trait = ranger
+								has_trait = urban_assault_specialist
+								has_trait = winter_specialist
+							}
 						}
 					}
 				}
-				set_character_flag = officer_theatre_training_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 3
+						NOT = {
+							OR = {
+								has_trait = desert_fox
+								has_trait = swamp_fox
+								has_trait = trait_mountaineer
+								has_trait = hill_fighter
+								has_trait = jungle_rat
+								has_trait = ranger
+								has_trait = urban_assault_specialist
+								has_trait = winter_specialist
+							}
+						}
+					}
+					set_character_flag = officer_theatre_training_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 3
+						NOT = {
+							OR = {
+								has_trait = desert_fox
+								has_trait = swamp_fox
+								has_trait = trait_mountaineer
+								has_trait = hill_fighter
+								has_trait = jungle_rat
+								has_trait = ranger
+								has_trait = urban_assault_specialist
+								has_trait = winter_specialist
+							}
+						}
+					}
+					set_character_flag = officer_theatre_training_flag
+				}
 			}
 			custom_effect_tooltip = off_theatre_tt
 		}
@@ -542,6 +820,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_theatre_training_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				random_list = {
 					12.5 = {
@@ -589,9 +873,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -604,14 +888,32 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					has_trait = infantry_officer
-					skill < 4
+					any_army_leader = {
+						has_trait = command_school
+						has_trait = infantry_officer
+						skill < 4
+					}
 				}
-				set_character_flag = officer_mass_assault_academy_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						has_trait = infantry_officer
+						skill < 4
+					}
+					set_character_flag = officer_mass_assault_academy_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						has_trait = infantry_officer
+						skill < 4
+					}
+					set_character_flag = officer_mass_assault_academy_flag
+				}
 			}
 			custom_effect_tooltip = off_mass_tt
 		}
@@ -620,6 +922,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_mass_assault_academy_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_unit_leader_trait = infantry_leader
 				clr_character_flag = officer_mass_assault_academy_flag
@@ -642,9 +950,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -657,14 +965,32 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					has_trait = armor_officer
-					skill < 4
+					any_army_leader = {
+						has_trait = command_school
+						has_trait = armor_officer
+						skill < 4
+					}
 				}
-				set_character_flag = officer_mobile_warfare_academy_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						has_trait = armor_officer
+						skill < 4
+					}
+					set_character_flag = officer_mobile_warfare_academy_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						has_trait = armor_officer
+						skill < 4
+					}
+					set_character_flag = officer_mobile_warfare_academy_flag
+				}
 			}
 			custom_effect_tooltip = off_mobile_tt
 		}
@@ -673,6 +999,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_mobile_warfare_academy_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_unit_leader_trait = panzer_leader
 				clr_character_flag = officer_mobile_warfare_academy_flag
@@ -694,9 +1026,9 @@ officer_training = {
 		}
 		
 		custom_cost_trigger = {
-			command_power > 49
+			command_power > 34
 		}
-		custom_cost_text = decision_cost_CP_50
+		custom_cost_text = decision_cost_CP_35
 		
 		days_remove = 365
 		
@@ -709,13 +1041,29 @@ officer_training = {
 		complete_effect = {
 			set_country_flag = officer_training_flag
 			hidden_effect = {
-				add_command_power = -50
+				add_command_power = -35
 			}
-			random_army_leader = {
+			if = {
 				limit = {
-					skill < 4
+					any_army_leader = {
+						has_trait = command_school
+						skill < 4
+					}
 				}
-				set_character_flag = officer_superior_firepower_academy_flag
+				random_army_leader = {
+					limit = {
+						has_trait = command_school
+						skill < 4
+					}
+					set_character_flag = officer_superior_firepower_academy_flag
+				}
+			} else = {
+				random_army_leader = {
+					limit = {
+						skill < 4
+					}
+					set_character_flag = officer_superior_firepower_academy_flag
+				}
 			}
 			custom_effect_tooltip = off_superior_tt
 		}
@@ -724,6 +1072,12 @@ officer_training = {
 			random_army_leader = {
 				limit = {
 					has_character_flag = officer_superior_firepower_academy_flag
+				}
+				if = {
+					limit = {
+						has_trait = command_school
+					}
+					remove_unit_leader_trait = command_school
 				}
 				add_unit_leader_trait = trait_engineer
 				clr_character_flag = officer_superior_firepower_academy_flag
