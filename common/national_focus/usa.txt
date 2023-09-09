@@ -3318,8 +3318,18 @@ focus_tree = {
 				technology = advanced_rubber_processing
 				technology = modern_rubber_processing
 			}
-			set_technology = { synth_oil_experiments = 1 }
-			set_technology = { rubber_processing = 1 }
+			if = {
+				limit = {
+					NOT = { has_tech = synth_oil_experiments }
+				}
+				set_technology = { synth_oil_experiments = 1 }
+			}
+			if = {
+				limit = {
+					NOT = { has_tech = rubber_processing }
+				}
+				set_technology = { rubber_processing = 1 }
+			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {

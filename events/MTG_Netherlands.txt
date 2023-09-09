@@ -173,11 +173,23 @@ country_event = {
 		FROM = { country_event = { id = mtg_netherlands.8 days = 1 random_days = 3 } }
 		effect_tooltip = {
 			HOL = {
-				set_technology = {
-					basic_ship_hull_heavy = 1
-					antiair2 = 1
-					improved_fire_control_system = 1
-					#dp_secondary_battery = 1
+				if = {
+					limit = {
+						NOT = { has_tech = basic_ship_hull_heavy }
+					}
+					set_technology = { basic_ship_hull_heavy = 1 }
+				}
+				if = {
+					limit = {
+						NOT = { has_tech = antiair2 }
+					}
+					set_technology = { antiair2 = 1 }
+				}
+				if = {
+					limit = {
+						NOT = { has_tech = improved_fire_control_system }
+					}
+					set_technology = { improved_fire_control_system = 1 }
 				}
 				create_equipment_variant = {
 					name = "Design 1047 Battlecruiser"

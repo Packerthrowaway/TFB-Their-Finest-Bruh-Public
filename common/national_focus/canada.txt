@@ -1293,8 +1293,18 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
-			set_technology = { synth_oil_experiments = 1 }
-			set_technology = { rubber_processing = 1 }
+			if = {
+				limit = {
+					NOT = { has_tech = synth_oil_experiments }
+				}
+				set_technology = { synth_oil_experiments = 1 }
+			}
+			if = {
+				limit = {
+					NOT = { has_tech = rubber_processing }
+				}
+				set_technology = { rubber_processing = 1 }
+			}
 			random_owned_controlled_state = {
 				prioritize = { 682 }
 				limit = {
