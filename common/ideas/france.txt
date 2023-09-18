@@ -291,9 +291,10 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				non_core_manpower = 0.1
+				non_core_manpower = 0.05
 			}
 		}
+		
 		FRA_france_undividable = {
 			picture = FRA_undividable
 			allowed = {
@@ -1222,8 +1223,8 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				non_core_manpower = 0.2
-				experience_gain_army_unit_factor = 0.25
+				non_core_manpower = 0.1
+				experience_gain_army_unit_factor = 0.1
 				#training_time_army_factor = -0.33
 			}
 		}
@@ -1242,8 +1243,8 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				special_forces_cap = 0.15
-				special_forces_training_time_factor = -0.20
+				special_forces_cap = 0.05
+				special_forces_training_time_factor = -0.1
 			}
 			equipment_bonus = {
 				sf_equipment = {
@@ -1322,13 +1323,10 @@ ideas = {
 
 			equipment_bonus = {
 				squad_equipment = {
-					build_cost_ic = -0.075 instant = yes
+					build_cost_ic = -0.05 instant = yes
 				}
-				anti_tank_equipment = {
-					build_cost_ic = -0.075 instant = yes
-				}
-				anti_air_equipment = {
-					build_cost_ic = -0.075 instant = yes
+				infantry_equipment = {
+					build_cost_ic = -0.05 instant = yes
 				}
 			}
 
@@ -1346,8 +1344,8 @@ ideas = {
 			}
 
 			modifier = {
-				army_infantry_attack_factor = 0.10
-				army_infantry_defence_factor = 0.10
+				army_infantry_attack_factor = 0.05
+				army_infantry_defence_factor = 0.05
 				army_armor_attack_factor = -0.30
 				army_armor_defence_factor = -0.30
 			}
@@ -1365,8 +1363,8 @@ ideas = {
 			}
 
 			modifier = {
-				army_armor_attack_factor = 0.10
-				army_armor_defence_factor = 0.10
+				army_armor_attack_factor = 0.05
+				army_armor_defence_factor = 0.05
 				army_infantry_attack_factor = -0.30
 				army_infantry_defence_factor = -0.30
 			}
@@ -1379,6 +1377,22 @@ ideas = {
 					build_cost_ic = 0.15 instant = yes
 				}
 			}
+		}
+
+		FRA_terrain_specialization = {
+			picture = generic_agrarian_society
+
+			allowed = {
+				original_tag = FRA
+				always = no
+
+			}
+
+			modifier = {
+				terrain_trait_xp_gain_factor = 0.20
+			}
+
+
 		}
 
 		FRA_army_capstone = {
@@ -1395,8 +1409,6 @@ ideas = {
 			modifier = {
 				army_morale_factor = 0.05
 				attrition = -0.1
-				army_attack_factor = 0.10
-				army_defence_factor = 0.10
 			}
 		}
 
