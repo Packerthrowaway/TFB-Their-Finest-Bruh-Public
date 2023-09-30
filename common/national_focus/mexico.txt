@@ -1591,6 +1591,220 @@
 			}
 		}
 	}
+
+	focus = {
+		id = MEX_focus_oppose_yanqui_imperialism
+		icon = GFX_focus_generic_strike_at_democracy3
+		prerequisite = { focus = MEX_focus_nationalize_the_oil_fields }
+		mutually_exclusive = { focus = MEX_focus_german_resource_exchange }
+		mutually_exclusive = { focus = MEX_focus_compensation }
+		x = 3
+		y = 1
+		relative_position_id = MEX_focus_nationalize_the_oil_fields
+
+		cost = 5
+
+		allow_branch = { always = no }
+
+		ai_will_do = {
+			factor = 100
+			
+			modifier = {
+				factor = 0.1
+				is_historical_focus_on = yes
+			}
+			
+			modifier = {
+				factor = 0.1
+				NOT = {
+					country_exists = SOV
+				}
+			}
+		}
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = MEX_focus_international_proletarianism
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		prerequisite = { focus = MEX_focus_oppose_yanqui_imperialism }
+		x = 0
+		y = 1
+		relative_position_id = MEX_focus_oppose_yanqui_imperialism
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		allow_branch = { always = no }
+
+		available = {
+			is_subject = no
+			NOT = {
+				has_war_with = SOV
+			}
+			SOV = {
+				exists = yes
+				is_in_faction = yes
+				is_subject = no
+			}
+		}
+
+		bypass = {
+			OR = {
+				is_in_faction = yes
+				SOV = {
+					exists = no
+				}
+				SOV = {
+					is_subject = yes
+				}
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			if = {
+				limit = {
+					SOV = { has_government = neutrality }
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.1
+				}
+			}
+			else_if = {
+				limit = {
+					SOV = { has_government = democratic }
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.1
+				}
+			}
+			else_if = {
+				limit = {
+					SOV = { has_government = fascism }
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.1
+				}
+			}
+			else_if = {
+				limit = {
+					SOV = { has_government = communism }
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.1
+				}
+			}
+
+			add_opinion_modifier = {
+				target = SOV
+				modifier = russo_mexican_diplomacy
+			}
+			
+			SOV = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = russo_mexican_diplomacy
+				}
+				if = {
+					limit = {
+						is_in_faction = yes
+					}
+					country_event = {
+						id = mexico.8
+						days = 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MEX_focus_interior_defence_plan # hurr build the wall. how's that swampy drainy stuff workin out for ya?
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = MEX_focus_international_proletarianism focus = MEX_focus_new_world_order }
+		x = 0
+		y = 1
+		relative_position_id = MEX_focus_international_proletarianism
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 100
+			
+			modifier = {
+				factor = 100
+				has_war_with = USA
+			}
+		}
+
+		allow_branch = { always = no }
+
+		available = {
+			
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			
+			unlock_decision_tooltip = MEX_decision_interior_defence_plan
+		
+			483 = {
+				add_building_construction = { type = bunker province = 8033 level = 1 instant_build = yes }
+			}
+			482 = {
+				add_building_construction = { type = bunker province = 7935 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 10830 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 10916 level = 1 instant_build = yes }
+			}
+			481 = {
+				add_building_construction = { type = bunker province = 8003 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 7921 level = 1 instant_build = yes }
+			}
+			480 = {
+				add_building_construction = { type = bunker province = 7973 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 12835 level = 1 instant_build = yes }
+			}
+			478 = {
+				add_building_construction = { type = bunker province = 10172 level = 1 instant_build = yes }
+			}
+			479 = {
+				add_building_construction = { type = bunker province = 4956 level = 1 instant_build = yes }
+			}
+		}
+	}
 	
 	focus = {
 		id = MEX_focus_compensation
@@ -4690,6 +4904,7 @@
 				has_war_with = USA
 			}
 		}
+		
 
 		available = {
 			
