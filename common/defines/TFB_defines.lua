@@ -445,7 +445,7 @@ NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE 						= 0.02
 NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 0.25
 NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.02						-- Xp gain by non-carrier ships in the combat
 NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.15								-- Amount of exp each ship gain every 24h while training (before modifiers)
-
+NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.9 -- org will clamped to this ratio on manual move
 
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
 
