@@ -676,7 +676,7 @@ NOR_spawn_militias_in_state = {
 					division_names_group = NOR_MIL_01
 					priority = 1
 					is_locked = yes					
-					template_counter = 6  
+					template_counter = 7  
 					regiments = {
 						militia = { x = 0 y = 0 }
 						militia = { x = 0 y = 1 }
@@ -741,7 +741,7 @@ NOR_spawn_militias_in_state = {
 				check_variable = { NOR_state_preparation = 2 }
 			}
 			create_unit = {
-				division = "name = \"våpenfolket\" division_template = \"våpenfolket\" start_experience_factor = 0.3 start_equipment_factor = 0.5"
+				division = "name = \"Våpenfolket\" division_template = \"våpenfolket\" start_experience_factor = 0.3 start_equipment_factor = 0.5"
 				owner = NOR
 				allow_spawning_on_enemy_provs = no 
 				count = 2 
@@ -752,7 +752,7 @@ NOR_spawn_militias_in_state = {
 				check_variable = { NOR_state_preparation = 3 }
 			}
 			create_unit = {
-				division = "name = \"folkets hær\" division_template = \"folkets hær\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
+				division = "name = \"Folkets Hær\" division_template = \"folkets hær\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
 				owner = NOR
 				allow_spawning_on_enemy_provs = no 
 				count = 2 
@@ -1531,12 +1531,12 @@ NOR_reduce_hard_thirties_ns = {
 }
 
 NOR_make_militias_into_regulars = {
-	add_equipment_to_stockpile = { 
-		type = convoy_1
-		amount = 50
-		producer = NOR
-	}
 	hidden_effect = {
+		add_equipment_to_stockpile = { 
+			type = convoy_1
+			amount = -50
+			producer = NOR
+		}
 		army_experience = -80 
 		division_template = { 
 			name = "Integrated militias" 
@@ -1544,7 +1544,7 @@ NOR_make_militias_into_regulars = {
 			division_names_group = NOR_INF_01
 			priority = 1
 			is_locked = no					
-			template_counter = 69  
+			template_counter = 6  
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
@@ -1598,30 +1598,30 @@ NOR_spawn_resistance = {
 	}
 	effect_tooltip = {
 		create_unit = {
-			division = "name = \"1. motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
+			division = "name = \"1. Motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
 			owner = NOR 
 			count = 5
 		}
 	}
 	hidden_effect = {
 		create_unit = { 
-			division = "name = \"1. motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
+			division = "name = \"1. Motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
 			owner = ROOT
 		}
 		create_unit = { 
-			division = "name = \"2. motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
+			division = "name = \"2. Motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
 			owner = ROOT
 		}
 		create_unit = { 
-			division = "name = \"3. motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
+			division = "name = \"3. Motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
 			owner = ROOT
 		}
 		create_unit = { 
-			division = "name = \"4. motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
+			division = "name = \"4. Motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
 			owner = ROOT
 		}
 		create_unit = { 
-			division = "name = \"5. motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
+			division = "name = \"5. Motstandsbevegelsen\" division_template = \"motstandsbevegelsen\" start_experience_factor = 0.75" 
 			owner = ROOT
 		}	
 	}

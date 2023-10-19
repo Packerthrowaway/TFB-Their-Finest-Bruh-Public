@@ -1176,6 +1176,62 @@ ideas = {
 				production_speed_dockyard_factor = 0.1	
 			}
 		}
+		USA_greenland_patrol_idea = {
+			picture = tur_sub_zero_survival_training
+
+			allowed = {
+				original_tag = USA
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+
+			cancel = {
+				DEN = {
+					exists = yes
+					is_subject = no
+					has_war = no
+					OR = {
+						is_in_faction_with = ROOT
+						has_government = ROOT
+						AND = {
+							USA = { has_government = democratic }
+							has_government = democratic
+							has_government = neutrality
+						}
+						AND = {
+							USA = { has_government = neutrality }
+							has_government = democratic
+							has_government = neutrality
+						}
+					}
+				}
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						DEN = {
+							exists = yes
+						}
+						101 = {
+							is_owned_by = ROOT
+						}
+					}
+					101 = {
+						transfer_state_to = DEN
+					}
+				}
+				
+			}
+			
+			modifier = {
+				acclimatization_cold_climate_gain_factor = 0.1
+				spotting_chance = 0.02
+			}
+		}
 		USA_us_air_force = {
 			picture = usa_us_air_force
 			allowed = {

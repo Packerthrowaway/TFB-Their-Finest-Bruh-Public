@@ -492,6 +492,11 @@ SWI_federal_council_decisions_category = {
 
 		state_target = yes
 
+		target_root_trigger = {
+			has_completed_focus = SWI_expand_the_confederation
+			NOT = { has_country_flag = SWI_influencing_a_state }
+		}
+
 		target_trigger = {
 			FROM = {
 				OR = {
@@ -509,7 +514,6 @@ SWI_federal_council_decisions_category = {
 					}
 				}
 			}
-			ROOT = { has_completed_focus = SWI_expand_the_confederation }
 		}
 
 		priority = 10
@@ -611,6 +615,9 @@ SWI_federal_council_decisions_category = {
 
 		state_target = yes 
 
+		target_root_trigger = {
+			has_completed_focus = SWI_expand_the_confederation
+		}
 		target_trigger = {
 			FROM = {
 				has_state_flag = SWI_influence_succeeded
@@ -619,8 +626,6 @@ SWI_federal_council_decisions_category = {
 				}
 				NOT = { is_owned_by = ROOT }			
 			}
-			ROOT = { has_completed_focus = SWI_expand_the_confederation }
-
 		}
 
 		priority = 1

@@ -255,6 +255,7 @@ focus_tree = {
 		}
 
 		available = {
+			has_government = democratic 
 			NOT = {
 				has_idea = NOR_complacent_cabinet_ns
 			}
@@ -571,7 +572,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	focus = { 
 		id = NOR_organize_partisan_militias
 		icon = GFX_focus_generic_limited_social_mobilization
 		prerequisite = { focus = NOR_the_seeds_of_the_revolution }
@@ -1272,15 +1273,15 @@ focus_tree = {
 					is_controlled_by = ROOT 
 					free_building_slots = {
 						building = arms_factory
-						size > 2
+						size > 1
 						include_locked = yes
 					}
 				}
 				random_select_amount = 3
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory 
-					level = 3
+					level = 2
 					instant_build = yes 
 				}
 			}
@@ -1317,6 +1318,7 @@ focus_tree = {
 		cost = 10
 		available = {
 			communism > 0.75
+			has_dynamic_modifier = { modifier = NOR_independent_norway_dmod }
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1336,6 +1338,27 @@ focus_tree = {
 			}
 			else = {
 				set_cosmetic_tag = NOR_SOV_communism	
+			}
+			custom_effect_tooltip = NOR_modify_independent_norway_TT
+			add_to_variable = {
+				var = NOR.NOR_independent_norway_dmod_army_org_factor
+				value = 0.15
+				tooltip = army_org_factor_tt
+			}
+			add_to_variable = {
+				var = NOR.NOR_independent_norway_dmod_navy_org_factor
+				value = 0.1
+				tooltip = navy_org_factor_tt
+			}
+			add_to_variable = {
+				var = NOR.NOR_independent_norway_dmod_war_stability_factor
+				value = 0.2
+				tooltip = war_stability_factor_tt
+			}
+			add_to_variable = {
+				var = NOR.NOR_independent_norway_dmod_war_support_factor
+				value = 0.15
+				tooltip = war_support_factor_tt
 			}
 		}
 	}
@@ -2063,16 +2086,46 @@ focus_tree = {
 				}
 				override_model = NOR_irregular_entity				
 			}
+
 			random_owned_state = {
 				limit = {
 					is_controlled_by = ROOT 
 					NOT = { state = 914 } # Not Jan Mayen
 				}
-				create_unit = {
-					division = "name = \"Secret Army\" division_template = \"Secret Army\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
-					owner = NOR
-					allow_spawning_on_enemy_provs = no 
-					count = 5 
+				effect_tooltip = {
+					create_unit = {
+						division = "name = \"1. Hemmelige Hæren\" division_template = \"Hemmelige Hæren\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
+						owner = NOR
+						allow_spawning_on_enemy_provs = no
+						count = 5  
+					}
+				}
+				hidden_effect = {
+					create_unit = {
+						division = "name = \"1. Hemmelige Hæren\" division_template = \"Hemmelige Hæren\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
+						owner = NOR
+						allow_spawning_on_enemy_provs = no  
+					}
+					create_unit = {
+						division = "name = \"2. Hemmelige Hæren\" division_template = \"Hemmelige Hæren\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
+						owner = NOR
+						allow_spawning_on_enemy_provs = no  
+					}
+					create_unit = {
+						division = "name = \"3. Hemmelige Hæren\" division_template = \"Hemmelige Hæren\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
+						owner = NOR
+						allow_spawning_on_enemy_provs = no  
+					}
+					create_unit = {
+						division = "name = \"4. Hemmelige Hæren\" division_template = \"Hemmelige Hæren\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
+						owner = NOR
+						allow_spawning_on_enemy_provs = no  
+					}
+					create_unit = {
+						division = "name = \"5. Hemmelige Hæren\" division_template = \"Hemmelige Hæren\" start_experience_factor = 0.25 start_equipment_factor = 0.5"
+						owner = NOR
+						allow_spawning_on_enemy_provs = no  
+					}
 				}
 			}
 			add_popularity = {
@@ -2094,6 +2147,12 @@ focus_tree = {
 		available = {
 			NOT = {
 				SOV = { has_war_with = ROOT }
+			}
+			924 = {
+				is_fully_controlled_by = ROOT
+			}
+			925 = {
+				is_fully_controlled_by = ROOT
 			}
 		}
 
@@ -2288,6 +2347,10 @@ focus_tree = {
 		relative_position_id = NOR_join_the_comintern
 		cost = 10
 		available = {
+			any_other_country = {
+				has_government = communism 
+				is_faction_leader = yes 
+			}	
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -2603,6 +2666,7 @@ focus_tree = {
 				popularity = 0.15 
 			}
 			retire_character = NOR_vidkun_quisling
+			mark_focus_tree_layout_dirty = yes
 		}
 	}
 
@@ -2790,7 +2854,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			has_government = democratic 
 		}
 		
 		bypass = {
@@ -2828,7 +2892,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			has_government = democratic 
 		}
 		
 		bypass = {
@@ -2872,7 +2936,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			has_government = democratic
 		}
 		
 		bypass = {
@@ -2908,7 +2972,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			has_government = democratic
 		}
 		
 		bypass = {
@@ -2958,7 +3022,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			has_government = democratic
 		}
 		
 		bypass = {
@@ -3008,7 +3072,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			has_government = democratic
 		}
 		
 		bypass = {
@@ -3022,7 +3086,6 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-
 			if = {
 				limit = {
 					has_tech = tech_military_police
@@ -3087,6 +3150,7 @@ focus_tree = {
 		
 		cost = 10
 		available = {
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
@@ -3160,6 +3224,7 @@ focus_tree = {
 		# I know this trigger will never show negative but it's so the player knows why they have it. 
 		available = {
 			has_lar = yes 
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
@@ -3187,6 +3252,7 @@ focus_tree = {
 		
 		cost = 10
 		available = {
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP }
@@ -3256,6 +3322,7 @@ focus_tree = {
 		relative_position_id = NOR_cut_military_budget
 		cost = 10
 		available = {
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
@@ -3286,6 +3353,7 @@ focus_tree = {
 		
 		cost = 10
 		available = {
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -3310,6 +3378,7 @@ focus_tree = {
 		relative_position_id = NOR_social_incrementalism
 		cost = 5
 		available = {
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
@@ -3343,6 +3412,7 @@ focus_tree = {
 		}
 		cost = 5
 		available = {
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -3410,6 +3480,7 @@ focus_tree = {
 		relative_position_id = NOR_coastal_defense
 		cost = 5
 		available = {
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -3516,9 +3587,10 @@ focus_tree = {
 
 		available = {
 			is_government_in_exile = yes
+			has_government = democratic
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MILITARY_CHARACTER }
 
 		completion_reward = {
 			add_legitimacy = 20
@@ -3526,6 +3598,15 @@ focus_tree = {
 			NOR_add_25_convoys = yes  
 			add_stability = 0.1
 			add_war_support = 0.25
+			add_naval_commander_role = {
+				character = NOR_prince_olav
+				traits={ navy_media_personality bold blockade_runner }
+				skill=5
+				attack_skill=6
+				defense_skill=3
+				maneuvering_skill=3
+				coordination_skill=5
+			}
 		}
 	}
 
@@ -3547,6 +3628,7 @@ focus_tree = {
 		
 		available = {
 			is_government_in_exile = yes
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_HISTORICAL }
@@ -3578,6 +3660,7 @@ focus_tree = {
 		
 		available = {
 			is_government_in_exile = yes 
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL }
@@ -3601,6 +3684,7 @@ focus_tree = {
 		
 		allow_branch = {
 			NOR_kings_no_allow_trigger = yes 
+			has_government = democratic
 		}
 
 		available = {			
@@ -3628,6 +3712,7 @@ focus_tree = {
 		
 		available = {
 			is_government_in_exile = yes
+			has_government = democratic
 		}
 		
 		allow_branch = {
@@ -3677,6 +3762,7 @@ focus_tree = {
 
 		available = {
 			is_government_in_exile = yes
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
@@ -3707,6 +3793,7 @@ focus_tree = {
 
 		available = {
 			is_government_in_exile = yes
+			has_government = democratic
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
@@ -3747,14 +3834,26 @@ focus_tree = {
 
 		available = {
 			is_government_in_exile = yes
+			has_government = democratic
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MILITARY_CHARACTER }
 
 		completion_reward = {
 			unlock_decision_tooltip = {
 				decision = NOR_support_rebellion
 				show_effect_tooltip = no 
+			}
+			effect_tooltip = {
+				add_naval_commander_role = {
+					Character = NOR_king_haakon_vii
+					traits={ navy_media_personality gentlemanly naval_lineage fleet_protector }			
+					skill=5
+					attack_skill=2
+					defense_skill=6
+					maneuvering_skill=4
+					coordination_skill=4
+				}
 			}
 			if = {
 				limit = {
@@ -3978,6 +4077,16 @@ focus_tree = {
 		x = 10
 		y = 4
 		relative_position_id = NOR_continue_nygaardsvold_government
+		
+		offset = {
+			x = -1
+			y = -3
+			trigger = {
+				has_hide_rule = yes
+				has_completed_focus = NOR_arrest_quisling
+			}	
+		}
+
 		cost = 10
 		available = {
 			custom_trigger_tooltip = {
@@ -4267,6 +4376,17 @@ focus_tree = {
 				fascism > 0.6
 			}
 		}
+
+		allow_branch = {
+			if = {
+				limit ={
+					has_hide_rule = yes 
+				}
+				NOT = {
+					has_completed_focus = NOR_arrest_quisling
+				}
+			}
+		}
 		available = {
 			NOT = { 
 				has_global_flag = NOR_quislings_coup_happened 
@@ -4381,7 +4501,10 @@ focus_tree = {
 					has_variable = NOR_cw_democratic_norway
 				}
 				var:NOR_cw_democratic_norway = {
-					has_capitulated = yes 
+					OR = {
+						has_capitulated = yes 
+						exists = no 
+					}
 				}
 			}			
 			has_government = fascism 
@@ -5448,6 +5571,7 @@ focus_tree = {
 				long_name = NOR_Wedel-Jarlsberg_regency_long_name
 			}
 			NOR_set_kingdom_of_norway_variables = yes
+			set_cosmetic_tag = NOR_neutrality
 			add_dynamic_modifier = { modifier = NOR_kingdom_of_norway_dmod }
 			set_division_template_lock = {
 				division_template = "Kongens Menn"
@@ -5459,6 +5583,17 @@ focus_tree = {
 					has_idea = NOR_birger_ljungberg
 				}
 				deactivate_advisor = NOR_birger_ljungberg
+			}
+			effect_tooltip = {
+				add_naval_commander_role = {
+					Character = NOR_king_haakon_vii
+					traits={ navy_media_personality gentlemanly naval_lineage fleet_protector }			
+					skill=5
+					attack_skill=2
+					defense_skill=6
+					maneuvering_skill=4
+					coordination_skill=4
+				}
 			}
 		}
 	}
@@ -5478,16 +5613,16 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_MILITARY_CHARACTER FOCUS_FILTER_ARMY_XP }
 
 		completion_reward = {
-			NOR_prince_olav = {
-				add_corps_commander_role = {
-					traits = { trait_mountaineer winter_specialist }
-					skill = 3
-					attack_skill = 1
-					defense_skill = 4
-					planning_skill = 3
-					logistics_skill = 2
-				}
-			}
+			add_corps_commander_role = {
+				character = NOR_prince_olav
+				traits = { trait_mountaineer winter_specialist media_personality }
+				skill = 5
+				attack_skill = 5
+				defense_skill = 3
+				planning_skill = 4
+				logistics_skill = 4
+				legacy_id = -1 
+			}		
 			army_experience = 65
 			add_command_power = 25
 		}
@@ -5508,15 +5643,14 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_MILITARY_CHARACTER FOCUS_FILTER_NAVY_XP }
 
 		completion_reward = {
-			NOR_prince_olav = {
-				add_naval_commander_role = {
-					traits = { blockade_runner }
-					skill = 3
-					attack_skill = 2
-					defense_skill = 2
-					maneuvering_skill = 4
-					coordination_skill = 2
-				}
+			add_naval_commander_role = {
+				character = NOR_prince_olav
+				traits={ navy_media_personality bold blockade_runner }
+				skill=5
+				attack_skill=6
+				defense_skill=3
+				maneuvering_skill=3
+				coordination_skill=5
 			}
 			navy_experience = 50
 			add_command_power = 20
@@ -5901,7 +6035,7 @@ focus_tree = {
 		relative_position_id = NOR_for_the_king_and_prince
 		cost = 10
 		available = {
-			has_war_support > 0.7
+			has_war_support > 0.55
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_INDUSTRY }
@@ -5944,7 +6078,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			add_war_support = 0.2
+			add_stability = 0.2
 			if = {
 				limit = { 
 					is_in_faction = no 
@@ -6009,6 +6143,18 @@ focus_tree = {
 		relative_position_id = NOR_ulfhedhnar_wolf_coats
 		cost = 5
 		available = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10 
+				NOR_is_fascist_ai = yes 
+			}
+			modifier = { # I know this is redundant but I REALLY want to make sure the AI doesn't take it if it's historical 
+				factor = 0 
+				NOR_is_historical_ai = yes 
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL }
@@ -7297,7 +7443,7 @@ focus_tree = {
 		available = {
 			NOR_broken_gun_trigger = yes 
 			110 = {
-				is_owned_and_controlled_by = ROOT
+				is_controlled_by = ROOT
 			}
 		}
 
@@ -8961,7 +9107,8 @@ focus_tree = {
 		search_filters = {}
 
 		completion_reward = {
-			
+			custom_effect_tooltip = NOR_emergency_conversions_tt
+			set_country_flag = refit_convoy_ships_flag_nor		
 		}
 	}
 
