@@ -11,13 +11,16 @@
 # influence
 
 SOV_unit_production = {
-	enable = {
+	allowed = {
 		original_tag = SOV
+	}
+	enable = {
+		always = yes
 	}
 	abort = {
 		always = no
 	}
-	
+
 	ai_strategy = {
 		type = role_ratio
 		id = garrison
@@ -166,10 +169,12 @@ SOV_unit_production = {
 }	
 
 SOV_anti_armor = {
-	enable = {
+	allowed = {
 		original_tag = SOV
+	}
+	enable = {
 		ai_wants_divisions > 5 #Decreasing the amount of motorized the AI wants
-		
+
 		any_enemy_country = {
 			ROOT = {
 				estimated_intel_max_armor = {
@@ -389,10 +394,13 @@ SOV_template_design_1 = {
 }
 
 SOV_template_design_2 = {
-	enable = {
+	allowed = {
 		original_tag = SOV
-		date > 1940.1.1				
 	}
+	enable = {
+		date > 1940.1.1
+	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = template_prio
@@ -405,7 +413,7 @@ SOV_template_design_2 = {
 		id = cavalry
 		value = -100
 	}
-	
+
 	ai_strategy = {
 		type = template_prio
 		id = light_armor
@@ -417,7 +425,7 @@ SOV_template_design_2 = {
 		id = medium_armor
 		value = 50
 	}
-	
+
 	ai_strategy = {
 		type = template_prio
 		id = modern_armor
@@ -435,7 +443,7 @@ SOV_template_design_2 = {
 		id = paratroopers
 		value = -50
 	}
-	
+
 	ai_strategy = {
 		type = template_prio
 		id = infantry
@@ -444,8 +452,10 @@ SOV_template_design_2 = {
 }
 
 SOV_pp_spending = {
-	enable = {
+	allowed = {
 		original_tag = SOV
+	}
+	enable = {
 		has_manpower < 100000
 		has_political_power < 200
 	}
@@ -465,9 +475,11 @@ SOV_pp_spending = {
 }
 
 SOV_play_nice_with_ribbentrop_pact = {
+	allowed = {
+		original_tag = SOV
+	}
 	enable = {
-		tag = SOV
-		has_global_flag = sov_yes_pact		
+		has_global_flag = sov_yes_pact
 		GER = { has_war_with = POL }
 		date < 1941.1.1
 	}
@@ -478,19 +490,24 @@ SOV_play_nice_with_ribbentrop_pact = {
 			date > 1941.1.1
 		}
 	}
-	
+
 	# respect the spirit of the law ;)
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = "POL"
 		value = -100
-	}	
+	}
 }
 SOV_naval_role_ratios_historical = {
-	enable = {
+	allowed = {
 		has_dlc = "Man the Guns"
 		original_tag = SOV
 	}
+
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
 
 	ai_strategy = {
 		type = role_ratio
@@ -573,7 +590,7 @@ SOV_home_land_is_safe = {
 	enable = {
 		original_tag = SOV
 	}
-	
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = garrison
 		value = -25
@@ -617,6 +634,7 @@ SOV_prio_civilian_factories = {
 
 SOV_prio_military_factories = {
 	allowed = { original_tag = SOV }
+	abort_when_not_enabled = yes
 	enable = {
 		date > 1936.10.1
 	}	

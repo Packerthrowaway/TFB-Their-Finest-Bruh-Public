@@ -4515,20 +4515,12 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_tech_bonus = {
-				name = special_bonus
-				bonus = 0.75
+			add_potential_special_forces_tree = yes
+			add_doctrine_cost_reduction = {
+				name = USA_special_forces
+				cost_reduction = 0.75
 				uses = 2
-				technology = paratroopers
-				technology = paratroopers2
-				technology = tech_mountaineers
-				technology = tech_mountaineers2
-				technology = tech_engineers
-				technology = tech_engineers2
-				technology = tech_engineers3
-				technology = tech_recon
-				technology = tech_recon2
-				technology = tech_recon3
+				category = special_forces_doctrine
 			}
 		}
 	}
@@ -4751,8 +4743,20 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = tank_destroyer_board
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}	
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = USA_tank_destroyer_board_organization
+				mio:USA_tank_destroyer_board_organization = {
+					add_mio_size = 2
+				}
+			}
+			ELSE = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = tank_destroyer_board
+			}
 		}
 	}
 	focus = {
@@ -4781,8 +4785,20 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = detroit_arsenal
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}	
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = USA_detroit_arsenal_organization
+				mio:USA_detroit_arsenal_organization = {
+					add_mio_size = 2
+				}
+			}
+			ELSE = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = detroit_arsenal
+			}
 		}
 	}
 	focus = {
@@ -5696,12 +5712,25 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_tech_bonus = {
-				name = USA_expand_the_USMC
-				bonus = 0.5
-				uses = 2
-				technology = marines2
-				technology = marines3
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_doctrine_cost_reduction = {
+					name = USA_expand_the_USMC
+					cost_reduction = 0.25
+					uses = 2
+					category = special_forces_doctrine
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = USA_expand_the_USMC
+					bonus = 1.0
+					uses = 1
+					technology = marines2
+					technology = marines3
+				}
 			}
 			create_corps_commander = {
 				name = "Alexander Vandegrift"

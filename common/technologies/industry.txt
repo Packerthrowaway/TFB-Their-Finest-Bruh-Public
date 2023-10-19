@@ -32,6 +32,7 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 
@@ -71,6 +72,7 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 	
@@ -106,6 +108,7 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 	
@@ -151,6 +154,7 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 	
@@ -184,6 +188,7 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 	
@@ -217,13 +222,14 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 
 	#Conversion branch - Enabled in DoD
 	improved_equipment_conversion = {
 	
-		equipment_conversion_speed = 0.4
+		equipment_conversion_speed = 0.40
 
 		allow_branch = {
 			has_dlc = "Death or Dishonor"
@@ -258,12 +264,13 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 	
 	advanced_equipment_conversion = {
 		
-		equipment_conversion_speed = 0.4
+		equipment_conversion_speed = 0.40
 
 		research_cost = 1.5
 		start_year = 1942
@@ -289,6 +296,7 @@ technologies = {
 		
 		categories = {
 			industry
+			cat_production
 		}
 	}
 
@@ -321,6 +329,45 @@ technologies = {
 		folder = {
 			name = industry_folder
 			position = { x = 4 y = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 25
+
+			modifier = {
+				factor = 2
+				NOT = { tag = GER }
+			}
+			
+			modifier = {
+				factor = 2
+				tag = USA
+			}
+			
+			modifier = {
+				factor = 2
+				tag = ENG
+			}
+			
+			modifier = {
+				factor = 2
+				tag = JAP
+			}
+
+			modifier = {
+				factor = 0
+				has_tech = dispersed_industry
+			}
+			
+			modifier = {
+				factor = 0
+				is_researching_technology = dispersed_industry
+			}
+						
+			modifier = {
+				factor = 5
+				date > "1937.1.1"
+			}
 		}
 		
 		categories = {
@@ -373,6 +420,10 @@ technologies = {
 		ai_will_do = {
 			factor = 50
 		}
+
+		ai_research_weights = {
+			offensive = -1.0
+		}
 	}
 	
 	concentrated_industry3 = {
@@ -410,6 +461,10 @@ technologies = {
 		ai_will_do = {
 			factor = 50
 		}
+		
+		ai_research_weights = {
+			offensive = -1.0
+		}
 	}
 	
 	concentrated_industry4 = {
@@ -446,6 +501,10 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 50
+		}
+		
+		ai_research_weights = {
+			offensive = -1.0
 		}
 	}
 	
@@ -529,13 +588,52 @@ technologies = {
 			position = { x = 6 y = 2 }
 		}
 		
+		ai_will_do = {
+			factor = 25
+
+			modifier = {
+				factor = 2
+				tag = GER
+			}
+			
+			modifier = {
+				factor = 0.25
+				tag = USA
+			}
+			
+			modifier = {
+				factor = 0.25
+				tag = ENG
+			}
+			
+			modifier = {
+				factor = 0.25
+				tag = JAP
+			}
+
+			modifier = {
+				factor = 0
+				has_tech = concentrated_industry
+			}
+			
+			modifier = {
+				factor = 0
+				is_researching_technology = concentrated_industry
+			}
+
+			modifier = {
+				factor = 5
+				date > "1937.1.1"
+			}
+		}
+		
 		categories = {
 			industry
 			dispersed_industry_category
 		}
 		
 		ai_research_weights = {
-			
+			defensive = -1.0
 		}
 	}
 	
@@ -569,6 +667,15 @@ technologies = {
 		folder = {
 			name = industry_folder
 			position = { x = 6 y = 4 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+						
+			modifier = {
+				factor = 10
+				date > "1937.1.1"
+			}
 		}
 		
 		categories = {
@@ -616,6 +723,15 @@ technologies = {
 			position = { x = 6 y = 6 }
 		}
 		
+		ai_will_do = {
+			factor = 15
+						
+			modifier = {
+				factor = 10
+				date > "1939.1.1"
+			}			
+		}
+		
 		categories = {
 			industry
 			dispersed_industry_category
@@ -657,6 +773,15 @@ technologies = {
 			position = { x = 6 y = 8 }
 		}
 		
+		ai_will_do = {
+			factor = 15
+						
+			modifier = {
+				factor = 10
+				date > "1941.1.1"
+			}
+		}
+		
 		categories = {
 			industry
 			dispersed_industry_category
@@ -692,6 +817,15 @@ technologies = {
 		# 	leads_to_tech = nav_factory5
 		# 	research_cost_coeff = 1
 		# }
+		ai_will_do = {
+			factor = 15
+			
+			
+			modifier = {
+				factor = 10
+				date > "1943.1.1"
+			}
+		}
 		
 		categories = {
 			industry
@@ -1792,6 +1926,20 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_oil
+		}
+
+		on_research_complete = {
+			# FIN effect from focus Tire Factory at Nokia
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+					tag = FIN
+					has_completed_focus = FIN_tire_factory_at_nokia
+					controls_state = 927
+				}
+				FIN_nokia_tires_after_tech_effect = yes
+			}
 		}
 		
 		ai_will_do = {
@@ -1853,6 +2001,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_oil
 		}
 		
 		ai_will_do = {
@@ -1907,6 +2056,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_oil
 		}
 		
 		ai_will_do = {
@@ -1966,6 +2116,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_oil
 		}
 		
 		ai_will_do = {
@@ -2015,6 +2166,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_oil
 		}
 		
 		ai_will_do = {
@@ -2064,6 +2216,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_rubber
 		}
 		
 		ai_will_do = {
@@ -2131,6 +2284,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_rubber
 		}
 		
 		ai_will_do = {
@@ -2190,6 +2344,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_rubber
 		}
 		
 		ai_will_do = {
@@ -2244,6 +2399,7 @@ technologies = {
 		categories = {
 			industry
 			synth_resources
+			cat_synth_rubber
 		}
 		
 		ai_will_do = {
@@ -2730,6 +2886,7 @@ technologies = {
 			leads_to_tech = excavation5
 			research_cost_coeff = 1
 		}
+
 		
 		enable_building = {
 			building = bunker

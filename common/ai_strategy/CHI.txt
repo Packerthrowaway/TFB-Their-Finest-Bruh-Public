@@ -11,8 +11,9 @@
 # influence
 
 CHI_unit_production = {
+	allowed = { original_tag = CHI }
 	enable = {
-		original_tag = CHI
+		always = yes
 	}
 	abort = {
 		always = no
@@ -46,7 +47,7 @@ CHI_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = 0
+		value = -10
 	}
 
 	ai_strategy = {
@@ -174,9 +175,11 @@ CHI_unit_production = {
 
 
 CHI_prio_military_even_at_peace = {
+	allowed = { original_tag = CHI }
 	enable = {
-		original_tag = CHI
+		always = yes
 	}
+	abort_when_not_enabled = yes
 	
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
@@ -187,9 +190,8 @@ CHI_prio_military_even_at_peace = {
 	
 CHI_dont_mess_with_the_soviets = {
 
-	enable = {
-		original_tag = CHI
-		
+	allowed = { original_tag = CHI }
+	enable = {	
 		NOT = { has_war_with = SOV }
 	}
 	
@@ -205,8 +207,9 @@ CHI_dont_mess_with_the_soviets = {
 }
 
 CHI_some_safer_places_to_build = {
+	allowed = { original_tag = CHI }
 	enable = {
-		original_tag = CHI
+		always = yes
 	}
 
 	abort = {
@@ -253,9 +256,11 @@ CHI_some_safer_places_to_build = {
 }
 
 CHI_you_should_be_prepared_for_war = {
-
-	enable = {
+	allowed = { 
 		is_literally_china = yes
+	}
+	enable = {
+		always = yes
 	}
 	abort_when_not_enabled = yes
 	
@@ -270,6 +275,7 @@ CHI_no_army_on_friendly_neighbors = {
 	allowed = {
 		original_tag = CHI 
 	}
+	abort_when_not_enabled = yes
 	enable = {
 		has_war_with = JAP
 		JAP = { is_ai = no}

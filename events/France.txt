@@ -310,6 +310,7 @@ country_event = {
 		set_country_flag = become_vichy
 		set_global_flag = fall_of_france
 		save_global_event_target_as = vichy_france
+
 		GER = { country_event = france.14 }
 		custom_effect_tooltip = france.10.a_tt
 		# Switches to Vichy if GER accepts
@@ -352,6 +353,7 @@ country_event = {
 		}
 		trigger = {
 			has_government = fascism
+			has_dlc = "La Resistance"
 		}
 		FRA = { 
 			set_cosmetic_tag = FRA_FREE 
@@ -383,6 +385,7 @@ country_event = {
 			create_dynamic_country = {
 				original_tag = FRA
 				save_event_target_as = vichy_france
+				set_country_flag = vichy_france
 				every_state = { #transfer French colonial empire
 					limit = {
 						is_controlled_by = FRA
@@ -403,6 +406,7 @@ country_event = {
 						OR = {
 							state = 735
 							state = 21
+							state = 851
 							state = 32
 							state = 20
 							state = 26
@@ -439,6 +443,7 @@ country_event = {
 								state = 21
 								state = 1
 								state = 735
+								state = 851
 							}
 							has_state_flag = vichy_italian_conquest
 						}
@@ -448,6 +453,7 @@ country_event = {
 					if = {
 						limit = {
 							21 = { is_controlled_by = ITA }
+							851 = { is_controlled_by = ITA }
 							735 = { is_controlled_by = ITA } 
 						}
 						ITA = { transfer_state = 32 }

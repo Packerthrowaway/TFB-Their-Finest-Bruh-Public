@@ -1357,7 +1357,7 @@ focus_tree = {
 		#relative_position_id =
 		cost = 10
 		available = {
-			all_owned_state = {
+			271 = {
 				is_controlled_by = ROOT
 			}
 			has_civil_war = no
@@ -1367,7 +1367,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			capital_scope = {
+			271 = {
 				add_building_construction = {
 					type = industrial_complex
 					level = 2
@@ -1390,6 +1390,10 @@ focus_tree = {
 		relative_position_id = ETH_develop_the_capital_region
 		cost = 10
 		available = {
+			all_owned_state = {
+				is_controlled_by = ROOT
+			}
+			has_civil_war = no
 		}
 
 		search_filters = {FOCUS_FILTER_BALANCE_OF_POWER}
@@ -1414,6 +1418,7 @@ focus_tree = {
 			any_owned_state = {
 				is_controlled_by = ROOT
 			}
+			has_civil_war = no
 		}
 
 		search_filters = {}
@@ -1443,6 +1448,10 @@ focus_tree = {
 		relative_position_id = ETH_develop_the_capital_region
 		cost = 10
 		available = {
+			all_owned_state = {
+				is_controlled_by = ROOT
+			}
+			has_civil_war = no
 		}
 		ai_will_do = {
 			base = 1
@@ -1535,6 +1544,10 @@ focus_tree = {
 		relative_position_id = ETH_develop_the_capital_region
 		cost = 10
 		available = {
+			all_owned_state = {
+				is_controlled_by = ROOT
+			}
+			has_civil_war = no
 		}
 		ai_will_do = {
 			base = 1
@@ -3237,6 +3250,7 @@ focus_tree = {
 	 					is_league_of_nations_member = yes 
 	 					is_subject = no # Embargo managed by overlord
 	 					NOT = { tag = ROOT }
+	 					NOT = { tag =  ITA }
 	 				}
 	 				country_event = {
 	 					id = BBA_italo_ethiopian_war_events.10
@@ -4085,7 +4099,7 @@ focus_tree = {
 			OR = {
 				AND = {
 					is_government_in_exile = no 
-					all_owned_state = { is_controlled_by_ROOT_or_ally = yes }
+					any_owned_state = { is_controlled_by_ROOT_or_ally = yes }
 				}
 				AND = {
 					is_government_in_exile = yes
@@ -4401,6 +4415,9 @@ focus_tree = {
 			NOT = { has_war_with = 268.owner }
 			268 = {
 				NOT = { is_core_of = 268.owner }
+				268 = {
+					is_controlled_by = 268.owner
+				}
 			}
 			908 = { is_owned_by = ROOT }
 		}
@@ -6472,7 +6489,7 @@ focus_tree = {
 				target = SPC
 				modifier = ETH_support_spain_static_modifier
 			}
-			set_relation_rule = {
+			add_relation_rule_override = {
 				target = SPC
 				can_send_volunteers = yes
 			}

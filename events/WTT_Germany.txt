@@ -13,7 +13,8 @@ country_event = {
 	option = {
 		name = wtt_germany.1.a
 		hidden_effect = {
-			set_capital =  { state = 55 }
+
+			set_capital = { state = 55 }
 			start_civil_war = {
 				ruling_party = neutrality
 				ideology = fascism
@@ -512,6 +513,7 @@ country_event = {
 			GER = { transfer_state = 85 }
 			GER = { transfer_state = 86 }
 			GER = { transfer_state = 762 }
+			GER = { transfer_state = 807 }
 			GER = { add_ideas = anti_soviet_pact }
 			add_ideas = anti_soviet_pact
 			add_opinion_modifier = { target = GER modifier = danzig_for_guarantees }
@@ -565,9 +567,11 @@ country_event = {
 		transfer_state = 85
 		transfer_state = 86
 		transfer_state = 762
+		transfer_state = 807
 		add_state_core = 85
 		add_state_core = 86
 		add_state_core = 762
+		add_state_core = 807
 		86 = { set_state_name = "Posen" }
 		set_province_name = { id = 6558 name = "Posen" }
 		762 = { set_state_name = "Kattowitz" }
@@ -668,6 +672,10 @@ country_event = {
 		add_stability = 0.05
 		add_popularity = { ideology = fascism popularity = -0.05 }
 		delete_unit_template_and_units = { division_template = "Landsturmregiment" }
+		if = { 
+			limit = { is_faction_leader = yes } 
+			leave_faction = yes
+		}
 	}
 
 	# Imprison head nazis for life
@@ -677,6 +685,10 @@ country_event = {
 		add_popularity = { ideology = fascism popularity = 0.05 }
 		set_country_flag = GER_imprisoned_fascist_leadership
 		delete_unit_template_and_units = { division_template = "Landsturmregiment" }
+		if = { 
+			limit = { is_faction_leader = yes } 
+			leave_faction = yes
+		}
 	}
 }
 
@@ -714,7 +726,7 @@ country_event = {
 			limit = {
 				has_idea = GER_the_great_red_menace
 			}
-			country_event = { id = wtt_germany.25 days = 1 random = 2 }
+			country_event = { id = wtt_germany.25 days = 1 random_days = 2 }
 			random_list = {
 				80 = {
 					# No effect
@@ -724,7 +736,7 @@ country_event = {
 				}
 			}
 		}
-		GER = { country_event = { id = wtt_germany.25 days = 1 random = 2 } }
+		GER = { country_event = { id = wtt_germany.25 days = 1 random_days = 2 } }
 	}
 
 	# Do nothing

@@ -77,8 +77,9 @@ armor_ENG = {
 			
 			support = {
 				engineer = 1
+				signal_company = 1 
+				maintenance_company = 1
 				mot_recon = 1
-				artillery = 1
 			}
 			
 			regiments = {
@@ -94,7 +95,10 @@ armor_ENG = {
 			mot_recon
 			armored_car_recon
 			light_tank_recon
-			artillery
+			mot_artillery_brigade
+			mot_anti_air_brigade
+			signal_company
+			maintenance_company
 		}
 		
 		replace_at_match = 0.4
@@ -192,11 +196,8 @@ armor_ENG = {
 			maintenance_company
 			logistics_company
 
-			anti_tank
 			military_police
-			artillery
 			anti_air
-			rocket_artillery
 		}
 		
 		replace_at_match = 0.4
@@ -206,7 +207,6 @@ armor_ENG = {
 
 	medium_armor_default_ENG = {
 	
-		
 		upgrade_prio = {
 			factor = 2
 
@@ -261,9 +261,10 @@ armor_ENG = {
 			
 			support = {
 				engineer = 1
-				mot_recon = 1
+				armored_car_recon = 1
 				maintenance_company = 1
 				logistics_company = 1
+				signal_company = 1 
 			}
 			
 			regiments = {
@@ -289,11 +290,11 @@ armor_ENG = {
 			maintenance_company
 			logistics_company
 
-			anti_tank
 			military_police
-			artillery
 			anti_air
-			rocket_artillery
+			mot_artillery_brigade
+			mot_anti_air_brigade
+			mot_anti_tank_brigade
 		}
 		
 		replace_at_match = 0.8
@@ -361,7 +362,6 @@ armor_ENG = {
 			0.00 #-- build_cost_ic
 		}
 		
-
 		target_template = {
 			weight = 0.9
 			match_value = 7000.0
@@ -371,6 +371,8 @@ armor_ENG = {
 				armored_car_recon = 1
 				maintenance_company = 1
 				logistics_company = 1
+				signal_company = 1 
+
 			}
 			
 			regiments = {
@@ -396,11 +398,12 @@ armor_ENG = {
 			maintenance_company
 			logistics_company
 
-			anti_tank
 			military_police
-			artillery
 			anti_air
-			rocket_artillery
+			mot_artillery_brigade
+			mot_anti_air_brigade
+			medium_sp_artillery_brigade
+			medium_tank_destroyer_brigade
 		}
 		
 		replace_at_match = 0.8
@@ -490,11 +493,8 @@ armor_ENG = {
 			maintenance_company
 			logistics_company
 
-			anti_tank
 			military_police
-			artillery
 			anti_air
-			rocket_artillery
 		}
 	}
 }
@@ -579,11 +579,10 @@ infantry_ENG = {
 				engineer = 1
 				recon = 1
 				field_hospital = 1
-				anti_tank = 1
 			}
 			
 			regiments = {
-				infantry = 7
+				infantry = 9
 				artillery_brigade = 2
 			}
 		}
@@ -595,11 +594,8 @@ infantry_ENG = {
 			signal_company
 			field_hospital
 			logistics_company
-			anti_tank
 			military_police
-			artillery
 	#		anti_air
-			rocket_artillery
 			anti_tank_brigade
 			artillery_brigade
 			rocket_artillery_brigade
@@ -690,8 +686,6 @@ mountaineers_ENG = {
 			
 			support = {
 				engineer = 1
-				artillery = 1
-				anti_tank = 1
 				logistics_company = 1
 			}
 			
@@ -703,12 +697,12 @@ mountaineers_ENG = {
 		
 		allowed_types = {
 			mountaineers
-			artillery
 			recon
 			signal_company
 			field_hospital
 			logistics_company
-			anti_tank
+			artillery_brigade
+			engineer
 		}
 	}
 }
@@ -805,6 +799,7 @@ marines_ENG = {
 			marine
 			engineer
 			logistics_company
+			recon
 		}
 	}
 }
@@ -890,8 +885,6 @@ paratrooper_ENG = {
 			
 			support = {
 				engineer = 1
-				artillery = 1
-				anti_tank = 1
 			}
 			
 			regiments = {
@@ -906,11 +899,8 @@ paratrooper_ENG = {
 			signal_company
 			field_hospital
 			logistics_company
-			anti_tank
 			military_police
-			artillery
 			anti_air
-			rocket_artillery
 		}
 	}
 	
@@ -1009,7 +999,6 @@ garrison_ENG = {
 			infantry		
 			engineer
 			field_hospital
-			anti_tank
 			military_police
 		}
 	}

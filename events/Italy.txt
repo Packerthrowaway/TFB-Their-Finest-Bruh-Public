@@ -37,6 +37,7 @@ country_event = {
 	
 	option = {
 		name = italy.1.a
+
 		annex_country = { target = ALB }
 		add_named_threat = { threat = 2 name = ITA_albania_war_goal }
 		USA = {
@@ -62,7 +63,7 @@ country_event = {
 		create_wargoal = {
 			type = take_state_focus
 			target = ALB
-			generator = { 44 }
+			generator = { 44 805 }
 		}
 		hidden_effect = {
 			country_event = { days = 1 id = news.23 }
@@ -101,8 +102,12 @@ country_event = {
 				factor = 0.5
 				OR = {
 					has_government = communism
-					has_government = fascism #glorious Albania will never yield!
+					has_government = fascism #glorious Albania will never yield! #Actually, there is nothing glorious to be found in fascism ;)
 				}
+			}
+			modifier = {
+				factor = 5
+				is_subject_of = FROM
 			}
 		}
 		ITA = {
@@ -118,20 +123,30 @@ country_event = {
 				factor = 0
 				OR = {
 					AND = {
-						is_in_faction_with = ITA
-						ITA = { is_faction_leader = yes }
+						is_in_faction_with = FROM
+						FROM = { is_faction_leader = yes }
 					}
 					is_historical_focus_on = yes
 					AND = {
 						is_in_faction = no 
 						NOT = {
 							any_other_country = {
-								NOT = { tag = ITA }
-								has_guaranteed = ALB
+								NOT = { tag = FROM }
+								has_guaranteed = ROOT
 							} 
 						}
 					}
 				}
+			}
+			modifier = {
+				add = 100
+				is_in_faction = yes
+				NOT = { is_in_faction_with = FROM }
+			}
+			modifier = {
+				add = 100
+				is_subject = yes
+				NOT = { is_subject_of = FROM }
 			}
 		}
 		ITA = {
@@ -341,7 +356,7 @@ country_event = {
 	
 	option = {
 		name = italy.9.a
-		country_event = { id = italy.10 }
+		ITA = { country_event = { id = italy.10 } }
 		effect_tooltip = {
 			ITA = { transfer_state = 177 }
 			remove_opinion_modifier = { target = ITA modifier = ita_supported_spain_civil_war }
@@ -354,7 +369,7 @@ country_event = {
 	option = {
 		name = italy.9.b
 		ai_chance = { factor = 0 }
-		country_event = { id = italy.11 }
+		ITA = { country_event = { id = italy.11 } }
 		effect_tooltip = {
 			ITA = { add_state_claim = 177 }
 		}
@@ -373,7 +388,12 @@ country_event = {
 	option = {
 		name = italy.10.a
 		ITA = { transfer_state = 177 }
-		remove_opinion_modifier = { target = ITA modifier = ita_supported_spain_civil_war }
+		FROM = {
+			if = {
+				limit = { has_opinion_modifier = ita_supported_spain_civil_war }
+				remove_opinion_modifier = { target = ITA modifier = ita_supported_spain_civil_war }
+			}
+		}
 	}
 }
 
@@ -497,7 +517,11 @@ country_event = {
 		if = {
 			limit = { owns_state = 44 }
 			ITA = { transfer_state = 105 }
-		}		
+		}
+		if = {
+			limit = { owns_state = 44 }
+			ITA = { transfer_state = 802 }
+		}
 	}
 }
 

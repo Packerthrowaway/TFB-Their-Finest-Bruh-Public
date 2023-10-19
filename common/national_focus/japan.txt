@@ -2103,6 +2103,7 @@
 				category = infantry_weapons
 			}
 			add_ideas = JAP_expand_the_army
+			add_potential_special_forces_tree = yes
 		}
 	}
 	
@@ -2129,6 +2130,7 @@
 				category = marine_tech
 				category = tp_tech
 			}
+			add_potential_special_forces_tree = yes
 		}
 	}
 	
@@ -3927,8 +3929,20 @@
 				uses = 2
 				category = bb_tech
 			}
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = kure_naval_arsenal
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}	
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = JAP_kure_naval_arsenal_organization
+				mio:JAP_kure_naval_arsenal_organization = {
+					add_mio_size = 2
+				}
+			}
+			ELSE = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = kure_naval_arsenal
+			}
 		}
 	}
 	
@@ -4000,8 +4014,20 @@
 				uses = 1
 				technology = cv_fighter2			
 			}
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = mitsubishi
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}	
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = JAP_mitsubishi_organization
+				mio:JAP_mitsubishi_organization = {
+					add_mio_funds = 1500
+				}
+			}
+			ELSE = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = mitsubishi
+			}
 			custom_effect_tooltip = unlock_propaganda_campaign_tt
 			unlock_decision_tooltip = JAP_air2_prop
 		}

@@ -26,9 +26,12 @@ country_event = {
 			factor = 70
 			modifier = {
 				factor = 0
-				has_game_rule = {
-					rule = ENG_ai_behavior 
-					option = NEUTRALITY
+				OR = {
+					has_game_rule = {
+						rule = ENG_ai_behavior 
+						option = NEUTRALITY
+					}
+					has_country_flag = ENG_AI_RANDOM_NEUTRALITY
 				}
 			}
 		}
@@ -51,7 +54,8 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			remove_ideas = ENG_king_edward
-			add_ideas = ENG_george_vi		
+			add_ideas = ENG_george_vi
+			set_country_flag = ENG_edward_viii_abdicated
 		}
 	}
 

@@ -1798,11 +1798,7 @@ technologies = {
 		}
 		enable_equipment_modules = {
 			tank_ac_turret_1
-			tank_riveted_armor
-			tank_gasoline_engine
-			tank_diesel_engine
 
-			tank_car_heavy_machine_gun 
 			tank_car_quad_machine_gun
 			tank_car_auto_cannon
 		
@@ -1868,8 +1864,6 @@ technologies = {
 		enable_equipment_modules = {
 			tank_ac_turret_3
 
-
-
 			tank_car_auto_cannon_3 	
 			tank_car_small_squeeze 
 			tank_car_at_cannon
@@ -1888,6 +1882,63 @@ technologies = {
 		}
 
 	}
+
+	SWE_lynx_armored_car = {
+		allow = { always = no }
+		enable_equipments = {
+			#armored_car_at_equipment
+		}
+
+	   research_cost = 1
+	   start_year = 1942
+	   sub_tech_index = 1
+	   
+	   categories = {
+		   motorized_equipment
+		   armor
+		   cat_armored_cars
+	   }
+
+	#    armored_car = {
+	# 	   max_organisation = 5
+	# 	   ap_attack = 0.1
+	# 	   hard_attack = 0.1
+	# 	   #hardness = 1
+	# 	   forest = {
+	# 		   attack = 0.2
+	# 		   movement = 0.55
+	# 	   }
+	# 	   desert = {
+	# 		   attack = -0.2
+	# 		   movement = -0.55
+	# 	   }
+
+	# 	   snow = {
+	# 		   attack = 0.2
+	# 		   movement = 0.35
+	# 	   }
+	#    }
+
+	   armored_car_recon = {
+		   max_organisation = 3
+		   ap_attack = 0.1
+		   hard_attack = 0.1
+		   #hardness = 1
+		   forest = {
+			   attack = 0.05
+			   movement = 0.1
+		   }
+		   desert = {
+			   attack = -0.15
+			   movement = -0.15
+		   }
+
+		   snow = {
+			   attack = 0.2
+			   movement = 0.25
+		   }
+	   }
+   }
 	
 	######### FROM JAPANESE FOCUS ##########
 	bicycle_infantry = {
@@ -2142,20 +2193,20 @@ technologies = {
 		}
 	}
 	
-	rangers = {
+	# rangers = {
 
-		allow = {
-			always = no
-		}
+	# 	allow = {
+	# 		always = no
+	# 	}
 
-		mountaineers = {
-			jungle = {
-				attack = 0.1
-				defence = 0.05
-				movement = 0.05
-			}
-		}
-	}
+	# 	mountaineers = {
+	# 		jungle = {
+	# 			attack = 0.1
+	# 			defence = 0.05
+	# 			movement = 0.05
+	# 		}
+	# 	}
+	# }
 
 	penal_infantry = {
 		
@@ -2173,7 +2224,7 @@ technologies = {
 
 	######### FROM ITALIAN FOCUS ##########
 	blackshirt_assault_battalion_tech = {
-		
+	
 		allow = {
 			always = no
 		}
@@ -2217,7 +2268,130 @@ technologies = {
 		}
 		irregular_infantry = {
 			max_organisation = 10
-			maximum_speed = 1.25 #TODO_TA for testing only, remove
 		}
 	}
+
+
+	######### FROM FINNISH FOCUS ##########
+	molotov_cocktails_tech = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		category_all_infantry = {
+			hard_attack = 0.25
+			ap_attack = 1
+		}
+	}
+
+	winter_logistics_support_tech = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		enable_subunits = {
+			winter_logistics_support
+		}
+	}
+
+	long_range_patrol_support_tech = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		enable_subunits = {
+			long_range_patrol_support
+		}
+	}
+
+	sami_pathfinders_tech = { #Hidden tech showed as part of FIN_sami_pathfinders national spirit
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		category_recon = {
+			recon = 1
+
+			snow = {
+				movement = 0.1
+			}
+			forest = {
+				movement = 0.05
+			}
+			hills = {
+				movement = 0.05
+			}
+			mountain = {
+				movement = 0.05
+			}
+			marsh = {
+				movement = 0.05
+			}
+			plains = {
+				movement = 0.05
+			}
+			river = {
+				movement = 0.05
+			}
+		}
+	}
+
+	lotta_svard_tech = { #Hidden tech showed as part of FIN_lotta_svard national spirit
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		category_support_battalions = { #Any changes in the values below need to be applied in FIN_lotta_svard_support_battalions_bonus_tt too
+			max_strength = 5
+			max_organisation = 10
+		}
+	}
+
+	SWE_sami_support_tech = { #Hidden tech for Sami reconcilliation for Sweden
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		category_recon = {
+			recon = 1
+
+			snow = {
+				movement = 0.1
+			}
+			forest = {
+				movement = 0.1
+			}
+			hills = {
+				movement = 0.05
+			}
+			mountain = {
+				movement = 0.05
+			}
+		}
+	}
+		
 }

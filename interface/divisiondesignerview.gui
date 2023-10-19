@@ -176,6 +176,7 @@ guiTypes = {
 			spriteType = "GFX_equipment_naval_item"
 			position = { x=115 y=15 }
 			scale = 0.6
+			centerposition = yes
 		}
 		
 		instantTextboxType = {
@@ -189,10 +190,10 @@ guiTypes = {
 		}
 	}
 
-		containerWindowType = {
+	containerWindowType = {
 		name = "button_wrapper_container"
 	}
-	
+
 	containerWindowType = {
 		name = "countrydivisiondesignerview"
 		position = { x=0 y=0}	
@@ -585,6 +586,7 @@ guiTypes = {
 			quadTextureSprite ="GFX_div_priority_strip"
 			clicksound = click_default
 		}
+		
 		iconType = {
 			name = "niche_icon_bg"
 			spriteType = "GFX_role_icon_bg"
@@ -947,7 +949,7 @@ guiTypes = {
 				frame = 1
 				pdx_tooltip = REINFORCE_WITH_RESEARCHED_EQUIPMENT
 			}
-			
+
 			instantTextboxType = {
 				name = "new_equipment_allowed_text"
 				position = { x = 70 y = 70 }
@@ -957,6 +959,7 @@ guiTypes = {
 				maxHeight = 20
 				format = left
 			}
+
 			buttonType = {
 				name = "foreign_equipment_allowed_button"
 				position = { x=245 y =65 }
@@ -1145,6 +1148,14 @@ guiTypes = {
 			spriteType ="GFX_div_unit_item_bg"
 		}
 		
+		iconType = {
+			name = "glowup"
+			spriteType = "GFX_spirit_glow"
+			position = {x=-17 y=-8}
+			scale = 0.70
+			hide = yes
+		}
+		
 		instantTextboxType = {
 			name = "name"
 			position = { x = 9 y = 22 }
@@ -1179,10 +1190,20 @@ guiTypes = {
 		position = { x=0 y=0}	
 		size = { width=64 height=53 }
 		clipping = no
-
+		
 		background = {
 			name = "Background"		
 			spriteType ="GFX_div_subunit_item_bg"
+			alwaystransparent = yes	
+		}
+		
+		iconType = {
+			name = "glowup"
+			quadTextureSprite = "GFX_bop_glow_effect"
+			position = {x=-4 y=16}
+			Orientation = CENTER_LOWER
+			scale = 1.0
+			hide = yes
 		}
 		
 		instantTextboxType = {
@@ -1195,6 +1216,13 @@ guiTypes = {
 			maxWidth = 65
 			maxHeight = 20
 			format = centre
+			
+			pdx_tooltip_anchor =
+			{
+				x = -254
+				y = -2
+			}
+			
 		}
 	
 		buttonType = {
@@ -1204,6 +1232,13 @@ guiTypes = {
 			Orientation = CENTER_LOWER
 			scale = 0.8
 			clicksound = click_default
+			
+			pdx_tooltip_anchor =
+			{
+				x = -254
+				y = -2
+			}
+			
 		}	
 
 		buttonType = {
