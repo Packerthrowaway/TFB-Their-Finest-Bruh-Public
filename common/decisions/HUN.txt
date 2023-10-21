@@ -11,14 +11,17 @@ operations = {
 		fire_only_once = yes
 		
 		available = {
-			has_license = {
-				from = SWE
-				equipment = {
-					type = hun_light_tank_chassis_38m
+			OR = {
+				has_completed_focus = HUN_approach_sweden
+				has_license = {
+					from = SWE
+					equipment = {
+						type = hun_light_tank_chassis_38m
+					}
 				}
 			}
 		}
-		
+
 		complete_effect = {
 			set_technology = { hun_light_tank_1 = 1 }
 		}
@@ -65,6 +68,9 @@ operations = {
 					equipment = {
 						type = ger_light_tank_chassis_p35
 					}
+				}
+				GER = {
+					has_completed_focus = GER_end_of_czechoslovakia
 				}
 				AND = {
 					has_global_flag = DENIED_CZE
