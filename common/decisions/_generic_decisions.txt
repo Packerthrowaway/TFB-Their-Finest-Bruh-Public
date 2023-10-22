@@ -86,7 +86,7 @@ political_actions = {
 
 		modifier = {
 			stability_weekly = 0.005
-			consumer_goods_factor = 0.1
+			consumer_goods_factor = 0.10
 			industrial_capacity_factory = -0.1
 		}
 
@@ -104,11 +104,25 @@ political_actions = {
 			modifier = {
 				add = 1
 				has_stability < 0.6
+				has_political_power > 155 #Spend on other things first
 			}
 			modifier = {
 				factor = 0
 				original_tag = SPR
 				NOT = { has_global_flag = spanish_civil_war }
+			}
+			modifier = {
+				factor = 0 
+				tag = ICE
+				has_completed_focus = ICE_not_our_king
+				NOT = { has_completed_focus = ICE_break_with_the_crown }
+			}
+
+			modifier = {
+				add = 1000
+				has_stability < 0.76
+				original_tag = SWE
+				has_idea = SWE_hungershield
 			}
 		}
 	}
@@ -179,7 +193,7 @@ economy_decisions = {
 		icon = generic_construction
 
 		allowed = {
-			NOT = { OR = { tag = GER tag = FRA original_tag = GER original_tag = FRA } }
+			NOT = { OR = { original_tag = GER original_tag = FRA } }
 		}
 
 		cost = 50
@@ -247,8 +261,14 @@ economy_decisions = {
 					}
 				}
 			}
+			if = {
+				limit = {
+					has_idea = FRA_protected_by_the_maginot_line
+				}
+				remove_ideas = FRA_protected_by_the_maginot_line
+			}
 		}
-	}		
+	}	
 }
 
 propaganda_efforts = {
@@ -1162,8 +1182,7 @@ operations = {
 		visible = {
 			has_war = yes
 			NOT = { has_global_flag = SUEZ_CANAL_BLOCKED }
-			any_state = {
-				is_controlled_by = ROOT
+			any_controlled_state = {
 				OR = {
 					region = 28
 					region = 128
@@ -1283,8 +1302,7 @@ operations = {
 		visible = {
 			has_war = yes
 			NOT = { has_global_flag = PANAMA_CANAL_BLOCKED }
-			any_state = {
-				is_controlled_by = ROOT
+			any_controlled_state = {
 				OR = {
 					region = 34
 					region = 124
@@ -1529,7 +1547,8 @@ war_measures = {
 
 		visible = {
 			has_defensive_war = yes
-			has_offensive_war = no			
+			has_offensive_war = no
+			num_of_controlled_states > 0			
 		}
 
 		fire_only_once = no
@@ -1862,6 +1881,12 @@ foreign_politics = {
         	any_enemy_country = {
 				has_attache_from = FROM
 			}
+			NOT = {
+				AND = {
+					original_tag = SPR
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+				}
+			}
 		}
 
 		target_root_trigger = {
@@ -2001,12 +2026,23 @@ economy_decisions = {
         fire_only_once = no
 
         available = {
-            has_war = yes
-            any_owned_state = {
-            	NOT = { has_state_flag = war_building_slot_flag }
-            	is_fully_controlled_by = ROOT
-            }
-        }
+			IF = { 
+				limit = { 
+					OR = { 
+						has_dlc = "Man the Guns" 	
+						has_dlc = "By Blood Alone" 
+					}
+				}
+				has_war_with_non_exiled_country = yes   
+			}
+			ELSE = {
+				has_war = yes
+			}
+			any_owned_state = {
+				NOT = { has_state_flag = war_building_slot_flag }
+				is_fully_controlled_by = ROOT
+			}
+		}
 
         visible = {
 			has_war = yes

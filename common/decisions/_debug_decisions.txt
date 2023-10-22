@@ -9,7 +9,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -29,7 +31,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -60,7 +64,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -80,11 +86,13 @@ debug_decisions = {
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -107,16 +115,19 @@ debug_decisions = {
 		}
 	}
 
+
 	create_operative_debug = {
 
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -140,11 +151,13 @@ debug_decisions = {
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -166,11 +179,13 @@ debug_decisions = {
 		icon = generic_research
 
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -195,7 +210,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -225,7 +242,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -252,23 +271,28 @@ debug_decisions = {
 
 	harm_operative_debug = {
 		available = {
-			num_of_operatives > 0
+			#num_of_operatives > 0
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
 		cost = 0
 
 		complete_effect = {
-			random_operative = {
-				harm_operative_leader = 1
-				operative_leader_event = {
-					id = lar_operative_event.4
-					set_from_from = URG
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = SWE_ai_behavior
+						option = SWE_DEMOCRATIC_DEM_ALT
+					}
 				}
+
+				add_political_power = 1000
 			}
 		}
 
@@ -284,7 +308,9 @@ debug_decisions = {
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		fire_only_once = no
@@ -311,11 +337,13 @@ debug_decisions = {
 
 	slot_machine = { # we pegi 18 now
 		available = {
-			always = yes
+			is_ai = no
 		}
 
 		visible = {
-			always = yes
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
 		}
 
 		days_remove = 777
@@ -326,6 +354,15 @@ debug_decisions = {
 	}
 
 	decryption_tech_1 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			decryption = 1
@@ -333,6 +370,15 @@ debug_decisions = {
 	}
 
 	decryption_tech_2 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			decryption = 1
@@ -340,6 +386,15 @@ debug_decisions = {
 	}
 
 	decryption_tech_3 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			decryption = 1
@@ -347,6 +402,15 @@ debug_decisions = {
 	}
 
 	encryption_tech_1 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			encryption = 1
@@ -354,6 +418,15 @@ debug_decisions = {
 	}
 
 	encryption_tech_2 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			encryption = 1
@@ -361,6 +434,15 @@ debug_decisions = {
 	}
 
 	encryption_tech_3 = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
 		days_remove = 100
 		modifier = {
 			encryption = 1

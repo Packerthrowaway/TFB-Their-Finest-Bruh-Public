@@ -772,6 +772,10 @@ HOL_secret_staff_talks = {
 			}
 		}
 
+		target_root_trigger = {
+			has_completed_focus = HOL_secret_staff_talks
+		}
+
 		complete_effect = {
 			FROM = { country_event = { id = mtg_netherlands.29 hours = 6 } }
 			effect_tooltip = {
@@ -844,6 +848,10 @@ HOL_secret_staff_talks = {
 			}
 		}
 
+		target_root_trigger = {
+			has_completed_focus = HOL_secret_staff_talks
+		}
+
 		complete_effect = {
 			FROM = { country_event = { id = mtg_netherlands.32 hours = 6 } }
 			effect_tooltip = {
@@ -883,7 +891,6 @@ HOL_secret_staff_talks = {
 		fire_only_once = yes
 
 		visible = {
-			tag = HOL
 			has_completed_focus = HOL_secret_staff_talks
 			has_war = no
 			FROM = {
@@ -910,6 +917,10 @@ HOL_secret_staff_talks = {
 					}
 				}
 			}
+		}
+
+		target_root_trigger = {
+			has_completed_focus = HOL_secret_staff_talks
 		}
 
 		complete_effect = {
@@ -988,6 +999,10 @@ HOL_secret_staff_talks = {
 				is_in_faction = no 
 				is_in_faction_with = FROM
 			}
+		}
+
+		target_root_trigger = {
+			has_completed_focus = HOL_secret_staff_talks
 		}
 
 		complete_effect = {
@@ -1459,7 +1474,10 @@ HOL_gateway_to_europe_hol_category = {
 		}
 
 		remove_effect = {
-			ENG = { add_to_variable = { var = eng_gateway_to_europe_influence value = 5 } }
+			ENG = { 
+				custom_effect_tooltip = gateway_to_europe_hol_tt
+				add_to_variable = { var = eng_gateway_to_europe_influence value = 5 } 
+			}
 			set_variable = { var = eng_temp_trade_influence value = ENG.eng_gateway_to_europe_influence }
 			subtract_from_variable = { var = eng_temp_trade_influence value = GER.ger_gateway_to_europe_influence }
 			set_variable = { var = ger_temp_trade_influence value = GER.ger_gateway_to_europe_influence }
@@ -1594,7 +1612,10 @@ HOL_gateway_to_europe_hol_category = {
 		}
 
 		remove_effect = {
-			GER = { add_to_variable = { var = ger_gateway_to_europe_influence value = 5 } }
+			GER = { 
+				custom_effect_tooltip = gateway_to_europe_hol_tt
+				add_to_variable = { var = ger_gateway_to_europe_influence value = 5 } 
+			}
 			set_variable = { var = ger_temp_trade_influence value = GER.ger_gateway_to_europe_influence }
 			subtract_from_variable = { var = ger_temp_trade_influence value = ENG.eng_gateway_to_europe_influence }
 			set_variable = { var = eng_temp_trade_influence value = ENG.eng_gateway_to_europe_influence }
@@ -1786,6 +1807,16 @@ HOL_request_allied_favors = {
 			    amount = 50
 			    producer = ENG
 			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 1000
+					equipment_type = small_plane_airframe
+					seller_tags = { ENG } 
+				}
+			}
 		}
 
 	}
@@ -1837,8 +1868,17 @@ HOL_request_allied_favors = {
 			    amount = 100
 			    producer = ENG
 			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 250
+					equipment_type = artillery_equipment
+					seller_tags = { ENG } 
+				}
+			}
 		}
-
 	}
 
 	HOL_pull_strings_with_british_industrialists = {

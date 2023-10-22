@@ -92,6 +92,7 @@ ETH_army_2_dynamic_modifier = { #NATIONAL SPIRIT
 
 	modifier_army_sub_unit_irregular_infantry_defence_factor = ETH_modifier_army_sub_unit_irregular_infantry_defence_factor
 	modifier_army_sub_unit_irregular_infantry_speed_factor = ETH_modifier_army_sub_unit_irregular_infantry_speed_factor
+	modifier_army_sub_unit_irregular_infantry_max_org_factor = ETH_modifier_army_sub_unit_irregular_infantry_max_org_factor
 
 }
 ETH_army_3_dynamic_modifier = { #NATIONAL SPIRIT
@@ -119,7 +120,7 @@ ETH_army_3_dynamic_modifier = { #NATIONAL SPIRIT
 
 	modifier_army_sub_unit_irregular_infantry_defence_factor = ETH_modifier_army_sub_unit_irregular_infantry_defence_factor
 	modifier_army_sub_unit_irregular_infantry_speed_factor = ETH_modifier_army_sub_unit_irregular_infantry_speed_factor
-
+	modifier_army_sub_unit_irregular_infantry_max_org_factor = ETH_modifier_army_sub_unit_irregular_infantry_max_org_factor
 }
 
 
@@ -1401,6 +1402,11 @@ ITA_expanded_corporatism_modifier = {
 
 SWI_dormant_citizen_militia = {
 	enable = { always = yes }
+	remove_trigger = {
+		ROOT = {
+			has_country_flag = SWI_militias_turned_into_regulars
+		}
+	}
 	icon = GFX_idea_prc_low_popular_support3
 	modifier_army_sub_unit_militia_attack_factor = -0.5
 	modifier_army_sub_unit_militia_defence_factor = -0.5
@@ -1411,6 +1417,11 @@ SWI_dormant_citizen_militia = {
 
 SWI_active_citizen_militia = {
 	enable = { always = yes }
+	remove_trigger = {
+		ROOT = {
+			has_country_flag = SWI_militias_turned_into_regulars
+		}
+	}
 	icon = GFX_idea_generic_manpower_bonus
 
 	industrial_capacity_factory = SWI_citizen_militia_industrial_capacity_factory

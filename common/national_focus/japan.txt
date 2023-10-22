@@ -2399,7 +2399,7 @@
 					}
 					random_country = { 
 						limit = { original_tag = HOL  has_government = democratic}
-						JAP = {
+						MAN = {
 							declare_war_on = {
 								target = PREV
 								type = annex_everything
@@ -2407,59 +2407,65 @@
 						}	
 					}
 				}
-				SIA = {
-					declare_war_on = {
-						target = ENG
-						type = annex_everything
+				if = {
+					limit = {
+						country_exists = SIA
 					}
-					declare_war_on = {
-						target = AST
-						type = annex_everything
-					}
-					if = {
-						limit = {
-							NZL = { exists = yes }
-						}
+					SIA = {
 						declare_war_on = {
-							target = NZL
+							target = ENG
 							type = annex_everything
 						}
-					}
-					declare_war_on = {
-						target = RAJ
-						type = annex_everything
-					}
-					create_wargoal = {
-						target = CAN
-						type = annex_everything
-					}
-					declare_war_on = {
-						target = SAF
-						type = annex_everything
-					}
-					declare_war_on = {
-						target = MAL
-						type = annex_everything
-					}
-					if = {
-						limit = {
-							INS = { exists = yes }
-						}
 						declare_war_on = {
-							target = INS
+							target = AST
 							type = annex_everything
 						}
-					}
-					random_country = { 
-						limit = { original_tag = HOL  has_government = democratic}
-						JAP = {
+						if = {
+							limit = {
+								NZL = { exists = yes }
+							}
 							declare_war_on = {
-								target = PREV
+								target = NZL
 								type = annex_everything
 							}
-						}	
+						}
+						declare_war_on = {
+							target = RAJ
+							type = annex_everything
+						}
+						create_wargoal = {
+							target = CAN
+							type = annex_everything
+						}
+						declare_war_on = {
+							target = SAF
+							type = annex_everything
+						}
+						declare_war_on = {
+							target = MAL
+							type = annex_everything
+						}
+						if = {
+							limit = {
+								INS = { exists = yes }
+							}
+							declare_war_on = {
+								target = INS
+								type = annex_everything
+							}
+						}
+						random_country = { 
+							limit = { original_tag = HOL  has_government = democratic}
+							SIA = {
+								declare_war_on = {
+									target = PREV
+									type = annex_everything
+								}
+							}	
+						}
 					}
 				}
+				
 				if = {
 					limit = {
 						has_country_flag = JAP_usa1

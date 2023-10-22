@@ -7,7 +7,7 @@ FRA_vichy_france = {
 		available = {
 			has_government = fascism
 			NOT = {
-				GER = { divisions_in_state = { state = 21 size > 0 } }
+				GER = { divisions_in_state = { state = 851 size > 0 } } #BBA: Replaced state 21 (Provence - Bouches-du-Rhone) by stat 851 (Provence - Var), where Toulon is
 			}
 			has_country_flag = {
 				flag = case_anton
@@ -66,6 +66,10 @@ FRA_vichy_france = {
 		activation = {
 			original_tag = FRA
 			has_government = fascism
+			OR = {
+				is_subject_of = GER
+				has_focus_tree = vichy_french_focus
+			}
 			has_country_flag = case_anton
 		}
 
@@ -76,8 +80,60 @@ FRA_vichy_france = {
 		is_good = no
 
 		timeout_effect = {
+			# Remove states that should not go to Germany - then Germany annexes Vichy France
+			hidden_effect = {
+				random_country = {
+					limit = {
+						original_tag = FRA 
+						NOT = { tag = ROOT }
+						has_war_with = GER 
+					}
+					set_variable = { GER.transfer_target = THIS }
+					# transfer states to Free France if controlled by Free france
+					ROOT  = {
+						every_owned_state = {
+							limit = { is_controlled_by = PREV.PREV }
+							transfer_state_to = GER.transfer_target
+						}
+					}
+					# transfer non-core states to Free France if Germany does not have troops in them 
+					ROOT  = {
+						every_owned_state = {
+							limit = { 
+								NOT = { is_core_of = FRA }
+								is_controlled_by_ROOT_or_ally = yes 
+							}
+							set_variable = { GER.state_to_target = THIS}
+							IF = {
+								limit = {
+									GER = {
+										divisions_in_state = {
+											state = GER.state_to_target
+											size < 1
+										}
+										NOT = {
+											any_allied_country = {
+												NOT = { tag = ROOT }
+												divisions_in_state = {
+													state = GER.state_to_target
+													size > 0
+												}
+											}
+										}
+									}
+								}
+								transfer_state_to = GER.transfer_target
+							}
+						}
+					}
+				}
+				GER = { annex_country = { target = ROOT } }
+			}
+
 			transfer_navy = { target = GER }
-			GER = { annex_country = { target = ROOT } }
+			effect_tooltip = {
+				GER = { annex_country = { target = ROOT } }
+			}
 			if = {
 				limit = {
 					NOT = { has_country_flag = scuttled_fleet }
@@ -129,20 +185,21 @@ FRA_vichy_france = {
 	FRA_failsafe_join_axis = {
 		available = {
 			tag = VIC
-			any_state = {
-				NOT = { #algeria
-					state = 459
-					state = 460
-					state = 513
-				}
-				is_core_of = FRA
-				is_controlled_by = FRA #Free France has taken back some territory on the mainland
-			}
 			NOT = {
 				has_war_with = GER
 				is_in_faction_with = GER
 			}
 			date > 1942.6.1
+			FRA = {
+				any_controlled_state = {
+					NOT = { #algeria
+						state = 459
+						state = 460
+						state = 513
+					}
+					is_core_of = FRA
+				}
+			}
 		}
 		visible = {
 			is_ai = yes #if you are not a member of the dev team - avert thy eyes, traveller, for thou hath gazed upon my shame
@@ -199,6 +256,7 @@ category_test_decisions = {
 						OR = {
 							state = 735
 							state = 21
+							state = 851
 							state = 32
 							state = 20
 							state = 26
@@ -392,6 +450,8 @@ category_test_decisions_non_debug = {
 						air_ratio = 1.0
 					}
 				}
+				event_target:france_vichy = {set_country_flag  = vichy_france}
+				
 				change_tag_from = FRA
 			}
 		}
@@ -433,6 +493,17 @@ FRA_weapons_purchases_category = {
 				type = infantry_equipment
 				amount = 2500
 			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 500
+					equipment_type = infantry_equipment
+					seller_tags = { USA } 
+				}
+			}
+
 			USA = {
 				add_offsite_building = { type = industrial_complex level = -2 }
 			}
@@ -471,6 +542,16 @@ FRA_weapons_purchases_category = {
 			add_equipment_to_stockpile = {
 				type = artillery_equipment
 				amount = 75
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 250
+					equipment_type = artillery_equipment
+					seller_tags = { USA } 
+				}
 			}
 			USA = {
 				add_offsite_building = { type = industrial_complex level = -3 }
@@ -554,6 +635,16 @@ FRA_weapons_purchases_category = {
 			add_equipment_to_stockpile = {
 				type = tac_bomber_equipment
 				amount = 25
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 500
+					equipment_type = medium_plane_airframe
+					seller_tags = { USA } 
+				}
 			}
 			USA = {
 				add_offsite_building = { type = industrial_complex level = -5 }
@@ -753,6 +844,7 @@ economy_decisions = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
 					level = 1
@@ -774,6 +866,7 @@ economy_decisions = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
 					level = 1
@@ -797,6 +890,7 @@ economy_decisions = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
 					level = 1
@@ -811,6 +905,7 @@ economy_decisions = {
 						state = 32
 						state = 20
 						state = 21
+						state = 851
 					}
 					is_fully_controlled_by = ROOT 
 					free_building_slots = {
@@ -819,6 +914,7 @@ economy_decisions = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
 					level = 1
@@ -841,6 +937,7 @@ economy_decisions = {
 						include_locked = yes
 					}
 				}
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
 					level = 1
@@ -1173,6 +1270,7 @@ FRA_intervention_in_overseas_territories = {
 			custom_effect_tooltip = FRA_promise_independence_tt
 			random_list = {
 				20 = {
+					VIC = { country_event = LaR_france_vichy_notification_events.5 }
 					FRA_transfer_north_africa_effect = yes
 					every_owned_state = {
 						limit = {
@@ -1262,6 +1360,7 @@ FRA_intervention_in_overseas_territories = {
 			custom_effect_tooltip = FRA_promise_independence_tt
 			random_list = {
 				50 = {
+					VIC = { country_event = LaR_france_vichy_notification_events.1 }
 					FRA_transfer_syria_effect = yes
 					every_owned_state = {
 						limit = {
@@ -1365,6 +1464,7 @@ FRA_intervention_in_overseas_territories = {
 			custom_effect_tooltip = FRA_promise_independence_tt
 			random_list = {
 				20 = {
+					VIC = { country_event = LaR_france_vichy_notification_events.2 }
 					FRA_transfer_indochina_effect = yes
 					every_owned_state = {
 						limit = {
@@ -1422,6 +1522,11 @@ FRA_intervention_in_overseas_territories = {
 					state = 286
 					state = 741
 				}
+				CONTROLLER = {
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
 				any_neighbor_state = {
 					CONTROLLER = {
 						OR = {
@@ -1445,6 +1550,9 @@ FRA_intervention_in_overseas_territories = {
 						state = 741
 					}
 					not = { is_controlled_by = ROOT }
+					CONTROLLER = {
+						NOT = { has_war_with = ROOT }
+					}
 					any_neighbor_state = {
 						CONTROLLER = {
 							OR = {
@@ -1574,6 +1682,7 @@ FRA_intervention_in_overseas_territories = {
 			custom_effect_tooltip = FRA_promise_independence_tt
 			random_list = {
 				25 = {
+					VIC = { country_event = LaR_france_vichy_notification_events.3 }
 					FRA_transfer_central_africa_effect = yes
 					every_owned_state = {
 						limit = {
@@ -1635,6 +1744,9 @@ FRA_intervention_in_overseas_territories = {
 					state = 660
 					state = 774
 				}
+				CONTROLLER = {
+					NOT = { has_war_with = ROOT }
+				}
 				any_neighbor_state = {
 					CONTROLLER = {
 						OR = {
@@ -1659,6 +1771,9 @@ FRA_intervention_in_overseas_territories = {
 						state = 774
 					}
 					not = { is_controlled_by = ROOT }
+					CONTROLLER = {
+						NOT = { has_war_with = ROOT }
+					}
 					any_neighbor_state = {
 						CONTROLLER = {
 							OR = {
@@ -1796,6 +1911,7 @@ FRA_intervention_in_overseas_territories = {
 			custom_effect_tooltip = FRA_promise_independence_tt
 			random_list = {
 				100 = {
+					VIC = { country_event = LaR_france_vichy_notification_events.4 }
 					FRA_transfer_western_africa_effect = yes
 					every_owned_state = {
 						limit = {
@@ -1869,6 +1985,7 @@ FRA_intervention_in_overseas_territories = {
 			custom_effect_tooltip = FRA_promise_independence_tt
 			random_list = {
 				100 = {
+					VIC = { country_event = LaR_france_vichy_notification_events.6 }
 					transfer_state = 543 
 					543 = {
 						add_compliance = 5

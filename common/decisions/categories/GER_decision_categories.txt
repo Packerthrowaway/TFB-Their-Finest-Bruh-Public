@@ -54,6 +54,7 @@ GER_mefo_bills_category = {
 	allowed = {
 		original_tag = GER
 	}
+	priority = 10
 }
 
 GER_case_anton_category = {
@@ -67,9 +68,14 @@ GER_case_anton_category = {
 
 	visible = {
 		has_government = fascism
-		any_other_country = {
-			original_tag = FRA
+		any_country_with_original_tag = {
+			original_tag_to_check = FRA
 			has_government = fascism
+			OR = {
+				is_subject_of = GER
+				has_focus_tree = vichy_french_focus
+			}
+			NOT = { has_country_flag = case_anton }
 		}
 	}
 }
