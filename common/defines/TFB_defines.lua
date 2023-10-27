@@ -96,6 +96,7 @@ NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.05	
 NDefines.NProduction.BASE_LAND_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.2		-- Fraction of the chassis industry cost which is always included in the conversion cost.
 NDefines.NProduction.MIN_LAND_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.05		-- Minimum fraction of a land equipment's strategic resource cost that any conversion will cost.
 NDefines.NProduction.CONVOY_MAX_NAV_FACTORIES_PER_LINE = 150
+NDefines.NProduction.MINIMUM_NUMBER_OF_FACTORIES_TAKEN_BY_CONSUMER_GOODS_PERCENT = 0.05	-- The minimum number of factories we have to put on consumer goods, in percent. (Vanilla is 0.1)
 
 NDefines.NTechnology.BASE_RESEARCH_POINTS_SAVED = 75.0		-- Base amount of research points a country can save per slot.
 NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 6.0		-- Base year ahead penalty
@@ -560,3 +561,6 @@ NDefines.NGraphics.WEATHER_PLAYBACK_RATE_LENGTH = 200 -- For how long to fade be
 NDefines.NCharacter.SPECIALIST_ADVISOR_MIN_RANK = 2
 NDefines.NCharacter.EXPERT_ADVISOR_MIN_RANK = 4
 NDefines.NCharacter.GENIUS_ADVISOR_MIN_RANK = 6
+
+NDefines.NIndustrialOrganisation.FUNDS_FOR_SIZE_UP_LEVEL_FACTOR = 0.9 -- How much each level mutliplies the funds for size up (Vanlla 0.8)
+NDefines.NIndustrialOrganisation.FUNDS_FOR_RESEARCH_COMPLETION_PER_RESEARCH_COST = 400 -- Funds added to MIO when the Design Team has completed a research, multiplied by research_cost in technology template (Vanilla 500)
