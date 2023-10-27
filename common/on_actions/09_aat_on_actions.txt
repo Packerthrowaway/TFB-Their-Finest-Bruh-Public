@@ -78,22 +78,22 @@ on_actions = {
 			SWE_is_ice_mostly_occupied = yes
 		}
 
-		#FINLAND - BROKEN CONTINUATION WAR PACT
-		effect = {
-			if = { #Finland or GER capitulating
-				limit = {
-					has_country_flag = FIN_pact_for_continuation_war_flag
-				}
-				#Send Event to Finland and to GER, regardless of who is ROOT
-				country_event = AAT_finland_continuation_war.04
-				random_other_country = {
-					limit = {
-						has_country_flag = FIN_pact_for_continuation_war_flag
-					}
-					country_event = AAT_finland_continuation_war.04
-				}
-			}
-		}
+		# #FINLAND - BROKEN CONTINUATION WAR PACT
+		# effect = {
+		# 	if = { #Finland or GER capitulating
+		# 		limit = {
+		# 			has_country_flag = FIN_pact_for_continuation_war_flag
+		# 		}
+		# 		#Send Event to Finland and to GER, regardless of who is ROOT
+		# 		country_event = AAT_finland_continuation_war.04
+		# 		random_other_country = {
+		# 			limit = {
+		# 				has_country_flag = FIN_pact_for_continuation_war_flag
+		# 			}
+		# 			country_event = AAT_finland_continuation_war.04
+		# 		}
+		# 	}
+		# }
 	}
 	
 	# ROOT is capitulated country, FROM is winner
@@ -1123,94 +1123,94 @@ on_actions = {
 			}
 		}
 
-		#FIN - Secret Pact for Continuation War (with GER)
-		effect = { #ROOT = attacking side // FROM = defending side
-			if = { #BARBAROSSA STARTS -> CONTINUATION WAR STARTS
-				limit = {
-					ROOT = { original_tag = GER }
-					FROM = { original_tag = SOV }
-					FIN = {
-						exists = yes
-						has_country_flag = FIN_pact_for_continuation_war_flag
-						is_subject = no
-						NOT = {
-							is_in_faction_with = FROM
-							has_subject = FROM
-							has_non_aggression_pact_with = FROM
-							has_guaranteed = FROM
-						}
-					}
-				}
-				FIN = {
-					country_event = AAT_finland_continuation_war.05
-				}
-				ROOT = {
-					country_event = AAT_finland_continuation_war.06
-				}
-				FROM = {
-					country_event = AAT_finland_continuation_war.07
-				}
-				news_event = { id = aat_news.100 hours = 8 random_hours = 4 }
-			}
-			else_if = { #BARBAROSSA INVERTED STARTS (SOV declares on GER) -> CONTINUATION WAR STARTS
-				limit = {
-					ROOT = { original_tag = SOV }
-					FROM = { original_tag = GER }
-					FIN = {
-						country_exists = yes
-						has_country_flag = FIN_pact_for_continuation_war_flag
-						is_subject = no
-						NOT = {
-							is_in_faction_with = ROOT
-							has_subject = ROOT
-							has_non_aggression_pact_with = ROOT
-							has_guaranteed = ROOT
-						}
-					}
-				}
-				FIN = {
-					country_event = AAT_finland_continuation_war.05
-				}
-				ROOT = {
-					country_event = AAT_finland_continuation_war.07
-				}
-				FROM = {
-					country_event = AAT_finland_continuation_war.06
-				}
-				news_event = { id = aat_news.100 hours = 8 random_hours = 4 }
-			}
-			else_if = { #FIN-GER at war, pact is broken
-				limit = {
-					OR = {
-						AND = {
-							ROOT = { original_tag = GER }
-							FROM = { original_tag = FIN }
-						}
-						AND = {
-							ROOT = { original_tag = FIN }
-							FROM = { original_tag = GER }
-						}
-					}
-					OR = {
-						ROOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
-						FROM = { has_country_flag = FIN_pact_for_continuation_war_flag }
-					}
-				}
-				# Send event
-				if = {
-					limit = {
-						ROOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
-					}
-					ROOT = { country_event = AAT_finland_continuation_war.04 }
-				}
-				if = {
-					limit = {
-						FROM = { has_country_flag = FIN_pact_for_continuation_war_flag }
-					}
-					FROM = { country_event = AAT_finland_continuation_war.04 }
-				}
-			}
-		}
+		# #FIN - Secret Pact for Continuation War (with GER)
+		# effect = { #ROOT = attacking side // FROM = defending side
+		# 	if = { #BARBAROSSA STARTS -> CONTINUATION WAR STARTS
+		# 		limit = {
+		# 			ROOT = { original_tag = GER }
+		# 			FROM = { original_tag = SOV }
+		# 			FIN = {
+		# 				exists = yes
+		# 				has_country_flag = FIN_pact_for_continuation_war_flag
+		# 				is_subject = no
+		# 				NOT = {
+		# 					is_in_faction_with = FROM
+		# 					has_subject = FROM
+		# 					has_non_aggression_pact_with = FROM
+		# 					has_guaranteed = FROM
+		# 				}
+		# 			}
+		# 		}
+		# 		FIN = {
+		# 			country_event = AAT_finland_continuation_war.05
+		# 		}
+		# 		ROOT = {
+		# 			country_event = AAT_finland_continuation_war.06
+		# 		}
+		# 		FROM = {
+		# 			country_event = AAT_finland_continuation_war.07
+		# 		}
+		# 		news_event = { id = aat_news.100 hours = 8 random_hours = 4 }
+		# 	}
+		# 	else_if = { #BARBAROSSA INVERTED STARTS (SOV declares on GER) -> CONTINUATION WAR STARTS
+		# 		limit = {
+		# 			ROOT = { original_tag = SOV }
+		# 			FROM = { original_tag = GER }
+		# 			FIN = {
+		# 				country_exists = yes
+		# 				has_country_flag = FIN_pact_for_continuation_war_flag
+		# 				is_subject = no
+		# 				NOT = {
+		# 					is_in_faction_with = ROOT
+		# 					has_subject = ROOT
+		# 					has_non_aggression_pact_with = ROOT
+		# 					has_guaranteed = ROOT
+		# 				}
+		# 			}
+		# 		}
+		# 		FIN = {
+		# 			country_event = AAT_finland_continuation_war.05
+		# 		}
+		# 		ROOT = {
+		# 			country_event = AAT_finland_continuation_war.07
+		# 		}
+		# 		FROM = {
+		# 			country_event = AAT_finland_continuation_war.06
+		# 		}
+		# 		news_event = { id = aat_news.100 hours = 8 random_hours = 4 }
+		# 	}
+		# 	else_if = { #FIN-GER at war, pact is broken
+		# 		limit = {
+		# 			OR = {
+		# 				AND = {
+		# 					ROOT = { original_tag = GER }
+		# 					FROM = { original_tag = FIN }
+		# 				}
+		# 				AND = {
+		# 					ROOT = { original_tag = FIN }
+		# 					FROM = { original_tag = GER }
+		# 				}
+		# 			}
+		# 			OR = {
+		# 				ROOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
+		# 				FROM = { has_country_flag = FIN_pact_for_continuation_war_flag }
+		# 			}
+		# 		}
+		# 		# Send event
+		# 		if = {
+		# 			limit = {
+		# 				ROOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
+		# 			}
+		# 			ROOT = { country_event = AAT_finland_continuation_war.04 }
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				FROM = { has_country_flag = FIN_pact_for_continuation_war_flag }
+		# 			}
+		# 			FROM = { country_event = AAT_finland_continuation_war.04 }
+		# 		}
+		# 	}
+		# }
 	}
 
 	on_peaceconference_ended = {
@@ -1779,33 +1779,33 @@ on_actions = {
 			}
 		}
 
-		#FINLAND - BROKEN CONTINUATION WAR PACT
-		effect = { #ROOT = nation being puppeted, FROM = overlord
-			if = { #Finland or GER puppeted by someone else
-				limit = {
-					has_country_flag = FIN_pact_for_continuation_war_flag
-					FROM = {
-						NOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
-					}
-				}
-				#Send Event to Finland and to GER, regardless of who us ROOT here
-				country_event = AAT_finland_continuation_war.04
-				random_other_country = {
-					limit = {
-						has_country_flag = FIN_pact_for_continuation_war_flag
-					}
-					country_event = AAT_finland_continuation_war.04
-				}
-			}
-			else_if = { #Finland puppeted by GER or viceversa - Silently clear the flags
-				limit = {
-					ROOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
-					FROM = { has_country_flag = FIN_pact_for_continuation_war_flag }
-				}
-				ROOT = { clr_country_flag = FIN_pact_for_continuation_war_flag }
-				FROM = { clr_country_flag = FIN_pact_for_continuation_war_flag }
-			}
-		}
+		# #FINLAND - BROKEN CONTINUATION WAR PACT
+		# effect = { #ROOT = nation being puppeted, FROM = overlord
+		# 	if = { #Finland or GER puppeted by someone else
+		# 		limit = {
+		# 			has_country_flag = FIN_pact_for_continuation_war_flag
+		# 			FROM = {
+		# 				NOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
+		# 			}
+		# 		}
+		# 		#Send Event to Finland and to GER, regardless of who us ROOT here
+		# 		country_event = AAT_finland_continuation_war.04
+		# 		random_other_country = {
+		# 			limit = {
+		# 				has_country_flag = FIN_pact_for_continuation_war_flag
+		# 			}
+		# 			country_event = AAT_finland_continuation_war.04
+		# 		}
+		# 	}
+		# 	else_if = { #Finland puppeted by GER or viceversa - Silently clear the flags
+		# 		limit = {
+		# 			ROOT = { has_country_flag = FIN_pact_for_continuation_war_flag }
+		# 			FROM = { has_country_flag = FIN_pact_for_continuation_war_flag }
+		# 		}
+		# 		ROOT = { clr_country_flag = FIN_pact_for_continuation_war_flag }
+		# 		FROM = { clr_country_flag = FIN_pact_for_continuation_war_flag }
+		# 	}
+		# }
 
 		#FINLAND FINNISH DEMOCRATIC REPUBLIC
 		effect = { #ROOT = nation being puppeted, FROM = overlord
