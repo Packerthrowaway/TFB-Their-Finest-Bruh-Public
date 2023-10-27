@@ -2782,8 +2782,26 @@ focus_tree = {
 		prerequisite = { focus = GER_weserubung }
 		
 		available = {
-			controls_state = 110
-			controls_state = 37
+			AND = {
+				110 = {
+					CONTROLLER = {
+						OR = {
+							tag = GER
+							is_subject_of = GER
+							is_in_faction_with = GER
+						}
+					}
+				}
+				37 = {
+					CONTROLLER = {
+						OR = {
+							tag = GER
+							is_subject_of = GER
+							is_in_faction_with = GER
+						}
+					}
+				}
+			}
 		}
 		
 		x = 0
@@ -2799,6 +2817,7 @@ focus_tree = {
 		}	
 		completion_reward = {
 			SWE = { 
+				give_military_access = GER
 				add_ideas = GER_SWE_trade 
 				add_opinion_modifier = {
 					target = GER
