@@ -1,4 +1,17 @@
-﻿focus_tree = {
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_CHI_INFLATION}
+### search_filters = {FOCUS_FILTER_USA_CONGRESS}
+### search_filters = {FOCUS_FILTER_TFV_AUTONOMY}
+### search_filters = {FOCUS_FILTER_MEX_CHURCH_AUTHORITY}
+### search_filters = {FOCUS_FILTER_MEX_CAUDILLO_REBELLION}
+
+focus_tree = {
 	id = mexico_focus_tree
 	
 	country = {
@@ -37,7 +50,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_stability = 0.05
 		}
@@ -108,16 +121,15 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			if = {
 				limit = {
 					has_completed_focus = MEX_focus_professional_army
 				}
-				create_field_marshal = {
-					name = "Plutarco E. Calles"
-					id = 711
-					gfx = "GFX_portrait_mex_calles_military"
+				add_field_marshal_role = {
+					character = MEX_plutarco_calles
+					legacy_id = 711
 					traits = { harsh_leader } # Incited many rebellions with his heavy hand
 					skill = 4
 					attack_skill = 5
@@ -126,10 +138,9 @@
 					logistics_skill = 4
 				}
 				else = {
-					create_field_marshal = {
-						name = "Plutarco E. Calles"
-						id = 711
-						gfx = "GFX_portrait_mex_calles_military"
+					add_field_marshal_role = {
+						character = MEX_plutarco_calles
+						legacy_id = 711
 						traits = { harsh_leader } # Incited many rebellions with his heavy hand
 						skill = 4
 						attack_skill = 5
@@ -251,7 +262,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			add_political_power = 120
 			custom_effect_tooltip = available_political_advisor
@@ -283,7 +294,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_political_power = 120
 			add_stability = 0.05
@@ -318,7 +329,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER}
 		completion_reward = {
 			MEX_decrease_church_power = yes
 			add_ideas = MEX_ejido_worker_militias
@@ -356,7 +367,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
 			add_popularity = {
 				ideology = communism
@@ -368,53 +379,57 @@
 
 			if = {
 				limit = {
-					has_country_leader = { name = "Lázaro Cárdenas" }
+					has_country_leader = { character = MEX_lazaro_cardenas }
 				}
-				create_country_leader = {
-					name = "Lázaro Cárdenas"
-					desc = "POLITICS_LAZARO_CARDENAS_DESC"
-					picture = "Portrait_Mexico_Lazaro_Cardenas.dds"
-					expire = "1965.1.1"
-					ideology = marxism
-					traits = {
-						protector_of_the_campesinos
+				add_country_leader_role = {
+					character = MEX_lazaro_cardenas
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = marxism
+						traits = {
+							protector_of_the_campesinos
+						}
 					}
+				promote_leader = yes				
 				}
-				create_country_leader = {
-					name = "Plutarco E. Calles"
-					desc = "POLITICS_PLUTARCO_E_CALLES_DESC"
-					picture = GFX_portrait_mex_calles_civil
-					expire = "1965.1.1"
-					ideology = despotism
-					traits = {
-						el_jefe_maximo
+				add_country_leader_role = {
+					character = MEX_plutarco_calles
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							el_jefe_maximo
+						}
 					}
+				promote_leader = yes				
 				}
 			}
 			
 			if = {
 				limit = {
-					has_country_leader = { name = "Vicente Lombardo" }
+					has_country_leader = { character = MEX_vicente_lombardo }
 				}
-				create_country_leader = {
-					name = "Vicente Lombardo"
-					desc = "POLITICS_VICENTE_LOMBARDO_DESC"
-					picture = GFX_portrait_mex_vicente_lombardo
-					expire = "1965.1.1"
-					ideology = marxism
-					traits = {
-						the_dean_of_mexican_marxism
+				add_country_leader_role = {
+					character = MEX_vicente_lombardo
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = marxism
+						traits = {
+							the_dean_of_mexican_marxism
+						}
 					}
+					promote_leader = yes
 				}
-				create_country_leader = {
-					name = "Plutarco E. Calles"
-					desc = "POLITICS_PLUTARCO_E_CALLES_DESC"
-					picture = GFX_portrait_mex_calles_civil
-					expire = "1965.1.1"
-					ideology = despotism
-					traits = {
-						el_jefe_maximo
+				add_country_leader_role = {
+					character = MEX_plutarco_calles
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							el_jefe_maximo
+						}
 					}
+					promote_leader = yes
 				}
 			}
 			
@@ -461,7 +476,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -510,7 +525,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -559,7 +574,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -601,7 +616,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_MEX_CAUDILLO_REBELLION}
 		completion_reward = {
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = MEX_luis_montes_de_oca
@@ -639,7 +654,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			add_ideas = MEX_strike_breaking
 		}
@@ -675,7 +690,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			277 = {
 				add_building_construction = {
@@ -733,7 +748,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -764,7 +779,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_MEX_CAUDILLO_REBELLION}
 		completion_reward = {
 			add_stability = -0.05
 			add_political_power = 200
@@ -797,7 +812,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_MEX_CAUDILLO_REBELLION}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -841,7 +856,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY FOCUS_FILTER_MEX_CAUDILLO_REBELLION}
 		completion_reward = {
 			add_ideas = MEX_caudillo_private_armies
 			MEX_decrease_cedillo_tension = yes
@@ -876,17 +891,16 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MEX_CAUDILLO_REBELLION}
 		completion_reward = {
 			custom_effect_tooltip = tooltip_mexico_cedillo_will_be_placated
 			if = {
 				limit = {
 					has_completed_focus = MEX_focus_professional_army
 				}
-				create_field_marshal = {
-					name = "Saturnino Cedillo Martínez"
-					id = 708
-					gfx = "GFX_portrait_mex_saturnino_cedillo"
+				add_field_marshal_role = {
+					character = MEX_saturnino_cedillo
+					legacy_id = 708
 					traits = { trait_reckless trickster} # Futile rebellion
 					skill = 3
 					attack_skill = 4
@@ -895,10 +909,9 @@
 					logistics_skill = 3
 				}
 				else = {
-					create_field_marshal = {
-						name = "Saturnino Cedillo Martínez"
-						id = 708
-						gfx = "GFX_portrait_mex_saturnino_cedillo"
+					add_field_marshal_role = {
+						character = MEX_saturnino_cedillo
+						legacy_id = 708
 						traits = { trait_reckless trickster } # Futile rebellion
 						skill = 3
 						attack_skill = 4
@@ -939,7 +952,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -1005,7 +1018,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			USA = {
 				remove_resource_rights = 480
@@ -1051,7 +1064,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -1148,7 +1161,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-		
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			if = {
 				limit = {
@@ -1367,7 +1380,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			480 = {
 				add_extra_state_shared_building_slots = 2
@@ -1448,7 +1461,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			GER = {
 				country_event = {
@@ -1458,7 +1471,7 @@
 			}
 			custom_effect_tooltip = if_they_accept
 			effect_tooltip = {
-				GER = {
+				GER = { 
 					if = {
 						limit = {
 							has_dlc = "Death or Dishonor"
@@ -1530,7 +1543,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			if = {
 				limit = {
@@ -1633,7 +1646,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
 			add_war_support = 0.05
 		}
@@ -1670,6 +1683,7 @@
 		bypass = {
 			OR = {
 				is_in_faction = yes
+				SOV = { NOT = { has_government = communism } }
 				SOV = {
 					exists = no
 				}
@@ -1682,7 +1696,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			if = {
 				limit = {
@@ -1743,7 +1757,7 @@
 			}
 		}
 	}
-
+	
 	focus = {
 		id = MEX_focus_interior_defence_plan # hurr build the wall. how's that swampy drainy stuff workin out for ya?
 		icon = GFX_goal_generic_construct_military
@@ -1805,7 +1819,7 @@
 			}
 		}
 	}
-	
+
 	focus = {
 		id = MEX_focus_compensation
 		icon = GFX_focus_generic_concessions
@@ -1840,7 +1854,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-		
+		search_filters = {FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_stability = 0.05
 			every_country = {
@@ -1910,7 +1924,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			if = {
 				limit = {
@@ -2002,7 +2016,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			set_rule = { can_send_volunteers = yes }
 			add_tech_bonus = {
@@ -2057,7 +2071,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			set_rule = { can_send_volunteers = yes }
 			add_ideas = MEX_international_peacekeepers
@@ -2089,18 +2103,17 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_stability = 0.1
 			if = {
 				limit = {
 					has_completed_focus = MEX_focus_professional_army
 				}
-				create_corps_commander = {
-					name = "José Gonzalo Escobar"
-					id = 709
-					gfx = "GFX_portrait_mex_jose_gonzalo_escobar"
-					traits = { cavalry_leader  } # Cavalry commander
+				add_corps_commander_role = {
+					character = MEX_jose_gonzalo_escobar
+					legacy_id = 709
+					traits = { cavalry_officer } # Cavalry commander
 					skill = 3
 					attack_skill = 4
 					defense_skill = 2
@@ -2108,11 +2121,10 @@
 					logistics_skill = 3
 				}
 				else = {
-					create_corps_commander = {
-						name = "José Gonzalo Escobar"
-						id = 709
-						gfx = "GFX_portrait_mex_jose_gonzalo_escobar"
-						traits = { cavalry_leader  } # Cavalry commander
+					add_corps_commander_role = {
+						character = MEX_jose_gonzalo_escobar
+						legacy_id = 709
+						traits = { cavalry_officer } # Cavalry commander
 						skill = 3
 						attack_skill = 4
 						defense_skill = 2
@@ -2157,7 +2169,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_popularity = {
 				ideology = democratic
@@ -2168,27 +2180,28 @@
 			
 			if = {
 				limit = {
-					has_country_leader = { name = "Lázaro Cárdenas" }
+					has_country_leader = { character = MEX_lazaro_cardenas }
 				}
-				create_country_leader = {
-					name = "Lázaro Cárdenas"
-					desc = "POLITICS_LAZARO_CARDENAS_DESC"
-					picture = "Portrait_Mexico_Lazaro_Cardenas.dds"
-					expire = "1965.1.1"
-					ideology = socialism
-					traits = {
-						refounder_of_mexico
+				add_country_leader_role = {
+					character = MEX_lazaro_cardenas
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = socialism
+						traits = {
+							refounder_of_mexico
+						}	
 					}
+					promote_leader = yes				
 				}
-				create_country_leader = {
-					name = "Plutarco E. Calles"
-					desc = "POLITICS_PLUTARCO_E_CALLES_DESC"
-					picture = GFX_portrait_mex_calles_civil
-					expire = "1965.1.1"
-					ideology = despotism
-					traits = {
-						el_jefe_maximo
+				add_country_leader_role = {
+					character = MEX_plutarco_calles
+					country_leader = {
+						ideology = despotism
+						traits = {
+							el_jefe_maximo
+						}
 					}
+					promote_leader = yes				
 				}
 			}
 			if = {
@@ -2235,7 +2248,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
 			custom_effect_tooltip = tooltip_mexico_cedillo_will_be_neutralised
 			add_war_support = 0.05
@@ -2268,7 +2281,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_stability = 0.05
 		}
@@ -2300,7 +2313,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_MEX_CHURCH_AUTHORITY}
 		completion_reward = {
 			add_stability = 0.05
 			MEX_increase_church_power = yes
@@ -2332,7 +2345,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			add_political_power = 160
 		}
@@ -2361,7 +2374,7 @@
 		available = {
 			NOT = {
 				has_country_leader = {
-					name = "Salvador Abascal"
+					character = MEX_salvador_abascal
 					ruling_only = yes
 				}
 			}					
@@ -2374,7 +2387,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_INDUSTRY FOCUS_FILTER_MEX_CHURCH_AUTHORITY}
 		completion_reward = {
 			add_war_support = 0.05
 			MEX_decrease_church_power = yes
@@ -2415,10 +2428,9 @@
 				limit = {
 					has_completed_focus = MEX_focus_professional_army
 				}
-				create_corps_commander = {
-					name = "Pablo González Garza"
-					id = 710
-					#gfx = "GFX_portrait_MEX_pablo_gonzalez"
+				add_corps_commander_role = {
+					character = MEX_pablo_gonzalez
+					legacy_id = 710
 					traits = { harsh_leader } # Prince of terror, led assassination of Pancho Villa
 					skill = 3
 					attack_skill = 3
@@ -2427,10 +2439,9 @@
 					logistics_skill = 2
 				}
 				else = {
-					create_corps_commander = {
-						name = "Pablo González Garza"
-						id = 710
-						#gfx = "GFX_portrait_MEX_pablo_gonzalez"
+					add_corps_commander_role = {
+						character = MEX_pablo_gonzalez
+						legacy_id = 710
 						traits = { harsh_leader } # Prince of terror, led assassination of Pancho Villa
 						skill = 3
 						attack_skill = 3
@@ -2472,7 +2483,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY FOCUS_FILTER_MEX_CHURCH_AUTHORITY}
 		completion_reward = {
 			add_research_slot = 1
 			MEX_decrease_church_power = yes
@@ -2505,7 +2516,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_tech_bonus = {
 				name = electronics
@@ -2541,7 +2552,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -2585,7 +2596,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			if = {
 				limit = {
@@ -2650,7 +2661,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			custom_effect_tooltip = available_industrial_concern
 			show_ideas_tooltip = MEX_escuela_de_ingeneria_electrica
@@ -2692,7 +2703,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_research_slot = 1
 			add_tech_bonus = {
@@ -2814,7 +2825,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_MEX_CHURCH_AUTHORITY}
 		completion_reward = {
 			MEX_increase_church_power = yes
 			add_ideas = MEX_knights_of_columbus
@@ -2853,7 +2864,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_popularity = {
 				ideology = democratic
@@ -2873,15 +2884,16 @@
 					elections_allowed = yes
 				}
 			}
-			create_country_leader = {
-				name = "Luis María Martínez"
-				desc = "POLITICS_LUIS_MARIA_MARTINEZ_DESC"
-				picture = "gfx/leaders/MEX/portrait_MEX_Luis_Maria_Martinez.dds"
-				expire = "1965.1.1"
-				ideology = socialism
-				traits = {
-					primate_of_mexico
+			add_country_leader_role = {
+				character = MEX_luis_maria_martinez
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+						primate_of_mexico
+					}
 				}
+				promote_leader = yes
 			}
 			
 			set_party_name = { ideology = democratic name = MEX_democratic_party_national_action_party_short long_name = MEX_democratic_party_national_action_party_long }
@@ -2915,7 +2927,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = MEX_knights_of_columbus
@@ -2954,7 +2966,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MEX_CHURCH_AUTHORITY FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			MEX_increase_church_power = yes
 			add_ideas = MEX_legion_of_christ
@@ -2996,7 +3008,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
 			add_popularity = {
 				ideology = fascism
@@ -3046,7 +3058,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = MEX_legion_of_christ
@@ -3080,7 +3092,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -3111,7 +3123,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -3158,9 +3170,8 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			create_corps_commander = {
-				name = "Jesús Degollado Guízar"
-				gfx = GFX_portrait_mex_jesus_degollado_guizar
+			add_corps_commander_role = {
+				character = MEX_jesus_degollado_guizar
 				traits = { trait_reckless infantry_officer }
 				skill = 3
 				attack_skill = 2
@@ -3281,7 +3292,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MANPOWER}
 		completion_reward = {
 			add_ideas = synarchist_youth
 		}
@@ -3313,7 +3324,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = MEX_politicised_army
@@ -3348,7 +3359,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -3393,7 +3404,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MEX_CHURCH_AUTHORITY FOCUS_FILTER_STABILITY FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			MEX_increase_church_power = yes
 			add_ideas = MEX_womens_suffrage
@@ -3431,7 +3442,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			army_experience = 5
 			set_rule = {
@@ -3480,7 +3491,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			remove_ideas = MEX_politicised_army_2
 			add_doctrine_cost_reduction = {
@@ -3519,7 +3530,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			army_experience = 15
 			every_army_leader = {
@@ -3599,7 +3610,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = MEX_revolutionary_army
@@ -3657,7 +3668,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
 			add_popularity = {
 				ideology = fascism
@@ -3680,15 +3691,16 @@
 				limit = {
 					has_completed_focus = MEX_focus_jefe_maximo
 				}
-				create_country_leader = {
-					name = "Plutarco E. Calles"
-					desc = "POLITICS_PLUTARCO_E_CALLES_DESC"
-					picture = "GFX_portrait_mex_calles_civil"
-					expire = "1965.1.1"
-					ideology = fascism_ideology #changed to "regular fascism" to differenciate from Abascal
-					traits = {
-						el_jefe_maximo
+				add_country_leader_role = {
+					character = MEX_plutarco_calles
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = fascism_ideology #changed to "regular fascism" to differenciate from Abascal
+						traits = {
+							el_jefe_maximo
+						}
 					}
+					promote_leader = yes
 				}
 				remove_ideas = MEX_plutarco_calles
 			}
@@ -3696,15 +3708,16 @@
 				limit = {
 					has_completed_focus = MEX_focus_support_general_cedillo
 				}
-				create_country_leader = {
-					name = "Saturnino Cedillo"
-					desc = "POLITICS_SATURNINO_CEDILLO_DESC"
-					picture = "GFX_portrait_mex_saturnino_cedillo"
-					expire = "1965.1.1"
-					ideology = fascism_ideology
-					traits = {
-						strongman_of_san_luis_potosi
+				add_country_leader_role = {
+					character = MEX_saturnino_cedillo
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = fascism_ideology
+						traits = {
+							strongman_of_san_luis_potosi
+						}
 					}
+					promote_leader = yes
 				}
 			}
 			set_party_name = { ideology = neutrality name = MEX_democratic_party_institutional_revolutionary_party_short long_name = MEX_democratic_party_institutional_revolutionary_party_long }
@@ -3738,7 +3751,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MEX_CHURCH_AUTHORITY FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			MEX_decrease_church_power = yes
 			swap_ideas = {
@@ -3779,7 +3792,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
 			add_popularity = {
 				ideology = communism
@@ -3795,19 +3808,20 @@
 					NOT = { has_global_flag = flag_trotsky_dead }
 					NOT = {
 						SOV = {
-							has_country_leader = { ruling_only = yes name = "Leon Trotsky" }
+							has_country_leader = { ruling_only = yes character = MEX_leon_trotsky }
 						}
 					}
 				}
-				create_country_leader = {
-					name = "Leon Trotsky"
-					desc = "POLITICS_LEON_TROTSKY_DESC"
-					picture = "gfx/leaders/SOV/Portrait_Leon_Trotsky.dds"
-					expire = "1965.1.1"
-					ideology = leninism
-					traits = {
-						exiled_revolutionary
+				add_country_leader_role = {
+					character = MEX_leon_trotsky
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = leninism
+						traits = {
+							exiled_revolutionary
+						}
 					}
+					promote_leader = yes
 				}
 				add_ai_strategy = {
 					type = antagonize
@@ -4004,7 +4018,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			if = {
 				limit = {
@@ -4079,7 +4093,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_STABILITY FOCUS_FILTER_MEX_CHURCH_AUTHORITY}
 		completion_reward = {
 			unlock_decision_tooltip = MEX_decision_support_spanish_fascists
 			add_popularity = {
@@ -4166,7 +4180,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MEX_CHURCH_AUTHORITY FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			unlock_decision_tooltip = MEX_decision_support_spanish_loyalists
 			
@@ -4250,7 +4264,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MEX_CHURCH_AUTHORITY FOCUS_FILTER_STABILITY}
 		completion_reward = {			
 			set_rule = { can_create_factions = yes }
 			
@@ -4361,7 +4375,7 @@
 		cancel_if_invalid = no
 		continue_if_invalid = yes
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
 			add_stability = 0.05
 			add_war_support = 0.05
@@ -4477,7 +4491,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			add_stability = 0.05
 			add_war_support = 0.05
@@ -4523,7 +4537,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
 			
@@ -4611,15 +4625,15 @@
 			is_subject = no
 			OR = {
 				has_country_leader = {
-					name = "Leon Trotsky"
+					character = MEX_leon_trotsky
 					ruling_only = yes
 				}
 				has_country_leader = {
-					name = "Hernán Laborde"
+					character = MEX_hernan_laborde
 					ruling_only = yes
 				}
 				has_country_leader = {
-					name = "Valentín Campa"
+					character = MEX_valentin_campa
 					ruling_only = yes
 				}							
 			}
@@ -4632,7 +4646,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_ideas = MEX_idea_vanguard_of_the_4th_international
 			
@@ -4652,6 +4666,7 @@
 				create_wargoal = {
 					type = puppet_wargoal_focus
 					target = SOV
+					expire = 0
 				}
 			}
 			add_tech_bonus = {
@@ -4737,7 +4752,7 @@
 					original_tag = HOL
 					OR = {
 						AND = {
-							owns_state = 309
+							owns_state = 309 #Suriname 
 							has_full_control_of_state = 309
 						}
 						AND = {
@@ -4838,10 +4853,25 @@
 				NOT = {
 					SOV = {
 						has_country_leader = {
-							name = "Joseph Stalin"
+							character = SOV_iosif_stalin
 							ruling_only = yes
 						}
+						
 					}
+				}
+				IF = { 
+					limit = { 
+						SOV = { 
+							has_government = communism 
+							NOT = { 
+								has_country_leader = {
+									character = SOV_iosif_stalin
+									ruling_only = yes
+								}
+							} 
+						}
+					}
+					SOV = { NOT = { has_country_leader_ideology = stalinism } }
 				}
 			}
 		}
@@ -4904,7 +4934,6 @@
 				has_war_with = USA
 			}
 		}
-		
 
 		available = {
 			
@@ -5007,6 +5036,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = GUA
+                    expire = 0
                 }
             }
             if = {
@@ -5024,6 +5054,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = HON
+                    expire = 0
                 }
             }
             if = {
@@ -5041,6 +5072,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = ELS
+                    expire = 0
                 }
             }
 		}
@@ -5109,6 +5141,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = NIC
+                    expire = 0
                 }
             }
             if = {
@@ -5126,6 +5159,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = COS
+                    expire = 0
                 }
             }
             if = {
@@ -5143,6 +5177,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = PAN
+                    expire = 0
                 }
             }
 		}
@@ -5210,6 +5245,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = CUB
+                    expire = 0
                 }
             }
             if = {
@@ -5227,6 +5263,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = DOM
+                    expire = 0
                 }
             }
             if = {
@@ -5244,6 +5281,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = HAI
+                    expire = 0
                 }
             }
             if = {
@@ -5261,6 +5299,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = BAH
+                    expire = 0
                 }
             }
             if = {
@@ -5278,6 +5317,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = BAS
+                    expire = 0
                 }
             }
             if = {
@@ -5295,6 +5335,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = JAM
+                    expire = 0
                 }
             }
             if = {
@@ -5312,6 +5353,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = PUE
+                    expire = 0
                 }
             }
             if = {
@@ -5329,6 +5371,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = CRC
+                    expire = 0
                 }
             }
             if = {
@@ -5346,6 +5389,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = TRI
+                    expire = 0
                 }
             }
             if = {
@@ -5363,6 +5407,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = GDL
+                    expire = 0
                 }
             }
 		}
@@ -5475,6 +5520,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = COL
+                    expire = 0
                 }
             }
             if = {
@@ -5492,6 +5538,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = ECU
+                    expire = 0
                 }
             }
             if = {
@@ -5509,6 +5556,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = VEN
+                    expire = 0
                 }
             } 
 		}
@@ -5579,6 +5627,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = ARG
+                    expire = 0
                 }
             }
             if = {
@@ -5596,6 +5645,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = CHL
+                    expire = 0
                 }
             }
             if = {
@@ -5613,6 +5663,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = URG
+                    expire = 0
                 }
             }
             if = {
@@ -5630,6 +5681,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = PAR
+                    expire = 0
                 }
             }
             if = {
@@ -5647,6 +5699,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = BOL
+                    expire = 0
                 }
             }
             if = {
@@ -5664,6 +5717,7 @@
             	create_wargoal = {
                     type = annex_everything
                     target = PRU
+                    expire = 0
                 }
             }
 		}
@@ -5861,6 +5915,7 @@
 				create_wargoal = {
 					type = take_state_focus
 					target = USA
+					expire = 0
 					generator = { 375 376 377 378 379 380 382 }
 				}
 			}
@@ -5873,6 +5928,7 @@
 					create_wargoal = {
 						type = take_state_focus
 						target = PREV
+						expire = 0
 						generator = { 375 376 377 378 379 380 382 }
 					}
 				}
@@ -6043,7 +6099,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_tech_bonus = {
 				name = tooltip_military_budget_review
@@ -6240,6 +6296,7 @@
 				custom_effect_tooltip = available_designer
 				show_ideas_tooltip = MEX_astimar_pacific
 			}
+			
 		}
 	}
 
@@ -6288,7 +6345,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_ideas = MEX_brown_water_navy
 			add_doctrine_cost_reduction = {
@@ -6348,7 +6405,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = MEX_brown_water_navy
@@ -6406,7 +6463,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = MEX_brown_water_navy
@@ -6458,7 +6515,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			army_experience = 30
 			add_doctrine_cost_reduction = {
@@ -6502,7 +6559,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_tech_bonus = {
 				name = infantry_weapons
@@ -6549,7 +6606,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_tech_bonus = {
 				name = armor
@@ -6604,7 +6661,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_tech_bonus = {
 				name = air_equipment
@@ -6632,6 +6689,7 @@
 				custom_effect_tooltip = available_designer
 				show_ideas_tooltip = MEX_tnca
 			}
+			
 		}
 	}
 	
@@ -6665,7 +6723,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_tech_bonus = {
 				name = air_equipment
@@ -6718,7 +6776,7 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			every_state = {
 				limit = {

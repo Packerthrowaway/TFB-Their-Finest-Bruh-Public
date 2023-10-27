@@ -501,7 +501,7 @@ focus_tree = {
 							#log = "deleting units in [THIS.GetName]"
 							PREV = {
 								delete_unit = {
-									division_template = "Jalkaväkidivisioona" # optional - can be filtered a specific template 
+									division_template = "Jalkavï¿½kidivisioona" # optional - can be filtered a specific template 
 									state = PREV # optional - can be filtered by a given state
 									disband = no # optional - default is no. if set to yes the game will refund equipment/manpower
 								}
@@ -563,7 +563,7 @@ focus_tree = {
 							NOT = {
 								state = 722 #PETSAMO
 								state = 147 #SALLA
-								state = 145 #ÅLAND
+								state = 145 #ï¿½LAND
 							}
 						}
 						create_unit = {
@@ -1508,14 +1508,14 @@ focus_tree = {
 				}
 			}
 
-			# ÅLAND ISLANDS (Only if Militarized)
+			# ï¿½LAND ISLANDS (Only if Militarized)
 			if = {
 				limit = {
 					145 = {
 						is_demilitarized_zone = no
 					}
 				}
-				145 = { #ÅLAND
+				145 = { #ï¿½LAND
 					add_building_construction = { #Coastal Bunker
 						type = coastal_bunker
 						level = 4
@@ -4267,7 +4267,7 @@ focus_tree = {
 			count_triggers = {
 				amount = 6
 				controls_state = 666 #NORRBOTTEN
-				controls_state = 918 #VÄSTERBOTTEN
+				controls_state = 918 #Vï¿½STERBOTTEN
 				controls_state = 144 #NORDLAND
 				controls_state = 924 #TROMS
 				controls_state = 925 #FINNMARK
@@ -4277,7 +4277,7 @@ focus_tree = {
 				controls_state = 812 #HARJU
 				controls_state = 813 #VIRUMAA
 				controls_state = 811 #SAAREMAA
-				controls_state = 13 #PÄRNU
+				controls_state = 13 #Pï¿½RNU
 				controls_state = 191 #TARTU
 			}
 		}
@@ -4412,7 +4412,7 @@ focus_tree = {
 		bypass = {
 			is_subject = no
 			controls_state = 666 #NORRBOTTEN
-			controls_state = 918 #VÄSTERBOTTEN
+			controls_state = 918 #Vï¿½STERBOTTEN
 			controls_state = 144 #NORDLAND
 			controls_state = 924 #TROMS
 			controls_state = 925 #FINNMARK
@@ -4434,7 +4434,7 @@ focus_tree = {
 					}
 				}
 				
-				#VÄSTERBOTTEN
+				#Vï¿½STERBOTTEN
 				918 = {
 					controller = {
 						if = {
@@ -5560,6 +5560,10 @@ focus_tree = {
 			NOT = { has_government = communism }
 		}
 
+		ai_will_do = {
+			factor = 100
+		}
+
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
@@ -6115,6 +6119,10 @@ focus_tree = {
 					NOT = { has_country_flag = FIN_winter_war_ongoing_flag }
 				}
 			}
+		}
+
+		ai_will_do = {
+			factor = 100
 		}
 
 		available = {
@@ -6881,7 +6889,7 @@ focus_tree = {
 						add_divisional_commander_xp = 2300
 						add_history_entry = {
 							key = FIN_parmis_devils
-							subject = "Pärmi's Devils"
+							subject = "Pï¿½rmi's Devils"
 							allow = no #(allow medal award)
 						}
 					}
@@ -9425,7 +9433,7 @@ focus_tree = {
 						engineer = { x = 0 y = 0 }
 						recon = { x = 0 y = 1 }
 						#artillery = { x = 0 y = 2 }
-						anti_air = { x = 0 y = 3 }
+						anti_air = { x = 0 y = 2 }
 					}
 				}
 			}
@@ -9760,12 +9768,12 @@ focus_tree = {
 				path = { 3083 9194 11211 6108 11105 }
 			}
 
-			#HÄME
+			#Hï¿½ME
 			if = {
 				limit = {
 					has_full_control_of_state = 927
 				}
-				927 = { #HÄME
+				927 = { #Hï¿½ME
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = infrastructure
@@ -9782,7 +9790,7 @@ focus_tree = {
 					}
 				}
 
-				# Helsinki - Tampere - Hämeenlinna
+				# Helsinki - Tampere - Hï¿½meenlinna
 				build_railway = {
 					path = { 11105 9129 11172 3025 3137 9167 }
 				}
@@ -9814,7 +9822,7 @@ focus_tree = {
 						has_full_control_of_state = 930
 						has_full_control_of_state = 927
 					}
-					# Helsinki - Hämeenlinna - Lahti - Kouvola - Kotka
+					# Helsinki - Hï¿½meenlinna - Lahti - Kouvola - Kotka
 					build_railway = {
 						path = { 11105 9129 6144 9167 67 9073 9183 3061 }
 					}
@@ -9951,14 +9959,14 @@ focus_tree = {
 		bypass = {
 			has_civil_war = no
 			NOT = {
-				145 = { #ÅLAND
+				145 = { #ï¿½LAND
 					is_owned_by = ROOT
 				}
 			}
 		}
 
 		available = {
-			145 = { #ÅLAND
+			145 = { #ï¿½LAND
 				is_owned_and_controlled_by = ROOT
 			}
 		}
@@ -10209,7 +10217,7 @@ focus_tree = {
 			}
 
 			random_core_state = {
-				prioritize = { 927 } #HÄME (Tampere)
+				prioritize = { 927 } #Hï¿½ME (Tampere)
 				limit = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
@@ -10260,7 +10268,7 @@ focus_tree = {
 		relative_position_id = FIN_industrial_development
 		cost = 10
 		available = {
-			has_full_control_of_state = 927 #HÄME (Tampere - Nokia)
+			has_full_control_of_state = 927 #Hï¿½ME (Tampere - Nokia)
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
@@ -10684,7 +10692,7 @@ focus_tree = {
 			}
 
 			random_core_state = {
-				prioritize = { 149 } #VAASA (Tikkakoski - Jyväskylä)
+				prioritize = { 149 } #VAASA (Tikkakoski - Jyvï¿½skylï¿½)
 				limit = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
@@ -10766,7 +10774,7 @@ focus_tree = {
 			}
 
 			random_core_state = {
-				prioritize = { 149 } #VAASA (Tikkakoski - Jyväskylä)
+				prioritize = { 149 } #VAASA (Tikkakoski - Jyvï¿½skylï¿½)
 				limit = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
@@ -10907,7 +10915,7 @@ focus_tree = {
 			}
 
 			random_core_state = {
-				prioritize = { 149 } #VAASA (Valtion Tykkitehdas premises in Jyväskylä)
+				prioritize = { 149 } #VAASA (Valtion Tykkitehdas premises in Jyvï¿½skylï¿½)
 				limit = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
@@ -10946,7 +10954,7 @@ focus_tree = {
 
 		available = {
 			threat > 0.7
-			145 = { #ÅLAND
+			145 = { #ï¿½LAND
 				is_demilitarized_zone = yes
 			}
 		}
@@ -10958,7 +10966,7 @@ focus_tree = {
 			army_experience = 15
 			navy_experience = 15
 
-			145 = { #ÅLAND
+			145 = { #ï¿½LAND
 				set_demilitarized_zone = no
 				if = {
 					limit = {
@@ -11033,7 +11041,7 @@ focus_tree = {
 
 			custom_effect_tooltip = FIN_modify_finnish_army_ns_intro
 			add_to_variable = { FIN_finnish_army_experience_gain_army_factor = 0.05 tooltip = experience_gain_army_factor_tt }
-			add_to_variable = { FIN_finnish_army_dig_in_speed_factor = 0.1 tooltip = dig_in_speed_factor_tt }
+			add_to_variable = { FIN_finnish_army_dig_in_speed_factor = 0.05 tooltip = dig_in_speed_factor_tt }
 			add_to_variable = { FIN_finnish_army_training_time_factor = -0.1 tooltip = training_time_factor_tt }
 			add_to_variable = { FIN_finnish_army_mobilization_speed = 0.1 tooltip = mobilization_speed_tt }
 			add_to_variable = { FIN_finnish_army_conscription_factor = 0.1 tooltip = conscription_factor_tt }
@@ -11057,12 +11065,12 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = FIN_modify_finnish_army_ns_intro
 			add_to_variable = { FIN_finnish_army_acclimatization_cold_climate_gain_factor = 0.1 tooltip = acclimatization_cold_climate_gain_factor_tt }
-			add_to_variable = { FIN_finnish_army_cas_damage_reduction = 0.15 tooltip = cas_damage_reduction_tt }
+			add_to_variable = { FIN_finnish_army_cas_damage_reduction = 0.1 tooltip = cas_damage_reduction_tt }
 			add_to_variable = { FIN_finnish_army_winter_attrition_factor = -0.15 tooltip = winter_attrition_factor_tt }
 
 			army_experience = 15
 
-			#TODO_Manu: Nice to have: Simo Häyä event chain starting here?
+			#TODO_Manu: Nice to have: Simo Hï¿½yï¿½ event chain starting here?
 		}
 	}
 	
@@ -11086,8 +11094,8 @@ focus_tree = {
 			set_technology = { bicycle_infantry = 1 popup = no }
 
 			custom_effect_tooltip = FIN_modify_finnish_army_ns_intro
-			add_to_variable = { FIN_finnish_army_army_org_factor = 0.1 tooltip = army_org_factor_tt }
-			add_to_variable = { FIN_finnish_army_special_forces_cap = 0.15 tooltip = special_forces_cap_tt }
+			add_to_variable = { FIN_finnish_army_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+			add_to_variable = { FIN_finnish_army_special_forces_cap = 0.1 tooltip = special_forces_cap_tt }
 			add_to_variable = { FIN_finnish_army_breakthrough_factor = 0.05 tooltip = breakthrough_factor_tt }
 			add_to_variable = { FIN_finnish_army_special_forces_out_of_supply_factor = -0.1 tooltip = special_forces_out_of_supply_factor_tt }
 
@@ -11244,7 +11252,7 @@ focus_tree = {
 			custom_effect_tooltip = FIN_modify_finnish_army_ns_intro
 			add_to_variable = { FIN_finnish_army_acclimatization_cold_climate_gain_factor = 0.15 tooltip = acclimatization_cold_climate_gain_factor_tt }
 			add_to_variable = { FIN_finnish_army_winter_attrition_factor = -0.15 tooltip = winter_attrition_factor_tt }
-			add_to_variable = { FIN_finnish_army_supply_combat_penalties_on_core_factor = -0.15 tooltip = supply_combat_penalties_on_core_factor_tt }
+			add_to_variable = { FIN_finnish_army_supply_combat_penalties_on_core_factor = -0.1 tooltip = supply_combat_penalties_on_core_factor_tt }
 
 			custom_effect_tooltip = FIN_winter_warfare_battalion_tt
 
@@ -11276,7 +11284,7 @@ focus_tree = {
 			army_experience = 25
 
 			custom_effect_tooltip = FIN_modify_finnish_army_ns_intro
-			add_to_variable = { FIN_finnish_army_org_loss_when_moving = -0.15 tooltip = org_loss_when_moving_tt }
+			add_to_variable = { FIN_finnish_army_org_loss_when_moving = -0.1 tooltip = org_loss_when_moving_tt }
 			add_to_variable = { FIN_finnish_army_recon_factor_while_entrenched = 0.1 tooltip = recon_factor_while_entrenched_tt }
 			add_to_variable = { FIN_finnish_army_army_attack_speed_factor = 0.1 tooltip = army_attack_speed_factor_tt }
 
@@ -12009,7 +12017,7 @@ focus_tree = {
 					}
 				}
 				# create_equipment_variant = {
-				# 	name = "Hyökkäysvaunu"
+				# 	name = "Hyï¿½kkï¿½ysvaunu"
 				# 	type = super_heavy_tank_chassis_1
 				# 	parent_version = 0
 				# 	modules = {
@@ -12034,7 +12042,7 @@ focus_tree = {
 				# 	equipment = {
 				# 		type = super_heavy_tank_chassis_1
 				# 		creator = "FIN"
-				# 		version_name = "Hyökkäysvaunu"
+				# 		version_name = "Hyï¿½kkï¿½ysvaunu"
 				# 	}
 				# 	requested_factories = 1
 				# 	progress = 0.6
@@ -12161,7 +12169,7 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = FIN_modify_finnish_army_ns_intro
-			add_to_variable = { FIN_finnish_army_max_dig_in_factor = 0.1 tooltip = max_dig_in_factor_tt }
+			add_to_variable = { FIN_finnish_army_max_dig_in_factor = 0.05 tooltip = max_dig_in_factor_tt }
 			add_to_variable = { FIN_finnish_army_dig_in_speed_factor = 0.05 tooltip = dig_in_speed_factor_tt }
 
 			add_timed_idea = {
@@ -12304,7 +12312,7 @@ focus_tree = {
 			}
 
 			random_core_state = {
-				prioritize = { 111 } #UUSIMAA (Helsinki) (Valtion Lentokonetehdas premises in Jyväskylä)
+				prioritize = { 111 } #UUSIMAA (Helsinki) (Valtion Lentokonetehdas premises in Jyvï¿½skylï¿½)
 				limit = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
@@ -13352,7 +13360,7 @@ focus_tree = {
 						has_dlc = "Arms Against Tyranny"
 					}
 					create_equipment_variant = {
-						name = "VL Pyörremyrsky"
+						name = "VL Pyï¿½rremyrsky"
 						type = small_plane_airframe_4
 						parent_version = 0
 						modules = {
@@ -13416,7 +13424,7 @@ focus_tree = {
 				}
 				else = {
 					create_equipment_variant = {
-						name = "VL Pyörremyrsky"
+						name = "VL Pyï¿½rremyrsky"
 						type = small_plane_airframe_4
 						parent_version = 0
 						modules = {
@@ -14155,7 +14163,7 @@ focus_tree = {
 			}
 
 			division_template = {
-				name = "Rannikkojääkäritdivisioona"
+				name = "Rannikkojï¿½ï¿½kï¿½ritdivisioona"
 				template_counter = 33
 				regiments = {
 					marine = { x = 0 y = 0 }
@@ -14174,7 +14182,7 @@ focus_tree = {
 
 			capital_scope = {
 				create_unit = {
-					division = "division_template = \"Rannikkojääkäritdivisioona\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
+					division = "division_template = \"Rannikkojï¿½ï¿½kï¿½ritdivisioona\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
 					owner = ROOT
 					count = 1
 				}
@@ -14921,7 +14929,7 @@ focus_tree = {
 				limit = {
 					has_full_control_of_state = 145
 				}
-				#ÅLAND
+				#ï¿½LAND
 				145 = {
 					add_building_construction = {
 						type = naval_base
