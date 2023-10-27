@@ -19,7 +19,10 @@ ROM_be_nice_to_hitler = {
 		original_tag = ROM
 	}
 	enable = {
-		has_completed_focus = ROM_trade_treaty_with_germany
+		OR = {
+			has_completed_focus = ROM_trade_treaty_with_germany
+			date < 1939.1.1
+		}
 	}
 	abort={
 		is_in_faction = yes
