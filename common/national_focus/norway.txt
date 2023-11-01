@@ -371,7 +371,12 @@ focus_tree = {
 		}
 		cost = 5
 		available = {
-			NOR_lev_trotsky = { is_hired_as_advisor = no }
+			if = {
+				limit = {
+					has_character = NOR_lev_trotsky
+				}
+				NOR_lev_trotsky = { is_hired_as_advisor = no }
+			}
 			
 		}
 
@@ -1165,6 +1170,7 @@ focus_tree = {
 				popularity = 0.2
 			}
 			add_political_power = 100
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -1228,7 +1234,7 @@ focus_tree = {
 		available = {
 		}
 
-		search_filters = {}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			add_political_power = 75
@@ -1264,7 +1270,7 @@ focus_tree = {
 		available = {
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			every_owned_state = {
@@ -1381,6 +1387,29 @@ focus_tree = {
 
 		completion_reward = {
 			if = {
+				limit = { 
+					is_in_faction = no 
+					NORDIC_alliance_created_already = no
+					any_other_country = {
+						NORDIC_is_nordic = yes
+						has_government = communism 
+						is_in_faction = no 
+					} 
+				}
+				create_faction = NORDIC_alliance_communist
+				every_other_country = {
+					limit = {
+						NORDIC_is_nordic = yes 
+						has_government = communism
+					}
+					country_event = {
+						id = generic.5
+						hours = 2
+					}
+				}
+				complete_national_focus = NORDIC_form_joint_alliance
+			}
+			else_if = {
 				limit = {
 					any_other_country = {
 						original_tag = SOV
@@ -1484,14 +1513,7 @@ focus_tree = {
 					target = ICE
 				}
 			}
-			if = {
-				limit = { 
-					is_in_faction = no 
-					NORDIC_alliance_created_already = no 
-				}
-				create_faction = NORDIC_alliance_communist
-				complete_national_focus = NORDIC_form_joint_alliance
-			}
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -1824,6 +1846,7 @@ focus_tree = {
 					country_event = { id = generic.2 }	
 				}	
 			}
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -2209,6 +2232,14 @@ focus_tree = {
 				is_faction_leader = yes 
 			}
 		}
+		bypass = {
+			NOT = {
+				any_other_country = {
+					has_government = communism
+					is_faction_leader = yes 
+				}
+			}
+		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -2236,6 +2267,7 @@ focus_tree = {
 					}
 				}
 			}
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -2623,7 +2655,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			retire_character = NOR_kristian_laake
+			effect_tooltip = { retire_character = NOR_kristian_laake } 
 			country_event = {
 				id = AAT_norway_allied.4
 			}
@@ -2804,11 +2836,13 @@ focus_tree = {
 
 		completion_reward = {
 			add_doctrine_cost_reduction = {
+				name = NOR_offensive_doctrines
 				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
 			}
 			add_doctrine_cost_reduction = {
+				name = NOR_offensive_doctrines
 				cost_reduction = 0.6
 				uses = 2
 				category = special_forces_doctrine
@@ -3566,6 +3600,7 @@ focus_tree = {
 				}
 				unlock_decision_tooltip = { decision = NOR_prepare_exile show_effect_tooltip = yes}
 			}
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -3996,6 +4031,8 @@ focus_tree = {
 		completion_reward = {
 			hidden_effect = {
 				set_country_flag = NOR_going_fascist 
+				find_biggest_fascist = yes
+				find_local_dangerous_fascist = yes  
 			}
 			NOR_set_prepare_variables_fascist = yes 	
 			add_political_power = 50
@@ -4084,6 +4121,10 @@ focus_tree = {
 			trigger = {
 				has_hide_rule = yes
 				has_completed_focus = NOR_arrest_quisling
+				NOT = {
+					has_global_flag = NOR_quislings_coup_happened
+					has_country_flag = NOR_delayed_quislings_coup
+				}
 			}	
 		}
 
@@ -4126,6 +4167,7 @@ focus_tree = {
 				ideology = fascism 
 				popularity = -0.1
 			}
+			mark_focus_tree_layout_dirty = yes
 		}
 	}
 
@@ -4140,6 +4182,7 @@ focus_tree = {
 		cost = 5
 		available = {
 			has_war = no
+
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -4193,6 +4236,7 @@ focus_tree = {
 				ideology = fascism
 				popularity = -0.1
 			}
+			hidden_effect = { find_local_dangerous_fascist = yes }
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = NOR_joakim_lehmkuhl
 		}
@@ -4215,6 +4259,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_political_power = 80
+			hidden_effect = { find_local_dangerous_fascist = yes }			
 			add_popularity = {
 				ideology = democratic
 				popularity = -0.05
@@ -4288,6 +4333,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
+			hidden_effect = {
+				find_global_platonic_countries = yes 
+			}
 			add_war_support = 0.1
 			add_stability = -0.05
 			custom_effect_tooltip = available_political_advisor
@@ -4295,9 +4343,6 @@ focus_tree = {
 			unlock_decision_tooltip = {
 			 	decision = NOR_invite_fascist_to_invade
 			 	show_effect_tooltip = yes # default is no
-			}
-			hidden_effect = {
-				find_global_platonic_countries = yes 
 			}
 		}
 	}
@@ -4382,8 +4427,15 @@ focus_tree = {
 				limit ={
 					has_hide_rule = yes 
 				}
-				NOT = {
-					has_completed_focus = NOR_arrest_quisling
+				OR = { 
+					NOT = {
+						has_completed_focus = NOR_arrest_quisling
+						has_completed_focus = NOR_vote_of_no_confidence
+						has_completed_focus = NOR_a_resurgent_labor_movement
+						has_completed_focus = NOR_the_chamberlains_overture
+					}
+					has_global_flag = NOR_quislings_coup_happened
+					has_country_flag = NOR_delayed_quislings_coup 
 				}
 			}
 		}
@@ -4436,6 +4488,12 @@ focus_tree = {
 				}
 				deactivate_advisor = NOR_birger_ljungberg
 			}
+			if = {
+				limit = {
+					has_idea = NOR_kristian_laake
+				}
+				deactivate_advisor = NOR_kristian_laake
+			}			
 			add_ideas = { NOR_contested_leadership_ns }
 			custom_effect_tooltip = NOR_switch_to_fascist_TT # Oslo City Shuffle 
 			NOR_start_fascist_civil_war = yes
@@ -4583,6 +4641,7 @@ focus_tree = {
 					owner = ROOT
 				}
 			}
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -4830,8 +4889,7 @@ focus_tree = {
 				value = 0.15
 				tooltip = conscription_factor_tt
 			}
-			
-
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -5286,6 +5344,7 @@ focus_tree = {
 		available = {
 			has_government = fascism 
 			is_subject = yes 
+			has_civil_war = no 
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -5478,6 +5537,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_stability = 0.15
+			add_war_support = 0.1
+			add_political_power = 50
 			add_ideas = { NOR_king_haakon_vii_ns } 
 		}
 	}
@@ -5960,10 +6021,16 @@ focus_tree = {
 			}
 
 			set_variable = {
-				var = NOR_kingdom_of_norway_dmod_special_forces_organization
+				var = NOR_kingdom_of_norway_dmod_modifier_army_sub_unit_mountaineers_max_org_factor
 				value = 0.10
-				tooltip = special_forces_organization_tt
+				tooltip = special_forces_mountaineers_organization_tt
 			}
+
+			set_variable = {
+				var = NOR_kingdom_of_norway_dmod_modifier_army_sub_unit_marines_max_org_factor
+				value = 0.10
+				tooltip = special_forces_marines_organization_tt
+			}			
 		}
 	}
 	focus = {
@@ -6087,6 +6154,7 @@ focus_tree = {
 				create_faction = NORDIC_alliance_monarchist
 				complete_national_focus = NORDIC_form_joint_alliance
 			}
+			hidden_effect = { set_country_flag = NOR_included_in_generic_political }
 		}
 	}
 
@@ -6208,6 +6276,17 @@ focus_tree = {
 			}
 			add_political_power = 50
 			add_war_support = 0.2
+			if = {
+				limit = {
+					has_country_leader = {
+						character = NOR_queen_mathilde_i
+						ruling_only = yes 
+					}
+				}
+				122 = {
+					add_claim_by = NOR
+				}
+			}
 		}
 	}
 
@@ -7722,6 +7801,15 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = { NOR_new_haeren_ns_1 }
+
+			custom_effect_tooltip = FIN_winter_warfare_battalion_tt
+
+			hidden_effect = {
+				set_technology = {
+					winter_logistics_support_tech = 1
+					popup = no
+				}
+			}
 		}
 	}
 

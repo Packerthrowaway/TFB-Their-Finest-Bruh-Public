@@ -148,6 +148,9 @@ country_event = { # Fascists Ransack Trotsky's residence
 		trigger = {
 			NOT = {
 				has_completed_focus = NOR_compromise_with_the_nkp
+				has_completed_focus = NOR_vote_of_no_confidence
+				has_completed_focus = NOR_continue_nygaardsvold_government
+				has_completed_focus = NOR_the_stumbling_storting	
 			}
 		}
 		country_event = {
@@ -684,10 +687,17 @@ country_event = { # Asking Germany if they want Quisling or not
 		}
 		trigger = {
 		}
-		NOR = {
-			country_event = {
-				id = AAT_norway.13
-				hours = 2
+		if = {
+			limit = {
+				NOR = {
+					has_civil_war = no 
+				}
+			}	
+			NOR = {
+				country_event = {
+					id = AAT_norway.13
+					hours = 2
+				}
 			}
 		}
 	}
@@ -1546,6 +1556,24 @@ news_event = { # King Haakon Dies
 		}
 	}
 }
+
+
+news_event = {
+	id = AAT_norway_news.99
+	title = AAT_norway_news.99.t
+	desc = AAT_norway_news.99.desc
+	picture =  GFX_news_event_ast_navy
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = AAT_norway_news.99.a
+		trigger = {
+		}
+	}
+}
+
 
 #######################################################################################
 #######################################################################################
@@ -3083,7 +3111,7 @@ country_event = { # Fascist Bully REJECTED support
 #######################################################################################
 
 
-country_event = { # Asking SOV to revive POMOR trade 
+country_event = { # Asking SOV to revive Pomor trade 
 	id = AAT_norway_communist.1
 	title = AAT_norway_communist.1.t
 	desc = AAT_norway_communist.1.desc
@@ -3117,12 +3145,12 @@ country_event = { # Asking SOV to revive POMOR trade
 	option = { # No... for some reason 
 		name = AAT_norway_communist.1.b
 		ai_chance = {
-			base = 10
+			base = 5
 			modifier = {
 				factor = 0 
 				has_opinion = {
 					target = FROM
-					value < 0
+					value > 10
 				}
 			}
 		}
@@ -3227,12 +3255,12 @@ country_event = { # Asking SOV to Collaborate Militarily
 	option = { # No... for some reason 
 		name = AAT_norway_communist.4.b
 		ai_chance = {
-			base = 10
+			base = 5
 			modifier = {
 				factor = 0 
 				has_opinion = {
 					target = FROM
-					value < 0
+					value > 35
 				}
 			}
 		}
@@ -3431,7 +3459,7 @@ country_event = { #  The Chamberlain Intercedes.
 		}
 		trigger = {
 		}
-		add_political_power = 50 
+		add_political_power = 60 
 		add_war_support = 0.05
 		add_stability = 0.1
 		add_popularity = {

@@ -3280,13 +3280,6 @@ focus_tree = {
 
 			DEN_bop_occupation_low_decrease_effect = yes
 
-			if = {
-				limit = {	
-					has_country_flag = DEN_can_decline_war_flag
-				}
-				set_rule = { can_decline_call_to_war = no }
-			}
-
 			OVERLORD = { country_event = { id = denmark_occupation_event.110 days = 1 } }
 			custom_effect_tooltip = if_they_accept_tt
 			event_option_tooltip = denmark_occupation_event.111.a
@@ -3846,8 +3839,9 @@ focus_tree = {
 
 				if = {
 					limit = {	
-						has_country_flag = DEN_can_decline_war_flag
+						has_country_flag = DEN_cannot_join_factions_flag
 					}
+					set_rule = { can_join_factions = yes }
 					set_rule = { can_decline_call_to_war = no }
 				}
 
@@ -4252,7 +4246,7 @@ focus_tree = {
 					rule = obsolete_focus_branches_visibility
 					option = SHOW
 				}		
-				has_country_flag = DEN_has_occupation_flag
+				is_subject = yes
 			}
 		}
 
@@ -4296,8 +4290,10 @@ focus_tree = {
 		cost = 5
 	
 		bypass = {
-			is_subject = yes
-			has_war = yes
+			OR = {
+				is_subject = yes
+				has_war = yes
+			}
 		}
 	
 		available = {
@@ -4317,7 +4313,19 @@ focus_tree = {
 
 			custom_effect_tooltip = DEN_unlocks_bop_decisions_tt
 
-			add_ideas = DEN_declaration_of_neutrality
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_ideas = {
+					DEN_declaration_of_neutrality
+				}
+				else = {
+					add_ideas = {
+						DEN_declaration_of_neutrality_no_BBA
+					}
+				}
+			}
 
 			hidden_effect = {
 				set_country_flag = DEN_neutrality_flag
@@ -4378,9 +4386,10 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
-		ai_will_do  = {
+		ai_will_do = {
 		}
 	
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_HISTORICAL }
@@ -4429,6 +4438,7 @@ focus_tree = {
 				id = DEN_balance_of_power
 				value < 0
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -4479,6 +4489,7 @@ focus_tree = {
 			any_core_state = { 
 				is_owned_and_controlled_by = ROOT
 			}
+			is_Subject = no
 		}
 	
 		ai_will_do = {
@@ -4518,6 +4529,7 @@ focus_tree = {
 				has_full_control_of_state = 99
 				has_full_control_of_state = 912
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -4570,6 +4582,7 @@ focus_tree = {
 				has_full_control_of_state = 99
 				has_full_control_of_state = 912
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -4637,6 +4650,7 @@ focus_tree = {
 				has_full_control_of_state = 37
 				has_full_control_of_state = 911
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -4708,6 +4722,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 			
 		available_if_capitulated = yes
@@ -4748,6 +4763,11 @@ focus_tree = {
 		}
 	
 		available = {
+			OR = {
+				has_full_control_of_state = 37
+				has_full_control_of_state = 911
+			}
+			is_subject = no
 		}
 			
 		available_if_capitulated = yes
@@ -4802,6 +4822,7 @@ focus_tree = {
 				has_full_control_of_state = 37
 				has_full_control_of_state = 911
 			}
+			is_subject = no
 		}
 
 	
@@ -4861,6 +4882,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 			
 		available_if_capitulated = yes
@@ -4909,6 +4931,7 @@ focus_tree = {
 		available = {
 			has_full_control_of_state = 99
 			has_tech = excavation3
+			is_subject = no
 		}
 			
 		available_if_capitulated = yes
@@ -4973,6 +4996,7 @@ focus_tree = {
 			any_controlled_state = { 
 				is_coastal = yes
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5101,6 +5125,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5151,6 +5176,7 @@ focus_tree = {
 				has_full_control_of_state = 99
 				has_full_control_of_state = 912
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5244,6 +5270,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5304,6 +5331,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5382,6 +5410,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5480,6 +5509,7 @@ focus_tree = {
 				is_owned_and_controlled_by = ROOT
 			}
 			num_of_civilian_factories > 24
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5516,6 +5546,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5578,6 +5609,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5785,6 +5817,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5837,6 +5870,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5901,6 +5935,7 @@ focus_tree = {
 				id = DEN_balance_of_power
 				value > 0
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -5960,6 +5995,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -6022,6 +6058,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -6186,6 +6223,7 @@ focus_tree = {
 				id = DEN_balance_of_power
 				value > 0.3
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -6218,6 +6256,7 @@ focus_tree = {
 		available = {
 			is_in_faction = no
 			has_war = no
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -6276,6 +6315,7 @@ focus_tree = {
 					var:DEN.DEN_guaranteeing_nation = { is_justifying_wargoal_against = ROOT }
 				}
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -6374,6 +6414,7 @@ focus_tree = {
 					var:DEN.DEN_guaranteeing_nation = { is_justifying_wargoal_against = ROOT }
 				}
 			}
+			is_subject = no
 		}
 	
 		ai_will_do = {
@@ -6412,6 +6453,7 @@ focus_tree = {
 		}
 	
 		available = {
+			is_subject = no
 			if = {
 				limit = {
 					NOT = { has_country_flag = DEN_has_non_aggression_flag }
@@ -6493,6 +6535,7 @@ focus_tree = {
 	
 		available = {
 			is_in_faction = no
+			is_subject = no
 			has_army_manpower = { size > 49999 }
 			power_balance_value = {
 				id = DEN_balance_of_power
@@ -6506,7 +6549,19 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	
 		completion_reward = {
-			remove_ideas = DEN_declaration_of_neutrality
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				remove_ideas = {
+					DEN_declaration_of_neutrality
+				}
+				else = {
+					remove_ideas = {
+						DEN_declaration_of_neutrality_no_BBA
+					}
+				}
+			}
 			unlock_decision_tooltip = DEN_seek_an_alliance
 			custom_effect_tooltip = DEN_effects_may_vary_tech_sharing_tt
 			custom_effect_tooltip = DEN_joint_military_drills_tt
@@ -6764,6 +6819,7 @@ focus_tree = {
 		}
 
 		available = {
+			is_subject = no
 		}
 
 		ai_will_do  = {
@@ -6816,6 +6872,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			is_subject = no
 		}
 
 		bypass = {
@@ -6851,6 +6908,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_BALANCE_OF_POWER }
@@ -6882,6 +6940,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_BALANCE_OF_POWER }
@@ -6938,6 +6997,7 @@ focus_tree = {
 					fascism > 0.2
 				}
 			}
+			is_subject = no
 		}
 
 		bypass = {
@@ -6983,6 +7043,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_XP FOCUS_FILTER_NAVY_XP FOCUS_FILTER_AIR_XP FOCUS_FILTER_MILITARY_CHARACTER FOCUS_FILTER_BALANCE_OF_POWER FOCUS_FILTER_POLITICAL_CHARACTER }
@@ -7034,6 +7095,7 @@ focus_tree = {
 		available = {
 			neutrality > 0.3
 			NOT = { has_country_flag = DEN_exiled_royal_family }
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -7063,6 +7125,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL FOCUS_FILTER_MILITARY_CHARACTER }
@@ -7126,6 +7189,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = {}
@@ -7172,6 +7236,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -7214,6 +7279,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_MANPOWER }
@@ -7270,6 +7336,7 @@ focus_tree = {
 
 		available = {
 			num_of_civilian_factories > 24
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -7502,6 +7569,7 @@ focus_tree = {
 					exists = yes
 				}
 			}
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -7546,6 +7614,7 @@ focus_tree = {
 					exists = yes
 				}
 			}
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
@@ -7565,12 +7634,14 @@ focus_tree = {
 		y = 2
 
 		cost = 10
+		will_lead_to_war_with = SWE
 
 		available = {
 			OR = {	
 				threat > 0.20
 				has_subject = SWE
 			}
+			is_subject = no
 		}
 
 		bypass = {
@@ -7617,7 +7688,9 @@ focus_tree = {
 				#Give them a chance to become a puppet due to close monarchical ties
 				SWE = { country_event = { id = denmark_expansion_event.10 days = 1 }}
 				custom_effect_tooltip = if_they_accept_tt
-				ROOT = { puppet = SWE }
+				effect_tooltip = {
+					ROOT = { puppet = SWE }
+				}
 				custom_effect_tooltip = if_they_refuse_tt
 				event_option_tooltip = denmark_expansion_event.12.a
 			}
@@ -7692,6 +7765,7 @@ focus_tree = {
 
 		available = {
 			666 = { is_fully_controlled_by = ROOT }
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -7719,6 +7793,7 @@ focus_tree = {
 		y = 3
 
 		cost = 10
+		will_lead_to_war_with = FIN
 
 		available = {
 			threat > 0.20
@@ -7730,6 +7805,7 @@ focus_tree = {
 					}
 				}
 			}
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
@@ -7788,6 +7864,7 @@ focus_tree = {
 		y = 4
 
 		cost = 10
+		will_lead_to_war_with = NOR
 
 		available = {
 			OR = {
@@ -7801,6 +7878,7 @@ focus_tree = {
 					threat > 0.15
 				}
 			}
+			is_subject = no
 		}
 
 		bypass = {
@@ -8078,6 +8156,7 @@ focus_tree = {
 		available = {
 			fascism > 0.2
 			has_civil_war = no
+			is_subject = no
 		}
 
 		bypass = {
@@ -8110,6 +8189,7 @@ focus_tree = {
 
 		available = {
 			fascism > 0.4
+			is_subject = no
 		}
 
 		bypass = {
@@ -8186,6 +8266,7 @@ focus_tree = {
 
 		available = {
 			has_civil_war = no
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_BALANCE_OF_POWER }
@@ -8248,6 +8329,7 @@ focus_tree = {
 				has_war_with = GER
 			}
 			fascism > 0.3
+			is_subject = no
 		}
 
 		bypass = {
@@ -8374,12 +8456,12 @@ focus_tree = {
 
 		available = {
 			has_civil_war = no
-			has_war_support > 0.25
 			has_army_manpower = { size > 99999 }
 			power_balance_value = {
 				id = DEN_balance_of_power
 				value > 0.3
 			}
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_BALANCE_OF_POWER FOCUS_FILTER_MANPOWER }
@@ -8454,6 +8536,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
@@ -8540,6 +8623,7 @@ focus_tree = {
 
 		available = {
 			num_of_civilian_factories > 24
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -8581,6 +8665,7 @@ focus_tree = {
 		}
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -8619,6 +8704,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -8661,6 +8747,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -8835,8 +8922,10 @@ focus_tree = {
 		y = 1
 
 		cost = 10
+		will_lead_to_war_with = GER
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
@@ -8935,8 +9024,13 @@ focus_tree = {
 		y = 1
 
 		cost = 10
+		will_lead_to_war_with = EST
+		will_lead_to_war_with = LAT
+		will_lead_to_war_with = LIT
+		will_lead_to_war_with = POL
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -8990,8 +9084,10 @@ focus_tree = {
 		y = 1
 
 		cost = 10
+		will_lead_to_war_with = ENG
 
 		available = {
+			is_subject = no
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
@@ -9069,9 +9165,17 @@ focus_tree = {
 		y = 0
 
 		allow_branch = {
-			OR = {
-				is_subject = no
-				has_country_flag = DEN_unlock_military_branch_flag
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				OR = {
+					is_subject = no
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
 			}
 		}
 
@@ -9140,9 +9244,80 @@ focus_tree = {
 			}
 		}
 
+		offset = {
+			x = -18
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_country_flag = DEN_unlock_military_branch_flag
+				is_subject = yes
+				NOT = {
+					has_completed_focus = DEN_political_unity
+					has_completed_focus = DEN_unify_the_right
+				}
+			}
+		}
+
+		offset = {
+			x = 0
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_country_flag = DEN_unlock_military_branch_flag
+				is_subject = no
+				NOT = {
+					has_completed_focus = DEN_political_unity
+					has_completed_focus = DEN_unify_the_right
+				}
+			}
+		}
+
+		offset = {
+			x = 0
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				OR = {
+					AND = {
+						is_subject = yes
+						has_country_flag = DEN_unlock_military_branch_flag
+						OR = {
+							has_completed_focus = DEN_political_unity
+							has_completed_focus = DEN_unify_the_right
+						}
+					}
+					AND = {
+						is_subject = no
+						has_country_flag = DEN_unlock_military_branch_flag
+						OR = {
+							has_completed_focus = DEN_political_unity
+							has_completed_focus = DEN_unify_the_right
+						}
+					}
+				}
+			}
+		}
+
 		cost = 5
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 	
 		ai_will_do = {
@@ -9178,6 +9353,14 @@ focus_tree = {
 
 		available = {
 			any_core_state = { is_owned_and_controlled_by = ROOT }
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_HISTORICAL }
@@ -9271,6 +9454,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
@@ -9332,6 +9523,14 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER FOCUS_FILTER_HISTORICAL }
@@ -9378,6 +9577,14 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_MILITARY_CHARACTER }
@@ -9425,6 +9632,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
@@ -9477,6 +9692,14 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER FOCUS_FILTER_ARMY_XP }
@@ -9509,6 +9732,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
@@ -9566,6 +9797,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -9603,6 +9842,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
@@ -9681,6 +9928,14 @@ focus_tree = {
 
 		available = {
 			101 = { is_fully_controlled_by = ROOT }
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH }
@@ -9719,6 +9974,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_MILITARY_CHARACTER }
@@ -9778,6 +10041,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
@@ -9845,6 +10116,14 @@ focus_tree = {
 			any_core_state = { 
 				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
 			}
 		}
 
@@ -9972,6 +10251,14 @@ focus_tree = {
 				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
 			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_MILITARY_CHARACTER }
@@ -10089,6 +10376,14 @@ focus_tree = {
 			any_core_state = { 
 				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
 			}
 		}
 
@@ -10341,7 +10636,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
-			#any_core_state = { is_owned_and_controlled_by = ROOT }
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_MILITARY_CHARACTER }
@@ -10403,6 +10705,14 @@ focus_tree = {
 		cost = 10
 
 		available = { 
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_MILITARY_CHARACTER }
@@ -10462,6 +10772,14 @@ focus_tree = {
 			any_core_state = { 
 				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
 			}
 		}
 
@@ -10570,6 +10888,14 @@ focus_tree = {
 				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
 			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
@@ -10651,6 +10977,14 @@ focus_tree = {
 			any_core_state = { 
 				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
 			}
 		}
 
@@ -10767,6 +11101,14 @@ focus_tree = {
 			any_core_state = { 
 				is_owned_and_controlled_by = ROOT
 				is_coastal = yes
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
 			}
 		}
 
@@ -11107,6 +11449,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -11148,6 +11498,14 @@ focus_tree = {
 
 		available = {
 			any_core_state = { is_owned_and_controlled_by = ROOT }
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
@@ -11249,6 +11607,14 @@ focus_tree = {
 
 		available = {
 			any_core_state = { is_owned_and_controlled_by = ROOT }
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INTERNATIONAL_TRADE FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
@@ -11310,6 +11676,14 @@ focus_tree = {
 
 		available = {
 			any_core_state = { is_owned_and_controlled_by = ROOT }
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
@@ -11373,7 +11747,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
-
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
@@ -11419,6 +11800,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -11462,6 +11851,14 @@ focus_tree = {
 
 		available = {
 			any_core_state = { is_owned_and_controlled_by = ROOT }
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_MANPOWER }
@@ -11552,6 +11949,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -11605,6 +12010,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIR_XP }
@@ -11653,6 +12066,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
@@ -11701,6 +12122,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIR_XP }
@@ -11748,6 +12177,14 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				hidden_trigger = {
+					has_country_flag = DEN_unlock_military_branch_flag
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }

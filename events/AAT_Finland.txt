@@ -297,12 +297,9 @@ country_event = {
 			base = 10
 		}
 
-		#resource@chromium
-		#set_country_flag = FIN_faction_leader_aid_for_mineral_wealth_flag
 		add_to_variable = { FIN_mineral_wealth_development_resource_amount = 1 }
 		add_to_variable = { FIN_mineral_wealth_development_aluminium_amount = 2 }
-		log = "My faction leader is [faction_leader.GetName]"
-		set_variable = { FIN_faction_leader_recieving_resource_rights = THIS.faction_leader }
+		#log = "My faction leader is [faction_leader.GetName]"
 	}
 
 	#We need no help
@@ -312,6 +309,8 @@ country_event = {
 		ai_chance = {
 			base = 0
 		}
+
+		clear_variable = FIN_faction_leader_recieving_resource_rights
 	}
 }
 
@@ -334,7 +333,6 @@ country_event = {
 			base = 10
 		}
 
-		#resource@chromium
 		929 = {
 			add_resource = {
 				type = steel
@@ -349,10 +347,10 @@ country_event = {
 			set_variable = { ROOT.FIN_state_given_for_resource_rights = THIS }
 		}
 		faction_leader = { #Done in this stupid way because the effect can't take vars, faction_leader scope and so on as receiver.
-			log = "I am faction leader [faction_leader.GetName]"
+			#log = "I am faction leader [faction_leader.GetName]"
 			ROOT = {
-				log = "THIS is [THIS.GetName] which is ROOT [ROOT.GetName]"
-				log = "PREV is [PREV.GetName]"
+				#log = "THIS is [THIS.GetName] which is ROOT [ROOT.GetName]"
+				#log = "PREV is [PREV.GetName]"
 				give_resource_rights = {
 					receiver = PREV
 					state = 929
@@ -486,7 +484,6 @@ country_event = {
 	option = {
 		name = AAT_finland_misc_events.05.a
 
-		#resource@chromium
 		set_country_flag = FIN_faction_leader_aid_for_mineral_wealth_flag
 
 		effect_tooltip = {
@@ -1540,14 +1537,14 @@ country_event = {
 			base = 0
 		}
 
-		effect_tooltip = {
-			every_core_state = {
-				limit = {
-					is_controlled_by = ROOT
-				}
-				add_claim_by = FROM
-			}
-		}
+		#effect_tooltip = { #Don't show this, AI will always respect the decision and not get claims
+		#	every_core_state = {
+		#		limit = {
+		#			is_controlled_by = ROOT
+		#		}
+		#		add_claim_by = FROM
+		#	}
+		#}
 
 		hidden_effect = {
 			FROM = { country_event = { id = AAT_finland_diplomacy.16 hours = 1 } }
@@ -1852,6 +1849,7 @@ country_event = {
 			for_each_scope_loop = {
 				array = FROM.FIN_states_requested_by_finland_array			
 				ROOT = { transfer_state = PREV }
+				add_compliance = 30
 			}
 		}
 	}

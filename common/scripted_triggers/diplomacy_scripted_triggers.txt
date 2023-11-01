@@ -1058,3 +1058,34 @@ DIPLOMACY_CALL_ALLY_ENABLE_TRIGGER = {
 		}
 	}
 }
+DIPLOMACY_JOIN_FACTION_ENABLE_TRIGGER = {
+	if = { 
+		limit = {
+			has_dlc = "Arms Against Tyranny"
+			original_tag = DEN
+			has_country_flag = DEN_is_protectorate_flag
+			is_subject = yes 
+
+		}
+		custom_trigger_tooltip = {
+			tooltip = DENMARK_IS_A_PUPPET_FACTION
+			always = no
+		}
+	}
+}
+DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = {
+	if = { 
+		limit = {
+			has_dlc = "Arms Against Tyranny"
+			FROM = {
+				original_tag = DEN
+				has_country_flag = DEN_is_protectorate_flag
+				is_subject = yes 
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = DENMARK_IS_A_PUPPET_FACTION
+			always = no
+		}
+	}
+}
