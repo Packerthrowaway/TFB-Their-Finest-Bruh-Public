@@ -5298,324 +5298,324 @@ country_event = {
 
 
 
-# Our Snipers Are Proving Highly Effecive
-country_event = {
-	id = AAT_finland_the_white_death.1
-	title = AAT_finland_the_white_death.1.t
-	desc = AAT_finland_the_white_death.1.desc
-	picture = GFX_report_event_FIN_camouflaged_white_death
+# # Our Snipers Are Proving Highly Effecive
+# country_event = {
+# 	id = AAT_finland_the_white_death.1
+# 	title = AAT_finland_the_white_death.1.t
+# 	desc = AAT_finland_the_white_death.1.desc
+# 	picture = GFX_report_event_FIN_camouflaged_white_death
 
-	trigger = {
-		tag = FIN
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 	trigger = {
+# 		tag = FIN
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_defensive_war = yes
-		has_civil_war = no
+# 		has_defensive_war = yes
+# 		has_civil_war = no
 		
-		is_subject = no
+# 		is_subject = no
 
-		any_country = {
-			has_war_with = FIN
-			has_variable = FIN_white_death_target_country
-		}
+# 		any_country = {
+# 			has_war_with = FIN
+# 			has_variable = FIN_white_death_target_country
+# 		}
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 42 }
+# 	mean_time_to_happen = { days = 42 }
 
-	hidden = no
+# 	hidden = no
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	# Erinomainen! (Excellent!)
-	option = {
-		name = AAT_finland_the_white_death.1.a
-		ai_chance = {
-			base = 100
-		}
+# 	# Erinomainen! (Excellent!)
+# 	option = {
+# 		name = AAT_finland_the_white_death.1.a
+# 		ai_chance = {
+# 			base = 100
+# 		}
 
-		add_war_support = 0.02
+# 		add_war_support = 0.02
 
-		add_political_power = 10
+# 		add_political_power = 10
 
-		hidden_effect = {
+# 		hidden_effect = {
 
-			#random_country = {
-			#	limit = {
-			#		has_war_with = ROOT
-			#		has_variable = FIN_white_death_target_country
-			#	}
-			#	country_event = {
-			#		id = AAT_finland_the_white_death.2
-			#		days = 3
-			#		random_days = 5
-			#	}	
-			#}
+# 			#random_country = {
+# 			#	limit = {
+# 			#		has_war_with = ROOT
+# 			#		has_variable = FIN_white_death_target_country
+# 			#	}
+# 			#	country_event = {
+# 			#		id = AAT_finland_the_white_death.2
+# 			#		days = 3
+# 			#		random_days = 5
+# 			#	}	
+# 			#}
 
-			set_global_flag = FIN_snipers_active
+# 			set_global_flag = FIN_snipers_active
 
-			news_event = { id = aat_news.105 days = 12 }
-		}
+# 			news_event = { id = aat_news.105 days = 12 }
+# 		}
 
-	}
+# 	}
 
-	# We should endeavor to distribute more arms to the hunters
-	option = {
-		name = AAT_finland_the_white_death.1.b
-		ai_chance = {
-			base = 50
+# 	# We should endeavor to distribute more arms to the hunters
+# 	option = {
+# 		name = AAT_finland_the_white_death.1.b
+# 		ai_chance = {
+# 			base = 50
 			
-			modifier = {
-				add = 100
-				has_equipment = {
-					infantry_equipment > 1500
-				}	
-			}
-		}
+# 			modifier = {
+# 				add = 100
+# 				has_equipment = {
+# 					infantry_equipment > 1500
+# 				}	
+# 			}
+# 		}
 
-		add_war_support = 0.02
+# 		add_war_support = 0.02
 
-		add_equipment_to_stockpile = { 
-			type = infantry_equipment
-			amount = -1000
-			producer = FIN
-		}	
+# 		add_equipment_to_stockpile = { 
+# 			type = infantry_equipment
+# 			amount = -1000
+# 			producer = FIN
+# 		}	
 
-		custom_effect_tooltip = FIN_our_snipers_will_be_more_deadly_tt
+# 		custom_effect_tooltip = FIN_our_snipers_will_be_more_deadly_tt
 
-		hidden_effect = {
+# 		hidden_effect = {
 
-			#random_country = {
-			#	limit = {
-			#		has_war_with = ROOT
-			#		has_variable = FIN_white_death_target_country
-			#	}
-			#	country_event = {
-			#		id = AAT_finland_the_white_death.2
-			#		days = 3
-			#		random_days = 5
-			#	}	
-			#}
+# 			#random_country = {
+# 			#	limit = {
+# 			#		has_war_with = ROOT
+# 			#		has_variable = FIN_white_death_target_country
+# 			#	}
+# 			#	country_event = {
+# 			#		id = AAT_finland_the_white_death.2
+# 			#		days = 3
+# 			#		random_days = 5
+# 			#	}	
+# 			#}
 
-			set_global_flag = FIN_snipers_active_with_extra_arms
+# 			set_global_flag = FIN_snipers_active_with_extra_arms
 
-			news_event = { id = aat_news.105 days = 12 }
-		}
+# 			news_event = { id = aat_news.105 days = 12 }
+# 		}
 
-	}
-}
+# 	}
+# }
 
-# Finnish Snipers Putting Fear into the Hearts of our Soldiers - Event for FIN_white_death_target_country
-country_event = {
-	id = AAT_finland_the_white_death.2
-	title = AAT_finland_the_white_death.2.t 
-	desc = AAT_finland_the_white_death.2.desc
-	picture = GFX_report_event_FIN_camouflaged_white_death
+# # Finnish Snipers Putting Fear into the Hearts of our Soldiers - Event for FIN_white_death_target_country
+# country_event = {
+# 	id = AAT_finland_the_white_death.2
+# 	title = AAT_finland_the_white_death.2.t 
+# 	desc = AAT_finland_the_white_death.2.desc
+# 	picture = GFX_report_event_FIN_camouflaged_white_death
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		has_variable = FIN_white_death_target_country
+# 		has_variable = FIN_white_death_target_country
 
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_offensive_war_with = FIN
+# 		has_offensive_war_with = FIN
 		
-		is_subject = no
+# 		is_subject = no
 
-		OR = {
-			has_global_flag = FIN_snipers_active
-			has_global_flag = FIN_snipers_active_with_extra_arms
-		}
+# 		OR = {
+# 			has_global_flag = FIN_snipers_active
+# 			has_global_flag = FIN_snipers_active_with_extra_arms
+# 		}
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 14 }
+# 	mean_time_to_happen = { days = 14 }
 	
-	# There is no need to worry about them
-	option = {
-		name = AAT_finland_the_white_death.2.a
-		ai_chance = {
-			base = 50
-		}
+# 	# There is no need to worry about them
+# 	option = {
+# 		name = AAT_finland_the_white_death.2.a
+# 		ai_chance = {
+# 			base = 50
+# 		}
 		
-		IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -100
-			add_war_support = -0.01
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -250
-			add_war_support = -0.01
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -200
-			add_war_support = -0.02
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -400
-			add_war_support = -0.02
-		}
+# 		IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -100
+# 			add_war_support = -0.01
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -250
+# 			add_war_support = -0.01
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -200
+# 			add_war_support = -0.02
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -400
+# 			add_war_support = -0.02
+# 		}
 
-		add_command_power = 10
+# 		add_command_power = 10
 
-		hidden_effect = {
+# 		hidden_effect = {
 			
-			random_list =  {
-				70 = {
-					set_global_flag = FIN_simo_hayha_appears_flag
-				}
-				30 = {
-					set_global_flag = FIN_simo_hayha_appears_and_is_wounded_flag
-				}
-			}
+# 			random_list =  {
+# 				70 = {
+# 					set_global_flag = FIN_simo_hayha_appears_flag
+# 				}
+# 				30 = {
+# 					set_global_flag = FIN_simo_hayha_appears_and_is_wounded_flag
+# 				}
+# 			}
 
-			#FROM = {
-			#	country_event = {
-			#		id = AAT_finland_the_white_death.3
-			#		days = 5
-			#		random_days = 9
-			#	}	
-			#}
+# 			#FROM = {
+# 			#	country_event = {
+# 			#		id = AAT_finland_the_white_death.3
+# 			#		days = 5
+# 			#		random_days = 9
+# 			#	}	
+# 			#}
 			
-		}
+# 		}
 
-	}
+# 	}
 
-	# Hunt them down!
-	option = {
-		name = AAT_finland_the_white_death.2.b
-		ai_chance = {
-			base = 50
+# 	# Hunt them down!
+# 	option = {
+# 		name = AAT_finland_the_white_death.2.b
+# 		ai_chance = {
+# 			base = 50
 			
-			modifier = {
-				add = 100
-				OR = {
-					has_equipment = {
-						infantry_equipment > 1500
-					}
-					is_historical_focus_on = yes
-				}
-			}
-		}
+# 			modifier = {
+# 				add = 100
+# 				OR = {
+# 					has_equipment = {
+# 						infantry_equipment > 1500
+# 					}
+# 					is_historical_focus_on = yes
+# 				}
+# 			}
+# 		}
 
-		IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -100
-			add_war_support = -0.01
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -250
-			add_war_support = -0.01
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -200
-			add_war_support = -0.02
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -400
-			add_war_support = -0.02
-		}
+# 		IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -100
+# 			add_war_support = -0.01
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -250
+# 			add_war_support = -0.01
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -200
+# 			add_war_support = -0.02
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -400
+# 			add_war_support = -0.02
+# 		}
 
-		add_equipment_to_stockpile = { 
-			type = infantry_equipment
-			amount = -1400
-			producer = ROOT
-		}	
+# 		add_equipment_to_stockpile = { 
+# 			type = infantry_equipment
+# 			amount = -1400
+# 			producer = ROOT
+# 		}	
 
-		add_command_power = -25
+# 		add_command_power = -25
 
-		custom_effect_tooltip = FIN_we_will_be_more_likely_to_put_down_the_finnish_snipers_tt
+# 		custom_effect_tooltip = FIN_we_will_be_more_likely_to_put_down_the_finnish_snipers_tt
 
-		hidden_effect = {
+# 		hidden_effect = {
 
-			random_list =  {
-				40 = {
-					set_global_flag = FIN_simo_hayha_appears_flag
-				}
-				50 = {
-					set_global_flag = FIN_simo_hayha_appears_and_is_wounded_flag
-				}
-				10 = {
-					set_global_flag = FIN_simo_hayha_appears_and_is_killed_flag
-				}
-			}
+# 			random_list =  {
+# 				40 = {
+# 					set_global_flag = FIN_simo_hayha_appears_flag
+# 				}
+# 				50 = {
+# 					set_global_flag = FIN_simo_hayha_appears_and_is_wounded_flag
+# 				}
+# 				10 = {
+# 					set_global_flag = FIN_simo_hayha_appears_and_is_killed_flag
+# 				}
+# 			}
 
-			#FROM = {
-			#	country_event = {
-			#		id = AAT_finland_the_white_death.3
-			#		days = 5
-			#		random_days = 9
-			#	}	
-			#}
+# 			#FROM = {
+# 			#	country_event = {
+# 			#		id = AAT_finland_the_white_death.3
+# 			#		days = 5
+# 			#		random_days = 9
+# 			#	}	
+# 			#}
 
-		}
+# 		}
 		
-	}
-}
+# 	}
+# }
 
 # Outcome for the Actual Simo Häyhä chain - Event for FIN
 #country_event = {
@@ -5690,845 +5690,845 @@ country_event = {
 #	}
 #}
 
-# Simo Häyhä acredited as the White Death (and will not get wounded later) - Event for FIN
-country_event = {
-	id = AAT_finland_the_white_death.4
-	title = AAT_finland_the_white_death.4.t 
-	desc = AAT_finland_the_white_death.4.desc
-	picture = GFX_report_event_FIN_simo_hayha
+# # Simo Häyhä acredited as the White Death (and will not get wounded later) - Event for FIN
+# country_event = {
+# 	id = AAT_finland_the_white_death.4
+# 	title = AAT_finland_the_white_death.4.t 
+# 	desc = AAT_finland_the_white_death.4.desc
+# 	picture = GFX_report_event_FIN_simo_hayha
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		tag = FIN
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		tag = FIN
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_defensive_war = yes
-		has_civil_war = no
+# 		has_defensive_war = yes
+# 		has_civil_war = no
 		
-		is_subject = no
+# 		is_subject = no
 
-		any_country = {
-			has_war_with = FIN
-			has_variable = FIN_white_death_target_country
-		}
+# 		any_country = {
+# 			has_war_with = FIN
+# 			has_variable = FIN_white_death_target_country
+# 		}
 
-		has_global_flag = FIN_simo_hayha_appears_flag
+# 		has_global_flag = FIN_simo_hayha_appears_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 7 }
+# 	mean_time_to_happen = { days = 7 }
 	
-	# We should propagate tales of this Modern Finnish Hero
-	option = {
-		name = AAT_finland_the_white_death.4.a
-		ai_chance = {
-			base = 80
-		}
+# 	# We should propagate tales of this Modern Finnish Hero
+# 	option = {
+# 		name = AAT_finland_the_white_death.4.a
+# 		ai_chance = {
+# 			base = 80
+# 		}
 		
-		add_war_support = 0.05
+# 		add_war_support = 0.05
 
-		add_political_power = 50
+# 		add_political_power = 50
 
-		add_command_power = 20
+# 		add_command_power = 20
 
-		add_manpower = 12000
+# 		add_manpower = 12000
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_has_appeared_flag
-		}
-		
-
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		random_country = {
-		#			limit = {
-		#				has_war_with = ROOT
-		#				has_variable = FIN_white_death_target_country
-		#			}
-		#			# The White Death Embraces us
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.7
-		#				days = 8
-		#				random_days = 22
-		#			}
-		#		}
-		#	}
-		#}
-
-	}
-
-	# The White Death is the Embodiment of Finland, not some person!
-	option = {
-		name = AAT_finland_the_white_death.4.b
-		ai_chance = {
-			base = 20
-		}
-
-		add_political_power = -25
-
-		add_timed_idea = {
-			idea = FIN_we_are_the_white_death_idea
-			days = 180
-		}	
-
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_has_appeared_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_has_appeared_flag
+# 		}
 		
 
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		random_country = {
-		#			limit = {
-		#				has_war_with = ROOT
-		#				has_variable = FIN_white_death_target_country
-		#			}
-		#			# The White Death Embraces us
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.7
-		#				days = 8
-		#				random_days = 22
-		#			}
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		random_country = {
+# 		#			limit = {
+# 		#				has_war_with = ROOT
+# 		#				has_variable = FIN_white_death_target_country
+# 		#			}
+# 		#			# The White Death Embraces us
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.7
+# 		#				days = 8
+# 		#				random_days = 22
+# 		#			}
+# 		#		}
+# 		#	}
+# 		#}
+
+# 	}
+
+# 	# The White Death is the Embodiment of Finland, not some person!
+# 	option = {
+# 		name = AAT_finland_the_white_death.4.b
+# 		ai_chance = {
+# 			base = 20
+# 		}
+
+# 		add_political_power = -25
+
+# 		add_timed_idea = {
+# 			idea = FIN_we_are_the_white_death_idea
+# 			days = 180
+# 		}	
+
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_has_appeared_flag
+# 		}
 		
-	}
-}
 
-# Simo Häyhä acredited as the White Death (and will get wounded later) - Event for FIN
-country_event = {
-	id = AAT_finland_the_white_death.5
-	title = AAT_finland_the_white_death.5.t 
-	desc = AAT_finland_the_white_death.4.desc
-	picture = GFX_report_event_FIN_simo_hayha
-
-	fire_only_once = yes
-
-	trigger = {
-
-		tag = FIN
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
-
-		has_defensive_war = yes
-		has_civil_war = no
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		random_country = {
+# 		#			limit = {
+# 		#				has_war_with = ROOT
+# 		#				has_variable = FIN_white_death_target_country
+# 		#			}
+# 		#			# The White Death Embraces us
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.7
+# 		#				days = 8
+# 		#				random_days = 22
+# 		#			}
+# 		#		}
+# 		#	}
+# 		#}
 		
-		is_subject = no
+# 	}
+# }
 
-		any_country = {
-			has_war_with = FIN
-			has_variable = FIN_white_death_target_country
-		}
+# # Simo Häyhä acredited as the White Death (and will get wounded later) - Event for FIN
+# country_event = {
+# 	id = AAT_finland_the_white_death.5
+# 	title = AAT_finland_the_white_death.5.t 
+# 	desc = AAT_finland_the_white_death.4.desc
+# 	picture = GFX_report_event_FIN_simo_hayha
 
-		has_global_flag = FIN_simo_hayha_appears_and_is_wounded_flag
+# 	fire_only_once = yes
+
+# 	trigger = {
+
+# 		tag = FIN
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
+
+# 		has_defensive_war = yes
+# 		has_civil_war = no
 		
-	}
+# 		is_subject = no
 
-	mean_time_to_happen = { days = 7 }
+# 		any_country = {
+# 			has_war_with = FIN
+# 			has_variable = FIN_white_death_target_country
+# 		}
+
+# 		has_global_flag = FIN_simo_hayha_appears_and_is_wounded_flag
+		
+# 	}
+
+# 	mean_time_to_happen = { days = 7 }
 	
-	# We should propagate tales of this Modern Finnish Hero
-	option = {
-		name = AAT_finland_the_white_death.4.a
-		ai_chance = {
-			base = 80
-		}
+# 	# We should propagate tales of this Modern Finnish Hero
+# 	option = {
+# 		name = AAT_finland_the_white_death.4.a
+# 		ai_chance = {
+# 			base = 80
+# 		}
 
-		add_war_support = 0.05
+# 		add_war_support = 0.05
 
-		add_political_power = 50
+# 		add_political_power = 50
 
-		add_command_power = 20
+# 		add_command_power = 20
 
-		add_manpower = 12000
+# 		add_manpower = 12000
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_will_be_wounded_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_will_be_wounded_flag
+# 		}
 		
 		
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		random_country = {
-		#			limit = {
-		#				has_war_with = ROOT
-		#				has_variable = FIN_white_death_target_country
-		#			}
-		#			# Our Soldiers successfully hunt The White Death
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.8
-		#				days = 8
-		#				random_days = 22
-		#			}
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		random_country = {
+# 		#			limit = {
+# 		#				has_war_with = ROOT
+# 		#				has_variable = FIN_white_death_target_country
+# 		#			}
+# 		#			# Our Soldiers successfully hunt The White Death
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.8
+# 		#				days = 8
+# 		#				random_days = 22
+# 		#			}
+# 		#		}
+# 		#	}
+# 		#}
 
-	}
+# 	}
 
-	# The White Death is the Embodiment of Finland, not some person!
-	option = {
-		name = AAT_finland_the_white_death.4.b
-		ai_chance = {
-			base = 20
-		}
+# 	# The White Death is the Embodiment of Finland, not some person!
+# 	option = {
+# 		name = AAT_finland_the_white_death.4.b
+# 		ai_chance = {
+# 			base = 20
+# 		}
 
-		add_political_power = -25
+# 		add_political_power = -25
 
-		add_timed_idea = {
-			idea = FIN_we_are_the_white_death_idea
-			days = 180
-		}	
+# 		add_timed_idea = {
+# 			idea = FIN_we_are_the_white_death_idea
+# 			days = 180
+# 		}	
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_will_be_wounded_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_will_be_wounded_flag
+# 		}
 		
 
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		random_country = {
-		#			limit = {
-		#				has_war_with = ROOT
-		#				has_variable = FIN_white_death_target_country
-		#			}
-		#			# Our Soldiers successfully hunt The White Death
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.8
-		#				days = 8
-		#				random_days = 22
-		#			}
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		random_country = {
+# 		#			limit = {
+# 		#				has_war_with = ROOT
+# 		#				has_variable = FIN_white_death_target_country
+# 		#			}
+# 		#			# Our Soldiers successfully hunt The White Death
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.8
+# 		#				days = 8
+# 		#				random_days = 22
+# 		#			}
+# 		#		}
+# 		#	}
+# 		#}
 		
-	}
-}
+# 	}
+# }
 
-# Simo Häyhä acredited as the White Death (and will get killed later) - Event for FIN
-country_event = {
-	id = AAT_finland_the_white_death.6
-	title = AAT_finland_the_white_death.6.t 
-	desc = AAT_finland_the_white_death.4.desc
-	picture = GFX_report_event_FIN_simo_hayha
+# # Simo Häyhä acredited as the White Death (and will get killed later) - Event for FIN
+# country_event = {
+# 	id = AAT_finland_the_white_death.6
+# 	title = AAT_finland_the_white_death.6.t 
+# 	desc = AAT_finland_the_white_death.4.desc
+# 	picture = GFX_report_event_FIN_simo_hayha
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		tag = FIN
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		tag = FIN
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_defensive_war = yes
-		has_civil_war = no
+# 		has_defensive_war = yes
+# 		has_civil_war = no
 		
-		is_subject = no
+# 		is_subject = no
 
-		any_country = {
-			has_war_with = FIN
-			has_variable = FIN_white_death_target_country
-		}
+# 		any_country = {
+# 			has_war_with = FIN
+# 			has_variable = FIN_white_death_target_country
+# 		}
 
-		has_global_flag = FIN_simo_hayha_appears_and_is_killed_flag
+# 		has_global_flag = FIN_simo_hayha_appears_and_is_killed_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 7 }
+# 	mean_time_to_happen = { days = 7 }
 	
-	# We should propagate tales of this Modern Finnish Hero
-	option = {
-		name = AAT_finland_the_white_death.4.a
-		ai_chance = {
-			base = 80
-		}
+# 	# We should propagate tales of this Modern Finnish Hero
+# 	option = {
+# 		name = AAT_finland_the_white_death.4.a
+# 		ai_chance = {
+# 			base = 80
+# 		}
 
-		add_war_support = 0.05
+# 		add_war_support = 0.05
 
-		add_political_power = 50
+# 		add_political_power = 50
 
-		add_command_power = 20
+# 		add_command_power = 20
 
-		add_manpower = 12000
+# 		add_manpower = 12000
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_will_be_killed_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_will_be_killed_flag
+# 		}
 		
 		
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		random_country = {
-		#			limit = {
-		#				has_war_with = ROOT
-		#				has_variable = FIN_white_death_target_country
-		#			}
-		#			# The White Death is dead!
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.9
-		#				days = 8
-		#				random_days = 22
-		#			}
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		random_country = {
+# 		#			limit = {
+# 		#				has_war_with = ROOT
+# 		#				has_variable = FIN_white_death_target_country
+# 		#			}
+# 		#			# The White Death is dead!
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.9
+# 		#				days = 8
+# 		#				random_days = 22
+# 		#			}
+# 		#		}
+# 		#	}
+# 		#}
 
-	}
+# 	}
 
-	# The White Death is the Embodiment of Finland, not some person!
-	option = {
-		name = AAT_finland_the_white_death.4.b
-		ai_chance = {
-			base = 20
-		}
+# 	# The White Death is the Embodiment of Finland, not some person!
+# 	option = {
+# 		name = AAT_finland_the_white_death.4.b
+# 		ai_chance = {
+# 			base = 20
+# 		}
 
-		add_political_power = -25
+# 		add_political_power = -25
 
-		add_timed_idea = {
-			idea = FIN_we_are_the_white_death_idea
-			days = 180
-		}	
+# 		add_timed_idea = {
+# 			idea = FIN_we_are_the_white_death_idea
+# 			days = 180
+# 		}	
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_will_be_killed_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_will_be_killed_flag
+# 		}
 		
 
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#			 	has_war = yes
-		#			}
-		#		}
-		#		random_country = {
-		#			limit = {
-		#				has_war_with = ROOT
-		#				has_variable = FIN_white_death_target_country
-		#			}
-		#			# The White Death is dead!
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.9
-		#				days = 8
-		#				random_days = 22
-		#			}
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#			 	has_war = yes
+# 		#			}
+# 		#		}
+# 		#		random_country = {
+# 		#			limit = {
+# 		#				has_war_with = ROOT
+# 		#				has_variable = FIN_white_death_target_country
+# 		#			}
+# 		#			# The White Death is dead!
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.9
+# 		#				days = 8
+# 		#				random_days = 22
+# 		#			}
+# 		#		}
+# 		#	}
+# 		#}
 		
-	}
-}
+# 	}
+# }
 
-# The White Death Embraces Us! - Event for FIN_white_death_target_country
-country_event = {
-	id = AAT_finland_the_white_death.7
-	title = AAT_finland_the_white_death.7.t 
-	desc = AAT_finland_the_white_death.7.desc
-	picture = GFX_report_event_FIN_camouflaged_white_death
+# # The White Death Embraces Us! - Event for FIN_white_death_target_country
+# country_event = {
+# 	id = AAT_finland_the_white_death.7
+# 	title = AAT_finland_the_white_death.7.t 
+# 	desc = AAT_finland_the_white_death.7.desc
+# 	picture = GFX_report_event_FIN_camouflaged_white_death
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		has_variable = FIN_white_death_target_country
+# 		has_variable = FIN_white_death_target_country
 
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_offensive_war_with = FIN
+# 		has_offensive_war_with = FIN
 		
-		is_subject = no
+# 		is_subject = no
 
 		
-		has_global_flag = FIN_simo_hayha_has_appeared_flag
+# 		has_global_flag = FIN_simo_hayha_has_appeared_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 24 }
+# 	mean_time_to_happen = { days = 24 }
 	
-	# This is bad...
-	option = {
-		name = AAT_finland_the_white_death.7.a
-		ai_chance = {
-			base = 100
-		}
+# 	# This is bad...
+# 	option = {
+# 		name = AAT_finland_the_white_death.7.a
+# 		ai_chance = {
+# 			base = 100
+# 		}
 
-		IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -300
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -350
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -320
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -500
-			add_war_support = -0.1
-		}
+# 		IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -300
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -350
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -320
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -500
+# 			add_war_support = -0.1
+# 		}
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_is_safe_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_is_safe_flag
+# 		}
 
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		FROM = {
-		#			# The White Death continues to stalk his prey
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.10
-		#				days = 10
-		#				random_days = 15
-		#			}	
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		FROM = {
+# 		#			# The White Death continues to stalk his prey
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.10
+# 		#				days = 10
+# 		#				random_days = 15
+# 		#			}	
+# 		#		}
+# 		#	}
+# 		#}
 
-	}
-}
+# 	}
+# }
 
-# Despite Heavy Losses, Our troops successfully wound The White Death - Event for FIN_white_death_target_country
-country_event = {
-	id = AAT_finland_the_white_death.8
-	title = AAT_finland_the_white_death.8.t 
-	desc = AAT_finland_the_white_death.8.desc
-	picture = GFX_report_event_FIN_camouflaged_white_death
+# # Despite Heavy Losses, Our troops successfully wound The White Death - Event for FIN_white_death_target_country
+# country_event = {
+# 	id = AAT_finland_the_white_death.8
+# 	title = AAT_finland_the_white_death.8.t 
+# 	desc = AAT_finland_the_white_death.8.desc
+# 	picture = GFX_report_event_FIN_camouflaged_white_death
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		has_variable = FIN_white_death_target_country
+# 		has_variable = FIN_white_death_target_country
 
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_offensive_war_with = FIN
+# 		has_offensive_war_with = FIN
 		
-		is_subject = no
+# 		is_subject = no
 
 		
-		has_global_flag = FIN_simo_hayha_will_be_wounded_flag
+# 		has_global_flag = FIN_simo_hayha_will_be_wounded_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 24 }
+# 	mean_time_to_happen = { days = 24 }
 	
-	# We have rid ourselves of a pesky fly!
-	option = {
-		name = AAT_finland_the_white_death.8.a
-		ai_chance = {
-			base = 100
-		}
+# 	# We have rid ourselves of a pesky fly!
+# 	option = {
+# 		name = AAT_finland_the_white_death.8.a
+# 		ai_chance = {
+# 			base = 100
+# 		}
 		
-		IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -300
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -350
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -320
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -500
-			add_war_support = -0.1
-		}
+# 		IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -300
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -350
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -320
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -500
+# 			add_war_support = -0.1
+# 		}
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_has_been_inured_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_has_been_inured_flag
+# 		}
 
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		FROM = {
-		#			# Simo Häyhä is injured and brought off of the battlefield
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.11
-		#				days = 10
-		#				random_days = 15
-		#			}	
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		FROM = {
+# 		#			# Simo Häyhä is injured and brought off of the battlefield
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.11
+# 		#				days = 10
+# 		#				random_days = 15
+# 		#			}	
+# 		#		}
+# 		#	}
+# 		#}
 
-	}
-}
+# 	}
+# }
 
-# Despite Heavy Losses, Our troops have killed The White Death! - Event for FIN_white_death_target_country
-country_event = {
-	id = AAT_finland_the_white_death.9
-	title = AAT_finland_the_white_death.9.t 
-	desc = AAT_finland_the_white_death.9.desc
-	picture = GFX_report_event_FIN_camouflaged_white_death
+# # Despite Heavy Losses, Our troops have killed The White Death! - Event for FIN_white_death_target_country
+# country_event = {
+# 	id = AAT_finland_the_white_death.9
+# 	title = AAT_finland_the_white_death.9.t 
+# 	desc = AAT_finland_the_white_death.9.desc
+# 	picture = GFX_report_event_FIN_camouflaged_white_death
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		has_variable = FIN_white_death_target_country
+# 		has_variable = FIN_white_death_target_country
 
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_offensive_war_with = FIN
+# 		has_offensive_war_with = FIN
 		
-		is_subject = no
+# 		is_subject = no
 
 		
-		has_global_flag = FIN_simo_hayha_will_be_killed_flag
+# 		has_global_flag = FIN_simo_hayha_will_be_killed_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 24 }
+# 	mean_time_to_happen = { days = 24 }
 	
-	# He stood no chance against us
-	option = {
-		name = AAT_finland_the_white_death.9.a
-		ai_chance = {
-			base = 100
-		}
+# 	# He stood no chance against us
+# 	option = {
+# 		name = AAT_finland_the_white_death.9.a
+# 		ai_chance = {
+# 			base = 100
+# 		}
 		
-		IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -300
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				NOT = {
-					FIN = {
-						has_completed_focus = FIN_winter_warfare
-					}
-				}
-			}
-			add_manpower = -350
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -320
-			add_war_support = -0.05
-		}
-		ELSE_IF = {
-			limit = {
-				has_global_flag = FIN_snipers_active_with_extra_arms
-				FIN = {
-					has_completed_focus = FIN_winter_warfare
-				}
-			}
-			add_manpower = -500
-			add_war_support = -0.1
-		}
+# 		IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -300
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				NOT = {
+# 					FIN = {
+# 						has_completed_focus = FIN_winter_warfare
+# 					}
+# 				}
+# 			}
+# 			add_manpower = -350
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -320
+# 			add_war_support = -0.05
+# 		}
+# 		ELSE_IF = {
+# 			limit = {
+# 				has_global_flag = FIN_snipers_active_with_extra_arms
+# 				FIN = {
+# 					has_completed_focus = FIN_winter_warfare
+# 				}
+# 			}
+# 			add_manpower = -500
+# 			add_war_support = -0.1
+# 		}
 
-		hidden_effect = {
-			set_global_flag = FIN_simo_hayha_is_dead_flag
-		}
+# 		hidden_effect = {
+# 			set_global_flag = FIN_simo_hayha_is_dead_flag
+# 		}
 
-		#hidden_effect = {
-		#	IF = {
-		#		limit = {
-		#			FIN = {
-		#				has_war = yes
-		#			}
-		#		}
-		#		FROM = {
-		#			# Simo Häyhä has been killed!
-		#			country_event = {
-		#				id = AAT_finland_the_white_death.12
-		#				days = 10
-		#				random_days = 15
-		#			}	
-		#		}
-		#	}
-		#}
+# 		#hidden_effect = {
+# 		#	IF = {
+# 		#		limit = {
+# 		#			FIN = {
+# 		#				has_war = yes
+# 		#			}
+# 		#		}
+# 		#		FROM = {
+# 		#			# Simo Häyhä has been killed!
+# 		#			country_event = {
+# 		#				id = AAT_finland_the_white_death.12
+# 		#				days = 10
+# 		#				random_days = 15
+# 		#			}	
+# 		#		}
+# 		#	}
+# 		#}
 
-	}
-}
+# 	}
+# }
 
-# The White Death Continues to Stalk his prey - Event for FIN (end of the chain)
-country_event = {
-	id = AAT_finland_the_white_death.10
-	title = AAT_finland_the_white_death.10.t 
-	desc = AAT_finland_the_white_death.10.desc
-	picture = GFX_report_event_FIN_camouflaged_white_death
+# # The White Death Continues to Stalk his prey - Event for FIN (end of the chain)
+# country_event = {
+# 	id = AAT_finland_the_white_death.10
+# 	title = AAT_finland_the_white_death.10.t 
+# 	desc = AAT_finland_the_white_death.10.desc
+# 	picture = GFX_report_event_FIN_camouflaged_white_death
 
-	trigger = {
+# 	trigger = {
 
-		tag = FIN
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		tag = FIN
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_defensive_war = yes
-		has_civil_war = no
+# 		has_defensive_war = yes
+# 		has_civil_war = no
 		
-		is_subject = no
+# 		is_subject = no
 
-		any_country = {
-			has_war_with = FIN
-			has_variable = FIN_white_death_target_country
-		}
+# 		any_country = {
+# 			has_war_with = FIN
+# 			has_variable = FIN_white_death_target_country
+# 		}
 
-		has_global_flag = FIN_simo_hayha_is_safe_flag
+# 		has_global_flag = FIN_simo_hayha_is_safe_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 20 }
+# 	mean_time_to_happen = { days = 20 }
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 	
-	# They will know true fear
-	option = {
-		name = AAT_finland_the_white_death.10.a
-		ai_chance = {
-			base = 100
-		}
+# 	# They will know true fear
+# 	option = {
+# 		name = AAT_finland_the_white_death.10.a
+# 		ai_chance = {
+# 			base = 100
+# 		}
 
-		add_war_support = 0.04
+# 		add_war_support = 0.04
 
-		random_country = {
-			limit = {
-				has_war_with = ROOT
-				has_variable = FIN_white_death_target_country
-			}
-			add_timed_idea = {
-				idea = FIN_embraced_by_the_white_death
-				days = 360
-			}	
-		}
+# 		random_country = {
+# 			limit = {
+# 				has_war_with = ROOT
+# 				has_variable = FIN_white_death_target_country
+# 			}
+# 			add_timed_idea = {
+# 				idea = FIN_embraced_by_the_white_death
+# 				days = 360
+# 			}	
+# 		}
 
-	}
-}
+# 	}
+# }
 
-# Simo Häyhä has been injured and brought off of the battlefield - Event for FIN (end of the chain)
-country_event = {
-	id = AAT_finland_the_white_death.11
-	title = AAT_finland_the_white_death.11.t 
-	desc = AAT_finland_the_white_death.11.desc
-	picture = GFX_report_event_FIN_simo_hayha
+# # Simo Häyhä has been injured and brought off of the battlefield - Event for FIN (end of the chain)
+# country_event = {
+# 	id = AAT_finland_the_white_death.11
+# 	title = AAT_finland_the_white_death.11.t 
+# 	desc = AAT_finland_the_white_death.11.desc
+# 	picture = GFX_report_event_FIN_simo_hayha
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		tag = FIN
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		tag = FIN
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_defensive_war = yes
-		has_civil_war = no
+# 		has_defensive_war = yes
+# 		has_civil_war = no
 		
-		is_subject = no
+# 		is_subject = no
 
-		any_country = {
-			has_war_with = FIN
-			has_variable = FIN_white_death_target_country
-		}
+# 		any_country = {
+# 			has_war_with = FIN
+# 			has_variable = FIN_white_death_target_country
+# 		}
 
-		has_global_flag = FIN_simo_hayha_has_been_inured_flag
+# 		has_global_flag = FIN_simo_hayha_has_been_inured_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 20 }
+# 	mean_time_to_happen = { days = 20 }
 	
-	# Nevertheless, he is a true Finnish Hero!
-	option = {
-		name = AAT_finland_the_white_death.11.a
-		ai_chance = {
-			base = 100
-		}
+# 	# Nevertheless, he is a true Finnish Hero!
+# 	option = {
+# 		name = AAT_finland_the_white_death.11.a
+# 		ai_chance = {
+# 			base = 100
+# 		}
 
-		add_war_support = 0.03
+# 		add_war_support = 0.03
 
-		army_experience = 30
+# 		army_experience = 30
 
-	}
-}
+# 	}
+# }
 
-# Simo Häyhä has been killed! - Event for FIN (end of the chain)
-country_event = {
-	id = AAT_finland_the_white_death.12
-	title = AAT_finland_the_white_death.12.t 
-	desc = AAT_finland_the_white_death.12.desc
-	picture = GFX_report_event_europe_funeral
+# # Simo Häyhä has been killed! - Event for FIN (end of the chain)
+# country_event = {
+# 	id = AAT_finland_the_white_death.12
+# 	title = AAT_finland_the_white_death.12.t 
+# 	desc = AAT_finland_the_white_death.12.desc
+# 	picture = GFX_report_event_europe_funeral
 
-	fire_only_once = yes
+# 	fire_only_once = yes
 
-	trigger = {
+# 	trigger = {
 
-		tag = FIN
-		FIN = {
-			NOT = {
-				has_government = communism
-			}
-		}
+# 		tag = FIN
+# 		FIN = {
+# 			NOT = {
+# 				has_government = communism
+# 			}
+# 		}
 
-		has_defensive_war = yes
-		has_civil_war = no
+# 		has_defensive_war = yes
+# 		has_civil_war = no
 		
-		is_subject = no
+# 		is_subject = no
 
-		any_country = {
-			has_war_with = FIN
-			has_variable = FIN_white_death_target_country
-		}
+# 		any_country = {
+# 			has_war_with = FIN
+# 			has_variable = FIN_white_death_target_country
+# 		}
 
-		has_global_flag = FIN_simo_hayha_is_dead_flag
+# 		has_global_flag = FIN_simo_hayha_is_dead_flag
 		
-	}
+# 	}
 
-	mean_time_to_happen = { days = 20 }
+# 	mean_time_to_happen = { days = 20 }
 	
-	# May his soul rest amongst the heroes of old
-	option = {
-		name = AAT_finland_the_white_death.12.a
-		ai_chance = {
-			base = 100
-		}
+# 	# May his soul rest amongst the heroes of old
+# 	option = {
+# 		name = AAT_finland_the_white_death.12.a
+# 		ai_chance = {
+# 			base = 100
+# 		}
 
-		add_stability = 0.02
+# 		add_stability = 0.02
 
-		add_war_support = 0.04
+# 		add_war_support = 0.04
 
-	}
-}
+# 	}
+# }
 
 
 
