@@ -5560,7 +5560,7 @@ focus_tree = {
 		available = {
 			is_subject = no
 			is_in_faction = no
-			threat > 0.5
+			threat > 0.4
 			neutrality > 0.85
 			NOT = { has_government = democratic }
 			NOT = { has_government = communism }
@@ -6408,7 +6408,7 @@ focus_tree = {
 			
 			add_timed_idea = {
 				idea = FIN_finnish_march_of_conquest
-				days = 730
+				days = 365
 			}
 
 			custom_effect_tooltip = FIN_heimosodat_dec_tt
@@ -7052,9 +7052,9 @@ focus_tree = {
 			216 = { #OLONETS
 				add_core_of = ROOT
 			}
-			666 = { #NORRBOTTEN
-				add_core_of = ROOT
-			}
+			# 666 = { #NORRBOTTEN
+			# 	add_core_of = ROOT
+			# }
 			925 = { #FINNMARK
 				add_core_of = ROOT
 			}
@@ -8461,11 +8461,11 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = FIN_modify_fascist_regime_ns_intro
-			add_to_variable = { FIN_fascist_regime_special_forces_cap = 0.1 tooltip = special_forces_cap_tt }
+			add_to_variable = { FIN_fascist_regime_special_forces_cap = 0.05 tooltip = special_forces_cap_tt }
 			add_to_variable = { FIN_fascist_regime_special_forces_no_supply_grace = 24 tooltip = special_forces_no_supply_grace_tt }
-			add_to_variable = { FIN_fascist_regime_special_forces_out_of_supply_factor = -0.15 tooltip = special_forces_out_of_supply_factor_tt }
-			add_to_variable = { FIN_fascist_regime_special_forces_attack_factor = 0.10 tooltip = special_forces_attack_factor_tt }
-			add_to_variable = { FIN_fascist_regime_special_forces_training_time_factor = 0.2 tooltip = special_forces_training_time_factor_tt }
+			add_to_variable = { FIN_fascist_regime_special_forces_out_of_supply_factor = -0.1 tooltip = special_forces_out_of_supply_factor_tt }
+			add_to_variable = { FIN_fascist_regime_special_forces_attack_factor = 0.075 tooltip = special_forces_attack_factor_tt }
+			add_to_variable = { FIN_fascist_regime_special_forces_training_time_factor = 0.25 tooltip = special_forces_training_time_factor_tt }
 
 			add_tech_bonus = {
 				name = FIN_advanced_jaeger_training_program
@@ -8475,7 +8475,7 @@ focus_tree = {
 			}
 			add_doctrine_cost_reduction = {
 				name = FIN_advanced_jaeger_training_program
-				cost_reduction = 0.75
+				cost_reduction = 0.50
 				uses = 3
 				category = special_forces_doctrine
 			}
@@ -8539,11 +8539,11 @@ focus_tree = {
 
 		bypass = {
 			#SMI and KAR excluded so that focus can be bypasssed without Kola, which will be cored later.
-			SWE = {
-				all_core_state = {
-					is_core_of = ROOT
-				}
-			}
+			# SWE = {
+			# 	all_core_state = {
+			# 		is_core_of = ROOT
+			# 	}
+			# }
 			NOR = {
 				all_core_state = {
 					is_core_of = ROOT
@@ -8924,141 +8924,141 @@ focus_tree = {
 					}
 				}
 
-				### SWEDEN ###
-				if = { #Finnish puppet or independent ally - Annexation
-					limit = {
-						SWE = {
-							FIN_is_valid_root_puppet_or_independent_ally = yes
-						}
-					}
-					SWE = {
-						country_event = { id = AAT_finland_diplomacy.14 hours = 1 }
-					}
-				}
-				else_if = { #Ally's puppet and AI - Request puppet transfer
-					limit = {
-						SWE = {
-							FIN_is_valid_allied_puppet_ai = yes
-						}
-					}
-					SWE = {
-						overlord = {
-							if = {
-								limit = {
-									NOT = { is_in_array = { ROOT.countries_with_nordic_territory_array = THIS } }
-								}
-								#This array will be used at the end of the effect to send ONE SINGLE EVENT to each country with Baltic puppets or states with Finnish demands
-								add_to_array = { ROOT.countries_with_nordic_territory_array = THIS }
-							}
-							PREV = {
-								every_controlled_state = {
-									if = {
-										limit = {
-											OR = {
-												AND = {
-													is_core_of = SMI
-													is_owned_by = SMI
-												}
-												AND = {
-													is_core_of = KAR
-													is_owned_by = KAR
-												}
-												is_core_of = ICE
-												is_core_of = SWE
-												is_core_of = NOR
-												is_core_of = DEN
-												is_owned_by = PREV
-											}
-										}
-										#This array will be used in the ONE event that the country's overlord will receive for transferring the appropriate states
-										add_to_array = { PREV.PREV.FIN_states_requested_by_finland_array = THIS } #store array in overlord
-									}
-									else = {
-										#This array will be used in the ONE event that the country's overlord will receive for transferring states back to the overlord 
-										add_to_array = { PREV.PREV.FIN_states_to_come_back_to_overlord_array = THIS } #store array in overlord
-									}
-								}
-							}
-						}
-					}
-				}
-				else_if = { #Neutral/enemy - Claims and wargoal
-					limit = {
-						SWE = {
-							OR = {
-								FIN_is_valid_neutral_or_enemy = yes
-								has_civil_war = yes
-							}
-						}
-					}
-					SWE = {
-						every_core_state = {
-							limit = {
-								controller = {
-									original_tag = PREV.PREV
-									FIN_is_valid_neutral_or_enemy = yes
-								}
-							}
-							add_claim_by = ROOT
-						}
-						ROOT = {
-							create_wargoal = {
-								type = annex_everything
-								target = PREV
-							}
+				# ### SWEDEN ###
+				# if = { #Finnish puppet or independent ally - Annexation
+				# 	limit = {
+				# 		SWE = {
+				# 			FIN_is_valid_root_puppet_or_independent_ally = yes
+				# 		}
+				# 	}
+				# 	SWE = {
+				# 		country_event = { id = AAT_finland_diplomacy.14 hours = 1 }
+				# 	}
+				# }
+				# else_if = { #Ally's puppet and AI - Request puppet transfer
+				# 	limit = {
+				# 		SWE = {
+				# 			FIN_is_valid_allied_puppet_ai = yes
+				# 		}
+				# 	}
+				# 	SWE = {
+				# 		overlord = {
+				# 			if = {
+				# 				limit = {
+				# 					NOT = { is_in_array = { ROOT.countries_with_nordic_territory_array = THIS } }
+				# 				}
+				# 				#This array will be used at the end of the effect to send ONE SINGLE EVENT to each country with Baltic puppets or states with Finnish demands
+				# 				add_to_array = { ROOT.countries_with_nordic_territory_array = THIS }
+				# 			}
+				# 			PREV = {
+				# 				every_controlled_state = {
+				# 					if = {
+				# 						limit = {
+				# 							OR = {
+				# 								AND = {
+				# 									is_core_of = SMI
+				# 									is_owned_by = SMI
+				# 								}
+				# 								AND = {
+				# 									is_core_of = KAR
+				# 									is_owned_by = KAR
+				# 								}
+				# 								is_core_of = ICE
+				# 								is_core_of = SWE
+				# 								is_core_of = NOR
+				# 								is_core_of = DEN
+				# 								is_owned_by = PREV
+				# 							}
+				# 						}
+				# 						#This array will be used in the ONE event that the country's overlord will receive for transferring the appropriate states
+				# 						add_to_array = { PREV.PREV.FIN_states_requested_by_finland_array = THIS } #store array in overlord
+				# 					}
+				# 					else = {
+				# 						#This array will be used in the ONE event that the country's overlord will receive for transferring states back to the overlord 
+				# 						add_to_array = { PREV.PREV.FIN_states_to_come_back_to_overlord_array = THIS } #store array in overlord
+				# 					}
+				# 				}
+				# 			}
+				# 		}
+				# 	}
+				# }
+				# else_if = { #Neutral/enemy - Claims and wargoal
+				# 	limit = {
+				# 		SWE = {
+				# 			OR = {
+				# 				FIN_is_valid_neutral_or_enemy = yes
+				# 				has_civil_war = yes
+				# 			}
+				# 		}
+				# 	}
+				# 	SWE = {
+				# 		every_core_state = {
+				# 			limit = {
+				# 				controller = {
+				# 					original_tag = PREV.PREV
+				# 					FIN_is_valid_neutral_or_enemy = yes
+				# 				}
+				# 			}
+				# 			add_claim_by = ROOT
+				# 		}
+				# 		ROOT = {
+				# 			create_wargoal = {
+				# 				type = annex_everything
+				# 				target = PREV
+				# 			}
 
-							if = {
-								limit = {
-									has_non_aggression_pact_with = PREV
-								}
-								diplomatic_relation = {
-									country = PREV
-									relation = non_aggression_pact
-									active = no
-								}
-							}
-							if = {
-								limit = {
-									has_guaranteed = PREV
-								}
-								diplomatic_relation = {
-									country = PREV
-									relation = guarantee
-									active = no
-								}
-							}
-						}
-					}
-				}
+				# 			if = {
+				# 				limit = {
+				# 					has_non_aggression_pact_with = PREV
+				# 				}
+				# 				diplomatic_relation = {
+				# 					country = PREV
+				# 					relation = non_aggression_pact
+				# 					active = no
+				# 				}
+				# 			}
+				# 			if = {
+				# 				limit = {
+				# 					has_guaranteed = PREV
+				# 				}
+				# 				diplomatic_relation = {
+				# 					country = PREV
+				# 					relation = guarantee
+				# 					active = no
+				# 				}
+				# 			}
+				# 		}
+				# 	}
+				# }
 			
-				if = { #Someone else controls Swedish states - Demand Swedish states.
-					limit = {
-						SWE = {
-							any_core_state = {
-								FIN_is_valid_occupier_country = yes
-							}
-						}
-					}
-					SWE = {
-						every_core_state = {
-							limit = {
-								FIN_is_valid_occupier_country = yes
-							}
-							controller = {
-								if = {
-									limit = {
-										NOT = { is_in_array = { ROOT.countries_with_nordic_territory_array = THIS } }
-									}
-									#This array will be used at the end of the effect to send ONE SINGLE EVENT to each country with Baltic puppets or states with Finnish demands
-									add_to_array = { ROOT.countries_with_nordic_territory_array = THIS }
-								}
+				# if = { #Someone else controls Swedish states - Demand Swedish states.
+				# 	limit = {
+				# 		SWE = {
+				# 			any_core_state = {
+				# 				FIN_is_valid_occupier_country = yes
+				# 			}
+				# 		}
+				# 	}
+				# 	SWE = {
+				# 		every_core_state = {
+				# 			limit = {
+				# 				FIN_is_valid_occupier_country = yes
+				# 			}
+				# 			controller = {
+				# 				if = {
+				# 					limit = {
+				# 						NOT = { is_in_array = { ROOT.countries_with_nordic_territory_array = THIS } }
+				# 					}
+				# 					#This array will be used at the end of the effect to send ONE SINGLE EVENT to each country with Baltic puppets or states with Finnish demands
+				# 					add_to_array = { ROOT.countries_with_nordic_territory_array = THIS }
+				# 				}
 
-								#Add state target for Finnish request of state transfer. This array will be used in the ONE event that the country will receive for transferring the appropriate states
-								add_to_array = { FIN_states_requested_by_finland_array = PREV }
-							}
-						}
-					}
-				}
+				# 				#Add state target for Finnish request of state transfer. This array will be used in the ONE event that the country will receive for transferring the appropriate states
+				# 				add_to_array = { FIN_states_requested_by_finland_array = PREV }
+				# 			}
+				# 		}
+				# 	}
+				# }
 
 
 				### NORWAY ###
@@ -9430,11 +9430,11 @@ focus_tree = {
 			}
 
 			capital_scope = {
-				create_unit = {
-					division = "division_template = \"Mustapaidat\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-					owner = ROOT
-					count = 3
-				}
+				# create_unit = {
+				# 	division = "division_template = \"Mustapaidat\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+				# 	owner = ROOT
+				# 	count = 3
+				# }
 			}
 
 			swap_ideas = {
@@ -9563,6 +9563,7 @@ focus_tree = {
 						infantry = { x = 0 y = 1 }
 						infantry = { x = 1 y = 0 }
 						infantry = { x = 1 y = 1 }
+						infantry = { x = 2 y = 0 }
 					}
 					support = {
 						engineer = { x = 0 y = 0 }
@@ -9583,6 +9584,7 @@ focus_tree = {
 						infantry = { x = 0 y = 1 }
 						infantry = { x = 1 y = 0 }
 						infantry = { x = 1 y = 1 }
+						infantry = { x = 2 y = 0 }
 					}
 					support = {
 						engineer = { x = 0 y = 0 }
@@ -9635,47 +9637,47 @@ focus_tree = {
 				}
 			}
 			
-			#MIKKELI
-			if = {
-				limit = {
-					controls_state = 930
-				}
-				930 = {
-					create_unit = {
-						division = "division_template = \"Suojeluskunta\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
-						owner = ROOT
-						count = 1
-					}
-				}
-			}
+			# #MIKKELI
+			# if = {
+			# 	limit = {
+			# 		controls_state = 930
+			# 	}
+			# 	930 = {
+			# 		create_unit = {
+			# 			division = "division_template = \"Suojeluskunta\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
+			# 			owner = ROOT
+			# 			count = 1
+			# 		}
+			# 	}
+			# }
 
-			#KUOPIO
-			if = {
-				limit = {
-					controls_state = 150
-				}
-				150 = {
-					create_unit = {
-						division = "division_template = \"Suojeluskunta\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
-						owner = ROOT
-						count = 1
-					}
-				}
-			}
+			# #KUOPIO
+			# if = {
+			# 	limit = {
+			# 		controls_state = 150
+			# 	}
+			# 	150 = {
+			# 		create_unit = {
+			# 			division = "division_template = \"Suojeluskunta\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
+			# 			owner = ROOT
+			# 			count = 1
+			# 		}
+			# 	}
+			# }
 
-			#OULU
-			if = {
-				limit = {
-					controls_state = 929
-				}
-				929 = {
-					create_unit = {
-						division = "division_template = \"Suojeluskunta\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
-						owner = ROOT
-						count = 1
-					}
-				}
-			}
+			# #OULU
+			# if = {
+			# 	limit = {
+			# 		controls_state = 929
+			# 	}
+			# 	929 = {
+			# 		create_unit = {
+			# 			division = "division_template = \"Suojeluskunta\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
+			# 			owner = ROOT
+			# 			count = 1
+			# 		}
+			# 	}
+			# }
 		}
 	}
 	
@@ -10585,12 +10587,12 @@ focus_tree = {
 					level = 1
 					instant_build = yes
 				}
-				add_building_construction = {
-					type = naval_base
-					level = 1
-					instant_build = yes
-					province = 3083
-				}
+				# add_building_construction = {
+				# 	type = naval_base
+				# 	level = 1
+				# 	instant_build = yes
+				# 	province = 3083
+				# }
 				add_resource = {
 					type = steel
 					amount = 50
