@@ -24,7 +24,9 @@ country_event = {
 		
 		effect_tooltip = {
 			SAF = {
+				transfer_state = 540
 				transfer_state = 542
+				transfer_state = 544
 				transfer_state = 545
 				transfer_state = 546
 				transfer_state = 547
@@ -82,6 +84,22 @@ country_event = {
 	
 	option = {
 		name = tfv_south_africa.2.a
+		if = {
+			limit = {
+				544 = {	is_fully_controlled_by = ENG }
+			}
+			transfer_state = 544
+		} else = {
+			544 = { add_claim_by = SAF }
+		}
+		if = {
+			limit = {
+				540 = {	is_fully_controlled_by = ENG }
+			}
+			transfer_state = 540
+		} else = {
+			540 = { add_claim_by = SAF }
+		}
 		if = {
 			limit = {
 				545 = {	is_fully_controlled_by = ENG }
