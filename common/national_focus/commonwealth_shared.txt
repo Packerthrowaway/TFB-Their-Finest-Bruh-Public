@@ -53,6 +53,8 @@
 		}
 	}
 
+	dynamic = yes
+
 	cost = 5
 
 	available = {
@@ -259,7 +261,7 @@ shared_focus = {
 	id = COM_invite_british_experts
 	icon = GFX_focus_chi_british_cooperation
 	prerequisite = { focus = COM_armed_forces_development }
-	x = -2
+	x = 4
 	y = 1
 	relative_position_id = COM_armed_forces_development
 
@@ -280,55 +282,381 @@ shared_focus = {
 	}
 }
 
-shared_focus = {
+joint_focus = {
+	id = COM_contract_royal_arsenal
+	icon = GFX_goal_generic_army_artillery
+	prerequisite = { focus = COM_invite_british_experts }
+	x = -3
+	y = 1
+	relative_position_id = COM_invite_british_experts
+
+	cost = 5
+	
+	offset = {
+		x = 1
+		y = 0
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	available = {
+		COMMONWEALTH_basic_available_trigger = yes
+		has_capitulated = no
+		custom_trigger_tooltip = {
+			tooltip = COM_max_2_mios_tt
+			check_variable = { number_of_mios = 2 compare = less_than }
+		}
+	}
+
+	joint_trigger = {
+		COMMONWEALTH_basic_joint_trigger = yes 
+  	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = yes
+
+
+	completion_reward_joint_originator = {
+		if = {
+			limit = {
+				tag = RAJ
+			}
+			mio:RAJ_ordnance_factories_board_organization = {
+				add_mio_size = 2
+			}
+		}
+		else = {
+			unlock_military_industrial_organization_tooltip = mio:COM_royal_arsenal_organization
+		}
+		if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 0 
+				}
+			}
+			set_variable = { number_of_mios = 1 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 1
+				}
+			}
+			set_variable = { number_of_mios = 2 }
+		}
+	}
+
+	completion_reward_joint_member = {
+		add_tech_bonus = {
+			name = COM_royal_arsenal
+			bonus = 0.5
+			uses = 2
+			category = artillery
+		}
+	}
+}
+
+joint_focus = {
 	id = COM_employ_nuffield
 	icon = GFX_goal_generic_army_tanks
+	prerequisite = { focus = COM_invite_british_experts }
+	x = -2
+	y = 2
+	relative_position_id = COM_invite_british_experts
+
+	cost = 5
+	
+	offset = {
+		x = 1
+		y = 0
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	available = {
+		COMMONWEALTH_basic_available_trigger = yes
+		has_capitulated = no
+		custom_trigger_tooltip = {
+			tooltip = COM_max_2_mios_tt
+			check_variable = { number_of_mios = 2 compare = less_than }
+		}
+	}
+
+	joint_trigger = {
+		COMMONWEALTH_basic_joint_trigger = yes 
+  	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = yes
+
+	completion_reward_joint_originator = {
+		if = {
+			limit = {
+				tag = SAF
+			}
+			mio:SAF_iscor_organization = {
+				add_mio_size = 2
+			}
+		} 
+		else_if = {
+			limit = {
+				tag = CAN
+			}
+			mio:CAN_vickers_armstrong_can_organization = {
+				add_mio_size = 2
+			}
+		}
+		else = {
+			unlock_military_industrial_organization_tooltip = mio:COM_nuffield_organization
+		}
+		if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 0 
+				}
+			}
+			set_variable = { number_of_mios = 1 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 1
+				}
+			}
+			set_variable = { number_of_mios = 2 }
+		}
+	}
+
+	completion_reward_joint_member = {
+		add_tech_bonus = {
+			name = COM_nuffield_bonus
+			bonus = 0.5
+			uses = 1
+			category = cat_medium_armor
+		}
+	}
+}
+
+joint_focus = {
+	id = COM_contract_humber
+	icon = GFX_focus_NOR_rikstanken
 	prerequisite = { focus = COM_invite_british_experts }
 	x = -1
 	y = 1
 	relative_position_id = COM_invite_british_experts
 
 	cost = 5
+	
+	offset = {
+		x = 1
+		y = 0
+		trigger = {
+			tag = ENG
+		}
+	}
 
 	available = {
+		COMMONWEALTH_basic_available_trigger = yes
+		has_capitulated = no
+		custom_trigger_tooltip = {
+			tooltip = COM_max_2_mios_tt
+			check_variable = { number_of_mios = 2 compare = less_than }
+		}
 	}
+
+	joint_trigger = {
+		COMMONWEALTH_basic_joint_trigger = yes 
+  	}
 
 	cancel_if_invalid = yes
 	continue_if_invalid = no
 	available_if_capitulated = yes
 
-	completion_reward = {
-		#custom_effect_tooltip = available_designer
-		#show_ideas_tooltip = COM_nuffield
-		unlock_military_industrial_organization_tooltip = mio:COM_nuffield_organization
+	completion_reward_joint_originator = {
+		unlock_military_industrial_organization_tooltip = mio:COM_humber_organization
+		if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 0 
+				}
+			}
+			set_variable = { number_of_mios = 1 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 1
+				}
+			}
+			set_variable = { number_of_mios = 2 }
+		}
+	}
+
+	completion_reward_joint_member = {
+		add_tech_bonus = {
+			name = COM_armored_cars
+			bonus = 0.5
+			uses = 1
+			category = armor
+		}
 	}
 }
 
-shared_focus = {
+joint_focus = {
 	id = COM_employ_vauxhall
 	icon = GFX_focus_generic_tank_production
+	prerequisite = { focus = COM_invite_british_experts }
+	x = 2
+	y = 2
+	relative_position_id = COM_invite_british_experts
+
+	cost = 5
+	
+	offset = {
+		x = 1
+		y = 0
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	available = {
+		COMMONWEALTH_basic_available_trigger = yes
+		has_capitulated = no
+		custom_trigger_tooltip = {
+			tooltip = COM_max_2_mios_tt
+			check_variable = { number_of_mios = 2 compare = less_than }
+		}
+	}
+
+	joint_trigger = {
+		COMMONWEALTH_basic_joint_trigger = yes 
+  	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = yes
+
+	completion_reward_joint_originator = {
+		if = {
+			limit = {
+				tag = SAF
+			}
+			mio:SAF_cope_organization = {
+				add_mio_size = 2
+			}
+		}
+		else = {
+			unlock_military_industrial_organization_tooltip = mio:COM_vauxhall_organization
+		}
+		if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 0 
+				}
+			}
+			set_variable = { number_of_mios = 1 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 1
+				}
+			}
+			set_variable = { number_of_mios = 2 }
+		}
+	}
+
+	completion_reward_joint_member = {
+		add_tech_bonus = {
+			name = COM_vauxhall_tanks
+			bonus = 0.5
+			uses = 1
+			category = cat_heavy_armor
+		}
+	}
+}
+
+joint_focus = {
+	id = COM_contract_vauxhall_automotive
+	icon = GFX_goal_generic_army_motorized
 	prerequisite = { focus = COM_invite_british_experts }
 	x = 1
 	y = 1
 	relative_position_id = COM_invite_british_experts
 
 	cost = 5
+	
+	offset = {
+		x = 1
+		y = 0
+		trigger = {
+			tag = ENG
+		}
+	}
 
 	available = {
+		COMMONWEALTH_basic_available_trigger = yes
+		has_capitulated = no
+		custom_trigger_tooltip = {
+			tooltip = COM_max_2_mios_tt
+			check_variable = { number_of_mios = 2 compare = less_than }
+		}
 	}
+
+	joint_trigger = {
+		COMMONWEALTH_basic_joint_trigger = yes 
+  	}
 
 	cancel_if_invalid = yes
 	continue_if_invalid = no
 	available_if_capitulated = yes
 
-	completion_reward = {
-		#custom_effect_tooltip = available_designer
-		#show_ideas_tooltip = COM_vauxhall
-		unlock_military_industrial_organization_tooltip = mio:COM_vauxhall_organization
+	completion_reward_joint_originator = {
+		if = {
+			limit = {
+				tag = NZL
+			}
+			mio:NZL_charlton_mw_organization = {
+				add_mio_size = 2
+			}
+		}
+		else = {
+			unlock_military_industrial_organization_tooltip = mio:COM_vauxhall_automotive_organization
+		}
+		if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 0 
+				}
+			}
+			set_variable = { number_of_mios = 1 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 1
+				}
+			}
+			set_variable = { number_of_mios = 2 }
+		}
+	}
+
+	completion_reward_joint_member = {
+		add_tech_bonus = {
+			name = COM_vauxhall_trucks
+			bonus = 0.5
+			uses = 1
+			category = tp_tech
+		}
 	}
 }
 
-shared_focus = {
+joint_focus = {
 	id = COM_contract_enfield
 	icon = GFX_focus_focus_fra_maquis
 	prerequisite = { focus = COM_invite_british_experts }
@@ -337,26 +665,248 @@ shared_focus = {
 	relative_position_id = COM_invite_british_experts
 
 	cost = 5
+	
+	offset = {
+		x = 1
+		y = 0
+		trigger = {
+			tag = ENG
+		}
+	}
 
 	available = {
+		COMMONWEALTH_basic_available_trigger = yes
+		has_capitulated = no
+		custom_trigger_tooltip = {
+			tooltip = COM_max_2_mios_tt
+			check_variable = { number_of_mios = 2 compare = less_than }
+		}
 	}
+
+	joint_trigger = {
+		COMMONWEALTH_basic_joint_trigger = yes 
+  	}
 
 	cancel_if_invalid = yes
 	continue_if_invalid = no
 	available_if_capitulated = yes
 
-	completion_reward = {
-		#custom_effect_tooltip = available_designer
-		#show_ideas_tooltip = COM_rsaf_enfield
-		unlock_military_industrial_organization_tooltip = mio:COM_rsaf_enfield_organization
+	completion_reward_joint_originator = {
+		if = {
+			limit = {
+				tag = CAN
+			}
+			mio:CAN_small_arms_limited_organization = {
+				add_mio_size = 2
+			}
+		}
+		else_if = {
+			limit = {
+				tag = AST
+			}
+			mio:AST_lithgow_saf_organization = {
+				add_mio_size = 2
+			}
+		}
+		else_if = {
+			limit = {
+				tag = RAJ
+			}
+			mio:RAJ_ishapore_rifle_factory_organization = {
+				add_mio_size = 2
+			}
+		}
+		else = {
+			unlock_military_industrial_organization_tooltip = mio:COM_rsaf_enfield_organization
+		}
+		if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 0 
+				}
+			}
+			set_variable = { number_of_mios = 1 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 1
+				}
+			}
+			set_variable = { number_of_mios = 2 }
+		}
+	}
+
+	completion_reward_joint_member = {
+		add_tech_bonus = {
+			name = COM_enfield
+			bonus = 0.5
+			uses = 1
+			category = infantry_weapons
+		}
 	}
 }
+
+joint_focus = {
+	id = COM_contract_pye
+	icon = GFX_focus_SOV_organize_wreckers
+	prerequisite = { focus = COM_invite_british_experts }
+	x = 3
+	y = 1
+	relative_position_id = COM_invite_british_experts
+
+	cost = 5
+	
+	offset = {
+		x = 1
+		y = 0
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	available = {
+		COMMONWEALTH_basic_available_trigger = yes
+		has_capitulated = no
+		custom_trigger_tooltip = {
+			tooltip = COM_max_2_mios_tt
+			check_variable = { number_of_mios = 2 compare = less_than }
+		}
+	}
+
+	joint_trigger = {
+		COMMONWEALTH_basic_joint_trigger = yes 
+  	}
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = yes
+
+	completion_reward_joint_originator = {
+		if = {
+			limit = {
+				tag = CAN
+			}
+			mio:CAN_inglis_company_organization = {
+				add_mio_size = 2
+			}
+		}
+		else_if = {
+			limit = {
+				tag = AST
+			}
+			mio:AST_lysaghts_works_organization = {
+				add_mio_size = 2
+			}
+		}
+		else = {
+			unlock_military_industrial_organization_tooltip = mio:COM_pye_organization
+		}
+		if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 0 
+				}
+			}
+			set_variable = { number_of_mios = 1 }
+		}
+		else_if = {
+			limit = { 
+				check_variable = {
+					number_of_mios = 1
+				}
+			}
+			set_variable = { number_of_mios = 2 }
+		}
+	}
+
+	completion_reward_joint_member = {
+		add_tech_bonus = {
+			name = COM_pye
+			bonus = 0.5
+			uses = 2
+			category = support_tech
+		}
+	}
+}
+
+# shared_focus = {
+# 	id = COM_employ_nuffield
+# 	icon = GFX_goal_generic_army_tanks
+# 	prerequisite = { focus = COM_invite_british_experts }
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = COM_invite_british_experts
+
+# 	cost = 5
+
+# 	available = {
+# 	}
+
+# 	cancel_if_invalid = yes
+# 	continue_if_invalid = no
+# 	available_if_capitulated = yes
+
+# 	completion_reward = {
+# 		#custom_effect_tooltip = available_designer
+# 		#show_ideas_tooltip = COM_nuffield
+# 		unlock_military_industrial_organization_tooltip = mio:COM_nuffield_organization
+# 	}
+# }
+
+# shared_focus = {
+# 	id = COM_employ_vauxhall
+# 	icon = GFX_focus_generic_tank_production
+# 	prerequisite = { focus = COM_invite_british_experts }
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = COM_invite_british_experts
+
+# 	cost = 5
+
+# 	available = {
+# 	}
+
+# 	cancel_if_invalid = yes
+# 	continue_if_invalid = no
+# 	available_if_capitulated = yes
+
+# 	completion_reward = {
+# 		#custom_effect_tooltip = available_designer
+# 		#show_ideas_tooltip = COM_vauxhall
+# 		unlock_military_industrial_organization_tooltip = mio:COM_vauxhall_organization
+# 	}
+# }
+
+# shared_focus = {
+# 	id = COM_contract_enfield
+# 	icon = GFX_focus_focus_fra_maquis
+# 	prerequisite = { focus = COM_invite_british_experts }
+# 	x = 0
+# 	y = 2
+# 	relative_position_id = COM_invite_british_experts
+
+# 	cost = 5
+
+# 	available = {
+# 	}
+
+# 	cancel_if_invalid = yes
+# 	continue_if_invalid = no
+# 	available_if_capitulated = yes
+
+# 	completion_reward = {
+# 		#custom_effect_tooltip = available_designer
+# 		#show_ideas_tooltip = COM_rsaf_enfield
+# 		unlock_military_industrial_organization_tooltip = mio:COM_rsaf_enfield_organization
+# 	}
+# }
 
 shared_focus = {
 	id = COM_mission_to_usa
 	icon = GFX_focus_chi_mission_to_the_us
 	prerequisite = { focus = COM_armed_forces_development }
-	x = 2
+	x = -2
 	y = 1
 	relative_position_id = COM_armed_forces_development
 
@@ -367,7 +917,7 @@ shared_focus = {
 	}
 
 	offset = {
-		x = -2
+		x = 2
 		y = 0
 		trigger = {
 			tag = ENG
