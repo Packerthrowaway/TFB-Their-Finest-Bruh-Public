@@ -7412,6 +7412,7 @@
 				mio:SOV_okmo_organization = {
 					add_mio_size = 2
 					add_mio_funds = 1000
+					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
@@ -7427,6 +7428,7 @@
 				mio:SOV_morozov_design_bureau_organization = {
 					add_mio_size = 2
 					add_mio_funds = 1000
+					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
@@ -7442,6 +7444,7 @@
 				mio:SOV_astrov_design_bureau_organization = {
 					add_mio_size = 2
 					add_mio_funds = 1000
+					add_mio_funds_gain_factor = 0.50
 				}
 			}
 			else_if = {
@@ -7451,6 +7454,7 @@
 				mio:SOV_kirov_organization = {
 					add_mio_size = 2
 					add_mio_funds = 1000
+					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
@@ -7466,6 +7470,7 @@
 				mio:SOV_mytishchy_machine_building_plant_organization = {
 					add_mio_size = 2
 					add_mio_funds = 1000
+					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
@@ -7826,6 +7831,38 @@
 				swap_ideas = {
 					remove_idea = SOV_modernisation_cav_2
 					add_idea = SOV_modernisation_mech_2
+				}
+			}
+
+			# TODO don't apply if already the prefered designer
+			if = {
+				limit = { NOT = { has_completed_focus = SOV_new_corps } }
+				mio:SOV_okmo_organization = {
+					add_mio_funds_gain_factor = 0.50
+				}
+			}
+			if = {
+				limit = { NOT = { has_completed_focus = SOV_new_corps2 } }
+				mio:SOV_morozov_design_bureau_organization = {
+					add_mio_funds_gain_factor = 0.50
+				}
+			}
+			if = {
+				limit = { NOT = { has_completed_focus = SOV_new_corps3 } }
+				mio:SOV_astrov_design_bureau_organization = {
+					add_mio_funds_gain_factor = 0.50
+				}
+			}
+			if = {
+				limit = { NOT = { has_completed_focus = SOV_new_corps4 } }
+				mio:SOV_kirov_organization = {
+					add_mio_funds_gain_factor = 0.50
+				}
+			}
+			if = {
+				limit = { NOT = { has_completed_focus = SOV_new_corps5 } }
+				mio:SOV_mytishchy_machine_building_plant_organization = {
+					add_mio_funds_gain_factor = 0.50
 				}
 			}
 		}
