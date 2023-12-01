@@ -76,6 +76,39 @@ foreign_politics = {
 			country_event = lar_spain.2
 		}
 	}
+
+	hold_the_fascist_national_referendum2 = {
+
+		icon = generic_political_discourse
+
+		available = {
+			fascism > 0.5
+		}
+
+		visible = {
+			NOT = { has_government = fascism }
+			tag = SPR
+		}
+		
+		remove_trigger = {
+			has_government = fascism
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			country_event = { id = political.18 }
+		}
+		
+		ai_will_do = {
+			modifier = {
+				tag = SPR
+				factor = 0
+			}
+		}
+	}
 }
 
 SPR_expand_resource_extraction = {
