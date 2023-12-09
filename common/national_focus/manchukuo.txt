@@ -54,7 +54,7 @@
 	focus = {
 		id = MAN_meeting_of_the_gac
 		icon = GFX_focus_eng_concessions_to_the_trade_unions
-		x = 6
+		x = 20
 		y = 0
 
 		cost = 10
@@ -97,7 +97,7 @@
 		icon = GFX_focus_eng_move_to_secure_the_dominions
 		prerequisite = { focus = MAN_meeting_of_the_gac }
 		mutually_exclusive = { focus = MAN_treaty_with_the_bandits }
-		x = -8
+		x = -10
 		y = 1
 		relative_position_id = MAN_meeting_of_the_gac
 
@@ -1547,11 +1547,582 @@
 	}
 
 	focus = {
+		id = MAN_mission_to_germany
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = MAN_treaty_with_the_bandits focus = MAN_crush_the_bandits}
+		x = 0
+		y = 2
+		relative_position_id = MAN_meeting_of_the_gac
+		cost = 1
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				tag = CHI
+			}
+			modifier = {
+				factor = 10
+				has_country_flag = GER_befriended_by_germany_flag
+			}
+		}
+
+		available = {
+			OR = {
+				has_government = neutrality
+				GER = { has_government = ROOT }
+				GER_will_support = yes
+			}
+			NOT = {
+				has_war_with = GER
+			}
+			GER = {
+				has_capitulated = no
+			}
+			OR = {
+				GER = { has_completed_focus = GER_japan_friend}
+				date > 1938.1.1
+				MAN = { has_war_with = CHI}
+			}
+		}
+
+		bypass = {
+			is_in_faction_with = GER
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = CHI_mission_to_germany
+				}
+				add_ai_strategy = {
+					type = alliance
+					id = ROOT
+					value = 100
+				}
+				add_ai_strategy = {
+					type = protect
+					id = ROOT
+					value = 100
+				}
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = ROOT
+					value = 100
+				}
+				add_ai_strategy = {
+					type = support
+					id = ROOT
+					value = 100
+				}
+			}
+		}
+	}
+
+
+	focus = {
+		id = MAN_chinese_general_staff
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = MAN_mission_to_germany }
+		x = -1
+		y = 1
+		relative_position_id = MAN_mission_to_germany
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = { has_idea = CHI_incompetent_officers }
+			#NOT = { has_global_flag = falkenhausen_recalled }
+			GER_will_support = yes
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			every_army_leader = {
+				add_planning = 1
+			}
+			add_ideas = CHI_chinese_general_staff
+		}
+	}
+
+	focus = {
+		id = MAN_mukden_arsenal
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = MAN_chinese_general_staff }
+		x = -1
+		y = 1
+		relative_position_id = MAN_chinese_general_staff
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			716 = { is_fully_controlled_by = ROOT }
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			716 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MAN_mamc
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = MAN_mukden_arsenal }
+		x = 0
+		y = 2
+		relative_position_id = MAN_mukden_arsenal
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		
+
+		completion_reward = {
+
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = MAN_mamc_light_organization
+				show_mio_tooltip = MAN_mamc_medium_organization
+				show_mio_tooltip = MAN_mamc_heavy_organization
+				
+
+
+				mio:MAN_mamc_light_organization = {
+					add_mio_funds = 1000
+				}
+				mio:MAN_mamc_medium_organization = {
+					add_mio_funds = 1000
+				}
+				mio:MAN_mamc_heavy_organization = {
+					add_mio_funds = 1000
+				}
+			}
+
+			ELSE = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = MAN_mamc_light
+				show_ideas_tooltip = MAN_mamc_medium
+				show_ideas_tooltip = MAN_mamc_heavy
+			}
+		}
+	}
+
+
+	focus = {
+		id = MAN_closer_ties_with_germany
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = MAN_mission_to_germany }
+		#mutually_exclusive = { focus = MAN_rapprochement_with_soviet_union }
+		x = 1
+		y = 1
+		relative_position_id = MAN_mission_to_germany
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				tag = PRC
+			}
+			modifier = {
+				factor = 4
+				tag = CHI
+			}
+		}
+
+		available = {
+			NOT = { has_war_with = GER }
+			#NOT = { has_global_flag = falkenhausen_recalled }
+			GER_will_support = yes
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+
+	focus = {
+		id = MAN_purchase_tanks
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = MAN_closer_ties_with_germany}
+		x = 1
+		y = 1
+		relative_position_id = MAN_closer_ties_with_germany
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				tag = PRC
+			}
+			modifier = {
+				factor = 4
+				tag = CHI
+			}
+		}
+
+		available = {
+			OR = {
+				GER_will_support = yes
+				#SOV_will_support = yes
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = CHI_purchase_tanks_tt
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_completed_focus = MAN_closer_ties_with_germany
+							#has_completed_focus = MAN_rapprochement_with_soviet_union
+						}
+					}
+					add_equipment_subsidy = {
+						cic = 500
+						equipment_type = light_tank_chassis
+						seller_trigger = MAN_tank_seller_for_subsidy
+					}
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = MAN_closer_ties_with_germany
+					}
+					add_equipment_subsidy = {
+						cic = 500
+						equipment_type = light_tank_chassis
+						seller_tags = { GER } 
+					}
+				}
+			}
+			hidden_effect = { 
+				if = {
+					limit = {
+						not = {
+							has_tech = jap_light_tank_1
+						}
+					}
+					set_technology = { jap_light_tank_1 = 1 }
+				}
+				if = {
+					limit = {
+						has_completed_focus = MAN_closer_ties_with_germany
+					}
+					add_equipment_to_stockpile = { type = ger_light_tank_chassis_p1 amount = 100 producer = GER  variant_name = "PzKpfw I A"} 
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MAN_chinese_panzers
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = MAN_purchase_tanks }
+		prerequisite = { focus = MAN_closer_ties_with_germany }
+		x = -2
+		y = 1
+		relative_position_id = MAN_purchase_tanks
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			GER_will_support = yes
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = CHI_chinese_panzers
+				bonus = 0.50
+				uses = 1
+				category = armor
+			}
+
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = CHI_sino_german_technical_mission_organization
+
+				mio:CHI_sino_german_technical_mission_organization = {
+					add_mio_size = 1
+					add_mio_funds = 500
+				}
+			}
+			ELSE = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = german_chinese_tank_designer
+			}
+		}
+	}
+
+	focus = {
+		id = MAN_tank_plant
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = MAN_chinese_panzers }
+		x = -2
+		y = 3
+		relative_position_id = MAN_purchase_tanks
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			GER_will_support = yes
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = CHI_tank_plant_AF
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = CHI_tank_plant_AF
+			}
+		}
+	}
+
+	focus = {
+		id = MAN_experimental_mechanised_unit
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = MAN_purchase_tanks }
+		x = 0
+		y = 2
+		relative_position_id = MAN_purchase_tanks
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				tag = PRC
+			}
+			modifier = {
+				factor = 4
+				tag = CHI
+			}
+		}
+
+		available = {
+			capital_scope = { is_fully_controlled_by = ROOT }
+			has_tech = motorised_infantry
+			OR = {
+				GER_will_support = yes
+				#SOV_will_support = yes
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = MAN_experimental_mechanised_unit_effect
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_completed_focus = MAN_closer_ties_with_germany
+						}
+					}
+					add_equipment_subsidy = {
+						cic = 500
+						equipment_type = motorized_equipment
+						seller_trigger = MAN_tank_seller_for_subsidy
+					}
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = MAN_closer_ties_with_germany
+					}
+					add_equipment_subsidy = {
+						cic = 500
+						equipment_type = motorized_equipment
+						seller_tags = { GER } 
+					}
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						tag = MAN
+					}
+					division_template = {
+						name = "Experimental Mechanised Division"
+						division_names_group = MAN_MEC_01
+						priority = 2
+						regiments = {
+							light_armor = { x = 0 y = 0 }
+							light_armor = { x = 0 y = 1 }
+							light_armor = { x = 0 y = 2 }
+							light_armor = { x = 0 y = 3 }
+							light_armor = { x = 1 y = 0 }
+				
+							motorized = { x = 2 y = 0 }
+							motorized = { x = 2 y = 1 }
+							motorized = { x = 2 y = 2 }
+							motorized = { x = 2 y = 3 }
+							motorized = { x = 3 y = 0 }
+						}
+						support = {
+							hq_company = { x = 0 y = 0 }
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_completed_focus = MAN_closer_ties_with_germany 
+					}
+					capital_scope = {
+						create_unit = {
+							division = "name = \"200. Mechanised Division\" division_template = \"Experimental Mechanised Division\" start_experience_factor = 1.0 force_equipment_variants = { ger_light_tank_chassis_p1 = { creator = \"GER\" version_name = \"PzKpfw I A\"} }" 
+							owner = ROOT
+						}
+					}
+				}		
+			}
+		}
+	}
+
+	focus = {
 		id = MAN_treaty_with_the_bandits
 		icon = GFX_focus_generic_diplomatic_treaty
 		prerequisite = { focus = MAN_meeting_of_the_gac }
 		mutually_exclusive = { focus = MAN_crush_the_bandits }
-		x = 8
+		x = 10
 		y = 1
 		relative_position_id = MAN_meeting_of_the_gac
 
