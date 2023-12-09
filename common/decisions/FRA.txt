@@ -106,6 +106,55 @@ FRA_vichy_france = {
 							set_variable = { GER.state_to_target = THIS}
 							IF = {
 								limit = {
+									OR = {
+										state = 553
+										state = 554
+										state = 677
+										state = 680
+									}
+									OR = {
+										454 = {
+											OR = {
+												is_controlled_by = ITA
+												is_controlled_by = SPA
+												is_controlled_by = ROM
+												is_controlled_by = HUN
+												is_controlled_by = FIN
+												is_controlled_by = YUG
+												is_controlled_by = BUL
+											}
+										}
+										455 = {
+											OR = {
+												is_controlled_by = ITA
+												is_controlled_by = SPA
+												is_controlled_by = ROM
+												is_controlled_by = HUN
+												is_controlled_by = FIN
+												is_controlled_by = YUG
+												is_controlled_by = BUL
+											}
+										}
+									} 
+
+								}
+							}
+							ELSE_IF = {
+								limit = {
+
+									OR = {
+										is_controlled_by = ITA
+										is_controlled_by = SPA
+										is_controlled_by = ROM
+										is_controlled_by = HUN
+										is_controlled_by = FIN
+										is_controlled_by = YUG
+										is_controlled_by = BUL
+									}
+								}
+							}
+							ELSE_IF = {
+								limit = {
 									GER = {
 										divisions_in_state = {
 											state = GER.state_to_target
