@@ -9,7 +9,7 @@
  #################### 
 
 CHI_sino_german_technical_mission_organization = {
-	include = generic_heavy_tank_organization
+	include = generic_tank_organization
 	icon = GFX_idea_porsche
 	allowed = {	
 		OR = {
@@ -21,9 +21,13 @@ CHI_sino_german_technical_mission_organization = {
 	}
 	available = {
 		owner = {
-			OR = {
+			if ={
+				limit = { tag = MAN }
+				has_completed_focus = MAN_chinese_panzers
+			}
+			if ={
+				limit = { tag = CHI }
 				has_completed_focus = CHI_chinese_panzers
-				has_idea = german_advisors
 			}
 			NOT = {
 				has_war_with = GER
@@ -98,7 +102,7 @@ CHI_camco_medium_organization = {
 	allowed = {	
 		OR = {
 			is_literally_china = yes
-			tag = MAN
+			#tag = MAN
 			tag = MEN
 		} 
 		has_dlc = "Waking the Tiger"
@@ -113,7 +117,7 @@ CHI_camco_fighter_organization = {
 	allowed = {	
 		OR = {
 			is_literally_china = yes
-			tag = MAN
+			#tag = MAN
 			tag = MEN
 		} 
 		has_dlc = "Waking the Tiger"
@@ -128,7 +132,7 @@ CHI_camco_bomber_organization = {
 	allowed = {	
 		OR = {
 			is_literally_china = yes
-			tag = MAN
+			#tag = MAN
 			tag = MEN
 		} 
 		has_dlc = "Waking the Tiger"
