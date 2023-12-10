@@ -2263,7 +2263,7 @@
 		prerequisite = { focus = JAP_build_up_islands focus = JAP_build_up_china }
 		prerequisite = { focus = JAP_befriend_siam focus = JAP_pressure_siam }
 		prerequisite = { focus = JAP_expand_army focus = JAP_expand_marines }
-		prerequisite = { focus = JAP_late_war_destruction_focus focus = JAP_mid_war_intel_focus focus = JAP_early_war_military_focus }
+		#prerequisite = { focus = JAP_late_war_destruction_focus focus = JAP_mid_war_intel_focus focus = JAP_early_war_military_focus }
 		will_lead_to_war_with = ENG
 		x = 0
 		y = 6
@@ -2272,29 +2272,8 @@
 
 		available = {
 			NOT = { has_war_with = CHI }
-			if = {
-				limit = {
-					has_completed_focus = JAP_early_war_industry_focus
-				}
-				date > 1940.7.1
-			}
-			else_if = {
-				limit = {
-					has_completed_focus = JAP_mid_war_industry_focus
-				}
-				date > 1941.1.1
-			}
-			else_if = {
-				limit = {
-					has_completed_focus = JAP_late_war_industry_focus
-				}
-				date > 1941.7.1
-			}else = {
-				custom_trigger_tooltip = {
-					tooltip = JAP_war_start_tt
-					always = no
-				}
-			}
+			JAP_can_declare_on_the_allies = yes
+			JAP_has_finished_post_china_branch = yes
 		}
 
 		completion_reward = {
