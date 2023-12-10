@@ -1205,13 +1205,23 @@
 		x = 0
 		y = 1
 		available = { 
-			has_war = no
 			OR = {
-				date > 1941.8.1
-				ENG = {
-					has_capitulated = yes
+				AND = {
+					has_war = no
+					OR = {
+						date > 1941.8.1
+						ENG = {
+							has_capitulated = yes
+						}
+					}
+				}	
+				AND = {
+					has_war = yes
+					date > 1942.1.1
+					surrender_progress < 0.05
 				}
-			}	
+			}
+			
 		}
 		completion_reward = {
 			swap_ideas = {
@@ -1492,7 +1502,13 @@
 		cost = 4
 
 		available = {
-			surrender_progress > 0.24 
+			OR = {
+				surrender_progress > 0.24 
+				AND = {
+					date > 1942.1.1
+					surrender_progress < 0.05
+				}
+			}
 		}
 		completion_reward = {
 			set_technology = {
