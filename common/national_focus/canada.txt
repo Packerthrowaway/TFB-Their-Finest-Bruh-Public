@@ -532,12 +532,13 @@ focus_tree = {
 			threat > 0.25
 		}
 		
-		continue_if_invalid = yes
-		available_if_capitulated = yes
-
-		complete_tooltip = {
+		bypass = {
 
 		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
 
 		completion_reward = {
 			if = {
@@ -931,12 +932,14 @@ focus_tree = {
 			threat > 0.3
 		}
 		
-		continue_if_invalid = yes
-		available_if_capitulated = yes
-
-		complete_tooltip = {
+		bypass = {
 
 		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			swap_ideas = {
@@ -3123,9 +3126,22 @@ focus_tree = {
 				category = tactical_bomber
 				category = cas_bomber
 			}
-			#custom_effect_tooltip = available_designer
-			#show_ideas_tooltip = CAN_fairchild_aircraft_ltd
-			unlock_military_industrial_organization_tooltip = mio:CAN_fairchild_aircraft_ltd_organization
+
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = CAN_fairchild_aircraft_ltd_organization
+				mio:CAN_fairchild_aircraft_ltd_organization = {
+					add_mio_funds = 2500
+				}
+			}
+
+			else = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = CAN_fairchild_aircraft_ltd
+			}
 		}
 	}
 
@@ -3167,9 +3183,28 @@ focus_tree = {
 				uses = 1
 				category = cat_strategic_bomber
 			}
-			#custom_effect_tooltip = available_designer
-			#show_ideas_tooltip = CAN_handley_page
-			unlock_military_industrial_organization_tooltip = mio:CAN_handley_page_organization
+
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = CAN_handley_page_organization
+				mio:CAN_handley_page_organization = {
+					add_mio_size = 1
+					add_mio_funds = 500
+
+				#	unlock_mio_trait_tooltip  = {
+				#		department = CAN_mio_department_design_plane_heavy_combat
+				#		trait = CAN_mio_trait_cookie_carriers
+				#	}
+				}
+			}
+
+			else = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = CAN_handley_page
+			}
 		}
 	}
 
