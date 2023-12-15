@@ -4935,10 +4935,14 @@ focus_tree = {
 		
 
 		ai_will_do = {
-			factor = 10		
+			factor = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}		
 		}
 
-		available = {
+		available = {	
 			NOT = {
 				has_war_with = NOR
 			}
@@ -5007,7 +5011,6 @@ focus_tree = {
 		bypass = {
 
 		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no

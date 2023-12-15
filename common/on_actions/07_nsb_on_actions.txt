@@ -2224,29 +2224,13 @@ on_actions = {
 						tag = GER 
 					}
 					FROM = {
-						has_country_flag = achievement_stalingrad_not_taken
+						NOT = { has_country_flag = achievement_stalingrad_taken }
 					}
 				}
 				FROM = { set_country_flag = achievement_not_much_fun_in_stalingrad }
 			}
 		}
 	}
-	#ROOT = attacking side
-	#FROM = defending side
-	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
-	# on_war_relation_added = {
-	# 	effect = {
-	# 		if = {
-	# 			limit = {
-	# 				tag = GER
-	# 				FROM = { tag = SOV }
-	# 			}
-	# 		}
-	# 		GER = {
-	# 			set_country_flag = achievement_stalingrad_not_taken #will be removed in on_state_control_change if Germany takes Stalingrad
-	# 		}
-	# 	}
-	# }
 
 	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
 	# on_state_control_changed = {

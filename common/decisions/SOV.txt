@@ -52,12 +52,12 @@ debug_decisions = { #TODO_Manu: Comment these out
 		}
 	}
 
-	SOV_TEST_CONTINENTS = {
+	SOV_TEST_ULTIMATE_CONTINENTS = {
 		priority = 200
 
 		icon = generic_prepare_civil_war
 
-		allowed = { 
+		allowed = {
 			original_tag = SOV
 		}
 
@@ -72,88 +72,46 @@ debug_decisions = { #TODO_Manu: Comment these out
 		cost = 0
 
 		complete_effect = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				log = "HIDE obsolete focus branches"
-			}
-			else = {
-				log = "SHOW obsolete focus branches"
-			}
-			every_owned_state = {
-				limit = {
-					is_on_continent = asia 
-				}
-				log = "[THIS.GetName]"
-				URG = { transfer_state = PREV }
-
-			}
-		}
-	}
-	SOV_TEST_ULTIMATE_CONTINENTS_SHOW = {
-		priority = 200
-
-		icon = generic_prepare_civil_war
-
-		allowed = { 
-			original_tag = SOV
-		}
-
-		available = {
-			always = yes
-		}
-
-		visible = {
-			always = yes
-		}
-
-		cost = 0
-
-		complete_effect = {
-			log = "WARNING: This takes a while"
+			#log = "WARNING: This takes a while"
 			every_state = {
 				limit = {
-					is_on_continent = asia 
+					is_on_continent = asia
 				}
 				TIB = { transfer_state = PREV }
 			}
 			every_state = {
 				limit = {
-					is_on_continent = europe 
+					is_on_continent = europe
 				}
 				LUX = { transfer_state = PREV }
 			}
 			every_state = {
 				limit = {
-					is_on_continent = middle_east 
+					is_on_continent = middle_east
 				}
 				YEM = { transfer_state = PREV }
 			}
 			every_state = {
 				limit = {
-					is_on_continent = africa 
+					is_on_continent = africa
 				}
 				ETH = { transfer_state = PREV }
 			}
 			every_state = {
 				limit = {
-					is_on_continent = australia 
+					is_on_continent = australia
 				}
 				NZL = { transfer_state = PREV }
 			}
 			every_state = {
 				limit = {
-					is_on_continent = north_america 
+					is_on_continent = north_america
 				}
 				CAN = { transfer_state = PREV }
 			}
 			every_state = {
 				limit = {
-					is_on_continent = south_america 
+					is_on_continent = south_america
 				}
 				PER = { transfer_state = PREV }
 			}
@@ -1318,7 +1276,15 @@ SOV_paranoia_system = {
 		}
 
 		available = {
-			has_country_flag = { flag = SOV_third_moscow_trial_flag days > 365 }
+			if = {
+				limit = {
+					has_country_flag = SOV_assassinated_stalin_flag
+				}
+				has_country_flag = SOV_assassinated_stalin_flag
+			}
+			else = {
+				has_country_flag = { flag = SOV_third_moscow_trial_flag days > 365 }
+			}
 		}
 
 		visible = {
@@ -1327,7 +1293,10 @@ SOV_paranoia_system = {
 				has_idea = SOV_anti_soviet_military_thinking_banned_navy
 				has_idea = SOV_anti_soviet_military_thinking_banned_airforce
 			}
-			SOV_is_stalinist = yes
+			OR = {
+				SOV_is_stalinist = yes
+				has_country_flag = SOV_assassinated_stalin_flag
+			}
 		}
 
 		days_remove = 30
@@ -2779,7 +2748,7 @@ SOV_propaganda_campaigns = {
 			}
 		}
 
-		allowed = { 
+		allowed = {
 			original_tag = SOV
 		}
 

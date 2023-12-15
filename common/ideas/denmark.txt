@@ -344,7 +344,7 @@ ideas = {
 				supply_factor = 0.05
 				supply_combat_penalties_on_core_factor = -0.05
 				out_of_supply_factor = -0.05
-				consumer_goods_factor = 0.10
+				consumer_goods_factor = 0.1
 			}
 		}
 
@@ -651,6 +651,15 @@ ideas = {
 			}
 			available = {
 			}
+
+			on_remove = {
+				if = {
+					limit = {
+						has_country_flag = DEN_has_danish_influence_flag
+					}
+					clr_country_flag = DEN_has_danish_influence_flag
+				}
+			}
 		
 			modifier = { 
 				neutrality_drift = 0.15
@@ -669,6 +678,15 @@ ideas = {
 				always = no
 			}
 			available = {
+			}
+
+			on_remove = {
+				if = {
+					limit = {
+						has_country_flag = DEN_has_danish_influence_flag
+					}
+					clr_country_flag = DEN_has_danish_influence_flag
+				}
 			}
 		
 			targeted_modifier = { 

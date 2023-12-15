@@ -2279,6 +2279,7 @@ country_event = { # Norway wants to collaborate on Tanks
 		}
 		ROOT = {
 			add_tech_bonus = {
+				name = AAT_rikstanken_program_tech_bonus
 				bonus = 0.25
 				uses = 2 
 				category = armor 
@@ -3061,6 +3062,17 @@ country_event = { # Fascist Bully accepted support
 			value = 15
 			tooltip = NOR_reduce_fascist_prep_time_TT
 		}
+		subtract_from_variable = {
+			var = NOR_prep_fasc_cost_pp
+			value = 15
+			tooltip = NOR_reduce_fascist_pp_cost_TT
+		}
+		hidden_effect = {
+			set_variable = { NOR_prep_fasc_cost_pp_remove = 0 }
+			set_variable = { NOR_prep_fasc_cost_pp_trigger = -1 }
+			subtract_from_variable = { NOR_prep_fasc_cost_pp_remove = NOR_prep_fasc_cost_pp }
+			add_to_variable = { NOR_prep_fasc_cost_pp_trigger = NOR_prep_fasc_cost_pp }
+		}
 	}
 }
 
@@ -3562,6 +3574,7 @@ country_event = { #  The Queen Rises
 			character = NOR_queen_mathilde_i
 			ideology = despotism
 		}
+		mark_focus_tree_layout_dirty = yes 
 	}
 }
 
