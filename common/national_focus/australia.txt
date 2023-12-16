@@ -1354,7 +1354,7 @@ focus_tree = {
 	focus = {
 		id = AST_cockatoo_island_shipyards
 		icon = GFX_goal_generic_construct_naval_dockyard
-		x = 16
+		x = 15
 		y = 0
 
 		cost = 5
@@ -1385,13 +1385,15 @@ focus_tree = {
 				limit = {
 					has_state_flag = AST_cockatoo_island_shipyards_DY
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 			}
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = AST_cockatoo_doe_organization
 		}
 
 			
@@ -1403,28 +1405,101 @@ focus_tree = {
 					is_coastal = yes
 					free_building_slots = {
 						building = dockyard
-						size > 2
+						size > 1
 						include_locked = yes
 					}
 					NOT = { state = 674 }
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = AST_cockatoo_island_shipyards_DY
 			}
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = AST_cockatoo_doe_organization
 		}
 	}
+	
+	focus = {
+		id = AST_kangaroo_point_shipyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 2
+		y = 0
+		relative_position_id = AST_cockatoo_island_shipyards
+		cost = 5
 
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+
+		complete_tooltip = {
+			navy_experience = 25
+			random_state = {
+				limit = {
+					has_state_flag = AST_kangaroo_point_shipyards_DY
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = AST_evans_deakin_co_organization
+		}
+
+		completion_reward = {
+			navy_experience = 25
+			random_owned_controlled_state = {
+				prioritize = { 521 }
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					NOT = { state = 674 }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = AST_kangaroo_point_shipyards_DY
+			}
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = AST_evans_deakin_co_organization
+		}
+	}
+	
 	focus = {
 		id = AST_protect_overseas_commerce
 		icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = { focus = AST_cockatoo_island_shipyards }
+		prerequisite = { focus = AST_cockatoo_island_shipyards focus = AST_kangaroo_point_shipyards }
 		mutually_exclusive = { focus = AST_fly_the_jolly_roger }
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -1461,9 +1536,9 @@ focus_tree = {
 	focus = {
 		id = AST_fly_the_jolly_roger
 		icon = GFX_goal_generic_navy_submarine
-		prerequisite = { focus = AST_cockatoo_island_shipyards }
+		prerequisite = { focus = AST_cockatoo_island_shipyards focus = AST_kangaroo_point_shipyards }
 		mutually_exclusive = { focus = AST_protect_overseas_commerce }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -1500,7 +1575,7 @@ focus_tree = {
 		id = AST_scrap_iron_flotilla
 		icon = GFX_goal_generic_navy_cruiser
 		prerequisite = { focus = AST_protect_overseas_commerce focus = AST_fly_the_jolly_roger }
-		x = -1
+		x = 0
 		y = 2
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -1538,7 +1613,7 @@ focus_tree = {
 		id = AST_royal_australian_submarine_service
 		icon = GFX_goal_generic_wolf_pack
 		prerequisite = { focus = AST_protect_overseas_commerce focus = AST_fly_the_jolly_roger }
-		x = 1
+		x = 2
 		y = 2
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -1576,7 +1651,7 @@ focus_tree = {
 		id = AST_naval_auxiliary_patrol
 		icon = GFX_goal_generic_fortify_city
 		prerequisite = { focus = AST_royal_australian_submarine_service focus = AST_scrap_iron_flotilla }
-		x = -1
+		x = 0
 		y = 3
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -1608,7 +1683,7 @@ focus_tree = {
 		id = AST_improve_dockyard_facilities
 		icon = GFX_goal_generic_production2
 		prerequisite = { focus = AST_royal_australian_submarine_service focus = AST_scrap_iron_flotilla }
-		x = 1
+		x = 2
 		y = 3
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -1654,7 +1729,7 @@ focus_tree = {
 		id = AST_cruisers
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = AST_naval_auxiliary_patrol focus = AST_improve_dockyard_facilities }
-		x = -1
+		x = 0
 		y = 4
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -1693,7 +1768,7 @@ focus_tree = {
 		id = AST_pacific_area_navy
 		icon = GFX_goal_generic_navy_doctrines_tactics
 		prerequisite = { focus = AST_naval_auxiliary_patrol focus = AST_improve_dockyard_facilities }
-		x = 1
+		x = 2
 		y = 4
 		relative_position_id = AST_cockatoo_island_shipyards
 
@@ -2898,7 +2973,7 @@ focus_tree = {
 		x = 32
 		y = 0
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -2958,7 +3033,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -2999,7 +3074,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = AST_support_the_policy_of_appeasement
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -3043,7 +3118,7 @@ focus_tree = {
 		y = 3
 		relative_position_id = AST_support_the_policy_of_appeasement
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 10
@@ -3087,7 +3162,7 @@ focus_tree = {
 		y = 3
 		relative_position_id = AST_support_the_policy_of_appeasement
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -3231,7 +3306,7 @@ focus_tree = {
 		y = 4
 		relative_position_id = AST_support_the_policy_of_appeasement
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
