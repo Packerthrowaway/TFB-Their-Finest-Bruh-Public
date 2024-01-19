@@ -16,6 +16,7 @@ ITA_fiat_organization = {
 	allowed = {	
 		OR = {
 			tag = ITA 
+			tag = HUN
 			AND = {
 				tag = GRE 
 				has_dlc = "Battle for the Bosporus"
@@ -73,6 +74,18 @@ ITA_fiat_organization = {
 					is_subject_of = ITA
 				}
 				has_completed_focus = BUL_cooperation_with_italy
+				#is_in_faction_with = ITA
+				#NOT = { has_completed_focus = BUL_nationalization }
+			}
+		}
+		IF = {
+			limit = { FROM = { original_tag = HUN } }
+			FROM = {
+				OR = {
+					is_subject = no
+					is_subject_of = ITA
+				}
+				has_completed_focus = HUN_mobile_focus
 				#is_in_faction_with = ITA
 				#NOT = { has_completed_focus = BUL_nationalization }
 			}

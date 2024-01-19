@@ -179,7 +179,14 @@ technologies = {
 			maximum_speed = 0.1
 			default_morale = 0.2
 		}
-		
+
+		armored_car_recon = {
+			battalion_mult = {
+				category = category_mobile
+				hard_attack = 0.05
+				soft_attack = 0.05
+			}
+		}
 		
 		path = {
 			leads_to_tech = mass_motorization 
@@ -242,6 +249,21 @@ technologies = {
 		category_militia = {
 			max_organisation = 5
 		}
+
+		infantry_mot = {
+			need = {
+				motorized_equipment = 10
+			}
+			maximum_speed = 0.25
+		}
+		on_research_complete = {
+			set_temp_variable = { total_unit_mot = num_battalions_with_type@infantry_mot }
+			set_temp_variable = { temp = 10 }
+			multiply_temp_variable = { total_unit_mot = temp }
+
+			set_temp_variable = { trucks_stored = num_equipment@motorized_equipment }
+			custom_effect_tooltip = tooltip_faster_mech_tt
+		}
 			
 		path = {
 			leads_to_tech = mechanised_offensive 
@@ -293,12 +315,31 @@ technologies = {
 
 		motorized = {
 			max_organisation = 10
+			need = {
+				motorized_equipment = 8
+			}
 		}
 		mechanized = {
 			max_organisation = 10
+			need = {
+				mechanized_equipment = 6
+			}
 		}
 		amphibious_mechanized = {
 			max_organisation = 10
+		}
+
+		on_research_complete = {
+			set_temp_variable = { total_unit_mot = num_battalions_with_type@motorized }
+			set_temp_variable = { total_unit_mech = num_battalions_with_type@mechanized }
+			set_temp_variable = { temp = 8 }
+			multiply_temp_variable = { total_unit_mot = temp }
+			set_temp_variable = { temp = 6 }
+			multiply_temp_variable = { total_unit_mech = temp }
+
+			set_temp_variable = { trucks_stored = num_equipment@motorized_equipment }
+			set_temp_variable = { mech_stored = num_equipment@mechanized_equipment }
+			custom_effect_tooltip = tooltip_more_mech_tt
 		}
 		
 		category_all_armor = {
@@ -357,6 +398,11 @@ technologies = {
 	
 	armored_spearhead = { #Branch focused on Tanks 
 	
+		light_tank_recon = {
+			max_organisation = 3
+			recon = 1
+		}
+
 		dependencies = {
 			mot_radio2 = 1
 		}
@@ -424,8 +470,106 @@ technologies = {
 	schwerpunk = {
 
 		category_all_armor = {
-			max_organisation = 3
+			max_organisation = 1
 			max_strength = 1
+		}
+		light_assault_gun_brigade = {
+			need = {
+				light_assault_gun_chassis = 4
+			}
+		}
+		medium_assault_gun_brigade = {
+			need = {
+				medium_assault_gun_chassis = 4
+			}
+		}
+		heavy_assault_gun_brigade = {
+			need = {
+				heavy_assault_gun_chassis = 4
+			}
+		}
+		light_armor = {
+			need = {
+				light_tank_chassis = 4
+			}
+		}
+		medium_armor = {
+			need = {
+				medium_tank_chassis = 4
+			}
+		}
+		heavy_armor = {
+			need = {
+				heavy_tank_chassis = 4
+			}
+		}
+		light_tank_destroyer_brigade = {
+			need = {
+				light_tank_destroyer_chassis = 2
+			}
+		}
+		medium_tank_destroyer_brigade = {
+			need = {
+				medium_tank_destroyer_chassis = 2
+			}
+		}
+		heavy_tank_destroyer_brigade = {
+			need = {
+				heavy_tank_destroyer_chassis = 2
+			}
+		}
+		light_sp_artillery_brigade = {
+			need = {
+				light_tank_artillery_chassis = 2
+			}
+		}
+		medium_sp_artillery_brigade = {
+			need = {
+				medium_tank_artillery_chassis = 2
+			}
+		}
+		heavy_sp_artillery_brigade = {
+			need = {
+				heavy_tank_artillery_chassis = 2
+			}
+		}
+		amphibious_light_armor = {
+			need = {
+				light_tank_amphibious_chassis = 4
+			}
+		}
+		amphibious_medium_armor = {
+			need = {
+				medium_tank_amphibious_chassis = 4
+			}
+		}
+		amphibious_heavy_armor = {
+			need = {
+				heavy_tank_amphibious_chassis = 4
+			}
+		}
+		light_sp_anti_air_brigade = {
+			need = {
+				light_tank_aa_chassis = 2
+			}
+		}
+		medium_sp_anti_air_brigade = {
+			need = {
+				medium_tank_aa_chassis = 2
+			}
+		}
+		light_tank_recon = {
+			need = {
+				light_tank_chassis = 4
+			}
+		}
+		armored_car_recon = {
+			need = {
+				armored_car_chassis = 4
+			}
+		}
+		on_research_complete = {
+			custom_effect_tooltip = tooltip_more_armor_tt
 		}
 		max_planning = 0.05
 		
@@ -479,12 +623,40 @@ technologies = {
 	blitzkrieg = {
 
 		category_all_armor = {
-			max_organisation = 2
+			max_organisation = 1
 			maximum_speed = 0.05
+			default_morale = 0.1
+			need = {
+			    radio_equipment = 3
+			}
 		}
 
-		category_all_armor = {
-			default_morale = 0.1
+		on_research_complete = {
+			set_temp_variable = { temp = 3 }
+			set_temp_variable = { total_unit = num_battalions_with_type@amphibious_light_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@amphibious_medium_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@amphibious_heavy_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_assault_gun_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_assault_gun_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_assault_gun_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_assault_gun_support }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_assault_gun_support }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_assault_gun_support }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_sp_anti_air_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_sp_anti_air_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_sp_artillery_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_sp_artillery_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_sp_artillery_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_tank_destroyer_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_tank_destroyer_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_tank_destroyer_brigade }
+			multiply_temp_variable = { total_unit = temp }
+
+			set_temp_variable = { radios_stored = num_equipment@radio_equipment }
+			custom_effect_tooltip = tooltip_3radio
 		}
 
 		enable_tactic = tactic_breakthrough
@@ -796,15 +968,9 @@ technologies = {
 		xor={
 			firebrigades
 		}
+		army_core_attack_factor = 0.1
+		army_core_defence_factor = 0.1
 
-		dig_in_speed_factor = 0.5
-		category_all_infantry = {
-			defense = 0.2			
-		}
-		category_militia = {
-			defense = 0.2			
-		}
-		
 		path = {
 			leads_to_tech = nd_conscription 
 			research_cost_coeff = 1
@@ -857,9 +1023,9 @@ technologies = {
 	
 	nd_conscription = { #Conjuncted Defence
 
-		category_line_artillery = {
-			soft_attack = 0.05
-			hard_attack = 0.05
+		land_reinforce_rate = 0.05
+		category_army = {
+			default_morale = 0.2
 		}
 
 		path = {
@@ -904,11 +1070,8 @@ technologies = {
 	
 	werwolf_guerillas  = {
 		
-		land_reinforce_rate = 0.02
-		
-		category_front_line = {
-			max_organisation = 5
-		}
+		cas_damage_reduction = 0.2
+		army_speed_factor = 0.05
 
 		enable_tactic = tactic_tactical_withdrawal
 		
@@ -1564,6 +1727,47 @@ technologies = {
 		category_front_line = {
 			max_organisation = 5
 		}
+
+		recon = {
+			battalion_mult = {
+				category = category_all_armor
+				hard_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				hard_attack = 0.075
+			}
+		}
+		mot_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				hard_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				hard_attack = 0.075
+			}
+		}
+		armored_car_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				hard_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				hard_attack = 0.075
+			}
+		}
+		light_tank_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				hard_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				hard_attack = 0.075
+			}
+		}
 			
 		#combat advantage when air superior
 		army_bonus_air_superiority_factor = 0.15
@@ -1785,7 +1989,48 @@ technologies = {
 		category_army = { 
 			soft_attack = 0.05
 		}
-		
+
+		recon = {
+			battalion_mult = {
+				category = category_all_armor
+				soft_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				soft_attack = 0.075
+			}
+		}
+		mot_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				soft_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				soft_attack = 0.075
+			}
+		}
+		armored_car_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				soft_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				soft_attack = 0.075
+			}
+		}
+		light_tank_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				soft_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				soft_attack = 0.075
+			}
+		}
+
 		enable_tactic = tactic_breakthrough
 		
 		xp_research_type = army
@@ -2046,6 +2291,10 @@ technologies = {
 	}
 	
 	grand_mechanized_offensive = {
+
+		dependencies = {
+			inf_radio1 = 1
+		}
 	
 		xor = {
 			infantry_offensive
@@ -2116,6 +2365,20 @@ technologies = {
 	assault_concentration = {
 	
 		max_planning = 0.1
+
+		hq_company = {
+			need = {
+			   radio_equipment = 3
+		    }
+			max_organisation = 2
+		}
+		on_research_complete = {
+			set_temp_variable = { temp = 3 }
+			set_temp_variable = { total_unit = num_battalions_with_type@hq_company }
+			multiply_temp_variable = { total_unit = temp }
+			set_temp_variable = { radios_stored = num_equipment@radio_equipment }
+			custom_effect_tooltip = tooltip_3radio
+		}
 
 		enable_tactic = tactic_overwhelming_fire
 		
@@ -2234,6 +2497,25 @@ technologies = {
 			breakthrough = 0.10
 		}
 		army_attack_factor = 0.05
+
+		signal_company = {
+			initiative = 0.05
+			max_organisation = 5
+			default_morale = 0.1
+			need = {
+			   radio_equipment = 3
+			   motorized_equipment = 3
+		    }
+		}
+		on_research_complete = {
+			set_temp_variable = { temp = 3 }
+			set_temp_variable = { total_unit = num_battalions_with_type@signal_company }
+			multiply_temp_variable = { total_unit = temp }
+			set_temp_variable = { radios_stored = num_equipment@radio_equipment }
+			set_temp_variable = { trucks_stored = num_equipment@motorized_equipment }
+			custom_effect_tooltip = tooltip_3radio
+			custom_effect_tooltip = tooltip_3truck
+		}
 		
 		enable_tactic = tactic_breakthrough
 	
@@ -2294,6 +2576,26 @@ technologies = {
 		category_all_armor = {
 			default_morale = 0.1
 		}
+
+		mot_recon = {
+			battalion_mult = {
+				category = category_all_infantry
+				defense = 0.025
+				breakthrough = 0.025
+				soft_attack = 0.05
+				hard_attack = 0.05
+			}
+		}
+		armored_car_recon = {
+			battalion_mult = {
+				category = category_all_infantry
+				defense = 0.025
+				breakthrough = 0.025
+				soft_attack = 0.05
+				hard_attack = 0.05
+			}
+		}
+
 		
 		#enable_tactic = tactic_blitz
 		#enable_tactic = tactic_elastic_defense
@@ -2401,6 +2703,10 @@ technologies = {
 	}
 	
 	infantry_offensive = {
+
+		dependencies = {
+			inf_radio1 = 1
+		}
 	
 		xor = {
 			grand_mechanized_offensive
@@ -2462,7 +2768,21 @@ technologies = {
 
 		max_planning = 0.1
 		planning_speed = 0.2
-		attrition = -0.15
+		attrition = -0.1
+
+		category_army = {
+			need = {
+			   radio_equipment = 2
+		    }
+		}
+		on_research_complete = {
+			set_temp_variable = { temp = 2 }
+			set_temp_variable = { total_unit = num_battalions }
+			multiply_temp_variable = { total_unit = temp }
+			set_temp_variable = { radios_stored = num_equipment@radio_equipment }
+			custom_effect_tooltip = tooltip_2radio_all
+		}
+
 
 		path = {
 			leads_to_tech = infiltration_assault
@@ -2512,6 +2832,13 @@ technologies = {
 	}
 	
 	infiltration_assault = {
+
+		recon = {
+			recon = 2
+			need = {
+			   infantry_equipment = 10
+			}
+		}
 
 		category_light_infantry = {
 			breakthrough = 0.1
@@ -2566,7 +2893,7 @@ technologies = {
 	night_assault_tactics = {
 
 		#reduce land night combat penalty
-		land_night_attack = 0.25 # negates half of base penalty
+		land_night_attack = 0.15 # negates half of base penalty
 	
 	
 		path = {
@@ -2621,6 +2948,11 @@ technologies = {
 		category_light_infantry = {
 			max_organisation = 10
 			experience_loss_factor = -0.1
+		}
+
+		field_hospital = {
+			casualty_trickleback = 0.05
+			experience_loss_factor = -0.05
 		}
 
 		enable_tactic = tactic_elastic_defense
@@ -3196,6 +3528,22 @@ technologies = {
 			default_morale = 0.1
 		}
 		
+		armored_car_recon = {
+			battalion_mult = {
+				category = category_light_infantry
+				max_organisation = 1
+				add = yes
+			}
+		}
+		
+		light_tank_recon = {
+			battalion_mult = {
+				category = category_light_infantry
+				max_organisation = 1
+				add = yes
+			}
+		}
+		
 		path = {
 			leads_to_tech = continuous_offensive
 			research_cost_coeff = 1
@@ -3311,6 +3659,9 @@ technologies = {
 			max_strength = 2.5
 		}
 		
+		#Increased Partisan effect on your land occupied by others
+		resistance_damage_to_garrison_on_our_occupied_states = 0.1 #10% more partisan effects 
+		
 		training_time_factor = -0.15
 		land_reinforce_rate = 0.05
 				
@@ -3334,6 +3685,13 @@ technologies = {
 			cat_mass_assault
 		}
 
+		military_police = {
+			battalion_mult = {
+				category = category_cavalry
+				suppression = 0.50
+				add = yes
+			}
+		}
 		
 		folder = {
 			name = land_doctrine_folder

@@ -2041,44 +2041,49 @@ tactic_poor_fortifications = {
 ###Complex Ambush
 
 tactic_trap = {
-	is_attacker = no
-	trigger = {
-		is_attacker = no
-		phase = no
-		
-		 OR = {
-		 	has_trait = ambusher
-		 	has_trait = unyielding_defender
-		 	skill > 3
-		 }
-	}
+    is_attacker = no
+    trigger = {
+        is_attacker = no
+        phase = no
+        
+         OR = {
+             has_trait = ambusher
+             has_trait = unyielding_defender
+             skill > 3
+         }
+         NOT = {
+            is_fighting_in_terrain = mountain
+            is_fighting_in_terrain = rock
+            has_combat_modifier = amphibious_attack
+         }
+    }
 
-	active = yes
+    active = yes
 
-	base = {
-		factor = 1
+    base = {
+        factor = 0.5
 
-		modifier = {
-			add = 1
-			AND = {
-				has_trait = ambusher
-				has_trait = unyielding_defender
-				#remember, the officer must be in the GENERAL's slot for field marshal traits to pass this check. Officers in FM slots do *not* command armies.
-			}
-		}
+        modifier = {
+            add = 1
+            AND = {
+                has_trait = ambusher
+                has_trait = unyielding_defender
+                #remember, the officer must be in the GENERAL's slot for field marshal traits to pass this check. Officers in FM slots do *not* command armies.
+            }
+        }
 
-	}
+    }
 
-	picture = trap
+    picture = trap
 
 
-	phase = complex_ambush
-	#this worked perfectly on my old night tactics.......
+    phase = complex_ambush
+    #this worked perfectly on my old night tactics.......
 
-	display_phase = complex_ambush
-	
-	attacker_movement_speed = 0.1
-	defender = 0.00
+    display_phase = complex_ambush
+    
+    attacker_movement_speed = 0.1
+    defender = 0.00
 }
 
 tactic_ca_ambushed = {
