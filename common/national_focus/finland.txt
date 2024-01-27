@@ -5635,6 +5635,39 @@ focus_tree = {
 			add_ideas = FIN_the_lone_wolf
 		}
 	}
+
+	focus = {
+		id = FIN_continuation
+		icon = GFX_focus_generic_attack_finland
+		prerequisite = { focus = FIN_the_lone_wolf }
+		x = 2 #2
+		y = 1
+		relative_position_id = FIN_the_lone_wolf
+		cost = 1
+		available = {
+			GER = { has_war_with = SOV }
+			NOT = { has_war_with = SOV }
+		}
+
+		bypass = {
+			has_war_with = SOV
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			declare_war_on = {
+				target = SOV
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = MON
+				type = annex_everything
+			}
+		}
+	}
 	
 	focus = {
 		id = FIN_military_aid
