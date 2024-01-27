@@ -5163,8 +5163,11 @@ focus_tree = {
 				transfer_state = 850
 			}
 			ITA = { 
-				set_cosmetic_tag = ITA_ISR 
-				remove_ideas = victor_emmanuel
+				set_cosmetic_tag = ITA_ISR
+				if = {
+					limit = { has_idea = victor_emmanuel}
+					remove_ideas = victor_emmanuel
+				}
 				add_ideas = ITA_german_occupation
 				set_capital =  { state = 159 }
 			}
@@ -6399,7 +6402,7 @@ focus_tree = {
 		relative_position_id = GER_anschluss
 		cost = 5
 		ai_will_do = {
-			factor = 10
+			factor = 1000
 		}	
 		completion_reward = {
 			country_event = { id = germany.98 }
