@@ -177,7 +177,7 @@ NDefines.NMilitary.EXPEDITIONARY_FIELD_EXPERIENCE_SCALE = 0.5		-- reduction fact
 NDefines.NMilitary.LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0.005		-- Experience scale for lend leased equipment used in combat.
 NDefines.NMilitary.LEADER_EXPERIENCE_SCALE = 0.8
 NDefines.NMilitary.SLOWEST_SPEED = 2
-NDefines.NMilitary.EXPERIENCE_COMBAT_FACTOR = 0.10
+NDefines.NMilitary.EXPERIENCE_COMBAT_FACTOR = 0.075
 NDefines.NMilitary.PARACHUTE_FAILED_EQUIPMENT_DIV = 25.0		   -- When the transport plane was shot down we drop unit with almost NONE equipment
 NDefines.NMilitary.PARACHUTE_FAILED_MANPOWER_DIV = 50.0		   -- When the transport plane was shot down we drop unit with almost NONE manpower
 NDefines.NMilitary.PARACHUTE_FAILED_STR_DIV = 7.5			   -- When the transport plane was shot down we drop unit with almost NONE strenght
@@ -505,6 +505,7 @@ NDefines.NFocus.MAX_SAVED_FOCUS_PROGRESS = 21				-- This much progress can be sa
 NDefines.NOperatives.INTEL_NETWORK_MAX_INTELLIGENCE_AGENCY_DEFENSE_DETECTION_SCALE_FACTOR = 1.0	-- clamp the value from the multiplication of the above factor
 NDefines.NOperatives.OPERATIVE_BASE_CONTROL_TRADE_DRIFT = 0.0				-- The base daily drift in trade influence caused by an operative
 NDefines.NOperatives.CONTROL_TRADE_STACKING_FACTOR = 0.0					-- Multiplied to the drift of each operative after the first one
+NDefines.NOperatives.INTEL_NETWORK_MIN_VP_TO_TARGET = 10					-- The minimum value of the highest VP in a state to consider the state as a valid target to start building an intel network
 
 NDefines.NIntel.CIVILIAN_INTEL_NEEDED_TO_SHOW_FOCUS_TREE = 0.7 -- min required intel to focus tree with taken focuses
 NDefines.NIntel.CIVILIAN_INTEL_NEEDED_TO_SHOW_CURRENT_FOCUS = 0.4  -- min required intel to show currently focus
