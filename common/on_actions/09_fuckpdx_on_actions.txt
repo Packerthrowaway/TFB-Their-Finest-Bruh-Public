@@ -213,155 +213,185 @@ on_actions = {
 
 	on_capitulation = {
 		## Capitulation of China
-		# Going to the Peace Conference
+		# Japan Annexes all and then we use the Decisions
 		effect = {
 			if = {
 				limit = {
 					original_tag = CHI
 					FROM = { tag = JAP }
-					AND = {
-						NOT = { has_global_flag = JAP_split_china}
-						NOT = { has_global_flag = JAP_take_china}
-						NOT = { has_global_flag = JAP_give_china}
-						NOT = { has_global_flag = JAP_puppet_china}
+				}
+				JAP = {
+					# white_peace = CHI
+					annex_country = {
+						target = CHI
+						transfer_troops = no
 					}
+					add_named_threat = {
+						threat = 30
+						name = JAP_threat_treaty_of_nanjing
+					}
+					set_country_flag = { flag = JAP_transfer_timer value = 1 days = 30 }
+					country_event = {  id = japan.506 } 
+				}
+				if = {
+					limit = {
+						MAN = { has_completed_focus = MAN_crush_the_bandits }
+					}
+					MAN = {
+						add_ideas = MAN_assert_mills
+					}
+				}
+			}
+		}
+		# # Going to the Peace Conference
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			original_tag = CHI
+		# 			FROM = { tag = JAP }
+		# 			AND = {
+		# 				NOT = { has_global_flag = JAP_split_china}
+		# 				NOT = { has_global_flag = JAP_take_china}
+		# 				NOT = { has_global_flag = JAP_give_china}
+		# 				NOT = { has_global_flag = JAP_puppet_china}
+		# 			}
 					
-				}
-				if = {
-					limit = {
-						MAN = { has_completed_focus = MAN_crush_the_bandits }
-					}
-					MAN = {
-						add_ideas = MAN_assert_mills
-					}
-				}
-			}
-		}
-		# Japan and Manchu split China
-		effect = {
-			if = {
-				limit = {
-					original_tag = CHI
-					FROM = { tag = JAP }
-					has_global_flag = JAP_split_china
-				}
-				# JAP = {
-				# 	white_peace = CHI
-				# }
-				MAN = {
-					transfer_state = 604 #Qinghai
-					transfer_state = 608 #Beijing
-					transfer_state = 616 #Ningxia
-					transfer_state = 621 #Suiyuan
-					transfer_state = 746 #Ordos
-					transfer_state = 755 #Haixi
-					transfer_state = 756 #Jinquan
-				}
-				if = {
-					limit = {
-						MAN = { has_completed_focus = MAN_crush_the_bandits }
-					}
-					MAN = {
-						add_ideas = MAN_assert_mills
-					}
-				}
-				JAP = {
-					annex_country = {
-						target = CHI
-						transfer_troops = no
-					}
-					add_named_threat = {
-						threat = 30
-						name = JAP_threat_treaty_of_nanjing
-					}
-				}
-			}
-		}
-		# Japan Takes all of China
-		effect = {
-			if = {
-				limit = {
-					original_tag = CHI
-					FROM = { tag = JAP }
-					has_global_flag = JAP_take_china
-				}
-				JAP = {
-					# white_peace = CHI
-					annex_country = {
-						target = CHI
-						transfer_troops = no
-					}
-					add_named_threat = {
-						threat = 30
-						name = JAP_threat_treaty_of_nanjing
-					}
-				}
-				if = {
-					limit = {
-						MAN = { has_completed_focus = MAN_crush_the_bandits }
-					}
-					MAN = {
-						add_ideas = MAN_assert_mills
-					}
-				}
-			}
-		}
-		# Manchu takes all of China
-		effect = {
-			if = {
-				limit = {
-					original_tag = CHI
-					FROM = { tag = JAP }
-					has_global_flag = JAP_give_china
-				}
-				MAN = {
-					# white_peace = CHI
-					annex_country = {
-						target = CHI
-						transfer_troops = no
-					}
-				}
-				if = {
-					limit = {
-						MAN = { has_completed_focus = MAN_crush_the_bandits }
-					}
-					MAN = {
-						add_ideas = MAN_assert_mills
-					}
-				}
-				JAP = {
-					add_named_threat = {
-						threat = 30
-						name = JAP_threat_treaty_of_nanjing
-					}
-				}
-			}
-		}
-		# Japan Puppets China
-		effect = { 
-			if = {
-				limit = {
-					original_tag = CHI
-					FROM = { tag = JAP }
-					has_global_flag = JAP_puppet_china
-				}
-				JAP = {
-					puppet = CHI
-					add_named_threat = {
-						threat = 30
-						name = JAP_threat_treaty_of_nanjing
-					}
-				}
-				if = {
-					limit = {
-						MAN = { has_completed_focus = MAN_crush_the_bandits }
-					}
-					MAN = {
-						add_ideas = MAN_assert_mills
-					}
-				}
-			}
-		}
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				MAN = { has_completed_focus = MAN_crush_the_bandits }
+		# 			}
+		# 			MAN = {
+		# 				add_ideas = MAN_assert_mills
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# # Japan and Manchu split China
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			original_tag = CHI
+		# 			FROM = { tag = JAP }
+		# 			has_global_flag = JAP_split_china
+		# 		}
+		# 		# JAP = {
+		# 		# 	white_peace = CHI
+		# 		# }
+		# 		MAN = {
+		# 			transfer_state = 604 #Qinghai
+		# 			transfer_state = 608 #Beijing
+		# 			transfer_state = 616 #Ningxia
+		# 			transfer_state = 621 #Suiyuan
+		# 			transfer_state = 746 #Ordos
+		# 			transfer_state = 755 #Haixi
+		# 			transfer_state = 756 #Jinquan
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				MAN = { has_completed_focus = MAN_crush_the_bandits }
+		# 			}
+		# 			MAN = {
+		# 				add_ideas = MAN_assert_mills
+		# 			}
+		# 		}
+		# 		JAP = {
+		# 			annex_country = {
+		# 				target = CHI
+		# 				transfer_troops = no
+		# 			}
+		# 			add_named_threat = {
+		# 				threat = 30
+		# 				name = JAP_threat_treaty_of_nanjing
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# # Japan Takes all of China
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			original_tag = CHI
+		# 			FROM = { tag = JAP }
+		# 			has_global_flag = JAP_take_china
+		# 		}
+		# 		JAP = {
+		# 			# white_peace = CHI
+		# 			annex_country = {
+		# 				target = CHI
+		# 				transfer_troops = no
+		# 			}
+		# 			add_named_threat = {
+		# 				threat = 30
+		# 				name = JAP_threat_treaty_of_nanjing
+		# 			}
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				MAN = { has_completed_focus = MAN_crush_the_bandits }
+		# 			}
+		# 			MAN = {
+		# 				add_ideas = MAN_assert_mills
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# # Manchu takes all of China
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			original_tag = CHI
+		# 			FROM = { tag = JAP }
+		# 			has_global_flag = JAP_give_china
+		# 		}
+		# 		MAN = {
+		# 			# white_peace = CHI
+		# 			annex_country = {
+		# 				target = CHI
+		# 				transfer_troops = no
+		# 			}
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				MAN = { has_completed_focus = MAN_crush_the_bandits }
+		# 			}
+		# 			MAN = {
+		# 				add_ideas = MAN_assert_mills
+		# 			}
+		# 		}
+		# 		JAP = {
+		# 			add_named_threat = {
+		# 				threat = 30
+		# 				name = JAP_threat_treaty_of_nanjing
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# # Japan Puppets China
+		# effect = { 
+		# 	if = {
+		# 		limit = {
+		# 			original_tag = CHI
+		# 			FROM = { tag = JAP }
+		# 			has_global_flag = JAP_puppet_china
+		# 		}
+		# 		JAP = {
+		# 			puppet = CHI
+		# 			add_named_threat = {
+		# 				threat = 30
+		# 				name = JAP_threat_treaty_of_nanjing
+		# 			}
+		# 		}
+		# 		if = {
+		# 			limit = {
+		# 				MAN = { has_completed_focus = MAN_crush_the_bandits }
+		# 			}
+		# 			MAN = {
+		# 				add_ideas = MAN_assert_mills
+		# 			}
+		# 		}
+		# 	}
+		# }
 
 		# Italy takes Ethopia
 		effect = { 
