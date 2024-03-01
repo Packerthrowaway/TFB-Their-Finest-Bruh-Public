@@ -122,6 +122,10 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 					NOT = { original_tag = YUG }
 				}
 			}
+			OR = {
+				NOT = { has_dlc = "Trial of Allegiance" }
+				NOT = { original_tag = CHL }
+			}
 			NOT = { original_tag = SOV }
 		}
 		always = yes
@@ -973,11 +977,16 @@ game_weight_can_add_communist = {
 }
 
 DIPLOMACY_JOIN_ALLY_ENABLE_TRIGGER = {
-	if = { # TODO_TA make more generic trigger
+	if = { 
 		limit = {
 			NOT = { has_global_flag = ethiopia_recognized_flag }
-			FROM = {
-				tag = ETH 
+			OR = {
+				ROOT = {
+					tag = ETH
+				}
+				FROM = {
+					tag = ETH
+				}
 			}
 			
 		}
@@ -1019,8 +1028,13 @@ DIPLOMACY_CALL_ALLY_ENABLE_TRIGGER = {
 	if = { 
 		limit = {
 			NOT = { has_global_flag = ethiopia_recognized_flag }
-			ROOT = {
-				tag = ETH
+			OR = {
+				ROOT = {
+					tag = ETH
+				}
+				FROM = {
+					tag = ETH
+				}
 			}
 			
 		}

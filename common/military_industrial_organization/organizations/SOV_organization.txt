@@ -984,6 +984,14 @@ SOV_rubin_design_bureau_organization = {
 				tag = ETH 
 				has_dlc = "By Blood Alone"
 			}
+			AND = {
+				tag = ARG
+				has_dlc = "Trial of Allegiance"
+			}
+			AND = {
+				tag = BRA
+				has_dlc = "Trial of Allegiance"
+			}
 			NOR_AAT = yes
 		}
 	}
@@ -1009,6 +1017,20 @@ SOV_rubin_design_bureau_organization = {
 				FROM = { original_tag = NOR }
 			}
 			FROM = { has_completed_focus = NOR_invite_soviet_designers }
+		}
+
+		IF = {
+			limit = {
+				FROM = { original_tag = ARG }
+			}
+			FROM = { has_completed_focus = ARG_russian_manufacturers }
+		}
+
+		IF = {
+			limit = {
+				FROM = { original_tag = BRA }
+			}
+			FROM = { has_completed_focus = BRA_soviet_arms_industry }
 		}
 	}
 
@@ -1538,6 +1560,14 @@ SOV_mig_design_bureau_organization = {
 				tag = ETH 
 				has_dlc = "By Blood Alone"
 			}
+			AND = {
+				tag = ARG
+				has_dlc = "Trial of Allegiance" 
+			}
+			AND = {
+				tag = BRA
+				has_dlc = "Trial of Allegiance" #TODO MH Change DLC
+			}
 		}
 	}
 	
@@ -1545,6 +1575,12 @@ SOV_mig_design_bureau_organization = {
 		IF = { 
 			limit = { FROM = { original_tag = ETH } } 
 			FROM = { has_completed_focus = ETH_soviet-ethiopian_trade_agreement }
+		}
+		IF = { 
+			limit = {
+				FROM = { tag = BRA }
+				has_dlc = "Trial of Allegiance"
+			}
 		}
 	}
 
@@ -1555,6 +1591,18 @@ SOV_mig_design_bureau_organization = {
 				FROM = { NOT = { original_tag = SOV } }
 			}
 			FROM = { NOT = { has_war_with = SOV } }
+		}
+		IF = {
+			limit = {
+				FROM = { original_tag = ARG }
+			}
+			FROM = { has_completed_focus = ARG_russian_manufacturers }
+		}
+		IF = {
+			limit = {
+				FROM = { original_tag = BRA }
+			}
+			FROM = { has_completed_focus = BRA_soviet_arms_industry }
 		}
 	}
 
@@ -2473,6 +2521,14 @@ SOV_gaz_organization = {
 				tag = ETH 
 				has_dlc = "By Blood Alone"
 			}
+			AND = {
+				tag = ARG
+				has_dlc = "Trial of Allegiance" #TODO_Eildih fix DLC
+			}
+			AND = {
+				tag = BRA
+				has_dlc = "Trial of Allegiance" #TODO MH fix DLC
+			}
 			NOR_AAT = yes
 		}
 	}
@@ -2515,6 +2571,20 @@ SOV_gaz_organization = {
 				FROM = { original_tag = NOR }
 			}
 			FROM = { has_completed_focus = NOR_invite_soviet_designers }
+		}
+
+		IF = {
+			limit = {
+				FROM = { original_tag = ARG }
+			}
+			FROM = { has_completed_focus = ARG_russian_manufacturers }
+		}
+
+		IF = {
+			limit = {
+				FROM = { original_tag = BRA }
+			}
+			FROM = { has_completed_focus = BRA_soviet_arms_industry }
 		}
 	}
 

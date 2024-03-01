@@ -2191,15 +2191,46 @@ country_event = {
 		hidden_effect = {
 			random_list = {
 				1 = {
+					modifier = {
+						factor = 20
+						has_dlc = "Trial of Allegiance"
+					}
+					modifier = {
+						factor = 100
+						has_dlc = "Trial of Allegiance"
+						ARG = {
+							has_completed_focus = ARG_guardia_nacional
+						}
+					}
+
 					if = {
 						limit = {
+							NOT = {
+								has_dlc = "Trial of Allegiance"
+							}
 							ARG = {
 								is_ai = yes
 							}
 						}
 						ARG = {
 							add_timed_idea = { idea = fascism_drift_ARG days = 1460 }
-							country_event = { id = wtt_germany.1004 days = 1095 random = 365 }
+							country_event = { id = wtt_germany.1004 days = 1095 random_days = 365 }
+						}
+					}
+					
+					IF = {
+						limit = {
+							has_dlc = "Trial of Allegiance"
+							ARG = {
+								exists = yes
+								has_government = fascism 
+							}
+						}
+						ARG = {
+							country_event = {
+								id = ARG_political_events.120
+								days = 30
+							}
 						}
 					}
 				}

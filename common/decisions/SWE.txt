@@ -1690,17 +1690,6 @@ SWE_ebba_palmstierna_cat = {
 
 		complete_effect = {
 			SWE_ebba_palmstierna = {
-				hidden_effect = {
-					if = {
-						limit = {
-							has_trait = SWE_suffragette
-						}
-						remove_trait = {
-							trait = SWE_suffragette
-							slot = political_advisor 
-						}
-					}
-				}
 				add_trait = {
 					slot = political_advisor
 					trait = SWE_suffragette_research
@@ -3214,6 +3203,9 @@ SWE_communist_foreign_influence = {
 			}
 
 			complete_effect = {
+				set_rule = { 
+					can_send_volunteers = yes # rule to use, e.g.  can_not_declare_war = yes
+				}
 				hidden_effect = {
 					set_country_flag = SWE_has_triggered_nor_com_uprising
 				}
@@ -3342,6 +3334,32 @@ SWE_communist_foreign_influence = {
 						}
 					}
 				}
+
+				hidden_effect = {
+					every_country = {
+						limit = {
+							original_tag = NOR
+							has_government = communism
+						}
+						every_other_country = {
+							limit = {
+								NOT = {
+									original_tag = SWE
+								}
+							}
+							PREV = {
+								log = "[THIS.GetName]"
+								log = "[PREV.GetName]"
+								add_ai_strategy = { 
+									type = alliance
+									id = PREV
+									value = -250
+								}
+							}
+						}
+					}
+				}
+
 				custom_effect_tooltip = SWE_pull_the_trigger_tt
 			}
 		}
@@ -3363,7 +3381,7 @@ SWE_communist_foreign_influence = {
 
 				DEN = {
 					NOT = { has_government = communism }
-					communism > 0.3
+					communism > 0.25
 				}
 			}
 
@@ -3378,6 +3396,9 @@ SWE_communist_foreign_influence = {
 			}
 
 			complete_effect = {
+				set_rule = { 
+					can_send_volunteers = yes # rule to use, e.g.  can_not_declare_war = yes
+				}
 				hidden_effect = {
 					set_country_flag = SWE_has_triggered_den_com_uprising
 				}
@@ -3417,6 +3438,31 @@ SWE_communist_foreign_influence = {
 							ideology = communism
 							ruling_party = neutrality
 							size = var:SWE_DEN_communist_support
+						}
+					}
+
+					hidden_effect = {
+						every_country = {
+							limit = {
+								original_tag = DEN
+								has_government = communism
+							}
+							every_country = {
+								limit = {
+									NOT = {
+										original_tag = SWE
+										original_tag = DEN
+										has_government = communism
+									}
+								}
+								PREV = {
+									add_ai_strategy = { 
+										type = alliance
+										id = PREV
+										value = -250
+									}
+								}
+							}
 						}
 					}
 				}

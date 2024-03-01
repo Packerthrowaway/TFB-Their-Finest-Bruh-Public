@@ -29,6 +29,10 @@ ITA_fiat_organization = {
 				tag = ETH 
 				has_dlc = "By Blood Alone"
 			}
+			AND = {
+				tag = BRA
+				has_dlc = "Trial of Allegiance"
+			}
 		}
 	}
 
@@ -76,6 +80,16 @@ ITA_fiat_organization = {
 				has_completed_focus = BUL_cooperation_with_italy
 				#is_in_faction_with = ITA
 				#NOT = { has_completed_focus = BUL_nationalization }
+			}
+		}
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = BRA
+				}
+			}
+			FROM = {
+				has_completed_focus = BRA_italian_trucks
 			}
 		}
 		IF = {
@@ -741,9 +755,14 @@ ITA_crda_cant_organization = {
 ITA_fiat_aviazione_organization = {
 	include = generic_range_focused_aircraft_organization
 	icon = GFX_idea_ITA_fiat_aviazione
+
+
 	
 	allowed = {	 
-		tag = ITA 
+		OR = {
+			tag = ITA
+			tag = BRA
+		} 
 	}
 	
 	available = {
