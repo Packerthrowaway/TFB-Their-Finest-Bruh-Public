@@ -1239,7 +1239,7 @@ focus_tree = {
 			capital_scope = {
 				add_resource = {
 					type = steel
-					amount = 24
+					amount = 240
 					#state = 662
 				}
 				add_extra_state_shared_building_slots = 1
@@ -1560,7 +1560,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 1
 				add_resource = {
 					type = oil
-					amount = 16
+					amount = 160
 				}	
 				add_to_variable = {
 					BRA_state_development_local_building_slots_factor = 0.2
@@ -1605,7 +1605,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 1
 				add_resource = {
 					type = rubber
-					amount = 20
+					amount = 200
 				}
 				add_to_variable = {
 					BRA_state_development_local_building_slots_factor = 0.2
@@ -1786,7 +1786,7 @@ focus_tree = {
 			938 = {
 				add_resource = {
 					type = rubber
-					amount = 10
+					amount = 100
 				}
 				add_extra_state_shared_building_slots = 1
 				add_victory_points = {
@@ -4614,18 +4614,18 @@ focus_tree = {
 		}
 		available = {
 		}
-		allow_branch = {
-			IF = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				NOT = { has_completed_focus = BRA_prepare_for_second_intentona }
-				NOT = { has_completed_focus = BRA_tribunal_de_seguranca_nacional }
-			}
-		}
+		# allow_branch = {
+		# 	IF = {
+		# 		limit = {
+		# 			has_game_rule = {
+		# 				rule = obsolete_focus_branches_visibility
+		# 				option = HIDE
+		# 			}
+		# 		}
+		# 		NOT = { has_completed_focus = BRA_prepare_for_second_intentona }
+		# 		NOT = { has_completed_focus = BRA_tribunal_de_seguranca_nacional }
+		# 	}
+		# }
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 
 		completion_reward = {
@@ -5162,6 +5162,9 @@ focus_tree = {
 		cost = 5
 		ai_will_do = {
 			factor = 0
+		}
+		allow_branch = {
+			always = no
 		}
 		available = {
 			OR = {
