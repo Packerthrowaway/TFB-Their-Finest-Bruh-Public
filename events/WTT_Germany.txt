@@ -2236,8 +2236,26 @@ country_event = {
 				}
 				1 = {
 					set_global_flag = MTG_flag_955
+					modifier = { 
+						has_dlc = "Trial of Allegiance"
+						tag = ARG
+						has_completed_focus = ARG_guardia_nacional
+						factor = 0
+					}
 				}
-				198 = {}
+				1 = { 
+					modifier = { 
+						has_dlc = "Trial of Allegiance"
+						tag = ARG
+						has_completed_focus = ARG_guardia_nacional
+						factor = 0
+					}
+					if = { 
+						limit = { has_dlc = "La Resistance" }
+						country_event = { id = wtt_germany.1005 days = 1095 random_days = 365 } 
+					} 
+				}
+				297 = {}
 			}
 		}
 	}
