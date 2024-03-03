@@ -2992,7 +2992,12 @@ FRA_propaganda_campaigns = {
 				has_capitulated = yes
 			}
 			NOT = { has_government = fascism }
-			VIC = { has_war = yes }
+			OR = {
+				has_country_flag = case_anton
+				VIC = { has_war = yes }
+				D04 = {	has_war = yes }
+			}
+
 		}
 
 		days_remove = 365
