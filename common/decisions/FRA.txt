@@ -2992,7 +2992,16 @@ FRA_propaganda_campaigns = {
 				has_capitulated = yes
 			}
 			NOT = { has_government = fascism }
-			VIC = { has_war = yes }
+			OR = {
+				has_country_flag = case_anton
+				if = {
+					limit = {
+						country_exists = VIC
+					}
+					VIC = { has_war = yes }
+				}
+				26 = { CONTROLLER = { has_war_with = ROOT } }
+			}
 		}
 
 		days_remove = 365
@@ -3002,9 +3011,11 @@ FRA_propaganda_campaigns = {
 		cost = 25
 
 		targeted_modifier = {
-			tag = VIC
+			tag = FRA.SOUTHFRANCEOWNER
 			attack_bonus_against = 0.2
 		}
+
+
 		targeted_modifier = {
 			tag = GER
 			attack_bonus_against = 0.2
