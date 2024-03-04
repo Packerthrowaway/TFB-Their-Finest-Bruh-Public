@@ -44,6 +44,26 @@ on_actions = {
 				HMP_check_fleet_size = yes 
 			}
 		}
+		effect = {
+			if = {
+				limit = {
+					country_exists = VIC
+				}
+				set_variable = { FRA.SOUTHFRANCEOWNER = VIC }
+			}
+			if = {
+				limit = {
+					26 = { CONTROLLER = { tag = D04 } }
+				}
+				set_variable = { FRA.SOUTHFRANCEOWNER = D04 }
+			}
+			if = {
+				limit = {
+					26 = { CONTROLLER = { tag = D05 } }
+				}
+				set_variable = { FRA.SOUTHFRANCEOWNER = D05 }
+			}
+		}
 	}
    on_startup = {
 		effect = {
@@ -94,6 +114,9 @@ on_actions = {
 			ENG = {
 				COMMONWEALTH_create_commonwealth_alliance = yes
 			}
+		}
+		effect = {
+			set_variable = { FRA.SOUTHFRANCEOWNER = VIC }
 		}
 		effect = {
 			# every_country = { 
