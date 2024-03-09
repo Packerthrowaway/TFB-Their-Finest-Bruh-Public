@@ -53,6 +53,19 @@ focus_tree = {
 		available = {
 		}
 
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = ARG_the_clean_election }
+				NOT = { has_completed_focus = ARG_a_call_to_reform }
+			}
+		}
+
 		ai_will_do = {
 			factor = 20 #default to historical
 		}
@@ -78,6 +91,15 @@ focus_tree = {
 						}
 						remove_ideas = ARG_roberto_maria_ortiz_idea
 					}
+				}
+					if = {
+					limit = {
+						has_game_rule = {
+							rule = obsolete_focus_branches_visibility
+							option = HIDE
+						}
+					}
+					mark_focus_tree_layout_dirty = yes
 				}
 			}
 		}
@@ -699,6 +721,7 @@ focus_tree = {
 		relative_position_id = ARG_balancing_act
 		cost = 10
 		available = {
+			has_character = ARG_juan_peron
 		}
 
 		ai_will_do = {
@@ -2626,6 +2649,19 @@ focus_tree = {
 		available = {
 		}
 
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = ARG_roberto_maria_ortiz }
+				NOT = { has_completed_focus = ARG_a_call_to_reform }
+			}
+		}
+
 		ai_will_do = {
 			factor = 15
 		}
@@ -2637,6 +2673,15 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = ARG_infamous_decade_idea
   				add_idea = ARG_infamous_decade_3_idea 	
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				mark_focus_tree_layout_dirty = yes
 			}
 		}
 	}
@@ -4146,6 +4191,19 @@ focus_tree = {
 		available = {
 		}
 
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = ARG_roberto_maria_ortiz }
+				NOT = { has_completed_focus = ARG_the_clean_election }
+			}
+		}
+
 		ai_will_do = {
 			factor = 15 #what are you doing here ai! 5 less than historical, go on, go take that!
 		}
@@ -4166,6 +4224,15 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = ARG_infamous_decade_idea
   				add_idea = ARG_infamous_decade_4_idea 	
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				mark_focus_tree_layout_dirty = yes
 			} 
 		}
 	}
@@ -5339,6 +5406,30 @@ focus_tree = {
 		#relative_position_id =
 		cost = 10
 		available = {
+		}
+
+		offset = {
+			x = -22
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = ARG_the_clean_election 
+			}
+		}
+
+		offset = {
+			x = -34
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = ARG_a_call_to_reform 
+			}
 		}
 
 		ai_will_do = {

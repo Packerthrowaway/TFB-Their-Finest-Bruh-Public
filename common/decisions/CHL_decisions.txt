@@ -9492,19 +9492,19 @@ CHL_monarchist_decisions = {
 				limit = {
 					NOT = {
 						is_core_of = ROOT
-						OR = {
-							state = 16
-							state = 785
-							state = 29
-							state = 18
-							state = 28
-							state = 17
-							state = 27
-							state = 24
-							state = 30
-							state = 14
-							state = 23
-						}
+					}
+					OR = {
+						state = 16
+						state = 785
+						state = 29
+						state = 18
+						state = 28
+						state = 17
+						state = 27
+						state = 24
+						state = 30
+						state = 14
+						state = 23
 					}
 				}
 				remove_claim_by = ROOT
@@ -9583,20 +9583,20 @@ CHL_monarchist_decisions = {
 				limit = {
 					NOT = {
 						is_core_of = ROOT
-						OR = {
-							state = 19
-							state = 806
-							state = 31
-							state = 25
-							state = 33
-							state = 26
-							state = 20
-							state = 22
-							state = 32
-							state = 21
-							state = 851
-							state = 735
-						}
+					}
+					OR = {
+						state = 19
+						state = 806
+						state = 31
+						state = 25
+						state = 33
+						state = 26
+						state = 20
+						state = 22
+						state = 32
+						state = 21
+						state = 851
+						state = 735
 					}
 				}
 				remove_claim_by = ROOT
@@ -9788,17 +9788,18 @@ CHL_monarchist_decisions = {
 		}
 
 		remove_effect = {
-			
-			every_state = {
-				limit = {
-					NOT = {
-						is_core_of = ROOT
+			hidden_effect = {
+				every_state = {
+					limit = {
+						NOT = {
+							is_core_of = ROOT
+						}
+						is_core_of = QUE
+						is_controlled_by = ROOT
 					}
-					is_core_of = QUE
-					is_controlled_by = ROOT
+					transfer_state_to = ROOT
+					add_core_of = ROOT
 				}
-				transfer_state_to = ROOT
-				add_core_of = ROOT
 			}
 			effect_tooltip = {
 				every_state = {
