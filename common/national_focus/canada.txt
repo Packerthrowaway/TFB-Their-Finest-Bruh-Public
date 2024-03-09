@@ -183,6 +183,21 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+
+			IF = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CAN_mackenzie_king
+					}
+				}
+
+				add_trait = {
+					character = CAN_mackenzie_king
+					trait = CAN_father_of_the_canadian_welfare_state
+					ideology = liberalism 
+				}
+			}
 		}
 
 		completion_reward = {
@@ -201,6 +216,22 @@ focus_tree = {
 					instant_build = yes
 				}
 				set_state_flag = CAN_national_housing_act_IC
+			}
+
+			IF = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CAN_mackenzie_king
+					}
+				}
+				
+				add_trait = {
+					character = CAN_mackenzie_king
+					trait = CAN_father_of_the_canadian_welfare_state
+					ideology = liberalism 
+				}
+				
 			}
 		}
 	}
@@ -294,10 +325,12 @@ focus_tree = {
 				}
 			}
 			build_railway = { #Vancouver - NW Canada
-			path = {
-				1408 1858 10273 4870 10548
+				path = {
+					1408 1858 10273 4870 10548
+				}
 			}
-		}
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = canadian_pacific_railway
 		}
 	}
 

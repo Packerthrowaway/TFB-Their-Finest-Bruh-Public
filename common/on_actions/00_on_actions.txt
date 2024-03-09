@@ -173,6 +173,17 @@ on_actions = {
 				}
 				set_global_flag = JAP_nuke_1
 			}
+			if = {
+				limit = {
+					FROM = {
+						state = 953
+					}
+					NOT = {
+						has_global_flag = land_of_fire_flag
+					}
+				}
+				set_global_flag = land_of_fire_flag
+			}
 
 			news_event = { id = nuke_dropped.2 days = 1}
 			news_event = { id = nuke_dropped.3 days = 1}
@@ -2101,6 +2112,26 @@ on_actions = {
 							modifier = {
 								factor = 0.25
 								game_weight_can_add_democratic = no
+							}
+							modifier = {
+								OR = {
+									CHL = {
+										is_ai = no
+									}
+									BRA = {
+										is_ai = no
+									}
+									ARG = {
+										is_ai = no
+									}			
+									PAR = {
+										is_ai = no
+									}									
+									URG = {
+										is_ai = no
+									}									
+								}
+								factor = 1.25
 							}
 							set_add_democratic_game_weight_large = yes
 							set_country_flag = USA_AI_RANDOM_DEMOCRATIC_ALTERNATE

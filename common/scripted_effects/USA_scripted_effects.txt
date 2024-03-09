@@ -529,16 +529,27 @@ USA_calc_stars = {
 	if = {
 		limit = {
 			has_cosmetic_tag = USA_50
+			NOT = {
+				has_cosmetic_tag = native_american_usa
+			}
 		}
 		set_cosmetic_tag = USA_51
 	}
 	else_if = {
 		limit = {
 			has_cosmetic_tag = USA_49
+			NOT = {
+				has_cosmetic_tag = native_american_usa
+			}
 		}
 		set_cosmetic_tag = USA_50
 	}
-	else = {
+	else_if = {
+		limit = {
+			NOT = {
+				has_cosmetic_tag = native_american_usa
+			}
+		}
 		set_cosmetic_tag = USA_49
 	}
 }
@@ -900,6 +911,66 @@ USA_set_president_effect = {
 				
 			}
 		}
+	}
+}
+
+USA_create_william_sebold_operative = { #FBI
+	create_operative_leader = {
+		name = "William G Sebold"
+		GFX = GFX_portrait_USA_william_g_sebold
+		gender = male
+		traits = { operative_double_agent operative_infiltrator }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { USA GER }
+	}
+}
+
+USA_create_joe_savoldi_operative = { #OSS
+	create_operative_leader = {
+		name = "Joe Savoldi"
+		GFX = GFX_portrait_USA_joe_savoldi
+		gender = male
+		traits = { operative_infiltrator operative_tough operative_well_groomed }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { USA ITA }
+	}
+}
+
+USA_create_serge_obolensky_operative = { #OSS
+	create_operative_leader = {
+		name = "Serge Obolensky"
+		GFX = GFX_portrait_USA_serge_obolensky
+		gender = male
+		traits = { operative_tough operative_natural_orator }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { SOV USA }
+	}
+}
+
+USA_create_george_musulin_operative = { #OSS
+	create_operative_leader = {
+		name = "George Musulin"
+		GFX = GFX_portrait_USA_george_musulin
+		gender = male
+		traits = { operative_tough operative_infiltrator operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { USA YUG SER CRO }
+	}
+}
+
+USA_create_rene_joyeuse_operative = { #OSS
+	create_operative_leader = {
+		name = "Ren� Joyeuse"
+		GFX = GFX_portrait_USA_rene_joyeuse
+		gender = male
+		traits = { operative_infiltrator operative_commando }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { USA FRA SWI QUE }
 	}
 }
 
@@ -4479,7 +4550,7 @@ USA_election_count = {
 		if = {
 			limit = {
 				any_owned_state = {
-					state = 938
+					state = 973
 					has_state_flag = USA_vt_swing
 				}
 			}
@@ -4499,14 +4570,14 @@ USA_election_count = {
 					set_variable = { USA_vt_frame = 3 }
 				}
 			}
-			938 = {
+			973 = {
 				clr_state_flag = USA_vt_swing
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 938
+					state = 973
 					has_state_flag = USA_vt_blue
 				}
 			}
@@ -4526,14 +4597,14 @@ USA_election_count = {
 					set_variable = { USA_vt_frame = 3 }
 				}
 			}
-			938 = {
+			973 = {
 				clr_state_flag = USA_vt_blue
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 938
+					state = 973
 					has_state_flag = USA_vt_red
 				}
 			}
@@ -4553,14 +4624,14 @@ USA_election_count = {
 					set_variable = { USA_vt_frame = 3 }
 				}
 			}
-			938 = {
+			973 = {
 				clr_state_flag = USA_vt_red
 			}
 		}
 		if = {
 			limit = {
 				any_owned_state = {
-					state = 941
+					state = 976
 					has_state_flag = USA_ma_swing
 				}
 			}
@@ -4580,14 +4651,14 @@ USA_election_count = {
 					set_variable = { USA_ma_frame = 3 }
 				}
 			}
-			941 = {
+			976 = {
 				clr_state_flag = USA_ma_swing
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 941
+					state = 976
 					has_state_flag = USA_ma_blue
 				}
 			}
@@ -4607,14 +4678,14 @@ USA_election_count = {
 					set_variable = { USA_ma_frame = 3 }
 				}
 			}
-			941 = {
+			976 = {
 				clr_state_flag = USA_ma_blue
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 941
+					state = 976
 					has_state_flag = USA_ma_red
 				}
 			}
@@ -4634,14 +4705,14 @@ USA_election_count = {
 					set_variable = { USA_ma_frame = 3 }
 				}
 			}
-			941 = {
+			976 = {
 				clr_state_flag = USA_ma_red
 			}
 		}
 		if = {
 			limit = {
 				any_owned_state = {
-					state = 937
+					state = 972
 					has_state_flag = USA_nh_swing
 				}
 			}
@@ -4661,14 +4732,14 @@ USA_election_count = {
 					set_variable = { USA_nh_frame = 3 }
 				}
 			}
-			937 = {
+			972 = {
 				clr_state_flag = USA_nh_swing
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 937
+					state = 972
 					has_state_flag = USA_nh_blue
 				}
 			}
@@ -4688,14 +4759,14 @@ USA_election_count = {
 					set_variable = { USA_nh_frame = 3 }
 				}
 			}
-			937 = {
+			972 = {
 				clr_state_flag = USA_nh_blue
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 937
+					state = 972
 					has_state_flag = USA_nh_red
 				}
 			}
@@ -4715,14 +4786,14 @@ USA_election_count = {
 					set_variable = { USA_nh_frame = 3 }
 				}
 			}
-			937 = {
+			972 = {
 				clr_state_flag = USA_nh_red
 			}
 		}
 		if = {
 			limit = {
 				any_owned_state = {
-					state = 940
+					state = 975
 					has_state_flag = USA_ct_swing
 				}
 			}
@@ -4742,14 +4813,14 @@ USA_election_count = {
 					set_variable = { USA_ct_frame = 3 }
 				}
 			}
-			940 = {
+			975 = {
 				clr_state_flag = USA_ct_swing
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 940
+					state = 975
 					has_state_flag = USA_ct_blue
 				}
 			}
@@ -4769,14 +4840,14 @@ USA_election_count = {
 					set_variable = { USA_ct_frame = 3 }
 				}
 			}
-			940 = {
+			975 = {
 				clr_state_flag = USA_ct_blue
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 940
+					state = 975
 					has_state_flag = USA_ct_red
 				}
 			}
@@ -4796,14 +4867,14 @@ USA_election_count = {
 					set_variable = { USA_ct_frame = 3 }
 				}
 			}
-			940 = {
+			975 = {
 				clr_state_flag = USA_ct_red
 			}
 		}
 		if = {
 			limit = {
 				any_owned_state = {
-					state = 939
+					state = 974
 					has_state_flag = USA_ri_swing
 				}
 			}
@@ -4823,14 +4894,14 @@ USA_election_count = {
 					set_variable = { USA_ri_frame = 3 }
 				}
 			}
-			939 = {
+			974 = {
 				clr_state_flag = USA_ri_swing
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 939
+					state = 974
 					has_state_flag = USA_ri_blue
 				}
 			}
@@ -4850,14 +4921,14 @@ USA_election_count = {
 					set_variable = { USA_ri_frame = 3 }
 				}
 			}
-			939 = {
+			974 = {
 				clr_state_flag = USA_ri_blue
 			}
 		}
 		else_if = {
 			limit = {
 				any_owned_state = {
-					state = 939
+					state = 974
 					has_state_flag = USA_ri_red
 				}
 			}
@@ -4877,7 +4948,7 @@ USA_election_count = {
 					set_variable = { USA_ri_frame = 3 }
 				}
 			}
-			939 = {
+			974 = {
 				clr_state_flag = USA_ri_red
 			}
 		}

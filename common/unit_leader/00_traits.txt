@@ -816,6 +816,7 @@ leader_traits = {
 					original_tag = ITA
 					original_tag = SWI
 					original_tag = SWE
+					original_tag = BRA
 				}
 			}
 		}
@@ -831,6 +832,7 @@ leader_traits = {
 					original_tag = ITA
 					original_tag = SWI
 					original_tag = SWE
+					original_tag = BRA
 				}
 				NOT = {
 					OR = {
@@ -2083,7 +2085,7 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 1
+		gui_row = 2
 		gui_column = 0
 	}
 
@@ -2107,7 +2109,7 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 3
+		gui_row = 5
 		gui_column = 0
 	}
 
@@ -2127,7 +2129,7 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 7
+		gui_row = 0
 		gui_column = 0
 	}
 
@@ -2155,7 +2157,7 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 5
+		gui_row = 6
 		gui_column = 0
 	}
 
@@ -2174,20 +2176,19 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 8
+		gui_row = 4
 		gui_column = 0
 	}
 
 	fly_swatter = {
 		type = navy
-		gain_xp = {
-			is_fighting_air_units = yes
-		}
-		cost = 300
 		modifier = {
 			navy_anti_air_attack_factor = 0.1
 		}
-		custom_gain_xp_trigger_tooltip = FLY_SWATTER_TRIGGER_TT
+
+		trait_type = assignable_trait
+		any_parent = { cruiser_captain destroyer_leader }
+		#custom_gain_xp_trigger_tooltip = FLY_SWATTER_TRIGGER_TT
 		
 		slot = high_command
 		specialist_advisor_trait = navy_naval_air_defense_1
@@ -2197,8 +2198,8 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 4
-		gui_column = 0
+		gui_row = 6
+		gui_column = 2
 	}
 
 	ironside = {
@@ -2221,7 +2222,7 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}	
-		gui_row = 13
+		gui_row = 10
 		gui_column = 0
 	}
 
@@ -2242,7 +2243,7 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 10
+		gui_row = 8
 		gui_column = 0
 	}
 	
@@ -2264,7 +2265,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { seawolf }
 		mutually_exclusive = lancer
-		gui_row = 1
+		gui_row = 2
 		gui_column = 1
 	}
 
@@ -2285,7 +2286,7 @@ leader_traits = {
 
 		trait_type = assignable_trait
 		any_parent = { silent_hunter }
-		gui_row = 1
+		gui_row = 2
 		gui_column = 2
 	}
 
@@ -2300,11 +2301,11 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { seawolf fleet_protector }
+		any_parent = { seawolf spotter fleet_protector superior_tactician }
 		
 		mutually_exclusive = silent_hunter
 		
-		gui_row = 2
+		gui_row = 3
 		gui_column = 1
 	}
 
@@ -2330,9 +2331,9 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { fleet_protector }
+		any_parent = { fleet_protector superior_tactician }
 		
-		gui_row = 3
+		gui_row = 5
 		gui_column = 1
 	}
 	loading_drill_master = { 
@@ -2349,10 +2350,9 @@ leader_traits = {
 		any_parent = {
 			silent_hunter
 			lancer
-			destroyer_leader
 		}
 		
-		gui_row = 2
+		gui_row = 3
 		gui_column = 2
 	}
 	hunter_killer = { 
@@ -2372,9 +2372,9 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { destroyer_leader }
+		any_parent = { search_pattern_expert destroyer_leader }
 		
-		gui_row = 3
+		gui_row = 5
 		gui_column = 2
 	}
 
@@ -2398,9 +2398,9 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { fly_swatter }
+		any_parent = { fly_swatter superior_tactician }
 		
-		gui_row = 4
+		gui_row = 6
 		gui_column = 1
 	}
 
@@ -2415,10 +2415,10 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { cruiser_captain }
+		any_parent = { spotter fleet_protector }
 		
 		gui_row = 4
-		gui_column = 2
+		gui_column = 1
 	}
 
 	lone_wolf = { 
@@ -2432,9 +2432,9 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { superior_tactician }
+		any_parent = { blockade_runner }
 		mutually_exclusive = concealment_expert
-		gui_row = 5
+		gui_row = 1
 		gui_column = 1
 	}
 
@@ -2455,12 +2455,10 @@ leader_traits = {
 		
 		trait_type = assignable_trait
 		any_parent = {
-			superior_tactician
-			spotter
 			blockade_runner
 		}
 		mutually_exclusive = lone_wolf
-		gui_row = 6
+		gui_row = 0
 		gui_column = 1
 	}
 	# mine_sweeper = { 
@@ -2516,7 +2514,7 @@ leader_traits = {
 		 	lone_wolf
 			concealment_expert
 		}
-		gui_row = 5
+		gui_row = 0
 		gui_column = 2
 	}
 
@@ -2538,7 +2536,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { ironside }
 		
-		gui_row = 12
+		gui_row = 10
 		gui_column = 1
 	}
 	ground_pounder = { 
@@ -2554,7 +2552,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { ironside }
 		
-		gui_row = 14
+		gui_row = 9
 		gui_column = 1
 	}
 	safety_first = { 
@@ -2575,7 +2573,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { ironside }
 		
-		gui_row = 13
+		gui_row = 11
 		gui_column = 1
 	}
 	marksman = { 
@@ -2597,7 +2595,7 @@ leader_traits = {
 		mutually_exclusive = crisis_magician
 		any_parent = { big_guns_expert }
 		
-		gui_row = 12
+		gui_row = 10
 		gui_column = 2
 	}
 	crisis_magician = { 
@@ -2614,7 +2612,7 @@ leader_traits = {
 		mutually_exclusive = marksman
 		any_parent = { safety_first }
 		
-		gui_row = 13
+		gui_row = 11
 		gui_column = 2
 	}
 	flight_deck_manager = { 
@@ -2636,7 +2634,7 @@ leader_traits = {
 		
 		any_parent = { air_controller }
 		
-		gui_row = 10
+		gui_row = 8
 		gui_column = 1
 	}
 	fighter_director = { 
@@ -2654,7 +2652,7 @@ leader_traits = {
 		mutually_exclusive = torpedo_bomber
 		any_parent = { flight_deck_manager }
 		
-		gui_row = 9
+		gui_row = 7
 		gui_column = 2
 	}
 	dive_bomber = { 
@@ -2679,7 +2677,7 @@ leader_traits = {
 		mutually_exclusive = torpedo_bomber
 		any_parent = { flight_deck_manager }
 		
-		gui_row = 10
+		gui_row = 8
 		gui_column = 2
 	}
 	torpedo_bomber = { 
@@ -2705,7 +2703,7 @@ leader_traits = {
 		mutually_exclusive = dive_bomber
 		any_parent = { flight_deck_manager }
 		
-		gui_row = 11
+		gui_row = 9
 		gui_column = 2
 	}
 	
