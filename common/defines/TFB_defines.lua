@@ -548,8 +548,12 @@ NDefines.NSupply.VP_TO_SUPPLY_BASE = 0.7
 NDefines.NSupply.COOLDOWN_DAYS_AFTER_MOVING_SUPPLY_CAPITAL = 3 -- cooldown for moving supply again after last move
 NDefines.NSupply.DAYS_TO_START_GIVING_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL = 3  -- the country will start gaining supply after this many days moving its capital
 NDefines.NSupply.DAYS_TO_START_GIVING_FULL_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL =  10 -- the country will reach max supply after this many days moving its capital
+NDefines.NSupply.SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.40 -- armies will only get attrition below this supply
+NDefines.NSupply.SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 0.10 -- crossing rivers introduces additional penalty
+NDefines.NSupply.SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.1 -- if supply flow is lower than this, it is not applied
+NDefines.NSupply.NUMBER_OF_SHOWN_SUPPLY_SOURCES_IN_SUPPLY_MAPMODE = 5 -- number of supply flow sources shown in breakdown tooltip
 -- defines that are used for supply reach for floating harbors
-NDefines.NSupply.FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 3.0
+NDefines.NSupply.FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 4.0
 NDefines.NSupply.FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 0.6
 NDefines.NSupply.FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 0.6
 NDefines.NSupply.NAVAL_BASE_FLOW = 15
