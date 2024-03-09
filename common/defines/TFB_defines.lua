@@ -323,7 +323,7 @@ NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.05
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_MITIGATION = 6.0 -- Multiply Train Damage by (Smooth / (Smooth + (Disruption * Mitigation)))
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_SMOOTHING = 5.0
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_RAILWAY_DAMAGE_SPILL_FACTOR = 0.003 -- Portion of train damage to additionally deal to railways
-NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 10					-- same as above but used inside naval combat for carrier battles
+NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 20					-- same as above but used inside naval combat for carrier battles
 NDefines.NAir.PORT_STRIKE_DAMAGE_FACTOR = 0.75								-- How much damage is dealt to ports during a port strike (per plane damage [complex number] * num flying planes * define)
 
 NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 10
