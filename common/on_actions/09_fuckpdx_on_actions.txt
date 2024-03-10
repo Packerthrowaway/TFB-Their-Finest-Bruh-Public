@@ -47,6 +47,17 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
+					has_game_rule = {
+						rule = coastal_raiders
+						option = ENABLED
+					}
+				}
+				MED_coastal_raiding_check = yes 
+			}
+		}
+		effect = {
+			if = {
+				limit = {
 					country_exists = VIC
 				}
 				set_variable = { FRA.SOUTHFRANCEOWNER = VIC }
@@ -66,6 +77,61 @@ on_actions = {
 		}
 	}
    on_startup = {
+
+	   	# Mediteranian Raiders
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = coastal_raiders
+						option = ENABLED
+					}
+				}
+				# Eastern Med
+				ENG = {  add_to_array = { ENG.eastern_med = 982 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 447 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 971 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 452 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 451 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 446 } }
+				# Central Med
+				ENG = {  add_to_array = { ENG.central_med = 450 } }
+				ENG = {  add_to_array = { ENG.central_med = 449 } }
+				ENG = {  add_to_array = { ENG.central_med = 448 } }
+				ENG = {  add_to_array = { ENG.central_med = 665 } }
+				ENG = {  add_to_array = { ENG.central_med = 458 } }
+				# Western Med
+				ENG = {  add_to_array = { ENG.western_med = 290 } }
+				ENG = {  add_to_array = { ENG.western_med = 459 } }
+				ENG = {  add_to_array = { ENG.western_med = 460 } }
+
+				for_each_scope_loop = {
+					array = ENG.eastern_med
+					add_dynamic_modifier = {
+						modifier =  NO_coastal_raiding 
+					}
+				}
+				for_each_scope_loop = {
+					array = ENG.central_med
+					add_dynamic_modifier = {
+						modifier =  NO_coastal_raiding 
+					}
+				}
+				for_each_scope_loop = {
+					array = ENG.western_med
+					add_dynamic_modifier = {
+						modifier =  NO_coastal_raiding 
+					}
+				}
+			}
+		}
+		effect = {
+			981 = {
+				add_dynamic_modifier = {
+					modifier =  NO_PORTS_CAN_BE_BUILT 
+				}
+			}
+		}
 		effect = {
 			if = {
 				limit = {
