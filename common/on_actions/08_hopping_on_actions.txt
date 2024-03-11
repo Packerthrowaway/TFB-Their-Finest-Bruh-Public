@@ -376,12 +376,24 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
+					FROM.FROM = { is_on_continent = europe }
+				}
+				PACIFIC_state_swap = yes
+			}
+		}
+
+		# Japan Takes Stuff
+		effect = {
+			if = {
+				limit = {
 					FROM = { 
 						OR = {
 							is_in_faction_with = ENG 
-							is_in_faction_with = USA 
+							is_in_faction_with = USA
+							is_in_faction_with = FRA
 							tag = ENG
 							tag = USA
+							tag = FRA
 							tag = PHI
 							tag = INS
 						}
@@ -400,8 +412,8 @@ on_actions = {
 					}
 				}
 				FROM.FROM = {  
-						set_state_flag = NOT_PACIFIC_COMMONWEALTH_controls
-						clr_state_flag = PACIFIC_COMMONWEALTH_controls
+					set_state_flag = NOT_PACIFIC_COMMONWEALTH_controls
+					clr_state_flag = PACIFIC_COMMONWEALTH_controls
 				}
 				if = {
 					limit = {
@@ -410,37 +422,7 @@ on_actions = {
 							SOV = {has_capitulated = yes}
 						}
 					}
-					every_country = {
-						limit = {
-							OR = {
-								tag = NZL
-								tag = AST
-								tag = SAF
-								tag = RAJ
-								tag = ENG
-								tag = IRE
-								tag = CAN
-								tag = BRA
-								tag = MEX
-								tag = FRA
-							}
-						}
-						PACIFIC_COMMONWEALTH_bases_level_down = yes
-					}
-					every_country = {
-						limit = {
-							OR = {
-								tag = FIN
-								tag = GER
-								tag = HUN
-								tag = ITA
-								tag = ROM
-								tag = SPR
-								tag = YUG
-							}
-						}
-						PACIFIC_COMMONWEALTH_AXIS_bases_level_down = yes
-					}
+					PACIFIC_state_up = yes
 				} else = {
 					add_to_variable = {
 						var = JAP.PACIFIC_COMMONWEALTH_BASES_LEVEL
@@ -450,8 +432,7 @@ on_actions = {
 
 			}
 		}
-	}
-	on_state_control_changed = {
+		# Allies Takes Stuff
 		effect = {
 			if = {
 				limit = {
@@ -467,9 +448,11 @@ on_actions = {
 					ROOT = {
 						OR = {
 							is_in_faction_with = ENG 
-							is_in_faction_with = USA 
+							is_in_faction_with = USA
+							is_in_faction_with = FRA
 							tag = ENG
 							tag = USA
+							tag = FRA
 							tag = PHI
 							tag = INS
 						}
@@ -479,8 +462,8 @@ on_actions = {
 					}
 				}
 				FROM.FROM = { 
-						set_state_flag = PACIFIC_COMMONWEALTH_controls
-						clr_state_flag = NOT_PACIFIC_COMMONWEALTH_controls
+					set_state_flag = PACIFIC_COMMONWEALTH_controls
+					clr_state_flag = NOT_PACIFIC_COMMONWEALTH_controls
 				}
 				if = {
 					limit = {
@@ -489,37 +472,7 @@ on_actions = {
 							SOV = {has_capitulated = yes}
 						}
 					}
-					every_country = {
-						limit = {
-							OR = {
-								tag = NZL
-								tag = AST
-								tag = SAF
-								tag = RAJ
-								tag = ENG
-								tag = IRE
-								tag = CAN
-								tag = BRA
-								tag = MEX
-								tag = FRA
-							}
-						}
-						PACIFIC_COMMONWEALTH_bases_level_up = yes
-					}
-					every_country = {
-						limit = {
-							OR = {
-								tag = FIN
-								tag = GER
-								tag = HUN
-								tag = ITA
-								tag = ROM
-								tag = SPR
-								tag = YUG
-							}
-						}
-						PACIFIC_COMMONWEALTH_AXIS_bases_level_up = yes
-					}
+					PACIFIC_state_down = yes
 				} else = {
 					subtract_from_variable = {
 						var = JAP.PACIFIC_COMMONWEALTH_BASES_LEVEL
