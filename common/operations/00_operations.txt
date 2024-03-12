@@ -124,9 +124,9 @@ operation_infiltrate_civilian = { ### 1 1/35
 	desc = operation_infiltrate_civilian_desc
 	priority = 1
 
-	days = 90
+	days = 60
 	network_strength = 35
-	operatives = 2
+	operatives = 1
 
 	visible = {
 		network_national_coverage = {
@@ -556,9 +556,9 @@ operation_infiltrate_armed_forces_army = { ### 4 1/55
 	desc = operation_infiltrate_armed_forces_army_desc
 	priority = 4
 	
-	days = 75
+	days = 60
 	network_strength = 50
-	operatives = 2
+	operatives = 1
 
 	visible = {
 		network_national_coverage = {
@@ -705,9 +705,9 @@ operation_infiltrate_armed_forces_navy = { ### 5 1/55
 	desc = operation_infiltrate_armed_forces_navy_desc
 	priority = 5
 	
-	days = 75
+	days = 60
 	network_strength = 50
-	operatives = 2
+	operatives = 1
 
 	visible = {
 		network_national_coverage = {
@@ -863,9 +863,9 @@ operation_infiltrate_armed_forces_airforce = { ### 6 1/55
 	desc = operation_infiltrate_armed_forces_airforce_desc
 	priority = 6
 
-	days = 75
+	days = 60
 	network_strength = 50
-	operatives = 2
+	operatives = 1
 
 	visible = {
 		network_national_coverage = {
@@ -1273,11 +1273,11 @@ operation_boost_resistance = { ### 8 2/40
 	desc = operation_boost_resistance_desc
 	priority = 8
 	
-	cost_multiplier = 0.25
+	cost_multiplier = 0.2
 	
 	days = 50
 	network_strength = 35
-	operatives = 2
+	operatives = 1
 
 	visible = {
 		network_national_coverage = {
@@ -1312,9 +1312,23 @@ operation_boost_resistance = { ### 8 2/40
 	outcome_modifiers = { boost_resistance_factor }
 	outcome_execute = {
 		FROM.FROM = {
-			add_resistance_target = {
-				amount = 15
-				tooltip = intelligency_agency_resistance_boost_tt
+			if = {
+				limit = {
+					ROOT = {
+						has_completed_focus = SWI_export_saboteurs
+					}
+				}
+				add_resistance_target = {
+					amount = 25
+					tooltip = intelligency_agency_resistance_boost_tt
+				}
+				add_compliance = -15
+			}
+			else = {
+				add_resistance_target = {
+					amount = 15
+					tooltip = intelligency_agency_resistance_boost_tt
+				}
 			}
 			subtract_from_variable = { boost_resistance_chance = 10 }
 		}
@@ -1347,9 +1361,23 @@ operation_boost_resistance = { ### 8 2/40
 
 	outcome_potential = {
 		FROM.FROM = {
-			add_resistance_target = {
-				amount = 10
-				tooltip = intelligency_agency_resistance_boost_tt
+			if = {
+				limit = {
+					ROOT = {
+						has_completed_focus = SWI_export_saboteurs
+					}
+				}
+				add_resistance_target = {
+					amount = 25
+					tooltip = intelligency_agency_resistance_boost_tt
+				}
+				add_compliance = -15
+			}
+			else = {
+				add_resistance_target = {
+					amount = 15
+					tooltip = intelligency_agency_resistance_boost_tt
+				}
 			}
 		}
 	}
@@ -1404,7 +1432,7 @@ operation_make_resistance_contacts = { ### 9 2/40
 
 	days = 60
 	network_strength = 40
-	operatives = 2
+	operatives = 1
 
 	visible = {
 		network_national_coverage = {
@@ -1596,7 +1624,7 @@ operation_collaboration_government = { ### 10 2/55
 
 	equipment = {
 		support_equipment = 100
-		infantry_equipment = 800
+		infantry_equipment = 1000
 		civilian_factories = {
 			amount = 5
 			days = 60
@@ -1700,7 +1728,7 @@ operation_coordinated_strike = { ### 11 2/70
 
 	days = 3
 	network_strength = 70
-	operatives = 2
+	operatives = 1
 
 	visible = {
 		network_strength = {
@@ -1810,7 +1838,7 @@ operation_steal_tech_civilian = { ### 12 3/35
 
 	days = 120
 	network_strength = 35
-	operatives = 3
+	operatives = 2
 	cost_multiplier = 0.05
 
 	visible = {
@@ -1972,7 +2000,7 @@ operation_targeted_sabotage_industry = { ### 13 3/35
 	
 	days = 90
 	network_strength = 35
-	operatives = 3
+	operatives = 2
 
 	visible = {
 		num_of_operatives > 1
@@ -2106,7 +2134,7 @@ operation_targeted_sabotage_infrastructure = { ### 14 3/35
 	
 	days = 90
 	network_strength = 35
-	operatives = 3
+	operatives = 1
 
 	visible = {
 		num_of_operatives > 1
@@ -2237,7 +2265,7 @@ operation_targeted_sabotage_resources = { ### 15 3/35
 	
 	days = 90
 	network_strength = 35
-	operatives = 3
+	operatives = 2
 
 	visible = {
 		num_of_operatives > 1
@@ -2367,7 +2395,7 @@ operation_steal_tech_army = { ### 16 3/55
 
 	days = 120
 	network_strength = 50
-	operatives = 3
+	operatives = 2
 	cost_multiplier = 0.05
 
 	visible = {
@@ -2399,7 +2427,11 @@ operation_steal_tech_army = { ### 16 3/55
 	outcome_execute = {
 		ROOT = {
 			steal_random_tech_bonus = {
-				folder = armour_folder
+				folder = ger_armour_folder_tab
+				folder = sov_armour_folder_tab
+				folder = eng_armour_folder_tab
+				folder = usa_armour_folder_tab
+				folder = nsb_armour_folder_tab
 				folder = artillery_folder
 				folder = infantry_folder
 				folder = support_folder
@@ -2421,7 +2453,11 @@ operation_steal_tech_army = { ### 16 3/55
 			33 = {
 				ROOT = {
 					steal_random_tech_bonus = {
-						folder = armour_folder
+						folder = ger_armour_folder_tab
+						folder = sov_armour_folder_tab
+						folder = eng_armour_folder_tab
+						folder = usa_armour_folder_tab
+						folder = nsb_armour_folder_tab
 						folder = artillery_folder
 						folder = infantry_folder
 						folder = support_folder
@@ -2439,7 +2475,11 @@ operation_steal_tech_army = { ### 16 3/55
 			67 = {
 				ROOT = {
 					steal_random_tech_bonus = {
-						folder = armour_folder
+						folder = ger_armour_folder_tab
+						folder = sov_armour_folder_tab
+						folder = eng_armour_folder_tab
+						folder = usa_armour_folder_tab
+						folder = nsb_armour_folder_tab
 						folder = artillery_folder
 						folder = infantry_folder
 						folder = support_folder
@@ -2460,7 +2500,11 @@ operation_steal_tech_army = { ### 16 3/55
 	outcome_potential = {
 		ROOT = {
 			steal_random_tech_bonus = {
-				folder = armour_folder
+				folder = ger_armour_folder_tab
+				folder = sov_armour_folder_tab
+				folder = eng_armour_folder_tab
+				folder = usa_armour_folder_tab
+				folder = nsb_armour_folder_tab
 				folder = artillery_folder
 				folder = infantry_folder
 				folder = support_folder
@@ -2538,7 +2582,7 @@ operation_steal_tech_navy = { ### 17 3/55
 
 	days = 120
 	network_strength = 50
-	operatives = 3
+	operatives = 2
 	cost_multiplier = 0.05
 
 	visible = {
@@ -2574,6 +2618,7 @@ operation_steal_tech_navy = { ### 17 3/55
   			ROOT = {
 				steal_random_tech_bonus = {
 					folder = mtgnavalfolder
+					folder = mtgnavalsupportfolder
 					bonus = 100.0
 					dynamic = no
 					instant = no
@@ -2590,7 +2635,8 @@ operation_steal_tech_navy = { ### 17 3/55
   		else = {
 	  		ROOT = {
 				steal_random_tech_bonus = {
-					folder = naval_folder
+					folder = mtgnavalfolder
+					folder = mtgnavalsupportfolder
 					bonus = 100.0
 					dynamic = no
 					instant = no
@@ -2616,6 +2662,7 @@ operation_steal_tech_navy = { ### 17 3/55
   					ROOT = {
 						steal_random_tech_bonus = {
 							folder = mtgnavalfolder
+							folder = mtgnavalsupportfolder
 							bonus = 100.0
 							ahead_reduction = 0.5
 							dynamic = no
@@ -2629,7 +2676,8 @@ operation_steal_tech_navy = { ### 17 3/55
   				else = {
 					ROOT = {
 						steal_random_tech_bonus = {
-							folder = naval_folder
+							folder = mtgnavalfolder
+							folder = mtgnavalsupportfolder
 							bonus = 100.0
 							ahead_reduction = 0.5
 							dynamic = no
@@ -2648,6 +2696,7 @@ operation_steal_tech_navy = { ### 17 3/55
 					ROOT = {
 						steal_random_tech_bonus = {
 							folder = mtgnavalfolder
+							folder = mtgnavalsupportfolder
 							bonus = 100.0
 							ahead_reduction = 0.5
 							dynamic = no
@@ -2661,7 +2710,8 @@ operation_steal_tech_navy = { ### 17 3/55
 				else = {
 					ROOT = {
 						steal_random_tech_bonus = {
-							folder = naval_folder
+							folder = mtgnavalfolder
+							folder = mtgnavalsupportfolder
 							bonus = 100.0
 							ahead_reduction = 0.5
 							dynamic = no
@@ -2678,8 +2728,8 @@ operation_steal_tech_navy = { ### 17 3/55
 	outcome_potential = {
 		ROOT = {
 			steal_random_tech_bonus = {
-				folder = naval_folder
 				folder = mtgnavalfolder
+				folder = mtgnavalsupportfolder
 
 				bonus = 100.0
 				dynamic = no
@@ -2754,7 +2804,7 @@ operation_steal_tech_airforce = { ### 18 3/55
 
 	days = 120
 	network_strength = 50
-	operatives = 3
+	operatives = 2
 	cost_multiplier = 0.05
 
 	visible = {
