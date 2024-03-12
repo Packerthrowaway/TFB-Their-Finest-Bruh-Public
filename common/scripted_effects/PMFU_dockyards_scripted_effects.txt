@@ -1,0 +1,45 @@
+dockyard_cg_calculation = {
+	set_variable = { dockcount1 = 0 }
+	while_loop_effect = {
+		limit = {
+			num_of_naval_factories > dockcount1
+		}
+		add_to_variable = { dockcount1 = 1 }
+	}
+    if = {
+        limit = {
+            check_variable = {
+                var = dockcount1 
+                value = 40
+                compare = greater_than_or_equals
+            }
+        }
+        subtract_from_variable = { dockcount1 = 40 } # This and the value above determine when to start counting dockyards
+    }
+    else = {
+        set_variable = { dockcount1 = 0 }
+    }
+    #dockcount1 = number of dockyards in the country
+	set_variable = { dockcount2 = dockcount1 }
+	multiply_variable = { dockcount2 = 0.2 } # This variable controls how often we tick up the consumer goods .2 is 1/5th = every 5
+	round_variable = dockcount2
+    #dockcount2 = 5% of the dockyard count
+    # This would meam at 100 dockyards you would have 20
+	set_variable = { dockcount3 = 0 }
+	set_variable = { dockyard_cg = 0 }
+    #dockcount3 is just a counter. 
+    #dockcount2 * 0.005 is the amount of consumer goods penalty.
+	while_loop_effect = {
+		limit = {
+			check_variable = { dockcount3 < dockcount2 }
+		}
+		add_to_variable = { dockcount3 = 1 }
+		add_to_variable = { dockyard_cg = 0.01 } # This is the variable determining how much we tick the consumer goods
+	}
+	if = {
+		limit = {
+			has_naval_treaty_trigger = yes
+		}
+		set_variable = { dockyard_cg = 0 }
+	}
+}

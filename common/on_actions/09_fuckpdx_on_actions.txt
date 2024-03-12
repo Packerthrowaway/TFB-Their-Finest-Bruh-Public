@@ -31,6 +31,20 @@ on_actions = {
 				}
 			}
 		}
+		# Update Dockyard Consumer Goods
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = dockyard_cg
+						option = ENABLED
+					}
+				}
+				every_country = {
+					dockyard_cg_calculation = yes
+				}
+			}
+		}
 	}
 	on_daily = {
 		effect = {
@@ -77,6 +91,22 @@ on_actions = {
 		}
 	}
     on_startup = {
+
+		# Dockyard Consumer Goods Debuff
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = dockyard_cg
+						option = ENABLED
+					}
+				}
+				every_country = {
+					add_dynamic_modifier = { modifier = dockyard_cg_mod }
+					dockyard_cg_calculation = yes
+				}
+			}
+		}
 
 	   	# Mediteranian Raiders
 		effect = {
