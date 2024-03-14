@@ -844,6 +844,17 @@ DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
 				option = LIMITED
 			}
 		}
+		if = {
+			limit = {
+				tag = SOV
+				FROM = {tag = CHI}
+				NOT = { SOV = { has_completed_focus = SOV_the_military_conspiracy } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_VOLUNTEERS_BLOCKED_TT
+				always = no
+			}
+		}
 		else = {
 			always = yes
 		}
