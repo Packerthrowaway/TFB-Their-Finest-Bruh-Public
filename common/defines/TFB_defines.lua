@@ -466,6 +466,19 @@ NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.02						-- Xp gain by non-
 NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.15								-- Amount of exp each ship gain every 24h while training (before modifiers)
 NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.9 -- org will clamped to this ratio on manual move
 
+NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
+0.0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
+1.0, -- PATROL
+1.0, -- STRIKE FORCE (does not cost fuel at base, and uses IN_COMBAT_FUEL_COST in combat. this is just for the movement in between)
+1.0, -- CONVOY RAIDING
+1.0, -- CONVOY ESCORT
+1.0, -- MINES PLANTING
+1.0, -- MINES SWEEPING
+0.5, -- TRAIN
+0.0, -- RESERVE_FLEET (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
+1.0, -- NAVAL_INVASION_SUPPORT (does not cost fuel at base, only costs while doing bombardment and escorting units)
+}
+
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
 
 NDefines.NAI.DEPLOY_MIN_TRAINING_PEACE_FACTOR = 1.0		-- Required percentage of training (1.0 = 100%) for AI to deploy unit in peacetime
