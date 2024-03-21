@@ -1309,12 +1309,24 @@
 		completion_reward = {
 			if = {
 				limit = {
-					has_idea = war_economy
+					OR = {
+						has_idea = partial_economic_mobilisation
+						has_idea = war_economy
+					}
 				}
 				add_political_power = 150
 			}
 			else = {
-				add_ideas = war_economy
+				country_event = { id = japan.508 }
+				custom_effect_tooltip = gives_the_option_between_tt
+				effect_tooltip = {
+					MAN = { 
+						add_ideas = partial_economic_mobilisation
+					}
+					JAP = {
+						add_ideas = war_economy
+					}
+				}
 			}
 		}
 	}
