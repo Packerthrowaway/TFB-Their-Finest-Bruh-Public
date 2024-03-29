@@ -1520,22 +1520,35 @@ on_actions = {
 						AND = {
 							FROM = { original_tag = GER }
 							ROOT = { original_tag = SOV }
-							GER = { has_idea = GER_good_weather_army }	
 						}
 						AND = {
 							FROM = { original_tag = SOV }
 							ROOT = { original_tag = GER }
-							GER = { has_idea = GER_good_weather_army }	
 						}
 					}
 				}
-				GER = { remove_ideas = GER_good_weather_army }
+				if = {
+					limit = {
+						GER = { has_idea = GER_good_weather_army }	
+					}
+					GER = { remove_ideas = GER_good_weather_army }
+				}
+
 				FIN = {
 					hidden_effect = {
 						FIN = { country_event = { id =  finland.500 } }
 					}
 				}
-
+				# Calculate Soviet Air Penalty if choosing Half
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = soviet_air_changes
+							option = START_SOV_AIR
+						}
+					}
+					SOV_stalins_air_needs = yes
+				}
 				# State of the Pacific
 				set_temp_variable = { num_captures = JAP.PACIFIC_COMMONWEALTH_BASES_LEVEL}
 				subtract_from_temp_variable = {

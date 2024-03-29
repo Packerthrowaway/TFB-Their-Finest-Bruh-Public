@@ -1419,13 +1419,31 @@
 			OR = {
 				has_war_with = GER
 				has_war_with = ITA
-				has_war_with = JAP
+				#has_war_with = JAP
 			}
 		}
 
 		completion_reward = {
 			add_ideas = tot_economic_mobilisation
 			add_ideas = SOV_war_mob
+
+			if = {
+				limit = { has_idea = SOV_soviet_industry}
+				swap_ideas = {
+					remove_idea = SOV_soviet_industry
+					add_idea = SOV_soviet_industry_2
+				}
+			}
+
+			hidden_effect = {
+				SOV_check_equipment_stockpile = yes
+				USA = {
+					country_event = {  id = soviet.3100 }
+				}
+				ENG = {
+					country_event = {  id = soviet.3100 }
+				}
+			}
 
 			if = {
 				limit = { has_country_flag = RG_armored_division_medium }
@@ -2566,6 +2584,16 @@
 				}
 				SOV = { country_event = soviet.2223 }
 			}
+
+			hidden_effect = {
+				SOV_check_equipment_stockpile = yes
+				USA = {
+					country_event = {  id = soviet.3100 }
+				}
+				ENG = {
+					country_event = {  id = soviet.3100 }
+				}
+			}
 			
 		}
 	}
@@ -2602,6 +2630,15 @@
 		}
 
 		completion_reward = {
+			hidden_effect = {
+				SOV_check_equipment_stockpile = yes
+				USA = {
+					country_event = {  id = soviet.3100 }
+				}
+				ENG = {
+					country_event = {  id = soviet.3100 }
+				}
+			}
 			hidden_effect = {
 				division_template = {
 					name = "Strelki"
@@ -2720,6 +2757,15 @@
 		}
 
 		completion_reward = {
+			hidden_effect = {
+				SOV_check_equipment_stockpile = yes
+				USA = {
+					country_event = {  id = soviet.3100 }
+				}
+				ENG = {
+					country_event = {  id = soviet.3100 }
+				}
+			}
 			hidden_effect = {
 				division_template = {
 					name = "Strelki"
@@ -7863,7 +7909,30 @@
 		cost = 3
 
 		available = {
-
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				OR = {
+					has_air_experience > 250
+					custom_trigger_tooltip = {
+						tooltip = SOV_air_needed_2_tt
+						#Fighters
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { current_air = 3500 compare = greater_than_or_equals }
+					}
+				}
+			}
 		}
 		
 		search_filters = {}
@@ -7873,6 +7942,33 @@
 			add_to_variable = { SOV_soviet_airforce_air_range_factor = 0.05 }
 			add_to_variable = { SOV_soviet_airforce_air_agility_factor = 0.05 }
 			custom_effect_tooltip = SOV_modernize_aircraft_facilities_ns_tt
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				if = {
+					limit = {
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { actual_air = 3500 compare = greater_than_or_equals }
+					}
+					custom_effect_tooltip = SOV_has_planes_tt
+				} else = {
+					custom_effect_tooltip = SOV_blank_space_tt
+					air_experience = -250
+				}
+				custom_effect_tooltip = SOV_air_mod_reduction_tt
+				add_to_variable = { soviet_cas_debuff = 0.05 }
+			}
 		}
 	}
 
@@ -8035,6 +8131,30 @@
 
 		available = {
 			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				OR = {
+					has_air_experience > 250
+					custom_trigger_tooltip = {
+						tooltip = SOV_air_needed_3_tt
+						#Fighters
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { current_air = 4000 compare = greater_than_or_equals }
+					}
+				}
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
@@ -8047,20 +8167,20 @@
 			}
 
 			hidden_effect = {
-			if = { #DEFAULT COMMIE
-				limit = {
-					has_government = communism
+				if = { #DEFAULT COMMIE
+					limit = {
+						has_government = communism
+					}
+					#Swap dynamic modifiers to show the bonus equipment custom tooltip
+					remove_dynamic_modifier = { modifier = SOV_soviet_airforce_dynamic_modifier }
+					add_dynamic_modifier = { modifier = SOV_soviet_airforce_aircraft_production_focus_dynamic_modifier }
 				}
-				#Swap dynamic modifiers to show the bonus equipment custom tooltip
-				remove_dynamic_modifier = { modifier = SOV_soviet_airforce_dynamic_modifier }
-				add_dynamic_modifier = { modifier = SOV_soviet_airforce_aircraft_production_focus_dynamic_modifier }
+				else = { #ALT IDEOLOGY
+					#Swap dynamic modifiers to show the bonus equipment custom tooltip
+					remove_dynamic_modifier = { modifier = SOV_soviet_airforce_dynamic_modifier_alt }
+					add_dynamic_modifier = { modifier = SOV_soviet_airforce_aircraft_production_focus_dynamic_modifier_alt }
+				}
 			}
-			else = { #ALT IDEOLOGY
-				#Swap dynamic modifiers to show the bonus equipment custom tooltip
-				remove_dynamic_modifier = { modifier = SOV_soviet_airforce_dynamic_modifier_alt }
-				add_dynamic_modifier = { modifier = SOV_soviet_airforce_aircraft_production_focus_dynamic_modifier_alt }
-			}
-		}
 
 			custom_effect_tooltip = SOV_increase_aircraft_production_ns_tt
 
@@ -8069,6 +8189,34 @@
 				bonus = 1.0
 				uses = 2
 				category = light_air
+			}
+
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				if = {
+					limit = {
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { actual_air = 4000 compare = greater_than_or_equals }
+					}
+					custom_effect_tooltip = SOV_has_planes_tt
+				} else = {
+					custom_effect_tooltip = SOV_blank_space_tt
+					air_experience = -250
+				}
+				custom_effect_tooltip = SOV_air_mod_reduction_tt
+				add_to_variable = { soviet_cas_debuff = 0.05 }
 			}
 		}
 	}
@@ -8111,9 +8259,33 @@
 		cost = 3
 
 		available = {
-			OR = {
-				has_completed_focus = SOV_the_path_of_marxism_leninism
-				#has_completed_focus = SOV_womens_fascist_movement
+			# OR = {
+			# 	has_completed_focus = SOV_the_path_of_marxism_leninism
+			# 	#has_completed_focus = SOV_womens_fascist_movement
+			# }
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				OR = {
+					has_air_experience > 250
+					custom_trigger_tooltip = {
+						tooltip = SOV_air_needed_2_tt
+						#Fighters
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { current_air = 3500 compare = greater_than_or_equals }
+					}
+				}
 			}
 		}
 		
@@ -8129,6 +8301,33 @@
 			air_experience = 25
 			set_rule = {
 				can_generate_female_aces = yes
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				if = {
+					limit = {
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { actual_air = 3500 compare = greater_than_or_equals }
+					}
+					custom_effect_tooltip = SOV_has_planes_tt
+				} else = {
+					custom_effect_tooltip = SOV_blank_space_tt
+					air_experience = -250
+				}
+				custom_effect_tooltip = SOV_air_mod_reduction_tt
+				add_to_variable = { soviet_cas_debuff = 0.05 }
 			}
 		}
 	}
@@ -8187,6 +8386,30 @@
 
 		available = {
 			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				OR = {
+					has_air_experience > 250
+					custom_trigger_tooltip = {
+						tooltip = SOV_air_needed_3_tt
+						#Fighters
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { current_air = 4000 compare = greater_than_or_equals }
+					}
+				}
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_AIR_XP}
@@ -8201,6 +8424,34 @@
 			custom_effect_tooltip = SOV_intensify_pilot_training_program_ns_tt
 
 			air_experience = 50
+
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				if = {
+					limit = {
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { actual_air = 4000 compare = greater_than_or_equals }
+					}
+					custom_effect_tooltip = SOV_has_planes_tt
+				} else = {
+					custom_effect_tooltip = SOV_blank_space_tt
+					air_experience = -250
+				}
+				custom_effect_tooltip = SOV_air_mod_reduction_tt
+				add_to_variable = { soviet_cas_debuff = 0.05 }
+			}
 		}
 	}
 
@@ -8215,7 +8466,30 @@
 		cost = 3
 
 		available = {
-
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				OR = {
+					has_air_experience > 250
+					custom_trigger_tooltip = {
+						tooltip = SOV_air_needed_1_tt
+						#Fighters
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { current_air = 3000 compare = greater_than_or_equals }
+					}
+				}
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_AIR_XP}
@@ -8226,6 +8500,33 @@
 			add_to_variable = { SOV_soviet_airforce_air_training_xp_gain_factor = 0.05 }
 			add_to_variable = { SOV_soviet_airforce_air_wing_xp_loss_when_killed_factor = -0.15 }
 			custom_effect_tooltip = SOV_expand_aviation_institutes_ns_tt
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				if = {
+					limit = {
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { actual_air = 3000 compare = greater_than_or_equals }
+					}
+					custom_effect_tooltip = SOV_has_planes_tt
+				} else = {
+					custom_effect_tooltip = SOV_blank_space_tt
+					air_experience = -250
+				}
+				custom_effect_tooltip = SOV_air_mod_reduction_tt
+				add_to_variable = { soviet_cas_debuff = 0.05 }
+			}
 		}
 	}
 
@@ -8305,7 +8606,30 @@
 		cost = 3
 
 		available = {
-
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				OR = {
+					has_air_experience > 250
+					custom_trigger_tooltip = {
+						tooltip = SOV_air_needed_4_tt
+						#Fighters
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { current_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { current_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { current_air = 4500 compare = greater_than_or_equals }
+					}
+				}
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_AIR_XP}
@@ -8316,6 +8640,34 @@
 			custom_effect_tooltip = SOV_the_modern_war_in_the_skies_ns_tt
 
 			air_experience = 50
+
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				if = {
+					limit = {
+						set_temp_variable = { current_air = SOV.num_equipment@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@heavy_fighter_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@cas_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_equipment@tac_bomber_equipment }
+						add_to_temp_variable = { actual_air = SOV.num_deployed_planes_with_type@tac_bomber_equipment }
+						check_variable = { actual_air = 4500 compare = greater_than_or_equals }
+					}
+					custom_effect_tooltip = SOV_has_planes_tt
+				} else = {
+					custom_effect_tooltip = SOV_blank_space_tt
+					air_experience = -250
+				}
+				custom_effect_tooltip = SOV_air_mod_reduction_tt
+				add_to_variable = { soviet_cas_debuff = 0.05 }
+			}
 		}
 	}
 	

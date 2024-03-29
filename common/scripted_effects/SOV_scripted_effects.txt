@@ -4057,10 +4057,10 @@ SOV_damage_relocated_military_factories_effect = {
 				NOT = { is_fully_controlled_by = ROOT }
 			}
 		}
-		damage_building = { type = arms_factory damage = 0.9 }
+		damage_building = { type = arms_factory damage = 0.8 }
 	}
 	else = {
-		damage_building = { type = arms_factory damage = 0.5 }
+		damage_building = { type = arms_factory damage = 0.4 }
 	}
 }
 
@@ -4071,10 +4071,10 @@ SOV_damage_relocated_civilian_factories_effect = {
 				NOT = { is_fully_controlled_by = ROOT }
 			}
 		}
-		damage_building = { type = industrial_complex damage = 0.9 }
+		damage_building = { type = industrial_complex damage = 0.8 }
 	}
 	else = {
-		damage_building = { type = industrial_complex damage = 0.5 }
+		damage_building = { type = industrial_complex damage = 0.4 }
 	}
 }
 
@@ -10047,4 +10047,375 @@ SOV_replace_stuff_based_on_ideology_effect = {
 			add_dynamic_modifier = { modifier = SOV_the_red_army_dynamic_modifier }
 		}
 	}
+}
+
+SOV_stalins_air_needs = {
+	#enemy_army_bonus_air_superiority_factor = -0.20
+	set_variable = { sovietPlanes = 0 }
+	set_variable = { soviet_cas_debuff = 0 }
+	# Fighters
+	set_variable = { inArmyFighters2 = SOV.num_deployed_planes_with_type@fighter_equipment}
+	set_variable = { inStockpileFighters2 = SOV.num_equipment@fighter_equipment}
+	add_to_variable = { inArmyFighters2 = inStockpileFighters2 }
+
+	# Heavy Fighters
+	set_variable = { inArmyHeavyFighters2 = SOV.num_deployed_planes_with_type@heavy_fighter_equipment}
+	set_variable = { inStockpileHeavyFighters2 = SOV.num_equipment@heavy_fighter_equipment}
+	add_to_variable = { inArmyHeavyFighters2 = inStockpileHeavyFighters2 }
+
+	# CAS
+	set_variable = { inArmyCAS2 = SOV.num_deployed_planes_with_type@cas_equipment}
+	set_variable = { inStockpileCAS2 = SOV.num_equipment@cas_equipment}
+	add_to_variable = { inArmyCAS2 = inStockpileCAS2 }
+
+	# Tactical Bombers
+	set_variable = { inArmyTACS2 = SOV.num_deployed_planes_with_type@tac_bomber_equipment}
+	set_variable = { inStockpileTACS2 = SOV.num_equipment@tac_bomber_equipment}
+	add_to_variable = { inArmyTACS2 = inStockpileTACS2 }
+
+	add_to_variable = { sovietPlanes = inArmyFighters2 }
+	add_to_variable = { sovietPlanes = inArmyHeavyFighters2 }
+	add_to_variable = { sovietPlanes = inArmyCAS2 }
+	add_to_variable = { sovietPlanes = inArmyTACS2 }
+
+	set_variable = { maxSteps = 5 }
+	set_variable = { sovietPlanes2 = sovietPlanes }
+
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = soviet_air_changes
+				option = FULL_SOV_AIR
+			}
+		}
+		while_loop_effect = {
+			limit = {
+				check_variable = { sovietPlanes2 < 3500 } # while at less than 3k, add 500, increasing the debuff each time you do so. Capping at -25%
+				check_variable = { 0 < maxSteps }
+			}
+			add_to_variable = { sovietPlanes2 = 500 }
+			subtract_from_variable = { maxSteps = 1 }
+			add_to_variable = { soviet_cas_debuff = -0.05 } # This is the variable determining how much we tick the consumer goods
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = sovietPlanes 
+					value = 3500
+					compare = greater_than_or_equals
+				}
+			}
+			set_variable = { soviet_cas_debuff = 0 }
+		}
+	} else_if = {
+		limit = {
+			has_game_rule = {
+				rule = soviet_air_changes
+				option = START_SOV_AIR
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = sovietPlanes 
+					value = 3500
+					compare = greater_than_or_equals
+				}
+			}
+			set_variable = { soviet_cas_debuff = 0 }
+		} else = {
+			while_loop_effect = {
+				limit = {
+					check_variable = { sovietPlanes2 < 3500 } # while at less than 3k, add 500, increasing the debuff each time you do so. Capping at -25%
+					check_variable = { 0 < maxSteps }
+				}
+				add_to_variable = { sovietPlanes2 = 500 }
+				subtract_from_variable = { maxSteps = 1 }
+				add_to_variable = { soviet_cas_debuff = -0.05 } # This is the variable determining how much we tick the consumer goods
+			}
+		}
+	}
+
+}
+
+SOV_check_equipment_stockpile = {
+  # Regular Equipment
+	# Radios
+	set_temp_variable = { requestedRadios = SOV.num_target_equipment_in_armies@radio_equipment}
+	set_temp_variable = { inArmyRadios = SOV.num_equipment_in_armies@radio_equipment}
+	set_temp_variable = { inStockpileRadios = SOV.num_equipment@radio_equipment}
+	subtract_from_temp_variable = { inArmyRadios = requestedRadios }
+	add_to_temp_variable = { inArmyRadios = inStockpileRadios }
+	#log = "Radio Surplus/Deficet: [?inArmyRadios]"
+
+	# Infantry Equipment
+	set_temp_variable = { requestedInfEquipment = SOV.num_target_equipment_in_armies@infantry_equipment}
+	set_temp_variable = { inArmyInfEquipment = SOV.num_equipment_in_armies@infantry_equipment}
+	set_temp_variable = { inStockpileInfEquipment = SOV.num_equipment@infantry_equipment}
+	subtract_from_temp_variable = { inArmyInfEquipment = requestedInfEquipment }
+	add_to_temp_variable = { inArmyInfEquipment = inStockpileInfEquipment }
+
+	# Squad Equipment
+	set_temp_variable = { requestedSquadEquipment = SOV.num_target_equipment_in_armies@squad_equipment}
+	set_temp_variable = { inArmySquadEquipment = SOV.num_equipment_in_armies@squad_equipment}
+	set_temp_variable = { inStockpileSquadEquipment = SOV.num_equipment@squad_equipment}
+	subtract_from_temp_variable = { inArmySquadEquipment = requestedSquadEquipment }
+	add_to_temp_variable = { inArmySquadEquipment = inStockpileSquadEquipment }
+
+	# Support Equipment
+	set_temp_variable = { requestedSupportEquipment = SOV.num_target_equipment_in_armies@support_equipment}
+	set_temp_variable = { inArmySupportEquipment = SOV.num_equipment_in_armies@support_equipment}
+	set_temp_variable = { inStockpileSupportEquipment = SOV.num_equipment@support_equipment}
+	subtract_from_temp_variable = { inArmySupportEquipment = requestedSupportEquipment }
+	add_to_temp_variable = { inArmySupportEquipment = inStockpileSupportEquipment }
+
+	# Special Forces Equipment
+	set_temp_variable = { requestedSFEquipment = SOV.num_target_equipment_in_armies@sf_equipment}
+	set_temp_variable = { inArmySFEquipment = SOV.num_equipment_in_armies@sf_equipment}
+	set_temp_variable = { inStockpileSFEquipment = SOV.num_equipment@sf_equipment}
+	subtract_from_temp_variable = { inArmySFEquipment = requestedSFEquipment }
+	add_to_temp_variable = { inArmySFEquipment = inStockpileSFEquipment }
+
+  # Artillery
+
+	# Artillery
+	set_temp_variable = { requestedArtilleryEquipment = SOV.num_target_equipment_in_armies@artillery_equipment}
+	set_temp_variable = { inArmyArtilleryEquipment = SOV.num_equipment_in_armies@artillery_equipment}
+	set_temp_variable = { inStockpileArtilleryEquipment = SOV.num_equipment@artillery_equipment}
+	subtract_from_temp_variable = { inArmyArtilleryEquipment = requestedArtilleryEquipment }
+	add_to_temp_variable = { inArmyArtilleryEquipment = inStockpileArtilleryEquipment }
+
+	# Pack Artillery
+	set_temp_variable = { requestedPackArtilleryEquipment = SOV.num_target_equipment_in_armies@pack_artillery_equipment}
+	set_temp_variable = { inArmyPackArtilleryEquipment = SOV.num_equipment_in_armies@pack_artillery_equipment}
+	set_temp_variable = { inStockpilePackArtilleryEquipment = SOV.num_equipment@pack_artillery_equipment}
+	subtract_from_temp_variable = { inArmyPackArtilleryEquipment = requestedPackArtilleryEquipment }
+	add_to_temp_variable = { inArmyPackArtilleryEquipment = inStockpilePackArtilleryEquipment }
+
+	# Heavy Artillery
+	set_temp_variable = { requestedHeavyArtilleryEquipment = SOV.num_target_equipment_in_armies@heavy_artillery_equipment}
+	set_temp_variable = { inArmyHeavyArtilleryEquipment = SOV.num_equipment_in_armies@heavy_artillery_equipment}
+	set_temp_variable = { inStockpileHeavyArtilleryEquipment = SOV.num_equipment@heavy_artillery_equipment}
+	subtract_from_temp_variable = { inArmyHeavyArtilleryEquipment = requestedHeavyArtilleryEquipment }
+	add_to_temp_variable = { inArmyHeavyArtilleryEquipment = inStockpileHeavyArtilleryEquipment }
+
+	# Rocket Artillery
+	set_temp_variable = { requestedRocketArtillery = SOV.num_target_equipment_in_armies@rocket_artillery_equipment}
+	set_temp_variable = { inArmyRocketArtillery = SOV.num_equipment_in_armies@rocket_artillery_equipment}
+	set_temp_variable = { inStockpileRocketArtillery = SOV.num_equipment@rocket_artillery_equipment}
+	subtract_from_temp_variable = { inArmyRocketArtillery = requestedRocketArtillery }
+	add_to_temp_variable = { inArmyRocketArtillery = inStockpileRocketArtillery }
+
+	# Motorized Rocket Artillery
+	set_temp_variable = { requestedMotorizedRocketArtillery = SOV.num_target_equipment_in_armies@motorized_rocket_equipment}
+	set_temp_variable = { inArmyMotorizedRocketArtillery = SOV.num_equipment_in_armies@motorized_rocket_equipment}
+	set_temp_variable = { inStockpileMotorizedRocketArtillery = SOV.num_equipment@motorized_rocket_equipment}
+	subtract_from_temp_variable = { inArmyMotorizedRocketArtillery = requestedMotorizedRocketArtillery }
+	add_to_temp_variable = { inArmyMotorizedRocketArtillery = inStockpileMotorizedRocketArtillery }
+
+	# Anti Tank
+	set_temp_variable = { requestedAntiTankEquipment = SOV.num_target_equipment_in_armies@anti_tank_equipment}
+	set_temp_variable = { inArmyAntiTankEquipment = SOV.num_equipment_in_armies@anti_tank_equipment}
+	set_temp_variable = { inStockpileAntiTankEquipment = SOV.num_equipment@anti_tank_equipment}
+	subtract_from_temp_variable = { inArmyAntiTankEquipment = requestedAntiTankEquipment }
+	add_to_temp_variable = { inArmyAntiTankEquipment = inStockpileAntiTankEquipment }
+
+	# Pack Anti Tank
+	set_temp_variable = { requestedPackAntiTankEquipment = SOV.num_target_equipment_in_armies@anti_tank_equipment_squeeze}
+	set_temp_variable = { inArmyPackAntiTankEquipment = SOV.num_equipment_in_armies@anti_tank_equipment_squeeze}
+	set_temp_variable = { inStockpilePackAntiTankEquipment = SOV.num_equipment@anti_tank_equipment_squeeze}
+	subtract_from_temp_variable = { inArmyPackAntiTankEquipment = requestedPackAntiTankEquipment }
+	add_to_temp_variable = { inArmyPackAntiTankEquipment = inStockpilePackAntiTankEquipment }
+
+	# Heavy Anti Tank
+	set_temp_variable = { requestedHeavyAntiTankEquipment = SOV.num_target_equipment_in_armies@heavy_anti_tank_equipment}
+	set_temp_variable = { inArmyHeavyAntiTankEquipment = SOV.num_equipment_in_armies@heavy_anti_tank_equipment}
+	set_temp_variable = { inStockpileHeavyAntiTankEquipment = SOV.num_equipment@heavy_anti_tank_equipment}
+	subtract_from_temp_variable = { inArmyHeavyAntiTankEquipment = requestedHeavyAntiTankEquipment }
+	add_to_temp_variable = { inArmyHeavyAntiTankEquipment = inStockpileHeavyAntiTankEquipment }
+
+	# Anti Air
+	set_temp_variable = { requestedAntiAir = SOV.num_target_equipment_in_armies@anti_air_equipment}
+	set_temp_variable = { inArmyAntiAir = SOV.num_equipment_in_armies@anti_air_equipment}
+	set_temp_variable = { inStockpileAntiAir = SOV.num_equipment@anti_air_equipment}
+	subtract_from_temp_variable = { inArmyAntiAir = requestedAntiAir }
+	add_to_temp_variable = { inArmyAntiAir = inStockpileAntiAir }
+
+	# Heavy Anti Air
+	set_temp_variable = { requestedHeavyAntiAir = SOV.num_target_equipment_in_armies@heavy_anti_air_equipment}
+	set_temp_variable = { inArmyHeavyAntiAir = SOV.num_equipment_in_armies@heavy_anti_air_equipment}
+	set_temp_variable = { inStockpileHeavyAntiAir = SOV.num_equipment@heavy_anti_air_equipment}
+	subtract_from_temp_variable = { inArmyHeavyAntiAir = requestedHeavyAntiAir }
+	add_to_temp_variable = { inArmyHeavyAntiAir = inStockpileHeavyAntiAir }
+
+	# Motorized/Mechanized Anti Air
+	set_temp_variable = { requestedMotorizedAntiAir = SOV.num_target_equipment_in_armies@mot_anti_air_equipment}
+	set_temp_variable = { inArmyMotorizedAntiAir = SOV.num_equipment_in_armies@mot_anti_air_equipment}
+	set_temp_variable = { inStockpileMotorizedAntiAir = SOV.num_equipment@mot_anti_air_equipment}
+	subtract_from_temp_variable = { inArmyMotorizedAntiAir = requestedMotorizedAntiAir }
+	add_to_temp_variable = { inArmyMotorizedAntiAir = inStockpileMotorizedAntiAir }
+
+  # Vehicles
+
+	# Mechanized
+	set_temp_variable = { requestedMechanized = SOV.num_target_equipment_in_armies@mechanized_equipment}
+	set_temp_variable = { inArmyMechanized = SOV.num_equipment_in_armies@mechanized_equipment}
+	set_temp_variable = { inStockpileMechanized = SOV.num_equipment@mechanized_equipment}
+	subtract_from_temp_variable = { inArmyMechanized = requestedMechanized }
+	add_to_temp_variable = { inArmyMechanized = inStockpileMechanized }
+
+	# Trucks
+	SOV = { get_supply_vehicles_temp = { var = trucks_needed_for_supply type = truck need = yes } }
+	set_temp_variable = { requestedTrucks = SOV.num_target_equipment_in_armies@motorized_equipment}
+	set_temp_variable = { inArmyTrucks = SOV.num_equipment_in_armies@motorized_equipment}
+	set_temp_variable = { inStockpileTrucks = SOV.num_equipment@motorized_equipment}
+	subtract_from_temp_variable = { inArmyTrucks = requestedTrucks }
+	subtract_from_temp_variable = { inArmyTrains = trucks_needed_for_supply }
+	add_to_temp_variable = { inArmyTrucks = inStockpileTrucks }
+
+	# Trains
+	SOV = { get_supply_vehicles_temp = { var = trains_needed_for_supply type = train need = yes } }
+	set_temp_variable = { requestedTrains = SOV.num_target_equipment_in_armies@train_equipment}
+	set_temp_variable = { inArmyTrains = SOV.num_equipment_in_armies@train_equipment}
+	set_temp_variable = { inStockpileTrains = SOV.num_equipment@train_equipment}
+	subtract_from_temp_variable = { inArmyTrains = requestedTrains }
+	subtract_from_temp_variable = { inArmyTrains = trains_needed_for_supply }
+	add_to_temp_variable = { inArmyTrains = inStockpileTrains }
+
+  # Air
+
+	# Fighters
+	set_temp_variable = { requestedFighters = SOV.num_target_equipment_in_armies@fighter_equipment}
+	set_temp_variable = { inArmyFighters = SOV.num_equipment_in_armies@fighter_equipment}
+	set_temp_variable = { inStockpileFighters = SOV.num_equipment@fighter_equipment}
+	subtract_from_temp_variable = { inArmyFighters = requestedFighters }
+	add_to_temp_variable = { inArmyFighters = inStockpileFighters }
+
+	# Heavy Fighters
+	set_temp_variable = { requestedHeavyFighters = SOV.num_target_equipment_in_armies@heavy_fighter_equipment}
+	set_temp_variable = { inArmyHeavyFighters = SOV.num_equipment_in_armies@heavy_fighter_equipment}
+	set_temp_variable = { inStockpileHeavyFighters = SOV.num_equipment@heavy_fighter_equipment}
+	subtract_from_temp_variable = { inArmyHeavyFighters = requestedHeavyFighters }
+	add_to_temp_variable = { inArmyHeavyFighters = inStockpileHeavyFighters }
+
+	# CAS
+	set_temp_variable = { requestedCAS = SOV.num_target_equipment_in_armies@cas_equipment}
+	set_temp_variable = { inArmyCAS = SOV.num_equipment_in_armies@cas_equipment}
+	set_temp_variable = { inStockpileCAS = SOV.num_equipment@cas_equipment}
+	subtract_from_temp_variable = { inArmyCAS = requestedCAS }
+	add_to_temp_variable = { inArmyCAS = inStockpileCAS }
+
+	# Tactical Bombers
+	set_temp_variable = { requestedTACS = SOV.num_target_equipment_in_armies@tac_bomber_equipment}
+	set_temp_variable = { inArmyTACS = SOV.num_equipment_in_armies@tac_bomber_equipment}
+	set_temp_variable = { inStockpileTACS = SOV.num_equipment@tac_bomber_equipment}
+	subtract_from_temp_variable = { inArmyTACS = requestedTACS }
+	add_to_temp_variable = { inArmyTACS = inStockpileTACS }
+
+  # Armor
+
+	# Armored Cars
+	set_temp_variable = { requestedArmoredCars = SOV.num_target_equipment_in_armies@armored_car_chassis}
+	set_temp_variable = { inArmyArmoredCars = SOV.num_equipment_in_armies@armored_car_chassis}
+	set_temp_variable = { inStockpileArmoredCars = SOV.num_equipment@armored_car_chassis}
+	subtract_from_temp_variable = { inArmyArmoredCars = requestedArmoredCars }
+	add_to_temp_variable = { inArmyArmoredCars = inStockpileArmoredCars }
+
+	# Light Tanks
+	set_temp_variable = { requestedLightTanks = SOV.num_target_equipment_in_armies@light_tank_chassis}
+	set_temp_variable = { inArmyLightTanks = SOV.num_equipment_in_armies@light_tank_chassis}
+	set_temp_variable = { inStockpileLightTanks = SOV.num_equipment@light_tank_chassis}
+	subtract_from_temp_variable = { inArmyLightTanks = requestedLightTanks }
+	add_to_temp_variable = { inArmyLightTanks = inStockpileLightTanks }
+
+	# Light Assault Guns
+	set_temp_variable = { requestedLightAGs = SOV.num_target_equipment_in_armies@light_assault_gun_chassis}
+	set_temp_variable = { inArmyLightAGs = SOV.num_equipment_in_armies@light_assault_gun_chassis}
+	set_temp_variable = { inStockpileLightAGs = SOV.num_equipment@light_assault_gun_chassis}
+	subtract_from_temp_variable = { inArmyLightAGs = requestedLightAGs }
+	add_to_temp_variable = { inArmyLightAGs = inStockpileLightAGs }
+
+	# Light SPG's
+	set_temp_variable = { requestedLightSPGs = SOV.num_target_equipment_in_armies@light_tank_artillery_chassis}
+	set_temp_variable = { inArmyLightSPGs = SOV.num_equipment_in_armies@light_tank_artillery_chassis}
+	set_temp_variable = { inStockpileLightSPGs = SOV.num_equipment@light_tank_artillery_chassis}
+	subtract_from_temp_variable = { inArmyLightSPGs = requestedLightSPGs }
+	add_to_temp_variable = { inArmyLightSPGs = inStockpileLightSPGs }
+
+	# Light Tank Destroyers
+	set_temp_variable = { requestedLightTDs = SOV.num_target_equipment_in_armies@light_tank_destroyer_chassis}
+	set_temp_variable = { inArmyLightTDs = SOV.num_equipment_in_armies@light_tank_destroyer_chassis}
+	set_temp_variable = { inStockpileLightTDs = SOV.num_equipment@light_tank_destroyer_chassis}
+	subtract_from_temp_variable = { inArmyLightTDs = requestedLightTDs }
+	add_to_temp_variable = { inArmyLightTDs = inStockpileLightTDs }
+
+	# Light SPAA
+	set_temp_variable = { requestedLightSPAA = SOV.num_target_equipment_in_armies@light_tank_aa_chassis}
+	set_temp_variable = { inArmyLightSPAA = SOV.num_equipment_in_armies@light_tank_aa_chassis}
+	set_temp_variable = { inStockpileLightSPAA = SOV.num_equipment@light_tank_aa_chassis}
+	subtract_from_temp_variable = { inArmyLightSPAA = requestedLightSPAA }
+	add_to_temp_variable = { inArmyLightSPAA = inStockpileLightSPAA }
+
+	# Medium Tanks
+	set_temp_variable = { requestedMediumTanks = SOV.num_target_equipment_in_armies@medium_tank_chassis}
+	set_temp_variable = { inArmyMediumTanks = SOV.num_equipment_in_armies@medium_tank_chassis}
+	set_temp_variable = { inStockpileMediumTanks = SOV.num_equipment@medium_tank_chassis}
+	subtract_from_temp_variable = { inArmyMediumTanks = requestedMediumTanks }
+	add_to_temp_variable = { inArmyMediumTanks = inStockpileMediumTanks }
+
+	# Medium Assault Guns
+	set_temp_variable = { requestedMediumAGs = SOV.num_target_equipment_in_armies@medium_assault_gun_chassis}
+	set_temp_variable = { inArmyMediumAGs = SOV.num_equipment_in_armies@medium_assault_gun_chassis}
+	set_temp_variable = { inStockpileMediumAGs = SOV.num_equipment@medium_assault_gun_chassis}
+	subtract_from_temp_variable = { inArmyMediumAGs = requestedMediumAGs }
+	add_to_temp_variable = { inArmyMediumAGs = inStockpileMediumAGs }
+
+	# Medium SPG's
+	set_temp_variable = { requestedMediumSPGs = SOV.num_target_equipment_in_armies@medium_tank_artillery_chassis}
+	set_temp_variable = { inArmyMediumSPGs = SOV.num_equipment_in_armies@medium_tank_artillery_chassis}
+	set_temp_variable = { inStockpileMediumSPGs = SOV.num_equipment@medium_tank_artillery_chassis}
+	subtract_from_temp_variable = { inArmyMediumSPGs = requestedMediumSPGs }
+	add_to_temp_variable = { inArmyMediumSPGs = inStockpileMediumSPGs }
+
+	# Medium Tank Destroyers
+	set_temp_variable = { requestedMediumTDs = SOV.num_target_equipment_in_armies@medium_tank_destroyer_chassis}
+	set_temp_variable = { inArmyMediumTDs = SOV.num_equipment_in_armies@medium_tank_destroyer_chassis}
+	set_temp_variable = { inStockpileMediumTDs = SOV.num_equipment@medium_tank_destroyer_chassis}
+	subtract_from_temp_variable = { inArmyMediumTDs = requestedMediumTDs }
+	add_to_temp_variable = { inArmyMediumTDs = inStockpileMediumTDs }
+
+	# Medium SPAA
+	set_temp_variable = { requestedMediumSPAA = SOV.num_target_equipment_in_armies@medium_tank_aa_chassis}
+	set_temp_variable = { inArmyMediumSPAA = SOV.num_equipment_in_armies@medium_tank_aa_chassis}
+	set_temp_variable = { inStockpileMediumSPAA = SOV.num_equipment@medium_tank_aa_chassis}
+	subtract_from_temp_variable = { inArmyMediumSPAA = requestedMediumSPAA }
+	add_to_temp_variable = { inArmyMediumSPAA = inStockpileMediumSPAA }
+
+	# Heavy Tanks
+	set_temp_variable = { requestedHeavyTanks = SOV.num_target_equipment_in_armies@heavy_tank_chassis}
+	set_temp_variable = { inArmyHeavyTanks = SOV.num_equipment_in_armies@heavy_tank_chassis}
+	set_temp_variable = { inStockpileHeavyTanks = SOV.num_equipment@heavy_tank_chassis}
+	subtract_from_temp_variable = { inArmyHeavyTanks = requestedHeavyTanks }
+	add_to_temp_variable = { inArmyHeavyTanks = inStockpileHeavyTanks }
+
+	# Heavy Assault Guns
+	set_temp_variable = { requestedHeavyAGs = SOV.num_target_equipment_in_armies@heavy_assault_gun_chassis}
+	set_temp_variable = { inArmyHeavyAGs = SOV.num_equipment_in_armies@heavy_assault_gun_chassis}
+	set_temp_variable = { inStockpileHeavyAGs = SOV.num_equipment@heavy_assault_gun_chassis}
+	subtract_from_temp_variable = { inArmyHeavyAGs = requestedHeavyAGs }
+	add_to_temp_variable = { inArmyHeavyAGs = inStockpileHeavyAGs }
+
+	# Heavy SPG's
+	set_temp_variable = { requestedHeavySPGs = SOV.num_target_equipment_in_armies@heavy_tank_artillery_chassis}
+	set_temp_variable = { inArmyHeavySPGs = SOV.num_equipment_in_armies@heavy_tank_artillery_chassis}
+	set_temp_variable = { inStockpileHeavySPGs = SOV.num_equipment@heavy_tank_artillery_chassis}
+	subtract_from_temp_variable = { inArmyHeavySPGs = requestedHeavySPGs }
+	add_to_temp_variable = { inArmyHeavySPGs = inStockpileHeavySPGs }
+
+	# Heavy Tank Destroyers
+	set_temp_variable = { requestedHeavyTDs = SOV.num_target_equipment_in_armies@heavy_tank_destroyer_chassis}
+	set_temp_variable = { inArmyHeavyTDs = SOV.num_equipment_in_armies@heavy_tank_destroyer_chassis}
+	set_temp_variable = { inStockpileHeavyTDs = SOV.num_equipment@heavy_tank_destroyer_chassis}
+	subtract_from_temp_variable = { inArmyHeavyTDs = requestedHeavyTDs }
+	add_to_temp_variable = { inArmyHeavyTDs = inStockpileHeavyTDs }
 }

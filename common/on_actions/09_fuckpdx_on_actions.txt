@@ -45,6 +45,21 @@ on_actions = {
 				}
 			}
 		}
+
+		# Update Stalin Air Weekly
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FULL_SOV_AIR
+					}
+				}
+				SOV = {
+					SOV_stalins_air_needs = yes
+				}
+			}
+		}
 	}
 	on_daily = {
 		effect = {
@@ -91,6 +106,41 @@ on_actions = {
 		}
 	}
     on_startup = {
+
+		# Apply Soviet Stuff
+		effect = {
+			SOV = {
+				add_ideas = SOV_soviet_industry
+			}
+			if = {
+				limit = {
+					OR = {
+						has_game_rule = {
+							rule = soviet_air_changes
+							option = FULL_SOV_AIR
+						}
+						has_game_rule = {
+							rule = soviet_air_changes
+							option = START_SOV_AIR
+						}
+					}
+				}
+				SOV = {
+					add_dynamic_modifier = { modifier = soviet_air_mod }
+					SOV_stalins_air_needs = yes
+				}
+			} else_if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				SOV = {
+					add_dynamic_modifier = { modifier = soviet_air_mod }
+				}
+			}
+		}		
 
 		# Dockyard Consumer Goods Debuff
 		effect = {
