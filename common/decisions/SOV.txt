@@ -8105,7 +8105,7 @@ SOV_industry_relocation = {
 
 					#Attempt to relocate 50%-50% of mils-civs
 					set_temp_variable = { SOV_half_the_factories_to_relocate = SOV.SOV_industrial_relocation_max_factories }
-					divide_temp_variable = { SOV_half_the_factories_to_relocate = 5 }
+					divide_temp_variable = { SOV_half_the_factories_to_relocate = 2 }
 					while_loop_effect = {
 						limit = {
 							check_variable = { SOV_factories_counter = SOV.SOV_industrial_relocation_max_factories compare = less_than }
@@ -8209,7 +8209,7 @@ SOV_industry_relocation = {
 				set_temp_variable = { SOV_factories_counter = 0 }
 				#Factories attempt to get relocated in 2 different states
 				set_temp_variable = { SOV_half_the_factories_to_relocate = SOV.SOV_industrial_relocation_max_factories }
-				divide_temp_variable = { SOV_half_the_factories_to_relocate = 5 }
+				divide_temp_variable = { SOV_half_the_factories_to_relocate = 2 }
 				while_loop_effect = { #NOTE: Due to the seed not changing during the execution of this effect, the same state will always be chosen, UNLESS it runs out of slots -> That's the reason for this 
 					limit = {
 						check_variable = { SOV_factories_counter = SOV_half_the_factories_to_relocate compare = less_than }
@@ -8221,6 +8221,22 @@ SOV_industry_relocation = {
 			custom_effect_tooltip = SOV_relocate_industry_repair_tt
 			custom_effect_tooltip = SOV_relocate_industry_lose_control_tt
 		}
+
+		# cancel_effect = {
+		# 	FROM = {
+		# 		set_temp_variable = { SOV_factories_counter = 0 }
+		# 		#Factories attempt to get relocated in 2 different states
+		# 		set_temp_variable = { SOV_half_the_factories_to_relocate = SOV.SOV_industrial_relocation_max_factories }
+		# 		divide_temp_variable = { SOV_half_the_factories_to_relocate = 5 }
+		# 		while_loop_effect = { #NOTE: Due to the seed not changing during the execution of this effect, the same state will always be chosen, UNLESS it runs out of slots -> That's the reason for this 
+		# 			limit = {
+		# 				check_variable = { SOV_factories_counter = SOV_half_the_factories_to_relocate compare = less_than }
+		# 			}
+		# 			SOV_relocate_industry_in_appropriate_state_effect = yes
+		# 			add_to_temp_variable = { SOV_factories_counter = 1 }
+		# 		}
+		# 	}
+		# }
 	}
 
 	move_leningrad_aluminium_plant = { #195

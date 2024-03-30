@@ -46,6 +46,8 @@ NDefines.NCountry.BASE_COMMAND_POWER_GAIN = 0.2				-- base value for daily comma
 NDefines.NCountry.ATTACHE_XP_SHARE = 0.15							-- Country received xp from attaches
 NDefines.NCountry.SPECIAL_FORCES_CAP_MIN = 36					-- You can have a minimum of this many special forces battalions regardless of the number of non-special forces battalions you have this can also be modified by a country modifier
 NDefines.NCountry.BASE_FUEL_GAIN_PER_OIL = 0.2						-- base amount of fuel gained hourly per excess oil
+NDefines.NCountry.STARTING_FUEL_RATIO = 0.5						-- starting fuel ratio compared to max fuel for countries
+NDefines.NCountry.SCORCHED_EARTH_STATE_COST = 10					-- pp cost to scorch a state
 NDefines.NCountry.COUNTRY_MANPOWER_CAPITULATED_CORE_GAIN_FACTOR = 0.002	-- Factor on amount of normal manpower gained for the exile nation. From owned states that are controlled by an enemy. State manpower reduced by factor 1000 in code.
 NDefines.NCountry.GIE_CAPITULATE_MAX_STOCKPILE_TRANSFER = 0.5 			-- 0-1 Transfers ratio of stockpile. from 0 to this define depending on starting legitimacy on capitulation.
 NDefines.NCountry.GIE_CAPITULATION_WARSCORE_LEGITIMACY_FACTOR = 1.5 	--Multiplies accumulated warscore with this factor for part of starting legitimacy.
@@ -74,13 +76,15 @@ NDefines.NResistance.GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.005 	-- Ratio of equi
 
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 5 	-- Max number of different strategic resources an equipment can be dependent on.
 NDefines.NProduction.EFFICIENCY_LOSS_PER_UNUSED_DAY = 0.5		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
-NDefines.NProduction.BASE_FACTORY_SPEED = 3.25 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 4.0 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED = 3.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 3.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 2.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 15	-- Base start efficiency for factories expressed in %.
 NDefines.NProduction.MAX_MIL_FACTORIES_PER_LINE = 200
-NDefines.NProduction.ANNEX_FUEL_RATIO = 0.50	-- How much fuel will be transferred on annexation
+NDefines.NProduction.ANNEX_FUEL_RATIO = 0.75	-- How much fuel will be transferred on annexation
 NDefines.NProduction.ANNEX_CONVOYS_RATIO = 0.25			-- How many convoys will be transferred on annexation
+NDefines.NProduction.CAPITULATE_STOCKPILES_RATIO = 0.6 -- How much equipment from deployed divisions will be transferred on capitulation
+NDefines.NProduction.CAPITULATE_FUEL_RATIO = 0.75 -- How much fuel will be transferred on capitulation
 NDefines.NProduction.MIN_FIELD_TO_TRAINING_MANPOWER_RATIO = 0.65	-- Ratio which % of army in field can be trained
 NDefines.NProduction.INFRA_MAX_CONSTRUCTION_COST_EFFECT = 0.5 		-- Building in a state with higher infrastructure will reduce the cost of shared buildings.
 NDefines.NProduction.PRODUCTION_RESOURCE_LACK_PENALTY = -0.01			-- Penalty decrease while lack of resource per factory
@@ -93,7 +97,7 @@ NDefines.NProduction.EQUIPMENT_MODULE_REPLACE_XP_COST = 2.0				-- XP cost for re
 NDefines.NProduction.EQUIPMENT_MODULE_CONVERT_XP_COST = 1.0				-- XP cost for converting one equipment module to a related module when creating an equipment variant.
 NDefines.NProduction.BASE_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.08		-- Fraction of the hull industry cost which is always included in the refitting cost.
 NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.05	-- Minimum fraction of a naval equipment's strategic resource cost that any conversion will cost.
-NDefines.NProduction.BASE_LAND_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.1		-- Fraction of the chassis industry cost which is always included in the conversion cost.
+NDefines.NProduction.BASE_LAND_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.05		-- Fraction of the chassis industry cost which is always included in the conversion cost.
 NDefines.NProduction.MIN_LAND_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.05		-- Minimum fraction of a land equipment's strategic resource cost that any conversion will cost.
 NDefines.NProduction.CONVOY_MAX_NAV_FACTORIES_PER_LINE = 150
 NDefines.NProduction.MINIMUM_NUMBER_OF_FACTORIES_TAKEN_BY_CONSUMER_GOODS_PERCENT = 0.05	-- The minimum number of factories we have to put on consumer goods, in percent. (Vanilla is 0.1)
@@ -140,7 +144,7 @@ NDefines.NMilitary.MAX_AIR_EXPERIENCE = 999				--Max air experience a country ca
 NDefines.NMilitary.MIN_SUPPLY_CONSUMPTION = 0.1					-- minimum value of supply consumption that a unit can get
 NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.03        -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
 NDefines.NMilitary.LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.05        -- global damage modifier
-NDefines.NMilitary.LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 6
+NDefines.NMilitary.LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 5
 NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.03    -- air global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.03    -- global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 2 -- how many CAS/TAC can enter a combat depending on enemy width there
@@ -272,9 +276,9 @@ NDefines.NMilitary.XP_GAIN_PER_OVERRUN_UNIT = 45.0						-- fixed XP gain per ove
 NDefines.NMilitary.XP_GAIN_FOR_SHATTERING = 45.0                          -- fixed XP gain per shattered unit
 NDefines.NMilitary.SURPLUS_SUPPLY_RATIO_FOR_ZERO_FUEL_FLOW = 1.0		-- if a supply chunk has more supply needed than this ratio + 1 compared to its max supply flow the units inside the chiunk will get no fuel 
 NDefines.NMilitary.ARMY_FUEL_COST_MULT = 0.75						-- fuel cost multiplier for all army related stuff
-NDefines.NMilitary.ARMY_COMBAT_FUEL_MULT =   1.5					-- fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
-NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.25				-- ratio of the stats that you get from equipments that uses fuel and you lack it
-NDefines.NMilitary.OUT_OF_FUEL_SPEED_MULT = 0.1					-- speed mult that armies get when out of fuel
+NDefines.NMilitary.ARMY_COMBAT_FUEL_MULT = 1.4					-- fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
+NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.2				-- ratio of the stats that you get from equipments that uses fuel and you lack it
+NDefines.NMilitary.OUT_OF_FUEL_SPEED_MULT = 0.4					-- speed mult that armies get when out of fuel
 NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 168             	-- default capacity if not specified
 NDefines.NMilitary.DAMAGE_SPLIT_ON_FIRST_TARGET = 0.2				--% of damage dealt to the first target in a combat. The rest will be split amongst subsequent targets. Modifiers can affect this up to a maximum of 0.9. That value must not be exposed as a define.
 
@@ -323,7 +327,7 @@ NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.05
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_MITIGATION = 6.0 -- Multiply Train Damage by (Smooth / (Smooth + (Disruption * Mitigation)))
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_SMOOTHING = 5.0
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_RAILWAY_DAMAGE_SPILL_FACTOR = 0.003 -- Portion of train damage to additionally deal to railways
-NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 10					-- same as above but used inside naval combat for carrier battles
+NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 20					-- same as above but used inside naval combat for carrier battles
 NDefines.NAir.PORT_STRIKE_DAMAGE_FACTOR = 0.75								-- How much damage is dealt to ports during a port strike (per plane damage [complex number] * num flying planes * define)
 
 NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 10
@@ -462,6 +466,19 @@ NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.02						-- Xp gain by non-
 NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.15								-- Amount of exp each ship gain every 24h while training (before modifiers)
 NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.9 -- org will clamped to this ratio on manual move
 
+NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
+0.0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
+1.0, -- PATROL
+1.0, -- STRIKE FORCE (does not cost fuel at base, and uses IN_COMBAT_FUEL_COST in combat. this is just for the movement in between)
+1.0, -- CONVOY RAIDING
+1.0, -- CONVOY ESCORT
+1.0, -- MINES PLANTING
+1.0, -- MINES SWEEPING
+0.5, -- TRAIN
+0.0, -- RESERVE_FLEET (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
+1.0, -- NAVAL_INVASION_SUPPORT (does not cost fuel at base, only costs while doing bombardment and escorting units)
+}
+
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
 
 NDefines.NAI.DEPLOY_MIN_TRAINING_PEACE_FACTOR = 1.0		-- Required percentage of training (1.0 = 100%) for AI to deploy unit in peacetime
@@ -553,8 +570,12 @@ NDefines.NSupply.VP_TO_SUPPLY_BASE = 0.7
 NDefines.NSupply.COOLDOWN_DAYS_AFTER_MOVING_SUPPLY_CAPITAL = 3 -- cooldown for moving supply again after last move
 NDefines.NSupply.DAYS_TO_START_GIVING_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL = 3  -- the country will start gaining supply after this many days moving its capital
 NDefines.NSupply.DAYS_TO_START_GIVING_FULL_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL =  10 -- the country will reach max supply after this many days moving its capital
+NDefines.NSupply.SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.40 -- armies will only get attrition below this supply
+NDefines.NSupply.SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 0.10 -- crossing rivers introduces additional penalty
+NDefines.NSupply.SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.1 -- if supply flow is lower than this, it is not applied
+NDefines.NSupply.NUMBER_OF_SHOWN_SUPPLY_SOURCES_IN_SUPPLY_MAPMODE = 5 -- number of supply flow sources shown in breakdown tooltip
 -- defines that are used for supply reach for floating harbors
-NDefines.NSupply.FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 3.0
+NDefines.NSupply.FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 4.0
 NDefines.NSupply.FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 0.6
 NDefines.NSupply.FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 0.6
 NDefines.NSupply.NAVAL_BASE_FLOW = 15

@@ -12987,6 +12987,25 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SPA_maintain_neutrality
+		icon = GFX_focus_SWI_neutrality_on_the_move
+		prerequisite = { focus = SPA_ensure_agricultural_self_sufficiency }
+		x = 0
+		y = 1
+		relative_position_id = SPA_ensure_agricultural_self_sufficiency
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			set_rule = { can_send_volunteers = yes }
+			add_ideas = SPA_la_division_azul_0
+		}
+	}
+
+
+	focus = {
 		id = SPA_abandon_neutrality
 		icon = GFX_focus_renounce_the_treaty_of_trianon
 		available = {
@@ -13001,12 +13020,16 @@ focus_tree = {
 				NOT = { has_idea = SPA_national_recovery_7 }				
 			}
 			fascism > 0.65
+			OR = {
+				GER = { has_war_with = SOV }
+				date > 1942.1.1
+			}
 		}
-		prerequisite = { focus = SPA_ensure_agricultural_self_sufficiency }
-		mutually_exclusive = { focus = SPA_maintain_neutrality }
+		prerequisite = { focus = SPA_maintain_neutrality }
+		mutually_exclusive = { focus = SPA_maintain_neutrality_2 }
 		x = -1
 		y = 1
-		relative_position_id = SPA_ensure_agricultural_self_sufficiency
+		relative_position_id = SPA_maintain_neutrality
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -13014,8 +13037,8 @@ focus_tree = {
 		
 		completion_reward = {
 			remove_ideas = SPA_neutrality_idea
-			add_war_support = -0.20
-			add_stability = -0.1
+			add_war_support = -0.2
+			add_stability = -0.2
 		}
 	}
 
@@ -13074,22 +13097,30 @@ focus_tree = {
 		}
 	}
 	
+
 	focus = {
-		id = SPA_maintain_neutrality
+		id = SPA_maintain_neutrality_2
 		icon = GFX_goal_generic_neutrality_focus
-		prerequisite = { focus = SPA_ensure_agricultural_self_sufficiency }
+		prerequisite = { focus = SPA_maintain_neutrality }
 		mutually_exclusive = { focus = SPA_abandon_neutrality }
 		x = 1
 		y = 1
-		relative_position_id = SPA_ensure_agricultural_self_sufficiency
+		relative_position_id = SPA_maintain_neutrality
 		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
+
+		available = {
+			OR = {
+				GER = { has_war_with = SOV }
+				date > 1942.1.1
+			}
+		}
 		
 		completion_reward = {
 			add_political_power = 100
-			set_rule = { can_send_volunteers = yes }
+			#set_rule = { can_send_volunteers = yes }
 			every_owned_state = {
 				limit = {
 					OR = {
@@ -13100,7 +13131,6 @@ focus_tree = {
 				}
 				remove_dynamic_modifier = { modifier = autonomous_state }
 			}
-			add_ideas = SPA_embargo_spirit
 		}
 	}
 
@@ -13110,18 +13140,21 @@ focus_tree = {
 		}
 		bypass = {
 		}
-		prerequisite = { focus = SPA_maintain_neutrality }
+		prerequisite = { focus = SPA_maintain_neutrality_2 }
 		
 		icon = GFX_goal_rhineland
 		x = 0
 		y = 1
-		relative_position_id = SPA_maintain_neutrality
+		relative_position_id = SPA_maintain_neutrality_2
 		cost = 10
 
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = SPA_la_division_azul
+			swap_ideas = {
+				remove_idea = SPA_la_division_azul_0
+				add_idea = SPA_la_division_azul_1
+			}
 		}
 	}
 
@@ -13140,10 +13173,31 @@ focus_tree = {
 		}
 		
 		completion_reward = {
+			POR = { add_ideas = SPA_expand_the_axis_gold_trade_2 }
+			add_ideas = SPA_embargo_spirit
+				ROOT = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = spain_portugese_axis
+				}
+				add_opinion_modifier = {
+					target = ITA
+					modifier = spain_portugese_axis
+				}
+			}
 			POR = {
-				give_resource_rights = { receiver = SPR state = 181 }
-				give_resource_rights = { receiver = SPR state = 112 }
-				give_resource_rights = { receiver = SPR state = 795 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = spain_portugese_axis
+				}
+				add_opinion_modifier = {
+					target = GER
+					modifier = spain_portugese_axis
+				}
+				add_opinion_modifier = {
+					target = ITA
+					modifier = spain_portugese_axis
+				}
 			}
 		}
 	}

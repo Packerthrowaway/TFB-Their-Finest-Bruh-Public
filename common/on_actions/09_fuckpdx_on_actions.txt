@@ -31,6 +31,35 @@ on_actions = {
 				}
 			}
 		}
+		# Update Dockyard Consumer Goods
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = dockyard_cg
+						option = ENABLED
+					}
+				}
+				every_country = {
+					dockyard_cg_calculation = yes
+				}
+			}
+		}
+
+		# Update Stalin Air Weekly
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FULL_SOV_AIR
+					}
+				}
+				SOV = {
+					SOV_stalins_air_needs = yes
+				}
+			}
+		}
 	}
 	on_daily = {
 		effect = {
@@ -42,6 +71,17 @@ on_actions = {
 					}
 				}
 				HMP_check_fleet_size = yes 
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = coastal_raiders
+						option = ENABLED
+					}
+				}
+				MED_coastal_raiding_check = yes 
 			}
 		}
 		effect = {
@@ -65,7 +105,302 @@ on_actions = {
 			}
 		}
 	}
-   on_startup = {
+    on_startup = {
+
+		# Apply Soviet Stuff
+		effect = {
+			SOV = {
+				add_ideas = SOV_soviet_industry
+			}
+			if = {
+				limit = {
+					OR = {
+						has_game_rule = {
+							rule = soviet_air_changes
+							option = FULL_SOV_AIR
+						}
+						has_game_rule = {
+							rule = soviet_air_changes
+							option = START_SOV_AIR
+						}
+					}
+				}
+				SOV = {
+					add_dynamic_modifier = { modifier = soviet_air_mod }
+					SOV_stalins_air_needs = yes
+				}
+			} else_if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				SOV = {
+					add_dynamic_modifier = { modifier = soviet_air_mod }
+				}
+			}
+		}		
+
+		# Dockyard Consumer Goods Debuff
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = dockyard_cg
+						option = ENABLED
+					}
+				}
+				every_country = {
+					add_dynamic_modifier = { modifier = dockyard_cg_mod }
+					dockyard_cg_calculation = yes
+				}
+			}
+		}
+
+	   	# Mediteranian Raiders
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = coastal_raiders
+						option = ENABLED
+					}
+				}
+				# Eastern Med
+				ENG = {  add_to_array = { ENG.eastern_med = 982 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 447 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 971 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 452 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 451 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 446 } }
+				# Central Med
+				ENG = {  add_to_array = { ENG.central_med = 450 } }
+				ENG = {  add_to_array = { ENG.central_med = 449 } }
+				ENG = {  add_to_array = { ENG.central_med = 448 } }
+				ENG = {  add_to_array = { ENG.central_med = 665 } }
+				ENG = {  add_to_array = { ENG.central_med = 458 } }
+				# Western Med
+				ENG = {  add_to_array = { ENG.western_med = 290 } }
+				ENG = {  add_to_array = { ENG.western_med = 459 } }
+				ENG = {  add_to_array = { ENG.western_med = 460 } }
+
+				for_each_scope_loop = {
+					array = ENG.eastern_med
+					add_dynamic_modifier = {
+						modifier =  NO_coastal_raiding 
+					}
+				}
+				for_each_scope_loop = {
+					array = ENG.central_med
+					add_dynamic_modifier = {
+						modifier =  NO_coastal_raiding 
+					}
+				}
+				for_each_scope_loop = {
+					array = ENG.western_med
+					add_dynamic_modifier = {
+						modifier =  NO_coastal_raiding 
+					}
+				}
+			}
+		}
+		# State of the Pacific
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_game_rule = {
+							rule = state_of_the_pacific
+							option = DISABLED
+						}	
+					}
+				}
+			   # Initialize Variables
+				set_variable = { global.PACIFIC_DEBUFF_INVASION_PENALTY = 0 } 
+				set_variable = { global.PACIFIC_DEBUFF_SPEED_PENALTY = 0 } 
+				set_variable = { global.PACIFIC_DEBUFF_ATTRITION_PENALTY = 0 } 
+
+			   # Atlantic Wall
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 99 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 912 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 909 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 58 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 59 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 56 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 36 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 7 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 35 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 6 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 29 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 785 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 15 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 14 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 30 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 23 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 19 } }
+				USA = {  add_to_array = { global.pacific_modifier_states_europe = 806 } }
+
+			   # Southern Europe Coast
+				if = {
+					limit = {
+						OR = {
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = COAST_WEST
+							}
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = COAST
+							}
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = ALL
+							}
+						}
+					}
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 31 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 22 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 21 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 851 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 735 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 158 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 162 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 2 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 117 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 156 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 849 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 44 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 805 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 185 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 186 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 47 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 731 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 184 } }
+
+				}
+
+			   # Western Europe Inland
+				if = {
+					limit = {
+						OR = {
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = COAST_WEST
+							}
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = WEST
+							}
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = ALL
+							}
+						}
+					}
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 16 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 24 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 33 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 25 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 26 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 20 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 32 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 18 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 17 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 27 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 28 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 34 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 8 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 151 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 42 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 51 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 57 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 55 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 50 } }
+
+					if = {
+						limit = {
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = WEST
+							}
+						}
+						USA = {  add_to_array = { global.pacific_modifier_states_europe = 31 } }
+						USA = {  add_to_array = { global.pacific_modifier_states_europe = 22 } }
+						USA = {  add_to_array = { global.pacific_modifier_states_europe = 21 } }
+					}					
+				}
+
+			   # Southern Europe Inland
+			   	if = {
+					limit = {
+						OR = {
+							has_game_rule = {
+								rule = state_of_the_pacific
+								option = ALL
+							}
+						}
+					}
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 159 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 161 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 157 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 160 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 850 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 39 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 736 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 852 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 102 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 853 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 103 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 163 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 104 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 105 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 804 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 802 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 106 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 934 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 48 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 803 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 108 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 107 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 109 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 212 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 211 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 845 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 3 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 847 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 151 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 846 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 153 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 848 } }
+					USA = {  add_to_array = { global.pacific_modifier_states_europe = 153 } }
+			   	}
+
+			   # Apply to the Correct States
+				for_each_scope_loop = {
+					array = global.pacific_modifier_states_europe
+					if = {
+						limit = {
+							NOT = {
+								has_dynamic_modifier = {
+									modifier = PACIFIC_COMMONWEALTH_controls_original 
+								}
+							}
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = PACIFIC_COMMONWEALTH_controls_original 
+					}
+				}
+			}
+		}
+		effect = {
+			981 = {
+				add_dynamic_modifier = {
+					modifier =  NO_PORTS_CAN_BE_BUILT 
+				}
+			}
+		}
 		effect = {
 			if = {
 				limit = {

@@ -1375,3 +1375,79 @@ PAR_protected_by_humaita = {
 fleet_overstack_dynamic_modifier = {
 	naval_damage_factor = fleet_overstack_naval_damage_factor
 }
+
+ENG_coastal_raiding = {
+	enable = { always = yes }
+
+	icon = GFX_idea_ENG_coastal_support
+	
+	state_production_speed_naval_base_factor = -1.2
+	# state_production_speed_supply_node_factor = -0.05
+	# state_production_speed_rail_way_factor = -0.05
+}
+
+ITA_coastal_raiding = {
+	enable = { always = yes }
+
+	icon = GFX_idea_ITA_coastal_support
+	
+	state_production_speed_naval_base_factor = -1.2
+	# state_production_speed_supply_node_factor = -0.05
+	# state_production_speed_rail_way_factor = -0.05
+}
+
+NO_coastal_raiding = {
+	enable = { always = yes }
+
+	icon = GFX_idea_SWE_coastal_support
+}
+
+NO_PORTS_CAN_BE_BUILT = {
+	enable = { always = yes }
+
+	icon = GFX_idea_SOV_shipyard_staff_purged
+
+	state_production_speed_naval_base_factor = -9999
+}
+
+PACIFIC_COMMONWEALTH_controls_original = {
+	enable = { always = yes }
+
+	icon = GFX_idea_jap_militarism_shogun_faded
+
+	custom_modifier_tooltip = PACIFIC_DESCRIPTOR_tt
+}
+
+PACIFIC_COMMONWEALTH_axis_controlled = {
+	enable = { always = yes }
+
+	icon = GFX_idea_jap_militarism_shogun
+
+	custom_modifier_tooltip = PACIFIC_DESCRIPTOR_tt
+	naval_invasion_penalty = global.PACIFIC_DEBUFF_INVASION_PENALTY
+}
+
+PACIFIC_COMMONWEALTH_allied_controlled = {
+	enable = { always = yes }
+
+	icon = GFX_idea_jap_militarism_shogun
+
+	custom_modifier_tooltip = PACIFIC_DESCRIPTOR_tt
+	army_speed_factor_for_controller = global.PACIFIC_DEBUFF_SPEED_PENALTY
+	attrition_for_controller = global.PACIFIC_DEBUFF_ATTRITION_PENALTY
+}
+
+dockyard_cg_mod = {
+	enable = { always = yes }
+
+	icon = "GFX_idea_naval_dockyard_cg"
+	consumer_goods_expected_value = dockyard_cg
+}
+
+soviet_air_mod = {
+	enable = { always = yes }
+
+	icon = "GFX_idea_NORDIC_airforce_communist"
+	cas_damage_reduction = soviet_cas_debuff
+	#enemy_army_bonus_air_superiority_factor = 0.20
+}

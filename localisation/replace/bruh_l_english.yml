@@ -21,7 +21,7 @@
  startingevent.1000.d:0 "The game believes there is a player on a nation that is typically not for players.\nThis list includes Venezuela, Portugal, Belgium, Luxembourg, Switzerland, Austria, Czechoslovakia, Sweden, Denmark, Norway, Yugoslavia, Greece, Lithuania, Latvia, Estonia,  China, Dutch East Indies, Philippines, Malaya,  Turkey, Iraq, or Iran.\nPlease ensure that all non-player nations show up as such. You can tell if a nation has it's AI off by wether or not when you open the diplomatic screen you see the player logo on things like 'ask for military access' instead of the number telling you the AI will or won't accept."
  startingevent.1000.a:0 "Ok"
  startingevent.1001.t:0 "Enabled Game Rules and TFB Mods"
- startingevent.1001.d:0 "If you wish to play on AAT then search for '§BTFB Arms Against Tyranny§!'\n\nIf you wish to play on BBA then search for '§BTFB By Blood Alone§!'\n\nIf you wish to play on NSB then search for '§BTFB No Step Back§!'.\n\nTo play on BTFB patch pre tank designer, search for '§BTFB Battle for the Bosporus§!'.\n\nAdmiral Command Limit: §0[navy_cap_rule_sl]§!\n\nChinese Waves: §0[allow_china_waves_rule_sl]§!\n\nVoice Lines: §0[allow_voice_lines_rule_sl]§!\n\nFatherless Spirit: §0[fatherless_spirit_rule_sl]§!\n\nAssault Guns Status: §0[assault_gun_rule_sl]§!\n\nHost Country: §0[host_country_rule_sl]§!"
+ startingevent.1001.d:0 "If you wish to play on AAT then search for '§BTFB Arms Against Tyranny§!'\n\nIf you wish to play on BBA then search for '§BTFB By Blood Alone§!'\n\nIf you wish to play on NSB then search for '§BTFB No Step Back§!'.\n\nTo play on BTFB patch pre tank designer, search for '§BTFB Battle for the Bosporus§!'.\n\nAdmiral Command Limit: §0[navy_cap_rule_sl]§!\n\nNorth African Raiders: §0[coastal_raiders_rule_sl]§!\n\nDockyard Consumer Goods: §0[dockyard_cg_rule_sl]§!\n\nSoviet Air: §0[soviet_air_rule_sl]§!\n\nChinese Waves: §0[allow_china_waves_rule_sl]§!\n\nVoice Lines: §0[allow_voice_lines_rule_sl]§!\n\nFatherless Spirit: §0[fatherless_spirit_rule_sl]§!\n\nAssault Guns Status: §0[assault_gun_rule_sl]§!\n\nHost Country: §0[host_country_rule_sl]§!"
  startingevent.1001.a:0 "Ok"
  #### LEVELS ####
  UNIT_LEVEL_0:0 "Fresh"
@@ -240,6 +240,10 @@
  coastal_fortress_plural:0 "Coastal Fortresses"
  coastal_fortress_tt:0 "Enables the construction of Coastal Fortress"
 
+ NO_coastal_raiding:0 "No Coastal Raiders"
+ NO_coastal_raiding_desc:0 "Currently neither the Italians nor the British have the supremacy to restrict port construction. Placing §R10 Screens and 3 Capital Ships§! while the enemy does not have that many will incur a debuff to building ports in this state."
+ NO_PORTS_CAN_BE_BUILT:0 "No Ports"
+ NO_PORTS_CAN_BE_BUILT_desc:0 "The Mountain Terrain is too Rugged to build Port Infrastructure here."
 
  bunker:0 "Pillbox"
  bunker_plural:0 "Pillboxes"
@@ -279,7 +283,7 @@
  tooltip_more_armor_tt:0 "§RIncrease the armored equipment required for all armor battalions by 10%§! (Plus 2 chassis per combat width)"
  tooltip_more_mech_tt:0 "§RIncrease the motorized/mechanized equipment required for all motorized/mechanized battalions by 8/6 (10%)§!\n(§YTotal Motorized Need/Total Stockpile:§! [?total_unit_mot|R0]/[?trucks_stored|R0])\n(§YTotal Mechanized Need/Total Stockpile:§! [?total_unit_mech|R0]/[?mech_stored|R0])"
  tooltip_faster_mech_tt:0 "\n§GIncreases Infantry (mot.) Speed from 4.5 KPH to 5.5 KPH§!\n§RIncrease the motorized equipment required for all Infantry (mot.) battalions by 10 (50%)§!\n(§YTotal Motorized Need/Total Stockpile:§! [?total_unit|R0]/[?trucks_stored|R0])"
-
+ golden_song:0 "§OGoldenSpatulas§!"
 
  expert_improviser_movement_bonus_on_land:0 "Movement Bonus On Land: §G+10.0%§!"
  cavalary_ratio_over_40:1 "Cavalry, motorized and mechanized ratio > §H90%§!"
@@ -303,6 +307,9 @@
  GetCommandLimit_disabled:0 "£command_power_texticon §RCmd Limit: §0(DISABLED)§!"
  #GetCommandLimit_2:0 "[?THIS.fleet_overstack_naval_damage_factor]"
  GetAdmiralPortrait_tt:0 "[GetAdmiralPortrait]"
+
+ dockyard_cg_mod:0 "§YDockyard Inefficiencies§!"
+ dockyard_cg_mod_desc:0 "§WFor every £dockyard_texticon §R5§! §YNaval Dockyards§! (rounded), you will gain §Y1%§! £consumer_goods_texticon EXPECTED Consumer Goods (flat consumer goods) to prevent spamming naval dockyards. Calculation starts after 50 dockyards.\nThis does §RNOT§! apply when you are in the §BLondon Naval Treaty§!"
 
  startingevent.29.t:0 "Naval Fleet Size §0(Important)§!"
  startingevent.29.desc:0 "1) You should have multiple fleets, with no fleet exceeding a Command Limit of 150.\n2) Fleets should have high screening values for capitals and carriers\n3) You need 1 destroyer for every 2 convoys in a battle, and one for every 40 convoys in a space for escort efficiency.\n4)Your host should require an admiral on all fleets\n\n§BFleet Command Limit§!\n\nEvery ship class has a 'command limit' value. A fleet (all taskforces underneath one admiral) can support at most 150 'command limit'. As long as you are at or below your command limit value for every fleet with an admiral leading it, then you will not have special debuffs applied to your admiral and country. Any admiral which is leading a fleet will appear in a list just right of the admiral portraits. This list contains useful information about your fleets so that you can easily adhere to this system.\n\nDestroyers/Submarines - 1 command limit\nLight Cruisers/Heavy Cruisers - 2 command limit\nBattleships and Battlecruisers - 6 command limit\nCarriers/Super Heavy Battleships - 8 command limit\nSuper Heavy Carriers - 14 command limit.\n\n§RIf you are over the cap you will deal 5% less damage, and for each Command Limit you are over the cap, your country will deal an additional 1% less naval damage.§! Command Limit is recalculated every week when there is no war, so you may need to wait to see the changes update. Once at war it will update the calculation daily."
@@ -345,6 +352,8 @@ off_superior_tt:0 "A random §YSkill 3§! or lower General will gain §Y"Enginee
  hold_the_fascist_national_referendum2_desc:0 "With sufficient support, we may now safely hold a referendum to affect a change of government, without bloodshed."
  democratic_on_the_rise:0 "Democracy on the Rise"
 
+ gives_the_option_between_tt:0 "Gives the option between"
+
  #### UNITS ####
  mountaineers:0 "Light Infantry"
  infantry_mot:0 "Infantry (Mot.)"
@@ -368,6 +377,8 @@ off_superior_tt:0 "A random §YSkill 3§! or lower General will gain §Y"Enginee
  category_cavalry:0 "Cavalry"
  category_assault_gun:0 "Assault Guns"
  category_mobile:0 "Motorized/Mechanized/Mobile"
+ dispersed_industry_category:0 "Dispersed Industry"
+ dispersed_industry_category_research:0 "Dispersed Industry Research"
  flying_boat:0 "Flying Boat"
  flying_boat_equipment:0 "Flying Boat"
  advanced_sonar:0 "Sonobuoys"
@@ -1301,6 +1312,13 @@ off_superior_tt:0 "A random §YSkill 3§! or lower General will gain §Y"Enginee
  navy_chief_anti_submarine_2:0 "Anti-Submarine\n(Expert)"
  navy_chief_anti_submarine_3:0 "Anti-Submarine\n(Genius)"
 
+  cant_faction_call_tt: "§RCannot call faction allies into our wars.§!"
+  ally_cant_faction_call_tt: "§RThis ally cannot be joined in their wars.§!"
+  cant_faction_call: "Can Not Call Allies into Wars"
+  cant_faction_join_tt: "§RCannot join this allies wars.§!"
+  ally_cant_faction_join_tt: "§RThis ally cannot be called into our wars.§!"
+  cant_faction_join: "Can Not Join Allies Wars"
+
 # GAME RULES
  RULE_GROUP_TFB:0 "Custom TFB Game Rules"
  RULE_OPTION_ENABLED:0 "Enabled"
@@ -1310,6 +1328,20 @@ off_superior_tt:0 "A random §YSkill 3§! or lower General will gain §Y"Enginee
  RULE_NAVY_CAP:0 "Admiral Command Limit"
  RULE_OPTION_NAVY_CAP_ENABLED_DESC:0 "Limit the amount of ships a single Admiral can command"
  RULE_OPTION_NAVY_CAP_DISABLED_DESC:0 "Allow Admirals to have an unlimited number of ships under them"
+ RULE_DOCK_CG:0 "Dockyard Consumer Goods"
+ RULE_OPTION_DOCK_CG_ENABLED_DESC:0 "Dockyard Consumer Goods Mechanic Enabled"
+ RULE_OPTION_DOCK_CG_DISABLED_DESC:0 "Dockyard Consumer Goods Mechanic Disabled"
+ RULE_SOV_AIR:0 "The Red Airforce"
+ RULE_OPTION_SOV_FULL_AIR:0 "Soviets Need Air Consistently"
+ RULE_OPTION_SOV_FULL_AIR_DESC:0 "Soviets need to build Air Consistently, as the incoming CAS Damage Penalty will check itself every week."
+ RULE_OPTION_SOV_FULL_AIR_SPIRIT_DESC:0 "We need a combined 3500 planes (Fighters, Heavy Fighters, CAS, TACS) Deployed or in Stockpile in order to stave off a debuff. Under that, and for every additional 500 planes under that you are, you will recieve 5% Additional CAS Damage."
+ RULE_OPTION_SOV_START_AIR:0 "Soviets Need Air at Barbarossa."
+ RULE_OPTION_SOV_START_AIR_DESC:0 "Soviets need to build Air for the start of Barbarossa, as the incoming CAS Damage Penalty will check itself only at the start of Barb."
+ RULE_OPTION_SOV_START_AIR_SPIRIT_DESC:0 "We need a combined 3500 planes (Fighters, Heavy Fighters, CAS, TACS) Deployed or in Stockpile at the Start of Barbarossa in order to stave off the debuff. Under that, and for every additional 500 planes under that you are, you will recieve 5% Additional CAS Damage."
+ RULE_OPTION_SOV_FOCUS_AIR:0 "Soviets Need Air for Focuses"
+ RULE_OPTION_SOV_FOCUS_AIR_DESC:0 "Soviets start with a spirit making them take bonus CAS Damage, until they complete air focuses, which are locked base on plane count or XP."
+ RULE_OPTION_SOV_FOCUS_AIR_SPIRIT_DESC:0 "We need planes (Fighters, Heavy Fighters, CAS, TACS) Deployed or in Stockpile OR to spend Air XP in order to remove the CAS Damage debuff."
+ RULE_OPTION_SOV_AIR_DISABLED_DESC:0 "Soviets need to build Air Disabled"
  RULE_CHINA_WAVES:0 "Chinese Waves"
  RULE_OPTION_THREE_WAVES:0 "3 Waves (Max)"
  RULE_OPTION_THREE_WAVES_DESC:0 "Spawn all 3 waves of conscripts (Default balance)"
@@ -1329,3 +1361,18 @@ off_superior_tt:0 "A random §YSkill 3§! or lower General will gain §Y"Enginee
  RULE_OPTION_ASSAULT_GUN_SUPPORT_DESC:0 "Assault Guns can only be added as Support Companies"
  RULE_OPTION_ASSAULT_GUN_LINE:0 "Line Companies"
  RULE_OPTION_ASSAULT_GUN_LINE_DESC:0 "Assault Guns can only be added as Line Companies"
+ RULE_COASTAL_RAIDERS:0 "North African Coastal Raiders"
+ RULE_OPTION_COASTAL_RAIDERS_ENABLED_DESC:0 "Enable the Coastal Raiders"
+ RULE_OPTION_COASTAL_RAIDERS_DISABLED_DESC:0 "Disable the Coastal Raiders"
+ RULE_PACIFIC_STATE:0 "State of the Pacific Modifiers"
+ RULE_OPTION_COAST_WEST:0 "European Coast + Western Europe"
+ RULE_OPTION_COAST_WEST_DESC:0 "Apply the Modifiers to all European Coastal states, as well as Inland states in Western Europe. Excludes Spain."
+ RULE_OPTION_COAST:0 "Coastal Europe"
+ RULE_OPTION_COAST_DESC:0 "Apply the Modifiers to all Coastal states in the Atlantic and Mediterranean. Excludes Spain."
+ RULE_OPTION_WEST:0 "Western Europe"
+ RULE_OPTION_WEST_DESC:0 "Apply the Modifiers to all states in Western Europe, including the Atlantic Wall. Excludes Spain."
+ RULE_OPTION_ATLANTIC_WALL:0 "Atlantic Wall"
+ RULE_OPTION_ATLANTIC_WALL_DESC:0 "Apply the Modifiers to the coast from Southern France to Denmark."
+ RULE_OPTION_ALL:0 "All of Western and Southern Europe"
+ RULE_OPTION_ALL_DESC:0 "Apply the Modifiers to all Coastal states, as well as Inland states in Western and Southern Europe. Excludes Spain."
+ RULE_OPTION_ZERO_STATE_DESC:0 "Disable the State in the Pacific"

@@ -51,7 +51,7 @@ ideas = {
 			
 			modifier = {
 				license_purchase_cost = -0.5
-				license_production_speed = 0.2
+				license_production_speed = 0.3
 			}
 		}
 
@@ -176,9 +176,9 @@ ideas = {
 			}
 
 			modifier = {
-				industrial_capacity_factory = -0.2
-				industrial_capacity_dockyard = -0.2
-				production_speed_buildings_factor = -0.1
+				industrial_capacity_factory = -0.3
+				industrial_capacity_dockyard = -0.3
+				production_speed_buildings_factor = -0.15
 				consumer_goods_factor = 0.2
 			}
 			rule = {
@@ -206,9 +206,9 @@ ideas = {
 			}
 
 			modifier = {
-				industrial_capacity_factory = -0.14
-				industrial_capacity_dockyard = -0.14
-				production_speed_buildings_factor = -0.07
+				industrial_capacity_factory = -0.2
+				industrial_capacity_dockyard = -0.2
+				production_speed_buildings_factor = -0.1
 				consumer_goods_factor = 0.15
 			}
 
@@ -237,9 +237,9 @@ ideas = {
 			}
 
 			modifier = {
-				industrial_capacity_factory = -0.07
-				industrial_capacity_dockyard = -0.07
-				production_speed_buildings_factor = -0.04
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				production_speed_buildings_factor = -0.05
 				consumer_goods_factor = 0.10
 			}
 
@@ -597,7 +597,7 @@ ideas = {
 			}
 
 			modifier = {
-				production_speed_arms_factory_factor = 0.1
+				production_speed_arms_factory_factor = 0.05
 			}
 		}
 
@@ -806,6 +806,35 @@ ideas = {
 			}
 		}
 
+		SPA_expand_the_axis_gold_trade_2 = {
+
+			name = SPA_expand_the_axis_gold_trade
+
+			picture = SPR_seize_the_gold_reserves
+
+			allowed = {
+				original_tag = POR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.06
+				min_export = 0.2
+			}
+
+			targeted_modifier = {
+				tag = SPR
+				trade_cost_for_target_factor = -0.25
+			}
+			targeted_modifier = {
+				tag = GER
+				trade_cost_for_target_factor = -0.25
+			}
+		}
+
 		SPA_a_methodical_approach = {
 
 			picture = CZE_planning_bonus
@@ -842,7 +871,33 @@ ideas = {
 			}
 		}
 
-		SPA_la_division_azul = {
+		SPA_la_division_azul_0 = {
+
+			name = SPA_la_division_azul
+
+			picture = SPA_la_division_azul
+
+			allowed = {
+				original_tag = SPR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				send_volunteer_size = 3
+				air_volunteer_cap = 3
+				send_volunteer_divisions_required = -0.15
+				send_volunteers_tension = -0.20
+			}
+
+		}
+
+
+		SPA_la_division_azul_1 = {
+
+			name = SPA_la_division_azul
 
 			picture = SPA_la_division_azul
 
@@ -856,6 +911,7 @@ ideas = {
 
 			modifier = {
 				send_volunteer_size = 6
+				air_volunteer_cap = 6
 				send_volunteer_divisions_required = -0.25
 				send_volunteers_tension = -0.20
 				acclimatization_cold_climate_gain_factor = 0.25

@@ -100,3 +100,41 @@ country_event = {
 		custom_effect_tooltip = FIN_winter_war_push_back_tt
 	}
 }
+
+country_event = {
+	id = finland.500
+	title = finland.500.t
+	desc = finland.500.d
+	picture = GFX_report_event_chinese_soldiers_02
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		set_country_flag = FINLAND_LONE_WOLF
+		name = finland.500.a
+		custom_effect_tooltip = finland.500.a_desc
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				FIN = { is_ai = yes }
+			}
+		}
+	}
+	option = {
+		set_country_flag = FINLAND_JOIN_FACTION
+		name = finland.500.b
+		custom_effect_tooltip = finland.500.b_desc
+		effect_tooltip = {
+			remove_ideas = FIN_the_lone_wolf
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				FIN = { is_ai = no }
+			}
+		}
+	}
+}
