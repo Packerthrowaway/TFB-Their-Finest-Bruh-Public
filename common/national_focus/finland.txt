@@ -6262,6 +6262,9 @@ focus_tree = {
 					}
 				}
 			}
+			SOV = {
+				has_completed_focus = SOV_baltic_security
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INTERNATIONAL_TRADE }
@@ -7030,6 +7033,10 @@ focus_tree = {
 		relative_position_id = FIN_union_of_finnish_brothers_in_arms
 		cost = 10
 		available = {
+			OR = {
+				GER = { has_war_with = SOV }
+				SOV = { has_completed_focus = SOV_war_mobilisation }
+			}
 			OR = {
 				has_idea = all_adults_serve
 				has_idea = scraping_the_barrel

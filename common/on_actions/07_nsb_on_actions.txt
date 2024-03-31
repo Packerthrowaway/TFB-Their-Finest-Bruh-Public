@@ -1535,6 +1535,19 @@ on_actions = {
 					GER = { remove_ideas = GER_good_weather_army }
 				}
 
+				if = {
+					limit = {
+						has_country_flag = FINLAND_JOIN_FACTION
+						SOV = { has_war_with = FIN }
+					}
+					remove_ideas = {
+						FIN_the_lone_wolf
+					}
+					GER = {
+						add_to_faction = FIN
+					}
+				}
+
 				FIN = {
 					hidden_effect = {
 						FIN = { country_event = { id =  finland.500 } }
