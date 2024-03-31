@@ -1513,6 +1513,7 @@ on_actions = {
 		
 			}
 		}
+		# This is the Fallback Brabrossa Code, that will trigger anytime Germany and the Soviets go to war with eachother.
 		effect = {
 			if = {
 				limit = {
@@ -1539,6 +1540,19 @@ on_actions = {
 						FIN = { country_event = { id =  finland.500 } }
 					}
 				}
+				# Swap to the War Air Spirit:
+				if = {
+					limit = {
+						SOV = {
+							has_dynamic_modifier = { modifier = soviet_air_mod_pre_war }
+						}
+					}
+					SOV = {
+					remove_dynamic_modifier = { modifier = soviet_air_mod_pre_war }
+					add_dynamic_modifier = { modifier = soviet_air_mod }
+					}
+				}
+				
 				# Calculate Soviet Air Penalty if choosing Half
 				if = {
 					limit = {
