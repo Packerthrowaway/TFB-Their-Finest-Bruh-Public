@@ -38,8 +38,8 @@
 		x = 40
 		y = 0
 		offset = {
-			x = -19
-			y = 8
+			x = -13
+			y = 0
 			trigger = {
 				tag = URG 
 			}
@@ -129,34 +129,100 @@
 					original_tag = PAR
 				}
 
-				create_wargoal = {
-					type = annex_everything
-					target = BRA
-					generator = { 504 } # optional 
+				if = {
+					limit = { BRA = { has_civil_war = yes } }
+					every_country = {
+						limit = { original_tag = BRA }
+
+						ROOT = {
+							create_wargoal = {
+								type = annex_everything
+								target = PREV
+								generator = { 504 } # optional 
+							}
+						}
+					}
+				}
+				else = {
+					create_wargoal = {
+						type = annex_everything
+						target = BRA
+						generator = { 504 } # optional 
+					}
 				}
 
-				create_wargoal = {
-					type = annex_everything
-					target = ARG
-					generator = { 957 } # optional 
-				}
+				if = {
+					limit = { ARG = { has_civil_war = yes } }
+					every_country = {
+						limit = { original_tag = ARG }
 
+						ROOT = {
+							create_wargoal = {
+								type = annex_everything
+								target = PREV
+								generator = { 957 } # optional 
+							}
+						}
+					}
+				}
+				else = {
+					create_wargoal = {
+						type = annex_everything
+						target = ARG
+						generator = { 957 } # optional 
+					}
+				}
 				custom_effect_tooltip = CHL_skip_one_line_tt
 				custom_effect_tooltip = GUAY_rekindle_old_gripes_ARG_PAR_tt
 				custom_effect_tooltip = CHL_skip_one_line_tt
 				custom_effect_tooltip = GUAY_rekindle_old_gripes_BRA_PAR_tt
 			}
 			else = {
-				create_wargoal = {
-					type = annex_everything
-					target = BRA
-					generator = { 502 } # optional 
+
+				if = {
+					limit = { BRA = { has_civil_war = yes } }
+					every_country = {
+						limit = { original_tag = BRA }
+
+						ROOT = {
+							create_wargoal = {
+								type = annex_everything
+								target = PREV
+								generator = { 502 } # optional 
+							}
+						}
+					}
 				}
-				create_wargoal = {
-					type = annex_everything
-					target = ARG
-					generator = { 510 } # optional 
+				else = {
+					create_wargoal = {
+						type = annex_everything
+						target = BRA
+						generator = { 502 } # optional 
+					}
 				}
+
+				if = {
+					limit = { ARG = { has_civil_war = yes } }
+					every_country = {
+						limit = { original_tag = ARG }
+
+						ROOT = {
+							create_wargoal = {
+								type = annex_everything
+								target = PREV
+								generator = { 510 } # optional 
+							}
+						}
+					}
+				}
+				else = {
+					create_wargoal = {
+						type = annex_everything
+						target = ARG
+						generator = { 510 } # optional 
+					}
+				}
+			######
 				custom_effect_tooltip = CHL_skip_one_line_tt
 				custom_effect_tooltip = GUAY_rekindle_old_gripes_ARG_URG_tt
 				custom_effect_tooltip = CHL_skip_one_line_tt
@@ -183,7 +249,7 @@
 
 		offset = {
 			x = 1
-			y = -8
+			y = 0
 			trigger = {
 				tag = URG 
 			}
@@ -262,6 +328,18 @@
 			random_core_state = {
 				limit = {
 					is_owned_and_controlled_by = ROOT
+					NOT = {
+						OR = {
+							state = 961
+							state = 962
+							state = 963
+							state = 964
+							state = 965
+							state = 966
+							state = 967
+							state = 968
+						}
+					}
 				}
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -1017,6 +1095,7 @@
 				}
 			}
 			add_tech_bonus = {
+				name = infantry_weapons_bonus
 				bonus = 0.25
 				uses = 1
 				category = infantry_weapons # optional 
@@ -1313,9 +1392,13 @@
 					instant_build = yes
 				}
 			}
-			capital_scope = {
+			random_core_state = {
+				limit = {
+					is_controlled_by = ROOT
+				}
 				add_extra_state_shared_building_slots = 2
 			}
+
 		}
 	}
 
@@ -1873,88 +1956,27 @@
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			278 = { add_core_of = ROOT } #Buenos Aires
-			501 = { add_core_of = ROOT } #Sao Paulo
-			957 = { add_core_of = ROOT } #Formosa
-			510 = { add_core_of = ROOT } #Region Mesopotamia
-			509 = { add_core_of = ROOT } #Chaco Austral
-			302 = { add_core_of = ROOT } #La Paz
-			487 = { add_core_of = ROOT } #Santa Cruz
-			504 = { add_core_of = ROOT } #Punta Pora
-			944 = { add_core_of = ROOT } #Parana
-			502 = { add_core_of = ROOT } #Rio Grande do SUL
-			if = {
-				limit = {
-					original_tag = PAR
-				}
-
-				946 = { add_core_of = ROOT } #PaySandu
-				945 = { add_core_of = ROOT } #Cerro Largo
-				300 = { add_core_of = ROOT } #Montevideo
-
-			}
-			else = {
-				301 = { add_core_of = ROOT } #Paraguay
-				688 = { add_core_of = ROOT } #Chaco Boreal
-			}
-
-
 			every_state = {
 				limit = {
-					has_resistance = yes
-					is_core_of = BRA
-				}
-				add_compliance = 25
-				add_resistance = -25
-			}
+					is_on_continent = south_america
+					NOT = {
+						is_core_of = PAN
+						is_core_of = MEX
+						is_core_of = COS
+						is_core_of = NIC
+						is_core_of = HON
+						is_core_of = ELS
+						is_core_of = GUA
+						is_core_of = DOM
+						is_core_of = HAI
+						is_core_of = CUB
 
-			every_state = {
-				limit = {
-					has_resistance = yes
-					is_core_of = ARG
-				}
-				add_compliance = 25
-				add_resistance = -25
-			}
-
-			every_state = {
-				limit = {
-					has_resistance = yes
-					is_core_of = BOL
-				}
-				add_compliance = 25
-				add_resistance = -25
-			}
-
-			687 = {
-				if = {
-					limit = {
-						has_resistance = yes
 					}
-					add_compliance = 25
-					add_resistance = -25
 				}
+				add_core_of = ROOT
 			}
 
-			309 = {
-				if = {
-					limit = {
-						has_resistance = yes
-					}
-					add_compliance = 25
-					add_resistance = -25
-				}
-			}
 
-			310 = {
-				if = {
-					limit = {
-						has_resistance = yes
-					}
-					add_compliance = 25
-					add_resistance = -25
-				}
-			}
 
 			if = {
 				limit = {
@@ -2185,6 +2207,7 @@
 
 		completion_reward = {
 			add_tech_bonus = {
+				name = BRA_resource_extraction_bonus
 				bonus = 0.4
 				uses = 2
 				category = excavation_tech # optional 
@@ -2283,10 +2306,6 @@
 		prerequisite = { focus =  GUAY_national_academy_of_sciences_2 }
 		available = {
 			num_of_factories > 100
-			all_state = {
-				is_on_continent = south_america
-				is_fully_controlled_by = ROOT
-			}
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		cost = 10

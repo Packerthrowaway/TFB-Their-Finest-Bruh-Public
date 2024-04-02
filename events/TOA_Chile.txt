@@ -772,7 +772,7 @@ country_event = {
 		}
 
 		# TODO JA, set to require the correct DLC
-		has_dlc = "Arms Against Tyranny"
+		has_dlc = "Trial of Allegiance"
 	}
 
 	mean_time_to_happen = { days = 1 }
@@ -4180,7 +4180,7 @@ country_event = {
 				set_rule = { can_send_volunteers = yes }
 				add_timed_idea = {
 					idea = CHL_aid_araucania
-					days = 730
+					days = 180
 				}
 				add_ai_strategy = {
 					type = send_volunteers_desire
@@ -4350,7 +4350,7 @@ country_event = {
 					set_rule = { can_send_volunteers = yes }
 					add_timed_idea = {
 						idea = CHL_aid_araucania
-						days = 730
+						days = 180
 					}
 					add_ai_strategy = {
 						type = send_volunteers_desire
@@ -4559,10 +4559,11 @@ country_event = {
 		                set_nationality = PREV.PREV
 		                # Transfers to breakaway
 		            }
-		            CHL_bartolome_blanche = { # Character
-		                set_nationality = PREV.PREV
-		                # Transfers to breakaway
-		            }
+		            # He can stay
+		            #CHL_bartolome_blanche = { # Character
+		            #    set_nationality = PREV.PREV
+		            #    # Transfers to breakaway
+		            #}
 		            CHL_escudero_oscar_otárola = { # Character
 		                set_nationality = PREV.PREV
 		                # Transfers to breakaway 
@@ -5213,11 +5214,17 @@ country_event = {
 		    	}
 			} 
 
-			add_manpower = 5000
+			add_manpower = 10000
 
 			add_equipment_to_stockpile = { 
 				type = infantry_equipment
 				amount = 1500
+				producer = CHL
+			}
+
+			add_equipment_to_stockpile = { 
+				type = convoy_1
+				amount = 25
 				producer = CHL
 			}	
 		}
@@ -5245,9 +5252,14 @@ country_event = {
 
 		hidden_effect = {
 			948 = {
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 8
 				add_building_construction = {
 					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
 					level = 1
 					instant_build = yes
 				}	

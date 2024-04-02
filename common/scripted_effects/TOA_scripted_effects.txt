@@ -374,11 +374,12 @@ SMB_get_dreadnoughts_from_country = {
 			}
 		}
 		FRA = { 
-			set_country_flag = sold_dreadnoughts_to_us@ROOT }
+			set_country_flag = sold_dreadnoughts_to_us@ROOT 
 			add_timed_idea = {
 				idea = SMB_dreadnought_payments
 				days = 365
 			}	
+		}
 		ROOT = {
 			add_timed_idea = {
 				idea = SMB_dreadnought_debt_fra
@@ -1293,6 +1294,118 @@ VEN_blockade_countries = {
 					}
 				}
 			}
+		}
+	}
+}
+
+BRA_select_leader_flag = {
+	IF = {
+		limit = {
+			has_country_leader = {
+				ruling_only = yes
+				character = BRA_armando_de_sales_oliveira
+			}
+		}
+		set_country_flag = BRA_adso_president_flag
+	}
+	ELSE_IF = {
+		IF = {
+			limit = {
+				has_country_leader = {
+					ruling_only = yes
+					character = BRA_anisio_teixeira
+				}
+			}
+			set_country_flag = BRA_ansio_president_flag
+		}
+	}
+	ELSE_IF = {
+		IF = {
+			limit = {
+				has_country_leader = {
+					ruling_only = yes
+					character = BRA_minervino_de_oliveira
+				}
+			}
+			set_country_flag = BRA_mdo_president_flag
+		}
+	}
+	ELSE_IF = {
+		IF = {
+			limit = {
+				has_country_leader = {
+					ruling_only = yes
+					character = BRA_lindolfo_collor
+				}
+			}
+			set_country_flag = BRA_collor_president_flag
+		}
+	}
+	ELSE_IF = {
+		IF = {
+			limit = {
+				has_country_leader = {
+					ruling_only = yes
+					character = BRA_eurico_gaspar_dutra
+				}
+			}
+			set_country_flag = BRA_dutra_president_flag
+		}
+	}
+}
+
+BRA_clear_leader_flags = {
+	clr_country_flag = BRA_adso_president_flag
+	clr_country_flag = BRA_ansio_president_flag
+	clr_country_flag = BRA_mdo_president_flag
+	clr_country_flag = BRA_collor_president_flag
+	clr_country_flag = BRA_dutra_president_flag
+}
+
+BRA_clr_country_leader_role = {
+	IF = {
+		limit = {
+			has_country_flag = BRA_adso_president_flag
+		}
+		remove_country_leader_role = {
+			character = BRA_armando_de_sales_oliveira
+			ideology = liberalism
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			has_country_flag = BRA_ansio_president_flag
+		}
+		remove_country_leader_role = {
+			character = BRA_anisio_teixeira
+			ideology = liberalism
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			has_country_flag = BRA_mdo_president_flag
+		}
+		remove_country_leader_role = {
+			character = BRA_minervino_de_oliveira
+			ideology = liberalism
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			has_country_flag = BRA_collor_president_flag
+		}
+		remove_country_leader_role = {
+			character = BRA_lindolfo_collor
+			ideology = liberalism
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			has_country_flag = BRA_dutra_president_flag
+		}
+		remove_country_leader_role = {
+			character = BRA_eurico_gaspar_dutra
+			ideology = conservatism
 		}
 	}
 }

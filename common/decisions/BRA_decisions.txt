@@ -137,6 +137,7 @@ BRA_ensure_support_cat = {
 		target_trigger = {
 		    FROM = {
 		    	is_fully_controlled_by = ROOT
+		    	is_core_of = ROOT
 		       	NOT = {
 		       		has_state_flag = BRA_gained_support
 		       	}
@@ -206,6 +207,7 @@ BRA_ensure_support_cat = {
 		target_trigger = {
 		    FROM = {
 		    	is_fully_controlled_by = ROOT
+		    	is_core_of = ROOT
 		       	OR = {
 		       		has_state_category = town
 		       		has_state_category = large_town
@@ -954,7 +956,10 @@ BRA_invite_foreign_companies_cat = {
 					value > 25
 				}
 				NOT = {
-					has_war_with = ROOT
+					OR = {
+						has_war_with = ROOT
+						surrender_progress > 0.5
+					}
 				}
 				has_government = democratic
 			}
@@ -1114,7 +1119,7 @@ BRA_us_of_south_america_cat = {
 				}			
 			}
 		}
-		cost = 50
+		cost = 100
 		fire_only_once = no
 		days_remove = 30
 		ai_will_do = {
@@ -1145,6 +1150,66 @@ BRA_us_of_south_america_cat = {
 			}
 		}
 	}
+
+	BRA_invite_to_faction = {
+		icon = GFX_decision_eng_trade_unions_support
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_completed_focus	= BRA_reach_out_to_our_neighbors
+		}
+		available = {
+			has_completed_focus	= BRA_reach_out_to_our_neighbors
+			FROM = {
+				has_opinion = {
+					target = ROOT
+					value > 30
+				}
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		target_trigger = {
+		    FROM = { 
+		    	AND = {
+		    		NOT = { 
+		    			is_in_faction_with = ROOT
+		    			tag = ROOT
+		    		}
+		    		OR = { 
+		    			is_subject = no
+		    			is_subject_of = ROOT
+		    		}
+		    	}
+		    	capital_scope = { is_on_continent = south_america }
+		    }
+		}
+		cost = 20
+		ai_will_do = {
+			base = 35
+			modifier = {
+				factor = 0
+				is_in_faction = yes
+			}
+		}
+		fire_only_once = no
+		days_remove = 10
+		complete_effect = {
+
+		}
+		remove_effect = {
+			FROM = {
+				country_event = {
+					id = generic.5
+					hours = 1
+				}
+			}
+			#custom_effect_tooltip = BRA_invite_to_organization_of_american_states_tt
+		}
+	}	
 }
 
 BRA_foreign_legion_cat = {

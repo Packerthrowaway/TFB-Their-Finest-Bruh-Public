@@ -215,17 +215,6 @@ country_event = {
 		name = JUNO_guay_events.6.a
 
 		FROM = {
-			every_enemy_country = {
-				limit = {
-					is_in_faction_with = ROOT
-					has_war_with = PREV
-				}
-				white_peace = {
-					tag = PREV
-				}
-			}
-
-			white_peace = PREV
 			country_event = {
 				id = JUNO_guay_events.7 hours = 2
 			}
@@ -313,11 +302,24 @@ country_event = {
 	desc = JUNO_guay_events.7.desc 
 	picture = GFX_report_event_gre_city_devastated 
 	is_triggered_only = yes
-	fire_only_once = yes
+	#fire_only_once = yes
 
 	#Accept
 	option = {
 		name = JUNO_guay_events.7.a
+		FROM = {
+			every_enemy_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					has_war_with = PREV
+				}
+				white_peace = {
+					tag = PREV
+				}
+			}
+
+			white_peace = PREV
+		}
 	}
 
 	#Continue the war

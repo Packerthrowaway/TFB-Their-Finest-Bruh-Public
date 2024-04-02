@@ -3937,8 +3937,8 @@ focus_tree = {
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
 			custom_effect_tooltip = CHL_modify_mapuche_nationalism_ns_intro
-			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_factory = 0.1 tooltip = industrial_capacity_factory_tt }
-			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_dockyard = 0.1 tooltip = industrial_capacity_dockyard_tt }
+			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { CHL_mapuche_nationalism_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
 
 		}
 	}
@@ -3982,7 +3982,7 @@ focus_tree = {
 		completion_reward = {
 
 			950 = {
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
 					level = 1
@@ -5329,7 +5329,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
-
+		available_if_capitulated = no
 		available = {
 			has_government = neutrality
 			is_subject = no
@@ -9398,10 +9398,12 @@ focus_tree = {
 		ai_will_do = {
 			base = 1.5
 		}
+		available_if_capitulated = no
 
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
 
 		available = {
+			is_subject = no
 			has_government = fascism
 			has_war_support > 0.79
 			has_idea = CHL_the_francoist_model
@@ -9460,6 +9462,8 @@ focus_tree = {
 		ai_will_do = {
 			base = 1.5
 		}
+
+		available_if_capitulated = no
 
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 
@@ -10050,6 +10054,7 @@ focus_tree = {
 				controls_state = 944
 				controls_state = 503
 				controls_state = 502
+				controls_state = 969
 			}
 		}
 
@@ -10134,6 +10139,7 @@ focus_tree = {
 						state = 299
 						state = 720
 						state = 494
+						state = 969
 					}
 				}
 				add_core_of = ROOT
@@ -10160,6 +10166,7 @@ focus_tree = {
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
+			drop_cosmetic_tag = yes
 			set_cosmetic_tag = CHL_hispanic_union
 
 			hidden_effect = {
@@ -10992,6 +10999,7 @@ focus_tree = {
 
 			custom_effect_tooltip = CHL_skip_one_line_tt
 
+			drop_cosmetic_tag = yes
 			set_cosmetic_tag = CHL_fascist_kingdom	
 
 			hidden_effect = {
@@ -11516,6 +11524,7 @@ focus_tree = {
 				controls_state = 944
 				controls_state = 503
 				controls_state = 502
+				controls_state = 969
 			}
 		} 
 
@@ -11605,6 +11614,7 @@ focus_tree = {
 						state = 299
 						state = 720
 						state = 494
+						state = 969
 					}
 				}
 				add_core_of = ROOT
@@ -11683,6 +11693,7 @@ focus_tree = {
 					}
 				}
 				has_government = communism
+				is_subject_of = ROOT
 				NOT = {
 					OR = {
 						original_tag = USA
@@ -11699,7 +11710,6 @@ focus_tree = {
 			custom_effect_tooltip = CHL_propose_closer_cooperation_tt
 			every_country = {
 				limit = {
-					is_subject = no
 					capital_scope = {
 						OR = {
 							is_on_continent = south_america
@@ -12183,6 +12193,10 @@ focus_tree = {
 				has_war = yes
 			}
 			has_war = no
+		}
+
+		bypass ={
+			has_government = communism
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_HISTORICAL }
@@ -14397,10 +14411,10 @@ focus_tree = {
 				limit = {
 					is_owned_and_controlled_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}	
 			}

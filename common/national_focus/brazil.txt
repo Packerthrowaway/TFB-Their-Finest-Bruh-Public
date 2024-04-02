@@ -363,7 +363,7 @@ focus_tree = {
 				division_template = {
 					name = "Integralist Militia"		
 					#division_names_group = SWE_BS_01
-					is_locked = no
+					is_locked = yes
 					#force_allow_recruiting = yes
 					template_counter = 89
 					# Note: Represents brownshirts
@@ -459,7 +459,7 @@ focus_tree = {
 				custom_effect_tooltip = BRA_modify_estado_novo_ns_intro
 				add_to_variable = {
 					BRA_estado_novo_production_factory_max_efficiency_factor = 0.05
-					tooltip = industrial_capacity_factory_tt
+					tooltip = production_factory_max_efficiency_factor_tt
 				}
 				add_to_variable = {
 					BRA_estado_novo_consumer_goods_factor = -0.05
@@ -2044,6 +2044,9 @@ focus_tree = {
 					capital_scope = {
 						is_on_continent = south_america
 					}
+					NOT = {
+						has_war_with = ROOT
+					}
 				}
 				country_event = {
 					id = JUNO_brazil_events.14
@@ -2558,11 +2561,8 @@ focus_tree = {
 					id = JUNO_brazil_events.20
 					hours = 1
 				}
-				IF = {
-					limit = {
-						is_in_faction = yes
-					}
-					add_to_faction = BRA
+				faction_leader = {
+					add_to_faction = ROOT
 				}
 			}
 			custom_effect_tooltip = BRA_potenji_river_conference_tt
@@ -3087,6 +3087,9 @@ focus_tree = {
 				OR = {
 					has_government = fascism
 					has_government = neutrality
+				}
+				NOT = {
+					has_war_with = ROOT
 				}
 			}
 		}
@@ -3949,6 +3952,9 @@ focus_tree = {
 					has_government = fascism
 					has_government = neutrality
 				}
+				NOT = {
+					has_war_with = ROOT
+				}
 			}
 		}
 
@@ -4490,6 +4496,7 @@ focus_tree = {
 		will_lead_to_war_with = VEN
 		will_lead_to_war_with = PRU
 		will_lead_to_war_with = PAN
+		will_lead_to_war_with = COL
 		cost = 10
 		ai_will_do = {
 			factor = 10
@@ -4560,6 +4567,21 @@ focus_tree = {
 				}
 				create_wargoal = {
 					target = PAN
+					type = annex_everything
+					expire = 0
+				}
+			}
+			IF = {
+				limit = {
+					COL = {
+						exists = yes
+						NOT = {
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				create_wargoal = {
+					target = COL
 					type = annex_everything
 					expire = 0
 				}
@@ -5074,7 +5096,7 @@ focus_tree = {
 		prerequisite = { focus = BRA_implement_a_national_guard }
 		cost = 10
 		available = {
-			neutrality < 0.21
+			#neutrality < 0.21
 		}
 		cancel_if_invalid = no
 
@@ -5368,6 +5390,9 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = BRA_international_crisis 
+			set_rule = {
+				can_send_volunteers = yes
+			}
 			#set_rule = {
 			#	can_join_factions = yes 
 			#}
@@ -5821,15 +5846,25 @@ focus_tree = {
 
 		completion_reward = {
 			add_political_power = 50
-			#add_country_leader_trait = JUNO_aligned_with_stalin	
-			BRA_luis_carlos_prestes = {
-				promote_leader = yes
-				#add_trait = {
-				#	trait = JUNO_aligned_with_stalin
-				#}
+			#BRA_luis_carlos_prestes = {
+			#	promote_leader = yes
+			#}
+			effect_tooltip = {
+				retire_country_leader = yes
 			}
-			retire_country_leader = yes
-			add_country_leader_trait = JUNO_aligned_with_stalin
+			add_country_leader_role = {
+				character = BRA_luis_carlos_prestes
+				promote_leader = yes
+				country_leader = {
+					ideology=marxism
+					expire="1965.1.1.1"
+					id=-1
+					traits = {
+						JUNO_aligned_with_stalin
+					}
+				}
+			}
+			#retire_country_leader = yes
 			remove_dynamic_modifier = {
 				modifier = BRA_weak_government
 			}
@@ -6760,7 +6795,7 @@ focus_tree = {
 				limit = {
 					is_on_continent = south_america
 				}
-				add_claim_by = ROOT
+				add_core_of = ROOT
 			}
 		}
 	}

@@ -64,12 +64,27 @@ GUAY_military_play_cat = {
 		}
 		fire_only_once = yes
 		activation = {
-			has_war_with = ARG
+			OR = {
+				has_war_with = ARG
+				any_enemy_country = {
+					original_tag = ARG
+					ARG = { has_civil_war = yes }
+				}
+			}
 			has_completed_focus = GUAY_rekindle_old_gripes
 		}
 		days_mission_timeout = 365 #Remember to change loc if needed
 		complete_effect = {
-			ARG = { country_event = { id = JUNO_guay_events.6 } }
+			if = {
+				limit = { ARG = { has_civil_war = yes } }
+				every_country = {
+					limit = { original_tag = ARG }
+					country_event = { id = JUNO_guay_events.6 hours = 2 } 
+				} 
+			}
+			else = {
+				ARG = { country_event = { id = JUNO_guay_events.6 hours = 2 } }
+			}
 		}
 		timeout_effect = {
 			add_stability = -0.1
@@ -108,12 +123,27 @@ GUAY_military_play_cat = {
 		}
 		fire_only_once = yes
 		activation = {
-			has_war_with = BRA
+			OR = {
+				has_war_with = BRA
+				any_enemy_country = {
+					original_tag = BRA
+					BRA = { has_civil_war = yes }
+				}
+			}
 			has_completed_focus = GUAY_rekindle_old_gripes
 		}
 		days_mission_timeout = 365
 		complete_effect = {
-			BRA = { country_event = { id = JUNO_guay_events.6 hours = 2 } }
+			if = {
+				limit = { BRA = { has_civil_war = yes } }
+				every_country = {
+					limit = { original_tag = BRA }
+					country_event = { id = JUNO_guay_events.6 hours = 2 } 
+				} 
+			}
+			else = {
+				BRA = { country_event = { id = JUNO_guay_events.6 hours = 2 } }
+			}
 		}
 		timeout_effect = {
 			add_stability = -0.1
@@ -355,6 +385,7 @@ GUAY_laissez_faire_cat = {
 			random_state = {
 				limit = {
 					is_controlled_by = ROOT
+					impassable = no
 				}
 				random_list = {
 					seed = random 

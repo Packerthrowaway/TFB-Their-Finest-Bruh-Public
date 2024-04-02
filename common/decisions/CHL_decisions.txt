@@ -1308,6 +1308,9 @@ CHL_nacista_insurgency_decisions = {
 						option = COMMUNIST
 					}
 				}
+				NOT = {
+					has_government = communism
+				}
 			}
 		}
 
@@ -1385,6 +1388,19 @@ CHL_nacista_insurgency_decisions = {
 
 		ai_will_do = {
 			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = CHL_AI_RANDOM_COMMUNIST
+					has_game_rule = {
+						rule = CHL_ai_behavior
+						option = COMMUNIST
+					}
+				}
+				NOT = {
+					has_government = communism
+				}
+			}
 		}
 
 		allowed = {  
@@ -1561,6 +1577,15 @@ CHL_nacista_insurgency_decisions = {
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes 
+				NOT = {
+					OR = {
+						has_country_flag = CHL_AI_RANDOM_COMMUNIST
+						has_game_rule = {
+							rule = CHL_ai_behavior
+							option = COMMUNIST
+						}
+					}
+				}
 			}
 		}
 
@@ -1805,7 +1830,7 @@ CHL_nacista_insurgency_decisions = {
 
 		days_remove = 14 
 
-		cost = 120
+		cost = 100
 
 		complete_effect = {
 		}
@@ -1919,14 +1944,24 @@ political_actions = {
 		}
 
 		available = {
-			NOT = { has_government = communism }
+			NOT = { 
+				OR = {
+					has_government = communism 
+					has_government = fascism 
+				}
+			}
 			NOT = { has_completed_focus = CHL_avenge_the_pacification_of_araucania }
 			has_war = yes
 		}
 
 		visible = { 
 			tag = CHL
-			NOT = { has_government = communism }
+			NOT = { 
+				OR = {
+					has_government = communism 
+					has_government = fascism 
+				}
+			}
 			NOT = { has_completed_focus = CHL_avenge_the_pacification_of_araucania }
 			NOT = { has_country_flag = CHL_recalled_pedro_dartnell_flag }
 		} 
@@ -2950,6 +2985,58 @@ CHL_nacista_decisions = {
 			hidden_effect = {
 				set_country_flag = CHL_introduced_authotitarianism_flag 
 			}
+		}
+
+	}
+
+	# Adopt the Patria Vieja Flag
+	CHL_adopt_the_patria_vieja_flag_decision  = {
+
+		priority = 25
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {  
+			original_tag = CHL
+		}
+
+		available = {
+			has_government = fascism
+		}
+
+		visible = { 
+			original_tag = CHL
+			has_completed_focus = CHL_enforce_the_chilean_identity
+			NOT = { has_country_flag = CHL_adopted_patria_vieja_flag }
+			NOT = {
+				OR = {
+					has_completed_focus = CHL_restore_the_old_kingdom
+					has_completed_focus = CHL_unite_hispanic_america
+				}
+			}
+		} 
+
+		#days_remove = 140 
+
+		cost = 25
+
+		complete_effect = {
+
+			set_cosmetic_tag = CHL_patria_vieja_fasc_flag
+
+			hidden_effect = {
+				set_country_flag = CHL_adopted_patria_vieja_flag 
+			}
+		}
+
+		modifier = {
+		}
+
+		remove_effect = {	
 		}
 
 	}
@@ -9462,6 +9549,7 @@ CHL_monarchist_decisions = {
 			controls_state = 30
 			controls_state = 14
 			controls_state = 23
+			controls_state = 15
 		}
 
 		visible = { 
@@ -9505,6 +9593,7 @@ CHL_monarchist_decisions = {
 						state = 30
 						state = 14
 						state = 23
+						state = 15
 					}
 				}
 				remove_claim_by = ROOT

@@ -395,6 +395,10 @@ country_event = {
 				create_faction = faction_name_bra_ita
 			}
 			add_to_faction = FROM
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = large_increase 
 		}	
 	}	
 	option = {
@@ -1125,9 +1129,11 @@ country_event = {
 		}
 		effect_tooltip = {
 			FROM = {
-				puppet = ROOT
+				annex_country = { 
+					target = PREV 
+					transfer_troops = yes 
+				}
 			}
-			set_cosmetic_tag = POR_const_kingdom_neutrality
 		}
 	}		
 	# Propose Portugese Commonwealth
@@ -1220,11 +1226,24 @@ country_event = {
 				}
 			}
 		}
-		puppet = FROM
 		FROM = {
-			drop_cosmetic_tag = yes
-			set_cosmetic_tag = POR_const_kingdom_neutrality
+			every_owned_state = {
+				limit = {
+					is_core_of = POR
+				}
+				add_core_of = ROOT
+			}
 		}
+		annex_country = { 
+			target = FROM
+			transfer_troops = yes
+		}
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = BRA_uk_POR
+		#FROM = {
+		#	drop_cosmetic_tag = yes
+		#	set_cosmetic_tag = POR_const_kingdom_neutrality
+		#}
 		hidden_effect = {
 			news_event = { id = JUNO_brazil_news.3 hours = 1 }
 		}
@@ -1395,7 +1414,7 @@ country_event = {
 	option = {
 		name =  JUNO_brazil_events.70.b
 		ai_chance = {
-			base = 0
+			base = 10
 		}
 		FROM = {
 			country_event = {
@@ -1560,6 +1579,27 @@ country_event = {
 		puppet = FROM
 		FROM = {
 			load_focus_tree = generic_focus
+			set_politics = {
+				ruling_party = neutrality
+				#elections_allowed = no
+			}
+			remove_ideas = POR_estado_novo
+			# swap_ideas = {
+			# 	remove_idea = POR_unstable_republic
+			# 	add_idea = POR_unstable_monarchy
+			# }
+			set_country_flag = KOP_kingdom_of_portugal_flag
+			set_cosmetic_tag = KOP_kingdom_portugal
+			create_country_leader = {
+				name = "Duke Duarte Nuno"
+				desc = "POLITICS_DOM_DUARTE_NUNO_DESC"
+				picture = GFX_portrait_Dom_Duarte_Nuno
+				expire = "1976.12.24"
+				ideology = despotism
+				traits = { 
+					#constitutional_monarch_minor
+				}
+			}
 		}
 		FROM = {
 			every_owned_state = {
@@ -2000,7 +2040,7 @@ country_event = { #USA refuses to share tech
 
 	# Better than nothing
 	option = { 
-		name = JUNO_brazil_events.122.b 
+		name = JUNO_brazil_events.122.a
 		ai_chance = {
 			base = 1
 		}
@@ -3146,6 +3186,14 @@ country_event = {
 		ai_chance = {
 			base = 1
 		}
+		FROM = {
+			every_owned_state = {
+				limit = {
+					is_core_of = PREV
+				}
+				add_core_of = ROOT
+			}
+		}
 		annex_country = {
 			target = FROM
 			transfer_troops = yes
@@ -3296,6 +3344,20 @@ country_event = {
 	picture = GFX_report_event_election_vote
 	is_triggered_only = yes
 	# BRA_ansio_teixeira
+	immediate = {
+		BRA_select_leader_flag = yes
+		hidden_effect = {
+			set_politics = {
+				ruling_party = democratic
+				election_frequency = 48
+				elections_allowed = yes
+			}
+			country_event = {
+				id = JUNO_brazil_events.202
+				months = 48
+			}
+		}
+	}
 	option = {
 		name = JUNO_brazil_events.200.a
 		ai_chance = {
@@ -3310,19 +3372,18 @@ country_event = {
 					}
 				}
 			}
-			#retire_country_leader = yes
-			BRA_anisio_teixeira = {
+			add_country_leader_role = {
+				character = BRA_anisio_teixeira
 				promote_leader = yes
+				country_leader = {
+					ideology = liberalism
+					expire = "1965.1.1"
+					traits =  { BRA_education_pioneer }
+				}
 			}
-			retire_country_leader = yes
-			hidden_effect = {
-				#set_politics = {
-				#	ruling_party = democratic
-				#	last_election = "1936.11.20"
-				#	election_frequency = 48
-				#	elections_allowed = yes
-				#}
-			}
+			BRA_clr_country_leader_role = yes
+			BRA_clear_leader_flags = yes
+	
 		}
 	}
 	# BRA_armando_de_sales_oliveira
@@ -3340,26 +3401,32 @@ country_event = {
 					}
 				}
 			}
-			#retire_country_leader = yes
-			BRA_armando_de_sales_oliveira = {
+
+			add_country_leader_role = {
+				character = BRA_armando_de_sales_oliveira
 				promote_leader = yes
+				country_leader = {
+					ideology = liberalism
+					expire = "1965.1.1"
+					traits =  { BRA_democratic_engineer }
+				}
 			}
-			retire_country_leader = yes
-			hidden_effect = {
-				#set_politics = {
-				#	ruling_party = democratic
-				#	last_election = "1936.11.20"
-				#	election_frequency = 48
-				#	elections_allowed = yes
-				#}
-			}
+			BRA_clr_country_leader_role = yes
+			BRA_clear_leader_flags = yes
+
 		}
 	}	
 	# BRA_minervino_de_oliveira
 	option = {
 		name = JUNO_brazil_events.200.c
+		trigger = {
+			OR = {
+				has_completed_focus = BRA_free_speech
+				has_completed_focus = BRA_prepare_for_second_intentona
+			}
+		}
 		ai_chance = {
-			base = 10
+			base = 0
 		}
 		IF = {
 			limit = {
@@ -3370,19 +3437,17 @@ country_event = {
 					}
 				}
 			}
-			#retire_country_leader = yes
-			BRA_minervino_de_oliveira = {
+			add_country_leader_role = {
+				character = BRA_minervino_de_oliveira
 				promote_leader = yes
+				country_leader = {
+					ideology = socialism
+					expire = "1965.1.1"
+					traits =  { ICE_trade_unionist }
+				}
 			}
-			retire_country_leader = yes
-			hidden_effect = {
-				#set_politics = {
-				#	ruling_party = democratic
-				#	last_election = "1936.11.20"
-				#	election_frequency = 48
-				#	elections_allowed = yes
-				#}
-			}
+			BRA_clr_country_leader_role = yes
+			BRA_clear_leader_flags = yes
 		}
 	}	
 	# BRA_lindolfo_collor
@@ -3400,21 +3465,118 @@ country_event = {
 					}
 				}
 			}
-			#retire_country_leader = yes
-			BRA_lindolfo_collor = {
+			add_country_leader_role = {
+				character = BRA_lindolfo_collor
 				promote_leader = yes
+				country_leader = {
+					ideology = liberalism
+					expire = "1965.1.1"
+					traits =  { BRA_anti_authoritarian }
+				}
 			}
-			retire_country_leader = yes
-			hidden_effect = {
-				#set_politics = {
-				#	ruling_party = democratic
-				#	last_election = "1936.11.20"
-				#	election_frequency = 48
-				#	elections_allowed = yes
-				#}
+			BRA_clr_country_leader_role = yes
+			BRA_clear_leader_flags = yes
+		}
+	}
+	# BRA_eurico_gaspar_dutra
+	option = {
+		name = JUNO_brazil_events.200.e
+		trigger = {
+			has_completed_focus = BRA_posts_for_generals
+		}
+		ai_chance = {
+			base = 0
+		}
+		IF = {
+			limit = {
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = BRA_eurico_gaspar_dutra
+					}
+				}
 			}
+			add_country_leader_role = {
+				character = BRA_eurico_gaspar_dutra
+				promote_leader = yes
+				country_leader = {
+					ideology = conservatism
+					expire = "1965.1.1"
+					traits =  { war_industrialist }
+				}
+			}
+			BRA_clr_country_leader_role = yes
+			BRA_clear_leader_flags = yes
 		}
 	}	
+}
+
+country_event = {
+	id = JUNO_brazil_events.201
+	title = JUNO_brazil_events.201.t
+	desc = JUNO_brazil_events.201.d
+	picture = GFX_report_event_election_vote
+
+	trigger = {
+		has_dlc = "Trial of Allegiance"
+		original_tag = BRA
+		# Testing Date		
+		#date > 1936.02.01
+
+		# Actual Date
+		date > 1938.07.01
+
+		has_government = democratic
+		has_completed_focus	= BRA_repeal_the_national_security_law
+		NOT = {
+			OR = {
+				has_completed_focus = BRA_romanticize_the_old_empire
+				has_completed_focus = BRA_tribunal_de_seguranca_nacional
+				has_completed_focus = BRA_launch_the_revolution
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	hidden = yes
+
+	fire_only_once = yes
+
+	immediate = {
+		country_event = {
+			id = JUNO_brazil_events.200
+			days = 1
+			#random_days = 5
+		}
+	}
+}
+
+country_event = {
+	id = JUNO_brazil_events.202
+	title = JUNO_brazil_events.202.t
+	desc = JUNO_brazil_events.202.d
+	picture = GFX_report_event_election_vote
+
+	mean_time_to_happen = { days = 1 }
+
+	hidden = yes
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	immediate = {
+		IF = {
+			limit = {
+				has_government = democratic
+				has_completed_focus = BRA_repeal_the_national_security_law
+			}
+			country_event = {
+				id = JUNO_brazil_events.200
+				days = 1
+			}
+		}
+	}
 }
 
 # Brazil taking dominate americas path - news

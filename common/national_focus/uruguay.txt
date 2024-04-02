@@ -75,7 +75,7 @@ focus_tree = {
 		prerequisite = { focus = URG_statism }
 		relative_position_id = URG_statism
 		mutually_exclusive = { }
-		icon = GFX_focus_usa_guarantee_the_american_dream
+		icon = GFX_goal_generic_national_unity
 		x = 0
 		y = 1
 		cost = 10
@@ -87,7 +87,7 @@ focus_tree = {
 				limit = {
 					is_controlled_by = ROOT
 				}
-				prioritize = { 300 } #optional: to pick those states first if they fulfill the limit
+				prioritize = { 946 945 }
 				add_extra_state_shared_building_slots = 1
 				increase_state_category = yes
 			}
@@ -377,7 +377,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				prioritize = { 300 } #optional: to pick those states first if they fulfill the limit
+				prioritize = { 946 945 } #optional: to pick those states first if they fulfill the limit
 				
 			}
 
@@ -653,8 +653,8 @@ focus_tree = {
 		prerequisite = { focus = URG_the_fuhrmann_plan  }
 		mutually_exclusive = { }
 		icon = GFX_focus_SWE_rations
-		x = -4
-		y = 2
+		x = 0
+		y = 1
 		cost = 5
 		relative_position_id = URG_the_fuhrmann_plan
 		search_filters = {  }
@@ -807,28 +807,9 @@ focus_tree = {
 	}
 
 	focus = {
-		id = URG_rincon_del_bonete_dam
-		available = {
-		}
-		prerequisite = { focus = URG_rapid_industrialization }
-		mutually_exclusive = { }
-		icon = GFX_focus_generic_military_academy
-		x = 4
-		y = 1
-		cost = 5
-		relative_position_id = URG_rapid_industrialization
-		search_filters = {  }
-		completion_reward = {
-			add_ideas = {
-				PAR_febrerista_land_reform
-			}
-		}
-	}
-
-	focus = {
 		id = URG_la_teja_refinery 
 		available = {
-			controls_state = 300
+			#controls_state = 300
 		}
 		prerequisite = { focus = URG_rapid_industrialization }
 		mutually_exclusive = { }
@@ -839,11 +820,16 @@ focus_tree = {
 		relative_position_id = URG_rapid_industrialization
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 		completion_reward = {
-			300 = {
+			random_core_state = {
+				limit = {
+					is_controlled_by = ROOT
+				}
+				prioritize = { 946 945 }
 				add_resource = {
 					type = oil
 					amount = 8
 				}
+
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = synthetic_refinery
@@ -874,8 +860,10 @@ focus_tree = {
 				producer = URG
 			}
 
-			300 = {
-
+			random_core_state = {
+				limit = {
+					is_controlled_by = ROOT
+				}
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
@@ -890,7 +878,6 @@ focus_tree = {
 	focus = {
 		id = URG_conaprole
 		available = {
-			controls_state = 300
 		}
 		prerequisite = { focus = URG_rapid_industrialization }
 		mutually_exclusive = { }
@@ -907,7 +894,11 @@ focus_tree = {
 			 	category = construction_tech # optional 
 			 	# technology  = technology_id # optional
 			 } 
-			300 = {
+			random_core_state = {
+				limit = {
+					is_controlled_by = ROOT
+				}
+				prioritize = { 946 945 }
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -933,12 +924,19 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 		completion_reward = {
 			300 = {
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
 					level = 1
 					instant_build = yes
 				}
+			}
+			random_core_state = {
+				limit = {
+					is_controlled_by = ROOT
+					NOT = { state = 300 }
+				}
+				add_extra_state_shared_building_slots = 2
 			}
 		}
 	}
@@ -1238,7 +1236,7 @@ focus_tree = {
 		available = {
 		}
 
-		icon = GFX_focus_SWE_approach_the_allies
+		icon = GFX_focus_chi_british_cooperation
 		x = -6
 		y = 1
 		available = {  }
@@ -1393,7 +1391,7 @@ focus_tree = {
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 				}
-				prioritize = { 300 } #optional: to pick those states first if they fulfill the limit
+				prioritize = { 946 945 }
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -1612,7 +1610,7 @@ focus_tree = {
 		available = {
 		}
 
-		icon = GFX_focus_SOV_pacific_empire
+		icon = GFX_focus_generic_support_the_left_right
 		x = 0
 		y = 1
 		available = {  }
