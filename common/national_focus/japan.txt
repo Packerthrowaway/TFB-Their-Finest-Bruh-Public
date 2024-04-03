@@ -2638,7 +2638,7 @@
 		id = JAP_island_defences
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = JAP_strike_the_west }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = JAP_strike_the_west
 
@@ -2697,7 +2697,7 @@
 		id = JAP_warrior_spirit
 		icon = GFX_goal_JAP_WAY
 		prerequisite = { focus = JAP_strike_the_west }
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = JAP_strike_the_west
 
@@ -2749,6 +2749,36 @@
 		completion_reward = {
 			custom_effect_tooltip = JAP_strengthen_the_divine_wind_effect
 			hidden_effect = { set_technology = { suicide_craft = 1 } }
+		}
+	}
+
+	focus = {
+		id = JAP_embargo_soviets
+		icon = GFX_goal_generic_war_with_comintern
+		prerequisite = { focus = JAP_strike_the_west }
+		x = 2
+		y = 1
+		relative_position_id = JAP_strike_the_west
+
+		cost = 5
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			JAP = {
+				send_embargo = SOV
+				add_political_power = -100
+			}
+			SIA = {
+				send_embargo = SOV
+				add_political_power = -100
+			}
 		}
 	}
 	
