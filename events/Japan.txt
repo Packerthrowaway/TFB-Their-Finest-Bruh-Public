@@ -630,6 +630,9 @@ country_event = {
 		set_country_flag = JAP_siam1
 		name = japan.500.a
 		custom_effect_tooltip = japan.500.a_desc
+		effect_tooltip = {
+			SIA = { country_event = japan.12 }
+		}
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -642,6 +645,14 @@ country_event = {
 		set_country_flag = JAP_siam2
 		name = japan.500.b
 		custom_effect_tooltip = japan.500.b_desc
+		effect_tooltip = {
+			SIA = { country_event = generic.5 }
+			add_ai_strategy = {
+				type = protect
+				id = "SIA"
+				value = 100
+			}
+		}
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -676,12 +687,33 @@ country_event = {
 		set_country_flag = JAP_army1
 		name = japan.501.a
 		custom_effect_tooltip = japan.501.a_desc
+		effect_tooltip = {
+			add_tech_bonus = {
+				name = JAP_lessons
+				bonus = 0.50
+				uses = 2
+				category = infantry_weapons
+			}
+			add_ideas = JAP_expand_the_army
+			add_potential_special_forces_tree = yes
+		}
 		
 	}
 	option = {
 		set_country_flag = JAP_army2
 		name = japan.501.b
 		custom_effect_tooltip = japan.501.b_desc
+		effect_tooltip = {
+			add_ideas = JAP_expand_the_snlf
+			add_tech_bonus = {
+				name = JAP_lessons
+				bonus = 0.50
+				uses = 2
+				category = marine_tech
+				category = tp_tech
+			}
+			add_potential_special_forces_tree = yes
+		}
 	}
 }
 
@@ -709,12 +741,103 @@ country_event = {
 		set_country_flag = JAP_buildup1
 		name = japan.502.a
 		custom_effect_tooltip = japan.502.a_desc
+		effect_tooltip = {
+			289 = {
+				add_building_construction = {
+					type = naval_base
+					level = 5
+					province = 7408
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 5
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 5
+					instant_build = yes
+				}
+			}
+			724 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
 		
 	}
 	option = {
 		set_country_flag = JAP_buildup2
 		name = japan.502.b
 		custom_effect_tooltip = japan.502.b_desc
+		effect_tooltip = {
+			645 = {
+				add_building_construction = {
+					type = naval_base
+					level = 4
+					province = 13025
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker 
+					level = 2
+					province = 13025
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			526 = {
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					province = 11932
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker 
+					level = 3
+					province = 11932
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			646 = {
+				add_building_construction = {
+					type = naval_base
+					level = 4
+					province = 3995
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker 
+					level = 3
+					province = 3995
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
 	}
 }
 
