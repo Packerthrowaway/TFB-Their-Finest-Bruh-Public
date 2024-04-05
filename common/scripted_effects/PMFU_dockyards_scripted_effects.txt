@@ -1,24 +1,45 @@
 dockyard_cg_calculation = {
-	set_variable = { dockcount1 = 0 }
-	while_loop_effect = {
-		limit = {
-			num_of_naval_factories > dockcount1
-		}
-		add_to_variable = { dockcount1 = 1 }
-	}
+    set_variable = { dockcount1 = 0 }
+    for_each_scope_loop = {
+        array = owned_states
+        add_to_variable = { PREV.dockcount1 = building_level@dockyard}
+    }
+	# For majors cap starts at 50
     if = {
-        limit = {
-            check_variable = {
-                var = dockcount1 
-                value = 50
-                compare = greater_than_or_equals
-            }
-        }
-        subtract_from_variable = { dockcount1 = 50 } # This and the value above determine when to start counting dockyards
+		limit = {
+			has_variable = dockyard_major
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = dockcount1 
+					value = 50
+					compare = greater_than_or_equals
+				}
+			}
+			subtract_from_variable = { dockcount1 = 50 } # This and the value above determine when to start counting dockyards
+		}
+		else = {
+        	set_variable = { dockcount1 = 0 }
+		}
     }
+    # For Minors Cap Starts at 25
     else = {
-        set_variable = { dockcount1 = 0 }
+		if = {
+			limit = {
+				check_variable = {
+					var = dockcount1 
+					value = 25
+					compare = greater_than_or_equals
+				}
+			}
+			subtract_from_variable = { dockcount1 = 25 } # This and the value above determine when to start counting dockyards
+		}
+		else = {
+        	set_variable = { dockcount1 = 0 }
+		}
     }
+
     #dockcount1 = number of dockyards in the country
 	set_variable = { dockcount2 = dockcount1 }
 	multiply_variable = { dockcount2 = 0.2 } # This variable controls how often we tick up the consumer goods .2 is 1/5th = every 5
