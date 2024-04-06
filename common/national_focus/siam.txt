@@ -18,7 +18,7 @@ focus_tree = {
 		id = SIA_return_of_the_king
 		icon = GFX_focus_rom_royal_dictatorship
         mutually_exclusive = { focus = SIA_khana_ratsadon }
-		x = 3
+		x = 2
 		y = 0
 
 		cost = 10
@@ -286,6 +286,38 @@ focus_tree = {
 
 		completion_reward = {
            add_ideas = SIA_new_era
+		}
+	}
+
+	focus = {
+		id = SIA_china_volunteers
+		icon = GFX_focus_generic_strike_at_democracy1
+		x = 5
+		y = 1
+		relative_position_id = SIA_return_of_the_king
+
+		cost = 3
+
+		available = {
+			date > 1939.1.1
+			JAP = {
+				has_war_with = CHI
+			}
+        }
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_rule = { 
+				can_send_volunteers = yes # rule to use, e.g.  can_not_declare_war = yes
+			}
+			add_ideas = SIA_china_volunteers
 		}
 	}
 

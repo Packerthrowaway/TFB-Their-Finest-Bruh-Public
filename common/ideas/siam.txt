@@ -214,6 +214,48 @@ ideas = {
 				special_forces_cap = 0.15
 			}
 		}
+
+		SIA_china_volunteers = {
+			allowed = {
+				always = no # Added via focus
+			}
+			cancel = {
+				NOT = {
+					CHI = { has_war_with = JAP}
+				}
+			}
+			
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+			
+			modifier = {
+				send_volunteer_size = 1
+				send_volunteer_divisions_required = -0.90
+			}
+		}
+
+		SIA_rubber_extortion = {
+
+			picture = ARG_resource_extration_focus
+
+			allowed = {
+				original_tag = SIA
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				min_export = 0.1
+			}
+			targeted_modifier = {
+				tag = JAP
+				trade_cost_for_target_factor = -0.75
+				extra_trade_to_target_factor = 1
+			}
+		}
     }
 
 }
