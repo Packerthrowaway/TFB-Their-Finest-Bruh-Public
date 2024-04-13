@@ -1443,6 +1443,22 @@
 				ENG = {
 					country_event = {  id = soviet.3100 }
 				}
+				if = {
+					limit = { has_idea = SOV_soviet_industry_railway_gun}
+					remove_ideas = SOV_soviet_industry_railway_gun
+					if = {
+						limit = {
+							has_tech = railway_gun
+						}
+						add_ideas = SOV_soviet_industry_railway_gun_1_counter
+					}
+					if = {
+						limit = {
+							has_tech = railway_gun_2
+						}
+						add_ideas = SOV_soviet_industry_railway_gun_2_counter
+					}	
+				}
 			}
 
 			if = {
@@ -7547,14 +7563,19 @@
 				#add_ideas = SOV_kirov
 				mio:SOV_okmo_organization = {
 					add_mio_size = 2
-					add_mio_funds = 1000
 					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.75
+					bonus = 0.50
 					uses = 1
 					category = cat_medium_armor
+				}
+				add_tech_bonus = {
+					name = doc_bonus
+					bonus = 0.50
+					uses = 1
+					category = cat_heavy_armor
 				}
 			}
 			else_if = {
@@ -7563,13 +7584,12 @@
 				#add_ideas = SOV_morozov_design_bureau
 				mio:SOV_astrov_design_bureau_organization = {
 					add_mio_size = 2
-					add_mio_funds = 1000
 					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.75
-					uses = 1
+					bonus = 0.50
+					uses = 2
 					category = cat_medium_armor
 				}
 			}
@@ -7580,8 +7600,13 @@
 				#add_ideas = SOV_astrov_design_bureau
 				mio:SOV_mytishchy_machine_building_plant_organization = {
 					add_mio_size = 2
-					add_mio_funds = 1000
 					add_mio_funds_gain_factor = 0.50
+				}
+				add_tech_bonus = {
+					name = doc_bonus
+					bonus = 0.50
+					uses = 2
+					category = armor
 				}
 			}
 			else_if = {
@@ -7590,14 +7615,19 @@
 				#add_ideas = SOV_okmo
 				mio:SOV_kirov_organization = {
 					add_mio_size = 2
-					add_mio_funds = 1000
 					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.75
+					bonus = 0.50
 					uses = 1
 					category = cat_heavy_armor
+				}
+				add_tech_bonus = {
+					name = doc_bonus
+					bonus = 0.50
+					uses = 1
+					category = cat_light_armor
 				}
 			}
 			else_if = {
@@ -7606,12 +7636,11 @@
 				#add_ideas = SOV_mytishchy_machine_building_plant	
 				mio:SOV_morozov_design_bureau_organization = {
 					add_mio_size = 2
-					add_mio_funds = 1000
 					add_mio_funds_gain_factor = 0.50
 				}
 				add_tech_bonus = {
 					name = doc_bonus
-					bonus = 0.75
+					bonus = 1
 					uses = 1
 					category = cat_light_armor
 				}

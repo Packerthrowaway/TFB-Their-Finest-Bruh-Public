@@ -83,7 +83,7 @@ NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_STATE_VP = {					-- resistance t
 11,  8.0, -- 11 - 26
 26,  12.0, -- 26 - 50
 50,  20.0, -- 50 - ...
-},
+}
 
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 5 	-- Max number of different strategic resources an equipment can be dependent on.
 NDefines.NProduction.EFFICIENCY_LOSS_PER_UNUSED_DAY = 0.5		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
