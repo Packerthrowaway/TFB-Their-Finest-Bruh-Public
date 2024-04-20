@@ -99,6 +99,7 @@ equipments = {
 		visual_level = 2
 		year = 1939
 		archetype = light_tank_chassis
+		parent = sov_light_tank_chassis_t26
 		priority = 2000
 		module_slots = {
 			main_armament_slot = inherit
@@ -115,7 +116,12 @@ equipments = {
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
-			special_type_slot_1 = inherit
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
 			special_type_slot_2 = inherit
 		}
 		maximum_speed = 6.5
@@ -132,6 +138,7 @@ equipments = {
 		visual_level = 2
 		year = 1942
 		archetype = light_tank_chassis
+		parent = sov_light_tank_chassis_t50
 		priority = 2000
 		module_slots = {
 			main_armament_slot = inherit
@@ -151,7 +158,12 @@ equipments = {
 			engine_type_slot = inherit
 			special_type_slot_1 = inherit
 			special_type_slot_2 = inherit
-			special_type_slot_3 = inherit
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
 		}
 		maximum_speed = 6
 		build_cost_ic = 16
@@ -256,6 +268,7 @@ equipments = {
 		visual_level = 1
 		year = 1940
 		archetype = medium_tank_chassis
+		parent = sov_medium_tank_chassis_t28
 		priority = 2000
 		module_slots = {
 			main_armament_slot = inherit
@@ -284,7 +297,12 @@ equipments = {
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
-			special_type_slot_1 = inherit
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
 			special_type_slot_2 = inherit
 			special_type_slot_3 = inherit
 		}
@@ -305,6 +323,7 @@ equipments = {
 		visual_level = 2
 		year = 1944
 		archetype = medium_tank_chassis
+		parent = sov_medium_tank_chassis_t34
 		priority = 2000
 		module_slots = {
 			main_armament_slot = inherit
@@ -335,7 +354,12 @@ equipments = {
 			special_type_slot_1 = inherit
 			special_type_slot_2 = inherit
 			special_type_slot_3 = inherit
-			special_type_slot_4 = inherit
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
 		}
 		upgrades = {
 			tank_nsb_med_armor_3_upgrade
@@ -409,6 +433,7 @@ equipments = {
 		visual_level = 0
 		year = 1939
 		archetype = heavy_tank_chassis
+		parent = sov_heavy_tank_chassis_t35
 		priority = 2000
 		module_slots = 	{
 			main_armament_slot = {
@@ -428,7 +453,12 @@ equipments = {
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
-			special_type_slot_1 = inherit
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
 			special_type_slot_2 = {
 				required = yes
 				allowed_module_categories = {
@@ -450,6 +480,7 @@ equipments = {
 	sov_heavy_tank_chassis_kv1 = {
 		year = 1940
 		archetype = heavy_tank_chassis
+		parent = sov_heavy_tank_chassis_t35
 		priority = 2000
 		module_slots = {
 			main_armament_slot = inherit
@@ -457,7 +488,12 @@ equipments = {
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
-			special_type_slot_1 = inherit
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
 			special_type_slot_2 = inherit
 			special_type_slot_3 = inherit
 		}
@@ -479,6 +515,7 @@ equipments = {
 		visual_level = 2
 		year = 1943
 		archetype = heavy_tank_chassis
+		parent = sov_heavy_tank_chassis_kv1
 		priority = 2000
 		module_slots = {
 			main_armament_slot = inherit
@@ -498,8 +535,18 @@ equipments = {
 			special_type_slot_1 = inherit
 			special_type_slot_2 = inherit
 			special_type_slot_3 = inherit
-			special_type_slot_4 = inherit
-			special_type_slot_5 = inherit
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+			special_type_slot_5 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
 		}
 		upgrades = {
 			tank_nsb_heavy_armor_2_upgrade
