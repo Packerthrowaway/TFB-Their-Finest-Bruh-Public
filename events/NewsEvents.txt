@@ -4985,11 +4985,22 @@ news_event = {
 	id = news.153
 	title = news.153.t
 	desc = news.153.d
-	picture = GFX_event_germany_barb_gif
+	#picture = GFX_event_germany_barb_gif
+	picture = GFX_news_event_german_inspect_troops
 	
 	major = yes
 	
-	is_triggered_only = yes
+	trigger = {
+		SOV = {
+			has_defensive_war_with = GER
+			has_opinion_modifier = MR_pact
+		}
+		NOT = { has_global_flag = MR_pact_broken_event_flag }
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
 
 	immediate = {
 		hidden_effect = {
