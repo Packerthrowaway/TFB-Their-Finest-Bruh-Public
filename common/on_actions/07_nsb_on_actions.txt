@@ -1780,6 +1780,51 @@ on_actions = {
 				}
 			}
 		}
+
+		# Add the USA to the Allies when Germany goes to war
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							OR = {
+								FROM = { original_tag = GER }
+								FROM = { original_tag = ITA }
+								FROM = { original_tag = JAP }
+							}
+							OR = {
+								ROOT = { original_tag = ENG }
+								ROOT = { original_tag = FRA }
+								ROOT = { original_tag = POL }
+								ROOT = { original_tag = CZE }
+							}
+						}
+						AND = {
+							OR = {
+								FROM = { original_tag = ENG }
+								FROM = { original_tag = FRA }
+								FROM = { original_tag = POL }
+								FROM = { original_tag = CZE }
+							}
+							OR = {
+								ROOT = { original_tag = GER }
+								ROOT = { original_tag = ITA }
+								ROOT = { original_tag = JAP }
+							}
+						}
+					}
+				}
+				hidden_effect = {
+					if = {
+						limit = {
+							NOT = { USA = { is_in_faction_with = ENG } }
+						}
+						ENG = {	add_to_faction = USA }
+						USA = { country_event = usa.1006 }
+					}
+				}
+			}
+		}
 	}
 
 	on_weekly_SOV = {
