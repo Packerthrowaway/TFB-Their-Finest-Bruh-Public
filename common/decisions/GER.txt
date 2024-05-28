@@ -448,6 +448,75 @@ GER_case_anton_category = {
 
 #Category only allowed for GER
 GER_reichskommissariats = {
+	request_control_of_navy_nor = {
+
+		icon = generic_naval
+
+		cost = 25
+		fire_only_once = yes
+
+		available = {
+		    FROM = {
+		    	# has_government = fascism
+				# original_tag = NOR
+				has_navy_size = {
+				    size > 0
+				}
+		    }
+		}
+
+		targets = { NOR }
+
+		target_trigger = {
+			FROM = { has_government = fascism }
+			FROM = { original_tag = NOR }
+		}
+
+		complete_effect = {
+			FROM = {
+				transfer_navy = {
+					target = ROOT
+				}
+			}
+		}
+
+	}
+
+	request_control_of_navy_den = {
+
+		icon = generic_naval
+
+		cost = 25
+		fire_only_once = yes
+
+		available = {
+		    FROM = {
+		    	# has_government = fascism
+				# original_tag = NOR
+				has_navy_size = {
+				    size > 0
+				}
+		    }
+		}
+
+		targets = { DEN }
+
+		target_trigger = {
+			FROM = { is_puppet_of = GER }
+			FROM = { original_tag = DEN }
+			#FROM = { has_war = yes }
+		}
+
+		complete_effect = {
+			FROM = {
+				transfer_navy = {
+					target = ROOT
+				}
+			}
+		}
+
+	}
+
 	GER_reichskommissariat_norwegen = {
 
 		icon = ger_reichskommissariats
