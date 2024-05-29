@@ -1266,3 +1266,39 @@ BRA_foreign_legion_cat = {
 		}
 	}
 }
+
+foreign_politics = {
+	BRA_annex_mex = {
+
+		allowed = {
+			original_tag = BRA
+		}
+
+		available = {
+			MEX = {is_ai = yes}
+			OR = {
+				JAP = { has_war_with = ENG }
+				GER = { has_war_with = SOV }
+				USA = { has_war = yes }
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			always = yes
+		}
+		fire_only_once = yes
+		complete_effect = {
+			annex_country = { target = MEX transfer_troops = yes }
+			every_owned_state = {
+				limit = {
+					is_core_of = MEX
+				}
+				set_compliance = 60
+			}
+		}
+	}
+}
