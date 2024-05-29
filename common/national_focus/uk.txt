@@ -2476,89 +2476,94 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_ideas = { ENG_colonial_elite }
-		}
-	}
-	
-	focus = {
-		id = ENG_commonwealth_ties 
-		prerequisite = { focus = ENG_develop_the_empire }
-		available = {
-			OR = {
-				any_country = {
-					original_tag = NZL
-					is_in_faction_with = ROOT
-				}
-				any_country = {
-					original_tag = SAF
-					is_in_faction_with = ROOT
-				}
-				any_country = {
-					original_tag = RAJ
-					is_in_faction_with = ROOT
-				}
-				any_country = {
-					original_tag = AST
-					is_in_faction_with = ROOT
-				}
-				any_country = {
-					original_tag = NZL
-					is_in_faction_with = ROOT
-				}
-			}
-		}
-		bypass = {
-			CAN = {
-				exists = no
-			}
-			SAF = {
-				exists = no
-			}
-			RAJ = {
-				exists = no
-			}
-			AST = {
-				exists = no
-			}
-			NZL = {
-				exists = no
-			}
-			NOT = {
-				any_state = {
-					OR = {
-						is_core_of = ENG
-						is_core_of = CAN
-						is_core_of = SAF
-						is_core_of = AST
-						is_core_of = NZL
-						is_core_of = RAJ
-					}
-					NOT = { state = 320 }
-					NOT = { state = 321 }
-					OWNER = {
-						NOT = { tag = ENG }
-					}
-				}
-			}
-		}
-		icon = GFX_goal_tfv_strengthen_commonwealth_ties
-		x = -2
-		y = 1
-		relative_position_id = ENG_develop_the_empire
-		cost = 5
-
-		available_if_capitulated = yes
-
-		completion_reward = {
 			unlock_decision_tooltip = ENG_develop_ast
 			unlock_decision_tooltip = ENG_develop_can
 			unlock_decision_tooltip = ENG_develop_nzl
 			unlock_decision_tooltip = ENG_develop_saf
+			unlock_decision_tooltip = ENG_develop_raj
 		}
 	}
 	
+	# focus = {
+	# 	id = ENG_commonwealth_ties 
+	# 	prerequisite = { focus = ENG_develop_the_empire }
+	# 	available = {
+	# 		OR = {
+	# 			any_country = {
+	# 				original_tag = NZL
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 			any_country = {
+	# 				original_tag = SAF
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 			any_country = {
+	# 				original_tag = RAJ
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 			any_country = {
+	# 				original_tag = AST
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 			any_country = {
+	# 				original_tag = NZL
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 		}
+	# 	}
+	# 	bypass = {
+	# 		CAN = {
+	# 			exists = no
+	# 		}
+	# 		SAF = {
+	# 			exists = no
+	# 		}
+	# 		RAJ = {
+	# 			exists = no
+	# 		}
+	# 		AST = {
+	# 			exists = no
+	# 		}
+	# 		NZL = {
+	# 			exists = no
+	# 		}
+	# 		NOT = {
+	# 			any_state = {
+	# 				OR = {
+	# 					is_core_of = ENG
+	# 					is_core_of = CAN
+	# 					is_core_of = SAF
+	# 					is_core_of = AST
+	# 					is_core_of = NZL
+	# 					is_core_of = RAJ
+	# 				}
+	# 				NOT = { state = 320 }
+	# 				NOT = { state = 321 }
+	# 				OWNER = {
+	# 					NOT = { tag = ENG }
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	icon = GFX_goal_tfv_strengthen_commonwealth_ties
+	# 	x = -2
+	# 	y = 1
+	# 	relative_position_id = ENG_develop_the_empire
+	# 	cost = 5
+
+	# 	available_if_capitulated = yes
+
+	# 	completion_reward = {
+	# 		unlock_decision_tooltip = ENG_develop_ast
+	# 		unlock_decision_tooltip = ENG_develop_can
+	# 		unlock_decision_tooltip = ENG_develop_nzl
+	# 		unlock_decision_tooltip = ENG_develop_saf
+	# 	}
+	# }
+	
 	focus = {
 		id = ENG_imperial_conference
-		prerequisite = { focus = ENG_commonwealth_ties }
+		prerequisite = { focus = ENG_develop_the_empire }
 
 		available = {
 			CAN = {
@@ -2663,7 +2668,7 @@ focus_tree = {
 
 		x = 0
 		y = 2
-		relative_position_id = ENG_commonwealth_ties
+		relative_position_id = ENG_develop_the_empire
 		cost = 5
 		search_filters = {FOCUS_FILTER_POLITICAL}	
 		completion_reward = {
@@ -2747,43 +2752,47 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = ENG_develop_colonies
-		prerequisite = { focus = ENG_develop_the_empire }
-		available = {
-			any_country = {
-				original_tag = RAJ
-				is_in_faction_with = ROOT
-			}
-		} 
-		icon = GFX_goal_generic_construct_civ_factory
-		x = 2
-		y = 1
-		relative_position_id = ENG_develop_the_empire
-		cost = 5
+	# focus = {
+	# 	id = ENG_develop_colonies
+	# 	prerequisite = { focus = ENG_develop_the_empire }
+	# 	available = {
+	# 		any_country = {
+	# 			original_tag = RAJ
+	# 			is_in_faction_with = ROOT
+	# 		}
+	# 	} 
+	# 	icon = GFX_goal_generic_construct_civ_factory
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = ENG_develop_the_empire
+	# 	cost = 5
 
-		available_if_capitulated = yes
+	# 	available_if_capitulated = yes
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		search_filters = {FOCUS_FILTER_INDUSTRY}
-		completion_reward = {
-			unlock_decision_tooltip = ENG_develop_raj
-		}
-	}
+	# 	search_filters = {FOCUS_FILTER_INDUSTRY}
+	# 	completion_reward = {
+	# 		unlock_decision_tooltip = ENG_develop_ast
+	# 		unlock_decision_tooltip = ENG_develop_can
+	# 		unlock_decision_tooltip = ENG_develop_nzl
+	# 		unlock_decision_tooltip = ENG_develop_saf
+	# 		unlock_decision_tooltip = ENG_develop_raj
+	# 	}
+	# }
 	
 	focus = {
 		id = ENG_service_overseas
-		prerequisite = { focus = ENG_develop_colonies }
+		prerequisite = { focus = ENG_develop_the_empire }
 
 		continue_if_invalid = no
 
 		icon = GFX_focus_por_luso_tropicalism
 
-		x = -1
+		x = -2
 		y = 2
-		relative_position_id = ENG_develop_colonies
+		relative_position_id = ENG_develop_the_empire
 		cost = 5
 		
 		completion_reward = {
@@ -2793,7 +2802,7 @@ focus_tree = {
 	
 	focus = {
 		id = ENG_imperial_conscription
-		prerequisite = { focus = ENG_develop_colonies }
+		prerequisite = { focus = ENG_develop_the_empire }
 
 		available = { 	
 		}
@@ -2802,9 +2811,9 @@ focus_tree = {
 
 		icon = GFX_focus_generic_military_mission
 
-		x = 1
+		x = 2
 		y = 2
-		relative_position_id = ENG_develop_colonies
+		relative_position_id = ENG_develop_the_empire
 		cost = 5
 		
 		completion_reward = {
