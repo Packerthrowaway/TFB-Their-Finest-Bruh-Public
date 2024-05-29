@@ -85,8 +85,8 @@ NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_STATE_VP = {					-- resistance t
 50,  20.0, -- 50 - ...
 }
 
-NDefines.NMarket.PURCHASE_CONTRACT_DELIVERY_TOTAL_DAYS = 21                   	-- Number of days between purchase contract deliveries
-NDefines.NMarket.IC_TO_CIC_FACTOR = 3.75                    					-- The factor for mapping IC cost to CIC cost. Should be a positive number.
+NDefines.NMarket.PURCHASE_CONTRACT_DELIVERY_TOTAL_DAYS = 15                   	-- Number of days between purchase contract deliveries
+NDefines.NMarket.IC_TO_CIC_FACTOR = 1.6                    					-- The factor for mapping IC cost to CIC cost. Should be a positive number.
 NDefines.NMarket.MAX_CIV_FACTORIES_PER_CONTRACT = 20							-- Max number of factories that can be assigned for paying single contract.
 NDefines.NMarket.PURCHASE_CONTRACT_SUBSIDY_BONUS_SPEED_FACTOR = 1.5				-- The factor of speed bonus from subsidies
 
