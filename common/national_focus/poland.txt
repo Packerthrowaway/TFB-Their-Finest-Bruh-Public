@@ -1543,49 +1543,78 @@
 
 		available = {
 			has_country_flag = invited_motor_co
-			OR = {
-				has_idea = POL_vauxhall
-				has_idea = POL_ford
-				has_idea = POL_somua
+			IF = {
+				limit = { NOT = { has_dlc = "Arms Against Tyranny" } }
+				OR = {
+					has_idea = POL_vauxhall
+					has_idea = POL_ford
+					has_idea = POL_somua
+				}
 			}
-		}
-
-		allow_branch = {
-			always = no
 		}
 
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			if = {
+			IF = {
 				limit = {
-					has_idea = POL_vauxhall
+					has_dlc = "Arms Against Tyranny"
 				}
-				swap_ideas = {
-					remove_idea = POL_vauxhall
-					add_idea = POL_vauxhall_free
+				IF = { 
+					limit = { has_country_flag = POL_somua_motors }
+					mio:FRA_somua_organization = {
+						add_mio_funds = 500
+						add_mio_funds_gain_factor = 0.1
+					}
+
+				}
+				IF = { 
+					limit = { has_country_flag = POL_vauxhall_motors }
+					mio:ENG_vauxhall_organization = {
+						add_mio_funds = 500
+						add_mio_funds_gain_factor = 0.1
+					}
+				}
+				IF = { 
+					limit = { has_country_flag = POL_ford_motors }
+					mio:USA_ford_motor_company_organization = {
+						add_mio_funds = 500
+						add_mio_funds_gain_factor = 0.1
+					}
 				}
 			}
-			else_if = {
-				limit = {
-					has_idea = POL_somua
+			ELSE = {
+
+				if = {
+					limit = {
+						has_idea = POL_vauxhall
+					}
+					swap_ideas = {
+						remove_idea = POL_vauxhall
+						add_idea = POL_vauxhall_free
+					}
 				}
-				swap_ideas = {
-					remove_idea = POL_somua
-					add_idea = POL_somua_free
+				else_if = {
+					limit = {
+						has_idea = POL_somua
+					}
+					swap_ideas = {
+						remove_idea = POL_somua
+						add_idea = POL_somua_free
+					}
 				}
-			}
-			else_if = {
-				limit = {
-					has_idea = POL_ford
+				else_if = {
+					limit = {
+						has_idea = POL_ford
+					}
+					swap_ideas = {
+						remove_idea = POL_ford
+						add_idea = POL_ford_free
+					}
 				}
-				swap_ideas = {
-					remove_idea = POL_ford
-					add_idea = POL_ford_free
+				else = {
+					custom_effect_tooltip = POL_motors_become_free_tt
 				}
-			}
-			else = {
-				custom_effect_tooltip = POL_motors_become_free_tt
 			}
 		}
 	}
@@ -1857,7 +1886,7 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = POL_rocket_development
-				bonus = 1.0
+				bonus = 0.75
 				uses = 2
 				category = jet_technology
 				category = rocketry
@@ -3445,7 +3474,7 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = POL_invest_anti_air
-				bonus = 1.0
+				bonus = 0.5
 				uses = 3
 				category = cat_anti_air
 			}
@@ -5960,7 +5989,7 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = POL_study_foreign_built_ships
-				bonus = 1.0
+				bonus = 0.75
 				uses = 2
 				category = dd_tech
 			}

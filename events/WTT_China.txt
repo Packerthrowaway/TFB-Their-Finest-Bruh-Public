@@ -821,6 +821,7 @@ country_event = {
 			NOT = {
 				has_country_flag = SOV_xian_refuse
 			}
+			SOV = { has_government = communism } # No point in asking a non-communist SOV
 		}
 		name = wtt_xian_incident.7.a #ask Soviets
 		ai_chance = {
@@ -1262,13 +1263,15 @@ country_event = {
 			base = 30
 		}
 		set_country_flag = joseph_stilwell_sent_to_china
-		random_army_leader = { 
-			limit = { has_id = 601 }
+		USA_joseph_stilwell = { 
 			set_nationality = FROM
 			save_event_target_as = CHI_USA_general
 		}
 		FROM = {
-			country_event = wtt_china_shared.13
+			country_event = {
+				id = wtt_china_shared.13
+				hours = 1
+			}	
 		}
 	}
 
@@ -1281,36 +1284,40 @@ country_event = {
 				factor = 0
 			}
 		}
-		set_country_flag = joseph_stilwell_sent_to_china
-		random_army_leader = { 
-			limit = { has_id = 57 }
+		set_country_flag = douglas_macarthur_sent_to_china
+		USA_douglas_macarthur = {
 			set_nationality = FROM
 			save_event_target_as = CHI_USA_general
 		}
 		FROM = {
-			country_event = wtt_china_shared.13
+			country_event = {
+				id = wtt_china_shared.13
+				hours = 1
+			}	
 		}
 	}
 
-	option = { #accept - Eisenhower
-		name = wtt_china_shared.12.d
-		ai_chance = {
-			base = 30
-			modifier = {
-				USA_is_on_historical_plan_trigger = yes
-				factor = 0
-			}
-		}
-		set_country_flag = joseph_stilwell_sent_to_china
-		random_army_leader = { 
-			limit = { has_id = 602 }
-			set_nationality = FROM
-			save_event_target_as = CHI_USA_general
-		}
-		FROM = {
-			country_event = wtt_china_shared.13
-		}
-	}
+	# option = { #accept - Eisenhower
+	# 	name = wtt_china_shared.12.d
+	# 	ai_chance = {
+	# 		base = 30
+	# 		modifier = {
+	# 			USA_is_on_historical_plan_trigger = yes
+	# 			factor = 0
+	# 		}
+	# 	}
+	# 	set_country_flag = dwight_d_eisenhower_sent_to_china
+	# 	USA_dwight_d_eisenhower = { 
+	# 		set_nationality = FROM
+	# 		save_event_target_as = CHI_USA_general
+	# 	}
+	# 	FROM = {
+	# 		country_event = {
+	# 			id = wtt_china_shared.13
+	# 			hours = 1
+	# 		}	
+	# 	}
+	# }
 
 	option = { #refuse
 		name = wtt_china_shared.12.b
@@ -1324,7 +1331,10 @@ country_event = {
 		reverse_add_opinion_modifier = { target = FROM modifier = CHI_refused_support }
 		add_war_support = -0.1
 		FROM = {
-			country_event = wtt_china_shared.14
+			country_event = {
+				id = wtt_china_shared.14
+				hours = 1
+			}	
 		}
 	}
 }
@@ -1755,7 +1765,7 @@ country_event = {
 		trigger = {
 			owns_state = 608
 		}
-		set_capital =  { state = 608 }
+		set_capital = { state = 608 }
 	}
 
 	#Move to Nanjing
@@ -1769,7 +1779,7 @@ country_event = {
 		}
 		custom_effect_tooltip = CHI_nanjing_tt
 		hidden_effect = {
-			set_capital =  { state = 613 }
+			set_capital = { state = 613 }
 		}
 	}
 

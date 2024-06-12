@@ -302,7 +302,6 @@ NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 500
 NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 300
 NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 300
 NDefines.NAir.AIR_WING_MAX_STATS_BOMBING = 300
-NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 1					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
 NDefines.NAir.TOP_SPEED_DAMAGE_BONUS_FACTOR = 0.2				-- A factor for scaling the top speed of a plane into damage buff --Vanilla is .02
 NDefines.NAir.COMBAT_DAMAGE_STATS_MULTILPIER = 0.30	
 NDefines.NAir.BIGGEST_AGILITY_FACTOR_DIFF = 5.0					-- biggest factor difference in agility for doing damage (caps to this) -- Vanilla is 3.0

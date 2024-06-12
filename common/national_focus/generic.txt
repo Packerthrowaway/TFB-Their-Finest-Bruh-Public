@@ -1,3 +1,20 @@
+search_filter_prios = {
+	FOCUS_FILTER_POLITICAL = 1010
+	
+	FOCUS_FILTER_RESEARCH = 522
+	
+	FOCUS_FILTER_INDUSTRY = 509
+
+	FOCUS_FILTER_BALANCE_OF_POWER = 200
+	FOCUS_FILTER_SOV_POLITICAL_PARANOIA = 111
+	FOCUS_FILTER_PROPAGANDA = 110
+	FOCUS_FILTER_MISSIOLINI = 110
+	FOCUS_FILTER_ARMY_XP = 103
+	FOCUS_FILTER_NAVY_XP = 102
+	FOCUS_FILTER_AIR_XP = 101
+
+}
+
 focus_tree = {
 	id = generic_focus
 	
@@ -8,18 +25,24 @@ focus_tree = {
 	default = yes
 	reset_on_civilwar = no
 
+	initial_show_position = {
+		focus = industrial_effort
+	}
+
 	focus = {
 		id = army_effort
 		icon = GFX_goal_generic_allies_build_infantry
 		x = 1
 		y = 0
 		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			army_experience = 5
+			army_experience = 25
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
 				cost_reduction = 0.5
@@ -36,6 +59,9 @@ focus_tree = {
 		x = 0
 		y = 1
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 1
@@ -62,6 +88,9 @@ focus_tree = {
 		x = 2
 		y = 1
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 		completion_reward = {
 			add_tech_bonus = {
@@ -80,12 +109,15 @@ focus_tree = {
 		x = 1
 		y = 2
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			army_experience = 5
+			army_experience = 25
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
 				cost_reduction = 0.5
@@ -102,6 +134,9 @@ focus_tree = {
 		x = 0
 		y = 3
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 		
 		ai_will_do = {
@@ -125,6 +160,9 @@ focus_tree = {
 		x = 2
 		y = 3
 		cost = 10
+		
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
@@ -146,12 +184,15 @@ focus_tree = {
 		x = 1
 		y = 4
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			army_experience = 5
+			army_experience = 25
 			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
 				cost_reduction = 0.5
@@ -168,6 +209,9 @@ focus_tree = {
 		x = 0
 		y = 5
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 1
@@ -190,6 +234,9 @@ focus_tree = {
 		x = 2
 		y = 5
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
@@ -213,11 +260,15 @@ focus_tree = {
 		x = 1
 		y = 6
 		cost = 10
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
+			add_ideas = special_forces
 			add_tech_bonus = {
 				name = special_forces_bonus
 				bonus = 0.5
@@ -238,6 +289,8 @@ focus_tree = {
 		x = 5
 		y = 0
 		cost = 10
+		
+		search_filters = {   FOCUS_FILTER_RESEARCH }
 
 		available_if_capitulated = yes
 				ai_will_do = {
@@ -324,6 +377,9 @@ focus_tree = {
 		x = 4
 		y = 1
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 1
@@ -352,6 +408,9 @@ focus_tree = {
 		x = 6
 		y = 1
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
@@ -464,6 +523,9 @@ focus_tree = {
 		x = 4
 		y = 3
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
@@ -486,6 +548,9 @@ focus_tree = {
 		x = 5
 		y = 4
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
@@ -517,6 +582,9 @@ focus_tree = {
 		x = 6
 		y = 3
 		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
@@ -538,6 +606,8 @@ focus_tree = {
 		y = 0
 		cost = 13
 
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
 		available_if_capitulated = yes
 				ai_will_do = {
 			factor = 1
@@ -666,6 +736,8 @@ focus_tree = {
 		x = 8
 		y = 1
 		cost = 10
+		
+		search_filters = {  FOCUS_FILTER_RESEARCH }
 
 		available_if_capitulated = yes
 				ai_will_do = {
@@ -712,6 +784,8 @@ focus_tree = {
 		x = 10
 		y = 1
 		cost = 10
+		
+		search_filters = {   FOCUS_FILTER_RESEARCH }
 
 		available_if_capitulated = yes
 		ai_will_do = {
@@ -784,6 +858,8 @@ focus_tree = {
 		cost = 9
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -816,7 +892,11 @@ focus_tree = {
 		y = 3
 		cost = 8
 
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -848,7 +928,10 @@ focus_tree = {
 		y = 3
 		cost = 12
 
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -880,7 +963,11 @@ focus_tree = {
 		x = 13
 		y = 0
 		cost = 10
+
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_tech_bonus = {
 				name = industrial_bonus
@@ -909,7 +996,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 
+		search_filters = { FOCUS_FILTER_INDUSTRY  }
+		
 		available_if_capitulated = yes
+
+
 		
 		ai_will_do = {
 			factor = 200
@@ -991,7 +1082,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 
+		search_filters = { FOCUS_FILTER_INDUSTRY  }
+		
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 150			
 		}
@@ -1060,7 +1155,11 @@ focus_tree = {
 		y = 2
 		cost = 10
 
+		search_filters = { FOCUS_FILTER_INDUSTRY  }
+		
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 200
 		}
@@ -1128,8 +1227,12 @@ focus_tree = {
 		x = 14
 		y = 2
 		cost = 10
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY  }
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 150
 		}
@@ -1197,6 +1300,9 @@ focus_tree = {
 		x = 12
 		y = 3
 		cost = 10
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 200
@@ -1292,7 +1398,11 @@ focus_tree = {
 		y = 3
 		cost = 10
 
+		search_filters = { FOCUS_FILTER_INDUSTRY  }
+		
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 150
 		}
@@ -1360,6 +1470,9 @@ focus_tree = {
 		x = 12
 		y = 4
 		cost = 10
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 50
@@ -1455,7 +1568,11 @@ focus_tree = {
 		y = 4
 		cost = 10
 
+		search_filters = { FOCUS_FILTER_INDUSTRY  }
+		
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 200
 		}
@@ -1523,7 +1640,11 @@ focus_tree = {
 		x = 11
 		y = 5
 		cost = 10
+		
+		search_filters = { FOCUS_FILTER_RESEARCH } 
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_tech_bonus = {
 				name = nuclear_bonus
@@ -1549,7 +1670,11 @@ focus_tree = {
 		x = 13
 		y = 5
 		cost = 10
+
+		search_filters = { FOCUS_FILTER_RESEARCH } 
+		
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_tech_bonus = {
 				name = secret_bonus
@@ -1576,7 +1701,11 @@ focus_tree = {
 		x = 19
 		y = 0
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_political_power = 120
 		}
@@ -1597,8 +1726,12 @@ focus_tree = {
 		x = 18
 		y = 1
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL   }
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 2
 			modifier = {
@@ -1648,8 +1781,12 @@ focus_tree = {
 		x = 16
 		y = 2
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 5
 			modifier = {
@@ -1684,8 +1821,12 @@ focus_tree = {
 		x = 18
 		y = 2
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 3
 			modifier = {
@@ -1716,8 +1857,12 @@ focus_tree = {
 		x = 20
 		y = 1
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 55
 			modifier = {
@@ -1765,7 +1910,11 @@ focus_tree = {
 		x = 16
 		y = 3
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			if = {
 				limit = { has_idea = neutrality_idea }
@@ -1784,7 +1933,11 @@ focus_tree = {
 		x = 18
 		y = 3
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			if = {
 				limit = { has_idea = neutrality_idea }
@@ -1803,6 +1956,9 @@ focus_tree = {
 		x = 20
 		y = 2
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
 		available_if_capitulated = yes
 		completion_reward = {
 			if = {
@@ -1821,8 +1977,12 @@ focus_tree = {
 		x = 22
 		y = 2
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 0
 			modifier = {
@@ -1848,7 +2008,11 @@ focus_tree = {
 		x = 16
 		y = 4
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = military_youth_focus
 			if = {
@@ -1875,7 +2039,11 @@ focus_tree = {
 		x = 20
 		y = 3
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = deterrence
 		}
@@ -1888,7 +2056,11 @@ focus_tree = {
 		x = 22
 		y = 3
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = volunteer_corps_focus
 		}
@@ -1901,7 +2073,11 @@ focus_tree = {
 		x = 16
 		y = 5
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = paramilitarism_focus
 		}
@@ -1914,7 +2090,11 @@ focus_tree = {
 		x = 18
 		y = 4
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = indoctrination_focus
 			add_political_power = 150
@@ -1928,7 +2108,11 @@ focus_tree = {
 		x = 22
 		y = 4
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = foreign_expeditions_focus
 		}
@@ -1950,7 +2134,11 @@ focus_tree = {
 		x = 20
 		y = 5
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			if = {
 				limit = { NOT = { has_idea = neutrality_idea } }
@@ -1969,7 +2157,11 @@ focus_tree = {
 		x = 18
 		y = 5
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = political_commissars_focus
 			if = {
@@ -1997,7 +2189,11 @@ focus_tree = {
 		x = 17
 		y = 6
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			add_ideas = ideological_fanaticism_focus
 			set_rule = {
@@ -2028,7 +2224,11 @@ focus_tree = {
 		x = 19
 		y = 7
 		cost = 10
+	
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+
 		available_if_capitulated = yes
+
 		completion_reward = {
 			if = {
 				limit = {
@@ -2038,6 +2238,5 @@ focus_tree = {
 			}	
 		}
 	}	
-	#######################################################
-	
+
 }

@@ -3423,28 +3423,26 @@ country_event = {
 				add_political_power = 10
 			}
 			retire_country_leader = yes
-			create_country_leader = {
-				name = "Manuel Azaña"
-				desc = "POLITICS_MANUEL_AZANA_DESC"
-				picture = GFX_portrait_Manuel_Azana
-				expire = "1965.1.1"
-				ideology = conservatism
-				traits = {
-					figurehead_president
+			add_country_leader_role = {
+				character = SPR_manuel_azana
+				country_leader = {
+				 	ideology = conservatism
+				 	traits = { figurehead_president }
+				 	expire = "1965.1.1"
 				}
+				promote_leader = yes
 			}
 		}
 		else = {
 			retire_country_leader = yes
-			create_country_leader = {
-				name = "Manuel Azaña"
-				desc = "POLITICS_MANUEL_AZANA_DESC"
-				picture = GFX_portrait_Manuel_Azana
-				expire = "1965.1.1"
-				ideology = conservatism
-				traits = {
-		
+			add_country_leader_role = {
+				character = SPR_manuel_azana
+				country_leader = {
+				 	ideology = conservatism
+				 	traits = { }
+				 	expire = "1965.1.1"
 				}
+				promote_leader = yes
 			}
 		}
 	}
@@ -3495,3 +3493,28 @@ country_event = {
 		}
 	}
 }
+
+# Spain unites the Hispanics!
+news_event = {
+	id = lar_spain.100
+	title = lar_spain.100.t
+	desc = lar_spain.100.d
+	picture = GFX_news_event_journalists_speech
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = lar_spain.100.a
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+	option = {
+		name = lar_spain.100.b
+		trigger = { original_tag = SPR }
+	}
+} 

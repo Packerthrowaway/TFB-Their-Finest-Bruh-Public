@@ -1179,7 +1179,7 @@ focus_tree = {
 			BRA_remove_economy_modifier = yes	
 			add_tech_bonus = {
 				name = BRA_electronics_bonus
-				bonus = 0.4
+				bonus = 0.5
 				uses = 2
 				category = electronics
 			}			
@@ -1217,7 +1217,7 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = BRA_resource_extraction_bonus
-				bonus = 0.75
+				bonus = 0.50
 				uses = 2
 				category = excavation_tech
 			}
@@ -1302,7 +1302,7 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = BRA_industry_bonus
-				bonus = 0.4
+				bonus = 0.5
 				uses = 2
 				category = industry
 			}			
@@ -1751,7 +1751,7 @@ focus_tree = {
 			ELSE = {
 				add_tech_bonus = {
 					name = BRA_nacional_de_motores_bonus
-					bonus = 0.75
+					bonus = 0.50
 					uses = 2
 					category = motorized_equipment
 				}
@@ -2229,6 +2229,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			is_subject = no
 			is_in_faction = no
 		}
 
@@ -2545,6 +2546,7 @@ focus_tree = {
 			is_in_faction_with = USA
 		}
 		available = {
+			is_subject = no
 			USA = {
 				OR = {
 					has_war = yes
@@ -3082,6 +3084,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			is_subject = no
 			is_in_faction = no
 			GER = {
 				OR = {
@@ -3946,6 +3949,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			is_subject = no
 			is_in_faction = no
 			ITA = {
 				OR = {
@@ -4019,7 +4023,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = BRA_italian_truck_exchange
-				bonus = 0.75
+				bonus = 0.50
 				uses = 2
 				category = motorized_equipment 
 				category = cat_mechanized_equipment 
@@ -4612,6 +4616,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			is_subject = no
 			is_in_faction = no
 		}
 
@@ -5181,8 +5186,8 @@ focus_tree = {
 
 	focus = {
 		id = BRA_united_states_of_south_america
-		icon = GFX_focus_BRA_us_of_south_america
-		x = 0
+		icon = GFX_focus_BRA_us_of_brazil
+		x = 2
 		y = 1
 		relative_position_id = BRA_us_brazil_technology_exchange
 		prerequisite = { focus = BRA_us_brazil_technology_exchange focus = BRA_south_american_research_cooperation }
@@ -5537,6 +5542,12 @@ focus_tree = {
 			}
 			custom_effect_tooltip = BRA_revive_the_anl_tt
 			custom_effect_tooltip = BRA_free_prestes_tt
+			hidden_effect = {
+				add_ai_strategy = {
+					type = befriend
+					id = SOV
+				}
+			}
 		}
 	}
 
@@ -5612,7 +5623,7 @@ focus_tree = {
 					has_government = communism
 				}
 			}
-			communism > 0.4
+			communism > 0.3
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL}
 		completion_reward = {
@@ -6474,7 +6485,7 @@ focus_tree = {
 				}
 	
 				create_operative_leader = {
-					name = "Robert Ivanov" #Ivan is dead, long live Robert, yes, I asked him beforehand
+					name = BRA_robert_ivanov 
 					traits = { operative_tough }
 					female = no
 					bypass_recruitment = yes
@@ -6482,7 +6493,7 @@ focus_tree = {
 					GFX = GFX_portrait_europe_generic_operative_male_5
 				}
 				create_operative_leader = {
-					name = "Nadiya Morozova"
+					name = BRA_nadiya_morozova 
 					traits = { operative_escape_artist }
 					female = yes
 					bypass_recruitment = yes
@@ -6498,7 +6509,7 @@ focus_tree = {
 				}
 
 				create_operative_leader = {
-					name = "Robert Ivanov" #Ivan is dead, long live Robert, yes, I asked him beforehand
+					name = BRA_robert_ivanov 
 					traits = { operative_tough }
 					female = no
 					bypass_recruitment = yes
@@ -6507,7 +6518,7 @@ focus_tree = {
 				}
 
 				create_operative_leader = {
-					name = "Nadiya Morozova"
+					name = BRA_nadiya_morozova 
 					traits = { operative_escape_artist }
 					female = yes
 					bypass_recruitment = yes
@@ -6579,6 +6590,7 @@ focus_tree = {
 			is_in_faction_with = SOU
 		}
 		available = {
+			is_subject = no
 			is_in_faction = no
 			SOV_comintern_joinable = yes 
 			has_government = communism	
@@ -6675,6 +6687,7 @@ focus_tree = {
 			factor = 10
 		}
 		available = {
+			is_subject = no
 		}
 
 		bypass = {
@@ -6761,7 +6774,7 @@ focus_tree = {
 				# Add character with propaganda bonus
 				add_ideas = BRA_sway_the_neighbors_lar
 				create_operative_leader = {
-					name = "Julieta Soria"
+					name = BRA_julieta_soria
 					traits = { operative_double_agent operative_natural_orator }
 					female = yes
 					bypass_recruitment = yes
@@ -7152,7 +7165,7 @@ focus_tree = {
 		
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
 			add_research_slot = 1

@@ -475,17 +475,27 @@ focus_tree = {
 
 	focus = {
 		id = URG_the_fuhrmann_plan
-		available = {
-		} 
+
 		prerequisite = { focus = URG_establish_the_german_uruguayan_cultural_center  }
-		available = { fascism > 0.5 }
+
+		available = { 
+			is_subject = no
+			fascism > 0.5 
+		}
+
 		mutually_exclusive = { }
+
 		icon = GFX_focus_hol_war_on_pacifism
+
 		x = 0
 		y = 1
+
 		cost = 10
+
 		relative_position_id = URG_establish_the_german_uruguayan_cultural_center
+
 		search_filters = { FOCUS_FILTER_POLITICAL  }
+
 		completion_reward = {
 			set_politics = {
 				ruling_party = fascism
@@ -608,6 +618,7 @@ focus_tree = {
 			 			has_government = fascism
 			 			exists = yes
 			 			has_capitulated = no
+			 			NOT = { is_in_faction_with = ROOT }
 			 		}
 			 	}
 			 	GER = {
@@ -1239,13 +1250,20 @@ focus_tree = {
 		icon = GFX_focus_chi_british_cooperation
 		x = -6
 		y = 1
-		available = {  }
+		available = { 
+			is_subject = no
+		}
+
 		cost = 5
+
 		relative_position_id = URG_break_diplomatic_relations_with_the_axis
+
 		prerequisite = { focus = URG_break_diplomatic_relations_with_the_axis  focus = URG_anticentralism }
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
+
 		completion_reward = {
+
 			add_popularity = {
 				ideology = democratic
 				popularity = 0.15
@@ -1456,14 +1474,21 @@ focus_tree = {
 		available = {
 		}
 
-		icon = GFX_focus_FIN_pragmatic_socialism
+		icon = GFX_focus_generic_self_management
+		
 		x = 1
 		y = 1
+
 		available = {  }
+
 		cost = 5
+
 		prerequisite = { focus = URG_blanco_victory }
+
 		relative_position_id = URG_blanco_victory
+
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+
 		completion_reward = {
 			add_ideas = {
 				idea_URG_traditionalism
