@@ -219,9 +219,11 @@ war_measures = {
 
 		available = {
 			has_war = yes
-			NOT = {
-				controls_state = 608
-				controls_state = 614
+				OR = {
+					NOT = { controls_state = 608 }
+					NOT = { controls_state = 614 }
+					surrender_progress > 0.08
+				}
 			}
 		}
 
