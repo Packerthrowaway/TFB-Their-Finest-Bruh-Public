@@ -5337,7 +5337,7 @@ focus_tree = {
 			add_ideas = USA_maritime_commission
 		}
 	}
-	
+
 	focus = {
 		id = USA_liberty_ships
 		icon = GFX_goal_generic_amphibious_assault
@@ -5354,6 +5354,29 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = liberty_ships_focus
+		}
+	}
+
+	focus = {
+		id = USA_war_production_board
+		icon = GFX_focus_usa_recruit_the_free_corps
+		prerequisite = { focus = USA_liberty_ships }
+		x = -3
+		y = 3
+		relative_position_id = USA_two_ocean_navy_act
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available = {
+			date > 1942.1.1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = USA_war_production_tt
 		}
 	}
 

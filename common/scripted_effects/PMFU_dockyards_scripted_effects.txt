@@ -4,8 +4,29 @@ dockyard_cg_calculation = {
         array = owned_states
         add_to_variable = { PREV.dockcount1 = building_level@dockyard}
     }
-	# For majors cap starts at 50
+	# USA could be 60 or 80
     if = {
+		limit = {
+			has_variable = dockyard_major
+			tag = USA
+			has_completed_focus = USA_war_production_board
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = dockcount1 
+					value = 85
+					compare = greater_than
+				}
+			}
+			subtract_from_variable = { dockcount1 = 85 } # This and the value above determine when to start counting dockyards
+		}
+		else = {
+        	set_variable = { dockcount1 = 0 }
+		}
+    }
+	# For majors cap starts at 60
+    else_if = {
 		limit = {
 			has_variable = dockyard_major
 		}
