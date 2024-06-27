@@ -60,6 +60,51 @@ on_actions = {
 				}
 			}
 		}
+
+		effect = {
+			every_country = {
+				for_each_scope_loop = {
+					array = THIS.CIVILIAN
+					if = {
+						limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_civilian } } } }
+						PREV = { add_operation_token = { tag = PREV token = token_civilian } }
+						log = "Tried to Add Civilian Token - ROOT: [PREV.GetName] - TARGET: [THIS.GetName]"
+					}
+				}
+				for_each_scope_loop = {
+					array = THIS.ARMY
+					if = {
+						limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_army } } } }
+						PREV = { add_operation_token = { tag = PREV token = token_army } }
+						log = "Tried to Add Army Token - ROOT: [PREV.GetName] - TARGET: [THIS.GetName]"
+					}
+				}
+				for_each_scope_loop = {
+					array = THIS.AIR
+					if = {
+						limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_airforce } } } }
+						PREV = { add_operation_token = { tag = PREV token = token_airforce } }
+						log = "Tried to Add Air Token - ROOT: [PREV.GetName] - TARGET: [THIS.GetName]"
+					}
+				}
+				for_each_scope_loop = {
+					array = THIS.NAVY
+					if = {
+						limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_navy } } } }
+						PREV = { add_operation_token = { tag = PREV token = token_navy } }
+						log = "Tried to Add Navy Token - ROOT: [PREV.GetName] - TARGET: [THIS.GetName]"
+					}
+				}
+				for_each_scope_loop = {
+					array = THIS.RESISTANCE
+					if = {
+						limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_resistance_contacts } } } }
+						PREV = { add_operation_token = { tag = PREV token = token_resistance_contacts } }
+						log = "Tried to Add Resistance Contacts Token - ROOT: [PREV.GetName] - TARGET: [THIS.GetName]"
+					}
+				}
+			}
+		}
 	}
 	on_daily = {
 		effect = {
