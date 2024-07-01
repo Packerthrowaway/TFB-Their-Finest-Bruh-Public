@@ -1170,6 +1170,64 @@ country_event = {
 		add_political_power = -200
 		add_opinion_modifier = { target = GER modifier = condemn_aggression }
 		set_global_flag = DENIED_CZE
+		hidden_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 10000
+				producer = CZE
+			}
+			add_equipment_to_stockpile = {
+				type = squad_equipment_0
+				amount = 2000
+				producer = CZE
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_1
+				amount = 500
+				producer = CZE
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 1000
+				producer = CZE
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 2000
+				producer = CZE
+			}
+			create_equipment_variant = {
+				name = "LT-35"
+				type = ger_light_tank_chassis_p35
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_gun_1
+					turret_type_slot = tank_light_turret_1
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+				icon = "gfx/interface/technologies/tanks/ger/ger_cze_tank_1.dds"
+			}
+			create_equipment_variant = {
+				name = "PzKpfw 38(t)"
+				type = ger_light_tank_chassis_p38
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_gun_2
+					turret_type_slot = tank_light_turret_2
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+				icon = "gfx/interface/technologies/tanks/ger/ger_cze_tank_2.dds"
+			}
+			add_equipment_to_stockpile = {
+				type = ger_light_tank_chassis_p38
+				amount = 300
+				producer = CZE
+			}
+		}
 		effect_tooltip = {
 			GER = {
 				create_wargoal = {
