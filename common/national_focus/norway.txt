@@ -719,7 +719,7 @@ focus_tree = {
 						industrial_complex < 1 
 						NOT = { state = 914 } # Jan Mayen =( 
 					}
-					random_select_amount = 3
+					random_select_amount = 2
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = industrial_complex
@@ -7444,7 +7444,7 @@ focus_tree = {
 						include_locked = yes 
 					}
 				}
-				random_select_amount = 2
+				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 				   	type = arms_factory
@@ -7928,18 +7928,17 @@ focus_tree = {
 					is_controlled_by = ROOT
 					free_building_slots = {
 						building = industrial_complex
-						size > 1
+						size > 0
 						include_locked = yes  
 					}
 				}
 				prioritize = { 
 					110 # Oslofjord
-					921 # Telemark
 				}
-				add_extra_state_shared_building_slots = 2 
+				add_extra_state_shared_building_slots = 1 
 				add_building_construction = {
 					type = industrial_complex 
-					level = 2
+					level = 1
 					instant_build = yes
 				}	
 			}
@@ -7948,19 +7947,38 @@ focus_tree = {
 					is_controlled_by = ROOT
 					free_building_slots = {
 						building = industrial_complex
-						size > 1
+						size > 0
 						include_locked = yes  
 					}
 				}
 				prioritize = { 
 					922 # Agder
 					142 # Vestlandet
-					920 # Opladene
 				}
-				add_extra_state_shared_building_slots = 2 
+				add_extra_state_shared_building_slots = 1 
 				add_building_construction = {
 					type = industrial_complex 
-					level = 2
+					level = 1
+					instant_build = yes
+				}	
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes  
+					}
+				}
+				prioritize = { 
+					920 # Opladene
+					921 # Telemark
+				}
+				add_extra_state_shared_building_slots = 1 
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
 					instant_build = yes
 				}	
 			}
@@ -7994,7 +8012,7 @@ focus_tree = {
 			}
 			add_to_variable = {
 				var = NOR.NOR_independent_norway_dmod_production_speed_industrial_complex_factor
-				value = 0.1
+				value = 0.05
 				tooltip = production_speed_industrial_complex_factor_tt
 			}
 		}
@@ -8154,7 +8172,7 @@ focus_tree = {
 						include_locked = yes 
 					}  
 				}
-				random_select_amount = 3 
+				random_select_amount = 2 
 				add_resource = {
 					type = aluminium 
 					amount = 100
@@ -8207,7 +8225,7 @@ focus_tree = {
 			custom_effect_tooltip = NOR_modify_independent_norway_TT
 			add_to_variable = {
 				var = NOR.NOR_independent_norway_dmod_production_speed_industrial_complex_factor
-				value = 0.1
+				value = 0.05
 				tooltip = production_speed_industrial_complex_factor_tt
 			}
 		}
@@ -9051,7 +9069,7 @@ focus_tree = {
 						}
 						NOT = { state = 914 } # Almost got away 
 					}
-					random_select_amount = 3
+					random_select_amount = 2
 					add_extra_state_shared_building_slots = 1 
 					add_building_construction = {
 						type = dockyard
@@ -9436,13 +9454,13 @@ focus_tree = {
 			custom_effect_tooltip = NOR_modify_royal_navy_dmod_TT
 			add_to_variable = {
 				var = NOR.NOR_royal_navy_dmod_naval_torpedo_reveal_chance_factor
-				value = -0.3
+				value = -0.15
 				tooltip = naval_torpedo_reveal_chance_factor_tt
 			}
 			add_tech_bonus = {
 				name = NOR_submarine_fleet
-				bonus = 1.5
-				uses = 2
+				bonus = 1
+				uses = 1
 				category = ss_tech
 			}
 			
