@@ -7450,63 +7450,63 @@ BUL_align_bulgaria = {
 		}
 	}
 
-	# BUL_germany_demand_replacement_of_bulgarian_prime_minister = {
+	BUL_germany_demand_replacement_of_bulgarian_prime_minister = {
 
-	# 	icon = eng_trade_unions_demand
+		icon = eng_trade_unions_demand
 
-	# 	available = {
+		available = {
 
-	# 	}
+		}
 
-	# 	visible = {
-	# 		NOT = {	
-	# 			has_war_with = BUL
-	# 			is_justifying_wargoal_against = BUL
-	# 		}
-	# 		BUL = {
-	# 			OR = {
-	# 				is_in_faction = no
-	# 				is_in_faction_with = GER
-	# 			}
-	# 			has_completed_focus = BUL_approach_germany
-	# 			has_idea = BUL_georgi_ivanov_kyoseivanov
-	# 			NOT = { has_idea = BUL_bogdan_filov }
-	# 			has_country_flag = { flag = BUL_german_influence_flag value > 3 }
-	# 		}
-	# 		is_subject = no
-	# 		has_capitulated = no
-	# 	}
+		visible = {
+			NOT = {	
+				has_war_with = BUL
+				is_justifying_wargoal_against = BUL
+			}
+			BUL = {
+				OR = {
+					is_in_faction = no
+					is_in_faction_with = GER
+				}
+				has_completed_focus = BUL_approach_germany
+				has_idea = BUL_georgi_ivanov_kyoseivanov
+				NOT = { has_idea = BUL_bogdan_filov }
+				has_country_flag = { flag = BUL_german_influence_flag value > 3 }
+			}
+			is_subject = no
+			has_capitulated = no
+		}
 
-	# 	ai_will_do = {
-	# 		base = 1
-	# 		modifier = {
-	# 			add = 100
-	# 			BUL = { has_completed_focus = BUL_join_the_tripartite_pact }
-	# 		}
-	# 		modifier = {
-	# 			factor = 100
-	# 			is_historical_focus_on = yes
-	# 			date > 1939.1.1
-	# 		}
-	# 		modifier = {
-	# 			factor = 0
-	# 			BUL = {
-	# 				has_opinion = {
-	# 					target = ROOT
-	# 					value < 0
-	# 				}
-	# 			}
-	# 		}
-	# 	}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 100
+				BUL = { has_completed_focus = BUL_join_the_tripartite_pact }
+			}
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+				date > 1939.1.1
+			}
+			modifier = {
+				factor = 0
+				BUL = {
+					has_opinion = {
+						target = ROOT
+						value < 0
+					}
+				}
+			}
+		}
 
-	# 	cost = 5
+		cost = 5
 
-	# 	fire_only_once = yes
+		fire_only_once = yes
 		
-	# 	complete_effect = {
-	# 		BUL = { country_event = { id = bftb_bulgaria_german_influence.4 hours = 2 random_hours = 1 } }
-	# 	}
-	# }
+		complete_effect = {
+			BUL = { country_event = { id = bftb_bulgaria_german_influence.4 hours = 2 random_hours = 1 } }
+		}
+	}
 }
 
 
@@ -9063,54 +9063,54 @@ BUL_dominance_in_the_seas = {
 
 
 political_actions = {
-	BUL_appoint_tsankov = {
-		priority = 100
+	# BUL_appoint_tsankov = {
+	# 	priority = 100
 
-		icon = GFX_decision_generic_speech
+	# 	icon = GFX_decision_generic_speech
 
-		ai_will_do = {
-			base = 0
-		}
+	# 	ai_will_do = {
+	# 		base = 0
+	# 	}
 
-		allowed = {
-			original_tag = BUL
-			has_dlc = "Battle for the Bosporus"
-		}
+	# 	allowed = {
+	# 		original_tag = BUL
+	# 		has_dlc = "Battle for the Bosporus"
+	# 	}
 
-		available = {
-			has_country_flag = BUL_nsm_integrated_flag
-		}
+	# 	available = {
+	# 		has_country_flag = BUL_nsm_integrated_flag
+	# 	}
 		
-		visible = {
-			has_government = fascism
-			NOT = {
-				has_country_leader = { name = "Aleksandar Tsankov" }
-			}
-		}
+	# 	visible = {
+	# 		has_government = fascism
+	# 		NOT = {
+	# 			has_country_leader = { name = "Aleksandar Tsankov" }
+	# 		}
+	# 	}
 
-		fire_only_once = yes
+	# 	fire_only_once = yes
 		
-		cost = 50
+	# 	cost = 50
 		
-		complete_effect = {
-			retire_ideology_leader = fascism
-			set_party_name = {
-				ideology = fascism
-				long_name = BUL_national_social_movement_party_long
-				name = BUL_national_social_movement_party
-			}
-			create_country_leader = {
-				name = "Aleksandar Tsankov"
-				desc = "POLITICS_BOGDAN_FILOV_DESC"
-				picture = GFX_portrait_bul_aleksandar_tsankov
-				expire = "1965.1.1"
-				ideology = nazism
-				traits = {
-					the_bloody_professor
-				}
-			}
-		}
-	}
+	# 	complete_effect = {
+	# 		retire_ideology_leader = fascism
+	# 		set_party_name = {
+	# 			ideology = fascism
+	# 			long_name = BUL_national_social_movement_party_long
+	# 			name = BUL_national_social_movement_party
+	# 		}
+	# 		create_country_leader = {
+	# 			name = "Aleksandar Tsankov"
+	# 			desc = "POLITICS_BOGDAN_FILOV_DESC"
+	# 			picture = GFX_portrait_bul_aleksandar_tsankov
+	# 			expire = "1965.1.1"
+	# 			ideology = nazism
+	# 			traits = {
+	# 				the_bloody_professor
+	# 			}
+	# 		}
+	# 	}
+	# }
 
 	BUL_appoint_georgiev = {
 		priority = 100
