@@ -767,6 +767,31 @@ FIN_national_defense_category = {
 				custom_effect_tooltip = FIN_can_demand_territory_if_occupying_tt
 			}
 
+			set_global_flag = SOV_winter_war_loss
+			hidden_effect = {
+				MON = {
+					remove_ideas = MON_brothers_war
+				}
+				SOV = {
+					add_days_mission_timeout = {
+						mission = SOV_winter_war
+						days = -300
+					}
+				}
+			}
+			effect_tooltip = {
+				SOV = {
+					white_peace = FIN
+				}
+				FIN = { set_country_flag = winter_war_finished }
+				diplomatic_relation = {
+					country = SOV
+					relation = non_aggression_pact
+				}
+				set_global_flag =  FIN_winter_victory
+
+			}
+
 			#Manage flags
 			clr_country_flag = FIN_can_demand_peace_negotiations_flag
 			set_country_flag = FIN_winter_war_peace_demanded_flag
