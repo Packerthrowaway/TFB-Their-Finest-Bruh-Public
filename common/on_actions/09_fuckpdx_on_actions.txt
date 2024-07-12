@@ -110,9 +110,15 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = navy_cap
-						option = ENABLED
+					OR = {
+						has_game_rule = {
+							rule = navy_cap
+							option = ONEFIFTYCAP
+						}
+						has_game_rule = {
+							rule = navy_cap
+							option = ONEHUNDREDCAP
+						}
 					}
 				}
 				HMP_check_fleet_size = yes 
@@ -489,12 +495,40 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = navy_cap
-						option = ENABLED
+					OR = {
+						has_game_rule = {
+							rule = navy_cap
+							option = ONEFIFTYCAP
+						}
+						has_game_rule = {
+							rule = navy_cap
+							option = ONEFIFTYCAP
+						}
 					}
 				}
 				SWE = { HMP_startup_on_actions = yes }
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = ONEFIFTYCAP
+					}
+				}
+				# Set variable to 150
+				set_variable={GLOBAL.cap = 150}
+			}else_if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = ONEHUNDREDCAP
+					}
+				}
+				set_variable={GLOBAL.cap = 100}
+			}else = {
+				set_variable={GLOBAL.cap = 0}
 			}
 		}
 		effect = {

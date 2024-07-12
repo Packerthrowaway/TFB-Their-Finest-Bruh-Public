@@ -1,9 +1,15 @@
 HMP_startup_on_actions = {
 	if = {
 		limit = {
-			has_game_rule = {
-				rule = navy_cap
-				option = ENABLED
+			OR = {
+				has_game_rule = {
+					rule = navy_cap
+					option = ONEFIFTYCAP
+				}
+				has_game_rule = {
+					rule = navy_cap
+					option = ONEHUNDREDCAP
+				}
 			}
 		}
 		every_country = {
@@ -230,14 +236,22 @@ HMP_check_fleet_size = {
 			value = command_limit_used_temp
 		}
 		if = {  
-			limit = { check_variable = {  command_limit_used > 150 } }
+			limit = { check_variable = {  command_limit_used > GLOBAL.cap } }
+			set_temp_variable = { 
+				var = penaltylevel 
+				value = GLOBAL.cap
+			}
+			subtract_from_temp_variable = {
+				var = penaltylevel
+				value = 5
+			}
 			add_to_temp_variable = { 
 				var = command_limit_penalty_calc
 				value = command_limit_used
 			}
 			subtract_from_temp_variable = {
 				var = command_limit_penalty_calc
-				value = 145
+				value = penaltylevel
 			}
 			multiply_temp_variable = {
 				var = command_limit_penalty_calc
