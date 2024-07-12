@@ -445,13 +445,13 @@ NDefines.NNavy.DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.75	-- damage pen
 NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.15  -- screening efficiency (screen to capital ratio) at 0% positioning
 NDefines.NNavy.AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING						= 0.3  -- AA penalty at 0% positioning
 
-NDefines.NNavy.MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.60  -- the accumulated penalty from new ships will be clamped to this value
+NDefines.NNavy.MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.80  -- the accumulated penalty from new ships will be clamped to this value
 NDefines.NNavy.POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS			= 0.02  -- the accumulated penalty from new ships will decay hourly by this value
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS 					= 3.0	-- this screen ratio to num capital/carriers is needed for full screening beyond screen line
 NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.25	-- screening efficiency (screen to capital ratio) at 0% positioning
-NDefines.NNavy.LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.01 -- light gun attack value is divided by this value * 100 and added to shore bombardment modifier 
+NDefines.NNavy.LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.02 -- light gun attack value is divided by this value * 100 and added to shore bombardment modifier 
 NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns if target ih profile is lower the gun will have lower accuracy
-		90.0,	-- big guns
+		95.0,	-- big guns
 		125.0,	-- torpedos
 		55.0	-- small guns
 	}
@@ -482,7 +482,7 @@ NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE 						= 0.02
 NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 0.25
 NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.02						-- Xp gain by non-carrier ships in the combat
 NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.2								-- Amount of exp each ship gain every 24h while training (before modifiers)
-NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.9 -- org will clamped to this ratio on manual move
+NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.8 -- org will clamped to this ratio on manual move
 
 NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
 0.0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
