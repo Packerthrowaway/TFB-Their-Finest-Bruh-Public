@@ -11,7 +11,6 @@ focus_tree = {
 	
 	country = {
 		factor = 0
-
 		modifier = {
 			add = 10
 			tag = BRA
@@ -741,25 +740,6 @@ focus_tree = {
 			}
 		}
 	}
-
-	#focus = {
-	#	id = BRA_placeholder_1
-	#	#icon = 
-	#	prerequisite = { focus = BRA_decree_no_37 focus = BRA_federal_employment_plan }
-	#	x = 1
-	#	y = 1
-	#	relative_position_id = BRA_decree_no_37
-	#	cost = 10
-	#	available = {
-	#	}
-	#	bypass = {
-	#		# Place holder just to keep the tree playable for now
-	#		original_tag = BRA
-	#	}
-	#	search_filters = { }
-	#	completion_reward = {
-	#	}
-	#}
 
 	focus = {
 		id = BRA_reward_army_loyalty
@@ -2573,10 +2553,11 @@ focus_tree = {
 					has_war_with = USA
 					is_major = yes
 				}
-				BRA = {
-					declare_war_on = {
-						target = PREV
-						type = topple_government
+				ROOT = {
+					add_to_war = {
+					    targeted_alliance = USA
+					    enemy = PREV
+					    hostility_reason = asked_to_join
 					}
 				}
 			}
@@ -7071,12 +7052,13 @@ focus_tree = {
 		y = 1
 		relative_position_id = BRA_constitutional_monarchy
 		prerequisite = { focus = BRA_constitutional_monarchy }
-		#prerequisite = { focus = BRA_court_the_military }
-		#mutually_exclusive = { focus = BRA_undermine_democracy }
+		
 		cost = 10
+
 		ai_will_do = {
 			factor = 10
 		}
+
 		available = {
 		
 		}
@@ -7126,15 +7108,17 @@ focus_tree = {
 						size > 1
 						include_locked = yes
 					}
-					OR = {
-						state = 961
-						state = 962
-						state = 963
-						state = 964
-						state = 965
-						state = 966
-						state = 967
-						state = 968
+					NOT = {
+						OR = {
+							state = 961
+							state = 962
+							state = 963
+							state = 964
+							state = 965
+							state = 966
+							state = 967
+							state = 968
+						}
 					}
 				}
 				add_extra_state_shared_building_slots = 1

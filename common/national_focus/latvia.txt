@@ -73,6 +73,32 @@ focus_tree = {
 
 		cost = 10
 
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					has_completed_focus = BALTIC_restore_workers_republic
+				}
+			}
+		}
+
+		offset = {
+			x = -12
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = LAT_suspend_the_constitution
+			}
+		}
+
 		ai_will_do = {
 			factor = 1
 		}
@@ -92,6 +118,16 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 100
 			activate_mission_tooltip = LAT_perkonkrust_uprising
+
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				mark_focus_tree_layout_dirty = yes 
+			}
 		}
 	}
 	
@@ -434,15 +470,25 @@ focus_tree = {
 			promote_character = LAT_fricis_menders
 			effect_tooltip = {
 				swap_ruler_traits = {
-
 					remove = subservient_democrat add = subservient_democrat_democratic
 				}
-
 			}
 			remove_ideas = democratic_opposition_idea_1
 			add_popularity = {
 				ideology = democratic
 				popularity = 0.1
+			}
+			hidden_effect = {
+				LAT_alberts_kvesis = {
+					remove_trait = {
+						trait = subservient_democrat
+						slot = political_advisor
+					}
+					add_trait = {
+						trait = subservient_democrat_democratic
+						slot = political_advisor
+					}	
+				}
 			}
 		}
 	}

@@ -71,6 +71,35 @@ focus_tree = {
 		x = 34
 		y = 0
 
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					OR = {
+						has_completed_focus = BALTIC_restore_workers_republic
+						has_completed_focus = EST_rally_the_nation
+					}
+				}
+			}
+		}
+
+		offset = {
+			x = -10
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = EST_era_of_silence
+			}
+		}
+
 		cost = 10
 
 		ai_will_do = {
@@ -94,6 +123,16 @@ focus_tree = {
 			add_stability = 0.1
 			activate_mission_tooltip = EST_vaps_uprising
 			activate_mission_tooltip = EST_vaps_crackdown
+
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				mark_focus_tree_layout_dirty = yes 
+			}
 		}
 	}
 
@@ -1124,6 +1163,35 @@ focus_tree = {
 
 		cost = 10
 
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					OR = {
+						has_completed_focus = BALTIC_restore_workers_republic
+						has_completed_focus = EST_era_of_silence
+					}
+				}
+			}
+		}
+
+		offset = {
+			x = -20
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = EST_rally_the_nation
+			}
+		}
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -1150,6 +1218,16 @@ focus_tree = {
 				activate_decision = EST_stomp_the_vaps
 			}
 			unlock_decision_category_tooltip = march_through_estonia
+
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				mark_focus_tree_layout_dirty = yes 
+			}
 		}
 	}
 
@@ -2522,6 +2600,18 @@ focus_tree = {
 			factor = 1
 		}
 
+		offset = {
+			x = -10
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = EST_era_of_silence
+			}
+		}
+
 		available = {
 			OR = {
 				NOT = {
@@ -2762,6 +2852,30 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 1
+		}
+
+		offset = {
+			x = -1
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = EST_era_of_silence
+			}
+		}
+
+		offset = {
+			x = -19
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = EST_rally_the_nation
+			}
 		}
 
 		available = {
