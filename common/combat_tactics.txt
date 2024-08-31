@@ -2403,6 +2403,51 @@ tactic_dt_finish_them = {
 	display_phase = deadly_trap
 }
 
+#to buff cope heavies after they lost a dmg die
+tactic_armored_spearhead = {
+    is_attacker = yes
+    trigger = {
+        is_attacker = yes
+        phase = no
+        hardness > .69
+        armor > 70
+#        custom_trigger_tooltip = {
+#                tooltip = min_armor_60_cbt
+#            }
+        OR = {
+            has_trait = panzer_expert
+            skill_advantage > 1
+            skill > 2
+    }
+#        custom_trigger_tooltip = {
+#            tooltip = warn_pierce_cbt
+#        }
+#    }
+    active = yes
+    base =  { 
+        factor = 4 
+        modifier = {
+            add = 2
+            has_trait = panzer_expert
+        }
+        modifier = {
+            add = 2
+            armor > 85
+        }
+        modifier = {
+            date > 1943.01.01
+            add = -2
+            
+        }#upgrade armor to get the bonus back, HOPEFULLY prevents mediums from gaining access
+    }
+    picture = armored_spearhead
+
+    attacker = 0.25
+    defender = 0.15
+    
+    countered_by = tactic_backhand_blow
+}
+
 ###Break Line
 
 #special MW tactics
