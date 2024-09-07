@@ -1003,34 +1003,6 @@ on_actions = {
 			}
 		}
 
-		effect = {
-			if = {
-				limit = {
-					FROM.FROM = { state = 110 }
-				}
-				FROM.FROM = {
-                    if = {
-						limit = {
-							CONTROLLER = {
-								OR = {
-									tag = ENG
-									is_subject_of = ENG
-									is_in_faction_with = ENG
-									tag = SOV
-									is_subject_of = SOV
-									is_in_faction_with = SOV
-								}
-							}
-						}
-						GER = {
-							set_country_flag = GER_start_sweden_allied_embargo_allies_mission
-						}
-					}
-                }
-
-			}
-		}
-
 		# Poland Loses Agency Debuff
 		effect = { 
 			if = {
@@ -1049,6 +1021,36 @@ on_actions = {
 			}
 		}
 	}
+
+	# on_state_control_changed = {
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				FROM.FROM = { state = 110 }
+	# 			}
+	# 			FROM.FROM = {
+    #                 if = {
+	# 					limit = {
+	# 						CONTROLLER = {
+	# 							OR = {
+	# 								tag = ENG
+	# 								is_subject_of = ENG
+	# 								is_in_faction_with = ENG
+	# 								tag = SOV
+	# 								is_subject_of = SOV
+	# 								is_in_faction_with = SOV
+	# 							}
+	# 						}
+	# 					}
+	# 					GER = {
+	# 						set_country_flag = GER_start_sweden_allied_embargo_allies_mission
+	# 					}
+	# 				}
+    #             }
+
+	# 		}
+	# 	}
+	# }
 
 	on_naval_invasion = {
 		effect = { 
