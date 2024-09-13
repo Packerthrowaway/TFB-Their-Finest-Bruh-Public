@@ -34,9 +34,23 @@ focus_tree = {
 		}
 		
 		available = {
-			OR = {
-				threat > 0.05
-				has_war = yes
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = tension_game 
+						option = DISABLED
+					}
+				}
+				OR = {
+					threat > 0.05
+					has_war = yes
+					date > 1937.1.1
+				}
+			} else = {
+				OR = {
+					threat > 0.05
+					has_war = yes
+				}
 			}
 		}
 		
