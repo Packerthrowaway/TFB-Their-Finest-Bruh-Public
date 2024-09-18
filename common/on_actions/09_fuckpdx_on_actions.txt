@@ -1063,8 +1063,32 @@ on_actions = {
 					CONTROLLER = {
 						set_country_flag = ui_show_invasion_warning
 						set_variable = { ui_invaded_state = PREV }
+						set_variable = { ui_invaded_country = PREV.owner }
 						set_variable = { ui_invader_country = ROOT }
 					}
+					if = {
+						limit = { CONTROLLER = { is_puppet = yes } }
+						CONTROLLER = {
+							OVERLORD = {
+								set_country_flag = ui_show_invasion_warning
+								set_variable = { ui_invaded_state = PREV.PREV }
+								set_variable = { ui_invaded_country = PREV.PREV.owner }
+								set_variable = { ui_invader_country = ROOT }
+							}
+						}
+					} 
+					every_country = {
+						if = { 
+							limit = { 
+								PREV.CONTROLLER = { is_in_faction_with = THIS } 
+							}
+							set_country_flag = ui_show_invasion_warning
+							set_variable = { ui_invaded_state = PREV }
+							set_variable = { ui_invaded_country = PREV.CONTROLLER }
+							set_variable = { ui_invader_country = ROOT }
+						}
+					}
+
 				}
 			}
 		}
@@ -1080,7 +1104,30 @@ on_actions = {
 					CONTROLLER = {
 						set_country_flag = ui_show_paradrop_warning
 						set_variable = { ui_invaded_state = PREV }
+						set_variable = { ui_invaded_country = PREV.owner }
 						set_variable = { ui_invader_country = ROOT }
+					}
+					if = {
+						limit = { CONTROLLER = { is_puppet = yes } }
+						CONTROLLER = {
+							OVERLORD = {
+								set_country_flag = ui_show_paradrop_warning
+								set_variable = { ui_invaded_state = PREV.PREV }
+								set_variable = { ui_invaded_country = PREV.PREV.owner }
+								set_variable = { ui_invader_country = ROOT }
+							}
+						}
+					} 
+					every_country = {
+						if = { 
+							limit = { 
+								PREV.CONTROLLER = { is_in_faction_with = THIS } 
+							}
+							set_country_flag = ui_show_paradrop_warning
+							set_variable = { ui_invaded_state = PREV }
+							set_variable = { ui_invaded_country = PREV.CONTROLLER }
+							set_variable = { ui_invader_country = ROOT }
+						}
 					}
 				}
 			}
