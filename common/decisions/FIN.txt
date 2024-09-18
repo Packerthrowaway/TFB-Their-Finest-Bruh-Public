@@ -2404,6 +2404,119 @@ FIN_the_path_to_socialism = {
 }
 
 political_actions = {
+
+	FIN_go_to_war_with_soviet = {
+		priority = 100
+		allowed = { tag = FIN }
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			OR = {
+				has_war_with = SOV
+				has_war_with = MON
+			}
+		}
+
+		visible = {
+			always = yes
+		}
+
+		activation = {
+			GER = { has_war_with = SOV }
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.20
+			add_stability =  -0.20
+			add_power_balance_value = {
+				id = FIN_power_balance
+				value = -1
+			}
+			#activate_decision = ITA_go_to_war_with_france2
+			set_global_flag = FIN_not_at_war
+			FIN = {country_event = { id = finland.503 }}
+			SOV = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FIN
+				}
+			}
+			SOV = {country_event = { id =soviet.504 }}
+		}
+	}
+
+	# ITA_go_to_war_with_france2 = {
+	# 	priority = 100
+	# 	allowed = { tag = ITA }
+
+	# 	icon = generic_prepare_civil_war
+
+	# 	available = {
+	# 		hidden_trigger = { always = no }
+	# 	}
+
+	# 	days_mission_timeout = 60
+	# 	is_good = no
+	# 	fire_only_once = yes
+
+	# 	cancel_trigger = {
+	# 		has_war_with = FRA
+	# 	}
+
+	# 	visible = {
+	# 		always = yes
+	# 	}
+
+	# 	activation = {
+	# 		has_global_flag = ITA_not_at_war
+	# 	}
+		
+	# 	timeout_effect = {
+	# 		ENG = {
+	# 			create_wargoal = {
+	# 				type = topple_government
+	# 				target = ITA
+	# 			}
+	# 		}
+	# 		ENG = {country_event = { id = britain.504 }}
+	# 	}
+	# }
+
+	FIN_go_to_war_with_soviet_event = {
+		priority = 100
+		allowed = { tag = FIN }
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 0
+		fire_only_once = yes
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			GER = { has_war_with = SOV }
+		}
+		
+		timeout_effect = {
+			FIN = {country_event = { id = finland.502 }}
+		}
+	}
+
 	FIN_request_extradition_of_kullervo_manner = {
 		priority = 50
 
