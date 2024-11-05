@@ -1,4 +1,4 @@
-version="2.14.0"
+version="2.15.0"
 tags={
 	"Balance"
 	"Events"
@@ -13,4 +13,4 @@ replace_path="common/ai_equipment"
 replace_path="common/ai_strategy"
 replace_path="common/ai_strategy_plans"
 replace_path="gfx/interface/equipmentdesigner/tanks/designer"
-supported_version="1.14.*"
+supported_version="1.15.*"
