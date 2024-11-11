@@ -1597,12 +1597,29 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = CAN_uranium_mining
-				bonus = 0.5
-				uses = 2
-				category = nuclear
-			}	
+			IF = {
+				limit = {
+					NOT = {
+						has_tech = atomic_research
+					}
+				}
+				add_tech_bonus = {
+					name = CAN_uranium_mining
+					bonus = 0.5
+					uses = 1
+					category = nuclear
+				}
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.25
+				}
+			}
+			ELSE = {
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.75
+				}
+			}
 		}
 	}
 
@@ -2073,6 +2090,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.15
+			}
 			add_tech_bonus = {
 				name = CAN_royal_regiment_of_canadian_artillery
 				bonus = 0.5
@@ -2324,6 +2345,12 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.5
+			}
+
 			add_tech_bonus = {
 				name = CAN_the_valentine_tank
 				bonus = 0.75
@@ -2893,6 +2920,12 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		complete_tooltip = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
+
 			add_tech_bonus = {
 				name = CAN_the_pacific_coast_air_defence_radar_system
 				bonus = 0.75
@@ -2932,6 +2965,12 @@ focus_tree = {
 		}
 
 		completion_reward = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
+
 			add_tech_bonus = {
 				name = CAN_the_pacific_coast_air_defence_radar_system
 				bonus = 0.75
@@ -2993,8 +3032,8 @@ focus_tree = {
 					set_state_flag = CAN_the_pacific_coast_air_defence_radar_system_radar3
 				}
 				else = {
-					set_technology = {
-						radio_detection = 1
+					complete_special_project = {
+						project = sp:sp_air_radar
 					}
 					effect_tooltip = {
 						random_owned_controlled_state = {
@@ -3172,6 +3211,8 @@ focus_tree = {
 				category = cas_bomber
 			}
 
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			IF = {
 				limit = {
 					has_dlc = "Arms Against Tyranny"
@@ -3229,6 +3270,8 @@ focus_tree = {
 				category = cat_strategic_bomber
 			}
 
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			IF = {
 				limit = {
 					has_dlc = "Arms Against Tyranny"
@@ -3282,13 +3325,20 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.5
+			}
+
 			add_tech_bonus = {
 				name = CAN_the_sabre_project
-				ahead_reduction = 0.5
-				uses = 2
+				ahead_reduction = 1
+				uses = 1
 				category = rocketry
 				category = jet_technology
 			}
+
 		}
 	}
 
@@ -3538,6 +3588,10 @@ focus_tree = {
 
 		completion_reward = {
 			navy_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.15
+			}
 			add_doctrine_cost_reduction = {
 				name = CAN_escort_fleet
 				cost_reduction = 0.5
@@ -3577,6 +3631,10 @@ focus_tree = {
 
 		completion_reward = {
 			navy_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.15
+			}
 			add_doctrine_cost_reduction = {
 				name = CAN_fleet_in_being
 				cost_reduction = 0.5

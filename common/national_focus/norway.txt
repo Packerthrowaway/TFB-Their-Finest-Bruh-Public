@@ -152,12 +152,17 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+
 			hidden_effect = {
 				set_country_flag = NOR_going_dem_allied 
 				NOR_set_variables_alt_dem = yes 
 			}
+
 			custom_effect_tooltip = NOR_unlocking_prep_allied_dem_TT
 			remove_ideas = { NOR_complacent_cabinet_ns } 
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			
 			country_event = { id = AAT_norway.12 }
 			custom_effect_tooltip = the_following_will_happen_TT
 			event_option_tooltip = AAT_norway.12.a
@@ -432,6 +437,10 @@ focus_tree = {
 				character = NOR_lev_trotsky
 				slot = political_advisor 
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = NOR_kirsten_hansteen
 		}
 	}
 
@@ -3450,6 +3459,11 @@ focus_tree = {
 				add_idea = NOR_broken_gun_ns_3
 			}
 			remove_ideas = { NOR_complacent_cabinet_ns }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = NOR_kirsten_hansteen
 		}
 	}
 
@@ -4661,6 +4675,7 @@ focus_tree = {
 				limit = {
 					any_other_country = {
 						original_tag = NOR
+						exists = yes
 						NOT = { has_government = fascism }
 					}
 					has_variable = NOR_cw_democratic_norway	
@@ -4686,6 +4701,9 @@ focus_tree = {
 			add_stability = -0.1
 			add_war_support = -0.06
 			remove_ideas = { NOR_contested_leadership_ns }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			NOR_vidkun_quisling = {
 				remove_country_leader_trait = NOR_fascist_lackey
 				add_country_leader_trait = NOR_fascist_dilettante
@@ -4746,6 +4764,9 @@ focus_tree = {
 			add_stability = -0.2
 			add_war_support = -0.1
 			remove_ideas = { NOR_contested_leadership_ns }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			promote_character = {
 				character = NOR_josef_terboven
 				ideology = nazism
@@ -4875,6 +4896,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
+
 			every_owned_state = {
 				limit = {
 					is_controlled_by = ROOT 
@@ -4893,12 +4915,19 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+
+			add_breakthrough_progress = {
+				specialization = specialization_nuclear
+				value = 0.5
+			}
+
 			add_tech_bonus = {
 				name = NOR_the_weapons_of_conquest
 				bonus = 0.5
-				uses = 2
+				uses = 1 # was 2
 				category = nuclear
 			}
+
 		}
 	}
 
@@ -4984,6 +5013,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
+
 			set_variable = { NOR.NOR_oppressed_civilians_dmod_recruitable_population_factor = 0 }
 			add_dynamic_modifier = {
 				modifier = NOR_oppressed_civilians_dmod 
@@ -5005,6 +5035,11 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = NOR_rolf_fuglesang
 		}
 	}
 
@@ -5083,6 +5118,12 @@ focus_tree = {
 					is_in_faction_with = ROOT 
 				}
 				has_war_with = GER
+				GER = {
+					NOT = {
+						has_government = fascism
+					}
+				}
+				is_faction_leader = yes
 			}
 		}
 
@@ -6368,12 +6409,14 @@ focus_tree = {
 			every_owned_state = {
 				limit = {
 					# Just celebrating the fact that I don't need to exclude Jan Mayen this time
-					is_controlled_by = ROOT 
-					free_building_slots = {
-						building = bunker
-						size < 2
-						include_locked = yes
-					}	
+					is_controlled_by = ROOT
+					# NOTE : This now triggers an error on load because bunker is a province building!
+					# Commented out for now, please fix -- RRK
+#					free_building_slots = {
+#						building = bunker
+#						size < 2
+#						include_locked = yes
+#					}	
 				}
 				add_building_construction = {
 					type = bunker 
@@ -6433,10 +6476,17 @@ focus_tree = {
 				}
 			}			 
 			set_cosmetic_tag = NOR_norgesveldet_fascism
-			add_autonomy_score = { 
-				value = 650 
-				localization = NOR_reviving_the_norgesveldet
+			custom_effect_tooltip = generic_skip_one_line_tt
+			IF = {
+				limit = {
+					is_subject = yes
+				}
+				add_autonomy_score = { 
+					value = 650 
+					localization = NOR_reviving_the_norgesveldet
+				}
 			}
+			
 		}
 	}
 	focus = {
@@ -7735,25 +7785,21 @@ focus_tree = {
 				free_building_slots = {
 					building = coastal_bunker
 					size < 3
-					include_locked = yes
 					province = 6115
 				}	
 				free_building_slots = {
 					building = coastal_bunker
 					size < 3
-					include_locked = yes
 					province = 3171
 				}
 				free_building_slots = {
 					building = coastal_bunker
 					size < 3
-					include_locked = yes
 					province = 11151
 				}
 				free_building_slots = {
 					building = coastal_bunker
 					size < 3
-					include_locked = yes
 					province = 14
 				}
 			}
@@ -8113,6 +8159,7 @@ focus_tree = {
 				}
 				prioritize = { 
 					110 # Oslofjord
+					921 # Telemark
 				}
 				add_extra_state_shared_building_slots = 1 
 				add_building_construction = {
@@ -8152,7 +8199,6 @@ focus_tree = {
 				}
 				prioritize = { 
 					920 # Opladene
-					921 # Telemark
 				}
 				add_extra_state_shared_building_slots = 1 
 				add_building_construction = {
@@ -8773,7 +8819,6 @@ focus_tree = {
 					free_building_slots = {
 						building = anti_air_building
 						size > 1
-						include_locked = yes 
 					}	
 				}
 				prioritize = { # Southern States
@@ -9088,7 +9133,7 @@ focus_tree = {
 		relative_position_id = NOR_radar_research
 		cost = 10
 		available = {
-			has_tech = radio_detection
+			is_special_project_completed = sp:sp_air_radar
 			NOR_broken_gun_trigger = yes 
 			any_state = {
 				is_owned_and_controlled_by = ROOT

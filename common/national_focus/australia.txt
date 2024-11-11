@@ -531,6 +531,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH  }
 
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.5
+			}
 			add_tech_bonus = {
 				name = AST_sentinel_tank
 				bonus = 0.75
@@ -770,20 +774,50 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_RESEARCH  }
 
-		completion_reward = {
+		complete_tooltip = {
 			air_experience = 25
-			random_owned_controlled_state = {
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
+			random_state = {				
 				limit = {
-					free_building_slots = {
-						building = air_base
-						size > 1
-					}
+					has_state_flag = AST_expand_the_raaf_AB
 				}
 				add_building_construction = {
 					type = air_base
 					level = 2
 					instant_build = yes
 				}
+			}
+			add_doctrine_cost_reduction = {
+				name = AST_expand_the_raaf
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+
+		completion_reward = {
+			air_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+					NOT = { state = 674 }
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = AST_expand_the_raaf_AB
 			}
 			add_doctrine_cost_reduction = {
 				name = AST_expand_the_raaf
@@ -857,16 +891,13 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_RESEARCH  }
 
-		completion_reward = {
+		complete_tooltip = {
 			air_experience = 25
-			random_owned_controlled_state = {
-				prioritize = { 521 520 }
+			random_state = {				
 				limit = {
-					free_building_slots = {
-						building = air_base
-						size > 1
-					}
+					has_state_flag = AST_expand_northern_presence_AB
 				}
 				add_building_construction = {
 					type = air_base
@@ -876,7 +907,33 @@ focus_tree = {
 			}
 			add_doctrine_cost_reduction = {
 				name = AST_expand_northern_presence
-				cost_reduction = 0.25
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+
+		completion_reward = {
+			air_experience = 25
+			random_owned_controlled_state = {
+				prioritize = { 521 520 872}
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+					NOT = { state = 674 }
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = AST_expand_the_raaf_AB
+			}
+			add_doctrine_cost_reduction = {
+				name = AST_expand_northern_presence
+				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
@@ -1057,8 +1114,8 @@ focus_tree = {
 					set_state_flag = AST_volunteer_air_observers_corps_radar3
 				}
 				else = {
-					set_technology = {
-						radio_detection = 1
+					complete_special_project = {
+						project = sp:sp_air_radar
 					}
 					effect_tooltip = {
 						random_owned_controlled_state = {
@@ -1851,6 +1908,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		complete_tooltip = {
 			random_state = {
@@ -1877,6 +1935,9 @@ focus_tree = {
 				}
 			}
 			add_ideas = AST_standard_gauge_railway
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = AST_new_south_wales_rc_ic
 		}
 
 		completion_reward = {
@@ -1898,6 +1959,9 @@ focus_tree = {
 				set_state_flag = AST_standard_gauge_railway_Inf2
 			}
 			add_ideas = AST_standard_gauge_railway
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = AST_new_south_wales_rc_ic
 		}
 	}
 
@@ -1963,6 +2027,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		complete_tooltip = {
 			random_state = {

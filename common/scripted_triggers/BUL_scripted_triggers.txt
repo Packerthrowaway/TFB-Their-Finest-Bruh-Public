@@ -40,7 +40,7 @@ BUL_state_is_in_the_black_sea = {
 			state = 797
 			state = 211
 			state = 77
-			state = 46
+			state = 971
 			state = 766
 			state = 192
 			state = 197
@@ -56,6 +56,7 @@ BUL_state_is_in_the_black_sea = {
 			state = 355
 			state = 356
 			state = 347
+			state = 826
 		}
 	}
 }
@@ -67,15 +68,18 @@ BUL_state_is_in_the_adriatic_sea = {
 			state = 185
 			state = 805
 			state = 44
+			state = 934
 			state = 105
 			state = 103
 			state = 163
 			state = 736
+			state = 852
 			state = 160
 			state = 161
 			state = 157
 			state = 117
 			state = 156
+			state = 849
 		}
 	}
 }
@@ -86,6 +90,7 @@ BUL_country_seeks_macedonian_stability = {
 		OR = {
 			controls_state = 803
 			controls_state = 106
+			controls_state = 970
 			controls_state = 731
 			controls_state = 184
 			AND = {
@@ -96,6 +101,7 @@ BUL_country_seeks_macedonian_stability = {
 					is_in_faction_with = YUG
 					803 = { controller = { is_in_faction_with = ENG } }
 					106 = { controller = { is_in_faction_with = ENG } }
+					970 = { controller = { is_in_faction_with = ENG } }
 					731 = { controller = { is_in_faction_with = ENG } }
 					184 = { controller = { is_in_faction_with = ENG } }
 				}
@@ -109,6 +115,7 @@ BUL_country_seeks_macedonian_stability = {
 					is_in_faction_with = YUG
 					803 = { controller = { is_in_faction_with = ENG } }
 					106 = { controller = { is_in_faction_with = ENG } }
+					970 = { controller = { is_in_faction_with = ENG } }
 					731 = { controller = { is_in_faction_with = ENG } }
 					184 = { controller = { is_in_faction_with = ENG } }
 				}
@@ -140,22 +147,36 @@ BUL_has_banned_faction_media = {
 }
 
 BUL_historical_requirements_met = {
-	any_allied_country = {
+	OR = {
 		has_war_with = SOV
+		any_allied_country = {
+			has_war_with = SOV
+		}
+	}
+	SOV = {
+		surrender_progress < 0.05
 	}
 	OR = {
-		AND = {
-			any_home_area_neighbor_country = {
-				tag = SOV
+		SOV = {
+			any_controlled_state = {
+				OR = {
+					has_state_flag = BUL_initial_bulgarian_state_flag
+					has_state_flag = BUL_historical_bulgarian_claim_flag
+				}
+				is_fully_controlled_by = PREV
 			}
 		}
 		SOV = {
-			any_state = {
+			any_controlled_state = {
 				is_core_of = GER
+				NOT = {
+					state = 188
+					state = 763
+					state = 5
+					state = 807
+					state = 85
+				}
 			}
-		}
-		SOV = {
-			surrender_progress < 0.2
 		}
 	}
 }
@@ -170,6 +191,7 @@ BUL_has_restored_greater_bulgaria = {
 	184 = { is_fully_controlled_by = ROOT } #Central Macedonia
 	731 = { is_fully_controlled_by = ROOT } #Thrace
 	77 = { is_fully_controlled_by = ROOT } #Dobrudja
+	971 = { is_fully_controlled_by = ROOT } #North Dobrudja
 }
 
 BUL_country_can_influence_bulgaria = {
@@ -207,6 +229,7 @@ BUL_is_balkan_nation = {
 			original_tag = CRO
 			original_tag = KOS
 			original_tag = MNT
+			original_tag = TRA
 		}
 	}
 }
@@ -228,6 +251,7 @@ BUL_is_balkan_nation_no_bulgaria = {
 			original_tag = CRO
 			original_tag = KOS
 			original_tag = MNT
+			original_tag = TRA
 		}
 	}
 }
@@ -248,6 +272,7 @@ BUL_is_balkan_state = {
 		is_core_of = CRO
 		is_core_of = KOS
 		is_core_of = MNT
+		is_core_of = TRA
 	}
 	is_on_continent = europe
 }
@@ -425,7 +450,7 @@ BUL_has_some_sort_of_bogdan_filov = {
 			has_idea = BUL_bogdan_filov
 			has_idea = BUL_bogdan_filov_fascism
 			has_country_leader = {
-				name = "Bogdan Filov" 
+				character = BUL_bogdan_filov
 				ruling_only = yes
 			}
 		}

@@ -2065,6 +2065,9 @@ focus_tree = {
 					}
 				}
 			}
+
+			custom_effect_tooltip = CHL_skip_one_line_tt
+
 			if = {
 				limit = { NOT = { has_idea = ROM_flexible_foreign_policy_2 } }
 				swap_ideas = {
@@ -2076,6 +2079,9 @@ focus_tree = {
 				popularity = 0.35
 				ideology = fascism
 			}
+
+			custom_effect_tooltip = CHL_skip_one_line_tt
+
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = ROM_mihail_sturdza
 			add_stability = -0.05
@@ -2103,6 +2109,13 @@ focus_tree = {
 				relation = guarantee
 				active = no
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			764 = {
+				add_claim_by = ROOT
+			}
+
 		}
 	}
 
@@ -3406,12 +3419,19 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_nuclear
+				value = 0.75
+			}
+
 			add_tech_bonus = {
 				name = ROM_nuclear_bomb_project
 				bonus = 0.75
 				uses = 1
 				category = nuclear
 			}
+
 		}
 	}
 
@@ -4090,7 +4110,7 @@ focus_tree = {
 		completion_reward = {
 			navy_experience = 25
 			random_owned_controlled_state = {
-				prioritize = { 46 }
+				prioritize = { 971 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 					free_building_slots = {
@@ -4138,6 +4158,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+
 			IF = {
 				limit = {
 					has_dlc = "Arms Against Tyranny"

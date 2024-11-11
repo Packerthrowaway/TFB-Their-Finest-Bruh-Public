@@ -1097,28 +1097,58 @@ focus_tree = {
 		completion_reward = { 
 			IF = {
 				limit = {
-					has_tech = nuclear_reactor 
+					has_tech = atomic_research 
 					has_tech = experimental_rockets
 				}
 
-				add_tech_bonus = {
-				name = ARG_arma_maravillosa_bonus
-				bonus = 0.5
-				uses = 2
-				category = nuclear
+				add_breakthrough_points = {
+					specialization = specialization_nuclear
+			    	value = 1
 				}
-
-				add_tech_bonus = {
-				name = ARG_arma_maravillosa_bonus
-				bonus = 0.5
-				uses = 2
-				category = rocketry
+				add_breakthrough_points = {
+					specialization = specialization_air
+			    	value = 1
 				}
 			}
-
+			else_if = {
+				if = {
+					limit = {
+						has_tech = atomic_research 
+						NOT = { has_tech = experimental_rockets }
+					}
+				}
+				add_tech_bonus = {
+					name = ARG_arma_maravillosa_bonus
+					bonus = 0.5
+					uses = 1
+					category = rocketry
+				}
+				add_breakthrough_points = {
+					specialization = specialization_nuclear
+			    	value = 0.5
+				}
+			}
+			else_if = {
+				if = {
+					limit = {
+						NOT = { has_tech = atomic_research }
+						has_tech = experimental_rockets
+					}
+				}
+				add_tech_bonus = {
+					name = ARG_arma_maravillosa_bonus
+					bonus = 0.5
+					uses = 1
+					category = nuclear
+				}
+				add_breakthrough_points = {
+					specialization = specialization_air
+			    	value = 0.5
+				}
+			}
 			ELSE = {
 				set_technology = {
-					nuclear_reactor = 1
+					atomic_research = 1
 				}
 
 				set_technology = {
@@ -3180,12 +3210,15 @@ focus_tree = {
 
 		completion_reward = { 
 			air_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
 			add_tech_bonus = {
 			 	name = ARG_royal_airforce_influence_bonus
-			 	bonus = 0.5
+			 	bonus = 0.4 # was 0.5
 			 	uses = 3
-			 	category = air_equipment # optional 
-			 	# technology  = technology_id # optional
+			 	category = air_equipment 
 			 } 
 
 			 IF = {
@@ -3273,9 +3306,13 @@ focus_tree = {
 
 		completion_reward = { 
 			navy_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.25
+			}
 			add_tech_bonus = {
 			 	name = ARG_royal_navy_influence_bonus
-			 	bonus = 0.5
+			 	bonus = 0.4 # was 0.5
 			 	uses = 3
 			 	category = naval_equipment 
 			 } 
@@ -3773,6 +3810,10 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 1
 				category = naval_doctrine
+			}
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.25
 			}
 		}
 	}
@@ -5583,7 +5624,6 @@ focus_tree = {
 				free_building_slots = {
 					building = infrastructure
 					size > 0
-					include_locked = yes
 				}
 				is_owned_and_controlled_by = ROOT
 			}

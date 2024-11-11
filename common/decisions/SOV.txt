@@ -960,18 +960,17 @@ SOV_paranoia_system = {
 		icon = GFX_decision_eng_trade_unions_support
 
 		ai_will_do = {
-			base = 0
+			factor = 1.0
 			modifier = {
-				add = 1
-				check_variable = { SOV_paranoia > 35 }
+				add = var:SOV_paranoia
 			}
 			modifier = {
-				add = 100
-				check_variable = { SOV_paranoia > 75 }
-			}
-			modifier = {
-				factor = 2
+				factor = 1.2
 				SOV_is_opposition = yes
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_paranoia < 20 }
 			}
 		}
 
@@ -1138,7 +1137,14 @@ SOV_paranoia_system = {
 		icon = GFX_decision_generic_political_discourse
 
 		ai_will_do = {
-			base = 0
+			factor = 0.9
+			modifier = {
+				add = var:SOV_paranoia
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_paranoia < 20 }
+			}
 		}
 
 		allowed = {
@@ -1261,7 +1267,7 @@ SOV_paranoia_system = {
 		icon = generic_brainwash
 
 		ai_will_do = {
-			base = 1
+			base = 2
 			modifier = {
 				factor = 2
 				any_enemy_country = {
@@ -1271,6 +1277,10 @@ SOV_paranoia_system = {
 			modifier = {
 				factor = 5
 				has_idea = SOV_anti_soviet_military_thinking_banned_army
+			}
+			modifier = {
+				factor = 2
+				has_idea = SOV_anti_soviet_military_thinking_banned_airforce
 			}
 		}
 
@@ -1284,6 +1294,12 @@ SOV_paranoia_system = {
 					has_country_flag = SOV_assassinated_stalin_flag
 				}
 				has_country_flag = SOV_assassinated_stalin_flag
+			}
+			else_if = {
+				limit = {
+					has_global_flag = SOV_soviet_civil_war
+				}
+				has_global_flag = SOV_soviet_civil_war
 			}
 			else = {
 				has_country_flag = { flag = SOV_third_moscow_trial_flag days > 365 }
@@ -1529,6 +1545,13 @@ SOV_paranoia_system = {
 				flag = SOV_mig_design_bureau_dissolved_flag
 				days > 365
 			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_mig_design_bureau_dissolved_days_tt
+				has_country_flag = {
+					flag = SOV_mig_design_bureau_dissolved_flag
+					days > 365
+				}
+			}
 			num_of_civilian_factories_available_for_projects > 1
 		}
 
@@ -1569,6 +1592,13 @@ SOV_paranoia_system = {
 			has_country_flag = {
 				flag = SOV_ilyushin_design_bureau_dissolved_flag
 				days > 365
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_ilyushin_design_bureau_dissolved_days_tt
+				has_country_flag = {
+					flag = SOV_ilyushin_design_bureau_dissolved_flag
+					days > 365
+				}
 			}
 			num_of_civilian_factories_available_for_projects > 1
 		}
@@ -1611,6 +1641,13 @@ SOV_paranoia_system = {
 				flag = SOV_tupolev_design_bureau_dissolved_flag
 				days > 365
 			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_tupolev_design_bureau_dissolved_days_tt
+				has_country_flag = {
+					flag = SOV_tupolev_design_bureau_dissolved_flag
+					days > 365
+				}
+			}
 			num_of_civilian_factories_available_for_projects > 1
 		}
 
@@ -1651,6 +1688,13 @@ SOV_paranoia_system = {
 			has_country_flag = {
 				flag = SOV_yakovlev_design_bureau_dissolved_flag
 				days > 365
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_yakovlev_design_bureau_dissolved_days_tt
+				has_country_flag = {
+					flag = SOV_yakovlev_design_bureau_dissolved_flag
+					days > 365
+				}
 			}
 			num_of_civilian_factories_available_for_projects > 1
 		}
@@ -8705,7 +8749,7 @@ SOV_great_patriotic_war = {
 		icon = generic_army_support
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 			modifier = {
 				surrender_progress > 0.25
 				factor = 10
@@ -8855,7 +8899,7 @@ SOV_great_patriotic_war = {
 		}
 
 		state_target = yes
-		
+
 		target_trigger = {
 			FROM = {
 				SOV_is_military_offensive_main_objective = yes
@@ -9502,7 +9546,7 @@ SOV_great_patriotic_war = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -9592,7 +9636,7 @@ SOV_great_patriotic_war = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 
@@ -9642,7 +9686,7 @@ SOV_great_patriotic_war = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 
@@ -9690,7 +9734,7 @@ SOV_great_patriotic_war = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 
@@ -9761,7 +9805,7 @@ SOV_great_patriotic_war = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 
@@ -9825,7 +9869,7 @@ SOV_great_patriotic_war = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 
@@ -9891,7 +9935,7 @@ SOV_great_patriotic_war = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 		}
 	}
 

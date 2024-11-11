@@ -427,7 +427,7 @@
 		completion_reward = {
 			add_war_support = 0.1
 		}
-	}	
+	}
 
 	focus = {
 		id = CHI_judicial_yuan
@@ -664,6 +664,14 @@
 
 		available = {
 			NOT = { is_in_faction_with = JAP }
+			is_subject = no
+		}
+
+		bypass = {
+			OR = {
+				has_war_with = JAP
+				has_war_with = MAN
+			}
 		}
 
 		cancel_if_invalid = yes

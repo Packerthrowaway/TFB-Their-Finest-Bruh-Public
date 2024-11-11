@@ -1950,6 +1950,9 @@ country_event = {
 			233 = { add_core_of = KUB }
 			232 = { add_core_of = KUB }
 			137 = { add_core_of = KUB }
+			827 = { add_core_of = KUB }
+			828 = { add_core_of = KUB }
+			821 = { add_core_of = KUB }
 		}
 	}
 
@@ -1969,6 +1972,24 @@ country_event = {
 					PREV = { controls_state = 137 }
 				}
 				transfer_state = 137
+			}
+			if = {
+				limit = {
+					PREV = { controls_state = 827 }
+				}
+				transfer_state = 827
+			}
+			if = {
+				limit = {
+					PREV = { controls_state = 828 }
+				}
+				transfer_state = 828
+			}
+			if = {
+				limit = {
+					PREV = { controls_state = 821 }
+				}
+				transfer_state = 821
 			}
 			custom_effect_tooltip = spawn_cossacks_tt
 			hidden_effect = {
@@ -4156,6 +4177,39 @@ country_event = {
 		if = { #Switch to the Habsburg branch
 			limit = {
 				has_focus_tree = hungarian_focus
+			}
+			if = {
+				limit = {
+					has_completed_focus = HUN_economic_intervention
+				}
+				uncomplete_national_focus = {
+					focus = HUN_economic_intervention
+					uncomplete_children = yes
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = HUN_elect_a_democratic_king
+				}
+				uncomplete_national_focus = {
+					focus = HUN_elect_a_democratic_king
+					uncomplete_children = yes
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = HUN_elect_a_fascist_king
+				}
+				uncomplete_national_focus = {
+					focus = HUN_elect_a_fascist_king
+					uncomplete_children = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_completed_focus = HUN_balanced_budget }
+				}
+				complete_national_focus = HUN_balanced_budget
 			}
 			if = {
 				limit = {

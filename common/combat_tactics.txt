@@ -86,12 +86,13 @@ tactic_counterattack = { # counters basic attack, assault
 
 
 tactic_assault = { 
-    is_attacker = yes
-    trigger = {
-        is_attacker = yes
-        phase = no
-    }
-    
+	is_attacker = yes
+	trigger = {
+		is_attacker = yes
+		phase = no
+		has_artillery_ratio > 0.1
+	}
+ 
     active = yes
     
     base =  {
@@ -104,10 +105,10 @@ tactic_assault = {
 
         modifier = {
             add = 3
-            OR = {
-                is_fighting_in_terrain = urban
-                is_fighting_in_terrain = dense_urban
-            }
+	            OR = {
+	                is_fighting_in_terrain = urban
+	                is_fighting_in_terrain = dense_urban
+	            }
             }
         }
     #Revisit ideally this should be more common in urban terrain
@@ -735,7 +736,6 @@ tactic_shock = { #counters delay
 	defender = -0.25
 }
 
-
 tactic_tactical_withdrawal = { #counters encirclement
 	is_attacker = no
 	trigger = {
@@ -749,7 +749,9 @@ tactic_tactical_withdrawal = { #counters encirclement
 	
 	active = no
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+	}
 	picture = withdraw
 	
 	phase = tactical_withdrawal
@@ -1013,7 +1015,9 @@ tactic_seize_bridge = {
 		}
 	}
 	
-	base =  { factor = 2 }
+	base =  {
+		factor = 2
+	}
 	picture = seize_bridge
 	
 	phase = seize_bridge
@@ -1247,7 +1251,9 @@ tactic_guerrilla_tactics = { #People's army defender tactic. also for German vol
 	
 	active = no
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+	}
 	picture = tactic_guerrilla_tactics
 	
 	countered_by = tactic_partisan_sweeps
@@ -1319,7 +1325,9 @@ tactic_infantry_charge = { #GBP -> Infantry attacker tactic
 	
 	active = no
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+	}
 	picture = tactic_infantry_charge
 	
 	attacker = 0.1 
@@ -1335,7 +1343,9 @@ tactic_planned_attack = { #GBP -> Armor attacker tactic
 	
 	active = no
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+	}
 	picture = tactic_planned_attack
 	
 	attacker = 0.15 
@@ -1350,7 +1360,9 @@ tactic_relentless_assault = { #Deep battle attacker tactic
 	
 	active = no
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+	}
 	picture = tactic_relentless_assault
 	
 	attacker_movement_speed = 0.15
@@ -1367,7 +1379,9 @@ tactic_unexpected_thrust = { #Mobile warfare attacker tactic
 	
 	active = no
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+	}
 	picture = tactic_unexpected_thrust
 	
 	attacker_movement_speed = 0.15
@@ -1383,7 +1397,9 @@ tactic_overwhelming_fire = { # Counters Banzai charge and double envelopment #re
 	
 	active = no
 	
-	base =  { factor = 2 }
+	base =  {
+		factor = 2
+	}
 	picture = tactic_overwhelming_fire
 	
 	attacker = -0.1
@@ -1399,7 +1415,9 @@ tactic_barrage = { #Superior firepower attacker tactic
 	
 	active = no
 	
-	base =  { factor = 4 }
+	base =  {
+		factor = 4
+	}
 	picture = tactic_barrage
 	
 	attacker = 0.1

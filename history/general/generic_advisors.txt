@@ -10,17 +10,26 @@ every_possible_country = {
 		NOT = {
 			has_allowed_idea_with_traits = { idea = communist_revolutionary characters = yes }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "Battle for the Bosporus" }
 			NOT = { tag = TUR tag = GRE }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "By Blood Alone" }
 			NOT = { OR = { tag = ETH tag = SWI } }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "Arms Against Tyranny" }
 			NOT = { OR = { tag = ICE tag = DEN tag = SWE tag = NOR } }
+		}
+
+		IF = {
+			limit = { has_dlc = "Trial of Allegiance" }
+			NOT = { OR = { tag = CHL tag = ARG tag = BRA tag = PAR tag = URG } }
+		}
+		IF = {
+			limit = { has_dlc = "Gotterdammerung" }
+			NOT = { tag = HUN tag = AUS tag = COG tag = BEL }
 		}
 	}
 	generate_character = {
@@ -51,17 +60,27 @@ every_possible_country = {
 		NOT = {
 			has_allowed_idea_with_traits = { idea = democratic_reformer characters = yes }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "Battle for the Bosporus" }
 			NOT = { tag = TUR tag = GRE }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "By Blood Alone" }
 			NOT = { OR = { tag = ETH tag = SWI } }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "Arms Against Tyranny" }
 			NOT = { OR = { tag = ICE tag = DEN tag = SWE tag = NOR } }
+		}
+
+		IF = {
+			limit = { has_dlc = "Trial of Allegiance" }
+			NOT = { OR = { tag = CHL tag = ARG tag = BRA tag = PAR tag = URG } }
+		}
+
+		IF = {
+			limit = { has_dlc = "Gotterdammerung"}
+			NOT = { OR = { tag = AUS tag = COG tag = BEL }}
 		}
 	}
 	generate_character = {
@@ -70,7 +89,7 @@ every_possible_country = {
 			slot = political_advisor
 			traits = { democratic_reformer }
 			available = {
-				if = {
+				IF = {
 					limit = { 
 						original_tag = NZL
 						has_dlc = "Together for Victory"
@@ -79,7 +98,7 @@ every_possible_country = {
 						has_completed_focus = NZL_strengthen_the_commonwealth
 					}
 				}
-				if = {
+				IF = {
 					limit = { has_dlc = "Man the Guns" }	
 					NOT = { has_autonomy_state = autonomy_supervised_state }
 				}
@@ -101,17 +120,26 @@ every_possible_country = {
 		NOT = {
 			has_allowed_idea_with_traits = { idea = fascist_demagogue characters = yes }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "Battle for the Bosporus" }
 			NOT = { tag = TUR tag = GRE }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "By Blood Alone" }
 			NOT = { OR = { tag = ETH tag = SWI } }
 		}
-		if = {
+		IF = {
 			limit = { has_dlc = "Arms Against Tyranny" }
 			NOT = { OR = { tag = ICE tag = DEN tag = SWE tag = NOR } }
+		}
+		# TODO CHANGE THIS TO THE CORRECT DLC LOCK
+		IF = {
+			limit = { has_dlc = "Trial of Allegiance" }
+			NOT = { OR = { tag = CHL tag = ARG tag = BRA tag = PAR tag = URG } }
+		}
+		IF = {
+			limit = { has_dlc = "Gotterdammerung" }
+			NOT = { tag = HUN tag = AUS tag = COG tag = BEL }
 		}
 	}
 	generate_character = {
@@ -480,5 +508,33 @@ every_possible_country = {
 			army = { small = GFX_idea_viktor_schutze }
 		}
 	}
+}
 
+every_possible_country = { #BEL has no chief of navy, nor any naval theorists
+	limit = {
+		original_tag = BEL
+	}
+	generate_character = {
+		token_base = generic_naval_theorist # token will be TAG_token_base
+		advisor = {
+			slot = theorist
+			traits = { naval_theorist }
+			ledger = navy
+			cost = 100
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_naval_theorist }
+		}
+	}
+	generate_character = {
+		token_base = navy_chief_reform # token will be TAG_token_base
+		advisor = {
+			slot = navy_chief
+			traits = { navy_chief_reform_1 }
+			cost = 50
+		}
+		portraits = { 
+			army = { small = GFX_idea_ENG_generic_navy_1 }
+		}
+	}
 }

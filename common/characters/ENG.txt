@@ -9,6 +9,33 @@ characters={
 				small="GFX_idea_ENG_winston_churchill"
 			}
 		}
+		advisor={
+			slot = political_advisor
+			idea_token = ENG_winston_churchill
+			available  = {
+				has_government  = neutrality 
+				has_completed_focus  = ENG_the_kings_party 
+				if  = {
+					limit  = {
+						has_dlc = "Man the Guns"
+					}
+					NOT = {
+						has_autonomy_state  = autonomy_supervised_state
+					}
+				}
+			}
+			allowed  = {
+				original_tag  = ENG
+				has_dlc = "Man the Guns"
+			}
+			traits  = {
+				royalist_bulldog 
+			}
+			ai_will_do  = {
+				base = 1
+			}
+		}
+
 		country_leader={
 			ideology=conservatism
 			traits = {
@@ -38,7 +65,10 @@ characters={
 		name=ENG_oswald_mosley
 		portraits={
 			civilian={
-				large="gfx/leaders/ENG/Portrait_Britain_Oswald_Mosley.dds"
+				large=GFX_portrait_ENG_oswald_mosley
+			}
+			army={
+				small="GFX_idea_ENG_oswald_mosley"
 			}
 		}
 		
@@ -91,7 +121,7 @@ characters={
 				}
 			}
 			ai_will_do  = {
-				factor  = 0.000
+				base = 0
 			}
 		}
 		
@@ -102,6 +132,7 @@ characters={
 			id=-1
 		}
 	}
+
 	ENG_neville_chamberlain={
 		name=ENG_neville_chamberlain
 		portraits={
@@ -117,6 +148,22 @@ characters={
 		}
 		
 	}
+
+	ENG_horatio_dundas={
+		name=ENG_horatio_dundas
+		portraits={
+			civilian={
+				large=GFX_portrait_ENG_horatio_dundas
+			}
+		}
+		country_leader={
+			ideology=centrism
+			traits={ quartermaster_general compassionate_gentleman }
+			expire="1945.1.1.12"
+			id=-1
+		}
+	}
+
 	ENG_alan_brooke={
 		name=ENG_alan_brooke
 		portraits={
@@ -138,7 +185,7 @@ characters={
 			}
 			cost = 200
 			ai_will_do = {
-				factor = 1.000
+				base = 0.5
 			}
 		}
 		
@@ -184,6 +231,15 @@ characters={
 			traits = {
 				grand_battle_plan_expert
 			}
+
+			ai_will_do = {
+				base = 2
+				modifier = {
+					has_idea_with_trait = industrial_concern
+					has_idea_with_trait = silent_workhorse
+					factor = 5
+				}
+			}
 		}
 	}
 
@@ -218,7 +274,7 @@ characters={
 			}
 			cost = 100
 			ai_will_do = {
-				factor = 2.000
+				base = 2
 			}
 		}
 	}
@@ -380,12 +436,7 @@ characters={
 				military_theorist
 			}
 			ai_will_do = {
-				factor = 2.000
-				modifier = {
-					has_idea_with_trait = industrial_concern
-					has_idea_with_trait = silent_workhorse
-					factor = 10.000
-				}
+				base = 2
 			}
 		}
 	}
@@ -1543,52 +1594,7 @@ characters={
 			}
 		}
 	}
-	ENG_james_chadwick={
-		name=ENG_james_chadwick
-		portraits={
-			army={
-				small="GFX_idea_james_chadwick"
-			}
-		}
-		advisor={
-			cost = 100
-			slot = theorist
-			idea_token = james_chadwick
-			ledger = army
-			allowed = {
-				original_tag = ENG
-			}
-			research_bonus = {
-				nuclear = 0.150
-			}
-			traits = {
-				nuclear_scientist
-			}
-		}
-	}
-	ENG_frank_whittle={
-		name=ENG_frank_whittle
-		portraits={
-			army={
-				small="GFX_idea_frank_whittle"
-			}
-		}
-		advisor={
-			cost = 100
-			slot = theorist
-			idea_token = frank_whittle
-			ledger = air
-			allowed = {
-				original_tag = ENG
-			}
-			research_bonus = {
-				rocketry = 0.150
-			}
-			traits = {
-				rocket_scientist
-			}
-		}		
-	}
+
 	ENG_jfc_fuller={
 		name=ENG_jfc_fuller
 		portraits={
@@ -1614,6 +1620,145 @@ characters={
 			}
 			ai_will_do = {
 				factor = 1.000
+			}
+		}
+	}
+
+  #####                                                              
+ #     #   ####   #  ######  #    #  #####  #   ####   #####   ####  
+ #        #    #  #  #       ##   #    #    #  #         #    #      
+  #####   #       #  #####   # #  #    #    #   ####     #     ####  
+       #  #       #  #       #  # #    #    #       #    #         # 
+ #     #  #    #  #  #       #   ##    #    #  #    #    #    #    # 
+  #####    ####   #  ######  #    #    #    #   ####     #     ####  
+
+
+	ENG_james_chadwick = {
+		name = ENG_james_chadwick
+		portraits = {
+			army = {
+				large = GFX_portrait_ENG_james_chadwick
+				small = GFX_idea_james_chadwick
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_nuclear_warfare_expert }
+			skills = {
+				specialization_nuclear = 2
+			}
+		}
+
+		#advisor = {
+		#	cost = 100
+		#	slot = theorist
+		#	idea_token = james_chadwick
+		#	ledger = army
+		#	allowed = {
+		#		original_tag = ENG
+		#	}
+		#	research_bonus = {
+		#		nuclear = 0.150
+		#	}
+		#	traits = {
+		#		nuclear_scientist
+		#	}
+		#}
+	}
+
+	ENG_frank_whittle = {
+		name = ENG_frank_whittle
+		portraits = {
+			army = {
+				large = GFX_portrait_ENG_frank_whittle
+				small = GFX_idea_frank_whittle
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_jet_expert scientist_trait_bright }
+			skills = {
+				specialization_air = 2
+			}
+		}
+
+		#advisor = {
+		#	cost = 100
+		#	slot = theorist
+		#	idea_token = frank_whittle
+		#	ledger = air
+		#	allowed = {
+		#		original_tag = ENG
+		#	}
+		#	research_bonus = {
+		#		rocketry = 0.150
+		#	}
+		#	traits = {
+		#		rocket_scientist
+		#	}
+		#}		
+	}
+
+	ENG_john_cockcroft = {
+		name = ENG_john_cockcroft
+		portraits = {
+			army = {
+				large = GFX_portrait_ENG_john_cockcroft
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_nuclear_power_expert }
+			skills = {
+				specialization_nuclear = 2
+			}
+		}
+	}
+
+	ENG_charles_goodeve = {
+		name = ENG_charles_goodeve
+		portraits = {
+			army = {
+				large = GFX_portrait_ENG_charles_goodeve
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_surface_ship_specialist }
+			skills = {
+				specialization_naval = 2
+			}
+		}
+	}
+
+	ENG_nevil_shute = {
+		name = ENG_nevil_shute
+		portraits = {
+			army = {
+				large = GFX_portrait_ENG_nevil_shute
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist scientist_trait_gifted_engineer }
+			skills = {
+				specialization_air = 2
+			}
+		}
+	}
+
+	ENG_robert_watson_watt = {
+		name = ENG_robert_watson_watt
+		portraits = {
+			army = {
+				large = GFX_portrait_ENG_robert_watson_watt
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist }
+			skills = {
+				specialization_air = 2
 			}
 		}
 	}

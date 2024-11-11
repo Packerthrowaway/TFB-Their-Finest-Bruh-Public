@@ -72,24 +72,26 @@ if = {
 	add_ideas = {
 		limited_conscription
 	}
+
 	if = {
-	limit = {
-		has_dlc = "Death or Dishonor"
-	}
-	add_ideas = {
-		YUG_idea_foreign_capital
-		YUG_idea_expanded_mining_industry
-		YUG_license_production
-		YUG_idea_orthodox_church_support
-	}
-}
+		limit = {
+			has_dlc = "Death or Dishonor"
+		}
+		add_ideas = {
+			YUG_idea_foreign_capital
+			YUG_idea_expanded_mining_industry
+			YUG_license_production
+			YUG_idea_orthodox_church_support
+		}
+	}	
 
 	add_political_power = 1198
+	add_command_power = 100
 	
 	if = {
-	limit = {
-		has_dlc = "Death or Dishonor"
-	}
+		limit = {
+			has_dlc = "Death or Dishonor"
+		}
 		complete_national_focus = YUG_western_focus
 		complete_national_focus = YUG_friendship_treaty_with_italy
 		complete_national_focus = YUG_attract_foreign_capital
@@ -113,22 +115,28 @@ if = {
 	}
 	
 	if = {
-	limit = {
-		NOT = { has_dlc = "Death or Dishonor" }
+		limit = {
+			NOT = { has_dlc = "Death or Dishonor" }
+		}
+		#generic focuses
+		complete_national_focus = army_effort
+		complete_national_focus = equipment_effort
+		complete_national_focus = motorization_effort
+		complete_national_focus = aviation_effort
+		complete_national_focus = naval_effort
+		complete_national_focus = flexible_navy
+		complete_national_focus = industrial_effort
+		complete_national_focus = construction_effort
+		complete_national_focus = production_effort
 	}
-	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	if = {
+		limit = { NOT = { has_dlc = "No Step Back" } }
+		set_oob = "YUG_1939"
 	}
-	
-	oob = "YUG_1939"
+	if = {
+		limit = { has_dlc = "No Step Back" } 
+		set_oob = "YUG_1939_nsb"
+	}
 	if = {
 		limit = { has_dlc = "Man the Guns" }
 			set_naval_oob = "YUG_1939_naval_mtg"
@@ -155,7 +163,6 @@ if = {
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
-		radio_detection = 1
 		mechanical_computing = 1
 		computing_machine = 1
 
@@ -167,6 +174,9 @@ if = {
 		oil_processing = 1
 		construction1 = 1
 		concentrated_industry = 1
+	}
+	complete_special_project = {
+		project = sp:sp_air_radar
 	}
 	if = {
 		limit = { not = { has_dlc = "Man the Guns" } }
@@ -183,6 +193,7 @@ if = {
 }
 
 set_convoys = 10
+
 set_politics = {
 	ruling_party = neutrality
 	last_election = "1935.5.3"
@@ -203,13 +214,14 @@ set_popularities = {
 		election_frequency = 36
 		elections_allowed = yes
 	}
-	set_popularities = {
+	set_popularities = { # Will get +7 from Italian focus: Potential Allies in the Balkans
 		democratic = 10
 		fascism = 20
 		communism = 10
 		neutrality = 60
 	}
 }
+
 set_stability = 0.6
 
 recruit_character = YUG_prince_paul
@@ -236,6 +248,8 @@ recruit_character = YUG_milan_nedic
 recruit_character = YUG_ivan_ribar
 recruit_character = YUG_dimitrije_ljotic
 recruit_character = YUG_ivo_lola_ribar
+recruit_character = SOV_vasily_flug
+recruit_character = SOV_boris_shteifon
 
 create_equipment_variant = {
 	name = "FT-17"

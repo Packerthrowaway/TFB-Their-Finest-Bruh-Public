@@ -309,12 +309,32 @@ country_event = {
 
 			add_political_power = -75		
 			add_named_threat = { threat = 5 name = GER_fate_of_yugoslavia }
+			every_country = {
+				limit = {
+					is_subject_of = YUG
+					OR = {
+						original_tag = BOS
+						original_tag = HRZ
+						original_tag = CRO
+						original_tag = MAC
+						original_tag = SLV
+						original_tag = KOS
+						original_tag = MNT
+						original_tag = HUN
+						original_tag = ROM
+					}
+				}
+				GER = { annex_country = { target = PREV transfer_troops = no } }
+			}
 			annex_country = { target = YUG transfer_troops = no }
 
 			hidden_effect = {
 				set_global_flag = GER_fate_of_yugoslavia_annex_YUG
 				news_event = { hours = 6 id = news.169 }
 			}
+			GER_yugoslavia_modify_mefo_bills_or_economy_of_conquest = yes
+			GER_seize_gold_reserves_in_europe_peacefully = yes
+			add_to_variable = { var = GER_mefo_bill_counter value = -5 }
 		}
 	}
 }
@@ -409,6 +429,9 @@ country_event = {
 				set_global_flag = GER_fate_of_yugoslavia_puppet_CRO_annex_YUG
 				news_event = { hours = 6 id = news.169 }
 			}
+			GER_yugoslavia_modify_mefo_bills_or_economy_of_conquest = yes
+			GER_seize_gold_reserves_in_europe_peacefully = yes
+			add_to_variable = { var = GER_mefo_bill_counter value = -5 }
 		}
 	}
 }

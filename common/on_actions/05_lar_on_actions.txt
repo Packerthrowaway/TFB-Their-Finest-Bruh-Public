@@ -951,4 +951,19 @@ on_actions = {
 			}
 		}
 	}
+	
+	on_ruling_party_change = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						has_cosmetic_tag = FRA_THIRD_EMPIRE
+						has_cosmetic_tag = FRA_ORLEANS
+					}
+					NOT = {	has_government = neutrality }
+				}
+				drop_cosmetic_tag = yes
+			}
+		}	
+	}
 }

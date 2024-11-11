@@ -137,6 +137,10 @@ focus_tree = {
 
 		completion_reward = {
 			navy_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.25
+			}
 			add_doctrine_cost_reduction = {
 				name = NZL_form_the_rnzn
 				cost_reduction = 0.25
@@ -534,6 +538,10 @@ focus_tree = {
 
 		complete_tooltip = {
 			air_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
 			random_state = {				
 				limit = {
 					has_state_flag = NZL_expand_the_nzpaf_AB
@@ -554,6 +562,10 @@ focus_tree = {
 
 		completion_reward = {
 			air_experience = 25
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -1356,11 +1368,24 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = NZL_project_seal
-				bonus = 0.75
-				uses = 2
-				category = nuclear
+			if = {
+				limit = {
+					NOT = {
+						has_tech = atomic_research
+					}
+				}
+				add_tech_bonus = {
+					name = NZL_project_seal
+					bonus = 0.5
+					uses = 1
+					category = nuclear
+				}
+			}
+			else = {
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.75
+				}
 			}
 		}
 	}
@@ -1434,7 +1459,13 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.1
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = NZL_bob_semple_tank
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_tech_bonus = {
 				name = NZL_bob_semple_tank
 				bonus = 0.75
@@ -1527,6 +1558,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.15
+			}
 			add_tech_bonus = {
 				name = NZL_schofield_tank
 				bonus = 0.75
@@ -1601,6 +1636,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.25
+			}
 			add_tech_bonus = {
 				name = NZL_artillery_focus
 				bonus = 0.75
@@ -1641,6 +1680,10 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.25
+			}
 			add_tech_bonus = {
 				name = NZL_big_bob_tank
 				ahead_reduction = 0.5

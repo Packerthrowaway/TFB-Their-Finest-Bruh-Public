@@ -15,6 +15,8 @@ focus_tree = {
 
 	continuous_focus_position = { x = 50 y = 1100 }
 
+	shared_focus = HABSBURG_part_of_something_bigger
+
 #	focus = {
 #		id = CZE_
 #		icon = GFX_
@@ -57,14 +59,18 @@ focus_tree = {
 
 	focus = {
 		id = CZE_fortification_studies
-		icon = GFX_goal_generic_construct_military
+		icon = GFX_focus_hol_the_foundations_of_defense
 		x = 3
 		y = 0
 
 		cost = 10
 
 		ai_will_do = {
-			factor = 200			
+			factor = 200
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}			
 		}
 
 		available = {
@@ -81,14 +87,17 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
+
 			army_experience = 10
+
 			add_ideas = CZE_fortification_focus
+
 		}
 	}
 
 	focus = {
 		id = CZE_fallback_line
-		icon = GFX_goal_generic_fortify_city
+		icon = GFX_focus_SWE_hedgehog_defense
 		prerequisite = { focus = CZE_fortification_studies }
 		x = -2
 		y = 1
@@ -101,6 +110,10 @@ focus_tree = {
 			modifier = {
 				factor = 0.5
 				is_in_faction_with = GER
+			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
 			}
 		}
 
@@ -117,7 +130,11 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+
 			army_experience = 20
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			9 = {
 				add_building_construction = { type = bunker province = 6440 level = 3 instant_build = yes }
 				add_building_construction = { type = bunker province = 6418 level = 3 instant_build = yes }
@@ -125,6 +142,7 @@ focus_tree = {
 				add_building_construction = { type = bunker province = 9414 level = 3 instant_build = yes }
 				add_building_construction = { type = bunker province = 3462 level = 3 instant_build = yes }
 			}
+
 		}
 	}
 
@@ -148,10 +166,17 @@ focus_tree = {
 				factor = 1.5
 				is_in_faction = no
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
-			CZE = { controls_state = 69 }
+			CZE = { 
+				controls_state = 69 
+				controls_state = 972 
+			}
 		}
 
 		bypass = {
@@ -163,7 +188,17 @@ focus_tree = {
 							limit_to_border = yes
 						}
 						building = bunker
-						level < 2
+						level < 3
+					}
+				}
+				972 = {
+					any_province_building_level = {
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+						building = bunker
+						level < 3
 					}
 				}
 				9 = {
@@ -210,10 +245,34 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
+
 			army_experience = 20
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			swap_ideas = {
+				add_idea = CZE_fortification_focus2
+				remove_idea = CZE_fortification_focus
+			}
+
 			if = {
 				limit = { controls_state = 69 }
 				69 = {
+					set_building_level = {
+						type = bunker
+						level = 3
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+							level < 3
+						}
+					}
+				}
+			}
+
+			if = {
+				limit = { controls_state = 972 }
+				972 = {
 					set_building_level = {
 						type = bunker
 						level = 3
@@ -275,10 +334,7 @@ focus_tree = {
 					}
 				}
 			}
-			swap_ideas = {
-				add_idea = CZE_fortification_focus2
-				remove_idea = CZE_fortification_focus
-			}	
+
 		}
 	}
 
@@ -302,10 +358,17 @@ focus_tree = {
 				factor = 1.5
 				is_in_faction = no
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
-			CZE = { controls_state = 69 }
+			CZE = { 
+				controls_state = 69 
+				controls_state = 972 
+			}
 		}
 
 		bypass = {
@@ -364,10 +427,34 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
+
 			army_experience = 20
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			swap_ideas = {
+				add_idea = CZE_fortification_focus3
+				remove_idea = CZE_fortification_focus2
+			}	
+
 			if = {
 				limit = { controls_state = 69 }
 				69 = {
+					set_building_level = {
+						type = bunker
+						level = 5
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+							level < 5
+						}
+					}
+				}
+			}
+
+			if = {
+				limit = { controls_state = 972 }
+				972 = {
 					set_building_level = {
 						type = bunker
 						level = 5
@@ -429,10 +516,7 @@ focus_tree = {
 					}
 				}
 			}
-			swap_ideas = {
-				add_idea = CZE_fortification_focus3
-				remove_idea = CZE_fortification_focus2
-			}	
+
 		}
 	}
 
@@ -518,7 +602,16 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
+
 			army_experience = 30
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			swap_ideas = {
+				add_idea = CZE_fortification_focus4
+				remove_idea = CZE_fortification_focus3
+			}
+
 			if = {
 				limit = { controls_state = 69 }
 				69 = {
@@ -528,7 +621,22 @@ focus_tree = {
 						province = {
 							all_provinces = yes
 							limit_to_border = yes
-							level < 6
+							level < 7
+						}
+					}
+				}
+			}
+
+			if = {
+				limit = { controls_state = 972 }
+				972 = {
+					set_building_level = {
+						type = bunker
+						level = 7
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+							level < 7
 						}
 					}
 				}
@@ -582,11 +690,8 @@ focus_tree = {
 						}
 					}
 				}
-			}
-			swap_ideas = {
-				add_idea = CZE_fortification_focus4
-				remove_idea = CZE_fortification_focus3
 			}	
+
 		}
 	}
 
@@ -614,6 +719,10 @@ focus_tree = {
 				factor = 0.5
 				HUN = { exists = no }
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -629,21 +738,26 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {       
+		completion_reward = {    
+
 			army_experience = 30
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			664 = {
-				add_building_construction = { type = bunker province = 3565 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 3565 level = 3 instant_build = yes }
 				add_building_construction = { type = bunker province = 3716 level = 3 instant_build = yes }
 				add_building_construction = { type = bunker province = 6561 level = 3 instant_build = yes }
-				add_building_construction = { type = bunker province = 6573 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 6573 level = 3 instant_build = yes }
 				add_building_construction = { type = bunker province = 9537 level = 3 instant_build = yes }
-				add_building_construction = { type = bunker province = 11679 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 11679 level = 3 instant_build = yes }
 			}
 			
 			73 = {
 				add_building_construction = { type = bunker province = 11691 level = 3 instant_build = yes }
-				add_building_construction = { type = bunker province = 3548 level = 2 instant_build = yes }
+				add_building_construction = { type = bunker province = 3548 level = 3 instant_build = yes }
 			}
+
 		}
 	}
 
@@ -663,6 +777,10 @@ focus_tree = {
 				factor = 0.25
 				is_in_faction_with = POL
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -679,11 +797,16 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+
 			army_experience = 30
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			72 = {
 				add_building_construction = { type = bunker province = 9567 level = 2 instant_build = yes }
 				add_building_construction = { type = bunker province = 9551 level = 2 instant_build = yes }
 			}
+
 			71 = {      
 				add_building_construction = { type = bunker province = 581 level = 2 instant_build = yes }
 				add_building_construction = { type = bunker province = 3550 level = 2 instant_build = yes }
@@ -691,6 +814,7 @@ focus_tree = {
 				add_building_construction = { type = bunker province = 6604 level = 2 instant_build = yes }
 				add_building_construction = { type = bunker province = 11554 level = 2 instant_build = yes }
 			}
+
 		}
 	}
 
@@ -706,6 +830,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 60
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -724,7 +852,11 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
+
 			army_experience = 20
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			664 = {
 				add_building_construction = { type = bunker province = 6573 level = 2 instant_build = yes }
 			}
@@ -738,6 +870,7 @@ focus_tree = {
 				add_building_construction = { type = bunker province = 6418 level = 2 instant_build = yes }
 				add_building_construction = { type = bunker province = 11542 level = 3 instant_build = yes }
 			}
+
 		}
 	}
 
@@ -756,6 +889,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -773,12 +910,26 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = CZE_industrial_legacy_idea
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			add_tech_bonus = {
+				name = CZE_industrial_legacy
+				bonus = 1
+				uses = 1
+				category = industry
+			}	
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = CZE_csd
 		}
 	}
 
 	focus = {
 		id = CZE_favor_czechs_1
-		icon = GFX_goal_generic_construct_mil_factory
+		icon = GFX_focus_generic_industry_1
 		prerequisite = { focus = CZE_industrial_legacy }
 		mutually_exclusive = { focus = CZE_balanced_1 }
 		x = -2
@@ -796,6 +947,10 @@ focus_tree = {
 			modifier = {
 				factor = 2
 				has_completed_focus = CZE_german_leanings
+			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
 			}
 		}
 
@@ -835,7 +990,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_favor_czechs_2
-		icon = GFX_goal_generic_construct_mil_factory
+		icon = GFX_focus_generic_industry_2
 		prerequisite = { focus = CZE_favor_czechs_1 }
 		x = 0
 		y = 1
@@ -845,6 +1000,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -883,7 +1042,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_favor_czechs_3
-		icon = GFX_goal_generic_construct_mil_factory
+		icon = GFX_focus_generic_industry_3
 		prerequisite = { focus = CZE_favor_czechs_2 }
 		x = 0
 		y = 2
@@ -893,6 +1052,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -950,6 +1113,10 @@ focus_tree = {
 				factor = 0.5
 				has_completed_focus = CZE_german_leanings
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -976,9 +1143,14 @@ focus_tree = {
 				}
 			}
 			70 = {
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
 					level = 1
 					instant_build = yes
 				}
@@ -988,7 +1160,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_balanced_2
-		icon = GFX_goal_generic_construction
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
 		prerequisite = { focus = CZE_balanced_1 }
 		x = 0
 		y = 1
@@ -998,6 +1170,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1023,10 +1199,15 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			70 = {
-				add_extra_state_shared_building_slots = 1
+			71 = {
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
 					level = 1
 					instant_build = yes
 				}
@@ -1036,7 +1217,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_balanced_3
-		icon = GFX_goal_generic_construction
+		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = CZE_balanced_2 }
 		x = 0
 		y = 2
@@ -1046,6 +1227,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1099,6 +1284,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1129,7 +1318,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_arms_exports_1
-		icon = GFX_goal_generic_production
+		icon = GFX_focus_generic_reorient_production
 		prerequisite = { focus = CZE_industrial_legacy }
 		x = 2
 		y = 1
@@ -1146,6 +1335,10 @@ focus_tree = {
 			modifier = {
 				factor = 2
 				has_completed_focus = CZE_german_leanings
+			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
 			}
 		}
 
@@ -1187,6 +1380,10 @@ focus_tree = {
 				factor = 2
 				has_completed_focus = CZE_german_leanings
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1209,7 +1406,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_arms_exports_3
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_generic_positive_trade_relations
 		prerequisite = { focus = CZE_arms_exports_2 }
 		x = 0
 		y = 2
@@ -1226,6 +1423,10 @@ focus_tree = {
 			modifier = {
 				factor = 2
 				has_completed_focus = CZE_german_leanings
+			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
 			}
 		}
 
@@ -1262,6 +1463,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1303,6 +1508,10 @@ focus_tree = {
 				factor = 0
 				has_completed_focus = CZE_german_leanings
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1322,6 +1531,7 @@ focus_tree = {
 			add_political_power = 100
 			#allow communist reformer
 			# relations changes
+			custom_effect_tooltip = generic_skip_one_line_tt
 			every_other_country = {
 				limit = { 
 					has_government = communism
@@ -1357,7 +1567,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_czech_socialism
-		icon = GFX_focus_generic_soviet_politics
+		icon = GFX_focus_SWE_socialist_reforms
 		prerequisite = { focus = CZE_communist_support }
 		x = -2
 		y = 3
@@ -1367,6 +1577,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1404,6 +1618,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 50
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1426,7 +1644,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_communist_support
-		icon = GFX_focus_generic_soviet_politics
+		icon = GFX_focus_generic_workers
 		prerequisite = { focus = CZE_go_left }
 		x = 0
 		y = 1
@@ -1436,6 +1654,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1458,7 +1680,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_join_comintern
-		icon = GFX_goal_support_communism
+		icon = GFX_focus_generic_join_comintern
 		prerequisite = { focus = CZE_communist_support }
 		x = 0
 		y = 2
@@ -1468,6 +1690,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1516,6 +1742,10 @@ focus_tree = {
 				factor = 0
 				has_completed_focus = CZE_german_leanings
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1549,6 +1779,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 70
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1581,6 +1815,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1617,6 +1855,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1659,6 +1901,10 @@ focus_tree = {
 				factor = 0
 				has_completed_focus = CZE_trust_in_the_west
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1674,7 +1920,13 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+			add_political_power = 120
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}	
 			#allow nazi leader
+			custom_effect_tooltip = generic_skip_one_line_tt 
 			every_other_country = {
 				limit = { 
 					has_government = fascism
@@ -1720,6 +1972,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1752,6 +2008,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1792,6 +2052,10 @@ focus_tree = {
 				factor = 2
 				has_completed_focus = CZE_german_leanings
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1812,25 +2076,29 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+
 			if = {
 				limit = {
 					has_idea = CZE_divided_nation
 				}
-				swap_ideas = { remove_idea = CZE_divided_nation add_idea = CZE_czech_fascism_idea  }	
+				remove_ideas = CZE_divided_nation
+				custom_effect_tooltip = generic_skip_one_line_tt
 			}
-			if = {
-				limit = {
-					NOT = { has_idea = CZE_divided_nation }
-				}
-				add_ideas = CZE_czech_fascism_idea	
+
+			add_timed_idea = { 
+				idea = CZE_czech_fascism_idea 
+				days = 1095 
 			}
-		    country_event = { days = 6 random = 120 id = czech.14 }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			country_event = { days = 6 random_days = 5 id = czech.14 }			
 		}
 	}
 	
 	focus = {
 		id = CZE_national_fascism
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_focus_ITA_generic_fascist_workers
 		mutually_exclusive = { focus = CZE_exclude_the_slovaks }
 		prerequisite = { focus = CZE_czech_fascism }
 		x = 4
@@ -1844,6 +2112,10 @@ focus_tree = {
 			modifier = {
 				factor = 2
 				has_completed_focus = CZE_german_leanings
+			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
 			}
 		}
 
@@ -1883,6 +2155,10 @@ focus_tree = {
 			modifier = {
 				factor = 2
 				has_completed_focus = CZE_german_leanings
+			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
 			}
 		}
 
@@ -1925,6 +2201,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1970,6 +2250,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -1992,7 +2276,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_german_leanings
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_focus_generic_fascist_propaganda
 		prerequisite = { focus = CZE_strategy_decisions }
 		mutually_exclusive = { focus = CZE_trust_in_the_west focus = CZE_an_entente_of_our_own }
 		x = -2
@@ -2011,6 +2295,10 @@ focus_tree = {
 				factor = 0
 				has_completed_focus = CZE_democratic_bastion
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2026,13 +2314,18 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			 GER = { add_opinion_modifier = { target = CZE modifier = CZE_german_leanings } }
+			GER = { add_opinion_modifier = { target = CZE modifier = CZE_german_leanings } }
+			add_political_power = 75
+			add_popularity = {
+				ideology = GER
+				popularity = 0.1
+			}	
 		}
 	}
 
 	focus = {
 		id = CZE_german_puppet
-		icon = GFX_focus_CZE_german_puppet
+		icon = GFX_focus_GER_integrate_czechoslovakia
 		prerequisite = { focus = CZE_deliver_sudetenland }
 		mutually_exclusive = { focus = CZE_german_ally focus = CZE_german_minor_ally }
 		x = -2
@@ -2043,6 +2336,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2079,15 +2376,39 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 40
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
 			GER = { exists = yes }
 			GER = { is_subject = no }
+			NOT = { has_war_with = GER }
+			AND = {
+				owns_state = 69
+				owns_state = 74
+				owns_state = 972
+			}
 		}
 
 		bypass = {
-
+			69 = {
+				NOT = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
+			74 = {
+				NOT = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
+			972 = {
+				NOT = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
 		}
 
 		cancel_if_invalid = yes
@@ -2101,7 +2422,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_german_technology
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_focus_ARG_fascist_researchers
 		prerequisite = { focus = CZE_deliver_sudetenland }
 		x = 0
 		y = 2
@@ -2111,6 +2432,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2152,6 +2477,10 @@ focus_tree = {
 				factor = 2
 				has_completed_focus = CZE_go_left
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2167,10 +2496,16 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+
+			add_stability = 0.05
+			add_political_power = 50
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			ENG = {
 				add_opinion_modifier = { 
-						target = ROOT 
-						modifier =  CZE_trust_in_the_west
+					target = ROOT 
+					modifier =  CZE_trust_in_the_west
 				}
 			}
 			FRA = {
@@ -2192,6 +2527,7 @@ focus_tree = {
 					active = no
 				}
 			}
+
 		}
 	}
 
@@ -2207,6 +2543,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2244,6 +2584,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2278,6 +2622,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 60
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2294,14 +2642,23 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = secret_bonus
-				bonus = 0.6
-				uses = 3
-				category = electronics
-				category = jet_technology
-				category = rocketry
+
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.5
 			}
+
+			add_ideas = generic_secret_weapons_ns
+
+			#add_tech_bonus = {
+			#	name = secret_bonus
+			#	bonus = 1.0
+			#	uses = 2 # was 3
+			#	category = electronics
+			#	category = jet_technology
+			#	category = rocketry
+			#}
+
 		}
 	}
 
@@ -2318,6 +2675,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 40
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2334,12 +2695,32 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = nuclear_bonus
-				bonus = 0.7
-				uses = 1
-				category = nuclear
+
+			IF = {
+				limit = {
+					NOT = {
+						has_tech = atomic_research
+					}
+				}
+				add_tech_bonus = {
+					name = nuclear_bonus
+					bonus = 1.0
+					ahead_reduction = 1 # was 2
+					uses = 1
+					category = nuclear
+				}
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.75
+				}
 			}
+			ELSE = {
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 1
+				}
+			}
+
 		}
 	}
 
@@ -2356,6 +2737,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 40
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2378,7 +2763,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_invite_yugoslavia
-		icon = GFX_goal_generic_major_alliance
+		icon = GFX_focus_invite_yugoslavia
 		prerequisite = { focus = CZE_an_entente_of_our_own }
 		x = -1
 		y = 1
@@ -2388,6 +2773,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2418,7 +2807,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_invite_romania
-		icon = GFX_goal_generic_major_alliance
+		icon = GFX_focus_invite_romania
 		prerequisite = { focus = CZE_an_entente_of_our_own }
 		x = 1
 		y = 1
@@ -2428,6 +2817,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2474,6 +2867,10 @@ focus_tree = {
 			modifier = {
 				factor = 1.5
 				has_completed_focus = CZE_invite_yugoslavia
+			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
 			}
 		}
 
@@ -2522,6 +2919,10 @@ focus_tree = {
 				factor = 1.5
 				has_completed_focus = CZE_invite_yugoslavia
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2556,7 +2957,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_rapprochement_with_hungary
-		icon = GFX_goal_generic_military_deal
+		icon = GFX_focus_generic_befriend_hungary
 		prerequisite = { focus = CZE_security_council }
 		x = -2
 		y = 1
@@ -2566,6 +2967,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 40
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2591,7 +2996,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_czechoslovak_legion
-		icon = GFX_goal_generic_axis_build_infantry
+		icon = GFX_focus_CZE_czechoslovak_legion_export
 		prerequisite = { focus = CZE_strategy_decisions }
 		x = 5
 		y = 1
@@ -2601,6 +3006,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 60
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2637,6 +3046,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2652,13 +3065,17 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			army_experience = 10
+			army_experience = 50
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.25
+			}
 		}
 	}
 
 	focus = {
 		id = CZE_mountain_bonus
-		icon = GFX_goal_generic_special_forces
+		icon = GFX_focus_SMB_special_forces_option_1
 		prerequisite = { focus = CZE_military_research_institute }
 		x = -3
 		y = 1
@@ -2668,6 +3085,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 50
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2705,6 +3126,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2742,6 +3167,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 60
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2792,6 +3221,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2830,6 +3263,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2867,6 +3304,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 60
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2903,6 +3344,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 70
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2930,7 +3375,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_mechanization
-		icon = GFX_goal_generic_production2
+		icon = GFX_focus_generic_mechanized
 		prerequisite = { focus = CZE_motorization_scheme }
 		x = 1
 		y = 2
@@ -2940,6 +3385,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 50
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -2967,7 +3416,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_armour_bonus_ii
-		icon = GFX_goal_generic_army_tanks
+		icon = GFX_focus_generic_army_tanks2
 		prerequisite = { focus = CZE_armour_bonus_1 }
 		x = 3
 		y = 2
@@ -2977,6 +3426,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 60
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3004,7 +3457,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_doctrine_bonus_2
-		icon = GFX_goal_generic_army_doctrines
+		icon = GFX_focus_FIN_motti_tactics
 		prerequisite = { focus = CZE_mechanization }
 		prerequisite = { focus = CZE_armour_bonus_ii }
 		x = 2
@@ -3015,6 +3468,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3042,7 +3499,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_war_college
-		icon = GFX_goal_generic_build_tank
+		icon = GFX_focus_generic_military_academy
 		prerequisite = { focus = CZE_doctrine_bonus }
 		prerequisite = { focus = CZE_doctrine_bonus_2 }
 		x = 0
@@ -3053,6 +3510,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3095,6 +3556,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3110,7 +3575,11 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			air_experience = 10
+			air_experience = 100
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
 		}
 	}
 
@@ -3126,6 +3595,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 70
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3165,6 +3638,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 70
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3192,7 +3669,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_heavy_fighter_focus
-		icon = GFX_goal_generic_air_fighter
+		icon = GFX_focus_usa_escort_fighters
 		prerequisite = { focus = CZE_import_foreign_fighters }
 		mutually_exclusive = { focus = CZE_light_fighter_focus }
 		x = 1
@@ -3203,6 +3680,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 50
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3240,6 +3721,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3273,6 +3758,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3310,6 +3799,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 70
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3349,6 +3842,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 70
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3375,7 +3872,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_tac_focus
-		icon = GFX_goal_generic_air_bomber
+		icon = GFX_focus_SWE_marauder_bombers
 		prerequisite = { focus = CZE_import_foreign_bombers }
 		mutually_exclusive = { focus = CZE_cas_focus }
 		x = 1
@@ -3386,6 +3883,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 30
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3425,6 +3926,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 30
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3442,7 +3947,11 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			navy_experience = 25
+			navy_experience = 100
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.25
+			}
 		}
 	}
 
@@ -3458,6 +3967,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 70
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3524,6 +4037,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 40
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3555,6 +4072,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3591,6 +4112,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 20
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3627,6 +4152,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3666,6 +4195,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 20
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
@@ -3693,7 +4226,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_capital_focus
-		icon = GFX_goal_generic_navy_doctrines_tactics
+		icon = GFX_focus_generic_navy_battleship2
 		prerequisite = { focus = CZE_cruiser__catchup_1 }
 		prerequisite = { focus = CZE_battleship_catchup_1 }
 		mutually_exclusive = { focus = CZE_raiding_focus }
@@ -3705,6 +4238,10 @@ focus_tree = {
 
 		ai_will_do = {
 			factor = 5
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
