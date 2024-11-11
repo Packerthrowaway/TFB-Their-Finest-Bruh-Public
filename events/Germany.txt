@@ -2318,6 +2318,11 @@ country_event = {
 				}	
 			}
 			modifier = {
+				factor = 2
+				is_in_faction = yes
+				num_faction_members > 2
+			}
+			modifier = {
 				factor = 0.5
 				strength_ratio = {
 					tag = GER
@@ -2384,6 +2389,10 @@ country_event = {
 
 		hidden_effect = {
 			news_event = { hours = 6 id = news.57 }
+			# Hitler has faced resistance and showed now
+			add_to_variable = { 
+				GER_hitlers_blunders_variable = 1
+			}
 		}
 		set_country_flag = allies_support_czechs
 	}
@@ -2417,6 +2426,10 @@ country_event = {
 
 		hidden_effect = {
 			country_event = { hours = 6 id = news.58 }
+			# Hitler has faced resistance and showed now
+			add_to_variable = { 
+				GER_hitlers_blunders_variable = 1
+			}
 		}
 	}
 }
@@ -2654,6 +2667,10 @@ country_event = {
 			}
 			modifier = {
 				factor = 0.5
+				AUS = { exists = yes }
+			}
+			modifier = {
+				factor = 0.5
 				GER = {
 					OR = {
 						AND = {
@@ -2787,7 +2804,7 @@ country_event = {
 				}
 			}
 			modifier = {
-				add = 100 #Germany's neighbors are banding together and feeling mighty strong. This will increase the chance for players to have an impact on the outcome
+				add = 150 #Germany's neighbors are banding together and feeling mighty strong. This will increase the chance for players to have an impact on the outcome
 				OR = {
 					POL = { 
 						has_completed_focus = POL_coerce_czechoslovakia

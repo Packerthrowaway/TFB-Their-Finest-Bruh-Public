@@ -40,8 +40,7 @@ is_alone_or_in_faction_at_peace_with_GER = {
 		}
 	}
 	NOT = {
-		any_other_country = {
-			is_in_faction_with = PREV
+		any_allied_country = {
 			has_war_with = GER
 		}
 	}
@@ -236,8 +235,6 @@ going_war_with_SOV = {
 }
 
 
-
-
 GER_is_historical_ai = {
 	OR = {
 		AND = {
@@ -257,6 +254,17 @@ GER_is_historical_ai = {
 		}
 	}
 }
+
+GER_is_alt_fascist_ai = {
+	OR = {
+		has_country_flag = GER_AI_RANDOM_ALT_FASCIST
+		has_game_rule = {
+			rule = GER_ai_behavior
+			option = GER_ALT_FASCIST
+		}
+	}
+}
+
 
 # Reichskommissariat Ukraine Zone
 GER_is_RKU_state = {

@@ -1178,6 +1178,62 @@ form_austria_hungary_category = {
 			has_dlc = "Waking the Tiger"
 		}
 
+		highlight_states = {
+			highlight_state_targets = {
+				state = 155
+				state = 43
+				state = 973
+				state = 974
+				state = 154
+				state = 102
+				state = 853
+				state = 103
+				state = 104
+				state = 804
+				state = 109
+				state = 45
+				state = 83
+				state = 76
+				state = 84
+				state = 764
+				state = 82
+				state = 975
+				state = 976
+				state = 4
+				state = 152
+				state = 153
+				state = 848
+				state = 73
+				state = 664
+				state = 71
+				state = 70
+				state = 75
+				state = 972
+				state = 9
+				state = 69
+				state = 74
+				state = 72
+				state = 852
+				state = 736
+				state = 39
+				state = 850
+				state = 160
+				state = 159
+				state = 163
+			}
+		}
+
+		on_map_mode = decision_view_only
+
+		visible = {
+			tag = HUN
+			OR = {
+				has_completed_focus = HUN_proclaim_the_restoration_of_austria_hungary
+				has_completed_focus = wuw_HUN_renovato_imperii
+			}
+			NOT = { has_global_flag = reintegrate_the_empire_flag }
+		}
+
 		available = {
 			is_subject = no
 			controls_state = 155
@@ -1197,15 +1253,29 @@ form_austria_hungary_category = {
 			controls_state = 84
 			controls_state = 764
 			controls_state = 82
-		}
-
-		visible = {
-			tag = HUN
-			OR = {
-				has_completed_focus = HUN_proclaim_the_restoration_of_austria_hungary
-				has_completed_focus = wuw_HUN_renovato_imperii
-			}
-			NOT = { has_global_flag = reintegrate_the_empire_flag }
+			controls_state = 975
+			controls_state = 976
+			controls_state = 4
+			controls_state = 152
+			controls_state = 153
+			controls_state = 848
+			controls_state = 73
+			controls_state = 664
+			controls_state = 71
+			controls_state = 70
+			controls_state = 75
+			controls_state = 972
+			controls_state = 9
+			controls_state = 69
+			controls_state = 74
+			controls_state = 72
+			controls_state = 852
+			controls_state = 736
+			controls_state = 39
+			controls_state = 850
+			controls_state = 160
+			controls_state = 159
+			controls_state = 163
 		}
 
 		complete_effect = {
@@ -1237,6 +1307,29 @@ form_austria_hungary_category = {
 						state = 850
 						state = 764
 						state = 82
+						state = 975
+						state = 976
+						state = 4
+						state = 152
+						state = 153
+						state = 848
+						state = 73
+						state = 664
+						state = 71
+						state = 70
+						state = 75
+						state = 972
+						state = 9
+						state = 69
+						state = 74
+						state = 72
+						state = 852
+						state = 736
+						state = 39
+						state = 850
+						state = 160
+						state = 159
+						state = 163
 					}
 				}
 				add_core_of = ROOT
@@ -5363,6 +5456,7 @@ form_hre_category = {
 			controls_state = 28
 			controls_state = 735
 			controls_state = 69
+			controls_state = 972
 			controls_state = 9
 			controls_state = 75
 			controls_state = 74
@@ -5375,6 +5469,7 @@ form_hre_category = {
 			controls_state = 162
 			controls_state = 736
 			controls_state = 852
+			controls_state = 102
 
 			# Switzerland
 			custom_trigger_tooltip = {
@@ -5465,22 +5560,53 @@ form_hre_category = {
 
 			set_cosmetic_tag = HRE_UNIFIED
 
-			8 = { add_core_of = ROOT }
-			28 = { add_core_of = ROOT }
-			735 = { add_core_of = ROOT }
-			69 = { add_core_of = ROOT }
-			9 = { add_core_of = ROOT }
-			75 = { add_core_of = ROOT }
-			74 = { add_core_of = ROOT }
-			158 = { add_core_of = ROOT }
-			159 = { add_core_of = ROOT }
-			39 = { add_core_of = ROOT }
-			160 = { add_core_of = ROOT }
-			161 = { add_core_of = ROOT }
-			162 = { add_core_of = ROOT }
-			736 = { add_core_of = ROOT }
-			850 = { add_core_of = ROOT }
-			852 = { add_core_of = ROOT }
+			8 = { add_core_of = ROOT } #Luxembourg
+			28 = { add_core_of = ROOT } #Alsace
+			735 = { add_core_of = ROOT } #Savoy
+			158 = { add_core_of = ROOT } #Piedmont
+			159 = { add_core_of = ROOT } #Lombardy
+			39 = { add_core_of = ROOT } #South Tyrol
+			160 = { add_core_of = ROOT } #Veneto
+			161 = { add_core_of = ROOT } #Emilia Romagna
+			162 = { add_core_of = ROOT } #Tuscany
+			736 = { add_core_of = ROOT } #Litorale
+			850 = { add_core_of = ROOT } #Trentino
+			852 = { add_core_of = ROOT } #Istria
+			102 = { add_core_of = ROOT } #North Slovenia
+
+			#Czechoslovakia, not all
+			69 = { add_core_of = ROOT } #Sudetenland
+			972 = { add_core_of = ROOT } #South Sudetenland
+			9 = { add_core_of = ROOT } #Bohemia
+			75 = { add_core_of = ROOT } #Moravia
+			74 = { add_core_of = ROOT } #East Sudetenland
+
+			#Germany
+			custom_effect_tooltip = form_hre_germany_coring_states_tt
+			hidden_effect = {
+				51 = { add_core_of = ROOT } # Rhineland
+				42 = { add_core_of = ROOT } # Moselland
+				56 = { add_core_of = ROOT } # Weser-ems
+				57 = { add_core_of = ROOT } # Westfalen
+				55 = { add_core_of = ROOT } # Hessen
+				50 = { add_core_of = ROOT } # Wurttemberg
+				978 = { add_core_of = ROOT } # Baden
+				59 = { add_core_of = ROOT } # Hannover
+				58 = { add_core_of = ROOT } # Holstein
+				909 = { add_core_of = ROOT } # Schleswig
+				60 = { add_core_of = ROOT } # Thuringia
+				54 = { add_core_of = ROOT } # Franken
+				52 = { add_core_of = ROOT } # Oberbayern
+				53 = { add_core_of = ROOT } # Niederbayern
+				61 = { add_core_of = ROOT } # Mecklenburg
+				64 = { add_core_of = ROOT } # Brandenberg
+				65 = { add_core_of = ROOT } # Sachsen
+				62 = { add_core_of = ROOT } # Vorpommern
+				68 = { add_core_of = ROOT } # Ostmark
+				66 = { add_core_of = ROOT } # Niederschlesien
+				67 = { add_core_of = ROOT } # Oberschlesien
+				63 = { add_core_of = ROOT } # Hinterpommern
+			}
 
 			# Switzerland
 			custom_effect_tooltip = form_country_switzerland_coring_states_tt

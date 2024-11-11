@@ -2670,41 +2670,116 @@ state_event = {
 					limit = {
 						has_state_flag = nazi_state_withdrawn1
 					}
-					damage_building = { type = industrial_complex damage = 0.5 }
-					damage_building = { type = arms_factory damage = 0.5 }
-					damage_building = { type = infrastructure damage = 0.5 }
+					if = {
+						limit = {
+							industrial_complex > 0
+						}
+						damage_building = { type = industrial_complex damage = 0.5 }
+					}
+					if = {
+						limit = {
+							arms_factory > 0
+						}
+						damage_building = { type = arms_factory damage = 0.5 }
+					}
+					if = {
+						limit = {
+							infrastructure > 0
+						}
+						damage_building = { type = infrastructure damage = 0.5 }
+					}
 				}
 				if = {
 					limit = {
 						has_state_flag = nazi_state_withdrawn2
 					}
-					damage_building = { type = industrial_complex damage = 0.8 }
-					damage_building = { type = arms_factory damage = 0.8 }
-					damage_building = { type = infrastructure damage = 0.8 }
+					if = {
+						limit = {
+							industrial_complex > 0
+						}
+						damage_building = { type = industrial_complex damage = 0.8 }
+					}
+					if = {
+						limit = {
+							arms_factory > 0
+						}
+						damage_building = { type = arms_factory damage = 0.8 }
+					}
+					if = {
+						limit = {
+							infrastructure > 0
+						}
+						damage_building = { type = infrastructure damage = 0.8 }
+					}
 				}
 				if = {
 					limit = {
 						has_state_flag = nazi_state_withdrawn3
 					}
-					damage_building = { type = industrial_complex damage = 1.2 }
-					damage_building = { type = arms_factory damage = 1.2 }
-					damage_building = { type = infrastructure damage = 1.2 }
+					if = {
+						limit = {
+							industrial_complex > 0
+						}
+						damage_building = { type = industrial_complex damage = 1.2 }
+					}
+					if = {
+						limit = {
+							arms_factory > 0
+						}
+						damage_building = { type = arms_factory damage = 1.2 }
+					}
+					if = {
+						limit = {
+							infrastructure > 0
+						}
+						damage_building = { type = infrastructure damage = 1.2 }
+					}
 				}
 				if = {
 					limit = {
 						has_state_flag = nazi_state_withdrawn4
 					}
-					damage_building = { type = industrial_complex damage = 1.8 }
-					damage_building = { type = arms_factory damage = 1.8 }
-					damage_building = { type = infrastructure damage = 1.8 }
+					if = {
+						limit = {
+							industrial_complex > 0
+						}
+						damage_building = { type = industrial_complex damage = 1.8 }
+					}
+					if = {
+						limit = {
+							arms_factory > 0
+						}
+						damage_building = { type = arms_factory damage = 1.8 }
+					}
+					if = {
+						limit = {
+							infrastructure > 0
+						}
+						damage_building = { type = infrastructure damage = 1.8 }
+					}
 				}
 				if = {
 					limit = {
 						has_state_flag = nazi_state_withdrawn5
 					}
-					damage_building = { type = industrial_complex damage = 2.5 }
-					damage_building = { type = arms_factory damage = 2.5 }
-					damage_building = { type = infrastructure damage = 2.5 }
+					if = {
+						limit = {
+							industrial_complex > 0
+						}
+						damage_building = { type = industrial_complex damage = 2.5 }
+					}
+					if = {
+						limit = {
+							arms_factory > 0
+						}
+						damage_building = { type = arms_factory damage = 2.5 }
+					}
+					if = {
+						limit = {
+							infrastructure > 0
+						}
+						damage_building = { type = infrastructure damage = 2.5 }
+					}
 				}
 			}
 		}
@@ -3487,10 +3562,24 @@ country_event = {
 	
 	option = {
 		name = wtt_germany.63.a
-		effect_tooltip = {
-			GER = {
-				add_state_core = 8
-				add_state_core = 28
+		IF = {
+			limit = {
+				GER = {
+					has_completed_focus = GER_reintegrate_luxemburg_and_alsace_lorraine
+				}
+			}
+			effect_tooltip = {
+				GER = {
+					add_state_core = 8
+					add_state_core = 28
+				}
+			}
+		}
+		ELSE = {
+			effect_tooltip = {
+				GER = {
+					add_state_core = 28
+				}
 			}
 		}
 	}

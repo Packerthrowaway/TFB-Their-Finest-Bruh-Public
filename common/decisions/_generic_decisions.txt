@@ -2181,7 +2181,7 @@ economy_decisions = {
 			base = 1
 			modifier = {
 				factor = 1.5
-				any_owned_state = { free_building_slots = { building = industrial_complex size < 1 include_locked = no } }
+				all_owned_state = { free_building_slots = { building = industrial_complex size < 1 include_locked = no } }
 			}
 		}
     }
@@ -2301,17 +2301,10 @@ economy_decisions = {
 			}
 		}
 		ai_will_do = {
-			base = 1
+			base = 0
 			modifier = {
-				factor = 10
+				add = 1
 				all_owned_state = { free_building_slots = { building = industrial_complex size < 1 include_locked = no } }
-			}
-			modifier = {
-				any_owned_state = {
-					infrastructure > 5
-					free_building_slots = { building = industrial_complex size > 0 include_locked = no }
-				}
-				factor = 0
 			}
 		}
     }
