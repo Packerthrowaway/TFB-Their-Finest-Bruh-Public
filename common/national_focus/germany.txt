@@ -22356,24 +22356,20 @@ focus_tree = {
 
 
 		completion_reward = {
-			IF = {
+			if = {
 				limit = {
-					NOT = {
-						any_other_country = {
-							is_in_array = {
-								array = GER.started_communist_cw_here
-								value = THIS
-							}
-							capital_scope = { is_on_continent = europe}
+					any_other_country = {
+						NOT = { is_in_faction_with = ROOT }
+						is_in_array = {
+							array = GER.started_communist_cw_here
+							value = THIS
 						}
+						capital_scope = { is_on_continent = europe}
 					}
 				}
-				custom_effect_tooltip = GER_strengthen_the_proletarian_international_tt
-			}
-	
-			ELSE = {
 				every_other_country = {
 					limit = {
+						NOT = { is_in_faction_with = ROOT }
 						is_in_array = {
 							array = GER.started_communist_cw_here
 							value = THIS
@@ -22385,6 +22381,9 @@ focus_tree = {
 						hours = 6
 					}
 				}
+			}	
+			else = {
+				custom_effect_tooltip = GER_strengthen_the_proletarian_international_tt
 			}
 		}
 	}
