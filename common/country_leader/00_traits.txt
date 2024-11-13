@@ -143,7 +143,9 @@ leader_traits = {
 
 		experience_gain_navy = @chief_experience_gain_medium
 
-		command_cap = @tier3
+		command_cap_increase = @tier3_cp_cap_increase
+		command_power = @tier3_cp_cost
+
 
 		equipment_bonus = {
 			capital_ship = {
@@ -13891,13 +13893,14 @@ leader_traits = {
 		army_org_factor = 0.04
 		#experience_gain_army = @chief_experience_gain_low
 		
-		command_cap = @tier1
+		command_cap_increase = @tier1_cp_cap_increase
+		command_power = @tier1_cp_cost
 
 		ai_will_do = {
-			factor = 1
+			factor = @army_command_factor_1
 			modifier = {
 				factor = 0
-				command_power < @tier1
+				command_power < @tier1_cp_cost
 			}
 		}
 	}
@@ -13907,13 +13910,14 @@ leader_traits = {
 		army_org_factor = 0.08
 		#experience_gain_army = @chief_experience_gain_medium
 		
-		command_cap = @tier2
+		command_cap_increase = @tier2_cp_cap_increase
+		command_power = @tier2_cp_cost
 
 		ai_will_do = {
-			factor = 2
+			factor = @army_command_factor_2
 			modifier = {
 				factor = 0
-				command_power < @tier2
+				command_power < @tier2_cp_cost
 			}
 		}
 	}
@@ -13923,13 +13927,14 @@ leader_traits = {
 		army_org_factor = 0.12
 		#experience_gain_army = @chief_experience_gain_high
 		
-		command_cap = @tier3
+		command_cap_increase = @tier3_cp_cap_increase
+		command_power = @tier3_cp_cost
 
 		ai_will_do = {
-			factor = 3
+			factor = @army_command_factor_3
 			modifier = {
 				factor = 0
-				command_power < @tier3
+				command_power < @tier3_cp_cost
 			}
 		}
 	}
@@ -15027,10 +15032,15 @@ leader_traits = {
 		navy_submarine_detection_factor = 0.1
 		experience_gain_navy = @chief_experience_gain_low
 		
-		command_cap = @tier1
+		command_cap_increase = @tier1_cp_cap_increase
+		command_power = @tier1_cp_cost
 
 		ai_will_do = {
-			factor = 1
+			factor = @army_command_factor_1
+			modifier = {
+				factor = 0
+				command_power < @tier1_cp_cost
+			}
 		}
 	}
 	
@@ -15039,10 +15049,15 @@ leader_traits = {
 		navy_submarine_detection_factor = 0.15
 		experience_gain_navy = @chief_experience_gain_medium
 		
-		command_cap = @tier2
+		command_cap_increase = @tier2_cp_cap_increase
+		command_power = @tier2_cp_cost
 
 		ai_will_do = {
-			factor = 2
+			factor = @army_command_factor_2
+			modifier = {
+				factor = 0
+				command_power < @tier2_cp_cost
+			}
 		}
 	}
 	
@@ -15051,10 +15066,15 @@ leader_traits = {
 		navy_submarine_detection_factor = 0.2
 		experience_gain_navy = @chief_experience_gain_high
 		
-		command_cap = @tier3
+		command_cap_increase = @tier3_cp_cap_increase
+		command_power = @tier3_cp_cost
 
 		ai_will_do = {
-			factor = 3
+			factor = @army_command_factor_3
+			modifier = {
+				factor = 0
+				command_power < @tier3_cp_cost
+			}
 		}
 	}
 	
