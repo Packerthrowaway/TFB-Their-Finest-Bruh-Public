@@ -1137,25 +1137,25 @@ country_event = {
 			clr_country_flag = AUS_antischluss_active_flag
 		}
 
-		hidden_effect = {
-			IF = {
-				limit = {
-					ITA = {
-						OR = {
-							has_completed_focus = ITA_guarantee_austrian_independence
-							has_guaranteed = AUS
-						}
-					}
-				}
+		# hidden_effect = {
+		# 	IF = {
+		# 		limit = {
+		# 			ITA = {
+		# 				OR = {
+		# 					has_completed_focus = ITA_guarantee_austrian_independence
+		# 					has_guaranteed = AUS
+		# 				}
+		# 			}
+		# 		}
 
-				ITA = {
-					country_event = {
-						id = AUS_political_events.107
-						hours = 12
-					}
-				}
-			}
-		}
+		# 		ITA = {
+		# 			country_event = {
+		# 				id = AUS_political_events.107
+		# 				hours = 12
+		# 			}
+		# 		}
+		# 	}
+		# }
 	}
 
 	option = { # Refuse
@@ -1166,7 +1166,7 @@ country_event = {
 				factor = 0
 				is_historical_focus_on = yes
 				NOT = { HUN = { has_completed_focus = HUN_protect_austria } }
-				NOT = { ITA = { has_completed_focus = ITA_guarantee_austrian_independence } }
+				#NOT = { ITA = { has_completed_focus = ITA_guarantee_austrian_independence } }
 				NOT = {
 					strength_ratio = {
 						tag = GER
@@ -1202,7 +1202,7 @@ country_event = {
 				add = 100
 				ITA = {
 					OR = {
-						has_completed_focus = ITA_guarantee_austrian_independence
+						#has_completed_focus = ITA_guarantee_austrian_independence
 						is_in_faction_with = AUS
 					}
 				}
@@ -1259,7 +1259,7 @@ country_event = {
 			limit = {
 				ITA = {
 					OR = {
-						has_completed_focus = ITA_guarantee_austrian_independence
+						#has_completed_focus = ITA_guarantee_austrian_independence
 						has_guaranteed = AUS
 					}
 					
@@ -1432,7 +1432,7 @@ country_event = {
 			}
 			if = {
 				limit = {
-					has_completed_focus = ENG_no_further_appeasement
+					has_completed_focus = ENG_containment
 				}
 				add_political_power = -200
 			}
@@ -2691,19 +2691,19 @@ country_event = {
 			modifier = { #minors banding together to resist German Annexation should likely resist German annexation
 				factor = 0.5
 				OR = {
-					POL = { #Germany's neighbors are banding together and feeling mighty strong
-						has_completed_focus = POL_coerce_czechoslovakia
-							OR = {
-								is_in_faction_with = CZE
-								has_guaranteed = CZE
-							}
-					}
-					AND = {
-						is_in_faction_with = AUS
-						AUS = {
-							has_completed_focus = AUS_the_danubian_federation
-						}
-					}
+					# POL = { #Germany's neighbors are banding together and feeling mighty strong
+					# 	has_completed_focus = POL_coerce_czechoslovakia
+					# 		OR = {
+					# 			is_in_faction_with = CZE
+					# 			has_guaranteed = CZE
+					# 		}
+					# }
+					# AND = {
+					# 	is_in_faction_with = AUS
+					# 	AUS = {
+					# 		has_completed_focus = AUS_the_danubian_federation
+					# 	}
+					# }
 					AND = {
 						is_in_faction_with = HUN
 						HUN = {
@@ -2806,19 +2806,19 @@ country_event = {
 			modifier = {
 				add = 150 #Germany's neighbors are banding together and feeling mighty strong. This will increase the chance for players to have an impact on the outcome
 				OR = {
-					POL = { 
-						has_completed_focus = POL_coerce_czechoslovakia
-						OR = {
-							is_in_faction_with = CZE
-							has_guaranteed = CZE
-						}
-					}
-					AND = {
-						AUS = {
-							has_completed_focus = AUS_the_danubian_federation
-						}
-						is_in_faction_with = AUS
-					}
+					# POL = { 
+					# 	has_completed_focus = POL_coerce_czechoslovakia
+					# 	OR = {
+					# 		is_in_faction_with = CZE
+					# 		has_guaranteed = CZE
+					# 	}
+					# }
+					# AND = {
+					# 	AUS = {
+					# 		has_completed_focus = AUS_the_danubian_federation
+					# 	}
+					# 	is_in_faction_with = AUS
+					# }
 					AND = {
 						HUN = {
 							has_completed_focus = wuw_HUN_a_danubian_federation
@@ -7960,7 +7960,7 @@ country_event = {
 				POL = {
 					OR = {
 						has_completed_focus = POL_protect_czechozlovakia
-						has_completed_focus = POL_coerce_czechoslovakia
+						#has_completed_focus = POL_coerce_czechoslovakia
 					}
 				}
 				OR = {

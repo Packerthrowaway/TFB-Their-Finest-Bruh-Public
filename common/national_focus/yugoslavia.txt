@@ -392,9 +392,9 @@
 				name = YUG_german_military_mission
 				bonus = 1.0
 				uses = 1
-				technology = basic_medium_tank
-				technology = improved_medium_tank
-				technology = advanced_medium_tank
+				# technology = basic_medium_tank
+				# technology = improved_medium_tank
+				# technology = advanced_medium_tank
 				technology = mechanised_infantry
 			}
 		}
@@ -751,645 +751,645 @@
 	
 
 	
-	focus = {
-		id = YUG_end_the_regency
-		icon = GFX_focus_rom_royal_dictatorship
-		prerequisite = { focus = YUG_concessions_for_macedonians focus = YUG_surrender_macedonia focus = YUG_banat_for_support focus = YUG_autonomous_transylvania focus = YUG_fortify_banat }
-		mutually_exclusive = { focus = YUG_join_axis }
-		x = 0
-		y = 1
-		relative_position_id = YUG_banat_for_support
+	# focus = {
+	# 	id = YUG_end_the_regency
+	# 	icon = GFX_focus_rom_royal_dictatorship
+	# 	prerequisite = { focus = YUG_concessions_for_macedonians }#focus = YUG_surrender_macedonia focus = YUG_banat_for_support focus = YUG_autonomous_transylvania focus = YUG_fortify_banat }
+	# 	mutually_exclusive = { focus = YUG_join_axis }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_banat_for_support
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-			date > 1938.09.06
-		}
+	# 	available = {
+	# 		date > 1938.09.06
+	# 	}
 
-		bypass = {
-			has_country_leader = {
-				character = YUG_peter_ii
-				ruling_only = yes
-			}
-		}
+	# 	bypass = {
+	# 		has_country_leader = {
+	# 			character = YUG_peter_ii
+	# 			ruling_only = yes
+	# 		}
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			retire_country_leader = yes
-			YUG_peter_ii = {
-				promote_character = {ideology = despotism }
-				promote_character = {ideology = conservatism }
-			}
-			if = {
-				limit = {
-					date > 1941.09.06
-				}
-				YUG_peter_ii = {
-					swap_country_leader_traits = { remove = underage_monarch add = legitimate_heir }
-				}
-				hidden_effect = { set_country_flag = peter_is_of_age }
-			}
-		}
-	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	completion_reward = {
+	# 		retire_country_leader = yes
+	# 		YUG_peter_ii = {
+	# 			promote_character = {ideology = despotism }
+	# 			promote_character = {ideology = conservatism }
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				date > 1941.09.06
+	# 			}
+	# 			YUG_peter_ii = {
+	# 				swap_country_leader_traits = { remove = underage_monarch add = legitimate_heir }
+	# 			}
+	# 			hidden_effect = { set_country_flag = peter_is_of_age }
+	# 		}
+	# 	}
+	# }
 	
-	focus = {
-		id = YUG_coronation
-		icon = GFX_goal_support_democracy
-		prerequisite = { focus = YUG_end_the_regency focus = YUG_join_axis }
-		x = -2
-		y = 1
-		relative_position_id = YUG_end_the_regency
+	# focus = {
+	# 	id = YUG_coronation
+	# 	icon = GFX_goal_support_democracy
+	# 	prerequisite = { focus = YUG_end_the_regency focus = YUG_join_axis }
+	# 	x = -2
+	# 	y = 1
+	# 	relative_position_id = YUG_end_the_regency
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-			is_subject = no
-			OR = {
-				AND = {
-					has_country_leader = {
-						character = YUG_peter_ii
-						ruling_only = yes
-					}
-					NOT = { has_country_leader_with_trait = underage_monarch }
-				}
-				AND = {
-					NOT = { has_idea = king_peter_1 }
-					has_country_leader = {
-						character = YUG_prince_paul
-						ruling_only = yes
-					}
-				}
-			}
-		}
+	# 	available = {
+	# 		is_subject = no
+	# 		OR = {
+	# 			AND = {
+	# 				has_country_leader = {
+	# 					character = YUG_peter_ii
+	# 					ruling_only = yes
+	# 				}
+	# 				NOT = { has_country_leader_with_trait = underage_monarch }
+	# 			}
+	# 			AND = {
+	# 				NOT = { has_idea = king_peter_1 }
+	# 				has_country_leader = {
+	# 					character = YUG_prince_paul
+	# 					ruling_only = yes
+	# 				}
+	# 			}
+	# 		}
+	# 	}
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			if = {
-				limit = {
-					OR = {
-						has_idea = king_peter_1
-						NOT = { has_completed_focus = YUG_western_focus }
-					}
-				}
-				set_party_name = { 
-					ideology = neutrality
-					name = YUG_kardocevik
-					long_name = YUG_kardocevik
-				}
-			}
-			hidden_effect = {
-				country_event = { id = DOD_yugoslavia.60 }
-			}
-			effect_tooltip = { #This is what the actual event does. It's better to give the player a tooltip that tells them what the event does than to just tell them "X event happens"
-				if = {
-					limit = {
-						has_country_leader = {
-							character = YUG_prince_paul
-							ruling_only = yes
-						}
-						NOT = { has_idea = king_peter_1 }
-						has_completed_focus = YUG_western_focus
-					}
-					add_country_leader_role = {
-						character = YUG_prince_paul
-						country_leader = {
-							ideology = fascism_ideology
-							traits = {
-								collaborator_king
-							}
-						}
-						promote_leader = yes
-					}
-					set_party_name = { 
-						ideology = fascism
-						name = YUG_kardocevik
-						long_name = YUG_kardocevik
-					}
-					set_party_name = { 
-						ideology = neutrality
-						name = YUG_peters_loyalists
-						long_name = YUG_peters_loyalists
-					}
-					custom_effect_tooltip = all_subjects_become_fascist_tt
-					if = {
-						limit = {
-							has_government = neutrality
-						}
-						custom_effect_tooltip = neutral_to_fascist_tt
-						set_politics = {
-							ruling_party = fascism
-						}
-					}
-				}
-				add_stability = 0.1
-				add_war_support = 0.2
-			}
-		}
-	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	completion_reward = {
+	# 		if = {
+	# 			limit = {
+	# 				OR = {
+	# 					has_idea = king_peter_1
+	# 					NOT = { has_completed_focus = YUG_western_focus }
+	# 				}
+	# 			}
+	# 			set_party_name = { 
+	# 				ideology = neutrality
+	# 				name = YUG_kardocevik
+	# 				long_name = YUG_kardocevik
+	# 			}
+	# 		}
+	# 		hidden_effect = {
+	# 			country_event = { id = DOD_yugoslavia.60 }
+	# 		}
+	# 		effect_tooltip = { #This is what the actual event does. It's better to give the player a tooltip that tells them what the event does than to just tell them "X event happens"
+	# 			if = {
+	# 				limit = {
+	# 					has_country_leader = {
+	# 						character = YUG_prince_paul
+	# 						ruling_only = yes
+	# 					}
+	# 					NOT = { has_idea = king_peter_1 }
+	# 					has_completed_focus = YUG_western_focus
+	# 				}
+	# 				add_country_leader_role = {
+	# 					character = YUG_prince_paul
+	# 					country_leader = {
+	# 						ideology = fascism_ideology
+	# 						traits = {
+	# 							collaborator_king
+	# 						}
+	# 					}
+	# 					promote_leader = yes
+	# 				}
+	# 				set_party_name = { 
+	# 					ideology = fascism
+	# 					name = YUG_kardocevik
+	# 					long_name = YUG_kardocevik
+	# 				}
+	# 				set_party_name = { 
+	# 					ideology = neutrality
+	# 					name = YUG_peters_loyalists
+	# 					long_name = YUG_peters_loyalists
+	# 				}
+	# 				custom_effect_tooltip = all_subjects_become_fascist_tt
+	# 				if = {
+	# 					limit = {
+	# 						has_government = neutrality
+	# 					}
+	# 					custom_effect_tooltip = neutral_to_fascist_tt
+	# 					set_politics = {
+	# 						ruling_party = fascism
+	# 					}
+	# 				}
+	# 			}
+	# 			add_stability = 0.1
+	# 			add_war_support = 0.2
+	# 		}
+	# 	}
+	# }
 	
-	focus = {
-		id = YUG_royal_wedding
-		icon = GFX_goal_tfv_strengthen_commonwealth_ties
-		prerequisite = { focus = YUG_end_the_regency }
-		x = 0
-		y = 1
-		relative_position_id = YUG_end_the_regency
+	# focus = {
+	# 	id = YUG_royal_wedding
+	# 	icon = GFX_goal_tfv_strengthen_commonwealth_ties
+	# 	prerequisite = { focus = YUG_end_the_regency }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_end_the_regency
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-			has_country_leader = {
-				character = YUG_peter_ii
-				ruling_only = yes
-			}
-			NOT = { has_country_leader_with_trait = underage_monarch }
-		}
+	# 	available = {
+	# 		has_country_leader = {
+	# 			character = YUG_peter_ii
+	# 			ruling_only = yes
+	# 		}
+	# 		NOT = { has_country_leader_with_trait = underage_monarch }
+	# 	}
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			country_event = { id = DOD_yugoslavia.50 }
-		}
-	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	completion_reward = {
+	# 		country_event = { id = DOD_yugoslavia.50 }
+	# 	}
+	# }
 
-	focus = { #Yugoslavia joining the faction of the country they married
-		id = YUG_join_allies
-		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = YUG_royal_wedding }
-		prerequisite = { focus = YUG_coronation }
-		mutually_exclusive = { focus = YUG_enforced_neutrality }
-		x = 0
-		y = 1
-		relative_position_id = YUG_royal_wedding
+	# focus = { #Yugoslavia joining the faction of the country they married
+	# 	id = YUG_join_allies
+	# 	icon = GFX_goal_generic_major_alliance
+	# 	prerequisite = { focus = YUG_royal_wedding }
+	# 	prerequisite = { focus = YUG_coronation }
+	# 	mutually_exclusive = { focus = YUG_enforced_neutrality }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_royal_wedding
 
-		cost = 10 
+	# 	cost = 10 
 
-		ai_will_do = {
-			factor = 50
-		}
+	# 	ai_will_do = {
+	# 		factor = 50
+	# 	}
 
-		available = {
-			hidden_trigger = {
-				OR = {
-					event_target:yugoslavia_wedding_partner = {
-						NOT = { original_tag = YUG }
-						is_in_faction = yes
-					}
-					AND = {
-						hidden_trigger = { event_target:yugoslavia_wedding_partner = { original_tag = YUG } }
-						any_other_country = {
-							NOT = { has_war_with = ROOT }
-							is_faction_leader = yes
-							is_major = yes
-							has_government = democratic
-						}
+	# 	available = {
+	# 		hidden_trigger = {
+	# 			OR = {
+	# 				event_target:yugoslavia_wedding_partner = {
+	# 					NOT = { original_tag = YUG }
+	# 					is_in_faction = yes
+	# 				}
+	# 				AND = {
+	# 					hidden_trigger = { event_target:yugoslavia_wedding_partner = { original_tag = YUG } }
+	# 					any_other_country = {
+	# 						NOT = { has_war_with = ROOT }
+	# 						is_faction_leader = yes
+	# 						is_major = yes
+	# 						has_government = democratic
+	# 					}
 						
-						NOT = {
-							any_other_country = {
-								is_in_faction_with = ENG
-								has_war_with = YUG
-							}
-						}
-					}
-				}
-			}
-		}
+	# 					NOT = {
+	# 						any_other_country = {
+	# 							is_in_faction_with = ENG
+	# 							has_war_with = YUG
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
 
-		bypass = {
-			is_in_faction = yes
-		}
+	# 	bypass = {
+	# 		is_in_faction = yes
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
 
-		completion_reward = {
-			custom_effect_tooltip = YUG_royal_alliance_tt
-			hidden_effect = {
-				if = {
-					limit = {
-						event_target:yugoslavia_wedding_partner = {
-							NOT = { original_tag = YUG }
-							NOT = { has_war_with = ROOT }
-							is_in_faction = yes
-						}
-					}
-					if = {
-						limit = {
-							event_target:yugoslavia_wedding_partner = { is_faction_leader = yes }
-						}
-						event_target:yugoslavia_wedding_partner = {
-							country_event = generic.2
-						}
-					}
-					else = {
-						random_other_country = {
-							limit = {
-								is_in_faction_with = event_target:yugoslavia_wedding_partner
-								is_faction_leader = yes
-							}
-							country_event = generic.2
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = { 
-							ENG = {
-								is_faction_leader = yes
-								has_government = democratic
-								not = { has_war_with = ROOT }
-							}
-						}
-						ENG = { country_event = generic.2 }
-					}
-					else = {
-						get_best_alliance_match_democratic_effect = yes
-						var:best_leader = {
-							country_event = generic.2
-						}
-					}
-					if = {
-						limit = {
-							has_idea = YUG_idea_croatian_opposition
-						}
-						country_event = DOD_yugoslavia.10
-					}
-				}
-			}
-		}
-	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = YUG_royal_alliance_tt
+	# 		hidden_effect = {
+	# 			if = {
+	# 				limit = {
+	# 					event_target:yugoslavia_wedding_partner = {
+	# 						NOT = { original_tag = YUG }
+	# 						NOT = { has_war_with = ROOT }
+	# 						is_in_faction = yes
+	# 					}
+	# 				}
+	# 				if = {
+	# 					limit = {
+	# 						event_target:yugoslavia_wedding_partner = { is_faction_leader = yes }
+	# 					}
+	# 					event_target:yugoslavia_wedding_partner = {
+	# 						country_event = generic.2
+	# 					}
+	# 				}
+	# 				else = {
+	# 					random_other_country = {
+	# 						limit = {
+	# 							is_in_faction_with = event_target:yugoslavia_wedding_partner
+	# 							is_faction_leader = yes
+	# 						}
+	# 						country_event = generic.2
+	# 					}
+	# 				}
+	# 			}
+	# 			else = {
+	# 				if = {
+	# 					limit = { 
+	# 						ENG = {
+	# 							is_faction_leader = yes
+	# 							has_government = democratic
+	# 							not = { has_war_with = ROOT }
+	# 						}
+	# 					}
+	# 					ENG = { country_event = generic.2 }
+	# 				}
+	# 				else = {
+	# 					get_best_alliance_match_democratic_effect = yes
+	# 					var:best_leader = {
+	# 						country_event = generic.2
+	# 					}
+	# 				}
+	# 				if = {
+	# 					limit = {
+	# 						has_idea = YUG_idea_croatian_opposition
+	# 					}
+	# 					country_event = DOD_yugoslavia.10
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
-	focus = {
-		id = YUG_allied_air_combat_school
-		icon = GFX_goal_generic_air_doctrine
-		prerequisite = { focus = YUG_join_allies }
-		x = 0
-		y = 1
-		relative_position_id = YUG_join_allies
+	# focus = {
+	# 	id = YUG_allied_air_combat_school
+	# 	icon = GFX_goal_generic_air_doctrine
+	# 	prerequisite = { focus = YUG_join_allies }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_join_allies
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 100
-		}
+	# 	ai_will_do = {
+	# 		factor = 100
+	# 	}
 
-		available = {
-			is_in_faction_with = ENG
-		}
+	# 	available = {
+	# 		is_in_faction_with = ENG
+	# 	}
 
-		bypass = {
+	# 	bypass = {
 
-		}
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
 
-		completion_reward = {
-			add_to_tech_sharing_group = YUG_air_research_group
-			ENG = {
-				add_to_tech_sharing_group = YUG_air_research_group
-			}
-		}
-	}
+	# 	completion_reward = {
+	# 		add_to_tech_sharing_group = YUG_air_research_group
+	# 		ENG = {
+	# 			add_to_tech_sharing_group = YUG_air_research_group
+	# 		}
+	# 	}
+	# }
 	
-	focus = {
-		id = YUG_enforced_neutrality
-		icon = GFX_goal_generic_defence
-		prerequisite = { focus = YUG_royal_wedding }
-		prerequisite = { focus = YUG_coronation }
-		mutually_exclusive = { focus = YUG_join_allies }
-		x = 0
-		y = 1
-		relative_position_id = YUG_coronation
+	# focus = {
+	# 	id = YUG_enforced_neutrality
+	# 	icon = GFX_goal_generic_defence
+	# 	prerequisite = { focus = YUG_royal_wedding }
+	# 	prerequisite = { focus = YUG_coronation }
+	# 	mutually_exclusive = { focus = YUG_join_allies }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_coronation
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-		}
+	# 	available = {
+	# 	}
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			add_ideas = YUG_neutral_foreign_policy
-			add_ideas = neutrality_idea
-		}
-	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	completion_reward = {
+	# 		add_ideas = YUG_neutral_foreign_policy
+	# 		add_ideas = neutrality_idea
+	# 	}
+	# }
 	
-	focus = {
-		id = YUG_fortress_yugoslavia
-		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = YUG_enforced_neutrality }
-		x = 0
-		y = 1
-		relative_position_id = YUG_enforced_neutrality
+	# focus = {
+	# 	id = YUG_fortress_yugoslavia
+	# 	icon = GFX_goal_generic_fortify_city
+	# 	prerequisite = { focus = YUG_enforced_neutrality }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_enforced_neutrality
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-		}
+	# 	available = {
+	# 	}
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_MANPOWER }
-		completion_reward = {
-			if = {
-				limit = { #Controls both Slovenian states
-					controls_state = 102
-					controls_state = 853
-				}
-				102 = {
-					add_building_construction = { type = bunker province = 3631 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 9596 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 596 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 665 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 6672 level = 3 instant_build = yes }
-				}
-				853 = {
-					add_building_construction = { type = bunker province = 9627 level = 3 instant_build = yes }
-				}
-				103 = {
-					add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 11901 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 984 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3974 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3924 level = 3 instant_build = yes }
-				}
-				109 = {
-					add_building_construction = { type = bunker province = 11594 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 9611 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3627 level = 3 instant_build = yes }
-				}
-			}
-			else_if = {
-				limit = {
-					controls_state = 853
-				}
-				853 = {
-					add_building_construction = { type = bunker province = 9627 level = 3 instant_build = yes }
-				}
-				103 = {
-					add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 11901 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 984 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3974 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3924 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3601 level = 3 instant_build = yes }
-				}
-				109 = {
-					add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 9611 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3627 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 11581 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3592 level = 3 instant_build = yes }
-				}
-			}
-			else = {
-				103 = {
-					add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 11901 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 984 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3974 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3924 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3601 level = 3 instant_build = yes }
-				}
-				109 = {
-					add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 9611 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3627 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 11581 level = 3 instant_build = yes }
-					add_building_construction = { type = bunker province = 3592 level = 3 instant_build = yes }
-				}
-			}
-		}
-	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_MANPOWER }
+	# 	completion_reward = {
+	# 		if = {
+	# 			limit = { #Controls both Slovenian states
+	# 				controls_state = 102
+	# 				controls_state = 853
+	# 			}
+	# 			102 = {
+	# 				add_building_construction = { type = bunker province = 3631 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 9596 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 596 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 665 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 6672 level = 3 instant_build = yes }
+	# 			}
+	# 			853 = {
+	# 				add_building_construction = { type = bunker province = 9627 level = 3 instant_build = yes }
+	# 			}
+	# 			103 = {
+	# 				add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 11901 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 984 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3974 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3924 level = 3 instant_build = yes }
+	# 			}
+	# 			109 = {
+	# 				add_building_construction = { type = bunker province = 11594 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 9611 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3627 level = 3 instant_build = yes }
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				controls_state = 853
+	# 			}
+	# 			853 = {
+	# 				add_building_construction = { type = bunker province = 9627 level = 3 instant_build = yes }
+	# 			}
+	# 			103 = {
+	# 				add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 11901 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 984 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3974 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3924 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3601 level = 3 instant_build = yes }
+	# 			}
+	# 			109 = {
+	# 				add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 9611 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3627 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 11581 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3592 level = 3 instant_build = yes }
+	# 			}
+	# 		}
+	# 		else = {
+	# 			103 = {
+	# 				add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 11901 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 984 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3974 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3924 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3601 level = 3 instant_build = yes }
+	# 			}
+	# 			109 = {
+	# 				add_building_construction = { type = bunker province = 11564 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 9611 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3627 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 11581 level = 3 instant_build = yes }
+	# 				add_building_construction = { type = bunker province = 3592 level = 3 instant_build = yes }
+	# 			}
+	# 		}
+	# 	}
+	# }
 	
 	
 	
-	focus = {
-		id = YUG_towards_independence
-		icon = GFX_goal_tfv_sever_ties_with_uk
-		prerequisite = { focus = YUG_banat_for_support focus = YUG_autonomous_transylvania focus = YUG_fortify_banat }
-		mutually_exclusive = { focus = YUG_united_kingdom }
-		x = 0
-		y = 1
-		relative_position_id = YUG_autonomous_transylvania
+	# focus = {
+	# 	id = YUG_towards_independence
+	# 	icon = GFX_goal_tfv_sever_ties_with_uk
+	# 	prerequisite = { focus = YUG_banat_for_support focus = YUG_autonomous_transylvania focus = YUG_fortify_banat }
+	# 	mutually_exclusive = { focus = YUG_united_kingdom }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_autonomous_transylvania
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-		}
+	# 	available = {
+	# 	}
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			every_other_country = {
-				limit = {
-					capital_scope = {
-						is_on_continent = europe
-					}
-					NOT = { original_tag = YUG }
-					is_subject_of = ROOT
-				}
-				add_autonomy_score = {
-					value = 25
-					localization = YUG_towards_independence_mod
-				}
-				add_opinion_modifier = { 
-					target = ROOT
-					modifier = huge_increase
-				}
-			}
-		}
-	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	completion_reward = {
+	# 		every_other_country = {
+	# 			limit = {
+	# 				capital_scope = {
+	# 					is_on_continent = europe
+	# 				}
+	# 				NOT = { original_tag = YUG }
+	# 				is_subject_of = ROOT
+	# 			}
+	# 			add_autonomy_score = {
+	# 				value = 25
+	# 				localization = YUG_towards_independence_mod
+	# 			}
+	# 			add_opinion_modifier = { 
+	# 				target = ROOT
+	# 				modifier = huge_increase
+	# 			}
+	# 		}
+	# 	}
+	# }
 	
-	focus = {
-		id = YUG_defence_army_of_yugoslavia
-		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = YUG_towards_independence }
-		x = 0
-		y = 1
-		relative_position_id = YUG_towards_independence
+	# focus = {
+	# 	id = YUG_defence_army_of_yugoslavia
+	# 	icon = GFX_goal_generic_national_unity
+	# 	prerequisite = { focus = YUG_towards_independence }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_towards_independence
 
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-		}
+	# 	available = {
+	# 	}
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_MANPOWER }
-		completion_reward = {
-			division_template = {
-				name = "Yugoslavian Defence Army"
-				priority = 1
-				division_names_group = YUG_INF_01
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_MANPOWER }
+	# 	completion_reward = {
+	# 		division_template = {
+	# 			name = "Yugoslavian Defence Army"
+	# 			priority = 1
+	# 			division_names_group = YUG_INF_01
+	# 			regiments = {
+	# 				infantry = { x = 0 y = 0 }
+	# 				infantry = { x = 0 y = 1 }
+	# 				infantry = { x = 0 y = 2 }
 		
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
+	# 				infantry = { x = 1 y = 0 }
+	# 				infantry = { x = 1 y = 1 }
+	# 				infantry = { x = 1 y = 2 }
 		
-					artillery_brigade = { x = 2 y = 0 }
-					artillery_brigade = { x = 2 y = 1 }
-				}
-				support = {
-					engineer = { x = 0 y = 0 }
-				}
-			}
-			set_division_template_lock = {
-				division_template = "Yugoslavian Defence Army"
-				is_locked = yes
-			}
-			random_owned_controlled_state = {
-				limit = { PREV = { has_full_control_of_state = PREV } }
-				create_unit = {
-					division = "name = \"Yugoslavian Defence Army\" division_template = \"Yugoslavian Defence Army\" start_experience_factor = 0.9" 
-					owner = PREV
-				}
-			}
-			every_other_country = {
-				limit = {
-					capital_scope = {
-						is_on_continent = europe
-					}
-					NOT = { original_tag = YUG }
-					is_subject_of = ROOT
-				}
-				division_template = {
-					name = "Yugoslavian Defence Army"
-					priority = 1
-					division_names_group = YUG_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
+	# 				artillery_brigade = { x = 2 y = 0 }
+	# 				artillery_brigade = { x = 2 y = 1 }
+	# 			}
+	# 			support = {
+	# 				engineer = { x = 0 y = 0 }
+	# 			}
+	# 		}
+	# 		set_division_template_lock = {
+	# 			division_template = "Yugoslavian Defence Army"
+	# 			is_locked = yes
+	# 		}
+	# 		random_owned_controlled_state = {
+	# 			limit = { PREV = { has_full_control_of_state = PREV } }
+	# 			create_unit = {
+	# 				division = "name = \"Yugoslavian Defence Army\" division_template = \"Yugoslavian Defence Army\" start_experience_factor = 0.9" 
+	# 				owner = PREV
+	# 			}
+	# 		}
+	# 		every_other_country = {
+	# 			limit = {
+	# 				capital_scope = {
+	# 					is_on_continent = europe
+	# 				}
+	# 				NOT = { original_tag = YUG }
+	# 				is_subject_of = ROOT
+	# 			}
+	# 			division_template = {
+	# 				name = "Yugoslavian Defence Army"
+	# 				priority = 1
+	# 				division_names_group = YUG_INF_01
+	# 				regiments = {
+	# 					infantry = { x = 0 y = 0 }
+	# 					infantry = { x = 0 y = 1 }
+	# 					infantry = { x = 0 y = 2 }
 			
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
+	# 					infantry = { x = 1 y = 0 }
+	# 					infantry = { x = 1 y = 1 }
+	# 					infantry = { x = 1 y = 2 }
 			
-						artillery_brigade = { x = 2 y = 0 }
-						artillery_brigade = { x = 2 y = 1 }
-					}
-					support = {
-						engineer = { x = 0 y = 0 }
-					}
-				}
-				set_division_template_lock = {
-					division_template = "Yugoslavian Defence Army"
-					is_locked = yes
-				}
-				random_owned_controlled_state = {
-					limit = { PREV = { has_full_control_of_state = PREV } }
-					create_unit = {
-						division = "name = \"Yugoslavian Defence Army\" division_template = \"Yugoslavian Defence Army\" start_experience_factor = 0.9" 
-						owner = PREV
-					}
-				}
-			}
-		}
-	}
+	# 					artillery_brigade = { x = 2 y = 0 }
+	# 					artillery_brigade = { x = 2 y = 1 }
+	# 				}
+	# 				support = {
+	# 					engineer = { x = 0 y = 0 }
+	# 				}
+	# 			}
+	# 			set_division_template_lock = {
+	# 				division_template = "Yugoslavian Defence Army"
+	# 				is_locked = yes
+	# 			}
+	# 			random_owned_controlled_state = {
+	# 				limit = { PREV = { has_full_control_of_state = PREV } }
+	# 				create_unit = {
+	# 					division = "name = \"Yugoslavian Defence Army\" division_template = \"Yugoslavian Defence Army\" start_experience_factor = 0.9" 
+	# 					owner = PREV
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 	
-	focus = {
-		id = YUG_defence_league
-		icon = GFX_goal_generic_alliance
-		prerequisite = { focus = YUG_defence_army_of_yugoslavia }
-		x = 0
-		y = 1
-		relative_position_id = YUG_defence_army_of_yugoslavia
+	# focus = {
+	# 	id = YUG_defence_league
+	# 	icon = GFX_goal_generic_alliance
+	# 	prerequisite = { focus = YUG_defence_army_of_yugoslavia }
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = YUG_defence_army_of_yugoslavia
 		
-		cost = 10
+	# 	cost = 10
 
-		ai_will_do = {
-			factor = 40
-		}
+	# 	ai_will_do = {
+	# 		factor = 40
+	# 	}
 
-		available = {
-			is_subject = no
-		}
+	# 	available = {
+	# 		is_subject = no
+	# 	}
 
-		bypass = {
-		}
+	# 	bypass = {
+	# 	}
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_MANPOWER }
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_MANPOWER }
 
-		complete_tooltip = {
+	# 	complete_tooltip = {
 
-		}
+	# 	}
 
-		completion_reward = {
-			add_ideas = YUG_idea_all_yugoslavian_regiments
-		}
-	}
+	# 	completion_reward = {
+	# 		add_ideas = YUG_idea_all_yugoslavian_regiments
+	# 	}
+	# }
 
 	############################
 	######### INDUSTRY #########

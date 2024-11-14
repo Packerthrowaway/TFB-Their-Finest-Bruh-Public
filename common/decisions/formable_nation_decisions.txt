@@ -1899,6 +1899,770 @@ form_ottoman_empire_category = {
 			}
 		}
 	}
+
+	ott_reform_the_eyalet_of_rumelia = { #Greece + Albania + Bulgaria + South Yugoslavia
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			#Greece
+			custom_trigger_tooltip = {
+				tooltip = form_rumelia_greece_required_states_tt
+				controls_state = 47
+				controls_state = 185
+				controls_state = 731
+				controls_state = 184
+			}
+			#Bulgaria
+			custom_trigger_tooltip = {
+				tooltip = form_rumelia_bulgaria_required_states_tt
+				controls_state = 48
+				controls_state = 801
+				controls_state = 212
+				controls_state = 211
+			}
+			#Yugoslavia 
+			custom_trigger_tooltip = {
+				tooltip = form_rumelia_yugoslavia_required_states_tt
+				controls_state = 106 
+				controls_state = 970 
+				controls_state = 803
+				controls_state = 802
+				controls_state = 108 
+				controls_state = 105 
+				controls_state = 107
+			}
+			#Albania			
+			custom_trigger_tooltip = {
+				tooltip = form_rumelia_albania_required_states_tt
+				controls_state = 44
+				controls_state = 805
+				controls_state = 934
+			}
+		}
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_balkans_flag }
+			has_completed_focus = TUR_reclaim_macedonia
+		}
+
+		complete_effect = {
+			# Greece
+			custom_effect_tooltip = form_rumelia_greece_coring_states_tt
+			hidden_effect = {
+				47 = { add_core_of = ROOT }
+				185 = { add_core_of = ROOT }
+				731 = { add_core_of = ROOT }
+				184 = { add_core_of = ROOT }
+			}
+			# Bulgaria
+			custom_effect_tooltip = form_rumelia_bulgaria_coring_states_tt
+			hidden_effect = {
+				48 = { add_core_of = ROOT }
+				801 = { add_core_of = ROOT }
+				212 = { add_core_of = ROOT }
+				211 = { add_core_of = ROOT }
+			}
+			# Yugoslavia
+			custom_effect_tooltip = form_rumelia_yugoslavia_coring_states_tt
+			hidden_effect = {
+				106 = { add_core_of = ROOT }
+				970 = { add_core_of = ROOT }
+				803 = { add_core_of = ROOT }
+				802 = { add_core_of = ROOT }
+				108 = { add_core_of = ROOT }
+				105 = { add_core_of = ROOT }
+				107 = { add_core_of = ROOT }
+			}
+			custom_effect_tooltip = form_rumelia_albania_coring_states_tt
+			hidden_effect = {
+				44 = { add_core_of = ROOT }
+				805 = { add_core_of = ROOT }
+				934 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				set_global_flag = ottoman_balkans_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_merge_the_eyalets_of_morea_crete_and_kibris = { #Greece + Cyprus
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			#Greece
+			controls_state = 186
+			controls_state = 182
+			controls_state = 187
+			controls_state = 164 #Dodecanese
+			controls_state = 183 #Cyprus
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_greece_flag }
+			has_completed_focus = TUR_reclaim_macedonia
+		}
+
+		complete_effect = {
+			186 = { add_core_of = ROOT }
+			182 = { add_core_of = ROOT }
+			187 = { add_core_of = ROOT }
+			164 = { add_core_of = ROOT }
+			183 = { add_core_of = ROOT }
+			hidden_effect = {
+				set_global_flag = ottoman_greece_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_enlarge_the_vilayet_of_bosnia = { #Bosnia + Croatia
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 104
+			controls_state = 804
+			controls_state = 103
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_bosnia_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			104 = { add_core_of = ROOT }
+			804 = { add_core_of = ROOT }
+			103 = { add_core_of = ROOT }
+			hidden_effect = {
+				set_global_flag = ottoman_bosnia_flag
+				163 = { add_core_of = ROOT }
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_restore_the_vilayet_of_the_danube_and_moldova = { #Romania
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 46
+			controls_state = 971
+			controls_state = 79
+			controls_state = 81
+			controls_state = 77
+			controls_state = 766 
+			controls_state = 84 
+			controls_state = 76
+			controls_state = 83 
+			controls_state = 82 
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_romania_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			46 = { add_core_of = ROOT }
+			971 = { add_core_of = ROOT }
+			79 = { add_core_of = ROOT }
+			81 = { add_core_of = ROOT }
+			77 = { add_core_of = ROOT }
+			766 = { add_core_of = ROOT }
+			84 = { add_core_of = ROOT }
+			76 = { add_core_of = ROOT }
+			83 = { add_core_of = ROOT }
+			82 = { add_core_of = ROOT }
+			hidden_effect = {
+				set_global_flag = ottoman_romania_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_restore_the_vilayet_of_halep = { #Syria
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			# France
+			custom_trigger_tooltip = {
+				tooltip = form_persia_france_required_states_tt
+				# Syria
+				controls_state = 680
+				controls_state = 554
+				controls_state = 799
+				controls_state = 677
+			}
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_syria_flag }
+			OR = {
+				has_completed_focus = TUR_reclaiming_our_lost_empire
+				has_completed_focus = TUR_the_damascus_diktat
+			}
+		}
+
+		complete_effect = {
+			# French Syria
+			custom_effect_tooltip = form_persia_france_coring_states_tt 
+			hidden_effect = {
+				677 = { add_core_of = ROOT }
+				680 = { add_core_of = ROOT }
+				554 = { add_core_of = ROOT }
+				799 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				set_global_flag = ottoman_syria_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_restore_the_vilayet_of_beirut = { #Lebanon + Levant
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 454
+			controls_state = 455
+			controls_state = 553
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_levant_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			454 = { add_core_of = ROOT }
+			455 = { add_core_of = ROOT }
+			553 = { add_core_of = ROOT }
+			hidden_effect = {
+				set_global_flag = ottoman_levant_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_restore_the_vilayet_of_baghdad = { #Iraq
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			# Iraq
+			custom_trigger_tooltip = {
+				tooltip = form_country_iraq_required_states_tt
+				controls_state = 676
+				controls_state = 675
+				controls_state = 291
+			}
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_mesopotamia_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			# Iraq
+			custom_effect_tooltip = form_country_iraq_coring_states_tt
+			hidden_effect = {
+				676 = { add_core_of = ROOT }
+				675 = { add_core_of = ROOT }
+				291 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				set_global_flag = ottoman_mesopotamia_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_extend_the_lasha_eyalet = { #Arabia + Gulf + Oman
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 656
+			controls_state = 765
+			controls_state = 658
+			controls_state = 292
+			controls_state = 678
+			controls_state = 857
+			controls_state = 858
+			controls_state = 854
+			controls_state = 859
+			controls_state = 907
+			
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_arabia_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			656 = { add_core_of = ROOT }
+			765 = { add_core_of = ROOT }
+			658 = { add_core_of = ROOT }
+			292 = { add_core_of = ROOT }
+			857 = { add_core_of = ROOT }
+			858 = { add_core_of = ROOT }
+			854 = { add_core_of = ROOT }
+			855 = { add_core_of = ROOT }
+			856 = { add_core_of = ROOT }
+			859 = { add_core_of = ROOT }
+			678 = { add_core_of = ROOT }
+			294 = { add_core_of = ROOT }
+			857 = { add_core_of = ROOT }
+			858 = { add_core_of = ROOT }
+			854 = { add_core_of = ROOT }
+			859 = { add_core_of = ROOT }
+			907 = { add_core_of = ROOT }
+			create_wargoal = { 
+				type = annex_everything
+				target = OMA
+			}
+			hidden_effect = {
+				set_global_flag = ottoman_arabia_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_merge_the_eyalets_of_jeddah_habesh_and_yemen = { #Yemen + Hejaz
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 679
+			controls_state = 293
+			controls_state = 659
+			controls_state = 855
+			controls_state = 856
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_yemen_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			679 = { add_core_of = ROOT }
+			293 = { add_core_of = ROOT }
+			659 = { add_core_of = ROOT }
+			855 = { add_core_of = ROOT }
+			856 = { add_core_of = ROOT } 
+			hidden_effect = {
+				set_global_flag = ottoman_yemen_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_integrate_the_khedivate_of_egypt = { #Egypt
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 446
+			controls_state = 447
+			controls_state = 453
+			controls_state = 452
+			controls_state = 456
+			controls_state = 457
+			controls_state = 552
+			controls_state = 767
+			controls_state = 551
+			controls_state = 883
+			controls_state = 907
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_egypt_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			446 = { add_core_of = ROOT }
+			447 = { add_core_of = ROOT }
+			453 = { add_core_of = ROOT }
+			452 = { add_core_of = ROOT }
+			456 = { add_core_of = ROOT }
+			457 = { add_core_of = ROOT }
+			552 = { add_core_of = ROOT }
+			767 = { add_core_of = ROOT }
+			551 = { add_core_of = ROOT }
+			883 = { add_core_of = ROOT }
+			907 = { add_core_of = ROOT }
+			hidden_effect = {
+				set_global_flag = ottoman_egypt_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_restore_the_vilayet_of_tripolitania = { #Libya
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 448
+			controls_state = 661
+			controls_state = 449
+			controls_state = 662
+			controls_state = 450
+			controls_state = 451
+			controls_state = 663
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_libya_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			# Italian North Africa
+			custom_effect_tooltip = form_ottoman_italy_coring_states_tt
+			hidden_effect = {
+				448 = { add_core_of = ROOT }
+				661 = { add_core_of = ROOT }
+				449 = { add_core_of = ROOT }
+				662 = { add_core_of = ROOT }
+				450 = { add_core_of = ROOT }
+				451 = { add_core_of = ROOT }
+				663 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				set_global_flag = ottoman_libya_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ott_absorb_the_tunis_and_algerian_eyalets = { #Tunisia + Algeria
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			OR = { 
+				has_country_leader = {
+					character = TUR_abdulmejid_ii
+					ruling_only = yes
+				}
+				has_country_leader = {
+					character = TUR_durrushehvar_i
+					ruling_only = yes
+				}
+			}
+			controls_state = 458
+			controls_state = 665
+			controls_state = 459
+			controls_state = 460
+			controls_state = 513
+		}
+
+		visible = {
+			original_tag = TUR
+			NOT = { has_global_flag = ottoman_tunisia_flag }
+			has_completed_focus = TUR_reclaiming_our_lost_empire
+		}
+
+		complete_effect = {
+			458 = { add_core_of = ROOT }
+			665 = { add_core_of = ROOT }
+			459 = { add_core_of = ROOT }
+			460 = { add_core_of = ROOT }
+			513 = { add_core_of = ROOT }
+			hidden_effect = {
+				set_global_flag = ottoman_tunisia_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
 }
 
 form_european_union_category = {
@@ -1906,6 +2670,86 @@ form_european_union_category = {
 	form_european_union = {
 
 		icon = generic_form_nation
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 8
+				state = 7
+				state = 35
+				state = 36
+				state = 6
+				state = 34
+				state = 977
+				state = 980
+				state = 29
+				state = 18
+				state = 17
+				state = 28
+				state = 15
+				state = 16
+				state = 27
+				state = 14
+				state = 30
+				state = 24
+				state = 23
+				state = 33
+				state = 26
+				state = 20
+				state = 32
+				state = 735
+				state = 25
+				state = 22
+				state = 21
+				state = 851
+				state = 19
+				state = 1
+				state = 785
+				state = 31
+				state = 806
+				state = 158
+				state = 159
+				state = 39
+				state = 160
+				state = 161
+				state = 162
+				state = 157
+				state = 2
+				state = 117
+				state = 156
+				state = 115
+				state = 114
+				state = 736
+				state = 849
+				state = 850
+				state = 852
+				state = 51
+				state = 42
+				state = 56
+				state = 57
+				state = 55
+				state = 50
+				state = 978
+				state = 59
+				state = 58
+				state = 909
+				state = 60
+				state = 54
+				state = 52
+				state = 53
+				state = 61
+				state = 64
+				state = 65
+				state = 62
+				state = 68
+				state = 66
+				state = 67
+				state = 63
+				state = 5
+				state = 763
+			}
+		}
 
 		allowed = {
 			OR = {
@@ -1917,6 +2761,13 @@ form_european_union_category = {
 				original_tag = GER
 				original_tag = WGR
 				original_tag = ENG
+				AND = {
+					OR = {
+						original_tag = AUS
+						original_tag = HUN
+					}
+					has_dlc = "Gotterdammerung"
+				}
 			}
 			OR = {
 				has_dlc = "Waking the Tiger"
@@ -1924,9 +2775,71 @@ form_european_union_category = {
 			}
 		}
 
+		visible = {
+
+			OR = { 
+				AND = {
+					OR = {
+						original_tag = HOL
+						original_tag = BEL
+						original_tag = LUX
+						original_tag = FRA
+						original_tag = ITA
+						original_tag = GER
+					}
+					has_government = democratic
+				}
+				# AND = {
+				# 	original_tag = ENG
+				# 	has_country_leader = {
+				# 		character = ENG_oswald_mosley
+				# 		ruling_only = yes
+				# 	}
+				# 	has_completed_focus = ENG_imperial_federation
+				# }
+				AND = {
+					original_tag = HUN
+					has_country_leader = {
+						character = HUN_otto_von_habsburg
+						ruling_only = yes
+					}
+					has_government = neutrality
+					has_completed_focus = wuw_HUN_renovato_imperii
+				}
+				AND = {
+					original_tag = AUS
+					OR = {
+						AND = {
+							has_country_leader = {
+								character = HUN_otto_von_habsburg
+								ruling_only = yes
+							}
+							has_completed_focus = AUS_the_danubian_federation
+							is_faction_leader = yes
+						}	
+						AND = {
+							has_completed_focus = AUS_the_right_to_self_determination
+							has_government = democratic
+						}
+					}
+				}
+				AND = {
+					original_tag = GER
+					has_completed_focus = GER_european_confederation
+				}
+			}
+
+			NOT = { has_global_flag = form_european_union_flag }
+
+			is_major = yes
+
+		}
+
 		available = {
 			is_subject = no
+
 			controls_state = 8
+
 			# Netherlands
 			custom_trigger_tooltip = {
 				tooltip = form_eu_netherlands_required_states_tt
@@ -1934,12 +2847,16 @@ form_european_union_category = {
 				controls_state = 35
 				controls_state = 36
 			}
+
 			# Belgium
 			custom_trigger_tooltip = {
 				tooltip = form_eu_belgium_required_states_tt
 				controls_state = 6
 				controls_state = 34
+				controls_state = 977
+				controls_state = 980
 			}
+
 			# France
 			custom_trigger_tooltip = {
 				tooltip = form_eu_france_required_states_tt
@@ -2130,7 +3047,7 @@ form_european_union_category = {
 				67 = { add_core_of = ROOT } # Oberschlesien
 				63 = { add_core_of = ROOT } # Hinterpommern
 				5 = { add_core_of = ROOT } # Ermland-Masuren
-				763 = { add_core_of = ROOT } # Königsberg
+				763 = { add_core_of = ROOT } # Kï¿½nigsberg
 			}
 
 			116 = { add_core_of = ROOT } # Malta
@@ -2165,9 +3082,9 @@ form_european_union_category = {
 				state = 151 # Eastern Swiss Alps
 				state = 848 # Vorarlberg
 				state = 153 # Tyrol
-				state = 152 # Oberösterreich
-				state = 976 # Steiermark-Kärnten
-				state = 4 # Niederösterreich
+				state = 152 # Oberï¿½sterreich
+				state = 976 # Steiermark-Kï¿½rnten
+				state = 4 # Niederï¿½sterreich
 				state = 975 # Burgenland
 			}
 		}
@@ -2209,9 +3126,9 @@ form_european_union_category = {
 			controls_state = 151 # Eastern Swiss Alps
 			controls_state = 848 # Vorarlberg
 			controls_state = 153 # Tyrol
-			controls_state = 152 # Oberösterreich
-			controls_state = 976 # Steiermark-Kärnten
-			controls_state = 4 # Niederösterreich
+			controls_state = 152 # Oberï¿½sterreich
+			controls_state = 976 # Steiermark-Kï¿½rnten
+			controls_state = 4 # Niederï¿½sterreich
 			controls_state = 975 # Burgenland
 		}
 
@@ -2233,9 +3150,9 @@ form_european_union_category = {
 							state = 151 # Eastern Swiss Alps
 							state = 848 # Vorarlberg
 							state = 153 # Tyrol
-							state = 152 # Oberösterreich
-							state = 976 # Steiermark-Kärnten
-							state = 4 # Niederösterreich
+							state = 152 # Oberï¿½sterreich
+							state = 976 # Steiermark-Kï¿½rnten
+							state = 4 # Niederï¿½sterreich
 							state = 975 # Burgenland
 						}
 					}
@@ -2582,7 +3499,7 @@ form_european_union_category = {
 				state = 810 # Latgale
 				state = 12 # Vidzeme
 				state = 191 # Tartu
-				state = 13 # Pärnu
+				state = 13 # Pï¿½rnu
 				state = 813 # Virumaa
 				state = 812 # Harju
 				state = 811 # Saremaa
@@ -2630,7 +3547,7 @@ form_european_union_category = {
 			controls_state = 810 # Latgale
 			controls_state = 12 # Vidzeme
 			controls_state = 191 # Tartu
-			controls_state = 13 # Pärnu
+			controls_state = 13 # Pï¿½rnu
 			controls_state = 813 # Virumaa
 			controls_state = 812 # Harju
 			controls_state = 811 # Saremaa
@@ -2656,7 +3573,7 @@ form_european_union_category = {
 							state = 810 # Latgale
 							state = 12 # Vidzeme
 							state = 191 # Tartu
-							state = 13 # Pärnu
+							state = 13 # Pï¿½rnu
 							state = 813 # Virumaa
 							state = 812 # Harju
 							state = 811 # Saremaa
@@ -2829,18 +3746,18 @@ form_european_union_category = {
 				state = 911 # Fyn
 				state = 37 # Sjaelland
 				state = 910 # Bornholm
-				state = 138 # Skåne
+				state = 138 # Skï¿½ne
 				state = 124 # Gotland
-				state = 139 # Småland
-				state = 140 # Västergötland
-				state = 915 # Bohuslän
-				state = 913 # Östergötland
-				state = 919 # Värmland
-				state = 141 # Södermanland
+				state = 139 # Smï¿½land
+				state = 140 # Vï¿½stergï¿½tland
+				state = 915 # Bohuslï¿½n
+				state = 913 # ï¿½stergï¿½tland
+				state = 919 # Vï¿½rmland
+				state = 141 # Sï¿½dermanland
 				state = 916 # Dalarna
-				state = 38 # Gävleborg
-				state = 917 # Jämtland
-				state = 918 # Västerbotten
+				state = 38 # Gï¿½vleborg
+				state = 917 # Jï¿½mtland
+				state = 918 # Vï¿½sterbotten
 				state = 666 # Norrbotten
 				state = 110 # Oslofjord
 				state = 921 # Telemark
@@ -2890,18 +3807,18 @@ form_european_union_category = {
 			controls_state = 911 # Fyn
 			controls_state = 37 # Sjaelland
 			controls_state = 910 # Bornholm
-			controls_state = 138 # Skåne
+			controls_state = 138 # Skï¿½ne
 			controls_state = 124 # Gotland
-			controls_state = 139 # Småland
-			controls_state = 140 # Västergötland
-			controls_state = 915 # Bohuslän
-			controls_state = 913 # Östergötland
-			controls_state = 919 # Värmland
-			controls_state = 141 # Södermanland
+			controls_state = 139 # Smï¿½land
+			controls_state = 140 # Vï¿½stergï¿½tland
+			controls_state = 915 # Bohuslï¿½n
+			controls_state = 913 # ï¿½stergï¿½tland
+			controls_state = 919 # Vï¿½rmland
+			controls_state = 141 # Sï¿½dermanland
 			controls_state = 916 # Dalarna
-			controls_state = 38 # Gävleborg
-			controls_state = 917 # Jämtland
-			controls_state = 918 # Västerbotten
+			controls_state = 38 # Gï¿½vleborg
+			controls_state = 917 # Jï¿½mtland
+			controls_state = 918 # Vï¿½sterbotten
 			controls_state = 666 # Norrbotten
 			controls_state = 110 # Oslofjord
 			controls_state = 921 # Telemark
@@ -2929,18 +3846,18 @@ form_european_union_category = {
 							state = 911 # Fyn
 							state = 37 # Sjaelland
 							state = 910 # Bornholm
-							state = 138 # Skåne
+							state = 138 # Skï¿½ne
 							state = 124 # Gotland
-							state = 139 # Småland
-							state = 140 # Västergötland
-							state = 915 # Bohuslän
-							state = 913 # Östergötland
-							state = 919 # Värmland
-							state = 141 # Södermanland
+							state = 139 # Smï¿½land
+							state = 140 # Vï¿½stergï¿½tland
+							state = 915 # Bohuslï¿½n
+							state = 913 # ï¿½stergï¿½tland
+							state = 919 # Vï¿½rmland
+							state = 141 # Sï¿½dermanland
 							state = 916 # Dalarna
-							state = 38 # Gävleborg
-							state = 917 # Jämtland
-							state = 918 # Västerbotten
+							state = 38 # Gï¿½vleborg
+							state = 917 # Jï¿½mtland
+							state = 918 # Vï¿½sterbotten
 							state = 666 # Norrbotten
 							state = 110 # Oslofjord
 							state = 921 # Telemark
@@ -3010,10 +3927,10 @@ form_european_union_category = {
 				state = 928 # Kymi
 				state = 930 ## Mikkeli
 				state = 149 # Vaasa
-				state = 927 # Häme
+				state = 927 # Hï¿½me
 				state = 926 # Turku
 				state = 111 # Helsinki
-				state = 145 # Åland
+				state = 145 # ï¿½land
 				state = 213 # Murmansk
 				state = 215 # Onega
 				state = 216 # Olonets
@@ -3059,10 +3976,10 @@ form_european_union_category = {
 			controls_state = 928 # Kymi
 			controls_state = 930 ## Mikkeli
 			controls_state = 149 # Vaasa
-			controls_state = 927 # Häme
+			controls_state = 927 # Hï¿½me
 			controls_state = 926 # Turku
 			controls_state = 111 # Helsinki
-			controls_state = 145 # Åland
+			controls_state = 145 # ï¿½land
 			controls_state = 213 # Murmansk
 			controls_state = 215 # Onega
 			controls_state = 216 # Olonets
@@ -3086,10 +4003,10 @@ form_european_union_category = {
 							state = 928 # Kymi
 							state = 930 ## Mikkeli
 							state = 149 # Vaasa
-							state = 927 # Häme
+							state = 927 # Hï¿½me
 							state = 926 # Turku
 							state = 111 # Helsinki
-							state = 145 # Åland
+							state = 145 # ï¿½land
 							state = 213 # Murmansk
 							state = 215 # Onega
 							state = 216 # Olonets
@@ -3124,7 +4041,7 @@ form_european_union_category = {
 				state = 974 # South Transdanubia
 				state = 973 # Bacs-Bodrog
 				state = 43 # Northern Hungary
-				state = 154 # Alföld
+				state = 154 # Alfï¿½ld
 				state = 80 # Bucovina
 				state = 78 # Besarabia
 				state = 766 # Southern Besarabia
@@ -3196,7 +4113,7 @@ form_european_union_category = {
 			controls_state = 974 # South Transdanubia
 			controls_state = 973 # Bacs-Bodrog
 			controls_state = 43 # Northern Hungary
-			controls_state = 154 # Alföld
+			controls_state = 154 # Alfï¿½ld
 			controls_state = 80 # Bucovina
 			controls_state = 78 # Besarabia
 			controls_state = 766 # Southern Besarabia
@@ -3246,7 +4163,7 @@ form_european_union_category = {
 							state = 974 # South Transdanubia
 							state = 973 # Bacs-Bodrog
 							state = 43 # Northern Hungary
-							state = 154 # Alföld
+							state = 154 # Alfï¿½ld
 							state = 80 # Bucovina
 							state = 78 # Besarabia
 							state = 766 # Southern Besarabia
@@ -4070,7 +4987,10 @@ form_roman_empire_category = {
 
 		allowed = {
 			original_tag = ITA
-			has_dlc = "Waking the Tiger"
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
+			}
 		}
 
 		available = {
@@ -6274,7 +7194,7 @@ form_greater_german_state_category = {
 				67 = { add_core_of = ROOT } # Oberschlesien
 				63 = { add_core_of = ROOT } # Hinterpommern
 				5 = { add_core_of = ROOT } # Ermland-Masuren
-				763 = { add_core_of = ROOT } # Königsberg
+				763 = { add_core_of = ROOT } # Kï¿½nigsberg
 			}
 
 			# Germany
@@ -6936,6 +7856,1318 @@ form_polynesia_category = {
 	}
 }
 
+form_greater_greece_category = {
+
+	form_greater_greece = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = GRE
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			if = { 
+				limit = {
+					has_government = democratic
+				}
+				has_completed_focus = GRE_nenikikamen
+			}
+			# Greece
+			custom_trigger_tooltip = {
+				tooltip = form_country_greece_required_states_tt
+				controls_state = 185
+				controls_state = 731
+				controls_state = 47
+				controls_state = 186
+				controls_state = 184
+				controls_state = 187
+				controls_state = 182
+			}
+			# Turkey
+			custom_trigger_tooltip = {
+				tooltip = form_country_turkish_coastal_required_states_tt
+				controls_state = 797
+				controls_state = 341
+				controls_state = 340
+				controls_state = 339
+				controls_state = 347
+			}
+			# Dodecanese
+			if = {
+				limit = {
+					NOT = { has_government = democratic }
+				}
+				custom_trigger_tooltip = {
+					tooltip = form_country_dodecanese_required_state_tt
+					controls_state = 164
+				}
+			}
+			# Cyprus
+			if = {
+				limit = {
+					NOT = { has_government = democratic }
+				}
+				custom_trigger_tooltip = {
+					tooltip = form_country_cyprus_required_state_tt
+					controls_state = 183
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_global_flag = form_greater_greece_flag }
+			OR = { 
+				AND = {
+					has_completed_focus = GRE_the_modern_movement
+					has_country_leader = {
+						character = GRE_ioannis_metaxas
+						ruling_only = yes
+					}
+				}
+				AND = { 
+					has_completed_focus = GRE_resurrecting_the_megali_idea
+					NOT = { 
+						has_country_leader = {
+							character = GRE_georgios_kosmidis
+							ruling_only = yes
+						}
+					}
+				}
+				has_completed_focus = GRE_prepare_for_the_great_anti_fascist_war
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = GRE_GREATER_GREECE_flag
+			GRE_set_appropriate_cosmetic_tag = yes
+			# Greece
+			custom_effect_tooltip = form_country_greece_coring_states_tt
+			hidden_effect = {
+				185 = { add_core_of = ROOT }
+				731 = { add_core_of = ROOT }
+				47 = { add_core_of = ROOT }
+				186 = { add_core_of = ROOT }
+				184 = { add_core_of = ROOT }
+				187 = { add_core_of = ROOT }
+				182 = { add_core_of = ROOT }
+				164 = { add_core_of = ROOT }
+				183 = { add_core_of = ROOT }
+			}
+			# Turkey
+			custom_effect_tooltip = form_country_turkish_coast_coring_states_tt
+			hidden_effect = {
+				340 = { add_core_of = ROOT }
+				340 = { set_state_name = "Prousa" }
+				set_province_name = { id = 947 name = "Prousa" } 
+				set_province_name = { id = 947 name = "Palaeokastron" }
+				341 = { add_core_of = ROOT }
+				341 = { set_state_name = "Thrace" }
+				set_province_name = { id = 11842 name = "Adrianople" }
+				797 = { add_core_of = ROOT }
+				797 = { set_state_name = "Constantinople" }
+				set_province_name = { id = 9833 name = "Constantinople" }
+				184 = { set_state_name = "Eastern Macedonia" }
+				339 = { add_core_of = ROOT }
+				339 = { set_state_name = "Smyrni" }
+				set_province_name = { id = 4112 name = "Smyrna" }
+				set_province_name = { id = 928 name = "Magnesia" }
+				347 = { add_core_of = ROOT }
+				347 = { set_state_name = "Nikomedeia" }
+				set_province_name = { id = 11811 name = "Nikomedeia" }
+				set_province_name = { id = 904 name = "Kieros" }
+				if = {
+					limit = {
+						controls_state = 342
+					}
+					342 = { add_core_of = ROOT }
+					342 = { set_state_name = "Attalis" }
+					set_province_name = { id = 1005 name = "Attaleia" }
+				}
+			}
+			# Cyprus
+			custom_effect_tooltip = form_country_cyprus_coring_state_tt
+			hidden_effect = {
+				183 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				805 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					news_event = { id = bftb_news.302 hours = 6 } 
+				}
+				set_global_flag = form_greater_greece_flag
+				set_country_flag = achivement_istanbul_is_constantinople_again
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	GRE_appoint_aristotle_onassis_as_prime_minister = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = GRE
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			AND = {
+				has_government = democratic
+				has_completed_focus = GRE_nenikikamen
+			}
+		}
+
+		visible = {
+			has_global_flag = form_greater_greece_flag
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			retire_country_leader = yes
+			add_country_leader_role = {
+				character = GRE_aristotle_onassis
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						the_young_magnate
+					}
+				}
+				promote_leader = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	rename_antalya = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = GRE
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			if = { 
+				limit = {
+					has_government = democratic
+				}
+				has_completed_focus = GRE_nenikikamen
+			}
+			controls_state = 342
+			# Dodecanese
+			custom_trigger_tooltip = {
+				tooltip = form_country_dodecanese_required_state_tt
+				controls_state = 164
+			}
+		}
+
+		visible = {
+			has_global_flag = form_greater_greece_flag
+			NOT = { 342 = { is_core_of = ROOT } }
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			342 = { add_core_of = ROOT }
+			342 = { set_state_name = "Attalis" }
+			set_province_name = { id = 1005 name = "Attaleia" }
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	rename_gjirokaster = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = GRE
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			if = { 
+				limit = {
+					has_government = democratic
+				}
+				has_completed_focus = GRE_nenikikamen
+			}
+			controls_state = 805
+		}
+
+		visible = {
+			has_global_flag = form_greater_greece_flag
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_province_name = { id = 914 name = "Argyrokastro" }
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	GRE_move_capital_to_constantinople = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = GRE
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			if = { 
+				limit = {
+					has_government = democratic
+				}
+				has_completed_focus = GRE_nenikikamen
+			}
+			controls_state = 797
+		}
+
+		visible = {
+			has_global_flag = form_greater_greece_flag
+			NOT = { has_country_flag = GRE_chose_a_new_capital_city }
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.05
+			set_capital = { state = 797 }
+			hidden_effect = {
+				set_country_flag = GRE_chose_a_new_capital_city
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	move_capital_to_thessaloniki = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = GRE
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			if = { 
+				limit = {
+					has_government = democratic
+				}
+				has_completed_focus = GRE_nenikikamen
+			}
+			controls_state = 797
+		}
+
+		visible = {
+			has_global_flag = form_greater_greece_flag
+			NOT = { has_country_flag = GRE_chose_a_new_capital_city }
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_stability = 0.1
+			set_capital = { state = 731 }
+			hidden_effect = {
+				set_country_flag = GRE_chose_a_new_capital_city
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+form_macedonian_empire_category = {
+
+	form_macedonian_empire = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = GRE
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			# Greece
+			custom_trigger_tooltip = {
+				tooltip = form_country_greece_required_states_tt
+				controls_state = 185
+				controls_state = 731
+				controls_state = 47
+				controls_state = 186
+				controls_state = 184
+				controls_state = 187
+				controls_state = 182
+			}
+			# Macedonia [ Bulgaria / Yugoslav Macedonia / Albania ]
+			custom_trigger_tooltip = {
+				tooltip = form_country_southern_yugoslavia_required_states_tt
+				controls_state = 48
+				controls_state = 212
+				controls_state = 801
+				controls_state = 211
+				controls_state = 106
+				controls_state = 970
+				controls_state = 803
+				controls_state = 105
+				controls_state = 44
+				controls_state = 805
+				controls_state = 934
+			}
+			# Iran
+			custom_trigger_tooltip = {
+				tooltip = form_country_iran_required_states_tt
+				controls_state = 419
+				controls_state = 421
+				controls_state = 420
+				controls_state = 417
+				controls_state = 413
+				controls_state = 266
+				controls_state = 418
+				controls_state = 411
+				controls_state = 412
+				controls_state = 416
+				controls_state = 414
+				controls_state = 410
+			}
+			# Afghanistan
+			custom_trigger_tooltip = {
+				tooltip = form_country_afghanistan_required_states_tt
+				controls_state = 415
+				controls_state = 267
+			}
+			# Central Asia
+			custom_trigger_tooltip = {
+				tooltip = form_country_southern_central_asia_required_states_tt
+				controls_state = 742 # Tajikistan
+				controls_state = 405 # Uzbekistan
+				controls_state = 732 # Kyrgyzstan
+			}
+			# Iraq
+			custom_trigger_tooltip = {
+				tooltip = form_country_iraq_required_states_tt
+				controls_state = 676
+				controls_state = 675
+				controls_state = 291
+			}
+			# Turkey
+			custom_trigger_tooltip = {
+				tooltip = form_country_turkey_required_states_tt
+				controls_state = 341
+				controls_state = 340
+				controls_state = 339
+				controls_state = 342
+				controls_state = 343
+				controls_state = 347
+				controls_state = 49
+				controls_state = 346
+				controls_state = 345
+				controls_state = 356
+				controls_state = 348
+				controls_state = 344
+				controls_state = 355
+				controls_state = 349
+				controls_state = 350
+				controls_state = 354
+				controls_state = 353
+				controls_state = 352
+				controls_state = 797
+				controls_state = 798
+				controls_state = 799
+				controls_state = 800
+			}
+			# France: Syria
+			custom_trigger_tooltip = {
+				tooltip = form_persia_france_required_states_tt
+				controls_state = 677
+				controls_state = 680
+				controls_state = 553
+				controls_state = 554
+			}
+			# Britain: Egypt
+			custom_trigger_tooltip = {
+				tooltip = form_country_egypt_required_states_tt
+				controls_state = 452
+				controls_state = 447
+				controls_state = 446
+				controls_state = 456
+				controls_state = 453
+				controls_state = 457
+				controls_state = 907
+			}
+			# Britain: Levant / Kuwait
+			custom_trigger_tooltip = {
+				tooltip = form_country_british_levant_required_states_tt
+				controls_state = 454
+				controls_state = 455
+				controls_state = 656
+			}
+			# Raj / Punjab
+			custom_trigger_tooltip = {
+				tooltip = form_country_punjab_required_states_tt
+				controls_state = 440
+				controls_state = 443
+				controls_state = 441
+				controls_state = 787
+				controls_state = 442
+				controls_state = 445
+				controls_state = 444
+			}
+		}
+
+		visible = {
+			original_tag = GRE
+			OR = {
+				AND = {
+					has_completed_focus = GRE_moulding_the_new_world_order
+					has_country_leader = {
+						character = GRE_george_mercouris
+						ruling_only = yes
+					}
+				}
+				AND = {
+					has_completed_focus = GRE_protectors_of_the_mediterranean
+					has_country_leader = {
+						name = "George II"
+						ruling_only = yes
+					}
+				}
+			}
+			NOT = { has_global_flag = form_macedonian_empire_flag }
+		}
+
+		complete_effect = {
+			set_country_flag = GRE_mae_flag
+			GRE_set_appropriate_cosmetic_tag = yes
+			# Iran
+			custom_effect_tooltip = form_country_iran_coring_states_tt
+			hidden_effect = {
+				419 = { add_core_of = ROOT }
+				421 = { add_core_of = ROOT }
+				420 = { add_core_of = ROOT }
+				417 = { add_core_of = ROOT }
+				413 = { add_core_of = ROOT }
+				266 = { add_core_of = ROOT }
+				418 = { add_core_of = ROOT }
+				411 = { add_core_of = ROOT }
+				412 = { add_core_of = ROOT }
+				416 = { add_core_of = ROOT }
+				414 = { add_core_of = ROOT }
+				410 = { add_core_of = ROOT }
+			}
+			# Afghanistan
+			custom_effect_tooltip = form_country_afghanistan_coring_states_tt
+			hidden_effect = {
+				415 = { add_core_of = ROOT }
+				267 = { add_core_of = ROOT }
+			}
+			# Iraq
+			custom_effect_tooltip = form_country_iraq_coring_states_tt
+			hidden_effect = {
+				676 = { add_core_of = ROOT }
+				675 = { add_core_of = ROOT }
+				291 = { add_core_of = ROOT }
+			}
+			# Turkey
+			custom_effect_tooltip = form_country_turkey_coring_states_tt
+			hidden_effect = {
+				341 = { add_core_of = ROOT }
+				340 = { add_core_of = ROOT }
+				339 = { add_core_of = ROOT }
+				342 = { add_core_of = ROOT }
+				343 = { add_core_of = ROOT }
+				347 = { add_core_of = ROOT }
+				49 = { add_core_of = ROOT }
+				346 = { add_core_of = ROOT }
+				345 = { add_core_of = ROOT }
+				356 = { add_core_of = ROOT }
+				348 = { add_core_of = ROOT }
+				344 = { add_core_of = ROOT }
+				355 = { add_core_of = ROOT }
+				349 = { add_core_of = ROOT }
+				350 = { add_core_of = ROOT }
+				354 = { add_core_of = ROOT }
+				353 = { add_core_of = ROOT }
+				352 = { add_core_of = ROOT }
+				797 = { add_core_of = ROOT }
+				798 = { add_core_of = ROOT }
+				800 = { add_core_of = ROOT }
+			}
+			# France
+			custom_effect_tooltip = form_persia_france_coring_states_tt
+			hidden_effect = {
+				677 = { add_core_of = ROOT }
+				680 = { add_core_of = ROOT }
+				553 = { add_core_of = ROOT }
+				554 = { add_core_of = ROOT }
+			}
+			# Italy
+			custom_effect_tooltip = form_persia_italy_coring_states_tt
+			hidden_effect = {
+				164 = { add_core_of = ROOT }
+				450 = { add_core_of = ROOT }
+				451 = { add_core_of = ROOT }
+				663 = { add_core_of = ROOT }
+			}
+			# Britain
+			custom_effect_tooltip = form_persia_britain_coring_states_tt
+			hidden_effect = {
+				452 = { add_core_of = ROOT }
+				447 = { add_core_of = ROOT }
+				446 = { add_core_of = ROOT }
+				456 = { add_core_of = ROOT }
+				457 = { add_core_of = ROOT }
+				453 = { add_core_of = ROOT }
+				454 = { add_core_of = ROOT }
+				455 = { add_core_of = ROOT }
+				183 = { add_core_of = ROOT }
+				656 = { add_core_of = ROOT }
+				118 = { add_core_of = ROOT }
+				907 = { add_core_of = ROOT }
+			}
+			# Cyprus
+			183 = { add_core_of = ROOT }
+			# Macedonia
+			106 = { add_core_of = ROOT }
+			803 = { add_core_of = ROOT }
+			# Bulgaria
+			48 = { add_core_of = ROOT }
+			212 = { add_core_of = ROOT }
+			211 = { add_core_of = ROOT }
+			801 = { add_core_of = ROOT }
+			# Albania and Montenegro
+			805 = { add_core_of = ROOT }
+			44 = { add_core_of = ROOT }
+			934 = { add_core_of = ROOT }
+			105 = { add_core_of = ROOT }
+			# Central Asia
+			742 = { add_core_of = ROOT }
+			405 = { add_core_of = ROOT }
+			732 = { add_core_of = ROOT }
+			# Pakistan
+			441 = { add_core_of = ROOT }
+			787 = { add_core_of = ROOT }
+			440 = { add_core_of = ROOT }
+			442 = { add_core_of = ROOT }
+			445 = { add_core_of = ROOT }
+			443 = { add_core_of = ROOT }
+			444 = { add_core_of = ROOT }
+			hidden_effect = {
+				set_global_flag = form_macedonian_empire_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+
+form_turan_category = {
+
+	form_turan = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			# Turkey
+			custom_trigger_tooltip = {
+				tooltip = form_country_turkey_required_states_tt
+				controls_state = 797
+				controls_state = 341
+				controls_state = 340
+				controls_state = 339
+				controls_state = 342
+				controls_state = 343
+				controls_state = 347
+				controls_state = 49
+				controls_state = 798
+				controls_state = 346
+				controls_state = 345
+				controls_state = 356
+				controls_state = 348
+				controls_state = 344
+				controls_state = 355
+				controls_state = 349
+				controls_state = 350
+				controls_state = 354
+				controls_state = 353
+				controls_state = 352
+				controls_state = 800
+			}
+			# Syria
+			custom_trigger_tooltip = {
+				tooltip = form_country_turan_syria_required_states_tt
+				controls_state = 677
+				controls_state = 680
+			}
+			# Iraq
+			custom_trigger_tooltip = {
+				tooltip = form_country_turan_iraq_required_states_tt
+				controls_state = 676
+			}
+			# Persia
+			custom_trigger_tooltip = {
+				tooltip = form_country_turan_iran_required_states_tt
+				controls_state = 421
+				controls_state = 419
+				controls_state = 420
+				controls_state = 417
+				controls_state = 413
+				controls_state = 266
+				controls_state = 416
+			}
+			# Azerbaijan
+			custom_trigger_tooltip = {
+				tooltip = form_country_turan_azerbaijan_required_states_tt
+				controls_state = 229
+			}
+			# Kuban Region + Crimea
+			custom_trigger_tooltip = {
+				tooltip = form_country_turan_kuban_crimea_required_states_tt
+				controls_state = 233
+				controls_state = 232
+				controls_state = 235
+				controls_state = 234
+				controls_state = 237
+				controls_state = 238
+				controls_state = 236
+				controls_state = 407
+				controls_state = 406
+				controls_state = 218
+				controls_state = 227
+				controls_state = 228
+				controls_state = 200
+				controls_state = 196
+				controls_state = 137
+			}
+			# Urals + Central Asia
+			custom_trigger_tooltip = {
+				tooltip = form_country_turan_urals_central_asia_required_states_tt
+				controls_state = 582
+				controls_state = 402
+				controls_state = 583
+				controls_state = 587
+				controls_state = 585
+				controls_state = 584
+				controls_state = 405
+				controls_state = 404
+				controls_state = 586
+				controls_state = 732
+				controls_state = 742
+				controls_state = 589
+				controls_state = 588
+				controls_state = 590
+				controls_state = 570
+				controls_state = 571
+				controls_state = 823
+				controls_state = 832
+				controls_state = 831
+				controls_state = 830
+				controls_state = 882
+				controls_state = 881
+			}
+			# Siberia
+			custom_trigger_tooltip = {
+				tooltip = form_country_turan_siberia_required_states_tt
+				controls_state = 654
+				controls_state = 40
+				controls_state = 569
+				controls_state = 568
+				controls_state = 329
+				controls_state = 567
+				controls_state = 566
+				controls_state = 564
+				controls_state = 563
+				controls_state = 565
+				controls_state = 561
+				controls_state = 574
+				controls_state = 576
+				controls_state = 562
+				controls_state = 874
+				controls_state = 644
+				controls_state = 876
+				controls_state = 877
+				controls_state = 637
+				controls_state = 822
+				controls_state = 878
+			}
+		}
+
+		visible = {
+			original_tag = TUR
+			has_completed_focus = TUR_turanist_ambition
+			NOT = { has_global_flag = form_turan_flag }
+		}
+
+		complete_effect = {
+			set_country_flag = TUR_trn_flag
+			TUR_set_appropriate_cosmetic_tag = yes
+			hidden_effect = {
+				news_event = { id = bftb_news.209 hours = 6 }
+				#TURKEY
+				797 = { add_core_of = TUR }
+				341 = { add_core_of = TUR }
+				340 = { add_core_of = TUR }
+				339 = { add_core_of = TUR }
+				342 = { add_core_of = TUR }
+				343 = { add_core_of = TUR }
+				347 = { add_core_of = TUR }
+				49 = { add_core_of = TUR }
+				798 = { add_core_of = TUR }
+				346 = { add_core_of = TUR }
+				345 = { add_core_of = TUR }
+				356 = { add_core_of = TUR }
+				348 = { add_core_of = TUR }
+				344 = { add_core_of = TUR }
+				355 = { add_core_of = TUR }
+				349 = { add_core_of = TUR }
+				350 = { add_core_of = TUR }
+				354 = { add_core_of = TUR }
+				353 = { add_core_of = TUR }
+				352 = { add_core_of = TUR }
+				800 = { add_core_of = TUR }
+				799 = { add_core_of = TUR }
+				#SYRIA
+				677 = { add_core_of = TUR }
+				680 = { add_core_of = TUR }
+				#IRAQ
+				676 = { add_core_of = TUR }
+				291 = { add_core_of = TUR }
+				#PERSIA
+				421 = { add_core_of = TUR }
+				419 = { add_core_of = TUR }
+				420 = { add_core_of = TUR }
+				417 = { add_core_of = TUR }
+				413 = { add_core_of = TUR }
+				266 = { add_core_of = TUR }
+				416 = { add_core_of = TUR }
+				#AZERBAIJAN
+				229 = { add_core_of = TUR }
+				#KUBAN REGION + CRIMEA
+				233 = { add_core_of = TUR }
+				232 = { add_core_of = TUR }
+				235 = { add_core_of = TUR }
+				234 = { add_core_of = TUR }
+				237 = { add_core_of = TUR }
+				238 = { add_core_of = TUR }
+				236 = { add_core_of = TUR }
+				407 = { add_core_of = TUR }
+				406 = { add_core_of = TUR }
+				218 = { add_core_of = TUR }
+				227 = { add_core_of = TUR }
+				228 = { add_core_of = TUR }
+				200 = { add_core_of = TUR }
+				196 = { add_core_of = TUR }
+				137 = { add_core_of = TUR }
+				821 = { add_core_of = TUR }
+				826 = { add_core_of = TUR }
+				827 = { add_core_of = TUR }
+				828 = { add_core_of = TUR }
+				#URALS + CENTRAL ASIA
+				582 = { add_core_of = TUR }
+				402 = { add_core_of = TUR }
+				583 = { add_core_of = TUR }
+				587 = { add_core_of = TUR }
+				585 = { add_core_of = TUR }
+				584 = { add_core_of = TUR }
+				405 = { add_core_of = TUR }
+				404 = { add_core_of = TUR }
+				586 = { add_core_of = TUR }
+				732 = { add_core_of = TUR }
+				742 = { add_core_of = TUR }
+				589 = { add_core_of = TUR }
+				588 = { add_core_of = TUR }
+				590 = { add_core_of = TUR }
+				830 = { add_core_of = TUR }
+				823 = { add_core_of = TUR }
+				831 = { add_core_of = TUR }
+				832 = { add_core_of = TUR }
+				881 = { add_core_of = TUR }
+				882 = { add_core_of = TUR }
+				#SIBERIA
+				654 = { add_core_of = TUR }
+				40 = { add_core_of = TUR }
+				569 = { add_core_of = TUR }
+				568 = { add_core_of = TUR }
+				329 = { add_core_of = TUR }
+				567 = { add_core_of = TUR }
+				566 = { add_core_of = TUR }
+				564 = { add_core_of = TUR }
+				563 = { add_core_of = TUR }
+				565 = { add_core_of = TUR }
+				561 = { add_core_of = TUR }
+				574 = { add_core_of = TUR }
+				575 = { add_core_of = TUR }
+				576 = { add_core_of = TUR }
+				562 = { add_core_of = TUR }
+				874 = { add_core_of = TUR }
+				644 = { add_core_of = TUR }
+				876 = { add_core_of = TUR }
+				877 = { add_core_of = TUR }
+				637 = { add_core_of = TUR }
+				822 = { add_core_of = TUR }
+				875 = { add_core_of = TUR }
+				878 = { add_core_of = TUR }
+				set_global_flag = form_turan_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	integrate_the_magyars = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			has_global_flag = form_turan_flag
+			# Hungary + Slovakia
+			controls_state = 155
+			controls_state = 43
+			controls_state = 973
+			controls_state = 974
+			controls_state = 154
+			controls_state = 664
+			# Romania + Banat
+			controls_state = 76
+			controls_state = 84
+			controls_state = 82
+			controls_state = 764
+			controls_state = 45
+			controls_state = 83
+		}
+
+		visible = {
+			has_completed_focus = TUR_subdue_the_magyars
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			# Hungary
+			155 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			43 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			973 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			974 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			154 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			664 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			# Romania
+			76 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			84 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			82 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			83 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			764 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			45 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	assimilate_the_chinese_turks = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			has_global_flag = form_turan_flag
+			# Sinkiang
+			controls_state = 619
+			controls_state = 287
+			controls_state = 759
+			controls_state = 760
+			controls_state = 617
+			controls_state = 618
+			# Xibei San Ma
+			controls_state = 604
+			controls_state = 755
+			controls_state = 756
+			controls_state = 754
+			controls_state = 283
+			controls_state = 753
+			controls_state = 616
+			# Nationalist China
+			controls_state = 752
+			controls_state = 751
+			controls_state = 601
+			# Mongolia / Manchuria
+			controls_state = 330
+			controls_state = 817
+			controls_state = 818
+			controls_state = 819
+			controls_state = 820
+			controls_state = 612
+			controls_state = 611
+			controls_state = 621
+			controls_state = 761
+			controls_state = 714
+			controls_state = 717
+		}
+
+		visible = {
+			has_completed_focus = TUR_cin_turkleri
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			# Sinkiang
+			619 = { add_core_of = ROOT }
+			287 = { add_core_of = ROOT }
+			759 = { add_core_of = ROOT }
+			760 = { add_core_of = ROOT }
+			617 = { add_core_of = ROOT }
+			618 = { add_core_of = ROOT }
+			# China
+			604 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			755 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			756 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			754 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			283 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			753 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			616 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			752 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			751 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			601 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			612 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			611 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			621 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			761 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			714 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			717 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			#Mongolia
+			330 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			817 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			818 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			819 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			820 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	unite_with_the_finno_ugrians = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			has_dlc = "Battle for the Bosporus"
+		}
+
+		available = {
+			is_subject = no
+			has_global_flag = form_turan_flag
+			# Finland + Karelia
+			controls_state = 111 #UUSIMAA (Helsinki)
+			controls_state = 150 #KUOPIO
+			controls_state = 149 #VAASA
+			controls_state = 148 #LAPPI
+			controls_state = 146 #KARJALA
+			controls_state = 147 #SALLA
+			controls_state = 722 #PETSAMO
+			controls_state = 926 #TURKU
+			controls_state = 927 #Hï¿½ME
+			controls_state = 928 #KYME
+			controls_state = 929 #OULU
+			controls_state = 930 #MIKKELI
+
+			controls_state = 213 #MURMANSK
+			controls_state = 215 #ONEGA
+			controls_state = 216 #OLONETS
+
+			# Estonia
+			controls_state = 13
+			controls_state = 191
+			controls_state = 813
+			controls_state = 812
+			controls_state = 811
+		}
+
+		visible = {
+			has_completed_focus = TUR_crowning_ourselves_with_the_fin_ugor
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			#FINLAND + KARELIA
+			111 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			150 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			149 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			148 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			146 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			147 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			926 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			927 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			928 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			929 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			930 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+
+			213 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			215 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			216 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			#ESTONIA
+			13 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			191 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			811 = { add_dynamic_modifier = { modifier = turanist_assimilation } }
+			812 = { add_dynamic_modifier = { modifier = turanist_assimilation } }	
+			813 = { add_dynamic_modifier = { modifier = turanist_assimilation } }			
+			
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+form_turkestan_category = {
+	
+	form_turkestan = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = TAN # Tannu Tuva
+				original_tag = KAZ # Kazakhstan
+				original_tag = UZB # Uzbekistan
+				original_tag = KYR # Kyrgyzstan
+				original_tag = TAJ # Tajikistan
+				original_tag = TMS # Turkmenistan
+				original_tag = SIK # Sinkiang
+				original_tag = BUK # Bukhara
+				original_tag = KHI # Khiva
+				original_tag = KKP # Karakalpakstan
+			}
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = form_country_kazakhstan_required_states
+				controls_state = 402
+				controls_state = 404
+				controls_state = 406
+				controls_state = 407
+				controls_state = 583
+				controls_state = 586
+				controls_state = 587
+				controls_state = 588
+				controls_state = 589
+				controls_state = 590
+				controls_state = 881
+				controls_state = 882
+			}
+			custom_trigger_tooltip = {
+				tooltip = form_country_uzbekistan_required_states
+				controls_state = 405
+				controls_state = 585
+				controls_state = 830
+				controls_state = 823
+				controls_state = 831
+			}
+			controls_state = 732 # Kyrgyzstan
+			controls_state = 742 # Tajikistan
+			controls_state = 584 # Turkmenistan
+			controls_state = 832 # Tashauz
+		}
+
+		visible = {
+			OR = {
+				original_tag = TAN # Tannu Tuva
+				original_tag = KAZ # Kazakhstan
+				original_tag = UZB # Uzbekistan
+				original_tag = KYR # Kyrgyzstan
+				original_tag = TAJ # Tajikistan
+				original_tag = TMS # Turkmenistan
+				original_tag = SIK # Sinkiang
+				original_tag = BUK # Bukhara
+				original_tag = KHI # Khiva
+				original_tag = KKP # Karakalpakstan
+			}
+			NOT = { has_global_flag = form_turkestan_flag }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = turkestan_united
+			
+			# Kazakhstan
+			custom_effect_tooltip = form_country_kazakhstan_coring_states_tt
+			hidden_effect = {
+				402 = { add_core_of = ROOT }
+				404 = { add_core_of = ROOT }
+				406 = { add_core_of = ROOT }
+				407 = { add_core_of = ROOT }
+				583 = { add_core_of = ROOT }
+				586 = { add_core_of = ROOT }
+				587 = { add_core_of = ROOT }
+				588 = { add_core_of = ROOT }
+				589 = { add_core_of = ROOT }
+				590 = { add_core_of = ROOT }
+				881 = { add_core_of = ROOT }
+				882 = { add_core_of = ROOT }
+			}
+			
+			# Turkmenistan
+			584 = { add_core_of = ROOT }
+			
+			# Tashauz
+			832 = { add_core_of = ROOT }
+			
+			# Uzbekistan
+			custom_effect_tooltip = form_country_uzbekistan_coring_states_tt
+			hidden_effect = {
+				405 = { add_core_of = ROOT }
+				585 = { add_core_of = ROOT }
+				830 = { add_core_of = ROOT }
+				823 = { add_core_of = ROOT }
+				831 = { add_core_of = ROOT }
+			}
+			
+			# Kyrgyzstan
+			732 = { add_core_of = ROOT }
+			
+			# Tajikistan
+			742 = { add_core_of = ROOT }
+			
+			# Tuva
+			329 = { add_core_of = ROOT }
+			
+			# Altai
+			654 = { add_core_of = ROOT }
+			40 = { add_core_of = ROOT }
+			
+			# Sinkiang
+			custom_effect_tooltip = form_country_sinkiang_coring_states_tt
+			hidden_effect = {
+				287 = { add_core_of = ROOT }
+				617 = { add_core_of = ROOT }
+				618 = { add_core_of = ROOT }
+				619 = { add_core_of = ROOT }
+				759 = { add_core_of = ROOT }
+				760 = { add_core_of = ROOT }
+			}
+			
+			add_ideas = soldiers_of_the_steppe
+			
+			hidden_effect = {
+				news_event = { id = nsb_news.3 hours = 6 }
+				set_global_flag = form_turkestan_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+}
+
 form_greater_yugo_category = {
 
 	form_greater_yugo = {
@@ -6996,4 +9228,4642 @@ form_greater_yugo_category = {
 			}
 		}
 	}
+}
+
+form_mountainous_republic_category = {
+	
+	form_mountainous_republic = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = DAG # Dagestan
+				original_tag = CIN # Chechnya-Ingushetia
+				original_tag = NOA # North Ossetia-Alania
+				original_tag = KBK # Kabardino-Balkaria
+				original_tag = ABK # Abkhazia
+			}
+		}
+
+		available = {
+			controls_state = 232 # Dagestan
+			controls_state = 821 # Chechnya-Ingushetia
+			controls_state = 828 # North Ossetia
+			controls_state = 827 # Kabardino-Balkaria
+			controls_state = 826 # Abkhazia
+		}
+
+		visible = {
+			OR = {
+				original_tag = DAG # Dagestan
+				original_tag = CIN # Chechnya-Ingushetia
+				original_tag = NOA # North Ossetia-Alania
+				original_tag = KBK # Kabardino-Balkaria
+				original_tag = ABK # Abkhazia
+			}
+			NOT = { has_global_flag = form_mountainous_republic_flag }
+			has_dlc = "No Step Back"
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = mountainous_republics_unified
+			
+			# Dagestan
+			232 = { add_core_of = ROOT }
+			
+			# Chechnya-Ingushetia
+			821 = { add_core_of = ROOT }
+			
+			# North Ossetia
+			828 = { add_core_of = ROOT }
+			
+			# Kabardino-Balkaria
+			827 = { add_core_of = ROOT }
+			
+			# Abkhazia
+			826 = { add_core_of = ROOT }
+			
+			# Sochi
+			233 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				news_event = { id = nsb_news.301 hours = 8 }
+				set_global_flag = form_mountainous_republic_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+}
+
+
+form_transcaucasus_category = {
+	
+	form_transcaucasian_republic = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			has_dlc = "No Step Back"
+		}
+
+		visible = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			NOT = { has_global_flag = form_transcaucasia_flag }
+		}
+
+		available = {
+			controls_state = 826 # Abkhazia
+			controls_state = 231 # Georgia
+			controls_state = 230 # Armenia
+			controls_state = 229 # Azerbaijan
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 826 # Abkhazia
+				state = 231 # Georgia
+				state = 230 # Armenia
+				state = 229 # Azerbaijan
+			}
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = transcaucasia_unified
+			
+			# Abkhazia
+			826 = { add_core_of = ROOT }
+			
+			# Georgia
+			231 = { add_core_of = ROOT }
+			 
+			# Armenia
+			230 = { add_core_of = ROOT }
+			
+			# Azerbaijan
+			229 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				news_event = { id = nsb_news.302 hours = 8 }
+				set_global_flag = form_transcaucasia_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	
+	
+	unite_azeris = {  
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			has_global_flag = form_transcaucasia_flag
+			NOT = { has_global_flag = azeris_united_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 419 # Tabriz
+			controls_state = 420 # Gilan
+		}
+
+		complete_effect = {
+			
+			# Tabriz
+			419 = { add_core_of = ROOT }
+			
+			# Gilan
+			420 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				set_global_flag = azeris_united_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	
+	claim_northern_caucasus = {  
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			has_global_flag = form_transcaucasia_flag
+			NOT = { has_global_flag = northern_caucasus_claimed_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 232 # Dagestan
+			controls_state = 821 # Chechnya-Ingushetia
+			controls_state = 828 # North Ossetia
+			controls_state = 827 # Kabardino-Balkaria
+			controls_state = 233 # Sochi
+		}
+
+		complete_effect = {
+			
+			# Sochi
+			233 = { add_core_of = ROOT }
+			
+			# Kabardino-Balkaria
+			827 = { add_core_of = ROOT }
+			
+			# North Ossetia
+			828 = { add_core_of = ROOT }
+			
+			# Chechnya-Ingushetia
+			821 = { add_core_of = ROOT }
+			
+			# Gagestan
+			232 = { add_core_of = ROOT }
+			
+			#add_ideas = soldiers_of_the_steppe
+			
+			hidden_effect = { 
+				set_global_flag = northern_caucasus_claimed_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	
+	liberate_anatolian_peoples = {  
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = GEO # Georgia 
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			has_global_flag = form_transcaucasia_flag
+			NOT = { has_global_flag = anatolians_liberated_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 354 # Trabzon
+			controls_state = 800 # Van
+		}
+
+		complete_effect = {
+			
+			# Trabzon
+			354 = { add_core_of = ROOT }
+			
+			# Van
+			800 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				set_global_flag = anatolians_liberated_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	
+	restore_kalmyks = {  
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = GEO # Georgia 
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			} 
+		}
+  
+		available = {
+			is_subject = no
+			controls_state = 237 # Kalmykia
+			controls_state = 236 # Astrakhan
+			NOT = { has_government = communism }
+			NOT = { has_government = democratic }
+		}
+
+		visible = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			has_global_flag = form_transcaucasia_flag
+			NOT = { has_global_flag = kalmyk_khanate_restored_flag }
+
+				has_dlc = "No Step Back" 
+		}
+
+		complete_effect = {
+			
+			custom_effect_tooltip = release_kalmyk_khanate_tt
+			
+			hidden_effect = { 
+			
+				set_global_flag = kalmyk_khanate_restored_flag
+				
+				# Astrakhan
+				236 = { add_core_of = KAL }
+				
+				KAL = {
+					transfer_state = 237
+					transfer_state = 236
+					if = {
+						limit = {
+							ROOT = { controls_state = 217 } #Stalingrad
+						}
+						add_state_core = 217
+						transfer_state = 217
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 407 } #Uralsk
+						}
+						add_state_core = 407
+						transfer_state = 407
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 406 } #Guryev
+						}
+						add_state_core = 406
+						transfer_state = 406
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 401 } #Balakovo
+						}
+						add_state_core = 401
+						transfer_state = 401
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 829 } #Engels-Marxstadt
+						}
+						add_state_core = 829
+						transfer_state = 829
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 238 } #Volgodonsk
+						}
+						add_state_core = 238
+						transfer_state = 238
+					}
+					load_oob = "KAL_khanate_battalions"
+				}
+				
+				puppet = KAL
+				
+				if = {
+					limit = {
+						has_war_with = SOV
+					}
+					KAL = {
+						add_to_war = {
+							targeted_alliance = PREV 
+							enemy = SOV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				
+				
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	
+	restore_crimean_khanate = {  
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = GEO # Georgia 
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			} 
+		}
+  
+		available = {
+			is_subject = no
+			controls_state = 137 # Crimea
+			controls_state = 196 # Kherson
+			NOT = { has_government = communism }
+			NOT = { has_government = democratic }
+		}
+
+		visible = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			has_global_flag = form_transcaucasia_flag
+			NOT = { has_global_flag = crimean_khanate_restored_flag }
+
+				has_dlc = "No Step Back"
+		}
+
+		complete_effect = {
+			
+			custom_effect_tooltip = restore_crimean_khanate_tt 
+			
+			
+			hidden_effect = { 
+			
+				set_global_flag = crimean_khanate_restored_flag
+				
+				CRI = {
+					transfer_state = 137 # Crimea
+					transfer_state = 196 # Kherson
+					if = {
+						limit = {
+							ROOT = { controls_state = 200 } #Zaporozhe
+						}
+						add_state_core = 200
+						transfer_state = 200
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 227 } #Stalino
+						}
+						add_state_core = 227
+						transfer_state = 227
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 218 } #Rostov
+						}
+						add_state_core = 218
+						transfer_state = 218
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 228 } #Voroshilovgrad
+						}
+						add_state_core = 228
+						transfer_state = 228
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 234 } #Krasnodar
+						}
+						add_state_core = 234
+						transfer_state = 234
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 245 } #Millerovo
+						}
+						add_state_core = 245
+						transfer_state = 245
+					}
+					if = {
+						limit = {
+							ROOT = { controls_state = 226 } #Dnipropetrovsk
+						}
+						add_state_core = 226
+						transfer_state = 226
+					}
+					load_oob = "CRI_khanate_soldiers"
+				}
+				
+				puppet = CRI
+				
+				if = {
+					limit = {
+						has_war_with = SOV
+					}
+					CRI = {
+						add_to_war = {
+							targeted_alliance = ROOT 
+							enemy = SOV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_war_with = UKR
+					}
+					CRI = {
+						add_to_war = {
+							targeted_alliance = ROOT 
+							enemy = UKR
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				
+				
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	
+	release_turkish_kurdistan = {  
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = GEO # Georgia 
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			} 
+		}
+  
+		available = {
+			is_subject = no
+			controls_state = 352 # Hakkari
+			controls_state = 353 # Tunceli
+			controls_state = 350 # Diyarbakir
+		}
+
+		visible = {
+			OR = {
+				original_tag = GEO # Georgia
+				original_tag = ARM # Armenia
+				original_tag = AZR # Azerbaijan
+			}
+			has_global_flag = form_transcaucasia_flag
+			NOT = { has_global_flag = anatolian_kurds_subjugated_flag }
+
+				has_dlc = "No Step Back"
+		}
+
+		complete_effect = {
+			
+			custom_effect_tooltip = release_anatolian_kurdistan_tt 
+			
+			
+			hidden_effect = { 
+			
+				set_global_flag = anatolian_kurds_subjugated_flag
+				
+				KUR = {
+					transfer_state = 350 # Diyarbakir
+					transfer_state = 352 # Hakkari
+					transfer_state = 353 # Tunceli
+					if = {
+						limit = {
+							ROOT = { controls_state = 344 } #Malatya
+						}
+						add_state_core = 344
+						transfer_state = 344
+					}
+					load_oob = "KUR_liberation_troops"
+				}
+				
+				puppet = KUR
+				
+				if = {
+					limit = {
+						has_war_with = TUR
+					}
+					KUR = {
+						add_to_war = {
+							targeted_alliance = ROOT 
+							enemy = TUR
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				
+				
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+
+
+form_siberia_category = {
+	
+	form_siberian_republic = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+				original_tag = KHA # Khakassia
+				original_tag = EVE # Evenkia
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+				original_tag = KHA # Khakassia
+				original_tag = EVE # Evenkia
+			}
+			NOT = { has_global_flag = form_siberian_republic_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 564 # Buryatia
+			controls_state = 563 # Chita
+			controls_state = 574 # Yakutsk
+			controls_state = 516 # Taymyria
+			controls_state = 644 # Kolyma
+			controls_state = 876 # Udachny
+			controls_state = 877 # Verkhoyansk
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = siberia_unified
+			
+			custom_effect_tooltip = form_siberia_russian_siberia_coring_states_tt
+			
+			custom_effect_tooltip = form_siberia_yakutia_coring_states_tt
+			
+			custom_effect_tooltip = form_siberia_altai_coring_states_tt
+			
+			custom_effect_tooltip = form_siberia_ostyak_coring_states_tt
+			
+			custom_effect_tooltip = form_siberia_yamalia_coring_states_tt
+			
+			# Taymyria
+			516 = { add_core_of = ROOT }
+			
+			# Buryatia
+			564 = { add_core_of = ROOT }
+			
+			# Tannu Tuva
+			329 = { add_core_of = ROOT }
+			
+			# Chita
+			563 = { add_core_of = ROOT }
+
+			# Yeniseisk
+			576 = { add_core_of = ROOT }
+
+			# Kirensk
+			575 = { add_core_of = ROOT }
+
+			# Boyadbo
+			565 = { add_core_of = ROOT }
+
+			# Kemerovo/Khakassia
+			569 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+			
+				# Yakutsk
+				574 = { add_core_of = ROOT }
+				
+				# Kolyma
+				644 = { add_core_of = ROOT }
+
+				# Udachny
+				876 = { add_core_of = ROOT }
+
+				# Verkhoyansk
+				877 = { add_core_of = ROOT }
+				
+				# Oyrot Region
+				654 = { add_core_of = ROOT }
+				
+				# Altai Krai
+				40 = { add_core_of = ROOT }
+				
+				# Surgut
+				577 = { add_core_of = ROOT }
+				
+				# Tobolsk
+				580 = { add_core_of = ROOT }
+				
+				# Yamalia
+				824 = { add_core_of = ROOT }
+				
+				# Salekhard
+				579 = { add_core_of = ROOT }
+				
+				# Tyumen
+				403 = { add_core_of = ROOT }
+				
+				# Omsk
+				571 = { add_core_of = ROOT }
+				
+				# Tomsk
+				578 = { add_core_of = ROOT }
+				
+				# Novosibirsk
+				570 = { add_core_of = ROOT }
+				
+				# Krasnoyarsk
+				568 = { add_core_of = ROOT }
+				
+				# Bratsk
+				567 = { add_core_of = ROOT }
+				
+				# Irkutsk
+				566 = { add_core_of = ROOT }
+
+				#Khatangsky
+				878 = { add_core_of = ROOT }
+				
+				news_event = { id = nsb_news.303 hours = 8 }
+				
+				set_global_flag = form_siberian_republic_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	
+	conquer_the_fareast = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+			}
+			
+			has_global_flag = form_siberian_republic_flag
+			NOT = { has_global_flag = far_east_integrated_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 822 # Chukotka
+			controls_state = 875 # Chukchi Peninsula
+			controls_state = 637 # Kamchatka
+			controls_state = 562 # Okhotsk
+			controls_state = 874 # Magadan
+			controls_state = 560 # Nikolayevsk
+			controls_state = 655 # North Sakhalin
+			controls_state = 561 # Amur
+			controls_state = 657 # Birobidzhan
+			controls_state = 409 # Khabravosk
+			controls_state = 408 # Vladivostok
+		}
+
+		complete_effect = {
+			
+			custom_effect_tooltip = far_eastern_states_coring_states_tt
+			
+			hidden_effect = { 
+			
+				# Chukotka
+				822 = { add_core_of = ROOT }
+				
+				# Chukchi Peninsula
+				875 = { add_core_of = ROOT }
+				
+				# Kamchatka
+				637 = { add_core_of = ROOT }
+				
+				# Okhotsk
+				562 = { add_core_of = ROOT }
+				
+				# Magadan
+				874 = { add_core_of = ROOT }
+				
+				# Amur
+				561 = { add_core_of = ROOT }
+				
+				# Birobidzhan
+				657 = { add_core_of = ROOT }
+				
+				# Nikolayevsk
+				560 = { add_core_of = ROOT }
+				
+				# North Sakhalin
+				655 = { add_core_of = ROOT }
+				
+				# Khabravosk
+				409 = { add_core_of = ROOT }
+				
+				# Vladivostok
+				408 = { add_core_of = ROOT }
+				
+				set_global_flag = far_east_integrated_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	
+	push_to_the_urals = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+			}
+			
+			has_global_flag = form_siberian_republic_flag
+			NOT = { has_global_flag = urals_integrated_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 653 # Sverdlovsk
+			controls_state = 572 # Chelyabinsk
+			controls_state = 582 # Magnitogorsk
+			controls_state = 573 # Zlatoust
+			controls_state = 398 # Perm
+			controls_state = 581 # Northern Urals
+		}
+
+		complete_effect = {
+		
+			# Sverdlovsk
+			653 = { add_core_of = ROOT }
+			
+			# Chelyabinsk
+			572 = { add_core_of = ROOT }
+			
+			# Magnitogorsk
+			582 = { add_core_of = ROOT }
+			
+			# Zlatoust
+			573 = { add_core_of = ROOT }
+			
+			# Perm
+			398 = { add_core_of = ROOT }
+			
+			# Northern Urals
+			581 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = urals_integrated_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	
+	liberate_the_ainu = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = YAK # Yakutia
+				original_tag = FER # Far Eastern Republic
+				original_tag = CKK # Chukotka
+				original_tag = VLA # Vladivostok
+				original_tag = BYA # Buryatia
+				original_tag = TAY # Taymyria
+				original_tag = ALT # Altai
+				original_tag = YAM # Yamalia
+				original_tag = OVO # Ostyak-Vogulia
+				original_tag = TAN # Tannu Tuva
+			}
+			
+			has_global_flag = form_siberian_republic_flag
+			NOT = { has_global_flag = ainu_integrated_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 537 # South Sakhalin
+			controls_state = 555 # Kuril Islands
+			controls_state = 536 # Hokkaido
+		}
+
+		complete_effect = {
+		
+			# South Sakhalin
+			537 = { add_core_of = ROOT }
+			
+			# Kuril Islands
+			555 = { add_core_of = ROOT }
+			
+			# Hokkaido
+			536 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = ainu_integrated_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+}
+
+
+
+
+form_idel_ural_category = {
+	
+	form_idel_uralic_republic = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = MEL # Mari EL
+				original_tag = CHU # Chuvashia
+				original_tag = TAT # Tatarstan
+				original_tag = UDM # Udmurtia
+				original_tag = BSK # Bashkortostan
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = MEL # Mari EL
+				original_tag = CHU # Chuvashia
+				original_tag = TAT # Tatarstan
+				original_tag = UDM # Udmurtia
+				original_tag = BSK # Bashkortostan
+			}
+			NOT = { has_global_flag = form_idel_ural_flag }
+			has_dlc = "No Step Back"
+		}
+
+		available = {
+			controls_state = 833 # Mari El
+			controls_state = 256 # Chuvashia
+			controls_state = 249 # Kazan
+			controls_state = 399 # Udmurtia
+			controls_state = 651 # Ufa
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = idel_ural
+			
+			# Kazan
+			249 = { add_core_of = ROOT }
+			
+			# Mari El
+			833 = { add_core_of = ROOT }
+			
+			# Chuvashia
+			256 = { add_core_of = ROOT }
+			
+			# Udmurtia
+			399 = { add_core_of = ROOT }
+			
+			# Ufa
+			651 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				news_event = { id = nsb_news.304 hours = 8 }
+				
+				set_global_flag = form_idel_ural_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+}
+
+form_ethiopian_empire_category  = {
+	
+	form_empire_of_axum = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = ETH # Ethiopia # Maybe add Eritrea as well? 
+		}
+
+		available = {
+			controls_all_ethiopian_core_states = yes 
+			controls_state = 550 # Eritrea 
+			controls_state = 293 # Yemen 
+		}
+
+		visible = {
+			has_completed_focus = ETH_restore_the_empire_of_axum
+			NOT = { has_global_flag = form_axum_flag }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = empire_of_axum		
+			659 = { add_core_of = ROOT }
+			550 = { add_core_of = ROOT }
+			293 = { add_core_of = ROOT }
+			906 = { add_core_of = ROOT }
+			268 = { add_core_of = ROOT }
+			883 = { add_core_of = ROOT }
+			551 = { add_core_of = ROOT }
+			886 = { add_core_of = ROOT }
+		
+			hidden_effect = { 
+				#TODO_TA make news event 
+				# news_event = { id = nsb_news.304 hours = 8 }
+				
+				set_global_flag = form_axum_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ETH_move_capital_to_axum = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = ETH # Ethiopia 
+		}
+
+		available = {
+			controls_all_ethiopian_core_states = yes 
+			842 = { 
+				is_owned_by = ROOT 
+				is_fully_controlled_by = ROOT 
+			}
+			NOT = { has_country_flag = ETH_has_moved_capital_flag }
+		}
+		cost = 50 
+
+		visible = {
+			has_cosmetic_tag = empire_of_axum
+		}
+		fire_only_once = yes 
+
+		complete_effect = {
+			set_capital = {
+				state = 842 
+				remember_old_capital = no
+			}
+			842 = {
+				add_victory_points = {
+					province = 13237
+					value = 5
+				}
+				ETH_upgrade_state_category = yes 
+			}
+			#custom_effect_tooltip = ETH_prevents_further_capital_moves_tt
+			#set_country_flag = ETH_has_moved_capital_flag
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	form_empire_of_solomon = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = ETH # Ethiopia 
+		}
+
+		available = {
+			controls_all_ethiopian_core_states = yes 
+			controls_state = 454 # Palestine 
+			controls_state = 453 # Siniai
+			controls_state = 446 # Suez
+		}
+
+		visible = {
+			has_completed_focus = ETH_the_one_true_heir_of_solomon
+			NOT = { has_global_flag = form_empire_of_solomon_flag }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = empire_of_solomon		
+			453 = { add_core_of = ROOT }
+			446 = { add_core_of = ROOT }
+			907 = { add_core_of = ROOT }
+			447 = { add_core_of = ROOT }
+			457 = { add_core_of = ROOT }
+			456 = { add_core_of = ROOT }
+		
+			hidden_effect = { 
+				news_event = {
+					id = bba_news.5
+					hours = 8
+				}
+				
+				set_global_flag = form_empire_of_solomon_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	ETH_move_capital_to_jerusalem = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = ETH # Ethiopia 
+		}
+
+		available = {
+			controls_all_ethiopian_core_states = yes 
+			454 = { 
+				is_owned_by = ROOT 
+				is_fully_controlled_by = ROOT 
+			}
+			NOT = { has_country_flag = ETH_has_moved_capital_flag }
+		}
+		cost = 50 
+
+		visible = {
+			454 = { is_owned_and_controlled_by = ROOT }
+			OR = {
+				has_government = neutrality
+				has_government = fascism
+			}
+			NOT = { has_cosmetic_tag = gojjam }
+			NOT = { has_cosmetic_tag = jimma }
+		}
+		fire_only_once = yes 
+
+		complete_effect = {
+			set_capital = {
+				state = 454 
+				remember_old_capital = no
+			}
+			454 = {
+				add_victory_points = {
+					province = 1086
+					value = 9
+				}
+				ETH_upgrade_state_category = yes 
+				add_core_of = ROOT 
+			}
+			custom_effect_tooltip = ETH_prevents_further_capital_moves_tt
+			set_country_flag = ETH_has_moved_capital_flag
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	# form_empire_of_zion = { 
+
+	# 	icon = generic_form_nation
+
+	# 	allowed = {
+	# 		original_tag = ETH # Ethiopia 
+	# 	}
+
+	# 	available = {
+	# 		controls_all_ethiopian_core_states = yes 
+	# 		controls_state = 689
+	# 	}
+
+	# 	visible = {
+	# 		has_completed_focus = ETH_jah
+	# 		NOT = { has_global_flag = form_empire_of_zion_flag }
+	# 	}
+
+	# 	complete_effect = {
+	# 		set_cosmetic_tag = empire_of_zion
+	# 		custom_effect_tooltip = create_empire_of_zion_tt	
+	# 		hidden_effect = { 
+	# 			every_state = {
+	# 				limit = {
+	# 					OR = {
+	# 						region = 170
+	# 						region = 53
+	# 						state = 695
+	# 					}
+	# 					is_controlled_by_ROOT_or_subject = yes 
+	# 				}
+	# 				remove_claim_by = ROOT 
+	# 				add_core_of = ROOT 
+	# 			}
+				
+	# 			set_global_flag = form_empire_of_zion_flag
+				
+	# 		}
+	# 		news_event = {
+	# 			id = bba_news.6
+	# 			hours = 10
+	# 		}
+	# 	}
+
+	# 	ai_will_do = {
+	# 		factor = 200
+	# 		modifier = {
+	# 			factor = 0
+	# 			is_historical_focus_on = yes
+	# 		}
+	# 	}
+	# }
+}
+
+
+form_east_africa_category = {
+	
+	form_east_africa = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				AND = {
+					has_dlc = "Gotterdammerung"
+					original_tag = COG # Congo
+					has_completed_focus = COG_unify_east_africa
+				}
+			}
+			NOT = { has_global_flag = form_east_africa_flag }
+		}
+
+		available = {
+			controls_state = 546 # Tanganyika
+			controls_state = 547 # Nairobi
+			controls_state = 905 # Mombasa
+			controls_state = 904 # Nyanza-Rift Velley
+			controls_state = 548 # Uganda
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = east_africa
+			
+			# Tanganyika
+			546 = { add_core_of = ROOT }
+			
+			# Nairobi
+			547 = { add_core_of = ROOT }
+
+			# Nyanza-Rift Valley
+			904 = { add_core_of = ROOT }
+
+			# Mombasa
+			905 = { add_core_of = ROOT }
+			
+			# Uganda
+			548 = { add_core_of = ROOT }
+
+			# Rwanda
+			768 = { add_claim_by = ROOT }
+				
+			# Burundi
+			769 = { add_claim_by = ROOT }
+
+			# Jubaland
+			844 = { add_claim_by = ROOT }
+			
+			#add_ideas = soldiers_of_the_steppe
+			
+			hidden_effect = { 
+				
+				news_event = { id = bba_africa_news.1 hours = 8 }
+				
+				set_global_flag = form_east_africa_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	integrate_ruanda_urundi = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+			
+			has_global_flag = form_east_africa_flag
+			NOT = { has_global_flag = ruanda_urundi_integrated_flag }
+		}
+
+		available = {
+			controls_state = 768 # Rwanda
+			controls_state = 769 # Burundi
+		}
+
+		complete_effect = {
+		
+			# Rwanda
+			768 = { add_core_of = ROOT }
+			
+			# Burundi
+			769 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = ruanda_urundi_integrated_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	dominate_malawi = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+			
+			has_global_flag = form_east_africa_flag
+			NOT = { has_global_flag = malawi_dominated_flag }
+
+		}
+
+		available = {
+			controls_state = 770 # Malawi
+			controls_state = 897 # Zambezia-Mocambique 
+		}
+
+		complete_effect = {
+		
+			# Malawi
+			770 = { add_core_of = ROOT }
+			
+			# Zambezia-Mocambique 
+			897 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = malawi_dominated_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	liberate_sidamo = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+			
+			has_global_flag = form_east_africa_flag
+			NOT = { has_global_flag = sidamo_liberated_flag }
+
+		}
+
+		available = {
+			controls_state = 837 # Sidamo
+		}
+		
+
+		complete_effect = {
+		
+			# Sidamo
+			837 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = sidamo_liberated_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	unite_the_somalis = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+			
+			has_global_flag = form_east_africa_flag
+			NOT = { has_global_flag = somalis_united_flag }
+
+		}
+
+		available = {
+			controls_state = 844 # Jubaland
+			controls_state = 559 # Somaliland
+			controls_state = 269 # British Somaliland
+			controls_state = 836 # Bale
+			controls_state = 835 # Hararghe
+			controls_state = 268 # Djibouti
+			controls_state = 903 # Garissa
+		}
+
+		complete_effect = {
+		
+			# Jubaland
+			844 = { add_core_of = ROOT }
+
+			# Garissa
+			903 = { add_core_of = ROOT }
+
+			# Somaliland
+			559 = { add_core_of = ROOT }
+
+			# British Somaliland
+			269 = { add_core_of = ROOT }
+
+			# Bale
+			836 = { add_core_of = ROOT }
+
+			# Hararghe
+			835 = { add_core_of = ROOT }
+
+			# Djibouti
+			268 = { add_core_of = ROOT }
+
+			# Socotra
+			906 = { add_claim_by = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = somalis_united_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	conquer_the_comoros = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = KEN # Kenya
+				original_tag = UGA # Uganda
+				original_tag = TZN # Tanzania
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = COG # Congo
+			}
+			
+			has_global_flag = form_east_africa_flag
+			NOT = { has_global_flag = comoros_conquered_flag }
+
+		}
+
+		available = {
+			controls_state = 708 # Comoro Islands
+		}
+
+		complete_effect = {
+		
+			# Comoro Islands
+			708 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = comoros_conquered_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+}
+
+
+form_horn_of_africa_africa_category = {
+	
+	# form_the_horn_of_africa = { 
+
+	# 	icon = generic_form_nation
+
+	# 	allowed = {
+	# 		OR = {
+	# 			original_tag = ETH # Ethiopia
+	# 			original_tag = ERI # Eritrea
+	# 			original_tag = SOM # Somalia
+	# 			original_tag = TIG # Tigray
+	# 			original_tag = QEM # Qemant State
+	# 			original_tag = AFA # Afar
+	# 			original_tag = HAR # Harar
+	# 			original_tag = ORO # Oromia
+	# 			original_tag = SID # Sidamo
+	# 			original_tag = GBA # Gambela
+	# 			original_tag = BEG # Benishangul-Gumuz State
+	# 		}
+	# 	}
+
+	# 	visible = {
+	# 		IF = {
+	# 			limit = {
+	# 				original_tag = ETH
+	# 			}
+	# 			has_completed_focus = ETH_develop_the_horn_of_africa
+	# 		}
+	# 		ELSE_IF = {
+	# 			limit = {
+	# 				OR = {
+	# 					original_tag = AFA
+	# 					original_tag = ORO
+	# 					original_tag = QEM
+	# 					original_tag = TIG
+	# 					original_tag = BEG
+	# 					original_tag = HAR
+	# 					original_tag = SID
+	# 					original_tag = GBA
+	# 				}
+	# 			}
+	# 			has_completed_focus = HOA_proclaim_east-african_hegemony
+	# 		}
+	# 		OR = {
+	# 			original_tag = ETH # Ethiopia
+	# 			original_tag = ERI # Eritrea
+	# 			original_tag = SOM # Somalia
+	# 			original_tag = TIG # Tigray
+	# 			original_tag = QEM # Qemant State
+	# 			original_tag = AFA # Afar
+	# 			original_tag = HAR # Harar
+	# 			original_tag = ORO # Oromia
+	# 			original_tag = SID # Sidamo
+	# 			original_tag = GBA # Gambela
+	# 			original_tag = BEG # Benishangul-Gumuz State
+	# 		}
+	# 		NOT = { has_global_flag = form_horn_of_africa_flag }
+
+	# 		has_dlc = "By Blood Alone"
+	# 	}
+
+	# 	available = {
+	# 		IF = {
+	# 			limit = {
+	# 				original_tag = ETH
+	# 			}
+	# 			has_completed_focus = ETH_develop_the_horn_of_africa
+	# 			controls_state = 842 # Tigray
+	# 			controls_state = 843 # Wello
+	# 			controls_state = 908 # Afar
+	# 			controls_state = 841 # Begemder
+	# 			controls_state = 840 # Gojjam
+	# 			controls_state = 839 # Welega
+	# 			controls_state = 838 # Illubabor-Kaffa
+	# 			controls_state = 837 # Sidamo
+	# 			controls_state = 271 # Shewa
+	# 			controls_state = 836 # Bale
+	# 			controls_state = 835 # Hararghe
+	# 			controls_state = 550 # Eritrea
+	# 			controls_state = 268 # French Somaliland
+	# 			controls_state = 269 # British Somaliland
+	# 			controls_state = 559 # Somaliland
+	# 			controls_state = 844 # Jubaland
+	# 		}
+	# 		ELSE_IF = {
+	# 			limit = {
+	# 				OR = {
+	# 					original_tag = AFA
+	# 					original_tag = ORO
+	# 					original_tag = QEM
+	# 					original_tag = TIG
+	# 					original_tag = BEG
+	# 					original_tag = HAR
+	# 					original_tag = SID
+	# 					original_tag = GBA
+	# 				}
+	# 			}
+	# 			has_completed_focus = HOA_proclaim_east-african_hegemony
+	# 			controls_state = 842 # Tigray
+	# 			controls_state = 843 # Wello
+	# 			controls_state = 908 # Afar
+	# 			controls_state = 841 # Begemder
+	# 			controls_state = 840 # Gojjam
+	# 			controls_state = 839 # Welega
+	# 			controls_state = 838 # Illubabor-Kaffa
+	# 			controls_state = 837 # Sidamo
+	# 			controls_state = 271 # Shewa
+	# 			controls_state = 836 # Bale
+	# 			controls_state = 835 # Hararghe
+	# 			controls_state = 550 # Eritrea
+	# 			controls_state = 268 # French Somaliland
+	# 			controls_state = 269 # British Somaliland
+	# 			controls_state = 559 # Somaliland
+	# 			controls_state = 844 # Jubaland
+	# 		}
+	# 		ELSE = {
+	# 			controls_state = 842 # Tigray
+	# 			controls_state = 843 # Wello
+	# 			controls_state = 908 # Afar
+	# 			controls_state = 841 # Begemder
+	# 			controls_state = 840 # Gojjam
+	# 			controls_state = 839 # Welega
+	# 			controls_state = 838 # Illubabor-Kaffa
+	# 			controls_state = 837 # Sidamo
+	# 			controls_state = 271 # Shewa
+	# 			controls_state = 836 # Bale
+	# 			controls_state = 835 # Hararghe
+	# 			controls_state = 550 # Eritrea
+	# 			controls_state = 268 # French Somaliland
+	# 			controls_state = 269 # British Somaliland
+	# 			controls_state = 559 # Somaliland
+	# 			controls_state = 844 # Jubaland
+	# 		}
+	# 	}
+
+	# 	complete_effect = {
+	# 		set_cosmetic_tag = horn_of_africa
+			
+	# 		# Tigray
+	# 		842 = { add_core_of = ROOT }
+			
+	# 		# Wello
+	# 		843 = { add_core_of = ROOT }
+
+	# 		# Afar
+	# 		908 = { add_core_of = ROOT }
+			
+	# 		# Begemder
+	# 		841 = { add_core_of = ROOT }
+			
+	# 		# Gojjam
+	# 		840 = { add_core_of = ROOT }
+			
+	# 		# Welega
+	# 		839 = { add_core_of = ROOT }
+
+	# 		# Illubabor-Kaffa
+	# 		838 = { add_core_of = ROOT }
+
+	# 		# Sidamo
+	# 		837 = { add_core_of = ROOT }
+
+	# 		# Shewa
+	# 		271 = { add_core_of = ROOT }
+
+	# 		# Bale
+	# 		836 = { add_core_of = ROOT }
+
+	# 		# Hararghe
+	# 		835 = { add_core_of = ROOT }
+
+	# 		# Eritrea
+	# 		550 = { add_core_of = ROOT }
+
+	# 		# French Somaliland
+	# 		268 = { add_core_of = ROOT }
+
+	# 		# British Somaliland
+	# 		269 = { add_core_of = ROOT }
+
+	# 		# Somaliland
+	# 		559 = { add_core_of = ROOT }
+
+	# 		# Jubaland
+	# 		844 = { add_core_of = ROOT }
+
+	# 		# Socotra
+	# 		906 = { add_claim_by = ROOT }
+			
+	# 		hidden_effect = { 
+				
+	# 			news_event = { id = bba_africa_news.2 hours = 8 }
+				
+	# 			set_global_flag = form_horn_of_africa_flag
+				
+	# 		}
+	# 	}
+
+	# 	ai_will_do = {
+	# 		base = 200
+	# 	}
+	# }
+
+	conquer_socotra = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = ETH # Ethiopia
+				original_tag = ERI # Eritrea
+				original_tag = SOM # Somalia
+				original_tag = TIG # Tigray
+				original_tag = QEM # Qemant State
+				original_tag = AFA # Afar
+				original_tag = HAR # Harar
+				original_tag = ORO # Oromia
+				original_tag = SID # Sidamo
+				original_tag = GBA # Gambela
+				original_tag = BEG # Benishangul-Gumuz State
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = ETH # Ethiopia
+				original_tag = ERI # Eritrea
+				original_tag = SOM # Somalia
+				original_tag = TIG # Tigray
+				original_tag = QEM # Qemant State
+				original_tag = AFA # Afar
+				original_tag = HAR # Harar
+				original_tag = ORO # Oromia
+				original_tag = SID # Sidamo
+				original_tag = GBA # Gambela
+				original_tag = BEG # Benishangul-Gumuz State
+			}
+			
+			has_global_flag = form_horn_of_africa_flag
+			NOT = { has_global_flag = socotra_conquered_flag }
+			has_dlc = "By Blood Alone"
+		}
+
+		available = {
+			controls_state = 906 # Socotra
+		}
+
+		complete_effect = {
+		
+			# Socotra
+			906 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = socotra_conquered_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+
+	integrate_the_south = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = ETH # Ethiopia
+				original_tag = ERI # Eritrea
+				original_tag = SOM # Somalia
+				original_tag = TIG # Tigray
+				original_tag = QEM # Qemant State
+				original_tag = AFA # Afar
+				original_tag = HAR # Harar
+				original_tag = ORO # Oromia
+				original_tag = SID # Sidamo
+				original_tag = GBA # Gambela
+				original_tag = BEG # Benishangul-Gumuz State
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = ETH # Ethiopia
+				original_tag = ERI # Eritrea
+				original_tag = SOM # Somalia
+				original_tag = TIG # Tigray
+				original_tag = QEM # Qemant State
+				original_tag = AFA # Afar
+				original_tag = HAR # Harar
+				original_tag = ORO # Oromia
+				original_tag = SID # Sidamo
+				original_tag = GBA # Gambela
+				original_tag = BEG # Benishangul-Gumuz State
+			}
+			
+			has_global_flag = form_horn_of_africa_flag
+			NOT = { has_global_flag = integrate_the_south_flag }
+
+			has_dlc = "By Blood Alone"
+		}
+
+		available = {
+			controls_state = 903 # Garissa
+			controls_state = 547 # Nairobi
+			controls_state = 905 # Mombasa
+			controls_state = 904 # Nyanza-Rift Valley
+			controls_state = 548 # Uganda
+		}
+
+		complete_effect = {
+		
+			# Garissa
+			903 = { add_core_of = ROOT }
+
+			# Nairobi
+			547 = { add_core_of = ROOT }
+
+			# Mombasa
+			905 = { add_core_of = ROOT }
+
+			# Nyanza-Rift Valley
+			904 = { add_core_of = ROOT }
+
+			# Uganda
+			548 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = integrate_the_south_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+
+	the_upper_nile = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = ETH # Ethiopia
+				original_tag = ERI # Eritrea
+				original_tag = SOM # Somalia
+				original_tag = TIG # Tigray
+				original_tag = QEM # Qemant State
+				original_tag = AFA # Afar
+				original_tag = HAR # Harar
+				original_tag = ORO # Oromia
+				original_tag = SID # Sidamo
+				original_tag = GBA # Gambela
+				original_tag = BEG # Benishangul-Gumuz State
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = ETH # Ethiopia
+				original_tag = ERI # Eritrea
+				original_tag = SOM # Somalia
+				original_tag = TIG # Tigray
+				original_tag = QEM # Qemant State
+				original_tag = AFA # Afar
+				original_tag = HAR # Harar
+				original_tag = ORO # Oromia
+				original_tag = SID # Sidamo
+				original_tag = GBA # Gambela
+				original_tag = BEG # Benishangul-Gumuz State
+			}
+			
+			has_global_flag = form_horn_of_africa_flag
+			NOT = { has_global_flag = the_upper_nile_flag }
+
+			has_dlc = "By Blood Alone"
+		}
+
+		available = {
+			controls_state = 886 # Blue Nile
+			controls_state = 884 # Upper Nile
+		}
+
+		complete_effect = {
+		
+			# Blue Nile
+			886 = { add_core_of = ROOT }
+
+			# Upper Nile
+			884 = { add_core_of = ROOT }
+			
+			hidden_effect = { 
+				
+				set_global_flag = the_upper_nile_flag
+				
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+}
+
+
+greater_italy_category = {
+	
+	# proclaim_greater_italy = { 
+
+	# 	icon = generic_form_nation
+
+	# 	allowed = {
+	# 		original_tag = ITA # Italy
+	# 	}
+
+	# 	visible = {
+	# 		OR = {
+	# 			original_tag = ITA # Italy
+	# 		}
+			
+	# 		NOT = { has_global_flag = greater_italy_flag }
+			
+	# 	}
+
+	# 	available = {
+	# 		has_completed_focus = ITA_towards_a_greater_italy
+	# 		custom_trigger_tooltip = {
+	# 			tooltip = greater_italy_required_states
+	# 			controls_state = 852 # Istria
+	# 			controls_state = 736 # Litorale
+	# 			controls_state = 160 # Veneto
+	# 			controls_state = 39 # Alto Adige
+	# 			controls_state = 850 # Trentino
+	# 			controls_state = 159 # Lombardia
+	# 			controls_state = 158 # Piedmonte
+	# 			controls_state = 161 # Emilia Romagna
+	# 			controls_state = 162 # Toscana 
+	# 			controls_state = 157 # Abruzzo
+	# 			controls_state = 2 # Latium
+	# 			controls_state = 849 # Puglia
+	# 			controls_state = 117 # Campania
+	# 			controls_state = 156 # Calabria
+	# 			controls_state = 115 # Sicilia
+	# 			controls_state = 114 # Sardegna
+	# 		}  
+	# 		custom_trigger_tooltip = {
+	# 			tooltip = greater_italy_required_other_states 
+	# 			AND = {
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 1 # Corsica 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 1 # Corsica
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 846 # Ticino 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 846 # Ticino
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 735 # Savoy 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 735 # Savoy
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 163 # Zara 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 163 # Zara
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 103 # Dalmatia 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 103 # Dalmatia
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 853 # Ljubljana 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 853 # Ljubljana
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 116 # Malta 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 116 # Malta
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 182 # Crete 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 182 # Crete
+	# 					}
+	# 				}
+	# 				OR = {
+	# 					ITA = { 
+	# 					controls_state = 164 # Dodecaneso 
+	# 					}
+	# 					any_country = {
+	# 						is_subject_of = ITA
+	# 						controls_state = 164 # Dodecaneso
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+			
+	# 	}
+
+	# 	complete_effect = {
+	# 		set_cosmetic_tag = greater_italy 
+			
+	# 		custom_effect_tooltip = greater_italy_effect_tooltip
+			
+	# 		add_ideas = ITA_italia_irredenta_achieved
+			
+	# 		hidden_effect = { 
+
+	# 			# Corsica
+	# 			ITA = {
+	# 				transfer_state = 1
+	# 			}
+	# 			1 = { 
+	# 				add_core_of = ROOT
+	# 				set_state_name = ITA_italian_corsica_name
+	# 			}
+	# 			set_province_name = {
+	# 			    id = 3838 
+	# 			    name = ITA_italian_ajaccio_name   
+	# 			} 
+				
+	# 			# Ticino
+	# 			ITA = {
+	# 				transfer_state = 846
+	# 			}
+	# 			846 = { add_core_of = ROOT }
+				
+	# 			# Savoy
+	# 			ITA = {
+	# 				transfer_state = 735
+	# 			}
+	# 			735 = { 
+	# 				add_core_of = ROOT
+	# 				set_state_name = ITA_italian_savoy_name
+	# 			}
+	# 			set_province_name = {
+	# 			    id = 9909 
+	# 			    name = ITA_italian_nice_name
+	# 			} 
+	# 			set_province_name = {
+	# 			    id = 778  
+	# 			    name = ITA_italian_annecy_name
+	# 			} 
+				 
+	# 			# Zara
+	# 			ITA = {
+	# 				transfer_state = 163
+	# 			} 
+	# 			163 = { add_core_of = ROOT }
+				
+	# 			# Dalmatia
+	# 			ITA = {
+	# 				transfer_state = 103
+	# 			}
+	# 			103 = { 
+	# 				add_core_of = ROOT 
+	# 				set_state_name = ITA_italian_dalmatia_name
+	# 			}
+	# 			set_province_name = {
+	# 			    id = 3924
+	# 			    name = ITA_italian_split_name
+	# 			} 
+	# 			set_province_name = {
+	# 			    id = 6889  
+	# 			    name = ITA_italian_dubrovnik_name
+	# 			} 
+	 
+	# 			# Ljubljana
+	# 			ITA = {
+	# 				transfer_state = 853
+	# 			}
+	# 			853 = { 
+	# 				add_core_of = ROOT 
+	# 				set_state_name = ITA_italian_ljubljana_state_name
+	# 			}
+	# 			set_province_name = {
+	# 			    id = 9627
+	# 			    name = ITA_italian_ljubljana_name
+	# 			}
+
+	# 			# Malta
+	# 			ITA = {
+	# 				transfer_state = 116
+	# 			}
+	# 			116 = { add_core_of = ROOT }
+
+	# 			# Crete
+	# 			ITA = {
+	# 				transfer_state = 182
+	# 			}
+	# 			182 = { 
+	# 				add_core_of = ROOT 
+	# 				set_state_name = ITA_italian_crete_name
+	# 			}
+	# 			set_province_name = {
+	# 			    id = 12058  
+	# 			    name = ITA_italian_chania_name 
+	# 			} 
+	# 			set_province_name = {
+	# 			    id = 9940  
+	# 			    name = ITA_italian_heraklion_name 
+	# 			} 
+
+	# 			# Dodecaneso
+	# 			ITA = {
+	# 				transfer_state = 164
+	# 			}
+	# 			164 = { add_core_of = ROOT }
+
+	# 			news_event = { id = bba_italian_formables_news.1 hours = 8 }	
+
+	# 			set_global_flag = greater_italy_flag
+
+	# 		}
+	# 	}
+
+	# 	ai_will_do = {
+	# 		base = 500
+	# 	}
+	# }
+}
+
+form_sweden_hungary_category = {
+	
+	proclaim_sweden_hungary = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = HUN # Hungary
+		}
+
+		visible = {
+			
+			original_tag = HUN # Hungary
+			
+			NOT = { has_global_flag = sweden_hungary_formed_flag }
+
+			has_completed_focus = wuw_HUN_elect_a_democratic_king
+			
+		}
+
+		available = {
+			has_completed_focus = wuw_HUN_elect_a_democratic_king # They have a Swedish King
+			has_country_flag = HUN_carl_wilhelm_took_absolute_control
+			custom_trigger_tooltip = {
+				tooltip = sweden_hungary_required_states
+				controls_state = 155 # North Transdanubia
+				controls_state = 974 # South Transdanubia
+				controls_state = 43 # Northern Hungary
+				controls_state = 973 # Bacs Bodrog
+				controls_state = 154 # Alfï¿½ld
+			}  
+			custom_trigger_tooltip = {
+				tooltip = sweden_hungary_required_other_states 
+				AND = {
+					OR = {
+						HUN = { 
+						controls_state = 138 # Skï¿½ne 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 138 # Skï¿½ne 
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 139 # Smï¿½land 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 139 # Smï¿½land
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 140 # Vï¿½stergï¿½tland 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 140 # Vï¿½stergï¿½tland
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 915 # Bohuslï¿½n 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 915 # Bohuslï¿½n
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 124 # Gotland 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 124 # Gotland
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 913 # ï¿½stergï¿½tland 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 913 # ï¿½stergï¿½tland
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 919 # Vï¿½rmland 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 919 # Vï¿½rmland
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 141 # Sï¿½dermanland 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 141 # Sï¿½dermanland
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 916 # Dalarna 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 916 # Dalarna
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 38 # Gï¿½vleborg 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 38 # Gï¿½vleborg
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 917 # Jï¿½mtland 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 917 # Jï¿½mtland
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 918 # Vï¿½sterbotten 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 918 # Vï¿½sterbotten
+						}
+					}
+					OR = {
+						HUN = { 
+						controls_state = 666 # Norrbotten 
+						}
+						any_country = {
+							is_subject_of = HUN
+							controls_state = 666 # Norrbotten
+						}
+					}
+				}
+			}
+			
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = HUN_sweden_hungary_unified 
+			
+			custom_effect_tooltip = sweden_hungary_effect_tooltip
+			
+			hidden_effect = { 
+
+				# Skï¿½ne
+				HUN = {
+					transfer_state = 138
+				}
+				138 = { 
+					add_core_of = ROOT
+				}
+				
+				# Smï¿½land
+				HUN = {
+					transfer_state = 139
+				}
+				139 = { 
+					add_core_of = ROOT
+				}
+
+				# Vï¿½stergï¿½tland
+				HUN = {
+					transfer_state = 140
+				}
+				140 = { 
+					add_core_of = ROOT
+				}
+
+				# Bohuslï¿½n
+				HUN = {
+					transfer_state = 915
+				}
+				915 = { 
+					add_core_of = ROOT
+				}
+
+				# ï¿½stergï¿½tland!!!!!!!
+				HUN = {
+					transfer_state = 913
+				}
+				913 = { 
+					add_core_of = ROOT
+				}
+
+				# Gotland
+				HUN = {
+					transfer_state = 124
+				}
+				124 = { 
+					add_core_of = ROOT
+				}
+
+				# Vï¿½rmland..
+				HUN = {
+					transfer_state = 919
+				}
+				919 = { 
+					add_core_of = ROOT
+				}
+
+				# Sï¿½dermanland
+				HUN = {
+					transfer_state = 141
+				}
+				141 = { 
+					add_core_of = ROOT
+				}
+
+				# Dalarna
+				HUN = {
+					transfer_state = 916
+				}
+				916 = { 
+					add_core_of = ROOT
+				}
+
+				# Gï¿½vleborg
+				HUN = {
+					transfer_state = 38
+				}
+				38 = { 
+					add_core_of = ROOT
+				}
+
+				# Jï¿½mtland
+				HUN = {
+					transfer_state = 917
+				}
+				917 = { 
+					add_core_of = ROOT
+				}
+
+				# Vï¿½sterbotten
+				HUN = {
+					transfer_state = 918
+				}
+				918 = { 
+					add_core_of = ROOT
+				}
+
+				# Norrbotten
+				HUN = {
+					transfer_state = 666
+				}
+				666 = { 
+					add_core_of = ROOT
+				}
+
+				set_global_flag = sweden_hungary_formed_flag
+
+			}
+		}
+
+		ai_will_do = {
+			base = 500
+		}
+	}
+}
+
+antilles_category = {
+	
+	unite_the_antilles = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = HAI # Haiti
+				original_tag = DOM # Dominican Republic
+				original_tag = PUE # Puerto Rico
+				original_tag = CUB # Cuba
+				original_tag = JAM # Jamaica
+				original_tag = BAH # Bahamas
+				original_tag = GDL # Guadeloupe 
+				original_tag = BAS # British Antilles 
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = HAI # Haiti
+				original_tag = DOM # Dominican Republic
+				original_tag = PUE # Puerto Rico
+				original_tag = CUB # Cuba
+				original_tag = JAM # Jamaica
+				original_tag = BAH # Bahamas
+				original_tag = GDL # Guadeloupe 
+				original_tag = BAS # British Antilles 
+			}
+			
+			NOT = { has_global_flag = antilles_formed_flag }
+			
+		}
+
+		available = {
+			
+			319 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			318 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			315 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = antilles 
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			
+			# Dominican Republic
+			IF =  {
+				limit = {
+					NOT = {
+						319 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				319 = { add_core_of = ROOT }
+			}
+			
+			# Haiti
+			IF =  {
+				limit = {
+					NOT = {
+						318 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				318 = { add_core_of = ROOT }
+			}
+
+			# Cuba
+			IF =  {
+				limit = {
+					NOT = {
+						315 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				315 = { add_core_of = ROOT }
+			}
+
+			# Jamaica
+			IF =  {
+				limit = {
+					NOT = {
+						689 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				689 = { add_core_of = ROOT }
+			}
+
+			# Northern Bahamas
+			IF =  {
+				limit = {
+					NOT = {
+						690 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				690 = { add_core_of = ROOT }
+			}
+
+			# Southern Bahamas
+			IF =  {
+				limit = {
+					NOT = {
+						693 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				693 = { add_core_of = ROOT }
+			}
+
+			# Puerto Rico
+			IF =  {
+				limit = {
+					NOT = {
+						686 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				686 = { add_core_of = ROOT }
+			}
+
+			# French Caribbean
+			IF =  {
+				limit = {
+					NOT = {
+						694 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				694 = { add_core_of = ROOT }
+			}
+
+			# Leeward Islands
+			IF =  {
+				limit = {
+					NOT = {
+						308 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				308 = { add_core_of = ROOT }
+			}
+
+			# Windward Islands
+			IF =  {
+				limit = {
+					NOT = {
+						692 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				692 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				set_global_flag = antilles_formed_flag
+
+				news_event = { 
+					id = south_american_news.20
+					hours = 6
+				}
+
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	integrate_the_netherlands_antilles = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = HAI # Haiti
+				original_tag = DOM # Dominican Republic
+				original_tag = PUE # Puerto Rico
+				original_tag = CUB # Cuba
+				original_tag = JAM # Jamaica
+				original_tag = BAH # Bahamas
+				original_tag = GDL # Guadeloupe 
+				original_tag = BAS # British Antilles 
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = HAI # Haiti
+				original_tag = DOM # Dominican Republic
+				original_tag = PUE # Puerto Rico
+				original_tag = CUB # Cuba
+				original_tag = JAM # Jamaica
+				original_tag = BAH # Bahamas
+				original_tag = GDL # Guadeloupe 
+				original_tag = BAS # British Antilles 
+			}
+			
+			has_global_flag = antilles_formed_flag
+			NOT = { has_global_flag = integrated_curacao_flag }
+			
+		}
+
+		available = {
+			
+			695 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		complete_effect = {
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			
+			# Curacao
+			IF =  {
+				limit = {
+					NOT = {
+						695 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				695 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				set_global_flag = integrated_curacao_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	integrate_trinidad_and_tobago = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = HAI # Haiti
+				original_tag = DOM # Dominican Republic
+				original_tag = PUE # Puerto Rico
+				original_tag = CUB # Cuba
+				original_tag = JAM # Jamaica
+				original_tag = BAH # Bahamas
+				original_tag = GDL # Guadeloupe 
+				original_tag = BAS # British Antilles 
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = HAI # Haiti
+				original_tag = DOM # Dominican Republic
+				original_tag = PUE # Puerto Rico
+				original_tag = CUB # Cuba
+				original_tag = JAM # Jamaica
+				original_tag = BAH # Bahamas
+				original_tag = GDL # Guadeloupe 
+				original_tag = BAS # British Antilles 
+			}
+			
+			has_global_flag = antilles_formed_flag
+			NOT = { has_global_flag = integrated_tobago_flag }
+			
+		}
+
+		available = {
+			
+			691 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		complete_effect = {
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			
+			# Tobago
+			IF =  {
+				limit = {
+					NOT = {
+						691 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				691 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				set_global_flag = integrated_tobago_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+}
+
+latin_africa_category = {
+	
+	unite_latin_africa = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = COG # Congo Leopoldville
+				original_tag = KAT # Katanga
+				original_tag = RCG # Congo Brazzaville
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = ANG # Angola
+				original_tag = GAB # Gabon 
+				original_tag = EQG # Equatorial Guinea
+				original_tag = CMR # Cameroon
+				original_tag = CHA # Chad
+				original_tag = CAR # Central African Republic
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = COG # Congo Leopoldville
+				original_tag = KAT # Katanga
+				original_tag = RCG # Congo Brazzaville
+				original_tag = RWA # Rwanda
+				original_tag = BRD # Burundi
+				original_tag = ANG # Angola
+				original_tag = GAB # Gabon 
+				original_tag = EQG # Equatorial Guinea
+				original_tag = CMR # Cameroon
+				original_tag = CHA # Chad
+				original_tag = CAR # Central African Republic
+			}
+			
+			NOT = { has_global_flag = latin_africa_formed_flag }
+			
+		}
+
+		available = {
+			
+			295 = {
+				is_controlled_by = ROOT
+			}
+
+			888 = {
+				is_controlled_by = ROOT
+			}
+
+			889 = {
+				is_controlled_by = ROOT
+			}
+
+			890 = {
+				is_controlled_by = ROOT
+			}
+
+			718 = {
+				is_controlled_by = ROOT
+			}
+
+			538 = {
+				is_controlled_by = ROOT
+			}
+
+			768 = {
+				is_controlled_by = ROOT
+			}
+
+			769 = {
+				is_controlled_by = ROOT
+			}
+
+			796 = {
+				is_controlled_by = ROOT
+			}
+
+			540 = {
+				is_controlled_by = ROOT
+			}
+
+			891 = {
+				is_controlled_by = ROOT
+			}
+
+			892 = {
+				is_controlled_by = ROOT
+			}
+
+			772 = {
+				is_controlled_by = ROOT
+			}
+
+			539 = {
+				is_controlled_by = ROOT
+			}
+
+			297 = {
+				is_controlled_by = ROOT
+			}
+
+			773 = {
+				is_controlled_by = ROOT
+			}
+
+			660 = {
+				is_controlled_by = ROOT
+			}
+
+			774 = {
+				is_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 295
+				state = 888
+				state = 889
+				state = 890
+				state = 718
+				state = 538
+				state = 768
+				state = 769
+				state = 796
+				state = 540
+				state = 891
+				state = 892
+				state = 772
+				state = 539
+				state = 297
+				state = 773
+				state = 660
+				state = 774
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				drop_cosmetic_tag = yes
+			}
+			set_cosmetic_tag = latin_africa 
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			
+			# Leopoldville
+			IF =  {
+				limit = {
+					NOT = {
+						295 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				295 = { add_core_of = ROOT }
+			}
+			
+			# Coquilhatville
+			IF =  {
+				limit = {
+					NOT = {
+						538 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				538 = { add_core_of = ROOT }
+			}
+
+			# Lusambo
+			IF =  {
+				limit = {
+					NOT = {
+						888 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				888 = { add_core_of = ROOT }
+			}
+
+			# Elizabethville
+			IF =  {
+				limit = {
+					NOT = {
+						889 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				889 = { add_core_of = ROOT }
+			}
+
+			# Costermanville
+			IF =  {
+				limit = {
+					NOT = {
+						890 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				890 = { add_core_of = ROOT }
+			}
+
+			# Stanleyville
+			IF =  {
+				limit = {
+					NOT = {
+						718 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				718 = { add_core_of = ROOT }
+			}
+
+			# Rwanda
+			IF =  {
+				limit = {
+					NOT = {
+						768 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				768 = { add_core_of = ROOT }
+			}
+
+			# Burundi
+			IF =  {
+				limit = {
+					NOT = {
+						769 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				769 = { add_core_of = ROOT }
+			}
+
+			# North Angola
+			IF =  {
+				limit = {
+					NOT = {
+						796 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				796 = { add_core_of = ROOT }
+			}
+
+			# Luanda
+			IF =  {
+				limit = {
+					NOT = {
+						540 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				540 = { add_core_of = ROOT }
+			}
+
+			# South West Angola
+			IF =  {
+				limit = {
+					NOT = {
+						892 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				892 = { add_core_of = ROOT }
+			}
+
+			# Zambesi
+			IF =  {
+				limit = {
+					NOT = {
+						891 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				891 = { add_core_of = ROOT }
+			}
+
+			# Middle Congo
+			IF =  {
+				limit = {
+					NOT = {
+						772 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				772 = { add_core_of = ROOT }
+			}
+
+			# Gabon
+			IF =  {
+				limit = {
+					NOT = {
+						539 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				539 = { add_core_of = ROOT }
+			}
+
+			# Equatorial Guinea
+			IF =  {
+				limit = {
+					NOT = {
+						297 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				297 = { add_core_of = ROOT }
+			}
+
+			# Sao Tome
+			IF =  {
+				limit = {
+					NOT = {
+						705 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				705 = { add_core_of = ROOT }
+			}
+
+			# Cameroon
+			IF =  {
+				limit = {
+					NOT = {
+						773 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				773 = { add_core_of = ROOT }
+			}
+
+			# Equatorial Africa
+			IF =  {
+				limit = {
+					NOT = {
+						660 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				660 = { add_core_of = ROOT }
+			}
+
+			# Chad
+			IF =  {
+				limit = {
+					NOT = {
+						774 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				774 = { add_core_of = ROOT }
+			}
+
+			# B.E.T
+			IF =  {
+				limit = {
+					NOT = {
+						775 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				775 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				set_global_flag = latin_africa_formed_flag
+
+				news_event = { 
+					id = ww_congo.16
+					hours = 6
+				}
+
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+}
+
+
+germany_formable_category = {
+	
+	declare_germany_reunified_decision = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = DNZ # Danzig
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+				AND = {
+					original_tag = LUX # Luxembourg 
+					has_game_rule = {
+						rule = germany_fragmentation_status
+						option = GERMANY_FRAGMENTED
+					}
+				}
+				
+			}
+			
+			NOT = { has_global_flag = germany_reformed_flag }
+			
+		}
+
+		available = {
+			
+			909 = { # Schleswig
+				is_controlled_by = ROOT
+			}
+
+			58 = { # Holstein
+				is_controlled_by = ROOT
+			}
+
+			61 = { # Mecklenburg
+				is_controlled_by = ROOT
+			}
+
+			62 = { # Vorpommern
+				is_controlled_by = ROOT
+			}
+
+			#63 = { # Hinterpommern
+			#	is_controlled_by = ROOT
+			#}
+			#
+			#68 = { # Ostmark
+			#	is_controlled_by = ROOT
+			#}
+			#
+			#66 = { # Niederschlesien
+			#	is_controlled_by = ROOT
+			#}
+			#
+			#67 = { # Oberschlesien
+			#	is_controlled_by = ROOT
+			#}
+
+			64 = { # Brandenburg
+				is_controlled_by = ROOT
+			}
+
+			65 = { # Sachsen
+				is_controlled_by = ROOT
+			}
+
+			60 = { # Thï¿½ringen
+				is_controlled_by = ROOT
+			}
+
+			59 = { # Hannover
+				is_controlled_by = ROOT
+			}
+
+			56 = { # Weser-Ems
+				is_controlled_by = ROOT
+			}
+
+			57 = { # Westfalen
+				is_controlled_by = ROOT
+			}
+
+			55 = { # Hessen
+				is_controlled_by = ROOT
+			}
+
+			51 = { # Rhineland
+				is_controlled_by = ROOT
+			}
+
+			42 = { # Moselland
+				is_controlled_by = ROOT
+			}
+
+			978 = { # Baden
+				is_controlled_by = ROOT
+			}
+
+			50 = { # Wï¿½rttemberg
+				is_controlled_by = ROOT
+			}
+
+			54 = { # Franken
+				is_controlled_by = ROOT
+			}
+
+			53 = { # Niederbayern
+				is_controlled_by = ROOT
+			}
+
+			52 = { # Oberbayern
+				is_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 909
+				state = 58
+				state = 61
+				state = 62
+				state = 64
+				state = 65
+				state = 60
+				state = 59
+				state = 56
+				state = 57
+				state = 55
+				state = 51
+				state = 42
+				state = 978
+				state = 50
+				state = 54
+				state = 53
+				state = 52
+			}
+		}
+
+		cost = 100
+
+		complete_effect = {
+			hidden_effect = {
+				drop_cosmetic_tag = yes
+			}
+			set_cosmetic_tag = reunified_germany 
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = declare_germany_reunified_decision_tt 
+			hidden_effect = {
+				# Brandenburg
+				IF =  {
+					limit = {
+						NOT = {
+							64 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					64 = { add_core_of = ROOT }
+				}
+
+				# Vorpommern
+				IF =  {
+					limit = {
+						NOT = {
+							62 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					62 = { add_core_of = ROOT }
+				}
+
+				# Mecklenburg
+				IF =  {
+					limit = {
+						NOT = {
+							61 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					61 = { add_core_of = ROOT }
+				}
+
+				# Sachsen
+				IF =  {
+					limit = {
+						NOT = {
+							65 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					65 = { add_core_of = ROOT }
+				}
+
+				# Holstein
+				IF =  {
+					limit = {
+						NOT = {
+							58 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					58 = { add_core_of = ROOT }
+				}
+
+				# Schleswig
+				IF =  {
+					limit = {
+						NOT = {
+							909 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					909 = { add_core_of = ROOT }
+				}
+
+				# Hannover
+				IF =  {
+					limit = {
+						NOT = {
+							59 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					59 = { add_core_of = ROOT }
+				}
+
+				# Thï¿½ringen
+				IF =  {
+					limit = {
+						NOT = {
+							60 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					60 = { add_core_of = ROOT }
+				}
+
+				# Weser-Ems
+				IF =  {
+					limit = {
+						NOT = {
+							56 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					56 = { add_core_of = ROOT }
+				}
+
+				# Westfalen
+				IF =  {
+					limit = {
+						NOT = {
+							57 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					57 = { add_core_of = ROOT }
+				}
+
+				# Hessen
+				IF =  {
+					limit = {
+						NOT = {
+							55 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					55 = { add_core_of = ROOT }
+				}
+
+				# Rhineland
+				IF =  {
+					limit = {
+						NOT = {
+							51 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					51 = { add_core_of = ROOT }
+				}
+
+				# Moselland
+				IF =  {
+					limit = {
+						NOT = {
+							42 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					42 = { add_core_of = ROOT }
+				}
+
+				# Baden
+				IF =  {
+					limit = {
+						NOT = {
+							978 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					978 = { add_core_of = ROOT }
+				}
+
+				# Wï¿½rttemberg
+				IF =  {
+					limit = {
+						NOT = {
+							50 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					50 = { add_core_of = ROOT }
+				}
+
+				# Franken
+				IF =  {
+					limit = {
+						NOT = {
+							54 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					54 = { add_core_of = ROOT }
+				}
+
+				# Oberbayern
+				IF =  {
+					limit = {
+						NOT = {
+							52 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					52 = { add_core_of = ROOT }
+				}
+
+				# Niederbayern
+				IF =  {
+					limit = {
+						NOT = {
+							53 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					53 = { add_core_of = ROOT }
+				}
+
+				set_global_flag = germany_reformed_flag
+
+				country_event = { 
+					id = wuw_GER_releasable.1
+					hours = 0
+				}
+
+				news_event = { 
+					id = wuw_GER_news.1
+					hours = 16
+				}
+			}
+
+		}
+
+		ai_will_do = {
+			base = 2500
+		}
+	}
+
+	reintegrate_luxemburg = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+
+			NOT = {
+				8 = {
+					is_core_of = ROOT
+				}
+			}
+			
+			has_global_flag = germany_reformed_flag
+			NOT = { has_global_flag = reintegrated_lumexburg_flag }
+			
+		}
+
+		available = {
+			
+			8 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 8
+			}
+		}
+
+		cost = 25
+
+		complete_effect = {
+			
+			# Luxemburg
+			IF =  {
+				limit = {
+					NOT = {
+						8 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				8 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				8 = {
+					set_state_name = 8_lux_name
+				}
+
+				set_province_name = {
+					id = 6583
+					name = 6583_german_unification_lux_name
+				}
+				
+				set_global_flag = reintegrated_lumexburg_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	reintegrate_elsass_lothringen = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+
+			NOT = {
+				28 = {
+					is_core_of = ROOT
+				}
+			}
+			
+			has_global_flag = germany_reformed_flag
+			NOT = { has_global_flag = reintigrated_alsace_loraine_flag }
+			
+		}
+
+		available = {
+			
+			28 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 28
+			}
+		}
+
+		cost = 25
+
+		complete_effect = {
+			
+			# Alsace-Lorraine
+			IF =  {
+				limit = {
+					NOT = {
+						28 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				28 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				28 = { set_state_name = 28_german_name }
+				set_province_name = { id = 9503 name = province_9503_german_name }
+				set_province_name = { id = 678 name = province_678_german_name }
+				
+				set_global_flag = reintigrated_alsace_loraine_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	reintegrate_south_jutland = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+
+			NOT = {
+				912 = {
+					is_core_of = ROOT
+				}
+			}
+			
+			has_global_flag = germany_reformed_flag
+			NOT = { has_global_flag = reintigrated_south_jutland_flag }
+			
+		}
+
+		available = {
+			
+			912 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 912
+			}
+		}
+
+		cost = 25
+
+		complete_effect = {
+			
+			# South Jutland
+			IF =  {
+				limit = {
+					NOT = {
+						912 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				912 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				912 = { set_state_name = 912_german_name }
+				set_province_name = { id = 13258 name = province_13258_german_name }
+				
+				set_global_flag = reintigrated_south_jutland_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	reintegrate_east_prussia = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+
+			NOT = {
+				AND = {
+					5 = {
+						is_core_of = ROOT
+					}
+					763 = {
+						is_core_of = ROOT
+					}
+					188 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			
+			has_global_flag = germany_reformed_flag
+			NOT = { has_global_flag = reintigrated_east_prussia_flag }
+			
+		}
+
+		available = {
+			
+			5 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			763 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			188 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 5
+				state = 763
+				state = 188
+			}
+		}
+
+		cost = 50
+
+		complete_effect = {
+			
+			# Ermland-Masuren
+			IF =  {
+				limit = {
+					NOT = {
+						5 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				5 = { add_core_of = ROOT }
+			}
+
+			# Kï¿½nigsberg
+			IF =  {
+				limit = {
+					NOT = {
+						763 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				763 = { add_core_of = ROOT }
+			}
+
+			# Memel
+			IF =  {
+				limit = {
+					NOT = {
+						188 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				188 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				set_global_flag = reintigrated_east_prussia_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	reintegrate_silesia = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+
+			NOT = {
+				AND = {
+					66 = {
+						is_core_of = ROOT
+					}
+					67 = {
+						is_core_of = ROOT
+					}
+					762 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			
+			has_global_flag = germany_reformed_flag
+			NOT = { has_global_flag = reintigrated_silesia_flag }
+			
+		}
+
+		available = {
+			
+			66 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			67 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			762 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 66
+				state = 67
+				state = 762
+			}
+		}
+
+		cost = 50
+
+		complete_effect = {
+			
+			# Lower Silesia
+			IF =  {
+				limit = {
+					NOT = {
+						66 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				66 = { add_core_of = ROOT }
+			}
+
+			# Upper Silesia
+			IF =  {
+				limit = {
+					NOT = {
+						67 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				67 = { add_core_of = ROOT }
+			}
+
+			# Katowice
+			IF =  {
+				limit = {
+					NOT = {
+						762 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				762 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				762 = { set_state_name = 762_german_name }
+				set_province_name = { id = 6464 name = province_6464_german_name }
+
+				set_global_flag = reintigrated_silesia_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	reintegrate_posen_west_prussia = { 
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = PRE # Prussia
+				original_tag = MEK # Mecklenburg
+				original_tag = VGE # Volga Germany
+				original_tag = SHL # Schleswig-Holstein
+				original_tag = HAN # Hannover
+				original_tag = HES # Hesse
+				original_tag = RHI # Rhineland 
+				original_tag = WUR # Wurtemmburg
+				original_tag = BAY # Bavaria
+				original_tag = THU # Thuringia
+				original_tag = SAX # Saxony
+				original_tag = LUX # Luxembourg 
+				original_tag = DNZ # Danzig 
+				original_tag = WGR # West Germany
+				original_tag = DDR # East Germany
+				original_tag = UBD # United Baltic Duchy
+			}
+
+			NOT = {
+				AND = {
+					68 = {
+						is_core_of = ROOT
+					}
+					63 = {
+						is_core_of = ROOT
+					}
+					86 = {
+						is_core_of = ROOT
+					}
+					807 = {
+						is_core_of = ROOT
+					}
+					85 = {
+						is_core_of = ROOT
+					}
+				}
+			}
+			
+			has_global_flag = germany_reformed_flag
+			NOT = { has_global_flag = reintigrated_posen_west_prussia_flag }
+			
+		}
+
+		available = {
+			
+			68 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			63 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			86 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			807 = {
+				is_fully_controlled_by = ROOT
+			}
+
+			85 = {
+				is_fully_controlled_by = ROOT
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 68
+				state = 63
+				state = 86
+				state = 807
+				state = 85
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			
+			# Posen
+			IF =  {
+				limit = {
+					NOT = {
+						86 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				86 = { add_core_of = ROOT }
+			}
+
+			# Ostmark
+			IF =  {
+				limit = {
+					NOT = {
+						68 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				68 = { add_core_of = ROOT }
+			}
+
+			# Hinterpommern
+			IF =  {
+				limit = {
+					NOT = {
+						63 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				63 = { add_core_of = ROOT }
+			}
+
+			# Gdynia
+			IF =  {
+				limit = {
+					NOT = {
+						807 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				807 = { add_core_of = ROOT }
+			}
+
+			# Danzig
+			IF =  {
+				limit = {
+					NOT = {
+						85 = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				85 = { add_core_of = ROOT }
+			}
+
+			hidden_effect = {
+				807 = { set_state_name = 807_german_name }
+				86 = { set_state_name = 86_german_name }
+				set_province_name = { id = 9263 name = province_9263_german_name }
+				set_province_name = { id = 3295 name = province_3295_german_name }
+				set_province_name = { id = 6558 name = province_6558_german_name }
+
+				set_global_flag = reintigrated_posen_west_prussia_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+
+	
 }
