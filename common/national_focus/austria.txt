@@ -12518,8 +12518,8 @@ focus_tree = {
 					limit = { has_government = fascism }
 
 					add_equipment_subsidy = {
-						cic = 1000 
-						equipment_type = small_plane_airframe
+						cic = 10000 
+						equipment_type = fighter_equipment_0
 						seller_trigger = is_fascist_seller_trigger
 					}
 				}
@@ -12528,8 +12528,8 @@ focus_tree = {
 					limit = { has_government = communism }
 
 					add_equipment_subsidy = {
-						cic = 1000 
-						equipment_type = small_plane_airframe
+						cic = 10000
+						equipment_type = fighter_equipment_0
 						seller_trigger = is_communist_seller_trigger
 					}
 				}
@@ -12537,15 +12537,16 @@ focus_tree = {
 				ELSE = {
 
 					add_equipment_subsidy = {
-						cic = 1000 
-						equipment_type = small_plane_airframe
+						cic = 10000 
+						equipment_type = fighter_equipment_0
 						seller_trigger = is_democratic_seller_trigger
 					}
 				}
 			}
 
 			IF = {
-				limit = { has_dlc = "By Blood Alone"}
+				#limit = { has_dlc = "By Blood Alone"}
+				limit = { always = no }
 
 				IF = {
 					limit = { 

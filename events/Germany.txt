@@ -9115,49 +9115,49 @@ country_event = { #Germany wants resource rights for Sweden
 	desc = AAT_germany.10.desc #Intentional
 	picture = GFX_report_event_german_speech
 	is_triggered_only = yes
-	option = { #No
-		name = AAT_germany.1.a
-		ai_chance = {
-			base = 1
-			modifier = {
-				date > 1942.12.1
-				OR = {
-					is_historical_focus_on = yes
-					has_government = democratic
-				}
-				factor = 3
-			} 
+	# option = { #No
+	# 	name = AAT_germany.1.a
+	# 	ai_chance = {
+	# 		base = 1
+	# 		modifier = {
+	# 			date > 1942.12.1
+	# 			OR = {
+	# 				is_historical_focus_on = yes
+	# 				has_government = democratic
+	# 			}
+	# 			factor = 3
+	# 		} 
 
-			modifier = {
-				FROM = {
-					surrender_progress > 0.2
-				}
-				factor = 10
-			}
+	# 		modifier = {
+	# 			FROM = {
+	# 				surrender_progress > 0.2
+	# 			}
+	# 			factor = 10
+	# 		}
 
-			modifier = {
-				FROM = {
-					is_ai = no
-					surrender_progress < 0.03
-				}
-				factor = 0
-			}
-		}
+	# 		modifier = {
+	# 			FROM = {
+	# 				is_ai = no
+	# 				surrender_progress < 0.03
+	# 			}
+	# 			factor = 0
+	# 		}
+	# 	}
 
-		add_political_power = -25
+	# 	add_political_power = -25
 
-		FROM = {
-			effect_tooltip = {
-				create_wargoal = {
-					type = take_state_focus
-					target = ROOT
-					expire = 0
-					generator = { 918 666 }
-				}
-			}
-			country_event = { id = AAT_germany.2 hours = 2 }
-		}
-	}
+	# 	FROM = {
+	# 		effect_tooltip = {
+	# 			create_wargoal = {
+	# 				type = take_state_focus
+	# 				target = ROOT
+	# 				expire = 0
+	# 				generator = { 918 666 }
+	# 			}
+	# 		}
+	# 		country_event = { id = AAT_germany.2 hours = 2 }
+	# 	}
+	# }
 
 	option = { #Yes
 		ai_chance = {
@@ -9177,12 +9177,17 @@ country_event = { #Germany wants resource rights for Sweden
 
 		add_timed_idea = {
 			idea = GER_german_swedish_trade_agreement
-			days = 480
+			days = 720
 		}
 
 		give_resource_rights = {
 			receiver = FROM 
 			state = 918 #Västerbotten 
+		}
+
+		give_resource_rights = {
+			receiver = FROM 
+			state = 141 #Västerbotten 
 		}
 
 		add_opinion_modifier = {
