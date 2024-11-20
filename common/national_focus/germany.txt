@@ -3860,7 +3860,7 @@ focus_tree = {
 
 			add_tech_bonus = {
 				name = GER_panzergrenadier
-				ahead_reduction = 1
+				#ahead_reduction = 1
 				bonus = 1
 				uses = 1
 				category = cat_mechanized_equipment
@@ -4695,14 +4695,14 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = GER_expand_kummersdorfs_capacity
-				ahead_reduction = 1
-				bonus = 1
+				#ahead_reduction = 1
+				bonus = 0.5
 				uses = 1
 				category = cat_heavy_armor
 			}
 			add_tech_bonus = {
 				name = GER_expand_kummersdorfs_capacity
-				bonus = 1
+				bonus = 0.5
 				uses = 1
 				category = cat_medium_armor
 			}
@@ -8625,6 +8625,7 @@ focus_tree = {
 
 		available = { 
 			has_army_manpower = { size > 749999 }
+			date > 1938.7.1
 			NOT = { has_war_with = CZE }
 			CZE = {
 				custom_trigger_tooltip = {
@@ -8695,6 +8696,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
+			add_named_threat = { threat = 2 name = GER_befriend_czechoslovakia }
+
 			CZE = {
 				country_event = { id = wuw_GER_diplomacy.10 hours = 6 }
 			}
@@ -8951,6 +8954,7 @@ focus_tree = {
 		available = {
 			has_war = no
 			is_subject = no
+			date > 1937.1.1
 			IF = {
 				limit = { has_dlc = "Gotterdammerung" }
 
@@ -8998,7 +9002,7 @@ focus_tree = {
 			AUS = {
 				country_event = {
 					id = AUS_political_events.77
-					hours = 12
+					hours = 1
 				}
 				set_country_flag = AUS_anschluss_process_has_begun_flag
 			}
@@ -9596,8 +9600,8 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = GER_innovative_warfare
-				#bonus = 1
-				ahead_reduction = 2
+				bonus = 1
+				#ahead_reduction = 2
 				uses = 1
 				category = armor
 				category = artillery
@@ -9850,7 +9854,14 @@ focus_tree = {
 
 		available = {
 			is_subject = no
-			has_army_manpower = { size > 724999 } #80 div
+			has_army_manpower = { size > 749999 } #80 div		
+			NOT = {
+				AND = {
+					CZE = { is_in_faction_with = GER }
+					has_war = yes
+				}
+			}
+			date > 1938.1.1
 		}
 		
 		cancel = {
@@ -10628,15 +10639,15 @@ focus_tree = {
 
 			add_named_threat = { threat = 3 name = GER_demand_memel_threat }
 
-			random_other_country = {
+			if = {
 				limit = {
-					owns_state = 188
-					controls_state = 188 
+					LIT = { 
+						owns_state = 188
+						controls_state = 188 
+					}
 				}
-				country_event = { 
-					id = baltic.4 
-					days = 1
-					random_days = 3
+				LIT = {
+					country_event = { id = baltic.4 }
 				}
 			}
 
@@ -11365,6 +11376,11 @@ focus_tree = {
 				exists = yes
 				has_civil_war = no
 			}
+			FRA = { has_capitulated = yes }
+			OR = {
+				SPR = { has_government = democratic }
+				SPR = { has_government = communism }
+			}
 		}
 		
 		bypass = {
@@ -11394,61 +11410,66 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			if = {
-				limit = {
-					any_country_with_original_tag  = {
-						original_tag_to_check = SPR
-						has_government = fascism
-						exists = yes
-						has_civil_war = no
-						has_capitulated = no
-						is_subject = no
-						is_in_faction = no
-					}
-				}
-				random_country_with_original_tag = {
-					original_tag_to_check = SPR
-					limit = {
-						has_government = fascism
-						exists = yes
-						has_civil_war = no
-						has_capitulated = no
-						is_subject = no
-						is_in_faction = no
-					}
-					country_event = { id = wuw_GER_diplomacy.114 days = 1 }
-					custom_effect_tooltip = if_they_accept_tt
-					effect_tooltip = {
-						ROOT = {
-							puppet = PREV
-						}
-					}
+			# if = {
+			# 	limit = {
+			# 		any_country_with_original_tag  = {
+			# 			original_tag_to_check = SPR
+			# 			has_government = fascism
+			# 			exists = yes
+			# 			has_civil_war = no
+			# 			has_capitulated = no
+			# 			is_subject = no
+			# 			is_in_faction = no
+			# 		}
+			# 	}
+			# 	random_country_with_original_tag = {
+			# 		original_tag_to_check = SPR
+			# 		limit = {
+			# 			has_government = fascism
+			# 			exists = yes
+			# 			has_civil_war = no
+			# 			has_capitulated = no
+			# 			is_subject = no
+			# 			is_in_faction = no
+			# 		}
+			# 		country_event = { id = wuw_GER_diplomacy.114 days = 1 }
+			# 		custom_effect_tooltip = if_they_accept_tt
+			# 		effect_tooltip = {
+			# 			ROOT = {
+			# 				puppet = PREV
+			# 			}
+			# 		}
 
-					custom_effect_tooltip = if_they_refuse_tt
-					effect_tooltip = {
-						ROOT = {
-							create_wargoal = {
-								type = puppet_wargoal_focus
-								target = PREV
-							}
-						}
-					}
-				}
-			}
-			else = {
-				random_country_with_original_tag = {
-					original_tag_to_check = SPR
-					limit = {
-						exists = yes
-						has_civil_war = no
-					}
-					ROOT = {
-						create_wargoal = {
-							type = puppet_wargoal_focus
-							target = PREV
-						}
-					}
-				}
+			# 		custom_effect_tooltip = if_they_refuse_tt
+			# 		effect_tooltip = {
+			# 			ROOT = {
+			# 				create_wargoal = {
+			# 					type = puppet_wargoal_focus
+			# 					target = PREV
+			# 				}
+			# 			}
+			# 		}
+			# 	}
+			# }
+			# else = {
+			# 	random_country_with_original_tag = {
+			# 		original_tag_to_check = SPR
+			# 		limit = {
+			# 			exists = yes
+			# 			has_civil_war = no
+			# 		}
+			# 		ROOT = {
+			# 			create_wargoal = {
+			# 				type = puppet_wargoal_focus
+			# 				target = PREV
+			# 			}
+			# 		}
+			# 	}
+			# }
+			ENG = {add_to_faction = SPR }
+			declare_war_on = {
+					target = SPR
+					type = annex_everything
 			}
 		}
 	}
@@ -16114,10 +16135,16 @@ focus_tree = {
 					# 	icon = "GFX_GER_improved_heavy_tank_medium"
 					# }	
 					add_tech_bonus = {
-						name = armor_bonus
-						bonus = 2.0
-						uses = 1
-						category = armor
+						name = med_armor_bonus
+						bonus = 0.5
+						ahead_reduction = 0.5
+						category = cat_medium_armor
+					}
+					add_tech_bonus = {
+						name = hvy_armor_bonus
+						bonus = 0.5
+						ahead_reduction = 0.5
+						category = cat_heavy_armor
 					}
 				}
 				custom_effect_tooltip = generic_skip_one_line_tt
