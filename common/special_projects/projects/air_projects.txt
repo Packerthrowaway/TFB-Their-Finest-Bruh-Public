@@ -44,9 +44,9 @@ sp_air_bouncing_bomb = {
 	
 	resource_cost = {
 		resources = {
-			steel = 4
-			aluminium = 4
-			rubber = 2
+			steel = 40
+			aluminium = 40
+			rubber = 20
 		}
 	}
 
@@ -220,8 +220,8 @@ sp_air_earthshaker_bomb = {
 	
 	resource_cost = {
 		resources = {
-			steel = 4
-			tungsten = 8
+			steel = 40
+			tungsten = 80
 		}
 	}
 	
@@ -414,8 +414,8 @@ sp_air_intercontinental_bomber = {
 	
 	resource_cost = {
 		resources = {
-			aluminium = 24
-			rubber = 12
+			aluminium = 240
+			rubber = 120
 		}
 	}
 	
@@ -634,8 +634,8 @@ sp_air_mothership_aircraft = {
 	
 	resource_cost = {
 		resources = {
-			aluminium = 18
-			rubber = 8
+			aluminium = 180
+			rubber = 80
 		}
 	}
 	
@@ -811,8 +811,8 @@ sp_air_jet_engine = {
 			# }
 			# else = {
 				OR = {
-					has_tech = fighter2
-					has_tech = tactical_bomber2
+					has_tech = fighter3
+					has_tech = tactical_bomber3
 				}
 			# }	
 		}
@@ -824,9 +824,9 @@ sp_air_jet_engine = {
 
 	resource_cost = {
 		resources = {
-			chromium = 12
-			aluminium = 4
-			steel = 2
+			chromium = 120
+			aluminium = 40
+			steel = 20
 		}
 	}
 
@@ -1104,9 +1104,9 @@ sp_air_axial_jet_engine = {
 
 	resource_cost = {
 		resources = {
-			chromium = 18
-			aluminium = 10
-			steel = 4
+			chromium = 180
+			aluminium = 100
+			steel = 40
 		}
 	}
 
@@ -1116,39 +1116,39 @@ sp_air_axial_jet_engine = {
 
 	project_output = {
 		country_effects = {
-			if = {
-				limit = { has_dlc = "By Blood Alone" }
-				custom_effect_tooltip = {
-					localization_key = SP_UNLOCK_TECH
-					TECH = modern_small_airframe
-				}
-				custom_effect_tooltip = {
-					localization_key = SP_UNLOCK_TECH
-					TECH = modern_medium_airframe
-				}
-				custom_effect_tooltip = {
-					localization_key = SP_UNLOCK_TECH
-					TECH = modern_large_airframe
-				}
+			# if = {
+			# 	limit = { has_dlc = "By Blood Alone" }
+			# 	custom_effect_tooltip = {
+			# 		localization_key = SP_UNLOCK_TECH
+			# 		TECH = modern_small_airframe
+			# 	}
+			# 	custom_effect_tooltip = {
+			# 		localization_key = SP_UNLOCK_TECH
+			# 		TECH = modern_medium_airframe
+			# 	}
+			# 	custom_effect_tooltip = {
+			# 		localization_key = SP_UNLOCK_TECH
+			# 		TECH = modern_large_airframe
+			# 	}
 						
-				add_design_template_bonus = {
-					name = air_equipment
-					uses = 1
-					cost_factor = 0.75
-					equipment = medium_plane_airframe
-					equipment = small_plane_airframe
-					equipment = large_plane_airframe
-				}
-				add_design_template_bonus = {
-					name = air_equipment
-					uses = 1
-					cost_factor = 0.5
-					equipment = small_plane_airframe
-					equipment = medium_plane_airframe
-					equipment = large_plane_airframe
-				}				
-			}
-			else = {
+			# 	add_design_template_bonus = {
+			# 		name = air_equipment
+			# 		uses = 1
+			# 		cost_factor = 0.75
+			# 		equipment = medium_plane_airframe
+			# 		equipment = small_plane_airframe
+			# 		equipment = large_plane_airframe
+			# 	}
+			# 	add_design_template_bonus = {
+			# 		name = air_equipment
+			# 		uses = 1
+			# 		cost_factor = 0.5
+			# 		equipment = small_plane_airframe
+			# 		equipment = medium_plane_airframe
+			# 		equipment = large_plane_airframe
+			# 	}				
+			# }
+			# else = {
 				custom_effect_tooltip = {
 					localization_key = SP_UNLOCK_TECH
 					TECH = jet_fighter_equipment_2
@@ -1190,7 +1190,7 @@ sp_air_axial_jet_engine = {
 						}
 					}
 				}									
-			}	
+			# }	
 		}		
 
 		# enable_equipment_modules = {
@@ -1238,16 +1238,16 @@ sp_air_axial_jet_engine = {
 				
 				iteration_output = {
 					country_effects = {
-						if = {
-							limit = { has_dlc = "By Blood Alone"}												
-							add_tech_bonus = {
-								name = sp_air_light_air_tech_bonus
-								bonus = 0.5
-								uses = 1
-								category = light_air
-							}
-						}
-						else = {
+						# if = {
+						# 	limit = { has_dlc = "By Blood Alone"}												
+						# 	add_tech_bonus = {
+						# 		name = sp_air_light_air_tech_bonus
+						# 		bonus = 0.5
+						# 		uses = 1
+						# 		category = light_air
+						# 	}
+						# }
+						# else = {
 							add_equipment_bonus = {
 								name = sp_air_jet_engine_fighter_2
 								bonus = {
@@ -1268,7 +1268,7 @@ sp_air_axial_jet_engine = {
 									}	
 								}
 							}													
-						}
+						# }
 					}
 				}
 			}
@@ -1279,17 +1279,17 @@ sp_air_axial_jet_engine = {
 				default = yes
 				iteration_output = {
 					country_effects = {
-						if = {
-							limit = { has_dlc = "By Blood Alone"}							
+						# if = {
+						# 	limit = { has_dlc = "By Blood Alone"}							
 
-							add_tech_bonus = {
-								name = sp_air_air_equipment_tech_bonus
-								bonus = 0.33
-								uses = 2
-								category = air_equipment
-							}
-						}
-						else = {
+						# 	add_tech_bonus = {
+						# 		name = sp_air_air_equipment_tech_bonus
+						# 		bonus = 0.33
+						# 		uses = 2
+						# 		category = air_equipment
+						# 	}
+						# }
+						# else = {
 							add_equipment_bonus = {
 								name = sp_air_jet_engine_compromise_2
 								bonus = {
@@ -1306,7 +1306,7 @@ sp_air_axial_jet_engine = {
 									}	
 								}
 							}												
-						}
+						# }
 					}
 				}
 			}
@@ -1316,16 +1316,16 @@ sp_air_axial_jet_engine = {
 				
 				iteration_output = {
 					country_effects = {
-						if = {
-							limit = { has_dlc = "By Blood Alone"}												
-							add_tech_bonus = {
-								name = sp_air_medium_air_tech_bonus
-								bonus = 0.5
-								uses = 1
-								category = medium_air
-							}
-						}
-						else = {
+						# if = {
+						# 	limit = { has_dlc = "By Blood Alone"}												
+						# 	add_tech_bonus = {
+						# 		name = sp_air_medium_air_tech_bonus
+						# 		bonus = 0.5
+						# 		uses = 1
+						# 		category = medium_air
+						# 	}
+						# }
+						# else = {
 							add_equipment_bonus = {
 								name = sp_air_jet_engine_bomber_2
 								bonus = {
@@ -1346,7 +1346,7 @@ sp_air_axial_jet_engine = {
 									}	
 								}
 							}												
-						}
+						# }
 					}
 				}
 			}		
@@ -1379,9 +1379,9 @@ sp_air_supersonic_jet = {
 	
 	resource_cost = {
 		resources = {
-			aluminium = 24
-			chromium = 16
-			rubber = 8
+			aluminium = 240
+			chromium = 160
+			rubber = 80
 		}
 	}
 
@@ -1584,8 +1584,8 @@ sp_air_helicopter = {
 
 	resource_cost = {
 		resources = {
-			aluminium = 12
-			steel = 8
+			aluminium = 120
+			steel = 80
 		}
 	}
 	

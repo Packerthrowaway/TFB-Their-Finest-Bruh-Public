@@ -4770,6 +4770,24 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					is_fully_controlled_by = ROOT
+				}
+				prioritize = { 4 9 43 }
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -4826,15 +4844,15 @@ focus_tree = {
 							is_fully_controlled_by = ROOT
 						}
 						prioritize = { 9 }
-						add_extra_state_shared_building_slots = 4
+						add_extra_state_shared_building_slots = 8
 						add_building_construction = {
 							type = industrial_complex
-							level = 2
+							level = 4
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = arms_factory
-							level = 2
+							level = 4
 							instant_build = yes
 						}
 					}
@@ -4844,10 +4862,10 @@ focus_tree = {
 							is_fully_controlled_by = ROOT
 						}
 						prioritize = { 4 }
-						add_extra_state_shared_building_slots = 2
+						add_extra_state_shared_building_slots = 4
 						add_building_construction = {
 							type = arms_factory
-							level = 2
+							level = 4
 							instant_build = yes
 						}
 					}
@@ -8960,7 +8978,7 @@ focus_tree = {
 					is_core_of = ROOT
 					is_fully_controlled_by = ROOT
 				}
-				random_select_amount = 4
+				random_select_amount = 8
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
@@ -10666,7 +10684,7 @@ focus_tree = {
 				}
 				add_offsite_building = {
 					type = arms_factory
-					level = 2
+					level = 4
 				}
 			}
 			ELSE_IF = {
@@ -10684,7 +10702,7 @@ focus_tree = {
 				}
 				add_offsite_building = {
 					type = arms_factory
-					level = 4
+					level = 8
 				}
 			}
 			ELSE_IF = {
@@ -10698,11 +10716,11 @@ focus_tree = {
 				}
 				add_offsite_building = {
 					type = industrial_complex
-					level = 2
+					level = 4
 				}
 				add_offsite_building = {
 					type = arms_factory
-					level = 4
+					level = 8
 				}
 			}
 
@@ -11005,14 +11023,14 @@ focus_tree = {
 					is_core_of = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 1
+						size > 3
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -11023,14 +11041,14 @@ focus_tree = {
 					is_core_of = ROOT
 					free_building_slots = {
 						building = industrial_complex
-						size > 1
+						size > 3
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 4
 					instant_build = yes
 				}
 				add_resource = {
@@ -13544,10 +13562,10 @@ focus_tree = {
 		completion_reward = {
 
 			random_owned_controlled_state = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 				set_state_flag = HUN_soviet_hungarian_war_industry_flag
@@ -13556,10 +13574,10 @@ focus_tree = {
 				limit = {
 					NOT = { has_state_flag = HUN_soviet_hungarian_war_industry_flag }
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 				set_state_flag = HUN_soviet_hungarian_war_industry_flag
@@ -13568,10 +13586,10 @@ focus_tree = {
 				limit = {
 					NOT = { has_state_flag = HUN_soviet_hungarian_war_industry_flag }
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -16863,16 +16881,16 @@ focus_tree = {
 					43 = {
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 3
 							include_locked = yes
 						}
 					}
 				}
 				43 = {
-					add_extra_state_shared_building_slots = 2
+					add_extra_state_shared_building_slots = 4
 					add_building_construction = {
 						type = arms_factory
-						level = 2
+						level = 4
 						instant_build = yes
 					}
 				}
@@ -16883,16 +16901,16 @@ focus_tree = {
 					155 = {
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 3
 							include_locked = yes
 						}
 					}
 				}
 				155 = {
-					add_extra_state_shared_building_slots = 2
+					add_extra_state_shared_building_slots = 4
 					add_building_construction = {
 						type = arms_factory
-						level = 2
+						level = 4
 						instant_build = yes
 					}
 				}
@@ -16935,6 +16953,32 @@ focus_tree = {
 
 		completion_reward = {
 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				prioritize = { 43 }
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 100
+				}
+			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -17051,21 +17095,21 @@ focus_tree = {
 					155 = {
 						free_building_slots = {
 							building = industrial_complex
-							size > 2
+							size > 3
 							include_locked = yes
 						}
 					}
 				}
 				155 = {
-					add_extra_state_shared_building_slots = 2
+					add_extra_state_shared_building_slots = 4
 					add_building_construction = {
 						type = industrial_complex
-						level = 2
+						level = 4
 						instant_build = yes
 					}
 					add_resource = {
 						type = steel
-						amount = 20
+						amount = 40
 					}
 				}
 			}
@@ -17324,10 +17368,10 @@ focus_tree = {
 					}
 				}
 				43 = {
-					add_extra_state_shared_building_slots = 1
+					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -17397,7 +17441,7 @@ focus_tree = {
 		}
 
 		available = {
-			num_of_factories > 50
+			num_of_factories > 70
 		}
 
 		bypass = {
@@ -17457,14 +17501,14 @@ focus_tree = {
 					is_core_of = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 1
+						size > 3
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -17666,14 +17710,14 @@ focus_tree = {
 					is_core_of = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 1
+						size > 3
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -18162,6 +18206,21 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 3
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
 
 		}
 	}
@@ -18449,6 +18508,18 @@ focus_tree = {
 
 		completion_reward = {
 
+			random_owned_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
 			random_owned_state = {
 				limit = {
 					is_fully_controlled_by = ROOT
