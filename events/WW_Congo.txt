@@ -1765,6 +1765,7 @@ country_event = {
 	}
 }
 
+# [FROM.GetNameDefCap] Offers Peace for [?COG.COG_disputed_colony.GetAdjective] Independence
 country_event = {
 	id = ww_congo.37
 	title = ww_congo.37.t
@@ -1772,6 +1773,7 @@ country_event = {
 	is_triggered_only = yes
 	picture = GFX_report_event_ETH_ethiopian_warriors
 	option = {
+		# Reject
 		name = ww_congo.37.a
 		ai_chance = {
 			base = 10
@@ -1794,6 +1796,7 @@ country_event = {
 		}
 	}
 	option = {
+		# Accept
 		name = ww_congo.37.b
 		ai_chance = {
 			base = 1
@@ -1887,6 +1890,7 @@ country_event = {
 	}
 }
 
+# [FROM.GetName] Agrees to Peace Offer
 country_event = {
 	id = ww_congo.38
 	title = ww_congo.38.t
@@ -1898,10 +1902,120 @@ country_event = {
 		ai_chance = {
 			base = 5
 		}
+		add_war_support = 0.02
 		hidden_effect = {
 			clear_variable = COG.COG_disputed_colony
 			clr_country_flag = COG_has_active_liberation_goal
 		}	
+	}
+}
+
+# [FROM.GetNameDefCap] Offers Peace for [?COG.COG_disputed_colony.GetAdjective] Independence
+country_event = {
+	id = ww_congo.73
+	title = ww_congo.73.t
+	desc = ww_congo.73.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_ETH_ethiopian_warriors
+	option = {
+		# Reject
+		name = ww_congo.73.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 5
+				AND = {
+					is_in_faction = yes
+					has_war_with_major = yes
+					COG = {
+						is_in_faction = yes
+						is_faction_leader = no
+					}
+				}
+			}
+		}
+		
+		add_political_power = -25
+
+	}
+	option = {
+		# Accept
+		name = ww_congo.73.b
+		ai_chance = {
+			base = 3
+			modifier = {
+				add = 30
+				any_owned_state = {
+					is_on_continent = africa
+					is_controlled_by = COG
+				}
+			}
+			modifier = {
+				add = -15
+				any_controlled_state = {
+					is_core_of = FROM
+				}
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.3
+			}
+			modifier = {
+				add = 50
+				any_country = {
+					has_country_flag = COG_the_subject_country_to_be_liberated
+					has_capitulated = yes
+				}
+			}
+		}
+
+		for_each_scope_loop = {
+			array = COG.COG_has_liberation_goal_array
+			remove_from_array = {
+				array = COG.COG_has_liberation_goal_array
+				value = THIS
+			}	
+		}
+
+		white_peace = COG
+		# Allies also make peace
+		every_other_country = {
+			limit = { 
+				is_in_faction_with = ROOT 
+				has_war_with = COG
+			}
+			white_peace = COG
+		}
+		every_other_country = {
+			limit = {
+				is_in_faction_with = COG
+				has_war_with = ROOT
+			}
+			white_peace = ROOT
+		}
+		
+		random_country = {
+			limit = {
+				has_country_flag = COG_the_subject_country_to_be_liberated
+			}
+			ROOT = {
+				set_autonomy = {
+					target = PREV
+					autonomy_state = autonomy_free
+					end_wars  = yes # default yes. will not cancel non civil wars if set to no
+					end_civil_wars = yes # default yes. will not cancel civil wars if set to no
+				}	
+			}
+			leave_faction = yes
+		}	
+
+		hidden_effect = {
+			clear_variable = COG.COG_disputed_colony
+			FROM = {
+				clr_country_flag = COG_has_active_liberation_goal
+			}
+		}	
+
 	}
 }
 
@@ -2729,23 +2843,13 @@ country_event = {
 				elections_allowed = no
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
-			IF = {
-				limit = {
-					RWA_yuhi_musinga = {
-						can_be_country_leader = yes
-					}
-				}
-				promote_character = RWA_yuhi_musinga
-			}
-			ELSE = {
-				add_country_leader_role = {
-					character =  RWA_yuhi_musinga
-					promote_leader = yes
-					country_leader = {
-						ideology = despotism
-						expire = "1969.1.1.1"
-						traits = { the_rwandan_collaborstionist_king } 
-					}
+			add_country_leader_role = {
+				character =  RWA_yuhi_musinga
+				promote_leader = yes
+				country_leader = {
+					ideology = despotism
+					expire = "1969.1.1.1"
+					traits = { the_rwandan_collaborstionist_king } 
 				}
 			}
 		}

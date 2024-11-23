@@ -272,6 +272,10 @@ set_variable = { GER_military_air_range_factor = 0 }
 set_variable = { GER_military_air_fuel_consumption_factor = 0 }
 add_dynamic_modifier = { modifier = GER_airforce_modifier }
 
+#CROSSING THE ATLANTIC
+set_variable = { number_of_states_getting_dockyards = 0 }
+set_variable = { crossing_the_atlantic_max_states_for_dockyards = 10 }
+
 #FORT CONSTRUCTION COST
 set_variable = { GER_fort_construction_cp_cost = 25 }
 set_variable = { GER_fort_construction_pp_cost = 15 }
@@ -580,7 +584,12 @@ if = {
 	recruit_character = GER_oberste_heeresleitung_character
 	recruit_character = GER_franz_ritter_von_epp
 	recruit_character = GER_walter_ulbricht
-	recruit_character = GER_wilhelm_zaisser
+	if = {
+		limit = {
+			has_dlc = "La Resistance"
+		}
+		recruit_character = GER_wilhelm_zaisser
+	}
 	recruit_character = GER_otto_ruhle
 	recruit_character = GER_hermann_duncker
 	recruit_character = GER_august_thalheimer
@@ -690,7 +699,6 @@ if = {
 		}
 		obsolete = yes
 	}
-	# Heavy Cruisers #
 	create_equipment_variant = {
 		name = "Deutschland"
 		type = heavy_cruiser_1
@@ -799,7 +807,7 @@ if = {
 	}
 	create_equipment_variant = {
 		name = "Königsberg"
-		type = ship_hull_cruiser_2
+		type = ship_hull_cruiser_1
 		name_group = GER_CL_HISTORICAL
 		parent_version = 0
 		modules = {

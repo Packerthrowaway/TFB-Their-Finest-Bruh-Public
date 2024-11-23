@@ -144,13 +144,21 @@ FRA_apx_organization = {
 	}
 }
 
-#FRA_amx_organization = { # TODO set up correct from focus if needed
-#	include = generic_mobile_tank_organization
-#	icon = GFX_idea_generic_tank_manufacturer_2
-#	allowed = {	
-#		tag = FRA 
-#	}
-#}
+FRA_amx_organization = { 
+	include = generic_tank_organization
+	icon = GFX_idea_generic_tank_manufacturer_2
+	allowed = {	
+		tag = FRA 
+	}
+	available = {
+		IF = {
+			limit = {
+				FROM = { original_tag = FRA } 
+			}
+			FROM = { has_completed_focus = FRA_form_the_state_arsenals }
+		}
+	}
+}
 
 #####################
 

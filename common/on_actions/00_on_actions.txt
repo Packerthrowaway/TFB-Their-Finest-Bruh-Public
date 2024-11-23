@@ -1476,7 +1476,23 @@ on_actions = {
 
 	#Not run on a specific country.
 	on_startup = {
-		effect = {
+
+		effect = {  
+
+			GER = { #Axis and Poland just didn't get along
+				add_ai_strategy = {
+				   type = alliance
+				   id = POL
+				   value = -2000
+				}
+			}
+			POL = {
+				add_ai_strategy = {
+				   type = alliance
+				   id = GER
+				   value = -2000
+				}
+			}
 			GER = {
 				if = {
 					limit = {
@@ -4217,12 +4233,12 @@ on_actions = {
 					tag = ENG
 					has_war_with = GER
 					has_country_leader = { character = ENG_neville_chamberlain ruling_only = yes }
+					GER = { has_war_with = POL }
 				}
 				play_war_with_germany_effect = yes
 			}
 		}
 	}
-
 	#ROOT = attacking side
 	#FROM = defending side
 	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
@@ -4344,12 +4360,6 @@ on_actions = {
 				}
 				play_guns_are_silent_effect = yes
 			}
-		}
-	}
-
-	
-	on_unit_leader_created = {
-		effect = {
 		}
 	}
 

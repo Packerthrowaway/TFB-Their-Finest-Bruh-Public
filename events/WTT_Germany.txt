@@ -511,7 +511,13 @@ country_event = {
 
 		custom_effect_tooltip = generic_skip_one_line_tt
 
-		activate_mission = GER_fourth_silesian_uprising_mission
+		IF = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			activate_mission = GER_fourth_silesian_uprising_mission
+		}
+		
 
 		IF = {
 			limit = {
@@ -554,10 +560,15 @@ country_event = {
 		}
 
 		hidden_effect = { 
-			country_event = { 
-				id = wuw_GER_civil_war.1
-				days = 3
-				random_days = 7
+			IF = {
+				limit = {
+					has_dlc = "Gotterdammerung" 
+				}
+				country_event = { 
+					id = wuw_GER_civil_war.1
+					days = 3
+					random_days = 7
+				}
 			}
 		}
 	}
@@ -1240,17 +1251,22 @@ country_event = {
 			name = GER_black_front
 		}	
 		hidden_effect = {
-			GER_otto_strasser = {
-				add_country_leader_role = {
-					promote_leader = yes
-					country_leader = {
-						ideology = nazism
-						expire = "1974.1.1.1"
-						traits = { GER_revolutionary_nationalist } 
-					}
-				}	
+			IF = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				GER_otto_strasser = {
+					add_country_leader_role = {
+						promote_leader = yes
+						country_leader = {
+							ideology = nazism
+							expire = "1974.1.1.1"
+							traits = { GER_revolutionary_nationalist } 
+						}
+					}	
+				}
+				set_country_flag = GER_strasserism_relevant_in_germany_flag 
 			}
-			set_country_flag = GER_strasserism_relevant_in_germany_flag 
 		}
 
 		custom_effect_tooltip = generic_skip_one_line_tt
@@ -3061,17 +3077,22 @@ country_event = {
 			name = GER_black_front
 		}	
 		hidden_effect = {
-			GER_otto_strasser = {
-				add_country_leader_role = {
-					promote_leader = yes
-					country_leader = {
-						ideology = nazism
-						expire = "1974.1.1.1"
-						traits = { GER_revolutionary_nationalist } 
-					}
-				}	
+			IF = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				GER_otto_strasser = {
+					add_country_leader_role = {
+						promote_leader = yes
+						country_leader = {
+							ideology = nazism
+							expire = "1974.1.1.1"
+							traits = { GER_revolutionary_nationalist } 
+						}
+					}	
+				}
+				set_country_flag = GER_strasserism_relevant_in_germany_flag 
 			}
-			set_country_flag = GER_strasserism_relevant_in_germany_flag 
 		}
 
 	}
