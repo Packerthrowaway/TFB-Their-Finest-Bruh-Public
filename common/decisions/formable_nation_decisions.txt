@@ -182,7 +182,12 @@ form_nordic_league_category = {
 			is_subject = no
 			if = {
 				limit = {
-					NOT = { original_tag = EST }
+					original_tag = NOR
+					original_tag = DEN
+					original_tag = SWE
+					original_tag = FIN
+					original_tag = ICE
+					original_tag = GRN
 				}
 				# Norway
 				custom_trigger_tooltip = {
@@ -248,27 +253,27 @@ form_nordic_league_category = {
 					controls_state = 100
 				}
 			}
-			else = {
-				custom_trigger_tooltip = {
-					tooltip = control_all_nordic_states_tt
-					all_state = {
-						OR = {
-							controls_or_subject_of = yes
-							controller = {
-								original_tag = FIN
-								is_in_faction_with = ROOT
-							}
-							NOT = {
-								AND = {
-									is_core_of = NOR
-									is_core_of = DEN
-									is_core_of = SWE
-								}
-							}
-						}
-					}
-				}
-			}
+			# else = {
+			# 	custom_trigger_tooltip = {
+			# 		tooltip = control_all_nordic_states_tt
+			# 		all_state = {
+			# 			OR = {
+			# 				controls_or_subject_of = yes
+			# 				controller = {
+			# 					original_tag = FIN
+			# 					is_in_faction_with = ROOT
+			# 				}
+			# 				NOT = {
+			# 					AND = {
+			# 						is_core_of = NOR
+			# 						is_core_of = DEN
+			# 						is_core_of = SWE
+			# 					}
+			# 				}
+			# 			}
+			# 		}
+			# 	}
+			# }
 		}
 
 		visible = {
@@ -279,8 +284,8 @@ form_nordic_league_category = {
 				original_tag = FIN
 				original_tag = ICE
 				original_tag = GRN
-				original_tag = SMI
-				original_tag = KAR
+				#original_tag = SMI
+				#original_tag = KAR
 				AND = {
 					original_tag = EST
 					has_completed_focus = EST_form_scandinavia

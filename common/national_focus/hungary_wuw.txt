@@ -19114,17 +19114,39 @@ focus_tree = {
 
 		available = {
 			#has_country_flag = HUN_reverse_engineered_skoda_tanks
-			IF = {
-				limit = {
-					has_dlc = "No Step Back"
-				}
-				has_tech = basic_medium_tank_chassis
-			}
+			# IF = {
+			# 	limit = {
+			# 		has_dlc = "No Step Back"
+			# 	}
+			# 	has_tech = basic_medium_tank_chassis
+			# }
 			# ELSE_IF = {
 			# 	limit = {
 			# 		has_tech = basic_medium_tank
 			# 	}
 			# }
+			OR = {
+				has_license = {
+					from = GER
+					equipment = {
+						type = ger_light_tank_chassis_p35
+					}
+				}
+				GER = {
+					has_completed_focus = GER_fate_of_czechoslovakia
+				}
+				AND = {
+					has_global_flag = DENIED_CZE
+					OR = {
+						HUN = { controls_state = 9 }
+						GER = { controls_state = 9 }
+					}
+					OR = {
+						HUN = { controls_state = 70 }
+						GER = { controls_state = 70 }
+					}
+				}
+			}
 		}
 
 		bypass = {
