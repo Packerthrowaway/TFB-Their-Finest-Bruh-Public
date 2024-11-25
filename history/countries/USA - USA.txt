@@ -1,4 +1,4 @@
-﻿capital = 361
+﻿capital = 361 # Washington DC
 
 oob = "USA_1936"
 
@@ -95,7 +95,24 @@ set_technology = {
 	fuel_refining = 1
 	marines = 1
 	basic_train = 1
+	early_transport_plane = 1
 }
+
+add_breakthrough_progress = {
+	specialization = specialization_land
+	value = 0.3
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_naval
+	value = 0.8
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_air
+	value = 0.4
+}
+
 
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
@@ -142,29 +159,36 @@ if = {
 	}
 	add_ideas = MTG_naval_treaty_adherent
 }
+##Monroe Doctrine - We are trying to just remove the dlc check and see what, if any, things break. Will ask QA and BETAs to test new system both with and without ToA
+#IF = {
+#	limit = { has_dlc = "Trial of Allegiance" }
+	add_ideas = USA_monroe_doctrine_enforcer
+#}
+#IF = {
+#	limit = { NOT = { has_dlc = "Trial of Allegiance" }	}
+#	give_guarantee = CAN
+#	give_guarantee = MEX
+#	give_guarantee = CUB
+#	give_guarantee = HAI
+#	give_guarantee = DOM
+#	give_guarantee = GUA
+#	give_guarantee = HON
+#	give_guarantee = ELS
+#	give_guarantee = NIC
+#	give_guarantee = COS
+#	give_guarantee = PAN
+#	give_guarantee = VEN
+#	give_guarantee = COL
+#	give_guarantee = ECU
+#	give_guarantee = PRU
+#	give_guarantee = BRA
+#	give_guarantee = BOL
+#	give_guarantee = CHL
+#	give_guarantee = PAR
+#	give_guarantee = ARG
+#	give_guarantee = URG
+#}
 
-#Monroe Doctrine
-give_guarantee = CAN
-give_guarantee = MEX
-give_guarantee = CUB
-give_guarantee = HAI
-give_guarantee = DOM
-give_guarantee = GUA
-give_guarantee = HON
-give_guarantee = ELS
-give_guarantee = NIC
-give_guarantee = COS
-give_guarantee = PAN
-give_guarantee = VEN
-give_guarantee = COL
-give_guarantee = ECU
-give_guarantee = PRU
-give_guarantee = BRA
-give_guarantee = BOL
-give_guarantee = CHL
-give_guarantee = PAR
-give_guarantee = ARG
-give_guarantee = URG
 
 set_convoys = 600
 
@@ -259,6 +283,12 @@ recruit_character = USA_marc_mitscher
 recruit_character = USA_henry_stimson
 recruit_character = USA_jimmy_doolittle
 recruit_character = USA_claire_lee_chennault
+recruit_character = USA_leslie_skinner
+recruit_character = USA_edward_curtis_wells
+recruit_character = USA_william_francis_gibbs
+recruit_character = USA_andrew_mckee
+recruit_character = USA_john_walter_christie
+recruit_character = USA_vannevar_bush
 
 create_equipment_variant = {
 	name = "M2 Light"

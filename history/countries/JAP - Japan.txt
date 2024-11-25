@@ -1,7 +1,8 @@
-﻿capital = 282
+﻿capital = 282 # Tokyo/Kanto
 
 oob = "JAP_1936"
 
+# Starting Stats
 set_stability = 0.5
 set_war_support = 0.8
 
@@ -80,7 +81,28 @@ set_technology = {
 	fuel_silos = 1
 	synth_oil_experiments = 1
 	fuel_refining = 1
+	early_transport_plane = 1
 }
+
+complete_special_project = {
+	project = sp:sp_naval_cruiser_submarine
+	scientist = JAP_keiji_fukuda
+	state = 529
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_naval
+	value = 0.8
+}
+add_breakthrough_progress = {
+	specialization = specialization_air
+	value = 0.3
+}
+add_breakthrough_progress = {
+	specialization = specialization_land
+	value = 0.1
+}
+
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
@@ -113,7 +135,7 @@ if = {
 	}
 	set_naval_oob = "JAP_1936_naval"
 }
-if = {
+IF = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		early_submarine = 1
@@ -164,6 +186,37 @@ producer = ENG
 }
 
 set_convoys = 400
+
+IF = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+
+	set_technology = {
+		armored_car1 = 1
+	}
+
+	JAP_create_john_farnsworth_operative = yes
+
+	create_operative_leader = {
+		name = JAP_yoshiko_kawashima
+		GFX = GFX_portrait_yoshiko_kawashima
+		traits = { }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { MAN JAP CHI }
+	}
+
+	create_operative_leader = {
+		name = JAP_takeo_yoshikawa
+		GFX = GFX_portrait_takeo_yoshikawa
+		traits = { }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { JAP }
+	}
+}
 
 if = {
 	limit = {
@@ -292,6 +345,11 @@ recruit_character = JAP_yoshitoshi_tokugawa
 recruit_character = JAP_hino_kumazo
 recruit_character = JAP_yoshio_nishina
 recruit_character = JAP_hideo_itokawa
+recruit_character = JAP_kijiro_nambu
+recruit_character = JAP_keiji_fukuda
+recruit_character = JAP_jiro_horikoshi
+recruit_character = JAP_hideki_yukawa
+recruit_character = JAP_yoji_ito
 
 
 

@@ -829,6 +829,10 @@
 
 		ai_will_do = {
 			factor = 0
+			modifier = {
+				factor = 100
+				has_idea = GER_communist_refugees
+			}
 		}
 
 		available = {
@@ -2020,6 +2024,10 @@
 
 		ai_will_do = {
 			factor = 100
+			modifier = {
+				factor = 100
+				has_idea = GER_communist_refugees
+			}
 		}
 
 		available = {
@@ -2227,6 +2235,20 @@
 				category = industry
 				uses = 3
 				bonus = 0.75
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = FRA_amx_organization
+
+				mio:FRA_amx_organization = {
+					add_mio_size = 1
+				}
+
 			}
 		}
 	}
@@ -2779,6 +2801,10 @@
 
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				has_idea = GER_communist_refugees
+			}
 		}
 
 		available = {

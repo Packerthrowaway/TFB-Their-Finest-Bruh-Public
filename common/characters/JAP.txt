@@ -644,14 +644,15 @@ characters={
 		}
 	}
 
-	JAP_isoroku_yamamoto={
-		name=JAP_isoroku_yamamoto
-		portraits={
-			army={
-				small="gfx/interface/ideas/idea_JAP_isoroku_yamamoto.dds"
+	JAP_isoroku_yamamoto = {
+		name = JAP_isoroku_yamamoto
+		portraits = {
+			navy = {
+				large = GFX_portrait_JAP_isoroku_yamamoto
+				small = GFX_idea_isoroku_yamamoto
 			}
-			army={
-				large="gfx/leaders/JAP/Portrait_Japan_Isoroku_Yamamoto.dds"
+			civilian = {
+				large = GFX_portrait_JAP_isoroku_yamamoto_scientist
 			}
 		}
 		
@@ -674,6 +675,12 @@ characters={
 			}
 			traits  = {
 				naval_aviation_pioneer 
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_submarine_specialist }
+			skills = {
+				specialization_naval = 2
 			}
 		}
 	}
@@ -1433,46 +1440,173 @@ characters={
 			}
 		}
 	}
-	JAP_yoshio_nishina={
-		name="JAP_yoshio_nishina"
-		portraits={
-			army={
-				small="GFX_idea_generic_air_asia_2"
+
+	# Illusive Gentleman auto-generated
+
+
+  #####                                                              
+ #     #   ####   #  ######  #    #  #####  #   ####   #####   ####  
+ #        #    #  #  #       ##   #    #    #  #         #    #      
+  #####   #       #  #####   # #  #    #    #   ####     #     ####  
+       #  #       #  #       #  # #    #    #       #    #         # 
+ #     #  #    #  #  #       #   ##    #    #  #    #    #    #    # 
+  #####    ####   #  ######  #    #    #    #   ####     #     ####  
+
+
+	#JAP_isoroku_yamamoto up there
+
+	JAP_yoshio_nishina = {
+		name = JAP_yoshio_nishina
+		portraits = {
+			army = {
+				large = GFX_portrait_JAP_yoshio_nishina
+				small = GFX_idea_yoshio_nishina
 			}
 		}
-		advisor={
-			slot = theorist
-			idea_token = JAP_yoshio_nishina
-			allowed  = {
-				original_tag = JAP
+
+		scientist = {
+			traits = { scientist_trait_nuclear_specialist }
+			skills = {
+				specialization_nuclear = 2
 			}
-			research_bonus = {
-				nuclear = 0.15
+		}
+
+		#advisor = {
+		#	cost = 100
+		#	slot = theorist
+		#	idea_token = yoshio_nishina
+		#	ledger = army
+		#	allowed = {
+		#		original_tag = JAP
+		#	}
+		#	research_bonus = {
+		#		nuclear = 0.150
+		#	}
+		#	traits = {
+		#		nuclear_scientist
+		#	}
+		#}
+	}
+
+	JAP_hideo_itokawa = {
+		name = JAP_hideo_itokawa
+		portraits = {
+			army = {
+				large = GFX_portrait_JAP_hideo_itokawa
+				small = GFX_idea_hideo_itokawa
 			}
-			traits  = {
-				nuclear_scientist 
+		}
+
+		scientist = {
+			traits = { scientist_trait_rocketry_specialist }
+			skills = {
+				specialization_air = 2
+			}
+		}
+
+		#advisor = {
+		#	cost = 100
+		#	slot = theorist
+		#	idea_token = hideo_itokawa
+		#	ledger = air
+		#	allowed = {
+		#		original_tag = JAP
+		#	}
+		#	research_bonus = {
+		#		rocketry = 0.150
+		#	}
+		#	traits = {
+		#		rocket_scientist
+		#	}
+		#}
+	}
+
+	JAP_kijiro_nambu = {
+		name = JAP_kijiro_nambu
+		portraits = {
+			army = {
+				large = GFX_portrait_JAP_kijiro_nambu
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_armored_specialist }
+			skills = {
+				specialization_land = 2
 			}
 		}
 	}
-	JAP_hideo_itokawa={
-		name="JAP_hideo_itokawa"
-		portraits={
-			army={
-				small="GFX_idea_generic_air_asia_3"
+
+	JAP_keiji_fukuda = {
+		name = JAP_keiji_fukuda
+		portraits = {
+			army = {
+				large = GFX_portrait_JAP_keiji_fukuda
 			}
 		}
-		advisor={
-			slot = theorist
-			idea_token = JAP_hideo_itokawa
-			allowed  = {
-				original_tag = JAP
-			}
-			research_bonus = {
-				rocketry = 0.15
-			}
-			traits  = {
-				rocket_scientist 
+
+		scientist = {
+			traits = { scientist_trait_surface_ship_specialist }
+			skills = {
+				specialization_naval = 2
 			}
 		}
 	}
+
+	JAP_jiro_horikoshi = {
+		name = JAP_jiro_horikoshi
+		portraits = {
+			army = {
+				large = GFX_portrait_JAP_jiro_horikoshi
+			}
+		}
+
+		scientist = {
+
+			traits = { scientist_trait_aircraft_specialist }
+
+			skills = {
+				specialization_air = 2
+			}
+
+			visible = {
+				owner = {
+					has_completed_focus = JAP_air_innovations
+				}
+			}
+		}
+	}
+
+	JAP_hideki_yukawa = {
+		name = JAP_hideki_yukawa
+		portraits = {
+			army = {
+				large = GFX_portrait_JAP_hideki_yukawa
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_nuclear_power_expert }
+			skills = {
+				specialization_nuclear = 2
+			}
+		}
+	}
+
+	JAP_yoji_ito = {
+		name = JAP_yoji_ito
+		portraits = {
+			army = {
+				large = GFX_portrait_JAP_yoji_ito
+			}
+		}
+
+		scientist = {
+			traits = { scientist_trait_electronics_specialist }
+			skills = {
+				specialization_air = 2
+			}
+		}
+	}
+
 }

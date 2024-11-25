@@ -1,10 +1,11 @@
 ﻿capital = 277
 
 oob = "MEX_1936"
-if = {
+
+IF = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "MEX_1936_naval_mtg"
-	else = {
+	ELSE = {
 		set_naval_oob = "MEX_1936_naval_legacy"
 	}
 }
@@ -31,7 +32,7 @@ if = {
 		early_heavy_cruiser = 1
 	}
 }
-if = {
+IF = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
 		#basic_naval_mines = 1
@@ -98,6 +99,8 @@ recruit_character = MEX_francisco_mugica
 recruit_character = MEX_jesus_degollado_guizar
 recruit_character = MEX_valentin_campa
 recruit_character = MEX_luis_maria_martinez
+recruit_character = MEX_indigenous_council
+recruit_character = MEX_maria_de_iturbide
 
 set_country_flag = monroe_doctrine
 
@@ -129,7 +132,7 @@ if = {
 	if = {
 		limit = { has_dlc = "Man the Guns" }
 			set_naval_oob = "MEX_1939_naval_mtg"
-		else = {
+		ELSE = {
 			set_naval_oob = "MEX_1939_naval_legacy"
 		}
 	}
@@ -149,7 +152,6 @@ if = {
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
-		radio_detection = 1
 		mechanical_computing = 1
 		computing_machine = 1
 
@@ -165,8 +167,11 @@ if = {
 		dispersed_industry2 = 1
 		dispersed_industry3 = 1
 	}
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
 
-	if = {
+	IF = {
 		limit = {
 			has_dlc = "Man the Guns"
 		}
@@ -228,7 +233,7 @@ if = {
 			modifier = embargo
 		}
 		
-		else = {
+		ELSE = {
 			#generic focuses
 			complete_national_focus = army_effort
 			complete_national_focus = equipment_effort
@@ -258,7 +263,7 @@ set_popularities = {
 
 ### VARIANTS ###
 # 1936 Start #
-if = {
+IF = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	create_equipment_variant = {
 		name = "Durango Class"
@@ -279,7 +284,7 @@ if = {
 		}
 	}
 }
-if = {
+IF = {
 	limit = { has_dlc = "Man the Guns" }
 	# Destroyers #
 	create_equipment_variant = {
@@ -333,3 +338,7 @@ if = {
 		}
 	}
 }
+
+
+
+

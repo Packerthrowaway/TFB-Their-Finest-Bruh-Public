@@ -21,10 +21,14 @@ country_event = {
 				modifier = tizard_relations
 			}
 		}
+		add_breakthrough_progress = {
+			specialization = specialization_air
+			value = 0.75
+		}
 		add_tech_bonus = {
 			name = tizard_mission_focus
 			uses = 1
-			bonus = 1.0
+			bonus = 1
 			category = light_fighter
 		}
 		add_tech_bonus = {
@@ -72,15 +76,19 @@ country_event = {
 	
 	option = {
 		name = britain.2.a
+		add_breakthrough_progress = {
+			specialization = specialization_air
+			value = 0.75
+		}
 		add_tech_bonus = {
 			name = tizard_mission_focus
-			bonus = 1.0
+			bonus = 0.5 # was 1
 			category = light_fighter
 		}
 		add_tech_bonus = {
 			name = tizard_mission_focus
-			bonus = 1.0
-			uses = 2
+			bonus = 0.5 # was 1
+			uses = 1 # was 2
 			category = radar_tech
 		}
 		USA = {
@@ -290,7 +298,7 @@ country_event = {
 		date > 1940.9.11
 		NOT = { has_country_flag = chamberlain_resigned }
 		has_country_leader = {
-			name = "Neville Chamberlain"
+			character = ENG_neville_chamberlain
 			ruling_only = yes
 		}
 	}	
@@ -453,10 +461,26 @@ country_event = {
 	
 	option = { # Abandon Yugoalvia
 		name = britain.14.a
-		ai_chance = { factor = 90 }
+		ai_chance = { 
+			factor = 90 
+			modifier = {
+				has_war_with = GER
+				factor = 0
+			}
+		}
 		YUG = {
 			add_opinion_modifier = { target = ENG modifier = western_betrayal }
 		}		
+		if = {
+			limit = {
+				has_guaranteed = YUG
+			}
+			diplomatic_relation = {
+   				country = YUG
+   				relation = guarantee
+   				active = no
+  			}
+		}
 		if = {
 			limit = {
 				country_exists = FRA
@@ -520,7 +544,7 @@ country_event = {
 		YUG = {
 			add_ai_strategy = {
 				type = alliance
-				id = "ENG"
+				id = ENG
 				value = 200
 			}
 		}

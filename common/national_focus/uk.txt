@@ -79,6 +79,45 @@ focus_tree = {
 			remove_ideas = ENG_great_depression_1
 		}
 	}
+
+	focus = {
+		id = ENG_expand_the_secret_intelligence_service_focus 
+
+		prerequisite = { focus = limited_rearmament_focus }
+
+		dynamic = yes
+
+		available = {
+		} 
+
+		allow_branch = {
+			has_dlc = "La Resistance"
+		}
+
+		icon = GFX_focus_generic_secret_service_agency
+
+		x = 2
+		y = 1
+		relative_position_id = limited_rearmament_focus
+
+		cost = 10
+
+		available_if_capitulated = no
+
+		completion_reward = {
+
+			IF = {
+				limit = {
+					has_intelligence_agency = no
+				}
+				create_intelligence_agency = yes
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
+
+			add_ideas = ENG_mi6_ns
+
+		}
+	}
 	
 	focus = {
 		id = ENG_air_rearmament
@@ -2175,7 +2214,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			971 = {
+			983 = {
 				add_building_construction = {
 					type = anti_air_building
 					level = 1
@@ -2250,7 +2289,7 @@ focus_tree = {
 					}
 				}
 			}
-			971 = {
+			983 = {
 				CONTROLLER = {
 					OR = {
 						tag = ENG
@@ -2282,7 +2321,7 @@ focus_tree = {
 				}
 				
 			}
-			971 = {
+			983 = {
 				set_building_level = {
 					type = fortress
 					level = 2
@@ -2898,7 +2937,20 @@ focus_tree = {
 		}
 		search_filters = {FOCUS_FILTER_INDUSTRY}	
 		completion_reward = {
-			add_ideas = ENG_prepare_for_the_inevitable_idea
+			IF = {
+				limit = {
+					NOT = {
+						has_idea = wartime_industry_focus
+					}
+				}
+				add_ideas = ENG_prepare_for_the_inevitable_idea
+			}
+			ELSE = {
+				swap_ideas = {
+					remove_idea = wartime_industry_focus
+					add_idea = ENG_prepare_for_the_inevitable_and_wartime_industry_idea
+				}	
+			}
 		}
 	}
 	
@@ -3305,7 +3357,41 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}	
 		completion_reward = {
 			USA = {
-				country_event = britain.1
+				country_event = {
+					id = britain.1
+					hours = 12
+				}	
+			}
+			custom_effect_tooltip = if_they_accept
+			effect_tooltip = {
+				add_breakthrough_progress = {
+					specialization = specialization_air
+					value = 0.75
+				}
+				add_tech_bonus = {
+					name = tizard_mission_focus
+					bonus = 0.5 # was 1
+					category = light_fighter
+				}
+				add_tech_bonus = {
+					name = tizard_mission_focus
+					bonus = 0.5 # was 1
+					uses = 1 # was 2
+					category = radar_tech
+				}
+				custom_effect_tooltip =  generic_skip_one_line_tt
+				USA = {
+					add_breakthrough_progress = {
+						specialization = specialization_air
+						value = 0.75
+					}
+					add_tech_bonus = {
+						name = tizard_mission_focus
+						uses = 1
+						bonus = 1
+						category = light_fighter
+					}
+				}
 			}
 		}
 	}
@@ -3552,6 +3638,7 @@ focus_tree = {
 			army_experience = 10
 			navy_experience = 10
 			air_experience = 10
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = ENG_chiefs_of_staff_committee_idea
 		}
 	}

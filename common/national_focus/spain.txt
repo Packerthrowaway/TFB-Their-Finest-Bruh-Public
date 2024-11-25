@@ -2820,7 +2820,7 @@ focus_tree = {
 		x = 4
 		y = 1
 		relative_position_id = SPA_the_national_syndicalist_state
-		cost = 10
+		cost = 5
 
 		available_if_capitulated = yes
 
@@ -4207,7 +4207,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SPA_fuse_the_parties
-		cost = 10
+		cost = 5
 
 		available_if_capitulated = yes
 
@@ -4833,10 +4833,13 @@ focus_tree = {
 
 	focus = {
 		id = SPA_dictator_for_life
+
 		available = {
 		}
+
 		bypass = {
 		}
+
 		prerequisite = { focus = SPA_adopt_the_26_points }
 		mutually_exclusive = { focus = SPA_restore_the_monarchy }
 		
@@ -5178,10 +5181,14 @@ focus_tree = {
 
 	focus = {
 		id = SPA_restore_the_monarchy
+
 		available = {
+			OR = {
+				has_government = neutrality
+				has_government = fascism
+			}
 		}
-		bypass = {
-		}
+
 		prerequisite = { focus = SPA_adopt_the_26_points focus = SPA_settle_the_succession_question }
 		mutually_exclusive = { focus = SPA_dictator_for_life }
 		
@@ -5192,8 +5199,17 @@ focus_tree = {
 		cost = 10
 
 		available_if_capitulated = yes
+
+		bypass = {
+			has_country_leader = {
+				character = SPA_karl_pius_von_habsburg
+				ruling_only = yes
+			}
+		}
+
 		allow_branch = { 
-			always = no}
+			always = no
+		}
 
 		completion_reward = {
 			if = {
@@ -12189,7 +12205,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = SPR_those_who_would_not_help_us
-		cost = 10
+		cost = 5
 
 		available_if_capitulated = yes
 
@@ -12330,7 +12346,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = SPR_enemies_of_our_enemy
-		cost = 10
+		cost = 5
 
 		available_if_capitulated = yes
 

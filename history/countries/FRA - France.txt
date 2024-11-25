@@ -1,4 +1,4 @@
-﻿capital = 16
+﻿capital = 16 # Paris/Ile de France
 
 oob = "FRA_1936"
 if = {
@@ -9,10 +9,34 @@ if = {
 	}
 }
 
+IF = {
+	limit = {
+		has_dlc = "Gotterdammerung"
+	}
+	set_stability = 0.45 # Was 0.5, but they now get +5% from the Eiffel Tower
+	ELSE = {
+		set_stability = 0.5
+	}
+}
+
 set_research_slots = 5
 set_stability = 0.5
 set_war_support = 0.1
 set_major = yes
+complete_special_project = {
+	project = sp:sp_naval_cruiser_submarine
+	scientist = FRA_henri_edmond_fouche
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_land
+	value = 0.5
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_naval
+	value = 0.5
+}
 
 # Starting tech
 set_technology = {
@@ -43,6 +67,8 @@ set_technology = {
 	fuel_silos = 1
 	fuel_refining = 1
 	basic_train = 1
+	basic_fortification_tech = 1
+	early_transport_plane = 1
 }
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
@@ -160,7 +186,6 @@ give_guarantee = CZE
 give_guarantee = YUG
 give_guarantee = ROM
 
-#Order matters here Daladier will start as leaders because added last
 recruit_character = FRA_philippe_petain
 recruit_character = FRA_maurice_thorez
 recruit_character = FRA_pierre_laval
@@ -182,7 +207,7 @@ recruit_character = FRA_francois_darlan
 recruit_character = FRA_jeanmarie_charles_abrial
 recruit_character = FRA_jeanpierre_esteva
 recruit_character = FRA_jean_de_laborde
-recruit_character = FRA_denis_guillaumat
+# recruit_character = FRA_denis_guillaumat # Has been removed to make way for Charles Maurras, but might be readded
 recruit_character = FRA_philippe_fequant
 recruit_character = FRA_victor_denain
 recruit_character = FRA_jean_marie_abrial
@@ -197,17 +222,18 @@ recruit_character = FRA_louis_kahn
 recruit_character = FRA_robert_odic
 recruit_character = FRA_jean_francois_jannekeyn
 recruit_character = FRA_emile_muselier
-recruit_character = FRA_frederic_irene_joliot_curie
 recruit_character = FRA_alfred_heurtaux
 recruit_character = FRA_rene_prioux
 recruit_character = FRA_pierre_alombert_goget
 recruit_character = FRA_gaston_henry_haye
-#recruit_character = FRA_georges_bonnet
+recruit_character = FRA_georges_bonnet
+#recruit_character = FRA_philippe_henriot
 recruit_character = FRA_paul_reynaud
 recruit_character = FRA_pierre_pucheu
 recruit_character = FRA_charles_tillon
 recruit_character = FRA_vincent_auriol
 recruit_character = FRA_rene_massigli
+#recruit_character = FRA_charles_maurras
 recruit_character = FRA_zivony_peshkov
 recruit_character = FRA_roger_salengro
 recruit_character = FRA_leon_blum
@@ -215,6 +241,27 @@ recruit_character = FRA_felix_gouin
 recruit_character = FRA_paul_baudouin
 recruit_character = FRA_maurice_gauche
 recruit_character = FRA_jacques_duclos
+recruit_character = FRA_marcel_bucard
+recruit_character = FRA_georges_valois
+#recruit_character = FRA_marcel_deat
+
+recruit_character = FRA_irene_joliot_curie
+recruit_character = FRA_frederic_joliot_curie
+recruit_character = FRA_francois_hussenot
+recruit_character = FRA_louis_renault
+recruit_character = FRA_henri_edmond_fouche
+recruit_character = FRA_joseph_bethenod
+
+if = {
+	limit = {
+		OR = {
+			has_dlc = "Gotterdammerung"
+			has_dlc = "No Step Back"
+		}
+	}
+	recruit_character = FRA_emile_rimailho #Artillery Scientist
+	recruit_character = FRA_eugene_schneider_ii #Artillery Scientist
+}
 
 create_equipment_variant = {
 	name = "Renault R35"
@@ -310,10 +357,10 @@ if = {
 	create_operative_leader = {
 		name = "René Joyeuse"
 		GFX = GFX_portrait_rene_joyeuse
-		traits = { operative_infiltrator }
+		traits = { operative_infiltrator operative_commando }
 		bypass_recruitment = no
-		available_to_spy_master = yes
-		nationalities = { FRA }
+		available_to_spy_master = no
+		nationalities = { FRA QUE }
 	}
 
 	create_operative_leader = {
@@ -324,6 +371,8 @@ if = {
 		available_to_spy_master = yes
 		nationalities = { FRA }
 	}
+
+	recruit_character = FRA_rene_nicod
 }
 
 ### VARIANTS ###

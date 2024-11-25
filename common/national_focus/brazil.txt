@@ -2652,7 +2652,6 @@ focus_tree = {
 						free_building_slots = {
 							building = air_base
 							size > 2 
-							include_locked = yes
 						}
 					}
 				}
@@ -2670,7 +2669,6 @@ focus_tree = {
 							free_building_slots = {
 								building = air_base
 								size > 1 
-								include_locked = yes
 							}
 						}
 					}
@@ -2689,7 +2687,6 @@ focus_tree = {
 							free_building_slots = {
 								building = air_base
 								size > 0 
-								include_locked = yes
 							}
 						}
 					}
@@ -2916,7 +2913,7 @@ focus_tree = {
 				has_government = communism
 			}
 		}
-				allow_branch = {
+		allow_branch = {
 			always = no
 		}
 
@@ -3339,100 +3336,11 @@ focus_tree = {
 				}
 			}
 
-			IF = {
-				limit = {
-					has_dlc = "Man the Guns"
-					NOT = {
-						has_tech = cruiser_submarines
-					}
-				}
-				set_technology = { cruiser_submarines = 1 } 
+			custom_effect_tooltip = generic_skip_one_line_tt
 
-				create_equipment_variant = {
-					name = "Lobo do Mar Class"
-					type = ship_hull_cruiser_submarine
-					allow_without_tech = yes # Display tooltip as if we have the tech.
-					name_group = ITA_SS_HISTORICAL #TODO, choose a good namelist
-					parent_version = 0
-					allow_without_tech = yes # Display tooltip as if we have the tech.
-					modules = {
-						fixed_ship_torpedo_slot = ship_torpedo_sub_1
-						fixed_ship_engine_slot = sub_ship_engine_2
-						front_1_custom_slot = ship_torpedo_sub_1
-						mid_1_custom_slot = empty
-						rear_1_custom_slot = ship_torpedo_sub_1
-					}
-				} 
-				#Line Production
-				add_equipment_production = {
-					equipment = {
-						type = ship_hull_cruiser_submarine
-						creator = "BRA"
-						version_name = "Lobo do Mar Class"
-					}
-					name = "Almirante Dönitz"
-					requested_factories = 1
-					progress = 0.5
-					amount = 1
-				}
-				add_equipment_production = {
-					equipment = {
-						type = ship_hull_cruiser_submarine
-						creator = "BRA"
-						version_name = "Lobo do Mar Class"
-					}
-					name = "Almirante Hermann"
-					requested_factories = 1
-					progress = 0.5
-					amount = 1
-				}
-
-			}
-				
-
-			IF = {	
-				limit = {
-					has_dlc = "Man the Guns"
-					has_tech = cruiser_submarines
-				}
-				create_equipment_variant = {
-					name = "Lobo do Mar Class"
-					type = ship_hull_cruiser_submarine
-					allow_without_tech = yes # Display tooltip as if we have the tech.
-					name_group = ITA_SS_HISTORICAL #TODO, choose a good namelist
-					parent_version = 0
-					allow_without_tech = yes # Display tooltip as if we have the tech.
-					modules = {
-						fixed_ship_torpedo_slot = ship_torpedo_sub_1
-						fixed_ship_engine_slot = sub_ship_engine_2
-						front_1_custom_slot = ship_torpedo_sub_1
-						mid_1_custom_slot = empty
-						rear_1_custom_slot = ship_torpedo_sub_1
-					}
-				}
-				#Line Production
-				add_equipment_production = {
-					equipment = {
-						type = ship_hull_cruiser_submarine
-						creator = "BRA"
-						version_name = "Lobo do Mar Class"
-					}
-					name = "Almirante Dönitz"
-					requested_factories = 1
-					progress = 0.5
-					amount = 1
-				}
-				add_equipment_production = {
-					equipment = {
-						type = ship_hull_cruiser_submarine
-						creator = "BRA"
-						version_name = "Lobo do Mar Class"
-					}
-					name = "Almirante Hermann"
-					requested_factories = 1
-					progress = 0.5
-					amount = 1
-				}
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.5
 			}
 		}
 

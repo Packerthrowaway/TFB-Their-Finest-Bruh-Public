@@ -226,6 +226,11 @@ country_event = {
 				original_tag = SOV 
 				FROM = { has_country_flag = AAT_trotsky_sent_to_stalin }
 			}
+			modifier = {
+				factor = 10
+				original_tag = SOV 
+				FROM = { has_completed_focus = wuw_HUN_join_the_comintern }
+			}
 		}
 		add_to_faction = FROM
 		FROM = { country_event = { id = generic.3 hours = 6 } }
@@ -374,6 +379,14 @@ country_event = {
 					}
 				}
 			}
+
+			modifier = { # It ruins the entire path if SOV says no so just don't
+				factor = 0
+				FROM = {
+					original_tag = HUN
+					has_completed_focus = wuw_HUN_join_the_comintern
+				}
+			}
 		}
 		FROM = { 
 			country_event = { id = generic.4 hours = 6 }
@@ -401,6 +414,20 @@ country_event = {
 				has_government = democratic
 			}
 		}
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = ENG
+				}
+				ROOT = {
+					original_tag = GER
+					has_government = neutrality
+					has_completed_focus = GER_ally_the_shade
+				}
+			}
+			set_global_flag = ENG_accepted_GER_diplomatic_overtures
+		}
+
 	}
 	option = {
 		name = generic.3.b
@@ -412,7 +439,19 @@ country_event = {
 				has_government = fascism
 			}
 		}
-
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = ENG
+				}
+				ROOT = {
+					original_tag = GER
+					has_government = neutrality
+					has_completed_focus = GER_ally_the_shade
+				}
+			}
+			set_global_flag = ENG_accepted_GER_diplomatic_overtures
+		}
 
 	}
 	option = {
@@ -425,6 +464,20 @@ country_event = {
 				has_government = communism
 			}
 		}
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = ENG
+				}
+				ROOT = {
+					original_tag = GER
+					has_government = neutrality
+					has_completed_focus = GER_ally_the_shade
+				}
+			}
+			set_global_flag = ENG_accepted_GER_diplomatic_overtures
+		}
+
 	}
 	option = {
 		name = generic.3.e
@@ -450,6 +503,20 @@ country_event = {
 				}
 			}
 		}
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = ENG
+				}
+				ROOT = {
+					original_tag = GER
+					has_government = neutrality
+					has_completed_focus = GER_ally_the_shade
+				}
+			}
+			set_global_flag = ENG_accepted_GER_diplomatic_overtures
+		}
+		
 	}
 }
 
@@ -626,6 +693,7 @@ country_event = {
 			id = FROM
 			value = 200
 		}
+		GER_setup_faction_wide_aoe_effects_from = yes
 		hidden_effect = {
 			set_country_flag = alliance_applicant@ROOT
 			FROM = { set_country_flag = alliance_inviter@ROOT }
@@ -726,12 +794,12 @@ country_event = {
 				}
 			}
 			
-			modifier = {
-				factor = 0.5
-				NOT = {
-					has_government = neutrality
-				}
-			}
+			#modifier = {
+			#	factor = 0.5
+			#	NOT = {
+			#		has_government = neutrality
+			#	}
+			#}
 			
 			modifier = {
 				factor = 0.75
@@ -763,6 +831,7 @@ country_event = {
 			set_country_flag = alliance_applicant@ROOT
 			FROM = { set_country_flag = alliance_inviter@ROOT }
 			news_event = { id = news.289 hours = 12 }
+			GER_setup_faction_wide_aoe_effects_from = yes
 		}
 	}
 	
@@ -772,7 +841,7 @@ country_event = {
 			is_in_faction = no
 		}
 		ai_chance = {
-			factor = 50
+			factor = 45
 			
 			modifier = {
 				factor = 0
@@ -874,6 +943,18 @@ country_event = {
 				has_government = democratic
 			}
 		}
+
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = AUS
+				}
+			}
+			FROM = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+
 	}
 	option = {
 		name = generic.3.b
@@ -886,6 +967,16 @@ country_event = {
 			}
 		}
 
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = AUS
+				}
+			}
+			FROM = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
 
 	}
 	option = {
@@ -898,6 +989,18 @@ country_event = {
 				has_government = communism
 			}
 		}
+
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = AUS
+				}
+			}
+			FROM = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+
 	}
 	option = {
 		name = generic.3.e
@@ -923,6 +1026,18 @@ country_event = {
 				}
 			}
 		}
+
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = AUS
+				}
+			}
+			FROM = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		
 	}
 }
 

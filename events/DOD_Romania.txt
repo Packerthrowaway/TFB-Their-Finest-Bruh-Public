@@ -97,10 +97,10 @@ country_event = {
 		}
 		ROM = { country_event = DOD_romania.11 }
 		add_ai_strategy = {
-					type = alliance
-					id = "ROM"
-					value = 200
-				}
+			type = alliance
+			id = ROM
+			value = 200
+		}
 	}
 
 	option = { #no
@@ -220,7 +220,18 @@ country_event = {
 country_event = {
 	id = DOD_romania.30
 	title = DOD_romania.30.t
-	desc = DOD_romania.30.desc
+	desc = {
+		text = DOD_romania.30.desc
+		trigger = {
+			SOV = { has_government = communism }
+		}
+	}
+	desc = {
+		text = DOD_romania.30.desc_alt
+		trigger = {
+			NOT = { SOV = { has_government = communism } }
+		}
+	}
 	picture = GFX_report_event_aid_pact
 	
 	is_triggered_only = yes
@@ -570,6 +581,30 @@ country_event = {
 			}
 		}
 		ROM = { country_event = DOD_romania.62 }	
+	}
+
+}
+
+# Romania wants to split Yugoslavia - invitation from Romania to come help out
+country_event = {
+	id = DOD_romania.601
+	title = DOD_romania.601.t
+	desc = DOD_romania.601.desc
+	picture = GFX_report_event_yugoslavian_split
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = DOD_romania.601.a
+		ai_chance = {
+			factor = 10
+		}
+		set_country_flag = invited_to_split_yugo
+		unlock_decision_category_tooltip = ROM_dividing_yugo
+	}
+
+	option = { #no
+		name = DOD_romania.601.b
 	}
 
 }
@@ -983,6 +1018,12 @@ country_event = {
 			}
 			SER = { transfer_state = 106 }
 		}
+		if = {
+			limit = {
+				970 = { is_owned_by = YUG }
+			}
+			SER = { transfer_state = 970 }
+		}
 		puppet = SER
 
 		if = {
@@ -1038,7 +1079,6 @@ country_event = {
 					is_owned_by = YUG 
 					NOT = { is_claimed_by = GER }
 				}
-
 			}
 			CRO = { transfer_state = 102 }
 		}
@@ -1048,9 +1088,26 @@ country_event = {
 					is_owned_by = YUG 
 					is_claimed_by = GER
 				}
-
 			}
 			GER = { transfer_state = 102 }
+		}
+		if = {
+			limit = {
+				853 = { 
+					is_owned_by = YUG 
+					NOT = { is_claimed_by = GER }
+				}
+			}
+			CRO = { transfer_state = 853 }
+		}
+		if = {
+			limit = {
+				853 = { 
+					is_owned_by = YUG 
+					is_claimed_by = GER
+				}
+			}
+			GER = { transfer_state = 853 }
 		}
 		if = {
 			limit = { has_country_flag = ROM_YUG_GER_approves }
@@ -1094,7 +1151,7 @@ country_event = {
 				create_wargoal = {
 					target = YUG
 					type = take_state_focus
-					generator = { 104 102 109 } 
+					generator = { 104 102 853 109 } 
 				}
 			}
 		}
@@ -1801,6 +1858,7 @@ country_event = {
 		GER = {
 			transfer_state = 9
 			transfer_state = 69
+			transfer_state = 972
 			transfer_state = 75
 			transfer_state = 74
 		}
@@ -1837,6 +1895,7 @@ country_event = {
 			factor = 20
 			modifier = {
 				owns_state = 69
+				owns_state = 972
 				factor = 2
 			}
 			modifier = {
@@ -1889,7 +1948,7 @@ country_event = {
 	}
 }
 
-#Invite Foreign Motor Companies
+#Invite Foreign Motor Companies 
 country_event = {
 	id = DOD_romania.120
 	title = DOD_romania.120.t
@@ -1941,7 +2000,7 @@ country_event = {
 	}
 }
 
-#fighter competition - initial choice for Hungary
+#fighter competition - initial choice for Romania
 country_event = {
 	id = DOD_romania.150
 	title = DOD_hungary.150.t
@@ -2030,7 +2089,7 @@ country_event = {
 	}
 }
 
-#Fighter competition - Hungary is looking for a light fighter
+#Fighter competition - Romania is looking for a light fighter
 country_event = {
 	id = DOD_romania.151
 	title = DOD_hungary.151.t
@@ -2946,6 +3005,16 @@ country_event = {
 				}
 				white_peace = ROM
 			}
+		}
+		white_peace = FROM
+		every_country = {
+			limit = {
+				is_subject_of = FROM
+				has_war_with = ROOT
+			}
+			white_peace = ROOT
+		}
+		FROM = {
 			leave_faction = yes
 		}
 		SOV = { 

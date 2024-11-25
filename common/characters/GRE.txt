@@ -403,6 +403,60 @@ characters={
 		}
 	}
 
+
+	GRE_stylianos_gonatas = {
+		
+		name = GRE_stylianos_gonatas
+
+		portraits = {
+			army = {
+				large = GFX_portrait_GRE_stylianos_gonatas
+				small = GFX_portrait_GRE_stylianos_gonatas_small
+			}
+		}
+
+		corps_commander = {
+			traits = { trait_GRE_venezelist_loyalist infantry_officer hill_fighter }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+			visible = {
+				has_government = democratic
+			}
+		}
+
+		advisor = {
+			slot = high_command
+			idea_token = GRE_stylianos_gonatas
+			ledger = army
+			name = GRE_stylianos_gonatas
+			allowed = {
+				original_tag = GRE
+				has_dlc = "Battle for the Bosporus"
+			}
+			available = {
+				custom_trigger_tooltip = {
+					tooltip = GRE_republicans_friendly_or_loyal
+					check_variable = {
+						var = GRE_republican_loyalty
+						value = 1.000
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			traits = {
+				army_entrenchment_1
+			}
+			cost = 150
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+		
+	}
+
 	GRE_napoleon_zervas={
 		instance = {
 			allowed = {

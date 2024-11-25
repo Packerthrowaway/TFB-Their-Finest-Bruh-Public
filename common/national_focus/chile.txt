@@ -7131,7 +7131,7 @@ focus_tree = {
 				limit = {
 					is_owned_and_controlled_by = ROOT 
 				}
-				random_select_amount = 3
+				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -7219,7 +7219,7 @@ focus_tree = {
 				limit = {
 					is_owned_and_controlled_by = ROOT 
 				}
-				random_select_amount = 3
+				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
@@ -7733,7 +7733,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = CHL_socialist_youth
+			#focus = CHL_socialist_youth
 		} 
 
 		offset = {
@@ -11211,11 +11211,12 @@ focus_tree = {
 		cost = 10
 
 		prerequisite = {
+			focus = CHL_repeal_the_separation_of_church_an_state
 			focus = CHL_enforce_stricter_secularism
 		}
 
 		mutually_exclusive = {
-			focus = CHL_chilean_anti_communist_action_dem_version
+			#focus = CHL_chilean_anti_communist_action_dem_version
 		} 
 		
 		ai_will_do = {
@@ -13147,7 +13148,6 @@ focus_tree = {
 					free_building_slots = {
 						building = infrastructure
 						size > 0
-						include_locked = yes
 					}
 				}
 				prioritize = { 506 279 507 950 952 951 949 } 
@@ -13164,7 +13164,6 @@ focus_tree = {
 					free_building_slots = {
 						building = infrastructure
 						size > 0
-						include_locked = yes
 					}
 				}
 				prioritize = { 506 279 507 950 952 951 949 } 
@@ -13590,7 +13589,6 @@ focus_tree = {
 					free_building_slots = {
 						building = infrastructure
 						size > 0
-						include_locked = yes
 					}
 				}
 				prioritize = { 506 279 507 950 952 951 949 } 
@@ -13675,7 +13673,6 @@ focus_tree = {
 					free_building_slots = {
 						building = infrastructure
 						size > 1
-						include_locked = yes
 					}	
 				}
 				add_building_construction = {
@@ -13693,7 +13690,6 @@ focus_tree = {
 					free_building_slots = {
 						building = infrastructure
 						size > 1
-						include_locked = yes
 					}	
 				}
 				add_building_construction = {
@@ -13965,7 +13961,7 @@ focus_tree = {
 
 			custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
 			add_to_variable = { CHL_economy_local_resources_factor = 0.05 tooltip = local_resources_factor_tt }
-			add_to_variable = { CHL_economy_min_export_factor = 0.15 tooltip = min_export_factor_tt }
+			add_to_variable = { CHL_economy_min_export_factor = 0.15 tooltip = min_export_tt }
 
 		}
 	} 
@@ -14442,6 +14438,8 @@ focus_tree = {
 			custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
 			add_to_variable = { CHL_economy_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
 
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			random_state = {
 				limit = {
 					is_owned_and_controlled_by = ROOT
@@ -14494,17 +14492,21 @@ focus_tree = {
 				add_mio_size = 1
 			}
 
-			#custom_effect_tooltip = CHL_modify_chilean_economy_ns_intro
-			#add_to_variable = { CHL_economy_industrial_capacity_factory = 0.1 tooltip = industrial_capacity_factory_tt }
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.25
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			random_state = {
 				limit = {
 					is_owned_and_controlled_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}	
 			}

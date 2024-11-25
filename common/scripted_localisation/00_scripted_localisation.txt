@@ -21,6 +21,7 @@ defined_text = { # Country
 	}
 }
 
+#MM: UNUSED after WW (replaced by GetKfdWagenNames)
 defined_text = { # Country
 	name = GetKdfWagenName
 	text = {
@@ -45,6 +46,7 @@ defined_text = { # Country
 	}
 }
 
+#MM: UNUSED after WW (replaced by GetReichsWerkeName)
 defined_text = { # Country
 	name = GetHermannGoringWerkeName
 	text = {
@@ -1514,5 +1516,45 @@ defined_text = { # global
 			NOT = {	has_variable = dockyard_major }
 		}
 		localization_key = "dockyard_cg_mod_minor"
+	}
+}
+
+defined_text = {
+	name = GetTheUSSRName
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_THE_USSR_NAME_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_THE_USSR_NAME_EXILES
+	}
+}
+
+defined_text = {
+	name = GetMolotovRibbentropName
+	text = {
+		trigger = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		localization_key = SOV_MOLOTOV_RIBBENTROP_NAME_COMMUNIST
+	}
+	text = {
+		trigger = {
+			SOV = {
+				NOT = { has_government = communism }
+			}
+		}
+		localization_key = SOV_MOLOTOV_RIBBENTROP_NAME_EXILES
 	}
 }

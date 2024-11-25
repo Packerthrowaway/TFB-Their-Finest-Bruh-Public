@@ -327,6 +327,9 @@ focus_tree = {
 	focus = {
 		id = URG_rincon_del_bonete_hydroelectric_power_station
 		available = {
+			946 = {
+				is_fully_controlled_by = ROOT
+			}
 		}
 		prerequisite = { focus = URG_break_relations_with_the_ussr }
 		mutually_exclusive = { }
@@ -341,9 +344,26 @@ focus_tree = {
 				ideology = fascism
 				popularity = 0.05
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = {
 				idea_GUAY_electrification_of_the_country
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			946 = {	
+				add_building_construction = {
+					type = dam
+					level = 1
+					instant_build = yes
+					province = {
+						id = 1613
+					}
+				}
+				custom_effect_tooltip = {
+					localization_key = building_state_modifier|dam
+					INDENT = "    "
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_fascist_influence = yes
 
 		}
@@ -864,12 +884,18 @@ focus_tree = {
 		relative_position_id = URG_rapid_industrialization
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 		completion_reward = {
-			air_experience = 40
+			air_experience = 25 # was 40
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
 			add_equipment_to_stockpile = { 
 				type = transport_plane_equipment_1
 				amount = 40 
 				producer = URG
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			random_core_state = {
 				limit = {

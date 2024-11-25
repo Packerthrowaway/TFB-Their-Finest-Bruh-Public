@@ -9,6 +9,8 @@ default = {
 				GFX_light_plane_2_medium
 				GFX_light_plane_3_medium
 				GFX_light_plane_4_medium
+				GFX_light_plane_5_medium
+				
 			 }
 		}
 
@@ -19,6 +21,7 @@ default = {
 		}
 
 	}
+
 	cv_small_plane_airframe = {
 		pool = {
 			icons = { 
@@ -37,6 +40,31 @@ default = {
 			 }
 		}
 	}
+
+	small_plane_airframe_5 = { #Supersonic Jet
+		pool = {
+			weight = 2  #This weight is necessary due to being in a different file than the country-specific ones
+			icons = {
+				GFX_small_plane_airframe_5_medium
+			}
+			models = {
+				supersonic_jet_plane_entity
+			}
+		}
+	}
+
+	supersonic_fighter_equipment_1 = { #Supersonic Jet (Non-BBA version) #MM: This equipment was implemented as the same air unit as the old Jet Plane so those old models will be the ones hooked-in
+		pool = {
+			weight = 2  #This weight is necessary due to being in a different file than the country-specific ones
+			icons = {
+				GFX_small_plane_airframe_5_medium
+			}
+			models = {
+				supersonic_jet_plane_entity
+			}
+		}
+	}
+
 	medium_plane_airframe = {
 		pool = {
 			icons = { 
@@ -81,6 +109,7 @@ GER = {
 				GFX_GER_cv_CAS3_medium
 				GFX_GER_jet_plane_2_medium
 				GFX_GER_jet_plane_1_medium
+				GFX_GER_light_jet_fighter_medium
 				GFX_GER_rocket_plane_1_medium
 				GFX_GER_fighter3_medium
 				GFX_GER_naval_bomber2_medium
@@ -97,7 +126,7 @@ GER = {
 				GFX_GER_fighter1_medium
 				GFX_GER_early_fighter_medium
 			}
-			models = {				
+			models = {
 				GER_jet_plane_entity
 				GER_light_plane_entity
 			}
@@ -132,6 +161,7 @@ GER = {
 			weight = 1.1
 			icons = {
 				GFX_GER_light_plane_4_medium
+				GFX_GER_jet_plane_1_medium #messerschmitt 262 jet fighter
 			}
 		}
 	}
@@ -283,6 +313,7 @@ GER = {
 	}
 	
 	medium_plane_airframe = {
+
 		pool = {
 			icons = {
 				GFX_GER_tactical_bomber3_medium
@@ -582,6 +613,7 @@ USA = {
 	}
 
 	medium_plane_airframe = {
+
 		pool = {
 			icons = {
 				GFX_USA_tactical_bomber3_medium
@@ -882,6 +914,7 @@ ENG = {
 	
 	
 	medium_plane_airframe = {
+
 		pool = {
 			icons = {
 				GFX_ENG_tactical_bomber3_medium
@@ -1177,6 +1210,7 @@ JAP = {
 		}
 	}
 	medium_plane_airframe = {
+
 		pool = {
 			icons = {
 				GFX_JAP_tactical_bomber3_medium
@@ -1397,7 +1431,8 @@ AST = {
 		}
 	}
 	medium_plane_airframe = {
-		pool = {
+
+		pool = {			
 			icons = {
 				GFX_ENG_tactical_bomber3_medium
 				GFX_ENG_jet_medium_plane_1_medium
@@ -4749,9 +4784,60 @@ NOR = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_iw_small_fighter_1_medium
 			}
 			models = {
 				NOR_light_plane_0_entity #Fokker C.V-D
+			}
+		}
+	}
+	small_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_fighter_1_medium
+				GFX_NOR_basic_small_fighter_2_medium
+			}
+			models = {
+				NOR_light_plane_0_entity
+			}
+		}
+	}
+	small_plane_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_small_fighter_1_medium
+			}
+			models = {
+			}
+		}
+	}
+	small_plane_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_small_fighter_1_medium
+			}
+			models = {
+			}
+		}
+	}
+	small_plane_airframe_4 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_modern_small_fighter_1_medium
+			}
+			models = {
 			}
 		}
 	}
@@ -4763,36 +4849,55 @@ NOR = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_basic_small_cas_1_medium
+				GFX_NOR_improved_small_cas_1_medium
+				GFX_NOR_advanced_small_cas_1_medium
 			}
 			models = {
 				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
 			}
 		}
 	}
-
 	small_plane_cas_airframe_0 = {
 		pool = {
 			limit = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_basic_small_cas_1_medium # Oldest CAS
 			}
 			models = {
 				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
 			}
 		}
 	}
-
-	#FIGHTER
-	cv_small_plane_airframe = {
+	small_plane_cas_airframe_1 = {
 		pool = {
 			limit = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_basic_small_cas_1_medium
 			}
-			models = {
-				NOR_light_plane_entity #generic NOR_light_plane
+		}
+	}
+	small_plane_cas_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_small_cas_1_medium
+			}
+		}
+	}
+	small_plane_cas_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_small_cas_1_medium
 			}
 		}
 	}
@@ -4804,23 +4909,248 @@ NOR = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_basic_small_naval_bomber_1_medium
+				GFX_NOR_improved_small_naval_bomber_1_medium
+				GFX_NOR_advanced_small_naval_bomber_1_medium
 			}
-			models = {
-				NOR_light_plane_entity #generic NOR_light_plane
+		}
+	}
+	small_plane_naval_bomber_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_naval_bomber_1_medium #Oldest Naval Bomber
+			}
+		}
+	}
+	small_plane_naval_bomber_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_naval_bomber_1_medium
+			}
+		}
+	}
+	small_plane_naval_bomber_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_small_naval_bomber_1_medium
+			}
+		}
+	}
+	small_plane_naval_bomber_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_small_naval_bomber_1_medium
 			}
 		}
 	}
 
-	#CAS
+
+	# CV FIGHTER
+	cv_small_plane_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_iw_small_fighter_1_medium
+				GFX_NOR_basic_small_fighter_1_medium
+				GFX_NOR_basic_small_fighter_2_medium
+				GFX_NOR_improved_small_fighter_1_medium
+				GFX_NOR_advanced_small_fighter_1_medium
+				GFX_NOR_modern_small_fighter_1_medium
+			}
+			models = {
+				NOR_light_plane_0_entity #Fokker C.V-D
+				NOR_light_plane_entity #generic NOR_light_plane
+			}
+		}
+	}
+	cv_small_plane_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_iw_small_fighter_1_medium
+			}
+			models = {
+				NOR_light_plane_0_entity #Fokker C.V-D
+			}
+		}
+	}
+	cv_small_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_fighter_1_medium
+				GFX_NOR_basic_small_fighter_2_medium
+			}
+			models = {
+				NOR_light_plane_0_entity
+			}
+		}
+	}
+	cv_small_plane_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_small_fighter_1_medium
+			}
+			models = {
+			}
+		}
+	}
+	cv_small_plane_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_small_fighter_1_medium
+			}
+			models = {
+			}
+		}
+	}
+	cv_small_plane_airframe_4 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_modern_small_fighter_1_medium
+			}
+			models = {
+			}
+		}
+	}
+
+	#CV CAS
 	cv_small_plane_cas_airframe = {
 		pool = {
 			limit = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_basic_small_cas_1_medium
+				GFX_NOR_improved_small_cas_1_medium
+				GFX_NOR_advanced_small_cas_1_medium
 			}
 			models = {
-				NOR_light_plane_entity #generic NOR_light_plane
+				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
+			}
+		}
+	}
+	cv_small_plane_cas_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_cas_1_medium # Oldest CAS
+			}
+			models = {
+				NOR_CAS_equipment_0_entity #Fokker C.V-D CLONE
+			}
+		}
+	}
+	cv_small_plane_cas_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_cas_1_medium
+			}
+		}
+	}
+	cv_small_plane_cas_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_small_cas_1_medium
+			}
+		}
+	}
+	cv_small_plane_cas_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_small_cas_1_medium
+			}
+		}
+	}
+
+	#CV NAVAL BOMBER
+	cv_small_plane_naval_bomber_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_naval_bomber_1_medium
+				GFX_NOR_improved_small_naval_bomber_1_medium
+				GFX_NOR_advanced_small_naval_bomber_1_medium
+			}
+		}
+	}
+	cv_small_plane_naval_bomber_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_naval_bomber_1_medium #Oldest Naval Bomber
+			}
+		}
+	}
+	cv_small_plane_naval_bomber_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_small_naval_bomber_1_medium
+			}
+		}
+	}
+	cv_small_plane_naval_bomber_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_small_naval_bomber_1_medium
+			}
+		}
+	}
+	cv_small_plane_naval_bomber_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_small_naval_bomber_1_medium
 			}
 		}
 	}
@@ -4833,39 +5163,212 @@ NOR = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_iw_medium_tactical_bomber_1 #Generic non-BBA
+				GFX_NOR_iw_medium_tactical_bomber_2 #Generic BBA
+				GFX_NOR_basic_medium_tactical_bomber_1_medium #Generic non-BBA
+				GFX_NOR_basic_medium_tactical_bomber_2_medium #Generic BBA
+				GFX_NOR_improved_medium_tactical_bomber_1_medium #Generic non-BBA
+				GFX_NOR_improved_medium_tactical_bomber_2_medium #Generic BBA
+				GFX_NOR_advanced_medium_tactical_bomber_1_medium #Generic non-BBA
+				GFX_NOR_advanced_medium_tactical_bomber_2_medium #Generic BBA
+				GFX_NOR_modern_medium_tactical_bomber_1_medium #Generic BBA
 			}
 			models = {
-				DEN_medium_plane_entity #generic DEN_medium_plane
+				NOR_medium_plane_entity
 			}
 		}
 	}
-
-################################ Medium Air Frames #######################################
-
-	medium_plane_airframe = {
+	medium_plane_airframe_0 = {
 		pool = {
 			limit = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
-			}
-			models = {
-				NOR_medium_plane_entity #generic NOR_medium_plane
+				GFX_NOR_iw_medium_tactical_bomber_1 #Generic non-BBA
+				GFX_NOR_iw_medium_tactical_bomber_2 #Generic BBA
 			}
 		}
 	}
+	medium_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_medium_tactical_bomber_1_medium #Generic non-BBA
+				GFX_NOR_basic_medium_tactical_bomber_2_medium #Generic BBA
+			}
+		}
+	}
+	medium_plane_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_medium_tactical_bomber_1_medium #Generic non-BBA
+				GFX_NOR_improved_medium_tactical_bomber_2_medium #Generic BBA
+			}
+		}
+	}
+	medium_plane_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_medium_tactical_bomber_1_medium #Generic non-BBA
+				GFX_NOR_advanced_medium_tactical_bomber_2_medium #Generic BBA
+			}
+		}
+	}
+	medium_plane_airframe_4 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_modern_medium_tactical_bomber_1_medium #Generic BBA
+			}
+		}
+	}
+
+	# HEAVY FIGHTER
+	medium_plane_fighter_airframe = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_medium_heavy_fighter_1_medium #Generic non-BBA
+				GFX_NOR_improved_medium_heavy_fighter_1_medium #Generic non-BBA
+				GFX_NOR_advanced_medium_heavy_fighter_1_medium #Generic non-BBA
+			}
+		}
+	}
+	medium_plane_fighter_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_medium_heavy_fighter_1_medium #Generic non-BBA
+			}
+		}
+	}
+	medium_plane_fighter_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_medium_heavy_fighter_1_medium #Generic non-BBA
+			}
+		}
+	}
+	medium_plane_fighter_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_medium_heavy_fighter_1_medium #Generic non-BBA
+			}
+		}
+	}
+
+	# SCOUT PLANES
+	# No Scout Planes
 
 ################################ Large Air Frames #######################################
 
+	#STRATEGIC BOMBER
 	large_plane_airframe = {
 		pool = {
 			limit = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			icons = {
+				GFX_NOR_iw_large_strategic_bomber_1_medium #Generic BBA
+				GFX_NOR_basic_large_strategic_bomber_1_medium #Generic non-BBA
+				GFX_NOR_basic_large_strategic_bomber_2_medium #Generic BBA
+				GFX_NOR_improved_large_strategic_bomber_1_medium #Generic non-BBA
+				GFX_NOR_improved_large_strategic_bomber_2_medium #Generic BBA
+				GFX_NOR_advanced_large_strategic_bomber_1_medium #Generic non-BBA
+				GFX_NOR_advanced_large_strategic_bomber_2_medium #Generic BBA
+				GFX_NOR_modern_large_strategic_bomber_2_medium #Generic BBA
 			}
 			models = {
 				NOR_heavy_plane_entity #generic NOR_heavy_plane
+			}
+		}
+	}
+	
+	large_plane_airframe_0 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_iw_large_strategic_bomber_1_medium #Generic BBA
+			}
+			models = {
+				NOR_heavy_plane_entity #generic NOR_heavy_plane
+			}
+		}
+	}
+	large_plane_airframe_1 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_basic_large_strategic_bomber_1_medium #Generic non-BBA
+				GFX_NOR_basic_large_strategic_bomber_2_medium #Generic BBA
+			}
+			models = {
+				
+			}
+		}
+	}
+	large_plane_airframe_2 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_improved_large_strategic_bomber_1_medium #Generic non-BBA
+				GFX_NOR_improved_large_strategic_bomber_2_medium #Generic BBA
+			}
+			models = {
+				
+			}
+		}
+	}
+	large_plane_airframe_3 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_advanced_large_strategic_bomber_1_medium #Generic non-BBA
+				GFX_NOR_advanced_large_strategic_bomber_2_medium #Generic BBA
+			}
+			models = {
+				
+			}
+		}
+	}
+	large_plane_airframe_4 = {
+		pool = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			icons = {
+				GFX_NOR_modern_large_strategic_bomber_2_medium #Generic BBA
+			}
+			models = {
+				
 			}
 		}
 	}

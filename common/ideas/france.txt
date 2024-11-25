@@ -182,6 +182,7 @@ ideas = {
 			
 			modifier = {
 				conscription_factor = 0.15
+				consumer_goods_factor = -0.1
 			}
 		}
 		FRA_anti_fascist_immigrants = {
@@ -474,6 +475,7 @@ ideas = {
 				stability_weekly = 0.0025
 			}
 		}
+
 		FRA_counter_action = {
 			picture = generic_oppression
 			allowed = {
@@ -491,6 +493,7 @@ ideas = {
 				fascism_drift = -0.1
 			}
 		}
+
 		FRA_la_deluge = {
 			
 			allowed = {
@@ -507,9 +510,11 @@ ideas = {
 			modifier = {
 				conscription = 0.03
 				conscription_factor = 0.25
+				war_support_factor = 0.1
 				training_time_army_factor = -0.2
 			}
 		}
+
 		FRA_firepower = {
 			picture = generic_artillery_regiments
 			allowed = {
@@ -655,6 +660,26 @@ ideas = {
 				has_government = fascism
 			}
 
+			cancel = {
+				OR = {
+					has_war_with = GER
+					GER = {	is_subject = yes }
+				}
+			}
+
+			on_remove = {
+				GER = {
+					clr_country_flag = GER_french_war_reparations_flag
+					if = {
+						limit = {
+							has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+						}
+						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_vichy_france }
+						country_event = { id = wuw_GER_diplomacy.100 hours = 1 }
+					}
+				}
+			}
+
 			removal_cost = -1
 			
 			modifier = {
@@ -672,6 +697,26 @@ ideas = {
 
 			allowed_civil_war = {
 				has_government = fascism
+			}
+
+			cancel = {
+				OR = {
+					has_war_with = GER
+					GER = {	is_subject = yes }
+				}
+			}
+
+			on_remove = {
+				GER = {
+					clr_country_flag = GER_french_war_reparations_flag
+					if = {
+						limit = {
+							has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+						}
+						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_vichy_france }
+						country_event = { id = wuw_GER_diplomacy.100 hours = 1 }
+					}
+				}
 			}
 
 			removal_cost = -1
@@ -693,6 +738,26 @@ ideas = {
 				has_government = fascism
 			}
 
+			cancel = {
+				OR = {
+					has_war_with = GER
+					GER = {	is_subject = yes }
+				}
+			}
+
+			on_remove = {
+				GER = {
+					clr_country_flag = GER_french_war_reparations_flag
+					if = {
+						limit = {
+							has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+						}
+						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_vichy_france }
+						country_event = { id = wuw_GER_diplomacy.100 hours = 1 }
+					}
+				}
+			}
+
 			removal_cost = -1
 			
 			modifier = {
@@ -709,6 +774,26 @@ ideas = {
 
 			allowed_civil_war = {
 				has_government = fascism
+			}
+
+			cancel = {
+				OR = {
+					has_war_with = GER
+					GER = {	is_subject = yes }
+				}
+			}
+
+			on_remove = {
+				GER = {
+					clr_country_flag = GER_french_war_reparations_flag
+					if = {
+						limit = {
+							has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+						}
+						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_vichy_france }
+						country_event = { id = wuw_GER_diplomacy.100 hours = 1 }
+					}
+				}
 			}
 
 			removal_cost = -1
@@ -1571,6 +1656,8 @@ ideas = {
 			modifier = {
 				production_speed_bunker_factor = 0.1
 				production_speed_coastal_bunker_factor = 0.1
+				bunker_max_level_terrain_limit = 1
+				coastal_bunker_max_level_terrain_limit = 1
 			}
 		}
 
@@ -2304,5 +2391,21 @@ ideas = {
 			
 			traits = { industrial_concern }
 		}
+
+		sfr = {
+
+			picture = generic_radio_concern
+						
+			allowed = {
+				original_tag = FRA
+			}
+						
+			research_bonus = {
+				electronics = 0.15
+			}
+			
+			traits = { electronics_concern }
+		}
+
 	}
 }

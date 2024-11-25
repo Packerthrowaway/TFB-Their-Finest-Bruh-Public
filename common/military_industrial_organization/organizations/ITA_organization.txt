@@ -16,7 +16,6 @@ ITA_fiat_organization = {
 	allowed = {	
 		OR = {
 			tag = ITA 
-			tag = HUN
 			AND = {
 				tag = GRE 
 				has_dlc = "Battle for the Bosporus"
@@ -92,18 +91,6 @@ ITA_fiat_organization = {
 		# 		has_completed_focus = BRA_italian_trucks
 		# 	}
 		# }
-		IF = {
-			limit = { FROM = { original_tag = HUN } }
-			FROM = {
-				OR = {
-					is_subject = no
-					is_subject_of = ITA
-				}
-				has_completed_focus = HUN_mobile_focus
-				#is_in_faction_with = ITA
-				#NOT = { has_completed_focus = BUL_nationalization }
-			}
-		}
 	}
 	
 	# add_trait = { 
@@ -153,6 +140,10 @@ ITA_crda_organization = {
 				tag = BUL 
 				has_dlc = "Battle for the Bosporus"
 			}
+			AND = {
+				tag = HUN 
+				has_dlc = "Gotterdammerung"
+			}
 		}
 	}
 	
@@ -186,6 +177,13 @@ ITA_crda_organization = {
 				#is_in_faction_with = ITA
 				#NOT = { has_completed_focus = BUL_nationalization }
 			}
+		}
+
+		IF = {
+			limit = {
+				FROM = { original_tag = HUN }
+			}
+			FROM = { controls_state = 736 } #LITORALE (Trieste) 
 		}
 	}
 

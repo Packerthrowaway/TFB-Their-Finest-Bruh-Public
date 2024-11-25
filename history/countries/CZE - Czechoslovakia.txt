@@ -37,6 +37,7 @@ set_technology = {
 	fuel_silos = 1
 	fuel_refining = 1
 	basic_train = 1
+	early_transport_plane = 1
 }
 
 add_equipment_to_stockpile = {
@@ -118,6 +119,7 @@ recruit_character = CZE_jozef_tiso
 recruit_character = CZE_vojtech_tuka
 recruit_character = CZE_konrad_henlein
 recruit_character = CZE_gustav_husak
+recruit_character = CZE_albrecht_franz
 
 
 	
@@ -147,6 +149,13 @@ create_equipment_variant = {
 		engine_type_slot = tank_gasoline_engine
 	}
 	icon = "gfx/interface/technologies/tanks/ger/ger_cze_tank_2.dds"
+}
+
+IF = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	CZE_create_paul_thummel_operative = yes
 }
 
 if = {

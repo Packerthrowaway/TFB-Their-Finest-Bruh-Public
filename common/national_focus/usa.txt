@@ -133,6 +133,7 @@ focus_tree = {
 			custom_effect_tooltip = USA_lend_lease_act_neutrality_tt
 			hidden_effect = {
 				news_event = { id = mtg_news.3 days = 3 random_days = 5 }
+				set_country_flag = USA_passed_neutrality_pact_flag
 			}
 		}
 	}
@@ -1260,8 +1261,6 @@ focus_tree = {
 					free_building_slots = {
 						building = infrastructure
 						size > 1
-						include_locked = yes
-						
 					}
 					is_controlled_by = ROOT
 					is_core_of = ROOT
@@ -2332,7 +2331,6 @@ focus_tree = {
 					free_building_slots = {
 						building = arms_factory
 						size > 4
-						include_locked = yes
 					}
 					is_core_of = ROOT
 				}
@@ -2348,7 +2346,6 @@ focus_tree = {
 					free_building_slots = {
 						building = arms_factory
 						size > 4
-						include_locked = yes
 					}
 					is_core_of = ROOT
 				}
@@ -3649,18 +3646,30 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_tech_bonus = {
-				name = USA_manhattan_project
-				bonus = 0.5
-				uses = 1
-				technology = nuclear_reactor
+			IF = {
+				limit = {
+					NOT = {
+						has_tech = atomic_research
+					}
+				}
+				add_tech_bonus = {
+					name = USA_manhattan_project
+					bonus = 0.5
+					uses = 1
+					category = nuclear
+				}
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.5
+				}
+				add_ideas = USA_manhattan_project_ns
 			}
-			add_tech_bonus = {
-				name = USA_manhattan_project
-				bonus = 0.75
-				ahead_reduction = 0.5
-				uses = 1
-				technology = nukes
+			ELSE = {
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 1
+				}
+				add_ideas = USA_manhattan_project_ns
 			}
 		}
 	}
@@ -4698,6 +4707,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = USA_tank_experiments
 		icon = GFX_goal_generic_army_tanks
@@ -4724,6 +4734,10 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 0.5
+			}
 			add_tech_bonus = {
 				name = USA_tank_experiments
 				uses = 3
@@ -4732,6 +4746,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = USA_tank_destroyer_doctrine
 		icon = GFX_focus_usa_tank_destroyer_doctrine
@@ -4772,6 +4787,7 @@ focus_tree = {
 				custom_effect_tooltip = available_designer
 				show_ideas_tooltip = tank_destroyer_board
 			}
+			
 		}
 	}
 	focus = {
@@ -5337,7 +5353,7 @@ focus_tree = {
 			add_ideas = USA_maritime_commission
 		}
 	}
-
+	
 	focus = {
 		id = USA_liberty_ships
 		icon = GFX_goal_generic_amphibious_assault
@@ -5402,31 +5418,13 @@ focus_tree = {
 				add_building_construction = {
 					type = naval_base
 					level = 1
-					province = 13402
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 2
-					province = 13402
+					province = 12140
 					instant_build = yes
 				}
 				add_building_construction = {
 					type = bunker 
 					level = 1
-					province = 13402
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13403
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13401
+					province = 12140
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -5458,24 +5456,6 @@ focus_tree = {
 					type = bunker 
 					level = 1
 					province = 13047
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13398
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13399
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13400
 					instant_build = yes
 				}
 			}
@@ -5524,24 +5504,6 @@ focus_tree = {
 					type = coastal_fortress 
 					level = 2
 					province = 13052
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13395
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13396
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker 
-					level = 1
-					province = 13397
 					instant_build = yes
 				}
 			}
@@ -5633,6 +5595,10 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.25
+			}
 			add_tech_bonus = {
 				name = USA_battleship_primacy
 				bonus = 0.5
@@ -5738,6 +5704,10 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.25
+			}
 			add_tech_bonus = {
 				name = USA_carrier_primacy
 				bonus = 0.5
@@ -5772,6 +5742,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = USA_naval_radar
 		icon = GFX_goal_generic_radar
@@ -5799,6 +5770,16 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.25
+			}
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.5
+			}
+
 			add_tech_bonus = {
 				name = USA_naval_radar
 				uses = 2
@@ -5846,9 +5827,9 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			navy_experience = 25
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = USA_convoy_tactics
-				bonus = 0.5
+				cost_reduction = 0.35
 				uses = 2
 				category = convoy_defense_tree
 			}
@@ -5868,13 +5849,9 @@ focus_tree = {
 		}
 
 		available = {
-
+			is_special_project_completed = sp:sp_naval_cruiser_submarine
 		}
 		
-		bypass = {
-
-		}
-
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -5941,7 +5918,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
-		completion_reward = {
+				completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = USA_fund_the_navy
 				uses = 3

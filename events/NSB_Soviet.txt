@@ -1881,8 +1881,15 @@ country_event = {
 					value = 0.75
 					compare = greater_than_or_equals 
 				}
+				NOT = { has_country_flag = SOV_mig_design_bureau_dissolved_flag }
 			}
-			remove_ideas = SOV_mig_design_bureau
+			if = { # If no AAT -> Then remove designer (in case it was hired etc)
+				limit = {
+					NOT = { has_dlc = "Arms Against Tyranny" }
+				}
+				remove_ideas = SOV_mig_design_bureau
+			}
+
 			set_country_flag = SOV_mig_design_bureau_dissolved_flag
 			unlock_decision_tooltip = SOV_reinstate_mig_design_bureau
 		}
@@ -1893,8 +1900,15 @@ country_event = {
 					value = 0.5
 					compare = greater_than_or_equals 
 				}
+				NOT = { has_country_flag = SOV_ilyushin_design_bureau_dissolved_flag }
 			}
-			remove_ideas = SOV_ilyushin_design_bureau
+			if = { # If no AAT -> Then remove designer (in case it was hired etc)
+				limit = {
+					NOT = { has_dlc = "Arms Against Tyranny" }
+				}
+				remove_ideas = SOV_ilyushin_design_bureau
+			}
+
 			set_country_flag = SOV_ilyushin_design_bureau_dissolved_flag
 			unlock_decision_tooltip = SOV_reinstate_ilyushin_design_bureau
 		}
@@ -1905,15 +1919,86 @@ country_event = {
 					value = 0.25
 					compare = greater_than_or_equals 
 				}
+				NOT = { has_country_flag = SOV_tupolev_design_bureau_dissolved_flag }
 			}
-			remove_ideas = SOV_tupolev_design_bureau
+			if = { # If no AAT -> Then remove designer (in case it was hired etc)
+				limit = {
+					NOT = { has_dlc = "Arms Against Tyranny" }
+				}
+				remove_ideas = SOV_tupolev_design_bureau
+			}
+
 			set_country_flag = SOV_tupolev_design_bureau_dissolved_flag
 			unlock_decision_tooltip = SOV_reinstate_tupolev_design_bureau
 		}
-		else= { #YAKOVLEV
-			remove_ideas = SOV_yakovlev_design_bureau
+		else_if = {
+			limit = { #YAKOVLEV
+				NOT = { has_country_flag = SOV_yakovlev_design_bureau_dissolved_flag }
+			}
+			if = { # If no AAT -> Then remove designer (in case it was hired etc)
+				limit = {
+					NOT = { has_dlc = "Arms Against Tyranny" }
+				}
+				remove_ideas = SOV_yakovlev_design_bureau
+			}
+
 			set_country_flag = SOV_yakovlev_design_bureau_dissolved_flag
 			unlock_decision_tooltip = SOV_reinstate_yakovlev_design_bureau
+		}
+		else = { #RANDOMIZED VALUE FOR BUREAU HAS ALREADY BEEN DISSOLVED - Fallback to first non-dissolved bureau
+			if = { # MIG
+				limit = {
+					NOT = { has_country_flag = SOV_mig_design_bureau_dissolved_flag }
+				}
+				if = { # If no AAT -> Then remove designer (in case it was hired etc)
+					limit = {
+						NOT = { has_dlc = "Arms Against Tyranny" }
+					}
+					remove_ideas = SOV_mig_design_bureau
+				}
+
+				set_country_flag = SOV_mig_design_bureau_dissolved_flag
+				unlock_decision_tooltip = SOV_reinstate_mig_design_bureau
+			}
+			else_if = {
+				limit = { # ILYUSHIN
+					NOT = { has_country_flag = SOV_ilyushin_design_bureau_dissolved_flag }
+				}
+				if = { # If no AAT -> Then remove designer (in case it was hired etc)
+					limit = {
+						NOT = { has_dlc = "Arms Against Tyranny" }
+					}
+					remove_ideas = SOV_ilyushin_design_bureau
+				}
+
+				set_country_flag = SOV_ilyushin_design_bureau_dissolved_flag
+				unlock_decision_tooltip = SOV_reinstate_ilyushin_design_bureau
+			}
+			else_if = {
+				limit = { # TUPOLEV
+					NOT = { has_country_flag = SOV_tupolev_design_bureau_dissolved_flag }
+				}
+				if = { # If no AAT -> Then remove designer (in case it was hired etc)
+					limit = {
+						NOT = { has_dlc = "Arms Against Tyranny" }
+					}
+					remove_ideas = SOV_tupolev_design_bureau
+				}
+
+				set_country_flag = SOV_tupolev_design_bureau_dissolved_flag
+				unlock_decision_tooltip = SOV_reinstate_tupolev_design_bureau
+			}
+			else = { #YAKOVLEV
+				if = { # If no AAT -> Then remove designer (in case it was hired etc)
+					limit = {
+						NOT = { has_dlc = "Arms Against Tyranny" }
+					}
+					remove_ideas = SOV_yakovlev_design_bureau
+				}
+
+				set_country_flag = SOV_yakovlev_design_bureau_dissolved_flag
+				unlock_decision_tooltip = SOV_reinstate_yakovlev_design_bureau
+			}
 		}
 
 		#Update purged portraits in UI
@@ -2230,23 +2315,14 @@ country_event = {
 ##       ##     ## ##    ##  ##        ##  ##    ##  ##   ###    ##        ##     ## ##        ##     ##     ##  ##    ## ##    ## 
 ##        #######  ##     ## ######## ####  ######   ##    ##    ##         #######  ######## ####    ##    ####  ######   ######  
 
-# SOV is pressuring our government - Event for Targeted country
+# SOV is pressuring our government - Event for Targeted country ### (ITA uses this too)
 country_event = {
 	id = NSB_soviet_foreign_politics_events.1
 	title = NSB_soviet_foreign_politics_events.1.t
 	desc = NSB_soviet_foreign_politics_events.1.desc
-	picture = GFX_report_event_SOV_demands
+	picture = "[GetPressureGovernmentGFX]"
 
 	is_triggered_only = yes
-
-	#immediate = { #Debug
-	#	log = "FROM is [FROM.GetName]"
-	#	log = "FROM.FROM [FROM.FROM.GetName]"
-	#	log = "FROM.PREV [FROM.PREV.GetName]"
-	#	log = "FROM.FROM.PREV [FROM.FROM.PREV.GetName]"
-	#	log = "ROOT.FROM [ROOT.FROM.GetName]"
-	#	log = "ROOT.PREV [ROOT.PREV.GetName]"
-	#}
 
 	option = { #Join Faction - Keep government
 		name = NSB_soviet_foreign_politics_events.1.a
@@ -2298,6 +2374,26 @@ country_event = {
 		}
 		hidden_effect = {
 			FROM = { country_event = { id = NSB_soviet_foreign_politics_events.151 hours = 1 } }
+
+			# AI more friendly
+			add_ai_strategy = { 
+				type = befriend 
+				id = FROM
+				value = 100
+			}
+			FROM = {
+				add_ai_strategy = { 
+					type = befriend 
+					id = ROOT
+					value = 100
+				}
+			}
+
+			add_ai_strategy = {
+				type = alliance
+				id = FROM		
+				value = 200
+			}
 		}
 	}
 
@@ -2358,6 +2454,19 @@ country_event = {
 		}
 		hidden_effect = {
 			FROM = { country_event = { id = NSB_soviet_foreign_politics_events.158 hours = 1 } }
+			# AI more friendly
+			add_ai_strategy = { 
+				type = befriend 
+				id = FROM
+				value = 20
+			}
+			FROM = {
+				add_ai_strategy = { 
+					type = befriend 
+					id = ROOT
+					value = 20
+				}
+			}
 		}
 	}
 
@@ -2396,12 +2505,12 @@ country_event = {
 	}
 }
 
-# SOV is promoting ideology rallies - Event for Targeted country
+# SOV is promoting ideology rallies - Event for Targeted country ### (ITA uses this too)
 country_event = {
 	id = NSB_soviet_foreign_politics_events.2
 	title = NSB_soviet_foreign_politics_events.2.t
 	desc = NSB_soviet_foreign_politics_events.2.desc
-	picture = GFX_report_event_soviet_purge_speech
+	picture = "[GetPromotingIdeologyGFX]"
 
 	is_triggered_only = yes
 
@@ -2454,15 +2563,39 @@ country_event = {
 		}
 
 		hidden_effect = { #Country is slightly more willing to cooperate with Soviets
-			add_ai_strategy = {
-				type = befriend
-				id = SOV			
-				value = 10
+			if = {
+				limit = {
+					FROM = {
+						original_tag = SOV
+					}
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = SOV			
+					value = 10
+				}
+				add_ai_strategy = {
+					type = alliance
+					id = SOV			
+					value = 10
+				}
 			}
-			add_ai_strategy = {
-				type = alliance
-				id = SOV			
-				value = 10
+			else_if = {
+				limit = {
+					FROM = {
+						original_tag = ITA
+					}
+				}
+				add_ai_strategy = {
+					type = befriend
+					id = ITA			
+					value = 10
+				}
+				add_ai_strategy = {
+					type = alliance
+					id = ITA			
+					value = 10
+				}
 			}
 		}
 
@@ -2982,12 +3115,12 @@ country_event = {
 	}
 }
 
-# Country becomes a puppet - Event for SOV
+# Country becomes a puppet - Event for SOV ### (ITA uses this too)
 country_event = {
 	id = NSB_soviet_foreign_politics_events.150
 	title = NSB_soviet_foreign_politics_events.150.t
 	desc = NSB_soviet_foreign_politics_events.150.desc
-	picture = GFX_report_event_stalin_propaganda
+	picture = "[GetCountryBecomesPuppetGFX]"
 
 	is_triggered_only = yes
 			
@@ -3001,12 +3134,12 @@ country_event = {
 	}
 }
 
-# Country joins faction - Event for SOV
+# Country joins faction - Event for SOV ### (ITA uses this too)
 country_event = {
 	id = NSB_soviet_foreign_politics_events.151
 	title = NSB_soviet_foreign_politics_events.151.t
 	desc = NSB_soviet_foreign_politics_events.151.desc
-	picture = GFX_report_event_stalin_propaganda
+	picture = "[GetCountryBecomesPuppetGFX]"
 
 	is_triggered_only = yes
 			
@@ -3024,12 +3157,12 @@ country_event = {
 	}
 }
 
-# Country changes government - Event for SOV
+# Country changes government - Event for SOV ### (ITA uses this too)
 country_event = {
 	id = NSB_soviet_foreign_politics_events.158
 	title = NSB_soviet_foreign_politics_events.158.t
 	desc = NSB_soviet_foreign_politics_events.158.desc
-	picture = GFX_report_event_stalin_propaganda
+	picture = "[GetCountryChangesGovernmentGFX]"
 
 	is_triggered_only = yes
 
@@ -3526,7 +3659,12 @@ country_event = {
 		}
 
 		trigger = {
-			has_government = FROM
+			OR = {
+				has_government = FROM
+				FROM = {	
+					original_tag = ITA
+				}
+			}
 		}
 
 		set_politics = { ruling_party = FROM }
@@ -3537,7 +3675,6 @@ country_event = {
 				country_event = { id = NSB_soviet_foreign_politics_events.150 hours = 1 }
 			}
 		}
-		#TODO_Manu: Handle wars, civil wars and all that stuff
 	}
 
 	option = { #Join Faction - Keep government
@@ -3545,6 +3682,16 @@ country_event = {
 
 		ai_chance = {
 			base = 0
+		}
+
+		trigger = {
+			FROM = { is_in_faction = yes }
+
+			IF = {
+				limit = { FROM = { original_tag = ITA } }
+				
+				FROM = { is_faction_leader = yes }
+			}
 		}
 
 		FROM = {
@@ -3566,12 +3713,47 @@ country_event = {
 
 		ai_chance = {
 			base = 10
+
+			modifier = {
+				factor = 0.1
+				FROM = {
+					original_tag = ITA
+					NOT = {
+						has_government = ROOT
+					}
+				}
+				is_in_faction = no
+			}
 		}
 
+
 		FROM = {
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = ROOT
+			effect_tooltip = {
+				if = {
+					limit = {
+						NOT = {
+							is_in_faction_with = ROOT
+						}
+					}
+					if = {
+						limit = {
+							OR = {
+								has_government = fascism
+								has_government = neutrality
+							}
+						}
+						create_wargoal = {
+							type = annex_everything
+							target = ROOT
+						}
+					}
+				}
+				else = {
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = ROOT
+					}
+				} 
 			}
 			hidden_effect = {
 				country_event = { id = NSB_soviet_foreign_politics_events.152 hours = 1 }
@@ -6327,13 +6509,38 @@ country_event = {
 
 		ai_chance = {
 			base = 5
+			modifier = {
+				factor = 10
+				has_war = yes
+			}
+			modifier = {
+				factor = 10
+				has_war_with = ENG
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = GER_molotov_ribbentrop_pact
+			}
+			modifier = {
+				factor = 10
+				has_completed_focus = GER_alliance_with_the_ussr
+			}
+			modifier = {
+				factor = 0.1
+				has_completed_focus = GER_anti_comintern_pact
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_war_with = FROM
+					is_justifying_wargoal_against = FROM
+					has_completed_focus = GER_anti_soviet_pact
+					has_completed_focus = GER_war_with_the_ussr
+				}
+			}
 		}
 
-		add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
-		set_variable = { SOV_capital_for_soviet_imports = ROOT.capital } #Store capital where the dynamic modifier is set so that it can be removed easily later
-		capital_scope = {
-			add_dynamic_modifier = { modifier = SOV_soviet_imports }
-		}
+		add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 800 } #Technically 1 year but really 18 months for Soviet payment 
 
 		#Effects to Soviets
 		effect_tooltip = {
@@ -6653,10 +6860,7 @@ country_event = {
 		#Effects to Germans
 		effect_tooltip = {
 			FROM = {
-				add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
-				capital_scope = {
-					add_dynamic_modifier = { modifier = SOV_soviet_imports }
-				}
+				add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 800 } 
 			}
 
 			add_opinion_modifier = {
@@ -7050,13 +7254,11 @@ country_event = {
 
 		if = {
 			limit = {
-				NOT = { has_tech = nukes }
+				NOT = { is_special_project_completed = sp:sp_nuclear_bomb }
 			}
-			add_tech_bonus = {
-				name = SOV_soviet_atomic_bomb_project
-				bonus = 1
-				uses = 1
-				category = nuclear
+			add_breakthrough_progress = {
+				specialization = specialization_nuclear
+				value = 0.4
 			}
 		}
 		else = {

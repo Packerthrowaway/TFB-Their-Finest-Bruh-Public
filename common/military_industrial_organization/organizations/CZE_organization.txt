@@ -71,6 +71,10 @@ CZE_skoda_armor_organization = {
 				tag = ETH 
 				has_dlc = "By Blood Alone"
 			}
+			AND = {
+				tag = HUN 
+				has_dlc = "Gotterdammerung"
+			}
 		}
 	}
 	
@@ -78,6 +82,10 @@ CZE_skoda_armor_organization = {
 		IF = {
 			limit = { FROM = { original_tag = ETH } }
 			FROM = { has_completed_focus = ETH_invite_foreign_industrialists }
+		}
+		IF = {
+			limit = { FROM = { original_tag = HUN } }
+			FROM = { has_completed_focus = wuw_HUN_integrate_bohemian_and_austrian_industries }
 		}
 	}
 
@@ -136,7 +144,24 @@ CZE_ckd_praga_organization = {
 	include = generic_naval_aircraft_organization
 	icon = GFX_idea_CZE_ckd_praga
 	allowed = { 
-		tag = CZE
+		OR = {
+			tag = CZE
+			AND = {
+				tag = ETH 
+				has_dlc = "By Blood Alone"
+			}
+			AND = {
+				tag = HUN 
+				has_dlc = "Gotterdammerung"
+			}
+		}
+	}
+
+	visible = {
+		IF = {
+			limit = { FROM = { original_tag = HUN } }
+			FROM = { has_completed_focus = wuw_HUN_integrate_bohemian_and_austrian_industries }
+		}
 	}
 }
 
