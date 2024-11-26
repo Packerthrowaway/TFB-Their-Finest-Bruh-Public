@@ -217,7 +217,7 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				random_select_amount = 2
+				random_select_amount = 4
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -267,14 +267,14 @@ focus_tree = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = industrial_complex
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -1701,10 +1701,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -2249,15 +2249,15 @@ focus_tree = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = synthetic_refinery
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
 				prioritize = { 57 }
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = synthetic_refinery
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -2466,13 +2466,13 @@ focus_tree = {
 			OR = {
 				has_resources_in_country = {
 					resource = chromium
-					amount > 1999 #This needs to correspond to the Bypass values in the previous focuses
+					amount > 999 #This needs to correspond to the Bypass values in the previous focuses
 					extracted = yes
 				}
 				any_subject_country = {
 					has_resources_in_country = {
 						resource = chromium
-						amount > 1999 #This needs to correspond to the Bypass values in the previous focuses
+						amount > 999 #This needs to correspond to the Bypass values in the previous focuses
 						extracted = yes
 					}
 				}
@@ -2836,15 +2836,15 @@ focus_tree = {
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 3
+						size > 1
 						include_locked = yes
 					}
 				}
 				random_select_amount = 2
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 4
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -2922,17 +2922,17 @@ focus_tree = {
 		relative_position_id = GER_armament_rationalization
 		cost = 5
 		available = {
-			has_war_with_major = yes
+			has_war_with = SOV
 			OR = {
 				has_war_support > 0.89
 				surrender_progress > 0
 			}
-			any_enemy_country = {
-				ic_ratio = {
-					tag = ROOT
-					ratio > 0.5
-				}
-			}
+			# any_enemy_country = {
+			# 	ic_ratio = {
+			# 		tag = ROOT
+			# 		ratio > 0.5
+			# 	}
+			# }
 		}
 
 		continue_if_invalid = yes
@@ -4995,7 +4995,7 @@ focus_tree = {
 					controls_state = 59
 				}
 				59 = { #Hannover
-					add_extra_state_shared_building_slots = 1
+					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = arms_factory
 						level = 2
@@ -5008,7 +5008,7 @@ focus_tree = {
 					limit = {
 						is_fully_controlled_by = ROOT
 					}
-					add_extra_state_shared_building_slots = 1
+					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = arms_factory
 						level = 2
@@ -7821,10 +7821,10 @@ focus_tree = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
 			GER_modify_navy_modifier = yes
-			add_to_variable = { 
-				GER_military_screening_without_screens = 0.1
-				tooltip = screening_without_screens_tt
-			}
+			# add_to_variable = { 
+			# 	GER_military_screening_without_screens = 0.1
+			# 	tooltip = screening_without_screens_tt
+			# }
 			add_to_variable = { 
 				GER_military_naval_light_gun_hit_chance_factor = 0.05
 				tooltip = naval_light_gun_hit_chance_factor_tt
@@ -8063,23 +8063,23 @@ focus_tree = {
 						has_completed_focus = GER_u_boat_efforts
 					}
 				}
-				custom_effect_tooltip = GER_with_panzerschiff_completed_tt
-				add_to_variable = { 
-					GER_military_screening_without_screens = 0.1
-					tooltip = screening_without_screens_tt
-				}
+				# custom_effect_tooltip = GER_with_panzerschiff_completed_tt
+				# add_to_variable = { 
+				# 	GER_military_screening_without_screens = 0.1
+				# 	tooltip = screening_without_screens_tt
+				# }
 				custom_effect_tooltip = GER_with_u_boat_efforts_completed_tt
 				custom_effect_tooltip = GER_submarine_max_speed_small_tt
 			}
-			else_if = {
-				limit = {
-					has_completed_focus = GER_panzerschiff_raiders
-				}
-				add_to_variable = { 
-					GER_military_screening_without_screens = 0.1
-					tooltip = screening_without_screens_tt
-				}
-			}
+			# else_if = {
+			# 	limit = {
+			# 		has_completed_focus = GER_panzerschiff_raiders
+			# 	}
+			# 	add_to_variable = { 
+			# 		GER_military_screening_without_screens = 0.1
+			# 		tooltip = screening_without_screens_tt
+			# 	}
+			# }
 			else_if = {
 				limit = {
 					has_completed_focus = GER_u_boat_efforts
