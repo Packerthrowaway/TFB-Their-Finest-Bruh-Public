@@ -3589,6 +3589,18 @@
 			}
 			add_ideas = HABSBURG_an_imperium_restored
 			set_cosmetic_tag = HUN_EMPIRE
+
+			IF = {
+				limit = { NOT = { any_country = { is_subject_of = ROOT } } }
+
+				custom_effect_tooltip = generic_skip_one_line_tt
+
+				custom_effect_tooltip = HABSBURG_an_empire_not_just_in_name_no_puppets_tt
+
+				effect_tooltip = {
+					add_ideas = HABSBURG_imperial_integration
+				}
+			}
 		}
 
 	}

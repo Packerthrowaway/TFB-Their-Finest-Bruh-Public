@@ -58,6 +58,19 @@ reduce_occupation_cost_effect = {
 	if = {
 		limit = { has_idea = FRA_occupation_costs_1 }
 		remove_ideas = FRA_occupation_costs_1
+		hidden_effect = {
+			#Remove reduced monthly CGFF increase for Germany
+			GER = {
+				if = {
+					limit = {
+						has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+					}
+					clr_country_flag = GER_french_war_reparations_flag
+					add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_vichy_france }
+					country_event = { id = wuw_GER_diplomacy.100 hours = 1 }
+				}
+			}
+		}
 	}
 	else_if = {
 		limit = {
@@ -126,6 +139,12 @@ increase_occupation_cost_effect = {
 			}
 		}
 		add_ideas = FRA_occupation_costs_1
+		hidden_effect = {
+			#Reduce monthly CGFF increase for Germany
+			GER = {
+				GER_set_consumer_goods_war_reparations = yes
+			}
+		}
 	}
 }
 

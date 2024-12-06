@@ -1729,7 +1729,6 @@ on_actions = {
 				set_country_flag = BEL_unknown_sympathies_triggered_flag
 			}
 		}
-
 	}
 
 	on_send_volunteers = { 
@@ -3026,6 +3025,9 @@ on_actions = {
 						set_state_flag = AUS_no_longer_expansion_target
 
 						log = "[THIS.GetName] was removed"
+						AUS = {
+							clr_country_flag = AUS_currently_undertaking_subjugating_lands_of_old_flag
+						}
 					}
 				}
 			}
@@ -3092,7 +3094,20 @@ on_actions = {
 				clr_country_flag = AUS_antischluss_measures_flag
 			}
 		}
-		
 	}
 
-}	
+
+	#ROOT is winner, FROM is loser (called for all winners against all losers)
+	on_before_peace_conference_start = {
+		# DEBUG TEST
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = GER }  # Germany is loser
+				}
+				log = "Germany [FROM.GetName] lost against [ROOT.GetName]"
+			}
+		}
+	}
+
+}

@@ -1861,6 +1861,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			has_war = yes
 		}
 
 		available_if_capitulated = yes
@@ -2661,7 +2662,7 @@ focus_tree = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = BEL_european_community_tt
 			custom_effect_tooltip = generic_skip_one_line_tt
-			set_cosmetic_tag = BEL_european_union_leader
+			set_cosmetic_tag = european_union_leader
 
 			hidden_effect = {
 				IF = { 
@@ -6244,7 +6245,7 @@ focus = {
 		completion_reward = {
 			custom_effect_tooltip = BEL_european_community_tt
 			custom_effect_tooltip = generic_skip_one_line_tt
-			set_cosmetic_tag = BEL_european_union_leader
+			set_cosmetic_tag = european_union_leader
 
 			hidden_effect = {
 				news_event = { id = mtg_news.54 days = 1 }
@@ -6851,12 +6852,20 @@ focus = {
 				add_to_variable = { 
 					BEL_belgian_legion_exile_manpower_factor = 0.1
 					tooltip = exile_manpower_factor_tt				
+				}
+				add_to_variable = { 
+					BEL_belgian_legion_weekly_manpower = 250
+					tooltip = weekly_manpower_tt				
 				}	 
 				else = {
 					custom_effect_tooltip = BEL_modify_belgian_legion_dynamic_modifier_tt
 					add_to_variable = { 
 						BEL_belgian_legion_exile_manpower_factor = 0.1
 						tooltip = exile_manpower_factor_tt				
+					}	 
+					add_to_variable = { 
+						BEL_belgian_legion_weekly_manpower = 250
+						tooltip = weekly_manpower_tt				
 					}	 
 				}		 
 			}

@@ -606,6 +606,7 @@ news_event = {
 			is_in_faction_with = GER
 		}
 	}
+
 }
 
 # German Claims Memel - Lithuania Rejects Demands
@@ -615,7 +616,7 @@ news_event = {
 	desc = news.20.d
 	picture = GFX_news_event_german_soldiers
 	
-	major = yes
+	major = no
 	
 	is_triggered_only = yes
 	
@@ -746,12 +747,12 @@ news_event = {
 	}
 }
 
-# Reichstag Speech (The Polish Question)
+# Reichstag Speech (The Polish Question) - NOT USED
 news_event = {
 	id = news.24
 	title = news.24.t
 	desc = news.24.d
-	picture = GFX_news_event_hitler_speech
+	picture = GFX_news_event_hitler_speech2
 	
 	major = yes
 	
@@ -1204,7 +1205,7 @@ news_event = {
 	id = news.34
 	title = news.34.t
 	desc = news.34.d
-	picture = GFX_news_event_hitler_handshake
+	picture = [GetHitlerHandshakeNewsEventPicture]
 	
 	major = yes
 	
@@ -1710,7 +1711,7 @@ news_event = {
 	}
 }
 
-# Trotsky Trigger (HIDDEN)
+# Hindenburg Trigger (HIDDEN)
 news_event = {
 	id = news.50
 	hidden = yes
@@ -1782,6 +1783,7 @@ news_event = {
 	option = {
 		name = news.51.a
 	}
+	
 }
 
 # Rudolf Hess Trigger (HIDDEN)
@@ -4902,7 +4904,7 @@ news_event = {
 	id = news.151
 	title = news.151.t
 	desc = news.151.d
-	picture = GFX_news_event_hitler_speech
+	picture = GFX_news_event_hitler_speech2
 	
 	major = yes
 	
@@ -4944,7 +4946,7 @@ news_event = {
 	id = news.152
 	title = news.151.t
 	desc = news.152.d
-	picture = GFX_news_event_hitler_speech
+	picture = GFX_news_event_hitler_speech2
 	
 	major = yes
 	
@@ -4989,7 +4991,7 @@ news_event = {
 	picture = GFX_news_event_german_inspect_troops
 	
 	major = yes
-	
+
 	trigger = {
 		SOV = {
 			has_defensive_war_with = GER
@@ -8283,7 +8285,7 @@ news_event = {
 			}
 		}
 	}
-	picture = GFX_news_event_hitler_handshake
+	picture = [GetHitlerHandshakeNewsEventPicture]
 
 	major = yes
 
@@ -8502,7 +8504,7 @@ news_event = {
 			}
 		}
 	}
-	picture = GFX_news_event_hitler_handshake
+	picture = [GetHitlerHandshakeNewsEventPicture]
 
 	major = yes
 
@@ -8659,6 +8661,7 @@ news_event = {
 		OR = {
 			has_idea = war_economy
 			has_idea = tot_economic_mobilisation
+			has_idea = totaler_krieg_economy
 		}
 		any_other_country = {
 			is_major = yes
@@ -9576,14 +9579,17 @@ news_event = {
 		name = news.234.c
 		trigger = {
 			NOT = {
-				OR = {
+				tag = BEL
+				tag = LUX
+			}
+			OR = {
+				NOT = {
 					tag = HOL
-					tag = BEL
-					tag = LUX
 					is_in_faction_with = HOL
 					is_in_faction_with = LUX
 					is_in_faction_with = BEL
 				}
+				NOT = { has_war_with = GER }
 			}
 		}
 	}
