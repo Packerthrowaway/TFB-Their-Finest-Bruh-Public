@@ -37,58 +37,58 @@ focus_tree = {
 		y = 0
 	}
 	
-	#Focus Path shortcuts	
-	shortcut = {
-		name = GER_oppose_hitler_shortcut
-		target = GER_oppose_hitler_ww 
-		scroll_wheel_factor = 0.485
-		trigger = {
-			has_dlc = "Gotterdammerung"
-		}
-	}
+	# #Focus Path shortcuts	
+	# shortcut = {
+	# 	name = GER_oppose_hitler_shortcut
+	# 	target = GER_oppose_hitler_ww 
+	# 	scroll_wheel_factor = 0.485
+	# 	trigger = {
+	# 		has_dlc = "Gotterdammerung"
+	# 	}
+	# }
 
-	shortcut = {
-		name = GER_oppose_hitler_shortcut
-		target = GER_oppose_hitler
-		scroll_wheel_factor = 0.55
-		trigger = {
-			NOT = { has_dlc = "Gotterdammerung" }
-		}
-	}
+	# shortcut = {
+	# 	name = GER_oppose_hitler_shortcut
+	# 	target = GER_oppose_hitler
+	# 	scroll_wheel_factor = 0.55
+	# 	trigger = {
+	# 		NOT = { has_dlc = "Gotterdammerung" }
+	# 	}
+	# }
 
-	shortcut = {
-		name = GER_historical_path_shortcut
-		target = GER_remilitarize_the_rhineland
-		scroll_wheel_factor = 0.469 #Optional parameter, if left unset will use existing zoomlevel. Warning: there's no good way for this to respect client resolution.
-		trigger = {
-			always = yes
-			# If FALSE, this will not display. If true, it will not supercede allow conditions of target focus.
-		}
-	}
+	# shortcut = {
+	# 	name = GER_historical_path_shortcut
+	# 	target = GER_remilitarize_the_rhineland
+	# 	scroll_wheel_factor = 0.469 #Optional parameter, if left unset will use existing zoomlevel. Warning: there's no good way for this to respect client resolution.
+	# 	trigger = {
+	# 		always = yes
+	# 		# If FALSE, this will not display. If true, it will not supercede allow conditions of target focus.
+	# 	}
+	# }
 
-	shortcut = {
-		name = GER_economic_path_shortcut
-		target = GER_construct_the_reichsautobahn 
-		scroll_wheel_factor = 0.75
-	}
+	# shortcut = {
+	# 	name = GER_economic_path_shortcut
+	# 	target = GER_construct_the_reichsautobahn 
+	# 	scroll_wheel_factor = 0.75
+	# }
 
-	shortcut = {
-		name = GER_naval_doctrine_shortcut
-		target = GER_strengthen_the_kriegsmarine
-		scroll_wheel_factor = 1.0
-	}
+	# shortcut = {
+	# 	name = GER_naval_doctrine_shortcut
+	# 	target = GER_strengthen_the_kriegsmarine
+	# 	scroll_wheel_factor = 1.0
+	# }
 	
-	shortcut = {
-		name = GER_air_doctrine_shortcut
-		target = GER_expanding_the_luftwaffe
-		scroll_wheel_factor = 1.0
-	}
+	# shortcut = {
+	# 	name = GER_air_doctrine_shortcut
+	# 	target = GER_expanding_the_luftwaffe
+	# 	scroll_wheel_factor = 1.0
+	# }
 
-	shortcut = {
-		name = GER_military_doctrine_shortcut
-		target = GER_develop_modern_maneuver_warfare
-		scroll_wheel_factor = 1.0
-	}
+	# shortcut = {
+	# 	name = GER_military_doctrine_shortcut
+	# 	target = GER_develop_modern_maneuver_warfare
+	# 	scroll_wheel_factor = 1.0
+	# }
 
 	continuous_focus_position = { x = 500 y = 1300 }
 
@@ -969,10 +969,10 @@ focus_tree = {
 			}
 
 			GER_modify_industrial_modifier = yes
-			# add_to_variable = { 
-			# 	GER_industrial_production_factory_max_efficiency_factor = 0.05
-			# 	tooltip = production_factory_max_efficiency_factor_tt
-			# }
+			add_to_variable = { 
+				GER_industrial_production_factory_max_efficiency_factor = 0.05
+				tooltip = production_factory_max_efficiency_factor_tt
+			}
 			add_to_variable = { 
 				GER_industrial_production_factory_efficiency_gain_factor = 0.05
 				tooltip = production_factory_efficiency_gain_factor_tt
@@ -1056,10 +1056,10 @@ focus_tree = {
 				GER_industrial_conversion_cost_civ_to_mil_factor = -0.2
 				tooltip = conversion_cost_civ_to_mil_factor_tt
 			}
-			# add_to_variable = { 
-			# 	GER_industrial_production_factory_max_efficiency_factor = 0.05
-			# 	tooltip = production_factory_max_efficiency_factor_tt
-			# }
+			add_to_variable = { 
+				GER_industrial_production_factory_max_efficiency_factor = 0.05
+				tooltip = production_factory_max_efficiency_factor_tt
+			}
 			add_to_variable = { 
 				GER_industrial_production_factory_efficiency_gain_factor = 0.05
 				tooltip = production_factory_efficiency_gain_factor_tt
@@ -8644,6 +8644,7 @@ focus_tree = {
 				}
 				exists = yes
 			}
+			NOT = { has_completed_focus = GER_the_four_year_plan }
 		}
 		
 		cancel = {
@@ -11786,15 +11787,15 @@ focus_tree = {
 			}
 		}
 		
-		bypass = {
-			any_country_with_original_tag = {
-				original_tag_to_check = SPR
-				OR = {
-					is_ally_with = ROOT
-					has_war_with = ROOT
-				}
-			}
-		}
+		# bypass = {
+		# 	any_country_with_original_tag = {
+		# 		original_tag_to_check = SPR
+		# 		OR = {
+		# 			is_ally_with = ROOT
+		# 			has_war_with = ROOT
+		# 		}
+		# 	}
+		# }
 
 		ai_will_do = {
 			factor = 10

@@ -8565,9 +8565,20 @@ focus_tree = {
 			}
 
 
+			IF = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = wuw_HUN_end_the_regency
+							has_completed_focus = wuw_HUN_end_the_white_terror
+							has_completed_focus = wuw_HUN_undermine_the_admiral
+						}
+					}
+				}
+				custom_effect_tooltip = available_political_advisor
+				show_ideas_tooltip = HUN_istvan_horthy
+			}
 
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = HUN_istvan_horthy
 		}
 	}
 
@@ -8984,7 +8995,7 @@ focus_tree = {
 					is_core_of = ROOT
 					is_fully_controlled_by = ROOT
 				}
-				random_select_amount = 8
+				random_select_amount = 4
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
@@ -11038,28 +11049,6 @@ focus_tree = {
 					type = arms_factory
 					level = 4
 					instant_build = yes
-				}
-			}
-
-			random_state = {
-				limit = {
-					is_owned_and_controlled_by = ROOT
-					is_core_of = ROOT
-					free_building_slots = {
-						building = industrial_complex
-						size > 3
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 4
-					instant_build = yes
-				}
-				add_resource = {
-					type = steel
-					amount = 40
 				}
 			}
 
@@ -18201,14 +18190,14 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 3
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 4
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -18216,14 +18205,14 @@ focus_tree = {
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 3
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 4
+					level = 2
 					instant_build = yes
 				}
 			}
