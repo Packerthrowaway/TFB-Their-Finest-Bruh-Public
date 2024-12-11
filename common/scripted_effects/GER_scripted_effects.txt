@@ -820,19 +820,19 @@ GER_autarky_achieved_effects = {
 		}
 		custom_effect_tooltip = GER_replace_mefo_bills_with_wirtschaftswunder_tt
 		add_to_variable = {
-			GER_mefo_bills_civilian_intel_to_others = 0.25
+			GER_mefo_bills_civilian_intel_to_others = 25
 			tooltip = civilian_intel_to_others_tt
 		}
 		add_to_variable = {
-			GER_mefo_bills_army_intel_to_others = 0.25
+			GER_mefo_bills_army_intel_to_others = 25
 			tooltip = army_intel_to_others_tt
 		}
 		add_to_variable = {
-			GER_mefo_bills_navy_intel_to_others = 0.25
+			GER_mefo_bills_navy_intel_to_others = 25
 			tooltip = navy_intel_to_others_tt
 		}
 		add_to_variable = {
-			GER_mefo_bills_airforce_intel_to_others = 0.25
+			GER_mefo_bills_airforce_intel_to_others = 25
 			tooltip = airforce_intel_to_others_tt
 		}
 	}
@@ -873,9 +873,69 @@ GER_autarky_achieved_effects = {
 		GER_industrial_industrial_capacity_dockyard = 0.05
 		tooltip = industrial_capacity_dockyard_tt
 	}
-	set_variable = {
-		GER_industrial_consumer_goods_factor = 0
-		tooltip = consumer_goods_factor_tt
+	# set_variable = {
+	# 	GER_industrial_consumer_goods_factor = 0
+	# 	tooltip = consumer_goods_factor_tt
+	# }
+}
+
+GER_autarky_partially_achieved_effects = {
+
+	if = {
+		limit = {
+			check_variable = { GER_industrial_consumer_goods_factor < 0.90}
+		}
+		set_variable = { GER_industrial_consumer_goods_factor = 0.90 tooltip = consumer_goods_factor_custom_tt}
+	}
+	if = {
+		limit = {
+			has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+		}
+		hidden_effect = {
+			remove_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+			add_dynamic_modifier = { modifier = GER_wirtschaftswunder_weaker_modifier }
+		}
+		custom_effect_tooltip = GER_replace_mefo_bills_with_wirtschaftswunder_weaker_tt
+		add_to_variable = {
+			GER_mefo_bills_civilian_intel_to_others = 25
+			tooltip = civilian_intel_to_others_tt
+		}
+		add_to_variable = {
+			GER_mefo_bills_army_intel_to_others = 25
+			tooltip = army_intel_to_others_tt
+		}
+		add_to_variable = {
+			GER_mefo_bills_navy_intel_to_others = 25
+			tooltip = navy_intel_to_others_tt
+		}
+		add_to_variable = {
+			GER_mefo_bills_airforce_intel_to_others = 25
+			tooltip = airforce_intel_to_others_tt
+		}
+	}
+	else_if = {
+		limit = {
+			has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+		}
+		hidden_effect = {
+			remove_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+			add_dynamic_modifier = { modifier = GER_wirtschaftswunder_weaker_modifier }
+		}
+		custom_effect_tooltip = GER_replace_economy_of_conquest_with_wirtschaftswunder_weaker_tt
+	}
+	else_if = {
+		limit = {
+			has_dynamic_modifier = { modifier = GER_recovering_economy_modifier }
+		}
+		hidden_effect = {
+			remove_dynamic_modifier = { modifier = GER_recovering_economy_modifier }
+			add_dynamic_modifier = { modifier = GER_wirtschaftswunder_weaker_modifier }
+		}
+		custom_effect_tooltip = GER_replace_recovering_economy_with_wirtschaftswunder_weaker_tt
+	}
+	add_to_variable = { 
+		GER_industrial_production_lack_of_resource_penalty_factor = 0.1
+		tooltip = production_lack_of_resource_penalty_factor_tt
 	}
 }
 

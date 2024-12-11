@@ -106,6 +106,12 @@ defined_text = {
 		}
 		localization_key = GER_wirtschaftswunder_modifier 
 	}
+	text = {
+		trigger = {
+			has_dynamic_modifier = { modifier = GER_wirtschaftswunder_weaker_modifier }
+		}
+		localization_key = GER_wirtschaftswunder_weaker_modifier 
+	}
 }
 
 defined_text = {
@@ -3160,4 +3166,29 @@ defined_text = { #MM: This is a necessary step for the RK SCRIPTED GUI tooltip s
 	text = {
 		localization_key = GER_rk_rosenberg_tt
 	}
+}
+
+
+
+defined_text = { 
+	name = GetGermanSteel 
+	text = {
+		trigger = { 
+			check_variable = { GER.num_ger_steel < 38000 }
+		}
+		localization_key = GER_steel_under_def
+	}
+	text = {
+		trigger = { 
+			check_variable = { GER.num_ger_steel = 38000 }
+		}
+		localization_key = GER_steel_over_def
+	}
+	text = {
+		trigger = { 
+			check_variable = { GER.num_ger_steel > 38000 }
+		}
+		localization_key = GER_steel_over_def
+	}	
+
 }

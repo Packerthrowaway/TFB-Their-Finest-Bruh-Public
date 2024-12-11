@@ -96,6 +96,11 @@ focus_tree = {
 		id = ger_inner_circle_inlay_window
 		position = { x = 4500 y = 1150 }
 	}
+
+	# inlay_window = {
+	# 	id = ger_autarky_inlay_window
+	# 	position = { x = 4500 y = 800 }
+	# }
 	
 	default = no
 
@@ -233,7 +238,7 @@ focus_tree = {
 
 			GER_modify_industrial_modifier = yes
 			add_to_variable = { 
-				GER_industrial_consumer_goods_factor = -0.2
+				GER_industrial_consumer_goods_factor = -0.1
 				tooltip = consumer_goods_factor_tt
 			}
 		}
@@ -517,12 +522,12 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			add_tech_bonus = {
-				name = GER_industrial_expansion
-				bonus = 1
-				uses = 1
-				category = industry
-			}
+			# add_tech_bonus = {
+			# 	name = GER_industrial_expansion
+			# 	bonus = 1
+			# 	uses = 1
+			# 	category = industry
+			# }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -817,12 +822,12 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			add_tech_bonus = {
-				name = GER_wirtschaftswunder
-				bonus = 1
-				uses = 1
-				category = industry
-			}
+			# add_tech_bonus = {
+			# 	name = GER_wirtschaftswunder
+			# 	bonus = 1
+			# 	uses = 1
+			# 	category = industry
+			# }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -969,10 +974,10 @@ focus_tree = {
 			}
 
 			GER_modify_industrial_modifier = yes
-			add_to_variable = { 
-				GER_industrial_production_factory_max_efficiency_factor = 0.05
-				tooltip = production_factory_max_efficiency_factor_tt
-			}
+			# add_to_variable = { 
+			# 	GER_industrial_production_factory_max_efficiency_factor = 0.05
+			# 	tooltip = production_factory_max_efficiency_factor_tt
+			# }
 			add_to_variable = { 
 				GER_industrial_production_factory_efficiency_gain_factor = 0.05
 				tooltip = production_factory_efficiency_gain_factor_tt
@@ -2402,7 +2407,9 @@ focus_tree = {
 		prerequisite = { focus = GER_subsidize_hoesch_benzin }
 		prerequisite = { focus = GER_establish_buna_werke }
 
-		x = 2
+		mutually_exclusive = { focus = GER_partial_autarky }
+
+		x = 1
 		y = 1
 		relative_position_id = GER_seize_foreign_industries
 		cost = 5
@@ -2410,89 +2417,53 @@ focus_tree = {
 			all_core_state = {
 				is_fully_controlled_by = ROOT
 			}
-			OR = {
-				has_resources_in_country = {
-					resource = steel
-					amount > 9999 #This needs to correspond to the Bypass values in the previous focuses
-					extracted = yes
-				}
-				any_subject_country = {
-					has_resources_in_country = {
-						resource = steel
-						amount > 9999 #This needs to correspond to the Bypass values in the previous focuses
-						extracted = yes
-					}
-				}
+			custom_trigger_tooltip = {
+				tooltip = GER_axis_has_enough_steel_tt
+				GER_axis_has_enough_steel = yes
 			}
-			OR = {
-				has_resources_in_country = {
-					resource = aluminium
-					amount > 2999 #This needs to correspond to the Bypass values in the previous focuses
-					extracted = yes
-				}
-				any_subject_country = {
-					has_resources_in_country = {
-						resource = aluminium
-						amount > 2999 #This needs to correspond to the Bypass values in the previous focuses
-						extracted = yes
-					}
-				}
+			custom_trigger_tooltip = {
+				tooltip = GER_has_enough_steel_tt
+				GER_has_enough_steel = yes
 			}
-			OR = {
-				has_resources_in_country = {
-					resource = oil
-					amount > 1999 #This needs to correspond to the Bypass values in the previous focuses
-					extracted = yes
-				}
-				any_subject_country = {
-					has_resources_in_country = {
-						resource = oil
-						amount > 1999 #This needs to correspond to the Bypass values in the previous focuses
-						extracted = yes
-					}
-				}
+			custom_trigger_tooltip = {
+				tooltip = GER_axis_has_enough_aluminium_tt
+				GER_axis_has_enough_aluminium = yes
 			}
-			OR = {
-				has_resources_in_country = {
-					resource = tungsten
-					amount > 1999 #This needs to correspond to the Bypass values in the previous focuses
-					extracted = yes
-				}
-				any_subject_country = {
-					has_resources_in_country = {
-						resource = tungsten
-						amount > 1999 #This needs to correspond to the Bypass values in the previous focuses
-						extracted = yes
-					}
-				}
+			custom_trigger_tooltip = {
+				tooltip = GER_has_enough_aluminium_tt
+				GER_has_enough_aluminium = yes
 			}
-			OR = {
-				has_resources_in_country = {
-					resource = chromium
-					amount > 999 #This needs to correspond to the Bypass values in the previous focuses
-					extracted = yes
-				}
-				any_subject_country = {
-					has_resources_in_country = {
-						resource = chromium
-						amount > 999 #This needs to correspond to the Bypass values in the previous focuses
-						extracted = yes
-					}
-				}
+			custom_trigger_tooltip = {
+				tooltip = GER_axis_has_enough_rubber_tt
+				GER_axis_has_enough_rubber = yes
 			}
-			OR = {
-				has_resources_in_country = {
-					resource = rubber
-					amount > 749 #This needs to correspond to the Bypass values in the previous focuses
-					extracted = yes
-				}
-				any_subject_country = {
-					has_resources_in_country = {
-						resource = rubber
-						amount > 749 #This needs to correspond to the Bypass values in the previous focuses
-						extracted = yes
-					}
-				}
+			custom_trigger_tooltip = {
+				tooltip = GER_has_enough_rubber_tt
+				GER_has_enough_rubber = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_axis_has_enough_tungsten_tt
+				GER_axis_has_enough_tungsten = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_has_enough_tungsten_tt
+				GER_has_enough_tungsten = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_axis_has_enough_chromium_tt
+				GER_axis_has_enough_chromium = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_has_enough_chromium_tt
+				GER_has_enough_chromium = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_axis_has_enough_oil_tt
+				GER_axis_has_enough_oil = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_has_enough_oil_tt
+				GER_has_enough_oil = yes
 			}
 		}
 
@@ -2514,6 +2485,60 @@ focus_tree = {
 					add_idea = autarkic_economy_improved
 				}
 			}			
+
+			#custom_effect_tooltip = generic_skip_one_line_tt
+
+			#custom_effect_tooltip = GER_modify_wehrwirtschaft_modifier_tt
+			#add_to_variable = { 
+			#	GER_wehrwirtschaft_production_speed_buildings_factor = 0.05
+			#	tooltip = production_speed_buildings_factor_tt
+			#}
+		}
+	}
+
+	focus = {
+		id = GER_partial_autarky
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		prerequisite = { focus = GER_seize_foreign_industries }
+		prerequisite = { focus = GER_subsidize_hoesch_benzin }
+		prerequisite = { focus = GER_establish_buna_werke }
+
+		mutually_exclusive = { focus = GER_autarky_achieved }
+
+		x = 3
+		y = 1
+		relative_position_id = GER_seize_foreign_industries
+		cost = 5
+		available = {
+			all_core_state = {
+				is_fully_controlled_by = ROOT
+			}
+			has_war_with = SOV
+
+			custom_trigger_tooltip = {
+				tooltip = GER_meets_4_of_6_tt
+				GER_meets_4_of_6 = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			GER_autarky_partially_achieved_effects = yes
+			
+			#custom_effect_tooltip = generic_skip_one_line_tt
+			# if = {
+			# 	limit = { #Notify that you will get an improved version of the Trade Law
+			# 		NOT = { has_idea = autarkic_economy }
+			# 	}
+			# 	custom_effect_tooltip = GER_improve_autarkic_economy_tt
+			# }
+			# else = { #Get the improved version of the Trade Law
+			# 	swap_ideas = {
+			# 		remove_idea = autarkic_economy
+			# 		add_idea = autarkic_economy_improved
+			# 	}
+			# }			
 
 			#custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -12384,6 +12409,35 @@ focus_tree = {
 
 		}
 	}
+
+	focus = {
+		id = GER_confiscate_romanian_oil
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = GER_subjugate_romanian_economy }
+		x = 0
+		y = 2
+		relative_position_id = GER_subjugate_romanian_economy
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = { has_war_with = ROM }
+		}
+
+		bypass = {
+			ROM = {
+				exists = no
+			}
+		}
+		
+		completion_reward = {
+			ROM = {			
+				give_resource_rights = { receiver = GER state = 46 }
+			}
+		}
+	}
 	
 	focus = {
 		id = GER_influence_the_benelux
@@ -14499,9 +14553,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			unlock_decision_tooltip = GER_reichskommissariat_klein_venedig
-			unlock_decision_tooltip = GER_reichskommissariat_anden
-			unlock_decision_tooltip = GER_reichskommissariat_kolumbus
+			# unlock_decision_tooltip = GER_reichskommissariat_klein_venedig
+			# unlock_decision_tooltip = GER_reichskommissariat_anden
+			# unlock_decision_tooltip = GER_reichskommissariat_kolumbus
 			unlock_decision_tooltip = GER_reichskommissariat_nordamerika
 
 		}
@@ -16801,6 +16855,68 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GER_unlock_influence_countries_tt
 			custom_effect_tooltip = GER_middle_eastern_trade_tt
+		}
+	}
+
+	focus = {
+		id = GER_confiscate_hungarian_alunimium
+		icon = GFX_focus_generic_aluminum
+		prerequisite = { focus = GER_war_with_the_ussr }
+		x = -4
+		y = 1
+		relative_position_id = GER_war_with_the_ussr
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = { has_war_with = HUN }
+		}
+
+		bypass = {
+			HUN = {
+				exists = no
+			}
+		}
+		
+		completion_reward = {
+			HUN = {			
+				give_resource_rights = { receiver = GER state = 43 }
+			}
+		}
+	}
+
+	focus = {
+		id = GER_confiscate_bulgarian_chromium
+		icon = GFX_focus_generic_chromium
+		prerequisite = { focus = GER_war_with_the_ussr }
+		x = 4
+		y = 1
+		relative_position_id = GER_war_with_the_ussr
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = { has_war_with = BUL }
+		}
+
+		bypass = {
+			BUL = {
+				exists = no
+			}
+		}
+		
+		completion_reward = {
+			BUL = {			
+				give_resource_rights = { receiver = GER state = 212 }
+			}
+			if = {
+				limit = { 106 = { is_owned_and_controlled_by = BUL } }
+				BUL = {	give_resource_rights = { receiver = GER state = 106 } }
+			}
 		}
 	}
 
