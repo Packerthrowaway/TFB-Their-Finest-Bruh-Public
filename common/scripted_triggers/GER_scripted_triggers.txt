@@ -1756,7 +1756,6 @@ GER_has_enough_steel = {
 		limit = { 26 = { CONTROLLER = { tag = D05 } } }
 		D05 = { add_to_temp_variable = { num_ger_steel = resource_produced@steel } }
 	}
-	log = "Steel1 [?num_ger_steel]"
 	set_temp_variable = { num_faction_steel = 0 }
 
 	# Check against non Spain to see if Germany has more Steel than anyone else in the faction
@@ -1775,9 +1774,8 @@ GER_has_enough_steel = {
 			}
 		}
 	}
-	log = "SteelFaction [?num_ger_steel]"
 	# If Germany has more, than we are Gucchi
-	check_variable = { num_ger_steel > country_steel_amount }
+	check_variable = { num_ger_steel > num_faction_steel }
 }
 
 GER_axis_has_enough_aluminium = {
@@ -1867,7 +1865,7 @@ GER_has_enough_aluminium = {
 		}
 	}
 	# If Germany has more, than we are Gucchi
-	check_variable = { num_ger_aluminium > country_aluminium_amount }
+	check_variable = { num_ger_aluminium > num_faction_aluminium }
 }
 
 GER_axis_has_enough_rubber = {
@@ -1957,7 +1955,7 @@ GER_has_enough_rubber = {
 		}
 	}
 	# If Germany has more, than we are Gucchi
-	check_variable = { num_ger_rubber > country_rubber_amount }
+	check_variable = { num_ger_rubber > num_faction_rubber }
 }
 
 GER_axis_has_enough_tungsten = {
@@ -2047,7 +2045,7 @@ GER_has_enough_tungsten = {
 		}
 	}
 	# If Germany has more, than we are Gucchi
-	check_variable = { num_ger_tungsten > country_tungsten_amount }
+	check_variable = { num_ger_tungsten > num_faction_tungsten }
 }
 
 GER_axis_has_enough_chromium = {
@@ -2137,7 +2135,7 @@ GER_has_enough_chromium = {
 		}
 	}
 	# If Germany has more, than we are Gucchi
-	check_variable = { num_ger_chromium > country_chromium_amount }
+	check_variable = { num_ger_chromium > num_faction_chromium }
 }
 
 GER_axis_has_enough_oil = {
@@ -2227,7 +2225,7 @@ GER_has_enough_oil = {
 		}
 	}
 	# If Germany has more, than we are Gucchi
-	check_variable = { num_ger_oil > country_oil_amount }
+	check_variable = { num_ger_oil > num_faction_oil }
 }
 
 GER_steel_check = {
