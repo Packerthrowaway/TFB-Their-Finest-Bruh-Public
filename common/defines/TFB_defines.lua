@@ -472,7 +472,7 @@ NDefines.NNavy.BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready a
 }
 NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_CHANCE 									= 0.25		-- chance for critical hit from torpedo.
 NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT								= 3.5		-- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usually torpedo_attack are pretty high base values)
-NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT						= 17		-- the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
+NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT						= 20		-- the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
 NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.25 		-- multiplies hit chance of small guns
 NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 2.0						-- Bonus to critical chance when shooter armor piercing is higher then target armor.
 NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 40		-- each ship in convoy defense mission can at most cover this many convoys without losing efficiency
