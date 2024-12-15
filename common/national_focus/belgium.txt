@@ -149,6 +149,13 @@ focus_tree = {
 
 		available = {
 		}
+
+		allow_branch = {
+			has_game_rule = {
+				rule = belgium_forts_allowed
+				option = ENABLED
+			}
+		}
 	
 		completion_reward = {
 
@@ -1006,11 +1013,11 @@ focus_tree = {
 					tooltip = conscription_factor_tt
 				}
 				add_to_variable = { 
-					BEL_scars_of_ww1_war_support_factor = 0.15
+					BEL_scars_of_ww1_war_support_factor = 0.1
 					tooltip = war_support_factor_tt
 				}	
 				add_to_variable = { 
-					BEL_scars_of_ww1_army_org_factor = 0.10
+					BEL_scars_of_ww1_army_org_factor = 0.05
 					tooltip = army_org_factor_tt
 				}
 			}
@@ -1067,7 +1074,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = BEL_modify_royal_military_academy_dynamic_modifier_tt
 			add_to_variable = { 
-				BEL_royal_military_academy_army_org_factor = 0.1
+				BEL_royal_military_academy_army_org_factor = 0.05
 				tooltip = army_org_factor_tt				
 			}	 
 		}
@@ -1093,7 +1100,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = BEL_modify_royal_military_academy_dynamic_modifier_tt
 			add_to_variable = { 
-				BEL_royal_military_academy_initiative_factor = 0.15
+				BEL_royal_military_academy_initiative_factor = 0.05
 				tooltip = initiative_factor_tt				
 			}	
 		}
@@ -1160,7 +1167,7 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = BEL_resist_and_bite
-				bonus = 1
+				bonus = 0.5
 				uses = 1
 				category = mountaineers_tech
 			}
@@ -1585,7 +1592,7 @@ focus_tree = {
 		id = BEL_modernized_army
 		icon = GFX_focus_generic_license_production
 	
-		prerequisite = { focus = BEL_defensive_reorganization }		
+		#prerequisite = { focus = BEL_defensive_reorganization }		
 		prerequisite = { focus = BEL_senior_officer_training }	
 		prerequisite = { focus = BEL_doctrinal_innovations }	
 
@@ -2478,6 +2485,10 @@ focus_tree = {
 	
 		cost = 10
 
+		allow_branch = {
+			always = no
+		}
+
 		available = { 
 			has_country_leader = { 
 				character = BEL_paul_henri_spaak
@@ -2587,7 +2598,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 			
-		x = 1
+		x = 0
 		y = 1
 	
 		cost = 10
@@ -2700,14 +2711,19 @@ focus_tree = {
 
 		available = {
 			has_dynamic_modifier = { modifier = BEL_neutrality_dynamic_modifier }
+			OR = {
+				date > 1940.1.1
+				threat > 0.8
+			}
 		}
 	
 		completion_reward = {
-
-			country_event = {
-				id = ww_BEL_event_diplomatic.33
-				hours = 0
-			}
+			add_ideas = BEL_volunteer_effort2_ns
+			set_rule = { can_send_volunteers = yes }
+			# country_event = {
+			# 	id = ww_BEL_event_diplomatic.33
+			# 	hours = 0
+			# }
 		}
 	}
 
@@ -4373,7 +4389,7 @@ focus = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		x = -2
+		x = 0
 		y = 1
 	
 		cost = 0
@@ -4433,7 +4449,7 @@ focus = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 
-		x = 1
+		x = -1
 		y = 1
 	
 		cost = 10
@@ -4462,7 +4478,7 @@ focus = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 
-		x = 3
+		x = 1
 		y = 1
 	
 		cost = 5
@@ -4497,6 +4513,10 @@ focus = {
 		y = 2
 	
 		cost = 10
+
+		allow_branch = {
+			always = no
+		}
 
 		available = {
 		}
@@ -7632,7 +7652,7 @@ focus = {
 
 			custom_effect_tooltip = BEL_modify_social_partners_dynamic_modifier_tt
 			add_to_variable = { 
-				BEL_social_partners_production_factory_efficiency_gain_factor  = 0.1
+				BEL_social_partners_production_factory_efficiency_gain_factor  = 0.05
 				tooltip = production_factory_efficiency_gain_factor_tt
 			}
 		}
@@ -7788,7 +7808,7 @@ focus = {
 
 			custom_effect_tooltip = BEL_remove_social_partners_dynamic_modifier_tt
 			add_to_variable = { 
-				BEL_social_partners_production_factory_max_efficiency_factor  = 0.1
+				BEL_social_partners_production_factory_max_efficiency_factor  = 0.05
 				tooltip = production_factory_max_efficiency_factor_tt
 			}
 		}
