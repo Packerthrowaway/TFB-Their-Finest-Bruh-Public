@@ -338,39 +338,39 @@ country_event = {
 		}
 		custom_effect_tooltip = war_will_cancel_deal_tt
 		FROM = {
-			country_event = { id = wuw_GER_diplomacy.2 hours = 5 random_hours = 5 }
+			country_event = { id = wuw_GER_diplomacy.2 hours = 1 random_hours = 1 }
 		}
 	}
 
-	option = { #Rejects
-		name = wuw_GER_diplomacy.1.b
-		ai_chance = {
-			base = 1
-			modifier = {
-				add = 15
-				has_opinion = {
-					target = FROM
-					value < -29
-				}
-			}
-			modifier = {
-				add = 15
-				has_opinion = {
-					target = FROM
-					value < -49
-				}
-			}
-			modifier = {
-				add = 20
-				FROM = {
-					has_added_tension_amount > 15
-				}
-			}
-		}		
-		FROM = {
-			country_event = { id = wuw_GER_diplomacy.3 hours = 5 random_hours = 5 }
-		}
-	}
+	# option = { #Rejects
+	# 	name = wuw_GER_diplomacy.1.b
+	# 	ai_chance = {
+	# 		base = 1
+	# 		modifier = {
+	# 			add = 15
+	# 			has_opinion = {
+	# 				target = FROM
+	# 				value < -29
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			add = 15
+	# 			has_opinion = {
+	# 				target = FROM
+	# 				value < -49
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			add = 20
+	# 			FROM = {
+	# 				has_added_tension_amount > 15
+	# 			}
+	# 		}
+	# 	}		
+	# 	FROM = {
+	# 		country_event = { id = wuw_GER_diplomacy.3 hours = 5 random_hours = 5 }
+	# 	}
+	# }
 }
 country_event = { #FROM accepts our trade deal
 	id = wuw_GER_diplomacy.2
