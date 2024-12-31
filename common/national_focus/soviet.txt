@@ -4597,18 +4597,99 @@
 		y = 1
 		relative_position_id = SOV_baltic_security
 		cost = 2
+
 		bypass = {
-			AND = {
-				owns_state = 78 
-				owns_state = 80
-				owns_state = 766
+			OR = {
+				AND = {
+					OR = {
+						owns_state = 78 #Bessarabia
+						78 = {
+							owner = { is_in_faction_with = ROOT }
+						}
+					}
+					OR = {
+						owns_state = 80 #Bucovina
+						80 = {
+							owner = { is_in_faction_with = ROOT }
+						}
+					}
+					OR = {
+						owns_state = 766 #Southern Bessarabia
+						766 = {
+							owner = { is_in_faction_with = ROOT }
+						}
+					}
+				}
+				any_country = {
+					owns_state = 78
+					owns_state = 80
+					owns_state = 766
+					has_war_with = ROOT
+				}
 			}
 		}
-		completion_reward = {
-			add_state_claim = 78
-			add_state_claim = 766
-			add_state_claim = 80
-			ROM = { country_event = { id = romania.1 days = 1 } }
+
+		will_lead_to_war_with = ROM
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = { #This is now generic and will target any potential (multiple) controllers for these states.
+			if = {
+				limit = { 78 = { OWNER = { NOT = { is_in_faction_with = ROOT} } } }
+				add_state_claim = 78
+			}
+			if = {
+				limit = { 766 = { OWNER = { NOT = { is_in_faction_with = ROOT} } } }
+				add_state_claim = 766
+			}
+			if = {
+				limit = { 80 = { OWNER = { NOT = { is_in_faction_with = ROOT} } } }
+				add_state_claim = 80
+			}
+			add_named_threat = { threat = 1 name = SOV_claim_on_bessarabia }
+			random_other_country = {
+				limit = { owns_state = 78 }
+				add_opinion_modifier = { target = SOV modifier = claimed_bessarabia }
+				set_country_flag = SOV_added_claimed_bessarabia
+				country_event = { id = romania.1 hours = 16 random_hours = 8 }
+			}
+			if = { #Done like this to prevent disgusting tooltip issues, but I hate it ok?
+				limit = {
+					any_other_country = {
+						owns_state = 78
+						NOT = {	owns_state = 80 }
+					}
+				}
+				random_other_country = {
+					limit = { 
+						owns_state = 80 
+						NOT = { has_country_flag = SOV_added_claimed_bessarabia }
+					}
+					add_opinion_modifier = { target = SOV modifier = claimed_bucovina }
+					country_event = { id = romania.1 hours = 16 random_hours = 8 }
+				}
+			}
+			if = {
+				limit = {
+					AND = {
+						any_other_country = {
+							owns_state = 78
+							NOT = {	owns_state = 766 }
+						}
+						any_other_country = {
+							owns_state = 80
+							NOT = {	owns_state = 766 }
+						}
+					}
+				}
+				random_other_country = {
+					limit = { 
+						owns_state = 766
+						NOT = { has_country_flag = SOV_added_claimed_bessarabia }
+					}
+					add_opinion_modifier = { target = SOV modifier = claimed_bucovina }
+					country_event = { id = romania.1 hours = 4 }
+				}
+			}
 		}
 	}
 	
