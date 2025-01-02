@@ -566,6 +566,10 @@ NDefines.NNavy.NAVY_PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always 
 	0.10 -- 
 }
 
+NDefines.NNavy.AMPHIBIOUS_LANDING_PENALTY = -0.75		-- amphibious landing penalty
+NDefines.NNavy.AMPHIBIOUS_INVADE_ATTACK_LOW = 0.25 		-- low and high cap of attack modifier scale. Scale interpolated by invasion progress.
+NDefines.NNavy.AMPHIBIOUS_INVADE_DEFEND_LOW = 1.6 		-- low and high cap of defend modifier scale. Scale interpolated by invasion progress.
+
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
 
 NDefines.NAI.DEPLOY_MIN_TRAINING_PEACE_FACTOR = 1.0		-- Required percentage of training (1.0 = 100%) for AI to deploy unit in peacetime
