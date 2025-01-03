@@ -301,7 +301,7 @@ GER_seize_gold_reserves_cat = {
 					NOT = { has_state_flag = GER_seize_gold_reserves_state_flag }
 					OR = {
 						check_variable = { industrial_complex_level > 0 }
-						check_variable = { arms_factory_level > 0 }
+						#check_variable = { arms_factory_level > 0 }
 						check_variable = { building_level@dockyard > 0 }
 					}
 				}
@@ -330,7 +330,7 @@ GER_seize_gold_reserves_cat = {
 
 		complete_effect = {
 			set_temp_variable = { occupied_state_num_factory = 0 } #This will show how many factories in total Germany controls from FROM's cores
-			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_military_factories_in_cores@GER }
+			#add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_military_factories_in_cores@GER }
 			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_civilian_factories_in_cores@GER }
 			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_naval_factories_in_cores@GER }
 			FROM = {
@@ -426,7 +426,7 @@ GER_seize_gold_reserves_cat = {
 				NOT = { is_core_of = ROOT }
 				OR = {
 					check_variable = { industrial_complex_level > 0 }
-					check_variable = { arms_factory_level > 0 }
+					#check_variable = { arms_factory_level > 0 }
 					check_variable = { building_level@dockyard > 0 }
 				}
 			}
@@ -456,7 +456,7 @@ GER_seize_gold_reserves_cat = {
 			#All temp variables need to be in the same scope to display the effect tooltip properly
 			FROM = {
 				set_temp_variable = { occupied_state_num_factory = 0 }
-				add_to_temp_variable = { occupied_state_num_factory = arms_factory_level }
+				#add_to_temp_variable = { occupied_state_num_factory = arms_factory_level }
 				add_to_temp_variable = { occupied_state_num_factory = industrial_complex_level }
 				add_to_temp_variable = { occupied_state_num_factory = building_level@dockyard }
 
@@ -493,6 +493,32 @@ GER_seize_gold_reserves_cat = {
 # Operational Planning
 GER_operational_planning_category = {
 
+	GER_planning_cooldown = {
+		priority = 100
+		allowed = { tag = GER }
+
+		#icon = generic_prepare_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 44
+		is_good = no
+		fire_only_once = no
+
+		cancel_trigger = {
+			NOT = {has_country_flag = GER_operational_planning_flag}
+		}
+
+		visible = {
+		}
+
+		activation = {
+			has_country_flag = GER_operational_planning_flag
+		}
+		
+	}
 	# Campaign Instructions against [FROM.GetName]
 	GER_operational_planning = {
 		icon = GFX_decision_hol_draw_up_staff_plans
@@ -642,7 +668,7 @@ GER_operational_planning_category = {
 			has_army_experience > 14
 		}
 
-		custom_cost_text = decision_cost_CP_25_ArmXP_15 
+		custom_cost_text = decision_cost_CP_15_ArmXP_15 
 
 		available = { #Can't be target_root_trigger
 			NOT = {	has_country_flag = GER_operational_planning_flag }
@@ -666,11 +692,11 @@ GER_operational_planning_category = {
 			}
 		}
 
-	#	fire_only_once = yes
+		#fire_only_once = yes
 		
 		complete_effect = {
 			hidden_effect = {
-				add_command_power = -25
+				add_command_power = -15
 				army_experience = -15
 				set_country_flag = GER_operational_planning_flag
 			}
@@ -879,9 +905,9 @@ GER_operational_planning_category = {
 			has_army_experience > 14
 		}
 
-		custom_cost_text = decision_cost_CP_25_ArmXP_15
+		custom_cost_text = decision_cost_CP_15_ArmXP_15
 
-		visible = { has_completed_focus = GER_establish_the_afrikakorps }
+		#visible = { has_completed_focus = GER_establish_the_afrikakorps }
 
 		available = { #Can't be target_root_trigger
 			NOT = {	has_country_flag = GER_operational_planning_flag }
@@ -889,9 +915,9 @@ GER_operational_planning_category = {
 				has_war_with = FROM
 				has_wargoal_against = FROM
 			}
-			hidden_trigger = {
-				has_completed_focus = GER_establish_the_afrikakorps
-			}
+			#hidden_trigger = {
+			has_completed_focus = GER_establish_the_afrikakorps
+			#}
 		}
 
 		target_array = ROOT.GER_war_targets_array
@@ -924,7 +950,7 @@ GER_operational_planning_category = {
 		
 		complete_effect = {
 			hidden_effect = {
-				add_command_power = -25
+				add_command_power = -15
 				army_experience = -15
 				set_country_flag = GER_operational_planning_flag
 			}
@@ -3816,7 +3842,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKG
 				set_state_flag = GER_RK_capital_state_trasferred_RKG_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_norwegen_effect_tt
@@ -3839,7 +3865,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKG
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -3860,7 +3886,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKG
 					set_state_controller_to = RKG
 					add_claim_by = RKG
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKG = {
@@ -3974,7 +4000,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKN
 				set_state_flag = GER_RK_capital_state_trasferred_RKN_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_niederlande_effect_tt
@@ -3997,7 +4023,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKN
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -4018,7 +4044,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKN
 					set_state_controller_to = RKN
 					add_claim_by = RKN
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RKN = {
 					add_manpower = 50000
@@ -4138,7 +4164,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKB
 				set_state_flag = GER_RK_capital_state_trasferred_RKB_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_belgien_effect_tt
@@ -4161,7 +4187,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKB
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -4182,7 +4208,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKB
 					set_state_controller_to = RKB
 					add_claim_by = RKB
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RKB = {
 					add_manpower = 50000
@@ -4386,7 +4412,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKO
 				set_state_flag = GER_RK_capital_state_trasferred_RKO_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_ostland_effect_tt
@@ -4409,7 +4435,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKO
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -4430,7 +4456,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKO
 					set_state_controller_to = RKO
 					add_claim_by = RKO
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKO = {
@@ -4596,7 +4622,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKU
 				set_state_flag = GER_RK_capital_state_trasferred_RKU_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_ukraine_effect_tt
@@ -4622,7 +4648,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKU
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -4646,7 +4672,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKU
 					set_state_controller_to = RKU
 					add_claim_by = RKU
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKU = {
@@ -5004,7 +5030,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKK
 				set_state_flag = GER_RK_capital_state_trasferred_RKK_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_kaukasien_effect_tt
@@ -5027,7 +5053,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKK
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -5048,7 +5074,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKK
 					set_state_controller_to = RKK
 					add_claim_by = RKK
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKK = {
@@ -5233,7 +5259,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKT
 				set_state_flag = GER_RK_capital_state_trasferred_RKT_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_turkestan_effect_tt
@@ -5256,7 +5282,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKT
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -5277,7 +5303,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKT
 					set_state_controller_to = RKT
 					add_claim_by = RKT
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKT = {
@@ -5526,7 +5552,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKM
 				set_state_flag = GER_RK_capital_state_trasferred_RKM_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_muscovy_effect_tt
@@ -5549,7 +5575,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKM
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -5570,7 +5596,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKM
 					set_state_controller_to = RKM
 					add_claim_by = RKM
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKM = {
@@ -6393,7 +6419,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = GEN
 				set_state_flag = GER_RK_capital_state_trasferred_GEN_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_generalgouvernement_effect_tt
@@ -6416,7 +6442,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = GEN
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -6437,7 +6463,7 @@ GER_reichskommissariats = {
 					add_contested_owner = GEN
 					set_state_controller_to = GEN
 					add_claim_by = GEN
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				GEN = {
@@ -6642,7 +6668,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKH
 				set_state_flag = GER_RK_capital_state_trasferred_RKH_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_bohemia_effect_tt
@@ -6665,7 +6691,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKH
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -6686,7 +6712,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKH
 					set_state_controller_to = RKH
 					add_claim_by = RKH
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RKH = {
 					add_manpower = 50000
@@ -6894,7 +6920,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKI
 				set_state_flag = GER_RK_capital_state_trasferred_RKI_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_iberia_effect_tt
@@ -6917,7 +6943,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKI
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -6938,7 +6964,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKI
 					set_state_controller_to = RKI
 					add_claim_by = RKI
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKI = {
@@ -7155,7 +7181,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKC
 				set_state_flag = GER_RK_capital_state_trasferred_RKC_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_balkan_effect_tt
@@ -7187,7 +7213,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKC
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -7217,7 +7243,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKC
 					set_state_controller_to = RKC
 					add_claim_by = RKC
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RKC = {
@@ -7481,7 +7507,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RGB
 				set_state_flag = GER_RK_capital_state_trasferred_RGB_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_grossbritannien_effect_tt
@@ -7504,7 +7530,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RGB
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -7525,7 +7551,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RGB
 					set_state_controller_to = RGB
 					add_claim_by = RGB
-					add_compliance = 25
+					add_compliance = 40
 				}
 
 				RGB = {
@@ -8265,7 +8291,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RNA
 				set_state_flag = GER_RK_capital_state_trasferred_RNA_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_nordafrika_effect_tt
@@ -8288,7 +8314,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RNA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -8309,7 +8335,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RNA
 					set_state_controller_to = RNA
 					add_claim_by = RNA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RNA = {
 					add_manpower = 100000
@@ -8685,7 +8711,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RKA
 				set_state_flag = GER_RK_capital_state_trasferred_RKA_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_mittelafrika_effect_tt
@@ -8708,7 +8734,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RKA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -8729,7 +8755,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RKA
 					set_state_controller_to = RKA
 					add_claim_by = RKA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RKA = {
 					add_manpower = 90000
@@ -9102,7 +9128,7 @@ GER_reichskommissariats = {
 	# 			}
 	# 			transfer_state_to = RKV
 	# 			set_state_flag = GER_RK_capital_state_trasferred_RKV_flag
-	# 			add_compliance = 25
+	# 			add_compliance = 40
 	# 		}
 
 	# 		custom_effect_tooltip = GER_reichskommissariat_klein_venedig_effect_tt
@@ -9125,7 +9151,7 @@ GER_reichskommissariats = {
 	# 					}
 	# 				}
 	# 				transfer_state_to = RKV
-	# 				add_compliance = 25
+	# 				add_compliance = 40
 	# 			}
 	# 			every_state = {	
 	# 				limit = {
@@ -9146,7 +9172,7 @@ GER_reichskommissariats = {
 	# 				add_contested_owner = RKV
 	# 				set_state_controller_to = RKV
 	# 				add_claim_by = RKV
-	# 				add_compliance = 25
+	# 				add_compliance = 40
 	# 			}
 	# 			RKV = {
 	# 				add_manpower = 60000
@@ -9375,7 +9401,7 @@ GER_reichskommissariats = {
 	# 			}
 	# 			transfer_state_to = RAN
 	# 			set_state_flag = GER_RK_capital_state_trasferred_RAN_flag
-	# 			add_compliance = 25
+	# 			add_compliance = 40
 	# 		}
 
 	# 		custom_effect_tooltip = GER_reichskommissariat_anden_effect_tt
@@ -9398,7 +9424,7 @@ GER_reichskommissariats = {
 	# 					}
 	# 				}
 	# 				transfer_state_to = RAN
-	# 				add_compliance = 25
+	# 				add_compliance = 40
 	# 			}
 	# 			every_state = {	
 	# 				limit = {
@@ -9419,7 +9445,7 @@ GER_reichskommissariats = {
 	# 				add_contested_owner = RAN
 	# 				set_state_controller_to = RAN
 	# 				add_claim_by = RAN
-	# 				add_compliance = 25
+	# 				add_compliance = 40
 	# 			}
 	# 			RAN = {
 	# 				add_manpower = 60000
@@ -9700,7 +9726,7 @@ GER_reichskommissariats = {
 	# 			}
 	# 			transfer_state_to = RCO
 	# 			set_state_flag = GER_RK_capital_state_trasferred_RCO_flag
-	# 			add_compliance = 25
+	# 			add_compliance = 40
 	# 		}
 
 	# 		custom_effect_tooltip = GER_reichskommissariat_kolumbus_effect_tt
@@ -9723,7 +9749,7 @@ GER_reichskommissariats = {
 	# 					}
 	# 				}
 	# 				transfer_state_to = RCO
-	# 				add_compliance = 25
+	# 				add_compliance = 40
 	# 			}
 	# 			every_state = {	
 	# 				limit = {
@@ -9744,7 +9770,7 @@ GER_reichskommissariats = {
 	# 				add_contested_owner = RCO
 	# 				set_state_controller_to = RCO
 	# 				add_claim_by = RCO
-	# 				add_compliance = 25
+	# 				add_compliance = 40
 	# 			}
 	# 			RCO = {
 	# 				add_manpower = 60000
@@ -10033,7 +10059,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RUS
 				set_state_flag = GER_RK_capital_state_trasferred_RUS_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_nordamerika_effect_tt
@@ -10056,7 +10082,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RUS
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -10077,7 +10103,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RUS
 					set_state_controller_to = RUS
 					add_claim_by = RUS
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RUS = {
 					add_manpower = 80000
@@ -10831,7 +10857,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RAR
 				set_state_flag = GER_RK_capital_state_trasferred_RAR_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_arabien_effect_tt
@@ -10854,7 +10880,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RAR
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -10875,7 +10901,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RAR
 					set_state_controller_to = RAR
 					add_claim_by = RAR
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RAR = {
 					add_manpower = 60000
@@ -11438,7 +11464,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RHD
 				set_state_flag = GER_RK_capital_state_trasferred_RHD_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_hindustan_effect_tt
@@ -11461,7 +11487,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RHD
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -11482,7 +11508,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RHD
 					set_state_controller_to = RHD
 					add_claim_by = RHD
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RHD = {
 					add_manpower = 90000
@@ -11987,7 +12013,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = ROA
 				set_state_flag = GER_RK_capital_state_trasferred_ROA_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_ostasien_effect_tt
@@ -12010,7 +12036,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = ROA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -12031,7 +12057,7 @@ GER_reichskommissariats = {
 					add_contested_owner = ROA
 					set_state_controller_to = ROA
 					add_claim_by = ROA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				ROA = {
 					add_manpower = 90000
@@ -12315,7 +12341,7 @@ GER_reichskommissariats = {
 				}
 				transfer_state_to = RAA
 				set_state_flag = GER_RK_capital_state_trasferred_RAA_flag
-				add_compliance = 25
+				add_compliance = 40
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_australasien_effect_tt
@@ -12338,7 +12364,7 @@ GER_reichskommissariats = {
 						}
 					}
 					transfer_state_to = RAA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				every_state = {	
 					limit = {
@@ -12359,7 +12385,7 @@ GER_reichskommissariats = {
 					add_contested_owner = RAA
 					set_state_controller_to = RAA
 					add_claim_by = RAA
-					add_compliance = 25
+					add_compliance = 40
 				}
 				RAA = {
 					add_manpower = 70000
