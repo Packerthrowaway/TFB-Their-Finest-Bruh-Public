@@ -304,6 +304,8 @@ GER_seize_gold_reserves_cat = {
 						#check_variable = { arms_factory_level > 0 }
 						check_variable = { building_level@dockyard > 0 }
 					}
+					# Specifically exclude Vichy France
+					NOT = { has_state_flag = VIC_dont_loot }
 				}
 			}
 		}
@@ -339,6 +341,7 @@ GER_seize_gold_reserves_cat = {
 						is_on_continent = europe
 						is_fully_controlled_by = ROOT
 						NOT = { has_state_flag = GER_seize_gold_reserves_state_flag }
+						NOT = { has_state_flag = VIC_dont_loot }
 					}
 					add_compliance = -5
 					add_resistance = 10
