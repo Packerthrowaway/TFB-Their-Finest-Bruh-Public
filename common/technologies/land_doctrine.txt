@@ -1794,6 +1794,16 @@ technologies = {
 				hard_attack = 0.075
 			}
 		}
+		helicopter_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				hard_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				hard_attack = 0.075
+			}
+		}
 			
 		#combat advantage when air superior
 		army_bonus_air_superiority_factor = 0.15
@@ -2059,6 +2069,16 @@ technologies = {
 			battalion_mult = {
 				category = category_line_artillery
 				soft_attack = 0.075
+			}
+		}
+		helicopter_recon = {
+			battalion_mult = {
+				category = category_all_armor
+				hard_attack = 0.075
+			}
+			battalion_mult = {
+				category = category_line_artillery
+				hard_attack = 0.075
 			}
 		}
 
@@ -2538,6 +2558,14 @@ technologies = {
 			   motorized_equipment = 3
 		    }
 		}
+		armored_signal = {
+			initiative = 0.05
+			max_organisation = 5
+			default_morale = 0.1
+			need = {
+				armored_support_vehicle = 2
+		    }
+		}
 		on_research_complete = {
 			set_temp_variable = { temp = 3 }
 			set_temp_variable = { total_unit = num_battalions_with_type@signal_company }
@@ -2545,7 +2573,7 @@ technologies = {
 			set_temp_variable = { radios_stored = num_equipment@radio_equipment }
 			set_temp_variable = { trucks_stored = num_equipment@motorized_equipment }
 			custom_effect_tooltip = tooltip_3radio
-			custom_effect_tooltip = tooltip_3truck
+			custom_effect_tooltip = tooltip_3truck			
 		}
 		
 		enable_tactic = tactic_breakthrough
@@ -2982,6 +3010,10 @@ technologies = {
 		}
 
 		field_hospital = {
+			casualty_trickleback = 0.05
+			experience_loss_factor = -0.05
+		}
+		helicopter_field_hospital = {
 			casualty_trickleback = 0.05
 			experience_loss_factor = -0.05
 		}
