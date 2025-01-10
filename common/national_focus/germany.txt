@@ -10748,7 +10748,13 @@ focus_tree = {
 			}
 			custom_trigger_tooltip = { 
 				tooltip = GER_the_supreme_leader_trigger
-				check_variable = { GER_capitulated_major_countries > 1 }
+				#check_variable = { GER_capitulated_major_countries > 1 }
+				FRA = { has_capitulated = yes }
+				OR = {
+					SOV = { has_capitulated = yes }
+					ENG = { has_capitulated = yes }
+					USA = { has_capitulated = yes }
+				}
 			}
 		}
 
