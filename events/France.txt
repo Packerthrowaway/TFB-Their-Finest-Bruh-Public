@@ -529,8 +529,6 @@ country_event = {
 					subtract_from_variable = { FRA_stockpile_keep = FRA_legit }
 				}
 
-				log = "% of French Stuff going to Vichy France: (Legitmacy [?FRA.legitimacy] - Army [?FRA_army_keep] - Navy [?FRA_naval_keep] - Air [?FRA_air_keep] - Stockpile [?FRA_stockpile_keep]"
-
 				# ~2% Navy Kept per Focus Done (Max of 30%, Vanilla is 15%)
 				if = { limit = { FRA = { has_completed_focus = FRA_naval_rearmament }} subtract_from_variable = { FRA_naval_keep = 0.03 } } #3% for the first one
 				if = { limit = { FRA = { has_completed_focus = FRA_colonial_naval_bases }} subtract_from_variable = { FRA_naval_keep = 0.02 } }
@@ -551,7 +549,8 @@ country_event = {
 				if = { limit = { FRA = { has_completed_focus = FRA_bomber_focus }} subtract_from_variable = { FRA_air_keep = 0.02 } }
 				if = { limit = { FRA = { has_completed_focus = FRA_heavy_bomber_focus }} subtract_from_variable = { FRA_air_keep = 0.02 } }
 				if = { limit = { FRA = { has_completed_focus = FRA_naval_bomber_focus }} subtract_from_variable = { FRA_air_keep = 0.02 } }
-				
+
+				log = "% of French Stuff going to Vichy France: (Legitmacy [?FRA.legitimacy] - Army [?FRA_army_keep] - Navy [?FRA_naval_keep] - Air [?FRA_air_keep] - Stockpile [?FRA_stockpile_keep]"				
 
 				add_dynamic_modifier = { modifier = dockyard_cg_mod }
 				add_ideas = FRA_occupation_costs_4
