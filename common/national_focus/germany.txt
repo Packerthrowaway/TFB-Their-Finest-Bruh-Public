@@ -7442,7 +7442,6 @@ focus_tree = {
 	
 			every_state = {
 				limit = { 
-					state_is_fully_controlled_by_ROOT_or_subject = yes
 					is_coastal = yes 
 					naval_base < 10
 					OR = { #Atlantic Coast from Brittany to Sevilla
@@ -7459,6 +7458,7 @@ focus_tree = {
 						state = 179
 						state = 169
 					}
+					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
 				add_building_construction = {
 					type = naval_base
@@ -7472,7 +7472,6 @@ focus_tree = {
 			}
 			every_state = {
 				limit = { 
-					state_is_fully_controlled_by_ROOT_or_subject = yes
 					is_coastal = yes 
 					coastal_bunker < 10
 					OR = { #Atlantic Coast from Brittany to Sevilla
@@ -7489,6 +7488,7 @@ focus_tree = {
 						state = 179
 						state = 169
 					}
+					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
 				add_building_construction = {
 					type = coastal_bunker
@@ -7570,7 +7570,6 @@ focus_tree = {
 			custom_effect_tooltip = GER_naval_bases_on_atlantic_islands_tt
 			every_state = {
 				limit = { 
-					state_is_fully_controlled_by_ROOT_or_subject = yes
 					is_coastal = yes 
 					naval_base < 10
 					OR = { #Atlantic Islands from Greenland to Cape Verde
@@ -7587,6 +7586,7 @@ focus_tree = {
 						state = 697
 						state = 702
 					}
+					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
 				add_building_construction = {
 					type = naval_base
@@ -7600,7 +7600,6 @@ focus_tree = {
 			}
 			every_state = {
 				limit = { 
-					state_is_fully_controlled_by_ROOT_or_subject = yes
 					is_coastal = yes 
 					coastal_bunker < 10
 					OR = { #Atlantic Islands from Greenland to the Falklands
@@ -7624,6 +7623,7 @@ focus_tree = {
 						state = 720
 						state = 299
 					}
+					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
 				add_building_construction = {
 					type = coastal_bunker
@@ -10428,6 +10428,78 @@ focus_tree = {
 					producer = CZE
 				}
 				
+			}
+		}
+	}
+
+	focus = {
+		id = GER_second_vienna_award
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = GER_fate_of_czechoslovakia focus = GER_integrate_czechoslovakia }
+		x = -1
+		y = 1
+		relative_position_id = GER_fate_of_czechoslovakia
+		cost = 2
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			is_puppet = no
+			has_army_manpower = { size > 749999 }
+			has_capitulated = no
+		}
+		bypass = {
+			OR = {
+				AND = {
+					OR = {
+						HUN = {
+							NOT = { has_government = fascism }
+							is_friend_or_potential_friend_of_GER = no
+						}
+						ROM = {
+							OR = {
+								AND = {
+									NOT = { controls_state = 76 }
+									NOT = { controls_state = 83 }
+									NOT = { controls_state = 84 }
+								}
+								has_war_with = HUN
+								AND = {
+									is_in_faction_with = GER
+									HUN = { NOT = { is_in_faction_with = GER } }#GER should not want to give territory to Hungary if Romania joined the axis early.
+								}
+							}
+						}
+					}
+					OR = {
+						BUL = { is_friend_or_potential_friend_of_GER = no }
+						ROM = {
+							OR = {
+								NOT = { controls_state = 77 }
+								has_war_with = BUL					
+							}
+						}					
+					}
+				}
+				HUN = { exists = no } 
+				ROM = { exists = no	}
+				HUN = { has_capitulated = yes }
+				ROM = { has_capitulated = yes }
+				HUN = { is_subject_of = ROM } #just rude
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					HUN = {
+						is_friend_or_potential_friend_of_GER = yes
+					}
+					ROM = {
+						controls_state = 76
+						NOT = { has_war_with = HUN }
+					}
+				}
+				country_event = { id = germany.20 }
 			}
 		}
 	}
