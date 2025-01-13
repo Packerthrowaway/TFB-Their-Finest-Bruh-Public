@@ -296,7 +296,7 @@ GER_seize_gold_reserves_cat = {
 					has_country_flag = GER_dont_seize_gold_reserves_flag
 				}
 				any_core_state = {
-					is_controlled_by = ROOT
+					is_controlled_by_ROOT_or_ally = yes
 					NOT = { is_core_of = ROOT }
 					NOT = { has_state_flag = GER_seize_gold_reserves_state_flag }
 					OR = {
@@ -335,11 +335,22 @@ GER_seize_gold_reserves_cat = {
 			#add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_military_factories_in_cores@GER }
 			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_civilian_factories_in_cores@GER }
 			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_naval_factories_in_cores@GER }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_civilian_factories_in_cores@ITA }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_naval_factories_in_cores@ITA }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_civilian_factories_in_cores@HUN }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_naval_factories_in_cores@HUN }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_civilian_factories_in_cores@ROM }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_naval_factories_in_cores@ROM }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_civilian_factories_in_cores@BUL }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_naval_factories_in_cores@BUL }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_civilian_factories_in_cores@FIN }
+			add_to_temp_variable = { GER.occupied_state_num_factory = FROM.num_of_naval_factories_in_cores@FIN }
+			# Doesn't do Spain, Vichy, Reickskomisriats, or Axis Yugo
 			FROM = {
 				every_core_state = {
 					limit = {
 						is_on_continent = europe
-						is_fully_controlled_by = ROOT
+						is_controlled_by_ROOT_or_ally = yes
 						NOT = { has_state_flag = GER_seize_gold_reserves_state_flag }
 						NOT = { has_state_flag = VIC_dont_loot }
 					}
