@@ -486,6 +486,14 @@ GER_seize_gold_reserves_cat = {
 				add_compliance = -5
 				set_state_flag = GER_seize_gold_reserves_state_flag
 				add_dynamic_modifier = { modifier = GER_overburdened_state_modifier days = 90 }
+				damage_building = {
+					type = industrial_complex
+					damage = 2 # levels of damage 
+				}
+				damage_building = {
+					type = dockyard
+					damage = 1 # levels of damage 
+				}
 				
 				divide_temp_variable = { occupied_state_num_factory = 200 } #This is necessary since a single factory will increase the occupied_state_num_factory number to 1, which in turn translates to -100% when subtracting from the Consumer Goods. Dividing it by 100 here will give you 1% instead, which is more like what we want.
 				multiply_temp_variable = { occupied_state_num_factory = -1 }
