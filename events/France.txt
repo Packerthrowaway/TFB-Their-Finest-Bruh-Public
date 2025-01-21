@@ -555,27 +555,27 @@ country_event = {
 				add_dynamic_modifier = { modifier = dockyard_cg_mod }
 				add_ideas = FRA_occupation_costs_4
 				load_focus_tree = vichy_french_focus
-				FRA = {
-					transfer_units_fraction = {
-						target = event_target:vichy_france
-						size = 0.95
-						stockpile_ratio = FRA_stockpile_keep
-						army_ratio = FRA_army_keep
-						navy_ratio = FRA_naval_keep
-						air_ratio = FRA_air_keep
-					}
-				}
-				# Old one for Posterity
 				# FRA = {
 				# 	transfer_units_fraction = {
 				# 		target = event_target:vichy_france
 				# 		size = 0.95
-				# 		stockpile_ratio = 0.8
-				# 		army_ratio = 0.8
-				# 		navy_ratio = 0.85
-				# 		air_ratio = 1.0
+				# 		stockpile_ratio = FRA_stockpile_keep
+				# 		army_ratio = FRA_army_keep
+				# 		navy_ratio = FRA_naval_keep
+				# 		air_ratio = FRA_air_keep
 				# 	}
 				# }
+				# Old one for Posterity
+				FRA = {
+					transfer_units_fraction = {
+						target = event_target:vichy_france
+						size = 0.95
+						stockpile_ratio = 0.8
+						army_ratio = 0.8
+						navy_ratio = 0.85
+						air_ratio = 1.0
+					}
+				}
 				if = {
 					limit = { FRA = { has_country_flag = become_vichy } }
 					change_tag_from = FRA
