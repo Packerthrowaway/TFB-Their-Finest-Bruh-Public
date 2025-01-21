@@ -3439,6 +3439,13 @@ operations = {
 		}
 
 		complete_effect = {
+			every_state = {
+				limit = {
+					is_fully_controlled_by = HUN
+					NOT = { is_owned_by = HUN }
+				}
+				transfer_state_to = GER
+			}
 			set_autonomy = {
 				target = HUN
 				autonomy_state = autonomy_reichsprotectorate
@@ -3449,6 +3456,7 @@ operations = {
 
 		timeout_effect = {
 			HUN = {
+				leave_faction = yes
 				white_peace = SOV
 				every_country = {
 					limit = {
@@ -3457,7 +3465,6 @@ operations = {
 					}
 					white_peace = HUN
 				}
-				leave_faction = yes
 			}
 			SOV = { add_to_faction = HUN }
 			create_wargoal = {

@@ -9017,6 +9017,7 @@ focus_tree = {
 						add_war_support = 0.1
 						add_stability = 0.05
 						army_experience = 10
+						add_threat = 10
 
 						custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -9030,6 +9031,7 @@ focus_tree = {
 							target = AUS
 							generator = { 4 152 153 848 975 976 }
 						}
+						add_threat = 5
 					}
 				# }
 			}
@@ -10448,9 +10450,13 @@ focus_tree = {
 			factor = 10
 		}
 		available = {
-			is_puppet = no
-			has_army_manpower = { size > 749999 }
-			has_capitulated = no
+			#is_puppet = no
+			#has_army_manpower = { size > 749999 }
+			#has_capitulated = no
+			OR = {
+				FRA = { has_capitulated = yes }
+				date > 1940.1.1
+			}
 		}
 		bypass = {
 			OR = {
