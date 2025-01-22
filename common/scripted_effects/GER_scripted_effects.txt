@@ -844,6 +844,15 @@ GER_autarky_achieved_effects = {
 			remove_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
 			add_dynamic_modifier = { modifier = GER_wirtschaftswunder_modifier }
 		}
+		if = {
+			limit = { 
+				check_variable = { var = GER_industrial_consumer_goods_factor value = 1 compare = greater_than_or_equals }
+			}
+			clr_country_flag = GER_mefo_bills_penalty_flag #This flag is always set when reaching 100% CGFF
+			subtract_from_variable = { GER_industrial_consumer_goods_expected_value = GER_expected_consumer_goods_penalty }
+			add_to_variable = { GER_industrial_industrial_capacity_factory = GER_factory_output_penalty }
+			add_to_variable = { GER_industrial_industrial_capacity_dockyard = GER_dockyard_output_penalty }
+		}
 		custom_effect_tooltip = GER_replace_economy_of_conquest_with_wirtschaftswunder_tt
 	}
 	else_if = {
@@ -1553,6 +1562,15 @@ GER_setup_GER_asia_sphere_of_influence_array = {
 			IF = {
 				limit = {
 					OR = {
+						#Islands
+						state = 712 # Cocos
+						state = 711 # Christmas
+						state = 710 # Diego Garcia
+						state = 709 # Seychelles
+						state = 707 # Mauritius
+						state = 713 # Kerguelen
+						state = 706 # Reunion
+
 						is_core_of = AST
 						is_core_of = NZL
 						is_core_of = MAL
@@ -1569,15 +1587,6 @@ GER_setup_GER_asia_sphere_of_influence_array = {
 						is_core_of = RAP
 						is_core_of = SRL
 						is_core_of = MLD
-
-						#Islands
-						state = 712 # Cocos
-						state = 711 # Christmas
-						state = 710 # Diego Garcia
-						state = 709 # Seychelles
-						state = 707 # Mauritius
-						state = 713 # Kerguelen
-						state = 706 # Reunion
 					}
 				}
 
