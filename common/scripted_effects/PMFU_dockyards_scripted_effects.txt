@@ -161,11 +161,11 @@ dockyard_build_speed_calculation = {
 	set_variable = { dockyard_build_speed = 0 }
     #dockcount3 is just a counter. 
 	while_loop_effect = {
-		log = "A [dockcount3] [?dockcount3] [dockcount2] [?dockcount2]"
+		#log = "A [dockcount3] [?dockcount3] [dockcount2] [?dockcount2]"
 		limit = {
 			check_variable = { dockcount3 < dockcount2 }
 		}
-		log = "B [dockcount3] [?dockcount3] [dockcount2] [?dockcount2]"
+		#log = "B [dockcount3] [?dockcount3] [dockcount2] [?dockcount2]"
 		add_to_variable = { dockcount3 = 1 }
 		if = {
 			limit = {
@@ -176,7 +176,7 @@ dockyard_build_speed_calculation = {
 		else = {
 			subtract_from_variable = { dockyard_build_speed = 0.1 } # This is the variable determining how much we tick the consumer goods
 		}
-		log = "C [dockcount3] [?dockcount3] [dockcount2] [?dockcount2]"
+		#log = "C [dockcount3] [?dockcount3] [dockcount2] [?dockcount2]"
 		
 	}
 	if = {
