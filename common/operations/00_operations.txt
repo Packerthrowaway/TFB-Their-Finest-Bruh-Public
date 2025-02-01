@@ -1484,6 +1484,9 @@ operation_make_resistance_contacts = { ### 9 2/40
 
 	selection_target_state = {
 		has_resistance = yes
+		NOT = {
+			is_in_array = { GLOBAL.RESISTANCE_CONTACTS = THIS }
+		}
 	}
 
 	available = {
@@ -1517,6 +1520,7 @@ operation_make_resistance_contacts = { ### 9 2/40
 			}
 		}
 		add_to_array = { ROOT.RESISTANCE = FROM }
+		add_to_array = { GLOBAL.RESISTANCE_CONTACTS = FROM.FROM }
 	}
 	outcome_extra_execute = { # SCOPE_OPERATION
 		random_list = {
@@ -1528,6 +1532,7 @@ operation_make_resistance_contacts = { ### 9 2/40
 					}
 				}
 				add_to_array = { ROOT.RESISTANCE = FROM }
+				add_to_array = { GLOBAL.RESISTANCE_CONTACTS = FROM.FROM }
 				FROM.FROM = {
 					add_resistance_target = {
 						amount = 10
@@ -1545,6 +1550,7 @@ operation_make_resistance_contacts = { ### 9 2/40
 					}
 				}
 				add_to_array = { ROOT.RESISTANCE = FROM }
+				add_to_array = { GLOBAL.RESISTANCE_CONTACTS = FROM.FROM }
 				FROM.FROM = {
 					add_resistance_target = {
 						amount = 10
@@ -2088,6 +2094,7 @@ operation_targeted_sabotage_industry = { ### 13 3/35
 			}
 		}
 		remove_from_array = { ROOT.RESISTANCE = FROM }
+		remove_from_array = { GLOBAL.RESISTANCE_CONTACTS = FROM.FROM }
 	}
 	outcome_extra_execute = { # SCOPE_OPERATION
 		
@@ -2221,6 +2228,7 @@ operation_targeted_sabotage_infrastructure = { ### 14 3/35
 			}
 		}
 		remove_from_array = { ROOT.RESISTANCE = FROM }
+		remove_from_array = { GLOBAL.RESISTANCE_CONTACTS = FROM.FROM }
 	}
 	outcome_extra_execute = { # SCOPE_OPERATION
 		FROM.FROM = {
@@ -2353,6 +2361,7 @@ operation_targeted_sabotage_resources = { ### 15 3/35
 			}
 		}
 		remove_from_array = { ROOT.RESISTANCE = FROM }
+		remove_from_array = { GLOBAL.RESISTANCE_CONTACTS = FROM.FROM }
 	}
 	outcome_extra_execute = { # SCOPE_OPERATION
 		
