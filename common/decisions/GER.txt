@@ -15737,257 +15737,257 @@ GER_influence_countries_cat = {
 		}
 	}
 
-	GER_influence_middle_east_decision = {
-		priority = 1
-		icon = GFX_decision_SWI_expand_covert_operations 
+	# GER_influence_middle_east_decision = {
+	# 	priority = 1
+	# 	icon = GFX_decision_SWI_expand_covert_operations 
 
-		ai_will_do = {
-			base = 25
-			modifier = {
-				factor = 0.5
-				FROM = {
-					is_major = yes
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1.25
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1.5
-				}
-			}
-		}
+	# 	ai_will_do = {
+	# 		base = 25
+	# 		modifier = {
+	# 			factor = 0.5
+	# 			FROM = {
+	# 				is_major = yes
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1.25
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1.5
+	# 			}
+	# 		}
+	# 	}
 
-		targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM PAL KUW QAT UAE KUR }
+	# 	targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM PAL KUW QAT UAE KUR }
 
-		target_trigger = {
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_in_faction_with = ROOT
-				}
-				NOT = { has_government = fascism }
-				fascism < 50
-			}
-		}
+	# 	target_trigger = {
+	# 		FROM = {
+	# 			NOT = { has_war_with = ROOT }
+	# 			is_subject = no
+	# 			OR = {
+	# 				is_in_faction = no
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 			NOT = { has_government = fascism }
+	# 			fascism < 50
+	# 		}
+	# 	}
 
-		target_root_trigger =  {
-			OR = {
-				has_completed_focus = GER_influence_the_middle_east
-				has_completed_focus = GER_german_hegemony_in_the_middle_east
-			}
-			has_government = fascism
-		}
+	# 	target_root_trigger =  {
+	# 		OR = {
+	# 			has_completed_focus = GER_influence_the_middle_east
+	# 			has_completed_focus = GER_german_hegemony_in_the_middle_east
+	# 		}
+	# 		has_government = fascism
+	# 	}
 
-		fire_only_once = no
+	# 	fire_only_once = no
 
-		cost = 25
+	# 	cost = 25
 
-		days_re_enable = 732 #Match the Timed NS below + couple of days to make sure NS is gone when the decision comes back
+	# 	days_re_enable = 732 #Match the Timed NS below + couple of days to make sure NS is gone when the decision comes back
 
-		complete_effect = {
-			hidden_effect = {
-				FROM = {
-					country_event = { id = wuw_GER_diplomacy.10 days = 1 } 
-				}
-			}
+	# 	complete_effect = {
+	# 		hidden_effect = {
+	# 			FROM = {
+	# 				country_event = { id = wuw_GER_diplomacy.10 days = 1 } 
+	# 			}
+	# 		}
 
-			effect_tooltip = {
-				FROM = {
-					add_timed_idea = {
-						idea = GER_fascism_influence
-						days = 730 #Match the days_re_enable above
-					}
-					add_opinion_modifier = { 
-						target = GER 
-						modifier = GER_german_influence
-					}
-				}
-			}
-		}
-	}
+	# 		effect_tooltip = {
+	# 			FROM = {
+	# 				add_timed_idea = {
+	# 					idea = GER_fascism_influence
+	# 					days = 730 #Match the days_re_enable above
+	# 				}
+	# 				add_opinion_modifier = { 
+	# 					target = GER 
+	# 					modifier = GER_german_influence
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
-	GER_influence_middle_east_democratic_decision = {
-		priority = 1
-		icon = GFX_decision_SWI_expand_covert_operations 
+	# GER_influence_middle_east_democratic_decision = {
+	# 	priority = 1
+	# 	icon = GFX_decision_SWI_expand_covert_operations 
 
-		ai_will_do = {
-			base = 25
-			modifier = {
-				factor = 0.5
-				FROM = {
-					is_major = yes
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1.25
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1.5
-				}
-			}
-		}
+	# 	ai_will_do = {
+	# 		base = 25
+	# 		modifier = {
+	# 			factor = 0.5
+	# 			FROM = {
+	# 				is_major = yes
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1.25
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1.5
+	# 			}
+	# 		}
+	# 	}
 
-		targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM PAL KUW QAT UAE KUR }
+	# 	targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM PAL KUW QAT UAE KUR }
 
-		target_trigger = {
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_in_faction_with = ROOT
-				}
-				NOT = { has_government = democratic }
-				democratic < 50
-			}
-		}
+	# 	target_trigger = {
+	# 		FROM = {
+	# 			NOT = { has_war_with = ROOT }
+	# 			is_subject = no
+	# 			OR = {
+	# 				is_in_faction = no
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 			NOT = { has_government = democratic }
+	# 			democratic < 50
+	# 		}
+	# 	}
 
-		target_root_trigger =  {
-			has_completed_focus = GER_german_hegemony_in_the_middle_east
-			has_government = democratic
-		}
+	# 	target_root_trigger =  {
+	# 		has_completed_focus = GER_german_hegemony_in_the_middle_east
+	# 		has_government = democratic
+	# 	}
 
-		fire_only_once = no
+	# 	fire_only_once = no
 
-		cost = 25
+	# 	cost = 25
 
-		days_re_enable = 732 #Match the Timed NS below + couple of days to make sure NS is gone when the decision comes back
+	# 	days_re_enable = 732 #Match the Timed NS below + couple of days to make sure NS is gone when the decision comes back
 
-		complete_effect = {
-			hidden_effect = {
-				FROM = {
-					country_event = { id = wuw_GER_diplomacy.10 days = 1 } 
-				}
-			}
+	# 	complete_effect = {
+	# 		hidden_effect = {
+	# 			FROM = {
+	# 				country_event = { id = wuw_GER_diplomacy.10 days = 1 } 
+	# 			}
+	# 		}
 
-			effect_tooltip = {
-				FROM = {
-					add_timed_idea = {
-						idea = GER_democratic_influence
-						days = 730 #Match the days_re_enable above
-					}
-					add_opinion_modifier = { 
-						target = GER 
-						modifier = GER_german_influence
-					}
-				}
-			}
-		}
-	}
+	# 		effect_tooltip = {
+	# 			FROM = {
+	# 				add_timed_idea = {
+	# 					idea = GER_democratic_influence
+	# 					days = 730 #Match the days_re_enable above
+	# 				}
+	# 				add_opinion_modifier = { 
+	# 					target = GER 
+	# 					modifier = GER_german_influence
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
-	GER_influence_middle_east_neutrality_decision = {
-		priority = 1
-		icon = GFX_decision_SWI_expand_covert_operations 
+	# GER_influence_middle_east_neutrality_decision = {
+	# 	priority = 1
+	# 	icon = GFX_decision_SWI_expand_covert_operations 
 
-		ai_will_do = {
-			base = 25
-			modifier = {
-				factor = 0.5
-				FROM = {
-					is_major = yes
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1.25
-				}
-			}
-			modifier = {
-				factor = 2
-				strength_ratio = {
-					tag = FROM 
-					ratio > 1.5
-				}
-			}
-		}
+	# 	ai_will_do = {
+	# 		base = 25
+	# 		modifier = {
+	# 			factor = 0.5
+	# 			FROM = {
+	# 				is_major = yes
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1.25
+	# 			}
+	# 		}
+	# 		modifier = {
+	# 			factor = 2
+	# 			strength_ratio = {
+	# 				tag = FROM 
+	# 				ratio > 1.5
+	# 			}
+	# 		}
+	# 	}
 
-		targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM PAL KUW QAT UAE KUR }
+	# 	targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM PAL KUW QAT UAE KUR }
 
-		target_trigger = {
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_in_faction_with = ROOT
-				}
-				NOT = { has_government = neutrality }
-				neutrality < 50
-			}
-		}
+	# 	target_trigger = {
+	# 		FROM = {
+	# 			NOT = { has_war_with = ROOT }
+	# 			is_subject = no
+	# 			OR = {
+	# 				is_in_faction = no
+	# 				is_in_faction_with = ROOT
+	# 			}
+	# 			NOT = { has_government = neutrality }
+	# 			neutrality < 50
+	# 		}
+	# 	}
 
-		target_root_trigger =  {
-			has_completed_focus = GER_german_hegemony_in_the_middle_east
-			has_government = neutrality
-		}
+	# 	target_root_trigger =  {
+	# 		has_completed_focus = GER_german_hegemony_in_the_middle_east
+	# 		has_government = neutrality
+	# 	}
 
-		fire_only_once = no
+	# 	fire_only_once = no
 
-		cost = 25
+	# 	cost = 25
 
-		days_re_enable = 732 #Match the Timed NS below + couple of days to make sure NS is gone when the decision comes back
+	# 	days_re_enable = 732 #Match the Timed NS below + couple of days to make sure NS is gone when the decision comes back
 
-		complete_effect = {
-			hidden_effect = {
-				FROM = {
-					country_event = { id = wuw_GER_diplomacy.10 days = 1 } 
-				}
-			}
+	# 	complete_effect = {
+	# 		hidden_effect = {
+	# 			FROM = {
+	# 				country_event = { id = wuw_GER_diplomacy.10 days = 1 } 
+	# 			}
+	# 		}
 
-			effect_tooltip = {
-				FROM = {
-					add_timed_idea = {
-						idea = GER_neutrality_influence
-						days = 730 #Match the days_re_enable above
-					}
-					add_opinion_modifier = { 
-						target = GER 
-						modifier = GER_german_influence
-					}
-				}
-			}
-		}
-	}
+	# 		effect_tooltip = {
+	# 			FROM = {
+	# 				add_timed_idea = {
+	# 					idea = GER_neutrality_influence
+	# 					days = 730 #Match the days_re_enable above
+	# 				}
+	# 				add_opinion_modifier = { 
+	# 					target = GER 
+	# 					modifier = GER_german_influence
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
 	GER_influence_balkans_neutrality_decision = {
 		priority = 1
@@ -16330,34 +16330,34 @@ GER_invite_to_faction_cat = {
 					has_completed_focus = GER_influence_the_benelux
 				}
 			}
-			if = {
-				limit = {
-					FROM = {
-						OR = {
-							original_tag = PER
-							original_tag = IRQ
-							original_tag = SYR
-							original_tag = SAU
-							original_tag = EGY
-							original_tag = JOR
-							original_tag = LEB
-							original_tag = OMA
-							original_tag = YEM
-							original_tag = PAL
-							original_tag = KUW 
-							original_tag = QAT 
-							original_tag = UAE
-							original_tag = KUR
-						}
-					}
-				}
-				ROOT = {
-					OR = {
-						has_completed_focus = GER_influence_the_middle_east
-						has_completed_focus = GER_german_hegemony_in_the_middle_east
-					}
-				}
-			}
+			# if = {
+			# 	limit = {
+			# 		FROM = {
+			# 			OR = {
+			# 				original_tag = PER
+			# 				original_tag = IRQ
+			# 				original_tag = SYR
+			# 				original_tag = SAU
+			# 				original_tag = EGY
+			# 				original_tag = JOR
+			# 				original_tag = LEB
+			# 				original_tag = OMA
+			# 				original_tag = YEM
+			# 				original_tag = PAL
+			# 				original_tag = KUW 
+			# 				original_tag = QAT 
+			# 				original_tag = UAE
+			# 				original_tag = KUR
+			# 			}
+			# 		}
+			# 	}
+			# 	ROOT = {
+			# 		OR = {
+			# 			has_completed_focus = GER_influence_the_middle_east
+			# 			has_completed_focus = GER_german_hegemony_in_the_middle_east
+			# 		}
+			# 	}
+			# }
 			if = {
 				limit = {
 					FROM = {
@@ -16424,189 +16424,189 @@ GER_invite_to_faction_cat = {
 	}	
 }
 	
-GER_middle_eastern_trade_cat = {
+# GER_middle_eastern_trade_cat = {
 
-	GER_middle_eastern_trade_decision = {
-		priority = 1
-		icon = GFX_decision_eng_trade_unions_support 
+# 	GER_middle_eastern_trade_decision = {
+# 		priority = 1
+# 		icon = GFX_decision_eng_trade_unions_support 
 
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 2
-				any_enemy_country = {
-					has_war_with = FROM
-				}
-			}
-			modifier = {
-				factor = 2
-				FROM = {
-					is_in_faction = no
-				}
-			}
-			modifier = {
-				factor = 3
-				FROM = {
-					any_core_state = {
-						is_fully_controlled_by = FROM
-						OR = {
-							has_resources_amount = {
-								resource = oil
-								amount > 14
-							}
-							has_resources_amount = {
-								resource = aluminium
-								amount > 14
-							}
-							has_resources_amount = {
-								resource = rubber
-								amount > 14
-							}
-							has_resources_amount = {
-								resource = tungsten
-								amount > 14
-							}
-							has_resources_amount = {
-								resource = steel
-								amount > 14
-							}
-							has_resources_amount = {
-								resource = chromium
-								amount > 14
-							}
-						}
-					}
-				}
-			}
-			modifier = {
-				factor = 3
-				FROM = {
-					any_core_state = {
-						is_fully_controlled_by = FROM
-						OR = {
-							has_resources_amount = {
-								resource = oil
-								amount > 24
-							}
-							has_resources_amount = {
-								resource = aluminium
-								amount > 24
-							}
-							has_resources_amount = {
-								resource = rubber
-								amount > 24
-							}
-							has_resources_amount = {
-								resource = tungsten
-								amount > 24
-							}
-							has_resources_amount = {
-								resource = steel
-								amount > 24
-							}
-							has_resources_amount = {
-								resource = chromium
-								amount > 24
-							}
-						}
-					}
-				}
-			}
-			modifier = {
-				factor = 0.5
-				FROM = {
-					is_enemy_ideology = yes
-				}
-			}
-			modifier = {
-				factor = 2
-				FROM = {
-					has_government = ROOT
-				}
-			}
-		}
+# 		ai_will_do = {
+# 			base = 1
+# 			modifier = {
+# 				factor = 2
+# 				any_enemy_country = {
+# 					has_war_with = FROM
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 2
+# 				FROM = {
+# 					is_in_faction = no
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 3
+# 				FROM = {
+# 					any_core_state = {
+# 						is_fully_controlled_by = FROM
+# 						OR = {
+# 							has_resources_amount = {
+# 								resource = oil
+# 								amount > 14
+# 							}
+# 							has_resources_amount = {
+# 								resource = aluminium
+# 								amount > 14
+# 							}
+# 							has_resources_amount = {
+# 								resource = rubber
+# 								amount > 14
+# 							}
+# 							has_resources_amount = {
+# 								resource = tungsten
+# 								amount > 14
+# 							}
+# 							has_resources_amount = {
+# 								resource = steel
+# 								amount > 14
+# 							}
+# 							has_resources_amount = {
+# 								resource = chromium
+# 								amount > 14
+# 							}
+# 						}
+# 					}
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 3
+# 				FROM = {
+# 					any_core_state = {
+# 						is_fully_controlled_by = FROM
+# 						OR = {
+# 							has_resources_amount = {
+# 								resource = oil
+# 								amount > 24
+# 							}
+# 							has_resources_amount = {
+# 								resource = aluminium
+# 								amount > 24
+# 							}
+# 							has_resources_amount = {
+# 								resource = rubber
+# 								amount > 24
+# 							}
+# 							has_resources_amount = {
+# 								resource = tungsten
+# 								amount > 24
+# 							}
+# 							has_resources_amount = {
+# 								resource = steel
+# 								amount > 24
+# 							}
+# 							has_resources_amount = {
+# 								resource = chromium
+# 								amount > 24
+# 							}
+# 						}
+# 					}
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 0.5
+# 				FROM = {
+# 					is_enemy_ideology = yes
+# 				}
+# 			}
+# 			modifier = {
+# 				factor = 2
+# 				FROM = {
+# 					has_government = ROOT
+# 				}
+# 			}
+# 		}
 
-		targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM KUW QAT UAE }
+# 		targets = { PER IRQ SYR SAU EGY JOR LEB OMA YEM KUW QAT UAE }
 
-		target_trigger = {
-			FROM = {
-				is_subject = no
-				NOT = {
-					has_war_with = ROOT
-				}
-				any_core_state = {
-					is_fully_controlled_by = FROM
-					OR = {
-						has_resources_amount = {
-							resource = oil
-							amount > 9
-							delivered = yes
+# 		target_trigger = {
+# 			FROM = {
+# 				is_subject = no
+# 				NOT = {
+# 					has_war_with = ROOT
+# 				}
+# 				any_core_state = {
+# 					is_fully_controlled_by = FROM
+# 					OR = {
+# 						has_resources_amount = {
+# 							resource = oil
+# 							amount > 9
+# 							delivered = yes
 
-						}
-						has_resources_amount = {
-							resource = aluminium
-							amount > 9
-							delivered = yes
-						}
-						has_resources_amount = {
-							resource = rubber
-							amount > 9
-							delivered = yes
-						}
-						has_resources_amount = {
-							resource = tungsten
-							amount > 9
-							delivered = yes
-						}
-						has_resources_amount = {
-							resource = steel
-							amount > 9
-							delivered = yes
-						}
-						has_resources_amount = {
-							resource = chromium
-							amount > 9
-							delivered = yes
-						}
-					}
-				}
-			}
-		}
+# 						}
+# 						has_resources_amount = {
+# 							resource = aluminium
+# 							amount > 9
+# 							delivered = yes
+# 						}
+# 						has_resources_amount = {
+# 							resource = rubber
+# 							amount > 9
+# 							delivered = yes
+# 						}
+# 						has_resources_amount = {
+# 							resource = tungsten
+# 							amount > 9
+# 							delivered = yes
+# 						}
+# 						has_resources_amount = {
+# 							resource = steel
+# 							amount > 9
+# 							delivered = yes
+# 						}
+# 						has_resources_amount = {
+# 							resource = chromium
+# 							amount > 9
+# 							delivered = yes
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
 
-		available = {
-		}
+# 		available = {
+# 		}
 
-		visible = {	
-			has_completed_focus = GER_influence_the_middle_east
-		}
+# 		visible = {	
+# 			has_completed_focus = GER_influence_the_middle_east
+# 		}
 
-		fire_only_once = yes
+# 		fire_only_once = yes
 
-		cost = 25
+# 		cost = 25
 
-		days_remove = 365
+# 		days_remove = 365
 
-		complete_effect = {
-			FROM = {
-				country_event = { id = wuw_GER_diplomacy.1 days = 1 } 
-			}
+# 		complete_effect = {
+# 			FROM = {
+# 				country_event = { id = wuw_GER_diplomacy.1 days = 1 } 
+# 			}
 
-			#custom_effect_tooltip = if_they_accept_tt
+# 			#custom_effect_tooltip = if_they_accept_tt
 
-			effect_tooltip = {
-				FROM = {
+# 			effect_tooltip = {
+# 				FROM = {
 
-					add_ideas = GER_german_trade_ns
-					add_opinion_modifier = {
-						target = PREV
-						modifier = GER_trading_partners
-					}
-					custom_effect_tooltip = war_will_cancel_deal_tt
-				}
-			}
-		}
-	}
-}
+# 					add_ideas = GER_german_trade_ns
+# 					add_opinion_modifier = {
+# 						target = PREV
+# 						modifier = GER_trading_partners
+# 					}
+# 					custom_effect_tooltip = war_will_cancel_deal_tt
+# 				}
+# 			}
+# 		}
+# 	}
+# }
 
 GER_mitteleuropa_allied_trade_cat = {
 

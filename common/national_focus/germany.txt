@@ -16855,137 +16855,137 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = GER_befriend_turkey
-		icon = GFX_focus_generic_befriend_turkey
-		prerequisite = { focus = GER_war_with_the_ussr }
+	# focus = {
+	# 	id = GER_befriend_turkey
+	# 	icon = GFX_focus_generic_befriend_turkey
+	# 	prerequisite = { focus = GER_war_with_the_ussr }
 
-		x = 0
-		y = 1
-		relative_position_id = GER_war_with_the_ussr
-		cost = 5
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = GER_war_with_the_ussr
+	# 	cost = 5
 		
-		bypass = { 
-			OR = {
-				TUR = { is_in_faction_with = GER }
-				TUR = { is_subject_of = GER }
-				NOT = { country_exists = TUR }
-			}
-		}
+	# 	bypass = { 
+	# 		OR = {
+	# 			TUR = { is_in_faction_with = GER }
+	# 			TUR = { is_subject_of = GER }
+	# 			NOT = { country_exists = TUR }
+	# 		}
+	# 	}
 
-		available_if_capitulated = no
+	# 	available_if_capitulated = no
 
-		available = { 
-			is_subject = no 
-			NOT = { has_war_with = TUR }
-			TUR = {
-				exists = yes
-				is_subject = no
-			}
+	# 	available = { 
+	# 		is_subject = no 
+	# 		NOT = { has_war_with = TUR }
+	# 		TUR = {
+	# 			exists = yes
+	# 			is_subject = no
+	# 		}
 
-			TUR = {
-				custom_trigger_tooltip = {
-					tooltip = GER_alone_or_peace_faction_tt
-					is_alone_or_in_faction_at_peace_with_GER = yes
-				}
-			}
-		}
+	# 		TUR = {
+	# 			custom_trigger_tooltip = {
+	# 				tooltip = GER_alone_or_peace_faction_tt
+	# 				is_alone_or_in_faction_at_peace_with_GER = yes
+	# 			}
+	# 		}
+	# 	}
 
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-		}
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 		modifier = {
+	# 			factor = 0
+	# 			OR = {
+	# 				has_government = democratic
+	# 				has_government = communism
+	# 			}
+	# 		}
+	# 	}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
 
-		completion_reward = {
-			TUR = {
-				add_opinion_modifier = { target = ROOT modifier = ger_tur_diplomacy_focus }
-				if = {
-					limit = {
-						is_ai = yes
-						is_in_faction = no
-						is_subject = no
-						has_government = ROOT
-						ROOT = { is_faction_leader = yes }
-					}
-					country_event = {
-						id = generic.5
-						hours = 6
-						random_hours = 12
-					}
-					add_ai_strategy = {
-						type = alliance
-						id = ROOT
-						value = 200
-					}
-				}
-				if = {
-					limit = {
-						ROOT = {
-							has_government = fascism
-						}
-					}
-					add_timed_idea = { idea = fascist_influence days = 1095 }
-				}
-				if = {
-					limit = {
-						ROOT = {
-							has_government = communism
-						}
-					}
-					add_timed_idea = { idea = communist_influence days = 1095 }
-				}
-				if = {
-					limit = {
-						ROOT = {
-							has_government = democratic
-						}
-					}
-					add_timed_idea = { idea = democratic_influence days = 1095 }
-				}
-				country_event = { id = generic.1 }
-			}
-		}
-	}
+	# 	completion_reward = {
+	# 		TUR = {
+	# 			add_opinion_modifier = { target = ROOT modifier = ger_tur_diplomacy_focus }
+	# 			if = {
+	# 				limit = {
+	# 					is_ai = yes
+	# 					is_in_faction = no
+	# 					is_subject = no
+	# 					has_government = ROOT
+	# 					ROOT = { is_faction_leader = yes }
+	# 				}
+	# 				country_event = {
+	# 					id = generic.5
+	# 					hours = 6
+	# 					random_hours = 12
+	# 				}
+	# 				add_ai_strategy = {
+	# 					type = alliance
+	# 					id = ROOT
+	# 					value = 200
+	# 				}
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					ROOT = {
+	# 						has_government = fascism
+	# 					}
+	# 				}
+	# 				add_timed_idea = { idea = fascist_influence days = 1095 }
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					ROOT = {
+	# 						has_government = communism
+	# 					}
+	# 				}
+	# 				add_timed_idea = { idea = communist_influence days = 1095 }
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					ROOT = {
+	# 						has_government = democratic
+	# 					}
+	# 				}
+	# 				add_timed_idea = { idea = democratic_influence days = 1095 }
+	# 			}
+	# 			country_event = { id = generic.1 }
+	# 		}
+	# 	}
+	# }
 
-	focus = {
-		id = GER_influence_the_middle_east
-		icon = GFX_focus_generic_influence_middle_east
-		prerequisite = { focus = GER_puppet_turkey focus = GER_befriend_turkey }
+	# focus = {
+	# 	id = GER_influence_the_middle_east
+	# 	icon = GFX_focus_generic_influence_middle_east
+	# 	prerequisite = { focus = GER_puppet_turkey focus = GER_befriend_turkey }
 
-		x = 0
-		y = 1
-		relative_position_id = GER_befriend_turkey
-		cost = 5
-		available = {
-			is_subject = no
-		}
+	# 	x = 0
+	# 	y = 1
+	# 	relative_position_id = GER_befriend_turkey
+	# 	cost = 5
+	# 	available = {
+	# 		is_subject = no
+	# 	}
 
-		ai_will_do = {
-			factor = 2
-			modifier = {
-				factor = 0
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-		}
+	# 	ai_will_do = {
+	# 		factor = 2
+	# 		modifier = {
+	# 			factor = 0
+	# 			OR = {
+	# 				has_government = democratic
+	# 				has_government = communism
+	# 			}
+	# 		}
+	# 	}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+	# 	search_filters = { FOCUS_FILTER_POLITICAL }
 
-		completion_reward = {
-			custom_effect_tooltip = GER_unlock_influence_countries_tt
-			custom_effect_tooltip = GER_middle_eastern_trade_tt
-		}
-	}
+	# 	completion_reward = {
+	# 		custom_effect_tooltip = GER_unlock_influence_countries_tt
+	# 		custom_effect_tooltip = GER_middle_eastern_trade_tt
+	# 	}
+	# }
 
 	focus = {
 		id = GER_confiscate_hungarian_alunimium
