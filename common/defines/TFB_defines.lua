@@ -535,6 +535,9 @@ NDefines.NNavy.AIR_MISSION_SPOTTING_FACTORS = {								-- Multiplier for air-win
 1.50, -- NAVAL_PATROL
 }
 
+NDefines.NNavy.SPOTTING_ENEMY_SPOTTING_MULTIPLIER_FOR_RUNNING_AWAY = 0.50		-- enemy spotting is multiplied by this value to simulate running away
+NDefines.NNavy.NAVY_VISIBILITY_BONUS_ON_RETURN_FOR_REPAIR = 0.5				-- Multiplier for the surface/sub visiblity when the heavily damaged fleet is returning to the home base for reparation. 1.0 = no bonus. 0.0 = invisible
+
 NDefines.NNavy.NAVY_PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
 	2.00,
 	1.50,
