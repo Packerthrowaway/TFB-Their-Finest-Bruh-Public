@@ -90,16 +90,16 @@ focus_tree = {
 	# 	scroll_wheel_factor = 1.0
 	# }
 
-	continuous_focus_position = { x = 500 y = 1300 }
+	continuous_focus_position = { x = 2500 y = 1100 }
 
 	inlay_window = {
 		id = ger_inner_circle_inlay_window
-		position = { x = 4500 y = 1150 }
+		position = { x = 4020 y = 1150 }
 	}
 
 	inlay_window = {
 		id = ger_autarky_inlay_window
-		position = { x = 4520 y = 800 }
+		position = { x = 4060 y = 820 }
 	}
 	
 	default = no
@@ -130,7 +130,7 @@ focus_tree = {
 		icon = GFX_focus_usa_reestablish_the_gold_standard
 		
 		mutually_exclusive = { focus = GER_the_four_year_plan }
-		x = 45
+		x = 42
 		y = 0
 		cost = 5
 		#relative_position_id = GER_strengthen_the_kriegsmarine
@@ -1087,7 +1087,7 @@ focus_tree = {
 		icon = GFX_focus_generic_road_investment
 		prerequisite = { focus = GER_prioritize_economic_growth focus = GER_the_four_year_plan }
 
-		x = 3
+		x = 2
 		y = 1
 		relative_position_id = GER_prioritize_economic_growth
 		cost = 5
@@ -1398,14 +1398,14 @@ focus_tree = {
 			if = {
 				limit = {
 					53 = { #Niederbayern
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				53 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1413,14 +1413,14 @@ focus_tree = {
 			if = {
 				limit = {
 					52 = { #Oberbayern
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				52 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1428,14 +1428,14 @@ focus_tree = {
 			if = {
 				limit = {
 					152 = { #Upper Austria
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				152 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1443,14 +1443,14 @@ focus_tree = {
 			if = {
 				limit = {
 					4 = { #Lower Austria
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				4 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1512,14 +1512,14 @@ focus_tree = {
 			if = {
 				limit = {
 					68 = { #Ostmark
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				68 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1527,14 +1527,14 @@ focus_tree = {
 			if = {
 				limit = {
 					63 = { #Hinterpommern
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				63 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1542,14 +1542,14 @@ focus_tree = {
 			if = {
 				limit = {
 					807 = { #Gdynia
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				807 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1557,14 +1557,14 @@ focus_tree = {
 			if = {
 				limit = {
 					85 = { #Danzig
-						infrastructure < 5
+						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
 					}
 				}
 				85 = { 
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -1645,7 +1645,7 @@ focus_tree = {
 		alternate_icon = GFX_focus_GER_the_four_year_plan_historical
 
 		mutually_exclusive = { focus = GER_prioritize_economic_growth }
-		x = 6
+		x = 4
 		y = 0
 		relative_position_id = GER_prioritize_economic_growth
 		cost = 5
@@ -1788,9 +1788,9 @@ focus_tree = {
 						has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
 					}
 				}
-				GER_modify_industrial_modifier = yes
-				custom_effect_tooltip = GER_reduce_increasing_consumer_goods_tt
-				subtract_from_variable = { GER_monthly_consumer_goods_increase = GER_change_monthly_CG_price_controls }
+				#GER_modify_industrial_modifier = yes
+				#custom_effect_tooltip = GER_reduce_increasing_consumer_goods_tt
+				#subtract_from_variable = { GER_monthly_consumer_goods_increase = GER_change_monthly_CG_price_controls }
 			}
 			else = {
 				GER_modify_industrial_modifier = yes
@@ -1863,6 +1863,8 @@ focus_tree = {
 			custom_effect_tooltip = GER_unlock_reichswerke_tt
 
 			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = GER_increase_consumer_goods_tt
 
 			GER_modify_industrial_modifier = yes
 			add_to_variable = { 
@@ -2070,9 +2072,11 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
+			custom_effect_tooltip = GER_increase_consumer_goods_tt
+
 			GER_modify_industrial_modifier = yes
 			add_to_variable = { 
-				GER_industrial_consumer_goods_factor = 0.1
+				GER_industrial_consumer_goods_factor = 0.075
 				tooltip = consumer_goods_factor_tt
 			}
 			if = {
@@ -2164,6 +2168,8 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = GER_increase_consumer_goods_tt
 
 			GER_modify_industrial_modifier = yes
 			add_to_variable = { 
@@ -2272,6 +2278,8 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
+			custom_effect_tooltip = GER_increase_consumer_goods_tt
+
 			GER_modify_industrial_modifier = yes
 			add_to_variable = { 
 				GER_industrial_consumer_goods_factor = 0.1
@@ -2291,7 +2299,7 @@ focus_tree = {
 
 			custom_effect_tooltip = GER_modify_wehrwirtschaft_modifier_tt
 			add_to_variable = { 
-				GER_wehrwirtschaft_production_oil_factor = 0.1
+				GER_wehrwirtschaft_production_oil_factor = 0.075
 				tooltip = production_oil_factor_tt
 			}
 
@@ -2383,9 +2391,11 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
+			custom_effect_tooltip = GER_increase_consumer_goods_tt
+
 			GER_modify_industrial_modifier = yes
 			add_to_variable = { 
-				GER_industrial_consumer_goods_factor = 0.1
+				GER_industrial_consumer_goods_factor = 0.075
 				tooltip = consumer_goods_factor_tt
 			}
 			if = {
@@ -2846,11 +2856,11 @@ focus_tree = {
 				tooltip = production_lack_of_resource_penalty_factor_tt
 			}
 			add_to_variable = { 
-				GER_industrial_industrial_capacity_factory = 0.075
+				GER_industrial_industrial_capacity_factory = 0.05
 				tooltip = industrial_capacity_factory_tt
 			}
 			add_to_variable = { 
-				GER_industrial_industrial_capacity_dockyard = 0.075
+				GER_industrial_industrial_capacity_dockyard = 0.05
 				tooltip = industrial_capacity_dockyard_tt
 			}
 			add_to_variable = { 
@@ -2940,14 +2950,14 @@ focus_tree = {
 				GER_industrial_production_factory_max_efficiency_factor = 0.05
 				tooltip = production_factory_max_efficiency_factor_tt
 			}
-			add_to_variable = { 
-				GER_industrial_production_factory_efficiency_gain_factor = 0.05
-				tooltip = production_factory_efficiency_gain_factor_tt
-			}
-			add_to_variable = { 
-				GER_industrial_production_factory_start_efficiency_factor = 0.05
-				tooltip = production_factory_start_efficiency_factor_tt
-			}
+			# add_to_variable = { 
+			# 	GER_industrial_production_factory_efficiency_gain_factor = 0.05
+			# 	tooltip = production_factory_efficiency_gain_factor_tt
+			# }
+			# add_to_variable = { 
+			# 	GER_industrial_production_factory_start_efficiency_factor = 0.05
+			# 	tooltip = production_factory_start_efficiency_factor_tt
+			# }
 			add_to_variable = { 
 				GER_industrial_line_change_production_efficiency_factor = 0.05
 				tooltip = line_change_production_efficiency_factor_tt
@@ -3020,7 +3030,7 @@ focus_tree = {
 		icon = GFX_focus_GER_army
 		#prerequisite = { focus = }
 
-		x = 8
+		x = 5
 		y = 0
 		#relative_position_id = GER_prioritize_economic_growth
 		cost = 5
@@ -8217,7 +8227,7 @@ focus_tree = {
 			}
 		}
 
-		x = 33
+		x = 30
 		y = 0
 		relative_position_id = GER_prioritize_economic_growth
 
@@ -8343,8 +8353,8 @@ focus_tree = {
 			}
 		}
 
-		x = 14
-		y = 1
+		x = 0
+		y = 2
 		relative_position_id = GER_remilitarize_the_rhineland
 
 		cost = 5
@@ -9582,7 +9592,7 @@ focus_tree = {
 		alternate_icon = GFX_focus_ger_reichskommisariats_historical
 		prerequisite = { focus = GER_reorganize_the_wehrmacht }
 
-		x = 19
+		x = 17
 		y = 1
 		relative_position_id = GER_heed_von_neuraths_concerns
 		cost = 5
@@ -10833,7 +10843,10 @@ focus_tree = {
 				#check_variable = { GER_capitulated_major_countries > 1 }
 				FRA = { has_capitulated = yes }
 				OR = {
-					SOV = { has_capitulated = yes }
+					OR = {
+						SOV = { has_capitulated = yes }
+						has_global_flag = SOV_has_capitulated
+					}
 					ENG = { has_capitulated = yes }
 					USA = { has_capitulated = yes }
 				}
@@ -12361,7 +12374,7 @@ focus_tree = {
 		cost = 5
 		available = {
 			ROM = {
-				fascism > 0.35
+				#fascism > 0.35
 				has_full_control_of_state = 46
 				NOT = { has_war_with = ROOT }
 				OR = {
@@ -12403,35 +12416,6 @@ focus_tree = {
 				custom_effect_tooltip = war_will_cancel_deal_tt
 			}
 
-		}
-	}
-
-	focus = {
-		id = GER_confiscate_romanian_oil
-		icon = GFX_goal_generic_oil_refinery
-		prerequisite = { focus = GER_subjugate_romanian_economy }
-		x = 0
-		y = 2
-		relative_position_id = GER_subjugate_romanian_economy
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			NOT = { has_war_with = ROM }
-		}
-
-		bypass = {
-			ROM = {
-				exists = no
-			}
-		}
-		
-		completion_reward = {
-			ROM = {			
-				give_resource_rights = { receiver = GER state = 46 }
-			}
 		}
 	}
 	
@@ -14586,8 +14570,8 @@ focus_tree = {
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = GER_anschluss }
 
-		x = 8
-		y = 1
+		x = 5
+		y = 2
 		relative_position_id = GER_anschluss
 		cost = 5
 		
@@ -15548,7 +15532,7 @@ focus_tree = {
 
 		prerequisite = { focus = GER_remilitarize_the_rhineland }
 		mutually_exclusive = { focus = GER_heed_von_neuraths_concerns }
-		x = 20
+		x = 18
 		y = 0
 		relative_position_id = GER_heed_von_neuraths_concerns
 		cost = 5
@@ -17050,6 +17034,35 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_confiscate_romanian_oil
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = GER_war_with_the_ussr}
+		x = 0
+		y = 1
+		relative_position_id = GER_war_with_the_ussr
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			NOT = { has_war_with = ROM }
+		}
+
+		bypass = {
+			ROM = {
+				exists = no
+			}
+		}
+		
+		completion_reward = {
+			ROM = {			
+				give_resource_rights = { receiver = GER state = 46 }
+			}
+		}
+	}
+
+	focus = {
 		id = GER_volksturm
 		icon = GFX_GER_volkdeutsche
 		prerequisite = { focus = GER_war_with_the_ussr }
@@ -17883,6 +17896,7 @@ focus_tree = {
 
 		available = {
 			is_subject = no
+			has_war = yes
 		}
 
 		bypass = {

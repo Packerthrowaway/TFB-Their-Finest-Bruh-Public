@@ -1138,6 +1138,23 @@ on_actions = {
 				POL = { remove_ideas = POL_no_agency }
 			}
 		}
+
+		# Soviets need a flag set
+		effect = { 
+			if = {
+				limit = {
+					original_tag = SOV
+					OR = {
+						FROM = { original_tag = GER }
+						FROM = { original_tag = ROM }
+						FROM = { original_tag = HUN }
+						FROM = { original_tag = BUL }
+						FROM = { original_tag = YUG }
+					}
+				}
+				set_global_flag = SOV_has_capitulated
+			}
+		}
 	}
 
 	# on_state_control_changed = {
