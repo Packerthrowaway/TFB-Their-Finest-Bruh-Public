@@ -73,6 +73,8 @@ NDefines.NCountry.HEROES_BEING_KILLED_WAR_SUPPORT_PENALTY_SCALE = -0.04			-- Sca
 NDefines.NCountry.MAX_HEROES_BEING_KILLED_WEEKLY_WAR_SUPPORT_PENALTY = -0.01		-- Max penalty that will gained per week from war heroes manpower lost
 NDefines.NCountry.MAX_HEROES_BEING_KILLED_WAR_SUPPORT_IMPACT = -0.4				-- Max total penalty from war heroes manpower lost
 
+NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_OCCUPIED_IS_EXILE_MAX = 10 -- max resistance target modifier resistance target modifier for exile countries. interpolated using legitimacy
+NDefines.NResistance.COMPLIANCE_DECAY_PER_EXILE_LEGITIMACY = -0.010 -- higher legitimacy will give higher decay to compliance
 NDefines.NResistance.COMPLIANCE_FACTOR_ON_STATE_CONTROLLER_CHANGE = -0.1	-- compliance factor that applies when the state controller changes (in between allies compliance is zeroed if it is taken by original country)
 NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.10 -- base compliance grow
 NDefines.NResistance.COMPLIANCE_GROWTH_HAS_CLAIM = 10 -- compliance growth buff if state has a claim
@@ -87,12 +89,15 @@ NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_STATE_VP = {					-- resistance t
 5,   4.0, -- 5 - 11
 11,  8.0, -- 11 - 26
 26,  12.0, -- 26 - 50
-50,  20.0, -- 50 - ...
+50,  16.0, -- 50 - ...
 }
+NDefines.NResistance.GARRISON_MANPOWER_MIN_DELIVERY_SPEED = 2	-- Minimum base delivery speed if the chunk can't be calculated.
+NDefines.NResistance.GARRISON_MANPOWER_REINFORCEMENT_SPEED = 2000.0	-- Modifier for garrison manpower reinforcement.  This value is the maximum to be delivered which is then modified by distance
+NDefines.NResistance.GARRISON_EQUIPMENT_DELIVERY_SPEED = 10	-- Modifier for garrison equipment reinforcement speed
 
 NDefines.NMarket.PURCHASE_CONTRACT_DELIVERY_TOTAL_DAYS = 15                   	-- Number of days between purchase contract deliveries
-NDefines.NMarket.IC_TO_CIC_FACTOR = 1.6                    					-- The factor for mapping IC cost to CIC cost. Should be a positive number.
-NDefines.NMarket.MAX_CIV_FACTORIES_PER_CONTRACT = 20							-- Max number of factories that can be assigned for paying single contract.
+NDefines.NMarket.IC_TO_CIC_FACTOR = 1.1                    					-- The factor for mapping IC cost to CIC cost. Should be a positive number.
+NDefines.NMarket.MAX_CIV_FACTORIES_PER_CONTRACT = 30							-- Max number of factories that can be assigned for paying single contract.
 NDefines.NMarket.PURCHASE_CONTRACT_SUBSIDY_BONUS_SPEED_FACTOR = 1.5				-- The factor of speed bonus from subsidies
 
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 5 	-- Max number of different strategic resources an equipment can be dependent on.
@@ -336,11 +341,11 @@ NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.08					-- Anti Air Gun hit chance
 NDefines.NAir.ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.8	-- Maximum damage reduction factor applied to incoming air attacks against units with AA.
 NDefines.NAir.ANTI_AIR_ATTACK_TO_DAMAGE_REDUCTION_FACTOR = 0.5	-- Balancing value to convert equipment stat anti_air_attack to the damage reduction modifier apply to incoming air attacks against units with AA.
 NDefines.NAir.NAVAL_COMBAT_EXTERNAL_PLANES_MIN_CAP = 500			-- Min cap for planes that can join naval combat
-NDefines.NAir.EFFICIENCY_REGION_CHANGE_DAILY_GAIN_STRATEGIC_BOMBER = 0.112	-- How much efficiency to regain per day. Gain applied hourly.						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
+NDefines.NAir.EFFICIENCY_REGION_CHANGE_DAILY_GAIN_STRATEGIC_BOMBER = 0.1	-- How much efficiency to regain per day. Gain applied hourly.						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
 NDefines.NAir.FUEL_COST_MULT = 0.7 -- fuel multiplier for all air missions
 -- NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.35							-- % of picking the wrong target
 -- NDefines.NAir.BOMBING_INFRA_PRIO_SCALE = 0.7									-- Scale of the selected priority for infastryctyre
-NDefines.NAir.NON_CORE_STRATEGIC_IMPACT = 0.25                                -- multiplier for strategic impact of non-core bombing	
+NDefines.NAir.NON_CORE_STRATEGIC_IMPACT = 0.2                                -- multiplier for strategic impact of non-core bombing	
 NDefines.NAir.RECON_LAND_SPOT_CHANCE = 0.03                     				-- scale factor on spotting lan
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_NO_TRUCK_DISRUPTION_FACTOR = 0.01 -- If a unit isn't motorized, still disrupt its supply by damage * this
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRUCK_DAMAGE_FACTOR = 0.1
@@ -703,5 +708,5 @@ NDefines.NIndustrialOrganisation.FUNDS_FROM_MANUFACTURER_PER_IC_PER_DAY = 0.04		
 NDefines.NIndustrialOrganisation.MAX_FUNDS_FROM_MANUFACTURER_PER_DAY = 20  -- Max funds generated per manufacturer per day. Set to 0 for no Maximum. (Vanilla 100)
 
 
-RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.2  -- How much the disaster risk is modified when the dial is set to "medium"
+NDefines.NRaids.RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.2  -- How much the disaster risk is modified when the dial is set to "medium"
 NDefines.NRaids.RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.5
