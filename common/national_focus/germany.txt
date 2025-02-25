@@ -1090,7 +1090,7 @@ focus_tree = {
 		x = 2
 		y = 1
 		relative_position_id = GER_prioritize_economic_growth
-		cost = 5
+		cost = 4
 		available = {
 			OR = {
 				has_full_control_of_state = 64 #Brandenburg
@@ -1370,7 +1370,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = GER_kdf_wagen_factories
-		cost = 5
+		cost = 2
 		available = {
 			OR = {
 				53 = { #Niederbayern
@@ -1484,7 +1484,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_kdf_wagen_factories
-		cost = 5
+		cost = 2
 		available = {
 			OR = {
 				68 = { #Ostmark
@@ -8916,34 +8916,52 @@ focus_tree = {
 			has_war = no
 			is_subject = no
 			date > 1937.1.1
-			IF = {
-				limit = { has_dlc = "Gotterdammerung" }
+		
+			# IF = {
+			# 	limit = { has_dlc = "Gotterdammerung" }
 
-				custom_trigger_tooltip = {
-					tooltip = GER_anschluss_army_trigger_tt
-					fighting_army_strength_ratio = {
-						tag = AUS
-						ratio > global.deployed_manpower_ratio_needed_for_anschluss
-					}
-				}
-			}
+			# 	custom_trigger_tooltip = {
+			# 		tooltip = GER_anschluss_army_trigger_tt
+			# 		fighting_army_strength_ratio = {
+			# 			tag = AUS
+			# 			ratio > global.deployed_manpower_ratio_needed_for_anschluss
+			# 		}
+			# 	}
+			# }
 
-			ELSE = {
-				has_army_manpower = { size > 499999 }
+			# ELSE = {
+			# 	has_army_manpower = { size > 499999 }
 				
-				custom_trigger_tooltip = {
-				 	tooltip = GER_anschluss_eq_trigger_tt
-				 	check_variable = { num_equipment_in_armies_k@infantry_equipment > 50 }
-				}
-			}
+			# 	custom_trigger_tooltip = {
+			# 	 	tooltip = GER_anschluss_eq_trigger_tt
+			# 	 	check_variable = { num_equipment_in_armies_k@infantry_equipment > 50 }
+			# 	}
+			# }
 			
-			NOT = { has_idea = rhineland_challenge_met }
+			#NOT = { has_idea = rhineland_challenge_met }
 			if = {
 				limit = {
 					SWI = { has_completed_focus = SWI_gotthard_union }
 				}
 				NOT = { 
 					AUS = { has_idea = SWI_swiss_democratic_propaganda }
+				}
+			}
+
+			OR = {
+				AND = {
+					has_army_manpower = { size > 549999 }
+					custom_trigger_tooltip = {
+						tooltip = GER_anschluss_eq_trigger_tt
+						check_variable = { num_equipment_in_armies_k@infantry_equipment > 50 }
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = GER_anschluss_army_trigger_tt
+					fighting_army_strength_ratio = {
+						tag = AUS
+						ratio > global.deployed_manpower_ratio_needed_for_anschluss
+					}
 				}
 			}
 
