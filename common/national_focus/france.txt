@@ -519,6 +519,7 @@
 				limit = {
 					not = { is_core_of = ROOT }
 					not = { is_on_continent = europe }
+					has_resistance = yes
 				}
 				add_compliance = 10
 			}
@@ -718,9 +719,9 @@
 		search_filters = {  FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			custom_effect_tooltip = FRA_colonial_industry_effect_tt
-			every_owned_state = {
+			every_state = {
 				limit = {
-					is_controlled_by = ROOT
+					is_owned_or_subject_trigger = yes 
 					has_state_flag = FRA_colonial_industry_target
 				}
 				add_building_construction = {
@@ -1593,7 +1594,7 @@
 			army_experience = 5
 			add_tech_bonus = {
 				name = FRA_mechanized_focus
-				bonus = 0.5
+				bonus = 0.4
 				uses = 1
 				category = cat_mechanized_equipment
 			}
@@ -1704,8 +1705,8 @@
 			}
 			add_tech_bonus = {
 				name = FRA_artillery_focus
-				bonus = 0.5
-				uses = 2
+				bonus = 0.75
+				uses = 1
 				category = heavy_artillery
 			}
 		}
