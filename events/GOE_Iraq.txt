@@ -1000,27 +1000,27 @@ country_event = {
 				}
 			}
 		}
-		FROM = {
-			IF = { 
-				limit = { 
-					tag = SYR 
-				} 
-				ROOT = { 
-					create_wargoal = {
-						target = PREV
-						type = puppet_wargoal_focus
-					}
+		IF = { 
+			limit = { 
+				FROM = { tag = SYR }
+			} 
+			ROOT = { 
+				create_wargoal = {
+					target = FROM
+					type = puppet_wargoal_focus
 				}
 			}
-			ELSE = {
-				every_owned_state = {
-					limit = {
-						is_core_of = SYR
-					}
-					add_claim_by = ROOT
+		}
+		ELSE = {
+			every_owned_state = {
+				limit = {
+					is_core_of = SYR
 				}
+				add_claim_by = ROOT
+			}
+			ROOT = {
 				create_wargoal = {
-					target = PREV
+					target = FROM
 					type = take_claimed_state
 				}
 			}

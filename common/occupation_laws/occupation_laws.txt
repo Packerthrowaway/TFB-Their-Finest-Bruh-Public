@@ -80,6 +80,17 @@ no_garrison = {
 
 	visible = {
 		NOT = {has_government = fascism}
+		if = {
+			limit = {
+				original_tag = RAJ
+				has_dlc = "Graveyard of Empires"
+			}
+
+			NOT = {
+				RAJ = { has_country_flag = RAJ_hide_no_garrison } 
+			}
+
+		}
 	}
 
 	available = {
@@ -818,8 +829,6 @@ princely_subjugation= {
 				original_tag = KLT
 			}
 		}
-
-		
 	}
 
 	state_modifier = {

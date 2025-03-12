@@ -824,6 +824,9 @@ country_event = {
 	#exit war
 	option = {
 		name = GOE_RAJ.24.a
+		RAJ = {
+			set_country_flag = stop_unrest_events
+		}
 		if = {
 			limit = {
 				659 = {
@@ -1119,20 +1122,18 @@ country_event = {
 			base = 1
 		}
 		add_ideas = idea_RAJ_the_long_goodbye
-		effect_tooltip = {
-			if = {
-				limit = {
-					NOT = {
-						has_autonomy_state = autonomy_dominion
-					}
+		if = {
+			limit = {
+				NOT = {
+					has_autonomy_state = autonomy_dominion
 				}
-				set_autonomy = {
-					target=RAJ
-					autonomy_state = autonomy_dominion
-					freedom_level = 0 # 0-1 
-					end_wars  = no # default yes. will not cancel non civil wars if set to no
-					end_civil_wars = no # default yes. will not cancel civil wars if set to no
-				}
+			}
+			set_autonomy = {
+				target=RAJ
+				autonomy_state = autonomy_dominion
+				freedom_level = 0 # 0-1 
+				end_wars  = no # default yes. will not cancel non civil wars if set to no
+				end_civil_wars = no # default yes. will not cancel civil wars if set to no
 			}
 		}
 	}
@@ -1411,8 +1412,115 @@ country_event = {
 			 can_join_factions = yes 
 		}
 	}
-
 }
+
+country_event = {  #Warn about garrison not being set, hidden event
+	id = GOE_RAJ.36
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = RAJ_only_send_one_event
+			}
+			clr_country_flag = RAJ_only_send_one_event
+		}
+		
+		every_owned_state = {
+			limit = { has_resistance = yes }
+			if = {
+				limit = { 
+					RAJ = { NOT = { has_country_flag = RAJ_only_send_one_event } } 
+				}
+
+				if = {
+					limit = { occupation_law = no_garrison }
+					RAJ = { set_country_flag = RAJ_only_send_one_event }
+					if = {
+						limit = {
+							RAJ = { NOT = { has_country_flag = RAJ_has_been_warned_about_garrison } }
+						}
+						RAJ = { 
+							set_country_flag = RAJ_has_been_warned_about_garrison 
+							country_event = {
+								id = GOE_RAJ.37
+								hours = 2
+							}
+						} 
+					}
+					else = {
+						RAJ = { 
+							country_event = {
+								id = GOE_RAJ.38
+								hours = 2
+							}
+						} 
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_completed_focus = RAJ_give_me_blood_and_i_will_grant_you_freedom } #Invoke itself
+			}
+
+			country_event = {
+				id = GOE_RAJ.36
+				days = 22
+				random_days = 15 
+			}
+		}
+
+		if = {
+			limit = {
+				has_country_flag = RAJ_only_send_one_event
+			}
+			clr_country_flag = RAJ_only_send_one_event
+		}
+	}
+}
+
+country_event = { #Warn once about garrison not being set 
+	id = GOE_RAJ.37
+	is_triggered_only = yes
+	title =  GOE_RAJ.37.t
+	desc =  GOE_RAJ.37.desc
+	option = {
+		name = GOE_RAJ.37.a
+        every_owned_state = {
+            limit = { 
+            	has_resistance = yes
+            	occupation_law = no_garrison 
+            	
+            }
+        	set_occupation_law = local_police_force_garrison
+
+        }
+	}
+}
+
+country_event = { #No more warning 
+	id = GOE_RAJ.38
+	is_triggered_only = yes
+	title =  GOE_RAJ.38.t
+	desc =  GOE_RAJ.38.desc
+	option = {
+		name = GOE_RAJ.38.a
+
+        every_owned_state = {
+        	limit = {
+        		has_resistance = yes
+        		occupation_law = no_garrison 
+        	}
+            set_occupation_law = local_police_force_garrison
+            set_resistance = 0
+
+        }
+        add_stability = -0.1
+	}
+}
+
 ##########
 #Partition
 ##########
@@ -3590,20 +3698,22 @@ country_event = {
 		}
 		has_idea = RAJ_risk_of_famine
 		original_tag = RAJ
-		OR = {
-			OR = {
-				any_of_scopes = {
-					array =  RAJ.owned_states_at_game_start 
-					controller = {
-						has_war_with = RAJ
-						NOT = { original_tag = RAJ }
-					}
-					NOT = { has_state_flag = RAJ_time_to_retake_state_famine }
-					NOT = { state = 992 }
+		any_of_scopes = {
+			array =  RAJ.owned_states_at_game_start 
+			controller = {
+				has_war_with = RAJ
+				NOT = { original_tag = RAJ }
+				NOT = {
+					is_in_array = {
+						array = RAJ.raj_releasables
+						value = THIS
+					}	
 				}
+				NOT = { is_subject_of = RAJ }
 			}
+			NOT = { has_state_flag = RAJ_time_to_retake_state_famine }
+			NOT = { state = 992 }
 		}
-
 
 	}
 

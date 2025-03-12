@@ -1028,43 +1028,6 @@ focus_tree = {
 		}
 	}
 
-	focus = { #INDUSTRIAL
-		id = PER_deal_with_eitc
-		icon = GFX_focus_PLACEHOLDER
-		prerequisite = { focus = PER_oil_baron }
-		x = -2
-		y = 1
-		relative_position_id = PER_oil_baron
-		cost = 10
-		
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		allow_branch = {
-			RAJ = {
-				has_completed_focus = RAJ_incorporation_of_the_east_india_company
-			}
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-			FOCUS_FILTER_POLITICAL
-		}
-
-		completion_reward = {
-			#TODO_EILIDH: add effect when EITC has been fleshed out
-		}
-	}
-
 	################################
 	######### ARMY BRANCH ##########
 	################################
@@ -5098,13 +5061,17 @@ focus_tree = {
 			IF = {
 				limit = {
 					is_subject = no
-					}
+				}
 				every_enemy_country = {
 					IF = {
 						limit = {
 							has_country_flag = PER_invading_country_flag
-							NOT = { original_tag = ENG }
-							NOT = { original_tag = SOV }
+							NOT = { 
+								OR = {
+									has_global_flag = SOV_soviet_invasion_of_iran_flag
+									has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+								}
+							 }
 						}
 						country_event = {
 						id = PER_imperial_events.180
@@ -7207,7 +7174,7 @@ focus_tree = {
 					division_template = {
 						name = "Immortal Legion"		
 						is_locked = no
-						template_counter = 107 #TODO_EILIDH CHANGE TO UNIQUE
+						template_counter = 107 
 						regiments = {
 							infantry = { x = 0 y = 0 }
 							infantry = { x = 0 y = 1 }
@@ -7215,7 +7182,17 @@ focus_tree = {
     				    	infantry = { x = 1 y = 0 }
 							infantry = { x = 1 y = 1 }
 							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+							artillery_brigade = { x = 3 y = 0 }
 						}
+
+						support = {
+    					    engineer = { x = 0 y = 0 }
+    					    #artillery = { x = 0 y = 1 }
+						}
+
 						override_model = PER_infantry_alt_0_entity
 					}
 	
@@ -8775,7 +8752,12 @@ focus_tree = {
 		}
 
 		bypass = {
-
+			OR = {
+				has_completed_focus = PER_iranian_socialist_revolution
+				has_completed_focus = PER_strengthen_iranian_parliament
+				has_completed_focus = PER_force_abdication
+				has_completed_focus = PER_march_on_saadabad
+			}
 		}
 
 		allow_branch = {
@@ -8814,7 +8796,12 @@ focus_tree = {
 		}
 
 		bypass = {
-
+			OR = {
+				has_completed_focus = PER_iranian_socialist_revolution
+				has_completed_focus = PER_strengthen_iranian_parliament
+				has_completed_focus = PER_force_abdication
+				has_completed_focus = PER_march_on_saadabad
+			}
 		}
 
 		allow_branch = {
@@ -9105,6 +9092,8 @@ focus_tree = {
 
 				custom_effect_tooltip = PER_strengthen_iranian_parliament_tt
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
 			remove_dynamic_modifier = { modifier = PER_opposition_modifier }
 			hidden_effect = {
 				IF = {
@@ -9595,6 +9584,10 @@ focus_tree = {
 				has_government = neutrality 
 			}
 			neutrality > 0.2
+
+			NOT = {
+				has_global_flag = PER_civil_war_happened
+			}
 		}
 
 		bypass = {
@@ -9840,20 +9833,22 @@ focus_tree = {
 		}
 
 		bypass = {
-			is_subject = yes
 			OR = {
-				AND = {
-					is_in_faction_with = ENG
-					ENG = { 
-						has_government = democratic 
-						is_faction_leader = yes
+				is_subject = yes
+				OR = {
+					AND = {
+						is_in_faction_with = ENG
+						ENG = { 
+							has_government = democratic 
+							is_faction_leader = yes
+						}
 					}
-				}
-				AND = {
-					is_in_faction_with = USA
-					USA = {
-						has_government = democratic
-						is_faction_leader = yes
+					AND = {
+						is_in_faction_with = USA
+						USA = {
+							has_government = democratic
+							is_faction_leader = yes
+						}
 					}
 				}
 			}
@@ -10425,8 +10420,6 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			remove_ideas = PER_islamic_traditions_ns
-			remove_ideas = PER_anglo_iranian_oil_ns
 			remove_dynamic_modifier = { modifier = PER_opposition_modifier }
 			IF = {
 				limit = {	
@@ -10463,6 +10456,9 @@ focus_tree = {
 				set_politics = { 
 					ruling_party = communism
 					elections_allowed = no
+				}
+				hidden_effect = {
+					set_global_flag = PER_non_lethal_takeover
 				}
 			}
 		}
