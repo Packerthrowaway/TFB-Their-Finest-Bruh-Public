@@ -6080,10 +6080,7 @@ focus_tree = {
 
 			custom_effect_tooltip = GER_controls_atlantic_coast_brittany_finnmark_effects_tt
 			every_state = {
-				limit = { 
-					anti_air_building < 5
-					state_is_fully_controlled_by_ROOT_or_subject = yes
-					is_coastal = yes 
+				limit = {
 					OR = {
 						state = 925
 						state = 924
@@ -6112,6 +6109,10 @@ focus_tree = {
 						state = 15
 						state = 14
 					}
+					anti_air_building < 5
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+					is_coastal = yes 
+
 				}
 				add_building_construction = {
 					type = anti_air_building
@@ -6497,7 +6498,7 @@ focus_tree = {
 		x = 12
 		y = 0
 		relative_position_id = GER_expanding_the_luftwaffe
-		cost = 5
+		cost = 4
 		available = {
 		}
 
@@ -6535,7 +6536,7 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = GER_strengthen_the_kriegsmarine
-		cost = 5
+		cost = 4
 		available = {
 			OR = {
 				NOT = { has_completed_focus = GER_trade_interdiction }
@@ -6578,7 +6579,7 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = GER_plan_z
-		cost = 5
+		cost = 4
 		available = {
 			#NOT = { has_completed_focus = GER_high_seas_fleet }
 		}
@@ -6892,7 +6893,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = GER_expand_kriegsmarinewerft
-		cost = 5
+		cost = 4
 		available = {
 			NOT = { has_completed_focus = GER_high_seas_fleet }
 			has_tech = early_ship_hull_carrier
@@ -7100,7 +7101,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_expand_kriegsmarinewerft
-		cost = 5
+		cost = 4
 		available = {
 			NOT = { has_completed_focus = GER_high_seas_fleet }
 			has_tech = improved_ship_hull_heavy
@@ -7267,7 +7268,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_construct_aircraft_carriers
-		cost = 5
+		cost = 4
 		available = {
 		}
 
@@ -7342,7 +7343,7 @@ focus_tree = {
 		x = 0
 		y = 2
 		relative_position_id = GER_strengthen_the_kriegsmarine
-		cost = 5
+		cost = 4
 		available = {
 		}
 
@@ -7382,7 +7383,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = GER_re_establish_the_seekriegsleitung
-		cost = 5
+		cost = 4
 		available = {
 		}
 
@@ -7430,7 +7431,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_re_establish_the_seekriegsleitung
-		cost = 5
+		cost = 4
 		available = { #These states start out with naval bases in western France
 			14 = { #Brittany
 				state_is_fully_controlled_by_ROOT_or_subject = yes
@@ -7521,7 +7522,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_marinestosstrupp
-		cost = 5
+		cost = 4
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = GER_controls_an_atantic_island_tt
@@ -7659,7 +7660,7 @@ focus_tree = {
 		x = 2
 		y = 1
 		relative_position_id = GER_strengthen_the_kriegsmarine
-		cost = 5
+		cost = 4
 	
 		available = {
 			OR = {
@@ -7704,7 +7705,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_trade_interdiction
-		cost = 5
+		cost = 4
 		available = {
 			NOT = { has_completed_focus = GER_unrestricted_convoy_raiding }
 		}
@@ -7832,7 +7833,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = GER_cruiser_warfare
-		cost = 5
+		cost = 4
 		available = {
 			NOT = { has_completed_focus = GER_unrestricted_convoy_raiding }
 		}
@@ -7847,30 +7848,30 @@ focus_tree = {
 				category = ca_tech
 			}
 
-			IF = {
-				limit = {
-					has_dlc =  "Man the Guns"
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				create_equipment_variant = {
-					name = "Panzer Class"
-					type = ship_hull_cruiser_3
-					name_group = GER_CA_HISTORICAL
-					modules = {
-						fixed_ship_battery_slot = ship_medium_battery_2
-						fixed_ship_anti_air_slot = ship_anti_air_1
-						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-						fixed_ship_radar_slot = ship_radar_1
-						fixed_ship_engine_slot= cruiser_ship_engine_3
-						fixed_ship_armor_slot = ship_armor_cruiser_2
-						fixed_ship_secondaries_slot = ship_secondaries_1
-						front_1_custom_slot = ship_anti_air_1
-						mid_1_custom_slot = ship_anti_air_1
-						mid_2_custom_slot = ship_airplane_launcher_1
-						rear_1_custom_slot = ship_medium_battery_2
-					}
-				}	
-			}
+			# IF = {
+			# 	limit = {
+			# 		has_dlc =  "Man the Guns"
+			# 	}
+			# 	custom_effect_tooltip = generic_skip_one_line_tt
+			# 	create_equipment_variant = {
+			# 		name = "Panzer Class"
+			# 		type = ship_hull_cruiser_3
+			# 		name_group = GER_CA_HISTORICAL
+			# 		modules = {
+			# 			fixed_ship_battery_slot = ship_medium_battery_2
+			# 			fixed_ship_anti_air_slot = ship_anti_air_1
+			# 			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			# 			fixed_ship_radar_slot = ship_radar_1
+			# 			fixed_ship_engine_slot= cruiser_ship_engine_3
+			# 			fixed_ship_armor_slot = ship_armor_cruiser_2
+			# 			fixed_ship_secondaries_slot = ship_secondaries_1
+			# 			front_1_custom_slot = ship_anti_air_1
+			# 			mid_1_custom_slot = ship_anti_air_1
+			# 			mid_2_custom_slot = ship_airplane_launcher_1
+			# 			rear_1_custom_slot = ship_medium_battery_2
+			# 		}
+			# 	}	
+			# }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
@@ -7909,7 +7910,7 @@ focus_tree = {
 		x = 3
 		y = 1
 		relative_position_id = GER_trade_interdiction
-		cost = 5
+		cost = 4
 		available = {
 			NOT = { has_completed_focus = GER_unrestricted_convoy_raiding }
 			has_war = yes
@@ -7978,7 +7979,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = GER_wolfpack_tactics
-		cost = 5
+		cost = 4
 		available = {
 			NOT = { has_completed_focus = GER_unrestricted_convoy_raiding }
 		}
@@ -8085,7 +8086,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_panzerschiff_raiders
-		cost = 5
+		cost = 4
 		available = {
 		}
 
@@ -8163,7 +8164,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = GER_atlantic_naval_dominance
 
-		cost = 5
+		cost = 4
 		available = {
 		}
 
@@ -15053,9 +15054,9 @@ focus_tree = {
 					reverse_add_opinion_modifier = { target = ITA modifier = GER_first_ljubljana_award_other }
 				}				
 			}
-			#hidden_effect = {
-			#	news_event = { hours = 6 id = news.208 }
-			#}
+			hidden_effect = {
+				news_event = { days = 1 id = news.168 }
+			}
 		}
 	}
 

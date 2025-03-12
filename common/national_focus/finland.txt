@@ -7736,6 +7736,13 @@ focus_tree = {
 			is_subject = no
 			has_government = fascism
 			is_in_faction = yes #More generic instead of checking for GER or ITA since there can be scenarios in which FIN goes with someone else like JAP, fascist ENG, etc.
+			OR = {
+				SOV = {
+					has_completed_focus = SOV_baltic_security
+				}
+				has_global_flag = SOV_winter_war_win
+				has_global_flag = SOV_winter_war_loss
+			}
 		}
 
 		available = {
@@ -10545,7 +10552,7 @@ focus_tree = {
 			
 			if = {
 				limit = {
-					has_tech = synth_oil_experiments
+					has_tech = rubber_processing
 				}
 				FIN_nokia_tires_after_tech_effect = yes
 			}
@@ -13449,12 +13456,13 @@ focus_tree = {
 		relative_position_id = FIN_national_aircraft_production
 		cost = 5
 		available = {
-			if = {
-				limit = {
-					has_dlc = "By Blood Alone"
-				}
-				has_tech = early_fighter
-			}
+			# if = {
+			# 	limit = {
+			# 		has_dlc = "By Blood Alone"
+			# 	}
+			# 	has_tech = early_fighter
+			# }
+			has_tech = cas1
 		}
 
 		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }

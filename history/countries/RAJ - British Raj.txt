@@ -1,28 +1,28 @@
 capital = 439
-if = {
-	limit = {
-		AND = {
-			has_dlc = "Graveyard of Empires"
-			is_using_old_raj = no
-		}
-	}
-	set_oob = "RAJ_1936_GOE"
-}
-if = {
-	limit = {
-		OR = {
-			is_using_old_raj = yes
-			NOT = { has_dlc = "Graveyard of Empires" }
-		}
-	}
-	set_oob = "RAJ_1936"	
-}
+# if = {
+# 	limit = {
+# 		AND = {
+# 			has_dlc = "Graveyard of Empires"
+# 			is_using_old_raj = no
+# 		}
+# 	}
+# 	set_oob = "RAJ_1936_GOE"
+# }
+# if = {
+# 	limit = {
+# 		OR = {
+# 			is_using_old_raj = yes
+# 			NOT = { has_dlc = "Graveyard of Empires" }
+# 		}
+# 	}
+# 	set_oob = "RAJ_1936"	
+# }
 
-		set_air_oob = "RAJ_1936_air_legacy"
-		set_technology = {
-			CAS1 = 1
-			early_fighter = 1
-		}
+set_air_oob = "RAJ_1936_air_legacy"
+set_technology = {
+	CAS1 = 1
+	early_fighter = 1
+}
 
 
 set_stability = 0.6
@@ -171,6 +171,9 @@ if = {
 	}
 }
 
+
+}
+
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
@@ -186,16 +189,16 @@ if = {
 		
 	}
 
-	if = {
-		limit = { 		
-			OR = {
-				is_using_old_raj = yes
-				NOT = { has_dlc = "Graveyard of Empires" }
-			} 
-		}
-		add_ideas = RAJ_agrarian_society
+	# if = {
+	# 	limit = { 		
+	# 		OR = {
+	# 			is_using_old_raj = yes
+	# 			NOT = { has_dlc = "Graveyard of Empires" }
+	# 		} 
+	# 	}
+		#add_ideas = RAJ_agrarian_society
 		
-	}
+	# }
 
 	add_ideas = {
 		RAJ_princely_states
@@ -222,20 +225,20 @@ if = {
 # 	}
 # }
 
-if = {
-	limit = {
-		AND = {
-			has_dlc = "Graveyard of Empires"
-			is_using_old_raj = no
-		}
-	}
-	add_dynamic_modifier = { modifier = idea_RAJ_agrarian_society } 		
-	set_variable = { RAJ_agrarian_society_conscription_factor = -0.72 } #3
-	set_variable = { RAJ_agrarian_society_mobilization_laws_cost_factor = 2.16 } #9
-	set_variable = { RAJ_agrarian_society_mobilization_speed = -0.72 } #3
-	add_ideas = idea_RAJ_great_depression_1
+# if = {
+# 	limit = {
+# 		AND = {
+# 			has_dlc = "Graveyard of Empires"
+# 			is_using_old_raj = no
+# 		}
+# 	}
+# 	add_dynamic_modifier = { modifier = idea_RAJ_agrarian_society } 		
+# 	set_variable = { RAJ_agrarian_society_conscription_factor = -0.72 } #3
+# 	set_variable = { RAJ_agrarian_society_mobilization_laws_cost_factor = 2.16 } #9
+# 	set_variable = { RAJ_agrarian_society_mobilization_speed = -0.72 } #3
+# 	add_ideas = idea_RAJ_great_depression_1
 
-}
+# }
 
 set_convoys = 80
 
@@ -489,13 +492,13 @@ if = {
 	}
 }
 
-if = {
-	limit = {
-		AND = {
-			has_dlc = "Graveyard of Empires"
-			is_using_old_raj = no
-		}
-	}
+# if = {
+# 	limit = {
+# 		AND = {
+# 			has_dlc = "Graveyard of Empires"
+# 			is_using_old_raj = no
+# 		}
+# 	}
 
 	add_equipment_to_stockpile = { 
 		type = infantry_equipment_0 #for Garrison aid
@@ -512,7 +515,7 @@ if = {
 		amount = 300
 		producer = RAJ
 	}
-}
+# }
 # if = {
 # 	limit = { #If not having goe core everything again since non dlc cant recore
 # 		NOT = { has_dlc = "Graveyard of Empires" }

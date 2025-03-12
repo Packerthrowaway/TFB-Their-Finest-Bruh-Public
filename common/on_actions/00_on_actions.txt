@@ -2650,113 +2650,113 @@ on_actions = {
 				}
 			}
 			RAJ = {
-				if = {
-					limit = {
-						has_dlc = "Together for Victory"
-						OR = {
-							is_using_old_raj = yes
-							NOT = { has_dlc = "Graveyard of Empires" }
-						}
-						OR = {
-							AND = {
-								is_historical_focus_on = no
-								has_game_rule = {
-									rule = RAJ_ai_behavior
-									option = DEFAULT
-								}
-							}
-							has_game_rule = {
-								rule = RAJ_ai_behavior
-								option = RANDOM
-							}
-						}
-					}
-					random_list = {
-						25 = { set_country_flag = RAJ_AI_RANDOM_COMMUNIST }
-						50 = { set_country_flag = RAJ_AI_DEMOCRATIC_HISTORICAL }
-						25 = { set_country_flag = RAJ_AI_RANDOM_FASCIST }
+				# if = {
+				# 	limit = {
+				# 		has_dlc = "Together for Victory"
+				# 		OR = {
+				# 			is_using_old_raj = yes
+				# 			NOT = { has_dlc = "Graveyard of Empires" }
+				# 		}
+				# 		OR = {
+				# 			AND = {
+				# 				is_historical_focus_on = no
+				# 				has_game_rule = {
+				# 					rule = RAJ_ai_behavior
+				# 					option = DEFAULT
+				# 				}
+				# 			}
+				# 			has_game_rule = {
+				# 				rule = RAJ_ai_behavior
+				# 				option = RANDOM
+				# 			}
+				# 		}
+				# 	}
+				# 	random_list = {
+				# 		25 = { set_country_flag = RAJ_AI_RANDOM_COMMUNIST }
+				# 		50 = { set_country_flag = RAJ_AI_DEMOCRATIC_HISTORICAL }
+				# 		25 = { set_country_flag = RAJ_AI_RANDOM_FASCIST }
 
-					}
-				}
+				# 	}
+				# }
 
-				if = {
-					limit = {
-						AND = {
-							has_dlc = "Graveyard of Empires"
-							is_using_old_raj = no
-						}
-						OR = {
-							AND = {
-								is_historical_focus_on = no
-								has_game_rule = {
-									rule = RAJ_ai_behavior
-									option = DEFAULT
-								}
-							}
-							has_game_rule = {
-								rule = RAJ_ai_behavior
-								option = RANDOM
-							}
-						}
-					}
+				# if = {
+				# 	limit = {
+				# 		AND = {
+				# 			has_dlc = "Graveyard of Empires"
+				# 			is_using_old_raj = no
+				# 		}
+				# 		OR = {
+				# 			AND = {
+				# 				is_historical_focus_on = no
+				# 				has_game_rule = {
+				# 					rule = RAJ_ai_behavior
+				# 					option = DEFAULT
+				# 				}
+				# 			}
+				# 			has_game_rule = {
+				# 				rule = RAJ_ai_behavior
+				# 				option = RANDOM
+				# 			}
+				# 		}
+				# 	}
 
-					random_list = {
-						40 = {
-							modifier = {
-								factor = 0.25
-								game_weight_can_add_democratic = no
-							}
-							set_country_flag = RAJ_AI_RANDOM_INDIA_UNITED
-							set_add_democratic_weight_small = yes
-						}
+				# 	random_list = {
+				# 		40 = {
+				# 			modifier = {
+				# 				factor = 0.25
+				# 				game_weight_can_add_democratic = no
+				# 			}
+				# 			set_country_flag = RAJ_AI_RANDOM_INDIA_UNITED
+				# 			set_add_democratic_weight_small = yes
+				# 		}
 
-						10 = {
-							modifier = {
-								factor = 0.1
-								game_weight_can_add_fascist = no
-							}
-							set_country_flag = RAJ_AI_RANDOM_INDIA_BOSE
-							set_add_fascist_weight_small = yes
-						}
+				# 		10 = {
+				# 			modifier = {
+				# 				factor = 0.1
+				# 				game_weight_can_add_fascist = no
+				# 			}
+				# 			set_country_flag = RAJ_AI_RANDOM_INDIA_BOSE
+				# 			set_add_fascist_weight_small = yes
+				# 		}
 
-						10 = {
-							modifier = {
-								factor = 0.10
-								game_weight_can_add_fascist = no
-							}
-							set_country_flag = RAJ_AI_RANDOM_INDIA_HINDUTVA
-							set_add_fascist_weight_small = yes
-						}
+				# 		10 = {
+				# 			modifier = {
+				# 				factor = 0.10
+				# 				game_weight_can_add_fascist = no
+				# 			}
+				# 			set_country_flag = RAJ_AI_RANDOM_INDIA_HINDUTVA
+				# 			set_add_fascist_weight_small = yes
+				# 		}
 
-						15 = {
-							modifier = {
-								factor = 0.15
-								game_weight_can_add_unaligned = no
-							}
-							set_country_flag = RAJ_AI_RANDOM_INDIA_EAST_INDIA_COMPANY
-							set_add_unaligned_weight_small = yes
-						}
+				# 		15 = {
+				# 			modifier = {
+				# 				factor = 0.15
+				# 				game_weight_can_add_unaligned = no
+				# 			}
+				# 			set_country_flag = RAJ_AI_RANDOM_INDIA_EAST_INDIA_COMPANY
+				# 			set_add_unaligned_weight_small = yes
+				# 		}
 
-						10 = {
-							modifier = {
-								factor = 0.10
-								game_weight_can_add_unaligned = no
-							}
-							set_country_flag = RAJ_AI_RANDOM_INDIA_MUGHAL
-							set_add_unaligned_weight_small = yes
-						}
+				# 		10 = {
+				# 			modifier = {
+				# 				factor = 0.10
+				# 				game_weight_can_add_unaligned = no
+				# 			}
+				# 			set_country_flag = RAJ_AI_RANDOM_INDIA_MUGHAL
+				# 			set_add_unaligned_weight_small = yes
+				# 		}
 
-						15 = {
-							modifier = {
-								factor = 0.15
-								game_weight_can_add_communist = no
-							}
-							set_country_flag = RAJ_AI_RANDOM_INDIA_COMMUNISM
-							set_add_communist_weight_small = yes
-						}
+				# 		15 = {
+				# 			modifier = {
+				# 				factor = 0.15
+				# 				game_weight_can_add_communist = no
+				# 			}
+				# 			set_country_flag = RAJ_AI_RANDOM_INDIA_COMMUNISM
+				# 			set_add_communist_weight_small = yes
+				# 		}
 
-					}
-				}
+				# 	}
+				# }
 			}
 			POL = {
 				if = {
@@ -3795,22 +3795,22 @@ on_actions = {
 					}
 				}
 			}
-			RAJ = {
-				if = {
-					limit = { 
-						has_dlc = "Together for Victory" 
-						OR = {
-							is_using_old_raj = yes
-							NOT = { has_dlc = "Graveyard of Empires" }
-						}
-					}
+			# RAJ = {
+			# 	if = {
+			# 		limit = { 
+			# 			has_dlc = "Together for Victory" 
+			# 			OR = {
+			# 				is_using_old_raj = yes
+			# 				NOT = { has_dlc = "Graveyard of Empires" }
+			# 			}
+			# 		}
 					
 					
-					set_variable = { RAJ_agrarian_society_value = -0.70 }
-					add_dynamic_modifier = { modifier = RAJ_agrarian_society_dynamic }
-					remove_ideas = RAJ_agrarian_society #For startup screen
-				}
-			}
+			# 		set_variable = { RAJ_agrarian_society_value = -0.70 }
+			# 		add_dynamic_modifier = { modifier = RAJ_agrarian_society_dynamic }
+			# 		remove_ideas = RAJ_agrarian_society #For startup screen
+			# 	}
+			# }
 			SWE = {
 				if = {
 					limit = {
