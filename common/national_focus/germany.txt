@@ -1221,7 +1221,7 @@ focus_tree = {
 		x = 2
 		y = 1
 		relative_position_id = GER_construct_the_reichsautobahn
-		cost = 5
+		cost = 2
 		available = {
 			is_subject = no
 			AND = {
@@ -1379,6 +1379,9 @@ focus_tree = {
 				52 = { #Oberbayern
 					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
+				50 = { #Wurttemberg
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
 				152 = { #Upper Austria
 					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
@@ -1418,6 +1421,21 @@ focus_tree = {
 					}
 				}
 				52 = { 
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					50 = { #Wurttemberg
+						infrastructure < 10
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				50 = { 
 					add_building_construction = {
 						type = infrastructure
 						level = 2
@@ -1493,10 +1511,16 @@ focus_tree = {
 				63 = { #Hinterpommern
 					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
+				62 = { #Vorpommern
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
 				807 = { #Gdynia
 					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
 				85 = { #Danzig
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
+				86 = { #Ponzan
 					state_is_fully_controlled_by_ROOT_or_subject = yes
 				}
 			}
@@ -1541,6 +1565,21 @@ focus_tree = {
 			}
 			if = {
 				limit = {
+					62 = { #Vorpommern
+						infrastructure < 10
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				62 = { 
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
 					807 = { #Gdynia
 						infrastructure < 10
 						state_is_fully_controlled_by_ROOT_or_subject = yes
@@ -1562,6 +1601,21 @@ focus_tree = {
 					}
 				}
 				85 = { 
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					86 = { #Ponzan
+						infrastructure < 10
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				86 = { 
 					add_building_construction = {
 						type = infrastructure
 						level = 2
@@ -1666,10 +1720,10 @@ focus_tree = {
 					}
 				}
 				random_select_amount = 2
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
