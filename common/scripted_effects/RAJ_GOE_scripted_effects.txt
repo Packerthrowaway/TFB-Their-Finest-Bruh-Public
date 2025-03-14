@@ -33,6 +33,7 @@ try_build_civ_in_core_otherwise_build_in_controlled = {
                 include_locked = yes
             }
             is_controlled_by = ROOT
+            NOT = { is_core_of = PAK }
         }
         add_extra_state_shared_building_slots = 2
         add_building_construction = {
@@ -89,6 +90,7 @@ try_build_dockyard_in_core_otherwise_build_in_controlled = {
             }
             is_coastal = yes
             is_controlled_by = ROOT
+            NOT = { is_core_of = PAK }
         }
         add_extra_state_shared_building_slots = 2
         add_building_construction = {
@@ -143,6 +145,7 @@ try_build_infra_in_core_otherwise_build_in_controlled = {
         limit = {
             infrastructure < 9
             is_controlled_by = ROOT
+            NOT = { is_core_of = PAK }
         }
         add_building_construction = {
              type = infrastructure
@@ -191,6 +194,7 @@ try_build_mil_in_core_otherwise_build_in_controlled = {
                 include_locked = yes
             }
             is_controlled_by = ROOT
+            NOT = { is_core_of = PAK }
         }
         add_extra_state_shared_building_slots = 2
         add_building_construction = {
@@ -677,7 +681,7 @@ calc_expected_consumer_goods_for_taxes = {
 eic_low_investments = {
     hidden_effect = {
         every_owned_state = {
-            random_select_amount = 1
+            random_select_amount = 2
             limit = { check_variable = { industrial_complex_level > 0 }  }
             remove_building = {
                 type = industrial_complex 
@@ -688,31 +692,12 @@ eic_low_investments = {
 
     custom_effect_tooltip = eic_low_investments_cost  #Need to update both tt and how many civs gets removed if changing
     custom_effect_tooltip = RAJ_GOE_modify_dividends
-    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.04 tooltip = production_factory_efficiency_gain_factor_tt } 
-    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.1 tooltip = production_speed_buildings_factor_tt }
+    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.025 tooltip = production_factory_efficiency_gain_factor_tt } 
+    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.075 tooltip = production_speed_buildings_factor_tt }
     custom_effect_tooltip = RAJ_GOE_modify_dividends_2
 }
 
 eic_normal_investments = {
-    hidden_effect = {
-        every_owned_state = {
-            random_select_amount = 2
-            limit = { check_variable = { industrial_complex_level > 0 }  }
-            remove_building = {
-                type = industrial_complex 
-                level = 1
-            }
-        }
-    }
-    
-    custom_effect_tooltip = eic_normal_investments_cost  #Need to update both tt and how many civs gets removed if changing
-    custom_effect_tooltip = RAJ_GOE_modify_dividends
-    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.09 tooltip = production_factory_efficiency_gain_factor_tt } 
-    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.23 tooltip = production_speed_buildings_factor_tt }
-    custom_effect_tooltip = RAJ_GOE_modify_dividends_2
-}
-
-eic_high_investments = {
     hidden_effect = {
         every_owned_state = {
             random_select_amount = 4
@@ -723,11 +708,30 @@ eic_high_investments = {
             }
         }
     }
+    
+    custom_effect_tooltip = eic_normal_investments_cost  #Need to update both tt and how many civs gets removed if changing
+    custom_effect_tooltip = RAJ_GOE_modify_dividends
+    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.075 tooltip = production_factory_efficiency_gain_factor_tt } 
+    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.15 tooltip = production_speed_buildings_factor_tt }
+    custom_effect_tooltip = RAJ_GOE_modify_dividends_2
+}
+
+eic_high_investments = {
+    hidden_effect = {
+        every_owned_state = {
+            random_select_amount = 8
+            limit = { check_variable = { industrial_complex_level > 0 }  }
+            remove_building = {
+                type = industrial_complex 
+                level = 1
+            }
+        }
+    }
     custom_effect_tooltip = eic_high_investments_cost  #Need to update both tt and how many civs gets removed if changing
 
     custom_effect_tooltip = RAJ_GOE_modify_dividends
-    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.16 tooltip = production_factory_efficiency_gain_factor_tt } 
-    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.35 tooltip = production_speed_buildings_factor_tt }
+    set_variable = { RAJ_eic_dividends_investment_efficiency_max = 0.15 tooltip = production_factory_efficiency_gain_factor_tt } 
+    set_variable = { RAJ_eic_dividends_investment_building_speed = 0.25 tooltip = production_speed_buildings_factor_tt }
     custom_effect_tooltip = RAJ_GOE_modify_dividends_2
 }
 

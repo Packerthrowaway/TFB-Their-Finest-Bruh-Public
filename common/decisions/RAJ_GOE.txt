@@ -2755,6 +2755,13 @@ RAJ_GOE_eic_hostile_takeover_cat = {
 			has_completed_focus = RAJ_hostile_takeover
 			FROM.owner = {
 				is_in_faction_with = RAJ
+				
+			}
+			OR = {
+				NOT = { FROM = { is_core_of = FROM.OWNER } }
+				FROM.OWNER = {
+					original_tag = RAJ
+				}
 			}
 		}
 		days_re_enable = 14
