@@ -2133,7 +2133,7 @@ leader_traits = {
 		type = navy
 		cost = 500
 		gain_xp = {
-			fastest_unit > 3.7
+			fastest_unit > 3
 		}
 		modifier = {
 			naval_retreat_chance = 0.2
@@ -2229,7 +2229,7 @@ leader_traits = {
 			}
 		}
 		custom_gain_xp_trigger_tooltip = IRONSIDE_TRIGGER_TT
-		cost = 500
+		cost = 300
 		modifier = {
 			naval_retreat_chance = -0.25
 			ships_at_battle_start = 0.1
@@ -2309,7 +2309,7 @@ leader_traits = {
 	lancer = {
 		type = navy
 		modifier = {
-			naval_torpedo_screen_penetration_factor = 0.1
+			naval_torpedo_screen_penetration_factor = 0.15
 		}
 				
 		ai_will_do = {
@@ -2536,9 +2536,20 @@ leader_traits = {
 
 	big_guns_expert = { 
 		type = navy
-		modifier = {
-			navy_capital_ship_attack_factor = 0.1
-		}
+		# modifier = {
+		# 	navy_capital_ship_attack_factor = 0.1
+		# }
+		sub_unit_modifiers = {
+			battleship = {
+				naval_damage_factor = 0.1
+			}
+			battle_cruiser = {
+				naval_damage_factor = 0.1
+			}
+			sh_battleship = {
+				naval_damage_factor = 0.1
+			}
+		}	
 				
 		slot = high_command
 		specialist_advisor_trait = navy_capital_ship_1
