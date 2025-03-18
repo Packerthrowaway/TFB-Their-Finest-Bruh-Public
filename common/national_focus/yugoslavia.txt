@@ -569,6 +569,16 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_political_power = 100
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.40
+			}
+			set_politics = {
+				ruling_party = fascism
+			}
+			YUG_milan_stojadinovic = {
+				add_country_leader_trait = NOR_fascist_lackey 
+			}
 		}
 	}
 
@@ -601,194 +611,14 @@
 			add_ideas = YUG_inward_perfection
 		}
 	}
-	focus = {
-		id = YUG_surrender_italian_claims
-		icon = GFX_focus_befriend_italy
-		prerequisite = { focus = YUG_inward_perfection }
-		x = -1
-		y = 1
-		relative_position_id = YUG_inward_perfection
-
-		cost = 8
-
-		ai_will_do = {
-			factor = 0
-		}
-
-		available = {
-			OR = {
-				GER = {
-					NOT = { has_war_with = ROOT }
-					has_government = fascism
-					has_capitulated = no
-					is_faction_leader = yes
-				}
-				any_other_country = {
-					is_major = yes
-					has_government = fascism
-					is_faction_leader = yes
-				}
-			}
-			NOT = {
-				any_other_country = {
-					is_in_faction_with = GER
-					has_war_with = YUG
-				}
-			}
-		}
-
-		bypass = {
-			is_in_faction_with = GER
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-
-		completion_reward = {
-			163 = { remove_core_of = ROOT }
-			163 = { add_core_of = ITA }
-			736 = { remove_core_of = ROOT }
-			852 = { remove_core_of = ROOT }
-			if = {
-				limit = {
-					GER = {
-						exists = yes
-						has_capitulated = no
-						has_government = fascism
-						is_faction_leader = yes
-					}
-				}
-				GER = { country_event = generic.2 }
-			}
-			else = {
-				get_best_alliance_match_fascism_effect = yes
-				var:best_leader = {
-					country_event = generic.2
-				}
-			}
-			add_ideas = YUG_italian_investments
-		}
-	}
-	focus = {
-		id = YUG_an_italian_friend
-		icon = GFX_focus_ITA_italian_irredentism
-		prerequisite = { focus = YUG_surrender_italian_claims }
-		x = 0
-		y = 1
-		relative_position_id = YUG_surrender_italian_claims
-
-		cost = 8
-
-		ai_will_do = {
-			factor = 40
-		}
-
-		available = {
-		}
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			add_ideas = YUG_ITA_trade
-			ITA= { add_ideas = ITA_YUG_trade }
-		}
-	}
-
-	focus = {
-		id = YUG_invite_german_military_mission
-		icon = GFX_focus_generic_military_mission
-		prerequisite = { focus = YUG_inward_perfection }
-		x = 1
-		y = 1
-		relative_position_id = YUG_inward_perfection
-
-		cost = 8
-
-		ai_will_do = {
-			factor = 100
-		}
-
-		available = {
-			GER = {
-				NOT = { has_war_with = ROOT }
-				exists = yes
-				has_capitulated = no
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-
-		complete_tooltip = {
-
-		}
-
-		completion_reward = {
-			IF = {
-				limit = {
-					has_idea = anti_german_military
-				}
-				remove_ideas = anti_german_military
-			}
-		}
-	}
-
-	focus = {
-		id = YUG_follow_by_example
-		icon = GFX_focus_ARG_fascist_researchers
-		prerequisite = { focus = YUG_invite_german_military_mission }
-		x = 0
-		y = 1
-		relative_position_id = YUG_invite_german_military_mission
-
-		cost = 8
-
-		ai_will_do = {
-			factor = 100
-		}
-
-		available = {
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
-
-		complete_tooltip = {
-
-		}
-
-		completion_reward = {
-			add_ideas = YUG_follow_by_example
-		}
-	}
 
 	focus = {
 		id = YUG_join_axis
 		icon = GFX_goal_support_fascism
-		prerequisite = { focus = YUG_an_italian_friend }
-		prerequisite = { focus = YUG_follow_by_example } 
-		x = 1
+		prerequisite = { focus = YUG_inward_perfection }
+		x = -1
 		y = 1
-		relative_position_id = YUG_an_italian_friend
+		relative_position_id = YUG_inward_perfection
 
 		cost = 8
 
@@ -905,12 +735,194 @@
 		}
 	}
 	focus = {
-		id = YUG_axis_research
-		icon = GFX_goal_tfv_generic_tech_sharing
+		id = YUG_an_italian_friend
+		icon = GFX_focus_ITA_italian_irredentism
 		prerequisite = { focus = YUG_join_axis }
 		x = 0
 		y = 1
 		relative_position_id = YUG_join_axis
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 40
+		}
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = YUG_ITA_trade
+			ITA= { add_ideas = ITA_YUG_trade }
+		}
+	}
+
+	focus = {
+		id = YUG_invite_german_military_mission
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = YUG_inward_perfection }
+		x = 1
+		y = 1
+		relative_position_id = YUG_inward_perfection
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		available = {
+			GER = {
+				NOT = { has_war_with = ROOT }
+				exists = yes
+				has_capitulated = no
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			IF = {
+				limit = {
+					has_idea = anti_german_military
+				}
+				remove_ideas = anti_german_military
+			}
+		}
+	}
+
+	focus = {
+		id = YUG_follow_by_example
+		icon = GFX_focus_ARG_fascist_researchers
+		prerequisite = { focus = YUG_invite_german_military_mission }
+		x = 0
+		y = 1
+		relative_position_id = YUG_invite_german_military_mission
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		available = {
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_ideas = YUG_follow_by_example
+		}
+	}
+
+	focus = {
+		id = YUG_surrender_italian_claims
+		icon = GFX_focus_befriend_italy
+		prerequisite = { focus = YUG_follow_by_example }
+		prerequisite = { focus = YUG_an_italian_friend }
+		x = 1
+		y = 1
+		relative_position_id = YUG_an_italian_friend
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		available = {
+			OR = {
+				GER = {
+					NOT = { has_war_with = ROOT }
+					has_government = fascism
+					has_capitulated = no
+					is_faction_leader = yes
+				}
+				any_other_country = {
+					is_major = yes
+					has_government = fascism
+					is_faction_leader = yes
+				}
+			}
+			NOT = {
+				any_other_country = {
+					is_in_faction_with = GER
+					has_war_with = YUG
+				}
+			}
+		}
+
+		bypass = {
+			is_in_faction_with = GER
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			163 = { remove_core_of = ROOT }
+			163 = { add_core_of = ITA }
+			736 = { remove_core_of = ROOT }
+			852 = { remove_core_of = ROOT }
+			if = {
+				limit = {
+					GER = {
+						exists = yes
+						has_capitulated = no
+						has_government = fascism
+						is_faction_leader = yes
+					}
+				}
+				GER = { country_event = generic.2 }
+			}
+			else = {
+				get_best_alliance_match_fascism_effect = yes
+				var:best_leader = {
+					country_event = generic.2
+				}
+			}
+			add_ideas = YUG_italian_investments
+		}
+	}
+
+	focus = {
+		id = YUG_axis_research
+		icon = GFX_goal_tfv_generic_tech_sharing
+		prerequisite = { focus = YUG_surrender_italian_claims }
+		x = 0
+		y = 1
+		relative_position_id = YUG_surrender_italian_claims
 
 		cost = 8
 
@@ -1303,10 +1315,7 @@
 				exists = yes
 				is_puppet = no
 				is_in_faction = no
-				has_government = communism
 			}
-			is_faction_leader = yes
-			is_subject = no
 		}
 
 		bypass = {
@@ -2267,8 +2276,7 @@
 	focus = {
 		id = YUG_expand_the_university_of_zagreb
 		icon = GFX_focus_research
-		prerequisite = { focus = YUG_expand_the_mining_industry }
-		prerequisite = { focus = YUG_rare_minerals_exploitation }
+		prerequisite = { focus = YUG_expand_the_mining_industry focus = YUG_rare_minerals_exploitation }
 		x = 1
 		y = 1
 		relative_position_id = YUG_expand_the_mining_industry
@@ -2280,9 +2288,9 @@
 		}
 
 		available = {
-			NOT = {
-				has_idea = YUG_idea_croatian_opposition
-			}
+			# NOT = {
+			# 	has_idea = YUG_idea_croatian_opposition
+			# }
 		}
 
 		bypass = {
