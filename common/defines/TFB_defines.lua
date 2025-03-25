@@ -114,7 +114,7 @@ NDefines.NProduction.ANNEX_CONVOYS_RATIO = 0.25			-- How many convoys will be tr
 NDefines.NProduction.CAPITULATE_STOCKPILES_RATIO = 0.75 -- How much equipment from deployed divisions will be transferred on capitulation
 NDefines.NProduction.CAPITULATE_FUEL_RATIO = 0.75 -- How much fuel will be transferred on capitulation
 NDefines.NProduction.MIN_FIELD_TO_TRAINING_MANPOWER_RATIO = 0.65	-- Ratio which % of army in field can be trained
-NDefines.NProduction.INFRA_MAX_CONSTRUCTION_COST_EFFECT = 0.6 		-- Building in a state with higher infrastructure will reduce the cost of shared buildings.
+NDefines.NProduction.INFRA_MAX_CONSTRUCTION_COST_EFFECT = 0.7 		-- Building in a state with higher infrastructure will reduce the cost of shared buildings.
 NDefines.NProduction.PRODUCTION_RESOURCE_LACK_PENALTY = -0.01			-- Penalty decrease while lack of resource per factory
 NDefines.NProduction.LICENSE_IC_COST_YEAR_INCREASE = 0.25					-- IC cost equipment for every year of equipment after 1936
 NDefines.NProduction.LICENSE_EQUIPMENT_BASE_SPEED = -0.20				-- base MIC speed modifier for licensed equipment
@@ -309,6 +309,12 @@ NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.2				-- ratio of the stats tha
 NDefines.NMilitary.OUT_OF_FUEL_SPEED_MULT = 0.4					-- speed mult that armies get when out of fuel
 NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 168             	-- default capacity if not specified
 NDefines.NMilitary.DAMAGE_SPLIT_ON_FIRST_TARGET = 0.2				--% of damage dealt to the first target in a combat. The rest will be split amongst subsequent targets. Modifiers can affect this up to a maximum of 0.9. That value must not be exposed as a define.
+NDefines.NMilitary.UNIT_LEADER_TRAIT_SLOT_PER_LEVEL = { 			-- num extra traits on each level
+		0.5, -- field marshal
+		0.5, -- corps commander
+		0.35, -- navy general
+		0.0, -- operative
+	}
 
 NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 500
 NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 300
@@ -484,7 +490,7 @@ NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns if target ih profil
 NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE 										= 80	-- hit profile for depth charges
 NDefines.NNavy.BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
 	3.0,	-- big guns
-	4.0,	-- torpedoes
+	5.0,	-- torpedoes
 	2.0,	-- small guns
 }
 NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_CHANCE 									= 0.25		-- chance for critical hit from torpedo.
@@ -494,7 +500,7 @@ NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.25 		-- multiplies hit
 NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 2.0						-- Bonus to critical chance when shooter armor piercing is higher then target armor.
 NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 40		-- each ship in convoy defense mission can at most cover this many convoys without losing efficiency
 NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT 											= 24		-- Amount of in-game-hours that takes the submarine (with position unrevealed) to hide.
-NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.045		-- Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
+NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.05		-- Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
 NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
 NDefines.NNavy.RESOURCE_LENDLEASE_PRIORITY = 3
 NDefines.NNavy.RESOURCE_ORIGIN_PRIORITY = 3
