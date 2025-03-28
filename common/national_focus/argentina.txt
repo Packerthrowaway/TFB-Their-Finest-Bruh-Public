@@ -624,7 +624,15 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = { 
-			custom_effect_tooltip = ARG_balancing_act_decisions_tt
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = ARG_balancing_act_decisions_AAT_tt
+			}
+			ELSE = {
+				custom_effect_tooltip = ARG_balancing_act_decisions_tt
+			}
 		}
 	}
 
@@ -1111,11 +1119,9 @@ focus_tree = {
 				}
 			}
 			else_if = {
-				if = {
-					limit = {
-						has_tech = atomic_research 
-						NOT = { has_tech = experimental_rockets }
-					}
+				limit = {
+					has_tech = atomic_research 
+					NOT = { has_tech = experimental_rockets }
 				}
 				add_tech_bonus = {
 					name = ARG_arma_maravillosa_bonus
@@ -1129,11 +1135,9 @@ focus_tree = {
 				}
 			}
 			else_if = {
-				if = {
-					limit = {
-						NOT = { has_tech = atomic_research }
-						has_tech = experimental_rockets
-					}
+				limit = {
+					NOT = { has_tech = atomic_research }
+					has_tech = experimental_rockets
 				}
 				add_tech_bonus = {
 					name = ARG_arma_maravillosa_bonus
