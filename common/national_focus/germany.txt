@@ -2479,8 +2479,9 @@ focus_tree = {
 		cost = 5
 		available = {
 			all_core_state = {
-				is_fully_controlled_by = ROOT
+				is_controlled_by = ROOT
 			}
+
 			custom_trigger_tooltip = {
 				tooltip = GER_axis_has_enough_steel_tt
 				GER_axis_has_enough_steel = yes
@@ -2574,9 +2575,9 @@ focus_tree = {
 		relative_position_id = GER_seize_foreign_industries
 		cost = 5
 		available = {
-			all_core_state = {
-				is_fully_controlled_by = ROOT
-			}
+
+			surrender_progress < 0.1
+
 			has_war_with = SOV
 
 			custom_trigger_tooltip = {
