@@ -757,9 +757,15 @@ on_actions = {
 			}
 			ITA = {
 				every_core_state = {
-					add_dynamic_modifier = {
-						modifier = no_father_italy
+					if = {
+						limit = {
+							NOT = { state = 158 }
+						}
+						add_dynamic_modifier = {
+							modifier = no_father_italy
+						}
 					}
+
 				}
 			}
 		}
