@@ -484,7 +484,7 @@ NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS 					= 3.0	-- this s
 NDefines.NNavy.LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.02 -- light gun attack value is divided by this value * 100 and added to shore bombardment modifier 
 NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns if target ih profile is lower the gun will have lower accuracy
 	95.0,	-- big guns
-	115.0,	-- torpedos
+	125.0,	-- torpedos
 	60.0	-- small guns
 }
 NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE 										= 80	-- hit profile for depth charges
@@ -511,10 +511,11 @@ NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO 								= 0.25	-- total sum of fleet
 NDefines.NNavy.ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE							= 0.58	-- received air damage is calculated using following: 1 - ( (ship_anti_air + fleet_anti_air * SHIP_TO_FLEET_ANTI_AIR_RATIO )^ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE ) * ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE
 NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE 						= 0.03
 NDefines.NNavy.ADMIRAL_TASKFORCE_CAP = 5									-- admirals will start getting penalties after this amount of taskforces
+NDefines.NNavy.UNIT_EXPERIENCE_PER_COMBAT_HOUR = 2
 
-NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 0.25
+NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 0.1
 NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.02						-- Xp gain by non-carrier ships in the combat
-NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.2								-- Amount of exp each ship gain every 24h while training (before modifiers)
+NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.25								-- Amount of exp each ship gain every 24h while training (before modifiers)
 NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.8 -- org will clamped to this ratio on manual move
 
 NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
@@ -530,7 +531,7 @@ NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
 	1.0, -- NAVAL_INVASION_SUPPORT (does not cost fuel at base, only costs while doing bombardment and escorting units)
 }
 
-NDefines.NNavy.DETECTION_CHANCE_MULT_AIR_SUPERIORITY_BONUS = 0.15			-- bonus from air superiority.
+NDefines.NNavy.DETECTION_CHANCE_MULT_AIR_SUPERIORITY_BONUS = 0.2			-- bonus from air superiority.
 NDefines.NNavy.COMBAT_DAMAGE_TO_STR_FACTOR = 0.5								-- casting damage value to ship strength multiplier. Use it ot balance the game difficulty.
 NDefines.NNavy.COMBAT_DAMAGE_TO_ORG_FACTOR = 1								-- casting damage value to ship strength multiplier. Use it ot balance the game difficulty.
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 5					-- amount of depth charge required for a ship to be considred a sub hunter and so good for convoy escort
