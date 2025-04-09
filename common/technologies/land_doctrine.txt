@@ -856,25 +856,20 @@ technologies = {
 	
 		category_all_infantry = {
 			max_strength = 1
+			max_organisation = 5
 		}
 		category_militia = {
 			max_strength = 1
+			max_organisation = 5
 		}
 	
 		xor={
 			volkssturm
 		}
 		
-		category_all_infantry = {
-			max_organisation = 5
-		}
-		category_militia = {
-			max_organisation = 5
-		}
 		category_all_armor = {
 			max_organisation = 2
 		}
-
 		
 		path = {
 			leads_to_tech = backhand_blow 
@@ -2992,14 +2987,81 @@ technologies = {
 		planning_speed = 0.2
 		attrition = -0.1
 
-		category_army = {
+		category_all_armor = {
 			need = {
 			   radio_equipment = 2
 		    }
 		}
+		category_all_infantry = {
+			need = {
+			   radio_equipment = 2
+		    }
+		}
+		category_line_artillery = {
+			need = {
+			   radio_equipment = 2
+		    }
+		}
+		signal_company = {
+			need = {
+			   radio_equipment = 2
+		    }
+		}
+		hq_company = {
+			need = {
+			   radio_equipment = 2
+		    }
+		}
+
 		on_research_complete = {
 			set_temp_variable = { temp = 2 }
-			set_temp_variable = { total_unit = num_battalions }
+			set_temp_variable = { total_unit = num_battalions_with_type@amphibious_mechanized }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@infantry }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@infantry_mot }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@marine }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@mountaineers }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@paratrooper }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@motorized }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@mechanized }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@bicycle_battalion }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@arditi }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@penal_battalion }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@irregular_infantry }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@hq_company }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@signal_company }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@anti_tank_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@mot_anti_tank_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@heavy_anti_tank_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@mot_heavy_anti_tank_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@pack_antitank_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@artillery_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@mot_artillery_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@pack_artillery_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@heavy_artillery_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@mot_heavy_artillery_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@rocket_artillery_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@motorized_rocket_brigade }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@mechanized }
+			add_to_temp_variable  = { total_unit = num_battalions_with_type@amphibious_mechanized }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@amphibious_medium_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@amphibious_heavy_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_assault_gun_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_assault_gun_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_assault_gun_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_assault_gun_support }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_assault_gun_support }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_assault_gun_support }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_armor }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_sp_anti_air_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_sp_anti_air_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_sp_artillery_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_sp_artillery_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_sp_artillery_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@light_tank_destroyer_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@medium_tank_destroyer_brigade }
+			add_to_temp_variable = { total_unit = num_battalions_with_type@heavy_tank_destroyer_brigade }
 			multiply_temp_variable = { total_unit = temp }
 			set_temp_variable = { radios_stored = num_equipment@radio_equipment }
 			custom_effect_tooltip = tooltip_2radio_all
