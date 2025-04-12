@@ -22,7 +22,7 @@ focus_tree = {
         }
     }
     default = no
-    continuous_focus_position = { x = 1 y = 1 }
+    continuous_focus_position = { x = 1000 y = 1300 }
 
     shared_focus = COM_commonwealth_command
 
@@ -115,6 +115,7 @@ focus_tree = {
         }
 
         allow_branch = {
+            always = no
             NOT = {
                 has_completed_focus = RAJ_provincial_autonomy
             }
@@ -292,6 +293,7 @@ focus_tree = {
         }
 
         allow_branch = {
+            always = no
             NOT = { has_completed_focus = RAJ_look_to_the_past }
             NOT = { has_completed_focus = RAJ_provincial_autonomy }
         }
@@ -7118,33 +7120,33 @@ focus_tree = {
         id = RAJ_trade_port
         icon = GFX_focus_POL_develop_polish_shipbuilding
         prerequisite = { focus = RAJ_great_depression_price_controls focus = RAJ_provincial_autonomy }
-        x = 9
+        x = 24
         y = 1
         relative_position_id = RAJ_great_depression_price_controls 
 
-        offset = {
-            x = -4
-            y = 0
-            trigger = {
-                has_game_rule = {
-                    rule = obsolete_focus_branches_visibility
-                    option = HIDE
-                }
-                has_completed_focus = RAJ_great_depression_price_controls
-            }
-        }
+        # offset = {
+        #     x = -4
+        #     y = 0
+        #     trigger = {
+        #         has_game_rule = {
+        #             rule = obsolete_focus_branches_visibility
+        #             option = HIDE
+        #         }
+        #         has_completed_focus = RAJ_great_depression_price_controls
+        #     }
+        # }
 
-        offset = {
-            x = 15
-            y = 0
-            trigger = {
-                has_game_rule = {
-                    rule = obsolete_focus_branches_visibility
-                    option = HIDE
-                }
-                has_completed_focus = RAJ_provincial_autonomy
-            }
-        }
+        # offset = {
+        #     x = 15
+        #     y = 0
+        #     # trigger = {
+        #     #     has_game_rule = {
+        #     #         rule = obsolete_focus_branches_visibility
+        #     #         option = HIDE
+        #     #     }
+        #     #     has_completed_focus = RAJ_provincial_autonomy
+        #     # }
+        # }
 
         # offset = {
         #     x = -12
@@ -7360,8 +7362,8 @@ focus_tree = {
         id = RAJ_mahatma
         icon = GFX_focus_RAJ_mahatma
         prerequisite = { focus = RAJ_purna_swaraj }
-        x = -7
-        y = 8
+        x = -9
+        y = 1
         relative_position_id = RAJ_purna_swaraj
         mutually_exclusive = { focus = RAJ_league_against_gandhism }
         cost = 5 # This was 70 Days???
@@ -7379,15 +7381,15 @@ focus_tree = {
         }
 
         offset = {
-            x = -2
-            y = -5
-            trigger = {
-                has_game_rule = {
-                    rule = obsolete_focus_branches_visibility
-                    option = HIDE
-                }
-                has_completed_focus = RAJ_provincial_autonomy
-            }
+            # x = -2
+            # y = -5
+            # trigger = {
+            #     has_game_rule = {
+            #         rule = obsolete_focus_branches_visibility
+            #         option = HIDE
+            #     }
+            #     has_completed_focus = RAJ_provincial_autonomy
+            # }
         }
 
         allow_branch = {
