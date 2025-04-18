@@ -293,7 +293,7 @@ NDefines.NMilitary.BASE_CAPTURE_EQUIPMENT_RATIO = 0.025				-- after a successful
 NDefines.NMilitary.PROMOTE_LEADER_CP_COST = 100.0					-- cost of promoting a leader
 NDefines.NMilitary.FIELD_MARSHAL_XP_RATIO = 0.25					-- xp gain ratio for army group leaders
 NDefines.NMilitary.GARRISON_ORDER_ARMY_CAP_FACTOR = 1.0			-- armies gets increased cap when they are garrisoned
-NDefines.NMilitary.BORDER_WAR_WIN_DAYS_AGAINST_EMPTY_OPPONENTS = 21		-- border wars will be automatically won if no opponent shows up for this duration
+NDefines.NMilitary.BORDER_WAR_WIN_DAYS_AGAINST_EMPTY_OPPONENTS = 7		-- border wars will be automatically won if no opponent shows up for this duration
 NDefines.NMilitary.MAX_RELATIVE_COMBAT_DAMAGE_TO_MODIFY_XP = 1.0			-- you gain more XP if you are doing more damage relative to enemy this is the max relative amount to gain following RATe
 NDefines.NMilitary.XP_GAIN_FACTOR_FOR_MAX_RELATIVE_COMBAT_DAMAGE = 1.0	-- XP factor scaling for max relative combat damage
 NDefines.NMilitary.XP_DECAY_RATE_PER_HOUR_IN_COMBAT = 0.01				-- you get reduced XP as combat drags
@@ -724,5 +724,5 @@ NDefines.NIndustrialOrganisation.FUNDS_FROM_MANUFACTURER_PER_IC_PER_DAY = 0.04		
 NDefines.NIndustrialOrganisation.MAX_FUNDS_FROM_MANUFACTURER_PER_DAY = 20  -- Max funds generated per manufacturer per day. Set to 0 for no Maximum. (Vanilla 100)
 
 
-NDefines.NRaids.RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.2  -- How much the disaster risk is modified when the dial is set to "medium"
+NDefines.NRaids.RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.15  -- How much the disaster risk is modified when the dial is set to "medium"
 NDefines.NRaids.RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.5
