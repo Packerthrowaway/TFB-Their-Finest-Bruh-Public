@@ -360,7 +360,7 @@ NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.075
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_MITIGATION = 6.0 -- Multiply Train Damage by (Smooth / (Smooth + (Disruption * Mitigation)))
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_DISRUPTION_SMOOTHING = 5.0
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_RAILWAY_DAMAGE_SPILL_FACTOR = 0.004 -- Portion of train damage to additionally deal to railways
-NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 12					-- same as above but used inside naval combat for carrier battles
+NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 7					-- same as above but used inside naval combat for carrier battles
 NDefines.NAir.PORT_STRIKE_DAMAGE_FACTOR = 0.7								-- How much damage is dealt to ports during a port strike (per plane damage [complex number] * num flying planes * define)
 
 NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 10
@@ -410,7 +410,7 @@ NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02					-- Global speed multiplier f
 
 
 NDefines.NAir.DISRUPTION_FACTOR = 4.0									-- multiplier on disruption damage to scale its effects on planes
-NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 25.0						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
+NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 500.0						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
 NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.5
 NDefines.NAir.DISRUPTION_AGILITY_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_ATTACK_FACTOR = 1.0
@@ -451,8 +451,8 @@ NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 6                         
 
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN = 48 -- minimum cooldown time
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN_FROM_EFFICIENCY = 24 -- clamped min value after screening efficiency has been applied
-NDefines.NNavy.SUPREMACY_PER_SHIP_PER_MANPOWER = 0.08							-- supremacy of a ship is calculated using its IC manpower and a base define
-NDefines.NNavy.SUPREMACY_PER_SHIP_PER_IC = 0.008
+NDefines.NNavy.SUPREMACY_PER_SHIP_PER_MANPOWER = 0.07							-- supremacy of a ship is calculated using its IC manpower and a base define
+NDefines.NNavy.SUPREMACY_PER_SHIP_PER_IC = 0.007
 NDefines.NNavy.SUPREMACY_PER_SHIP_BASE = 5.0
 NDefines.NNavy.NAVAL_MINES_IN_REGION_MAX = 1.0								-- Max number of mines that can be layed by the ships. The value should be hidden from the user as we present % so it's an abstract value that should be used for balancing.
 NDefines.NNavy.NAVAL_MINES_PLANTING_SPEED_MULT = 0.001						-- Value used to overall balance of the speed of planting naval mines
@@ -484,7 +484,7 @@ NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS 					= 3.0	-- this s
 NDefines.NNavy.LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.02 -- light gun attack value is divided by this value * 100 and added to shore bombardment modifier 
 NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns if target ih profile is lower the gun will have lower accuracy
 	95.0,	-- big guns
-	125.0,	-- torpedos
+	130.0,	-- torpedos
 	60.0	-- small guns
 }
 NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE 										= 80	-- hit profile for depth charges
