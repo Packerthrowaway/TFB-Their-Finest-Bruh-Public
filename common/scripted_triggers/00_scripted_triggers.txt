@@ -664,6 +664,26 @@ enemy_has_equal_or_better_radar_tech_trigger = {
 }
 
 is_available_to_collaboration_government = { # occupied_countries.1 should be updated along with this
+	is_subject = no
+	if = {
+		limit = {
+			original_tag = ITA
+		}
+		NOT = { FROM = { original_tag = YUG } }
+	}
+
+	if = {
+		limit = {
+			original_tag = POL
+		}
+		NOT = { FROM = { original_tag = DNZ } }
+	}
+	if = {
+		limit = {
+			original_tag = TUR
+		}
+		NOT = { FROM = { original_tag = KUR } }
+	}
 	NOT = {
 		any_country_with_original_tag = {
 			original_tag_to_check = FROM

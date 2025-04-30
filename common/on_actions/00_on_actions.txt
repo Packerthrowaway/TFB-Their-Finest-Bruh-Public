@@ -4441,13 +4441,13 @@ on_actions = {
 						50 = {
 							AFG = { set_country_flag = AFG_AI_RANDOM_HISTORICAL }
 						}
-						20 = {
+						10 = {
 							AFG = { set_country_flag = AFG_AI_RANDOM_FASCISM }
 						}
-						10 = {
+						5 = {
 							AFG = { set_country_flag = AFG_AI_RANDOM_DEMOCRATIC }
 						}
-						20 = {
+						10 = {
 							AFG = { set_country_flag = AFG_AI_RANDOM_COMMUNIST }
 						}
 					}
@@ -4475,17 +4475,54 @@ on_actions = {
 						50 = {
 							IRQ = { set_country_flag = IRQ_AI_RANDOM_HISTORICAL }
 						}
-						15 = {
+						10 = {
 							IRQ = { set_country_flag = IRQ_AI_RANDOM_FASCISM }
 						}
-						15 = {
+						10 = {
 							IRQ = { set_country_flag = IRQ_AI_RANDOM_HASHEMITE }
 						}
-						10 = {
+						5 = {
 							IRQ = { set_country_flag = IRQ_AI_RANDOM_KURDISTAN }
 						}
-						10 = {
+						5 = {
 							IRQ = { set_country_flag = IRQ_AI_RANDOM_SIDQI }
+						}
+					}
+				}
+			}
+			PER = {
+				IF = {
+					limit = {
+						has_dlc = "Graveyard of Empires"
+						OR = {
+							AND = {
+								is_historical_focus_on = no
+								has_game_rule = {
+									rule = PER_AI_BEHAVIOR
+									option = DEFAULT
+								}
+							}
+							has_game_rule = {
+								rule = PER_AI_BEHAVIOR
+								option = RANDOM
+							}
+						}
+					}
+					random_list = {
+						50 = {
+							PER = { set_country_flag = PER_AI_RANDOM_HISTORICAL }
+						}
+						15 = {
+							PER = { set_country_flag = PER_AI_RANDOM_IMPERIAL }
+						}
+						10 = {
+							PER = { set_country_flag = PER_AI_RANDOM_FASCISM }
+						}
+						5 = {
+							PER = { set_country_flag = PER_AI_RANDOM_DEMOCRATIC }
+						}
+						5 = {
+							PER = { set_country_flag = PER_AI_RANDOM_COMMUNISM }
 						}
 					}
 				}

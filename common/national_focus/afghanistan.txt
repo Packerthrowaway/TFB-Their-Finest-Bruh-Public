@@ -48,7 +48,7 @@ focus_tree = {
 	#	y = 0
 	#}
 
-#	shared_focus = SSB_the_saadabad_pact
+	shared_focus = SSB_the_saadabad_pact
 
 	#################################### Industrial Branch ####################################
 
@@ -251,7 +251,11 @@ focus_tree = {
 		#allow_branch = {
 		#}
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INDUSTRY }
-
+		bypass = {
+			267 = {
+				NOT = { is_owned_by = ROOT }
+			}
+		}
 		completion_reward = {
 			267 = {
 				add_building_construction = {
@@ -1105,7 +1109,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_HISTORICAL }
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_STABILITY }
 
 		completion_reward = {
 			add_stability = 0.05
@@ -1556,7 +1560,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_MANPOWER }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
 			IF = {
@@ -1629,7 +1633,7 @@ focus_tree = {
 						icon = GFX_intelligence_agency_logo_AFG_communism
 					}
 				}
-				IF = {
+				ELSE_IF = {
 					limit = {
 						has_government = democratic
 					}
@@ -1977,7 +1981,7 @@ focus_tree = {
 					has_dlc = "By Blood Alone"
 				}
 				add_equipment_to_stockpile = { 
-					type = small_plane_airframe_1
+					type = small_plane_airframe_0
 					amount = 25
 					producer = ENG
 				}
@@ -2641,6 +2645,7 @@ focus_tree = {
 			factor = 10
 		}
 		available = {
+			is_subject = no
 			#has_stability < 0.4
 			fascism > 0.2
 		}
@@ -2770,6 +2775,12 @@ focus_tree = {
 				limit = {
 					has_completed_focus = AFG_contact_rural_loyalists
 				}
+				AFG_faqir_of_ipi = {
+					set_character_flag = AFG_rural_cw_started
+				}
+				AFG_mazrak_zadran = {
+					set_character_flag = AFG_rural_cw_started
+				}
 				random_owned_controlled_state = {
 					create_unit = {
 						division = "division_template =\"Pashtun Militia\" start_experience_factor = 0.2 start_equipment_factor	= 1.0"
@@ -2834,6 +2845,11 @@ focus_tree = {
 			custom_effect_tooltip = AFG_modifiy_1923_constitution_modifier_tt
 			add_to_variable = { AFG_1923_const_modifier_research_speed_factor = 0.1 tooltip = research_speed_factor_tt }
 			add_to_variable = { AFG_1923_const_modifier_stability_factor = -0.05 tooltip = stability_factor_tt}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AFG_soraya_tarzi
 		}
 	}
 
@@ -3397,6 +3413,9 @@ focus_tree = {
 					GER = {
 						has_war_with = SOU
 					}
+					ROOT = {
+						is_in_faction = no
+					}
 				}
 				GER = {
 					country_event = {
@@ -3499,20 +3518,21 @@ focus_tree = {
 			factor = 10
 		}
 		available = {
+			is_subject = no
 			RAJ = {
 				exists = yes
 			}
 		}
-		#allow_branch = {
-		#}
+		
 		search_filters = { FOCUS_FILTER_ANNEXATION } 
 		completion_reward = {
 			IF = {
 				limit = {
 					GER = {
 						has_war_with = RAJ
+						NOT = { is_in_faction_with = ROOT}
 					}
-					is_in_faction_with = GER
+					NOT = { is_in_faction_with = GER } 
 				}
 				GER = {
 					country_event = {
@@ -3669,10 +3689,66 @@ focus_tree = {
 	#}
 
 	focus = {
+		id = AFG_ally_basmachi_remnants
+
+		icon = GFX_focus_generic_befriend_basmachi 
+
+		dynamic = yes
+
+		prerequisite = { focus = AFG_custail_pashtunwali_primacy }
+		x = -2
+		y = 1
+		relative_position_id = AFG_custail_pashtunwali_primacy
+		
+		cost = 5
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL_CHARACTER } 
+
+		completion_reward = {
+
+			every_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+						is_claimed_by = ROOT
+						is_owned_by = ROOT
+					}
+					OR = {
+						region = 267
+						region = 269
+						region = 268
+						region = 270
+						region = 136
+					}
+				}
+				add_claim_by = ROOT
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			add_manpower = 20000
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AFG_korsirmat
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AFG_junaid_khan
+			
+		}
+
+	}
+
+	focus = {
 		id = AFG_from_the_ashes
 		icon = GFX_focus_AFG_from_the_ashes 
 		prerequisite = { focus = AFG_custail_pashtunwali_primacy }
-		x = -3
+		x = -4
 		y = 1
 		relative_position_id = AFG_custail_pashtunwali_primacy
 		#mutually_exclusive = { focus = AFG_pashtun_ascendancy }
@@ -3802,6 +3878,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			is_subject = no
 			PER = {
 				exists = yes
 			}
@@ -3879,6 +3956,7 @@ focus_tree = {
 			}
 		}
 		available = {
+			is_subject = no
 			IRQ = {
 				exists = yes
 			}
@@ -3929,6 +4007,7 @@ focus_tree = {
 			factor = 10
 		}
 		available = {
+			is_subject = no
 			OR = {
 				856 = {
 					OWNER = {
@@ -5262,7 +5341,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_HISTORICAL }
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL_CHARACTER }
 		completion_reward = {
 			custom_effect_tooltip = AFG_support_king_zahir_tt
 			hidden_effect = {
@@ -5291,7 +5370,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL  FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL  FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL_CHARACTER }
 		completion_reward = {
 			AFG_mohammad_hashim_khan = {
 				add_country_leader_trait = {
@@ -5365,6 +5444,10 @@ focus_tree = {
 					modifier = large_increase
 				}
 			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
 		}
 	}
 
@@ -5421,12 +5504,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			retire_country_leader = yes
-			retire_character = AFG_shah_mahmud_khan
-			AFG_sardar_shah_wali_khan = {
-				remove_advisor_role = {
-					slot = political_advisor
-				}
-			}
 			hidden_effect = {
 				remove_ideas = AFG_mohammad_zahir_shah_ns_upgrade_1
 			}			
@@ -5440,6 +5517,16 @@ focus_tree = {
 					traits = {AFG_popular_figurehead}
 			    }
 			}
+
+			retire_character = AFG_sardar_shah_wali_khan
+
+			AFG_shah_mahmud_khan = {
+				remove_advisor_role = {
+					slot = political_advisor
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			
 			custom_effect_tooltip = AFG_promote_the_counter_elite_tt
 			show_ideas_tooltip = AFG_ghulam_muhammad_ghobar
 		}
@@ -5530,7 +5617,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			GER = {
 				country_event = {
@@ -5618,17 +5705,22 @@ focus_tree = {
 		}
 		available = {
 		}
+		bypass = {
+			1006 = {
+				NOT = { is_owned_by = ROOT }
+			}
+		}
 		#allow_branch = {
 		#}
-		search_filters = { }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			267 = {
+			1006 = {
 				add_building_construction = {
 					type = dam
 					level = 1
 					instant_build = yes
 					province = {
-						id = 12769
+						id = 12831
 					}
 				}
 			}
@@ -6004,7 +6096,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_HISTORICAL }
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_ideas = AFG_anti_soviet_cooperation_idea
 			every_other_country = {
@@ -6174,7 +6266,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			IF = {
 				limit = {
@@ -6242,7 +6334,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { }
+		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			IF = {
 				limit = { #AFG_nufus_modifier
@@ -6566,7 +6658,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			create_wargoal = {
 				target = PER
@@ -6954,6 +7046,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL_CHARACTER }
 		completion_reward = {
 			add_political_power = 100
+			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = AFG_promote_the_counter_elite_tt
 			#show_ideas_tooltip = AFG_mohammed_daoud_khan
 			show_ideas_tooltip = AFG_qiamuddin_khadim
@@ -6972,6 +7065,45 @@ focus_tree = {
 			}
 			add_ideas = AFG_counter_elite_on_the_rise
 		}
+	}
+
+	focus = {
+		id = AFG_gant_refuge_to_jadidists
+		icon = GFX_focus_PER_islamic_solidarity 
+		prerequisite = { focus = AFG_promote_the_counter_elite }
+		x = 0
+		y = 1
+		relative_position_id = AFG_promote_the_counter_elite
+		
+		cost = 5
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			OR = {
+				has_government = neutrality
+				has_government = democratic
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			
+			add_timed_idea = {
+				idea = AFG_pro_democratic_influx
+				days = 480
+			}	
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AFG_abdurauf_fitrat
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AFG_fayzulla_xojayev
+
+		}
+
 	}
 
 	focus = {
@@ -7142,7 +7274,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL_CHARACTER }
 		completion_reward = {
 			add_political_power = 100
 			add_country_leader_trait = { trait = AFG_faith_in_god }
@@ -7490,7 +7622,7 @@ focus_tree = {
 		}
 		#allow_branch = {
 		#}
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL_CHARACTER}
 		completion_reward = {
 			add_country_leader_trait = { trait = AFG_follower_of_islam_trait }
 		}

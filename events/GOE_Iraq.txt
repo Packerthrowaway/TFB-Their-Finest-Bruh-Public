@@ -933,12 +933,6 @@ country_event = {
 				has_war_with = IRQ
 			}
 		}
-		FROM = {
-			release = ROOT
-		}
-		FROM.FROM = {
-			puppet = ROOT
-		}
 		effect_tooltip = {
 			FROM.FROM = {
 				puppet = ROOT
@@ -1779,6 +1773,125 @@ country_event = {
 	
 } 
 
+# Oil Mission
+country_event = { 
+	id = IRQ_political_events.74
+	title = IRQ_political_events.74.t
+	desc = IRQ_political_events.74.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+	
+	option = { #Yes
+		name = IRQ_political_events.74.a
+		ai_chance = {
+			base = 10
+		}
+		
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -3000
+		}
+		
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = -300
+		}
+		
+		effect_tooltip = {
+			FROM = {
+				give_resource_rights = {
+					receiver = GER
+					state = 676
+				}
+			}
+		}
+		
+		FROM = {
+			country_event = {
+				id = IRQ_political_events.75
+				hours = 12
+				random_hours = 24
+			}	
+		}
+
+	}
+	# No
+	option = {
+		name = IRQ_political_events.74.b
+		ai_chance = {
+			base = 0
+		}
+		
+		FROM = {
+			country_event = {
+				id = IRQ_political_events.76
+				hours = 12
+				random_hours = 24
+			}	
+		}
+
+	}
+	
+} 
+
+# Oil Mission yes
+country_event = {
+	id = IRQ_political_events.75
+	title = IRQ_political_events.75.t
+	desc = IRQ_political_events.75.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+	
+	option = { #Yes
+		name = IRQ_political_events.75.a
+		ai_chance = {
+			base = 10
+		}
+		
+		add_equipment_to_stockpile = { 
+			type = infantry_equipment_1
+			amount = 3000
+			producer = GER
+		}
+		
+		add_equipment_to_stockpile = { 
+			type = artillery_equipment_1
+			amount = 300
+			producer = GER
+		}
+		
+		hidden_effect = {
+			ENG = { 
+				remove_resource_rights = 676 #Just in case
+			}
+		}
+		
+		give_resource_rights = {
+			receiver = GER
+			state = 676
+		}
+	}
+}
+
+# Oil Mission no
+country_event = { 
+	id = IRQ_political_events.76
+	title = IRQ_political_events.76.t
+	desc = IRQ_political_events.76.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+	
+	option = { #Yes
+		name = IRQ_political_events.76.a
+		ai_chance = {
+			base = 1
+		}
+	}
+} 
+
 
 
 ### News Events ###
@@ -1845,43 +1958,6 @@ news_event = { # Kurdistan rejects Ankara treaty
 		name = GOE_IRQ_news.2.a
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Kurdish Nationalists Approach us for Aid - event for SOV
 country_event = {
@@ -1975,6 +2051,40 @@ country_event = {
 		}
 
 		add_political_power = 75
+
+	}
+}
+
+#Trade Unions form
+country_event = {
+	id = IRQ_kurdistan_events.4
+	title = IRQ_kurdistan_events.4.t
+	desc = IRQ_kurdistan_events.4.desc
+	picture = GFX_report_event_generic_factory
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	# Embrace them
+	option = { 
+		name = IRQ_kurdistan_events.4.a
+		ai_chance = {
+			factor = 100
+		}
+
+		add_ideas = IRQ_trade_unions_allowed
+
+	}
+
+	#band them
+	option = { 
+		name = IRQ_kurdistan_events.4.b
+		ai_chance = {
+			factor = 100
+		}
+
+		add_political_power = -75
 
 	}
 }

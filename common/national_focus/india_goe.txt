@@ -5,6 +5,16 @@
 ### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
 ### search_filters = {FOCUS_FILTER_MANPOWER}
 ### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWER}
+### search_filters = {FOCUS_FILTER_POLITICAL_CHARACTER}
+### search_filters = {FOCUS_FILTER_MILITARY_CHARACTER}
+### search_filters = {FOCUS_FILTER_INTERNATIONAL_TRADE}
+### search_filters = {FOCUS_FILTER_HISTORICAL}
+### search_filters = {FOCUS_FILTER_TFV_AUTONOMY}
 
 focus_tree = {
     id = indian_focus_goe
@@ -293,8 +303,19 @@ focus_tree = {
 
         allow_branch = {
             always = no
-            NOT = { has_completed_focus = RAJ_look_to_the_past }
-            NOT = { has_completed_focus = RAJ_provincial_autonomy }
+        	if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+	            NOT = {
+					has_completed_focus = RAJ_provincial_autonomy
+					#has_completed_focus = RAJ_his_majestys_loyal_government
+	            	has_completed_focus = RAJ_look_to_the_past
+				}
+			}
         }
 
         # offset = {
@@ -398,6 +419,18 @@ focus_tree = {
             custom_effect_tooltip = AFG_promote_the_counter_elite_tt
             show_ideas_tooltip = RAJ_jim_corbett
 
+            custom_effect_tooltip = generic_skip_one_line_tt 
+            show_ideas_tooltip = RAJ_GOE_g_d_birla
+
+            custom_effect_tooltip = generic_skip_one_line_tt 
+            show_ideas_tooltip = RAJ_GOE_j_r_d_tata
+
+            custom_effect_tooltip = generic_skip_one_line_tt 
+            show_ideas_tooltip = RAJ_GOE_william_rhodes_davis
+
+            custom_effect_tooltip = generic_skip_one_line_tt 
+            show_ideas_tooltip = RAJ_GOE_prescott_bush
+
 
         } 
     }
@@ -431,7 +464,7 @@ focus_tree = {
 
         search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNATIONAL_TRADE}
 
-        completion_reward = {
+        completion_reward = { #Note: the equipment is ACTUALLY ADDED in RAJ_mughal_uprising, if you want to change the amount, you need to do it here and TWICE in the RAJ_Mughal_uprising
             IF = {
                 limit = {
                     has_dlc = "Arms Against Tyranny"
@@ -656,6 +689,74 @@ focus_tree = {
                     remove_ideas = idea_RAJ_price_controls
                 }
             }
+
+            custom_effect_tooltip = newline_tt
+
+            effect_tooltip = {#Note: the equipment is ACTUALLY ADDED further down in RAJ_mughal_uprising, if you want to change the amount, you need to do it here, further down AND in RAJ_secure_weapons
+                if = {
+                    limit = {
+                        has_country_flag = RAJ_mughal_no_aat_give_equipment
+                    }
+
+                    add_equipment_to_stockpile = { 
+                        type = infantry_equipment
+                        amount = 4000
+                        producer = SOV
+                    }
+                    add_equipment_to_stockpile = { 
+                        type = artillery_equipment
+                        amount = 800
+                        producer = SOV
+                    }
+                }
+
+                if = {
+                    limit = {
+                        has_completed_focus = RAJ_secure_weapons
+                    }
+
+                    add_equipment_to_stockpile = { 
+                        type = infantry_equipment
+                        amount = 2000
+                        producer = SOV
+                    }
+                    add_equipment_to_stockpile = { 
+                        type = artillery_equipment
+                        amount = 500
+                        producer = SOV
+                    }
+
+                    if = {
+                        limit = {
+                            has_dlc = "No Step Back"
+                        }
+                        set_technology = {
+                            basic_light_tank_chassis = 1
+                            popup = no
+                        }
+                        add_equipment_to_stockpile = {
+                            type =  light_tank_chassis
+                            variant_name = "BT-7"
+                            amount = 100
+                            producer = SOV
+                        }
+                        
+                    }
+                    # else = {
+                    #     set_technology = {
+                    #         basic_light_tank = 1
+                    #         popup = no
+                    #     }
+                    #     add_equipment_to_stockpile = { 
+                    #         type = light_tank_equipment_1 
+                    #         amount = 100 
+                    #         producer = SOV 
+                    #     }
+                    # }
+                    custom_effect_tooltip = newline_tt
+                } 
+            }
+
             hidden_effect = {
                 drop_cosmetic_tag = yes
                 OVERLORD = {
@@ -752,7 +853,7 @@ focus_tree = {
                     }
                 }
 
-                hidden_effect = {
+                hidden_effect = { #Note: the equipment is ACTUALLY ADDED further down in RAJ_mughal_uprising, if you want to change the amount, you need to do it here, up a few lines in this focus AND in RAJ_secure_weapons
                     if = {
                         limit = {
                             has_country_flag = RAJ_mughal_no_aat_give_equipment
@@ -1737,15 +1838,23 @@ focus_tree = {
 
         cost = 5 # This was 70 Days???
 
-        ai_will_do = {
+        ai_will_do = { 
             factor = 1
         }
 
         available = {
         }
+
+        bypass_effect = {
+            add_war_support = 0.05
+            add_manpower = 25000
+        }
         
         bypass = {
-
+            all_of_scopes = {
+                array = RAJ.owned_states_at_game_start
+                is_controlled_by = ROOT
+            }
         }
 
         cancel_if_invalid = yes
@@ -1755,6 +1864,7 @@ focus_tree = {
         search_filters = {FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER FOCUS_FILTER_ANNEXATION}
 
         completion_reward = {
+            add_ideas = idea_RAJ_under_the_yoke_of_peacock_throne
             add_war_support = 0.05
             add_manpower = 25000
             custom_effect_tooltip = RAJ_revolt_of_the_princes_tt
@@ -2145,6 +2255,9 @@ focus_tree = {
                     }
                 }
             }
+            custom_effect_tooltip = RAJ_mughal_court_tt
+            show_ideas_tooltip = idea_RAJ_central_mughal_court
+            custom_effect_tooltip = generic_skip_one_line_tt
             custom_effect_tooltip = RAJ_mughal_court_princely_states_tt
             custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -2179,6 +2292,34 @@ focus_tree = {
             WIS = {
                 custom_effect_tooltip = available_political_advisor
                 show_ideas_tooltip = RAJ_pratap_singh_rao_gaekwad
+            }
+
+            hidden_effect = {
+                every_country = {
+                    limit = {
+                        OR = {
+                            tag = PSH
+                            tag = HYD
+                            tag = MYS
+                            tag = RJP
+                            tag = CIP
+                            tag = RAS
+                            tag = NWF
+                            tag = KAS
+                            tag = MPU
+                            tag = WIS
+                            tag = KOL
+                            tag = KHL
+                            tag = SIN
+                            tag = KLT
+                            tag = SKK
+                            tag = BLC
+                        }
+                        exists = yes
+                        is_subject_of = ROOT
+                    }
+                    add_ideas = idea_RAJ_central_mughal_court
+                }
             }
         }
     }
@@ -6879,9 +7020,18 @@ focus_tree = {
         }
 
         allow_branch = {
-            NOT = {
-                has_completed_focus = RAJ_great_depression_price_controls
-            }
+        	if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+	            NOT = {
+					#has_completed_focus = RAJ_his_majestys_loyal_government
+					has_completed_focus = RAJ_great_depression_price_controls
+				}
+			}
         }
 
         cancel_if_invalid = yes
@@ -7392,8 +7542,19 @@ focus_tree = {
         }
 
         allow_branch = {
-            NOT = { has_completed_focus = RAJ_league_against_gandhism }
-            NOT = { has_completed_focus = RAJ_great_depression_price_controls }
+        	if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+	            NOT = {
+	            	has_completed_focus = RAJ_great_depression_price_controls
+	            	#has_completed_focus = RAJ_his_majestys_loyal_government
+	            	has_completed_focus = RAJ_league_against_gandhism
+	            }
+	        }
         }
 
         cancel_if_invalid = yes
@@ -7464,11 +7625,11 @@ focus_tree = {
         completion_reward = {
             add_popularity = {
                 ideology = communism 
-                popularity = 0.05
+                popularity = 0.025
             }
 
             custom_effect_tooltip = RAJ_league_against_gandhism_tt
-
+            add_political_power = 30
             hidden_effect = {
                 if = {
                     limit = {
@@ -7965,7 +8126,6 @@ focus_tree = {
         }
         
         bypass = {
-
         }
 
         cancel_if_invalid = yes
