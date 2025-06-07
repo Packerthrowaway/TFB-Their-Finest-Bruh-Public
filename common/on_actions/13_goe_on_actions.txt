@@ -1,51 +1,51 @@
 
 on_actions = {
-	on_monthly_AFG = {
-		effect = {
-			IF = {
-				limit = {
-					has_completed_focus = AFG_electrification
-					any_core_state = {
-						NOT = { 
-							has_dynamic_modifier = { modifier = AFG_electrification_modifier }
-						}
-					}
-				}
+	# on_monthly_AFG = {
+	# 	effect = {
+	# 		IF = {
+	# 			limit = {
+	# 				has_completed_focus = AFG_electrification
+	# 				any_core_state = {
+	# 					NOT = { 
+	# 						has_dynamic_modifier = { modifier = AFG_electrification_modifier }
+	# 					}
+	# 				}
+	# 			}
 
-				IF = {
-					limit = {
-						check_variable = { AFG_electrification_cooldown > 0 }
-					}
-					set_variable = { AFG_electrification_cooldown = 0 }
+	# 			IF = {
+	# 				limit = {
+	# 					check_variable = { AFG_electrification_cooldown > 0 }
+	# 				}
+	# 				set_variable = { AFG_electrification_cooldown = 0 }
 
-					random_core_state = {
-						limit = {
-							has_dynamic_modifier = { modifier = AFG_electrification_modifier }
-							NOT = {
-								OR = {
-									is_island_state = yes
-									has_state_category = small_island
-									has_state_category = tiny_island
-								}
-							}
-						}
-						random_neighbor_state = {
-							limit = {
-								NOT = {
-									has_dynamic_modifier = { modifier = AFG_electrification_modifier }
-								}
-								is_core_of = ROOT
-							}
-							add_dynamic_modifier = { modifier = AFG_electrification_modifier }
-						}
-					}
-				}
-				ELSE = {
-					add_to_variable = { AFG_electrification_cooldown = 1 }
-				}	
-			}
-		}
-	}
+	# 				random_core_state = {
+	# 					limit = {
+	# 						has_dynamic_modifier = { modifier = AFG_electrification_modifier }
+	# 						NOT = {
+	# 							OR = {
+	# 								is_island_state = yes
+	# 								has_state_category = small_island
+	# 								has_state_category = tiny_island
+	# 							}
+	# 						}
+	# 					}
+	# 					random_neighbor_state = {
+	# 						limit = {
+	# 							NOT = {
+	# 								has_dynamic_modifier = { modifier = AFG_electrification_modifier }
+	# 							}
+	# 							is_core_of = ROOT
+	# 						}
+	# 						add_dynamic_modifier = { modifier = AFG_electrification_modifier }
+	# 					}
+	# 				}
+	# 			}
+	# 			ELSE = {
+	# 				add_to_variable = { AFG_electrification_cooldown = 1 }
+	# 			}	
+	# 		}
+	# 	}
+	# }
 
 	#ROOT is the nation being released, FROM is the overlord.
 	on_startup = {
@@ -201,42 +201,42 @@ on_actions = {
 			controlled_civilian_factories_excluding_trade = yes
 		}
 		effect = {
-			if = {
-				limit = {
-					check_variable = { pmc_timer^num > 0 }
-				}
+			# if = {
+			# 	limit = {
+			# 		check_variable = { pmc_timer^num > 0 }
+			# 	}
 
-				for_each_loop = {
-					array = pmc_timer
-					index = i
-					value = v
+			# 	for_each_loop = {
+			# 		array = pmc_timer
+			# 		index = i
+			# 		value = v
 
-					set_variable = { v_copy = v }
-					add_to_variable = { v_copy = -1 }
-					if = {
-						limit = {
-							check_variable = { v_copy < 1 }
-						}
+			# 		set_variable = { v_copy = v }
+			# 		add_to_variable = { v_copy = -1 }
+			# 		if = {
+			# 			limit = {
+			# 				check_variable = { v_copy < 1 }
+			# 			}
 
-						remove_from_array = {
-							array = pmc_timer
-							index = i
-						}
+			# 			remove_from_array = {
+			# 				array = pmc_timer
+			# 				index = i
+			# 			}
 
-						remove_from_array = {
-							array = pmc_recievers
-							index = i
-						}
+			# 			remove_from_array = {
+			# 				array = pmc_recievers
+			# 				index = i
+			# 			}
 
-						add_offsite_building = {
-							type = industrial_complex
-							level = -1
-						}
-					}
-				}
+			# 			add_offsite_building = {
+			# 				type = industrial_complex
+			# 				level = -1
+			# 			}
+			# 		}
+			# 	}
 
-				clear_variable = v_copy
-			}
+			# 	clear_variable = v_copy
+			# }
 
 			if = {
 				limit = {
@@ -851,168 +851,168 @@ on_actions = {
 						transfer_state_to = FROM
 					}
 				}
-				IF = {
-					limit = {
-						FROM = { original_tag = AFG }
-					}
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = UZB }
-							UZB = { exists = no }
-						}
-						FROM = {
-							release = UZB 
-							puppet = UZB 
-							UZB = {
-								add_to_war = {
-									targeted_alliance = FROM 
-									enemy = ROOT 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = TAJ }
-							TAJ = { exists = no }
-						}
-						FROM = {
-							release = TAJ 
-							puppet = TAJ
-							TAJ = {
-								add_to_war = {
-									targeted_alliance = FROM 
-									enemy = ROOT 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = TMS }
-							TMS = { exists = no }
-						}
-						FROM = {
-							release = TMS 
-							puppet = TMS
-							TMS = {
-								add_to_war = {
-									targeted_alliance = FROM 
-									enemy = ROOT 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = KYR }
-							KYR = { exists = no }
-						}
-						FROM = {
-							release = KYR 
-							puppet = KYR
-							KYR = {
-								add_to_war = {
-									targeted_alliance = FROM 
-									enemy = ROOT 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-				}
-				ELSE_IF = {
-					limit = {
-						ROOT = { original_tag = AFG }
-					}
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = UZB }
-							UZB = { exists = no }
-						}
-						ROOT = {
-							release = UZB 
-							puppet = UZB
-							UZB = {
-								add_to_war = {
-									targeted_alliance = ROOT 
-									enemy = FROM 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = TAJ }
-							TAJ = { exists = no }
-						}
-						ROOT = {
-							release = TAJ 
-							puppet = TAJ
-							TAJ = {
-								add_to_war = {
-									targeted_alliance = ROOT 
-									enemy = FROM 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = TMS }
-							TMS = { exists = no }
-						}
-						ROOT = {
-							release = TMS 
-							puppet = TMS
-							TMS = {
-								add_to_war = {
-									targeted_alliance = ROOT 
-									enemy = FROM 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-					IF = {
-						limit = {
-							any_owned_state = { is_core_of = KYR }
-							KYR = { exists = no }
-						}
-						ROOT = {
-							release = KYR 
-							puppet = KYR
-							KYR = {
-								add_to_war = {
-									targeted_alliance = ROOT 
-									enemy = FROM 
-									hostility_reason = asked_to_join 
-									single_target_only = yes
-								}
-								AFG_create_puppet_army = yes
-							}
-						}
-					} 
-				}
+				# IF = {
+				# 	limit = {
+				# 		FROM = { original_tag = AFG }
+				# 	}
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = UZB }
+				# 			UZB = { exists = no }
+				# 		}
+				# 		FROM = {
+				# 			release = UZB 
+				# 			puppet = UZB 
+				# 			UZB = {
+				# 				add_to_war = {
+				# 					targeted_alliance = FROM 
+				# 					enemy = ROOT 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = TAJ }
+				# 			TAJ = { exists = no }
+				# 		}
+				# 		FROM = {
+				# 			release = TAJ 
+				# 			puppet = TAJ
+				# 			TAJ = {
+				# 				add_to_war = {
+				# 					targeted_alliance = FROM 
+				# 					enemy = ROOT 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = TMS }
+				# 			TMS = { exists = no }
+				# 		}
+				# 		FROM = {
+				# 			release = TMS 
+				# 			puppet = TMS
+				# 			TMS = {
+				# 				add_to_war = {
+				# 					targeted_alliance = FROM 
+				# 					enemy = ROOT 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = KYR }
+				# 			KYR = { exists = no }
+				# 		}
+				# 		FROM = {
+				# 			release = KYR 
+				# 			puppet = KYR
+				# 			KYR = {
+				# 				add_to_war = {
+				# 					targeted_alliance = FROM 
+				# 					enemy = ROOT 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# }
+				# ELSE_IF = {
+				# 	limit = {
+				# 		ROOT = { original_tag = AFG }
+				# 	}
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = UZB }
+				# 			UZB = { exists = no }
+				# 		}
+				# 		ROOT = {
+				# 			release = UZB 
+				# 			puppet = UZB
+				# 			UZB = {
+				# 				add_to_war = {
+				# 					targeted_alliance = ROOT 
+				# 					enemy = FROM 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = TAJ }
+				# 			TAJ = { exists = no }
+				# 		}
+				# 		ROOT = {
+				# 			release = TAJ 
+				# 			puppet = TAJ
+				# 			TAJ = {
+				# 				add_to_war = {
+				# 					targeted_alliance = ROOT 
+				# 					enemy = FROM 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = TMS }
+				# 			TMS = { exists = no }
+				# 		}
+				# 		ROOT = {
+				# 			release = TMS 
+				# 			puppet = TMS
+				# 			TMS = {
+				# 				add_to_war = {
+				# 					targeted_alliance = ROOT 
+				# 					enemy = FROM 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# 	IF = {
+				# 		limit = {
+				# 			any_owned_state = { is_core_of = KYR }
+				# 			KYR = { exists = no }
+				# 		}
+				# 		ROOT = {
+				# 			release = KYR 
+				# 			puppet = KYR
+				# 			KYR = {
+				# 				add_to_war = {
+				# 					targeted_alliance = ROOT 
+				# 					enemy = FROM 
+				# 					hostility_reason = asked_to_join 
+				# 					single_target_only = yes
+				# 				}
+				# 				AFG_create_puppet_army = yes
+				# 			}
+				# 		}
+				# 	} 
+				# }
 			}
 
 			if = {
@@ -1340,19 +1340,19 @@ on_actions = {
 					set_country_flag = POL_has_capitulated_flag
 				}
 			}
-			if = {
-				limit = {
-					ROOT = {
-						original_tag = SAU
-					}
-					FROM = {
-						original_tag = IRQ
-					}
-				}
-				FROM = {
-					set_country_flag = IRQ_capitulated_SAU
-				}
-			}
+			# if = {
+			# 	limit = {
+			# 		ROOT = {
+			# 			original_tag = SAU
+			# 		}
+			# 		FROM = {
+			# 			original_tag = IRQ
+			# 		}
+			# 	}
+			# 	FROM = {
+			# 		set_country_flag = IRQ_capitulated_SAU
+			# 	}
+			# }
 		}
 		effect = {
 			IF = {
@@ -1376,271 +1376,271 @@ on_actions = {
 	}
 
 	#ROOT is new controller, FROM is old controller, FROM.FROM is state ID.
-	on_state_control_changed = {
-		effect = {
-			if = {
-				limit = {
-					has_dlc = "Graveyard of Empires"
-					FROM.FROM = { state = 733 }
-					ROOT = { 
-						OR = {
-							AND = {
-								original_tag = JAP 
-								has_country_flag = agreed_to_help_bose
-								NOT = { has_war_with = RAJ }
-							}
-							AND = {
-								original_tag = RAJ
-								OR = {
-									has_country_leader = { character = RAJ_subhas_chanda_bose }
-									has_country_leader = { character = RAJ_v_d_savarkar }
-								}
-							}
-						}
-					}
-				}
-				RAJ = { 
-					transfer_state = 733 
-				}
-			}
+	# on_state_control_changed = {
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				has_dlc = "Graveyard of Empires"
+	# 				FROM.FROM = { state = 733 }
+	# 				ROOT = { 
+	# 					OR = {
+	# 						AND = {
+	# 							original_tag = JAP 
+	# 							has_country_flag = agreed_to_help_bose
+	# 							NOT = { has_war_with = RAJ }
+	# 						}
+	# 						AND = {
+	# 							original_tag = RAJ
+	# 							OR = {
+	# 								has_country_leader = { character = RAJ_subhas_chanda_bose }
+	# 								has_country_leader = { character = RAJ_v_d_savarkar }
+	# 							}
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 			RAJ = { 
+	# 				transfer_state = 733 
+	# 			}
+	# 		}
 
-			if = {
-				limit = {
-					has_dlc = "Graveyard of Empires"
+	# 		if = {
+	# 			limit = {
+	# 				has_dlc = "Graveyard of Empires"
 
-					FROM = {
-						is_raj_or_raj_inheritor = yes
-					}
-					is_in_array = {
-						array = RAJ.owned_states_at_game_start
-						value = FROM.FROM
-					}
+	# 				FROM = {
+	# 					is_raj_or_raj_inheritor = yes
+	# 				}
+	# 				is_in_array = {
+	# 					array = RAJ.owned_states_at_game_start
+	# 					value = FROM.FROM
+	# 				}
 
-					NOT = { 
-						has_dynamic_modifier = { modifier = idea_RAJ_resistant_to_occupation }
-					}
-					ROOT = { has_war_with = FROM }
-					FROM.FROM = { NOT = { is_core_of = ROOT } } 
+	# 				NOT = { 
+	# 					has_dynamic_modifier = { modifier = idea_RAJ_resistant_to_occupation }
+	# 				}
+	# 				ROOT = { has_war_with = FROM }
+	# 				FROM.FROM = { NOT = { is_core_of = ROOT } } 
 					
-				}
+	# 			}
 
-				FROM.FROM = { 
-					add_dynamic_modifier = {
-					 	modifier = idea_RAJ_resistant_to_occupation
-					 	days = 1400
-					}
+	# 			FROM.FROM = { 
+	# 				add_dynamic_modifier = {
+	# 				 	modifier = idea_RAJ_resistant_to_occupation
+	# 				 	days = 1400
+	# 				}
 
-					set_state_flag = RAJ_resistance_already_squashed_flag 
-				}
-			}
-			else_if = {
-				limit = {
-					has_dlc = "Graveyard of Empires"
-					ROOT = {
-						is_raj_or_raj_inheritor = yes
-					}
+	# 				set_state_flag = RAJ_resistance_already_squashed_flag 
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_dlc = "Graveyard of Empires"
+	# 				ROOT = {
+	# 					is_raj_or_raj_inheritor = yes
+	# 				}
 
-					FROM.FROM = { has_dynamic_modifier = { modifier = idea_RAJ_resistant_to_occupation } }
-				}
-				FROM.FROM = { remove_dynamic_modifier = { modifier = idea_RAJ_resistant_to_occupation } }
- 			}
+	# 				FROM.FROM = { has_dynamic_modifier = { modifier = idea_RAJ_resistant_to_occupation } }
+	# 			}
+	# 			FROM.FROM = { remove_dynamic_modifier = { modifier = idea_RAJ_resistant_to_occupation } }
+ 	# 		}
 
-			if = { #Free Bose
-				limit = {
-					has_dlc = "Graveyard of Empires"
-					RAJ = { has_country_flag = has_arrested_bose }
-					FROM.FROM = { state = var:global.bose_arrest_location }
-				}
+	# 		if = { #Free Bose
+	# 			limit = {
+	# 				has_dlc = "Graveyard of Empires"
+	# 				RAJ = { has_country_flag = has_arrested_bose }
+	# 				FROM.FROM = { state = var:global.bose_arrest_location }
+	# 			}
 
-				RAJ = { country_event = { id = GOE_RAJ.26 hours = 2 } }
-			}
+	# 			RAJ = { country_event = { id = GOE_RAJ.26 hours = 2 } }
+	# 		}
 
-			if = {
-				limit = {
-					FROM.FROM = {
-						OR = {
-							is_core_of = BRM
-							is_in_array = {
-								array = RAJ.owned_states_at_game_start
-								value = THIS
-							}
-							NOT = { has_state_flag = RAJ_time_to_retake_state_famine }
-						}
-					}
+	# 		if = {
+	# 			limit = {
+	# 				FROM.FROM = {
+	# 					OR = {
+	# 						is_core_of = BRM
+	# 						is_in_array = {
+	# 							array = RAJ.owned_states_at_game_start
+	# 							value = THIS
+	# 						}
+	# 						NOT = { has_state_flag = RAJ_time_to_retake_state_famine }
+	# 					}
+	# 				}
 
-					FROM = {
-						OR = {
-							original_tag = RAJ
-							original_tag = BRM
-						}
-					}
-				}
+	# 				FROM = {
+	# 					OR = {
+	# 						original_tag = RAJ
+	# 						original_tag = BRM
+	# 					}
+	# 				}
+	# 			}
 
-				FROM.FROM =  {
-					set_state_flag = { flag = RAJ_time_to_retake_state_famine days = 30 value = 1 }
-				}
-			}
-		}
-		effect = { #does not work when placed in on_capitulation or on_annexation, might be connected to an assert that fires off once the Raj caps the Mughals stating that the Raj doesn't have a war with them...
-			if = {
-				limit = {
-					has_dlc = "Graveyard of Empires"
-					FROM.FROM = {
-						has_dynamic_modifier = {
-							modifier = idea_RAJ_mughal_influence
-						}
-					}
-				}
+	# 			FROM.FROM =  {
+	# 				set_state_flag = { flag = RAJ_time_to_retake_state_famine days = 30 value = 1 }
+	# 			}
+	# 		}
+	# 	}
+	# 	effect = { #does not work when placed in on_capitulation or on_annexation, might be connected to an assert that fires off once the Raj caps the Mughals stating that the Raj doesn't have a war with them...
+	# 		if = {
+	# 			limit = {
+	# 				has_dlc = "Graveyard of Empires"
+	# 				FROM.FROM = {
+	# 					has_dynamic_modifier = {
+	# 						modifier = idea_RAJ_mughal_influence
+	# 					}
+	# 				}
+	# 			}
 
-				FROM.FROM = {
-					remove_dynamic_modifier = {
-						modifier = idea_RAJ_mughal_influence
-						days = 1400
-					}
-				}
-			}
-		}
+	# 			FROM.FROM = {
+	# 				remove_dynamic_modifier = {
+	# 					modifier = idea_RAJ_mughal_influence
+	# 					days = 1400
+	# 				}
+	# 			}
+	# 		}
+	# 	}
 
-		effect = { #does not work when placed in on_capitulation or on_annexation, might be connected to an assert that fires off once the Raj caps the Mughals stating that the Raj doesn't have a war with them...
-			if = {
-				limit = {
-					has_dlc = "Graveyard of Empires"
-					ROOT = {
-						original_tag = RAJ
-						has_completed_focus = RAJ_the_legacy_of_babur
-					}
-					FROM.FROM = {
-						NOT = {
-							has_dynamic_modifier = {
-								modifier = idea_RAJ_mughal_influence
-							}
-						}
-					}
-				}
+	# 	effect = { #does not work when placed in on_capitulation or on_annexation, might be connected to an assert that fires off once the Raj caps the Mughals stating that the Raj doesn't have a war with them...
+	# 		if = {
+	# 			limit = {
+	# 				has_dlc = "Graveyard of Empires"
+	# 				ROOT = {
+	# 					original_tag = RAJ
+	# 					has_completed_focus = RAJ_the_legacy_of_babur
+	# 				}
+	# 				FROM.FROM = {
+	# 					NOT = {
+	# 						has_dynamic_modifier = {
+	# 							modifier = idea_RAJ_mughal_influence
+	# 						}
+	# 					}
+	# 				}
+	# 			}
 
-				FROM.FROM = {
-					add_dynamic_modifier = {
-						modifier = idea_RAJ_mughal_influence
-					}
-				}
-			}
-		}
-	}
+	# 			FROM.FROM = {
+	# 				add_dynamic_modifier = {
+	# 					modifier = idea_RAJ_mughal_influence
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
 	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
-	ON_OFFER_JOIN_FACTION = { 
-		effect = { # Adding the correct stuff for faction joiners for the AH joint focus tree
-			IF = {
-				limit = {
-					has_dlc = "Graveyard of Empires"
-					FROM = {
-						original_tag = AFG
-						has_idea = neutrality_idea
-					}
-				}
-				FROM = {
-					remove_ideas = {
-						idea = neutrality_idea
-					}
-				}
-			}
-		}
-	}
+	# ON_OFFER_JOIN_FACTION = { 
+	# 	effect = { # Adding the correct stuff for faction joiners for the AH joint focus tree
+	# 		IF = {
+	# 			limit = {
+	# 				has_dlc = "Graveyard of Empires"
+	# 				FROM = {
+	# 					original_tag = AFG
+	# 					has_idea = neutrality_idea
+	# 				}
+	# 			}
+	# 			FROM = {
+	# 				remove_ideas = {
+	# 					idea = neutrality_idea
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
-	#ROOT is sender, FROM is receiver.
-	on_send_volunteers = {
-		effect = {
-			if = {
-				limit = {
-					ROOT = { 
-						has_completed_focus = RAJ_a_private_military 
-						NOT = { 
-							is_in_array = {
-							 	array = pmc_recievers
-							 	value = FROM
-							 } 
-						}
-					}
+	# #ROOT is sender, FROM is receiver.
+	# on_send_volunteers = {
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				ROOT = { 
+	# 					has_completed_focus = RAJ_a_private_military 
+	# 					NOT = { 
+	# 						is_in_array = {
+	# 						 	array = pmc_recievers
+	# 						 	value = FROM
+	# 						} 
+	# 					}
+	# 				}
 					
-				}
+	# 			}
 
-				ROOT = { 
-					add_to_array = { pmc_recievers = FROM }
-					log = "[FROM.GetName]"
-					add_to_array = { pmc_timer = 77 } #in weeks 
-					add_offsite_building = {
-						type = industrial_complex
-						level = 1
-					}
-				}
-			}
-		}
-	}
+	# 			ROOT = { 
+	# 				add_to_array = { pmc_recievers = FROM }
+	# 				log = "[FROM.GetName]"
+	# 				add_to_array = { pmc_timer = 77 } #in weeks 
+	# 				add_offsite_building = {
+	# 					type = industrial_complex
+	# 					level = 1
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
-	on_monthly_PER = {
-		effect = {
-			IF = {
-				limit = {
-					AND = {
-						kurdistan_exists = no
-						1000 = {
-							is_owned_by = SOU
-						}
-						420 = {
-							is_owned_by = SOU
-						}
-						419 = {
-							is_owned_by = SOU
-						}
-						SOU = {
-							has_government = communism
-						}
-					}
-				}
-				SOU = {
-					country_event = {
-						id = PER_communist_events.20
-						hours = 1
-					}
-				}
-			}
-		}
-	}
+	# on_monthly_PER = {
+	# 	effect = {
+	# 		IF = {
+	# 			limit = {
+	# 				AND = {
+	# 					kurdistan_exists = no
+	# 					1000 = {
+	# 						is_owned_by = SOU
+	# 					}
+	# 					420 = {
+	# 						is_owned_by = SOU
+	# 					}
+	# 					419 = {
+	# 						is_owned_by = SOU
+	# 					}
+	# 					SOU = {
+	# 						has_government = communism
+	# 					}
+	# 				}
+	# 			}
+	# 			SOU = {
+	# 				country_event = {
+	# 					id = PER_communist_events.20
+	# 					hours = 1
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
-	on_monthly_PAL = {
-		effect = {
-			IF = {
-				limit = {
-					date > 1936.3.1
-					OR = {
-						PAL = {
-							exists = yes
-							is_subject_of = ENG
-						}
-						454 = {
-							is_owned_by = ENG
-						}
-					}
-					NOT = { has_global_flag = the_1936_PAL_revolt_has_happened }
-				}
-				every_country = {
-					limit = {
-						OR = {
-							tag = ENG
-							capital_scope = {
-								is_on_continent = middle_east
-							}
-						}
-					}
-					news_event = {
-						id = GOE_IRQ_news.1
-						days = 19
-					}
-				}
-				set_global_flag = the_1936_PAL_revolt_has_happened
-			}
-		}
-	}
+	# on_monthly_PAL = {
+	# 	effect = {
+	# 		IF = {
+	# 			limit = {
+	# 				date > 1936.3.1
+	# 				OR = {
+	# 					PAL = {
+	# 						exists = yes
+	# 						is_subject_of = ENG
+	# 					}
+	# 					454 = {
+	# 						is_owned_by = ENG
+	# 					}
+	# 				}
+	# 				NOT = { has_global_flag = the_1936_PAL_revolt_has_happened }
+	# 			}
+	# 			every_country = {
+	# 				limit = {
+	# 					OR = {
+	# 						tag = ENG
+	# 						capital_scope = {
+	# 							is_on_continent = middle_east
+	# 						}
+	# 					}
+	# 				}
+	# 				news_event = {
+	# 					id = GOE_IRQ_news.1
+	# 					days = 19
+	# 				}
+	# 			}
+	# 			set_global_flag = the_1936_PAL_revolt_has_happened
+	# 		}
+	# 	}
+	# }
 
 	on_release_as_puppet = {
 		effect = {
@@ -1774,90 +1774,90 @@ on_actions = {
 		}
 	}
 
-	on_declare_war = {
-		effect = {
-			IF = {
-				limit = {
-					OR = {
-						tag = IRQ
-						tag = AFG
-						tag = PER
-						tag = TUR
-					}
-					has_dynamic_modifier = { modifier = SSB_saadabad_pact }
-					OR = {
-						AND = {
-							FROM = { tag = PER }
-							PER = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
-						}
-						AND = {
-							FROM = { tag = TUR }
-							TUR = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
-						}
-						AND = {
-							FROM = { tag = AFG }
-							AFG = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
-						}
-						AND = {
-							FROM = { tag = IRQ }
-							IRQ = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
-						}
-					}
-				}
-				custom_effect_tooltip = SSB_you_will_lose_the_bonus_tt
-				hidden_effect = {
-					remove_dynamic_modifier = { modifier = SSB_saadabad_pact }
-					PER = {
-						if = {
-							limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
-							country_event = {
-								id = PER_SSB_events.8
-								hours = 12
-							}
-						}
-					}
-					AFG = {
-						if = {
-							limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
-							country_event = {
-								id = PER_SSB_events.8
-								hours = 12
-							}
-						}
-					}
-					IRQ = {
-						if = {
-							limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
-							country_event = {
-								id = PER_SSB_events.8
-								hours = 12
-							}
-						}
-					}
-					TUR = {
-						if = {
-							limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
-							country_event = {
-								id = PER_SSB_events.8
-								hours = 12
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	# on_declare_war = {
+	# 	effect = {
+	# 		IF = {
+	# 			limit = {
+	# 				OR = {
+	# 					tag = IRQ
+	# 					tag = AFG
+	# 					tag = PER
+	# 					tag = TUR
+	# 				}
+	# 				has_dynamic_modifier = { modifier = SSB_saadabad_pact }
+	# 				OR = {
+	# 					AND = {
+	# 						FROM = { tag = PER }
+	# 						PER = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
+	# 					}
+	# 					AND = {
+	# 						FROM = { tag = TUR }
+	# 						TUR = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
+	# 					}
+	# 					AND = {
+	# 						FROM = { tag = AFG }
+	# 						AFG = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
+	# 					}
+	# 					AND = {
+	# 						FROM = { tag = IRQ }
+	# 						IRQ = { has_dynamic_modifier = { modifier = SSB_saadabad_pact} }
+	# 					}
+	# 				}
+	# 			}
+	# 			custom_effect_tooltip = SSB_you_will_lose_the_bonus_tt
+	# 			hidden_effect = {
+	# 				remove_dynamic_modifier = { modifier = SSB_saadabad_pact }
+	# 				PER = {
+	# 					if = {
+	# 						limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
+	# 						country_event = {
+	# 							id = PER_SSB_events.8
+	# 							hours = 12
+	# 						}
+	# 					}
+	# 				}
+	# 				AFG = {
+	# 					if = {
+	# 						limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
+	# 						country_event = {
+	# 							id = PER_SSB_events.8
+	# 							hours = 12
+	# 						}
+	# 					}
+	# 				}
+	# 				IRQ = {
+	# 					if = {
+	# 						limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
+	# 						country_event = {
+	# 							id = PER_SSB_events.8
+	# 							hours = 12
+	# 						}
+	# 					}
+	# 				}
+	# 				TUR = {
+	# 					if = {
+	# 						limit = { has_dynamic_modifier = { modifier = SSB_saadabad_pact } }
+	# 						country_event = {
+	# 							id = PER_SSB_events.8
+	# 							hours = 12
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 
-	on_annex = {
-		effect = {
-			if = {
-				limit = {
-					FROM = {
-						has_country_flag = IRQ_has_become_kurdistan_flag
-					}
-				}
-				clr_global_flag = kurdistan_exists_flag
-			}
-		}
-	}
+	# on_annex = {
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				FROM = {
+	# 					has_country_flag = IRQ_has_become_kurdistan_flag
+	# 				}
+	# 			}
+	# 			clr_global_flag = kurdistan_exists_flag
+	# 		}
+	# 	}
+	# }
 }

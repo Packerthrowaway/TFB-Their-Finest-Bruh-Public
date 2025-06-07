@@ -1013,96 +1013,96 @@ AFG_foreign_intervention_category = {
 }
 
 AFG_develop_central_asia_category = {
-	AFG_core_central_asian_state = {
-		icon = GFX_decision_hol_exchange_intelligence_data
+	# AFG_core_central_asian_state = {
+	# 	icon = GFX_decision_hol_exchange_intelligence_data
 	
-		allowed = {
-			original_tag = AFG
-		}
+	# 	allowed = {
+	# 		original_tag = AFG
+	# 	}
 	
-		available = {
-			FROM = {
-				is_owned_and_controlled_by = ROOT
+	# 	available = {
+	# 		FROM = {
+	# 			is_owned_and_controlled_by = ROOT
 
-			}
-			IF = {
-				limit = {
-					FROM = {
-						is_core_of = UZB
-					}
-				}
-				has_completed_focus = AFG_development_in_uzb
-			}
-			ELSE_IF = {
-				limit = {
-					FROM = {
-						is_core_of = TAJ
-					}
-				}
-				has_completed_focus = AFG_development_in_taj
-			}
-			ELSE_IF = {
-				limit = {
-					FROM = {
-						is_core_of = TMS
-					}
-				}
-				has_completed_focus = AFG_development_in_tms
-			}
-			ROOT = { 
-				NOT = { 
-					has_country_flag = AFG_core_central_asian_state_in_progress
-				}
-			}
-		}
+	# 		}
+	# 		IF = {
+	# 			limit = {
+	# 				FROM = {
+	# 					is_core_of = UZB
+	# 				}
+	# 			}
+	# 			has_completed_focus = AFG_development_in_uzb
+	# 		}
+	# 		ELSE_IF = {
+	# 			limit = {
+	# 				FROM = {
+	# 					is_core_of = TAJ
+	# 				}
+	# 			}
+	# 			has_completed_focus = AFG_development_in_taj
+	# 		}
+	# 		ELSE_IF = {
+	# 			limit = {
+	# 				FROM = {
+	# 					is_core_of = TMS
+	# 				}
+	# 			}
+	# 			has_completed_focus = AFG_development_in_tms
+	# 		}
+	# 		ROOT = { 
+	# 			NOT = { 
+	# 				has_country_flag = AFG_core_central_asian_state_in_progress
+	# 			}
+	# 		}
+	# 	}
 		
-		visible = {
-			hidden_trigger = { #Otherwise this will show up in the cancel trigger tooltip
-				has_completed_focus = AFG_central_asian_unification
-			}
-			FROM = { 
-				NOT = { is_core_of = ROOT }
-				is_fully_controlled_by = ROOT
-			}
-		}
-		state_target = any_owned_state
-	    target_trigger = {
-	        FROM = {
-	        	OR = {
-	        		is_core_of = UZB
-	        		is_core_of = TAJ
-	        		is_core_of = TMS
-	        	}
-	        }
-	    }
-	    on_map_mode = map_and_decisions_view 
-	    cost = 30
+	# 	visible = {
+	# 		hidden_trigger = { #Otherwise this will show up in the cancel trigger tooltip
+	# 			has_completed_focus = AFG_central_asian_unification
+	# 		}
+	# 		FROM = { 
+	# 			NOT = { is_core_of = ROOT }
+	# 			is_fully_controlled_by = ROOT
+	# 		}
+	# 	}
+	# 	state_target = any_owned_state
+	#     target_trigger = {
+	#         FROM = {
+	#         	OR = {
+	#         		is_core_of = UZB
+	#         		is_core_of = TAJ
+	#         		is_core_of = TMS
+	#         	}
+	#         }
+	#     }
+	#     on_map_mode = map_and_decisions_view 
+	#     cost = 30
 		
-		fire_only_once = no
-		days_remove = 30
+	# 	fire_only_once = no
+	# 	days_remove = 30
 
-		cancel_if_not_visible = yes
+	# 	cancel_if_not_visible = yes
 
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = AFG_core_central_asian_state_in_progress
-			}
-		}
-		remove_effect = {
-			FROM = {
-				add_core_of = ROOT
-			}
-			hidden_effect = {
-				clr_country_flag = AFG_core_central_asian_state_in_progress
-			}
-		}
+	# 	complete_effect = {
+	# 		hidden_effect = {
+	# 			set_country_flag = AFG_core_central_asian_state_in_progress
+	# 		}
+	# 	}
+	# 	remove_effect = {
+	# 		FROM = {
+	# 			add_core_of = ROOT
+	# 		}
+	# 		hidden_effect = {
+	# 			clr_country_flag = AFG_core_central_asian_state_in_progress
+	# 		}
+	# 	}
 
-		cancel_effect = {
-			hidden_effect = {
-				clr_country_flag = AFG_core_central_asian_state_in_progress
-			}
-		}
-	}
+	# 	cancel_effect = {
+	# 		hidden_effect = {
+	# 			clr_country_flag = AFG_core_central_asian_state_in_progress
+	# 		}
+	# 	}
+	# }
 }
 
 AFG_shadows_of_the_emir_category = {
@@ -1254,182 +1254,182 @@ AFG_turko_persian_heritage_category = {
 }
 
 AFG_turkik_alliance_category = {
-	AFG_support_resistance_in_state = {
-		icon = GFX_decision_revolt
+	# AFG_support_resistance_in_state = {
+	# 	icon = GFX_decision_revolt
 	
-		allowed = {
-			original_tag = AFG
-		}
+	# 	allowed = {
+	# 		original_tag = AFG
+	# 	}
 	
-		available = {
-			FROM = {
-				NOT = {
-					has_dynamic_modifier = { modifier = AFG_resistance_active_here }
-				}
-			}
-			NOT = { has_country_flag = AFG_supporting_resistance_in_state_in_progress }
-		}
+	# 	available = {
+	# 		FROM = {
+	# 			NOT = {
+	# 				has_dynamic_modifier = { modifier = AFG_resistance_active_here }
+	# 			}
+	# 		}
+	# 		NOT = { has_country_flag = AFG_supporting_resistance_in_state_in_progress }
+	# 	}
 		
-		visible = {
-			has_completed_focus = AFG_alliance_with_turkik_peoples
-			NOT = { has_war_with = FROM.OWNER }
-			FROM = { is_owned_and_controlled_by = SOU }
-		}
-		state_target = asia
-	    target_trigger = {
-	        FROM = {
-	        	OR = {
-	        		is_core_of = UZB
-	        		is_core_of = TAJ
-	        		is_core_of = TMS
-	        		is_core_of = KYR
-	        	}
-	        }
-	    }
-	    on_map_mode = map_and_decisions_view 
-	    cost = 30
+	# 	visible = {
+	# 		has_completed_focus = AFG_alliance_with_turkik_peoples
+	# 		NOT = { has_war_with = FROM.OWNER }
+	# 		FROM = { is_owned_and_controlled_by = SOU }
+	# 	}
+	# 	state_target = asia
+	#     target_trigger = {
+	#         FROM = {
+	#         	OR = {
+	#         		is_core_of = UZB
+	#         		is_core_of = TAJ
+	#         		is_core_of = TMS
+	#         		is_core_of = KYR
+	#         	}
+	#         }
+	#     }
+	#     on_map_mode = map_and_decisions_view 
+	#     cost = 30
 		
-		fire_only_once = no
-		days_remove = 15
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = { flag = AFG_supporting_resistance_in_state_in_progress value = 1 days = 15 }
-			}
-		}
-		remove_effect = {
-			FROM = {
-				add_dynamic_modifier = {
-					modifier = AFG_resistance_active_here
-				}
-			}
-			hidden_effect = {
-				clr_country_flag = AFG_supporting_resistance_in_state_in_progress
-				IF = {
-					limit = {
-						FROM = {
-							OWNER = {
-								NOT = {
-									has_country_flag = AFG_warning_event_fired
-								}
-							}
-						}
-					}
-					FROM = {
-						OWNER = {
-							country_event = {
-								id = AFG_political_events.90
-								hours = 1
-							}
-						}
-					}
-				}
-			}
-		}
+	# 	fire_only_once = no
+	# 	days_remove = 15
+	# 	complete_effect = {
+	# 		hidden_effect = {
+	# 			set_country_flag = { flag = AFG_supporting_resistance_in_state_in_progress value = 1 days = 15 }
+	# 		}
+	# 	}
+	# 	remove_effect = {
+	# 		FROM = {
+	# 			add_dynamic_modifier = {
+	# 				modifier = AFG_resistance_active_here
+	# 			}
+	# 		}
+	# 		hidden_effect = {
+	# 			clr_country_flag = AFG_supporting_resistance_in_state_in_progress
+	# 			IF = {
+	# 				limit = {
+	# 					FROM = {
+	# 						OWNER = {
+	# 							NOT = {
+	# 								has_country_flag = AFG_warning_event_fired
+	# 							}
+	# 						}
+	# 					}
+	# 				}
+	# 				FROM = {
+	# 					OWNER = {
+	# 						country_event = {
+	# 							id = AFG_political_events.90
+	# 							hours = 1
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
 
-		cancel_trigger = {
-			FROM = {
-				NOT = {
-					is_owned_and_controlled_by = SOU
-				}
-			}
-		}
+	# 	cancel_trigger = {
+	# 		FROM = {
+	# 			NOT = {
+	# 				is_owned_and_controlled_by = SOU
+	# 			}
+	# 		}
+	# 	}
 
-		cancel_effect = {
-			hidden_effect = {
-				clr_country_flag = AFG_supporting_resistance_in_state_in_progress
-				clr_country_flag = SOV_afg_clamp_down_in_state_in_progress
-			}
-		}
-	}
+	# 	cancel_effect = {
+	# 		hidden_effect = {
+	# 			clr_country_flag = AFG_supporting_resistance_in_state_in_progress
+	# 			clr_country_flag = SOV_afg_clamp_down_in_state_in_progress
+	# 		}
+	# 	}
+	# }
 
-	AFG_support_resistance_in_state_middle_east = {
-		icon = GFX_decision_revolt
+	# AFG_support_resistance_in_state_middle_east = {
+	# 	icon = GFX_decision_revolt
 	
-		allowed = {
-			original_tag = AFG
-		}
+	# 	allowed = {
+	# 		original_tag = AFG
+	# 	}
 	
-		available = {
-			FROM = {
-				is_owned_and_controlled_by = SOV
-				NOT = {
-					has_dynamic_modifier = { modifier = AFG_resistance_active_here }
-				}
-			}
-			NOT = { has_country_flag = AFG_supporting_resistance_in_state_in_progress }
-		}
+	# 	available = {
+	# 		FROM = {
+	# 			is_owned_and_controlled_by = SOV
+	# 			NOT = {
+	# 				has_dynamic_modifier = { modifier = AFG_resistance_active_here }
+	# 			}
+	# 		}
+	# 		NOT = { has_country_flag = AFG_supporting_resistance_in_state_in_progress }
+	# 	}
 		
-		visible = {
-			has_completed_focus = AFG_alliance_with_turkik_peoples
-			FROM = { NOT = { has_dynamic_modifier = { modifier = AFG_resistance_active_here } } }
-			NOT = { has_war_with = FROM.OWNER }
-		}
-		state_target = middle_east
-	    target_trigger = {
-	        FROM = {
-	        	OR = {
-	        		is_core_of = UZB
-	        		is_core_of = TAJ
-	        		is_core_of = TMS
-	        		is_core_of = KYR
-	        	}
-	        	is_owned_and_controlled_by = SOU
-	        }
-	    }
-	    on_map_mode = map_and_decisions_view 
-	    cost = 30
+	# 	visible = {
+	# 		has_completed_focus = AFG_alliance_with_turkik_peoples
+	# 		FROM = { NOT = { has_dynamic_modifier = { modifier = AFG_resistance_active_here } } }
+	# 		NOT = { has_war_with = FROM.OWNER }
+	# 	}
+	# 	state_target = middle_east
+	#     target_trigger = {
+	#         FROM = {
+	#         	OR = {
+	#         		is_core_of = UZB
+	#         		is_core_of = TAJ
+	#         		is_core_of = TMS
+	#         		is_core_of = KYR
+	#         	}
+	#         	is_owned_and_controlled_by = SOU
+	#         }
+	#     }
+	#     on_map_mode = map_and_decisions_view 
+	#     cost = 30
 		
-		fire_only_once = no
-		days_remove = 15
-		complete_effect = {
-			hidden_effect = {
-				set_country_flag = AFG_supporting_resistance_in_state_in_progress
-			}
-		}
-		remove_effect = {
-			FROM = {
-				add_dynamic_modifier = {
-					modifier = AFG_resistance_active_here
-				}
-			}
-			hidden_effect = {
-				clr_country_flag = AFG_supporting_resistance_in_state_in_progress
-				IF = {
-					limit = {
-						FROM = {
-							OWNER = {
-								NOT = {
-									has_country_flag = AFG_warning_event_fired
-								}
-							}
-						}
-					}
-					FROM = {
-						OWNER = {
-							country_event = {
-								id = AFG_political_events.90
-								hours = 1
-							}
-						}
-					}
-				}
-			}
-		}
+	# 	fire_only_once = no
+	# 	days_remove = 15
+	# 	complete_effect = {
+	# 		hidden_effect = {
+	# 			set_country_flag = AFG_supporting_resistance_in_state_in_progress
+	# 		}
+	# 	}
+	# 	remove_effect = {
+	# 		FROM = {
+	# 			add_dynamic_modifier = {
+	# 				modifier = AFG_resistance_active_here
+	# 			}
+	# 		}
+	# 		hidden_effect = {
+	# 			clr_country_flag = AFG_supporting_resistance_in_state_in_progress
+	# 			IF = {
+	# 				limit = {
+	# 					FROM = {
+	# 						OWNER = {
+	# 							NOT = {
+	# 								has_country_flag = AFG_warning_event_fired
+	# 							}
+	# 						}
+	# 					}
+	# 				}
+	# 				FROM = {
+	# 					OWNER = {
+	# 						country_event = {
+	# 							id = AFG_political_events.90
+	# 							hours = 1
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
 
-		cancel_trigger = {
-			NOT = {
-				FROM = {
-					is_fully_controlled_by = ROOT
-				}
-			} 
-		}
+	# 	cancel_trigger = {
+	# 		NOT = {
+	# 			FROM = {
+	# 				is_fully_controlled_by = ROOT
+	# 			}
+	# 		} 
+	# 	}
 
-		cancel_effect = {
-			hidden_effect = {
-				clr_country_flag = SOV_afg_clamp_down_in_state_in_progress
-			}
-		}
-	}
+	# 	cancel_effect = {
+	# 		hidden_effect = {
+	# 			clr_country_flag = SOV_afg_clamp_down_in_state_in_progress
+	# 		}
+	# 	}
+	# }
 
 	SOV_afg_crush_resistance_in_state = {
 		icon = GFX_decision_revolt

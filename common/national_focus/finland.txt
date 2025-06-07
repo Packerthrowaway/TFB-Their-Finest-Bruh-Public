@@ -6727,10 +6727,16 @@ focus_tree = {
 				target = SOV
 				type = annex_everything
 			}
-			declare_war_on = {
-				target = MON
-				type = annex_everything
+			if = {
+				limit = {
+					MON = { exists = yes }
+				}
+				declare_war_on = {
+					target = MON
+					type = annex_everything
+				}
 			}
+
 			if = {
 				limit = {
 					has_country_flag = FINLAND_JOIN_FACTION
@@ -7975,9 +7981,7 @@ focus_tree = {
 
 		completion_reward = {
 			mio:FIN_valtion_panssaritehdas_organization = {
-				add_mio_size = 1
-				add_mio_design_team_assign_cost = -0.2
-				add_mio_design_team_change_cost = -0.2
+				add_mio_size = 2
 			}
 
 			add_tech_bonus = {
@@ -11411,7 +11415,6 @@ focus_tree = {
 						}
 					}
 					add_mio_design_team_assign_cost = -0.5
-					add_mio_design_team_change_cost = -0.2
 					complete_mio_trait = FIN_mio_trait_salvaged_and_retooled
 				}
 			}
@@ -13299,76 +13302,76 @@ focus_tree = {
 			air_experience = 15
 			navy_experience = 15
 
-			if = {
-				limit = {
-					has_dlc = "By Blood Alone"
-				}
-				if = {
-					limit = {
-						has_tech = basic_small_airframe
-					}
-					if = {
-						limit = {
-							has_dlc = "Arms Against Tyranny"
-						}
-						create_equipment_variant = {
-							name = "VL Kotka" 
-							type = small_plane_naval_bomber_airframe_1
-							modules = {
-								fixed_main_weapon_slot = torpedo_mounting
-								engine_type_slot = engine_1_1x
-								special_type_slot_1 = empty
-							}
-							icon = "GFX_FIN_naval_bomber1_medium"
-							design_team = mio:FIN_valtion_lentokonetehdas_organization
-						}
-					}
-					else = {
-						create_equipment_variant = {
-							name = "VL Kotka" 
-							type = small_plane_naval_bomber_airframe_1
-							modules = {
-								fixed_main_weapon_slot = torpedo_mounting
-								engine_type_slot = engine_1_1x
-								special_type_slot_1 = empty
-							}
-							icon = "GFX_FIN_naval_bomber1_medium"
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_dlc = "Arms Against Tyranny"
-						}
-						create_equipment_variant = {
-							name = "VL Kotka" 
-							type = small_plane_naval_bomber_airframe_0
-							allow_without_tech = yes #Tooltip purposes (focus requires tech anyways)
-							modules = {
-								fixed_main_weapon_slot = torpedo_mounting
-								engine_type_slot = engine_1_1x
-								special_type_slot_1 = empty
-							}
-							icon = "GFX_FIN_iw_small_naval_bomber_1_medium"
-							design_team = mio:FIN_valtion_lentokonetehdas_organization
-						}
-					}
-					else = {
-						create_equipment_variant = {
-							name = "VL Kotka" 
-							type = small_plane_naval_bomber_airframe_0
-							allow_without_tech = yes #Tooltip purposes (focus requires tech anyways)
-							modules = {
-								fixed_main_weapon_slot = torpedo_mounting
-								engine_type_slot = engine_1_1x
-								special_type_slot_1 = empty
-							}
-							icon = "GFX_FIN_iw_small_naval_bomber_1_medium"
-						}
-					}
-				}
-			}
+			# if = {
+			# 	limit = {
+			# 		has_dlc = "By Blood Alone"
+			# 	}
+			# 	if = {
+			# 		limit = {
+			# 			has_tech = basic_small_airframe
+			# 		}
+			# 		if = {
+			# 			limit = {
+			# 				has_dlc = "Arms Against Tyranny"
+			# 			}
+			# 			create_equipment_variant = {
+			# 				name = "VL Kotka" 
+			# 				type = small_plane_naval_bomber_airframe_1
+			# 				modules = {
+			# 					fixed_main_weapon_slot = torpedo_mounting
+			# 					engine_type_slot = engine_1_1x
+			# 					special_type_slot_1 = empty
+			# 				}
+			# 				icon = "GFX_FIN_naval_bomber1_medium"
+			# 				design_team = mio:FIN_valtion_lentokonetehdas_organization
+			# 			}
+			# 		}
+			# 		else = {
+			# 			create_equipment_variant = {
+			# 				name = "VL Kotka" 
+			# 				type = small_plane_naval_bomber_airframe_1
+			# 				modules = {
+			# 					fixed_main_weapon_slot = torpedo_mounting
+			# 					engine_type_slot = engine_1_1x
+			# 					special_type_slot_1 = empty
+			# 				}
+			# 				icon = "GFX_FIN_naval_bomber1_medium"
+			# 			}
+			# 		}
+			# 	}
+			# 	else = {
+			# 		if = {
+			# 			limit = {
+			# 				has_dlc = "Arms Against Tyranny"
+			# 			}
+			# 			create_equipment_variant = {
+			# 				name = "VL Kotka" 
+			# 				type = small_plane_naval_bomber_airframe_0
+			# 				allow_without_tech = yes #Tooltip purposes (focus requires tech anyways)
+			# 				modules = {
+			# 					fixed_main_weapon_slot = torpedo_mounting
+			# 					engine_type_slot = engine_1_1x
+			# 					special_type_slot_1 = empty
+			# 				}
+			# 				icon = "GFX_FIN_iw_small_naval_bomber_1_medium"
+			# 				design_team = mio:FIN_valtion_lentokonetehdas_organization
+			# 			}
+			# 		}
+			# 		else = {
+			# 			create_equipment_variant = {
+			# 				name = "VL Kotka" 
+			# 				type = small_plane_naval_bomber_airframe_0
+			# 				allow_without_tech = yes #Tooltip purposes (focus requires tech anyways)
+			# 				modules = {
+			# 					fixed_main_weapon_slot = torpedo_mounting
+			# 					engine_type_slot = engine_1_1x
+			# 					special_type_slot_1 = empty
+			# 				}
+			# 				icon = "GFX_FIN_iw_small_naval_bomber_1_medium"
+			# 			}
+			# 		}
+			# 	}
+			# }
 		}
 	}
 	
@@ -14254,7 +14257,7 @@ focus_tree = {
 						front_1_custom_slot = ship_anti_air_1
 						mid_1_custom_slot = ship_anti_air_1
 						#mid_2_custom_slot = ship_anti_air_1
-						rear_1_custom_slot = ship_light_medium_battery_1
+						#rear_1_custom_slot = ship_light_medium_battery_1
 						fixed_ship_battery_slot = ship_light_medium_battery_1
 						fixed_ship_anti_air_slot = ship_anti_air_1
 						fixed_ship_fire_control_system_slot = ship_fire_control_system_0

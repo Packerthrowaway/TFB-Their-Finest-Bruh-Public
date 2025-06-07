@@ -321,21 +321,21 @@ country_event = {
 			}
 		}
 
+		# IF = {
+		# 	limit = {
+		# 		JOR = {
+		# 			exists = yes
+		# 			is_subject_of = ROOT
+		# 		}
+		# 	}
+		# 	JOR = {
+		# 		country_event = {
+		# 			id = IRQ_political_events.17
+		# 			hours = 1
+		# 		}
+		# 	}
+		# }
 		IF = {
-			limit = {
-				JOR = {
-					exists = yes
-					is_subject_of = ROOT
-				}
-			}
-			JOR = {
-				country_event = {
-					id = IRQ_political_events.17
-					hours = 1
-				}
-			}
-		}
-		ELSE_IF = {
 			limit = {
 				455 = {
 					is_owned_and_controlled_by = ROOT
@@ -392,9 +392,9 @@ country_event = {
 				hours = 1
 			}
 		}
-		effect_tooltip = {
-			IRQ = { puppet = JOR }
-		}
+		# effect_tooltip = {
+		# 	IRQ = { puppet = JOR }
+		# }
 	}
 	# Refuse
 	option = {
@@ -428,24 +428,24 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-		IF = {
-			limit = {
-				JOR = {
-					exists = yes
-					is_subject_of = ENG 
-				}
-			}
-			JOR = { drop_cosmetic_tag = yes }
-			IRQ = {
-				puppet = JOR
-			}
+		# IF = {
+		# 	limit = {
+		# 		JOR = {
+		# 			exists = yes
+		# 			is_subject_of = ENG 
+		# 		}
+		# 	}
+		# 	JOR = { drop_cosmetic_tag = yes }
+		# 	IRQ = {
+		# 		puppet = JOR
+		# 	}
 			
-		}
-		ELSE = {
+		# }
+		# ELSE = {
 			455 = {
 				transfer_state_to = IRQ
 			}
-		}
+		# }
 	}
 }
 
@@ -525,21 +525,21 @@ country_event = {
 			}
 		}
 
+		# IF = {
+		# 	limit = {
+		# 		PAL = {
+		# 			exists = yes
+		# 			is_subject_of = ROOT
+		# 		}
+		# 	}
+		# 	PAL = {
+		# 		country_event = {
+		# 			id = IRQ_political_events.22
+		# 			hours = 1
+		# 		}
+		# 	}
+		# }
 		IF = {
-			limit = {
-				PAL = {
-					exists = yes
-					is_subject_of = ROOT
-				}
-			}
-			PAL = {
-				country_event = {
-					id = IRQ_political_events.22
-					hours = 1
-				}
-			}
-		}
-		ELSE_IF = {
 			limit = {
 				454 = {
 					is_owned_and_controlled_by = ROOT
@@ -596,9 +596,9 @@ country_event = {
 			}
 		}
 		drop_cosmetic_tag = yes
-		effect_tooltip = {
-			IRQ = { puppet = PAL }
-		}
+		# effect_tooltip = {
+		# 	IRQ = { puppet = PAL }
+		# }
 	}
 	# Refuse
 	option = {
@@ -632,27 +632,27 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-		IF = {
-			limit = {
-				PAL = {
-					exists = yes
-					is_subject_of = ENG 
-				}
-			}
-			PAL = { 
-				drop_cosmetic_tag = yes 
-				retire_country_leader = yes
-			}
-			IRQ = {
-				puppet = PAL
-			}
+		# IF = {
+		# 	limit = {
+		# 		PAL = {
+		# 			exists = yes
+		# 			is_subject_of = ENG 
+		# 		}
+		# 	}
+		# 	PAL = { 
+		# 		drop_cosmetic_tag = yes 
+		# 		retire_country_leader = yes
+		# 	}
+		# 	IRQ = {
+		# 		puppet = PAL
+		# 	}
 			
-		}
-		ELSE = {
+		# }
+		# ELSE = {
 			455 = {
 				transfer_state_to = IRQ
 			}
-		}
+		# }
 	}
 }
 
@@ -1090,39 +1090,39 @@ country_event = {
 				has_war_with = FROM
 			}
 		}
-		IF = {
-			limit = {
-				KUW = {
-					exists = yes
-					is_subject_of = ROOT
-				}
-			}
-			KUW = {
-				country_event = {
-					id = IRQ_political_events.51
-					hours = 1
-				}
-			}
-			effect_tooltip = {
-				FROM = {
-					puppet = KUW
-				}
-			}
-		}
-		ELSE = {
+		# IF = {
+		# 	limit = {
+		# 		KUW = {
+		# 			exists = yes
+		# 			is_subject_of = ROOT
+		# 		}
+		# 	}
+		# 	KUW = {
+		# 		country_event = {
+		# 			id = IRQ_political_events.51
+		# 			hours = 1
+		# 		}
+		# 	}
+		# 	effect_tooltip = {
+		# 		FROM = {
+		# 			puppet = KUW
+		# 		}
+		# 	}
+		# }
+		# ELSE = {
 			FROM = {
 				country_event = {
 					id = IRQ_political_events.53
 					hours = 1
 				}
 			}
-			effect_tooltip = {
-				every_owned_state = {
-					limit = { is_core_of = KUW }
-					transfer_state_to = FROM
-				}
-			}
-		}
+		# 	effect_tooltip = {
+		# 		every_owned_state = {
+		# 			limit = { is_core_of = KUW }
+		# 			transfer_state_to = FROM
+		# 		}
+		# 	}
+		# }
 	}
 	# No
 	option = {
@@ -1209,31 +1209,31 @@ country_event = {
 				}
 			}
 		}
-		FROM = {
-			IF = { 
-				limit = { 
-					tag = KUW 
-				} 
-				ROOT = { 
-					create_wargoal = {
-						target = PREV
-						type = puppet_wargoal_focus
-					}
-				}
-			}
-			ELSE = {
-				every_owned_state = {
-					limit = {
-						is_core_of = KUW
-					}
-					add_claim_by = ROOT
-				}
-				create_wargoal = {
-					target = PREV
-					type = take_claimed_state
-				}
-			}
-		}
+		# FROM = {
+		# 	IF = { 
+		# 		limit = { 
+		# 			tag = KUW 
+		# 		} 
+		# 		ROOT = { 
+		# 			create_wargoal = {
+		# 				target = PREV
+		# 				type = puppet_wargoal_focus
+		# 			}
+		# 		}
+		# 	}
+		# 	ELSE = {
+		# 		every_owned_state = {
+		# 			limit = {
+		# 				is_core_of = KUW
+		# 			}
+		# 			add_claim_by = ROOT
+		# 		}
+		# 		create_wargoal = {
+		# 			target = PREV
+		# 			type = take_claimed_state
+		# 		}
+		# 	}
+		# }
 	}
 }
 
@@ -1250,23 +1250,23 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-		FROM = {
-			IF = { 
-				limit = { 
-					tag = KUW 
-				} 
-				ROOT = { puppet = KUW }
-				drop_cosmetic_tag = yes
-			}
-			ELSE = {
-				every_owned_state = {
-					limit = {
-						is_core_of = KUW
-					}
-					transfer_state_to = ROOT
-				}
-			}
-		}
+		# FROM = {
+		# 	IF = { 
+		# 		limit = { 
+		# 			tag = KUW 
+		# 		} 
+		# 		ROOT = { puppet = KUW }
+		# 		drop_cosmetic_tag = yes
+		# 	}
+		# 	ELSE = {
+		# 		every_owned_state = {
+		# 			limit = {
+		# 				is_core_of = KUW
+		# 			}
+		# 			transfer_state_to = ROOT
+		# 		}
+		# 	}
+		# }
 	}
 }
 
@@ -1913,7 +1913,7 @@ news_event = { # Palestine Revolt 1936
 				is_on_continent = middle_east
 				is_core_of = ROOT
 			}
-			NOT = { ROOT = { has_war_with = PAL } }
+			#NOT = { ROOT = { has_war_with = PAL } }
 		}
 	}
 	option = {
@@ -1930,7 +1930,8 @@ news_event = { # Palestine Revolt 1936
 						is_on_continent = middle_east
 						is_core_of = ROOT
 					}
-					ROOT = { has_war_with = PAL } 
+					always = no
+					#ROOT = { has_war_with = PAL } 
 				}
 			}
 			NOT = { tag = ENG }

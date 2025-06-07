@@ -2787,10 +2787,10 @@ focus_tree = {
 				has_government = fascism
 				NOT = {
 					OR = {
-						original_tag = ELS
+						# original_tag = ELS
 						original_tag = MEX
-						original_tag = DOM
-						original_tag = PAN
+						# original_tag = DOM
+						# original_tag = PAN
 					}
 				}
 			}
@@ -2808,10 +2808,10 @@ focus_tree = {
 						has_government = fascism
 						NOT = {
 							OR = {
-								original_tag = ELS
+								# original_tag = ELS
 								original_tag = MEX
-								original_tag = DOM
-								original_tag = PAN
+								# original_tag = DOM
+								# original_tag = PAN
 							}
 						}
 					}
@@ -3795,7 +3795,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 0
 		}
-		will_lead_to_war_with = URG
+		#will_lead_to_war_with = URG
 		available = {
 			has_war_support > 0.5
 		}
@@ -3803,12 +3803,12 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			URG = {
-				country_event = {
-					id = JUNO_brazil_events.40
-					hours = 1
-				}
-			}
+			# URG = {
+			# 	country_event = {
+			# 		id = JUNO_brazil_events.40
+			# 		hours = 1
+			# 	}
+			# }
 			add_war_support = 0.1
 		}
 	}
@@ -4216,13 +4216,14 @@ focus_tree = {
 			#focus = BRA_uruguay_ultimatum
 		}
 		bypass = {
-			BOL = {
-				OR = {
-					is_in_faction_with = ROOT
-					exists = no
-					is_subject_of = ROOT
-				}
-			}
+			always = yes
+			# BOL = {
+			# 	OR = {
+			# 		is_in_faction_with = ROOT
+			# 		exists = no
+			# 		is_subject_of = ROOT
+			# 	}
+			# }
 		}
 		x = -1
 		y = 1
@@ -4239,13 +4240,13 @@ focus_tree = {
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
-		will_lead_to_war_with = BOL
+		#will_lead_to_war_with = BOL
 		completion_reward = {
-			create_wargoal = {
-				target = BOL
-				type = annex_everything
-				expire = 0
-			}
+			# create_wargoal = {
+			# 	target = BOL
+			# 	type = annex_everything
+			# 	expire = 0
+			# }
 		}
 	}
 
@@ -4257,18 +4258,19 @@ focus_tree = {
 			focus = BRA_guyana_crisis
 		}
 		bypass = {
-			PAR = {
-				OR = {
-					is_in_faction_with = ROOT
-					exists = no
-					is_subject_of = ROOT
-				}
-			}
+			always = yes
+			# PAR = {
+			# 	OR = {
+			# 		is_in_faction_with = ROOT
+			# 		exists = no
+			# 		is_subject_of = ROOT
+			# 	}
+			# }
 		}
 		x = 1
 		y = 1
 		relative_position_id = BRA_guyana_crisis
-		will_lead_to_war_with = PAR
+		#will_lead_to_war_with = PAR
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -4283,12 +4285,12 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			PAR = {
-				country_event = {
-					id = JUNO_brazil_events.45
-					hours = 1
-				}
-			}
+			# PAR = {
+			# 	country_event = {
+			# 		id = JUNO_brazil_events.45
+			# 		hours = 1
+			# 	}
+			# }
 		}
 	}
 
@@ -4385,11 +4387,11 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = BRA_attack_chile
-		will_lead_to_war_with = ECU
+		# will_lead_to_war_with = ECU
 		will_lead_to_war_with = VEN
-		will_lead_to_war_with = PRU
-		will_lead_to_war_with = PAN
-		will_lead_to_war_with = COL
+		# will_lead_to_war_with = PRU
+		# will_lead_to_war_with = PAN
+		# will_lead_to_war_with = COL
 		cost = 10
 		ai_will_do = {
 			factor = 10
@@ -4404,21 +4406,21 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			IF = {
-				limit = {
-					ECU = {
-						exists = yes
-						NOT = {
-							is_in_faction_with = ROOT
-						}
-					}
-				}
-				create_wargoal = {
-					target = ECU
-					type = annex_everything
-					expire = 0
-				}
-			}
+			# IF = {
+			# 	limit = {
+			# 		ECU = {
+			# 			exists = yes
+			# 			NOT = {
+			# 				is_in_faction_with = ROOT
+			# 			}
+			# 		}
+			# 	}
+			# 	create_wargoal = {
+			# 		target = ECU
+			# 		type = annex_everything
+			# 		expire = 0
+			# 	}
+			# }
 			IF = {
 				limit = {
 					VEN = {
@@ -4434,51 +4436,51 @@ focus_tree = {
 					expire = 0
 				}
 			}
-			IF = {
-				limit = {
-					PRU = {
-						exists = yes
-						NOT = {
-							is_in_faction_with = ROOT
-						}
-					}
-				}
-				create_wargoal = {
-					target = PRU
-					type = annex_everything
-					expire = 0
-				}
-			}
-			IF = {
-				limit = {
-					PAN = {
-						exists = yes
-						NOT = {
-							is_in_faction_with = ROOT
-						}
-					}
-				}
-				create_wargoal = {
-					target = PAN
-					type = annex_everything
-					expire = 0
-				}
-			}
-			IF = {
-				limit = {
-					COL = {
-						exists = yes
-						NOT = {
-							is_in_faction_with = ROOT
-						}
-					}
-				}
-				create_wargoal = {
-					target = COL
-					type = annex_everything
-					expire = 0
-				}
-			}
+			# IF = {
+			# 	limit = {
+			# 		PRU = {
+			# 			exists = yes
+			# 			NOT = {
+			# 				is_in_faction_with = ROOT
+			# 			}
+			# 		}
+			# 	}
+			# 	create_wargoal = {
+			# 		target = PRU
+			# 		type = annex_everything
+			# 		expire = 0
+			# 	}
+			# }
+			# IF = {
+			# 	limit = {
+			# 		PAN = {
+			# 			exists = yes
+			# 			NOT = {
+			# 				is_in_faction_with = ROOT
+			# 			}
+			# 		}
+			# 	}
+			# 	create_wargoal = {
+			# 		target = PAN
+			# 		type = annex_everything
+			# 		expire = 0
+			# 	}
+			# }
+			# IF = {
+			# 	limit = {
+			# 		COL = {
+			# 			exists = yes
+			# 			NOT = {
+			# 				is_in_faction_with = ROOT
+			# 			}
+			# 		}
+			# 	}
+			# 	create_wargoal = {
+			# 		target = COL
+			# 		type = annex_everything
+			# 		expire = 0
+			# 	}
+			# }
 			add_timed_idea = { 
 				idea = BRA_panama_push
 				days = 365
@@ -6523,10 +6525,10 @@ focus_tree = {
 				has_government = fascism
 				NOT = {
 					OR = {
-						original_tag = ELS
+						# original_tag = ELS
 						original_tag = MEX
-						original_tag = DOM
-						original_tag = PAN
+						# original_tag = DOM
+						# original_tag = PAN
 					}
 				}
 			}
@@ -6543,10 +6545,10 @@ focus_tree = {
 						has_government = fascism
 						NOT = {
 							OR = {
-								original_tag = ELS
+								# original_tag = ELS
 								original_tag = MEX
-								original_tag = DOM
-								original_tag = PAN
+								# original_tag = DOM
+								# original_tag = PAN
 							}
 						}
 					}
@@ -6725,10 +6727,10 @@ focus_tree = {
 				has_government = democratic
 				NOT = {
 					OR = {
-						original_tag = ELS
+						# original_tag = ELS
 						original_tag = MEX
-						original_tag = DOM
-						original_tag = PAN
+						# original_tag = DOM
+						# original_tag = PAN
 					}
 				}
 			}
@@ -6748,10 +6750,10 @@ focus_tree = {
 						}
 						NOT = {
 							OR = {
-								original_tag = ELS
+								# original_tag = ELS
 								original_tag = MEX
-								original_tag = DOM
-								original_tag = PAN
+								# original_tag = DOM
+								# original_tag = PAN
 							}
 						}
 					}
@@ -7371,12 +7373,13 @@ focus_tree = {
 		available = {
 		}
 		bypass = {
-			URG = {
-				OR = {
-					exists = no
-					is_subject_of = ROOT
-				}
-			}
+			always = yes
+			# URG = {
+			# 	OR = {
+			# 		exists = no
+			# 		is_subject_of = ROOT
+			# 	}
+			# }
 		}
 		allow_branch = {
 			always = no
@@ -7385,10 +7388,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			create_wargoal = {
-				target = URG
-				type = annex_everything
-			}
+			# create_wargoal = {
+			# 	target = URG
+			# 	type = annex_everything
+			# }
 		}
 	}
 
@@ -7406,15 +7409,15 @@ focus_tree = {
 				factor = 0
 				OR = {
 					has_war_with_major = yes
-					is_in_faction_with = BOL
+					#is_in_faction_with = BOL
 				}
 			}
 		}
 		available = {
-			any_other_country = {
-				original_tag = BOL
-				exists = yes
-			}
+			# any_other_country = {
+			# 	original_tag = BOL
+			# 	exists = yes
+			# }
 		}
 		allow_branch = {
 			always = no
@@ -7423,10 +7426,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			create_wargoal = {
-				target = BOL
-				type = annex_everything
-			}
+			# create_wargoal = {
+			# 	target = BOL
+			# 	type = annex_everything
+			# }
 		}
 	}
 

@@ -291,17 +291,17 @@ ideas = {
 					add = 1200 #Prep for invasion
 				}
 
-				modifier = {
-					factor = 100
-					OR = {
-						original_tag = URG
-						original_tag = PAR
-					}
-					NOT = {
-						has_idea = war_economy
-					}
-					has_completed_focus = GUAY_coup_detat
-				}
+				# modifier = {
+				# 	factor = 100
+				# 	OR = {
+				# 		original_tag = URG
+				# 		original_tag = PAR
+				# 	}
+				# 	NOT = {
+				# 		has_idea = war_economy
+				# 	}
+				# 	has_completed_focus = GUAY_coup_detat
+				# }
    			}
 		}
 
@@ -1171,6 +1171,23 @@ ideas = {
 			
 			cancel_if_invalid = no
 
+		}
+
+		SOV_collectivized_society = {
+			picture = SPR_collectivized_society
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				min_export = 0
+				lend_lease_tension = 0.40
+				cic_construction_boost = -0.1
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			cancel_if_invalid = no
 		}
 	}
 }

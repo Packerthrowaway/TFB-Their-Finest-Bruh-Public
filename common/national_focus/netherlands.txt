@@ -4382,9 +4382,9 @@ focus_tree = {
 		available = {
 			has_government = communism
 			OR = {
-				CRC = { is_subject_of = HOL }
+				#CRC = { is_subject_of = HOL }
 				695 = { is_fully_controlled_by = HOL }
-				SUR = { is_subject_of = HOL }
+				#SUR = { is_subject_of = HOL }
 				309 = { is_fully_controlled_by = HOL }
 				custom_trigger_tooltip = {
 					tooltip = HOL_decolonization_tt2
@@ -4433,8 +4433,8 @@ focus_tree = {
 			}
 			NOT = {
 				OR = {
-					CRC = { is_subject_of = HOL }
-					SUR = { is_subject_of = HOL }
+					#CRC = { is_subject_of = HOL }
+					#SUR = { is_subject_of = HOL }
 					INS = { is_subject_of = HOL }
 				}
 			}
@@ -4500,23 +4500,23 @@ focus_tree = {
 			set_province_name = { id = 7381 name = "Jakarta" }
 			set_province_name = { id = 4608 name = "Surabaya" }
 			custom_effect_tooltip = generic_skip_one_line_tt
+			# if = {
+			# 	limit = {
+			# 		OR = {
+			# 			CRC = { is_subject_of = HOL }
+			# 			695 = { is_fully_controlled_by = HOL }
+			# 		}
+			# 	}
+			# 	release = CRC
+			# }
 			if = {
 				limit = {
 					OR = {
-						CRC = { is_subject_of = HOL }
-						695 = { is_fully_controlled_by = HOL }
-					}
-				}
-				release = CRC
-			}
-			if = {
-				limit = {
-					OR = {
-						SUR = { is_subject_of = HOL }
+						#SUR = { is_subject_of = HOL }
 						309 = { is_fully_controlled_by = HOL }
 					}
 				}
-				release = SUR
+				#release = SUR
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_stability = -0.1
