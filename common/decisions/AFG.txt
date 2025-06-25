@@ -1659,3 +1659,403 @@ AFG_kabul_conference_category = {
 		}
 	}
 }
+
+AFG_turkestan_legion_cat = {
+	AFG_recruit_turkestan_legion = {
+		icon = GFX_decision_generic_prepare_civil_war
+	
+		allowed = {
+			original_tag = AFG
+		}
+		
+		visible = {
+			hidden_trigger = { #Otherwise this will show up in the cancel trigger tooltip
+				has_completed_focus = AFG_form_the_turkestan_legion
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+			NOT = { 
+				FROM = { has_state_flag = AFG_recruited_turkestan_legion_here }
+				has_war_with = FROM.owner
+			}
+
+		}
+		available = {
+			FROM = {
+				NOT = {
+					has_state_flag = AFG_recruited_turkestan_legion_here
+				}
+			}
+			NOT = { has_country_flag = AFG_recruiting_turkestan_legion }
+			
+			has_equipment = {
+				infantry_equipment > 1999
+			}	
+		}
+
+		target_root_trigger = {
+			original_tag = AFG
+
+		}
+		state_target = yes
+		targets = { 49 229 651 586 732 830 742 405 823 831 584 619 249 137 676 329 1000 }
+	    target_trigger = {   
+	    }
+	    on_map_mode = map_and_decisions_view 
+		custom_cost_trigger = {
+			command_power > 24.9
+		}
+		custom_cost_text = BRA_decision_cost_cangaceiro
+		
+		fire_only_once = yes
+		days_remove = 30
+		cancel_if_not_visible = yes
+		complete_effect = {
+			add_command_power = -25
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -2000
+			}
+			hidden_effect = {
+				set_country_flag = AFG_recruiting_turkestan_legion
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = AFG_recruiting_turkestan_legion
+				FROM = {
+					set_state_flag = AFG_recruited_turkestan_legion_here
+				}
+			}
+			capital_scope = {
+				AFG_create_turkestan_free_legion_div = yes
+			}
+		}
+
+		cancel_effect = {
+			hidden_effect = {
+				clr_country_flag = AFG_recruiting_turkestan_legion
+			}
+		}
+	}
+}
+
+political_actions = {
+	
+	AFG_caliphate_core_state = {
+		icon = GFX_decision_infiltrate_state
+	
+		allowed = {
+			original_tag = AFG
+		}
+		
+		visible = {
+			has_completed_focus = AFG_proclaim_a_new_caliphate
+		}
+		available = {
+			NOT = { has_country_flag = IRQ_coring_state_in_progress }
+		}
+
+		state_target = any_controlled_state
+	    
+	    target_trigger = {
+	        FROM = {
+	        	NOT = { is_core_of = ROOT }
+	        	is_fully_controlled_by = ROOT
+	        	OR = {
+	        		is_claimed_by = ROOT
+	        		has_state_flag = AFG_caliphate_can_integrate_flag
+	        	}
+	        }
+	    }
+	    on_map_mode = map_only
+	    cost = 50		
+		fire_only_once = yes
+		days_remove = 7
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = { flag = IRQ_coring_state_in_progress value = 1 days = 31 }
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = IRQ_coring_state_in_progress
+			}
+			FROM = {
+				add_core_of = ROOT
+			}
+		}
+
+		cancel_trigger = {
+			FROM = {
+				NOT = { is_fully_controlled_by = ROOT }
+			}
+		}
+
+		cancel_effect = {
+			hidden_effect = {
+				clr_country_flag = IRQ_coring_state_in_progress
+			}
+		}
+	}
+
+	AFG_empire_core_state = {
+		icon = GFX_decision_infiltrate_state
+	
+		allowed = {
+			original_tag = AFG
+		}
+		
+		visible = {
+			has_completed_focus = AFG_proclaim_the_second_afghan_empire
+		}
+		available = {
+			NOT = { has_country_flag = IRQ_coring_state_in_progress }
+		}
+
+		state_target = any_controlled_state
+	    
+	    target_trigger = {
+	        FROM = {
+	        	NOT = { is_core_of = ROOT }
+	        	is_fully_controlled_by = ROOT
+	        	OR = {
+	        		is_claimed_by = ROOT
+	        		has_state_flag = AFG_empire_can_core_this_state_flag
+	        	}
+	        }
+	    }
+	    on_map_mode = map_only
+	    cost = 35		
+		fire_only_once = yes
+		days_remove = 7
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = { flag = IRQ_coring_state_in_progress value = 1 days = 31 }
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = IRQ_coring_state_in_progress
+			}
+			FROM = {
+				add_core_of = ROOT
+			}
+		}
+
+		cancel_trigger = {
+			FROM = {
+				NOT = { is_fully_controlled_by = ROOT }
+			}
+		}
+
+		cancel_effect = {
+			hidden_effect = {
+				clr_country_flag = IRQ_coring_state_in_progress
+			}
+		}
+	}
+
+	AFG_mughal_core_state = {
+		icon = GFX_decision_infiltrate_state
+	
+		allowed = {
+			original_tag = AFG
+		}
+		
+		visible = {
+			has_completed_focus = AFG_return_to_delhi
+		}
+		available = {
+			NOT = { has_country_flag = IRQ_coring_state_in_progress }
+		}
+
+		state_target = any_controlled_state
+	    
+	    target_trigger = {
+	        FROM = {
+	        	NOT = { is_core_of = ROOT }
+	        	is_fully_controlled_by = ROOT
+	        	OR = {
+	        		is_claimed_by = ROOT
+	        		has_state_flag = AFG_mughals_can_integrate_flag
+	        	}
+	        }
+	    }
+	    on_map_mode = map_only
+	    cost = 35		
+		fire_only_once = yes
+		days_remove = 7
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = { flag = IRQ_coring_state_in_progress value = 1 days = 31 }
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = IRQ_coring_state_in_progress
+			}
+			FROM = {
+				add_core_of = ROOT
+			}
+		}
+
+		cancel_trigger = {
+			FROM = {
+				NOT = { is_fully_controlled_by = ROOT }
+			}
+		}
+
+		cancel_effect = {
+			hidden_effect = {
+				clr_country_flag = IRQ_coring_state_in_progress
+			}
+		}
+	}
+
+	AFG_move_the_capital_to_delhi_decision = {
+		allowed = {
+			original_tag = AFG
+			has_dlc = "Graveyard of Empires"
+		}
+		available = {
+			has_full_control_of_state = 439
+			capital_scope = {
+				NOT = {
+					state = 439
+				}
+			}
+		}
+		visible = {
+
+			has_completed_focus = AFG_return_to_delhi
+			
+			capital_scope = {
+				NOT = {
+					state = 439
+				}
+			}
+			
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			set_capital = {
+				state = 439
+				remember_old_capital = no
+			}
+			IF = {
+				limit = {
+					439 = {
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				439 = {
+					add_core_of = ROOT
+				}
+			}
+		}
+	}
+
+}
+
+AFG_sikh_recruitment_cat = {
+	
+	AFG_sikh_recruitment = {
+
+		icon = GFX_decision_generic_prepare_civil_war
+		
+		state_target = yes
+		
+		visible = {
+			has_completed_focus = AFG_ally_the_sikhs
+		}
+		
+		available = {
+			FROM = { 
+				controller = {
+					OR = {
+						original_tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			has_tech = gw_artillery
+		}
+		
+		target_root_trigger = {
+			original_tag = AFG
+			has_completed_focus = AFG_ally_the_sikhs
+		}
+		target_trigger = {			
+			OR = {
+				FROM = { state = 440 }
+				FROM = { state = 433 }
+				FROM = { state = 1008 } # Can train one in Afghanistan in exile
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 440
+				state = 433
+				state = 1008
+			}
+		}
+		
+		cost = 30
+		
+		fire_only_once = yes
+
+		days_remove = 35
+
+		ai_will_do = {
+			base = 1
+		}
+
+		remove_effect = {
+			IF = {
+				limit = {
+					NOT = { has_template = "Sikh Division" }
+				}
+				division_template = {
+					name = "Sikh Division"
+					is_locked = yes
+					division_names_group = RAJ_SIKH_01 # optional
+					priority = 2 # optional 
+					
+					regiments = {
+						mountaineers = { x = 0 y = 0 }
+						mountaineers = { x = 0 y = 1 }
+						mountaineers = { x = 0 y = 2 }
+						mountaineers = { x = 0 y = 3 }
+						mountaineers = { x = 1 y = 0 }
+						mountaineers = { x = 1 y = 1 }
+						mountaineers = { x = 1 y = 2 }
+						mountaineers = { x = 1 y = 3 }
+					}
+					support = {
+						#artillery = { x = 0 y = 0 }
+						engineer = { x = 0 y = 1 }
+					}
+				}
+			}
+			FROM = {
+				custom_effect_tooltip = AFG_sikh_recruitment_tt
+				create_unit = {
+					division = "name = \"Sikh Division\" division_template = \"Sikh Division\" start_experience_factor = 0.5 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+					allow_spawning_on_enemy_provs = no 
+					count = 2
+				}
+			}
+		}
+	}
+}
+
