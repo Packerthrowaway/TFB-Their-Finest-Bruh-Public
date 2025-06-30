@@ -722,6 +722,7 @@ NDefines.NIndustrialOrganisation.FUNDS_FOR_SIZE_UP_LEVEL_POW = 1.9 -- the power 
 NDefines.NIndustrialOrganisation.FUNDS_FOR_RESEARCH_COMPLETION_PER_RESEARCH_COST = 300 -- Funds added to MIO when the Design Team has completed a research, multiplied by research_cost in technology template (Vanilla 500)
 NDefines.NIndustrialOrganisation.FUNDS_FROM_MANUFACTURER_PER_IC_PER_DAY = 0.04				-- Funds added to MIO when a manufacturer is attached to a production line. Added every day proportional to IC produced. (Vanilla 0.1)
 NDefines.NIndustrialOrganisation.MAX_FUNDS_FROM_MANUFACTURER_PER_DAY = 20  -- Max funds generated per manufacturer per day. Set to 0 for no Maximum. (Vanilla 100)
+NDefines.NIndustrialOrganisation.DEFAULT_INITIAL_ATTACH_POLICY_COOLDOWN = 365				-- Default start cooldown in days after attaching a policy
 
 
 NDefines.NRaids.RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.15  -- How much the disaster risk is modified when the dial is set to "medium"
