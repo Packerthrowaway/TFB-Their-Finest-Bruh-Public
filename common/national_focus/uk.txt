@@ -689,7 +689,7 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = transport_bonus
-				ahead_reduction = 2
+				ahead_reduction = 1.5
 				bonus = 1
 				uses = 1
 				category = transport_planes_cat
@@ -800,7 +800,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = cent_bonus
 				bonus = 0.75
-				ahead_reduction = 0.5
+				#ahead_reduction = 0.5
 				uses = 1
 				technology = mechanised_infantry
 			}
@@ -850,7 +850,7 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			mio:ENG_vauxhall_automotive_organization = {
+			mio:ENG_vauxhall_organization = {
 				add_mio_size = 2
 				add_mio_funds_gain_factor = 0.1
 			}
@@ -968,6 +968,7 @@ focus_tree = {
 		
 		available = {
 			controls_state = 126
+			has_war = yes
 		}
 		
 		
@@ -1943,8 +1944,8 @@ focus_tree = {
 	
 				add_tech_bonus = {
 					name = fighter_bonus
-					bonus = 0.75
-					ahead_reduction = 0.5
+					bonus = 0.5
+					ahead_reduction = 0.25
 					uses = 1
 					category = light_fighter
 				}
@@ -1953,7 +1954,7 @@ focus_tree = {
 				effect_tooltip = { 
 					add_tech_bonus = {
 						name = fighter_bonus
-						bonus = 0.5
+						bonus = 0.4
 						uses = 1
 						category = light_fighter
 					}
@@ -1962,7 +1963,7 @@ focus_tree = {
 			else = {
 				add_tech_bonus = {
 					name = fighter_bonus
-					bonus = 0.5
+					bonus = 0.4
 					uses = 1
 					category = light_fighter
 				}
@@ -1971,8 +1972,8 @@ focus_tree = {
 				effect_tooltip = { 
 					add_tech_bonus = {
 						name = fighter_bonus
-						bonus = 0.75
-						ahead_reduction = 0.5
+						bonus = 0.5
+						ahead_reduction = 0.25
 						uses = 1
 						category = light_fighter
 					}
@@ -1985,7 +1986,6 @@ focus_tree = {
 				}
 
 			}
-			else = {}
 		}
 	}
 
@@ -2089,7 +2089,7 @@ focus_tree = {
 				add_tech_bonus = {
 					name = fighter_bonus
 					bonus = 0.75
-					ahead_reduction = 0.5
+					ahead_reduction = 0.25
 					uses = 1
 					technology = fighter3
 				}
@@ -2108,7 +2108,7 @@ focus_tree = {
 					add_tech_bonus = {
 						name = fighter_bonus
 						bonus = 0.75
-						ahead_reduction = 0.5
+						ahead_reduction = 0.25
 						uses = 1
 						technology = fighter3
 					}
@@ -2393,7 +2393,7 @@ focus_tree = {
 				effect_tooltip = { 
 					swap_ideas = {
 						add_idea = ENG_fighter_design_strong3
-					remove_idea = ENG_fighter_design_strong2
+						remove_idea = ENG_fighter_design_strong2
 					}
 				}
 			}
@@ -2568,7 +2568,7 @@ focus_tree = {
 					uses = 2
 					category = cas_bomber
 				}
-				mio:ENG_de_havilland_organization = {
+				mio:ENG_hawker_organization = {
 					add_mio_funds = 1500
 					add_mio_funds_gain_factor = 0.15
 					add_mio_research_bonus = 0.05
@@ -2582,7 +2582,7 @@ focus_tree = {
 					uses = 2
 					category = cas_bomber
 				}
-				mio:ENG_de_havilland_organization = {
+				mio:ENG_hawker_organization = {
 					add_mio_funds = 1000
 					add_mio_funds_gain_factor = 0.10
 				}
@@ -2596,7 +2596,7 @@ focus_tree = {
 						uses = 2
 						category = cas_bomber
 					}
-					mio:ENG_de_havilland_organization = {
+					mio:ENG_hawker_organization = {
 						add_mio_funds = 1500
 						add_mio_funds_gain_factor = 0.15
 						add_mio_research_bonus = 0.05
@@ -2819,8 +2819,8 @@ focus_tree = {
 				add_tech_bonus = {
 					name = nav_bonus_big
 					bonus = 1
-					ahead_reduction = 0.7
-					uses = 3
+					ahead_reduction = 0.5
+					uses = 2
 					category = naval_bomber
 				}
 			}
@@ -2838,8 +2838,8 @@ focus_tree = {
 					add_tech_bonus = {
 						name = nav_bonus_big
 						bonus = 1
-						ahead_reduction = 0.7
-						uses = 3
+						ahead_reduction = 0.5
+						uses = 2
 						category = naval_bomber
 					}
 				}
@@ -3001,6 +3001,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = cv_bonus
 				bonus = 0.50
+				ahead_reduction = 0.25
 				uses = 1
 				category = bb_tech
 			}
@@ -3271,8 +3272,8 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = cv_bonus
-				bonus = 0.75
-				ahead_reduction = 0.5
+				bonus = 0.5
+				ahead_reduction = 0.25
 				uses = 1
 				category = cv_tech
 			}
@@ -3340,7 +3341,7 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-		custom_effect_tooltip = ENG_naval_investments_tt
+		#custom_effect_tooltip = ENG_naval_investments_tt
 			if = {
 				limit = { has_completed_focus = ENG_focus_cruiser }
 				swap_ideas = {
@@ -3348,18 +3349,23 @@ focus_tree = {
 					add_idea = royal_navy_new_mindset_4
 				}	
 			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = royal_navy_new_mindset_2
-					add_idea = royal_navy_new_mindset_4
-				}	
-			}
-			
 			if = {
 				limit = { has_completed_focus = ENG_focus_carrier }
 				swap_ideas = {
 					remove_idea = royal_navy_new_mindset_3
 					add_idea = royal_navy_new_mindset_5
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_completed_focus = ENG_focus_cruiser }
+					NOT = { has_completed_focus = ENG_focus_carrier }
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = royal_navy_new_mindset_2
+						add_idea = royal_navy_new_mindset_4
+					}	
 				}
 			}
 		}
@@ -3381,7 +3387,7 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-		custom_effect_tooltip = ENG_perfect_cruisers_tt
+		#custom_effect_tooltip = ENG_perfect_cruisers_tt
 			if = {
 				limit = { has_completed_focus = ENG_focus_cruiser }
 				swap_ideas = {
@@ -3389,18 +3395,23 @@ focus_tree = {
 					add_idea = royal_navy_new_mindset_6
 				}	
 			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = royal_navy_new_mindset_4
-					add_idea = royal_navy_new_mindset_6
-				}	
-			}
-			
 			if = {
 				limit = { has_completed_focus = ENG_focus_carrier }
 				swap_ideas = {
 					remove_idea = royal_navy_new_mindset_5
 					add_idea = royal_navy_new_mindset_7
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_completed_focus = ENG_focus_cruiser }
+					NOT = { has_completed_focus = ENG_focus_carrier }
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = royal_navy_new_mindset_5
+						add_idea = royal_navy_new_mindset_7
+					}
 				}
 			}
 		}
@@ -3453,18 +3464,24 @@ focus_tree = {
 					add_idea = royal_navy_new_mindset_8
 				}	
 			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = royal_navy_new_mindset_4
-					add_idea = royal_navy_new_mindset_8
-				}	
-			}
 			
 			if = {
 				limit = { has_completed_focus = ENG_focus_carrier }
 				swap_ideas = {
 					remove_idea = royal_navy_new_mindset_5
 					add_idea = royal_navy_new_mindset_9
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_completed_focus = ENG_focus_cruiser }
+					NOT = { has_completed_focus = ENG_focus_carrier }
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = royal_navy_new_mindset_4
+						add_idea = royal_navy_new_mindset_8
+					}
 				}
 			}
 		}
@@ -3476,7 +3493,7 @@ focus_tree = {
 		prerequisite = { focus = ENG_naval_investments }
 		prerequisite = { focus = ENG_expand_dockyards }
 		available = {
-			ENG = { has_completed_focus = ENG_perfect_cruisers has_completed_focus = ENG_focus_cruiser has_completed_focus = ENG_never_at_disadvantage }
+			ENG = { has_completed_focus = ENG_focus_cruiser has_completed_focus = ENG_perfect_cruisers }
 		}
 
 		x = -4
@@ -3501,6 +3518,9 @@ focus_tree = {
 		icon = GFX_focus_SMB_blue_water_fleet
 		prerequisite = { focus = ENG_perfect_cruisers focus = ENG_perfect_carriers}
 
+		allow_branch = {
+			always = no
+		}
 		x = 0
 		y = 4
 		relative_position_id = ENG_new_officers
@@ -3521,14 +3541,7 @@ focus_tree = {
 						add_idea = royal_navy_new_mindset_10
 					}	
 				}
-			}
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = royal_navy_new_mindset_6
-					add_idea = royal_navy_new_mindset_10
-				}	
-			}
-			
+			}		
 			if = {
 				limit = { has_completed_focus = ENG_focus_carrier }
 				if = {
@@ -3556,6 +3569,18 @@ focus_tree = {
 					swap_ideas = {
 						remove_idea = royal_navy_new_mindset_9
 						add_idea = royal_navy_new_mindset_13
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_completed_focus = ENG_perfect_cruisers }
+					NOT = { has_completed_focus = ENG_perfect_carriers }
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = royal_navy_new_mindset_6
+						add_idea = royal_navy_new_mindset_10
 					}
 				}
 			}
@@ -4509,14 +4534,14 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
+			send_embargo = GER
 			every_country = {
 				limit = {
 					is_subject_of = ROOT
 				}
 				send_embargo = GER
 			}
-			HOL = { send_embargo = GER }
-			send_embargo = GER
+			#HOL = { send_embargo = GER }
 		}
 	}
 	
@@ -4555,39 +4580,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = ENG_appeasement_to_action
-		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		id = ENG_prepare_for_the_inevitable
+		icon = GFX_focus_generic_combined_arms
 		prerequisite = { focus = ENG_free_trade }
-		
-		available = {
-			OR = {
-				threat > 0.4
-				has_war = yes
-			}
-		}
 		
 		x = 0
 		y = 1
 		relative_position_id = ENG_free_trade
-		
-		cost = 5
-		
-		ai_will_do = {
-			factor = 1
-		}	
-		completion_reward = {
-			remove_ideas = ENG_the_war_to_end_all_wars
-		}
-	}
-	
-	focus = {
-		id = ENG_prepare_for_the_inevitable
-		icon = GFX_focus_generic_combined_arms
-		prerequisite = { focus = ENG_containment }
-		
-		x = 2
-		y = 1
-		relative_position_id = ENG_containment
 		
 		cost = 5
 		
@@ -4602,11 +4601,11 @@ focus_tree = {
 	focus = {
 		id = ENG_military_buildup
 		icon = GFX_goal_generic_construct_mil_factory
-		prerequisite = { focus = ENG_prepare_for_the_inevitable }
+		prerequisite = { focus = ENG_containment }
 		
-		x = 0
+		x = 2
 		y = 1
-		relative_position_id = ENG_prepare_for_the_inevitable
+		relative_position_id = ENG_containment
 		
 		cost = 5
 		
@@ -4632,7 +4631,32 @@ focus_tree = {
 			}
 		}
 	}
-	
+
+	focus = {
+		id = ENG_appeasement_to_action
+		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		prerequisite = { focus = ENG_military_buildup }
+		
+		available = {
+			OR = {
+				threat > 0.4
+				has_war = yes
+			}
+		}
+		
+		x = 0
+		y = 1
+		relative_position_id = ENG_military_buildup
+		
+		cost = 5
+		
+		ai_will_do = {
+			factor = 1
+		}	
+		completion_reward = {
+			remove_ideas = ENG_the_war_to_end_all_wars
+		}
+	}
 	
 
 	# Empire Focused Branch ###################################################
@@ -5195,20 +5219,21 @@ focus_tree = {
 		}	
 		completion_reward = {
 			remove_ideas = ENG_great_depression_3
-			126 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
+			# 126 = {
+			# 	add_extra_state_shared_building_slots = 2
+			# 	add_building_construction = {
+			# 		type = industrial_complex
+			# 		level = 2
+			# 		instant_build = yes
+			# 	}
+			# }
 		}
 	}
 	
 	focus = {
 		id = ENG_imperial_defense_conference
-		prerequisite = { focus = ENG_finish_development focus = ENG_recover_depression}
+		prerequisite = { focus = ENG_finish_development }
+		prerequisite = { focus = ENG_recover_depression }
 		icon = GFX_focus_GER_rally_the_industrialists
 	
 		available = {
@@ -5362,7 +5387,7 @@ focus_tree = {
 		prerequisite = { focus = ENG_tackle_depression }
 		
 		available = {
-			has_war_support > 0.3
+			has_war_support > 0.2
 		}
 		
 		x = 0
@@ -5381,7 +5406,7 @@ focus_tree = {
 		
 		completion_reward = {
 			custom_effect_tooltip = ENG_instant_early_mob_tt
-			add_stability = -0.05
+			#add_stability = -0.05
 			add_political_power = -100
 		}
 	}
