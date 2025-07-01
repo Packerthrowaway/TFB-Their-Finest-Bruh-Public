@@ -1119,7 +1119,7 @@ ENG_homeland_defense_decision_cat = {
 
 		remove_effect = {
 			swap_ideas = {
-				remove_idea = british_austerity_idea
+				remove_idea = ENG_general_rearmament_idea
 				add_idea = ENG_blitz_spirit_idea
 			}	
 		}
@@ -2498,6 +2498,412 @@ ENG_develop_the_empire = {
 		}
 	}
 
+	ENG_invest_ast = {
+		allowed = {
+			original_tag = ENG
+		}
+		available = {
+			OR = {
+				has_completed_focus = ENG_finish_development
+				custom_trigger_tooltip = {
+					tooltip = ENG_develop_no_more_cores_tt
+					AST = {
+						all_core_state = {
+							has_state_flag = ENG_development_marker 
+						}
+					}
+				}
+			}
+		}
+
+		activation = {
+			has_completed_focus = ENG_develop_ast
+			AST = {
+				NOT = {
+					all_core_state = {
+						has_state_flag = ENG_development_marker 
+					}
+				}
+			}
+		}
+
+		is_good = yes
+
+		selectable_mission = no
+
+		days_mission_timeout = 90
+
+		modifier = {
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			AST = {
+				random_core_state = {
+					limit = {
+						NOT = { has_state_flag = ENG_development_marker }
+						
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					
+					set_state_flag = ENG_development_marker # Marks the selected state
+					custom_effect_tooltip = ENG_ast_dev_tt5
+				}
+				
+			}
+			hidden_effect = {
+				add_to_variable = { AST_investments = 1 }
+				if = {
+					limit = {
+						AST = {
+							all_core_state = {
+								has_state_flag = ENG_development_marker 
+							}
+						}
+					}
+				}
+				else = {
+					activate_mission = ENG_invest_ast
+				}
+			}
+		}
+	}
+
+	ENG_invest_nzl = {
+		allowed = {
+			original_tag = ENG
+		}
+		available = {
+			OR = {
+				has_completed_focus = ENG_finish_development
+				custom_trigger_tooltip = {
+					tooltip = ENG_develop_no_more_cores_tt
+					NZL = {
+						all_core_state = {
+							has_state_flag = ENG_development_marker 
+						}
+					}
+				}
+			}
+		}
+
+		activation = {
+			has_completed_focus = ENG_develop_nzl
+			NZL = {
+				NOT = {
+					all_core_state = {
+						has_state_flag = ENG_development_marker 
+					}
+				}
+			}
+		}
+
+		is_good = yes
+
+		selectable_mission = no
+
+		days_mission_timeout = 90
+
+		modifier = {
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			NZL = {
+				random_core_state = {
+					limit = {
+						NOT = { has_state_flag = ENG_development_marker }
+						
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					
+					set_state_flag = ENG_development_marker # Marks the selected state
+					custom_effect_tooltip = ENG_nzl_dev_tt5
+				}
+				
+			}
+			hidden_effect = {
+				add_to_variable = { NZL_investments = 1 }
+				if = {
+					limit = {
+						NZL = {
+							all_core_state = {
+								has_state_flag = ENG_development_marker 
+							}
+						}
+					}
+				}
+				else = {
+					activate_mission = ENG_invest_nzl
+				}
+			}
+		}
+	}
+
+	ENG_invest_can = {
+		allowed = {
+			original_tag = ENG
+		}
+		available = {
+			OR = {
+				has_completed_focus = ENG_finish_development
+				custom_trigger_tooltip = {
+					tooltip = ENG_develop_no_more_cores_tt
+					CAN = {
+						all_core_state = {
+							has_state_flag = ENG_development_marker 
+						}
+					}
+				}
+			}
+		}
+
+		activation = {
+			has_completed_focus = ENG_develop_canada
+			CAN = {
+				NOT = {
+					all_core_state = {
+						has_state_flag = ENG_development_marker 
+					}
+				}
+			}
+		}
+
+		is_good = yes
+
+		selectable_mission = no
+
+		days_mission_timeout = 90
+
+		modifier = {
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			CAN = {
+				random_core_state = {
+					limit = {
+						NOT = { has_state_flag = ENG_development_marker }
+						
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					set_state_flag = ENG_development_marker # Marks the selected state
+					custom_effect_tooltip = ENG_can_dev_tt5
+				}
+				
+			}
+			hidden_effect = {
+				add_to_variable = { CAN_investments = 1 }
+				if = {
+					limit = {
+						CAN = {
+							all_core_state = {
+								has_state_flag = ENG_development_marker 
+							}
+						}
+					}
+				}
+				else = {
+					activate_mission = ENG_invest_can
+				}
+			}
+		}
+	}
+
+	ENG_invest_saf = {
+		allowed = {
+			original_tag = ENG
+		}
+		available = {
+			OR = {
+				has_completed_focus = ENG_finish_development
+				custom_trigger_tooltip = {
+					tooltip = ENG_develop_no_more_cores_tt
+					SAF = {
+						all_core_state = {
+							has_state_flag = ENG_development_marker 
+						}
+					}
+				}
+			}
+		}
+
+		activation = {
+			has_completed_focus = ENG_develop_saf
+			SAF = {
+				NOT = {
+					all_core_state = {
+						has_state_flag = ENG_development_marker 
+					}
+				}
+			}
+		}
+
+		is_good = yes
+
+		selectable_mission = no
+
+		days_mission_timeout = 90
+
+		modifier = {
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			SAF = {
+				random_core_state = {
+					limit = {
+						NOT = { has_state_flag = ENG_development_marker }
+						
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					set_state_flag = ENG_development_marker # Marks the selected state
+					custom_effect_tooltip = ENG_saf_dev_tt5
+				}
+				
+			}
+			hidden_effect = {
+				add_to_variable = { SAF_investments = 1 }
+				if = {
+					limit = {
+						SAF = {
+							all_core_state = {
+								has_state_flag = ENG_development_marker 
+							}
+						}
+					}
+				}
+				else = {
+					activate_mission = ENG_invest_saf
+				}
+			}
+		}
+	}
+
+	ENG_invest_raj = {
+		allowed = {
+			original_tag = ENG
+		}
+		available = {
+			OR = {
+				has_completed_focus = ENG_finish_development
+				custom_trigger_tooltip = {
+					tooltip = ENG_develop_no_more_cores_tt
+					RAJ = {
+						all_core_state = {
+							has_state_flag = ENG_development_marker 
+						}
+					}
+				}
+			}
+		}
+
+		activation = {
+			has_completed_focus = ENG_develop_raj
+			RAJ = {
+				NOT = {
+					all_core_state = {
+						has_state_flag = ENG_development_marker 
+					}
+				}
+			}
+		}
+
+		is_good = yes
+
+		selectable_mission = no
+
+		days_mission_timeout = 90
+
+		modifier = {
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+		timeout_effect = {
+			RAJ = {
+				random_core_state = {
+					limit = {
+						NOT = { has_state_flag = ENG_development_marker }
+						
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					
+					set_state_flag = ENG_development_marker # Marks the selected state
+					custom_effect_tooltip = ENG_raj_dev_tt5
+				}
+			}
+			hidden_effect = {
+				add_to_variable = { RAJ_investments = 1 }
+				if = {
+					limit = {
+						RAJ = {
+							all_core_state = {
+								has_state_flag = ENG_development_marker 
+							}
+						}
+					}
+				}
+				else = {
+					activate_mission = ENG_invest_raj
+				}
+			}
+		}
+	}
 }
 
 ENG_persian_corridor = {
