@@ -2030,18 +2030,28 @@ focus_tree = {
 				}
 				
 				add_ideas = ENG_fighter_research_strong1
+				# mio:ENG_supermarine_organization = {
+				# 	complete_mio_trait = ENG_mio_trait_research_funding
+				# }
 				air_experience = 100
 			}
 			
 			else = {
 				add_ideas = ENG_fighter_research_weak1
 				air_experience = 50
+				# mio:ENG_supermarine_organization = {
+				# 	complete_mio_trait = ENG_mio_trait_research_funding2
+				# }
 				# Below is for if this is the Main Branch of the Air Focus Tree
 				custom_effect_tooltip = if_picked_as_main_branch_tt
 				effect_tooltip = { 
 					add_ideas = ENG_fighter_research_strong1
 					air_experience = 100
+					# mio:ENG_supermarine_organization = {
+					# 	complete_mio_trait = ENG_mio_trait_research_funding
+					# }
 				}
+
 			}
 		}
 	}
@@ -3508,8 +3518,17 @@ focus_tree = {
 		completion_reward = {
 			swap_ideas = {
 				add_idea = royal_navy_new_mindset_14
-				remove_idea = royal_navy_new_mindset_10
-			}	
+				remove_idea = royal_navy_new_mindset_6
+			}
+			# if = {
+			# 	limit = {
+			# 		has_idea = royal_navy_new_mindset_6
+			# 	}
+			# 	swap_ideas = {
+			# 		add_idea = royal_navy_new_mindset_14
+			# 		remove_idea = royal_navy_new_mindset_10
+			# 	}
+			# }
 		}
 	}
 	
@@ -4421,10 +4440,10 @@ focus_tree = {
 		}	
 		completion_reward = {
 			add_political_power = -100
-			add_stability = -0.1
+			add_stability = -0.05
 			add_war_support = 0.05
 			
-			GER = { add_political_power = -50 }
+
 		}
 	}
 	
@@ -4441,7 +4460,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_appeasement
 		
-		cost = 5
+		cost = 1
 		
 		ai_will_do = {
 			factor = 1
@@ -4465,13 +4484,14 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_containment
 		
-		cost = 5
+		cost = 1
 		
 		ai_will_do = {
 			factor = 1
 		}	
 		completion_reward = {
-			add_stability = -0.1
+			add_stability = -0.05
+			GER = { add_political_power = -50 }
 			set_rule = { can_send_volunteers = yes }
 		}
 	}
@@ -4534,14 +4554,63 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			send_embargo = GER
+			ENG = {
+				send_embargo = GER
+			}
 			every_country = {
 				limit = {
 					is_subject_of = ROOT
 				}
 				send_embargo = GER
 			}
-			#HOL = { send_embargo = GER }
+			HOL = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = HOL_english_embargo
+				}
+				hidden_effect = {
+					add_opinion_modifier = {
+						target = GER
+						modifier = HOL_english_embargo2
+					}
+				}
+				GER = {
+					add_opinion_modifier = {
+						target = PREV
+						modifier = HOL_english_embargo
+					}
+					hidden_effect = {
+						add_opinion_modifier = {
+							target = PREV
+							modifier = HOL_english_embargo2
+						}
+					}
+				}
+			}
+			INS = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = HOL_english_embargo
+				}
+				hidden_effect = {
+					add_opinion_modifier = {
+						target = GER
+						modifier = HOL_english_embargo2
+					}
+				}
+				GER = {
+					add_opinion_modifier = {
+						target = PREV
+						modifier = HOL_english_embargo
+					}
+					hidden_effect = {
+						add_opinion_modifier = {
+							target = PREV
+							modifier = HOL_english_embargo2
+						}
+					}
+				}
+			}
 		}
 	}
 	
@@ -4587,6 +4656,10 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = ENG_free_trade
+
+		available = {
+			GER = { has_completed_focus = GER_anschluss }
+		}
 		
 		cost = 5
 		
@@ -4639,7 +4712,7 @@ focus_tree = {
 		
 		available = {
 			OR = {
-				threat > 0.4
+				threat > 0.15
 				has_war = yes
 			}
 		}
@@ -4691,15 +4764,17 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_focus_empire
 		
-		cost = 2
+		cost = 1
 		
 		ai_will_do = {
 			factor = 1
 		}	
 		completion_reward = {
-			add_ideas = ENG_invest_in_the_empire
+			#add_ideas = ENG_invest_in_the_empire
+			add_dynamic_modifier = { modifier = ENG_invest_in_the_empire }
+			custom_effect_tooltip = zero_percent_consumer_goods_tt
 			
-			custom_effect_tooltip = ENG_general_dev_tt2
+			#custom_effect_tooltip = ENG_general_dev_tt2
 			custom_effect_tooltip = ENG_general_dev_tt5
 		}
 	}
@@ -4715,7 +4790,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 2
+		cost = 0.5
 		
 		ai_will_do = {
 			factor = 1
@@ -4727,6 +4802,10 @@ focus_tree = {
 				#country_event = { id = britain.600 }
 				activate_mission = ENG_invest_can
 			}
+			ENG = {
+				add_to_variable = { ENG_industrial_consumer_goods_expected_value = 0.04 tooltip = consumer_goods_expected_value_tt }
+			}
+			custom_effect_tooltip = will_remove_consumer_goods_tt
 			
 			custom_effect_tooltip = ENG_can_dev_tt1
 			custom_effect_tooltip = ENG_can_dev_tt2
@@ -4747,7 +4826,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 2
+		cost = 0.5
 		
 		ai_will_do = {
 			factor = 1
@@ -4759,6 +4838,11 @@ focus_tree = {
 				#country_event = { id = britain.601 }
 				activate_mission = ENG_invest_saf
 			}
+
+			ENG = {
+				add_to_variable = { ENG_industrial_consumer_goods_expected_value = 0.04 tooltip = consumer_goods_expected_value_tt }
+			}
+			custom_effect_tooltip = will_remove_consumer_goods_tt
 			
 			custom_effect_tooltip = ENG_saf_dev_tt1
 			custom_effect_tooltip = ENG_saf_dev_tt2
@@ -4779,7 +4863,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 2
+		cost = 0.5
 		
 		ai_will_do = {
 			factor = 1
@@ -4791,6 +4875,11 @@ focus_tree = {
 				#country_event = { id = britain.602 }
 				activate_mission = ENG_invest_raj
 			}
+			ENG = {
+				add_to_variable = { ENG_industrial_consumer_goods_expected_value = 0.04 tooltip = consumer_goods_expected_value_tt }
+			}
+			custom_effect_tooltip = will_remove_consumer_goods_tt
+			
 			
 			custom_effect_tooltip = ENG_raj_dev_tt1
 			custom_effect_tooltip = ENG_raj_dev_tt2
@@ -4810,7 +4899,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 2
+		cost = 0.5
 		
 		ai_will_do = {
 			factor = 1
@@ -4822,6 +4911,10 @@ focus_tree = {
 				#country_event = { id = britain.603 }
 				activate_mission = ENG_invest_ast
 			}
+			ENG = {
+				add_to_variable = { ENG_industrial_consumer_goods_expected_value = 0.04 tooltip = consumer_goods_expected_value_tt }
+			}
+			custom_effect_tooltip = will_remove_consumer_goods_tt
 			
 			custom_effect_tooltip = ENG_ast_dev_tt1
 			custom_effect_tooltip = ENG_ast_dev_tt2
@@ -4842,7 +4935,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 2
+		cost = 0.5
 		
 		ai_will_do = {
 			factor = 1
@@ -4854,6 +4947,10 @@ focus_tree = {
 				#country_event = { id = britain.604 } 
 				activate_mission = ENG_invest_nzl
 			}
+			ENG = {
+				add_to_variable = { ENG_industrial_consumer_goods_expected_value = 0.04 tooltip = consumer_goods_expected_value_tt }
+			}
+			custom_effect_tooltip = will_remove_consumer_goods_tt
 			
 			custom_effect_tooltip = ENG_nzl_dev_tt1
 			custom_effect_tooltip = ENG_nzl_dev_tt2
@@ -4872,17 +4969,22 @@ focus_tree = {
 		y = 2
 		relative_position_id = ENG_develop_raj
 		
-		cost = 3
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
 		}	
 		completion_reward = {
-			remove_ideas = ENG_invest_in_the_empire
+			#remove_ideas = ENG_invest_in_the_empire
+			remove_dynamic_modifier = { modifier = ENG_invest_in_the_empire }
+			ENG = {
+				set_variable = { ENG_industrial_consumer_goods_expected_value = 0 tooltip = consumer_goods_expected_value_tt }
+			}
+			custom_effect_tooltip = removes_consumer_goods_tt
 			
 			CAN = {
 				every_owned_state = {
-					# CAN (1 civ, 1 steel ref, 1 infra, 0 building slots)
+					# CAN (1 civ, 1 steel ref, 1 mill, 0 building slots)
 					limit = { owner = { tag = CAN } has_state_flag = ENG_development_marker}
 					
 					add_extra_state_shared_building_slots = 3 
@@ -4898,7 +5000,7 @@ focus_tree = {
 						instant_build = yes
 					}
 					add_building_construction = {
-						type = infrastructure
+						type = arms_factory
 						level = 1
 						instant_build = yes
 					}	
@@ -4925,7 +5027,7 @@ focus_tree = {
 
 			RAJ = {
 				every_owned_state = {
-					# RAJ (2 civ, 2 mil, 0 slots)
+					# RAJ (2 civ, 1 mil, 0 slots)
 					limit = { owner = { tag = RAJ } has_state_flag = ENG_development_marker }
 						
 					add_extra_state_shared_building_slots = 4
@@ -4936,7 +5038,7 @@ focus_tree = {
 					}
 					add_building_construction = {
 						type = arms_factory
-						level = 2
+						level = 1
 						instant_build = yes
 					}
 				}
@@ -5307,7 +5409,7 @@ focus_tree = {
 						}
 					}
 				}
-				country_event = { id = britain.700 hours = 6 }
+				country_event = { id = britain.700 hours = 2 }
 			}
 			custom_effect_tooltip = pick_one_of_tt
 			effect_tooltip = {
@@ -5814,7 +5916,7 @@ focus_tree = {
 						}
 					}
 				}
-				country_event = { id = mtg_britain.82 hours = 6 }
+				country_event = { id = mtg_britain.82 hours = 2 }
 			}
 			hidden_effect = { news_event = { id = mtg_news.13 days = 1 } }
 			
@@ -6188,7 +6290,7 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			SOV =  {country_event = { id = britain.501 hours = 6 } }
+			SOV =  {country_event = { id = britain.501 hours = 2 } }
 			
 		}
 	}
@@ -6294,7 +6396,7 @@ focus_tree = {
 			USA = {
 				country_event = {
 					id = britain.1
-					hours = 12
+					hours = 2
 				}	
 			}
 			custom_effect_tooltip = if_they_accept
