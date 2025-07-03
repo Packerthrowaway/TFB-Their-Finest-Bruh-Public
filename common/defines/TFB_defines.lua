@@ -454,8 +454,19 @@ NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN_FROM_EFFICIENCY = 24 -- clamped min 
 NDefines.NNavy.SUPREMACY_PER_SHIP_PER_MANPOWER = 0.07							-- supremacy of a ship is calculated using its IC manpower and a base define
 NDefines.NNavy.SUPREMACY_PER_SHIP_PER_IC = 0.007
 NDefines.NNavy.SUPREMACY_PER_SHIP_BASE = 5.0
-NDefines.NNavy.NAVAL_MINES_IN_REGION_MAX = 1.0								-- Max number of mines that can be layed by the ships. The value should be hidden from the user as we present % so it's an abstract value that should be used for balancing.
-NDefines.NNavy.NAVAL_MINES_PLANTING_SPEED_MULT = 0.001						-- Value used to overall balance of the speed of planting naval mines
+
+NDefines.NNavy.NAVAL_MINES_IN_REGION_MAX = 1000.0								-- Max number of mines that can be layed by the ships. The value should be hidden from the user as we present % so it's an abstract value that should be used for balancing.
+NDefines.NNavy.NAVAL_MINES_PLANTING_SPEED_MULT = 0.01						-- Value used to overall balance of the speed of planting naval mines
+NDefines.NNavy.NAVAL_MINES_SWEEPING_SPEED_MULT = 0.009						-- Value used to overall balance of the speed of sweeping naval mines
+NDefines.NNavy.NAVAL_MINES_DECAY_AT_PEACE_TIME = 0.25							-- How fast mines are decaying in peace time. Planting mines in peace time may be exploitable, so it's blocked atm. That's why after war we should decay them too.
+NDefines.NNavy.NAVAL_MINES_SWEEPERS_REDUCTION_ON_PENALTY_EFFECT = 3.3			-- How much is the task force's sweeping attribute reducing the penalty effect.
+NDefines.NNavy.NAVAL_MINES_INTEL_DIFF_FACTOR = 0.5							-- Better our decryption over enemy encryption will reduce the penalties from the enemy mines in the region. This value is a factor to be used for balancing.
+NDefines.NNavy.NAVAL_MINES_NAVAL_SUPREMACY_FACTOR = 0.5						-- Factor for max amount of mines increasing naval supremacy
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_CRITICAL_HIT_CHANCES = 0.14				-- If an accident happens, how likely it is to be a critical hit (caused by naval mines)
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_CRITICAL_HIT_DAMAGE_SCALE = 5.0			-- Scale the value below in case of critical hit (caused by naval mines)
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_STRENGTH_LOSS = 50.0						-- Amount of strength loss when hit by naval mine
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_ORG_LOSS_FACTOR = 0.5						-- Amount of org loss when hit by naval mine
+
 NDefines.NNavy.BASE_ESCAPE_SPEED = 0.060										-- daily base escape speed (gained as percentagE)
 NDefines.NNavy.SPEED_TO_ESCAPE_SPEED = 1.15									-- ratio to converstion from ship speed to escape speed (divided by hundred)
 NDefines.NNavy.MAX_ESCAPE_SPEED_FROM_COMBAT_DURATION = 0.20					-- max escape speed that will be gained from combat duration
@@ -655,6 +666,9 @@ NDefines.NIntel.ARMY_ARMY_COUNT_RANGE_INTEL_MIN = 0.15
 NDefines.NIntel.ARMY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.15
 NDefines.NIntel.NAVAL_SUPREMACY_INTEL_LOW = 0.3								-- we need more intel than this to get any supremacy
 NDefines.NIntel.NAVY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.1
+
+NDefines.NIntel.NAVY_INTEL_MINE_DAMAGE_REDUCTION_FACTOR_MIN_INTEL_FOR_BONUS = 5 -- at least this intel diff is needed for start applying NAVAL_MINES_INTEL_DIFF_FACTOR bonus
+NDefines.NIntel.NAVY_INTEL_MINE_DAMAGE_REDUCTION_FACTOR_MAX_INTEL_FOR_BONUS = 40 -- t this intel NAVAL_MINES_INTEL_DIFF_FACTOR will be applied fully
 
 NDefines.NIntel.STATIC_INTEL_SOURCE_INTEL_NETWORK_MAXIMUMS = { 30.0, 30.0, 30.0, 30.0}
 NDefines.NIntel.STATIC_INTEL_SOURCE_RADAR_MAXIMUMS = { 0.0, 0.0, 30.0, 30.0} -- Vanilla 10/10/20/20
