@@ -95,7 +95,6 @@ focus_tree = {
 		id = ENG_assasinate_heydrich
 		icon = GFX_focus_GER_strengthen_the_waffen_ss
 		prerequisite = { focus = ENG_expand_the_secret_intelligence_service_focus }
-		mutually_exclusive = { focus = ENG_international_agency }
 		
 		available = {
 			GER = { has_completed_focus = GER_fate_of_czechoslovakia }
@@ -174,185 +173,184 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = ENG_home_guard
-		icon = GFX_focus_eng_concessions_to_the_trade_unions
-		prerequisite = { focus = ENG_army_rearmament }
-		available = {
-			has_war_with = GER
-		}
-
-		available_if_capitulated = no
-
-		x = 1
-		y = 1
-		relative_position_id = ENG_army_rearmament
-		cost = 2
-		ai_will_do = {
-			factor = 1
-		}	
-		completion_reward = {
-			hidden_effect = {
-				hidden_effect = {
-					division_template = {
-						name = "Home Guard"
-						is_locked = yes
-						regiments = {
-							militia = { x = 0 y = 0 }
-							militia = { x = 0 y = 1 }
-							militia = { x = 0 y = 2 }
-					
-							militia = { x = 1 y = 0 }
-							militia = { x = 1 y = 1 }
-							militia = { x = 1 y = 2 }
-					
-							militia = { x = 2 y = 0 }
-							militia = { x = 2 y = 1 }
-							militia = { x = 2 y = 2 }
-
-							militia = { x = 3 y = 0 }
-							#artillery_brigade = { x = 3 y = 0}
-							#anti_tank_brigade = { x = 3 y = 1}
-					
-						}
-						support = {
-							engineer = { x = 0 y = 0 }   
-							anti_air = { x = 0 y = 1 }
-						}
-					}
-					# 40 Spawn Ins
-					126 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					125 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					122 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					127 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					123 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					338 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					253 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					128 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					129 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					130 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					132 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					131 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					133 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					121 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					120 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					136 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-					119 = {
-						if = {					
-							limit = { is_controlled_by = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-							create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-						}
-					}
-				}
-			}
-			custom_effect_tooltip = ENG_home_guard_tt
-		}
-	}
+	#focus = {
+	#	id = ENG_home_guard
+	#	icon = GFX_focus_eng_concessions_to_the_trade_unions
+	#	prerequisite = { focus = ENG_army_rearmament }
+	#	available = {
+	#		has_war_with = GER
+	#	}
+	#
+	#	available_if_capitulated = no
+	#
+	#	x = 1
+	#	y = 1
+	#	relative_position_id = ENG_army_rearmament
+	#	cost = 2
+	#	ai_will_do = {
+	#		factor = 1
+	#	}	
+	#	completion_reward = {
+	#		hidden_effect = {
+	#			hidden_effect = {
+	#				division_template = {
+	#					name = "Home Guard"
+	#					is_locked = yes
+	#					regiments = {
+	#						militia = { x = 0 y = 0 }
+	#						militia = { x = 0 y = 1 }
+	#						militia = { x = 0 y = 2 }
+	#				
+	#						militia = { x = 1 y = 0 }
+	#						militia = { x = 1 y = 1 }
+	#						militia = { x = 1 y = 2 }
+	#				
+	#						militia = { x = 2 y = 0 }
+	#						militia = { x = 2 y = 1 }
+	#						militia = { x = 2 y = 2 }
+	#						militia = { x = 3 y = 0 }
+	#						#artillery_brigade = { x = 3 y = 0}
+	#						#anti_tank_brigade = { x = 3 y = 1}
+	#				
+	#					}
+	#					support = {
+	#						engineer = { x = 0 y = 0 }   
+	#						anti_air = { x = 0 y = 1 }
+	#					}
+	#				}
+	#				# 40 Spawn Ins
+	#				126 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				125 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				122 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				127 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				123 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				338 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				253 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				128 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				129 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				130 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				132 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				131 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				133 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				121 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				120 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				136 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#				119 = {
+	#					if = {					
+	#						limit = { is_controlled_by = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#						create_unit = { division = "division_template = \"Home Guard\" force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
+	#					}
+	#				}
+	#			}
+	#		}
+	#		custom_effect_tooltip = ENG_home_guard_tt
+	#	}
+	#}
 	
 	focus = {
 		id = ENG_equip_foreign_exiles
@@ -372,7 +370,7 @@ focus_tree = {
 
 		available_if_capitulated = yes
 
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = ENG_army_rearmament
 		
@@ -424,14 +422,12 @@ focus_tree = {
 					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
 					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
 					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
-					create_unit = { division = "division_template = \"Foreign Exiles\" start_experience_factor = 0.3 force_equipment_variants = { infantry_equipment_0 = { owner = \"ENG\" } squad_equipment_0 = { owner = \"ENG\" } artillery_equipment_1 = { owner = \"ENG\" } anti_tank_equipment_1 = { owner = \"ENG\" } }" owner = ENG }
 				}
-			}	
+			}
+			add_timed_idea = {
+				idea = ENG_equip_exiles
+				days = 365
+			}
 		}
 	}
 	
@@ -4349,6 +4345,12 @@ focus_tree = {
 					province = 4135
 					instant_build = yes
 				}
+				set_building_level = {
+					type = coastal_fortress
+					level = 3
+					province = 4135
+					instant_build = yes
+				}
 				add_building_construction = {
 					type = air_base
 					level = 3
@@ -4359,6 +4361,10 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
+			}
+			add_mines = { 
+				region = 68
+				amount = 300
 			}
 		}
 	}

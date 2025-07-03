@@ -1217,21 +1217,31 @@ ENG_homeland_defense_decision_cat = {
 				}
 
 				division_template = {
-					name = "Home Guard Defense Brigades"
-					division_names_group = ENG_INF_01
-					template_counter = 99
-					role = garrison
-					is_locked = yes
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
+						name = "Home Guard Defense Brigades"
+						is_locked = yes
+						regiments = {
+							militia = { x = 0 y = 0 }
+							militia = { x = 0 y = 1 }
+							militia = { x = 0 y = 2 }
+					
+							militia = { x = 1 y = 0 }
+							militia = { x = 1 y = 1 }
+							militia = { x = 1 y = 2 }
+					
+							militia = { x = 2 y = 0 }
+							militia = { x = 2 y = 1 }
+							militia = { x = 2 y = 2 }
+
+							militia = { x = 3 y = 0 }
+							#artillery_brigade = { x = 3 y = 0}
+							#anti_tank_brigade = { x = 3 y = 1}
+					
+						}
+						support = {
+							engineer = { x = 0 y = 0 }   
+							anti_air = { x = 0 y = 1 }
+						}
 					}
-					support = {
-					}
-				}
 			}
 		}
 		
@@ -1317,12 +1327,23 @@ ENG_homeland_defense_decision_cat = {
 
 		available = {
 			has_war = yes
-			any_owned_state = {
-				is_core_of = ROOT
-				#is_in_home_area = yes 	
-				NOT = {
-					is_controlled_by = ROOT
+			
+			OR = {
+				any_owned_state = {
+					is_core_of = ROOT
+					#is_in_home_area = yes 	
+					NOT = {
+						is_controlled_by = ROOT
+					}
 				}
+				FRA = {
+					has_capitulated = yes
+				}
+				naval_strength_ratio = {
+					tag = GER
+					ratio < 2
+				}
+				has_war_with = ITA
 			}
 			NOT = {
 				has_country_flag = ENG_raising_militia_flag
@@ -1402,6 +1423,30 @@ ENG_homeland_defense_decision_cat = {
 				    division = "name = \"Home Guard Defense Brigade\" division_template = \"Home Guard Defense Brigades\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
 				    owner = ROOT
 				}
+				create_unit = {
+				    division = "name = \"Home Guard Defense Brigade\" division_template = \"Home Guard Defense Brigades\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+				    owner = ROOT
+				}
+				create_unit = {
+				    division = "name = \"Home Guard Defense Brigade\" division_template = \"Home Guard Defense Brigades\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+				    owner = ROOT
+				}
+				create_unit = {
+				    division = "name = \"Home Guard Defense Brigade\" division_template = \"Home Guard Defense Brigades\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+				    owner = ROOT
+				}
+				create_unit = {
+				    division = "name = \"Home Guard Defense Brigade\" division_template = \"Home Guard Defense Brigades\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+				    owner = ROOT
+				}
+				create_unit = {
+				    division = "name = \"Home Guard Defense Brigade\" division_template = \"Home Guard Defense Brigades\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+				    owner = ROOT
+				}
+				create_unit = {
+				    division = "name = \"Home Guard Defense Brigade\" division_template = \"Home Guard Defense Brigades\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+				    owner = ROOT
+				}
 			}
 
 			clr_country_flag = ENG_raising_militia_flag
@@ -1442,6 +1487,45 @@ ENG_homeland_defense_decision_cat = {
 		
 		ai_will_do = {
 			base = 500
+		}
+	}
+
+	ENG_mining_the_rock = {
+		priority = 5
+
+		icon = GFX_decision_generic_naval_mine
+
+		ai_will_do = {
+			base = 0.25
+		}
+
+		allowed = {
+			original_tag = ENG
+			has_dlc = "Man the Guns"
+			has_completed_focus = ENG_fortify_the_rock
+		}
+
+		visible = {
+			has_full_control_of_state = 118
+		}
+
+		available = {
+			has_war = yes
+			has_full_control_of_state = 118
+		}
+
+		custom_cost_trigger = {
+		}
+		ai_hint_pp_cost = 60
+
+		days_remove = 90
+
+		complete_effect = {
+			hidden_effect = {
+			}
+		}
+
+		remove_effect = {
 		}
 	}
 
@@ -4061,4 +4145,5 @@ ENG_propaganda_campaigns = {
 			hidden_effect = { FROM = { country_event = { id = generic.26 hours = 1} } }
 		}
 	}
+
 }
