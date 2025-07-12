@@ -15629,7 +15629,7 @@ focus_tree = {
 
 			add_tech_bonus = {
 				name = HUN_industrial_revitalization
-				bonus = 0.75
+				bonus = 0.5
 				uses = 1
 				category = industry
 			}
@@ -16898,7 +16898,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
-		cost = 5
+		cost = 8
 
 		ai_will_do = {
 			factor = 10
@@ -16941,16 +16941,16 @@ focus_tree = {
 					43 = {
 						free_building_slots = {
 							building = arms_factory
-							size > 2
+							size > 1
 							include_locked = yes
 						}
 					}
 				}
 				43 = {
-					add_extra_state_shared_building_slots = 3
+					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = arms_factory
-						level = 3
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -16961,16 +16961,16 @@ focus_tree = {
 					155 = {
 						free_building_slots = {
 							building = arms_factory
-							size > 2
+							size > 1
 							include_locked = yes
 						}
 					}
 				}
 				155 = {
-					add_extra_state_shared_building_slots = 3
+					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = arms_factory
-						level = 3
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -16990,7 +16990,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
-		cost = 5
+		cost = 8
 
 		ai_will_do = {
 			factor = 10
@@ -17155,21 +17155,21 @@ focus_tree = {
 					155 = {
 						free_building_slots = {
 							building = industrial_complex
-							size > 3
+							size > 1
 							include_locked = yes
 						}
 					}
 				}
 				155 = {
-					add_extra_state_shared_building_slots = 4
+					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = industrial_complex
-						level = 4
+						level = 2
 						instant_build = yes
 					}
 					add_resource = {
 						type = steel
-						amount = 40
+						amount = 100
 					}
 				}
 			}
@@ -17222,20 +17222,20 @@ focus_tree = {
 			155 = {
 				add_resource = {
 					type = oil
-					amount = 50
+					amount = 100
 				}
 			}
 			974 = {
 				add_resource = {
 					type = oil
-					amount = 40
+					amount = 90
 				}
 			}
 
 			973 = {
 				add_resource = {
 					type = oil
-					amount = 60
+					amount = 110
 				}
 			}
 
@@ -17344,7 +17344,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_political_power = 50
+			#add_political_power = 50
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -17501,7 +17501,7 @@ focus_tree = {
 		}
 
 		available = {
-			num_of_factories > 70
+			num_of_factories > 100
 		}
 
 		bypass = {
@@ -17561,14 +17561,14 @@ focus_tree = {
 					is_core_of = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 2
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -17584,7 +17584,7 @@ focus_tree = {
 				show_mio_tooltip = HUN_mw_aircraft_organization
 
 				mio:HUN_mw_aircraft_organization = {
-					add_mio_size = 3
+					add_mio_size = 2
 				}
 
 			}
@@ -17770,14 +17770,14 @@ focus_tree = {
 					is_core_of = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 2
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -17793,7 +17793,7 @@ focus_tree = {
 				show_mio_tooltip = HUN_mavag_aircraft_organization
 
 				mio:HUN_mavag_aircraft_organization = {
-					add_mio_size = 3
+					add_mio_size = 2
 				}
 
 			}
@@ -18266,22 +18266,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-
 		}
 	}
 
@@ -18573,26 +18557,13 @@ focus_tree = {
 					is_fully_controlled_by = ROOT
 					is_core_of = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
-			random_owned_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_core_of = ROOT
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-
 			custom_effect_tooltip = generic_skip_one_line_tt
 
 			IF = {
@@ -18604,7 +18575,7 @@ focus_tree = {
 				show_mio_tooltip = HUN_mavag_assault_guns_organization
 
 				mio:HUN_mavag_assault_guns_organization = {
-					add_mio_size = 3
+					add_mio_size = 2
 				}
 
 			}
