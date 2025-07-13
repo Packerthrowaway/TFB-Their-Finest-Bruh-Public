@@ -745,9 +745,16 @@
 
 		completion_reward = {
 			random_owned_controlled_state = {
-				prioritize = { 404 }
+				# prioritize = { 404 }
+				# limit = {
+				# 	ROOT = { has_full_control_of_state = PREV }
+				# }
 				limit = {
-					ROOT = { has_full_control_of_state = PREV }
+					free_building_slots = {
+						building = industrial_complex
+						size > 3
+						include_locked = yes
+					}
 				}
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
@@ -772,9 +779,16 @@
 
 		completion_reward = {
 			random_owned_controlled_state = {
-				prioritize = { 589 }
+				# prioritize = { 589 }
+				# limit = {
+				# 	ROOT = { has_full_control_of_state = PREV }
+				# }
 				limit = {
-					ROOT = { has_full_control_of_state = PREV }
+					free_building_slots = {
+						building = industrial_complex
+						size > 3
+						include_locked = yes
+					}
 				}
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
@@ -800,9 +814,16 @@
 
 		completion_reward = {
 			random_owned_controlled_state = {
-				prioritize = { 881 }
+				# prioritize = { 881 }
+				# limit = {
+				# 	ROOT = { has_full_control_of_state = PREV }
+				# }
 				limit = {
-					ROOT = { has_full_control_of_state = PREV }
+					free_building_slots = {
+						building = industrial_complex
+						size > 3
+						include_locked = yes
+					}
 				}
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
@@ -1214,8 +1235,8 @@
 		x = 0
 		y = 5
 		cost = 5
-		prerequisite = { focus = KSR_quality_over_quantity focus = KSR_develop_special_forces_doctrine }
-		prerequisite = { focus = KSR_mass_mobilisation focus = KSR_specialise_in_infantry }
+		prerequisite = { focus = KSR_quality_over_quantity focus = KSR_specialise_in_infantry }
+		prerequisite = { focus = KSR_mass_mobilisation focus = KSR_develop_special_forces_doctrine }
 		prerequisite = { focus = KSR_expand_karlag }
 		relative_position_id = KSR_kazakh_volunteers
 		available_if_capitulated = yes
