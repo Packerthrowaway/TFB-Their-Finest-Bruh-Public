@@ -1567,7 +1567,12 @@
 				if = { 
 					limit = { has_global_flag = meta_game_flag }
 					surrender_progress > 0.23 
-				} else = {
+				}
+				else_if = {
+					limit = { KSR = { exists = yes } }
+					surrender_progress > 0.25
+				}
+				else = {
 					# Default TFB
 					surrender_progress > 0.24 
 				}
@@ -1609,7 +1614,10 @@
 			casualties > 2000000
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
-				surrender_progress > 0.31 
+				surrender_progress > 0.31
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.33
 			} else = {
 				# Default TFB
 				surrender_progress > 0.32
@@ -1664,7 +1672,10 @@
 			casualties > 2000000
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
-				surrender_progress > 0.31 
+				surrender_progress > 0.31
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.33
 			} else = {
 				# Default TFB
 				surrender_progress > 0.32
@@ -1917,6 +1928,9 @@
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
 				surrender_progress > 0.39 
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.41
 			} else = {
 				# Default TFB
 				surrender_progress > 0.4
@@ -2001,6 +2015,9 @@
 				if = { 
 					limit = { has_global_flag = meta_game_flag }
 					surrender_progress > 0.29 
+				} else_if = {
+					limit = { KSR = { exists = yes } }
+					surrender_progress > 0.31
 				} else = {
 					# Default TFB
 					surrender_progress > 0.3
@@ -2168,7 +2185,10 @@
 				if = { 
 					limit = { has_global_flag = meta_game_flag }
 					surrender_progress > 0.39 
-				} else = {
+					} else_if = {
+						limit = { KSR = { exists = yes } }
+						surrender_progress > 0.41
+					} else = {
 					# Default TFB
 					surrender_progress > 0.4
 				}
@@ -2361,6 +2381,9 @@
 				if = { 
 					limit = { has_global_flag = meta_game_flag }
 					surrender_progress > 0.19 
+				} else_if = {
+					limit = { KSR = { exists = yes } }
+					surrender_progress > 0.21
 				} else = {
 					# Default TFB
 					surrender_progress > 0.2
@@ -2597,6 +2620,9 @@
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
 				surrender_progress > 0.21 
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.23
 			} else = {
 				# Default TFB
 				surrender_progress > 0.22
@@ -2699,6 +2725,9 @@
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
 				surrender_progress > 0.31 
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.33
 			} else = {
 				# Default TFB
 				surrender_progress > 0.32
@@ -2836,6 +2865,9 @@
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
 				surrender_progress > 0.46
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.48
 			} else = {
 				# Default TFB
 				surrender_progress > 0.47
@@ -2949,6 +2981,9 @@
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
 				surrender_progress > 0.26 
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.28
 			} else = {
 				# Default TFB
 				surrender_progress > 0.27
@@ -3083,6 +3118,9 @@
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
 				surrender_progress > 0.24 
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.26
 			} else = {
 				# Default TFB
 				surrender_progress > 0.25
@@ -3115,6 +3153,9 @@
 			if = { 
 				limit = { has_global_flag = meta_game_flag }
 				surrender_progress > 0.29 
+			} else_if = {
+				limit = { KSR = { exists = yes } }
+				surrender_progress > 0.31
 			} else = {
 				# Default TFB
 				surrender_progress > 0.3
@@ -4671,6 +4712,14 @@
 			hidden_effect = {
 				MON = {
 					add_ideas = MON_brothers_war
+				}
+				if = {
+					limit = {
+						country_exists = KSR
+					}
+					KSR = {
+						add_ideas = MON_brothers_war
+					}
 				}
 			}
 		}

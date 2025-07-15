@@ -24,6 +24,7 @@
 
 		available = {
 			NOT = {has_country_flag = KSR_keep_around}
+			date < 1936.6.1
 		}
 
 		ai_will_do = {
@@ -150,6 +151,12 @@
 
 		completion_reward = {
 			add_ideas = KSR_soviet_substate
+			SOV = { 
+				remove_resource_rights = 588
+				remove_resource_rights = 584
+				remove_resource_rights = 402
+				remove_resource_rights = 882
+			}
 		}
 	}
 	focus = {
@@ -217,6 +224,44 @@
 
 		completion_reward = {
 			country_event = soviet.506
+			custom_effect_tooltip = one_of_the_following_tt
+			effect_tooltip = {
+				add_country_leader_role = {
+					character = KSR_mao_zedong
+					country_leader={
+						ideology=marxism
+						traits={ cornered_fox }
+						expire="1965.1.1.1"
+						id=-1
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					character = KSR_p_krishna_pillai
+					country_leader={
+						ideology=marxism
+						expire="1965.1.1.1"
+						id=-1
+						traits = {
+							great_architect
+						}
+					}
+					promote_leader = yes
+				}
+				add_country_leader_role = {
+					character = KSR_ilyas_zhansugurov
+					country_leader={
+						ideology=marxism
+						expire="1965.1.1.1"
+						id=-1
+						traits = {
+							face_licker
+							revolutionary_poet
+						}
+					}
+					promote_leader = yes
+				}
+			}
 		}
 	}
 		
@@ -231,7 +276,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-		 add_stability = 0.2
+		 add_stability = 0.1
 		 add_war_support = 0.1
 		}
 	}
@@ -582,7 +627,7 @@
 				tooltip = industrial_capacity_factory_tt
 			}
 			add_to_variable = {
-				KSR_local_resources_factor = 0.15
+				KSR_local_resources_factor = 0.1
 				tooltip = local_resources_factor_tt
 			}
 			add_manpower = 50000
@@ -625,10 +670,9 @@
 			add_ideas = KSR_planning_committee
 		}
 	}
-
 	focus = {
-		id = KSR_expand_kazakh_resource_deposits
-		icon = GFX_SOV_increase_state_reserves_ccp_2d_sov_compatibility
+		id = KSR_expand_the_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
 		x = -1
 		y = 1
 		cost = 8
@@ -639,57 +683,15 @@
 
 		completion_reward = {
 			if = {
-				limit = {
-					has_full_control_of_state = 586
-				}
-				586 = {
-					add_resource = {
-						type = steel
-						amount = 500
-					}
-					add_resource = {
-						type = tungsten
-						amount = 200
+				limit = { has_full_control_of_state = 881 }
+				881 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
 					}
 				}
 			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 732
-				}
-				732 = {
-					add_resource = {
-						type = steel
-						amount = 100
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_full_control_of_state = 405
-				}
-				405 = {
-					add_resource = {
-						type = tungsten
-						amount = 200
-					}
-				}
-			}
-		}
-	}
-	focus = {
-		id = KSR_expand_the_infrastructure
-		icon = GFX_goal_generic_construct_infrastructure
-		x = 0
-		y = 1
-		cost = 8
-		prerequisite = { focus = KSR_expand_kazakh_resource_deposits }
-		
-		relative_position_id = KSR_expand_kazakh_resource_deposits
-		available_if_capitulated = yes
-
-		completion_reward = {
 			if = {
 				limit = { has_full_control_of_state = 586 }
 				586 = {
@@ -726,6 +728,59 @@
 						type = infrastructure
 						level = 2
 						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_expand_kazakh_resource_deposits
+		icon = GFX_SOV_increase_state_reserves_ccp_2d_sov_compatibility
+		x = 0
+		y = 1
+		cost = 8
+		prerequisite = { focus = KSR_expand_the_infrastructure }
+		
+		relative_position_id = KSR_expand_the_infrastructure
+		available_if_capitulated = yes
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_full_control_of_state = 881
+				}
+				881 = {
+					add_resource = {
+						type = steel
+						amount = 400
+					}
+					add_resource = {
+						type = tungsten
+						amount = 100
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_full_control_of_state = 732
+				}
+				732 = {
+					add_resource = {
+						type = steel
+						amount = 100
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 405
+				}
+				405 = {
+					add_resource = {
+						type = tungsten
+						amount = 100
 					}
 				}
 			}
@@ -807,7 +862,7 @@
 		y = 1
 		cost = 10
 		prerequisite = { focus = KSR_copy_the_soviet_model }
-		prerequisite = { focus = KSR_expand_the_infrastructure }
+		prerequisite = { focus = KSR_expand_kazakh_resource_deposits }
 		
 		relative_position_id = KSR_copy_the_soviet_model
 		available_if_capitulated = yes
@@ -870,6 +925,10 @@
 		y = 1
 		cost = 5
 		prerequisite = { focus = KSR_utilise_karlag }
+
+		available = {
+			SOV = { has_completed_focus = SOV_the_bloc_of_rights_and_trotskyites }
+		}
 		
 		relative_position_id = KSR_utilise_karlag
 		available_if_capitulated = yes
@@ -884,10 +943,10 @@
 				KSR_economy_production_efficiency_gain_factor = 0.05
 				tooltip = production_factory_efficiency_gain_factor_tt
 			}
-			add_to_variable = {
-				KSR_economy_production_max_efficiency_factor = 0.05
-				tooltip = production_factory_max_efficiency_factor_tt
-			}
+			# add_to_variable = {
+			# 	KSR_economy_production_max_efficiency_factor = 0.05
+			# 	tooltip = production_factory_max_efficiency_factor_tt
+			# }
 		}
 	}
 		
