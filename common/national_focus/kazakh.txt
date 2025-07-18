@@ -9,14 +9,14 @@
 			tag = KSR
 		}
 	}
-	continuous_focus_position = { x = 100 y = 1300 }
+	continuous_focus_position = { x = 2150 y = 1000 }
 	
 	default = no
 
 	focus = {
 		id = KSR_annexation
 		icon = GFX_focus_SOV_socialism_in_one_country
-		x = 8
+		x = 1
 		y = 0
 		cost = 1
 		
@@ -39,7 +39,7 @@
 	focus = {
 		id = KSR_change_the_trajectory
 		icon = GFX_SOV_the_stalin_constitutiony_ccp_2d_sov_compatibility
-		x = 4
+		x = 8
 		y = 0
 		cost = 8
 		
@@ -59,7 +59,7 @@
 		prerequisite = { focus = KSR_change_the_trajectory }
 		relative_position_id = KSR_change_the_trajectory
 		available = {
-			date > 1937.7.30 }
+			date > 1936.7.30 }
 		
 		available_if_capitulated = yes
 
@@ -75,8 +75,8 @@
 	focus = {
 		id = KSR_continue_soviet_guidance
 		icon = GFX_focus_SOV_stalins_cult_of_personality
-		x = -3
-		y = 1
+		x = -4
+		y = 3
 		cost = 8
 		prerequisite = { focus = KSR_purge_the_dissenters }
 		relative_position_id = KSR_purge_the_dissenters
@@ -101,7 +101,40 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = KSR_soviet_leadership
+			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
+			add_to_variable = {
+				KSR_stability_weekly_factor = 0.02
+				tooltip = KSR_focus_name_modifier2_tt
+			} 
+			add_to_variable = {
+				KSR_political_power_factor = 0.1
+				tooltip = political_power_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_a_new_replacement
+		icon = GFX_focus_BEL_order_of_the_golden_lion
+		x = -2
+		y = 2
+		cost = 8
+		prerequisite = { focus = KSR_soviet_leadership }
+		relative_position_id = KSR_continue_soviet_guidance
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			KSR_lavrenty_beriya = {
+				add_country_leader_role = {
+					country_leader = {
+						expire = "1953.12.23.1"
+						ideology = stalinism
+						traits = { unscrupulous_orchestrator }
+					}
+					promote_leader = yes
+				}
+			}
 		}
 	}
 		
@@ -162,7 +195,7 @@
 	focus = {
 		id = KSR_construct_universities
 		icon = GFX_focus_generic_socialist_science
-		x = 1
+		x = 2
 		y = 1
 		cost = 5
 		prerequisite = { focus = KSR_a_perfect_soviet_substate focus = KSR_kazakh_first}
@@ -197,21 +230,120 @@
 		
 	focus = {
 		id = KSR_an_autonomous_state
-		icon = GFX_SOV_the_fourth_international_ccp_2d_sov_compatibility
-		x = 3
-		y = 1
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 4
+		y = 3
 		cost = 8
 		prerequisite = { focus = KSR_purge_the_dissenters }
 		relative_position_id = KSR_purge_the_dissenters
 		mutually_exclusive = { focus = KSR_continue_soviet_guidance }
 		available_if_capitulated = yes
-
 		completion_reward = {
-			add_ideas = KSR_autonomous_state
-			
+			add_ideas = KSR_autonomy
 		}
 	}
-		
+
+	focus = {
+		id = KSR_secure_the_administration
+		icon = GFX_goal_support_communism
+		x = 0
+		y = 4
+		cost = 5
+		prerequisite = { focus = KSR_an_autonomous_state focus = KSR_continue_soviet_guidance }
+		relative_position_id = KSR_purge_the_dissenters
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
+			add_to_variable = {
+				KSR_communism_drift = 0.1
+				tooltip = communism_drift_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_the_kazakh_nkvd_branch
+		icon = GFX_focus_SWI_embrace_rote_drei
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = KSR_secure_the_administration }
+		relative_position_id = KSR_secure_the_administration
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
+			add_to_variable = {
+				KSR_operative_slot = 1
+				tooltip = operative_slot_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_cult_of_personality
+		icon = GFX_focus_SOV_stalins_cult_of_personality
+		x = -2
+		y = 1
+		cost = 5
+		prerequisite = { focus = KSR_secure_the_administration }
+		relative_position_id = KSR_secure_the_administration
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
+			add_to_variable = {
+				KSR_promote_cost_factor = -0.25 
+				tooltip = army_leader_cost_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_positive_heroism
+		icon = GFX_focus_ARG_women_in_industry
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = KSR_secure_the_administration }
+		relative_position_id = KSR_secure_the_administration
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
+			add_to_variable = {
+				KSR_command_power_gain_mult = 0.1
+				tooltip = command_power_gain_mult_tt
+			}
+
+		}
+	}
+
+	focus = {
+		id = KSR_faithful_servants_of_stalin
+		icon = GFX_SOV_father_of_nations_ccp_2d_sov_compatibility
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = KSR_the_kazakh_nkvd_branch
+		}
+		prerequisite = {
+			focus = KSR_cult_of_personality
+		}
+
+		prerequisite = {
+			focus = KSR_positive_heroism
+		}
+		relative_position_id = KSR_secure_the_administration
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = KSR_favoured_by_stalin
+		}
+	}
+
 	focus = {
 		id = KSR_leadership_contest
 		icon = GFX_focus_generic_soviet_politics
@@ -268,7 +400,7 @@
 	focus = {
 		id = KSR_continue_cossack_deportations
 		icon = GFX_focus_SOV_the_road_of_life
-		x = -1
+		x = 0
 		y = 1
 		cost = 8
 		prerequisite = { focus = KSR_leadership_contest }
@@ -283,12 +415,12 @@
 		
 	focus = {
 		id = KSR_religious_taxations
-		icon = GFX_goal_generic_forceful_treaty
-		x = 1
+		icon = GFX_focus_BRA_socialist_theologians
+		x = 0
 		y = 1
 		cost = 8
-		prerequisite = { focus = KSR_leadership_contest }
-		relative_position_id = KSR_leadership_contest
+		prerequisite = { focus = KSR_purge_the_dissenters }
+		relative_position_id = KSR_purge_the_dissenters
 		available_if_capitulated = yes
 
 		completion_reward = {
@@ -296,28 +428,107 @@
 		}
 	}
 
-	focus = {
-		id = KSR_kazakh_first
-		icon = GFX_focus_SOV_proclaim_soviet_hegemony
-		x = -1
-	
+		focus = {
+		id = KSR_nationalise_public_services
+		icon = GFX_focus_generic_supply_line
+		x = -2
 		y = 1
 		cost = 8
 		prerequisite = { focus = KSR_religious_taxations }
-		prerequisite = { focus = KSR_continue_cossack_deportations }
 		relative_position_id = KSR_religious_taxations
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = KSR_nationalised_public_services
+		}
+	}
+
+	focus = {
+		id = KSR_curate_national_curriculums
+		icon = GFX_focus_generic_socialist_science
+		x = 0
+		y = 1
+		cost = 8
+		prerequisite = { focus = KSR_religious_taxations }
+		relative_position_id = KSR_religious_taxations
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = KSR_national_curriculum
+		}
+	}
+
+	focus = {
+		id = KSR_a_one_party_state
+		icon = GFX_SOV_leader_of_the_party_and_the_people_ccp_2d_sov_compatibility
+		x = 2
+		y = 1
+		cost = 8
+		prerequisite = { focus = KSR_religious_taxations }
+		relative_position_id = KSR_religious_taxations
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
+			add_to_variable = {
+				KSR_political_power_factor = 0.05
+				tooltip = political_power_factor_tt
+			}
+		}
+	}
+
+
+	focus = {
+		id = KSR_kazakh_first
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		x = 0
+		y = 2
+		cost = 8
+
+		prerequisite = { focus = KSR_continue_cossack_deportations }
+		relative_position_id = KSR_leadership_contest
 		available_if_capitulated = yes
 
 		completion_reward = {
 			add_ideas = KSR_kazakh_first
 		}
 	}
+
+	focus = {
+		id = KSR_kazakh_socialism
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 2
+		y = 1
+		cost = 8
+
+		prerequisite = { focus = KSR_leadership_contest }
+		relative_position_id = KSR_leadership_contest
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
+			add_to_variable = {
+				KSR_autonomy_gain_global_factor = 1
+				tooltip = autonomy_gain_global_factor_tt
+
+			}
+			add_to_variable = {
+				KSR_war_support_weekly_factor = 0.02
+				tooltip = KSR_focus_name_modifier_war_tt
+			}
+
+			add_to_variable = {
+				KSR_stability_weekly_factor = 0.03
+				tooltip = KSR_focus_name_modifier3_tt
+			}
+
+		}
+	}
 		
 	focus = {
 		id = KSR_prepare_for_the_refugees
 		icon = GFX_focus_SOV_merge_plants
-		x = -1
-	
+		x = -2
 		y = 1
 		cost = 8
 		prerequisite = { focus = KSR_a_perfect_soviet_substate focus = KSR_kazakh_first }
@@ -561,15 +772,6 @@
 		}
 
 		completion_reward = {
-			custom_effect_tooltip = KSR_modify_karlag_modifier_tt
-			add_to_variable = {
-				KSR_industrial_capacity_factory = 0.05
-				tooltip = industrial_capacity_factory_tt
-			}
-			add_to_variable = {
-				KSR_economy_production_efficiency_gain_factor = 0.05
-				tooltip = production_factory_efficiency_gain_factor_tt
-			}
 			add_manpower = 50000
 		}
 	}
@@ -590,15 +792,7 @@
 		}
 
 		completion_reward = {
-			custom_effect_tooltip = KSR_modify_karlag_modifier_tt
-			add_to_variable = {
-					KSR_industrial_capacity_factory = 0.05
-					tooltip = industrial_capacity_factory_tt
-				}
-			add_to_variable = {
-				KSR_production_speed_buildings_factor = 0.05
-				tooltip = production_speed_buildings_factor_tt
-			}
+
 			add_manpower = 75000
 		}
 	}
@@ -621,15 +815,6 @@
 		}		
 
 		completion_reward = {
-			custom_effect_tooltip = KSR_modify_karlag_modifier_tt
-			add_to_variable = {
-				KSR_industrial_capacity_factory = 0.05
-				tooltip = industrial_capacity_factory_tt
-			}
-			add_to_variable = {
-				KSR_local_resources_factor = 0.1
-				tooltip = local_resources_factor_tt
-			}
 			add_manpower = 50000
 		}
 	}
@@ -637,7 +822,7 @@
 	focus = {
 		id = KSR_rapid_industrialisation
 		icon = GFX_SOV_reorganize_the_pc_of_heavy_industry_ccp_2d_sov_compatibility
-		x = 12
+		x = 20
 		y = 0
 		cost = 8
 
@@ -651,6 +836,9 @@
 				bonus = 0.50
 				uses = 2
 				category = industry
+			}
+			add_dynamic_modifier = {
+				modifier = KSR_industrialisation
 			}
 		}
 	}
@@ -667,13 +855,60 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = KSR_planning_committee
+			#add_ideas = KSR_planning_committee
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_factory_efficiency_gain_factor = 0.05
+				tooltip = production_factory_efficiency_gain_factor_tt
+			}
 		}
 	}
+
+    focus = {
+		id = KSR_kazakh_four_year_plan
+		icon = GFX_focus_generic_communist_industry
+		x = 0
+		y = 1
+		cost = 8
+		prerequisite = { focus = KSR_a_committee_for_national_planning }
+		
+		relative_position_id = KSR_a_committee_for_national_planning
+		available_if_capitulated = yes
+
+		completion_reward = {	
+			add_timed_idea = {
+				idea = KSR_four_year_plan
+				days = 1460
+			}	
+		}
+	}
+
+	focus = {
+		id = KSR_kazakh_second_four_year_plan
+		icon = GFX_focus_generic_communist_industry
+		x = 0
+		y = 2
+		cost = 8
+		prerequisite = { focus = KSR_kazakh_four_year_plan }
+		
+		relative_position_id = KSR_a_committee_for_national_planning
+		available_if_capitulated = yes
+        available = {
+			NOT = { has_idea = KSR_four_year_plan }
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = KSR_second_four_year_plan
+				days = 1460
+			}
+		}
+	}
+	
+	
 	focus = {
 		id = KSR_expand_the_infrastructure
 		icon = GFX_goal_generic_construct_infrastructure
-		x = -1
+		x = -2
 		y = 1
 		cost = 8
 		prerequisite = { focus = KSR_a_committee_for_national_planning }
@@ -735,12 +970,32 @@
 	}
 
 	focus = {
-		id = KSR_expand_kazakh_resource_deposits
-		icon = GFX_SOV_increase_state_reserves_ccp_2d_sov_compatibility
-		x = 0
-		y = 1
+		id = KSR_lay_the_foundations
+		icon = GFX_focus_generic_truck
+		x = -2
+		y = 2
 		cost = 8
 		prerequisite = { focus = KSR_expand_the_infrastructure }
+		relative_position_id = KSR_a_committee_for_national_planning
+		available_if_capitulated = yes
+
+		completion_reward = { 
+			add_timed_idea = {
+				idea = KSR_infrastructure_foundations
+				days = 365
+			}
+		}
+	}
+			
+		
+
+	focus = {
+		id = KSR_expand_kazakh_resource_deposits
+		icon = GFX_SOV_increase_state_reserves_ccp_2d_sov_compatibility
+		x = -2
+		y = 2
+		cost = 8
+		prerequisite = { focus = KSR_lay_the_foundations }
 		
 		relative_position_id = KSR_expand_the_infrastructure
 		available_if_capitulated = yes
@@ -786,11 +1041,37 @@
 			}
 		}
 	}
+
+	focus = {
+		id = KSR_mechanisation_of_the_mines
+		icon = GFX_goal_generic_construct_civ_factory
+		x = -4
+		y = 4
+		cost = 8
+		prerequisite = { focus = KSR_expand_kazakh_resource_deposits }
+		
+		relative_position_id = KSR_a_committee_for_national_planning
+		available_if_capitulated = yes
+        available = {
+			NOT = { has_idea = KSR_four_year_plan }
+		}
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_local_resources_factor = 0.05
+				tooltip = local_resources_factor_tt
+			}
+			add_to_variable = {
+				KSR_industrial_capacity_factory = 0.025
+				tooltip = industrial_capacity_factory_tt
+			}
+		}
+	}
 		
 	focus = {
 		id = KSR_soviet_industrial_investments
 		icon = GFX_goal_generic_soviet_construction
-		x = 1
+		x = 2
 		y = 1
 		cost = 8
 		prerequisite = { focus = KSR_a_committee_for_national_planning }
@@ -825,6 +1106,7 @@
 		id = KSR_copy_the_soviet_model
 		icon = GFX_goal_generic_soviet_construction
 		x = 0
+	
 		y = 1
 		cost = 8
 		prerequisite = { focus = KSR_soviet_industrial_investments }
@@ -854,19 +1136,325 @@
 			}
 		}
 	}	
-		
+
 	focus = {
-		id = KSR_full_rural_reconstruction
-		icon = GFX_SOV_finish_the_five_year_plan_ccp_2d_sov_compatibility
-		x = -1
-		y = 1
-		cost = 10
+		id = KSR_caspian_sea_life_line
+		icon = GFX_focus_PER_bolster_the_caspian
+		x = -3
+		y = 4
+		cost = 8
 		prerequisite = { focus = KSR_copy_the_soviet_model }
-		prerequisite = { focus = KSR_expand_kazakh_resource_deposits }
-		
+		available = {
+			ENG = {
+				has_completed_focus = ENG_operation_countenance
+			}
+		}
 		relative_position_id = KSR_copy_the_soviet_model
 		available_if_capitulated = yes
 
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+
+			add_to_variable = {
+				KSR_industrial_capacity_factory = 0.05
+				tooltip = industrial_capacity_factory_tt
+			}
+		}
+	}
+
+		focus = {
+		id = KSR_american_assistance
+		icon = GFX_focus_generic_befriend_usa
+		x = -1
+		y = 1
+		cost = 8
+		prerequisite = { focus = KSR_caspian_sea_life_line }
+		
+		relative_position_id = KSR_caspian_sea_life_line
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_speed_buildings_factor = 0.05
+				tooltip = production_speed_buildings_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_commonwealth_assistance
+		icon = GFX_focus_eng_the_sun_never_sets
+		x = 1
+		y = 1
+		cost = 8
+		prerequisite = { focus = KSR_caspian_sea_life_line }	
+		relative_position_id = KSR_caspian_sea_life_line
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_lack_of_resource_penalty_factor = -0.075
+				tooltip = production_lack_of_resource_penalty_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_jobs_for_refugees_from_soviet_states
+		icon = GFX_focus_ICE_embrace_the_workers_revolution
+		x = 0
+		y = 3
+		cost = 8
+		prerequisite = { focus = KSR_copy_the_soviet_model }
+		available = {
+			has_completed_focus = KSR_refugees_from_soviet_states
+		}
+		relative_position_id = KSR_copy_the_soviet_model
+		available_if_capitulated = yes
+
+		completion_reward = {	
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_speed_arms_factory_factor = 0.05
+				tooltip = production_speed_arms_factory_factor_tt
+			}
+		}
+	}
+	focus = {
+		id = KSR_jobs_for_refugees_from_east_asia
+		icon = GFX_focus_ICE_embrace_the_workers_revolution
+		x = 2
+		y = 3
+		cost = 8
+		prerequisite = { focus = KSR_copy_the_soviet_model }
+
+		relative_position_id = KSR_copy_the_soviet_model
+		available_if_capitulated = yes
+		available = {
+			has_completed_focus = KSR_refugees_from_east_asia
+		}
+		completion_reward = { 
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+				KSR_production_speed_infrastructure_factor = 0.10
+				tooltip = production_speed_infrastructure_factor_tt
+			} 
+		}
+	}
+	                
+
+
+	focus = {
+		id = KSR_jobs_for_refugees_from_europe
+		icon = GFX_focus_ICE_embrace_the_workers_revolution
+		x = -2
+		y = 3
+		cost = 8
+		prerequisite = { focus = KSR_copy_the_soviet_model }
+				available = {
+					has_completed_focus = KSR_refugees_from_europe
+				}
+		relative_position_id = KSR_copy_the_soviet_model
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+        random_owned_controlled_state = {
+
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_speed_buildings_factor = 0.025
+				tooltip = production_speed_buildings_factor_tt
+			}
+		}
+	}
+	
+
+	focus = {
+		id = KSR_soviet_industrial_assistance
+		icon = GFX_goal_generic_soviet_construction
+		x = -1
+		y = 2
+		cost = 8
+		prerequisite = { focus = KSR_copy_the_soviet_model }
+		
+		relative_position_id = KSR_soviet_industrial_investments
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_speed_industrial_complex_factor = 0.05
+				tooltip = production_speed_industrial_complex_factor_tt
+			}
+		}
+	}
+	
+	focus = {
+		id = KSR_home_grown_industry
+		icon = GFX_goal_generic_soviet_construction
+		x = 1
+		y = 2
+		cost = 8
+		prerequisite = { focus = KSR_copy_the_soviet_model }
+		
+		relative_position_id = KSR_soviet_industrial_investments
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_speed_buildings_factor = 0.025
+				tooltip = production_speed_buildings_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_women_workers
+		icon = GFX_focus_ARG_women_in_industry
+		x = 1
+		y = 2
+		cost = 8
+		prerequisite = { focus = KSR_home_grown_industry }
+		
+		relative_position_id = KSR_copy_the_soviet_model
+		available_if_capitulated = yes
+        available = {
+			NOT = { has_idea = KSR_four_year_plan }
+		}
+		completion_reward = {	
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_industrial_capacity_factory = 0.05
+				tooltip = industrial_capacity_factory_tt
+			}
+			add_to_variable = {
+				KSR_line_change_production_efficiency_factor = 0.075
+				tooltip = line_change_production_efficiency_factor_tt
+			}
+		}
+	}
+		
+	focus = {
+		id = KSR_full_rural_reconstruction
+		icon = GFX_focus_generic_workers_and_farmers_rise
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = KSR_lay_the_foundations }
+		relative_position_id = KSR_lay_the_foundations
+		available_if_capitulated = yes
+        available = {
+			NOT = { has_idea = KSR_infrastructure_foundations }
+		}
 		completion_reward = {
 			random_owned_controlled_state = {
 				# prioritize = { 881 }
@@ -876,108 +1464,66 @@
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
-						size > 3
+						size > 2
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 4
+					level = 3
 					instant_build = yes
 				}
 			}
 		}
 	}
-		
+	
 	focus = {
-		id = KSR_utilise_karlag
-		icon = GFX_focus_SOV_penal_battalions
+		id = KSR_full_urbanisation
+		icon = GFX_goal_generic_construct_infrastructure
 		x = 0
 		y = 1
-		cost = 10
-		prerequisite = { focus = KSR_full_rural_reconstruction }
-		
+		cost = 8
+		prerequisite = { focus = KSR_full_rural_reconstruction}
+		available = {
+			NOT = { has_idea = KSR_four_year_plan }
+		}
 		relative_position_id = KSR_full_rural_reconstruction
 		available_if_capitulated = yes
 
-		completion_reward = {
-			custom_effect_tooltip = KSR_modify_karlag_modifier_tt
-			add_to_variable = {
-				KSR_production_speed_buildings_factor = 0.05
-				tooltip = production_speed_buildings_factor_tt
+        completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
 			}
-			
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
 			add_to_variable = {
-				KSR_industrial_capacity_factory = 0.05
-				tooltip = industrial_capacity_factory_tt
-			}
-			add_stability = -0.1
-		}
-	}
-		
-		
-		
-	focus = {
-		id = KSR_accept_soviet_dissidents
-		icon = GFX_SOV_the_workers_dictatorship_ccp_2d_sov_compatibility
-		x = -2
-		y = 1
-		cost = 5
-		prerequisite = { focus = KSR_utilise_karlag }
-
-		available = {
-			SOV = { has_completed_focus = SOV_the_bloc_of_rights_and_trotskyites }
-		}
-		
-		relative_position_id = KSR_utilise_karlag
-		available_if_capitulated = yes
-
-		completion_reward = {
-			custom_effect_tooltip = KSR_modify_karlag_modifier_tt
-			add_to_variable = {
-				KSR_industrial_capacity_factory = 0.05
-				tooltip = industrial_capacity_factory_tt
-			}
-			add_to_variable = {
-				KSR_economy_production_efficiency_gain_factor = 0.05
-				tooltip = production_factory_efficiency_gain_factor_tt
+				KSR_production_factory_max_efficiency_factor = 0.05
+				tooltip = production_factory_max_efficiency_factor_tt
 			}
 			# add_to_variable = {
-			# 	KSR_economy_production_max_efficiency_factor = 0.05
-			# 	tooltip = production_factory_max_efficiency_factor_tt
+			# 	KSR_production_factory_efficiency_gain_factor = 0.05
+			# 	tooltip = production_factory_efficiency_gain_factor_tt
 			# }
-		}
+		}	
 	}
-		
-	focus = {
-		id = KSR_expand_karlag
-		icon = GFX_focus_SOV_penal_battalions
-		x = 2
-		y = 1
-		cost = 10
-		prerequisite = { focus = KSR_utilise_karlag }
-		relative_position_id = KSR_utilise_karlag
-		available_if_capitulated = yes
 
-		completion_reward = {
-			custom_effect_tooltip = KSR_modify_karlag_modifier_tt
-			add_to_variable = {
-				KSR_production_speed_buildings_factor = 0.05
-				tooltip = production_speed_buildings_factor_tt
-			}
-			add_to_variable = {
-				KSR_industrial_capacity_factory = 0.05
-				tooltip = industrial_capacity_factory_tt
-			}
-			add_stability = -0.2
-		}
-	}
 		
 	focus = {
 		id = KSR_kazakh_peoples_army
 		icon = GFX_focus_SOV_builder_of_the_red_army
-		x = 21
+		x = 35
 		y = 0
 		cost = 8
 		
@@ -1007,6 +1553,408 @@
 					}
 				}
 			}
+			add_dynamic_modifier = {
+				modifier = KSR_kazakh_peoples_army_idea
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_officer_training
+		icon = GFX_focus_generic_military_academy
+		x = -4
+		y = 1
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_kazakh_peoples_army
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_experience_gain_army = 0.05
+				tooltip = experience_gain_army_tt
+			}
+			add_to_variable = {
+				KSR_female_random_army_leader_chance = 0.5
+				tooltip = female_random_army_leader_chance_tt
+			}
+			add_to_variable = {
+				KSR_experience_gain_army_unit_factor = 0.1
+				tooltip = experience_gain_army_unit_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_military_schools
+		icon = GFX_focus_NOR_moscows_education_centers
+		x = -5
+		y = 2
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         	focus = KSR_officer_training
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_army_leader_start_level = 1
+				tooltip = army_leader_start_level_tt
+			}
+			add_to_variable = {
+				experience_gain_factor = 0.2
+				tooltip = experience_gain_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_learn_from_soviet_mistakes
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_communism
+		x = -5
+		y = 3
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_military_schools
+		}
+		available_if_capitulated = yes
+		available = {
+			SOV = {
+				has_completed_focus = SOV_baltic_security
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+
+			add_to_variable = {
+				KSR_army_leader_start_logistics_level = 1
+				tooltip = army_leader_start_logistics_level_tt
+			}
+
+			add_to_variable = {
+				KSR_winter_attrition_factor = -0.1
+				tooltip = winter_attrition_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_selected_from_merits
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		x = -3
+		y = 2
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_officer_training
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_experience_gain_army_unit_factor = 0.10
+				tooltip = experience_gain_army_unit_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_adapt_to_axis_tactics
+		icon = GFX_focus_GER_demonstration_of_military_achievements
+		x = -3
+		y = 3
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_selected_from_merits
+		}
+		available_if_capitulated = yes
+        available = {
+			GER ={ 
+				has_war_with = POL
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_army_leader_start_defense_level = 1
+				tooltip = army_leader_start_defense_level_tt
+			}
+			add_to_variable = {
+				KSR_supply_consumption_factor = -0.05
+				tooltip = supply_consumption_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_military_development
+		icon = GFX_focus_focus_fra_maquis
+		x = 4
+		y = 1
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_kazakh_peoples_army
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_experience_gain_army = 0.05
+				tooltip = experience_gain_army_tt
+			}
+			        add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_adapt_soviet_infantry_equipment
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		x = 5
+		y = 2
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_military_development
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				technology = infantry_weapons2
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_look_to_the_soviets_for_big_guns
+		icon = GFX_focus_SWE_let_fly_all_guns
+		x = 5
+		y = 3
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_adapt_soviet_infantry_equipment
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = heavy_artillery
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_support_companies_for_our_army
+		icon = GFX_focus_generic_reinforcing_the_supply_network
+		x = 3
+		y = 2
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_military_development
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = logistics_tech
+			}
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = support_tech
+			}
+		}
+	}
+	        
+		
+
+	focus = {
+		id = KSR_rocket_artillery_research
+		icon = GFX_focus_rocketry
+		x = 3
+		y = 3
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_support_companies_for_our_army
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				technology = rocket_artillery
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_proliferation_of_the_communist_musket
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		x = 2
+		y = 5
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_look_to_the_soviets_for_big_guns focus = KSR_rocket_artillery_research
+		}
+		prerequisite = {
+			focus = KSR_adapt_to_axis_tactics focus = KSR_learn_from_soviet_mistakes
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = { 
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				ahead_reduction = 0.5
+				technology = advanced_infantry_weapons
+			}
+		}
+		
+	}
+
+	focus = {
+		id = KSR_legacy_of_timur
+		icon = GFX_focus_RAJ_restore_the_timurid_empire
+		x = -2
+		y = 5
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_look_to_the_soviets_for_big_guns focus = KSR_rocket_artillery_research
+		}
+		prerequisite = {
+			focus = KSR_adapt_to_axis_tactics focus = KSR_learn_from_soviet_mistakes
+		}
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_army_leader_start_attack_level = 1
+				tooltip = army_leader_start_attack_level_tt
+			}
+			add_to_variable = {
+				KSR_army_leader_start_logistics_level = 1
+				tooltip = army_leader_start_logistics_level_tt
+			}
+			# add_to_variable = {
+			# 	KSR_terrain_penalty_reduction = -0.1
+			# 	tooltip = terrain_penalty_reduction_tt
+			# }
+			add_corps_commander_role = {
+				character = KSR_Timur
+				traits= { brilliant_strategist war_hero commando }
+				skill=3
+				attack_skill=3
+				defense_skill=3
+				planning_skill=4
+				logistics_skill=4
+				legacy_id=-1
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_kazakh_ak47
+		icon = GFX_focus_CHL_the_future_of_Chile
+		x = 0
+		y = 6
+		cost = 8
+		relative_position_id = KSR_kazakh_peoples_army
+		prerequisite = {
+         focus = KSR_legacy_of_timur
+		}
+		prerequisite = {
+			focus = KSR_proliferation_of_the_communist_musket
+		}
+
+		available_if_capitulated = yes
+        
+		ai_will_do = {
+			base = 0
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				ahead_reduction = 0.5
+				technology = advanced_infantry_weapons2
+			}
 		}
 	}
 		
@@ -1014,7 +1962,7 @@
 		id = KSR_kazakh_volunteers
 		icon = GFX_SOV_barrier_troops_ccp_2d_sov_compatibility
 		x = 0
-		y = 2
+		y = 1
 		cost = 5
 		prerequisite = { focus = KSR_kazakh_peoples_army }
 		
@@ -1029,8 +1977,8 @@
 	focus = {
 		id = KSR_chinese_model
 		icon = GFX_focus_prc_maoism
-		x = -4
-		y = 1
+		x = -8
+		y = 4
 		cost = 8
 		prerequisite = { focus = KSR_kazakh_peoples_army }
 		mutually_exclusive = { focus = KSR_soviet_model }
@@ -1038,7 +1986,11 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			army_experience = 25
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_experience_gain_army = 0.05
+				tooltip = experience_gain_army_tt
+			}
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.5
 				uses = 2
@@ -1063,6 +2015,7 @@
 					}
 				}
 			}
+			army_experience = 25
 		}
 	}
 		
@@ -1163,8 +2116,8 @@
 	focus = {
 		id = KSR_soviet_model
 		icon = GFX_focus_SOV_the_path_of_marxism_leninism
-		x = 4
-		y = 1
+		x = 8
+		y = 4
 		cost = 8
 		prerequisite = { focus = KSR_kazakh_peoples_army }
 		mutually_exclusive = { focus = KSR_chinese_model }
@@ -1172,7 +2125,11 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			army_experience = 25
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_experience_gain_army = 0.15
+				tooltip = experience_gain_army_tt
+			}
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.5
 				uses = 2
@@ -1198,6 +2155,7 @@
 					}
 				}
 			}
+						army_experience = 25
 		}
 	}
 	focus = {
@@ -1213,6 +2171,12 @@
 		completion_reward = {
 			add_ideas = KSR_spetsnaz
 			add_potential_special_forces_tree = yes
+
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_special_forces_min = 14
+				tooltip = special_forces_min_tt
+			}
 		}
 	}
 
@@ -1291,23 +2255,30 @@
 	focus = {
 		id = KSR_perfection_of_small_arms
 		icon = GFX_focus_focus_fra_maquis
-		x = 0
-		y = 5
+		x = -5
+		y = 3
 		cost = 5
-		prerequisite = { focus = KSR_quality_over_quantity focus = KSR_specialise_in_infantry }
-		prerequisite = { focus = KSR_mass_mobilisation focus = KSR_develop_special_forces_doctrine }
-		prerequisite = { focus = KSR_expand_karlag }
-		relative_position_id = KSR_kazakh_volunteers
+		prerequisite = { focus = KSR_quality_over_quantity focus = KSR_mass_mobilisation }
+		prerequisite = { focus = KSR_specialise_in_infantry focus = KSR_develop_special_forces_doctrine }
+		mutually_exclusive = { focus = KSR_focus_on_mass_production }
+		relative_position_id = KSR_soviet_model
 		available_if_capitulated = yes
 
+		available = {
+			OR = {
+				SOV = {has_completed_focus = SOV_baltic_security}
+				has_war = yes
+			}
+		}
+
 		completion_reward = {
-			add_ideas = YUG_idea_infantry_focus
+			add_ideas = KSR_perfection_of_the_small_arm
 		}
 	}
 		
 	focus = {
 		id = KSR_perfection_of_support_guns
-		icon = GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility
+		icon = GFX_focus_RAJ_mountain_guns
 		x = 0
 		y = 1
 		cost = 5
@@ -1316,7 +2287,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = YUG_idea_bosnian_artillery
+			add_ideas = KSR_perfection_of_support_guns
 		}
 	}
 	focus = {
@@ -1336,7 +2307,7 @@
 	}
 	focus = {
 		id = KSR_focus_on_support_guns
-		icon = GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility
+		icon = GFX_focus_generic_anti_tank_guns
 		x = 1
 		y = 1
 		cost = 5
@@ -1346,7 +2317,110 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = YUG_idea_artillery_focus
+			custom_effect_tooltip = KSR_modify_kazakh_peoples_army_modifier_tt
+			add_to_variable = {
+				KSR_army_artillery_attack_factor = 0.075
+				tooltip = army_artillery_attack_factor_tt
+			}
+			add_to_variable = {
+				KSR_army_artillery_defence_factor = 0.075
+				tooltip = army_artillery_defence_factor_tt
+			}
 		}
 	}
+
+	focus = {
+		id = KSR_focus_on_mass_production
+		icon = GFX_focus_focus_fra_maquis
+		x = 5
+		y = 3
+		cost = 5
+		prerequisite = { focus = KSR_quality_over_quantity focus = KSR_mass_mobilisation }
+		prerequisite = { focus = KSR_specialise_in_infantry focus = KSR_develop_special_forces_doctrine }
+		mutually_exclusive = { focus = KSR_perfection_of_small_arms }
+		relative_position_id = KSR_chinese_model
+		available_if_capitulated = yes
+
+		available = {
+			OR = {
+				SOV = {has_completed_focus = SOV_baltic_security}
+				has_war = yes
+			}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_industrial_capacity_factory = 0.05
+				tooltip = industrial_capacity_factory_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_alternative_materials_for_equipment
+		icon = GFX_focus_generic_rubber_plantations
+		x = -2
+		y = 1
+		cost = 5
+		prerequisite = { focus = KSR_focus_on_mass_production }
+		relative_position_id = KSR_focus_on_mass_production
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_lack_of_resource_penalty_factor = -0.075
+				tooltip = production_lack_of_resource_penalty_factor_tt
+			}			
+		}
+	}
+
+	focus = {
+		id = KSR_resources_for_mass_production
+		icon = GFX_focus_generic_central_planning
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = KSR_focus_on_mass_production }
+		relative_position_id = KSR_focus_on_mass_production
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_local_resources_factor = 0.05
+				tooltip = local_resources_factor_tt
+			}
+		}
+	}
+
+	focus = {
+		id = KSR_automated_production
+		icon = GFX_goal_continuous_non_factory_construct
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = KSR_focus_on_mass_production }
+		relative_position_id = KSR_focus_on_mass_production
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KSR_modify_industrialisation_modifier_tt
+			add_to_variable = {
+				KSR_production_factory_max_efficiency_factor = 0.025
+				tooltip = production_factory_max_efficiency_factor_tt
+			}
+			add_to_variable = {
+				KSR_production_factory_start_efficiency_factor = 0.05
+				tooltip = production_factory_start_efficiency_factor_tt
+			}
+			add_to_variable = {
+				KSR_production_factory_efficiency_gain_factor = 0.075
+				tooltip = production_factory_efficiency_gain_factor_tt
+			}
+
+		}
+	}
+
 }
