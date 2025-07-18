@@ -103,7 +103,7 @@
 		completion_reward = {
 			custom_effect_tooltip = KSR_modify_the_politburo_modifier_tt
 			add_to_variable = {
-				KSR_stability_weekly_factor = 0.02
+				KSR_stability_weekly = 0.002
 				tooltip = KSR_focus_name_modifier2_tt
 			} 
 			add_to_variable = {
@@ -513,12 +513,12 @@
 
 			}
 			add_to_variable = {
-				KSR_war_support_weekly_factor = 0.02
+				KSR_war_support_weekly = 0.002
 				tooltip = KSR_focus_name_modifier_war_tt
 			}
 
 			add_to_variable = {
-				KSR_stability_weekly_factor = 0.03
+				KSR_stability_weekly = 0.003
 				tooltip = KSR_focus_name_modifier3_tt
 			}
 
@@ -1872,11 +1872,17 @@
 			base = 0
 		}
 
-		completion_reward = { 
+		completion_reward = {
+			custom_effect_tooltip = KSR_license_tt
+			hidden_effect = {
+				SOV = { add_ideas = KSR_fatherless_licensing }
+				MON = { add_ideas = KSR_fatherless_licensing }
+			}
+			
 			add_tech_bonus = {
-				bonus = 0.5
+				bonus = 1
 				uses = 1
-				ahead_reduction = 0.5
+				ahead_reduction = 0.1
 				technology = advanced_infantry_weapons
 			}
 		}
@@ -1950,9 +1956,9 @@
 
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 0.5
+				bonus = 1
 				uses = 1
-				ahead_reduction = 0.5
+				ahead_reduction = 0.1
 				technology = advanced_infantry_weapons2
 			}
 		}
