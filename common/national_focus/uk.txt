@@ -36,10 +36,7 @@ focus_tree = {
 		available = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = tension_game 
-						option = DISABLED
-					}
+					NOT = { has_global_flag = tension_game_flag }
 				}
 				OR = {
 					threat > 0.05

@@ -35,10 +35,7 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = dockyard_cg
-						option = ENABLED
-					}
+					has_global_flag = dockyard_cg_enabled_flag
 				}
 				every_country = {
 					dockyard_cg_calculation = yes
@@ -46,10 +43,7 @@ on_actions = {
 			}
 			else_if = {
 				limit = {
-					has_game_rule = {
-						rule = dockyard_cg
-						option = BUILD_SPEED
-					}
+					has_global_flag = dockyard_cg_build_speed_flag
 				}
 				every_country = {
 					dockyard_build_speed_calculation = yes
@@ -61,10 +55,7 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = soviet_air_changes
-						option = FULL_SOV_AIR
-					}
+					has_global_flag = soviet_air_changes_full_flag
 				}
 				SOV = {
 					SOV_stalins_air_needs = yes
@@ -187,10 +178,7 @@ on_actions = {
 			if = {
 				limit = {
 					OR = {
-						has_game_rule = {
-							rule = intel_share_time
-							option = DISABLED
-						}
+						NOT = { has_global_flag = intel_share_time_flag }
 						has_global_flag = japan_is_at_war_with_allies
 					}
 				}
@@ -244,10 +232,7 @@ on_actions = {
 			if = {
 				limit = {
 					OR = {
-						has_game_rule = {
-							rule = intel_share_time
-							option = DISABLED
-						}
+						NOT = { has_global_flag = intel_share_time_flag }
 						has_global_flag = soviets_are_at_war_with_germany
 					}
 				}
@@ -335,10 +320,7 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = coastal_raiders
-						option = ENABLED
-					}
+					has_global_flag = coastal_raiders_flag
 				}
 				MED_coastal_raiding_check = yes 
 			}
@@ -365,6 +347,324 @@ on_actions = {
 		}
 	}
     on_startup = {
+		# Set all of the flags from GameRules for easier setup:
+		effect = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = fatherless_spirit
+						option = ENABLED
+					}
+				}
+				set_global_flag = fatherless_spirit_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = tension_game
+						option = ENABLED
+					}
+				}
+				set_global_flag = tension_game_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = coastal_raiders
+						option = ENABLED
+					}
+				}
+				set_global_flag = coastal_raiders_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = vp_system
+						option = ENABLED
+					}
+				}
+				set_global_flag = vp_system_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = capped_volunteers
+						option = ENABLED
+					}
+				}
+				set_global_flag = capped_volunteers_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = china_waves_style
+						option = ENABLED
+					}
+				}
+				set_global_flag = china_waves_style_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = raj_version
+						option = ENABLED
+					}
+				}
+				set_global_flag = raj_version_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = assault_gun
+						option = ASSAULT_GUN_LINE
+					}
+				}
+				set_global_flag = assault_gun_line_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = belgium_forts_allowed
+						option = ENABLED
+					}
+				}
+				set_global_flag = belgium_forts_allowed_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = rhineland_first
+						option = ENABLED
+					}
+				}
+				set_global_flag = rhineland_first_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = axis_manpower
+						option = ENABLED
+					}
+				}
+				set_global_flag = axis_manpower_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = deny_sudetenland
+						option = ENABLED
+					}
+				}
+				set_global_flag = deny_sudetenland_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = deny_anschluss
+						option = ENABLED
+					}
+				}
+				set_global_flag = deny_anschluss_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = infiltration_status
+						option = STATIC
+					}
+				}
+				set_global_flag = infiltration_status_static_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = danzig_autodeclare
+						option = ENABLED
+					}
+				}
+				set_global_flag = danzig_autodeclare_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_volunteer
+						option = ENABLED
+					}
+				}
+				set_global_flag = soviet_volunteer_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = intel_share_time
+						option = ENABLED
+					}
+				}
+				set_global_flag = intel_share_time_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = naval_treaty_status
+						option = ENABLED
+					}
+				}
+				set_global_flag = naval_treaty_status_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = japan_leave_out_USA
+						option = ENABLED
+					}
+				}
+				set_global_flag = japan_leave_out_USA_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = deny_tangiers
+						option = ENABLED
+					}
+				}
+				set_global_flag = deny_tangiers_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = allow_voice_lines
+						option = ENABLED
+					}
+				}
+				set_global_flag = allow_voice_lines_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = ONEFIFTYCAP
+					}
+				}
+				set_global_flag = navy_cap_150_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = ONEHUNDREDCAP
+					}
+				}
+				set_global_flag = navy_cap_100_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = navy_cap
+						option = DISABLED
+					}
+				}
+				set_global_flag = navy_cap_disabled_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = dockyard_cg
+						option = ENABLED
+					}
+				}
+				set_global_flag = dockyard_cg_enabled_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = dockyard_cg
+						option = BUILD_SPEED
+					}
+				}
+				set_global_flag = dockyard_cg_build_speed_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = dockyard_cg
+						option = DISABLED
+					}
+				}
+				set_global_flag = dockyard_cg_disabled_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = allow_china_waves
+						option = THREEWAVES
+					}
+				}
+				set_global_flag = allow_china_waves_3_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = allow_china_waves
+						option = TWOWAVES
+					}
+				}
+				set_global_flag =  allow_china_waves_2_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = allow_china_waves
+						option = ONEWAVES
+					}
+				}
+				set_global_flag = allow_china_waves_1_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = allow_china_waves
+						option = DISABLED
+					}
+				}
+				set_global_flag = allow_china_waves_disabled_flag
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FULL_SOV_AIR
+					}
+				}
+				set_global_flag = soviet_air_changes_full_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = START_SOV_AIR
+					}
+				}
+				set_global_flag =  soviet_air_changes_start_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = FOCUS_SOV_AIR
+					}
+				}
+				set_global_flag = soviet_air_changes_focus_flag
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = soviet_air_changes
+						option = DISABLED
+					}
+				}
+				set_global_flag = soviet_air_changes_disabled_flag
+			}
+		}
 		effect = {
 			if = {
 				limit = {
