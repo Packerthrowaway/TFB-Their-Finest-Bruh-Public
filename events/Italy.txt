@@ -487,21 +487,21 @@ country_event = {
 	desc = { 
 		text = italy.13.d_dalmatia_montenegro
 		trigger = {
-			has_completed_focus = ITA_slovenia_dalmatia_claims
+			has_completed_focus = ITA_yugo_question
 			owns_state = 44
 		}
 	}
 	desc = { 
 		text = italy.13.d_dalmatia
 		trigger = {
-			has_completed_focus = ITA_slovenia_dalmatia_claims
+			has_completed_focus = ITA_yugo_question
 			NOT = { owns_state = 44 }
 		}
 	}
 	desc = { 
 		text = italy.13.d_montenegro
 		trigger = {
-			NOT = { has_completed_focus = ITA_slovenia_dalmatia_claims }
+			NOT = { has_completed_focus = ITA_yugo_question }
 			owns_state = 44
 		}
 	}
@@ -513,7 +513,7 @@ country_event = {
 	option = {
 		name = italy.13.a
 		if = {
-			limit = { has_completed_focus = ITA_slovenia_dalmatia_claims }
+			limit = { has_completed_focus = ITA_yugo_question }
 			ITA = { transfer_state = 103 }
 		}
 		if = {
@@ -722,5 +722,104 @@ country_event = {
 
 	option = {
 		name = italy.504.a
+	}
+}
+
+country_event = {
+	id = italy.505
+	title = italy.505.t
+	desc = italy.505.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = {
+		name = italy.505.a
+		give_resource_rights = { receiver = ITA state = 488 }
+		488 = {
+			add_resource = {
+				type = rubber
+				amount = 250
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+country_event = {
+	id = italy.506
+	title = italy.506.t
+	desc = italy.506.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = italy.506.a
+		ITA = {
+			remove_resource_rights = 488
+		}
+		488 = {
+			add_resource = {
+				type = rubber
+				amount = -250
+			}
+		}
+	}
+}
+
+country_event = {
+	id = italy.507
+	title = italy.507.t
+	desc = italy.507.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = italy.507.a
+		ITA = {
+			white_peace = ETH
+		}
+		add_stability = 0.10
+		add_war_support = -0.05
+		add_ideas = partial_economic_mobilisation
+		hidden_effect = {
+			set_country_flag = cuck_italy_flag
+		}
+	}
+	option = {	
+	name = italy.507.b
+		add_stability = -0.05
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = italy.508
+	title = italy.508.t
+	desc = italy.508.d
+	picture = GFX_report_event_german_speech
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = italy.508.a
+		complete_national_focus = ITA_corpo_di_truppe_volontarie
+	}
+
+	option = {
+	name = italy.508.b
+		complete_national_focus = ITA_seize_balearics
+		custom_effect_tooltip = ITA_balearics_tt1
 	}
 }

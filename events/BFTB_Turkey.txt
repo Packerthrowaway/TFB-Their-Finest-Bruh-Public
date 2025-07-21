@@ -125,3 +125,62 @@ country_event = {
 		}
 	}
 }
+country_event = { #Italy wants resource rights for Turkey
+	id = bftb_turkey.999
+	title = bftb_turkey.999.t
+	desc = bftb_turkey.999.d 
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	
+	option = { #Yes
+		ai_chance = {
+			base = 9
+		}
+		name = bftb_turkey.999.a
+
+		give_resource_rights = {
+			receiver = FROM 
+			state = 343 #Afyon 
+		}
+
+		add_opinion_modifier = {
+			target = FROM # target of the relation
+			modifier = GER_SWE_historic_trade_Partners
+		}
+
+		FROM = {
+			add_opinion_modifier = {
+				target = PREV # target of the relation
+				modifier = GER_SWE_historic_trade_Partners
+			}
+			country_event = { id = bftb_turkey.998 hours = 1 }
+		}
+	}
+}
+
+country_event = { #Event for Italy acknowledgement
+	id = bftb_turkey.998
+	title = bftb_turkey.998.t
+	desc = bftb_turkey.998.d 
+	picture = [GetHitlerCroatianHandshakeEventPicture]
+
+	is_triggered_only = yes
+
+	option = { 
+		name = bftb_turkey.998.a
+
+		effect_tooltip = {
+			FROM = {
+				give_resource_rights = {
+					receiver = FROM 
+					state = 343 #Afyon 
+				}
+
+				add_opinion_modifier = {
+					target = FROM # target of the relation
+					modifier = GER_SWE_historic_trade_Partners
+				}
+			}
+		}
+	}
+}

@@ -9,7 +9,7 @@ prospect_for_resources = {
 		}
 		
 		available = {
-			has_completed_focus = ITA_oil_prospecting
+			has_completed_focus = ITA_libyan_oil
 			OR = {
 				NOT = { has_country_flag = ITA_lib_3 }
 				has_tech = excavation1
@@ -114,6 +114,244 @@ prospect_for_resources = {
 
 		}
 		
+	}
+
+	develop_sardinian_iron_deposits = { #114
+
+		icon = steel
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_sardinian_iron
+			OR = {
+				NOT = { has_country_flag = ITA_sard_3 }
+				has_tech = excavation1
+			}
+			OR = {
+				NOT = { has_country_flag = ITA_sard_4 }
+				has_tech = excavation2
+			}
+			OR = {
+				NOT = { has_country_flag = ITA_sard_5 }
+				has_tech = excavation3
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 114
+			}
+		}
+
+		visible = {
+			114 = {
+				CONTROLLER = {
+					OR = {
+						tag = ITA
+						is_subject_of = ITA
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_sard_6 }
+		}
+
+		days_remove = 120
+		
+		modifier = {
+			civilian_factory_use = 8
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = ITA_sard_1
+				}
+				set_country_flag = ITA_sard_2
+				clr_country_flag = ITA_sard_1
+				add_resource = {
+					type = steel
+					amount = 120
+					state = 114
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_sard_2
+				}
+				set_country_flag = ITA_sard_3
+				clr_country_flag = ITA_sard_2
+				add_resource = {
+					type = steel
+					amount = 140
+					state = 114
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_sard_3
+				}
+				set_country_flag = ITA_sard_4
+				clr_country_flag = ITA_sard_3
+				add_resource = {
+					type = steel
+					amount = 160
+					state = 114
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_sard_4
+				}
+				set_country_flag = ITA_sard_5
+				clr_country_flag = ITA_sard_4
+				add_resource = {
+					type = steel
+					amount = 180
+					state = 114
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_sard_5
+				}
+				set_country_flag = ITA_sard_6
+				clr_country_flag = ITA_sard_5
+				add_resource = {
+					type = steel
+					amount = 200
+					state = 114
+				}
+			}
+			else = {
+				set_country_flag = ITA_sard_1
+				add_resource = {
+					type = steel
+					amount = 100
+					state = 114
+				}
+			}
+		}
+	}	
+
+	develop_ethiopian_rubber_deposits = { #271
+
+		icon = rubber
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_ethiopian_rubber
+			OR = {
+				NOT = { has_country_flag = ITA_eth_3 }
+				has_tech = excavation1
+			}
+			OR = {
+				NOT = { has_country_flag = ITA_eth_4 }
+				has_tech = excavation2
+			}
+			OR = {
+				NOT = { has_country_flag = ITA_eth_5 }
+				has_tech = excavation3
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 114
+			}
+		}
+
+		visible = {
+			271 = {
+				CONTROLLER = {
+					OR = {
+						tag = ITA
+						is_subject_of = ITA
+					}
+				}
+			}
+			NOT = { has_country_flag = ITA_eth_6 }
+		}
+
+		days_remove = 120
+		
+		modifier = {
+			civilian_factory_use = 8
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = ITA_eth_1
+				}
+				set_country_flag = ITA_eth_2
+				clr_country_flag = ITA_eth_1
+				add_resource = {
+					type = rubber
+					amount = 60
+					state = 271
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_eth_2
+				}
+				set_country_flag = ITA_eth_3
+				clr_country_flag = ITA_eth_2
+				add_resource = {
+					type = rubber
+					amount = 70
+					state = 271
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_eth_3
+				}
+				set_country_flag = ITA_eth_4
+				clr_country_flag = ITA_eth_3
+				add_resource = {
+					type = rubber
+					amount = 80
+					state = 271
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_eth_4
+				}
+				set_country_flag = ITA_eth_5
+				clr_country_flag = ITA_eth_4
+				add_resource = {
+					type = rubber
+					amount = 90
+					state = 271
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ITA_eth_5
+				}
+				set_country_flag = ITA_eth_6
+				clr_country_flag = ITA_eth_5
+				add_resource = {
+					type = rubber
+					amount = 100
+					state = 271
+				}
+			}
+			else = {
+				set_country_flag = ITA_eth_1
+				add_resource = {
+					type = rubber
+					amount = 50
+					state = 271
+				}
+			}
+		}
 	}
 }
 
@@ -285,6 +523,1019 @@ political_actions = {
 	
 }	
 
+ITA_iri_decisions = {
+
+	ITA_steel_ref_steel = {
+
+		icon = steel
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_fund_the_iri
+			NOT = { has_country_flag = ITA_funding_iri_ongoing }
+			NOT = { has_country_flag = ITA_funded_iri_steel }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		fire_only_once = yes
+		complete_effect = {
+		
+			set_country_flag = ITA_funding_iri_ongoing
+			set_country_flag = ITA_funded_iri_steel
+			
+			modify_building_resources = {
+			   building = steel_refinery
+			   resource = steel
+			   amount = 30
+			}
+			if = {
+				limit = { has_idea = ITA_iri_3 }
+				swap_ideas = {
+					remove_idea = ITA_iri_3
+					add_idea = ITA_iri_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_2 }
+				swap_ideas = {
+					remove_idea = ITA_iri_2
+					add_idea = ITA_iri_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_1 }
+				swap_ideas = {
+					remove_idea = ITA_iri_1
+					add_idea = ITA_iri_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_0 }
+				swap_ideas = {
+					remove_idea = ITA_iri_0
+					add_idea = ITA_iri_1
+				}
+			}
+		}
+		
+		cost = 25
+		
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_funding_iri_ongoing
+			}
+		}
+
+	}
+	
+	ITA_steel_ref_aluminium = {
+
+		icon = aluminium
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_fund_the_iri
+			NOT = { has_country_flag = ITA_funding_iri_ongoing }
+			NOT = { has_country_flag = ITA_funding_iri_aluminium }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_funding_iri_ongoing
+			set_country_flag = ITA_funded_iri_tungsten
+			modify_building_resources = {
+			   building = steel_refinery
+			   resource = aluminium
+			   amount = 20
+			}
+			if = {
+				limit = { has_idea = ITA_iri_3 }
+				swap_ideas = {
+					remove_idea = ITA_iri_3
+					add_idea = ITA_iri_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_2 }
+				swap_ideas = {
+					remove_idea = ITA_iri_2
+					add_idea = ITA_iri_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_1 }
+				swap_ideas = {
+					remove_idea = ITA_iri_1
+					add_idea = ITA_iri_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_0 }
+				swap_ideas = {
+					remove_idea = ITA_iri_0
+					add_idea = ITA_iri_1
+				}
+			}
+		}
+		
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_funding_iri_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+
+	ITA_steel_ref_tungsten = {
+
+		icon = tungsten
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_fund_the_iri
+			NOT = { has_country_flag = ITA_funding_iri_ongoing }
+			NOT = { has_country_flag = ITA_funded_iri_tungsten }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_funding_iri_ongoing
+			set_country_flag = ITA_funded_iri_tungsten
+			modify_building_resources = {
+			   building = steel_refinery
+			   resource = tungsten
+			   amount = 10
+			}
+			if = {
+				limit = { has_idea = ITA_iri_3 }
+				swap_ideas = {
+					remove_idea = ITA_iri_3
+					add_idea = ITA_iri_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_2 }
+				swap_ideas = {
+					remove_idea = ITA_iri_2
+					add_idea = ITA_iri_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_1 }
+				swap_ideas = {
+					remove_idea = ITA_iri_1
+					add_idea = ITA_iri_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_0 }
+				swap_ideas = {
+					remove_idea = ITA_iri_0
+					add_idea = ITA_iri_1
+				}
+			}
+		}
+		
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_funding_iri_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+	ITA_steel_ref_chromium = {
+
+		icon = chromium
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_fund_the_iri
+			NOT = { has_country_flag = ITA_funding_iri_ongoing }
+			NOT = { has_country_flag = ITA_funded_iri_chromium }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_funding_iri_ongoing
+			set_country_flag = ITA_funded_iri_chromium
+			modify_building_resources = {
+			   building = steel_refinery
+			   resource = chromium
+			   amount = 5
+			}		
+			modify_building_resources = {
+			   building = steel_refinery
+			   resource = steel
+			   amount = -10
+			}
+			if = {
+				limit = { has_idea = ITA_iri_3 }
+				swap_ideas = {
+					remove_idea = ITA_iri_3
+					add_idea = ITA_iri_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_2 }
+				swap_ideas = {
+					remove_idea = ITA_iri_2
+					add_idea = ITA_iri_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_1 }
+				swap_ideas = {
+					remove_idea = ITA_iri_1
+					add_idea = ITA_iri_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_iri_0 }
+				swap_ideas = {
+					remove_idea = ITA_iri_0
+					add_idea = ITA_iri_1
+				}
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_funding_iri_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+}
+
+ITA_old_prov_decisions = {
+
+	ITA_trade_deal_hungary = {
+
+		icon = GFX_decision_faction_gre_fascist
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_our_old_provinces
+			NOT = { has_country_flag = ITA_trade_deal_ongoing }
+			NOT = { has_country_flag = ITA_trade_deal_hungary }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_trade_deal_ongoing
+			set_country_flag = ITA_trade_deal_hungary
+			HUN = {
+				country_event = {
+					id = hungary.7
+					days = 1
+				}
+			}
+			if = {
+				limit = { has_idea = ITA_trade_3 }
+				swap_ideas = {
+					remove_idea = ITA_trade_3
+					add_idea = ITA_trade_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_2 }
+				swap_ideas = {
+					remove_idea = ITA_trade_2
+					add_idea = ITA_trade_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_1 }
+				swap_ideas = {
+					remove_idea = ITA_trade_1
+					add_idea = ITA_trade_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_0 }
+				swap_ideas = {
+					remove_idea = ITA_trade_0
+					add_idea = ITA_trade_1
+				}
+			}		
+		}
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_trade_deal_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+	
+	ITA_trade_deal_bulgaria = {
+
+		icon = GFX_decision_faction_gre_fascist
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_our_old_provinces
+			NOT = { has_country_flag = ITA_trade_deal_ongoing }
+			NOT = { has_country_flag = ITA_trade_deal_bulgaria }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_trade_deal_ongoing
+			set_country_flag = ITA_trade_deal_bulgaria
+			BUL = {
+				country_event = {
+					id = bulgaria.6
+					days = 1
+				}
+			}
+			if = {
+				limit = { has_idea = ITA_trade_3 }
+				swap_ideas = {
+					remove_idea = ITA_trade_3
+					add_idea = ITA_trade_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_2 }
+				swap_ideas = {
+					remove_idea = ITA_trade_2
+					add_idea = ITA_trade_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_1 }
+				swap_ideas = {
+					remove_idea = ITA_trade_1
+					add_idea = ITA_trade_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_0 }
+				swap_ideas = {
+					remove_idea = ITA_trade_0
+					add_idea = ITA_trade_1
+				}
+			}		
+		}
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_trade_deal_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+	
+	ITA_trade_deal_yugoslavia = {
+
+		icon = GFX_decision_faction_gre_fascist
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_our_old_provinces
+			NOT = { has_country_flag = ITA_trade_deal_ongoing }
+			NOT = { has_country_flag = ITA_trade_deal_yugoslavia }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_trade_deal_ongoing
+			set_country_flag = ITA_trade_deal_yugoslavia
+			YUG = {
+				country_event = {
+					id = yugoslavia.10
+					days = 1
+				}
+			}
+			if = {
+				limit = { has_idea = ITA_trade_3 }
+				swap_ideas = {
+					remove_idea = ITA_trade_3
+					add_idea = ITA_trade_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_2 }
+				swap_ideas = {
+					remove_idea = ITA_trade_2
+					add_idea = ITA_trade_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_1 }
+				swap_ideas = {
+					remove_idea = ITA_trade_1
+					add_idea = ITA_trade_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_0 }
+				swap_ideas = {
+					remove_idea = ITA_trade_0
+					add_idea = ITA_trade_1
+				}
+			}		
+		}
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_trade_deal_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+	
+	ITA_trade_deal_spain = {
+
+		icon = GFX_decision_faction_gre_fascist
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_our_old_provinces
+			NOT = { has_country_flag = ITA_trade_deal_ongoing }
+			NOT = { has_country_flag = ITA_trade_deal_spain }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_trade_deal_ongoing
+			set_country_flag = ITA_trade_deal_spain
+			SPR = {
+				country_event = {
+					id = spain.12
+					days = 1
+				}
+			}
+			if = {
+				limit = { has_idea = ITA_trade_3 }
+				swap_ideas = {
+					remove_idea = ITA_trade_3
+					add_idea = ITA_trade_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_2 }
+				swap_ideas = {
+					remove_idea = ITA_trade_2
+					add_idea = ITA_trade_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_1 }
+				swap_ideas = {
+					remove_idea = ITA_trade_1
+					add_idea = ITA_trade_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_0 }
+				swap_ideas = {
+					remove_idea = ITA_trade_0
+					add_idea = ITA_trade_1
+				}
+			}		
+		}
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_trade_deal_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+}
+ITA_carve_up_africa_decisions = {
+
+	ITA_demand_tunisia = {
+		icon = GFX_decision_generic_belgian_colonial_helmet
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_carve_up_africa }
+		available =	{
+			has_completed_focus = ITA_carve_up_africa
+			controls_state = 448
+			D04 = {
+				458	= {
+					CONTROLLER = {
+						OR = {
+							tag = D04
+							is_subject_of = D04
+						}
+					}
+				}
+			}
+		}
+		complete_effect = {
+			transfer_state = 458
+			transfer_state = 665
+		}
+		
+	}
+	
+	ITA_demand_algeria = {
+		icon = GFX_decision_generic_belgian_colonial_helmet
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_carve_up_africa }
+		available =	{
+			has_completed_focus = ITA_carve_up_africa
+			controls_state = 458
+			OR = {
+				D04 = {
+					460	= {
+						CONTROLLER = {
+							OR = {
+								tag = D04
+								is_subject_of = D04
+							}
+						}
+					}
+				}
+				D04 = {
+					459	= {
+						CONTROLLER = {
+							OR = {
+								tag = D04
+								is_subject_of = D04
+							}
+						}
+					}
+				}
+			}
+		}
+		complete_effect = {
+			transfer_state = 460			
+			transfer_state = 459
+			transfer_state = 513
+		}
+	}
+	
+	ITA_demand_morocco = {
+		icon = GFX_decision_generic_belgian_colonial_helmet
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_carve_up_africa }
+		available =	{
+			has_completed_focus = ITA_carve_up_africa
+			controls_state = 459
+			OR = {
+				D04 = {
+					461	= {
+						CONTROLLER = {
+							OR = {
+								tag = D04
+								is_subject_of = D04
+							}
+						}
+					}
+				}
+				D04 = {
+					462	= {
+						CONTROLLER = {
+							OR = {
+								tag = D04
+								is_subject_of = D04
+							}
+						}
+					}
+				}
+			}
+		}
+		complete_effect = {
+			transfer_state = 461			
+			transfer_state = 462
+		}
+	}
+	ITA_demand_syria = {
+		icon = GFX_decision_generic_belgian_colonial_helmet
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_carve_up_africa }
+		available =	{
+			has_completed_focus = ITA_carve_up_africa
+			controls_state = 454
+			controls_state = 455
+			OR = {
+				D04 = {
+					553	= {
+						CONTROLLER = {
+							OR = {
+								tag = D04
+								is_subject_of = D04
+							}
+						}
+					}
+				}
+				D04 = {
+					554	= {
+						CONTROLLER = {
+							OR = {
+								tag = D04
+								is_subject_of = D04
+							}
+						}
+					}
+				}
+			}
+		}
+		complete_effect = {
+			transfer_state = 553
+			transfer_state = 554
+			transfer_state = 677
+			transfer_state = 680
+		}
+	}
+}
+
+ITA_italianisation_decisions = {
+
+	ITA_italianise_yugo = {
+		icon = GFX_decision_generic_confiscation
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+		days_remove = 730
+
+		visible = { has_completed_focus = ITA_italianisation }
+		
+		available =	{
+			has_completed_focus = ITA_italianisation
+			controls_state = 109
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = YUG
+					NOT = { is_core_of = ITA }
+				}
+				add_dynamic_modifier = { modifier = italianisation }
+			}
+		}
+		
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = YUG
+					NOT = { is_core_of = ITA }
+				}
+				remove_dynamic_modifier = { modifier = italianisation }
+				add_dynamic_modifier = { modifier = italianised }
+			}
+		}
+	}
+
+	ITA_italianise_greece = {
+		icon = GFX_decision_generic_confiscation
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+		days_remove = 730
+
+		visible = { has_completed_focus = ITA_italianisation }
+		
+		available =	{
+			has_completed_focus = ITA_italianisation
+			controls_state = 47
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = GRE
+					NOT = { is_core_of = ITA }
+				}
+				add_dynamic_modifier = { modifier = italianisation }
+			}
+		}
+		
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = GRE
+					NOT = { is_core_of = ITA }
+				}
+				remove_dynamic_modifier = { modifier = italianisation }
+				add_dynamic_modifier = { modifier = italianised }
+			}
+		}
+	}
+	
+	ITA_italianise_france = {
+		icon = GFX_decision_generic_confiscation
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+		days_remove = 730
+
+		visible = { has_completed_focus = ITA_italianisation }
+		
+		available =	{
+			has_completed_focus = ITA_italianisation
+			controls_state = 735
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = FRA
+					NOT = { is_core_of = ITA }
+				}
+				add_dynamic_modifier = { modifier = italianisation }
+			}
+		}
+		
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = FRA
+					NOT = { is_core_of = ITA }
+				}
+				remove_dynamic_modifier = { modifier = italianisation }
+				add_dynamic_modifier = { modifier = italianised }
+			}
+		}
+	}
+}
+ITA_triumph_decisions = {
+
+	ITA_triumph_france = {
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_roman_triumphs }
+		
+		available =	{
+			has_completed_focus = ITA_roman_triumphs
+			controls_state = 735
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = FRA
+				}
+				add_compliance = 5
+			}	
+		}
+	}	
+	ITA_triumph_yugo = {
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_roman_triumphs }
+		
+		available =	{
+			has_completed_focus = ITA_roman_triumphs
+			controls_state = 109
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = YUG
+				}
+				add_compliance = 5
+			}	
+		}
+	}	
+
+	ITA_triumph_greece = {
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_roman_triumphs }
+		
+		available =	{
+			has_completed_focus = ITA_roman_triumphs
+			controls_state = 47
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = GRE
+				}
+				add_compliance = 5
+			}	
+		}
+	}	
+	
+	ITA_triumph_north_africa = {
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_roman_triumphs }
+		
+		available =	{
+			has_completed_focus = ITA_roman_triumphs
+			controls_state = 459
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = MOR
+				}
+				add_compliance = 5
+			}	
+		}
+	}	
+	
+	ITA_triumph_egypt = {
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_roman_triumphs }
+		
+		available =	{
+			has_completed_focus = ITA_roman_triumphs
+			controls_state = 907
+		}
+		
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = EGY
+				}
+				add_compliance = 5
+			}	
+		}
+	}
+	
+	ITA_triumph_syria = {
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		visible = { has_completed_focus = ITA_roman_triumphs }
+		available =	{
+			has_completed_focus = ITA_roman_triumphs
+			controls_state = 554
+		}
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = SYR
+				}
+				add_compliance = 5
+			}	
+		}
+	}
+}
 operations = {
 
 	ITA_human_torpedo_raid = {
@@ -743,6 +1994,54 @@ operations = {
 			}
 		}
 	}
+	ITA_libya_local_supply = {
+		priority = 100
+		allowed = { tag = ITA }
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 90
+		is_good = no
+		fire_only_once = yes		
+
+		visible = {
+			always = yes
+		}
+
+
+		activation = {
+			has_war_with = ENG
+		}
+
+		cancel_trigger = {
+			NOT = {
+				controls_state = 663
+				controls_state = 662
+				controls_state = 661
+				controls_state = 448
+				controls_state = 449
+				controls_state = 450
+				controls_state = 451
+			}
+		}
+		
+		timeout_effect = {
+			custom_effect_tooltip = ITA_ea_supply
+			hidden_effect = {
+				if = {	limit = {	663 = { has_dynamic_modifier = { modifier = ITA_libya_local_supply } } } 663 = { remove_dynamic_modifier = { modifier = ITA_libya_local_supply } } }
+				if = {	limit = {	662 = { has_dynamic_modifier = { modifier = ITA_libya_local_supply } } } 662 = { remove_dynamic_modifier = { modifier = ITA_libya_local_supply } } }
+				if = {	limit = {	661 = { has_dynamic_modifier = { modifier = ITA_libya_local_supply } } } 661 = { remove_dynamic_modifier = { modifier = ITA_libya_local_supply } } }
+				if = {	limit = {	448 = { has_dynamic_modifier = { modifier = ITA_libya_local_supply } } } 448 = { remove_dynamic_modifier = { modifier = ITA_libya_local_supply } } }
+				if = {	limit = {	449 = { has_dynamic_modifier = { modifier = ITA_libya_local_supply } } } 449 = { remove_dynamic_modifier = { modifier = ITA_libya_local_supply } } }
+				if = {	limit = {	450 = { has_dynamic_modifier = { modifier = ITA_libya_local_supply } } } 450 = { remove_dynamic_modifier = { modifier = ITA_libya_local_supply } } }
+				if = {	limit = {	451 = { has_dynamic_modifier = { modifier = ITA_libya_local_supply } } } 451 = { remove_dynamic_modifier = { modifier = ITA_libya_local_supply } } }
+			}
+		}
+	}
     
 	
 	# ITA_unify_colonies = {
@@ -832,32 +2131,9 @@ operations = {
 	# 	}
 	# }
 
-	ITA_demand_tunisia = {
-		icon = generic_nationalism
-
-		allowed = {
-			original_tag = ITA
-		}
-
-		fire_only_once = yes
-
-		visible = { has_completed_focus = ITA_claims_on_france }
-		available ={ 
-			has_completed_focus = ITA_claims_on_france
-			controls_state = 448
-			controls_state = 450
-
-		}
-		complete_effect = {
-			transfer_state = 458
-			transfer_state = 665
-		}
-		
-	}
-
 	ITA_return_france = {
 		visible = {
-			country_exists = VIC
+			country_exists = D04
 			controls_state = 21
 			controls_state = 32
 		}
@@ -869,19 +2145,42 @@ operations = {
 		fire_only_once = yes
 
 		available = {
-			country_exists = VIC
+			country_exists = D04
 			controls_state = 21
 			controls_state = 32
 		}
 		complete_effect = {
-			VIC = {
+			D04 = {
 				transfer_state = 21
 				transfer_state = 32
 			}
 		}
 	}
-
 	
+	ITA_demand_ticino = {
+		visible = {
+		has_completed_focus = ITA_rome_berlin_axis
+			country_exists = SWI
+		}
+
+		allowed = {
+			original_tag = ITA
+		}
+
+		fire_only_once = yes
+
+		available = {
+			country_exists = SWI
+			SWI = {
+				controls_state = 846
+			}
+		}
+		complete_effect = {
+			transfer_state = 846
+			846 = { add_core_of = ROOT }
+			add_threat = 2
+		}
+	}
 }
 
 ITA_propaganda_campaigns = {
