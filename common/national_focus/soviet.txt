@@ -2708,6 +2708,9 @@
 
 		completion_reward = {
 			unlock_decision_category_tooltip = SOV_organise_partisans
+			set_technology = {
+				militia_tech = 1
+			}
 		}
 	}
 	
@@ -4709,6 +4712,8 @@
 			}
 			add_named_threat = { threat = 3 name = SOV_baltic_security }
 			activate_mission = SOV_winter_war
+			activate_mission = SOV_winter_war_lessons_mission
+			activate_mission = SOV_winter_war_catastrophe_mission
 			hidden_effect = {
 				MON = {
 					add_ideas = MON_brothers_war
@@ -6461,6 +6466,7 @@
 
 		available = {
 			has_global_flag = SOV_winter_war_loss
+			has_country_flag = SOV_winter_war_catastrophe
 			# NOT = { has_global_flag = SOV_border_war_loss}
 			SOV_vasily_blyukher = {
 				NOT = {has_character_flag = SOV_character_purged_flag }
@@ -7229,6 +7235,7 @@
 
 		available = {
 			# has_global_flag = SOV_border_war_win
+			has_country_flag = SOV_winter_war_incompetency
 			SOV_vasily_blyukher = {
 				NOT = {has_character_flag = SOV_character_purged_flag }
 			}
