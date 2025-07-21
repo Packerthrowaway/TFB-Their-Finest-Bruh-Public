@@ -815,7 +815,7 @@ ITA_iri_decisions = {
 
 ITA_old_prov_decisions = {
 
-	ITA_trade_deal_hungary = {
+	ITA_trade_deal_bulgaria = {
 
 		icon = GFX_decision_faction_gre_fascist
 
@@ -825,7 +825,7 @@ ITA_old_prov_decisions = {
 		available = {
 			has_completed_focus = ITA_our_old_provinces
 			NOT = { has_country_flag = ITA_trade_deal_ongoing }
-			NOT = { has_country_flag = ITA_trade_deal_hungary }
+			NOT = { has_country_flag = ITA_trade_deal_bulgaria }
 		}
 
 		visible = {
@@ -840,10 +840,10 @@ ITA_old_prov_decisions = {
 		
 		complete_effect = {
 			set_country_flag = ITA_trade_deal_ongoing
-			set_country_flag = ITA_trade_deal_hungary
-			HUN = {
+			set_country_flag = ITA_trade_deal_bulgaria
+			BUL = {
 				country_event = {
-					id = hungary.7
+					id = italy_trade.1
 					days = 1
 				}
 			}
@@ -885,8 +885,8 @@ ITA_old_prov_decisions = {
 		cost = 25
 
 	}
-	
-	ITA_trade_deal_bulgaria = {
+
+	ITA_trade_deal_hungary = {
 
 		icon = GFX_decision_faction_gre_fascist
 
@@ -896,7 +896,7 @@ ITA_old_prov_decisions = {
 		available = {
 			has_completed_focus = ITA_our_old_provinces
 			NOT = { has_country_flag = ITA_trade_deal_ongoing }
-			NOT = { has_country_flag = ITA_trade_deal_bulgaria }
+			NOT = { has_country_flag = ITA_trade_deal_hungary }
 		}
 
 		visible = {
@@ -911,10 +911,81 @@ ITA_old_prov_decisions = {
 		
 		complete_effect = {
 			set_country_flag = ITA_trade_deal_ongoing
-			set_country_flag = ITA_trade_deal_bulgaria
-			BUL = {
+			set_country_flag = ITA_trade_deal_hungary
+			HUN = {
 				country_event = {
-					id = bulgaria.6
+					id = italy_trade.2
+					days = 1
+				}
+			}
+			if = {
+				limit = { has_idea = ITA_trade_3 }
+				swap_ideas = {
+					remove_idea = ITA_trade_3
+					add_idea = ITA_trade_4
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_2 }
+				swap_ideas = {
+					remove_idea = ITA_trade_2
+					add_idea = ITA_trade_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_1 }
+				swap_ideas = {
+					remove_idea = ITA_trade_1
+					add_idea = ITA_trade_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_trade_0 }
+				swap_ideas = {
+					remove_idea = ITA_trade_0
+					add_idea = ITA_trade_1
+				}
+			}		
+		}
+		remove_effect = {
+			hidden_effect = {
+			clr_country_flag = ITA_trade_deal_ongoing
+			}
+		}
+		
+		cost = 25
+
+	}
+
+	ITA_trade_deal_spain = {
+
+		icon = GFX_decision_faction_gre_fascist
+
+		allowed = {
+			original_tag = ITA
+		}
+		available = {
+			has_completed_focus = ITA_our_old_provinces
+			NOT = { has_country_flag = ITA_trade_deal_ongoing }
+			NOT = { has_country_flag = ITA_trade_deal_spain }
+		}
+
+		visible = {
+		}
+
+		days_remove = 30
+		
+		modifier = {
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			set_country_flag = ITA_trade_deal_ongoing
+			set_country_flag = ITA_trade_deal_spain
+			SPR = {
+				country_event = {
+					id = italy_trade.3
 					days = 1
 				}
 			}
@@ -985,78 +1056,7 @@ ITA_old_prov_decisions = {
 			set_country_flag = ITA_trade_deal_yugoslavia
 			YUG = {
 				country_event = {
-					id = yugoslavia.10
-					days = 1
-				}
-			}
-			if = {
-				limit = { has_idea = ITA_trade_3 }
-				swap_ideas = {
-					remove_idea = ITA_trade_3
-					add_idea = ITA_trade_4
-				}
-			}
-			else_if = {
-				limit = { has_idea = ITA_trade_2 }
-				swap_ideas = {
-					remove_idea = ITA_trade_2
-					add_idea = ITA_trade_3
-				}
-			}
-			else_if = {
-				limit = { has_idea = ITA_trade_1 }
-				swap_ideas = {
-					remove_idea = ITA_trade_1
-					add_idea = ITA_trade_2
-				}
-			}
-			else_if = {
-				limit = { has_idea = ITA_trade_0 }
-				swap_ideas = {
-					remove_idea = ITA_trade_0
-					add_idea = ITA_trade_1
-				}
-			}		
-		}
-		remove_effect = {
-			hidden_effect = {
-			clr_country_flag = ITA_trade_deal_ongoing
-			}
-		}
-		
-		cost = 25
-
-	}
-	
-	ITA_trade_deal_spain = {
-
-		icon = GFX_decision_faction_gre_fascist
-
-		allowed = {
-			original_tag = ITA
-		}
-		available = {
-			has_completed_focus = ITA_our_old_provinces
-			NOT = { has_country_flag = ITA_trade_deal_ongoing }
-			NOT = { has_country_flag = ITA_trade_deal_spain }
-		}
-
-		visible = {
-		}
-
-		days_remove = 30
-		
-		modifier = {
-		}
-		
-		fire_only_once = yes
-		
-		complete_effect = {
-			set_country_flag = ITA_trade_deal_ongoing
-			set_country_flag = ITA_trade_deal_spain
-			SPR = {
-				country_event = {
-					id = spain.12
+					id = italy_trade.4
 					days = 1
 				}
 			}

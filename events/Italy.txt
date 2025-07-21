@@ -3,7 +3,7 @@
 ###########################
 
 add_namespace = italy
-
+add_namespace = italy_trade
 
 # country_event = {
 # 	id = italy.air
@@ -795,10 +795,15 @@ country_event = {
 			set_country_flag = cuck_italy_flag
 		}
 	}
-	option = {	
-	name = italy.507.b
+	option = {
+		name = italy.507.b
+
 		add_stability = -0.05
 		add_war_support = 0.05
+		
+		ai_chance = {
+			base = 100
+		}
 	}
 }
 
@@ -815,11 +820,196 @@ country_event = {
 	option = {
 		name = italy.508.a
 		complete_national_focus = ITA_corpo_di_truppe_volontarie
+		ai_chance = {
+			base = 100
+		}
 	}
 
 	option = {
 	name = italy.508.b
 		complete_national_focus = ITA_seize_balearics
 		custom_effect_tooltip = ITA_balearics_tt1
+	}
+}
+
+
+
+#### Italy Diplo Events ####
+
+country_event = { ###Bulgaria Trade Event
+	id = italy_trade.1
+	title = italy_trade.1.t
+	desc = italy_trade.1.d
+ 
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = italy_trade.1.a
+		BUL = {
+			add_ideas = ITA_italian_trade_BUL
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			country_event = { id = italy_trade.11 hours = 1 }
+		}
+	}
+	
+	option = {
+		name = italy_trade.1.b
+	}
+}
+
+country_event = { ###Hungary Trade Event
+	id = italy_trade.2
+	title = italy_trade.2.t
+	desc = italy_trade.2.d
+	picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = italy_trade.2.a
+		HUN = {
+			add_ideas = ITA_italian_trade_HUN
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			country_event = { id = italy_trade.11 hours = 1 }
+		}
+	}
+	option = {
+		name = italy_trade.2.b
+	}
+}
+
+
+country_event = { ###Spain Trade Event
+	id = italy_trade.3
+	title = italy_trade.3.t
+	desc = italy_trade.3.d
+	 
+	picture = GFX_report_event_generic_sign_treaty1
+		
+	is_triggered_only = yes
+		
+	option = {
+		name = italy_trade.3.a
+		SPR = {
+			add_ideas = ITA_italian_trade_SPR
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			country_event = { id = italy_trade.11 hours = 1 }
+		}
+	}
+	option = {
+		name = italy_trade.3.b
+	}
+}
+
+country_event = {
+	id = italy_trade.4
+	title = italy_trade.4.t
+	desc = italy_trade.4.d
+ 
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = italy_trade.4.a
+		YUG = {
+			add_ideas = ITA_italian_trade_YUG
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			country_event = { id = italy_trade.11 hours = 1 }
+		}
+	}
+	option = {
+		name = italy_trade.4.b
+	}
+}
+
+country_event = { #Italy wants resource rights for Turkey
+	id = italy_trade.5
+	title = italy_trade.5.t
+	desc = italy_trade.5.d 
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	
+	option = { #Yes
+		ai_chance = {
+			base = 9
+		}
+		name = italy_trade.5.a
+
+		give_resource_rights = {
+			receiver = FROM 
+			state = 343 #Afyon 
+		}
+
+		add_opinion_modifier = {
+			target = FROM # target of the relation
+			modifier = GER_SWE_historic_trade_Partners
+		}
+
+		FROM = {
+			add_opinion_modifier = {
+				target = PREV # target of the relation
+				modifier = GER_SWE_historic_trade_Partners
+			}
+			country_event = { id = italy_trade.10 hours = 1 }
+		}
+	}
+}
+
+country_event = { #Event for Italy acknowledgement Turkey
+	id = italy_trade.10
+	title = italy_trade.10.t
+	desc = italy_trade.10.d
+	picture = [GetHitlerCroatianHandshakeEventPicture]
+
+	is_triggered_only = yes
+
+	option = { 
+		name = italy_trade.10.a
+
+		effect_tooltip = {
+			FROM = {
+				give_resource_rights = {
+					receiver = FROM 
+					state = 343 #Afyon 
+				}
+
+				add_opinion_modifier = {
+					target = FROM # target of the relation
+					modifier = GER_SWE_historic_trade_Partners
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Event for Italy acknowledgement Minors
+	id = italy_trade.11
+	title = italy_trade.11.t
+	desc = italy_trade.11.d
+	picture = [GetHitlerCroatianHandshakeEventPicture]
+
+	is_triggered_only = yes
+
+	option = { 
+		name = italy_trade.11.a
 	}
 }
