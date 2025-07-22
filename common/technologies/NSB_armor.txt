@@ -560,13 +560,49 @@ technologies = {
 		special_project_specialization = { specialization_land }
 	}
 
+	fra_light_tank_export_rom = {
+
+		allow = {
+			always = no
+		}
+
+		enable_equipments = {
+			fra_light_tank_chassis_r35
+			fra_light_tank_chassis_h35
+		}
+		enable_equipment_modules = {
+			tank_riveted_armor
+			tank_gasoline_engine
+			tank_diesel_engine
+			tank_light_turret_1
+			tank_light_turret_open
+			tank_light_superstructure
+			tank_light_open_superstructure
+			interleaf_suspension
+			boogie_suspension
+			christie_suspension
+			tank_christie_suspension
+			tank_bogie_suspension
+			tank_interleaved_suspension
+			tank_horstmann_suspension
+			tank_torsion_bar_suspension
+			expanded_fuel_tank
+		}
+
+		on_research_complete = {
+			hidden_effect = { set_technology = { light_basic_dup_tech = 1 popup = no } }
+		}
+
+		special_project_specialization = { specialization_land }
+	}
+
 	fra_light_tank_1 = {
 
 		enable_equipments = {
 			fra_light_tank_chassis_ft
 			fra_light_tank_chassis_r35
 			fra_light_tank_chassis_h35
-			fra_light_tank_chassis_s35
+			fra_medium_tank_chassis_s35
 			fra_heavy_tank_chassis_2c
 		}
 		enable_equipment_modules = {
