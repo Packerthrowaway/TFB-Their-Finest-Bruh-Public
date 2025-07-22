@@ -1216,7 +1216,11 @@ leader_traits = {
 		type = corps_commander
 		gain_xp = {
 			NOT ={
-				has_trait = skilled_staffer
+				OR = {
+					has_trait = panzer_leader
+					has_trait = commando
+					has_trait = skilled_staffer
+				}
 			}
 			set_temp_variable = { temp = num_units }
 			multiply_temp_variable = { temp = 0.90 }
@@ -1234,7 +1238,7 @@ leader_traits = {
 			mechanized_attack_factor = 0.1
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -16
+			max_commander_army_size = -14
 		}
 		non_shared_modifier = {
 			experience_gain_factor = -0.1
@@ -1463,7 +1467,11 @@ leader_traits = {
  		type = corps_commander
 		gain_xp = {
 			NOT ={
-				has_trait = skilled_staffer
+				OR = {
+					has_trait = commando
+					has_trait = cavalry_leader
+					has_trait = skilled_staffer
+				}
 			}
 			set_temp_variable = { temp = num_units }
 			multiply_temp_variable = { temp = 0.90 }
@@ -1479,7 +1487,7 @@ leader_traits = {
 			experience_gain_factor = -0.1
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -16
+			max_commander_army_size = -14
 		}
 		
 		ai_will_do = {
@@ -1500,7 +1508,11 @@ leader_traits = {
  		type = corps_commander
 		gain_xp = {
 			NOT ={
-				has_trait = skilled_staffer
+				OR = {
+					has_trait = panzer_leader
+					has_trait = cavalry_leader
+					has_trait = skilled_staffer
+				}
 			}
 			OR = {
 				temperature < -10
