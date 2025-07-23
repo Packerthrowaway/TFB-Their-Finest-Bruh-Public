@@ -169,7 +169,8 @@ ideas = {
 			modifier = {
 				stability_factor = 0.05
 				research_speed_factor = 0.02
-				military_industrial_organization_funds_gain = 0.15
+				military_industrial_organization_funds_gain = 0.1
+				industrial_capacity_factory = 0.025
 			}
 		}
 
@@ -185,6 +186,8 @@ ideas = {
 			modifier = {
 				conscription = 0.01
 				army_morale_factor = 0.05
+				stability_factor = 0.02
+				political_power_factor = 0.1
 			}
 		}
 
@@ -200,12 +203,29 @@ ideas = {
 			modifier = {
 				conscription_factor = 0.1
 				experience_loss_factor = -0.1
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
 				# TODO: Add another modifier here
 				#casualty_trickleback = 0.05
 			}
 		}
 
-		ROM_mass_assassinations = {
+		ROM_christo_fascist_state = {
+			picture = generic_fascism_drift_2
+
+			allowed = {
+				original_tag = ROM
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.025
+			}
+		}
+
+		ROM_mass_assassinations_recover = {
 			picture = SPR_political_violence
 
 			allowed = {
@@ -215,7 +235,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				stability_weekly = 0.01
+				stability_weekly = 0.008
 			}
 		}
 
@@ -783,7 +803,7 @@ ideas = {
 				industrial_capacity_factory = 0.05
 				stability_factor = 0.1
 				research_speed_factor = 0.05
-				military_industrial_organization_funds_gain = 0.3
+				military_industrial_organization_funds_gain = 0.2
 			}
 		}
 
@@ -822,7 +842,7 @@ ideas = {
 			}
 			
 			modifier = {
-				stability_weekly = 0.005
+				stability_weekly = 0.002
 				political_power_factor = 0.1
 			}
 		}
@@ -877,14 +897,26 @@ ideas = {
 			allowed = {
 				original_tag = ROM
 			}
-
-			allowed_civil_war = {
-				has_government = democratic 
-			}				
-
 			
 			modifier = {
 				stability_weekly = -0.001
+				war_support_weekly = -0.001
+				guarantee_cost = -0.5
+			}
+		}
+
+		ROM_end_greater_romania2 = {
+			name = ROM_end_greater_romania
+
+			picture = SPA_recovering_from_the_civil_war
+
+			removal_cost = -1
+			
+			allowed = {
+				original_tag = ROM
+			}
+			
+			modifier = {
 				war_support_weekly = -0.001
 				guarantee_cost = -0.5
 			}
@@ -899,11 +931,6 @@ ideas = {
 			allowed = {
 				original_tag = ROM
 			}
-
-			allowed_civil_war = {
-				has_government = democratic 
-			}				
-
 			
 			modifier = {
 				army_core_attack_factor = 0.1

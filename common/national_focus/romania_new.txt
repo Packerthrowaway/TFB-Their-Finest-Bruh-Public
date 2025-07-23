@@ -13,7 +13,7 @@ focus_tree = {
 
 	inlay_window = {
 		id = rom_national_humiliation_inlay_window
-		position = { x = 1600 y = 1090 }
+		position = { x = 1450 y = 1070 }
 	}
 
 	default = no
@@ -1345,11 +1345,9 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = ROM_1937_election
-		cost = 10
+		cost = 4
 		ai_will_do = {}
-		available = {
-			date > 1937.6.1
-		}
+		available = {}
 		completion_reward = {
 			add_stability = 0.05
 			add_popularity = {
@@ -1389,7 +1387,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = ROM_appoint_pro_allied_government
-		cost = 10
+		cost = 4
 		ai_will_do = {}
 		completion_reward = {
 			ROM_armand_calinescu = { 
@@ -1410,7 +1408,7 @@ focus_tree = {
 		x = 2
 		y = 1
 		relative_position_id = ROM_1937_election
-		cost = 10
+		cost = 4
 		ai_will_do = {}
 		completion_reward = {
 			add_stability = -0.05
@@ -1461,7 +1459,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = ROM_appoint_pro_axis_government
-		cost = 10
+		cost = 4
 		ai_will_do = {}
 		completion_reward = {
 			add_popularity = {
@@ -1483,6 +1481,7 @@ focus_tree = {
 		ai_will_do = {}
 		completion_reward = {
 			add_ideas = ROM_constitutional_guarantees
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_popularity = {
 				ideology = democratic
 				popularity = 0.15
@@ -1490,6 +1489,7 @@ focus_tree = {
 			set_politics = {
 				ruling_party = democratic
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = ROM_king_carol_ii_dynamic_modifier
 			add_to_variable = {
 				ROM_king_carol_ii_consumer_goods_factor = 0.10
@@ -1674,7 +1674,11 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {}
 		available = {
-			democratic > 0.5
+			OR = {
+				democratic > 0.5
+				neutrality > 0.5
+			}
+			
 			NOT = { has_completed_focus = ROM_national_humiliation }
 		}
 		completion_reward = {
@@ -1706,6 +1710,7 @@ focus_tree = {
 		relative_position_id = ROM_land_reform
 		cost = 10
 		ai_will_do = {}
+		continue_if_invalid = yes
 		available = {
 			democratic > 0.5
 			NOT = { has_completed_focus = ROM_national_humiliation }
@@ -1770,6 +1775,7 @@ focus_tree = {
 		relative_position_id = ROM_carols_personality_cult
 		cost = 10
 		ai_will_do = {}
+		continue_if_invalid = yes
 		available = {
 			neutrality > 0.5
 			NOT = { has_completed_focus = ROM_national_humiliation }
@@ -1930,7 +1936,7 @@ focus_tree = {
 			add_stability = -0.3
 			retire_character = ROM_armand_calinescu
 			retire_character = ROM_gheorghe_argeseanu
-			add_timed_idea = { idea = ROM_mass_assassinations days = 365}
+			add_timed_idea = { idea = ROM_mass_assassinations_recover days = 365}
 			custom_effect_tooltip = ROM_king_carol_ii_dynamic_modifier
 			add_to_variable = {
 				ROM_king_carol_ii_political_power_factor = -0.03
@@ -1969,6 +1975,7 @@ focus_tree = {
 		relative_position_id = ROM_roman_dacian_ties
 		cost = 10
 		ai_will_do = {}
+		continue_if_invalid = yes
 		available = { NOT = { has_completed_focus = ROM_national_humiliation } }
 		completion_reward = {
 			custom_effect_tooltip = ROM_modify_iron_guard_dynamic_modifier
@@ -1999,6 +2006,7 @@ focus_tree = {
 		relative_position_id = ROM_roman_dacian_ties
 		cost = 10
 		ai_will_do = {}
+		continue_if_invalid = yes
 		available = { NOT = { has_completed_focus = ROM_national_humiliation } }
 		completion_reward = {
 			add_country_leader_role  = {
@@ -2107,6 +2115,12 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {}
 		completion_reward = {
+			swap_ideas = {
+				add_idea = ROM_end_greater_romania2
+				remove_idea = ROM_end_greater_romania
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+
 			# Constiutional
 			if = {
 				limit = {
@@ -2208,39 +2222,9 @@ focus_tree = {
 				ruling_party = fascism
 			}
 			add_ideas = ROM_figurehead_king_michael
+			custom_effect_tooltip = generic_skip_one_line_tt
 			activate_mission = ROM_iron_guard_coup
 			custom_effect_tooltip = ROM_iron_guard_coup_explainer_tt
-
-			# Replace with what?
-			custom_effect_tooltip = ROM_current_bonus_tt
-			if = {
-				limit = { has_completed_focus = ROM_all_parties_must_end }
-				add_ideas = ROM_democratic_institutions
-			}
-			if = {
-				limit = { has_completed_focus = ROM_the_national_renaissance_front }
-				add_ideas = ROM_paramilitary_youth
-			}
-			if = {
-				limit = { OR = { has_completed_focus = ROM_national_christian_party has_completed_focus = ROM_iron_guard } }
-				add_ideas = ROM_legacy_of_codreanu
-			}
-
-			custom_effect_tooltip = ROM_potential_bonus_tt
-			custom_effect_tooltip = ROM_has_completed_democratic
-			effect_tooltip = {
-				add_ideas = ROM_democratic_institutions
-			}
-
-			custom_effect_tooltip = ROM_has_completed_non_aligned
-			effect_tooltip = {
-				add_ideas = ROM_paramilitary_youth
-			}
-			
-			custom_effect_tooltip = ROM_has_completed_fascist
-			effect_tooltip = {
-				add_ideas = ROM_legacy_of_codreanu
-			}
 
 		}
 	}
@@ -2324,6 +2308,56 @@ focus_tree = {
 	}
 
 	focus = {
+		id = ROM_recover_our_strengths
+		icon = GFX_focus_invite_romania
+		prerequisite = { focus = ROM_crush_legionnaires focus = ROM_execute_the_coup }
+		x = 1
+		y = 1
+		relative_position_id = ROM_crush_legionnaires
+		cost = 10
+		ai_will_do = {}
+		available = {}
+		completion_reward = {
+			remove_ideas = ROM_end_greater_romania2
+			custom_effect_tooltip = ROM_current_bonus_tt
+			if = {
+				limit = { has_completed_focus = ROM_all_parties_must_end }
+				add_ideas = ROM_democratic_institutions
+			}
+			if = {
+				limit = { has_completed_focus = ROM_the_national_renaissance_front }
+				add_ideas = ROM_paramilitary_youth
+			}
+			if = {
+				limit = { has_completed_focus = ROM_national_christian_party }
+				add_ideas = ROM_christo_fascist_state
+			}
+			if = {
+				limit = { has_completed_focus = ROM_iron_guard }
+				add_ideas = ROM_legacy_of_codreanu
+			}
+
+			custom_effect_tooltip = ROM_potential_bonus_tt
+			custom_effect_tooltip = ROM_has_completed_democratic
+			effect_tooltip = {
+				add_ideas = ROM_democratic_institutions
+			}
+			custom_effect_tooltip = ROM_has_completed_non_aligned
+			effect_tooltip = {
+				add_ideas = ROM_paramilitary_youth
+			}
+			custom_effect_tooltip = ROM_has_completed_fascist_christian
+			effect_tooltip = {
+				add_ideas = ROM_christo_fascist_state
+			}			
+			custom_effect_tooltip = ROM_has_completed_fascist_guard
+			effect_tooltip = {
+				add_ideas = ROM_legacy_of_codreanu
+			}			
+		}
+	}
+
+	focus = {
 		id = ROM_the_transnistria_compromise
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = ROM_national_humiliation focus = ROM_preserve_greater_romania}
@@ -2367,9 +2401,9 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {}
 		available = {
-			192 = { is_owned_by = ROM }
-			198 = { is_owned_by = ROM }
-			834 = { is_owned_by = ROM }
+			192 = { is_controlled_by = ROM }
+			198 = { is_controlled_by = ROM }
+			834 = { is_controlled_by = ROM }
 		}
 		completion_reward = {
 			custom_effect_tooltip = ROM_current_bonus_tt
@@ -2491,9 +2525,9 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {}
 		available = {
-			192 = { is_owned_by = ROM }
-			198 = { is_owned_by = ROM }
-			834 = { is_owned_by = ROM }
+			192 = { is_controlled_by = ROM }
+			198 = { is_controlled_by = ROM }
+			834 = { is_controlled_by = ROM }
 		}
 		completion_reward = {
 			custom_effect_tooltip = ROM_continue_integration_efforts_tt
@@ -2530,9 +2564,9 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {}
 		available = {
-			192 = { is_owned_by = ROM }
-			198 = { is_owned_by = ROM }
-			834 = { is_owned_by = ROM }
+			192 = { is_controlled_by = ROM }
+			198 = { is_controlled_by = ROM }
+			834 = { is_controlled_by = ROM }
 		}
 		completion_reward = {
 			192 = { add_core_of = ROM }
@@ -3253,9 +3287,11 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {}
 		available = {
-			has_opinion	= {
-				target = FRA
-				value > 74
+			FRA = {
+				has_opinion	= {
+					target = ROM
+					value > 74
+				}
 			}
 			NOT = { has_war_with = FRA }
 			NOT = { has_war_with = SOV }
@@ -3308,9 +3344,11 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {}
 		available = {
-			has_opinion	= {
-				target = GER
-				value > 74
+			GER = {
+				has_opinion	= {
+					target = ROM
+					value > 74
+				}
 			}
 			NOT = { has_idea = ROM_armor_purchases_CZE }
 			NOT = { has_idea = ROM_armor_purchases_FRA }
@@ -3361,9 +3399,11 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {}
 		available = {
-			has_opinion	= {
-				target = CZE
-				value > 74
+			CZE = {
+				has_opinion	= {
+					target = ROM
+					value > 74
+				}
 			}
 			NOT = { has_idea = ROM_armor_purchases_CZE }
 			NOT = { has_idea = ROM_armor_purchases_FRA }
@@ -3413,9 +3453,11 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {}
 		available = {
-			has_opinion	= {
-				target = FRA
-				value > 74
+			FRA = {
+				has_opinion	= {
+					target = ROM
+					value > 74
+				}
 			}
 			NOT = { has_completed_focus = ROM_goga_codreanu_pact }
 			NOT = { has_idea = ROM_armor_purchases_CZE }
@@ -3461,7 +3503,7 @@ focus_tree = {
 				# France gets Foreign Amour Demand for 100 days (25% mio fund gain for armour MIO, if possible).
 				mio:FRA_renault_organization = {
 					add_mio_funds_gain_factor = 0.25
-					add_mio_research_bonus = 0.5
+					add_mio_research_bonus = 0.05
 				}
 				FRA = {
 					mio:FRA_renault_organization = {
@@ -3475,7 +3517,7 @@ focus_tree = {
 				# Germany gets Foreign Amour Demand for 100 days (25% mio fund gain for armour MIO, if possible).
 				mio:GER_daimler_benz_organization = {
 					add_mio_funds_gain_factor = 0.25
-					add_mio_research_bonus = 0.5
+					add_mio_research_bonus = 0.05
 				}
 				GER = {
 					mio:GER_daimler_benz_organization = {
@@ -3490,7 +3532,7 @@ focus_tree = {
 				mio:CZE_skoda_armor_organization = {
 					complete_mio_trait = CZE_mio_trait_cemented_armor
 					add_mio_funds_gain_factor = 0.25
-					add_mio_research_bonus = 0.5
+					add_mio_research_bonus = 0.05
 				}
 				CZE = {
 					mio:CZE_skoda_armor_organization = {
@@ -3512,7 +3554,7 @@ focus_tree = {
 				}
 				mio:FRA_renault_organization = {
 					add_mio_funds_gain_factor = 0.25
-					add_mio_research_bonus = 0.5
+					add_mio_research_bonus = 0.05
 				}
 			}
 			custom_effect_tooltip = ROM_has_completed_learn_from_germans
@@ -3520,7 +3562,7 @@ focus_tree = {
 			effect_tooltip = {
 				mio:GER_daimler_benz_organization = {
 					add_mio_funds_gain_factor = 0.25
-					add_mio_research_bonus = 0.5
+					add_mio_research_bonus = 0.05
 				}
 				GER = {
 					mio:GER_daimler_benz_organization = {
@@ -3533,7 +3575,7 @@ focus_tree = {
 				mio:CZE_skoda_armor_organization = {
 					complete_mio_trait = CZE_mio_trait_cemented_armor
 					add_mio_funds_gain_factor = 0.25
-					add_mio_research_bonus = 0.5
+					add_mio_research_bonus = 0.05
 				}
 				CZE = {
 					mio:CZE_skoda_armor_organization = {
@@ -3555,9 +3597,11 @@ focus_tree = {
 		cost = 7
 		ai_will_do = {}
 		available = {
-			has_opinion	= {
-				target = GER
-				value > 74
+			GER = {
+				has_opinion	= {
+					target = ROM
+					value > 74
+				}
 			}
 			NOT = { has_idea = ROM_armor_purchases_CZE }
 			NOT = { has_idea = ROM_armor_purchases_FRA }
@@ -3687,12 +3731,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = ROM_unlock_maresal_tt
-			set_technology = { rom_cze_tank_3 = 1}
+			set_technology = { rom_cze_tank_3 = 1 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 			GER = {
 				add_tech_bonus = {
 					name = ROM_main_battle_tank
-					bonus = 0.5
 					uses = 1
 					ahead_reduction = 1
 					technology = ger_cze_tank_3
