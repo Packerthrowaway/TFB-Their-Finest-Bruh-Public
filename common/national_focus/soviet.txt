@@ -4774,6 +4774,15 @@
 		
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = { #This is now generic and will target any potential (multiple) controllers for these states.
+			hidden_effect = {
+				CZE = {
+					diplomatic_relation = {
+						country = ROM
+						relation = guarantee
+						active = no
+					}
+				}
+			}
 			if = {
 				limit = { 78 = { OWNER = { NOT = { is_in_faction_with = ROOT} } } }
 				add_state_claim = 78
