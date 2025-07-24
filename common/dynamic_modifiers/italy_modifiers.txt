@@ -1,0 +1,49 @@
+ITA_army_reform_idea = {
+	enable = { always = yes }
+	icon = GFX_idea_ITA_regio_esercito_3
+	max_planning = ITA_max_planning
+	planning_speed = ITA_planning_speed
+	max_planning_factor	= ITA_max_planning_factor
+	conscription = ITA_conscription
+	acclimatization_cold_climate_gain_factor = ITA_acclimatization_cold_climate_gain_factor
+	acclimatization_hot_climate_gain_factor = ITA_acclimatization_hot_climate_gain_factor
+	land_night_attack = ITA_land_night_attack
+	breakthrough_factor = ITA_breakthrough_factor
+	army_morale_factor = ITA_army_morale_factor
+	experience_loss_factor = ITA_experience_loss_factor
+	experience_gain_army_unit_factor = ITA_experience_gain_army_unit_factor
+	experience_gain_factor = ITA_experience_gain_factor
+	promote_cost_factor = ITA_promote_cost_factor
+	command_power_gain_mult = ITA_command_power_gain_mult
+	army_leader_start_attack_level = ITA_army_leader_start_attack_level
+	army_leader_start_defense_level = ITA_army_leader_start_defense_level
+	army_leader_start_logistics_level = ITA_army_leader_start_logistics_level
+	army_leader_start_planning_level = ITA_army_leader_start_planning_level
+	experience_gain_army = ITA_experience_gain_army
+	production_speed_fortress_factor = ITA_production_speed_fortress_factor
+	max_command_power = ITA_max_command_power
+}
+
+ITA_libyan_local_construction = {
+	enable = { always = yes }
+	remove_trigger = {
+		NOT = {
+			is_controlled_by = ITA
+		}
+	}
+	icon = GFX_modifiers_generic_military_plans
+	
+	state_production_speed_buildings_factor = 0.2
+}
+
+ITA_libya_local_supply = {
+	enable = { always = yes }
+	remove_trigger = {
+		NOT = {
+			is_controlled_by = ITA
+		}
+	}
+	icon = GFX_modifiers_generic_supply
+	
+	local_supplies_for_controller = 1.25
+}
