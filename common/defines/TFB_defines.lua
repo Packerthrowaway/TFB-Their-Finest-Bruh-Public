@@ -716,6 +716,7 @@ NDefines.NSupply.FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 0.6
 NDefines.NSupply.NAVAL_BASE_FLOW = 15
 NDefines.NSupply.NAVAL_FLOW_PER_LEVEL = 5
 NDefines.NSupply.CAPITAL_INITIAL_SUPPLY_FLOW = 10
+NDefines.NSupply.AVAILABLE_MANPOWER_STATE_SUPPLY = 0.5
 
 NDefines.NGraphics.WEATHER_DISTANCE_CUTOFF = 1200 -- At what distance weather effects are hidden
 NDefines.NGraphics.WEATHER_DISTANCE_FADE_LENGTH = 400 -- How far the fade out distance should be
