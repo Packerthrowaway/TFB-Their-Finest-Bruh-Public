@@ -88,6 +88,27 @@ technologies = {
 			name = land_doctrine_folder
 			position = { x = 0 y = 2 }
 		}
+
+		on_research_complete = {
+			hidden_effect = {
+				every_unit_leader = {
+				limit = {
+					NOT ={
+						OR = {
+						has_trait = panzer_leader
+						has_trait = commando
+						has_trait = cavalry_leader
+						}
+					}
+				}
+				remove_unit_leader_trait = superior_firepower_cap_adjuster
+				remove_unit_leader_trait = grand_battleplan_cap_adjuster
+				remove_unit_leader_trait = mass_assault_cap_adjuster
+				add_unit_leader_trait = mobile_warfare_cap_adjuster
+			}	
+			}
+			custom_effect_tooltip = tooltip_mobile_warfare_cap_adjust_tt
+		}
 		
 		ai_will_do = {
 			factor = 20
@@ -988,6 +1009,7 @@ technologies = {
 		}
 		org_loss_when_moving = -0.15
 		air_cas_present_factor = 0.05
+		enable_tactic = tactic_masterful_blitz
 		
 		xp_research_type = army
 		xp_unlock_cost = 125
@@ -1028,6 +1050,7 @@ technologies = {
 		ai_research_weights = {
 			armor = 2.0
 		}
+
 	}
 	
 	volkssturm = {
@@ -1035,8 +1058,9 @@ technologies = {
 		xor={
 			firebrigades
 		}
-		army_core_attack_factor = 0.05
-		army_core_defence_factor = 0.05
+		
+		modifier_army_sub_unit_militia_attack_factor = 0.15
+		modifier_army_sub_unit_militia_defence_factor = 0.15
 
 		path = {
 			leads_to_tech = nd_conscription 
@@ -1053,6 +1077,12 @@ technologies = {
 		categories = {
 			land_doctrine
 			cat_mobile_warfare
+		}
+
+		on_research_complete = {
+			set_technology = {
+				militia_tech = 1
+			}
 		}
 
 		
@@ -1267,6 +1297,28 @@ technologies = {
 			position = { x = 0 y = 2 }
 		}
 		
+		on_research_complete = {
+			hidden_effect = {
+				every_unit_leader = {
+				limit = {
+					NOT ={
+						OR = {
+						has_trait = panzer_leader
+						has_trait = commando
+						has_trait = cavalry_leader
+						}
+					}
+				}
+				remove_unit_leader_trait = mobile_warfare_cap_adjuster
+				remove_unit_leader_trait = grand_battleplan_cap_adjuster
+				remove_unit_leader_trait = mass_assault_cap_adjuster
+				add_unit_leader_trait = superior_firepower_cap_adjuster
+				}
+				
+			}
+			custom_effect_tooltip = tooltip_superior_firepower_cap_adjust_tt
+		}
+
 		ai_will_do = {
 			modifier = {
 				not = {
@@ -2350,6 +2402,27 @@ technologies = {
 			name = land_doctrine_folder
 			position = { x = 0 y = 2 }
 		}
+
+		on_research_complete = {
+			hidden_effect = {
+				every_unit_leader = {
+				limit = {
+					NOT ={
+						OR = {
+						has_trait = panzer_leader
+						has_trait = commando
+						has_trait = cavalry_leader
+						}
+					}
+				}
+				remove_unit_leader_trait = mobile_warfare_cap_adjuster
+				remove_unit_leader_trait = superior_firepower_cap_adjuster
+				remove_unit_leader_trait = mass_assault_cap_adjuster
+				add_unit_leader_trait = grand_battleplan_cap_adjuster
+				}
+			}
+			custom_effect_tooltip = tooltip_grand_battleplan_cap_adjust_tt
+		}
 		
 		ai_will_do = {
 			factor = 20
@@ -3416,6 +3489,27 @@ technologies = {
 		
 		doctrine = yes	
 		research_cost = 2.8
+
+		on_research_complete = {
+			hidden_effect = {
+				every_unit_leader = {
+				limit = {
+					NOT ={
+						OR = {
+						has_trait = panzer_leader
+						has_trait = commando
+						has_trait = cavalry_leader
+						}
+					}
+				}
+				remove_unit_leader_trait = mobile_warfare_cap_adjuster
+				remove_unit_leader_trait = superior_firepower_cap_adjuster
+				remove_unit_leader_trait = grand_battleplan_cap_adjuster
+				add_unit_leader_trait = mass_assault_cap_adjuster
+				}	
+			}
+			custom_effect_tooltip = tooltip_mass_assault_cap_adjust_tt
+		}
 		
 		categories = {
 			land_doctrine

@@ -1,6 +1,8 @@
 on_actions = {
 	on_startup = {
 		effect = {
+		}
+		effect = {
 			# Add Canals
 			IF = {
 				limit = {
@@ -5272,6 +5274,9 @@ on_actions = {
 				days = 100
 			}
 		}
+		effect = { 
+			FROM = { update_general_cap_for_doctrine = yes }
+		}
 	}
 
 	# root country that invades
@@ -5323,6 +5328,13 @@ on_actions = {
 		}
 	}
 
+	on_unit_leader_created = {
+		effect = { 
+			FROM = { update_general_cap_for_doctrine = yes 
+			}			
+		}
+	}
+
 	on_unit_leader_promote_from_ranks_veteran = { #Unit leader scope, FROM is unit
 		effect = {
 			FROM = {
@@ -5332,11 +5344,21 @@ on_actions = {
 			}
 			set_unit_leader_flag = field_promotion_achievement
 		}
+		effect = { 
+			owner = {
+				update_general_cap_for_doctrine = yes
+			} 
+		}
 	}
 
 	on_unit_leader_promote_from_ranks_green = { #Unit leader scope, FROM is unit
 		effect = {
 			set_unit_leader_flag = field_promotion_achievement
+		}
+		effect = { 
+			owner = {
+				update_general_cap_for_doctrine = yes
+			} 
 		}
 	}
 

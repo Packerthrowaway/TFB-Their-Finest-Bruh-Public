@@ -329,7 +329,7 @@ leader_traits = {
 		
 		modifier = {
 			planning_speed = 0.20
-			wounded_chance_factor = 0.5  # +50% chance to get wounded
+			wounded_chance_factor = 0.25  # +25% chance to get wounded
 		}
 		
 		new_commander_weight = {
@@ -1198,7 +1198,7 @@ leader_traits = {
 		}
 		trait_type = assignable_trait
 		any_parent = { skilled_staffer }
-		gui_row = 16
+		gui_row = 18
 	}
 
 
@@ -1221,6 +1221,134 @@ leader_traits = {
 
 		corps_commander_modifier = {
 			max_commander_army_size = 20
+		}
+	}
+
+	mass_assault_cap_adjuster = {
+		type = corps_commander
+		ai_will_do = {
+			factor = 0
+		}
+		gain_xp = {
+			always = no # not gainable
+		}
+		allowed = {
+    		FROM = { has_tech = pocket_defence }
+			NOT = {
+				OR = {
+					has_trait = panzer_leader
+					has_trait = commando
+					has_trait = cavalry_leader
+				}
+			}
+		}
+
+		new_commander_weight = {
+    		base = 100
+		}
+
+		corps_commander_modifier = {
+			max_commander_army_size = 20
+		}
+
+		non_shared_modifier = {
+			experience_gain_factor = -0.75
+		}
+	}
+
+	grand_battleplan_cap_adjuster = {
+		type = corps_commander
+		ai_will_do = {
+			factor = 0
+		}
+		gain_xp = {
+			always = no # not gainable
+		}
+		allowed = {
+    		FROM = { has_tech = grand_battle_plan }
+			NOT = {
+				OR = {
+					has_trait = panzer_leader
+					has_trait = commando
+					has_trait = cavalry_leader
+				}
+			}
+		}
+
+		new_commander_weight = {
+    		base = 100
+		}
+
+		corps_commander_modifier = {
+			max_commander_army_size = 10
+		}
+
+		non_shared_modifier = {
+			experience_gain_factor = -0.5
+		}
+	}
+
+	superior_firepower_cap_adjuster = {
+		type = corps_commander
+		ai_will_do = {
+			factor = 0
+		}
+		gain_xp = {
+			always = no # not gainable
+		}
+		allowed = {
+    		FROM = { has_tech = sup_delay }
+			NOT = {
+				OR = {
+					has_trait = panzer_leader
+					has_trait = commando
+					has_trait = cavalry_leader
+				}
+			}
+		}
+
+		new_commander_weight = {
+    		base = 100
+		}
+
+		corps_commander_modifier = {
+			max_commander_army_size = 10
+		}
+
+		non_shared_modifier = {
+			experience_gain_factor = -0.25
+		}
+	}
+
+	mobile_warfare_cap_adjuster = {
+		type = corps_commander
+		ai_will_do = {
+			factor = 0
+		}
+		gain_xp = {
+			always = no # not gainable
+		}
+		allowed = {
+    		FROM = { has_tech = delay }
+			NOT = {
+				OR = {
+					has_trait = panzer_leader
+					has_trait = commando
+					has_trait = cavalry_leader
+				}
+			}
+		}
+
+		new_commander_weight = {
+    		base = 100
+		}
+
+		corps_commander_modifier = {
+			#max_commander_army_size = 0
+		}
+
+		non_shared_modifier = {
+			#experience_gain_factor = 0
 		}
 	}
 
@@ -1270,17 +1398,14 @@ leader_traits = {
 		}
 		custom_gain_xp_trigger_tooltip = cavalary_ratio_over_40
 		
-		cost = 1000
+		cost = 50
 		modifier = {
-			cavalry_attack_factor = 0.1
-			motorized_attack_factor = 0.1
-			mechanized_attack_factor = 0.1
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -14
+			max_commander_army_size = -12
 		}
 		non_shared_modifier = {
-			experience_gain_factor = -0.1
+			experience_gain_factor = 1
 		}
 		
 		slot = high_command
@@ -1291,8 +1416,17 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
+
+		on_add = {
+				remove_unit_leader_trait = mobile_warfare_cap_adjuster
+				remove_unit_leader_trait = superior_firepower_cap_adjuster
+				remove_unit_leader_trait = grand_battleplan_cap_adjuster
+				remove_unit_leader_trait = mass_assault_cap_adjuster
+				remove_unit_leader_trait = panzer_leader 
+				remove_unit_leader_trait = commando 
+		}
 		
-		gui_row = 4
+		gui_row = 6
 	}
 	
 	infantry_leader = { 
@@ -1321,7 +1455,7 @@ leader_traits = {
 			factor = 1
 		}
 		
-		gui_row = 7
+		gui_row = 9
 	}
 	skilled_staffer = { 
 		type = corps_commander
@@ -1357,7 +1491,7 @@ leader_traits = {
 		}
 		logistics_skill_factor = 2
 		
-		gui_row = 16
+		gui_row = 18
 		
 		slot = high_command
 		specialist_advisor_trait = army_logistics_1
@@ -1386,7 +1520,7 @@ leader_traits = {
 			factor = 1
 		}
 		
-		gui_row = 14
+		gui_row = 16
 	}
 
 
@@ -1477,7 +1611,7 @@ leader_traits = {
 				has_combat_modifier = river_crossing
 			}
 		}
-		cost = 700
+		cost = 300
 		modifier = {
 			river = {
 				attack = 0.05
@@ -1498,7 +1632,7 @@ leader_traits = {
 			factor = 1
 		}
 		
-		gui_row = 5
+		gui_row = 7
 	}
 
 
@@ -1517,20 +1651,27 @@ leader_traits = {
 			check_variable = { num_armored > temp }
 		}
 		custom_gain_xp_trigger_tooltip = armored_ratio_over_40
-		cost = 700
+		cost = 50
 		modifier = {
-			army_armor_speed_factor = 0.075
-			army_armor_attack_factor = 0.075
 		}
 		non_shared_modifier = {
-			experience_gain_factor = -0.1
+			experience_gain_factor = 1
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -14
+			max_commander_army_size = -12
 		}
 		
 		ai_will_do = {
 			factor = 1
+		}
+
+		on_add = {
+			remove_unit_leader_trait = mobile_warfare_cap_adjuster
+			remove_unit_leader_trait = superior_firepower_cap_adjuster
+			remove_unit_leader_trait = grand_battleplan_cap_adjuster
+			remove_unit_leader_trait = mass_assault_cap_adjuster
+			remove_unit_leader_trait = cavalry_leader 
+			remove_unit_leader_trait = commando 
 		}
 		
 		attack_skill_factor = 2
@@ -1560,12 +1701,12 @@ leader_traits = {
 				has_combat_modifier = amphibious_attack
 			}
 		}
-		cost = 700
+		cost = 300
 		modifier = {
 			out_of_supply_factor = -0.25
 		}
 		non_shared_modifier = {
-			experience_gain_factor = -0.1
+			experience_gain_factor = 1
 		}
 		corps_commander_modifier = {
 			max_commander_army_size = -12
@@ -1574,7 +1715,17 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-		gui_row = 11
+
+		on_add = {
+			remove_unit_leader_trait = mobile_warfare_cap_adjuster
+			remove_unit_leader_trait = superior_firepower_cap_adjuster
+			remove_unit_leader_trait = grand_battleplan_cap_adjuster
+			remove_unit_leader_trait = mass_assault_cap_adjuster
+			remove_unit_leader_trait = cavalry_leader 
+			remove_unit_leader_trait = panzer_leader 
+		}
+
+		gui_row = 13
 		
 		slot = high_command
 		specialist_advisor_trait = army_commando_1
@@ -1781,7 +1932,7 @@ leader_traits = {
 			factor = 1
 		}
 		
-		gui_row = 9
+		gui_row = 11
 	}
 	
 ##################################
@@ -1789,20 +1940,40 @@ leader_traits = {
 ##################################
 
 
-	panzer_expert = { 
+	frontline_panzer_general = { 
 		type = corps_commander
 		gain_xp = {
 			always = no # not gainable
 		}
+		prerequisites = {
+			skill > 4
+		}
 		cost = 1000
 		modifier = {
-			army_armor_defence_factor = 0.05
-			army_armor_attack_factor = 0.05
-			max_dig_in_factor = -0.30
+			army_armor_defence_factor = 0.075
+			army_armor_attack_factor = 0.075
+			max_dig_in_factor = -0.60
+			experience_gain_army_unit_factor = 0.50
 		}
 
 		corps_commander_modifier = {
-			max_commander_army_size = 2
+			max_commander_army_size = -5
+		}
+
+		non_shared_modifier = {
+			experience_gain_factor = 1
+			wounded_chance_factor = 0.5
+		}
+
+		on_add = {
+			hidden_effect = {
+				ROOT = {
+					owner = {
+					
+					}	
+				}
+			}
+			custom_effect_tooltip = SOV_the_glory_of_the_red_army_masterful_blitz_tactic_tt
 		}
 		
 		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
@@ -1814,10 +1985,57 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { panzer_leader }
 		
-		mutually_exclusive = combined_arms_expert
-		mutually_exclusive = cavalry_expert
+		on_add = {
+			remove_unit_leader_trait = panzer_expert
+			remove_unit_leader_trait = combined_arms_expert
+			remove_unit_leader_trait = mass_motorization_expert
+			remove_unit_leader_trait = cavalry_expert
+		}
 		
 		gui_row = 2
+	}	
+
+	panzer_expert = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		prerequisites = {
+			skill > 3
+		}
+		cost = 1000
+		modifier = {
+			army_armor_defence_factor = 0.05
+			army_armor_attack_factor = 0.05
+			max_dig_in_factor = -0.50
+			experience_gain_army_unit_factor = 0.25
+		}
+
+		corps_commander_modifier = {
+			max_commander_army_size = -2
+		}
+
+		non_shared_modifier = {
+			experience_gain_factor = 0.5
+		}
+		
+		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		trait_type = assignable_trait
+		any_parent = { panzer_leader }
+		
+		on_add = {
+			remove_unit_leader_trait = frontline_panzer_general
+			remove_unit_leader_trait = combined_arms_expert
+			remove_unit_leader_trait = mass_motorization_expert
+			remove_unit_leader_trait = cavalry_expert
+		}
+		
+		gui_row = 3
 	}
 	
 	combined_arms_expert = { 
@@ -1825,16 +2043,17 @@ leader_traits = {
 		gain_xp = {
 			always = no # not gainable
 		}
+		prerequisites = {
+			skill > 2
+		}
 		cost = 500
 		modifier = {
-			motorized_defence_factor = 0.05
-			motorized_attack_factor = 0.05
 			mechanized_defence_factor = 0.05
 			mechanized_attack_factor = 0.05
+			max_dig_in_factor = -0.40
 		}
 
 		corps_commander_modifier = {
-			max_commander_army_size = 2
 		}
 		
 		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
@@ -1851,23 +2070,34 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { cavalry_leader panzer_leader }
 		
-		mutually_exclusive = panzer_expert
-		mutually_exclusive = cavalry_expert
+		on_add = {
+			remove_unit_leader_trait = frontline_panzer_general
+			remove_unit_leader_trait = panzer_expert
+			remove_unit_leader_trait = mass_motorization_expert
+			remove_unit_leader_trait = cavalry_expert
+		}
 		
 		#num_parents_needed = 1
-		gui_row = 3
+		gui_row = 4
 	}
-	
-	cavalry_expert = { 
+
+	mass_motorization_expert = { 
 		type = corps_commander
 		gain_xp = {
 			always = no # not gainable
 		}
+		prerequisites = {
+			skill > 1
+		}
 		cost = 500
 		modifier = {
-			max_commander_army_size = 14
-			cavalry_attack_factor = 0.05
-			cavalry_defence_factor = 0.05
+			max_commander_army_size = 6
+			motorized_attack_factor = 0.10
+			motorized_defence_factor = 0.10
+			max_dig_in_factor = -0.30
+		}
+		non_shared_modifier = {
+			experience_gain_factor = -0.25
 		}
 		
 		ai_will_do = {
@@ -1877,10 +2107,47 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { cavalry_leader }
 		
-		mutually_exclusive = panzer_expert
-		mutually_exclusive = combined_arms_expert
+		on_add = {
+			remove_unit_leader_trait = frontline_panzer_general
+			remove_unit_leader_trait = panzer_expert
+			remove_unit_leader_trait = combined_arms_expert
+			remove_unit_leader_trait = cavalry_expert
+		}
 		
-		gui_row = 4
+		gui_row = 5
+	}
+	
+	cavalry_expert = { 
+		type = corps_commander
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 500
+		modifier = {
+			max_commander_army_size = 12
+			cavalry_attack_factor = 0.10
+			cavalry_defence_factor = 0.10
+			max_dig_in_factor = -0.20
+		}
+		non_shared_modifier = {
+			experience_gain_factor = -0.50
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		trait_type = assignable_trait
+		any_parent = { cavalry_leader }
+		
+		on_add = {
+			remove_unit_leader_trait = frontline_panzer_general
+			remove_unit_leader_trait = panzer_expert
+			remove_unit_leader_trait = combined_arms_expert
+			remove_unit_leader_trait = mass_motorization_expert
+		}
+		
+		gui_row = 6
 	}
 	
 	fortress_buster = {
@@ -1906,7 +2173,7 @@ leader_traits = {
 			factor = 1
 		}
 		
-		gui_row = 5
+		gui_row = 7
 		
 		trait_type = assignable_trait
 		any_parent = { trait_engineer }
@@ -1928,7 +2195,7 @@ leader_traits = {
 		
 		trait_type = assignable_trait
 		
-		gui_row = 6
+		gui_row = 8
 		any_parent = { trait_engineer }
 	}
 	
@@ -1948,7 +2215,7 @@ leader_traits = {
 		
 		trait_type = assignable_trait
 		any_parent = { infantry_leader }
-		gui_row = 7
+		gui_row = 9
 	}
 	
 	ambusher = { 
@@ -1969,7 +2236,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { infantry_leader }
 		
-		gui_row = 8
+		gui_row = 10
 	}
 	invader_ii = { 
 		type = corps_commander
@@ -1990,7 +2257,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { naval_invader }
 		
-		gui_row = 9
+		gui_row = 11
 	}
 	naval_liason = { 
 		type = corps_commander
@@ -2009,7 +2276,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { naval_invader }
 		
-		gui_row = 10
+		gui_row = 12
 	}
 	
 	skirmisher = { 
@@ -2030,7 +2297,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { commando }
 		
-		gui_row = 11
+		gui_row = 13
 	}
 	
 	paratrooper = { 
@@ -2052,7 +2319,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { commando }
 		
-		gui_row = 12
+		gui_row = 14
 	}
 	
 	
@@ -2079,7 +2346,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { commando }
 		
-		gui_row = 13
+		gui_row = 15
 	}
 	
 	expert_improviser = { 
@@ -2134,7 +2401,7 @@ leader_traits = {
 		}
 		custom_prerequisite_tooltip = needs_at_least_one_terrain
 		
-		gui_row = 14
+		gui_row = 16
 	}
 	
 	guerilla_fighter = { 
@@ -2155,7 +2422,7 @@ leader_traits = {
 		trait_type = assignable_trait
 		any_parent = { trickster }
 		
-		gui_row = 15
+		gui_row = 17
 	}
 	
 	
