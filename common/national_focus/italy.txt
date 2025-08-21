@@ -1140,7 +1140,7 @@ focus_tree = {
 
 		available_if_capitulated = yes
 
-		x = 16
+		x = 23
 		y = 0
 		cost = 1
 		ai_will_do = {
@@ -1153,6 +1153,9 @@ focus_tree = {
 			if = {
 				limit = { has_country_flag = cuck_italy_flag }
 				add_stability = 0.15
+				add_dynamic_modifier = {
+					modifier = ITA_state_of_the_nation_idea
+				}
 			}
 
 			else_if = {
@@ -1160,6 +1163,9 @@ focus_tree = {
 					NOT = { country_exists = ETH }
 				}
 				add_stability = 0.25
+				add_dynamic_modifier = {
+					modifier = ITA_state_of_the_nation_idea
+				}
 			}
 			
 			else_if = {
@@ -1167,16 +1173,20 @@ focus_tree = {
 					add_stability = 0.25
 					custom_effect_tooltip = generic_skip_one_line_tt
 					custom_effect_tooltip = ITA_proclaim_empire_tt1
+					add_dynamic_modifier = {
+						modifier = ITA_state_of_the_nation_idea
+					}
 				}
 			}
 		}
-	}
+	}	
+	
 	focus = {
-		id = ITA_seize_balearics
-		icon = GFX_focus_generic_annex_country_2
+		id = ITA_strengthen_il_duce
+		icon = GFX_focus_ITA_culto_del_duce
 		prerequisite = { focus = ITA_proclaim_the_empire }
-		mutually_exclusive = { focus = ITA_corpo_di_truppe_volontarie }
-		x = -1
+		mutually_exclusive = { focus = ITA_emmanuel_takes_control focus = ITA_an_alternate_look_at_fascism }
+		x = 0
 		y = 1
 		relative_position_id = ITA_proclaim_the_empire
 		available = {
@@ -1184,9 +1194,1349 @@ focus_tree = {
 		}
 
 		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
 
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+		}
+	}	
+	
+	focus = {
+		id = ITA_fund_the_cultura_popolare
+		icon = GFX_focus_generic_italy_propaganda
+		prerequisite = { focus = ITA_strengthen_il_duce }
+		x = 0
+		y = 1
+		relative_position_id = ITA_strengthen_il_duce
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+		}
+	}
+
+	focus = {
+		id = ITA_fund_ORVA
+		icon = GFX_focus_ITA_capo_supremo
+		prerequisite = { focus = ITA_fund_the_cultura_popolare }
+		x = 0
+		y = 1
+		relative_position_id = ITA_fund_the_cultura_popolare
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+		}
+	}
+
+	focus = {
+		id = ITA_sword_of_islam
+		icon = GFX_focus_ITA_moschettieri_del_duce
+		prerequisite = { focus = ITA_fund_ORVA }
+		x = 0
+		y = 1
+		relative_position_id = ITA_fund_ORVA
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+		}
+	}	
+
+	focus = {
+		id = ITA_an_alternate_look_at_fascism
+		icon = GFX_focus_generic_military_dictatorship
+		prerequisite = { focus = ITA_proclaim_the_empire }
+		mutually_exclusive = { focus = ITA_emmanuel_takes_control focus = ITA_strengthen_il_duce }
+		x = -5
+		y = 1
+		relative_position_id = ITA_proclaim_the_empire
+
+		available_if_capitulated = yes
+
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = ITA_modify_state_of_nation_tt
+			add_to_variable = {
+				ITA_political_power_factor = -0.30
+				tooltip = political_power_factor_tt
+			}
+
+			add_to_variable = {
+				ITA_disabled_ideas = 1
+				tooltip = ITA_disabled_ideas_tt
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_clear_the_rot
+		icon = GFX_focus_SOV_military_purge
+		prerequisite = { focus = ITA_an_alternate_look_at_fascism }
+		mutually_exclusive = { focus = ITA_only_those_necessary }
+		x = -2
+		y = 1
+		relative_position_id = ITA_an_alternate_look_at_fascism
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = ITA_clear_the_rot_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_timed_idea = {
+				idea = ITA_clear_the_rot_idea
+				days = 180
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_only_those_necessary
+		icon = GFX_focus_ITA_topple_amhara_rulers
+		prerequisite = { focus = ITA_an_alternate_look_at_fascism }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_an_alternate_look_at_fascism
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = ITA_soft_purges_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_timed_idea = {
+				idea = ITA_soft_purges_idea
+				days = 365
+			}
+			custom_effect_tooltip = ITA_modify_state_of_nation_tt
+			add_to_variable = {
+				ITA_disabled_ideas = 0
+				tooltip = ITA_disabled_ideas_tt2
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_end_the_roman_socialist
+		icon = GFX_focus_ger_assassinate_mussolini
+		prerequisite = { focus = ITA_clear_the_rot focus = ITA_only_those_necessary }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 1
+		y = 1
+		relative_position_id = ITA_clear_the_rot
+		available = {
+			NOT = { has_idea = ITA_clear_the_rot_idea }
+			NOT = { has_idea = ITA_soft_purges_idea }
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_character = ITA_grand_council
+				}
+				promote_character = ITA_grand_council
+			}
+			
+			add_ideas = ITA_shadow_of_mussolini
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = ITA_modify_state_of_nation_tt
+			
+			add_to_variable = {
+				ITA_disabled_ideas = 0
+				tooltip = ITA_disabled_ideas_tt2
+			}
+			set_country_flag = ITA_mussolini_killed_flag
+		}
+	}
+
+	focus = {
+		id = ITA_empower_the_air_marshal
+		icon = GFX_focus_ITA_italo_balbo
+		prerequisite = { focus = ITA_end_the_roman_socialist }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_end_the_roman_socialist
+		available = {
+			has_country_flag = {
+				flag = ITA_mussolini_killed_flag
+				days > 90
+			}
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = ITA_remove_balbo_as_advisor_tt
+			add_country_leader_role = {
+				character = ITA_italo_balbo
+				promote_leader = yes
+				country_leader = {
+					ideology = fascism_ideology
+					expire = 1965.1.1.1
+					traits =  {	aviation_hero }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_grand_council_in_control
+		icon = GFX_focus_SWI_dissolve_the_federal_council
+		prerequisite = { focus = ITA_empower_the_air_marshal }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = -3
+		y = 1
+		relative_position_id = ITA_empower_the_air_marshal
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_silence_the_radicals
+		icon = GFX_focus_RAJ_a_policy_of_silence
+		prerequisite = { focus = ITA_grand_council_in_control }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_grand_council_in_control
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_silence_the_opposition
+		icon = GFX_focus_ITA_depose_mussolini
+		prerequisite = { focus = ITA_silence_the_radicals }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_silence_the_radicals
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_peaceful_land_quiet_people
+		icon = GFX_focus_GER_total_control_over_domestic_affairs
+		prerequisite = { focus = ITA_silence_the_opposition }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_silence_the_opposition
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_the_marshal_our_father
+		icon = GFX_focus_GER_airforce
+		prerequisite = { focus = ITA_empower_the_air_marshal }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_empower_the_air_marshal
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_enshrine_the_knights
+		icon = GFX_focus_PER_modern_cataphract
+		prerequisite = { focus = ITA_the_marshal_our_father }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_the_marshal_our_father
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_cult_of_the_airforce
+		icon = GFX_focus_PER_establish_airforce
+		prerequisite = { focus = ITA_enshrine_the_knights }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_enshrine_the_knights
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_eagles_once_more
+		icon = GFX_focus_ITA_italian_hegemony
+		prerequisite = { focus = ITA_cult_of_the_airforce }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_cult_of_the_airforce
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_blackshirt_party
+		icon = GFX_focus_ITA_blackshirts
+		prerequisite = { focus = ITA_empower_the_air_marshal }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 3
+		y = 1
+		relative_position_id = ITA_empower_the_air_marshal
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_enforce_blackshirt_membership
+		icon = GFX_focus_generic_full_social_mobilization
+		prerequisite = { focus = ITA_blackshirt_party }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_blackshirt_party
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+	focus = {
+		id = ITA_encourage_fanaticism
+		icon = GFX_SOV_raskovas_aviation_group_ccp_2d_sov_compatibility
+		prerequisite = { focus = ITA_enforce_blackshirt_membership }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_enforce_blackshirt_membership
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_die_for_your_nation
+		icon = GFX_focus_SWE_revoke_militia_law
+		prerequisite = { focus = ITA_encourage_fanaticism }
+		mutually_exclusive = { focus = ITA_clear_the_rot }
+		x = 0
+		y = 1
+		relative_position_id = ITA_encourage_fanaticism
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_emmanuel_takes_control
+		icon = GFX_focus_ITA_the_new_emperor_of_ethiopia
+		prerequisite = { focus = ITA_proclaim_the_empire }
+		mutually_exclusive = { focus = ITA_an_alternate_look_at_fascism focus = ITA_strengthen_il_duce }
+		x = 6
+		y = 1
+		relative_position_id = ITA_proclaim_the_empire
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+		}
+	}
+
+	focus = {
+		id = ITA_ally_with_anti_duce_fascists
+		icon = GFX_focus_ITA_dino_grandi
+		prerequisite = { focus = ITA_emmanuel_takes_control }
+		mutually_exclusive = { focus = ITA_ally_with_democratic_remnants }
+		x = 2
+		y = 1
+		relative_position_id = ITA_emmanuel_takes_control
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ITA_ally_with_democratic_remnants
+		icon = GFX_focus_ITA_democratic_leadership
+		prerequisite = { focus = ITA_emmanuel_takes_control }
+		mutually_exclusive = { focus = ITA_ally_with_anti_duce_fascists }
+		x = 0
+		y = 1
+		relative_position_id = ITA_emmanuel_takes_control
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ITA_end_the_bald_jester
+		icon = GFX_focus_ITA_depose_mussolini
+		prerequisite = { focus = ITA_ally_with_anti_duce_fascists focus = ITA_ally_with_democratic_remnants }
 		x = -1
 		y = 1
+		relative_position_id = ITA_ally_with_anti_duce_fascists
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+			if = {
+				limit = {
+					has_character = ITA_vittorio_emanuele_iii
+				}
+				promote_character = ITA_vittorio_emanuele_iii
+			}
+			remove_ideas = vittorio_emanuele
+		}
+	}
+
+	focus = {
+		id = ITA_king_in_control
+		icon = GFX_focus_ITA_king_vittorio
+		prerequisite = { focus = ITA_end_the_bald_jester }
+		x = 0
+		y = 1
+		relative_position_id = ITA_end_the_bald_jester
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+		}
+	}
+	
+	focus = {
+		id = ITA_one_man_many_crowns
+		icon = GFX_focus_DEN_Hjemmevaernet
+		prerequisite = { focus = ITA_king_in_control }
+		x = 0
+		y = 1
+		relative_position_id = ITA_king_in_control
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}	
+	
+	focus = {
+		id = ITA_all_the_kings_horses
+		icon = GFX_focus_ITA_cavalry_charge
+		prerequisite = { focus = ITA_one_man_many_crowns }
+		x = 0
+		y = 1
+		relative_position_id = ITA_one_man_many_crowns
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_the_soldier_king
+		icon = GFX_focus_BEL_legacy_of_the_soldier_king
+		prerequisite = { focus = ITA_all_the_kings_horses }
+		x = 0
+		y = 1
+		relative_position_id = ITA_all_the_kings_horses
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_the_kings_country
+		icon = GFX_focus_ITA_italian_irredentism
+		prerequisite = { focus = ITA_the_soldier_king }
+		x = 0
+		y = 1
+		relative_position_id = ITA_the_soldier_king
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_the_pope_our_friend
+		icon = GFX_focus_generic_pope
+		prerequisite = { focus = ITA_king_in_control }
+		available = {
+			has_government = neutrality
+		}
+		x = -4
+		y = 1
+		relative_position_id = ITA_king_in_control
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_papal_corronations
+		icon = GFX_focus_RAJ_the_crown_and_the_world
+		prerequisite = { focus = ITA_the_pope_our_friend }
+		prerequisite = { focus = ITA_one_man_many_crowns }
+		available = {
+			has_government = neutrality
+		}
+		x = -2
+		y = 1
+		relative_position_id = ITA_one_man_many_crowns
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_use_his_holinesses_agents
+		icon = GFX_focus_generic_vatican_agents
+		prerequisite = { focus = ITA_the_pope_our_friend }
+		available = {
+			has_government = neutrality
+		}
+		x = 0
+		y = 1
+		relative_position_id = ITA_the_pope_our_friend
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_organize_the_swiss_guard
+		icon = GFX_focus_PER_expand_imperial_guard
+		prerequisite = { focus = ITA_use_his_holinesses_agents }
+		available = {
+			has_government = neutrality
+		}
+		x = 0
+		y = 1
+		relative_position_id = ITA_use_his_holinesses_agents
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_defender_of_the_holy_sepulcher
+		icon = GFX_focus_ETH_replace_the_abuna
+		prerequisite = { focus = ITA_organize_the_swiss_guard }
+		available = {
+			has_government = neutrality
+		}
+		x = 0
+		y = 1
+		relative_position_id = ITA_organize_the_swiss_guard
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}	
+	
+	focus = {
+		id = ITA_fascist_king
+		icon = GFX_focus_POL_cossack_king
+		prerequisite = { focus = ITA_king_in_control }
+		available = {
+			has_government = fascism
+		}
+		x = 4
+		y = 1
+		relative_position_id = ITA_king_in_control
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_fascist_coronations
+		icon = GFX_focus_CHL_crown_antoine_as_sovereign_king
+		prerequisite = { focus = ITA_fascist_king }
+		prerequisite = { focus = ITA_one_man_many_crowns }
+		available = {
+			has_government = fascism
+		}
+		x = -2
+		y = 1
+		relative_position_id = ITA_fascist_king
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_a_puppet_not_a_lion
+		icon = GFX_focus_BEL_prisoner_king
+		prerequisite = { focus = ITA_fascist_king }
+		available = {
+			has_government = fascism
+		}
+		x = 0
+		y = 1
+		relative_position_id = ITA_fascist_king
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_means_to_an_end
+		icon = GFX_focus_ARG_keep_it_in_the_party
+		prerequisite = { focus = ITA_a_puppet_not_a_lion }
+		available = {
+			has_government = fascism
+		}
+		x = 0
+		y = 1
+		relative_position_id = ITA_a_puppet_not_a_lion
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_the_social_republic
+		icon = GFX_focus_ITA_italian_hegemony
+		prerequisite = { focus = ITA_means_to_an_end }
+		available = {
+			has_government = fascism
+		}
+		x = 0
+		y = 1
+		relative_position_id = ITA_means_to_an_end
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+
+		bypass = {
+			has_country_flag = cuck_italy_flag
+		}
+
+		completion_reward = {
+		custom_effect_tooltip = ITA_corpo_volontarie_tt1
+			random_other_country = {
+				limit = {
+					owns_state = 177
+				}
+				country_event = { id = italy.9 }
+			}
+		}
+	}
+	focus = {
+		id = ITA_seize_balearics
+		icon = GFX_focus_generic_annex_country_2
+		prerequisite = { focus = ITA_emmanuel_takes_control focus = ITA_an_alternate_look_at_fascism focus = ITA_strengthen_il_duce }
+		mutually_exclusive = { focus = ITA_corpo_di_truppe_volontarie }
+		x = -1
+		y = 2
+		relative_position_id = ITA_fund_ORVA
+		available = {
+			always = no
+		}
+
+		available_if_capitulated = yes
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -1211,11 +2561,11 @@ focus_tree = {
 	focus = {
 		id = ITA_corpo_di_truppe_volontarie
 		icon = GFX_focus_ITA_volunteers
-		prerequisite = { focus = ITA_proclaim_the_empire }
+		prerequisite = { focus = ITA_emmanuel_takes_control focus = ITA_an_alternate_look_at_fascism focus = ITA_strengthen_il_duce }
 		mutually_exclusive = { focus = ITA_seize_balearics }
 		x = 1
-		y = 1
-		relative_position_id = ITA_proclaim_the_empire
+		y = 2
+		relative_position_id = ITA_fund_ORVA
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -1885,7 +3235,7 @@ focus_tree = {
 	focus = {
 		id = ITA_lessons_of_war
 		icon = GFX_Italian_Shield
-		x = 33
+		x = 45
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -2281,23 +3631,29 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = ITA_modify_army_reform_tt
-			add_to_variable = {
-				ITA_command_power_gain_mult = 1
-				tooltip = command_power_gain_mult_tt
-			}
+			#add_to_variable = {
+			#	ITA_command_power_gain_mult = 1
+			#	tooltip = command_power_gain_mult_tt
+			#}
+
+			#add_to_variable = {
+			#	ITA_max_command_power = 50
+			#	tooltip = ITA_max_command_power_gain_tt
+			#}
 
 			add_to_variable = {
-				ITA_max_command_power = 50
-				tooltip = ITA_max_command_power_gain_tt
+				ITA_army_leader_start_level = 1
+				tooltip = army_leader_start_level_tt
 			}
 		}
 	}
 
 	focus = {
-		id = ITA_promote_talented_officers
+		id = ITA_promote_offensive_officers
 		icon = GFX_focus_ITA_by_blood_alone
 		prerequisite = { focus = ITA_promotion_craze }
-		x = 0
+		mutually_exclusive = { focus = ITA_promote_defensive_officers }
+		x = 1
 		y = 1
 		relative_position_id = ITA_promotion_craze
 		cost = 5
@@ -2312,32 +3668,55 @@ focus_tree = {
 		completion_reward = {
 			every_army_leader = {
 				add_attack = 1
-				add_defense = 1
 				add_planning = 1
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = ITA_modify_army_reform_tt
+			add_to_variable = {
+				ITA_army_leader_start_attack_level = 1
+				tooltip = army_leader_start_attack_level_tt
+			}
+
+			add_to_variable = {
+				ITA_army_leader_start_planning_level = 1
+				tooltip = army_leader_start_planning_level_tt
+			}
+			
+		}
+	}
+	focus = {
+		id = ITA_promote_defensive_officers
+		icon = GFX_focus_ITA_by_blood_alone
+		prerequisite = { focus = ITA_promotion_craze }
+		mutually_exclusive = { focus = ITA_promote_offensive_officers }
+		x = -1
+		y = 1
+		relative_position_id = ITA_promotion_craze
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			every_army_leader = {
+				add_defense = 1
 				add_logistics = 1
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = ITA_modify_army_reform_tt
 			add_to_variable = {
-				ITA_army_leader_start_attack_level = 2
-				tooltip = army_leader_start_attack_level_tt
-			}
-			
-			add_to_variable = {
-				ITA_army_leader_start_defense_level = 2
+				ITA_army_leader_start_defense_level = 1
 				tooltip = army_leader_start_defense_level_tt
 			}	
 
 			add_to_variable = {
-				ITA_army_leader_start_logistics_level = 2
+				ITA_army_leader_start_logistics_level = 1
 				tooltip = army_leader_start_logistics_level_tt
 			}	
-
-			add_to_variable = {
-				ITA_army_leader_start_planning_level = 2
-				tooltip = army_leader_start_planning_level_tt
-			}
-			
 		}
 	}
 
