@@ -3612,84 +3612,104 @@ inner_circle_initialization = {
 		GER = {
 			GER_fritz_todt = {
 				set_variable = {inner_circle_power = 65}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 55}
 			}
 			GER_hermann_goring = {
 				set_variable = {inner_circle_power = 73}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 84}
 			}
 			GER_albert_speer = {
 				set_variable = {inner_circle_power = 25}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 13}
 			}
 			GER_hjalmar_schacht = {
 				set_variable = {inner_circle_power = 45}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = -25}
 			}
 
 			GER_konstantin_hierl = {
 				set_variable = {inner_circle_power = 68}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 78}
 			}
 			GER_robert_ley = {
 				set_variable = {inner_circle_power = 57}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 65}
 			}
 			GER_adolf_huhnlein = {
 				set_variable = {inner_circle_power = 25}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 63}
 			}
 			GER_rudolf_hess = {
 				set_variable = {inner_circle_power = 55}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 91}
 			}
 			GER_wilhelm_frick = {
 				set_variable = {inner_circle_power = 35}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 46}
 			}
 			GER_martin_bormann = {
 				set_variable = {inner_circle_power = 25}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 73}
 			}
 			GER_hans_lammers = {
 				set_variable = {inner_circle_power = 45}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 43}
 			}
 			GER_walter_buch = {
 				set_variable = {inner_circle_power = 33}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 58}
 			}
 			GER_viktor_lutze = {
 				set_variable = {inner_circle_power = 39}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 72}
 			}
 			GER_heinrich_himmler = {
 				set_variable = {inner_circle_power = 75}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 52}
 			}
 			GER_reinhard_heydrich = {
 				set_variable = {inner_circle_power = 23}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 48}
 			}
 			GER_max_amann = {
 				set_variable = {inner_circle_power = 32}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 51}
 			}
 			GER_joseph_goebbels = {
 				set_variable = {inner_circle_power = 65}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 89}
 			}
 			GER_otto_dietrich = {
 				set_variable = {inner_circle_power = 15}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 42}
 			}
 			GER_julius_streicher = {
 				set_variable = {inner_circle_power = 21}
+				set_variable = {inner_circle_character_power_portion = 0}
 				set_variable = {inner_circle_loyalty = 76}
 			}
 		}
 	}
 }
+
 
 calculate_inner_circle_category_values = {
 	######################################
@@ -4176,4 +4196,127 @@ calculate_inner_circle_category_values = {
 		inner_circle_temp_propaganda_portion = inner_circle_total_political_power
 	}
 	set_variable = { inner_circle_propaganda_portion = inner_circle_temp_propaganda_portion }
+}
+#todo: prevent division by zero if no members in category
+calculate_inner_circle_character_portions = {
+	every_character = {
+		limit = {
+			OR = {
+				has_character_flag = GER_inner_circle_economy_1_slot
+				has_character_flag = GER_inner_circle_economy_2_slot
+				has_character_flag = GER_inner_circle_economy_3_slot
+				has_character_flag = GER_inner_circle_economy_4_slot
+			}
+		}
+		add_to_temp_variable = { inner_circle_economy_political_power_portion_temp = inner_circle_power }
+		divide_temp_variable = {
+			inner_circle_economy_political_power_portion_temp = PREV.inner_circle_total_economy_political_power
+		}
+		set_variable = { inner_circle_character_power_portion = inner_circle_economy_political_power_portion_temp }
+	}
+	every_character = {
+		limit = {
+			OR = {
+				has_character_flag = GER_inner_circle_labour_1_slot
+				has_character_flag = GER_inner_circle_labour_2_slot
+				has_character_flag = GER_inner_circle_labour_3_slot
+			}
+		}
+		add_to_temp_variable = { inner_circle_labour_political_power_portion_temp = inner_circle_power }
+		divide_temp_variable = {
+			inner_circle_labour_political_power_portion_temp = PREV.inner_circle_total_labour_political_power
+		}
+		set_variable = { inner_circle_character_power_portion = inner_circle_labour_political_power_portion_temp }
+	}
+	every_character = {
+		limit = {
+			OR = {
+				has_character_flag = GER_inner_circle_administration_1_slot
+				has_character_flag = GER_inner_circle_administration_2_slot
+				has_character_flag = GER_inner_circle_administration_3_slot
+				has_character_flag = GER_inner_circle_administration_4_slot
+				has_character_flag = GER_inner_circle_administration_5_slot
+			}
+		}
+		add_to_temp_variable = { inner_circle_administration_political_power_portion_temp = inner_circle_power }
+		divide_temp_variable = {
+			inner_circle_administration_political_power_portion_temp = PREV.inner_circle_total_administration_political_power
+		}
+		set_variable = { inner_circle_character_power_portion = inner_circle_administration_political_power_portion_temp }
+	}
+	every_character = {
+		limit = {
+			OR = {
+				has_character_flag = GER_inner_circle_security_1_slot
+				has_character_flag = GER_inner_circle_security_2_slot
+				has_character_flag = GER_inner_circle_security_3_slot
+			}
+		}
+		add_to_temp_variable = { inner_circle_security_political_power_portion_temp = inner_circle_power }
+		divide_temp_variable = {
+			inner_circle_security_political_power_portion_temp = PREV.inner_circle_total_security_political_power
+		}
+		set_variable = { inner_circle_character_power_portion = inner_circle_security_political_power_portion_temp }
+	}
+	every_character = {
+		limit = {
+			OR = {
+				has_character_flag = GER_inner_circle_propaganda_1_slot
+				has_character_flag = GER_inner_circle_propaganda_2_slot
+				has_character_flag = GER_inner_circle_propaganda_3_slot
+				has_character_flag = GER_inner_circle_propaganda_4_slot
+			}
+		}
+		add_to_temp_variable = { inner_circle_propaganda_political_power_portion_temp = inner_circle_power }
+		divide_temp_variable = {
+			inner_circle_propaganda_political_power_portion_temp = PREV.inner_circle_total_propaganda_political_power
+		}
+		set_variable = { inner_circle_character_power_portion = inner_circle_propaganda_political_power_portion_temp }
+	}
+}
+
+#Calculations for category effects
+GER_calculate_category_effects = {
+	set_temp_variable = {
+		temp_GER_inner_circle_economy_category_construction_speed_bonus = GER_inner_circle_economy_category_max_construction_speed_bonus
+	}
+	multiply_temp_variable = {
+		temp_GER_inner_circle_economy_category_construction_speed_bonus = inner_circle_economy_portion
+	}
+	set_variable = { GER_inner_circle_economy_category_calculated_construction_speed_bonus = temp_GER_inner_circle_economy_category_construction_speed_bonus }
+}
+
+GER_inner_circle_test_tickers = {
+	if = {
+		limit = { ROOT = { original_tag = GER } }
+		every_character = {
+			limit = {
+				OR = {
+					has_character_flag = GER_inner_circle_economy_1_slot
+					has_character_flag = GER_inner_circle_economy_2_slot
+					has_character_flag = GER_inner_circle_economy_3_slot
+					has_character_flag = GER_inner_circle_economy_4_slot
+					has_character_flag = GER_inner_circle_labour_1_slot
+					has_character_flag = GER_inner_circle_labour_2_slot
+					has_character_flag = GER_inner_circle_labour_3_slot
+					has_character_flag = GER_inner_circle_administration_1_slot
+					has_character_flag = GER_inner_circle_administration_2_slot
+					has_character_flag = GER_inner_circle_administration_3_slot
+					has_character_flag = GER_inner_circle_administration_4_slot
+					has_character_flag = GER_inner_circle_administration_5_slot
+					has_character_flag = GER_inner_circle_security_1_slot
+					has_character_flag = GER_inner_circle_security_2_slot
+					has_character_flag = GER_inner_circle_security_3_slot
+					has_character_flag = GER_inner_circle_propaganda_1_slot
+					has_character_flag = GER_inner_circle_propaganda_2_slot
+					has_character_flag = GER_inner_circle_propaganda_3_slot
+					has_character_flag = GER_inner_circle_propaganda_4_slot
+				}
+			}
+			add_to_variable = {
+				inner_circle_power = PREV.inner_circle_base_power_gain
+			}
+		}
+		log = "[GetDateText]: [Root.GetName]: Inner Circle Economy Category Test Ticker executed, all active members in the category gained [$inner_circle_base_power_gain] power."
+	}
 }
