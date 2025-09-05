@@ -723,6 +723,14 @@
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			army_experience = 25
+
+			if = {
+				limit = {
+					has_global_flag = capped_volunteers_no_japan_flag
+				}
+				custom_effect_tooltip = SPA_civil_war_no_volunteer_japan_compensation
+				army_experience = 200
+			}
 		}
 	}
 	
