@@ -10,6 +10,7 @@ equipments = {
 		archetype = light_tank_chassis
 		priority = 500
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = {
 				required = yes
 				allowed_module_categories = {
@@ -18,7 +19,6 @@ equipments = {
 					tank_light_turret_type_t26
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -43,6 +43,7 @@ equipments = {
 		archetype = light_tank_chassis
 		priority = 600
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = {
 				required = yes
 				allowed_module_categories = {
@@ -50,7 +51,6 @@ equipments = {
 					tank_light_turret_type_2
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -72,6 +72,7 @@ equipments = {
 		archetype = light_tank_chassis
 		priority = 700
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = {
 				required = yes
 				allowed_module_categories = {
@@ -79,7 +80,6 @@ equipments = {
 					tank_light_turret_type_2
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -103,6 +103,7 @@ equipments = {
 		# Can't parent because then it inherits the module
 		priority = 800
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = 	{	
 				required = yes	
 				allowed_module_categories = {
@@ -113,7 +114,6 @@ equipments = {
 					tank_light_turret_type_open_superstructure
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -142,6 +142,7 @@ equipments = {
 		parent = sov_light_tank_chassis_t50
 		priority = 900
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = 	{	
 				required = yes	
 				allowed_module_categories = {
@@ -153,7 +154,6 @@ equipments = {
 					tank_light_turret_type_open_superstructure
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -182,16 +182,16 @@ equipments = {
 		archetype = light_tank_chassis
 		priority = 1000
 		module_slots = {
-			turret_type_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_light_turret_type_zis
-				}
-			}
 			main_armament_slot = {
 				required = yes
 				allowed_module_categories = {					
 					tank_armament_tier_tiny
+				}
+			}
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_light_turret_type_zis
 				}
 			}
 			suspension_type_slot = inherit
@@ -220,6 +220,13 @@ equipments = {
 		archetype = medium_tank_chassis
 		priority = 1100
 		module_slots = 	{
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_armament_tier_small_1
+					tank_armament_tier_small_2
+				}
+			}
 			turret_type_slot = {
 				required = yes
 				allowed_module_categories = {
@@ -227,13 +234,6 @@ equipments = {
 					tank_light_turret_type_2
 					tank_light_turret_type_3
 					tank_medium_turret_type_1
-				}
-			}
-			main_armament_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_armament_tier_small_1
-					tank_armament_tier_small_2
 				}
 			}
 			suspension_type_slot = inherit
@@ -268,6 +268,7 @@ equipments = {
 		#parent = sov_medium_tank_chassis_t28
 		priority = 1200
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = 	{	
 				required = yes	
 				allowed_module_categories = {
@@ -285,7 +286,6 @@ equipments = {
 					#tank_modern_turret_type
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -323,6 +323,7 @@ equipments = {
 		#parent = sov_medium_tank_chassis_t34
 		priority = 1300
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = 	{	
 				required = yes	
 				allowed_module_categories = {
@@ -339,7 +340,6 @@ equipments = {
 
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -374,6 +374,14 @@ equipments = {
 		archetype = heavy_tank_chassis
 		priority = 1400
 		module_slots = 	{
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_armament_tier_tiny_1
+					tank_armament_tier_small_1
+					tank_armament_tier_small_2
+				}
+			}
 			turret_type_slot = {
 				required = yes
 				allowed_module_categories = {
@@ -381,14 +389,6 @@ equipments = {
 					tank_light_turret_type_2
 					tank_light_turret_type_3
 					tank_medium_turret_type_1
-				}
-			}
-			main_armament_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_armament_tier_tiny_1
-					tank_armament_tier_small_1
-					tank_armament_tier_small_2
 				}
 			}
 			suspension_type_slot = inherit
@@ -428,18 +428,18 @@ equipments = {
 		parent = sov_heavy_tank_chassis_t35
 		priority = 1500
 		module_slots = 	{
-			turret_type_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_medium_turret_type_1
-					tank_medium_turret_type_2
-				}
-			}
 			main_armament_slot = {
 				required = yes
 				allowed_module_categories = {
 					tank_armament_tier_tiny_1
 					tank_armament_tier_small_1
+				}
+			}
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_medium_turret_type_1
+					tank_medium_turret_type_2
 				}
 			}
 			suspension_type_slot = inherit
@@ -475,7 +475,7 @@ equipments = {
 		parent = sov_heavy_tank_chassis_t35
 		priority = 100
 		module_slots = {
-			
+			main_armament_slot = inherit
 			turret_type_slot = {
 				required = yes
 				allowed_module_categories = {
@@ -490,7 +490,6 @@ equipments = {
 					tank_heavy_turret_type_open_casemate
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -534,6 +533,7 @@ equipments = {
 		#parent = sov_heavy_tank_chassis_kv1
 		priority = 1700
 		module_slots = {
+			main_armament_slot = inherit
 			turret_type_slot = 	{
 				required = yes		
 				allowed_module_categories = {
@@ -544,7 +544,6 @@ equipments = {
 					tank_heavy_turret_type_open_casemate
 				}
 			}
-			main_armament_slot = inherit
 			suspension_type_slot = inherit
 			armor_type_slot = inherit
 			engine_type_slot = inherit
@@ -582,6 +581,7 @@ equipments = {
 	# 	archetype = heavy_tank_chassis
 	# 	priority = 2000
 	# 	module_slots = {
+	# 		main_armament_slot = inherit
 	# 		turret_type_slot = 	{
 	# 			required = yes		
 	# 			allowed_module_categories = {
@@ -589,7 +589,6 @@ equipments = {
 	# 				tank_heavy_turret_type_casemate
 	# 			}
 	# 		}
-	# 		main_armament_slot = inherit
 	# 		suspension_type_slot = inherit
 	# 		armor_type_slot = inherit
 	# 		engine_type_slot = inherit
