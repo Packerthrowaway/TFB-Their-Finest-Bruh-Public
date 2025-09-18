@@ -659,13 +659,22 @@ NDefines.NOperatives.OPERATIVE_BASE_CONTROL_TRADE_DRIFT = 0.0				-- The base dai
 NDefines.NOperatives.CONTROL_TRADE_STACKING_FACTOR = 0.0					-- Multiplied to the drift of each operative after the first one
 NDefines.NOperatives.INTEL_NETWORK_MIN_VP_TO_TARGET = 10					-- The minimum value of the highest VP in a state to consider the state as a valid target to start building an intel network
 
+NDefines.NIntel.CIVILIAN_PRODUCTION_RANGE_INTEL_MIN = 0.1
+NDefines.NIntel.CIVILIAN_PRODUCTION_RANGE_INTEL_MAX = 0.75
+NDefines.NIntel.CIVILIAN_PRODUCTION_INTEL_RANGE_AT_LOWEST_INTEL = 1
 NDefines.NIntel.CIVILIAN_INTEL_NEEDED_TO_SHOW_FOCUS_TREE = 0.7 -- min required intel to focus tree with taken focuses
 NDefines.NIntel.CIVILIAN_INTEL_NEEDED_TO_SHOW_CURRENT_FOCUS = 0.4  -- min required intel to show currently focus
 NDefines.NIntel.CIVILIAN_INTEL_NEEDED_TO_SHOW_CURRENT_FOCUS_PROGRESS = 0.5  -- min required intel to show current focus progress
+NDefines.NIntel.CIVILIAN_TRADE_SHOW_TRADE_AMOUNTS = 0.35
+NDefines.NIntel.CIVILIAN_TRADE_SHOW_TRADE_PARTNERS = 0.35
+NDefines.NIntel.CIVILIAN_INTEL_NEEDED_TO_SHOW_FOCUS_TREE = 0.6
 NDefines.NIntel.ARMY_ARMY_COUNT_RANGE_INTEL_MIN = 0.15
 NDefines.NIntel.ARMY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.15
 NDefines.NIntel.NAVAL_SUPREMACY_INTEL_LOW = 0.3								-- we need more intel than this to get any supremacy
 NDefines.NIntel.NAVY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.1
+NDefines.NIntel.AIR_AIRWING_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 2
+
+NDefines.NIntel.INTEL_TO_SHOW_IDEAS = { 0.2, 0.2, 0.2, 0.2 }
 
 NDefines.NIntel.NAVY_INTEL_MINE_DAMAGE_REDUCTION_FACTOR_MIN_INTEL_FOR_BONUS = 5 -- at least this intel diff is needed for start applying NAVAL_MINES_INTEL_DIFF_FACTOR bonus
 NDefines.NIntel.NAVY_INTEL_MINE_DAMAGE_REDUCTION_FACTOR_MAX_INTEL_FOR_BONUS = 40 -- t this intel NAVAL_MINES_INTEL_DIFF_FACTOR will be applied fully
