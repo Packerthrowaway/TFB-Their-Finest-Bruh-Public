@@ -2187,7 +2187,7 @@ GER_remove_replaced_advisor_1_effects = {
 			}
 			GER_remove_speer_effects = yes
 		}
-		else_if = { # GÖRING REPLACED
+		else_if = { # Gï¿½RING REPLACED
 			limit = {
 				check_variable = { GER_ascended_advisor_1 = 3 }
 			}
@@ -2242,7 +2242,7 @@ GER_remove_replaced_advisor_2_effects = {
 			}
 			GER_remove_speer_effects = yes
 		}
-		else_if = { # GÖRING REPLACED
+		else_if = { # Gï¿½RING REPLACED
 			limit = {
 				check_variable = { GER_ascended_advisor_2 = 3 }
 			}
@@ -2297,7 +2297,7 @@ GER_remove_replaced_advisor_3_effects = {
 			}
 			GER_remove_speer_effects = yes
 		}
-		else_if = { # GÖRING REPLACED
+		else_if = { # Gï¿½RING REPLACED
 			limit = {
 				check_variable = { GER_ascended_advisor_3 = 3 }
 			}
@@ -2347,7 +2347,7 @@ GER_add_replacing_advisor_effects = {
 		}
 		GER_add_speer_effects = yes
 	}
-	else_if = { # GÖRING ADDED
+	else_if = { # Gï¿½RING ADDED
 		limit = {
 			check_variable = { GER_ascending_advisor = 3 }
 		}
@@ -2547,7 +2547,7 @@ GER_remove_speer_effects = {
 	}
 }
 
-# ADD/REMOVE GÖRING EFFECTS
+# ADD/REMOVE Gï¿½RING EFFECTS
 GER_add_goring_effects = {
 	if = {
 		limit = {
@@ -2606,7 +2606,7 @@ GER_remove_goring_effects = {
 		refund_political_power = no
 	}
 
-	if = { # REMOVE GÖRING FROM ASCENDED ADVISOR
+	if = { # REMOVE Gï¿½RING FROM ASCENDED ADVISOR
 		limit = {
 			check_variable = { GER_ascended_advisor_1 = 3 }
 		}
@@ -3070,7 +3070,7 @@ GER_remove_bormann_effects = {
 	}
 }
 
-# For when Göring can be promoted to country leader via content outside of Inner Circle - make sure that if he was the prevailing industrialist but didn't complete focus, someone else will be enabled
+# For when Gï¿½ring can be promoted to country leader via content outside of Inner Circle - make sure that if he was the prevailing industrialist but didn't complete focus, someone else will be enabled
 GER_replace_goring_as_prevailing_industrialist = {
 	#ASSIGN SOMEONE ELSE AS PREVAILING INDUSTRIALIST if he was chosen to prevail but didn't complete his focus before promoting to country leader. Pick a new Prevailing Advisor (very arbitrarily but better than nothing)
 	if = { #Only applicable if he was Prevailing Industrialist and didnt complete his focus before promoting
@@ -3571,143 +3571,6 @@ GER_check_oil = {
 	subtract_from_variable = { GER.num_ger_oil = num_iberian_oil }
 
 	add_to_variable = {	GER.num_faction_total_oil = GER.num_ger_oil }
-}
-
-inner_circle_initialization = {
-	if = {
-		limit = { original_tag = GER }
-
-		GER_fritz_todt = { set_character_flag = GER_inner_circle_economy_1_slot }
-		GER_fritz_todt = { save_global_event_target_as = GER_inner_circle_economy_1_holder }
-
-		GER_hermann_goring = { set_character_flag = GER_inner_circle_economy_2_slot }
-		GER_albert_speer = { set_character_flag = GER_inner_circle_economy_3_slot }
-		GER_hjalmar_schacht = { set_character_flag = GER_inner_circle_economy_4_slot }
-
-		GER_konstantin_hierl = { set_character_flag = GER_inner_circle_labour_1_slot }
-		GER_robert_ley = { set_character_flag = GER_inner_circle_labour_2_slot }
-		GER_adolf_huhnlein = { set_character_flag = GER_inner_circle_labour_3_slot }
-
-		GER_rudolf_hess = { set_character_flag = GER_inner_circle_administration_1_slot }
-		GER_wilhelm_frick = { set_character_flag = GER_inner_circle_administration_2_slot }
-		GER_martin_bormann = { set_character_flag = GER_inner_circle_administration_3_slot }
-		GER_hans_lammers = { set_character_flag = GER_inner_circle_administration_4_slot }
-		GER_walter_buch = { set_character_flag = GER_inner_circle_administration_5_slot }
-
-		GER_viktor_lutze = { set_character_flag = GER_inner_circle_security_1_slot }
-		GER_heinrich_himmler = { set_character_flag = GER_inner_circle_security_2_slot }
-		GER_reinhard_heydrich = { set_character_flag = GER_inner_circle_security_3_slot }
-
-		GER_max_amann = { set_character_flag = GER_inner_circle_propaganda_1_slot }
-		GER_joseph_goebbels = { set_character_flag = GER_inner_circle_propaganda_2_slot }
-		GER_otto_dietrich = { set_character_flag = GER_inner_circle_propaganda_3_slot }
-		GER_julius_streicher = { set_character_flag = GER_inner_circle_propaganda_4_slot }
-		# Initial power and loyalty values for Inner Circle members
-		set_variable = {hitler_inner_circle_power = 8}
-		set_variable = {hitler_inner_circle_stress = 0}
-		set_variable = {inner_circle_total_economy_political_power = 0}
-		set_variable = {inner_circle_total_economy_loyalty = 0}
-		set_variable = {inner_circle_average_economy_loyalty = 0}
-			
-		GER = {
-			GER_fritz_todt = {
-				set_variable = {inner_circle_power = 65}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 55}
-			}
-			GER_hermann_goring = {
-				set_variable = {inner_circle_power = 73}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 84}
-			}
-			GER_albert_speer = {
-				set_variable = {inner_circle_power = 25}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 13}
-			}
-			GER_hjalmar_schacht = {
-				set_variable = {inner_circle_power = 45}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = -25}
-			}
-
-			GER_konstantin_hierl = {
-				set_variable = {inner_circle_power = 68}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 78}
-			}
-			GER_robert_ley = {
-				set_variable = {inner_circle_power = 57}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 65}
-			}
-			GER_adolf_huhnlein = {
-				set_variable = {inner_circle_power = 25}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 63}
-			}
-			GER_rudolf_hess = {
-				set_variable = {inner_circle_power = 55}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 91}
-			}
-			GER_wilhelm_frick = {
-				set_variable = {inner_circle_power = 35}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 46}
-			}
-			GER_martin_bormann = {
-				set_variable = {inner_circle_power = 25}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 73}
-			}
-			GER_hans_lammers = {
-				set_variable = {inner_circle_power = 45}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 43}
-			}
-			GER_walter_buch = {
-				set_variable = {inner_circle_power = 33}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 58}
-			}
-			GER_viktor_lutze = {
-				set_variable = {inner_circle_power = 39}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 72}
-			}
-			GER_heinrich_himmler = {
-				set_variable = {inner_circle_power = 75}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 52}
-			}
-			GER_reinhard_heydrich = {
-				set_variable = {inner_circle_power = 23}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 48}
-			}
-			GER_max_amann = {
-				set_variable = {inner_circle_power = 32}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 51}
-			}
-			GER_joseph_goebbels = {
-				set_variable = {inner_circle_power = 65}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 89}
-			}
-			GER_otto_dietrich = {
-				set_variable = {inner_circle_power = 15}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 42}
-			}
-			GER_julius_streicher = {
-				set_variable = {inner_circle_power = 21}
-				set_variable = {inner_circle_character_power_portion = 0}
-				set_variable = {inner_circle_loyalty = 76}
-			}
-		}
-	}
 }
 
 
