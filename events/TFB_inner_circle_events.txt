@@ -1,0 +1,174 @@
+add_namespace = GER_inner_circle_todt
+
+# CONSTANT FOR INNER CIRCLE TIMES (This is Focus cost so x7 to get the days) - THE CONSTANTS USED IN THE EVENT FILE need to be these values x7
+# CONSTANT FOR INNER CIRCLE TIMES (These needs to be x7 compared to the Focus cost in the focus file) - NEEDS TO MATCH THE SAME CONSTANTS USED IN THE FOCUS FILE x7
+@inner_circle_time_tier_1 = 7
+@inner_circle_time_tier_2 = 7
+@inner_circle_time_tier_3 = 14
+# FLAG CONSTANTS (It is 1 day more so the tooltip and days shown in the focus about Focus Progress match exactly the moment when the focus is completed)
+@inner_circle_time_tier_1_flag = 8
+@inner_circle_time_tier_2_flag = 8
+@inner_circle_time_tier_3_flag = 15
+
+
+###  ##  ###  ### 
+ #  #  # #  #  #  
+ #  #  # #  #  #  
+ #  #  # #  #  #  
+ #   ##  ###   #  
+
+# TODT2 - Start work on Focus
+country_event = {
+	id = GER_inner_circle_todt.03
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_todt_new_test
+	}
+
+	immediate = {
+        if = { 
+            limit = {
+                NOT = { has_shine_effect_on_focus = GER_todt_tier1_power }
+                NOT = { has_shine_effect_on_focus = GER_todt_tier2_power }
+                NOT = { has_shine_effect_on_focus = GER_todt_tier3_power }
+                NOT = { has_shine_effect_on_focus = GER_todt_tier4_power }
+            }
+            random_list = {
+                80 = {
+
+                }
+                50 = {  
+                    if = {
+                        limit = {
+                            GER_fritz_todt = {
+                                check_variable = { inner_circle_power > 100 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_todt_tier4_power
+                        set_country_flag = { flag = GER_todt_tier4_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_todt.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                30 = {
+                    if = {
+                        limit = {
+                            GER_fritz_todt = {
+                                check_variable = { inner_circle_power > 75 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_todt_tier3_power
+                        set_country_flag = { flag = GER_todt_tier3_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_todt.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                20 = {
+                    if = {
+                        limit = {
+                            GER_fritz_todt = {
+                                check_variable = { inner_circle_power > 50 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_todt_tier2_power
+                        set_country_flag = { flag = GER_todt_tier2_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_todt.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                10 = {
+                    if = {
+                        limit = {
+                            GER_fritz_todt = {
+                                check_variable = { inner_circle_power > 25 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_todt_tier1_power
+                        set_country_flag = { flag = GER_todt_tier1_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_todt.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+            }
+        }
+	}
+}
+
+# TODT - Complete Focus
+country_event = {
+	id = GER_inner_circle_todt.04
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_todt_new_test
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = GER_todt_tier1_power
+			}
+			complete_national_focus = {
+				focus = GER_todt_tier1_power
+				use_side_message = yes
+				originator_name = GER_fritz_todt
+			}
+			clr_country_flag = GER_todt_tier1_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_todt.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            uncomplete_national_focus = {
+                focus = GER_todt_tier1_power
+            }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_todt_tier2_power
+			}
+			complete_national_focus = {
+				focus = GER_todt_tier2_power
+				use_side_message = yes
+				originator_name = GER_fritz_todt
+			}
+			clr_country_flag = GER_todt_tier2_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_todt.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            uncomplete_national_focus = {
+                focus = GER_todt_tier2_power
+            }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_todt_tier3_power
+			}
+			complete_national_focus = {
+				focus = GER_todt_tier3_power
+				use_side_message = yes
+				originator_name = GER_fritz_todt
+			}
+			clr_country_flag = GER_todt_tier3_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_todt.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            uncomplete_national_focus = {
+                focus = GER_todt_tier3_power
+            }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_todt_tier4_power
+			}
+			complete_national_focus = {
+				focus = GER_todt_tier4_power
+				use_side_message = yes
+				originator_name = GER_fritz_todt
+			}
+			clr_country_flag = GER_todt_tier4_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_todt.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            uncomplete_national_focus = {
+                focus = GER_todt_tier4_power
+            }
+		}
+        else = {
+            # Shouldn't be possible
+        }
+	}
+}

@@ -23836,6 +23836,300 @@ focus_tree = {
 
 
 
+	# New Tree
+
+
+	focus = {
+		id = GER_todt_new_test
+		icon = GFX_focus_GER_ascension_of_todt
+		prerequisite = { focus = GER_fuhrerprinzip }
+		x = -16
+		y = 1
+		relative_position_id = GER_fuhrerprinzip
+		cost = 1
+		
+		available = {
+		}
+
+		#Focus will need to pause while events are pending
+		cancel_if_invalid = no
+		continue_if_invalid = no
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_fritz_todt = {
+				add_to_variable = { inner_circle_power = 300 }
+			}
+			# hidden_effect = {
+			# 	country_event = { id = GER_inner_circle_todt.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+			# }
+		}
+	}
+
+	focus = {
+		id = GER_todt_tier1_power
+		#icon = GFX_focus_GER_reich_ministry_of_public_enlightenment
+		prerequisite = { focus = GER_todt_new_test }
+
+		dynamic = yes
+
+		# icon = {
+		# 	trigger = {
+		# 		GER = {
+		# 			GER_fritz_todt = {
+		# 				check_variable = { inner_circle_power > 24 }
+		# 			}
+		# 		}
+		# 	}
+		# 	value = GFX_focus_GER_party_chancellor_bormann_y
+		# }
+		icon = {
+			value = GFX_focus_GER_ascension_of_todt
+		}
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 0
+		y = 1
+		relative_position_id = GER_todt_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_todt_tier1_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_fritz_todt
+						FLAG_DAYS = [?GER_todt_tier1_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = GER_fritz_todt
+						FOCUS = GER_todt_tier1_power
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_fritz_todt = {
+				add_to_variable = { inner_circle_power = -25 }
+			}
+		}
+	}
+
+
+	focus = {
+		id = GER_todt_tier2_power
+		prerequisite = { focus = GER_todt_new_test }
+
+		dynamic = yes
+		# icon = {
+		# 	trigger = {
+		# 		GER = {
+		# 			GER_fritz_todt = {
+		# 				check_variable = { inner_circle_power > 49 }
+		# 			}
+		# 		}
+		# 	}
+		# 	value = GFX_focus_GER_party_chancellor_bormann_y
+		# }
+		icon = {
+			value = GFX_focus_GER_ascension_of_todt
+		}
+
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 2
+		y = 1
+		relative_position_id = GER_todt_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_todt_tier2_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_fritz_todt
+						FLAG_DAYS = [?GER_todt_tier2_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = GER_fritz_todt
+						FOCUS = GER_todt_tier2_power
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_fritz_todt = {
+				add_to_variable = { inner_circle_power = -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = GER_todt_tier3_power
+		prerequisite = { focus = GER_todt_new_test }
+
+		dynamic = yes
+
+		text_icon = GER_inner_circle_focus_style
+
+		
+		# icon = {
+		# 	trigger = {
+		# 		GER = {
+		# 			GER_fritz_todt = {
+		# 				check_variable = { inner_circle_power > 74 }
+		# 			}
+		# 		}
+		# 	}
+		# 	value = GFX_focus_GER_party_chancellor_bormann_y
+		# }
+		icon = {
+			value = GFX_focus_GER_ascension_of_todt
+		}
+
+
+		x = 4
+		y = 1
+		relative_position_id = GER_todt_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_todt_tier3_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_fritz_todt
+						FLAG_DAYS = [?GER_todt_tier3_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = GER_fritz_todt
+						FOCUS = GER_todt_tier3_power
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_fritz_todt = {
+				add_to_variable = { inner_circle_power = -75 }
+			}
+		}
+	}
+
+	focus = {
+		id = GER_todt_tier4_power
+		prerequisite = { focus = GER_todt_new_test }
+
+		dynamic = yes
+		
+		# icon = {
+		# 	trigger = {
+		# 		GER = {
+		# 			GER_fritz_todt = {
+		# 				check_variable = { inner_circle_power > 99 }
+		# 			}
+		# 		}
+		# 	}
+		# 	value = GFX_focus_GER_party_chancellor_bormann_y
+		# }
+		icon = {
+			value = GFX_focus_GER_ascension_of_todt
+		}
+
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 6
+		y = 1
+		relative_position_id = GER_todt_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_todt_tier4_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_fritz_todt
+						FLAG_DAYS = [?GER_todt_tier4_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						CHARACTER = GER_fritz_todt
+						FOCUS = GER_todt_tier4_power
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_fritz_todt = {
+				add_to_variable = { inner_circle_power = -100 }
+			}
+		}
+	}
+
+
+
    ###    ##       ########         ##     ## ####  ######  ######## 
   ## ##   ##          ##            ##     ##  ##  ##    ##    ##    
  ##   ##  ##          ##            ##     ##  ##  ##          ##    
