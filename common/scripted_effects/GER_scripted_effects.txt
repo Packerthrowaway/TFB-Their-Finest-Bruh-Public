@@ -3794,6 +3794,7 @@ calculate_inner_circle_character_portions = {
 		add_to_temp_variable = { inner_circle_economy_power_portion_temp = inner_circle_power }
 		divide_temp_variable = { inner_circle_economy_power_portion_temp = PREV.inner_circle_total_economy_power }
 		set_variable = { inner_circle_character_power_portion = inner_circle_economy_power_portion_temp }
+		log = "A [?inner_circle_character_power_portion]"
 	}
 	# Calculate the Characters Percentage of Power within Labour
 	every_character = {
@@ -3853,7 +3854,6 @@ calculate_inner_circle_character_portions = {
 }
 
 #Calculations for category effects
-# TODO: Make the individual characters Power impact the effect of the modifier, not just their category power
 GER_calculate_category_effects = {
 	# Economic Category
 	set_temp_variable = { temp_GER_inner_circle_production_speed_buildings_factor_bonus = GER_inner_circle_production_speed_buildings_factor_bonus }
@@ -3863,21 +3863,25 @@ GER_calculate_category_effects = {
 	# Todt
 	set_temp_variable = { temp_GER_inner_circle_industrial_capacity_factory_bonus = GER_inner_circle_industrial_capacity_factory_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_industrial_capacity_factory_bonus = inner_circle_economy_portion }
+	GER_fritz_todt = { multiply_temp_variable = { PREV.temp_GER_inner_circle_industrial_capacity_factory_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_industrial_capacity_factory_bonus_calculated = temp_GER_inner_circle_industrial_capacity_factory_bonus }
 
 	# Goring
 	set_temp_variable = { temp_GER_inner_circle_production_speed_arms_factory_factor_bonus = GER_inner_circle_production_speed_arms_factory_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_production_speed_arms_factory_factor_bonus = inner_circle_economy_portion }
+	GER_hermann_goring = { multiply_temp_variable = { PREV.temp_GER_inner_circle_production_speed_arms_factory_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_production_speed_arms_factory_factor_bonus_calculated = temp_GER_inner_circle_production_speed_arms_factory_factor_bonus }
 
 	# Speer
 	set_temp_variable = { temp_GER_inner_circle_line_change_production_efficiency_factor_bonus = GER_inner_circle_line_change_production_efficiency_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_line_change_production_efficiency_factor_bonus = inner_circle_economy_portion }
+	GER_albert_speer = { multiply_temp_variable = { PREV.temp_GER_inner_circle_line_change_production_efficiency_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_line_change_production_efficiency_factor_bonus_calculated = temp_GER_inner_circle_line_change_production_efficiency_factor_bonus }
 
 	# Schacht
 	set_temp_variable = { temp_GER_inner_circle_consumer_goods_factor_bonus = GER_inner_circle_consumer_goods_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_consumer_goods_factor_bonus = inner_circle_economy_portion }
+	GER_hjalmar_schacht = { multiply_temp_variable = { PREV.temp_GER_inner_circle_consumer_goods_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_consumer_goods_factor_bonus_calculated = temp_GER_inner_circle_consumer_goods_factor_bonus }
 
 	# Labour Category
@@ -3888,16 +3892,19 @@ GER_calculate_category_effects = {
 	# Hierl
 	set_temp_variable = { temp_GER_inner_circle_conscription_factor_bonus = GER_inner_circle_conscription_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_conscription_factor_bonus = inner_circle_labour_portion }
+	GER_konstantin_hierl = { multiply_temp_variable = { PREV.temp_GER_inner_circle_conscription_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_conscription_factor_bonus_calculated = temp_GER_inner_circle_conscription_factor_bonus }
 
 	# Ley
 	set_temp_variable = { temp_GER_inner_circle_mobilization_laws_cost_factor_bonus = GER_inner_circle_mobilization_laws_cost_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_mobilization_laws_cost_factor_bonus = inner_circle_labour_portion }
+	GER_robert_ley = { multiply_temp_variable = { PREV.temp_GER_inner_circle_mobilization_laws_cost_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_mobilization_laws_cost_factor_bonus_calculated = temp_GER_inner_circle_mobilization_laws_cost_factor_bonus }
 
 	# Huhnlein
 	set_temp_variable = { temp_GER_inner_circle_economy_cost_factor_bonus = GER_inner_circle_economy_cost_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_economy_cost_factor_bonus = inner_circle_labour_portion }
+	GER_adolf_huhnlein = { multiply_temp_variable = { PREV.temp_GER_inner_circle_economy_cost_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_economy_cost_factor_bonus_calculated = temp_GER_inner_circle_economy_cost_factor_bonus }
 
 	# Administration Category
@@ -3908,26 +3915,31 @@ GER_calculate_category_effects = {
 	# Hess
 	set_temp_variable = { temp_GER_inner_circle_research_speed_factor_bonus = GER_inner_circle_research_speed_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_research_speed_factor_bonus = inner_circle_administration_portion }
+	GER_rudolf_hess = { multiply_temp_variable = { PREV.temp_GER_inner_circle_research_speed_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_research_speed_factor_bonus_calculated = temp_GER_inner_circle_research_speed_factor_bonus }
 
 	# Frick
 	set_temp_variable = { temp_GER_inner_circle_drift_defence_factor_bonus = GER_inner_circle_drift_defence_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_drift_defence_factor_bonus = inner_circle_administration_portion }
+	GER_wilhelm_frick = { multiply_temp_variable = { PREV.temp_GER_inner_circle_drift_defence_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_drift_defence_factor_bonus_calculated = temp_GER_inner_circle_drift_defence_factor_bonus }
 
 	# Bormann
 	set_temp_variable = { temp_GER_inner_circle_party_popularity_stability_factor_bonus = GER_inner_circle_party_popularity_stability_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_party_popularity_stability_factor_bonus = inner_circle_administration_portion }
+	GER_martin_bormann = { multiply_temp_variable = { PREV.temp_GER_inner_circle_party_popularity_stability_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_party_popularity_stability_factor_bonus_calculated = temp_GER_inner_circle_party_popularity_stability_factor_bonus }
 
 	# Lammers
 	set_temp_variable = { temp_GER_inner_circle_stability_factor_bonus = GER_inner_circle_stability_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_stability_factor_bonus = inner_circle_administration_portion }
+	GER_hans_lammers = { multiply_temp_variable = { PREV.temp_GER_inner_circle_stability_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_stability_factor_bonus_calculated = temp_GER_inner_circle_stability_factor_bonus }
 
 	# Buch
 	set_temp_variable = { temp_GER_inner_circle_justify_war_goal_time_bonus = GER_inner_circle_justify_war_goal_time_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_justify_war_goal_time_bonus = inner_circle_administration_portion }
+	GER_walter_buch = { multiply_temp_variable = { PREV.temp_GER_inner_circle_justify_war_goal_time_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_justify_war_goal_time_bonus_calculated = temp_GER_inner_circle_justify_war_goal_time_bonus }
 
 	# Security Category
@@ -3938,16 +3950,19 @@ GER_calculate_category_effects = {
 	# Lutze
 	set_temp_variable = { temp_GER_inner_circle_navy_intel_to_others_bonus = GER_inner_circle_navy_intel_to_others_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_navy_intel_to_others_bonus = inner_circle_security_portion }
+	GER_viktor_lutze = { multiply_temp_variable = { PREV.temp_GER_inner_circle_navy_intel_to_others_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_navy_intel_to_others_bonus_calculated = temp_GER_inner_circle_navy_intel_to_others_bonus }
 
 	# Himmler
 	set_temp_variable = { temp_GER_inner_circle_civilian_intel_to_others_bonus = GER_inner_circle_civilian_intel_to_others_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_civilian_intel_to_others_bonus = inner_circle_security_portion }
+	GER_heinrich_himmler = { multiply_temp_variable = { PREV.temp_GER_inner_circle_civilian_intel_to_others_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_civilian_intel_to_others_bonus_calculated = temp_GER_inner_circle_civilian_intel_to_others_bonus }
 
 	# Heydrich
 	set_temp_variable = { temp_GER_inner_circle_army_intel_to_others_bonus = GER_inner_circle_army_intel_to_others_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_army_intel_to_others_bonus = inner_circle_security_portion }
+	GER_reinhard_heydrich = { multiply_temp_variable = { PREV.temp_GER_inner_circle_army_intel_to_others_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_army_intel_to_others_bonus_calculated = temp_GER_inner_circle_army_intel_to_others_bonus }
 
 	# Propaganda Category
@@ -3958,21 +3973,25 @@ GER_calculate_category_effects = {
 	# Amann
 	set_temp_variable = { temp_GER_inner_circle_war_support_factor_bonus = GER_inner_circle_war_support_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_war_support_factor_bonus = inner_circle_propaganda_portion }
+	GER_max_amann = { multiply_temp_variable = { PREV.temp_GER_inner_circle_war_support_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_war_support_factor_bonus_calculated = temp_GER_inner_circle_war_support_factor_bonus }
 
 	# Goebbels
 	set_temp_variable = { temp_GER_inner_circle_defensive_war_stability_factor_bonus = GER_inner_circle_defensive_war_stability_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_defensive_war_stability_factor_bonus = inner_circle_propaganda_portion }
+	GER_joseph_goebbels = { multiply_temp_variable = { PREV.temp_GER_inner_circle_defensive_war_stability_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_defensive_war_stability_factor_bonus_calculated = temp_GER_inner_circle_defensive_war_stability_factor_bonus }
 
 	# Dietrich
 	set_temp_variable = { temp_GER_inner_circle_command_power_gain_mult_bonus = GER_inner_circle_command_power_gain_mult_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_command_power_gain_mult_bonus = inner_circle_propaganda_portion }
+	GER_otto_dietrich = { multiply_temp_variable = { PREV.temp_GER_inner_circle_command_power_gain_mult_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_command_power_gain_mult_bonus_calculated = temp_GER_inner_circle_command_power_gain_mult_bonus }
 
 	# Streicher
 	set_temp_variable = { temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = GER_inner_circle_root_out_resistance_effectiveness_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = inner_circle_propaganda_portion }
+	GER_julius_streicher = { multiply_temp_variable = { PREV.temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_root_out_resistance_effectiveness_factor_bonus_calculated = temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus }
 }
 
