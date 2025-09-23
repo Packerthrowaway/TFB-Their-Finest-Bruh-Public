@@ -3575,63 +3575,17 @@ GER_check_oil = {
 
 
 calculate_inner_circle_category_values = {
+
 	######################################
 	# ECONOMY CATEGORY
 	######################################
+
 	# Reset totals to 0 before calculation
-	set_variable = {
-		inner_circle_total_economy_political_power = 0
-	}
-	set_variable = {
-		inner_circle_total_economy_loyalty = 0
-	}
-	set_variable = {
-		inner_circle_average_economy_loyalty = 0
-	}
-	set_temp_variable = {
-		inner_circle_total_active_economy_members = 0
-	}
-	# Count active members in the category
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_economy_1_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_economy_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_economy_2_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_economy_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_economy_3_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_economy_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_economy_4_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_economy_members = 1
-		}
-	}
+	set_variable = { inner_circle_total_economy_power = 0 }
+	set_variable = { inner_circle_total_economy_loyalty = 0 }
+	set_variable = { inner_circle_average_economy_loyalty = 0 }
+	set_temp_variable = { inner_circle_total_active_economy_members = 0 }
+
 	# Sum up power and loyalty of active members & divide loyalty by number of active members to get average loyalty
 	every_character = {
 		limit = {
@@ -3642,73 +3596,29 @@ calculate_inner_circle_category_values = {
 				has_character_flag = GER_inner_circle_economy_4_slot
 			}
 		}
-		add_to_variable = { PREV.inner_circle_total_economy_political_power = inner_circle_power }
+		# Add character to Total
+		add_to_variable = { PREV.inner_circle_total_economy_power = inner_circle_power }
 		add_to_variable = { PREV.inner_circle_total_economy_loyalty = inner_circle_loyalty }
-		set_temp_variable = {
-			inner_circle_temp_loyalty = PREV.inner_circle_total_economy_loyalty
-		}
-		divide_temp_variable = {
-			inner_circle_temp_loyalty = inner_circle_total_active_economy_members
-		}
-		set_variable = { PREV.inner_circle_average_economy_loyalty = inner_circle_temp_loyalty }
+		# Count active members in the category
+		add_to_temp_variable = { inner_circle_total_active_economy_members = 1 }
 	}
+
+	#divide loyalty by number of active members to get average loyalty
+	set_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_economy_loyalty }
+	divide_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_active_economy_members }
+	set_variable = { inner_circle_average_economy_loyalty = inner_circle_temp_loyalty_propaganda }
+
 	######################################
 	# labour CATEGORY
 	######################################
+
 	# Reset totals to 0 before calculation
-	set_variable = {
-		inner_circle_total_labour_political_power = 0
-	}
-	set_variable = {
-		inner_circle_total_labour_loyalty = 0
-	}
-	set_variable = {
-		inner_circle_average_labour_loyalty = 0
-	}
-	set_temp_variable = {
-		inner_circle_total_active_labour_members = 0
-	}
-	# Count active members in the category
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_labour_1_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_labour_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_labour_2_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_labour_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_labour_3_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_labour_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_labour_4_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_labour_members = 1
-		}
-	}
+	set_variable = { inner_circle_total_labour_power = 0 }
+	set_variable = { inner_circle_total_labour_loyalty = 0 }
+	set_variable = { inner_circle_average_labour_loyalty = 0 }
+	set_temp_variable = { inner_circle_total_active_labour_members = 0 }
+
+	
 	# Sum up power and loyalty of active members & divide loyalty by number of active members to get average loyalty
 	every_character = {
 		limit = {
@@ -3719,83 +3629,28 @@ calculate_inner_circle_category_values = {
 				has_character_flag = GER_inner_circle_labour_4_slot
 			}
 		}
-		add_to_variable = { PREV.inner_circle_total_labour_political_power = inner_circle_power }
+		# Add character to Total
+		add_to_variable = { PREV.inner_circle_total_labour_power = inner_circle_power }
 		add_to_variable = { PREV.inner_circle_total_labour_loyalty = inner_circle_loyalty }
-		set_temp_variable = {
-			inner_circle_temp_loyalty = PREV.inner_circle_total_labour_loyalty
-		}
-		divide_temp_variable = {
-			inner_circle_temp_loyalty = inner_circle_total_active_labour_members
-		}
-		set_variable = { PREV.inner_circle_average_labour_loyalty = inner_circle_temp_loyalty }
+		# Count active members in the category
+		add_to_temp_variable = { inner_circle_total_active_labour_members = 1 }
 	}
+
+	#divide loyalty by number of active members to get average loyalty
+	set_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_labour_loyalty }
+	divide_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_active_labour_members }
+	set_variable = { inner_circle_average_labour_loyalty = inner_circle_temp_loyalty_propaganda }
+
 	######################################
 	# administration CATEGORY
 	######################################
+
 	# Reset totals to 0 before calculation
-	set_variable = {
-		inner_circle_total_administration_political_power = 0
-	}
-	set_variable = {
-		inner_circle_total_administration_loyalty = 0
-	}
-	set_variable = {
-		inner_circle_average_administration_loyalty = 0
-	}
-	set_temp_variable = {
-		inner_circle_total_active_administration_members = 0
-	}
-	# Count active members in the category
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_administration_1_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_administration_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_administration_2_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_administration_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_administration_3_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_administration_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_administration_4_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_administration_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_administration_5_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_administration_members = 1
-		}
-	}
+	set_variable = { inner_circle_total_administration_power = 0 }
+	set_variable = { inner_circle_total_administration_loyalty = 0 }
+	set_variable = { inner_circle_average_administration_loyalty = 0 }
+	set_temp_variable = { inner_circle_total_active_administration_members = 0 }
+
 	# Sum up power and loyalty of active members & divide loyalty by number of active members to get average loyalty
 	every_character = {
 		limit = {
@@ -3807,84 +3662,29 @@ calculate_inner_circle_category_values = {
 				has_character_flag = GER_inner_circle_administration_5_slot
 			}
 		}
-		add_to_variable = { PREV.inner_circle_total_administration_political_power = inner_circle_power }
+		# Add character to Total
+		add_to_variable = { PREV.inner_circle_total_administration_power = inner_circle_power }
 		add_to_variable = { PREV.inner_circle_total_administration_loyalty = inner_circle_loyalty }
-		set_temp_variable = {
-			inner_circle_temp_loyalty = PREV.inner_circle_total_administration_loyalty
-		}
-		divide_temp_variable = {
-			inner_circle_temp_loyalty = inner_circle_total_active_administration_members
-		}
-		set_variable = { PREV.inner_circle_average_administration_loyalty = inner_circle_temp_loyalty }
+		# Count active members in the category
+		add_to_temp_variable = { inner_circle_total_active_administration_members = 1 }
 	}
+
+	#divide loyalty by number of active members to get average loyalty
+	set_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_administration_loyalty }
+	divide_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_active_administration_members }
+	set_variable = { inner_circle_average_administration_loyalty = inner_circle_temp_loyalty_propaganda }
+
 	######################################
 	# security CATEGORY
 	######################################
+
 	# Reset totals to 0 before calculation
-	set_variable = {
-		inner_circle_total_security_political_power = 0
-	}
-	set_variable = {
-		inner_circle_total_security_loyalty = 0
-	}
-	set_variable = {
-		inner_circle_average_security_loyalty = 0
-	}
-	set_temp_variable = {
-		inner_circle_total_active_security_members = 0
-	}
-	# Count active members in the category
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_security_1_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_security_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_security_2_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_security_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_security_3_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_security_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_security_4_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_security_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_security_5_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_security_members = 1
-		}
-	}
-	# Sum up power and loyalty of active members & divide loyalty by number of active members to get average loyalty
+	set_variable = { inner_circle_total_security_power = 0 }
+	set_variable = { inner_circle_total_security_loyalty = 0 }
+	set_variable = { inner_circle_average_security_loyalty = 0 }
+	set_temp_variable = { inner_circle_total_active_security_members = 0 }
+	
+	# Sum up power and loyalty of active members
 	every_character = {
 		limit = {
 			OR = {
@@ -3895,84 +3695,29 @@ calculate_inner_circle_category_values = {
 				has_character_flag = GER_inner_circle_security_5_slot
 			}
 		}
-		add_to_variable = { PREV.inner_circle_total_security_political_power = inner_circle_power }
+		# Add character to Total
+		add_to_variable = { PREV.inner_circle_total_security_power = inner_circle_power }
 		add_to_variable = { PREV.inner_circle_total_security_loyalty = inner_circle_loyalty }
-		set_temp_variable = {
-			inner_circle_temp_loyalty = PREV.inner_circle_total_security_loyalty
-		}
-		divide_temp_variable = {
-			inner_circle_temp_loyalty = inner_circle_total_active_security_members
-		}
-		set_variable = { PREV.inner_circle_average_security_loyalty = inner_circle_temp_loyalty }
+		# Count active members in the category
+		add_to_temp_variable = { inner_circle_total_active_security_members = 1 }
 	}
+
+	#divide loyalty by number of active members to get average loyalty
+	set_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_security_loyalty }
+	divide_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_active_security_members }
+	set_variable = { inner_circle_average_security_loyalty = inner_circle_temp_loyalty_propaganda }
+
 	######################################
 	# propaganda CATEGORY
 	######################################
+
 	# Reset totals to 0 before calculation
-	set_variable = {
-		inner_circle_total_propaganda_political_power = 0
-	}
-	set_variable = {
-		inner_circle_total_propaganda_loyalty = 0
-	}
-	set_variable = {
-		inner_circle_average_propaganda_loyalty = 0
-	}
-	set_temp_variable = {
-		inner_circle_total_active_propaganda_members = 0
-	}
-	# Count active members in the category
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_propaganda_1_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_propaganda_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_propaganda_2_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_propaganda_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_propaganda_3_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_propaganda_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_propaganda_4_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_propaganda_members = 1
-		}
-	}
-	if = {
-		limit = {
-			any_character = {
-				has_character_flag = GER_inner_circle_propaganda_5_slot
-			}
-		}
-		add_to_temp_variable = {
-			inner_circle_total_active_propaganda_members = 1
-		}
-	}
-	# Sum up power and loyalty of active members & divide loyalty by number of active members to get average loyalty
+	set_variable = { inner_circle_total_propaganda_power = 0 }
+	set_variable = { inner_circle_total_propaganda_loyalty = 0 }
+	set_variable = { inner_circle_average_propaganda_loyalty = 0 }
+	set_temp_variable = { inner_circle_total_active_propaganda_members = 0 }
+
+	# Sum up power and loyalty of active members
 	every_character = {
 		limit = {
 			OR = {
@@ -3983,85 +3728,60 @@ calculate_inner_circle_category_values = {
 				has_character_flag = GER_inner_circle_propaganda_5_slot
 			}
 		}
-		add_to_variable = { PREV.inner_circle_total_propaganda_political_power = inner_circle_power }
+		# Add character to Total
+		add_to_variable = { PREV.inner_circle_total_propaganda_power = inner_circle_power }
 		add_to_variable = { PREV.inner_circle_total_propaganda_loyalty = inner_circle_loyalty }
-		set_temp_variable = {
-			inner_circle_temp_loyalty = PREV.inner_circle_total_propaganda_loyalty
-		}
-		divide_temp_variable = {
-			inner_circle_temp_loyalty = inner_circle_total_active_propaganda_members
-		}
-		set_variable = { PREV.inner_circle_average_propaganda_loyalty = inner_circle_temp_loyalty }
+		# Count active members in the category
+		add_to_temp_variable = { inner_circle_total_active_propaganda_members = 1 }
 	}
 
-	#Category totals and portions
-	set_variable = {
-		inner_circle_total_political_power = 0
-	}
-	add_to_variable = { inner_circle_total_political_power = inner_circle_total_economy_political_power }
-	add_to_variable = { inner_circle_total_political_power = inner_circle_total_labour_political_power }
-	add_to_variable = { inner_circle_total_political_power = inner_circle_total_administration_political_power }
-	add_to_variable = { inner_circle_total_political_power = inner_circle_total_security_political_power }
-	add_to_variable = { inner_circle_total_political_power = inner_circle_total_propaganda_political_power }
+	#divide loyalty by number of active members to get average loyalty
+	set_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_propaganda_loyalty }
+	divide_temp_variable = { inner_circle_temp_loyalty_propaganda = inner_circle_total_active_propaganda_members }
+	set_variable = { inner_circle_average_propaganda_loyalty = inner_circle_temp_loyalty_propaganda }
 
-	#economy portion
-	set_temp_variable = {
-		inner_circle_temp_economy_portion = 0
-	}
-	add_to_temp_variable = {
-		inner_circle_temp_economy_portion = inner_circle_total_economy_political_power
-	}
-	divide_temp_variable = {
-		inner_circle_temp_economy_portion = inner_circle_total_political_power
-	}
+
+	######################################
+	# totals
+	######################################
+
+	set_variable = { inner_circle_total_power = 0 }
+	# Calculate the total amount of power combined from all characters
+	add_to_variable = { inner_circle_total_power = inner_circle_total_economy_power }
+	add_to_variable = { inner_circle_total_power = inner_circle_total_labour_power }
+	add_to_variable = { inner_circle_total_power = inner_circle_total_administration_power }
+	add_to_variable = { inner_circle_total_power = inner_circle_total_security_power }
+	add_to_variable = { inner_circle_total_power = inner_circle_total_propaganda_power }
+	# Calculate what % of power the Economic Characters hold
+	set_temp_variable = { inner_circle_temp_economy_portion = 0 }
+	add_to_temp_variable = { inner_circle_temp_economy_portion = inner_circle_total_economy_power }
+	divide_temp_variable = { inner_circle_temp_economy_portion = inner_circle_total_power }
 	set_variable = { inner_circle_economy_portion = inner_circle_temp_economy_portion }
-	#labour portion
-	set_temp_variable = {
-		inner_circle_temp_labour_portion = 0
-	}
-	add_to_temp_variable = {
-		inner_circle_temp_labour_portion = inner_circle_total_labour_political_power
-	}
-	divide_temp_variable = {
-		inner_circle_temp_labour_portion = inner_circle_total_political_power
-	}
+	# Calculate what % of power the Labour Characters hold
+	set_temp_variable = { inner_circle_temp_labour_portion = 0 }
+	add_to_temp_variable = { inner_circle_temp_labour_portion = inner_circle_total_labour_power }
+	divide_temp_variable = { inner_circle_temp_labour_portion = inner_circle_total_power }
 	set_variable = { inner_circle_labour_portion = inner_circle_temp_labour_portion }
-	#administration portion
-	set_temp_variable = {
-		inner_circle_temp_administration_portion = 0
-	}
-	add_to_temp_variable = {
-		inner_circle_temp_administration_portion = inner_circle_total_administration_political_power
-	}
-	divide_temp_variable = {
-		inner_circle_temp_administration_portion = inner_circle_total_political_power
-	}
+	# Calculate what % of power the Administration Characters hold
+	set_temp_variable = { inner_circle_temp_administration_portion = 0 }
+	add_to_temp_variable = { inner_circle_temp_administration_portion = inner_circle_total_administration_power }
+	divide_temp_variable = { inner_circle_temp_administration_portion = inner_circle_total_power }
 	set_variable = { inner_circle_administration_portion = inner_circle_temp_administration_portion }
-	#security portion
-	set_temp_variable = {
-		inner_circle_temp_security_portion = 0
-	}
-	add_to_temp_variable = {
-		inner_circle_temp_security_portion = inner_circle_total_security_political_power
-	}
-	divide_temp_variable = {
-		inner_circle_temp_security_portion = inner_circle_total_political_power
-	}
+	# Calculate what % of power the Security Characters hold
+	set_temp_variable = { inner_circle_temp_security_portion = 0 }
+	add_to_temp_variable = { inner_circle_temp_security_portion = inner_circle_total_security_power }
+	divide_temp_variable = { inner_circle_temp_security_portion = inner_circle_total_power }
 	set_variable = { inner_circle_security_portion = inner_circle_temp_security_portion }
-	#propaganda portion
-	set_temp_variable = {
-		inner_circle_temp_propaganda_portion = 0
-	}
-	add_to_temp_variable = {
-		inner_circle_temp_propaganda_portion = inner_circle_total_propaganda_political_power
-	}
-	divide_temp_variable = {
-		inner_circle_temp_propaganda_portion = inner_circle_total_political_power
-	}
+	# Calculate what % of power the Propaganda Characters hold
+	set_temp_variable = { inner_circle_temp_propaganda_portion = 0 }
+	add_to_temp_variable = { inner_circle_temp_propaganda_portion = inner_circle_total_propaganda_power }
+	divide_temp_variable = { inner_circle_temp_propaganda_portion = inner_circle_total_power }
 	set_variable = { inner_circle_propaganda_portion = inner_circle_temp_propaganda_portion }
 }
-#todo: prevent division by zero if no members in category
+
 calculate_inner_circle_character_portions = {
+
+	# Calculate the Characters Percentage of Power within Economy
 	every_character = {
 		limit = {
 			OR = {
@@ -4071,12 +3791,11 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_economy_4_slot
 			}
 		}
-		add_to_temp_variable = { inner_circle_economy_political_power_portion_temp = inner_circle_power }
-		divide_temp_variable = {
-			inner_circle_economy_political_power_portion_temp = PREV.inner_circle_total_economy_political_power
-		}
-		set_variable = { inner_circle_character_power_portion = inner_circle_economy_political_power_portion_temp }
+		add_to_temp_variable = { inner_circle_economy_power_portion_temp = inner_circle_power }
+		divide_temp_variable = { inner_circle_economy_power_portion_temp = PREV.inner_circle_total_economy_power }
+		set_variable = { inner_circle_character_power_portion = inner_circle_economy_power_portion_temp }
 	}
+	# Calculate the Characters Percentage of Power within Labour
 	every_character = {
 		limit = {
 			OR = {
@@ -4085,12 +3804,11 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_labour_3_slot
 			}
 		}
-		add_to_temp_variable = { inner_circle_labour_political_power_portion_temp = inner_circle_power }
-		divide_temp_variable = {
-			inner_circle_labour_political_power_portion_temp = PREV.inner_circle_total_labour_political_power
-		}
-		set_variable = { inner_circle_character_power_portion = inner_circle_labour_political_power_portion_temp }
+		add_to_temp_variable = { inner_circle_labour_power_portion_temp = inner_circle_power }
+		divide_temp_variable = { inner_circle_labour_power_portion_temp = PREV.inner_circle_total_labour_power }
+		set_variable = { inner_circle_character_power_portion = inner_circle_labour_power_portion_temp }
 	}
+	# Calculate the Characters Percentage of Power within Administration
 	every_character = {
 		limit = {
 			OR = {
@@ -4101,12 +3819,11 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_administration_5_slot
 			}
 		}
-		add_to_temp_variable = { inner_circle_administration_political_power_portion_temp = inner_circle_power }
-		divide_temp_variable = {
-			inner_circle_administration_political_power_portion_temp = PREV.inner_circle_total_administration_political_power
-		}
-		set_variable = { inner_circle_character_power_portion = inner_circle_administration_political_power_portion_temp }
+		add_to_temp_variable = { inner_circle_administration_power_portion_temp = inner_circle_power }
+		divide_temp_variable = { inner_circle_administration_power_portion_temp = PREV.inner_circle_total_administration_power }
+		set_variable = { inner_circle_character_power_portion = inner_circle_administration_power_portion_temp }
 	}
+	# Calculate the Characters Percentage of Power within Security
 	every_character = {
 		limit = {
 			OR = {
@@ -4115,12 +3832,11 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_security_3_slot
 			}
 		}
-		add_to_temp_variable = { inner_circle_security_political_power_portion_temp = inner_circle_power }
-		divide_temp_variable = {
-			inner_circle_security_political_power_portion_temp = PREV.inner_circle_total_security_political_power
-		}
-		set_variable = { inner_circle_character_power_portion = inner_circle_security_political_power_portion_temp }
+		add_to_temp_variable = { inner_circle_security_power_portion_temp = inner_circle_power }
+		divide_temp_variable = { inner_circle_security_power_portion_temp = PREV.inner_circle_total_security_power }
+		set_variable = { inner_circle_character_power_portion = inner_circle_security_power_portion_temp }
 	}
+	# Calculate the Characters Percentage of Power within Propaganda
 	every_character = {
 		limit = {
 			OR = {
@@ -4130,23 +3846,134 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_propaganda_4_slot
 			}
 		}
-		add_to_temp_variable = { inner_circle_propaganda_political_power_portion_temp = inner_circle_power }
-		divide_temp_variable = {
-			inner_circle_propaganda_political_power_portion_temp = PREV.inner_circle_total_propaganda_political_power
-		}
-		set_variable = { inner_circle_character_power_portion = inner_circle_propaganda_political_power_portion_temp }
+		add_to_temp_variable = { inner_circle_propaganda_power_portion_temp = inner_circle_power }
+		divide_temp_variable = { inner_circle_propaganda_power_portion_temp = PREV.inner_circle_total_propaganda_power }
+		set_variable = { inner_circle_character_power_portion = inner_circle_propaganda_power_portion_temp }
 	}
 }
 
 #Calculations for category effects
+# TODO: Make the individual characters Power impact the effect of the modifier, not just their category power
 GER_calculate_category_effects = {
-	set_temp_variable = {
-		temp_GER_inner_circle_economy_category_construction_speed_bonus = GER_inner_circle_economy_category_max_construction_speed_bonus
-	}
-	multiply_temp_variable = {
-		temp_GER_inner_circle_economy_category_construction_speed_bonus = inner_circle_economy_portion
-	}
-	set_variable = { GER_inner_circle_economy_category_calculated_construction_speed_bonus = temp_GER_inner_circle_economy_category_construction_speed_bonus }
+	# Economic Category
+	set_temp_variable = { temp_GER_inner_circle_production_speed_buildings_factor_bonus = GER_inner_circle_production_speed_buildings_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_production_speed_buildings_factor_bonus = inner_circle_economy_portion }
+	set_variable = { GER_inner_circle_production_speed_buildings_factor_bonus_calculated = temp_GER_inner_circle_production_speed_buildings_factor_bonus }
+
+	# Todt
+	set_temp_variable = { temp_GER_inner_circle_industrial_capacity_factory_bonus = GER_inner_circle_industrial_capacity_factory_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_industrial_capacity_factory_bonus = inner_circle_economy_portion }
+	set_variable = { GER_inner_circle_industrial_capacity_factory_bonus_calculated = temp_GER_inner_circle_industrial_capacity_factory_bonus }
+
+	# Goring
+	set_temp_variable = { temp_GER_inner_circle_production_speed_arms_factory_factor_bonus = GER_inner_circle_production_speed_arms_factory_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_production_speed_arms_factory_factor_bonus = inner_circle_economy_portion }
+	set_variable = { GER_inner_circle_production_speed_arms_factory_factor_bonus_calculated = temp_GER_inner_circle_production_speed_arms_factory_factor_bonus }
+
+	# Speer
+	set_temp_variable = { temp_GER_inner_circle_line_change_production_efficiency_factor_bonus = GER_inner_circle_line_change_production_efficiency_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_line_change_production_efficiency_factor_bonus = inner_circle_economy_portion }
+	set_variable = { GER_inner_circle_line_change_production_efficiency_factor_bonus_calculated = temp_GER_inner_circle_line_change_production_efficiency_factor_bonus }
+
+	# Schacht
+	set_temp_variable = { temp_GER_inner_circle_consumer_goods_factor_bonus = GER_inner_circle_consumer_goods_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_consumer_goods_factor_bonus = inner_circle_economy_portion }
+	set_variable = { GER_inner_circle_consumer_goods_factor_bonus_calculated = temp_GER_inner_circle_consumer_goods_factor_bonus }
+
+	# Labour Category
+	set_temp_variable = { temp_GER_inner_circle_trade_laws_cost_factor_bonus = GER_inner_circle_trade_laws_cost_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_trade_laws_cost_factor_bonus = inner_circle_labour_portion }
+	set_variable = { GER_inner_circle_trade_laws_cost_factor_bonus_calculated = temp_GER_inner_circle_trade_laws_cost_factor_bonus }
+
+	# Hierl
+	set_temp_variable = { temp_GER_inner_circle_conscription_factor_bonus = GER_inner_circle_conscription_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_conscription_factor_bonus = inner_circle_labour_portion }
+	set_variable = { GER_inner_circle_conscription_factor_bonus_calculated = temp_GER_inner_circle_conscription_factor_bonus }
+
+	# Ley
+	set_temp_variable = { temp_GER_inner_circle_mobilization_laws_cost_factor_bonus = GER_inner_circle_mobilization_laws_cost_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_mobilization_laws_cost_factor_bonus = inner_circle_labour_portion }
+	set_variable = { GER_inner_circle_mobilization_laws_cost_factor_bonus_calculated = temp_GER_inner_circle_mobilization_laws_cost_factor_bonus }
+
+	# Huhnlein
+	set_temp_variable = { temp_GER_inner_circle_economy_cost_factor_bonus = GER_inner_circle_economy_cost_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_economy_cost_factor_bonus = inner_circle_labour_portion }
+	set_variable = { GER_inner_circle_economy_cost_factor_bonus_calculated = temp_GER_inner_circle_economy_cost_factor_bonus }
+
+	# Administration Category
+	set_temp_variable = { temp_GER_inner_circle_political_power_factor_bonus = GER_inner_circle_political_power_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_political_power_factor_bonus = inner_circle_administration_portion }
+	set_variable = { GER_inner_circle_political_power_factor_bonus_calculated = temp_GER_inner_circle_political_power_factor_bonus }
+
+	# Hess
+	set_temp_variable = { temp_GER_inner_circle_research_speed_factor_bonus = GER_inner_circle_research_speed_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_research_speed_factor_bonus = inner_circle_administration_portion }
+	set_variable = { GER_inner_circle_research_speed_factor_bonus_calculated = temp_GER_inner_circle_research_speed_factor_bonus }
+
+	# Frick
+	set_temp_variable = { temp_GER_inner_circle_drift_defence_factor_bonus = GER_inner_circle_drift_defence_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_drift_defence_factor_bonus = inner_circle_administration_portion }
+	set_variable = { GER_inner_circle_drift_defence_factor_bonus_calculated = temp_GER_inner_circle_drift_defence_factor_bonus }
+
+	# Bormann
+	set_temp_variable = { temp_GER_inner_circle_party_popularity_stability_factor_bonus = GER_inner_circle_party_popularity_stability_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_party_popularity_stability_factor_bonus = inner_circle_administration_portion }
+	set_variable = { GER_inner_circle_party_popularity_stability_factor_bonus_calculated = temp_GER_inner_circle_party_popularity_stability_factor_bonus }
+
+	# Lammers
+	set_temp_variable = { temp_GER_inner_circle_stability_factor_bonus = GER_inner_circle_stability_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_stability_factor_bonus = inner_circle_administration_portion }
+	set_variable = { GER_inner_circle_stability_factor_bonus_calculated = temp_GER_inner_circle_stability_factor_bonus }
+
+	# Buch
+	set_temp_variable = { temp_GER_inner_circle_justify_war_goal_time_bonus = GER_inner_circle_justify_war_goal_time_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_justify_war_goal_time_bonus = inner_circle_administration_portion }
+	set_variable = { GER_inner_circle_justify_war_goal_time_bonus_calculated = temp_GER_inner_circle_justify_war_goal_time_bonus }
+
+	# Security Category
+	set_temp_variable = { temp_GER_inner_circle_airforce_intel_to_others_bonus = GER_inner_circle_airforce_intel_to_others_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_airforce_intel_to_others_bonus = inner_circle_security_portion }
+	set_variable = { GER_inner_circle_airforce_intel_to_others_bonus_calculated = temp_GER_inner_circle_airforce_intel_to_others_bonus }
+
+	# Lutze
+	set_temp_variable = { temp_GER_inner_circle_navy_intel_to_others_bonus = GER_inner_circle_navy_intel_to_others_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_navy_intel_to_others_bonus = inner_circle_security_portion }
+	set_variable = { GER_inner_circle_navy_intel_to_others_bonus_calculated = temp_GER_inner_circle_navy_intel_to_others_bonus }
+
+	# Himmler
+	set_temp_variable = { temp_GER_inner_circle_civilian_intel_to_others_bonus = GER_inner_circle_civilian_intel_to_others_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_civilian_intel_to_others_bonus = inner_circle_security_portion }
+	set_variable = { GER_inner_circle_civilian_intel_to_others_bonus_calculated = temp_GER_inner_circle_civilian_intel_to_others_bonus }
+
+	# Heydrich
+	set_temp_variable = { temp_GER_inner_circle_army_intel_to_others_bonus = GER_inner_circle_army_intel_to_others_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_army_intel_to_others_bonus = inner_circle_security_portion }
+	set_variable = { GER_inner_circle_army_intel_to_others_bonus_calculated = temp_GER_inner_circle_army_intel_to_others_bonus }
+
+	# Propaganda Category
+	set_temp_variable = { temp_GER_inner_circle_intelligence_agency_defense_bonus = GER_inner_circle_intelligence_agency_defense_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_intelligence_agency_defense_bonus = inner_circle_propaganda_portion }
+	set_variable = { GER_inner_circle_intelligence_agency_defense_bonus_calculated = temp_GER_inner_circle_intelligence_agency_defense_bonus }
+
+	# Amann
+	set_temp_variable = { temp_GER_inner_circle_war_support_factor_bonus = GER_inner_circle_war_support_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_war_support_factor_bonus = inner_circle_propaganda_portion }
+	set_variable = { GER_inner_circle_war_support_factor_bonus_calculated = temp_GER_inner_circle_war_support_factor_bonus }
+
+	# Goebbels
+	set_temp_variable = { temp_GER_inner_circle_defensive_war_stability_factor_bonus = GER_inner_circle_defensive_war_stability_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_defensive_war_stability_factor_bonus = inner_circle_propaganda_portion }
+	set_variable = { GER_inner_circle_defensive_war_stability_factor_bonus_calculated = temp_GER_inner_circle_defensive_war_stability_factor_bonus }
+
+	# Dietrich
+	set_temp_variable = { temp_GER_inner_circle_command_power_gain_mult_bonus = GER_inner_circle_command_power_gain_mult_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_command_power_gain_mult_bonus = inner_circle_propaganda_portion }
+	set_variable = { GER_inner_circle_command_power_gain_mult_bonus_calculated = temp_GER_inner_circle_command_power_gain_mult_bonus }
+
+	# Streicher
+	set_temp_variable = { temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = GER_inner_circle_root_out_resistance_effectiveness_factor_bonus }
+	multiply_temp_variable = { temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = inner_circle_propaganda_portion }
+	set_variable = { GER_inner_circle_root_out_resistance_effectiveness_factor_bonus_calculated = temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus }
 }
 
 GER_inner_circle_test_tickers = {
@@ -4177,9 +4004,8 @@ GER_inner_circle_test_tickers = {
 				}
 			}
 			add_to_variable = {
-				inner_circle_power = PREV.inner_circle_base_power_gain
+				inner_circle_power = inner_circle_base_power_gain
 			}
 		}
-		log = "[GetDateText]: [Root.GetName]: Inner Circle Economy Category Test Ticker executed, all active members in the category gained [$inner_circle_base_power_gain] power."
 	}
 }

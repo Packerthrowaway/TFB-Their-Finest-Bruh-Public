@@ -405,42 +405,60 @@ set_variable = { GER_total_control_over_domestic_affairs_focus_advisor = 0 } # T
 set_variable = { GER_industrialist_prevailed = 0 } #For allowing only one Industrialist advisor to work on the ME focus
 
 #TFB Inner Circle Rework - modding this game requires anti-depressants. //Swimmy
-set_variable = { inner_circle_base_power_gain = 1 } #Base power gain per advisor per day
+# Maximum Value of each Advisor's Bonus
+set_variable = { GER_inner_circle_production_speed_buildings_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_industrial_capacity_factory_bonus = 0.1 }
+set_variable = { GER_inner_circle_production_speed_arms_factory_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_line_change_production_efficiency_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_consumer_goods_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_trade_laws_cost_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_conscription_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_mobilization_laws_cost_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_economy_cost_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_political_power_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_research_speed_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_drift_defence_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_party_popularity_stability_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_stability_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_justify_war_goal_time_bonus = 0.1 }
+set_variable = { GER_inner_circle_airforce_intel_to_others_bonus = 0.1 }
+set_variable = { GER_inner_circle_navy_intel_to_others_bonus = 0.1 }
+set_variable = { GER_inner_circle_civilian_intel_to_others_bonus = 0.1 }
+set_variable = { GER_inner_circle_army_intel_to_others_bonus = 0.1 }
+set_variable = { GER_inner_circle_intelligence_agency_defense_bonus = 0.1 }
+set_variable = { GER_inner_circle_war_support_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_defensive_war_stability_factor_bonus = 0.1 }
+set_variable = { GER_inner_circle_command_power_gain_mult_bonus = 0.1 }
+set_variable = { GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = 0.1 }
 
-set_variable = { GER_inner_circle_economy_category_max_construction_speed_bonus = 0.1 } #base 10% construction speed bonus for economy category, gets multiplied by the strength portion
-set_variable = { GER_inner_circle_economy_category_calculated_construction_speed_bonus = 0 }
-
-set_variable = { GER_inner_circle_production_speed_buildings_factor_bonus = 0 }
-set_variable = { GER_inner_circle_industrial_capacity_factory_bonus = 0 }
-set_variable = { GER_inner_circle_production_speed_arms_factory_factor_bonus = 0 }
-set_variable = { GER_inner_circle_line_change_production_efficiency_factor_bonus = 0 }
-set_variable = { GER_inner_circle_consumer_goods_factor_bonus = 0 }
-set_variable = { GER_inner_circle_trade_laws_cost_factor_bonus = 0 }
-set_variable = { GER_inner_circle_conscription_factor_bonus = 0 }
-set_variable = { GER_inner_circle_mobilization_laws_cost_factor_bonus = 0 }
-set_variable = { GER_inner_circle_economy_cost_factor_bonus = 0 }
-set_variable = { GER_inner_circle_political_power_factor_bonus = 0 }
-set_variable = { GER_inner_circle_research_speed_factor_bonus = 0 }
-set_variable = { GER_inner_circle_drift_defence_factor_bonus = 0 }
-set_variable = { GER_inner_circle_party_popularity_stability_factor_bonus = 0 }
-set_variable = { GER_inner_circle_stability_factor_bonus = 0 }
-set_variable = { GER_inner_circle_justify_war_goal_time_bonus = 0 }
-set_variable = { GER_inner_circle_airforce_intel_to_others_bonus = 0 }
-set_variable = { GER_inner_circle_navy_intel_to_others_bonus = 0 }
-set_variable = { GER_inner_circle_civilian_intel_to_others_bonus = 0 }
-set_variable = { GER_inner_circle_army_intel_to_others_bonus = 0 }
-set_variable = { GER_inner_circle_intelligence_agency_defense_bonus = 0 }
-set_variable = { GER_inner_circle_war_support_factor_bonus = 0 }
-set_variable = { GER_inner_circle_defensive_war_stability_factor_bonus = 0 }
-set_variable = { GER_inner_circle_command_power_gain_mult_bonus = 0 }
-set_variable = { GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = 0 }
+# Calculated Inner Circle Bonuses. Leave 0 as it will get calculate later
+set_variable = { GER_inner_circle_production_speed_buildings_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_industrial_capacity_factory_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_production_speed_arms_factory_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_line_change_production_efficiency_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_consumer_goods_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_trade_laws_cost_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_conscription_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_mobilization_laws_cost_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_economy_cost_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_political_power_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_research_speed_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_drift_defence_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_party_popularity_stability_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_stability_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_justify_war_goal_time_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_airforce_intel_to_others_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_navy_intel_to_others_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_civilian_intel_to_others_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_army_intel_to_others_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_intelligence_agency_defense_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_war_support_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_defensive_war_stability_factor_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_command_power_gain_mult_bonus_calculated = 0 }
+set_variable = { GER_inner_circle_root_out_resistance_effectiveness_factor_bonus_calculated = 0 }
 
 
 add_dynamic_modifier = { modifier = GER_inner_circle_economic_category_modifier }
-add_dynamic_modifier = { modifier = GER_inner_circle_labour_category_modifier }
-add_dynamic_modifier = { modifier = GER_inner_circle_administration_category_modifier }
-add_dynamic_modifier = { modifier = GER_inner_circle_security_category_modifier }
-add_dynamic_modifier = { modifier = GER_inner_circle_security_category_modifier }
 
 # Starting Stats of various kinds
 set_research_slots = 6
@@ -627,50 +645,6 @@ recruit_character = GER_viktor_lutze
 recruit_character = GER_max_amann
 recruit_character = GER_otto_dietrich
 recruit_character = GER_julius_streicher
-
-GER_fritz_todt = { set_character_flag = GER_inner_circle_economy_1_slot }
-GER_hermann_goring = { set_character_flag = GER_inner_circle_economy_2_slot }
-GER_albert_speer = { set_character_flag = GER_inner_circle_economy_3_slot }
-GER_hjalmar_schacht = { set_character_flag = GER_inner_circle_economy_4_slot }
-
-GER_konstantin_hierl = { set_character_flag = GER_inner_circle_labour_1_slot }
-GER_robert_ley = { set_character_flag = GER_inner_circle_labour_2_slot }
-GER_adolf_huhnlein = { set_character_flag = GER_inner_circle_labour_3_slot }
-
-GER_rudolf_hess = { set_character_flag = GER_inner_circle_administration_1_slot }
-GER_wilhelm_frick = { set_character_flag = GER_inner_circle_administration_2_slot }
-GER_martin_bormann = { set_character_flag = GER_inner_circle_administration_3_slot }
-GER_hans_lammers = { set_character_flag = GER_inner_circle_administration_4_slot }
-GER_walter_buch = { set_character_flag = GER_inner_circle_administration_5_slot }
-
-GER_viktor_lutze = { set_character_flag = GER_inner_circle_security_1_slot }
-GER_heinrich_himmler = { set_character_flag = GER_inner_circle_security_2_slot }
-GER_reinhard_heydrich = { set_character_flag = GER_inner_circle_security_3_slot }
-
-GER_max_amann = { set_character_flag = GER_inner_circle_propaganda_1_slot }
-GER_joseph_goebbels = { set_character_flag = GER_inner_circle_propaganda_2_slot }
-GER_otto_dietrich = { set_character_flag = GER_inner_circle_propaganda_3_slot }
-GER_julius_streicher = { set_character_flag = GER_inner_circle_propaganda_4_slot }
-
-GER_fritz_todt = { set_character_flag = GER_inner_circle_member }
-GER_hermann_goring = { set_character_flag = GER_inner_circle_member }
-GER_albert_speer = { set_character_flag = GER_inner_circle_member }
-GER_hjalmar_schacht = { set_character_flag = GER_inner_circle_member }
-GER_konstantin_hierl = { set_character_flag = GER_inner_circle_member }
-GER_robert_ley = { set_character_flag = GER_inner_circle_member }
-GER_adolf_huhnlein = { set_character_flag = GER_inner_circle_member }
-GER_rudolf_hess = { set_character_flag = GER_inner_circle_member }
-GER_wilhelm_frick = { set_character_flag = GER_inner_circle_member }
-GER_martin_bormann = { set_character_flag = GER_inner_circle_member }
-GER_hans_lammers = { set_character_flag = GER_inner_circle_member }
-GER_walter_buch = { set_character_flag = GER_inner_circle_member }
-GER_viktor_lutze = { set_character_flag = GER_inner_circle_member }
-GER_heinrich_himmler = { set_character_flag = GER_inner_circle_member }
-GER_reinhard_heydrich = { set_character_flag = GER_inner_circle_member }
-GER_max_amann = { set_character_flag = GER_inner_circle_member }
-GER_joseph_goebbels = { set_character_flag = GER_inner_circle_member }
-GER_otto_dietrich = { set_character_flag = GER_inner_circle_member }
-GER_julius_streicher = { set_character_flag = GER_inner_circle_member }
 
 if = {
 	limit = {
@@ -1210,100 +1184,169 @@ set_variable = {hitler_inner_circle_stress = 0}
 set_variable = {inner_circle_total_economy_political_power = 0}
 set_variable = {inner_circle_total_economy_loyalty = 0}
 set_variable = {inner_circle_average_economy_loyalty = 0}
-	
+
+# Economic
 GER_fritz_todt = {
 	set_variable = {inner_circle_power = 65}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 55}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_economy_1_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_hermann_goring = {
 	set_variable = {inner_circle_power = 73}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 84}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_economy_2_slot
+	set_character_flag = GER_inner_circle_member
+	set_character_flag = GER_cat_loyalty_leader
 }
 GER_albert_speer = {
 	set_variable = {inner_circle_power = 25}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 13}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_economy_3_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_hjalmar_schacht = {
 	set_variable = {inner_circle_power = 45}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = -25}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_economy_4_slot
+	set_character_flag = GER_inner_circle_member
 }
 
+# Labour
 GER_konstantin_hierl = {
 	set_variable = {inner_circle_power = 68}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 78}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_labour_1_slot
+	set_character_flag = GER_inner_circle_member
+	set_character_flag = GER_cat_loyalty_leader
 }
 GER_robert_ley = {
 	set_variable = {inner_circle_power = 57}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 65}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_labour_2_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_adolf_huhnlein = {
 	set_variable = {inner_circle_power = 25}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 63}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_labour_3_slot
+	set_character_flag = GER_inner_circle_member
 }
+
+# Administration
 GER_rudolf_hess = {
 	set_variable = {inner_circle_power = 55}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 91}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_administration_1_slot
+	set_character_flag = GER_inner_circle_member
+	set_character_flag = GER_cat_loyalty_leader
 }
 GER_wilhelm_frick = {
 	set_variable = {inner_circle_power = 35}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 46}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_administration_2_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_martin_bormann = {
 	set_variable = {inner_circle_power = 25}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 73}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_administration_3_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_hans_lammers = {
 	set_variable = {inner_circle_power = 45}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 43}
+	set_variable = {inner_circle_base_power_gain = 10 }
+	set_character_flag = GER_inner_circle_administration_4_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_walter_buch = {
 	set_variable = {inner_circle_power = 33}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 58}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_administration_5_slot
+	set_character_flag = GER_inner_circle_member
 }
+# Security
 GER_viktor_lutze = {
 	set_variable = {inner_circle_power = 39}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 72}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_security_1_slot
+	set_character_flag = GER_inner_circle_member
+	set_character_flag = GER_cat_loyalty_leader
 }
 GER_heinrich_himmler = {
 	set_variable = {inner_circle_power = 75}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 52}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_security_2_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_reinhard_heydrich = {
 	set_variable = {inner_circle_power = 23}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 48}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_security_3_slot
+	set_character_flag = GER_inner_circle_member
 }
+
+# Propaganda
 GER_max_amann = {
 	set_variable = {inner_circle_power = 32}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 51}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_propaganda_1_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_joseph_goebbels = {
 	set_variable = {inner_circle_power = 65}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 89}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_propaganda_2_slot
+	set_character_flag = GER_inner_circle_member
+	set_character_flag = GER_cat_loyalty_leader
 }
 GER_otto_dietrich = {
 	set_variable = {inner_circle_power = 15}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 42}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_propaganda_3_slot
+	set_character_flag = GER_inner_circle_member
 }
 GER_julius_streicher = {
 	set_variable = {inner_circle_power = 21}
 	set_variable = {inner_circle_character_power_portion = 0}
 	set_variable = {inner_circle_loyalty = 76}
+	set_variable = {inner_circle_base_power_gain = 10}
+	set_character_flag = GER_inner_circle_propaganda_4_slot
+	set_character_flag = GER_inner_circle_member
 }
