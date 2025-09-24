@@ -1,10 +1,10 @@
-@CATEGORY_CONTAINER_POS_Y = 0
+@CATEGORY_CONTAINER_POS_Y = 100
 
 @ASCENDED_ADVISOR_CONTAINER_POS_Y = 395
 @ASCENDED_ADVISOR_CONTAINER_WIDTH = 150
 @ASCENDED_ADVISOR_CONTAINER_HEIGHT = 120
 @ASCENDED_ADVISOR_TEXT_POS_X = -75 #Should be ASCENDED_ADVISOR_CONTAINER_WIDTH / 2 * (-1)
-@ASCENDED_ADVISOR_TEXT_POS_Y = 23
+@ASCENDED_ADVISOR_TEXT_POS_Y = 25
 
 @POWER_LEVEL_POS_Y = 135
 @LOYALTY_LEVEL_POS_Y = 155
@@ -204,7 +204,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -60 y = -150 }
+					position = { x = -60 y = -200 }
 					font = "hoi_36header"
 					context_aware_text =  [GetEconCategoryPortion]
 					format = center
@@ -212,14 +212,37 @@ guiTypes = {
 					context_aware_tooltip = GER_inner_circle_economic_category_modifier
 				}
 
+				#ASCENDED ADVISOR TRAIT BOX
+				iconType = {
+					name ="inner_circle_economy_trait_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=75	 y=-150 }
+					centerposition = yes
+					context_aware_tooltip = GER_economy_bonus
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_economy_trait"
+					orientation = center_down
+					position = { x=0	 y=-227 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_economy_bonus
+					format = center
+					maxWidth = 150
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -60 y = -60 }
+					position = { x = -25 y = -60 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconCategoryValues]
 					format = center
-					maxWidth = 300
+					maxWidth = 200
 				}
 				
 				containerWindowType = {
@@ -734,21 +757,44 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -60 y = -150 }
+					position = { x = -60 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetLabourCategoryPortion]
 					format = center
 					maxWidth = 300
 				}
 
+				#ASCENDED ADVISOR TRAIT BOX
+				iconType = {
+					name ="inner_circle_labour_trait_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=75	 y=-150 }
+					centerposition = yes
+					context_aware_tooltip = GER_labour_bonus
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_administration_trait"
+					orientation = center_down
+					position = { x=0	 y=-227 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_labour_bonus
+					format = center
+					maxWidth = 150
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -60 y = -60 }
+					position = { x = -25 y = -60 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourCategoryValues]
 					format = center
-					maxWidth = 300
+					maxWidth = 200
 				}
 				
 				containerWindowType = {
@@ -1139,21 +1185,45 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = 0 y = -128 }
+					position = { x = 0 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetAdminCategoryPortion]
 					format = center
 					maxWidth = 300
 				}
 
+				#ASCENDED ADVISOR TRAIT BOX
+				iconType = {
+					name ="inner_circle_administration_trait_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=150	 y=-150 }
+					centerposition = yes
+					context_aware_tooltip = GER_admin_bonus
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_administration_trait"
+					orientation = center_down
+					position = { x=75	 y=-227 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_admin_bonus
+					format = center
+					maxWidth = 150
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = 0 y = -60 }
+					position = { x = 50 y = -60 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminCategoryValues]
 					format = center
-					maxWidth = 300
+					maxWidth = 200
 				}
 				
 				containerWindowType = {
@@ -1793,21 +1863,44 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -75 y = -150 }
+					position = { x = -75 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetSecurityCategoryPortion]
 					format = center
 					maxWidth = 300
 				}
 
+				#ASCENDED ADVISOR TRAIT BOX
+				iconType = {
+					name ="inner_circle_security_trait_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=75	 y=-150 }
+					centerposition = yes
+					context_aware_tooltip = GER_security_bonus
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_security_trait"
+					orientation = center_down
+					position = { x=0	 y=-227 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_security_bonus
+					format = center
+					maxWidth = 150
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -60 y = -60 }
+					position = { x = -25 y = -60 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecurityCategoryValues]
 					format = center
-					maxWidth = 300
+					maxWidth = 200
 				}
 				
 				containerWindowType = {
@@ -2198,21 +2291,44 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -75 y = -150 }
+					position = { x = -75 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetPropagandaCategoryPortion]
 					format = center
 					maxWidth = 300
 				}
 
+				#ASCENDED ADVISOR TRAIT BOX
+				iconType = {
+					name ="inner_circle_propaganda_trait_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=75	 y=-150 }
+					centerposition = yes
+					context_aware_tooltip = GER_propaganda_bonus
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_trait"
+					orientation = center_down
+					position = { x=0	 y=-227 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_propaganda_bonus
+					format = center
+					maxWidth = 150
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -60 y = -60 }
+					position = { x = -25 y = -60 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaCategoryValues]
 					format = center
-					maxWidth = 300
+					maxWidth = 200
 				}
 				
 				containerWindowType = {
@@ -2706,86 +2822,6 @@ guiTypes = {
 			}
 		}
 
-
-		#########################
-		### ADVISOR PORTRAITS ###
-		#########################
-
-		containerWindowType = {
-			name = "advisors_container"
-			orientation = center_up
-			position = { x = -220 y = @ADVISOR_CONTAINER_POS_Y }
-			size = { width = 480 height = 70 }
-			clipping = no
-
-			background = {
-				name = "background"
-				quadTextureSprite ="GFX_tiled_plain_bg2"
-			}
-
-			# TODT
-			iconType = {
-				name ="advisor_todt_portrait"
-				spriteType = "GFX_fritz_todt_available_small"
-				orientation = center
-				position = { x=-227	 y=@ADVISOR_POS_Y }
-				scale = 1
-			}
-
-			# SPEER
-			iconType = {
-				name ="advisor_speer_portrait"
-				spriteType = "GFX_albert_speer_available_small"
-				orientation = center
-				position = { x=-162	 y=@ADVISOR_POS_Y }
-				scale = 1
-			}
-
-			# GÖRING
-			iconType = {
-				name ="advisor_goring_portrait"
-				spriteType = "GFX_hermann_goring_available_small"
-				orientation = center
-				position = { x=-97	 y=@ADVISOR_POS_Y }
-				scale = 1
-			}
-
-			#HIMMLER
-			iconType = {
-				name ="advisor_himmler_portrait"
-				spriteType = "GFX_heinrich_himmler_available_small"
-				orientation = center
-				position = { x=-32	 y=@ADVISOR_POS_Y }
-				scale = 1
-			}
-
-			#GOEBBELS
-			iconType = {
-				name ="advisor_goebbels_portrait"
-				spriteType = "GFX_joseph_goebbels_available_small"
-				orientation = center
-				position = { x=33	 y=@ADVISOR_POS_Y }
-				scale = 1
-			}
-
-			# HESS
-			iconType = {
-				name ="advisor_hess_portrait"
-				spriteType = "GFX_rudolf_hess_available_small"
-				orientation = center
-				position = { x=98	 y=@ADVISOR_POS_Y }
-				scale = 1
-			}
-
-			# BORMANN
-			iconType = {
-				name ="advisor_bormann_portrait"
-				spriteType = "GFX_martin_bormann_available_small"
-				orientation = center
-				position = { x=163	 y=@ADVISOR_POS_Y }
-				scale = 1
-			}
-		}
 	}
 
 	# Todt Background Yellow UI
