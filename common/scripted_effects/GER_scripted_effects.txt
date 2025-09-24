@@ -3781,6 +3781,28 @@ calculate_inner_circle_category_values = {
 
 calculate_inner_circle_character_portions = {
 
+	# Remove gamewide Loyalty Flags + Bonus for now
+	set_temp_variable = { most_loyal_inner_circle_character_loyalty = 0 }
+	set_temp_variable = { most_loyal_inner_circle_economy_loyalty = 0 }
+	set_temp_variable = { most_loyal_inner_circle_labour_loyalty = 0 }
+	set_temp_variable = { most_loyal_inner_circle_admin_loyalty = 0 }
+	set_temp_variable = { most_loyal_inner_circle_security_loyalty = 0 }
+	set_temp_variable = { most_loyal_inner_circle_propaganda_loyalty = 0 }
+	every_character = {
+		limit = {
+			has_character_flag = GER_cat_loyalty_leader
+		}
+		subtract_from_variable = { inner_circle_base_power_gain = 1 }
+		clr_character_flag = GER_cat_loyalty_leader
+		if = {
+			limit = {
+				has_character_flag = GER_overall_loyalty_leader
+			}
+			subtract_from_variable = { inner_circle_base_power_gain = 1 }
+			clr_character_flag = GER_overall_loyalty_leader
+		}
+	}
+
 	# Calculate the Characters Percentage of Power within Economy
 	every_character = {
 		limit = {
@@ -3794,6 +3816,23 @@ calculate_inner_circle_character_portions = {
 		add_to_temp_variable = { inner_circle_economy_power_portion_temp = inner_circle_power }
 		divide_temp_variable = { inner_circle_economy_power_portion_temp = PREV.inner_circle_total_economy_power }
 		set_variable = { inner_circle_character_power_portion = inner_circle_economy_power_portion_temp }
+		# Check to see who the new Economic Loyalty guy is
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_economy_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_economy_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_economy = THIS.id }
+		}
+		# Check for most Loyal Overall	
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_character_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_character_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_character = THIS.id }
+		}
+
 	}
 	# Calculate the Characters Percentage of Power within Labour
 	every_character = {
@@ -3807,6 +3846,22 @@ calculate_inner_circle_character_portions = {
 		add_to_temp_variable = { inner_circle_labour_power_portion_temp = inner_circle_power }
 		divide_temp_variable = { inner_circle_labour_power_portion_temp = PREV.inner_circle_total_labour_power }
 		set_variable = { inner_circle_character_power_portion = inner_circle_labour_power_portion_temp }
+		# Check to see who the new Labour Loyalty guy is
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_labour_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_labour_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_labour = THIS.id }
+		}
+		# Check for most Loyal Overall	
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_character_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_character_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_character = THIS.id }
+		}
 	}
 	# Calculate the Characters Percentage of Power within Administration
 	every_character = {
@@ -3822,6 +3877,22 @@ calculate_inner_circle_character_portions = {
 		add_to_temp_variable = { inner_circle_administration_power_portion_temp = inner_circle_power }
 		divide_temp_variable = { inner_circle_administration_power_portion_temp = PREV.inner_circle_total_administration_power }
 		set_variable = { inner_circle_character_power_portion = inner_circle_administration_power_portion_temp }
+		# Check to see who the new Administration Loyalty guy is
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_admin_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_admin_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_admin = THIS.id }
+		}
+		# Check for most Loyal Overall	
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_character_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_character_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_character = THIS.id }
+		}
 	}
 	# Calculate the Characters Percentage of Power within Security
 	every_character = {
@@ -3835,6 +3906,22 @@ calculate_inner_circle_character_portions = {
 		add_to_temp_variable = { inner_circle_security_power_portion_temp = inner_circle_power }
 		divide_temp_variable = { inner_circle_security_power_portion_temp = PREV.inner_circle_total_security_power }
 		set_variable = { inner_circle_character_power_portion = inner_circle_security_power_portion_temp }
+		# Check to see who the new Security Loyalty guy is
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_security_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_security_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_security = THIS.id }
+		}
+		# Check for most Loyal Overall	
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_character_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_character_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_character = THIS.id }
+		}
 	}
 	# Calculate the Characters Percentage of Power within Propaganda
 	every_character = {
@@ -3849,10 +3936,49 @@ calculate_inner_circle_character_portions = {
 		add_to_temp_variable = { inner_circle_propaganda_power_portion_temp = inner_circle_power }
 		divide_temp_variable = { inner_circle_propaganda_power_portion_temp = PREV.inner_circle_total_propaganda_power }
 		set_variable = { inner_circle_character_power_portion = inner_circle_propaganda_power_portion_temp }
+		# Check to see who the new Propaganda Loyalty guy is
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_propaganda_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_propaganda_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_propaganda = THIS.id }
+		}
+		# Check for most Loyal Overall	
+		if = {
+			limit = {
+				check_variable = { inner_circle_loyalty > most_loyal_inner_circle_character_loyalty }
+			}
+			set_temp_variable = { most_loyal_inner_circle_character_loyalty = inner_circle_loyalty }
+			set_variable = { PREV.most_loyal_inner_circle_character = THIS.id }
+		}
 	}
+
+	# Re-Add the Loyalty Values and Flags
+	every_character = {
+		limit = {
+			OR = {
+				check_variable = { PREV.most_loyal_inner_circle_economy = THIS.id }
+				check_variable = { PREV.most_loyal_inner_circle_labour = THIS.id }
+				check_variable = { PREV.most_loyal_inner_circle_admin = THIS.id }
+				check_variable = { PREV.most_loyal_inner_circle_security = THIS.id }
+				check_variable = { PREV.most_loyal_inner_circle_propaganda = THIS.id }
+			}
+		}
+		set_character_flag = GER_cat_loyalty_leader
+		add_to_variable = { inner_circle_base_power_gain = 1 }
+		if = {
+			limit = {
+				check_variable = { PREV.most_loyal_inner_circle_character = THIS.id }
+			}
+			set_character_flag = GER_overall_loyalty_leader
+			add_to_variable = { inner_circle_base_power_gain = 1 }
+		}
+	}
+
 }
 
-#Calculations for category effects
+#Calculations for trait bonuses
 GER_calculate_category_effects = {
 	# Economic Category
 	set_temp_variable = { temp_GER_inner_circle_production_speed_buildings_factor_bonus = GER_inner_circle_production_speed_buildings_factor_bonus }
@@ -4021,18 +4147,9 @@ GER_inner_circle_test_tickers = {
 					has_character_flag = GER_inner_circle_propaganda_4_slot
 				}
 			}
-			# Add the default 10
+			# Add Power, default is 10
 			add_to_variable = {
 				inner_circle_power = inner_circle_base_power_gain
-			}
-			# +1 for being the most Loyal
-			if = {
-				limit = {
-					has_character_flag = GER_cat_loyalty_leader
-				}
-				add_to_variable = {
-					inner_circle_power = 1
-				}
 			}
 		}
 	}
