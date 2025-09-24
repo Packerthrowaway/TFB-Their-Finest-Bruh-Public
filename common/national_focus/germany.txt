@@ -16,9 +16,14 @@
 ### search_filters = {FOCUS_FILTER_HISTORICAL}
 
 # CONSTANT FOR INNER CIRCLE TIMES (This is Focus cost so x7 to get the days) - THE CONSTANTS USED IN THE EVENT FILE need to be these values x7
-@inner_circle_time_tier_1 = 20
-@inner_circle_time_tier_2 = 20
-@inner_circle_time_tier_3 = 40
+@inner_circle_time_tier_1 = 1
+@inner_circle_time_tier_2 = 2
+@inner_circle_time_tier_3 = 3
+
+@inner_circle_low_cost = 25
+@inner_circle_medium_cost = 50
+@inner_circle_high_cost = 75
+@inner_circle_very_high_cost = 100
 
 focus_tree = {
 	id = german_focus
@@ -23842,7 +23847,6 @@ focus_tree = {
 	focus = {
 		id = GER_todt_new_test
 		icon = GFX_focus_GER_ascension_of_todt
-		#prerequisite = { focus = GER_fuhrerprinzip }
 		x = -52
 		y = 18
 		relative_position_id = GER_remilitarize_the_rhineland
@@ -23869,21 +23873,8 @@ focus_tree = {
 
 	focus = {
 		id = GER_todt_tier1_power
-		#icon = GFX_focus_GER_reich_ministry_of_public_enlightenment
 		prerequisite = { focus = GER_todt_new_test }
 
-		dynamic = yes
-
-		# icon = {
-		# 	trigger = {
-		# 		GER = {
-		# 			GER_fritz_todt = {
-		# 				check_variable = { inner_circle_power > 24 }
-		# 			}
-		# 		}
-		# 	}
-		# 	value = GFX_focus_GER_party_chancellor_bormann_y
-		# }
 		icon = {
 			value = GFX_focus_GER_ascension_of_todt
 		}
@@ -23914,21 +23905,28 @@ focus_tree = {
 			else = { #NOT BEEN WORKED ON (Just Explain)
 				custom_override_tooltip = {
 					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
 						CHARACTER = GER_fritz_todt
-						FOCUS = GER_todt_tier1_power
+						POWER = 25
 					}
 					always = no
 				}
 			}
 		}
 
-		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
 
 		completion_reward = {
 			GER_fritz_todt = {
-				add_to_variable = { inner_circle_power = -25 }
-				add_to_variable = { inner_circle_loyalty = 25 }
+				add_to_variable = { 
+					inner_circle_power = -25
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = 25
+					tooltip = GER_power_loyalty_tt
+				}
 			}
 		}
 	}
@@ -23938,17 +23936,6 @@ focus_tree = {
 		id = GER_todt_tier2_power
 		prerequisite = { focus = GER_todt_new_test }
 
-		dynamic = yes
-		# icon = {
-		# 	trigger = {
-		# 		GER = {
-		# 			GER_fritz_todt = {
-		# 				check_variable = { inner_circle_power > 49 }
-		# 			}
-		# 		}
-		# 	}
-		# 	value = GFX_focus_GER_party_chancellor_bormann_y
-		# }
 		icon = {
 			value = GFX_focus_GER_ascension_of_todt
 		}
@@ -23980,21 +23967,28 @@ focus_tree = {
 			else = { #NOT BEEN WORKED ON (Just Explain)
 				custom_override_tooltip = {
 					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
 						CHARACTER = GER_fritz_todt
-						FOCUS = GER_todt_tier2_power
+						POWER = 50
 					}
 					always = no
 				}
 			}
 		}
 
-		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
 
 		completion_reward = {
 			GER_fritz_todt = {
-				add_to_variable = { inner_circle_power = -50 }
-				add_to_variable = { inner_circle_loyalty = 50 }
+				add_to_variable = { 
+					inner_circle_power = -50
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -50
+					tooltip = GER_power_loyalty_tt
+				}
 			}
 		}
 	}
@@ -24002,26 +23996,11 @@ focus_tree = {
 	focus = {
 		id = GER_todt_tier3_power
 		prerequisite = { focus = GER_todt_new_test }
-
-		dynamic = yes
-
 		text_icon = GER_inner_circle_focus_style
 
-		
-		# icon = {
-		# 	trigger = {
-		# 		GER = {
-		# 			GER_fritz_todt = {
-		# 				check_variable = { inner_circle_power > 74 }
-		# 			}
-		# 		}
-		# 	}
-		# 	value = GFX_focus_GER_party_chancellor_bormann_y
-		# }
 		icon = {
 			value = GFX_focus_GER_ascension_of_todt
 		}
-
 
 		x = 4
 		y = 1
@@ -24047,21 +24026,28 @@ focus_tree = {
 			else = { #NOT BEEN WORKED ON (Just Explain)
 				custom_override_tooltip = {
 					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
 						CHARACTER = GER_fritz_todt
-						FOCUS = GER_todt_tier3_power
+						POWER = 75
 					}
 					always = no
 				}
 			}
 		}
 
-		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
 
 		completion_reward = {
 			GER_fritz_todt = {
-				add_to_variable = { inner_circle_power = -75 }
-				add_to_variable = { inner_circle_loyalty = -75 }
+				add_to_variable = { 
+					inner_circle_power = -75
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -75
+					tooltip = GER_power_loyalty_tt
+				}
 			}
 		}
 	}
@@ -24069,19 +24055,7 @@ focus_tree = {
 	focus = {
 		id = GER_todt_tier4_power
 		prerequisite = { focus = GER_todt_new_test }
-
-		dynamic = yes
 		
-		# icon = {
-		# 	trigger = {
-		# 		GER = {
-		# 			GER_fritz_todt = {
-		# 				check_variable = { inner_circle_power > 99 }
-		# 			}
-		# 		}
-		# 	}
-		# 	value = GFX_focus_GER_party_chancellor_bormann_y
-		# }
 		icon = {
 			value = GFX_focus_GER_ascension_of_todt
 		}
@@ -24113,21 +24087,28 @@ focus_tree = {
 			else = { #NOT BEEN WORKED ON (Just Explain)
 				custom_override_tooltip = {
 					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
 						CHARACTER = GER_fritz_todt
-						FOCUS = GER_todt_tier4_power
+						POWER = 100
 					}
 					always = no
 				}
 			}
 		}
 
-		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
 
 		completion_reward = {
 			GER_fritz_todt = {
-				add_to_variable = { inner_circle_power = -100 }
-				add_to_variable = { inner_circle_loyalty = -100 }
+				add_to_variable = { 
+					inner_circle_power = -100
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -100
+					tooltip = GER_power_loyalty_tt
+				}
 			}
 		}
 	}
