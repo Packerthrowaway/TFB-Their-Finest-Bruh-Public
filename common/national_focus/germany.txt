@@ -23841,8 +23841,8 @@ focus_tree = {
 
 
 
-  # New Tree
-
+ # New Tree
+  # Economic
    # Todt
 	focus = {
 		id = GER_todt_new_test
@@ -24918,8 +24918,813 @@ focus_tree = {
 			}
 		}
 	}
+  # Labour
+   # Hierl
+	focus = {
+		id = GER_hierl_new_test
+		icon = GFX_focus_GER_ascension_of_hierl
+		x = -50
+		y = 17
+		relative_position_id = GER_remilitarize_the_rhineland
+		cost = 1
+		
+		available = {
+		}
+
+		#Focus will need to pause while events are pending
+		cancel_if_invalid = no
+		continue_if_invalid = no
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_konstantin_hierl = {
+				add_to_variable = { inner_circle_power = 300 }
+			}
+			# hidden_effect = {
+			# 	country_event = { id = GER_inner_circle_hierl.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+			# }
+		}
+	}
+
+	focus = {
+		id = GER_hierl_tier1_power
+		prerequisite = { focus = GER_hierl_new_test }
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_hierl
+		}
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 0
+		y = 1
+		relative_position_id = GER_hierl_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_hierl_tier1_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_konstantin_hierl
+						FLAG_DAYS = [?GER_hierl_tier1_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_konstantin_hierl
+						POWER = 25
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_konstantin_hierl = {
+				add_to_variable = { 
+					inner_circle_power = -25
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = 25
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_hierl_tier2_power
+		prerequisite = { focus = GER_hierl_new_test }
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_hierl
+		}
 
 
+		text_icon = GER_inner_circle_focus_style
+
+		x = 2
+		y = 1
+		relative_position_id = GER_hierl_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_hierl_tier2_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_konstantin_hierl
+						FLAG_DAYS = [?GER_hierl_tier2_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_konstantin_hierl
+						POWER = 50
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_konstantin_hierl = {
+				add_to_variable = { 
+					inner_circle_power = -50
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -50
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_hierl_tier3_power
+		prerequisite = { focus = GER_hierl_new_test }
+		text_icon = GER_inner_circle_focus_style
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_hierl
+		}
+
+		x = 4
+		y = 1
+		relative_position_id = GER_hierl_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_hierl_tier3_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_konstantin_hierl
+						FLAG_DAYS = [?GER_hierl_tier3_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_konstantin_hierl
+						POWER = 75
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_konstantin_hierl = {
+				add_to_variable = { 
+					inner_circle_power = -75
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -75
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_hierl_tier4_power
+		prerequisite = { focus = GER_hierl_new_test }
+		
+		icon = {
+			value = GFX_focus_GER_ascension_of_hierl
+		}
+
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 6
+		y = 1
+		relative_position_id = GER_hierl_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_hierl_tier4_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_konstantin_hierl
+						FLAG_DAYS = [?GER_hierl_tier4_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_konstantin_hierl
+						POWER = 100
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_konstantin_hierl = {
+				add_to_variable = { 
+					inner_circle_power = -100
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -100
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+   # Ley
+	focus = {
+		id = GER_ley_new_test
+		icon = GFX_focus_GER_ascension_of_ley
+		x = -50
+		y = 19
+		relative_position_id = GER_remilitarize_the_rhineland
+		cost = 1
+		
+		available = {
+		}
+
+		#Focus will need to pause while events are pending
+		cancel_if_invalid = no
+		continue_if_invalid = no
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_robert_ley = {
+				add_to_variable = { inner_circle_power = 300 }
+			}
+			# hidden_effect = {
+			# 	country_event = { id = GER_inner_circle_todt.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+			# }
+		}
+	}
+
+	focus = {
+		id = GER_ley_tier1_power
+		prerequisite = { focus = GER_ley_new_test }
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_ley
+		}
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 0
+		y = 1
+		relative_position_id = GER_ley_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_ley_tier1_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_robert_ley
+						FLAG_DAYS = [?GER_ley_tier1_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_robert_ley
+						POWER = 25
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_robert_ley = {
+				add_to_variable = { 
+					inner_circle_power = -25
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = 25
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_ley_tier2_power
+		prerequisite = { focus = GER_ley_new_test }
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_ley
+		}
+
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 2
+		y = 1
+		relative_position_id = GER_ley_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_ley_tier2_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_robert_ley
+						FLAG_DAYS = [?GER_ley_tier2_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_robert_ley
+						POWER = 50
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_robert_ley = {
+				add_to_variable = { 
+					inner_circle_power = -50
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -50
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_ley_tier3_power
+		prerequisite = { focus = GER_ley_new_test }
+		text_icon = GER_inner_circle_focus_style
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_ley
+		}
+
+		x = 4
+		y = 1
+		relative_position_id = GER_ley_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_ley_tier3_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_robert_ley
+						FLAG_DAYS = [?GER_ley_tier3_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_robert_ley
+						POWER = 75
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_robert_ley = {
+				add_to_variable = { 
+					inner_circle_power = -75
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -75
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_ley_tier4_power
+		prerequisite = { focus = GER_ley_new_test }
+		
+		icon = {
+			value = GFX_focus_GER_ascension_of_ley
+		}
+
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 6
+		y = 1
+		relative_position_id = GER_ley_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_ley_tier4_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_robert_ley
+						FLAG_DAYS = [?GER_ley_tier4_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_robert_ley
+						POWER = 100
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_robert_ley = {
+				add_to_variable = { 
+					inner_circle_power = -100
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -100
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+   # Huhnlei
+	focus = {
+		id = GER_huhnlein_new_test
+		icon = GFX_focus_GER_ascension_of_huhnlein
+		x = -50
+		y = 21
+		relative_position_id = GER_remilitarize_the_rhineland
+		cost = 1
+		
+		available = {
+		}
+
+		#Focus will need to pause while events are pending
+		cancel_if_invalid = no
+		continue_if_invalid = no
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			GER_adolf_huhnlein = {
+				add_to_variable = { inner_circle_power = 300 }
+			}
+			# hidden_effect = {
+			# 	country_event = { id = GER_inner_circle_todt.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+			# }
+		}
+	}
+
+	focus = {
+		id = GER_huhnlein_tier1_power
+		prerequisite = { focus = GER_huhnlein_new_test }
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_huhnlein
+		}
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 0
+		y = 1
+		relative_position_id = GER_huhnlein_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_huhnlein_tier1_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_adolf_huhnlein
+						FLAG_DAYS = [?GER_huhnlein_tier1_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_adolf_huhnlein
+						POWER = 25
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_adolf_huhnlein = {
+				add_to_variable = { 
+					inner_circle_power = -25
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = 25
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_huhnlein_tier2_power
+		prerequisite = { focus = GER_huhnlein_new_test }
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_huhnlein
+		}
+
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 2
+		y = 1
+		relative_position_id = GER_huhnlein_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_huhnlein_tier2_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_adolf_huhnlein
+						FLAG_DAYS = [?GER_huhnlein_tier2_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_adolf_huhnlein
+						POWER = 50
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_adolf_huhnlein = {
+				add_to_variable = { 
+					inner_circle_power = -50
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -50
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_huhnlein_tier3_power
+		prerequisite = { focus = GER_huhnlein_new_test }
+		text_icon = GER_inner_circle_focus_style
+
+		icon = {
+			value = GFX_focus_GER_ascension_of_huhnlein
+		}
+
+		x = 4
+		y = 1
+		relative_position_id = GER_huhnlein_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_huhnlein_tier3_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_adolf_huhnlein
+						FLAG_DAYS = [?GER_huhnlein_tier3_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_adolf_huhnlein
+						POWER = 75
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_adolf_huhnlein = {
+				add_to_variable = { 
+					inner_circle_power = -75
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -75
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_huhnlein_tier4_power
+		prerequisite = { focus = GER_huhnlein_new_test }
+		
+		icon = {
+			value = GFX_focus_GER_ascension_of_huhnlein
+		}
+
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 6
+		y = 1
+		relative_position_id = GER_huhnlein_new_test
+		cost = @inner_circle_time_tier_1
+		
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = GER_huhnlein_tier4_power_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_adolf_huhnlein
+						FLAG_DAYS = [?GER_huhnlein_tier4_power_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_focus_can_only_be_completed_by_advisor_power_tt
+						CHARACTER = GER_adolf_huhnlein
+						POWER = 100
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
+
+		completion_reward = {
+			GER_adolf_huhnlein = {
+				add_to_variable = { 
+					inner_circle_power = -100
+					tooltip = GER_power_variable_tt
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				add_to_variable = { 
+					inner_circle_loyalty = -100
+					tooltip = GER_power_loyalty_tt
+				}
+			}
+		}
+	}
 
    ###    ##       ########         ##     ## ####  ######  ######## 
   ## ##   ##          ##            ##     ##  ##  ##    ##    ##    

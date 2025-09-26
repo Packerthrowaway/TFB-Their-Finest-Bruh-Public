@@ -2,6 +2,9 @@ add_namespace = GER_inner_circle_todt
 add_namespace = GER_inner_circle_goring
 add_namespace = GER_inner_circle_speer
 add_namespace = GER_inner_circle_schacht
+add_namespace = GER_inner_circle_hierl
+add_namespace = GER_inner_circle_ley
+add_namespace = GER_inner_circle_huhnlein
 
 # CONSTANT FOR INNER CIRCLE TIMES (This is Focus cost so x7 to get the days) - THE CONSTANTS USED IN THE EVENT FILE need to be these values x7
 # CONSTANT FOR INNER CIRCLE TIMES (These needs to be x7 compared to the Focus cost in the focus file) - NEEDS TO MATCH THE SAME CONSTANTS USED IN THE FOCUS FILE x7
@@ -13,6 +16,7 @@ add_namespace = GER_inner_circle_schacht
 @inner_circle_time_tier_2_flag = 29
 @inner_circle_time_tier_3_flag = 29
 
+# ECONOMIC
 
 # TODT - Start work on Focus
 country_event = {
@@ -633,6 +637,479 @@ country_event = {
 			#country_event = { id = GER_inner_circle_schacht.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
             # uncomplete_national_focus = {
             #     focus = GER_schacht_tier4_power
+            # }
+		}
+        else = {
+            # Shouldn't be possible
+        }
+	}
+}
+
+# LABOUR
+
+
+# HIERL - Start work on Focus
+country_event = {
+	id = GER_inner_circle_hierl.03
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_hierl_new_test
+	}
+
+	immediate = {
+        if = { 
+            limit = {
+                NOT = { has_shine_effect_on_focus = GER_hierl_tier1_power }
+                NOT = { has_shine_effect_on_focus = GER_hierl_tier2_power }
+                NOT = { has_shine_effect_on_focus = GER_hierl_tier3_power }
+                NOT = { has_shine_effect_on_focus = GER_hierl_tier4_power }
+            }
+            random_list = {
+                80 = {
+
+                }
+                50 = {  
+                    if = {
+                        limit = {
+                            GER_konstantin_hierl = {
+                                check_variable = { inner_circle_power > 100 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_hierl_tier4_power
+                        set_country_flag = { flag = GER_hierl_tier4_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_hierl.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                30 = {
+                    if = {
+                        limit = {
+                            GER_konstantin_hierl = {
+                                check_variable = { inner_circle_power > 75 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_hierl_tier3_power
+                        set_country_flag = { flag = GER_hierl_tier3_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_hierl.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                20 = {
+                    if = {
+                        limit = {
+                            GER_konstantin_hierl = {
+                                check_variable = { inner_circle_power > 50 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_hierl_tier2_power
+                        set_country_flag = { flag = GER_hierl_tier2_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_hierl.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                10 = {
+                    if = {
+                        limit = {
+                            GER_konstantin_hierl = {
+                                check_variable = { inner_circle_power > 25 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_hierl_tier1_power
+                        set_country_flag = { flag = GER_hierl_tier1_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_hierl.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+            }
+        }
+	}
+}
+
+# HIERL - Complete Focus
+country_event = {
+	id = GER_inner_circle_hierl.04
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_hierl_new_test
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = GER_hierl_tier1_power
+			}
+			complete_national_focus = {
+				focus = GER_hierl_tier1_power
+				use_side_message = yes
+				originator_name = GER_konstantin_hierl
+			}
+			clr_country_flag = GER_hierl_tier1_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_hierl.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_hierl_tier1_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_hierl_tier2_power
+			}
+			complete_national_focus = {
+				focus = GER_hierl_tier2_power
+				use_side_message = yes
+				originator_name = GER_konstantin_hierl
+			}
+			clr_country_flag = GER_hierl_tier2_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_hierl.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_hierl_tier2_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_hierl_tier3_power
+			}
+			complete_national_focus = {
+				focus = GER_hierl_tier3_power
+				use_side_message = yes
+				originator_name = GER_konstantin_hierl
+			}
+			clr_country_flag = GER_hierl_tier3_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_hierl.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_hierl_tier3_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_hierl_tier4_power
+			}
+			complete_national_focus = {
+				focus = GER_hierl_tier4_power
+				use_side_message = yes
+				originator_name = GER_konstantin_hierl
+			}
+			clr_country_flag = GER_hierl_tier4_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_hierl.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_hierl_tier4_power
+            # }
+		}
+        else = {
+            # Shouldn't be possible
+        }
+	}
+}
+
+
+# LEY - Complete Focus
+country_event = {
+	id = GER_inner_circle_ley.03
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_ley_new_test
+	}
+
+	immediate = {
+        if = { 
+            limit = {
+                NOT = { has_shine_effect_on_focus = GER_ley_tier1_power }
+                NOT = { has_shine_effect_on_focus = GER_ley_tier2_power }
+                NOT = { has_shine_effect_on_focus = GER_ley_tier3_power }
+                NOT = { has_shine_effect_on_focus = GER_ley_tier4_power }
+            }
+            random_list = {
+                80 = {
+
+                }
+                50 = {  
+                    if = {
+                        limit = {
+                            GER_robert_ley = {
+                                check_variable = { inner_circle_power > 100 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_ley_tier4_power
+                        set_country_flag = { flag = GER_ley_tier4_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_ley.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                30 = {
+                    if = {
+                        limit = {
+                            GER_robert_ley = {
+                                check_variable = { inner_circle_power > 75 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_ley_tier3_power
+                        set_country_flag = { flag = GER_ley_tier3_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_ley.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                20 = {
+                    if = {
+                        limit = {
+                            GER_robert_ley = {
+                                check_variable = { inner_circle_power > 50 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_ley_tier2_power
+                        set_country_flag = { flag = GER_ley_tier2_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_ley.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                10 = {
+                    if = {
+                        limit = {
+                            GER_robert_ley = {
+                                check_variable = { inner_circle_power > 25 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_ley_tier1_power
+                        set_country_flag = { flag = GER_ley_tier1_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_ley.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+            }
+        }
+	}
+}
+
+# LEY - Complete Focus
+country_event = {
+	id = GER_inner_circle_ley.04
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_ley_new_test
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = GER_ley_tier1_power
+			}
+			complete_national_focus = {
+				focus = GER_ley_tier1_power
+				use_side_message = yes
+				originator_name = GER_robert_ley
+			}
+			clr_country_flag = GER_ley_tier1_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_ley.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_ley_tier1_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_ley_tier2_power
+			}
+			complete_national_focus = {
+				focus = GER_ley_tier2_power
+				use_side_message = yes
+				originator_name = GER_robert_ley
+			}
+			clr_country_flag = GER_ley_tier2_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_ley.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_ley_tier2_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_ley_tier3_power
+			}
+			complete_national_focus = {
+				focus = GER_ley_tier3_power
+				use_side_message = yes
+				originator_name = GER_robert_ley
+			}
+			clr_country_flag = GER_ley_tier3_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_ley.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_ley_tier3_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_ley_tier4_power
+			}
+			complete_national_focus = {
+				focus = GER_ley_tier4_power
+				use_side_message = yes
+				originator_name = GER_robert_ley
+			}
+			clr_country_flag = GER_ley_tier4_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_ley.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_ley_tier4_power
+            # }
+		}
+        else = {
+            # Shouldn't be possible
+        }
+	}
+}
+
+
+# HUHNLEIN - Start work on Focus
+country_event = {
+	id = GER_inner_circle_huhnlein.03
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_huhnlein_new_test
+	}
+
+	immediate = {
+        if = { 
+            limit = {
+                NOT = { has_shine_effect_on_focus = GER_huhnlein_tier1_power }
+                NOT = { has_shine_effect_on_focus = GER_huhnlein_tier2_power }
+                NOT = { has_shine_effect_on_focus = GER_huhnlein_tier3_power }
+                NOT = { has_shine_effect_on_focus = GER_huhnlein_tier4_power }
+            }
+            random_list = {
+                80 = {
+
+                }
+                50 = {  
+                    if = {
+                        limit = {
+                            GER_adolf_huhnlein = {
+                                check_variable = { inner_circle_power > 100 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_huhnlein_tier4_power
+                        set_country_flag = { flag = GER_huhnlein_tier4_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_huhnlein.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                30 = {
+                    if = {
+                        limit = {
+                            GER_adolf_huhnlein = {
+                                check_variable = { inner_circle_power > 75 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_huhnlein_tier3_power
+                        set_country_flag = { flag = GER_huhnlein_tier3_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_huhnlein.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                20 = {
+                    if = {
+                        limit = {
+                            GER_adolf_huhnlein = {
+                                check_variable = { inner_circle_power > 50 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_huhnlein_tier2_power
+                        set_country_flag = { flag = GER_huhnlein_tier2_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_huhnlein.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+                10 = {
+                    if = {
+                        limit = {
+                            GER_adolf_huhnlein = {
+                                check_variable = { inner_circle_power > 25 }
+                            }
+                        }
+                        activate_shine_on_focus = GER_huhnlein_tier1_power
+                        set_country_flag = { flag = GER_huhnlein_tier1_power_in_progress_flag days = @inner_circle_time_tier_1_flag value = 1 }
+                        country_event = { id = GER_inner_circle_huhnlein.04 days = @inner_circle_time_tier_1 }
+                    }
+                }
+            }
+        }
+	}
+}
+
+# HUHNLEIN - Complete Focus
+country_event = {
+	id = GER_inner_circle_huhnlein.04
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_completed_focus = GER_huhnlein_new_test
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_shine_effect_on_focus = GER_huhnlein_tier1_power
+			}
+			complete_national_focus = {
+				focus = GER_huhnlein_tier1_power
+				use_side_message = yes
+				originator_name = GER_adolf_huhnlein
+			}
+			clr_country_flag = GER_huhnlein_tier1_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_huhnlein.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_huhnlein_tier1_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_huhnlein_tier2_power
+			}
+			complete_national_focus = {
+				focus = GER_huhnlein_tier2_power
+				use_side_message = yes
+				originator_name = GER_adolf_huhnlein
+			}
+			clr_country_flag = GER_huhnlein_tier2_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_huhnlein.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_huhnlein_tier2_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_huhnlein_tier3_power
+			}
+			complete_national_focus = {
+				focus = GER_huhnlein_tier3_power
+				use_side_message = yes
+				originator_name = GER_adolf_huhnlein
+			}
+			clr_country_flag = GER_huhnlein_tier3_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_huhnlein.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_huhnlein_tier3_power
+            # }
+		}
+		else_if = {
+			limit = {
+				has_shine_effect_on_focus = GER_huhnlein_tier4_power
+			}
+			complete_national_focus = {
+				focus = GER_huhnlein_tier4_power
+				use_side_message = yes
+				originator_name = GER_adolf_huhnlein
+			}
+			clr_country_flag = GER_huhnlein_tier4_power_in_progress_flag
+			#country_event = { id = GER_inner_circle_huhnlein.03 days = GER_inner_circle_days_to_start_focus random_days = GER_inner_circle_random_days }
+            # uncomplete_national_focus = {
+            #     focus = GER_huhnlein_tier4_power
             # }
 		}
         else = {
