@@ -24,13 +24,13 @@ add_namespace = GER_inner_circle_streicher
 
 # CONSTANT FOR INNER CIRCLE TIMES (This is Focus cost so x7 to get the days) - THE CONSTANTS USED IN THE EVENT FILE need to be these values x7
 # CONSTANT FOR INNER CIRCLE TIMES (These needs to be x7 compared to the Focus cost in the focus file) - NEEDS TO MATCH THE SAME CONSTANTS USED IN THE FOCUS FILE x7
-@inner_circle_time_tier_1 = 28
-@inner_circle_time_tier_2 = 28
-@inner_circle_time_tier_3 = 28
+@inner_circle_time_tier_1 = 21
+@inner_circle_time_tier_2 = 21
+@inner_circle_time_tier_3 = 21
 # FLAG CONSTANTS (It is 1 day more so the tooltip and days shown in the focus about Focus Progress match exactly the moment when the focus is completed)
-@inner_circle_time_tier_1_flag = 29
-@inner_circle_time_tier_2_flag = 29
-@inner_circle_time_tier_3_flag = 29
+@inner_circle_time_tier_1_flag = 22
+@inner_circle_time_tier_2_flag = 22
+@inner_circle_time_tier_3_flag = 22
 
 # ECONOMIC
 
@@ -41,10 +41,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_todt_ascend
-	}
 
 	immediate = {
         if = { 
@@ -118,18 +114,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_todt_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_todt_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_todt_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_todt_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_fritz_todt
 			}
 			clr_country_flag = GER_todt_tier1_power_in_progress_flag
@@ -144,7 +137,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_todt_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_fritz_todt
 			}
 			clr_country_flag = GER_todt_tier2_power_in_progress_flag
@@ -159,7 +152,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_todt_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_fritz_todt
 			}
 			clr_country_flag = GER_todt_tier3_power_in_progress_flag
@@ -174,7 +167,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_todt_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_fritz_todt
 			}
 			clr_country_flag = GER_todt_tier4_power_in_progress_flag
@@ -196,10 +189,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_goring_ascend
-	}
 
 	immediate = {
         if = { 
@@ -274,18 +263,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_goring_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_goring_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_goring_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_goring_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hermann_goring
 			}
 			clr_country_flag = GER_goring_tier1_power_in_progress_flag
@@ -300,7 +286,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_goring_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hermann_goring
 			}
 			clr_country_flag = GER_goring_tier2_power_in_progress_flag
@@ -315,7 +301,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_goring_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hermann_goring
 			}
 			clr_country_flag = GER_goring_tier3_power_in_progress_flag
@@ -330,7 +316,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_goring_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hermann_goring
 			}
 			clr_country_flag = GER_goring_tier4_power_in_progress_flag
@@ -352,10 +338,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_speer_ascend
-	}
 
 	immediate = {
         if = { 
@@ -430,18 +412,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_speer_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_speer_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_speer_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_speer_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_albert_speer
 			}
 			clr_country_flag = GER_speer_tier1_power_in_progress_flag
@@ -456,7 +435,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_speer_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_albert_speer
 			}
 			clr_country_flag = GER_speer_tier2_power_in_progress_flag
@@ -471,7 +450,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_speer_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_albert_speer
 			}
 			clr_country_flag = GER_speer_tier3_power_in_progress_flag
@@ -486,7 +465,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_speer_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_albert_speer
 			}
 			clr_country_flag = GER_speer_tier4_power_in_progress_flag
@@ -509,10 +488,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_schacht_ascend
-	}
 
 	immediate = {
         if = { 
@@ -587,18 +562,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_schacht_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_schacht_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_schacht_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_schacht_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hjalmar_schacht
 			}
 			clr_country_flag = GER_schacht_tier1_power_in_progress_flag
@@ -613,7 +585,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_schacht_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hjalmar_schacht
 			}
 			clr_country_flag = GER_schacht_tier2_power_in_progress_flag
@@ -628,7 +600,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_schacht_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hjalmar_schacht
 			}
 			clr_country_flag = GER_schacht_tier3_power_in_progress_flag
@@ -643,7 +615,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_schacht_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hjalmar_schacht
 			}
 			clr_country_flag = GER_schacht_tier4_power_in_progress_flag
@@ -667,10 +639,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_hierl_ascend
-	}
 
 	immediate = {
         if = { 
@@ -745,18 +713,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_hierl_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_hierl_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_hierl_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_hierl_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_konstantin_hierl
 			}
 			clr_country_flag = GER_hierl_tier1_power_in_progress_flag
@@ -771,7 +736,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_hierl_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_konstantin_hierl
 			}
 			clr_country_flag = GER_hierl_tier2_power_in_progress_flag
@@ -786,7 +751,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_hierl_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_konstantin_hierl
 			}
 			clr_country_flag = GER_hierl_tier3_power_in_progress_flag
@@ -801,7 +766,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_hierl_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_konstantin_hierl
 			}
 			clr_country_flag = GER_hierl_tier4_power_in_progress_flag
@@ -823,10 +788,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_ley_ascend
-	}
 
 	immediate = {
         if = { 
@@ -901,18 +862,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_ley_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_ley_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_ley_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_ley_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_robert_ley
 			}
 			clr_country_flag = GER_ley_tier1_power_in_progress_flag
@@ -927,7 +885,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_ley_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_robert_ley
 			}
 			clr_country_flag = GER_ley_tier2_power_in_progress_flag
@@ -942,7 +900,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_ley_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_robert_ley
 			}
 			clr_country_flag = GER_ley_tier3_power_in_progress_flag
@@ -957,7 +915,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_ley_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_robert_ley
 			}
 			clr_country_flag = GER_ley_tier4_power_in_progress_flag
@@ -979,10 +937,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_huhnlein_ascend
-	}
 
 	immediate = {
         if = { 
@@ -1057,18 +1011,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_huhnlein_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_huhnlein_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_huhnlein_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_huhnlein_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_adolf_huhnlein
 			}
 			clr_country_flag = GER_huhnlein_tier1_power_in_progress_flag
@@ -1083,7 +1034,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_huhnlein_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_adolf_huhnlein
 			}
 			clr_country_flag = GER_huhnlein_tier2_power_in_progress_flag
@@ -1098,7 +1049,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_huhnlein_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_adolf_huhnlein
 			}
 			clr_country_flag = GER_huhnlein_tier3_power_in_progress_flag
@@ -1113,7 +1064,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_huhnlein_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_adolf_huhnlein
 			}
 			clr_country_flag = GER_huhnlein_tier4_power_in_progress_flag
@@ -1137,10 +1088,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_hess_ascend
-	}
 
 	immediate = {
         if = { 
@@ -1215,18 +1162,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_hess_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_hess_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_hess_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_hess_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_rudolf_hess
 			}
 			clr_country_flag = GER_hess_tier1_power_in_progress_flag
@@ -1237,7 +1181,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_hess_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_rudolf_hess
 			}
 			clr_country_flag = GER_hess_tier2_power_in_progress_flag
@@ -1248,7 +1192,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_hess_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_rudolf_hess
 			}
 			clr_country_flag = GER_hess_tier3_power_in_progress_flag
@@ -1259,7 +1203,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_hess_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_rudolf_hess
 			}
 			clr_country_flag = GER_hess_tier4_power_in_progress_flag
@@ -1277,10 +1221,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_frick_ascend
-	}
 
 	immediate = {
         if = { 
@@ -1355,18 +1295,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_frick_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_frick_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_frick_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_frick_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_wilhelm_frick
 			}
 			clr_country_flag = GER_frick_tier1_power_in_progress_flag
@@ -1377,7 +1314,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_frick_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_wilhelm_frick
 			}
 			clr_country_flag = GER_frick_tier2_power_in_progress_flag
@@ -1388,7 +1325,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_frick_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_wilhelm_frick
 			}
 			clr_country_flag = GER_frick_tier3_power_in_progress_flag
@@ -1399,7 +1336,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_frick_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_wilhelm_frick
 			}
 			clr_country_flag = GER_frick_tier4_power_in_progress_flag
@@ -1417,10 +1354,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_bormann_ascend
-	}
 
 	immediate = {
         if = { 
@@ -1495,18 +1428,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_bormann_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_bormann_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_bormann_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_bormann_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_martin_bormann
 			}
 			clr_country_flag = GER_bormann_tier1_power_in_progress_flag
@@ -1517,7 +1447,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_bormann_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_martin_bormann
 			}
 			clr_country_flag = GER_bormann_tier2_power_in_progress_flag
@@ -1528,7 +1458,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_bormann_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_martin_bormann
 			}
 			clr_country_flag = GER_bormann_tier3_power_in_progress_flag
@@ -1539,7 +1469,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_bormann_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_martin_bormann
 			}
 			clr_country_flag = GER_bormann_tier4_power_in_progress_flag
@@ -1557,10 +1487,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_lammers_ascend
-	}
 
 	immediate = {
         if = { 
@@ -1635,18 +1561,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_lammers_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_lammers_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_lammers_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_lammers_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hans_lammers
 			}
 			clr_country_flag = GER_lammers_tier1_power_in_progress_flag
@@ -1657,7 +1580,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_lammers_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hans_lammers
 			}
 			clr_country_flag = GER_lammers_tier2_power_in_progress_flag
@@ -1668,7 +1591,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_lammers_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hans_lammers
 			}
 			clr_country_flag = GER_lammers_tier3_power_in_progress_flag
@@ -1679,7 +1602,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_lammers_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_hans_lammers
 			}
 			clr_country_flag = GER_lammers_tier4_power_in_progress_flag
@@ -1697,10 +1620,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_buch_ascend
-	}
 
 	immediate = {
         if = { 
@@ -1775,18 +1694,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_buch_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_buch_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_buch_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_buch_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_walter_buch
 			}
 			clr_country_flag = GER_buch_tier1_power_in_progress_flag
@@ -1797,7 +1713,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_buch_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_walter_buch
 			}
 			clr_country_flag = GER_buch_tier2_power_in_progress_flag
@@ -1808,7 +1724,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_buch_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_walter_buch
 			}
 			clr_country_flag = GER_buch_tier3_power_in_progress_flag
@@ -1819,7 +1735,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_buch_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_walter_buch
 			}
 			clr_country_flag = GER_buch_tier4_power_in_progress_flag
@@ -1840,10 +1756,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_lutze_ascend
-	}
 
 	immediate = {
         if = { 
@@ -1918,18 +1830,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_lutze_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_lutze_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_lutze_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_lutze_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_viktor_lutze
 			}
 			clr_country_flag = GER_lutze_tier1_power_in_progress_flag
@@ -1944,7 +1853,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_lutze_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_viktor_lutze
 			}
 			clr_country_flag = GER_lutze_tier2_power_in_progress_flag
@@ -1959,7 +1868,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_lutze_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_viktor_lutze
 			}
 			clr_country_flag = GER_lutze_tier3_power_in_progress_flag
@@ -1974,7 +1883,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_lutze_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_viktor_lutze
 			}
 			clr_country_flag = GER_lutze_tier4_power_in_progress_flag
@@ -1996,10 +1905,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_himmler_ascend
-	}
 
 	immediate = {
         if = { 
@@ -2074,18 +1979,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_himmler_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_himmler_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_himmler_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_himmler_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_heinrich_himmler
 			}
 			clr_country_flag = GER_himmler_tier1_power_in_progress_flag
@@ -2100,7 +2002,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_himmler_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_heinrich_himmler
 			}
 			clr_country_flag = GER_himmler_tier2_power_in_progress_flag
@@ -2115,7 +2017,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_himmler_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_heinrich_himmler
 			}
 			clr_country_flag = GER_himmler_tier3_power_in_progress_flag
@@ -2130,7 +2032,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_himmler_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_heinrich_himmler
 			}
 			clr_country_flag = GER_himmler_tier4_power_in_progress_flag
@@ -2152,10 +2054,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_heydrich_ascend
-	}
 
 	immediate = {
         if = { 
@@ -2230,18 +2128,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_heydrich_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_heydrich_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_heydrich_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_heydrich_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_reinhard_heydrich
 			}
 			clr_country_flag = GER_heydrich_tier1_power_in_progress_flag
@@ -2256,7 +2151,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_heydrich_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_reinhard_heydrich
 			}
 			clr_country_flag = GER_heydrich_tier2_power_in_progress_flag
@@ -2271,7 +2166,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_heydrich_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_reinhard_heydrich
 			}
 			clr_country_flag = GER_heydrich_tier3_power_in_progress_flag
@@ -2286,7 +2181,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_heydrich_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_reinhard_heydrich
 			}
 			clr_country_flag = GER_heydrich_tier4_power_in_progress_flag
@@ -2311,10 +2206,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_amann_ascend
-	}
 
 	immediate = {
         if = { 
@@ -2389,18 +2280,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_amann_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_amann_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_amann_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_amann_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_max_amann
 			}
 			clr_country_flag = GER_amann_tier1_power_in_progress_flag
@@ -2411,7 +2299,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_amann_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_max_amann
 			}
 			clr_country_flag = GER_amann_tier2_power_in_progress_flag
@@ -2422,7 +2310,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_amann_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_max_amann
 			}
 			clr_country_flag = GER_amann_tier3_power_in_progress_flag
@@ -2433,7 +2321,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_amann_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_max_amann
 			}
 			clr_country_flag = GER_amann_tier4_power_in_progress_flag
@@ -2451,10 +2339,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_goebbels_ascend
-	}
 
 	immediate = {
         if = { 
@@ -2529,18 +2413,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_goebbels_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_goebbels_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_goebbels_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_goebbels_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_joseph_goebbels
 			}
 			clr_country_flag = GER_goebbels_tier1_power_in_progress_flag
@@ -2551,7 +2432,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_goebbels_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_joseph_goebbels
 			}
 			clr_country_flag = GER_goebbels_tier2_power_in_progress_flag
@@ -2562,7 +2443,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_goebbels_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_joseph_goebbels
 			}
 			clr_country_flag = GER_goebbels_tier3_power_in_progress_flag
@@ -2573,7 +2454,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_goebbels_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_joseph_goebbels
 			}
 			clr_country_flag = GER_goebbels_tier4_power_in_progress_flag
@@ -2592,9 +2473,6 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_dietrich_ascend
-	}
 
 	immediate = {
         if = { 
@@ -2669,18 +2547,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_dietrich_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_dietrich_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_dietrich_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_dietrich_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_otto_dietrich
 			}
 			clr_country_flag = GER_dietrich_tier1_power_in_progress_flag
@@ -2691,7 +2566,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_dietrich_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_otto_dietrich
 			}
 			clr_country_flag = GER_dietrich_tier2_power_in_progress_flag
@@ -2702,7 +2577,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_dietrich_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_otto_dietrich
 			}
 			clr_country_flag = GER_dietrich_tier3_power_in_progress_flag
@@ -2713,7 +2588,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_dietrich_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_otto_dietrich
 			}
 			clr_country_flag = GER_dietrich_tier4_power_in_progress_flag
@@ -2731,10 +2606,6 @@ country_event = {
 	hidden = yes
 
 	is_triggered_only = yes
-
-	trigger = {
-		has_completed_focus = GER_streicher_ascend
-	}
 
 	immediate = {
         if = { 
@@ -2809,18 +2680,15 @@ country_event = {
 
 	is_triggered_only = yes
 
-	trigger = {
-		has_completed_focus = GER_streicher_ascend
-	}
-
 	immediate = {
+        set_country_flag = GER_inner_circle_streicher_cd_flag
 		if = {
 			limit = {
 				has_shine_effect_on_focus = GER_streicher_tier1_power
 			}
 			complete_national_focus = {
 				focus = GER_streicher_tier1_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_julius_streicher
 			}
 			clr_country_flag = GER_streicher_tier1_power_in_progress_flag
@@ -2831,7 +2699,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_streicher_tier2_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_julius_streicher
 			}
 			clr_country_flag = GER_streicher_tier2_power_in_progress_flag
@@ -2842,7 +2710,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_streicher_tier3_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_julius_streicher
 			}
 			clr_country_flag = GER_streicher_tier3_power_in_progress_flag
@@ -2853,7 +2721,7 @@ country_event = {
 			}
 			complete_national_focus = {
 				focus = GER_streicher_tier4_power
-				use_side_message = yes
+				use_side_message = no
 				originator_name = GER_julius_streicher
 			}
 			clr_country_flag = GER_streicher_tier4_power_in_progress_flag
