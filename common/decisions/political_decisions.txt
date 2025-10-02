@@ -2097,6 +2097,21 @@ political_actions = {
 		cost = 50
 
 		complete_effect = {
+			if = {
+				limit = {
+					original_tag = GER
+				}
+				custom_effect_tooltip = GER_inner_circle_decision_effect_tt
+				GER_julius_streicher = {
+					add_to_variable = { 
+						inner_circle_loyalty = 5
+					}
+					add_to_variable = { 
+						inner_circle_power = 100
+					}
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
 			add_stability = -0.1
 		}
 		
@@ -2143,6 +2158,37 @@ political_actions = {
 		cost = 50
 
 		complete_effect = {
+			if = {
+				limit = {
+					original_tag = GER
+				}
+				custom_effect_tooltip = GER_inner_circle_decision_effect_tt
+				GER_robert_ley = {
+					add_to_variable = { 
+						inner_circle_loyalty = 5
+					}
+					add_to_variable = { 
+						inner_circle_power = 100
+					}
+				}
+				GER_heinrich_himmler = {
+					add_to_variable = { 
+						inner_circle_loyalty = 5
+					}
+					add_to_variable = { 
+						inner_circle_power = 100
+					}
+				}
+				GER_joseph_goebbels = {
+					add_to_variable = { 
+						inner_circle_loyalty = 5
+					}
+					add_to_variable = { 
+						inner_circle_power = 100
+					}
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
 			add_stability = -0.1
 		}
 		
@@ -2504,6 +2550,19 @@ political_actions = {
 		cost = 100
 		
 		complete_effect = {
+			if = {
+				limit = {
+					original_tag = GER
+				}
+				custom_effect_tooltip = GER_inner_circle_decision_effect_tt
+				every_character = {
+					limit = { has_trait = GER_inner_circle_member }
+					add_to_variable = { 
+						inner_circle_loyalty = 5
+					}
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
 			hidden_effect = {
 				set_temp_variable = {
 					var = ban_ideology_var
@@ -2665,6 +2724,24 @@ political_actions = {
 			fascism_drift = 0.03
 			democratic_drift = -0.01
 			neutrality_drift = -0.01
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					original_tag = GER
+				}
+				custom_effect_tooltip = GER_inner_circle_decision_effect_tt
+				GER_max_amann = {
+					add_to_variable = { 
+						inner_circle_loyalty = 15
+					}
+					add_to_variable = { 
+						inner_circle_power = 200
+					}
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
 		}
 	
 		days_remove = 360
