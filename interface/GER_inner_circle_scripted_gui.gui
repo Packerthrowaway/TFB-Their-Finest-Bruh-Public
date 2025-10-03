@@ -4,10 +4,10 @@
 @ASCENDED_ADVISOR_CONTAINER_WIDTH = 150
 @ASCENDED_ADVISOR_CONTAINER_HEIGHT = 120
 @ASCENDED_ADVISOR_TEXT_POS_X = -75 #Should be ASCENDED_ADVISOR_CONTAINER_WIDTH / 2 * (-1)
-@ASCENDED_ADVISOR_TEXT_POS_Y = 25
+@ASCENDED_ADVISOR_TEXT_POS_Y = -35
 
-@POWER_LEVEL_POS_Y = 135
-@LOYALTY_LEVEL_POS_Y = 135
+@POWER_LEVEL_POS_Y = 75
+@LOYALTY_LEVEL_POS_Y = 75
 
 @POWER_LEVEL_POS_Y_TIER_2 = 135
 @LOYALTY_LEVEL_POS_Y_TIER_2 = 155
@@ -16,7 +16,7 @@
 
 
 @ADVISOR_CONTAINER_POS_Y = 975
-@ADVISOR_CONTAINER_POS_Y_TIER_2 = 640
+@ADVISOR_CONTAINER_POS_Y_TIER_2 = 670
 @ADVISOR_POS_Y = -28
 
 
@@ -212,33 +212,10 @@ guiTypes = {
 					context_aware_tooltip = GER_inner_circle_economic_category_modifier
 				}
 
-				#ASCENDED ADVISOR TRAIT BOX
-				iconType = {
-					name ="inner_circle_economy_trait_box"
-					spriteType = "GFX_ascended_advisor_trait_box"
-					orientation = center
-					position = { x=75	 y=-150 }
-					centerposition = yes
-					context_aware_tooltip = GER_economy_bonus
-				}
-
-				#TRAIT
-				instantTextBoxType = {
-					name ="inner_circle_economy_trait"
-					orientation = center_down
-					position = { x=0	 y=-227 }
-					font = "hoi_18mbs"
-					context_aware_text = GER_economy_bonus
-					format = center
-					maxWidth = 150
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -25 y = -60 }
+					position = { x = -25 y = -120 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconCategoryValues]
 					format = center
@@ -248,7 +225,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_economy_1_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 					
@@ -278,7 +255,7 @@ guiTypes = {
 					name ="inner_circle_economy_1_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_todt_flavor
 				} 
@@ -287,7 +264,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_1_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetEconSlot1Name]
 					format = center
@@ -300,7 +277,7 @@ guiTypes = {
 					name ="inner_circle_economy_1_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_todt_bonus
 				}
@@ -332,7 +309,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot1PowerPercentage]
 					format = center
@@ -354,7 +331,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_1_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot1Loyalty]
 					format = center
@@ -366,7 +343,8 @@ guiTypes = {
 					name = "power_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
 					orientation = center_down
-					position = { x = 00 y = 85 }
+					position = { x = -70 y = 25 }
+					context_aware_tooltip = GER_econ_slot_1_tt
 				}
 			}
 
@@ -380,7 +358,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_economy_2_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -410,7 +388,7 @@ guiTypes = {
 					name ="inner_circle_economy_2_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_goring_flavor
 				}
@@ -419,7 +397,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_2_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetEconSlot2Name]
 					format = center
@@ -432,7 +410,7 @@ guiTypes = {
 					name ="inner_circle_economy_2_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_goring_bonus
 				}
@@ -463,7 +441,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot2PowerPercentage]
 					format = center
@@ -485,7 +463,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_2_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot2Loyalty]
 					format = center
@@ -504,7 +482,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_economy_3_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -534,7 +512,7 @@ guiTypes = {
 					name ="inner_circle_economy_3_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_speer_flavor
 				}
@@ -543,7 +521,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_3_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetEconSlot3Name]
 					format = center
@@ -556,7 +534,7 @@ guiTypes = {
 					name ="inner_circle_economy_3_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_speer_bonus
 				}
@@ -587,7 +565,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot3PowerPercentage]
 					format = center
@@ -609,7 +587,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_3_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot3Loyalty]
 					format = center
@@ -628,7 +606,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_economy_4_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -658,7 +636,7 @@ guiTypes = {
 					name ="inner_circle_economy_4_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_schacht_flavor
 				}
@@ -667,7 +645,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_4_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetEconSlot4Name]
 					format = center
@@ -680,7 +658,7 @@ guiTypes = {
 					name ="inner_circle_economy_4_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_schacht_bonus
 				}
@@ -711,7 +689,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_4_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot4PowerPercentage]
 					format = center
@@ -733,7 +711,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_4_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetEconSlot4Loyalty]
 					format = center
@@ -771,33 +749,10 @@ guiTypes = {
 					maxWidth = 300
 				}
 
-				#ASCENDED ADVISOR TRAIT BOX
-				iconType = {
-					name ="inner_circle_labour_trait_box"
-					spriteType = "GFX_ascended_advisor_trait_box"
-					orientation = center
-					position = { x=75	 y=-150 }
-					centerposition = yes
-					context_aware_tooltip = GER_labour_bonus
-				}
-
-				#TRAIT
-				instantTextBoxType = {
-					name ="inner_circle_administration_trait"
-					orientation = center_down
-					position = { x=0	 y=-227 }
-					font = "hoi_18mbs"
-					context_aware_text = GER_labour_bonus
-					format = center
-					maxWidth = 150
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -25 y = -60 }
+					position = { x = -25 y = -120 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourCategoryValues]
 					format = center
@@ -807,7 +762,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_labour_1_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 					
@@ -837,7 +792,7 @@ guiTypes = {
 					name ="inner_circle_labour_1_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_hierl_flavor
 				} 
@@ -846,7 +801,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_1_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetLabourSlot1Name]
 					format = center
@@ -859,7 +814,7 @@ guiTypes = {
 					name ="inner_circle_labour_1_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_hierl_bonus
 				}
@@ -891,7 +846,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourSlot1PowerPercentage]
 					format = center
@@ -913,7 +868,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_1_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourSlot1Loyalty]
 					format = center
@@ -932,7 +887,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_labour_2_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -962,7 +917,7 @@ guiTypes = {
 					name ="inner_circle_labour_2_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_ley_flavor
 				}
@@ -971,7 +926,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_2_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetLabourSlot2Name]
 					format = center
@@ -984,7 +939,7 @@ guiTypes = {
 					name ="inner_circle_labour_2_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_ley_bonus
 				}
@@ -1015,7 +970,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourSlot2PowerPercentage]
 					format = center
@@ -1037,7 +992,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_2_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourSlot2Loyalty]
 					format = center
@@ -1056,7 +1011,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_labour_3_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -1086,7 +1041,7 @@ guiTypes = {
 					name ="inner_circle_labour_3_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_huhnlein_flavor
 				}
@@ -1095,7 +1050,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_3_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetLabourSlot3Name]
 					format = center
@@ -1108,7 +1063,7 @@ guiTypes = {
 					name ="inner_circle_labour_3_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_huhnlein_bonus
 				}
@@ -1137,9 +1092,9 @@ guiTypes = {
 
 				#Power Level
 				instantTextBoxType = {
-					name ="inner_circle_labour_1_power_level"
+					name ="inner_circle_labour_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourSlot3PowerPercentage]
 					format = center
@@ -1149,7 +1104,7 @@ guiTypes = {
 
 				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_labour_1_loyalty_box"
+					name ="inner_circle_labour_3_loyalty_box"
 					spriteType = "GFX_trait_box_inner_circle_stats"
 					orientation = center
 					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
@@ -1159,9 +1114,9 @@ guiTypes = {
 
 				#Loyalty Level
 				instantTextBoxType = {
-					name ="inner_circle_labour_1_loyalty_level"
+					name ="inner_circle_labour_3_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetLabourSlot3Loyalty]
 					format = center
@@ -1199,34 +1154,10 @@ guiTypes = {
 					maxWidth = 300
 				}
 
-				#ASCENDED ADVISOR TRAIT BOX
-				iconType = {
-					name ="inner_circle_administration_trait_box"
-					spriteType = "GFX_ascended_advisor_trait_box"
-					orientation = center
-					position = { x=150	 y=-150 }
-					centerposition = yes
-					context_aware_tooltip = GER_admin_bonus
-				}
-
-				#TRAIT
-				instantTextBoxType = {
-					name ="inner_circle_administration_trait"
-					orientation = center_down
-					position = { x=75	 y=-227 }
-					font = "hoi_18mbs"
-					context_aware_text = GER_admin_bonus
-					format = center
-					maxWidth = 150
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-
-
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = 50 y = -60 }
+					position = { x = 50 y = -120 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminCategoryValues]
 					format = center
@@ -1236,7 +1167,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_administration_1_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 					
@@ -1266,7 +1197,7 @@ guiTypes = {
 					name ="inner_circle_administration_1_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_hess_flavor
 				} 
@@ -1275,7 +1206,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_1_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetAdminSlot1Name]
 					format = center
@@ -1288,7 +1219,7 @@ guiTypes = {
 					name ="inner_circle_administration_1_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_hess_bonus
 				}
@@ -1320,7 +1251,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot1PowerPercentage]
 					format = center
@@ -1342,7 +1273,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_1_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot1Loyalty]
 					format = center
@@ -1361,7 +1292,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_administration_2_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -1391,7 +1322,7 @@ guiTypes = {
 					name ="inner_circle_administration_2_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_frick_flavor
 				}
@@ -1400,7 +1331,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_2_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetAdminSlot2Name]
 					format = center
@@ -1413,7 +1344,7 @@ guiTypes = {
 					name ="inner_circle_administration_2_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_frick_bonus
 				}
@@ -1444,7 +1375,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot2PowerPercentage]
 					format = center
@@ -1466,7 +1397,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_2_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot2Loyalty]
 					format = center
@@ -1485,7 +1416,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_administration_3_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -1515,7 +1446,7 @@ guiTypes = {
 					name ="inner_circle_administration_3_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_bormann_flavor
 				}
@@ -1524,7 +1455,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_3_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetAdminSlot3Name]
 					format = center
@@ -1537,7 +1468,7 @@ guiTypes = {
 					name ="inner_circle_administration_3_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_bormann_bonus
 				}
@@ -1568,7 +1499,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot3PowerPercentage]
 					format = center
@@ -1590,7 +1521,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_3_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot3Loyalty]
 					format = center
@@ -1609,7 +1540,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_administration_4_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -1639,7 +1570,7 @@ guiTypes = {
 					name ="inner_circle_administration_4_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_lammers_flavor
 				}
@@ -1648,7 +1579,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_4_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetAdminSlot4Name]
 					format = center
@@ -1661,7 +1592,7 @@ guiTypes = {
 					name ="inner_circle_administration_4_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_lammers_bonus
 				}
@@ -1692,7 +1623,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_4_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot4PowerPercentage]
 					format = center
@@ -1714,7 +1645,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_4_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot4Loyalty]
 					format = center
@@ -1733,7 +1664,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_administration_5_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -1763,7 +1694,7 @@ guiTypes = {
 					name ="inner_circle_administration_5_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_buch_flavor
 				}
@@ -1772,7 +1703,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_5_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetAdminSlot5Name]
 					format = center
@@ -1785,7 +1716,7 @@ guiTypes = {
 					name ="inner_circle_administration_5_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_buch_bonus
 				}
@@ -1816,7 +1747,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_5_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot5PowerPercentage]
 					format = center
@@ -1838,7 +1769,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_5_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetAdminSlot5Loyalty]
 					format = center
@@ -1877,33 +1808,10 @@ guiTypes = {
 					maxWidth = 300
 				}
 
-				#ASCENDED ADVISOR TRAIT BOX
-				iconType = {
-					name ="inner_circle_security_trait_box"
-					spriteType = "GFX_ascended_advisor_trait_box"
-					orientation = center
-					position = { x=75	 y=-150 }
-					centerposition = yes
-					context_aware_tooltip = GER_security_bonus
-				}
-
-				#TRAIT
-				instantTextBoxType = {
-					name ="inner_circle_security_trait"
-					orientation = center_down
-					position = { x=0	 y=-227 }
-					font = "hoi_18mbs"
-					context_aware_text = GER_security_bonus
-					format = center
-					maxWidth = 150
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -25 y = -60 }
+					position = { x = -25 y = -120 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecurityCategoryValues]
 					format = center
@@ -1913,7 +1821,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_security_1_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 					
@@ -1943,7 +1851,7 @@ guiTypes = {
 					name ="inner_circle_security_1_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_lutze_flavor
 				} 
@@ -1952,7 +1860,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_1_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetSecuritySlot1Name]
 					format = center
@@ -1965,7 +1873,7 @@ guiTypes = {
 					name ="inner_circle_security_1_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_lutze_bonus
 				}
@@ -1997,7 +1905,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecuritySlot1PowerPercentage]
 					format = center
@@ -2019,7 +1927,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_1_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecuritySlot1Loyalty]
 					format = center
@@ -2038,7 +1946,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_security_2_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -2068,7 +1976,7 @@ guiTypes = {
 					name ="inner_circle_security_2_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_himmler_flavor
 				}
@@ -2077,7 +1985,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_2_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetSecuritySlot2Name]
 					format = center
@@ -2090,7 +1998,7 @@ guiTypes = {
 					name ="inner_circle_security_2_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_himmler_bonus
 				}
@@ -2121,7 +2029,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecuritySlot2PowerPercentage]
 					format = center
@@ -2143,7 +2051,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_2_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecuritySlot2Loyalty]
 					format = center
@@ -2162,7 +2070,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_security_3_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -2192,7 +2100,7 @@ guiTypes = {
 					name ="inner_circle_security_3_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_heydrich_flavor
 				}
@@ -2201,7 +2109,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_3_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetSecuritySlot3Name]
 					format = center
@@ -2214,7 +2122,7 @@ guiTypes = {
 					name ="inner_circle_security_3_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_heydrich_bonus
 				}
@@ -2245,7 +2153,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecuritySlot3PowerPercentage]
 					format = center
@@ -2267,7 +2175,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_3_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetSecuritySlot3Loyalty]
 					format = center
@@ -2305,33 +2213,10 @@ guiTypes = {
 					maxWidth = 300
 				}
 
-				#ASCENDED ADVISOR TRAIT BOX
-				iconType = {
-					name ="inner_circle_propaganda_trait_box"
-					spriteType = "GFX_ascended_advisor_trait_box"
-					orientation = center
-					position = { x=75	 y=-150 }
-					centerposition = yes
-					context_aware_tooltip = GER_propaganda_bonus
-				}
-
-				#TRAIT
-				instantTextBoxType = {
-					name ="inner_circle_propaganda_trait"
-					orientation = center_down
-					position = { x=0	 y=-227 }
-					font = "hoi_18mbs"
-					context_aware_text = GER_propaganda_bonus
-					format = center
-					maxWidth = 150
-					fixedsize = yes
-					alwaystransparent = yes
-				}
-
 				instantTextBoxType = {
 					name ="inner_circle_economy_category_values"
 					orientation = center_up
-					position = { x = -25 y = -60 }
+					position = { x = -25 y = -120 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaCategoryValues]
 					format = center
@@ -2341,7 +2226,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_propaganda_1_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 					
@@ -2371,7 +2256,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_1_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_amann_flavor
 				} 
@@ -2380,7 +2265,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetPropagandaSlot1Name]
 					format = center
@@ -2393,7 +2278,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_1_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_amann_bonus
 				}
@@ -2425,7 +2310,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot1PowerPercentage]
 					format = center
@@ -2447,7 +2332,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot1Loyalty]
 					format = center
@@ -2466,7 +2351,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_propaganda_2_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -2496,7 +2381,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_2_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_goebbels_flavor
 				}
@@ -2505,7 +2390,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_2_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetPropagandaSlot2Name]
 					format = center
@@ -2518,7 +2403,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_2_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_goebbels_bonus
 				}
@@ -2549,7 +2434,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot2PowerPercentage]
 					format = center
@@ -2571,7 +2456,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_2_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot2Loyalty]
 					format = center
@@ -2590,7 +2475,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_propaganda_3_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -2620,7 +2505,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_3_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_dietrich_flavor
 				}
@@ -2629,7 +2514,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_3_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetPropagandaSlot3Name]
 					format = center
@@ -2642,7 +2527,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_3_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_dietrich_bonus
 				}
@@ -2673,7 +2558,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot3PowerPercentage]
 					format = center
@@ -2695,7 +2580,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot3Loyalty]
 					format = center
@@ -2714,7 +2599,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "inner_circle_propaganda_4_portrait_container"
 					orientation = center_up
-					position = { x = -46 y = 0}
+					position = { x = -46 y = -60}
 					size = { width = 91 height = 119 }
 					clipping = no
 
@@ -2744,7 +2629,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_4_name_box"
 					spriteType = "GFX_ascended_advisor_name_box"
 					orientation = center
-					position = { x=0	 y=71 }
+					position = { x=0	 y=11 }
 					centerposition = yes
 					context_aware_tooltip = GER_streicher_flavor
 				}
@@ -2753,7 +2638,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_4_name"
 					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = 0 }
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
 					font = "hoi_20b"
 					context_aware_text = [GetPropagandaSlot4Name]
 					format = center
@@ -2766,7 +2651,7 @@ guiTypes = {
 					name ="inner_circle_propaganda_4_trait_box"
 					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=0	 y=102 }
+					position = { x=0	 y=42 }
 					centerposition = yes
 					context_aware_tooltip = GER_streicher_bonus
 				}
@@ -2797,7 +2682,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 65 }
+					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot4PowerPercentage]
 					format = center
@@ -2819,7 +2704,7 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_loyalty_level"
 					orientation = center_down
-					position = { x = -60 y = 65 }
+					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
 					context_aware_text = [GetPropagandaSlot4Loyalty]
 					format = center
