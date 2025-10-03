@@ -4148,8 +4148,45 @@ GER_inner_circle_test_tickers = {
 				}
 			}
 			# Add Power, default is 10
-			add_to_variable = {
-				inner_circle_power = inner_circle_base_power_gain
+			add_to_variable = { inner_circle_power = inner_circle_base_power_gain }
+			add_to_variable = { inner_circle_power_stored = inner_circle_base_power_gain }
+		}
+	}
+	GER_inner_circle_check_power_increase_effects = yes
+}
+
+GER_inner_circle_check_power_increase_effects = {
+	if = {
+		limit = { ROOT = { original_tag = GER } }
+		every_character = {
+			limit = {
+				OR = {
+					has_character_flag = GER_inner_circle_economy_1_slot
+					has_character_flag = GER_inner_circle_economy_2_slot
+					has_character_flag = GER_inner_circle_economy_3_slot
+					has_character_flag = GER_inner_circle_economy_4_slot
+					has_character_flag = GER_inner_circle_labour_1_slot
+					has_character_flag = GER_inner_circle_labour_2_slot
+					has_character_flag = GER_inner_circle_labour_3_slot
+					has_character_flag = GER_inner_circle_administration_1_slot
+					has_character_flag = GER_inner_circle_administration_2_slot
+					has_character_flag = GER_inner_circle_administration_3_slot
+					has_character_flag = GER_inner_circle_administration_4_slot
+					has_character_flag = GER_inner_circle_administration_5_slot
+					has_character_flag = GER_inner_circle_security_1_slot
+					has_character_flag = GER_inner_circle_security_2_slot
+					has_character_flag = GER_inner_circle_security_3_slot
+					has_character_flag = GER_inner_circle_propaganda_1_slot
+					has_character_flag = GER_inner_circle_propaganda_2_slot
+					has_character_flag = GER_inner_circle_propaganda_3_slot
+					has_character_flag = GER_inner_circle_propaganda_4_slot
+				}
+			}
+			# If at 100 go and do a thing
+			if = {
+				limit = { check_variable = { inner_circle_power_stored > 99 } }
+				set_variable = { inner_circle_power_stored = 0}
+				# Do the thing
 			}
 		}
 	}

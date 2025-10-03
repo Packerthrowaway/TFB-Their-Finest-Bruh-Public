@@ -78,10 +78,29 @@ scripted_gui = {
 			original_tag = GER
 		}
 
-		properties = {  
-			power_progressbar = {
-				frame = power_progress_todt
-			}
+		properties = {
+			# Power Progress Bars
+			inner_circle_economy_1_power_progressbar = { frame = power_progress_todt }
+			inner_circle_economy_2_power_progressbar = { frame = power_progress_goring }
+			inner_circle_economy_3_power_progressbar = { frame = power_progress_speer }
+			inner_circle_economy_4_power_progressbar = { frame = power_progress_schacht }
+			inner_circle_labour_1_power_progressbar = { frame = power_progress_hierl }
+			inner_circle_labour_2_power_progressbar = { frame = power_progress_ley }
+			inner_circle_labour_3_power_progressbar = { frame = power_progress_huhnlein }
+			inner_circle_administration_1_power_progressbar = { frame = power_progress_hess }
+			inner_circle_administration_2_power_progressbar = { frame = power_progress_frick }
+			inner_circle_administration_3_power_progressbar = { frame = power_progress_bormann }
+			inner_circle_administration_4_power_progressbar = { frame = power_progress_lammers }
+			inner_circle_administration_5_power_progressbar = { frame = power_progress_buch }
+			inner_circle_security_1_power_progressbar = { frame = power_progress_lutze }
+			inner_circle_security_2_power_progressbar = { frame = power_progress_himmler }
+			inner_circle_security_3_power_progressbar = { frame = power_progress_heydrich }
+			inner_circle_propaganda_1_power_progressbar = { frame = power_progress_amann }
+			inner_circle_propaganda_2_power_progressbar = { frame = power_progress_goebbels }
+			inner_circle_propaganda_3_power_progressbar = { frame = power_progress_dietrich }
+			inner_circle_propaganda_4_power_progressbar = { frame = power_progress_streicher }
+
+			# Images
 			inner_circle_economy_1_portrait = { image = "[inner_circle_economy_1_portrait_gui]" }
 			inner_circle_economy_1_frame = { image = "[inner_circle_economy_1_frame_gui]" }
 			inner_circle_economy_2_portrait = { image = "[inner_circle_economy_2_portrait_gui]" }
@@ -123,25 +142,25 @@ scripted_gui = {
 		}
 		triggers = {
 			inner_circle_title_name_visible = { 
-				GER_fritz_todt = { set_temp_variable = { power_progress_todt = inner_circle_power } }
-				GER_hermann_goring = { set_temp_variable = { power_progress_goring = inner_circle_power } }
-				GER_albert_speer = { set_temp_variable = { power_progress_speer = inner_circle_power } }
-				GER_hjalmar_schacht = { set_temp_variable = { power_progress_schacht = inner_circle_power } }
-				GER_konstantin_hierl = { set_temp_variable = { power_progress_hierl = inner_circle_power } }
-				GER_robert_ley = { set_temp_variable = { power_progress_ley = inner_circle_power } }
-				GER_adolf_huhnlein = { set_temp_variable = { power_progress_huhnlein = inner_circle_power } }
-				GER_rudolf_hess = { set_temp_variable = { power_progress_hess = inner_circle_power } }
-				GER_wilhelm_frick = { set_temp_variable = { power_progress_frick = inner_circle_power } }
-				GER_martin_bormann = { set_temp_variable = { power_progress_bormann = inner_circle_power } }
-				GER_hans_lammers = { set_temp_variable = { power_progress_lammers = inner_circle_power } }
-				GER_walter_buch = { set_temp_variable = { power_progress_buch = inner_circle_power } }
-				GER_viktor_lutze = { set_temp_variable = { power_progress_lutze = inner_circle_power } }
-				GER_heinrich_himmler = { set_temp_variable = { power_progress_himmler = inner_circle_power } }
-				GER_reinhard_heydrich = { set_temp_variable = { power_progress_heydrich = inner_circle_power } }
-				GER_max_amann = { set_temp_variable = { power_progress_amann = inner_circle_power } }
-				GER_joseph_goebbels = { set_temp_variable = { power_progress_goebbels = inner_circle_power } }
-				GER_otto_dietrich = { set_temp_variable = { power_progress_dietrich = inner_circle_power } }
-				GER_julius_streicher = { set_temp_variable = { power_progress_streicher = inner_circle_power } }
+				GER_fritz_todt = { set_temp_variable = { power_progress_todt = inner_circle_power_stored } }
+				GER_hermann_goring = { set_temp_variable = { power_progress_goring = inner_circle_power_stored } }
+				GER_albert_speer = { set_temp_variable = { power_progress_speer = inner_circle_power_stored } }
+				GER_hjalmar_schacht = { set_temp_variable = { power_progress_schacht = inner_circle_power_stored } }
+				GER_konstantin_hierl = { set_temp_variable = { power_progress_hierl = inner_circle_power_stored } }
+				GER_robert_ley = { set_temp_variable = { power_progress_ley = inner_circle_power_stored } }
+				GER_adolf_huhnlein = { set_temp_variable = { power_progress_huhnlein = inner_circle_power_stored } }
+				GER_rudolf_hess = { set_temp_variable = { power_progress_hess = inner_circle_power_stored } }
+				GER_wilhelm_frick = { set_temp_variable = { power_progress_frick = inner_circle_power_stored } }
+				GER_martin_bormann = { set_temp_variable = { power_progress_bormann = inner_circle_power_stored } }
+				GER_hans_lammers = { set_temp_variable = { power_progress_lammers = inner_circle_power_stored } }
+				GER_walter_buch = { set_temp_variable = { power_progress_buch = inner_circle_power_stored } }
+				GER_viktor_lutze = { set_temp_variable = { power_progress_lutze = inner_circle_power_stored } }
+				GER_heinrich_himmler = { set_temp_variable = { power_progress_himmler = inner_circle_power_stored } }
+				GER_reinhard_heydrich = { set_temp_variable = { power_progress_heydrich = inner_circle_power_stored } }
+				GER_max_amann = { set_temp_variable = { power_progress_amann = inner_circle_power_stored } }
+				GER_joseph_goebbels = { set_temp_variable = { power_progress_goebbels = inner_circle_power_stored } }
+				GER_otto_dietrich = { set_temp_variable = { power_progress_dietrich = inner_circle_power_stored } }
+				GER_julius_streicher = { set_temp_variable = { power_progress_streicher = inner_circle_power_stored } }
 			}
 		}
 	}
