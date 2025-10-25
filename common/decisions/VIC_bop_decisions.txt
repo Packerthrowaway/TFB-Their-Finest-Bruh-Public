@@ -1,0 +1,46 @@
+operations = {
+	VIC_prepare_for_war_mission = {
+
+		name = VIC_prepare_for_war
+
+		icon = eng_propaganda_campaigns
+
+		allowed = {
+			tag = VIC
+		}
+
+		available = {
+			always = yes
+		}
+
+    cancel_trigger = {
+      has_war = yes
+    }
+
+		fire_only_once = yes
+
+		days_mission_timeout = 730
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			tag = VIC
+		}
+
+		complete_effect = {
+      add_power_balance_value = {
+        id = VICHY_german_occupation
+        side = vichy_government
+        value = 0.20
+      }
+		}
+
+		timeout_effect = {
+		}
+	}
+
+}

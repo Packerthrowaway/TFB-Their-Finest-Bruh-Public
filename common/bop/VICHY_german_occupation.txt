@@ -1,0 +1,99 @@
+VICHY_german_occupation = {
+    initial_value = 0
+    left_side = vichy_government
+    right_side = german_occupation
+    decision_category = JAP_interservice_rivalry
+
+	### Neutral status
+	range = {
+		id = VIC_unstable
+		min = -0.20
+		max = 0.20
+		modifier = {
+			stability_factor = -0.05
+			political_power_gain = -0.05
+		}
+	}
+
+	side = {
+		id = vichy_government	
+		icon = GFX_idea_bop_imperial_japanese_army
+
+		range = {
+			id = VIC_improvised_government
+			min = -0.5
+			max = -0.2
+			modifier = {
+				
+			}
+		}
+
+		range = {
+			id = VIC_stabilising_government
+			min = -0.8
+			max = -0.5
+			modifier = {
+				stability_weekly = 0.002
+				stability_factor = 0.10
+
+			}
+		}
+
+		range = {
+			id = VIC_stable_goverment
+			min = -1
+			max = -0.8
+			modifier = {
+				stability_factor = 0.15
+				stability_weekly_factor = 0.004
+
+				
+			}
+		}
+	}
+
+	side = {
+		id = german_occupation	
+		icon = GFX_idea_bop_imperial_japanese_navy
+
+		range = {
+			id = VIC_increased_control
+			min = 0.2
+			max = 0.5
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = -0.06
+				stability_weekly = -0.001
+			}
+		}
+
+		range = {
+			id = VIC_deterioating_control
+			min = 0.5
+			max = 0.80
+			modifier = {
+				political_power_gain = -0.10
+
+				stability_factor = -0.08
+				stability_weekly = -0.002
+
+				army_core_attack_factor = 0.05
+				army_core_defense_factor = 0.05
+			}
+		}
+
+		range = {
+			id = VIC_puppet_state
+			min = 0.8
+			max = 1
+			modifier = {
+				political_power_gain = -0.15
+				stability_factor = -0.1
+				stability_weekly = -0.005
+
+				army_core_attack_factor = 0.1
+				army_core_defense_factor = 0.1
+			}
+		}
+	}
+}
