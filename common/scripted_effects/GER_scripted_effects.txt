@@ -3576,6 +3576,24 @@ GER_check_oil = {
 
 calculate_inner_circle_category_values = {
 
+	#Clamp to 100 loyalty & Power, if this breaks something in the future I am going to stick my dick in a blender
+	every_character = {
+		if = {
+			limit = {
+				has_character_flag = GER_inner_circle_member
+			}
+			clamp_variable = { 
+				var = inner_circle_loyalty 
+				min = -100 
+				max = 100 
+			}
+			clamp_variable = { 
+				var = inner_circle_power 
+				min = 0 
+			}
+		}
+	}
+
 	######################################
 	# ECONOMY CATEGORY
 	######################################
@@ -3659,7 +3677,6 @@ calculate_inner_circle_category_values = {
 				has_character_flag = GER_inner_circle_administration_2_slot
 				has_character_flag = GER_inner_circle_administration_3_slot
 				has_character_flag = GER_inner_circle_administration_4_slot
-				has_character_flag = GER_inner_circle_administration_5_slot
 			}
 		}
 		# Add character to Total
@@ -3841,6 +3858,7 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_labour_1_slot
 				has_character_flag = GER_inner_circle_labour_2_slot
 				has_character_flag = GER_inner_circle_labour_3_slot
+				has_character_flag = GER_inner_circle_labour_4_slot
 			}
 		}
 		add_to_temp_variable = { inner_circle_labour_power_portion_temp = inner_circle_power }
@@ -3871,7 +3889,6 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_administration_2_slot
 				has_character_flag = GER_inner_circle_administration_3_slot
 				has_character_flag = GER_inner_circle_administration_4_slot
-				has_character_flag = GER_inner_circle_administration_5_slot
 			}
 		}
 		add_to_temp_variable = { inner_circle_administration_power_portion_temp = inner_circle_power }
@@ -3901,6 +3918,7 @@ calculate_inner_circle_character_portions = {
 				has_character_flag = GER_inner_circle_security_1_slot
 				has_character_flag = GER_inner_circle_security_2_slot
 				has_character_flag = GER_inner_circle_security_3_slot
+				has_character_flag = GER_inner_circle_security_4_slot
 			}
 		}
 		add_to_temp_variable = { inner_circle_security_power_portion_temp = inner_circle_power }
@@ -4043,12 +4061,6 @@ GER_calculate_category_effects = {
 	GER_rudolf_hess = { multiply_temp_variable = { PREV.temp_GER_inner_circle_research_speed_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_research_speed_factor_bonus_calculated = temp_GER_inner_circle_research_speed_factor_bonus }
 
-	# Frick
-	set_temp_variable = { temp_GER_inner_circle_drift_defence_factor_bonus = GER_inner_circle_drift_defence_factor_bonus }
-	multiply_temp_variable = { temp_GER_inner_circle_drift_defence_factor_bonus = inner_circle_administration_portion }
-	GER_wilhelm_frick = { multiply_temp_variable = { PREV.temp_GER_inner_circle_drift_defence_factor_bonus = inner_circle_character_power_portion }}
-	set_variable = { GER_inner_circle_drift_defence_factor_bonus_calculated = temp_GER_inner_circle_drift_defence_factor_bonus }
-
 	# Bormann
 	set_temp_variable = { temp_GER_inner_circle_party_popularity_stability_factor_bonus = GER_inner_circle_party_popularity_stability_factor_bonus }
 	multiply_temp_variable = { temp_GER_inner_circle_party_popularity_stability_factor_bonus = inner_circle_administration_portion }
@@ -4118,6 +4130,12 @@ GER_calculate_category_effects = {
 	multiply_temp_variable = { temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = inner_circle_propaganda_portion }
 	GER_julius_streicher = { multiply_temp_variable = { PREV.temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus = inner_circle_character_power_portion }}
 	set_variable = { GER_inner_circle_root_out_resistance_effectiveness_factor_bonus_calculated = temp_GER_inner_circle_root_out_resistance_effectiveness_factor_bonus }
+
+	#Calculations for Action Bar
+	set_temp_variable = { temp_GER_inner_circle_average_economy_loyalty_action_bar_modifier = inner_circle_average_economy_loyalty }
+	divide_temp_variable = { temp_GER_inner_circle_average_economy_loyalty_action_bar_modifier = 100 }
+	add_to_temp_variable = { temp_GER_inner_circle_average_economy_loyalty_action_bar_modifier = 1 }
+	set_variable = { GER_inner_circle_average_economy_loyalty_bar_modifier = temp_GER_inner_circle_average_economy_loyalty_action_bar_modifier }
 }
 
 GER_inner_circle_test_tickers = {
@@ -4133,14 +4151,15 @@ GER_inner_circle_test_tickers = {
 					has_character_flag = GER_inner_circle_labour_1_slot
 					has_character_flag = GER_inner_circle_labour_2_slot
 					has_character_flag = GER_inner_circle_labour_3_slot
+					has_character_flag = GER_inner_circle_labour_4_slot
 					has_character_flag = GER_inner_circle_administration_1_slot
 					has_character_flag = GER_inner_circle_administration_2_slot
 					has_character_flag = GER_inner_circle_administration_3_slot
 					has_character_flag = GER_inner_circle_administration_4_slot
-					has_character_flag = GER_inner_circle_administration_5_slot
 					has_character_flag = GER_inner_circle_security_1_slot
 					has_character_flag = GER_inner_circle_security_2_slot
 					has_character_flag = GER_inner_circle_security_3_slot
+					has_character_flag = GER_inner_circle_security_4_slot
 					has_character_flag = GER_inner_circle_propaganda_1_slot
 					has_character_flag = GER_inner_circle_propaganda_2_slot
 					has_character_flag = GER_inner_circle_propaganda_3_slot
@@ -4170,14 +4189,15 @@ GER_inner_circle_check_power_increase_effects = {
 						has_character_flag = GER_inner_circle_labour_1_slot
 						has_character_flag = GER_inner_circle_labour_2_slot
 						has_character_flag = GER_inner_circle_labour_3_slot
+						has_character_flag = GER_inner_circle_labour_4_slot
 						has_character_flag = GER_inner_circle_administration_1_slot
 						has_character_flag = GER_inner_circle_administration_2_slot
 						has_character_flag = GER_inner_circle_administration_3_slot
 						has_character_flag = GER_inner_circle_administration_4_slot
-						has_character_flag = GER_inner_circle_administration_5_slot
 						has_character_flag = GER_inner_circle_security_1_slot
 						has_character_flag = GER_inner_circle_security_2_slot
 						has_character_flag = GER_inner_circle_security_3_slot
+						has_character_flag = GER_inner_circle_security_4_slot
 						has_character_flag = GER_inner_circle_propaganda_1_slot
 						has_character_flag = GER_inner_circle_propaganda_2_slot
 						has_character_flag = GER_inner_circle_propaganda_3_slot

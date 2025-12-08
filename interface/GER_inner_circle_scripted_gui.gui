@@ -1,6 +1,6 @@
-@CATEGORY_CONTAINER_POS_Y = 100
+@CATEGORY_CONTAINER_POS_Y = 185
 
-@ASCENDED_ADVISOR_CONTAINER_POS_Y = 395
+@ASCENDED_ADVISOR_CONTAINER_POS_Y = 400
 @ASCENDED_ADVISOR_CONTAINER_WIDTH = 150
 @ASCENDED_ADVISOR_CONTAINER_HEIGHT = 120
 @ASCENDED_ADVISOR_TEXT_POS_X = -75 #Should be ASCENDED_ADVISOR_CONTAINER_WIDTH / 2 * (-1)
@@ -16,7 +16,7 @@
 
 
 @ADVISOR_CONTAINER_POS_Y = 975
-@ADVISOR_CONTAINER_POS_Y_TIER_2 = 670
+@ADVISOR_CONTAINER_POS_Y_TIER_2 = 680
 @ADVISOR_POS_Y = -28
 
 
@@ -32,13 +32,13 @@ guiTypes = {
 		name = "ger_inner_circle_ui_window"
 		orientation = lower_left
 		position = { x = 2230 y = 1150 }
-		size = { width = 2000 height = 1000 }
+		size = { width = 2000 height = 1250 }
 		clipping = no
 
 		#BACKGROUND
 		background = {
 			name = "background"
-			quadTextureSprite="GFX_tiled_window_1b_border"
+			quadTextureSprite="GFX_inner_circle_background"
 			alwaystransparent = yes
 		}
 
@@ -57,6 +57,16 @@ guiTypes = {
 			position = { x = -130 y = 20 }
 			font = "hoi_36header"
 			text = "The State"
+			format = center
+			maxWidth = 300
+		}
+
+		instantTextBoxType = {
+			name ="inner_circle_debug_info"
+			orientation = center_left
+			position = { x = 0 y = 20 }
+			font = "hoi_18mbs"
+			context_aware_text = [InnerCircleDebugInfo]
 			format = center
 			maxWidth = 300
 		}
@@ -80,7 +90,7 @@ guiTypes = {
 		containerWindowType = {
 			name = "fuhrer_container"
 			orientation = center_up
-			position = { x = -80 y = 60 }
+			position = { x = -100 y = 60 }
 			size = { width = 200 height = 161 }
 			clipping = no
 
@@ -187,7 +197,7 @@ guiTypes = {
 		containerWindowType = {
 			name = "inner_circle_economy_category"
 			orientation = center_up
-			position = { x = -400 y = @CATEGORY_CONTAINER_POS_Y }
+			position = { x = -410 y = @CATEGORY_CONTAINER_POS_Y }
 			size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 			clipping = no
 
@@ -197,29 +207,19 @@ guiTypes = {
 				
 				name = "inner_circle_economy_1_container"
 				orientation = center_up
-				position = { x = -610 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
+				position = { x = -600 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -60 y = -200 }
+					position = { x = -80 y = -200 }
 					font = "hoi_36header"
 					context_aware_text =  [GetEconCategoryPortion]
 					format = center
 					maxWidth = 300
-					context_aware_tooltip = GER_inner_circle_economic_category_modifier
-				}
-
-				instantTextBoxType = {
-					name ="inner_circle_economy_category_values"
-					orientation = center_up
-					position = { x = -25 y = -120 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetEconCategoryValues]
-					format = center
-					maxWidth = 200
+					context_aware_tooltip = [GetEconCategoryValues]
 				}
 				
 				containerWindowType = {
@@ -230,7 +230,7 @@ guiTypes = {
 					clipping = no
 					
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_economy_1_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -295,13 +295,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_economy_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_economy_1_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_economy_1_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_1_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_economy_1_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_1_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_economy_1_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_econ_slot_1_tt
 				}
 
@@ -309,40 +354,25 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetEconSlot1PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
+				# Loyalty Bar
 				iconType = {
-					name ="inner_circle_economy_1_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_econ_slot_1_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_economy_1_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetEconSlot1Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				# Power Progress
-				iconType = {
-					name = "inner_circle_economy_1_power_progressbar"
+					name = "inner_circle_economy_1_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_econ_slot_1_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_economy_1_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_econ_slot_1_stored_tt
@@ -350,15 +380,18 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_economy_1_power_progressbar_option"
+					name ="inner_circle_economy_1_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [TodtPowerOptions]
+					context_aware_text = [GetEconSlot1Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
 				}
+
+				
+					
 			}
 
 			containerWindowType = {
@@ -376,7 +409,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_economy_2_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -440,13 +473,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_economy_2_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_economy_2_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_economy_2_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_2_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_economy_2_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_2_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_economy_2_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_econ_slot_2_tt
 				}
 
@@ -454,40 +532,25 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetEconSlot2PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
+				# Loyalty Bar
 				iconType = {
-					name ="inner_circle_economy_2_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_econ_slot_2_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_economy_2_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetEconSlot2Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				# Power Progress
-				iconType = {
-					name = "inner_circle_economy_2_power_progressbar"
+					name = "inner_circle_economy_2_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_econ_slot_2_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_economy_2_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_econ_slot_2_stored_tt
@@ -495,11 +558,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_economy_2_power_progressbar_option"
+					name ="inner_circle_economy_2_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [GoringPowerOptions]
+					context_aware_text = [GetEconSlot2Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -509,7 +572,7 @@ guiTypes = {
 			containerWindowType = {
 				name = "inner_circle_economy_3_container"
 				orientation = center_up
-				position = { x = -610 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
+				position = { x = -600 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 				
@@ -521,7 +584,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_economy_3_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -585,13 +648,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_economy_3_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_economy_3_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_economy_3_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_3_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_economy_3_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_3_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_economy_3_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_econ_slot_3_tt
 				}
 
@@ -599,39 +707,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_economy_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetEconSlot3PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_economy_3_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_econ_slot_3_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_economy_3_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetEconSlot3Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_economy_3_power_progressbar"
+					name = "inner_circle_economy_3_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_econ_slot_3_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_economy_3_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_econ_slot_3_stored_tt
@@ -639,11 +732,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_economy_3_power_progressbar_option"
+					name ="inner_circle_economy_3_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [SpeerPowerOptions]
+					context_aware_text = [GetEconSlot3Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -665,7 +758,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_economy_4_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -729,6 +822,152 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
+				iconType = {
+					name ="inner_circle_economy_4_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=0	 y=65 }
+					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_economy_4_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_4_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_economy_4_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_4_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_economy_4_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
+					context_aware_tooltip = GER_econ_slot_4_tt
+				}
+
+				#Power Level
+				instantTextBoxType = {
+					name ="inner_circle_economy_4_power_level"
+					orientation = center_down
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
+					context_aware_text = [GetEconSlot4PowerPercentage]
+					format = center
+					maxWidth = 200
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_economy_4_loyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = -0 y = 25 }
+					context_aware_tooltip = GER_econ_slot_4_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_economy_4_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
+					orientation = center_down
+					position = { x = -70 y = 25 }
+					context_aware_tooltip = GER_econ_slot_4_stored_tt
+				}
+
+				# Power Options
+				instantTextBoxType = {
+					name ="inner_circle_economy_4_loyalty_progressbar_option"
+					orientation = center_down
+					position = { x = -60 y = 29 }
+					font = "hoi_16mbs"
+					context_aware_text = [GetEconSlot4Loyalty]
+					format = center
+					maxWidth = 120
+					alwaystransparent = yes
+				}
+			}
+
+			#action
+
+			containerWindowType = {
+				name = "inner_circle_economy_action_container"
+				orientation = center_up
+				position = { x = -530 y = 850 }
+				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
+				clipping = no
+
+				#ASCENDED ADVISOR NAME BOX
+				iconType = {
+					name ="inner_circle_economy_action_name_box"
+					spriteType = "GFX_ascended_advisor_name_box"
+					orientation = center
+					position = { x=0	 y=11 }
+					centerposition = yes
+					context_aware_tooltip = text_here
+				}
+
+				#NAME
+				instantTextBoxType = {
+					name ="inner_circle_economy_action_name"
+					orientation = center_down
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
+					font = "hoi_20b"
+					context_aware_text = Economy_Action #NAME OF THE ACTION
+					format = center
+					maxWidth = 150
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_economy_4_action_progressbar"
+					spriteType = "GFX_inner_circle_action_bar"
+					orientation = center_down
+					position = { x = -150 y = -35 }
+					context_aware_tooltip = GER_econ_slot_4_stored_tt
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_economy_action_trait"
+					orientation = center_down
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -30 }
+					font = "hoi_18mbs"
+					context_aware_text = [GetCurrentEconAction]
+					format = center
+					maxWidth = 150
+					alwaystransparent = yes
+				}
+
 				#POWER BOX
 				iconType = {
 					name ="inner_circle_economy_4_power_box"
@@ -745,7 +984,7 @@ guiTypes = {
 					orientation = center_down
 					position = { x = -135 y = 5 }
 					font = "hoi_18mbs"
-					context_aware_text = [GetEconSlot4PowerPercentage]
+					context_aware_text = GER_economy_category_action_bar_gain_loc
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
@@ -767,32 +1006,90 @@ guiTypes = {
 					orientation = center_down
 					position = { x = -60 y = 5 }
 					font = "hoi_18mbs"
-					context_aware_text = [GetEconSlot4Loyalty]
+					context_aware_text = GER_economy_category_action_bar_modifier_loc
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				iconType = {
-					name = "inner_circle_economy_4_power_progressbar"
-					spriteType = "GFX_prod_progress_bar4"
-					orientation = center_down
-					position = { x = -70 y = 25 }
-					context_aware_tooltip = GER_econ_slot_4_stored_tt
-				}
+				dropDownBoxType = {
+					name = "division_names"
+					position = { x = -50 y = 150 }
+					size = { width = 220 height = 30 }
+					
 
-				# Power Options
-				instantTextBoxType = {
-					name ="inner_circle_economy_4_power_progressbar_option"
-					orientation = center_down
-					position = { x = -60 y = 29 }
-					font = "hoi_16mbs"
-					context_aware_text = [SchachtPowerOptions]
-					format = center
-					maxWidth = 120
+					containerWindowType = {
+					name = "division_name_bg"
+					size = { width = 220 height = 30 }
+
+				
+					background = {
+					name = "name_bg"
+					quadTextureSprite = "GFX_generic_background"
+					position = { x = 15 y = 0 }
 					alwaystransparent = yes
+					}
+
+					}
+
+					iconType = {
+						name = "division_nametag_icon"
+						spriteType = "GFX_division_nametag_icon"
+						position = { x = 20 y = 2 }
+					}
+
+					instantTextboxType = {
+						name = "name"
+						position = { x = 45 y = 5 }
+						font = "hoi_18mbs"
+						text = "COMBAT_HEADER"
+						maxWidth = 164
+						maxHeight = 20
+						fixedsize = yes
+						format = left
+					}
+
+					expandButton = {
+						name = "expand_button"	
+						position = { x = -9 y = 6 }
+						quadTextureSprite ="GFX_expand_button"
+						buttonFont = "Main_14_black"
+						Orientation = "UPPER_RIGHT"
+						clicksound = click_default
+					}
+			
+					expandedWindow = {
+						name = "expanded_window"
+						position = { x=10 y= -160 }	
+						show_position = { x = 10 y = 25 }
+						show_animation_type = decelerated
+						hide_animation_type = accelerated
+						animation_time = 300
+						size = { width=230 height=260 }	
+						verticalScrollbar = "right_vertical_slider"
+						scroll_wheel_factor = 45
+						smooth_scrolling = yes
+						margin = { top = 7 bottom = 7 right = 6 }
+						#clipping = no
+						
+						background = {
+							name = "Background"		
+							quadTextureSprite ="GFX_tiled_window_1b_thin_border"
+							position = { x = 0 y = 0 }
+						}
+						
+						gridBoxType = {
+							name = "names_grid"
+							position = { x = 8 y = 0 }
+							size = { width = 199 height = 100%% }
+							slotsize = { width = 186 height = 30 }
+							max_slots_horizontal = 1
+							format = "UPPER_LEFT"
+						}
+					}
 				}
 			}
+			
 		}
 
 		#########################
@@ -802,35 +1099,26 @@ guiTypes = {
 		containerWindowType = {
 			name = "inner_circle_labour_category"
 			orientation = center_up
-			position = { x = -40 y = @CATEGORY_CONTAINER_POS_Y }
+			position = { x = -25 y = @CATEGORY_CONTAINER_POS_Y }
 			size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 			clipping = no
 
 			containerWindowType = {
 				name = "inner_circle_labour_1_container"
 				orientation = center_up
-				position = { x = -610 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
+				position = { x = -600 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -60 y = -200 }
+					position = { x = -70 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetLabourCategoryPortion]
 					format = center
 					maxWidth = 300
-				}
-
-				instantTextBoxType = {
-					name ="inner_circle_economy_category_values"
-					orientation = center_up
-					position = { x = -25 y = -120 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetLabourCategoryValues]
-					format = center
-					maxWidth = 200
+					context_aware_tooltip = [GetLabourCategoryValues]
 				}
 				
 				containerWindowType = {
@@ -841,7 +1129,7 @@ guiTypes = {
 					clipping = no
 					
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_labour_1_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -906,13 +1194,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_labour_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_labour_1_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_labour_1_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_1_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_labour_1_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_1_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_labour_1_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_labour_slot_1_tt
 				}
 
@@ -920,39 +1253,25 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetLabourSlot1PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
+				# Loyalty Bar
 				iconType = {
-					name ="inner_circle_labour_1_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_labour_slot_1_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_labour_1_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetLabourSlot1Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_labour_1_power_progressbar"
+					name = "inner_circle_labour_1_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_labour_slot_1_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_labour_1_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_labour_slot_1_stored_tt
@@ -960,15 +1279,16 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_labour_1_power_progressbar_option"
+					name ="inner_circle_labour_1_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [HierlPowerOptions]
+					context_aware_text = [GetLabourSlot1Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
 				}
+
 
 			}
 
@@ -987,7 +1307,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_labour_2_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -1051,13 +1371,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_labour_2_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_labour_2_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_labour_2_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_2_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_labour_2_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_2_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_labour_2_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_labour_slot_2_tt
 				}
 
@@ -1065,39 +1430,25 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetLabourSlot2PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
+				# Loyalty Bar
 				iconType = {
-					name ="inner_circle_labour_2_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_labour_slot_2_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_labour_2_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetLabourSlot2Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_labour_2_power_progressbar"
+					name = "inner_circle_labour_2_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_labour_slot_2_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_labour_2_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_labour_slot_2_stored_tt
@@ -1105,21 +1456,22 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_labour_2_power_progressbar_option"
+					name ="inner_circle_labour_2_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [LeyPowerOptions]
+					context_aware_text = [GetLabourSlot2Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
 				}
+
 			}
 
 			containerWindowType = {
 				name = "inner_circle_labour_3_container"
 				orientation = center_up
-				position = { x = -535 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
+				position = { x = -600 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 				
@@ -1131,7 +1483,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_labour_3_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -1195,13 +1547,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_labour_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_labour_3_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_labour_3_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_3_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_labour_3_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_3_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_labour_3_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_labour_slot_3_tt
 				}
 
@@ -1209,39 +1606,25 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_labour_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetLabourSlot3PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
+				# Loyalty Bar
 				iconType = {
-					name ="inner_circle_labour_3_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_labour_slot_3_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_labour_3_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetLabourSlot3Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_labour_3_power_progressbar"
+					name = "inner_circle_labour_3_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_labour_slot_3_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_labour_3_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_labour_slot_3_stored_tt
@@ -1249,15 +1632,192 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_labour_3_power_progressbar_option"
+					name ="inner_circle_labour_3_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [HuhnleinPowerOptions]
+					context_aware_text = [GetLabourSlot3Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
 				}
+
+			}
+
+			containerWindowType = {
+				name = "inner_circle_labour_4_container"
+				orientation = center_up
+				position = { x = -455 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
+				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
+				clipping = no
+				
+				containerWindowType = {
+					name = "inner_circle_labour_4_portrait_container"
+					orientation = center_up
+					position = { x = -46 y = -60}
+					size = { width = 91 height = 119 }
+					clipping = no
+
+					#FRAME
+					buttonType = {
+						name ="inner_circle_labour_4_frame"
+						spriteType = "GFX_ascended_advisors_unappointed_frame"
+						orientation = center
+						position = { x=0	 y=@ASCENDED_ADVISOR_FRAME_POS_Y }
+						centerPosition = yes
+						context_aware_tooltip = GER_sauckel_flavor
+					}
+
+					#PORTRAIT
+					iconType = {
+						name ="inner_circle_labour_4_portrait"
+						spriteType = ""
+						orientation = upper_left
+						position = { x=7	 y=6 }
+						scale = 0.5
+						alwaystransparent = yes
+					}
+				}
+
+				#ASCENDED ADVISOR NAME BOX
+				iconType = {
+					name ="inner_circle_labour_4_name_box"
+					spriteType = "GFX_ascended_advisor_name_box"
+					orientation = center
+					position = { x=0	 y=11 }
+					centerposition = yes
+					context_aware_tooltip = GER_sauckel_flavor
+				}
+
+				#NAME
+				instantTextBoxType = {
+					name ="inner_circle_labour_4_name"
+					orientation = center_down
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
+					font = "hoi_20b"
+					context_aware_text = [GetLabourSlot4Name]
+					format = center
+					maxWidth = 150
+					alwaystransparent = yes
+				}
+
+				#ASCENDED ADVISOR TRAIT BOX
+				iconType = {
+					name ="inner_circle_labour_4_trait_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=0	 y=42 }
+					centerposition = yes
+					context_aware_tooltip = GER_sauckel_bonus
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_labour_4_trait"
+					orientation = center_down
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = @ASCENDED_ADVISOR_TEXT_POS_Y }
+					font = "hoi_18mbs"
+					context_aware_text = GER_sauckel_trait
+					format = center
+					maxWidth = 150
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name ="inner_circle_labour_4_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=0	 y=65 }
+					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_labour_4_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_4_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_labour_4_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_4_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_labour_4_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
+					context_aware_tooltip = GER_labour_slot_4_tt
+				}
+
+				#Power Level
+				instantTextBoxType = {
+					name ="inner_circle_labour_4_power_level"
+					orientation = center_down
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
+					context_aware_text = [GetLabourSlot4PowerPercentage]
+					format = center
+					maxWidth = 200
+					alwaystransparent = yes
+				}
+
+				# Loyalty Bar
+				iconType = {
+					name = "inner_circle_labour_4_loyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_labour_slot_4_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_labour_4_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
+					orientation = center_down
+					position = { x = -70 y = 25 }
+					context_aware_tooltip = GER_labour_slot_4_stored_tt
+				}
+
+				# Power Options
+				instantTextBoxType = {
+					name ="inner_circle_labour_4_loyalty_progressbar_option"
+					orientation = center_down
+					position = { x = -60 y = 29 }
+					font = "hoi_16mbs"
+					context_aware_text = [GetLabourSlot4Loyalty]
+					format = center
+					maxWidth = 120
+					alwaystransparent = yes
+				}
+
 			}
 		}
 
@@ -1268,35 +1828,26 @@ guiTypes = {
 		containerWindowType = {
 			name = "inner_circle_administration_category"
 			orientation = center_up
-			position = { x = 417 y = @CATEGORY_CONTAINER_POS_Y }
+			position = { x = 400 y = @CATEGORY_CONTAINER_POS_Y }
 			size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 			clipping = no
 
 			containerWindowType = {
 				name = "inner_circle_administration_1_container"
 				orientation = center_up
-				position = { x = -700 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
+				position = { x = -625 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = 0 y = -200 }
+					position = { x = -70 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetAdminCategoryPortion]
 					format = center
 					maxWidth = 300
-				}
-
-				instantTextBoxType = {
-					name ="inner_circle_economy_category_values"
-					orientation = center_up
-					position = { x = 50 y = -120 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetAdminCategoryValues]
-					format = center
-					maxWidth = 200
+					context_aware_tooltip = [GetAdminCategoryValues]
 				}
 				
 				containerWindowType = {
@@ -1307,7 +1858,7 @@ guiTypes = {
 					clipping = no
 					
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_administration_1_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -1372,13 +1923,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_administration_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_administration_1_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_administration_1_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_1_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_administration_1_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_1_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_administration_1_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_administration_slot_1_tt
 				}
 
@@ -1386,39 +1982,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetAdminSlot1PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_administration_1_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_administration_slot_1_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_administration_1_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetAdminSlot1Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_administration_1_power_progressbar"
+					name = "inner_circle_administration_1_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_administration_slot_1_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_administration_1_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_administration_slot_1_stored_tt
@@ -1426,11 +2007,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_administration_1_power_progressbar_option"
+					name ="inner_circle_administration_1_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [HessPowerOptions]
+					context_aware_text = [GetAdminSlot1Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -1440,7 +2021,7 @@ guiTypes = {
 			containerWindowType = {
 				name = "inner_circle_administration_2_container"
 				orientation = center_up
-				position = { x = -550 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
+				position = { x = -475 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 				
@@ -1452,7 +2033,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_administration_2_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -1501,7 +2082,7 @@ guiTypes = {
 					orientation = center
 					position = { x=0	 y=42 }
 					centerposition = yes
-					context_aware_tooltip = GER_frick_bonus
+					context_aware_tooltip = GER_buch_bonus
 				}
 
 				#TRAIT
@@ -1510,19 +2091,64 @@ guiTypes = {
 					orientation = center_down
 					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = @ASCENDED_ADVISOR_TEXT_POS_Y }
 					font = "hoi_18mbs"
-					context_aware_text = GER_frick_trait
+					context_aware_text = GER_buch_trait
 					format = center
 					maxWidth = 150
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_administration_2_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_administration_2_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_administration_2_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_2_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_administration_2_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_2_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_administration_2_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_administration_slot_2_tt
 				}
 
@@ -1530,39 +2156,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetAdminSlot2PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_administration_2_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_administration_slot_2_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_administration_2_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetAdminSlot2Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_administration_2_power_progressbar"
+					name = "inner_circle_administration_2_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_administration_slot_2_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_administration_2_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_administration_slot_2_stored_tt
@@ -1570,11 +2181,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_administration_2_power_progressbar_option"
+					name ="inner_circle_administration_2_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [FrickPowerOptions]
+					context_aware_text = [GetAdminSlot2Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -1584,7 +2195,7 @@ guiTypes = {
 			containerWindowType = {
 				name = "inner_circle_administration_3_container"
 				orientation = center_up
-				position = { x = -400 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
+				position = { x = -625 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 				
@@ -1596,7 +2207,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_administration_3_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -1660,13 +2271,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_administration_3_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_administration_3_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_administration_3_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_3_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_administration_3_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_3_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_administration_3_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_administration_slot_3_tt
 				}
 
@@ -1674,39 +2330,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetAdminSlot3PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_administration_3_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_administration_slot_3_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_administration_3_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetAdminSlot3Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_administration_3_power_progressbar"
+					name = "inner_circle_administration_3_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_administration_slot_3_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_administration_3_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_administration_slot_3_stored_tt
@@ -1714,11 +2355,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_administration_3_power_progressbar_option"
+					name ="inner_circle_administration_3_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [BormannPowerOptions]
+					context_aware_text = [GetAdminSlot3Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -1728,7 +2369,7 @@ guiTypes = {
 			containerWindowType = {
 				name = "inner_circle_administration_4_container"
 				orientation = center_up
-				position = { x = -625 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
+				position = { x = -475 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 				
@@ -1740,7 +2381,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_administration_4_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -1804,13 +2445,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_administration_4_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_administration_4_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_administration_4_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_4_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_administration_4_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_4_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_administration_4_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_administration_slot_4_tt
 				}
 
@@ -1818,195 +2504,36 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_administration_4_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetAdminSlot4PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_administration_4_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_administration_slot_4_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_administration_4_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetAdminSlot4Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_administration_4_power_progressbar"
+					name = "inner_circle_administration_4_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
 					orientation = center_down
-					position = { x = -70 y = 25 }
+					position = { x = 0 y = 25 }
 					context_aware_tooltip = GER_administration_slot_4_stored_tt
 				}
-
-				# Power Options
-				instantTextBoxType = {
-					name ="inner_circle_administration_4_power_progressbar_option"
-					orientation = center_down
-					position = { x = -60 y = 29 }
-					font = "hoi_16mbs"
-					context_aware_text = [LammersPowerOptions]
-					format = center
-					maxWidth = 120
-					alwaystransparent = yes
-				}
-			}
-
-			containerWindowType = {
-				name = "inner_circle_administration_5_container"
-				orientation = center_up
-				position = { x = -475 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
-				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
-				clipping = no
-				
-				containerWindowType = {
-					name = "inner_circle_administration_5_portrait_container"
-					orientation = center_up
-					position = { x = -46 y = -60}
-					size = { width = 91 height = 119 }
-					clipping = no
-
-					#FRAME
-					iconType = {
-						name ="inner_circle_administration_5_frame"
-						spriteType = "GFX_ascended_advisors_unappointed_frame"
-						orientation = center
-						position = { x=0	 y=@ASCENDED_ADVISOR_FRAME_POS_Y }
-						centerPosition = yes
-						context_aware_tooltip = GER_buch_flavor
-					}
-
-					#PORTRAIT
-					iconType = {
-						name ="inner_circle_administration_5_portrait"
-						spriteType = ""
-						orientation = upper_left
-						position = { x=7	 y=6 }
-						scale = 0.5
-						alwaystransparent = yes
-					}
-				}
-
-				#ASCENDED ADVISOR NAME BOX
 				iconType = {
-					name ="inner_circle_administration_5_name_box"
-					spriteType = "GFX_ascended_advisor_name_box"
-					orientation = center
-					position = { x=0	 y=11 }
-					centerposition = yes
-					context_aware_tooltip = GER_buch_flavor
-				}
-
-				#NAME
-				instantTextBoxType = {
-					name ="inner_circle_administration_5_name"
-					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
-					font = "hoi_20b"
-					context_aware_text = [GetAdminSlot5Name]
-					format = center
-					maxWidth = 150
-					alwaystransparent = yes
-				}
-
-				#ASCENDED ADVISOR TRAIT BOX
-				iconType = {
-					name ="inner_circle_administration_5_trait_box"
-					spriteType = "GFX_ascended_advisor_trait_box"
-					orientation = center
-					position = { x=0	 y=42 }
-					centerposition = yes
-					context_aware_tooltip = GER_buch_bonus
-				}
-
-				#TRAIT
-				instantTextBoxType = {
-					name ="inner_circle_administration_5_trait"
-					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = @ASCENDED_ADVISOR_TEXT_POS_Y }
-					font = "hoi_18mbs"
-					context_aware_text = GER_buch_trait
-					format = center
-					maxWidth = 150
-					alwaystransparent = yes
-				}
-
-				#POWER BOX
-				iconType = {
-					name ="inner_circle_administration_5_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_administration_slot_5_tt
-				}
-
-				#Power Level
-				instantTextBoxType = {
-					name ="inner_circle_administration_5_power_level"
-					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetAdminSlot5PowerPercentage]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				#LOYALTY BOX
-				iconType = {
-					name ="inner_circle_administration_5_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_administration_slot_5_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_administration_5_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetAdminSlot5Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_administration_5_power_progressbar"
-					spriteType = "GFX_prod_progress_bar4"
+					name = "inner_circle_administration_4_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
-					context_aware_tooltip = GER_administration_slot_5_stored_tt
+					context_aware_tooltip = GER_adminstration_slot_4_stored_tt
 				}
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_administration_5_power_progressbar_option"
+					name ="inner_circle_administration_4_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [BuchPowerOptions]
+					context_aware_text = [GetAdminSlot4Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -2022,35 +2549,26 @@ guiTypes = {
 		containerWindowType = {
 			name = "inner_circle_security_category"
 			orientation = center_up
-			position = { x = 835 y = @CATEGORY_CONTAINER_POS_Y }
+			position = { x = 775 y = @CATEGORY_CONTAINER_POS_Y }
 			size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 			clipping = no
 
 			containerWindowType = {
 				name = "inner_circle_security_1_container"
 				orientation = center_up
-				position = { x = -610 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
+				position = { x = -600 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -75 y = -200 }
+					position = { x = -65 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetSecurityCategoryPortion]
 					format = center
 					maxWidth = 300
-				}
-
-				instantTextBoxType = {
-					name ="inner_circle_economy_category_values"
-					orientation = center_up
-					position = { x = -25 y = -120 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetSecurityCategoryValues]
-					format = center
-					maxWidth = 200
+					context_aware_tooltip = [GetSecurityCategoryValues]
 				}
 				
 				containerWindowType = {
@@ -2061,7 +2579,7 @@ guiTypes = {
 					clipping = no
 					
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_security_1_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -2126,13 +2644,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_security_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_security_1_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_security_1_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_1_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_security_1_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_1_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_security_1_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_security_slot_1_tt
 				}
 
@@ -2140,39 +2703,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetSecuritySlot1PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_security_1_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_security_slot_1_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_security_1_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetSecuritySlot1Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_security_1_power_progressbar"
+					name = "inner_circle_security_1_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_security_slot_1_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_security_1_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_security_slot_1_stored_tt
@@ -2180,11 +2728,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_security_1_power_progressbar_option"
+					name ="inner_circle_security_1_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [LutzePowerOptions]
+					context_aware_text = [GetSecuritySlot1Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -2206,7 +2754,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_security_2_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -2270,13 +2818,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_security_2_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_security_2_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_security_2_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_2_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_security_2_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_2_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_security_2_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_security_slot_2_tt
 				}
 
@@ -2284,39 +2877,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetSecuritySlot2PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_security_2_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_security_slot_2_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_security_2_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetSecuritySlot2Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_security_2_power_progressbar"
+					name = "inner_circle_security_2_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_security_slot_2_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_security_2_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_security_slot_2_stored_tt
@@ -2324,11 +2902,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_security_12_power_progressbar_option"
+					name ="inner_circle_security_2_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [HimmlerPowerOptions]
+					context_aware_text = [GetSecuritySlot2Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -2338,7 +2916,7 @@ guiTypes = {
 			containerWindowType = {
 				name = "inner_circle_security_3_container"
 				orientation = center_up
-				position = { x = -535 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
+				position = { x = -600 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 				
@@ -2350,7 +2928,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_security_3_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -2414,13 +2992,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_security_3_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_security_3_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_security_3_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_3_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_security_3_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_3_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_security_3_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_security_slot_3_tt
 				}
 
@@ -2428,39 +3051,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_security_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetSecuritySlot3PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_security_3_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_security_slot_3_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_security_3_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetSecuritySlot3Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_security_3_power_progressbar"
+					name = "inner_circle_security_3_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_security_slot_3_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_security_3_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_security_slot_3_stored_tt
@@ -2468,11 +3076,185 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_security_3_power_progressbar_option"
+					name ="inner_circle_security_3_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [HeydrichPowerOptions]
+					context_aware_text = [GetSecuritySlot3Loyalty]
+					format = center
+					maxWidth = 120
+					alwaystransparent = yes
+				}
+			}
+
+			containerWindowType = {
+				name = "inner_circle_security_4_container"
+				orientation = center_up
+				position = { x = -455 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
+				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
+				clipping = no
+				
+				containerWindowType = {
+					name = "inner_circle_security_4_portrait_container"
+					orientation = center_up
+					position = { x = -46 y = -60}
+					size = { width = 91 height = 119 }
+					clipping = no
+
+					#FRAME
+					buttonType = {
+						name ="inner_circle_security_4_frame"
+						spriteType = "GFX_ascended_advisors_unappointed_frame"
+						orientation = center
+						position = { x=0	 y=@ASCENDED_ADVISOR_FRAME_POS_Y }
+						centerPosition = yes
+						context_aware_tooltip = GER_heydrich_flavor
+					}
+
+					#PORTRAIT
+					iconType = {
+						name ="inner_circle_security_4_portrait"
+						spriteType = ""
+						orientation = upper_left
+						position = { x=7	 y=6 }
+						scale = 0.5
+						alwaystransparent = yes
+					}
+				}
+
+				#ASCENDED ADVISOR NAME BOX
+				iconType = {
+					name ="inner_circle_security_4_name_box"
+					spriteType = "GFX_ascended_advisor_name_box"
+					orientation = center
+					position = { x=0	 y=11 }
+					centerposition = yes
+					context_aware_tooltip = GER_heydrich_flavor
+				}
+
+				#NAME
+				instantTextBoxType = {
+					name ="inner_circle_security_4_name"
+					orientation = center_down
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
+					font = "hoi_20b"
+					context_aware_text = [GetSecuritySlot4Name]
+					format = center
+					maxWidth = 150
+					alwaystransparent = yes
+				}
+
+				#ASCENDED ADVISOR TRAIT BOX
+				iconType = {
+					name ="inner_circle_security_4_trait_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=0	 y=42 }
+					centerposition = yes
+					context_aware_tooltip = GER_heydrich_bonus
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_security_4_trait"
+					orientation = center_down
+					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = @ASCENDED_ADVISOR_TEXT_POS_Y }
+					font = "hoi_18mbs"
+					context_aware_text = GER_daluege_trait
+					format = center
+					maxWidth = 150
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name ="inner_circle_security_4_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
+					orientation = center
+					position = { x=0	 y=65 }
+					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_security_4_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_4_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_security_4_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_4_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_security_4_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
+					context_aware_tooltip = GER_security_slot_4_tt
+				}
+
+				#Power Level
+				instantTextBoxType = {
+					name ="inner_circle_security_4_power_level"
+					orientation = center_down
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
+					context_aware_text = [GetSecuritySlot4PowerPercentage]
+					format = center
+					maxWidth = 200
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_security_4_loyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_security_slot_4_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_security_4_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
+					orientation = center_down
+					position = { x = -70 y = 25 }
+					context_aware_tooltip = GER_security_slot_4_stored_tt
+				}
+
+				# Power Options
+				instantTextBoxType = {
+					name ="inner_circle_security_4_loyalty_progressbar_option"
+					orientation = center_down
+					position = { x = -60 y = 29 }
+					font = "hoi_16mbs"
+					context_aware_text = [GetSecuritySlot4Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -2487,35 +3269,26 @@ guiTypes = {
 		containerWindowType = {
 			name = "inner_circle_propaganda_category"
 			orientation = center_up
-			position = { x = 1200 y = @CATEGORY_CONTAINER_POS_Y }
+			position = { x = 1175 y = @CATEGORY_CONTAINER_POS_Y }
 			size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 			clipping = no
 
 			containerWindowType = {
 				name = "inner_circle_propaganda_1_container"
 				orientation = center_up
-				position = { x = -610 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
+				position = { x = -600 y = @ASCENDED_ADVISOR_CONTAINER_POS_Y }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
-					position = { x = -75 y = -200 }
+					position = { x = -65 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetPropagandaCategoryPortion]
 					format = center
 					maxWidth = 300
-				}
-
-				instantTextBoxType = {
-					name ="inner_circle_economy_category_values"
-					orientation = center_up
-					position = { x = -25 y = -120 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetPropagandaCategoryValues]
-					format = center
-					maxWidth = 200
+					context_aware_tooltip = [GetPropagandaCategoryValues]
 				}
 				
 				containerWindowType = {
@@ -2526,7 +3299,7 @@ guiTypes = {
 					clipping = no
 					
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_propaganda_1_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -2591,13 +3364,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_propaganda_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_propaganda_1_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_propaganda_1_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_1_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_propaganda_1_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_1_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_propaganda_1_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_propaganda_slot_1_tt
 				}
 
@@ -2605,39 +3423,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_1_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetPropagandaSlot1PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_propaganda_1_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_propaganda_slot_1_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_propaganda_1_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetPropagandaSlot1Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_propaganda_1_power_progressbar"
+					name = "inner_circle_propaganda_1_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_propaganda_slot_1_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_propaganda_1_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_propaganda_slot_1_stored_tt
@@ -2645,11 +3448,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_propaganda_1_power_progressbar_option"
+					name ="inner_circle_propaganda_1_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [AmannPowerOptions]
+					context_aware_text = [GetPropagandaSlot1Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -2671,7 +3474,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_propaganda_2_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -2735,13 +3538,58 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_propaganda_2_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_propaganda_2_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_propaganda_2_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_2_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_propaganda_2_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_2_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_propaganda_2_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_propaganda_slot_2_tt
 				}
 
@@ -2749,39 +3597,24 @@ guiTypes = {
 				instantTextBoxType = {
 					name ="inner_circle_propaganda_2_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetPropagandaSlot2PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_propaganda_2_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_propaganda_slot_2_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_propaganda_2_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetPropagandaSlot2Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_propaganda_2_power_progressbar"
+					name = "inner_circle_propaganda_2_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_propaganda_slot_2_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_propaganda_2_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_propaganda_slot_2_stored_tt
@@ -2789,11 +3622,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_propaganda_2_power_progressbar_option"
+					name ="inner_circle_propaganda_2_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [GoebbelsPowerOptions]
+					context_aware_text = [GetPropagandaSlot2Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -2803,7 +3636,7 @@ guiTypes = {
 			containerWindowType = {
 				name = "inner_circle_propaganda_3_container"
 				orientation = center_up
-				position = { x = -610 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
+				position = { x = -600 y = @ADVISOR_CONTAINER_POS_Y_TIER_2 }
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 				
@@ -2815,7 +3648,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_propaganda_3_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -2879,53 +3712,83 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_propaganda_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_propaganda_3_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_propaganda_3_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_3_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_propaganda_3_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_3_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_propaganda_3_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_propaganda_slot_3_tt
 				}
 
 				#Power Level
 				instantTextBoxType = {
-					name ="inner_circle_propaganda_1_power_level"
+					name ="inner_circle_propaganda_3_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetPropagandaSlot3PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_propaganda_1_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_propaganda_slot_3_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_propaganda_1_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetPropagandaSlot3Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_propaganda_3_power_progressbar"
+					name = "inner_circle_propaganda_3_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_propaganda_slot_3_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_propaganda_3_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_propaganda_slot_3_stored_tt
@@ -2933,11 +3796,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_propaganda_3_power_progressbar_option"
+					name ="inner_circle_propaganda_3_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [DietrichPowerOptions]
+					context_aware_text = [GetPropagandaSlot3Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes
@@ -2960,7 +3823,7 @@ guiTypes = {
 					clipping = no
 
 					#FRAME
-					iconType = {
+					buttonType = {
 						name ="inner_circle_propaganda_4_frame"
 						spriteType = "GFX_ascended_advisors_unappointed_frame"
 						orientation = center
@@ -3024,53 +3887,83 @@ guiTypes = {
 					alwaystransparent = yes
 				}
 
-				#POWER BOX
 				iconType = {
-					name ="inner_circle_propaganda_1_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
+					name ="inner_circle_propaganda_4_bottom_box"
+					spriteType = "GFX_ascended_advisor_trait_box"
 					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+					position = { x=0	 y=65 }
 					centerposition = yes
+				}
+
+
+				buttonType = {
+					name ="inner_circle_propaganda_4_bribe_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_bribe_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_4_bribe_box_text"
+					position = { x = 100 y = 108 }
+					font = "hoi_16mbs"
+					text = GER_inner_circle_bribe_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				buttonType = {
+					name ="inner_circle_propaganda_4_curb_box"
+					spriteType = "GFX_tiling_sort_button"
+					orientation = center
+					position = { x=-40	 y=57 }
+					centerposition = yes
+					context_aware_tooltip = GER_inner_circle_curb_tt
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_4_curb_box_text"
+					position = { x = 20 y = 108 }
+					font = "hoi_16mbs"
+					context_aware_text = GER_inner_circle_curb_loc
+					maxWidth = 57
+					maxHeight = 24
+					alwaystransparent = yes
+				}
+
+				iconType = {
+					name = "inner_circle_propaganda_4_power_progressbar"
+					spriteType = "GFX_inner_circle_power_bar"
+					orientation = center_down
+					position = { x = -70 y = 5 }
 					context_aware_tooltip = GER_propaganda_slot_4_tt
 				}
 
 				#Power Level
 				instantTextBoxType = {
-					name ="inner_circle_propaganda_1_power_level"
+					name ="inner_circle_propaganda_4_power_level"
 					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
+					position = { x = -100 y = 7 }
+					font = "hoi_16mbs"
 					context_aware_text = [GetPropagandaSlot4PowerPercentage]
 					format = center
 					maxWidth = 200
 					alwaystransparent = yes
 				}
 
-				#LOYALTY BOX
 				iconType = {
-					name ="inner_circle_propaganda_1_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_propaganda_slot_4_tt
-				}
-
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_propaganda_1_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetPropagandaSlot4Loyalty]
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
-
-				iconType = {
-					name = "inner_circle_propaganda_4_power_progressbar"
+					name = "inner_circle_propaganda_4_loyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4"
+					orientation = center_down
+					position = { x = 0 y = 25 }
+					context_aware_tooltip = GER_propaganda_slot_4_stored_tt
+				}
+				iconType = {
+					name = "inner_circle_propaganda_4_disloyalty_progressbar"
+					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
 					context_aware_tooltip = GER_propaganda_slot_4_stored_tt
@@ -3078,11 +3971,11 @@ guiTypes = {
 
 				# Power Options
 				instantTextBoxType = {
-					name ="inner_circle_propaganda_4_power_progressbar_option"
+					name ="inner_circle_propaganda_4_loyalty_progressbar_option"
 					orientation = center_down
 					position = { x = -60 y = 29 }
 					font = "hoi_16mbs"
-					context_aware_text = [StreicherPowerOptions]
+					context_aware_text = [GetPropagandaSlot4Loyalty]
 					format = center
 					maxWidth = 120
 					alwaystransparent = yes

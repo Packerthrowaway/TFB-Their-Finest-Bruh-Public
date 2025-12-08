@@ -1,4 +1,19 @@
 ﻿defined_text = {
+    name = InnerCircleDebugInfo
+    text = {
+        trigger = {
+        debug_mode = yes
+        }
+        localization_key = GER_inner_circle_debug_info
+    }
+	text = {
+        trigger = {
+           debug_mode = no
+        }
+        localization_key = empty_key
+    }
+}
+defined_text = {
     name = CategoryLoyaltyLeader
     text = {
         trigger = {
@@ -291,34 +306,6 @@ defined_text = {
 		}
 		text = {
 			trigger = { GER_rudolf_hess = { THIS = { check_variable = { inner_circle_character_power_portion > 0 } } } }
-			localization_key = "Too weak to Act"
-		}
-		text = {
-			trigger = { always = yes }
-			localization_key = "Unavailable"
-		}
-	}
-  # Frick
-	defined_text = {
-		name = FrickPowerOptions
-		text = {
-			trigger = { GER_wilhelm_frick = { THIS = { check_variable = { inner_circle_character_power_portion > 0.50 } } } }
-			localization_key = "GER_frick_tier4_power"
-		}
-		text = {
-			trigger = { GER_wilhelm_frick = { THIS = { check_variable = { inner_circle_character_power_portion > 0.35 } } } }
-			localization_key = "GER_frick_tier3_power"
-		}
-		text = {
-			trigger = { GER_wilhelm_frick = { THIS = { check_variable = { inner_circle_character_power_portion > 0.20 } } } }
-			localization_key = "GER_frick_tier2_power"
-		}
-		text = {
-			trigger = { GER_wilhelm_frick = { THIS = { check_variable = { inner_circle_character_power_portion > 0.10 } } } }
-			localization_key = "GER_frick_tier1_power"
-		}
-		text = {
-			trigger = { GER_wilhelm_frick = { THIS = { check_variable = { inner_circle_character_power_portion > 0 } } } }
 			localization_key = "Too weak to Act"
 		}
 		text = {
@@ -626,7 +613,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_economy_1_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_todt_ascend } }
+			trigger = { 
+				GER_fritz_todt = { 
+						has_character_flag = inner_circle_ascended
+					} 
+				}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -651,7 +642,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_economy_2_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_goring_ascend } }
+			trigger = { 
+				GER_hermann_goring = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -675,7 +670,12 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_economy_3_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_speer_ascend } }
+			trigger = { 
+				GER_albert_speer = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
+			localization_key = GFX_ascended_advisors_frame
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -699,7 +699,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_economy_4_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_schacht_ascend } }
+			trigger = { 
+				GER_hjalmar_schacht = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -724,7 +728,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_labour_1_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_hierl_ascend } }
+			trigger = { 
+				GER_konstantin_hierl = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -748,7 +756,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_labour_2_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_ley_ascend } }
+			trigger = { 
+				GER_robert_ley = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -772,7 +784,39 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_labour_3_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_huhnlein_ascend } }
+			trigger = { 
+				GER_adolf_huhnlein = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
+			localization_key = GFX_ascended_advisors_frame
+		}
+		text = {
+			trigger = { always = yes }
+			localization_key = GFX_ascended_advisors_unappointed_frame
+		}
+	}
+
+	defined_text = {
+		name = inner_circle_labour_4_portrait_gui
+		text = {
+			trigger = { GER_fritz_sauckel = { THIS = { has_character_flag = GER_inner_circle_labour_4_slot } } }
+			localization_key = GFX_portrait_GER_fritz_sauckel
+		}
+		text = {
+			trigger = { always = yes }
+			localization_key = GFX_blank_leader_portrait
+		}
+	}
+
+	defined_text = {
+		name = inner_circle_labour_4_frame_gui
+		text = { 
+			trigger = { 
+				GER_fritz_sauckel = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -797,7 +841,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_administration_1_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_hess_ascend } }
+			trigger = { 
+				GER_rudolf_hess = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -809,8 +857,8 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_administration_2_portrait_gui
 		text = {
-			trigger = { GER_wilhelm_frick = { THIS = { has_character_flag = GER_inner_circle_administration_2_slot } } }
-			localization_key = GFX_portrait_GER_wilhelm_frick
+			trigger = { GER_walter_buch = { THIS = { has_character_flag = GER_inner_circle_administration_2_slot } } }
+			localization_key = GFX_portrait_GER_walter_buch
 		}
 		text = {
 			trigger = { always = yes }
@@ -821,7 +869,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_administration_2_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_frick_ascend } }
+			trigger = { 
+				GER_walter_buch = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -845,7 +897,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_administration_3_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_bormann_ascend } }
+			trigger = { 
+				GER_martin_bormann = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -869,31 +925,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_administration_4_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_lammers_ascend } }
-			localization_key = GFX_ascended_advisors_frame
-		}
-		text = {
-			trigger = { always = yes }
-			localization_key = GFX_ascended_advisors_unappointed_frame
-		}
-	}
-
-	defined_text = {
-		name = inner_circle_administration_5_portrait_gui
-		text = {
-			trigger = { GER_walter_buch = { THIS = { has_character_flag = GER_inner_circle_administration_5_slot } } }
-			localization_key = GFX_portrait_GER_walter_buch
-		}
-		text = {
-			trigger = { always = yes }
-			localization_key = GFX_blank_leader_portrait
-		}
-	}
-
-	defined_text = {
-		name = inner_circle_administration_5_frame_gui
-		text = { 
-			trigger = { GER = { has_completed_focus = GER_buch_ascend } }
+			trigger = { 
+				GER_hans_lammers = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -918,7 +954,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_security_1_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_lutze_ascend } }
+			trigger = { 
+				GER_viktor_lutze = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -942,7 +982,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_security_2_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_himmler_ascend } }
+			trigger = { 
+				GER_heinrich_himmler = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -966,7 +1010,39 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_security_3_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_heydrich_ascend } }
+			trigger = { 
+				GER_reinhard_heydrich = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
+			localization_key = GFX_ascended_advisors_frame
+		}
+		text = {
+			trigger = { always = yes }
+			localization_key = GFX_ascended_advisors_unappointed_frame
+		}
+	}
+
+	defined_text = {
+		name = inner_circle_security_4_portrait_gui
+		text = {
+			trigger = { GER_kurt_daluege = { THIS = { has_character_flag = GER_inner_circle_security_4_slot } } }
+			localization_key = GFX_portrait_GER_reinhard_heydrich
+		}
+		text = {
+			trigger = { always = yes }
+			localization_key = GFX_blank_leader_portrait
+		}
+	}
+
+	defined_text = {
+		name = inner_circle_security_4_frame_gui
+		text = { 
+			trigger = { 
+				GER_kurt_daluege = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -991,7 +1067,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_propaganda_1_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_amann_ascend } }
+			trigger = { 
+				GER_max_amann = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -1015,7 +1095,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_propaganda_2_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_goebbels_ascend } }
+			trigger = { 
+				GER_joseph_goebbels = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -1039,7 +1123,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_propaganda_3_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_dietrich_ascend } }
+			trigger = { 
+				GER_otto_dietrich = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -1063,7 +1151,11 @@ defined_text = {
 	defined_text = {
 		name = inner_circle_propaganda_4_frame_gui
 		text = { 
-			trigger = { GER = { has_completed_focus = GER_streicher_ascend } }
+			trigger = { 
+				GER_julius_streicher = { 
+					has_character_flag = inner_circle_ascended
+				} 
+			}
 			localization_key = GFX_ascended_advisors_frame
 		}
 		text = {
@@ -1224,6 +1316,27 @@ defined_text = {
 			localization_key = GER_adolf_huhnlein
 		}
 	}
+	defined_text = {
+		name = GetLabourSlot4Name
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_labour_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_fritz_sauckel = {
+					has_character_flag = GER_inner_circle_labour_4_slot
+				}
+			}
+			localization_key = GER_fritz_sauckel
+		}
+	}
   # ADMIN NAMES
 	defined_text = {
 		name = GetAdminSlot1Name
@@ -1260,11 +1373,11 @@ defined_text = {
 		}
 		text = {
 			trigger = {
-				GER_wilhelm_frick = {
+				GER_walter_buch = {
 					has_character_flag = GER_inner_circle_administration_2_slot
 				}
 			}
-			localization_key = GER_wilhelm_frick
+			localization_key = GER_walter_buch
 		}
 	}
 	defined_text = {
@@ -1307,27 +1420,6 @@ defined_text = {
 				}
 			}
 			localization_key = GER_hans_lammers
-		}
-	}
-	defined_text = {
-		name = GetAdminSlot5Name
-		text = { #NO ONE
-			trigger = {
-				GER = {
-					NOT = {
-						any_character = { has_character_flag = GER_inner_circle_administration_5_slot }
-					}
-				}
-			}
-			localization_key = empty_key
-		}
-		text = {
-			trigger = {
-				GER_walter_buch = {
-					has_character_flag = GER_inner_circle_administration_5_slot
-				}
-			}
-			localization_key = GER_walter_buch
 		}
 	}
 
@@ -1393,6 +1485,27 @@ defined_text = {
 				}
 			}
 			localization_key = GER_reinhard_heydrich
+		}
+	}
+	defined_text = {
+		name = GetSecuritySlot4Name
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_security_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_kurt_daluege = {
+					has_character_flag = GER_inner_circle_security_4_slot
+				}
+			}
+			localization_key = GER_kurt_daluege
 		}
 	}
 
@@ -1828,6 +1941,30 @@ defined_text = {
 		}
 	}
 
+	#ECONOMY ACTION
+
+	defined_text = {
+		name = GetCurrentEconAction
+		text = { #NO ACTIVE
+			trigger = {
+				GER = {
+					NOT = {
+						has_country_flag = GER_inner_circle_economy_action_active
+					}
+				}
+			}
+			localization_key = GER_no_econ_action_active
+		}
+		text = {
+			trigger = {
+				GER_hjalmar_schacht = {
+					has_character_flag = GER_inner_circle_economy_4_slot
+				}
+			}
+			localization_key = GER_hjalmar_schacht_loyalty_level_percentage
+		}
+	}
+
   # Labour 1
 	defined_text = {
 		name = GetLabourSlot1PowerPercentage
@@ -2085,6 +2222,91 @@ defined_text = {
 			localization_key = GER_adolf_huhnlein_loyalty_level_percentage
 		}
 	}
+	# Labour 4
+	defined_text = {
+		name = GetLabourSlot4PowerPercentage
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_labour_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_fritz_sauckel = {
+					has_character_flag = GER_inner_circle_labour_4_slot
+				}
+			}
+			localization_key = GER_fritz_sauckel_power_level_percentage
+		}
+	}
+	defined_text = {
+		name = GetLabourSlot4PowerRaw
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_labour_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_fritz_sauckel = {
+					has_character_flag = GER_inner_circle_labour_4_slot
+				}
+			}
+			localization_key = GER_fritz_sauckel_power_level_raw
+		}
+	}
+	defined_text = {
+		name = GetLabourSlot4PowerStored
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_labour_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_fritz_sauckel = {
+					has_character_flag = GER_inner_circle_labour_4_slot
+				}
+			}
+			localization_key = GER_fritz_sauckel_power_level_stored
+		}
+	}
+	defined_text = {
+		name = GetLabourSlot4Loyalty
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_labour_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_fritz_sauckel = {
+					has_character_flag = GER_inner_circle_labour_4_slot
+				}
+			}
+			localization_key = GER_fritz_sauckel_loyalty_level_percentage
+		}
+	}
 
   # Administration 1
 	defined_text = {
@@ -2105,7 +2327,7 @@ defined_text = {
 					has_character_flag = GER_inner_circle_administration_1_slot
 				}
 			}
-			localization_key = GER_adolf_huhnlein_power_level_percentage
+			localization_key = GER_rudolf_hess_power_level_percentage
 		}
 	}
 	defined_text = {
@@ -2126,7 +2348,7 @@ defined_text = {
 					has_character_flag = GER_inner_circle_administration_1_slot
 				}
 			}
-			localization_key = GER_adolf_huhnlein_power_level_raw
+			localization_key = GER_rudolf_hess_power_level_raw
 		}
 	}
 	defined_text = {
@@ -2187,11 +2409,11 @@ defined_text = {
 		}
 		text = {
 			trigger = {
-				GER_wilhelm_frick = {
+				GER_walter_buch = {
 					has_character_flag = GER_inner_circle_administration_2_slot
 				}
 			}
-			localization_key = GER_wilhelm_frick_power_level_percentage
+			localization_key = GER_walter_buch_power_level_percentage
 		}
 	}
 	defined_text = {
@@ -2208,11 +2430,11 @@ defined_text = {
 		}
 		text = {
 			trigger = {
-				GER_wilhelm_frick = {
+				GER_walter_buch = {
 					has_character_flag = GER_inner_circle_administration_2_slot
 				}
 			}
-			localization_key = GER_wilhelm_frick_power_level_raw
+			localization_key = GER_walter_buch_power_level_raw
 		}
 	}
 	defined_text = {
@@ -2229,11 +2451,11 @@ defined_text = {
 		}
 		text = {
 			trigger = {
-				GER_wilhelm_frick = {
+				GER_walter_buch = {
 					has_character_flag = GER_inner_circle_administration_2_slot
 				}
 			}
-			localization_key = GER_wilhelm_frick_power_level_stored
+			localization_key = GER_walter_buch_power_level_stored
 		}
 	}
 	defined_text = {
@@ -2250,11 +2472,11 @@ defined_text = {
 		}
 		text = {
 			trigger = {
-				GER_wilhelm_frick = {
+				GER_walter_buch = {
 					has_character_flag = GER_inner_circle_administration_2_slot
 				}
 			}
-			localization_key = GER_wilhelm_frick_loyalty_level_percentage
+			localization_key = GER_walter_buch_loyalty_level_percentage
 		}
 	}
 
@@ -2427,92 +2649,6 @@ defined_text = {
 				}
 			}
 			localization_key = GER_hans_lammers_loyalty_level_percentage
-		}
-	}
-
-  # Administration 5
-	defined_text = {
-		name = GetAdminSlot5PowerPercentage
-		text = { #NO ONE
-			trigger = {
-				GER = {
-					NOT = {
-						any_character = { has_character_flag = GER_inner_circle_administration_5_slot }
-					}
-				}
-			}
-			localization_key = empty_key
-		}
-		text = {
-			trigger = {
-				GER_walter_buch = {
-					has_character_flag = GER_inner_circle_administration_5_slot
-				}
-			}
-			localization_key = GER_walter_buch_power_level_percentage
-		}
-	}
-	defined_text = {
-		name = GetAdminSlot5PowerRaw
-		text = { #NO ONE
-			trigger = {
-				GER = {
-					NOT = {
-						any_character = { has_character_flag = GER_inner_circle_administration_5_slot }
-					}
-				}
-			}
-			localization_key = empty_key
-		}
-		text = {
-			trigger = {
-				GER_walter_buch = {
-					has_character_flag = GER_inner_circle_administration_5_slot
-				}
-			}
-			localization_key = GER_walter_buch_power_level_raw
-		}
-	}
-	defined_text = {
-		name = GetAdminSlot5PowerStored
-		text = { #NO ONE
-			trigger = {
-				GER = {
-					NOT = {
-						any_character = { has_character_flag = GER_inner_circle_administration_5_slot }
-					}
-				}
-			}
-			localization_key = empty_key
-		}
-		text = {
-			trigger = {
-				GER_walter_buch = {
-					has_character_flag = GER_inner_circle_administration_5_slot
-				}
-			}
-			localization_key = GER_walter_buch_power_level_stored
-		}
-	}
-	defined_text = {
-		name = GetAdminSlot5Loyalty
-		text = { #NO ONE
-			trigger = {
-				GER = {
-					NOT = {
-						any_character = { has_character_flag = GER_inner_circle_administration_5_slot }
-					}
-				}
-			}
-			localization_key = empty_key
-		}
-		text = {
-			trigger = {
-				GER_walter_buch = {
-					has_character_flag = GER_inner_circle_administration_5_slot
-				}
-			}
-			localization_key = GER_walter_buch_loyalty_level_percentage
 		}
 	}
 
@@ -2771,6 +2907,92 @@ defined_text = {
 				}
 			}
 			localization_key = GER_reinhard_heydrich_loyalty_level_percentage
+		}
+	}
+
+	# Security 4
+	defined_text = {
+		name = GetSecuritySlot4PowerPercentage
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_security_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_kurt_daluege = {
+					has_character_flag = GER_inner_circle_security_4_slot
+				}
+			}
+			localization_key = GER_kurt_daluege_power_level_percentage
+		}
+	}
+	defined_text = {
+		name = GetSecuritySlot4PowerRaw
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_security_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_kurt_daluege = {
+					has_character_flag = GER_inner_circle_security_4_slot
+				}
+			}
+			localization_key = GER_kurt_daluege_power_level_raw
+		}
+	}
+	defined_text = {
+		name = GetSecuritySlot4PowerStored
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_security_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_kurt_daluege = {
+					has_character_flag = GER_inner_circle_security_4_slot
+				}
+			}
+			localization_key = GER_kurt_daluege_power_level_stored
+		}
+	}
+	defined_text = {
+		name = GetSecuritySlot4Loyalty
+		text = { #NO ONE
+			trigger = {
+				GER = {
+					NOT = {
+						any_character = { has_character_flag = GER_inner_circle_security_4_slot }
+					}
+				}
+			}
+			localization_key = empty_key
+		}
+		text = {
+			trigger = {
+				GER_kurt_daluege = {
+					has_character_flag = GER_inner_circle_security_4_slot
+				}
+			}
+			localization_key = GER_kurt_daluege_loyalty_level_percentage
 		}
 	}
 
