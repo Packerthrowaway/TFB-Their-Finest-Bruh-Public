@@ -32,15 +32,15 @@ focus_tree = {
         }
     }
     default = no
-    continuous_focus_position = { x = 1000 y = 1300 }
+    continuous_focus_position = { x = 700 y = 1300 }
 
     shared_focus = COM_commonwealth_command
 
     focus = {
         id = RAJ_indianize_the_army
         icon = GFX_focus_RAJ_indianisation_of_army
-        x = 0
-        y = 0
+        x = 10
+        y = 10
         mutually_exclusive = { focus = RAJ_keep_british_generals }
         cost = 5
 
@@ -104,7 +104,7 @@ focus_tree = {
         id = RAJ_great_depression_price_controls
         icon = GFX_focus_generic_price_controls
         #prerequisite = { focus = }
-        mutually_exclusive = { focus = RAJ_provincial_autonomy }
+        mutually_exclusive = { focus = RAJ_provincial_autonomy focus = RAJ_his_majestys_loyal_government}
         x = -33
         y = 0
         relative_position_id = RAJ_indianize_the_army
@@ -7042,10 +7042,10 @@ focus_tree = {
         id = RAJ_provincial_autonomy
         icon = GFX_focus_RAJ_provincial_autonomy
         #prerequisite = { focus = }
-        mutually_exclusive = { focus = RAJ_great_depression_price_controls }
-        x = -15
+        mutually_exclusive = { focus = RAJ_his_majestys_loyal_government focus = RAJ_great_depression_price_controls}
+        x = 0
         y = 0
-        relative_position_id = RAJ_indianize_the_army 
+        #relative_position_id = RAJ_indianize_the_army 
 
         cost = 5
 
@@ -7310,10 +7310,10 @@ focus_tree = {
     focus = {
         id = RAJ_trade_port
         icon = GFX_focus_POL_develop_polish_shipbuilding
-        prerequisite = { focus = RAJ_great_depression_price_controls focus = RAJ_provincial_autonomy }
-        x = 24
+        prerequisite = { focus = RAJ_provincial_autonomy }
+        x = 5
         y = 1
-        relative_position_id = RAJ_great_depression_price_controls 
+        relative_position_id = RAJ_provincial_autonomy 
 
         # offset = {
         #     x = -4
@@ -15960,15 +15960,15 @@ focus = {
 	id = RAJ_his_majestys_loyal_government
 	icon = GFX_focus_RAJ_his_majestys_loyal_government
 	
-	x = 44
+	x = 15
 	y = 0
-	relative_position_id = RAJ_great_depression_price_controls 
+	relative_position_id = RAJ_provincial_autonomy 
 	cost = 5
 
-	#mutually_exclusive = { focus = RAJ_great_depression_price_controls focus = RAJ_provincial_autonomy }
+	mutually_exclusive = { focus = RAJ_provincial_autonomy focus = RAJ_great_depression_price_controls}
 
 	allow_branch = {
-        always = no
+        #always = no
 		if = {
 			limit = {
 				has_game_rule = {
@@ -16764,7 +16764,7 @@ focus = {
 	search_filters = { FOCUS_FILTER_INDUSTRY }
 
 	completion_reward = {
-		#unlock_decision_category_tooltip = RAJ_population_decisions
+		unlock_decision_category_tooltip = RAJ_population_decisions
 	}
 }
 
@@ -17060,7 +17060,7 @@ focus = {
 			hidden_effect = {
 				if = {
 					limit = {
-						infrastructure < 5
+						infrastructure < 10
 					}
 					add_building_construction = {
 						type = infrastructure
@@ -17070,7 +17070,7 @@ focus = {
 				}
 				add_resource = {
 					type = oil
-					amount = 4
+					amount = 40
 				}
 			}
 		}
@@ -17084,23 +17084,23 @@ focus = {
 				OR = {
 					has_resources_amount = {
 						resource = steel
-						amount > 19
+						amount > 190
 					}
 					has_resources_amount = {
 						resource = tungsten
-						amount > 19
+						amount > 190
 					}
 					has_resources_amount = {
 						resource = chromium
-						amount > 19
+						amount > 190
 					}
 					has_resources_amount = {
 						resource = aluminium
-						amount > 19
+						amount > 190
 					}
 					has_resources_amount = {
 						resource = rubber
-						amount > 19
+						amount > 190
 					}
 				}
 				is_in_array = {
@@ -17111,11 +17111,11 @@ focus = {
 			hidden_effect = {
 				if = {
 					limit = {
-						infrastructure < 5
+						infrastructure < 10
 					}
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -17124,60 +17124,60 @@ focus = {
 					limit = {
 						has_resources_amount = {
 							resource = steel
-							amount > 19
+							amount > 190
 						}
 					}
 					add_resource = {
 						type = steel
-						amount = 4
+						amount = 40
 					}
 				}
 				if = {
 					limit = {
 						has_resources_amount = {
 							resource = tungsten
-							amount > 19
+							amount > 190
 						}
 					}
 					add_resource = {
 						type = tungsten
-						amount = 4
+						amount = 40
 					}
 				}
 				if = {
 					limit = {
 						has_resources_amount = {
 							resource = chromium
-							amount > 19
+							amount > 190
 						}
 					}
 					add_resource = {
 						type = chromium
-						amount = 4
+						amount = 40
 					}
 				}
 				if = {
 					limit = {
 						has_resources_amount = {
 							resource = aluminium
-							amount > 19
+							amount > 190
 						}
 					}
 					add_resource = {
 						type = aluminium
-						amount = 4
+						amount = 40
 					}
 				}
 				if = {
 					limit = {
 						has_resources_amount = {
 							resource = rubber
-							amount > 19
+							amount > 190
 						}
 					}
 					add_resource = {
 						type = rubber
-						amount = 4
+						amount = 40
 					}
 				}
 			}
@@ -17216,22 +17216,22 @@ focus = {
 				has_dlc = "Arms Against Tyranny"
 			}
 			add_equipment_subsidy = {
-				cic = 1000
+				cic = 10000
 				equipment_type = infantry_equipment
 				seller_tags = { ENG } 
 			}
 			add_equipment_subsidy = {
-				cic = 1000
+				cic = 10000
 				equipment_type = motorized_equipment
 				seller_tags = { ENG } 
 			}
 			add_equipment_subsidy = {
-				cic = 1000
+				cic = 10000
 				equipment_type = artillery_equipment
 				seller_tags = { ENG } 
 			}
 			add_equipment_subsidy = {
-				cic = 1000
+				cic = 10000
 				equipment_type = light_tank_chassis
 				seller_tags = { ENG } 
 			}
@@ -18455,14 +18455,14 @@ focus = {
 
 		custom_effect_tooltip = generic_skip_one_line_tt
 
-		unlock_decision_category_tooltip = generic_refit_civilian_ships_category
+		# unlock_decision_category_tooltip = generic_refit_civilian_ships_category
 
-		custom_effect_tooltip = generic_skip_one_line_tt
+		# custom_effect_tooltip = generic_skip_one_line_tt
 
-		set_country_flag = refit_convoy_ships_flag #Necessary flag for unlocking Refit Civilian Ships decs 
-		#The variants created here replace the variants that can be created via decisions
-		set_country_flag = refit_to_destroyer_flag
-		set_country_flag = refit_to_cruiser_flag
+		# set_country_flag = refit_convoy_ships_flag #Necessary flag for unlocking Refit Civilian Ships decs 
+		# #The variants created here replace the variants that can be created via decisions
+		# set_country_flag = refit_to_destroyer_flag
+		# set_country_flag = refit_to_cruiser_flag
 
 		if = {
 			limit = {
@@ -18669,8 +18669,8 @@ focus = {
 		}
 		custom_effect_tooltip = RAJ_modify_south_east_asia_command_dm_tt
 		add_to_variable = { RAJ_south_east_asia_command_dm_max_command_power = 50 tooltip = max_command_power_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_command_power_gain = 0.2 tooltip = command_power_gain_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_special_forces_cap = 0.25 tooltip = special_forces_cap_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_command_power_gain = 0.1 tooltip = command_power_gain_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_special_forces_cap = 0.05 tooltip = special_forces_cap_tt }
 
 		country_event = GOE_RAJ_loyalist.06
 	}
@@ -21269,7 +21269,7 @@ focus = {
         id = RAJ_royal_indian_artillery_dlc
         #icon = GFX_
         prerequisite = {  }
-        x = 0
+        x = 2
         y = 5
         relative_position_id = RAJ_keep_british_generals
         icon = GFX_focus_SWE_let_fly_all_guns
