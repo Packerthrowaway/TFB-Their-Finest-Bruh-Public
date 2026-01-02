@@ -13151,6 +13151,8 @@ focus_tree = {
 
 		available = {
 			JAP_naval_faction_is_not_subdued = yes
+			NOT = { has_war_with = CHI }
+			date > 1941.1.1
 		}
 
 		bypass = {
@@ -13234,44 +13236,44 @@ focus_tree = {
 				days = 425
 			}	
 
-			IF = {
-				limit = {
-					AST = {
-						exists = yes
-						NOT = {	
-							is_ally_with = ROOT
-						}
-						NOT = {
-							has_war_with = ROOT
-						}
-					}
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = AST
-					expire = 0
-				}	
-			}
-			IF = {
-				limit = {
-					NZL = {
-						exists = yes
-						NOT = {	
-							is_ally_with = ROOT
-						}
-						NOT = {
-							has_war_with = ROOT
-						}
-					}
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = NZL
-					expire = 0
-				}	
-			}
+			# IF = {
+			# 	limit = {
+			# 		AST = {
+			# 			exists = yes
+			# 			NOT = {	
+			# 				is_ally_with = ROOT
+			# 			}
+			# 			NOT = {
+			# 				has_war_with = ROOT
+			# 			}
+			# 		}
+			# 	}
+			# 	custom_effect_tooltip = generic_skip_one_line_tt
+			# 	create_wargoal = {
+			# 		type = puppet_wargoal_focus
+			# 		target = AST
+			# 		expire = 0
+			# 	}	
+			# }
+			# IF = {
+			# 	limit = {
+			# 		NZL = {
+			# 			exists = yes
+			# 			NOT = {	
+			# 				is_ally_with = ROOT
+			# 			}
+			# 			NOT = {
+			# 				has_war_with = ROOT
+			# 			}
+			# 		}
+			# 	}
+			# 	custom_effect_tooltip = generic_skip_one_line_tt
+			# 	create_wargoal = {
+			# 		type = puppet_wargoal_focus
+			# 		target = NZL
+			# 		expire = 0
+			# 	}	
+			# }
 			# IF = {
 			# 	limit = {
 			# 		PNG = {
@@ -13337,43 +13339,43 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
-			IF = {
-				limit = {
-					NOT = {
-						has_war_with = AST
-						has_wargoal_against = {
-							target = AST
-						}
-						has_subject = AST
-						is_in_faction_with = AST
-					}
-				}
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = AST
-					expire = 0
-				}		
-			}
+			# IF = {
+			# 	limit = {
+			# 		NOT = {
+			# 			has_war_with = AST
+			# 			has_wargoal_against = {
+			# 				target = AST
+			# 			}
+			# 			has_subject = AST
+			# 			is_in_faction_with = AST
+			# 		}
+			# 	}
+			# 	create_wargoal = {
+			# 		type = puppet_wargoal_focus
+			# 		target = AST
+			# 		expire = 0
+			# 	}		
+			# }
 
-			custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = generic_skip_one_line_tt
 
-			IF = {
-				limit = {
-					NOT = {
-						has_war_with = NZL
-						has_wargoal_against = {
-							target = NZL
-						}
-						has_subject = NZL
-						is_in_faction_with = NZL
-					}
-				}
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = NZL
-					expire = 0
-				}		
-			}
+			# IF = {
+			# 	limit = {
+			# 		NOT = {
+			# 			has_war_with = NZL
+			# 			has_wargoal_against = {
+			# 				target = NZL
+			# 			}
+			# 			has_subject = NZL
+			# 			is_in_faction_with = NZL
+			# 		}
+			# 	}
+			# 	create_wargoal = {
+			# 		type = puppet_wargoal_focus
+			# 		target = NZL
+			# 		expire = 0
+			# 	}		
+			# }
 
 			add_ai_strategy = {
 				type = antagonize
@@ -14087,6 +14089,7 @@ focus_tree = {
 					has_army_manpower = { size > 999999 }
 				}
 			}
+			date > 1941.1.1
 		}
 
 		bypass = {
@@ -14422,20 +14425,20 @@ focus_tree = {
 			# 	}
 			# }
 
-			custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = generic_skip_one_line_tt
 
-			unlock_decision_tooltip = {
-				decision = JAP_establish_the_state_of_burma_decision
-				show_effect_tooltip = no 
-			}
-			unlock_decision_tooltip = {
-				decision = JAP_establish_the_provisional_government_of_free_india_decision
-				show_effect_tooltip = no 
-			}	
-			unlock_decision_tooltip = {
-				decision = JAP_establish_the_second_philippine_republic_decision
-				show_effect_tooltip = no 
-			}	
+			# unlock_decision_tooltip = {
+			# 	decision = JAP_establish_the_state_of_burma_decision
+			# 	show_effect_tooltip = no 
+			# }
+			# unlock_decision_tooltip = {
+			# 	decision = JAP_establish_the_provisional_government_of_free_india_decision
+			# 	show_effect_tooltip = no 
+			# }	
+			# unlock_decision_tooltip = {
+			# 	decision = JAP_establish_the_second_philippine_republic_decision
+			# 	show_effect_tooltip = no 
+			# }	
 
 		}
 
@@ -25730,7 +25733,7 @@ focus_tree = {
 		}
 
 		available = {
-			num_of_civilian_factories > 300
+			num_of_civilian_factories > 149
 		}
 
 		bypass = {
