@@ -3281,8 +3281,20 @@
 		
 		search_filters = { FOCUS_FILTER_POLITICAL } 
 		completion_reward = {
-			create_faction = POL_baltic_alliance
-			set_rule = { can_create_factions = yes }
+
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+				set_rule = { can_create_factions = yes }
+				create_faction_from_template = faction_template_POL_baltic_alliance
+				add_faction_initiative = 1
+			}
+			ELSE = {
+				set_rule = { can_create_factions = yes }
+				create_faction = POL_baltic_alliance
+			}
+
 			hidden_effect = {
 				if = {
 					limit = {
@@ -3405,6 +3417,12 @@
 				news_event = { hours = 6 id = news.214 }
 			}
 			unlock_national_focus = POL_the_between_the_seas_concept
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+				set_faction_manifest = faction_manifest_between_the_seas
+			}
 			if = {
 				limit = {
 					ROM = {
@@ -3443,6 +3461,7 @@
 					is_subject_of = GER
 					is_in_faction_with = GER
 				}
+				#has_completed_focus = POL_reach_out_to_underground_state
 			}
 			OR = {
 				NOT = { has_completed_focus = POL_plan_east }
@@ -6474,7 +6493,7 @@
 				name = POL_a_cruiser_navy
 				bonus = 1.0
 				uses = 1
-				category = cl_tech
+				category = ca_tech
 			}
 			#1x50% research bonus to Light Cruisers
 		}
@@ -6592,7 +6611,7 @@
 					name = POL_strike_force
 					bonus = 1.0
 					uses = 2
-					category = cl_tech
+					category = ca_tech
 				}
 				add_tech_bonus = {
 					name = POL_strike_force
@@ -6606,7 +6625,7 @@
 					name = POL_strike_force
 					bonus = 1.0
 					uses = 2
-					category = cl_tech
+					category = ca_tech
 				}
 			}
 			#1x50% research bonus to Light Cruisers & 1x50% bonus to Heavy Cruisers

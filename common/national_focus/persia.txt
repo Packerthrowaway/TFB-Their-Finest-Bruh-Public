@@ -1176,8 +1176,7 @@ focus_tree = {
 		cost = 10
 		
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -1188,14 +1187,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 2
-					    include_locked = yes
+						building = arms_factory
+						size < 2
+						include_locked = no
 					}
 				}
 			}
@@ -1431,8 +1429,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -1443,14 +1440,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 2
-					    include_locked = yes
+						building = arms_factory
+						size < 2
+						include_locked = no
 					}
 				}
 			}
@@ -1748,12 +1744,11 @@ focus_tree = {
 
 		completion_reward = {
 			
-			add_doctrine_cost_reduction = {
-				name = PER_superior_firepower
-				cost_reduction = 0.5
-				uses = 1
-				category = cat_superior_firepower
+			add_mastery= {
+				amount = 100
+				track = combat_support
 			}
+
 			custom_effect_tooltip = CHL_skip_one_line_tt
 			random_core_state = {
 				limit = {
@@ -3080,11 +3075,26 @@ focus_tree = {
 		}
 
 		completion_reward = {
+
+			add_mastery_bonus = {
+				name = PER_sea_specialization
+				bonus = 0.2
+				days = 180
+				track = capital_ships
+				
+			}
+			add_mastery_bonus = {
+				name = PER_sea_specialization
+				bonus = 0.2
+				days = 180
+				track = screens
+				
+			}
 			add_doctrine_cost_reduction = {
 				name = PER_sea_specialization
 				cost_reduction = 0.5
 				uses = 1
-				category = cat_trade_interdiction
+				category = naval_doctrine
 			}
 		}
 	}
@@ -3192,11 +3202,24 @@ focus_tree = {
 		}
 
 		completion_reward = {
+
+			add_mastery_bonus = {
+				name = PER_sea_specialization
+				bonus = 0.2
+				days = 180
+				track = screens
+			}
+			add_mastery_bonus = {
+				name = PER_sea_specialization
+				bonus = 0.2
+				days = 180
+				track = submarines
+			}
 			add_doctrine_cost_reduction = {
 				name = PER_sea_specialization
 				cost_reduction = 0.5
 				uses = 1
-				category = cat_base_strike
+				category = naval_doctrine
 			}
 		}
 	}
@@ -3372,11 +3395,12 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = PER_raiding_fleet_boost
-				cost_reduction = 0.5
-				uses = 2
-				category = trade_interdiction_tree
+			navy_experience = 25
+			add_mastery_bonus = {
+				name = PER_expert_raiders
+				bonus = 0.2
+				days = 180
+				grand_doctrine = new_convoy_raiding 
 			}
 		}
 	}
@@ -3776,8 +3800,7 @@ focus_tree = {
 		
 		available = {
 			has_government = neutrality
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -3788,14 +3811,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 2
-					    include_locked = yes
+						building = arms_factory
+						size < 2
+						include_locked = no
 					}
 				}
 			}
@@ -4054,8 +4076,7 @@ focus_tree = {
 		available = {
 			has_government = neutrality
 			has_war = no
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_controlled_by = ROOT
 				free_building_slots = {
 				    building = arms_factory
@@ -4066,14 +4087,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			NOT = {
-				any_state = {
-					is_owned_by = ROOT
-					is_controlled_by = ROOT
+			all_owned_state = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
 					free_building_slots = {
-					    building = arms_factory
-					    size > 1
-					    include_locked = yes
+						building = arms_factory
+						size < 1
+						include_locked = no
 					}
 				}
 			}
@@ -7323,6 +7343,7 @@ focus_tree = {
 					is_in_faction_with = SOU
 					has_war_with = PER	
 				}
+				has_non_aggression_pact_with = SOU
 			}
 		}
 
@@ -8734,7 +8755,11 @@ focus_tree = {
 				custom_effect_tooltip = CHL_skip_one_line_tt
 				add_war_support = 0.05
 				custom_effect_tooltip = CHL_skip_one_line_tt
-				create_faction = PER_middle_east_protectorate_faction	
+				create_faction_from_template = {
+					template = faction_template_generic_dominance
+					name = PER_middle_east_protectorate_faction
+					icon = GFX_faction_logo_generic_15
+				}
 	
 				hidden_effect = {
 					set_rule = { can_send_volunteers = yes }
@@ -8748,7 +8773,11 @@ focus_tree = {
 				}
 				add_war_support = 0.05
 				custom_effect_tooltip = CHL_skip_one_line_tt
-				create_faction = PER_middle_east_protectorate_faction	
+				create_faction_from_template = {
+					template = faction_template_generic_dominance
+					name = PER_middle_east_protectorate_faction
+					icon = GFX_faction_logo_generic_15
+				}
 	
 				hidden_effect = {
 					set_rule = { can_send_volunteers = yes }
@@ -10150,11 +10179,22 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			set_rule = {
-				can_create_factions = yes				
+
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+				set_rule = { can_create_factions = yes }
+				create_faction_from_template = faction_template_PER_islamic_faction
+				add_faction_initiative = 1
 			}
-			create_faction = PER_islamic_faction
+			ELSE = {
+				set_rule = { can_create_factions = yes }
+				create_faction = PER_islamic_faction
+			}
+
 		}
+
 	}
 
 	#focus = { #DEMOCRATIC
@@ -12098,7 +12138,7 @@ focus_tree = {
 				limit = {
 					is_in_faction = no
 				}
-				create_faction = PER_communist_faction
+				create_faction_from_template = faction_template_PER_communist_faction
 			}
 			
 			every_other_country = {

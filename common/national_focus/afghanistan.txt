@@ -836,6 +836,12 @@ focus_tree = {
 				#custom_effect_tooltip = AFG_ideology_on_the_rise_tt
 				set_country_flag = AFG_requested_our_aid
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AFG_nisar_muhammad_yousafzai
+			
 		}
 	}
 
@@ -1958,8 +1964,8 @@ focus_tree = {
 				custom_effect_tooltip = AFG_quami_intro_tt
 			}
 			add_to_variable = { 
-				AFG_army_supply_factor = 0.05 
-				tooltip = supply_factor_tt
+				AFG_army_supply_consumption_factor = -0.05 
+				tooltip = supply_consumption_factor_tt
 			}
 			add_to_variable = { 
 				AFG_army_supply_combat_penalties_on_core_factor = -0.15 
@@ -2807,7 +2813,7 @@ focus_tree = {
 				name = AFG_research_bonus_1
 				bonus = 1.0
 				uses = 2
-				category = cl_tech
+				category = ca_tech
 				category = dd_tech
 			}
 		}
@@ -3335,6 +3341,7 @@ focus_tree = {
 		}
 		available = {
 			is_subject = no
+			has_civil_war = no
 		}
 		
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -3848,11 +3855,18 @@ focus_tree = {
 
 		completion_reward = {
 
-			set_rule = { 
-				can_create_factions = yes 
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+				set_rule = { can_create_factions = yes }
+				create_faction_from_template = faction_template_AFG_united_islamic_world_faction
+				add_faction_initiative = 1
 			}
-
-			create_faction = AFG_united_islamic_world_faction
+			ELSE = {
+				set_rule = { can_create_factions = yes }
+				create_faction = AFG_united_islamic_world_faction
+			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -4516,9 +4530,16 @@ focus_tree = {
 
 	        custom_effect_tooltip = generic_skip_one_line_tt
 
-	        set_technology = {
-	            tech_mountaineers = 1
-	            popup = no
+	        IF = {
+	        	limit = {
+	        		NOT = {
+	        			has_tech = tech_mountaineers
+	        		}
+	        	}
+	        	set_technology = {
+	        	    tech_mountaineers = 1
+	        	    popup = no
+	        	}
 	        }
 
 	        division_template = {
@@ -6282,6 +6303,7 @@ focus_tree = {
 		}
 		available = {
 			is_subject = no
+			has_civil_war = no
 			fascism > 0.2
 		}
 
@@ -7403,7 +7425,10 @@ focus_tree = {
 				limit = {
 					is_in_faction = no
 				}
-				create_faction = AFG_turko_persian_union
+				create_faction_from_template = {
+					template = faction_template_AFG_united_islamic_world_faction
+					name = AFG_turko_persian_union
+				}
 			}
 		}
 	}
@@ -8389,7 +8414,10 @@ focus_tree = {
 			}
 		}
 		available = {
-			is_in_faction = no
+			OR = {
+				is_in_faction = no
+				is_in_faction_with = GER
+			}
 			is_subject = no
 			OR = {
 				has_government = fascism
@@ -10620,6 +10648,7 @@ focus_tree = {
 		}
 
 		available = {
+			has_civil_war = no
 			democratic > 0.2
 			OR = {
 				is_subject = no
@@ -10686,6 +10715,9 @@ focus_tree = {
 					    			ideology = oligarchism
 					    		}
 					    	}
+					    }
+					    PREV.PREV = {
+					    	remove_ideas = AFG_counter_elite_on_the_rise
 					    }
 					}
 				}
@@ -10804,6 +10836,12 @@ focus_tree = {
 				has_government = communism
 			}
 			has_civil_war = no
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes 
+					character = AFG_provisional_government
+				}	
+			}
 		}
 		#allow_branch = {
 		#}
@@ -11291,6 +11329,7 @@ focus_tree = {
 		}
 
 		available = {
+			has_civil_war = no
 			communism > 0.2
 			OR = {
 				is_subject = no

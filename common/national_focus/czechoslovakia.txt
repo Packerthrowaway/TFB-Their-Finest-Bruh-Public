@@ -540,15 +540,32 @@ focus_tree = {
 				factor = 1.5
 				is_in_faction = no
 			}
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
 		available = {
-			CZE = { controls_state = 69 }
+			CZE = { 
+				controls_state = 69 
+				controls_state = 972
+			}
 		}
 
 		bypass = {
 			NOT = {			
 				69 = {
+					any_province_building_level = {
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+						building = bunker
+						level < 6
+					}
+				}
+				972 = {
 					any_province_building_level = {
 						province = {
 							all_provinces = yes
@@ -1528,7 +1545,11 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
-			add_political_power = 100
+			add_political_power = 120
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}	
 			#allow communist reformer
 			# relations changes
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -1602,7 +1623,7 @@ focus_tree = {
 				remove_ideas = CZE_divided_nation
 			}
 			add_ideas = CZE_czech_socialism
-			add_political_power = 200
+			add_political_power = 120
 		}
 	}
 
@@ -1716,12 +1737,78 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		complete_tooltip = {
+		completion_reward = {
+			SOV = { country_event = { hours = 1 id = czech.1 } }
+		}
+	}
+
+	focus = {
+		id = CZE_the_romanian_question
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		prerequisite = { focus = CZE_join_comintern }
+		x = 0
+		y = 3
+		relative_position_id = CZE_go_left
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
+		}
+
+		available = {
 
 		}
 
+		bypass = {
+			NOT = { can_declare_war_on = ROM }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
 		completion_reward = {
-			SOV = { country_event = { hours = 1 id = czech.1 } }
+			SOV = { country_event = { hours = 1 id = czech.4 } }
+		}
+	}
+
+	focus = {
+		id = CZE_the_polish_division
+		icon = GFX_goal_generic_war_with_comintern
+		prerequisite = { focus = CZE_the_romanian_question }
+		x = 0
+		y = 4
+		relative_position_id = CZE_go_left
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 80
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			NOT = { can_declare_war_on = POL }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			SOV = { country_event = { hours = 1 id = czech.7 } }
 		}
 	}
 
@@ -1846,7 +1933,7 @@ focus_tree = {
 	focus = {
 		id = CZE_bonus_research_slot_1
 		icon = GFX_focus_research
-		prerequisite = { focus = CZE_defensive_preparations }
+		prerequisite = { focus = CZE_the_romanian_question focus = CZE_defensive_preparations focus = CZE_the_polish_question }
 		x = 0
 		y = 5
 		relative_position_id = CZE_democratic_bastion
@@ -2026,12 +2113,50 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			add_ideas = FRA_army_of_aggression_focus
+		}
+	}
+
+	focus = {
+		id = CZE_the_polish_question
+		icon = GFX_focus_generic_attack_poland
+		prerequisite = { focus = CZE_aggressive_wars focus = CZE_german_puppet }
+		x = -1
+		y = 4
+		relative_position_id = CZE_go_right
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
+		}
+
+		available = {
+			GER = { exists = yes }
+			POL = {	exists = yes }
+			NOT = {
+				has_War_with = GER
+			}
+		}
+
+		bypass = {
+			OR = {
+				POL = { exists = no }
+				has_war_with = POL
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			GER = { country_event = { hours = 1 id = czech.10 } }
 		}
 	}
 
@@ -2302,11 +2427,11 @@ focus_tree = {
 		}
 
 		available = {
-
+			NOT = { has_war_with = GER }
 		}
 
 		bypass = {
-
+			
 		}
 
 		cancel_if_invalid = yes
@@ -2345,6 +2470,7 @@ focus_tree = {
 		available = {
 			GER = { exists = yes }
 			GER = { is_subject = no }
+			NOT = { has_war_with = GER }
 		}
 
 		bypass = {
@@ -2355,12 +2481,56 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
 			GER = { country_event = { hours = 1 id = czech.19 } }
+		}
+	}
+
+	focus = {
+		id = CZE_hungarian_situation
+		icon = GFX_focus_generic_attack_hungary
+		prerequisite = { focus = CZE_german_puppet focus = CZE_aggressive_wars }
+		x = -7
+		y = 4
+		relative_position_id = CZE_german_leanings
+		
+		will_lead_to_war_with = HUN
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
+		}
+
+		available = {
+			NOT = {
+				is_in_faction_with = HUN
+			}
+			HUN = { exists = yes }
+		}
+
+		bypass = {
+			OR = {
+				has_war_with = HUN
+				HUN = { exists = no }
+				HUN = { is_subject_of = CZE}
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = HUN
+				expire = 0
+			}
 		}
 	}
 
@@ -2574,7 +2744,7 @@ focus_tree = {
 
 	focus = {
 		id = CZE_bonus_research_slot_2
-		icon = GFX_focus_research
+		icon = GFX_focus_generic_university_2
 		prerequisite = { focus = CZE_doctrinal_innovation }
 		x = 0
 		y = 1
@@ -2757,7 +2927,10 @@ focus_tree = {
 
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
-			create_faction = "CZE_little_entente"
+			create_faction_from_template = {
+				template = faction_template_the_little_entente
+				name = CZE_little_entente
+			}
 		}
 	}
 
@@ -2926,7 +3099,53 @@ focus_tree = {
 		}
 
 		available = {
+			is_in_faction = yes
+		}
 
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = CZE_planning_bonus
+			every_other_country = {
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				add_ideas = CZE_planning_bonus
+			}
+		}
+	}
+
+	focus = {
+		id = CZE_deal_with_hungary
+		icon = GFX_focus_generic_attack_hungary
+		prerequisite = { focus = CZE_security_council }
+		mutually_exclusive = { focus = CZE_rapprochement_with_hungary }
+		x = 0
+		y = 1
+		relative_position_id = CZE_security_council
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
+		}
+
+		available = {
+			NOT = {
+				is_in_faction_with = HUN
+			}
+			HUN = { exists = yes }
+			HUN = { is_subject = no }
 		}
 
 		bypass = {
@@ -2938,19 +3157,59 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		complete_tooltip = {
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = HUN
+				expire = 0
+			}
+		}
+	}
 
+	focus = {
+		id = CZE_deal_with_bulgaria
+		icon = GFX_focus_generic_attack_bulgaria
+		prerequisite = { focus = CZE_security_council }
+		x = 2
+		y = 1
+		relative_position_id = CZE_security_council
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 90
+			modifier = {
+				factor = 0.1
+				HABSBURG_joint_trigger = yes
+			}
 		}
 
+		available = {
+			NOT = {
+				is_in_faction_with = BUL
+			}
+			BUL = { exists = yes }
+			BUL = { is_subject = no }
+			OR = {
+				is_in_faction_with = ROM
+				has_subject = ROM
+				owns_state = 46
+			}
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
 		completion_reward = {
-			#events for faction members. add 10% planning cap bonus
-			add_ideas = CZE_planning_bonus
-			every_country = {
-				limit = {
-					is_in_faction_with = THIS
-					NOT = { tag = THIS }
-				}
-				country_event = { id = czech.31 }
+			create_wargoal = {
+				type = annex_everything
+				target = BUL
+				expire = 0
 			}
 		}
 	}
@@ -2959,6 +3218,7 @@ focus_tree = {
 		id = CZE_rapprochement_with_hungary
 		icon = GFX_focus_generic_befriend_hungary
 		prerequisite = { focus = CZE_security_council }
+		mutually_exclusive = { focus = CZE_deal_with_hungary }
 		x = -2
 		y = 1
 		relative_position_id = CZE_security_council
@@ -3863,7 +4123,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 0.6
+				name = CZE_cas_focus #@#
+				bonus = 1.0
 				uses = 1
 				category = cas_bomber
 			}
@@ -3904,7 +4165,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 0.6
+				name = CZE_tac_focus #@#
+				bonus = 1.0
 				uses = 1
 				category = tactical_bomber
 			}
@@ -3974,8 +4236,7 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
-				is_controlled_by = ROOT
+			any_controlled_state = {
 				is_coastal = yes
 			}
 		}
@@ -4093,7 +4354,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 0.6
+				bonus = 1.0
 				uses = 2
 				category = bb_tech
 			}
@@ -4133,7 +4394,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 0.6
+				bonus = 1.0
 				uses = 2
 				category = dd_tech
 			}
@@ -4173,9 +4434,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_tech_bonus = {
-				bonus = 0.6
+				bonus = 1.0
 				uses = 2
-				category = cl_tech
 				category = ca_tech
 			}
 		}
@@ -4215,11 +4475,24 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+			add_mastery_bonus = {
+				name = CZE_raiding_focus
+				bonus = 0.1
+				days = 240
+				track = screens
+			}
+			add_mastery_bonus = {
+				name = CZE_raiding_focus
+				bonus = 0.1
+				days = 240
+				track = submarines
+			}
+
 			add_doctrine_cost_reduction = {
-				name = naval_doc_bonus
-				cost_reduction = 0.6
+				name = CZE_raiding_focus
+				cost_reduction = 0.25
 				uses = 2
-				category = cat_trade_interdiction
+				category = naval_doctrine
 			}
 		}
 	}
@@ -4258,11 +4531,24 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
+
+			add_mastery_bonus = {
+				name = CZE_capital_focus
+				bonus = 0.1
+				days = 240
+				track = carriers
+			}
+			add_mastery_bonus = {
+				name = CZE_capital_focus
+				bonus = 0.1
+				days = 240
+				track = capital_ships
+			}
 			add_doctrine_cost_reduction = {
-				name = naval_doc_bonus
-				cost_reduction = 0.6
+				name = CZE_capital_focus
+				cost_reduction = 0.25
 				uses = 2
-				category = cat_fleet_in_being
+				category = naval_doctrine
 			}
 		}
 	}

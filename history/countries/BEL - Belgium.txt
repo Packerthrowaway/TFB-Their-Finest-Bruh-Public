@@ -4,11 +4,36 @@ IF = {
 	limit = { 
 		has_dlc = "Gotterdammerung"
 		has_dlc = "La Resistance"
+		has_dlc = "No Compromise, No Surrender"
 	}
 	set_technology = {
 		armored_car1 = 1
+		rangers_tech = 1
+		BEL_chasseurs_ardennais_ncns = 1 
 	}
-	set_oob = "BEL_WW_1936_lar"
+	set_oob = "BEL_WW_1936_lar_ncns"	
+	ELSE_IF = {
+		limit = { 
+			has_dlc = "Gotterdammerung"
+			has_dlc = "No Compromise, No Surrender"
+		}
+		set_technology = {
+			rangers_tech = 1
+			BEL_chasseurs_ardennais_ncns = 1 
+		}
+		set_oob = "BEL_WW_1936_ncns"
+	}
+	ELSE_IF = {
+		limit = { 
+			has_dlc = "Gotterdammerung"
+			has_dlc = "La Resistance"
+		}
+		set_technology = {
+			armored_car1 = 1
+			BEL_chasseurs_ardennais = 1 
+		}
+		set_oob = "BEL_WW_1936_lar"
+	}
 	ELSE_IF = {
 		limit = {
 			has_dlc = "Gotterdammerung"
@@ -17,6 +42,9 @@ IF = {
 			}
 		}
 		set_oob = "BEL_WW_1936"
+		set_technology = {
+			BEL_chasseurs_ardennais = 1 
+		}
 	}
 	ELSE_IF = {
 		limit = {
@@ -66,8 +94,6 @@ set_technology = {
 	tech_recon = 1
 	tech_engineers = 1
 	motorised_infantry = 1
-	early_fighter = 1
-	trench_warfare = 1
 	fuel_silos = 1
 	fuel_refining = 1
 	support_weapons = 1
@@ -78,6 +104,9 @@ set_technology = {
 	tech_mountaineers = 1
 	gwtank_chassis = 1
 }
+
+set_grand_doctrine = grand_battleplan
+
 
 # IF = {
 # 	limit = {
@@ -615,10 +644,25 @@ set_convoys = 300
 set_stability = 0.75
 
 IF = {
-	limit = { has_dlc = "Gotterdammerung" }
+	limit = { 
+		has_dlc = "Gotterdammerung" 
+		NOT = {
+			has_dlc = "No Compromise, No Surrender"
+		} 
+	}
 	add_ideas = {
 		BEL_language_barriers_ns
 		BEL_chasseurs_ardennais_ns
+	}
+}
+IF = {
+	limit = { 
+		has_dlc = "Gotterdammerung" 
+		has_dlc = "No Compromise, No Surrender"
+	}
+	add_ideas = {
+		BEL_language_barriers_ns
+		BEL_chasseurs_ardennais_ns_ncns
 	}
 }
 

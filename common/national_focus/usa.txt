@@ -1,4 +1,4 @@
-﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
 ### search_filters = {FOCUS_FILTER_STABILITY}
@@ -4632,6 +4632,10 @@ focus_tree = {
 				uses = 2
 				category = land_doctrine
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_george_s_patton = {
+				add_skill_level = 1
+			}	
 		}
 	}
 	focus = {
@@ -4695,6 +4699,13 @@ focus_tree = {
 				bonus = 0.75
 				uses = 1
 				category = infantry_weapons
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_omar_bradley = {
+				add_skill_level = 1
+			}
+			USA_mark_clark = {
+				add_skill_level = 1
 			}
 		}
 	}
@@ -5373,6 +5384,10 @@ focus_tree = {
 			685 = {
 				add_dynamic_modifier = { modifier = coastal_defence_battery }
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_ernest_king = {
+				add_skill_level = 1
+			}
 		}
 	}
 	focus = {
@@ -5608,6 +5623,17 @@ focus_tree = {
 		completion_reward = {
 			navy_experience = 50
 			add_ideas = bureau_of_ships_focus
+			if = {
+				limit = { has_idea = bureau_of_ordnance_spirit }
+				remove_ideas = bureau_of_ordnance_spirit
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_chester_w_nimitz = {
+				add_skill_level = 1
+			}
+			USA_william_halsey_jr = {
+				add_skill_level = 1
+			}
 		}
 	}
 	
@@ -5657,11 +5683,12 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_doctrine_cost_reduction = {
+
+			add_mastery_bonus = {
 				name = USA_advanced_mahanian_doctrine
-				cost_reduction = 0.25
-				uses = 2
-				category = cat_fleet_in_being
+				bonus = 0.1
+				days = 180
+				track = capital_ships
 			}
 		}
 	}
@@ -5815,11 +5842,15 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			navy_experience = 25
-			add_doctrine_cost_reduction = {
+			add_mastery = {
+				amount = 50
+				track = screens
+			}
+			add_mastery_bonus = {
 				name = USA_convoy_tactics
-				cost_reduction = 0.35
-				uses = 2
-				category = convoy_defense_tree
+				bonus = 0.1
+				days = 180
+				track = screens
 			}
 		}
 	}

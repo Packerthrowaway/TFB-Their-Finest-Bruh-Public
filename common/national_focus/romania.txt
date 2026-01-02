@@ -3703,7 +3703,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = ROM_unlock_maresal_tt
-			set_technology = { rom_cze_tank_3 = 1 }
+			set_technology = { rom_cze_tank_1 = 1 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 			GER = {
 				add_tech_bonus = {
@@ -3978,11 +3978,17 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			add_mastery_bonus = {
+				name = ROM_air_defense
+				bonus = 0.2
+				days = 240
+				grand_doctrine = new_operational_integrity
+			}
 			add_doctrine_cost_reduction = {
-				name = ROM_ground_support
-				cost_reduction = 0.40
-				uses = 2
-				category = operational_integrity_tree
+				name = ROM_air_defense
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
 			}
 		}
 	}
@@ -4015,6 +4021,12 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			add_mastery_bonus = {
+				name = ROM_ground_support
+				bonus = 0.2
+				days = 240
+				grand_doctrine = new_battlefield_support
+			}
 			add_doctrine_cost_reduction = {
 				name = ROM_ground_support
 				cost_reduction = 0.40
@@ -4201,11 +4213,11 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = ROM_air_superiority
-				cost_reduction = 0.40
-				uses = 2
-				category = strategic_destruction_tree
+				bonus = 0.1
+				days = 240
+				track = fighter_aircraft
 			}
 		}
 	}

@@ -720,6 +720,8 @@ set_technology = {
 
 capital = 219 # Moscow
 
+starting_train_buffer = 3.0
+
 oob = "SOV_1936"
 if = {
 	limit = { has_dlc = "Man the Guns" }
@@ -781,13 +783,14 @@ set_technology = { #WARNING: Do not just remove techs from here -> It can impact
 	electronic_mechanical_engineering = 1
 	radio = 1
 
-	mass_assault = 1
-	fleet_in_being = 1
 	fuel_silos = 1
 	fuel_refining = 1
 	basic_train = 1
 	early_transport_plane = 1
 }
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
 
 set_country_flag = RG_armored_division_medium
 # RG_armored_division_standard = yes
@@ -1156,15 +1159,10 @@ add_ideas = {
 		paratroopers = 1
 
 		#doctrines
-		pocket_defence = 1
-		defence_in_depth = 1
-		battlefleet_concentration = 1
-		submarine_operations = 1
-
 		#Air
-		formation_flying = 1		
-		dive_bombing = 1
-		direct_ground_support = 1
+		#formation_flying = 1		
+		#dive_bombing = 1
+		#direct_ground_support = 1
 
 		#electronics
 		electronic_mechanical_engineering = 1
@@ -1189,6 +1187,31 @@ add_ideas = {
 		concentrated_industry2 = 1
 		concentrated_industry3 = 1
 	}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_battlefield_support
+
+set_sub_doctrine = large_unit_tactics
+add_mastery = {
+    amount = 200
+    sub_doctrine = large_unit_tactics
+}
+set_sub_doctrine = fire_concentration
+add_mastery = {
+    amount = 100
+    sub_doctrine = fire_concentration
+}
+set_sub_doctrine = deep_battle
+add_mastery = {
+    amount = 100
+    sub_doctrine = deep_battle
+}
+set_sub_doctrine = air_subdoctrine_dogfighting_mastery
+add_mastery = {
+    amount = 75
+    sub_doctrine = air_subdoctrine_dogfighting_mastery
+}
 	if = {
 		limit = {
 			NOT = { has_dlc = "No Step Back" }
@@ -1238,7 +1261,7 @@ set_variable = { SOV_poster_center_icon_frame = 1 }
 set_variable = { SOV_poster_left_icon_frame = 1 }
 set_variable = { SOV_poster_right_icon_frame = 1 }
 
-create_faction = Comintern
+create_faction_from_template = faction_template_comintern
 add_to_faction = SOV
 add_to_faction = MON
 add_to_faction = KSR

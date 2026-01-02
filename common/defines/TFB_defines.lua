@@ -103,9 +103,17 @@ NDefines.NMarket.PURCHASE_CONTRACT_SUBSIDY_BONUS_SPEED_FACTOR = 1.5				-- The fa
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 5 	-- Max number of different strategic resources an equipment can be dependent on.
 NDefines.NProduction.EFFICIENCY_LOSS_PER_UNUSED_DAY = 1		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
 NDefines.NProduction.BASE_FACTORY_EFFICIENCY_BALANCE_FACTOR = 0.095             -- Factory efficiency balancing factor
-NDefines.NProduction.BASE_FACTORY_SPEED = 3.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 3.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 2.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.POWERED_FACTORY_SPEED = 3.5 			--Powered factory speed multiplier.
+NDefines.NProduction.POWERED_FACTORY_SPEED_MIL = 3.5 		--Powered factory speed multiplier.
+NDefines.NProduction.POWERED_FACTORY_SPEED_NAV = 2.5 		--Powered factory speed multiplier.
+NDefines.NProduction.BASE_COUNTRY_ENERGY_PRODUCTION = 20 	-- The base energy production of a country
+NDefines.NProduction.BASE_FACTORY_SPEED = 2 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 2				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 1.5 			-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_ENERGY_COST = 0.25 				-- How much energy per factory consumes
+NDefines.NProduction.ENERGY_COST_CAP = 12					-- Maximum energy cost per factory
+NDefines.NProduction.ENERGY_SCALING_COST_BY_FACTORY_COUNT = 0.0225 -- Scales energy cost based on the total number of factories
+NDefines.NProduction.RESOURCE_TO_ENERGY_COEFFICIENT = 5		-- How much energy per coal produces
 NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 15	-- Base start efficiency for factories expressed in %.
 NDefines.NProduction.MAX_MIL_FACTORIES_PER_LINE = 200
 NDefines.NProduction.MAX_MIL_FACTORIES_VISIBLE_FOR_MIL_EQUIPMENT_LINE = 200
@@ -129,6 +137,8 @@ NDefines.NProduction.BASE_LAND_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.2		-- Fra
 NDefines.NProduction.MIN_LAND_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2		-- Minimum fraction of a land equipment's strategic resource cost that any conversion will cost.
 NDefines.NProduction.CONVOY_MAX_NAV_FACTORIES_PER_LINE = 150
 NDefines.NProduction.MINIMUM_NUMBER_OF_FACTORIES_TAKEN_BY_CONSUMER_GOODS_PERCENT = 0.05	-- The minimum number of factories we have to put on consumer goods, in percent. (Vanilla is 0.1)
+
+
 
 NDefines.NTechnology.BASE_RESEARCH_POINTS_SAVED = 75.0		-- Base amount of research points a country can save per slot.
 NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 6.0		-- Base year ahead penalty
@@ -156,8 +166,8 @@ NDefines.NBuildings.NAVALBASE_REPAIR_MULT = 0.06		-- Each level of navalbase bui
 
 NDefines.NMilitary.ZERO_ORG_MOVEMENT_MODIFIER = -0.5		-- speed impact at 0 org.
 NDefines.NMilitary.INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.03	-- speed penalty per infrastucture below maximum.
-NDefines.NMilitary.CORPS_COMMANDER_DIVISIONS_CAP = 20			-- how many divisions a corps commander is limited to. 0 = inf < 0 = blocked
-NDefines.NMilitary.FIELD_MARSHAL_DIVISIONS_CAP = 20			-- how many divisions a field marshall is limited to. 0 = inf < 0 = blocked
+NDefines.NMilitary.CORPS_COMMANDER_DIVISIONS_CAP = 40			-- how many divisions a corps commander is limited to. 0 = inf < 0 = blocked
+NDefines.NMilitary.FIELD_MARSHAL_DIVISIONS_CAP = 40			-- how many divisions a field marshall is limited to. 0 = inf < 0 = blocked
 NDefines.NMilitary.RECON_SKILL_IMPACT = 4 -- how many skillpoints is a recon advantage worth when picking a tactic.
 NDefines.NMilitary.MAX_DIVISION_BRIGADE_HEIGHT = 4		-- Max height of regiments in division designer.
 NDefines.NMilitary.MAX_DIVISION_BRIGADE_WIDTH = 5
@@ -179,8 +189,9 @@ NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 2 -- how many CA
 NDefines.NMilitary.LAND_COMBAT_COLLATERAL_FACTOR = 0.0025		   -- Factor to scale collateral damage to infra and forts with.
 NDefines.NMilitary.LAND_COMBAT_FORT_DAMAGE_CHANCE = 6		-- chance to get a hit to damage on forts. (out of 100)
 NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.05					   -- damage from attrition to Organisation
-NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.05		   -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
-NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.05 -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
+NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.0025		   -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
+NDefines.NMilitary.COHESION_IMMOBILE_PLANNING_SPEED_MULTIPLIER = 0.9	-- If using the 'immobile' cohesion setting, factor ALL planning speed growth by this
+-- NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.05 -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.45     -- attack combat penalty for attacker if out of supply
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.75     -- defend combat penalty for attacker if out of supply
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_ATTACK = -0.45     -- attack combat penalty for defender if out of supply
@@ -203,7 +214,7 @@ NDefines.NMilitary.DEPLOY_TRAINING_MAX_LEVEL = 2
 NDefines.NMilitary.TRAINING_EXPERIENCE_SCALE = 80.0
 NDefines.NMilitary.ARMY_EXP_BASE_LEVEL = 2
 NDefines.NMilitary.UNIT_EXP_LEVELS = { 0.1, 0.2, 0.3, 0.4, 0.55, 0.7, 0.9 }		-- Experience needed to progress to the next level
-NDefines.NMilitary.FIELD_EXPERIENCE_SCALE = 0.002
+NDefines.NMilitary.FIELD_EXPERIENCE_SCALE = 0.0008
 NDefines.NMilitary.FIELD_EXPERIENCE_MAX_PER_DAY = 3				-- Most xp you can gain per day
 NDefines.NMilitary.EXPEDITIONARY_FIELD_EXPERIENCE_SCALE = 0.5		-- reduction factor in Xp from expeditionary forces
 NDefines.NMilitary.LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0.005		-- Experience scale for lend leased equipment used in combat.
@@ -439,25 +450,25 @@ NDefines.NNavy.CONVOY_HIT_PROFILE = 90										-- convoys has this contant hit 
 NDefines.NNavy.COORDINATION_EFFECT_ON_CONVOY_RAID_EFFICIENCY = 1.0			-- coordination will increase the number of areas you can cover in convoy raid
 NDefines.NNavy.BASE_CARRIER_SORTIE_EFFICIENCY = 0.2							-- factor of planes that can sortie by default from a carrier
 NDefines.NNavy.NAVAL_SPEED_MODIFIER = 0.08	                    				-- basic speed control
-NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE = 0.6								-- required naval supremacy to perform invasions on an area
-NDefines.NNavy.CARRIER_STACK_PENALTY = 8										-- The most efficient is 4 carriers in combat. 5+ brings the penalty to the amount of wings in battle.
+-- NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE = 0.6								-- required naval supremacy to perform invasions on an area
+-- NDefines.NNavy.CARRIER_STACK_PENALTY = 8										-- The most efficient is 4 carriers in combat. 5+ brings the penalty to the amount of wings in battle.
 NDefines.NNavy.ANTI_AIR_TARGETING = 0.4                                       -- how good ships are at hitting aircraft
 -- Maybe Later NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.008								-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
 NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 8                          -- hours from start of combat when only carriers capitals and subs get to attack
 NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 12                                    -- hours where all get to attack
 NDefines.NNavy.HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR	= 0.1  		-- penalty if other side has stronger carrier air force
 NDefines.NNavy.MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR = 0.1  			-- max penalty from stronger carrier air force
-NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_TARGET_SCORE = 10                             -- scoring for target picking for planes inside naval combat, one define per ship typ
-NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 30
-NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 100
-NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 4                         -- how much score factor from low health (scales between 0->this number)
-NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 6                           -- how much score factor from low AA guns (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_TARGET_SCALE = 10                             -- scoring for target picking for planes inside naval combat, one define per ship typ
+NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 30
+NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 100
+NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCALE = 4                         -- how much score factor from low health (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCALE = 6                           -- how much score factor from low AA guns (scales between 0->this number)
 
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN = 48 -- minimum cooldown time
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN_FROM_EFFICIENCY = 24 -- clamped min value after screening efficiency has been applied
-NDefines.NNavy.SUPREMACY_PER_SHIP_PER_MANPOWER = 0.07							-- supremacy of a ship is calculated using its IC manpower and a base define
-NDefines.NNavy.SUPREMACY_PER_SHIP_PER_IC = 0.007
-NDefines.NNavy.SUPREMACY_PER_SHIP_BASE = 5.0
+-- NDefines.NNavy.SUPREMACY_PER_SHIP_PER_MANPOWER = 0.07							-- supremacy of a ship is calculated using its IC manpower and a base define
+-- NDefines.NNavy.SUPREMACY_PER_SHIP_PER_IC = 0.007
+-- NDefines.NNavy.SUPREMACY_PER_SHIP_BASE = 5.0
 
 NDefines.NNavy.NAVAL_MINES_IN_REGION_MAX = 1000.0								-- Max number of mines that can be layed by the ships. The value should be hidden from the user as we present % so it's an abstract value that should be used for balancing.
 NDefines.NNavy.NAVAL_MINES_PLANTING_SPEED_MULT = 0.01						-- Value used to overall balance of the speed of planting naval mines
@@ -519,7 +530,7 @@ NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.05		-- Chance of 
 NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
 NDefines.NNavy.RESOURCE_LENDLEASE_PRIORITY = 3
 NDefines.NNavy.RESOURCE_ORIGIN_PRIORITY = 3
-NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.01 													-- multiplies supply usage
+NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.25 													-- multiplies supply usage
 NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 0.85												-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
 NDefines.NNavy.HIT_PROFILE_SPEED_BASE = 5													-- Base value added to hitprofile speed calulation
 NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO 								= 0.25	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
@@ -609,9 +620,33 @@ NDefines.NNavy.NAVY_PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always 
 	0.10 -- 
 }
 
+NDefines.NNavy.MISSION_DOMINANCE_RATIOS = { -- dominance multipliers for different mission types
+		0.0, -- HOLD
+		1.5, -- PATROL
+		1.0, -- STRIKE FORCE
+		0.5, -- CONVOY RAIDING
+		0.5, -- CONVOY ESCORT
+		0.3, -- MINES PLANTING
+		0.3, -- MINES SWEEPING
+		0.0, -- TRAIN
+		0.0, -- RESERVE_FLEET
+		1.0, -- NAVAL_INVASION_SUPPORT
+	}
+
 NDefines.NNavy.AMPHIBIOUS_LANDING_PENALTY = -0.75		-- amphibious landing penalty
 NDefines.NNavy.AMPHIBIOUS_INVADE_ATTACK_LOW = 0.25 		-- low and high cap of attack modifier scale. Scale interpolated by invasion progress.
 NDefines.NNavy.AMPHIBIOUS_INVADE_DEFEND_LOW = 1.6 		-- low and high cap of defend modifier scale. Scale interpolated by invasion progress.
+NDefines.NNavy.NAVAL_INVASION_PREPARE_DAYS = 50								-- base days needed to prepare a naval invasion
+NDefines.NNavy.NAVAL_INVASION_PLAN_CAP = 2									-- base cap of naval invasions can be planned at the same time
+NDefines.NNavy.BASE_NAVAL_INVASION_DIVISION_CAP = 6							-- base cap of divisions that can be assigned in a naval invasion
+
+NDefines.NNavy.NAVAL_DOMINANCE_STRIKE_FORCE_MULTIREGION_DECAY = 0.02			-- Percentage that the strike force mission's naval dominance multiplier decreases with for each additional assigned region
+NDefines.NNavy.NAVAL_DOMINANCE_STRIKE_FORCE_FRACTION = 0.0009					-- How much dominance points goes into one percent of the multiplier from strike force missions. ( e.g. a taskforce of 1000 dominance generates a 60% multiplier ) 
+NDefines.NNavy.DOMINANCE_PER_SHIP_PER_CARRIER_SIZE = 0.2					-- bonus to dominance based on the carrier size - e.g. regular carrier hangar has carrier_size of 2, so it would be a bonus of 2 * DOMINANCE_PER_SHIP_PER_CARRIER_SIZE, min value is 0
+NDefines.NNavy.DOMINANCE_DAILY_GAIN_FACTOR = 0.03
+NDefines.NNavy.NAVAL_BASE_DOMINANCE_FACTOR = 0.02
+NDefines.NNavy.NAVAL_HEADQUARTERS_FIRST_ADJACENT_FACTOR = 0.75						-- naval dominance from naval headquarters is multiplied by this value for the first adjacent region
+NDefines.NNavy.NAVAL_HEADQUARTERS_SECOND_ADJACENT_FACTOR = 0.25					-- naval dominance from naval headquarters is multiplied by this value for the second adjacent region
 
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 700
 
@@ -673,7 +708,7 @@ NDefines.NIntel.CIVILIAN_TRADE_SHOW_TRADE_PARTNERS = 0.35 -- minimum value to sh
 NDefines.NIntel.CIVILIAN_INTEL_NEEDED_TO_SHOW_FOCUS_TREE = 0.6 -- min required intel to focus tree with taken focuses
 NDefines.NIntel.ARMY_ARMY_COUNT_RANGE_INTEL_MIN = 0.15
 NDefines.NIntel.ARMY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.15
-NDefines.NIntel.NAVAL_SUPREMACY_INTEL_LOW = 0.3								-- we need more intel than this to get any supremacy
+NDefines.NIntel.NAVAL_DOMINANCE_INTEL_LOW = 0.3								-- we need more intel than this to get any supremacy
 NDefines.NIntel.NAVY_DEPLOYED_MANPOWER_COUNT_RANGE_INTEL_MIN = 0.1
 NDefines.NIntel.AIR_AIRWING_COUNT_INTEL_RANGE_AT_LOWEST_INTEL = 2
 
@@ -688,6 +723,13 @@ NDefines.NIntel.RADAR_BASE_INTEL_VALUES_FOR_COVERED_LAND_PROVINCES = { 0.0, 0.0,
 NDefines.NIntel.RADAR_BASE_INTEL_VALUES_FOR_COUNTRY_COVERAGE_PERCENTAGE = { 0.0, 0.0, 0.0, 18.0} -- Vanilla 9/9/0/18
 NDefines.NIntel.RADAR_INTEL_STACKING_FACTOR = 0.0 -- Used when multiple radars cover the same province Vanilla 0.5
 NDefines.NIntel.RADAR_LEVEL_INTEL_FACTOR = 0.5 -- Vanilla 1.25
+
+NDefines.NIntel.MAP_INTEL_VISIBILITY_CUTOFFS = { -- how much map intel is gained with intel over a country. first number is threshold, second is amount of intel map intel gained
+		0.1, -50,
+		0.4, -50,
+		0.6, 0,
+		1.0, 0,
+	} -- Vanilla 0.1, -50, - 0.4, 0, - 0.6, 50, - 1.0, 100,
 
 NDefines.NIntel.DYNAMIC_INTEL_SOURCE_AIR_RECON_MAXIMUMS =	{20, 20, 20, 20}	--MAXIMUMS controls the maximum value that the pool can contribute to the final intel values.
 NDefines.NIntel.DYNAMIC_INTEL_SOURCE_AIR_RECON_ABSOLUTE_MAXIMUMS =	{21, 21, 21, 21}	--ABSOLUTE_MAXIMUMS defines a ceiling for the intel in the pool that will never be exceeded. They are meant to be greater or equal to MAXIMUMS. If the array is empty, no absolute maximum is defined.
@@ -758,3 +800,6 @@ NDefines.NRaids.RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.15  -- How much t
 NDefines.NRaids.RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.5
 
 NDefines_Graphics.NInterface.MINIMAP_TOGGLE_SHIFT = 405				-- horizontal shift for minimap to close it
+
+
+NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0

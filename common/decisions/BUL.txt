@@ -4566,6 +4566,10 @@ BUL_macedonian_revolutionary_organizations = {
 
 		icon = GFX_decision_generic_military
 
+		ai_will_do = { #AI should use the IMRO as garrison instead
+			base = 0
+		}
+
 		allowed = { 
 			original_tag = BUL
 		}
@@ -4573,9 +4577,8 @@ BUL_macedonian_revolutionary_organizations = {
 		available = {
 			NOT = { has_country_flag = BUL_macedonian_affairs_ongoing_flag }
 			has_war = yes
-			any_state = {
+			any_controlled_state = {
 				BUL_is_macedonian_state = yes
-				is_fully_controlled_by = ROOT
 			}
 		}
 
@@ -4703,13 +4706,17 @@ BUL_macedonian_revolutionary_organizations = {
 
 		icon = GFX_decision_generic_prepare_civil_war
 
+		ai_will_do = {
+			base = 1
+		}
+
 		allowed = { 
 			original_tag = BUL
 		}
 
 		available = {
 			NOT = { has_country_flag = BUL_macedonian_affairs_ongoing_flag }
-			any_state = {
+			any_controlled_state = {
 				BUL_is_macedonian_state = yes
 				is_fully_controlled_by = ROOT
 			}

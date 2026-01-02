@@ -718,6 +718,16 @@ shared_focus = {
 			GER = { 
 				give_fascist_tank_licences = yes
 			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 500
+					equipment_type = light_tank_chassis
+					seller_tags  = { GER }
+				}
+			}
 		}
 		else_if = {
 			limit = {
@@ -734,6 +744,16 @@ shared_focus = {
 				}
 				give_fascist_tank_licences = yes
 			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 500
+					equipment_type = light_tank_chassis
+					seller_trigger = is_fascist_seller_trigger
+				}
+			}
 		}
 		else_if = { 
 			limit = {
@@ -746,6 +766,16 @@ shared_focus = {
 			}
 			JAP = {
 				give_fascist_tank_licences = yes
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 500
+					equipment_type = light_tank_chassis
+					seller_tags  = { JAP }
+				}
 			}
 		}
 		else = {
@@ -1418,6 +1448,16 @@ shared_focus = {
 			ENG = {
 				baltic_give_allied_equipment = yes
 			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 250
+					equipment_type = infantry_equipment
+					seller_tags  = { ENG }
+				}
+			}
 		}
 		else_if = { # (Allied) Fallback to France 
 			limit = {
@@ -1432,6 +1472,16 @@ shared_focus = {
 			FRA = {
 				baltic_give_allied_equipment = yes
 			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 250
+					equipment_type = infantry_equipment
+					seller_tags  = { FRA }
+				}
+			}
 		}
 		else_if = { # (American) Fallback to USA
 			limit = {
@@ -1444,6 +1494,16 @@ shared_focus = {
 			}
 			USA = {
 				baltic_give_allied_equipment = yes
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 250
+					equipment_type = infantry_equipment
+					seller_tags  = { USA }
+				}
 			}
 		}
 		else_if = { # (European) Fallback to another European Democracy
@@ -1458,6 +1518,16 @@ shared_focus = {
 					NOT = { has_war_with = ROOT }
 				}
 				baltic_give_allied_equipment = yes
+			}
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				add_equipment_subsidy = {
+					cic = 250
+					equipment_type = infantry_equipment
+					seller_trigger = is_democracy_seller_trigger
+				}
 			}
 		}
 		else = { # (International) Fallback to any democratic faction leader. 
@@ -2216,8 +2286,30 @@ shared_focus = {
 
 shared_focus = {
 	id = BALTIC_natural_resources
-	icon = GFX_goal_generic_oil_refinery
+
+	dynamic = yes
+
+	icon = {
+		trigger = {
+			original_tag = EST
+		}
+		value = GFX_goal_generic_oil_refinery
+	}
+	icon = {
+		trigger = {
+			original_tag = LIT
+		}
+		value = GFX_focus_generic_agricultural_subsidies
+	}
+	icon = {
+		trigger = {
+			original_tag = LAT
+		}
+		value = GFX_focus_generic_steel
+	}
+
 	prerequisite = { focus = BALTIC_modernize_industry }
+
 	x = 3
 	y = 1
 	relative_position_id = BALTIC_modernize_industry
@@ -3175,59 +3267,59 @@ shared_focus = {
 				}
 			}
 		}
-		random_country = {
-			limit = {
-				original_tag = ROOT
-				has_war_with = ROOT
-			}
-			division_template = { 
-				name = "Forest Brothers"
-				division_names_group = LAT_INF_01
-				is_locked = yes
-				regiments = { 
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 3 y = 0 }
+		# random_country = {	#was previously broken, but fixing it messed up the balance of the civil war
+		# 	limit = {
+		# 		original_tag = ROOT
+		# 		has_war_with = ROOT
+		# 	}
+		# 	division_template = { 
+		# 		name = "Forest Brothers"
+		# 		division_names_group = LAT_INF_01
+		# 		is_locked = yes
+		# 		regiments = { 
+		# 			infantry = { x = 0 y = 0 }
+		# 			infantry = { x = 1 y = 0 }
+		# 			infantry = { x = 2 y = 0 }
+		# 			infantry = { x = 3 y = 0 }
 
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 3 y = 1 }
+		# 			infantry = { x = 0 y = 1 }
+		# 			infantry = { x = 1 y = 1 }
+		# 			infantry = { x = 2 y = 1 }
+		# 			infantry = { x = 3 y = 1 }
 
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 1 y = 2 }
-					infantry = { x = 2 y = 2 }
-					infantry = { x = 3 y = 2 }
-				}
-				support = {
-				}
-			}
-			random_owned_controlled_state = {
-				hidden_effect = {
-					create_unit = { 
-						division = "name = \"1. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
-						owner = ROOT
-					}
-					create_unit = { 
-						division = "name = \"2. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
-						owner = ROOT
-					}
-					create_unit = { 
-						division = "name = \"3. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
-						owner = ROOT
-					}
-					create_unit = { 
-						division = "name = \"4. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
-						owner = ROOT
-					}
-					create_unit = { 
-						division = "name = \"5. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
-						owner = ROOT
-					}
-				}
-			}
-		}
+		# 			infantry = { x = 0 y = 2 }
+		# 			infantry = { x = 1 y = 2 }
+		# 			infantry = { x = 2 y = 2 }
+		# 			infantry = { x = 3 y = 2 }
+		# 		}
+		# 		support = {
+		# 		}
+		# 	}
+		# 	random_owned_controlled_state = {
+		# 		hidden_effect = {
+		# 			create_unit = { 
+		# 				division = "name = \"1. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
+		# 				owner = PREV
+		# 			}
+		# 			create_unit = { 
+		# 				division = "name = \"2. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
+		# 				owner = PREV
+		# 			}
+		# 			create_unit = { 
+		# 				division = "name = \"3. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
+		# 				owner = PREV
+		# 			}
+		# 			create_unit = { 
+		# 				division = "name = \"4. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
+		# 				owner = PREV
+		# 			}
+		# 			create_unit = { 
+		# 				division = "name = \"5. Forest Brothers\" division_template = \"Forest Brothers\" start_experience_factor = 0.5" 
+		# 				owner = PREV
+		# 			}
+		# 		}
+		# 	}
+		# }
 		if = {
 			limit = {
 				has_completed_focus = BALTIC_soviet_equipment

@@ -6104,7 +6104,7 @@
 	}
 
 	focus = {
-	id = SWI_switzerland_on_the_offense
+		id = SWI_switzerland_on_the_offense
 		icon = GFX_focus_SWI_neutrality_on_the_move
 		prerequisite = { focus = SWI_gotthard_union }
 		mutually_exclusive = { focus = SWI_neutral_entente }
@@ -6189,7 +6189,11 @@
 		}
 
 		completion_reward = {
-			create_faction = SWI_neutral_entente_faction
+			create_faction_from_template = {
+				template = faction_template_industrial_focus
+				name = SWI_neutral_entente_faction
+				icon = GFX_faction_logo_generic_democratic
+			}
 			unlock_decision_tooltip =  SWI_invite_to_entente
 		}
 	}

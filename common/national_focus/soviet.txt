@@ -6421,7 +6421,7 @@
 				}
 			}
 			hidden_effect = {
-				set_technology = { masterful_blitz = 1 popup = no }
+				unlock_tactic = tactic_masterful_blitz
 			}
 			custom_effect_tooltip = SOV_the_glory_of_the_red_army_masterful_blitz_tactic_tt
 		}
@@ -6470,11 +6470,10 @@
 		}
 
 		completion_reward = {
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.99
-				uses = 7
-				category = cat_mass_assault
+				bonus = 0.5
+				days = 1720
 			}
 		}
 	}
@@ -6570,22 +6569,15 @@
 		completion_reward = {
 			custom_effect_tooltip = SOV_tukachevsky_tt
 			custom_effect_tooltip = SOV_tukhachevsky_reinstated_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_mobile_warfare
+				bonus = 0.1
+				days = 720
+				grand_doctrine = new_mobile_warfare
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = armored_spearhead
-				technology = schwerpunk
-				technology = blitzkrieg
-				technology = firebrigades
-				technology = backhand_blow
-				technology = modern_blitzkrieg
+			add_mastery = {
+				amount = 150
+				track = armor
 			}
 			SOV_mikhail_tukhachevsky = { 
 				promote_leader = yes 
@@ -6668,26 +6660,31 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_timoshenko2_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_mobile_warfare
+				bonus = 0.1
+				days = 720
+				grand_doctrine = new_mobile_warfare
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = mobile_infantry
-				technology = mass_motorization
-				technology = mechanised_offensive
-				technology = volkssturm
-				technology = nd_conscription
-				technology = werwolf_guerillas
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
+			# add_doctrine_cost_reduction = {
+			# 	name = doc_bonus
+			# 	cost_reduction = 0.4
+			# 	uses = 3
+			# 	technology = mobile_infantry
+			# 	technology = mass_motorization
+			# 	technology = mechanised_offensive
+			# 	technology = volkssturm
+			# 	technology = nd_conscription
+			# 	technology = werwolf_guerillas
+			# }
+
 			SOV_semyon_timoshenko = { 
-				promote_leader = yes 
-				}
+			promote_leader = yes 
+			}
 		}
 	}
 	
@@ -6802,26 +6799,19 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_voroshilov2_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_grand_battle_plan
+				bonus = 0.1
+				days = 720
+				grand_doctrine = grand_battleplan
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = grand_mechanized_offensive
-				technology = assault_concentration
-				technology = branch_interoperation
-				technology = assault_breakthrough
-				technology = armored_operations
-				technology = c3i_theory
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 			SOV_kliment_voroshilov = { 
 				promote_leader = yes 
-				}
+			}
 		}
 	}
 	
@@ -6847,22 +6837,15 @@
 			custom_effect_tooltip = SOV_historical_tt
 			custom_effect_tooltip = SOV_shaposhnikovfocus_tt
 
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_mass_assault
+				bonus = 0.1
+				days = 720
+				grand_doctrine = mass_assault
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = large_front_operations
-				technology = deep_operations
-				technology = operational_concentration
-				technology = vast_offensives
-				technology = breakthrough_priority
-				technology = mechanized_wave
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 			
 			SOV_boris_shaposhnikov = { 
@@ -6964,26 +6947,19 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_budyonny2_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_mass_assault
+				bonus = 0.1
+				days = 720
+				grand_doctrine = mass_assault
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = large_front_operations
-				technology = deep_operations
-				technology = operational_concentration
-				technology = vast_offensives
-				technology = breakthrough_priority
-				technology = mechanized_wave
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 			SOV_semyon_budyonny = { 
 				promote_leader = yes 
-				}
+			}
 		}
 	}
 
@@ -7008,26 +6984,19 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_timoshenko_voroshilov_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_grand_battle_plan
+				bonus = 0.1
+				days = 720
+				grand_doctrine = mass_assault
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = infantry_offensive
-				technology = central_planning
-				technology = infiltration_assault
-				technology = night_assault_tactics
-				technology = attritional_containment
-				technology = infiltration_in_depth
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 			SOV_semyon_timoshenko = { 
 				promote_leader = yes 
-				}
+			}
 		}
 	}
 
@@ -7089,22 +7058,15 @@
 		completion_reward = {
 			custom_effect_tooltip = SOV_yegorov_tt
 			custom_effect_tooltip = SOV_yegerov_reinstated_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_superior_firepower
+				bonus = 0.1
+				days = 720
+				grand_doctrine = superior_firepower
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = dispersed_support
-				technology = overwhelming_firepower
-				technology = concentrated_fire_plans
-				technology = combined_arms
-				technology = tactical_control
-				technology = air_land_battle
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 			SOV_aleksandr_yegorov = { 
 				promote_leader = yes 
@@ -7181,26 +7143,19 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_kulik2_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_superior_firepower
+				bonus = 0.1
+				days = 720
+				grand_doctrine = superior_firepower
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = intergrated_support
-				technology = regimental_combat_teams
-				technology = centralized_fire_control
-				technology = forward_observers
-				technology = advanced_firebases
-				technology = shock_and_awe
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 			SOV_grigory_kulik = { 
 				promote_leader = yes 
-				}
+			}
 		}
 	}
 
@@ -7307,22 +7262,15 @@
 			custom_effect_tooltip = SOV_blucher_reinstated_tt
 			custom_effect_tooltip = SOV_shaposhnikovfocus_tt
 
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_mass_assault
+				bonus = 0.1
+				days = 720
+				grand_doctrine = mass_assault
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = large_front_operations
-				technology = deep_operations
-				technology = operational_concentration
-				technology = vast_offensives
-				technology = breakthrough_priority
-				technology = mechanized_wave
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 
 			SOV_vasily_blyukher = { 
@@ -7375,11 +7323,12 @@
 				add_idea = SOV_timoshenko_blucher_2
 				remove_idea = SOV_timoshenko_blucher_1
 			}	
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.25
-				uses = 2
-				category = cat_battlefield_support 
+				bonus = 0.1
+				days = 720
+				track = fighter_aircraft
+				grand_doctrine = new_battlefield_support
 			}
 		}
 	}
@@ -7456,26 +7405,19 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_timoshenko_voroshilov_tt
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 1
-				category = cat_grand_battle_plan
+				bonus = 0.1
+				days = 720
+				grand_doctrine = grand_battleplan
 			}
-			add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.4
-				uses = 3
-				technology = infantry_offensive
-				technology = central_planning
-				technology = infiltration_assault
-				technology = night_assault_tactics
-				technology = attritional_containment
-				technology = infiltration_in_depth
+			add_mastery = {
+				amount = 150
+				track = infantry
 			}
 			SOV_semyon_budyonny = { 
 				promote_leader = yes 
-				}
+			}
 		}
 	}
 
@@ -7862,11 +7804,10 @@
 		}
 
 		completion_reward = {
-			add_doctrine_cost_reduction = {
+			add_mastery_bonus = {
 				name = doc_bonus
-				cost_reduction = 0.25
-				uses = 2
-				category = land_doctrine
+				bonus = 0.1
+				days = 720
 			}
 		}
 	}
@@ -9874,7 +9815,6 @@
 				bonus = 1.0
 				uses = 1
 				category = ca_tech
-				category = cl_tech
 			}
 
 			#Kronshtadt Class Battlecruiser

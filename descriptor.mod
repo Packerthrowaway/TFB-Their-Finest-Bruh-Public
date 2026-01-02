@@ -1,4 +1,4 @@
-version="2.16.1"
+version="2.17.1"
 tags={
 	"Balance"
 	"Events"
@@ -15,4 +15,4 @@ replace_path="common/ai_strategy_plans"
 replace_path="common/ai_templates"
 replace_path="gfx/interface/equipmentdesigner/tanks/designer"
 replace_path="history/countries"
-supported_version="1.16.*"
+supported_version="1.17.*"
