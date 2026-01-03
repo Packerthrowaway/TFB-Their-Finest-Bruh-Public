@@ -189,7 +189,7 @@ NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 2 -- how many CA
 NDefines.NMilitary.LAND_COMBAT_COLLATERAL_FACTOR = 0.0025		   -- Factor to scale collateral damage to infra and forts with.
 NDefines.NMilitary.LAND_COMBAT_FORT_DAMAGE_CHANCE = 6		-- chance to get a hit to damage on forts. (out of 100)
 NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.05					   -- damage from attrition to Organisation
-NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.002		   -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
+NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.0025		   -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
 NDefines.NMilitary.ATTRITION_WHILE_MOVING_FACTOR = 1
 NDefines.NMilitary.COHESION_IMMOBILE_PLANNING_SPEED_MULTIPLIER = 0.9	-- If using the 'immobile' cohesion setting, factor ALL planning speed growth by this
 -- NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.05 -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
@@ -215,7 +215,7 @@ NDefines.NMilitary.DEPLOY_TRAINING_MAX_LEVEL = 2
 NDefines.NMilitary.TRAINING_EXPERIENCE_SCALE = 80.0
 NDefines.NMilitary.ARMY_EXP_BASE_LEVEL = 2
 NDefines.NMilitary.UNIT_EXP_LEVELS = { 0.1, 0.2, 0.3, 0.4, 0.55, 0.7, 0.9 }		-- Experience needed to progress to the next level
-NDefines.NMilitary.FIELD_EXPERIENCE_SCALE = 0.0008
+NDefines.NMilitary.FIELD_EXPERIENCE_SCALE = 0.0012
 NDefines.NMilitary.FIELD_EXPERIENCE_MAX_PER_DAY = 3				-- Most xp you can gain per day
 NDefines.NMilitary.EXPEDITIONARY_FIELD_EXPERIENCE_SCALE = 0.5		-- reduction factor in Xp from expeditionary forces
 NDefines.NMilitary.LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0.005		-- Experience scale for lend leased equipment used in combat.
@@ -727,9 +727,9 @@ NDefines.NIntel.RADAR_LEVEL_INTEL_FACTOR = 0.5 -- Vanilla 1.25
 
 NDefines.NIntel.MAP_INTEL_VISIBILITY_CUTOFFS = { -- how much map intel is gained with intel over a country. first number is threshold, second is amount of intel map intel gained
 		0.1, -50,
-		0.4, -50,
-		0.6, 0,
-		1.0, 0,
+		0.35, 0,
+		0.55, 10,
+		1.0, 20,
 	} -- Vanilla 0.1, -50, - 0.4, 0, - 0.6, 50, - 1.0, 100,
 
 NDefines.NIntel.DYNAMIC_INTEL_SOURCE_AIR_RECON_MAXIMUMS =	{20, 20, 20, 20}	--MAXIMUMS controls the maximum value that the pool can contribute to the final intel values.
@@ -802,5 +802,26 @@ NDefines.NRaids.RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.5
 
 NDefines_Graphics.NInterface.MINIMAP_TOGGLE_SHIFT = 405				-- horizontal shift for minimap to close it
 
+NDefines.NFactions.MAX_PROJECT_COUNT = 4 --The maximum number of projects a faction can have
+NDefines.NFactions.MAX_NUM_SHORT_TERM_GOALS = 3						-- Maximum number of short term goals a faction can have at any one time	
+NDefines.NFactions.MAX_NUM_MEDIUM_TERM_GOALS = 2						-- Maximum number of medium term goals a faction can have at any one time
+NDefines.NFactions.MAX_NUM_LONG_TERM_GOALS = 1					-- Maximum number of long term goals a faction can have at any one time
 
-NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0
+
+NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0				-- How much training contributes to doctrine mastery relative to combat/missions
+NDefines.NDoctrines.MASTERY_BANK_CONVERSION_RATE = 0.3 				-- The rate at which mastery gained when a track is finished or empty is "banked"
+NDefines.NDoctrines.MASTERY_BANK_MAX = 400							-- The maximum amount of mastery that can be banked
+NDefines.NDoctrines.MILITARY_ATTACHE_MASTERY_TRANSFER_FACTOR = 0.2	-- For each mastery track, military attaches will add this fraction of their visiting country's mastery gain (from units only) in that track
+NDefines.NDoctrines.THEATER_COMMANDER_UNITS_MASTERY_GAIN_FACTOR_PER_SKILL = 0.02	-- Unit in a theater commander's theater will contribute this fraction of their mastery gain to the theater commander's country, for each skill point they have in attack + defense
+NDefines.NDoctrines.NAVAL_MISSION_MASTERY_GAIN_FACTORS = {  -- Mastery gain from naval missions is reduced, just like training
+		0.0, -- HOLD
+		0.15, -- PATROL
+		0.0, -- STRIKE FORCE
+		0.5, -- CONVOY RAIDING
+		0.5, -- CONVOY ESCORT
+		0.5, -- MINES PLANTING
+		0.5, -- MINES SWEEPING
+		0.0, -- TRAIN # NOT USED - handled by TRAINING_MASTERY_GAIN_FACTOR
+		0.0, -- RESERVE_FLEET
+		0.0, -- NAVAL_INVASION_SUPPORT
+	}
