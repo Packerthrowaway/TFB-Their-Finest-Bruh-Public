@@ -950,7 +950,7 @@ faction_goal_indifference_is_a_threat = {
 				input = collection:europe_non_aligned_countries
 				name = COLLECTION_COUNTRIES_EUROPE_NON_ALIGNED
 			}
-			value < 5
+			value < 9
 		}
 	}
 	complete_effect = {
@@ -985,7 +985,7 @@ faction_goal_undoing_brest_litowsk = {
 	}
 	completed = {
 		count_triggers = {
-			amount = 4
+			amount = 5
 			OR = {
 				LIT = { exists = no }
 				LIT = { is_in_faction_with = ROOT }
@@ -1001,10 +1001,17 @@ faction_goal_undoing_brest_litowsk = {
 			OR = {
 				POL = { exists = no }
 				POL = { is_in_faction_with = ROOT }
+				SOV = { owns_state = 94 }
 			}
 			OR = {
 				FIN = { exists = no }
 				FIN = { is_in_faction_with = ROOT }
+				SOV = { owns_state = 146 }
+			}
+			OR = {
+				ROM = { exists = no }
+				ROM = { is_in_faction_with = ROOT }
+				SOV = { owns_state = 78 }
 			}
 		}
 		

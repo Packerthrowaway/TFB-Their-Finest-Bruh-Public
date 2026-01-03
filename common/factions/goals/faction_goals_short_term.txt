@@ -239,7 +239,7 @@ faction_goal_unlock_research = {
 	category = short_term
 	group = FOCUS_FILTER_INTERNAL_AFFAIRS
 	available = {
-		FROM = { num_faction_members > 2 }
+		FROM = { num_faction_members > 1 }
 	}
 	visible = {
 		FROM = { has_faction_research_unlocked = no }
@@ -315,7 +315,7 @@ faction_goal_unlock_military = {
 	category = short_term
 	group = FOCUS_FILTER_INTERNAL_AFFAIRS
 	available = {
-		FROM = { num_faction_members > 2 }
+		FROM = { num_faction_members > 1 }
 	}
 	visible = {
 		FROM = { has_faction_military_unlocked = no }
@@ -653,7 +653,16 @@ faction_goal_stall_the_fascist_threat = {
 			}
 			AND = {
 				has_global_flag = scw_over
-				has_global_flag = republican_victory
+				OR = {
+					has_global_flag = republican_victory
+					SPR = {
+						OR = {
+							has_government = democratic
+							has_government = communism
+						}
+
+					}
+				}
 			}
 		}
 	}
