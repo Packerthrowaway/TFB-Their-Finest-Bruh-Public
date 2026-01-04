@@ -43,6 +43,14 @@ country_event = {
 			limit = { ROOT = { tag = FRA } }
 			if = {
 				limit = {
+					1017 = {
+						is_fully_controlled_by = FRA
+					}
+				}
+				FROM = { transfer_state = 1017 }
+			}
+			if = {
+				limit = {
 					670 = {
 						is_fully_controlled_by = FRA
 					}
@@ -118,6 +126,10 @@ country_event = {
 
 			if = {
 				limit = { FROM = { tag = FRA } }
+				if = {
+					limit = { 1017 = { is_fully_controlled_by = ROOT } }
+					transfer_state = 1017
+				}
 				if = {
 					limit = { 670 = { is_fully_controlled_by = ROOT } }
 					transfer_state = 670
