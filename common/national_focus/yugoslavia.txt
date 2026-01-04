@@ -13,7 +13,7 @@
 	
 	default = no
 
-	continuous_focus_position = { x = 1100 y = 1100 }
+	continuous_focus_position = { x = 300 y = 1100 }
 
 	###############################
 	##### Democratic/Fascist ######
@@ -225,7 +225,7 @@
 		prerequisite = { focus = YUG_ban_slovene_nationalist_parties }
 		mutually_exclusive = { 
 			focus = YUG_stojadinovic_stays
-			focus = YUG_nation_of_royalty
+			#focus = YUG_nation_of_royalty
 		}
 		x = -2
 		y = 1
@@ -393,9 +393,9 @@
 		prerequisite = { focus = YUG_ban_slovene_nationalist_parties }
 		mutually_exclusive = { 
 			focus = YUG_step_down
-			focus = YUG_nation_of_royalty 
+			#focus = YUG_nation_of_royalty 
 		}
-		x = 9
+		x = 3
 		y = 1
 		relative_position_id = YUG_ban_slovene_nationalist_parties
 
@@ -692,7 +692,7 @@
 				receiver = GER
 				state = 106
 			}
-			add_offsite_building = { type = industrial_complex level = 8 }
+			add_offsite_building = { type = industrial_complex level = 6 }
 		}
 	}
 
@@ -1261,11 +1261,11 @@
 		completion_reward = {
             custom_effect_tooltip = YUG_modify_croatian_dominance_modifier_tt
 			add_to_variable = {
-				YUG_economy_modifier_industrial_capacity_factory = 0.05
+				YUG_economy_modifier_industrial_capacity_factory = 0.025
 				tooltip = industrial_capacity_factory_tt
 			}
             add_to_variable = {
-				YUG_economy_modifier_production_factory_efficiency_gain_factor = 0.05
+				YUG_economy_modifier_production_factory_efficiency_gain_factor = 0.025
 				tooltip = production_factory_efficiency_gain_factor_tt
 			}
 		}
@@ -1401,10 +1401,10 @@
 				YUG_recruitable_population_factor = 0.1
 				tooltip = recruitable_population_factor_tt
 			}
-			add_to_variable = {
-				YUG_economy_modifier_industrial_capacity_factory = 0.025
-				tooltip = industrial_capacity_factory_tt
-			}
+			# add_to_variable = {
+			# 	YUG_economy_modifier_industrial_capacity_factory = 0.025
+			# 	tooltip = industrial_capacity_factory_tt
+			# }
 		}
 	}
 
@@ -1499,24 +1499,21 @@
 			factor = 0
 		}
 		completion_reward = {
-			# Did you mean Owner or Controller? Was originally controller I changed it to Owner
-			# I had set it to controller, and had a hidden effect of set controller too, when I tested it it was funky so just did both.
-			# I may have just missed this one, if you check the Bulgaria/Hungary ones you can see what I did.
 			ITA = { 
-				set_state_owner = 105
-				set_state_owner = 802
-				set_state_owner = 970
+				transfer_state = 105
+				transfer_state = 802
+				transfer_state = 970
 			}
 			105 = { 
-				remove_core_of = YUG
+				#remove_core_of = YUG
 				add_compliance = 30
 			}
 			802 = { 
-				remove_core_of = YUG
+				#remove_core_of = YUG
 				add_compliance = 30
 			}
 			970 = { 
-				remove_core_of = YUG
+				#remove_core_of = YUG
 				add_compliance = 30
 			}
 			103 = {
@@ -1538,6 +1535,10 @@
 		relative_position_id = YUG_offer_italian_claims
 
 		cost = 8
+
+		allow_branch = {
+			always = no
+		}
 
 		ai_will_do = {
 			factor = 0
@@ -1616,44 +1617,41 @@
 		}
 		completion_reward = {
 			hidden_effect = {
-				GER =
-				{ set_state_owner = 102
-				  set_state_owner = 853 }
+				GER = { 
+					set_state_owner = 102
+				  	set_state_owner = 853
+				}
 			}
 			GER = { 
 				set_state_controller = 102
 				set_state_controller = 853
-			102 = { add_core_of = GER }
-			853 = { add_core_of = GER }
-			102 = { 
-					remove_core_of = YUG
-				}
-			853 = { 
-					remove_core_of = YUG
-				}
+				102 = { add_core_of = GER }
+				853 = { add_core_of = GER }
+				102 = { remove_core_of = YUG }
+				853 = { remove_core_of = YUG }
 		    }
 			random_owned_controlled_state = {
 				prioritize = { 103 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 5
 				add_building_construction = {
 					type = arms_factory
-					level = 6
+					level = 5
 					instant_build = yes
 				}
 			}
 			custom_effect_tooltip = YUG_modify_croatian_dominance_modifier_tt
 			add_to_variable = {
-				YUG_economy_modifier_production_factory_max_efficiency_factor = 0.05
+				YUG_economy_modifier_production_factory_max_efficiency_factor = 0.025
 				tooltip = production_factory_max_efficiency_factor_tt
 			}
 			if = {
 				limit = {
 					has_idea = YUG_idea_slovene_nationalism_2
 				}
-			remove_ideas = YUG_idea_slovene_nationalism_2
+				remove_ideas = YUG_idea_slovene_nationalism_2
 			}
         }
 	}
@@ -1685,11 +1683,11 @@
 			}
 			custom_effect_tooltip = YUG_modify_croatian_dominance_modifier_tt
 			add_to_variable = {
-				YUG_economy_modifier_production_speed_infrastructure_factor = 0.05
+				YUG_economy_modifier_production_speed_infrastructure_factor = 0.025
 				tooltip = production_speed_infrastructure_factor_tt
 			}
 			add_to_variable = {
-				YUG_economy_modifier_production_speed_arms_factory_factor = 0.05
+				YUG_economy_modifier_production_speed_arms_factory_factor = 0.025
 				tooltip = production_speed_arms_factory_factor_tt
 			}
 		}
@@ -1730,11 +1728,11 @@
 			}
 			custom_effect_tooltip = YUG_modify_croatian_dominance_modifier_tt
 			add_to_variable = {
-				YUG_economy_modifier_production_speed_arms_factory_factor = 0.05
+				YUG_economy_modifier_production_speed_arms_factory_factor = 0.025
 				tooltip = production_speed_arms_factory_factor_tt
 			}
 			add_to_variable = {
-				YUG_economy_modifier_production_factory_max_efficiency_factor = 0.05
+				YUG_economy_modifier_production_factory_max_efficiency_factor = 0.025
 				tooltip = production_factory_max_efficiency_factor_tt
 			}
 			if = {
@@ -1861,6 +1859,7 @@
 		prerequisite = { focus = YUG_stabilise_the_trajectory }
 		available = {
 			NOT = { has_idea = YUG_sidelined_serbs }
+			num_of_controlled_states < 8
 		}
 
 		
@@ -1875,21 +1874,21 @@
 		}
 		completion_reward = {
 			YUG = { annex_country = { target = SER transfer_troops = yes } }
-			764 = { add_core_of = YUG }
-			107 = { add_core_of = YUG }
-			108 = { add_core_of = YUG }
+			# 764 = { add_core_of = YUG }
+			# 107 = { add_core_of = YUG }
+			# 108 = { add_core_of = YUG }
 			add_stability = 0.1
 			custom_effect_tooltip = YUG_modify_croatian_dominance_modifier_tt
 			add_to_variable = {
-				YUG_economy_modifier_production_speed_arms_factory_factor = 0.05
+				YUG_economy_modifier_production_speed_arms_factory_factor = 0.025
 				tooltip = production_speed_arms_factory_factor_tt
 			}
 			add_to_variable = {
-				YUG_economy_modifier_production_factory_max_efficiency_factor = 0.05
+				YUG_economy_modifier_production_factory_max_efficiency_factor = 0.025
 				tooltip = production_factory_max_efficiency_factor_tt
 			}
 			add_to_variable = {
-				YUG_economy_modifier_production_factory_efficiency_gain_factor = 0.05
+				YUG_economy_modifier_production_factory_efficiency_gain_factor = 0.025
 				tooltip = production_factory_efficiency_gain_factor_tt
 			}
             add_to_variable = {
@@ -1937,13 +1936,17 @@
 		prerequisite = { focus = YUG_concessions_for_macedonians }
 		prerequisite = { focus = YUG_establish_the_banovina_of_croatia }
 		prerequisite = { focus = YUG_ban_slovene_nationalist_parties }
-		mutually_exclusive = { 
-			focus = YUG_stojadinovic_stays 
-			focus = YUG_step_down 
-		}
+		# mutually_exclusive = { 
+		# 	focus = YUG_stojadinovic_stays 
+		# 	focus = YUG_step_down 
+		# }
 		x = 2
 		y = 1
 		relative_position_id = YUG_concessions_for_macedonians
+
+		allow_branch = {
+			always = no
+		}
 
 		cost = 10
 
@@ -3120,7 +3123,7 @@
 	focus = {
 		id = YUG_recover_from_the_great_depression
 		icon = GFX_goal_generic_construction
-		x = 29
+		x = 24
 		y = 0
 
 		cost = 10
@@ -3146,7 +3149,7 @@
 		}
 
 		completion_reward = {
-			add_ideas = YUG_recover_from_the_great_depression
+			#add_ideas = YUG_recover_from_the_great_depression
 			add_tech_bonus = {
 				bonus = 0.50
 				uses = 1
@@ -3812,7 +3815,7 @@
 	focus = {
 		id = YUG_lessons_from_the_great_war
 		icon = GFX_goal_generic_army_doctrines
-		x = 42
+		x = 38
 		y = 0
 
 		cost = 8
@@ -3912,7 +3915,7 @@
 	focus = {
 		id = YUG_remove_serb_influence_army
 		icon = GFX_focus_SWE_revoke_militia_law
-		x = 35
+		x = 31
 		y = 0
 
 		cost = 8
@@ -3926,7 +3929,7 @@
 		}
 
 		available = {
-        has_completed_focus = YUG_the_experiment_has_failed
+        	has_completed_focus = YUG_the_experiment_has_failed
 		}
 
 		bypass = {
@@ -3944,11 +3947,11 @@
 		completion_reward = {
         custom_effect_tooltip = YUG_modify_ustase_military_modifier_tt
 			add_to_variable = {
-				CRO_army_org_regain = 0.05
+				CRO_army_org_regain = 0.04
 				tooltip = army_org_regain_tt
 			}
 			add_to_variable = {
-				CRO_army_org_factor = 0.05
+				CRO_army_org_factor = 0.04
 				tooltip = army_org_factor_tt
 			}
 		}
@@ -4009,10 +4012,10 @@
 		prerequisite = {
 			focus = YUG_merge_the_black_legion
 		}
-		available = {
-			has_completed_focus = YUG_the_experiment_has_failed
-		}
-		mutually_exclusive = {focus = YUG_an_elite_army focus = YUG_a_mechanised_army focus = YUG_the_royal_guard }
+		# available = {
+		# 	has_completed_focus = YUG_the_experiment_has_failed
+		# }
+		mutually_exclusive = {focus = YUG_an_elite_army focus = YUG_a_mechanised_army }
 		x = 0
 		y = 1
 		relative_position_id =  YUG_merge_the_black_legion
@@ -4055,10 +4058,10 @@
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 		    }
@@ -4295,7 +4298,7 @@
 		completion_reward = {
 			    add_tech_bonus = {
 				bonus = 0.5
-				uses = 3
+				uses = 2
 				category = infantry_weapons
 			}
 		}
@@ -4338,7 +4341,7 @@
 		completion_reward = {
         		add_tech_bonus = {
 				bonus = 0.5
-				uses = 4
+				uses = 2
 				category = artillery
 			}
 		}
@@ -4384,11 +4387,11 @@
 		completion_reward = {
 			custom_effect_tooltip = YUG_modify_ustase_military_modifier_tt
 			add_to_variable = {
-				CRO_army_armor_attack_factor = 0.05
+				CRO_army_armor_attack_factor = 0.03
 				tooltip = army_armor_attack_factor_tt
 			}
 			add_to_variable = {
-				CRO_army_armor_speed_factor = 0.05
+				CRO_army_armor_speed_factor = 0.03
 				tooltip = army_armor_speed_factor_tt
 			}
 			add_to_variable = {
@@ -4521,11 +4524,11 @@
 		completion_reward = {
 			custom_effect_tooltip = YUG_modify_ustase_military_modifier_tt
 			add_to_variable = {
-				CRO_army_artillery_attack_factor = 0.05
+				CRO_army_artillery_attack_factor = 0.03
 				tooltip = army_artillery_attack_factor_tt
 			}
 			add_to_variable = {
-				CRO_army_artillery_defence_factor = 0.05
+				CRO_army_artillery_defence_factor = 0.03
 				tooltip = army_artillery_defence_factor_tt
 			}
 			add_to_variable = {
@@ -4672,7 +4675,7 @@
 			army_experience = 100
 			custom_effect_tooltip = YUG_modify_ustase_military_modifier_tt
 			add_to_variable = {
-				CRO_army_org_regain = 0.1
+				CRO_army_org_regain = 0.05
 				tooltip = army_org_regain_tt
 			}
 		}
@@ -4765,7 +4768,7 @@
 		id = YUG_a_mechanised_army
 		icon = GFX_focus_generic_mechanized
 		prerequisite = { focus = YUG_army_modernization }
-		mutually_exclusive = {focus = YUG_an_elite_army focus = YUG_ustase_military focus = YUG_the_royal_guard }
+		mutually_exclusive = {focus = YUG_an_elite_army focus = YUG_ustase_military }
 		x = -2
 		y = 1
 		relative_position_id =  YUG_army_modernization
@@ -4808,10 +4811,10 @@
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -5047,7 +5050,7 @@
 		id = YUG_an_elite_army
 		icon = GFX_focus_eng_special_air_service
 		prerequisite = { focus = YUG_army_modernization }
-		mutually_exclusive = {focus = YUG_a_mechanised_army focus = YUG_ustase_military focus = YUG_the_royal_guard }
+		mutually_exclusive = {focus = YUG_a_mechanised_army focus = YUG_ustase_military }
 		x = 2
 		y = 1
 		relative_position_id = YUG_army_modernization
@@ -5075,7 +5078,7 @@
 		}
 
 		completion_reward = {
-			add_ideas = YUG_defunct_infantry
+			#add_ideas = YUG_defunct_infantry
 			custom_effect_tooltip = just_hurts_inf_tt
 			add_doctrine_cost_reduction = {
 				name = YUG_army_maneuvers
@@ -5088,10 +5091,10 @@
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -5165,7 +5168,7 @@
 	
 
 		completion_reward = {
-        add_ideas = YUG_equipment_discount
+        	add_ideas = YUG_equipment_discount
 		}
 	}
 	
@@ -5334,12 +5337,44 @@
 	}
 
 	focus = {
+		id = YUG_infantry_focus
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = {focus = YUG_learn_from_germans focus = YUG_ustase_general_staff focus = YUG_perfection_of_the_royal_guard }
+
+		x = -4
+		y = 3
+		relative_position_id = YUG_reform_high_command
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 80
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = YUG_idea_infantry_focus
+		}
+	}
+
+	focus = {
 		id = YUG_artillery_focus
 		icon = GFX_goal_generic_army_artillery
 		prerequisite = { focus = YUG_infantry_focus }
 		x = 0
-		y = 5
-		relative_position_id = YUG_reform_high_command
+		y = 1
+		relative_position_id = YUG_infantry_focus
 
 		cost = 8
 
@@ -5367,40 +5402,6 @@
 			add_ideas = YUG_idea_artillery_focus
 		}
 	}
-	
-	focus = {
-		id = YUG_infantry_focus
-		icon = GFX_goal_generic_allies_build_infantry
-		prerequisite = {focus = YUG_learn_from_germans focus = YUG_ustase_general_staff focus = YUG_perfection_of_the_royal_guard }
-
-		x = 0
-		y = 4
-		relative_position_id = YUG_reform_high_command
-
-		cost = 8
-
-		ai_will_do = {
-			factor = 80
-		}
-
-		available = {
-
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			add_ideas = YUG_idea_infantry_focus
-		}
-	}
-
-
 
 	focus = {
 		id = YUG_unified_army
@@ -5487,7 +5488,7 @@
 		id = YUG_the_royal_guard
 		icon = GFX_focus_AFG_royal_guard
 		prerequisite = { focus = YUG_army_modernization }
-		mutually_exclusive = {focus = YUG_a_mechanised_army focus = YUG_ustase_military focus = YUG_an_elite_army }
+		#mutually_exclusive = {focus = YUG_a_mechanised_army focus = YUG_ustase_military focus = YUG_an_elite_army }
 		x = 6
 		y = 1
 		relative_position_id = YUG_army_modernization
@@ -5508,6 +5509,10 @@
 
 		}
 
+		allow_branch = {
+			always = no
+		}
+
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
@@ -5517,7 +5522,7 @@
 		}
 
 		completion_reward = {
-			add_ideas = YUG_defunct_infantry
+			#add_ideas = YUG_defunct_infantry
 			custom_effect_tooltip = just_hurts_inf_tt
 			add_doctrine_cost_reduction = {
 				name = YUG_army_maneuvers
@@ -5976,13 +5981,14 @@
 		icon = GFX_focus_generic_manpower
 		prerequisite = { 
 			focus = YUG_learn_from_germans
-			focus = YUG_perfection_of_the_royal_guard }
+			#focus = YUG_perfection_of_the_royal_guard 
+		}
 	    available = {
-			OR = {
+		OR = {
 				has_completed_focus = YUG_serbian_army
-				has_completed_focus = YUG_perfection_of_the_royal_guard
-				}
+				#has_completed_focus = YUG_perfection_of_the_royal_guard
 			}
+		}
 		x = 1
 		y = 3
 		relative_position_id = YUG_reform_high_command
@@ -6039,7 +6045,7 @@
 	focus = {
 		id = YUG_modernize_the_air_force
 		icon = GFX_goal_generic_air_doctrine
-		x = 54
+		x = 47
 		y = 0
 
 		cost = 10
@@ -6702,7 +6708,7 @@
 		id = YUG_expand_the_split_shipyards
 		icon = GFX_goal_generic_construct_naval_dockyard
 		mutually_exclusive = { focus = YUG_expand_the_serbian_shipyards }
-		x = 60
+		x = 54
 		y = 0
 
 		cost = 8
