@@ -46,8 +46,8 @@ ideas = {
 			ledger = navy
 			available = {
 				AND = { 
-				has_naval_academy = yes
-				has_doctrine = new_fleet_in_being
+					has_naval_academy = yes
+					has_doctrine = new_fleet_in_being
 				}
 			}
 
@@ -65,15 +65,15 @@ ideas = {
 				modifier = {
 					factor = 2
 					has_doctrine = new_fleet_in_being
-					}
+				}
 			}
 		}
 		trade_interdiction_academy_spirit = {
 			ledger = navy
 			available = {
 				AND = { 
-				has_naval_academy = yes
-				has_doctrine = new_convoy_raiding
+					has_naval_academy = yes
+					has_doctrine = new_convoy_raiding
 				}
 			}
 
@@ -91,15 +91,15 @@ ideas = {
 				modifier = {
 					factor = 2
 					has_doctrine = new_convoy_raiding
-					}
+				}
 			}
 		}
 		base_strike_academy_spirit = {
 			ledger = navy
 			available = {
 				AND = { 
-				has_naval_academy = yes
-				has_doctrine = new_base_strike
+					has_naval_academy = yes
+					has_doctrine = new_base_strike
 				}
 			}
 
@@ -203,6 +203,34 @@ ideas = {
 				modifier = {
 					factor = 2
 					has_doctrine = screen_support_focus
+				}
+			}
+		}
+		ast_ranc_naval_academy_spirit = {
+			ledger = navy
+			visible = { has_dlc = "No Compromise, No Surrender" tag = AST}
+			available = { 
+				has_completed_focus = AST_expand_our_naval_college
+			}
+
+			modifier = {
+				navy_leader_start_level = 1
+				navy_leader_start_attack_level = 1
+				navy_leader_start_coordination_level = 1
+				navy_leader_start_defense_level = 1
+				navy_leader_start_maneuvering_level = 1
+				navy_intel_to_others = -5
+			}
+
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Compromise, No Surrender" }
+				}
+				modifier = {
+					factor = 10
+					TAG = AST
 				}
 			}
 		}
