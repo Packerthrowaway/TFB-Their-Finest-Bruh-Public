@@ -1,0 +1,1859 @@
+# Terribly sorry for how ugly this code is
+scripted_gui = {
+	SOV_Gosplan_GUI = {
+        window_name = "SOV_Gosplan_GUI"
+        context_type = decision_category
+        dirty = SOV_gosplan_gui_dirty_var
+        
+        effects = {
+            gosplan_heavy_industry_button_click = {
+				set_variable = {
+					var = gosplan_heavy_industry
+				}
+			
+				clear_variable = gosplan_light_industry
+				clear_variable = gosplan_defense_industry
+			}
+			
+            gosplan_light_industry_button_click = {
+				set_variable = {
+					var = gosplan_light_industry
+				}
+			
+				clear_variable = gosplan_heavy_industry
+				clear_variable = gosplan_defense_industry
+			}
+			
+            gosplan_defense_industry_button_click = {
+				set_variable = {
+					var = gosplan_defense_industry
+				}
+				clear_variable = gosplan_light_industry
+				clear_variable = gosplan_heavy_industry
+			}
+			
+			# Soooo sorry for this code
+			gosplan_areas_upgrade_button_click = {
+				
+				add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
+			
+				# Northwest
+				if = {
+					limit = { check_variable = { var_northwest_dev_map_counter = 100 } }
+
+					add_to_variable = { var_northwest_dev_map = 1 }
+					clamp_variable = { var = var_northwest_dev_map max = 5 }
+					set_variable = { var_northwest_dev_map_counter = 0 }
+					
+					213 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					213 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					213 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					213 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					213 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					215 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					215 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					215 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					215 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					215 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					216 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					216 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					216 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					216 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					216 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					351 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					351 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					351 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					351 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					351 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					880 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					880 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					880 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					880 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					880 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					879 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					879 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					879 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					879 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					879 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					214 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					214 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					214 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					214 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					214 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					825 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					825 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					825 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					825 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					825 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					262 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					262 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					262 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					262 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					262 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					397 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					397 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					397 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					397 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					397 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					400 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					400 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					400 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					400 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					400 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_northwest_dev_map = 1 } }
+						213 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						215 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						216 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						351 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						880 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						879 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						214 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						825 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						262 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						397 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						400 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_northwest_dev_map = 2 } }
+						213 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						215 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						216 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						351 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						880 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						879 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						214 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						825 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						262 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						397 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						400 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_northwest_dev_map = 3 } }
+						213 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						215 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						216 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						351 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						880 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						879 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						214 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						825 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						262 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						397 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						400 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_northwest_dev_map = 4 } }
+						213 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						215 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						216 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						351 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						880 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						879 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						214 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						825 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						262 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						397 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						400 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_northwest_dev_map = 5 } }
+						213 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						215 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						216 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						351 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						880 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						879 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						214 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						825 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						262 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						397 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						400 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+				
+				# Moscow
+				if = {
+					limit = { check_variable = { var_moscow_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_moscow_dev_map = 1 }
+					clamp_variable = { var = var_moscow_dev_map max = 5 }
+					set_variable = { var_moscow_dev_map_counter = 0 }
+					
+					248 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					248 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					248 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					248 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					248 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					247 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					247 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					247 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					247 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					247 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					246 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					246 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					246 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					246 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					246 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					242 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					242 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					242 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					242 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					242 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					243 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					243 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					243 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					243 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					243 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					205 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					205 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					205 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					205 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					205 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					219 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					219 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					219 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					219 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					219 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					223 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					223 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					223 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					223 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					223 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					254 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					254 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					254 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					254 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					254 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					253 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					253 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					253 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					253 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					253 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_moscow_dev_map = 1 } }
+						248 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						247 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						246 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						242 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						243 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						205 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						219 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						223 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						254 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						253 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_moscow_dev_map = 2 } }
+						248 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						247 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						246 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						242 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						243 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						205 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						219 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						223 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						254 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						253 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_moscow_dev_map = 3 } }
+						248 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						247 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						246 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						242 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						243 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						205 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						219 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						223 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						254 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						253 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_moscow_dev_map = 4 } }
+						248 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						247 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						246 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						242 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						243 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						205 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						219 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						223 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						254 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						253 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_moscow_dev_map = 5 } }
+						248 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						247 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						246 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						242 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						243 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						205 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						219 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						223 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						254 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						253 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+				
+				# Leningrad
+				if = {
+					limit = { check_variable = { var_leningrad_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_leningrad_dev_map = 1 }
+					clamp_variable = { var = var_leningrad_dev_map max = 5 }
+					set_variable = { var_leningrad_dev_map_counter = 0 }
+					
+					195 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					195 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					195 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					195 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					195 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					244 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					244 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					244 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					244 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					244 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					264 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					264 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					264 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					264 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					264 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					263 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					263 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					263 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					263 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					263 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					210 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					210 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					210 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					210 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					210 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					209 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					209 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					209 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					209 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					209 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					208 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					208 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					208 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					208 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					208 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_leningrad_dev_map = 1 } }
+						195 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						244 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						264 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						263 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						210 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						209 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						208 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_leningrad_dev_map = 2 } }
+						195 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						244 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						264 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						263 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						210 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						209 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						208 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_leningrad_dev_map = 3 } }
+						195 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						244 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						264 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						263 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						210 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						209 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						208 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_leningrad_dev_map = 4 } }
+						195 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						244 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						264 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						263 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						210 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						209 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						208 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_leningrad_dev_map = 5 } }
+						195 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						244 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						264 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						263 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						210 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						209 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						208 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+				
+				# Belarus
+				if = {
+					limit = { check_variable = { var_belarus_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_belarus_dev_map = 1 }
+					clamp_variable = { var = var_belarus_dev_map max = 5 }
+					set_variable = { var_belarus_dev_map_counter = 0 }
+					
+					207 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					207 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					207 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					207 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					207 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					206 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					206 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					206 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					206 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					206 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					204 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					204 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					204 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					204 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					204 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					241 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					241 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					241 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					241 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					241 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_belarus_dev_map = 1 } }
+						207 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						206 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						204 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						241 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_belarus_dev_map = 2 } }
+						207 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						206 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						204 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						241 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_belarus_dev_map = 3 } }
+						207 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						206 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						204 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						241 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_belarus_dev_map = 4 } }
+						207 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						206 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						204 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						241 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_belarus_dev_map = 5 } }
+						207 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						206 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						204 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						241 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+		
+				# Ukraine West
+				if = {
+					limit = { check_variable = { var_ukraine_west_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_ukraine_west_dev_map = 1 }
+					clamp_variable = { var = var_ukraine_west_dev_map max = 5 }
+					set_variable = { var_ukraine_west_dev_map_counter = 0 }
+					
+					137 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					137 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					137 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					137 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					137 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					196 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					196 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					196 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					196 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					196 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					200 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					200 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					200 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					200 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					200 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					226 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					226 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					226 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					226 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					226 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					203 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					203 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					203 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					203 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					203 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					197 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					197 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					197 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					197 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					197 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					192 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					192 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					192 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					192 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					192 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					834 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					834 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					834 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					834 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					834 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					198 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					198 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					198 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					198 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					198 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					199 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					199 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					199 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					199 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					199 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					201 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					201 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					201 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					201 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					201 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					202 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					202 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					202 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					202 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					202 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_ukraine_west_dev_map = 1 } }
+						137 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						196 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						200 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						226 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						203 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						197 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						192 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						834 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						198 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						199 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						201 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						202 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_west_dev_map = 2 } }
+						137 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						196 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						200 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						226 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						203 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						197 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						192 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						834 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						198 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						199 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						201 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						202 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_west_dev_map = 3 } }
+						137 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						196 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						200 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						226 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						203 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						197 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						192 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						834 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						198 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						199 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						201 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						202 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_west_dev_map = 4 } }
+						137 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						196 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						200 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						226 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						203 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						197 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						192 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						834 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						198 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						199 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						201 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						202 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_west_dev_map = 5 } }
+						137 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						196 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						200 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						226 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						203 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						197 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						192 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						834 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						198 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						199 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						201 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						202 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+		
+				# Ukraine East
+				if = {
+					limit = { check_variable = { var_ukraine_east_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_ukraine_east_dev_map = 1 }
+					clamp_variable = { var = var_ukraine_east_dev_map max = 5 }
+					set_variable = { var_ukraine_east_dev_map_counter = 0 }
+					
+					227 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					227 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					227 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					227 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					227 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					218 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					218 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					218 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					218 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					218 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					245 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					245 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					245 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					245 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					245 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					228 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					228 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					228 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					228 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					228 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					221 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					221 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					221 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					221 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					221 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					259 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					259 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					259 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					259 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					259 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					193 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					193 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					193 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					193 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					193 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					224 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					224 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					224 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					224 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					224 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					225 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					225 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					225 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					225 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					225 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					222 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					222 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					222 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					222 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					222 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					220 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					220 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					220 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					220 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					220 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					240 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					240 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					240 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					240 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					240 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					258 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					258 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					258 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					258 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					258 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					260 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					260 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					260 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					260 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					260 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					257 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					257 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					257 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					257 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					257 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_ukraine_east_dev_map = 1 } }
+						227 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						218 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						245 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						228 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						221 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						259 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						193 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						224 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						225 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						222 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						220 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						240 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						258 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						260 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						257 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_east_dev_map = 2 } }
+						227 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						218 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						245 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						228 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						221 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						259 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						193 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						224 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						225 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						222 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						220 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						240 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						258 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						260 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						257 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_east_dev_map = 3 } }
+						227 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						218 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						245 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						228 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						221 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						259 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						193 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						224 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						225 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						222 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						220 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						240 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						258 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						260 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						257 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_east_dev_map = 4 } }
+						227 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						218 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						245 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						228 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						221 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						259 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						193 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						224 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						225 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						222 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						220 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						240 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						258 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						260 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						257 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_ukraine_east_dev_map = 5 } }
+						227 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						218 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						245 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						228 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						221 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						259 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						193 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						224 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						225 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						222 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						220 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						240 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						258 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						260 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						257 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+		
+				# Caucasus
+				if = {
+					limit = { check_variable = { var_caucasus_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_caucasus_dev_map = 1 }
+					clamp_variable = { var = var_caucasus_dev_map max = 5 }
+					set_variable = { var_caucasus_dev_map_counter = 0 }
+					
+					234 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					234 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					234 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					234 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					234 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					235 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					235 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					235 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					235 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					235 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					232 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					232 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					232 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					232 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					232 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					821 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					821 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					821 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					821 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					821 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					828 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					828 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					828 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					828 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					828 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					827 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					827 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					827 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					827 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					827 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					233 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					233 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					233 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					233 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					233 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					826 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					826 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					826 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					826 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					826 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					231 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					231 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					231 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					231 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					231 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					230 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					230 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					230 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					230 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					230 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					229 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					229 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					229 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					229 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					229 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_caucasus_dev_map = 1 } }
+						234 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						235 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						232 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						821 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						828 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						827 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						233 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						826 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						231 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						230 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						229 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_caucasus_dev_map = 2 } }
+						234 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						235 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						232 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						821 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						828 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						827 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						233 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						826 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						231 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						230 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						229 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_caucasus_dev_map = 3 } }
+						234 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						235 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						232 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						821 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						828 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						827 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						233 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						826 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						231 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						230 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						229 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_caucasus_dev_map = 4 } }
+						234 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						235 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						232 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						821 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						828 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						827 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						233 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						826 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						231 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						230 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						229 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_caucasus_dev_map = 5 } }
+						234 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						235 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						232 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						821 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						828 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						827 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						233 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						826 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						231 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						230 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						229 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+		
+				# Volga
+				if = {
+					limit = { check_variable = { var_volga_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_volga_dev_map = 1 }
+					clamp_variable = { var = var_volga_dev_map max = 5 }
+					set_variable = { var_volga_dev_map_counter = 0 }
+					
+					237 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					237 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					237 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					237 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					237 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					236 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					236 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					236 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					236 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					236 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					238 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					238 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					238 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					238 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					238 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					217 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					217 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					217 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					217 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					217 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					407 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					407 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					407 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					407 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					407 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					265 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					265 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					265 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					265 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					265 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					829 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					829 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					829 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					829 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					829 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					401 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					401 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					401 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					401 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					401 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					251 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					251 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					251 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					251 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					251 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					250 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					250 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					250 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					250 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					250 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					255 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					255 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					255 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					255 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					255 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					239 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					239 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					239 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					239 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					239 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					833 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					833 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					833 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					833 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					833 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					252 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					252 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					252 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					252 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					252 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					256 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					256 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					256 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					256 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					256 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					652 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					652 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					652 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					652 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					652 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					249 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					249 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					249 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					249 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					249 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_volga_dev_map = 1 } }
+						237 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						236 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						238 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						217 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						407 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						265 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						829 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						401 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						251 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						250 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						255 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						239 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						833 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						252 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						256 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						652 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						249 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_volga_dev_map = 2 } }
+						237 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						236 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						238 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						217 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						407 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						265 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						829 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						401 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						251 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						250 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						255 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						239 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						833 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						252 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						256 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						652 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						249 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_volga_dev_map = 3 } }
+						237 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						236 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						238 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						217 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						407 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						265 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						829 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						401 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						251 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						250 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						255 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						239 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						833 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						252 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						256 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						652 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						249 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_volga_dev_map = 4 } }
+						237 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						236 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						238 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						217 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						407 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						265 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						829 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						401 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						251 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						250 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						255 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						239 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						833 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						252 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						256 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						652 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						249 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_volga_dev_map = 5 } }
+						237 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						236 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						238 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						217 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						407 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						265 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						829 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						401 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						251 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						250 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						255 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						239 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						833 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						252 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						256 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						652 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						249 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+				
+				# Central Asia
+				if = {
+					limit = { check_variable = { var_central_asia_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_central_asia_dev_map = 1 }
+					clamp_variable = { var = var_central_asia_dev_map max = 5 }
+					set_variable = { var_central_asia_dev_map_counter = 0 }
+					
+					406 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					406 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					406 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					406 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					406 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					587 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					587 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					587 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					587 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					587 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					584 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					584 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					584 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					584 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					584 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					832 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					832 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					832 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					832 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					832 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					831 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					831 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					831 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					831 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					831 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					823 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					823 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					823 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					823 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					823 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					402 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					402 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					402 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					402 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					402 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					583 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					583 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					583 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					583 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					583 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					590 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					590 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					590 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					590 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					590 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					881 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					881 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					881 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					881 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					881 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					404 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					404 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					404 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					404 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					404 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					585 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					585 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					585 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					585 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					585 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					830 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					830 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					830 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					830 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					830 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					742 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					742 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					742 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					742 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					742 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					405 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					405 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					405 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					405 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					405 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					732 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					732 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					732 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					732 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					732 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					586 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					586 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					586 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					586 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					586 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					589 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					589 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					589 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					589 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					589 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					882 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					882 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					882 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					882 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					882 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					588 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					588 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					588 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					588 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					588 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_central_asia_dev_map = 1 } }
+						406 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						587 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						584 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						832 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						831 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						823 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						402 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						583 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						590 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						881 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						404 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						585 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						830 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						742 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						405 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						732 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						586 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						589 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						882 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						588 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_central_asia_dev_map = 2 } }
+						406 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						587 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						584 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						832 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						831 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						823 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						402 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						583 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						590 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						881 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						404 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						585 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						830 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						742 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						405 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						732 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						586 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						589 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						882 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						588 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_central_asia_dev_map = 3 } }
+						406 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						587 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						584 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						832 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						831 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						823 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						402 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						583 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						590 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						881 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						404 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						585 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						830 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						742 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						405 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						732 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						586 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						589 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						882 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						588 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_central_asia_dev_map = 4 } }
+						406 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						587 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						584 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						832 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						831 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						823 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						402 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						583 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						590 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						881 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						404 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						585 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						830 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						742 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						405 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						732 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						586 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						589 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						882 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						588 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_central_asia_dev_map = 5 } }
+						406 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						587 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						584 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						832 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						831 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						823 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						402 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						583 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						590 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						881 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						404 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						585 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						830 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						742 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						405 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						732 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						586 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						589 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						882 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						588 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+				
+				# Urals
+				if = {
+					limit = { check_variable = { var_urals_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_urals_dev_map = 1 }
+					clamp_variable = { var = var_urals_dev_map max = 5 }
+					set_variable = { var_urals_dev_map_counter = 0 }
+					
+					582 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					582 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					582 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					582 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					582 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					572 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					572 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					572 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					572 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					572 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					573 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					573 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					573 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					573 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					573 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					651 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					651 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					651 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					651 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					651 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					399 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					399 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					399 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					399 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					399 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					398 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					398 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					398 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					398 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					398 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					581 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					581 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					581 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					581 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					581 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					579 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					579 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					579 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					579 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					579 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					580 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					580 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					580 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					580 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					580 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					403 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					403 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					403 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					403 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					403 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					653 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					653 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					653 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					653 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					653 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					571 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					571 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					571 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					571 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					571 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_urals_dev_map = 1 } }
+						582 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						572 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						573 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						651 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						399 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						398 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						581 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						579 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						580 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						403 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						653 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						571 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_urals_dev_map = 2 } }
+						582 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						572 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						573 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						651 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						399 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						398 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						581 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						579 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						580 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						403 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						653 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						571 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_urals_dev_map = 3 } }
+						582 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						572 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						573 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						651 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						399 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						398 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						581 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						579 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						580 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						403 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						653 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						571 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_urals_dev_map = 4 } }
+						582 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						572 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						573 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						651 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						399 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						398 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						581 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						579 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						580 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						403 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						653 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						571 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_urals_dev_map = 5 } }
+						582 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						572 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						573 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						651 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						399 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						398 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						581 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						579 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						580 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						403 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						653 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						571 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+				
+				# Siberia West
+				if = {
+					limit = { check_variable = { var_siberia_west_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_siberia_west_dev_map = 1 }
+					clamp_variable = { var = var_siberia_west_dev_map max = 5 }
+					set_variable = { var_siberia_west_dev_map_counter = 0 }
+					
+					654 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					654 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					654 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					654 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					654 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					40 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					40 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					40 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					40 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					40 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					570 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					570 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					570 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					570 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					570 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					578 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					578 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					578 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					578 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					578 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					577 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					577 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					577 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					577 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					577 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					824 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					824 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					824 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					824 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					824 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					329 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					329 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					329 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					329 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					329 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					569 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					569 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					569 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					569 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					569 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					568 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					568 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					568 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					568 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					568 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					576 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					576 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					576 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					576 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					576 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					516 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					516 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					516 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					516 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					516 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					878 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					878 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					878 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					878 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					878 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					876 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					876 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					876 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					876 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					876 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					575 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					575 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					575 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					575 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					575 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					565 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					565 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					565 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					565 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					565 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					563 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					563 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					563 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					563 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					563 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					564 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					564 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					564 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					564 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					564 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					566 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					566 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					566 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					566 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					566 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					567 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					567 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					567 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					567 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					567 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_siberia_west_dev_map = 1 } }
+						654 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						40 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						570 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						578 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						577 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						824 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						329 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						569 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						568 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						576 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						516 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						878 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						876 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						575 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						565 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						563 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						564 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						566 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						567 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_west_dev_map = 2 } }
+						654 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						40 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						570 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						578 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						577 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						824 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						329 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						569 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						568 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						576 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						516 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						878 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						876 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						575 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						565 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						563 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						564 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						566 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						567 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_west_dev_map = 3 } }
+						654 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						40 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						570 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						578 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						577 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						824 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						329 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						569 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						568 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						576 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						516 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						878 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						876 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						575 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						565 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						563 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						564 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						566 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						567 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_west_dev_map = 4 } }
+						654 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						40 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						570 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						578 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						577 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						824 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						329 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						569 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						568 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						576 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						516 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						878 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						876 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						575 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						565 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						563 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						564 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						566 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						567 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_west_dev_map = 5 } }
+						654 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						40 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						570 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						578 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						577 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						824 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						329 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						569 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						568 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						576 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						516 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						878 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						876 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						575 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						565 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						563 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						564 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						566 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						567 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+		
+				# Siberia East
+				if = {
+					limit = { check_variable = { var_siberia_east_dev_map_counter = 100 } }
+					
+					add_to_variable = { var_siberia_east_dev_map = 1 }
+					clamp_variable = { var = var_siberia_east_dev_map max = 5 }
+					set_variable = { var_siberia_east_dev_map_counter = 0 }
+					
+					408 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					408 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					408 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					408 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					408 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					409 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					409 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					409 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					409 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					409 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					655 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					655 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					655 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					655 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					655 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					560 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					560 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					560 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					560 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					560 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					657 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					657 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					657 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					657 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					657 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					561 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					561 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					561 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					561 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					561 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					574 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					574 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					574 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					574 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					574 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					562 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					562 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					562 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					562 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					562 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					877 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					877 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					877 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					877 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					877 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					644 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					644 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					644 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					644 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					644 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					874 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					874 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					874 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					874 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					874 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					637 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					637 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					637 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					637 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					637 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					822 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					822 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					822 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					822 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					822 = { remove_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					if = {
+						limit = { check_variable = { var_siberia_east_dev_map = 1 } }
+						408 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						409 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						655 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						560 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						657 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						561 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						574 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						562 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						877 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						644 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						874 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						637 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+						822 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_east_dev_map = 2 } }
+						408 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						409 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						655 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						560 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						657 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						561 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						574 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						562 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						877 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						644 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						874 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						637 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+						822 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_east_dev_map = 3 } }
+						408 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						409 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						655 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						560 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						657 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						561 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						574 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						562 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						877 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						644 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						874 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						637 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+						822 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_east_dev_map = 4 } }
+						408 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						409 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						655 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						560 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						657 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						561 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						574 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						562 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						877 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						644 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						874 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						637 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+						822 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_4 }}
+					}
+					if = {
+						limit = { check_variable = { var_siberia_east_dev_map = 5 } }
+						408 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						409 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						655 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						560 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						657 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						561 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						574 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						562 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						877 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						644 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						874 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						637 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+						822 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_5 }}
+					}
+				}
+			}
+        }
+        
+        properties = {
+            # plan_fulfillment_counter_text = {
+            #     text = "Plan Fulfillment: [?SOV_gosplan_counter_var|0]"
+            # }
+			SOV_5_year_plan_progress_bar = { frame = var_SOV_second_5_year_plan_progress_bar_counter }
+        }
+    } 
+}

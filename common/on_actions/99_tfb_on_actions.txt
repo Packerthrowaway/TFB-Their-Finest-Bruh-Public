@@ -83,18 +83,6 @@ on_actions = {
 			}
 		}
 
-		# Update Stalin Air Weekly
-		effect = {
-			if = {
-				limit = {
-					has_global_flag = soviet_air_changes_full_flag
-				}
-				SOV = {
-					SOV_stalins_air_needs = yes
-				}
-			}
-		}
-
 		# Reset Intel on Hotjoin
 		effect = {
 			every_country = {
@@ -381,6 +369,12 @@ on_actions = {
     on_startup = {
 		effect = {
 			set_global_flag = game_has_started
+		}
+		effect = {
+			add_power_balance_modifier = {
+				id = SOV_purge_bop    # The ID of the balance of power
+				modifier = SOV_purge1 # The modifier to add
+			}
 		}
 		# Set all of the flags from GameRules for easier setup:
 		effect = {
@@ -769,42 +763,14 @@ on_actions = {
 		# Apply Soviet Stuff
 		effect = {
 			SOV = {
-				add_ideas = SOV_soviet_industry
-				add_ideas = SOV_soviet_industry_railway_gun
+				# add_ideas = SOV_soviet_industry
+				# add_ideas = SOV_soviet_industry_railway_gun
 				add_tech_bonus = {
 					name = SOV_small_cannon
 					ahead_reduction = 1
 					uses = 2
 					technology = antiair_research1
 					technology = sov_t26_upgrade
-				}
-			}
-			if = {
-				limit = {
-					OR = {
-						has_game_rule = {
-							rule = soviet_air_changes
-							option = FULL_SOV_AIR
-						}
-						has_game_rule = {
-							rule = soviet_air_changes
-							option = START_SOV_AIR
-						}
-					}
-				}
-				SOV = {
-					add_dynamic_modifier = { modifier = soviet_air_mod_pre_war }
-					SOV_stalins_air_needs = yes
-				}
-			} else_if = {
-				limit = {
-					has_game_rule = {
-						rule = soviet_air_changes
-						option = FOCUS_SOV_AIR
-					}
-				}
-				SOV = {
-					add_dynamic_modifier = { modifier = soviet_air_mod_pre_war }
 				}
 			}
 		}		
@@ -1438,23 +1404,23 @@ on_actions = {
 			340 = { set_demilitarized_zone = no }
 		}
 		effect = {
-			SOV = {
-				mio:SOV_morozov_design_bureau_organization = {
-					add_mio_funds_gain_factor = -0.75
-				}
-				mio:SOV_astrov_design_bureau_organization = {
-					add_mio_funds_gain_factor = -0.75
-				}
-				mio:SOV_okmo_organization = {
-					add_mio_funds_gain_factor = -0.75
-				}
-				mio:SOV_mytishchy_machine_building_plant_organization = {
-					add_mio_funds_gain_factor = -0.75
-				}
-				mio:SOV_kirov_organization = {
-					add_mio_funds_gain_factor = -0.75
-				}
-			}
+			# SOV = {
+			# 	mio:SOV_morozov_design_bureau_organization = {
+			# 		add_mio_funds_gain_factor = -0.75
+			# 	}
+			# 	mio:SOV_astrov_design_bureau_organization = {
+			# 		add_mio_funds_gain_factor = -0.75
+			# 	}
+			# 	mio:SOV_okmo_organization = {
+			# 		add_mio_funds_gain_factor = -0.75
+			# 	}
+			# 	mio:SOV_mytishchy_machine_building_plant_organization = {
+			# 		add_mio_funds_gain_factor = -0.75
+			# 	}
+			# 	mio:SOV_kirov_organization = {
+			# 		add_mio_funds_gain_factor = -0.75
+			# 	}
+			# }
 			# if = {
 			# 	limit = {
 			# 		KSR = { is_ai = yes }
@@ -1599,6 +1565,221 @@ on_actions = {
 					FIN_ruben_lagus = { add_unit_leader_trait = fun_haters }
 					FIN_svante_sundman = { add_unit_leader_trait = fun_haters }
 				}
+			}
+		}
+		
+		# SOV GOSPLAN STUFF
+		effect = {
+			SOV = {
+				# Progress Bar Counter
+				set_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 67 }
+				
+				# Marsh / Island that cant be upgraded
+				194 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				875 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+
+				# Northwest
+				set_variable = { var_northwest_dev_map = 1 }
+				set_variable = { var_northwest_dev_map_counter = 70 }
+				213 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				215 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				216 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				351 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				880 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				879 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				214 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				825 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				262 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				397 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				400 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				
+				# MOSCOW
+				set_variable = { var_moscow_dev_map = 3 }
+				set_variable = { var_moscow_dev_map_counter = 35 }
+				248 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				247 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				246 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				242 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				243 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				205 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				219 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				223 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				254 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				253 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				
+				
+				# Leningrad
+				set_variable = { var_leningrad_dev_map = 3 }
+				set_variable = { var_leningrad_dev_map_counter = 25 }
+				195 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				244 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				264 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				263 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				210 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				209 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				208 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_3 }}
+				
+				
+				# Belarus
+				set_variable = { var_belarus_dev_map = 2 }
+				set_variable = { var_belarus_dev_map_counter = 75 }
+				207 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				206 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				204 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				241 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				
+				# Ukraine West
+				set_variable = { var_ukraine_west_dev_map = 2 }
+				set_variable = { var_ukraine_west_dev_map_counter = 75 }
+				137 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				196 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				200 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				226 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				203 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				197 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				192 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				834 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				198 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				199 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				198 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				201 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				202 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				
+				# Ukraine East
+				set_variable = { var_ukraine_east_dev_map = 2 }
+				set_variable = { var_ukraine_east_dev_map_counter = 90 }
+				227 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				218 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				245 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				228 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				221 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				259 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				193 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				224 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				225 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				222 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				220 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				240 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				258 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				260 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				257 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				
+				# Caucasus
+				set_variable = { var_caucasus_dev_map = 2 }
+				set_variable = { var_caucasus_dev_map_counter = 20 }
+				234 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				235 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				232 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				821 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				828 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				827 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				233 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				826 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				231 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				230 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				229 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				
+				# Volga
+				set_variable = { var_volga_dev_map = 2 }
+				set_variable = { var_volga_dev_map_counter = 45 }
+				237 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				236 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				238 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				217 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				407 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				265 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				829 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				401 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				251 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				250 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				255 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				239 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				833 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				252 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				256 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				652 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				249 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				
+				
+				# Urals
+				set_variable = { var_urals_dev_map = 2 }
+				set_variable = { var_urals_dev_map_counter = 25 }
+				582 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				572 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				573 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				651 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				399 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				398 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				581 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				579 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				580 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				403 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				653 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				571 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				
+				# Central Asia
+				set_variable = { var_central_asia_dev_map = 2 }
+				set_variable = { var_central_asia_dev_map_counter = 20 }
+				406 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				587 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				584 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				832 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				831 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				823 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				402 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				583 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				590 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				881 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				404 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				585 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				830 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				742 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				405 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				732 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				586 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				589 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				882 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				588 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_2 }}
+				
+				# Siberia West
+				set_variable = { var_siberia_west_dev_map = 1 }
+				set_variable = { var_siberia_west_dev_map_counter = 35 }
+				654 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				40 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				570 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				578 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				577 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				824 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				329 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				569 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				568 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				576 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				516 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				878 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				876 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				575 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				565 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				563 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				564 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				566 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				567 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				
+				# Siberia East
+				set_variable = { var_siberia_east_dev_map = 1 }
+				set_variable = { var_siberia_east_dev_map_counter = 90 }
+				408 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				409 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				655 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				560 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				657 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				561 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				574 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				562 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				877 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				644 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				874 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				637 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
+				822 = { add_dynamic_modifier = { modifier = SOV_regional_development_stage_1 }}
 			}
 		}
 	}

@@ -6298,7 +6298,6 @@ focus_tree = {
 		completion_reward = {
 			SOV = { add_offsite_building = { type = arms_factory level = 15 } }
 			SOV = { add_offsite_building = { type = industrial_complex level = 15 } }
-			SOV = { remove_ideas =  home_of_revolution  }
 		}
 	}
 	
@@ -6405,42 +6404,6 @@ focus_tree = {
 		completion_reward = {
 			SOV =  {country_event = { id = britain.501 hours = 2 } }
 			
-		}
-	}
-
-	focus = {
-		id = ENG_artic_convoys
-		icon = GFX_goal_generic_positive_trade_relations
-		available = {
-			OR = {
-				SOV = { controls_state = 213 }
-				SOV = { controls_state = 214 }
-			}
-		}
-
-		available_if_capitulated = yes
-
-		prerequisite = { focus = ENG_soviet_lend_lease }
-		x = 0
-		y = 1
-		relative_position_id = ENG_soviet_lend_lease
-		cost = 2
-		ai_will_do = {
-			factor = 1
-		}	
-		completion_reward = {
-			SOV = {
-				add_equipment_to_stockpile = {
-					type = convoy
-					amount = 200
-					producer = ENG
-				}
-				add_equipment_to_stockpile = {
-					type = convoy
-					amount = 200
-					producer = USA
-				}
-			}
 		}
 	}
 	

@@ -10780,6 +10780,10 @@ focus_tree = {
 		relative_position_id = GER_fate_of_czechoslovakia
 		cost = 5
 		
+		bypass = {
+			SOV = { has_completed_focus = SOV_pol_triple_alliance }
+		}
+		
 		available = {
 			is_subject = no
 			has_government = fascism
@@ -10826,152 +10830,6 @@ focus_tree = {
 				country_event = { id = germany.11 days = 1 }
 				custom_effect_tooltip = GER_mol_rib_pact_tt
 				custom_effect_tooltip = needs_approval
-			}
-		}
-	}
-
-	focus = {
-		id = GER_treaty_with_the_ussr
-		icon = GFX_goal_generic_scientific_exchange
-		prerequisite = { focus = GER_molotov_ribbentrop_pact }
-
-		x = 0
-		y = 1
-		relative_position_id = GER_molotov_ribbentrop_pact
-		cost = 5
-		
-		bypass = { 
-			OR = {
-				has_war_with = SOV
-				NOT = { country_exists = SOV }
-				has_completed_focus = GER_bulwark_against_bolshevism
-				has_completed_focus = GER_the_great_red_menace
-			}
-		}
-
-		available = {
-			NOT = { has_completed_focus = GER_anti_soviet_pact }
-			OR = {
-				NOT = { has_completed_focus = GER_bulwark_against_bolshevism }
-				NOT = { has_completed_focus = GER_the_great_red_menace }
-			}
-		}
-
-		cancel = { 
-			OR = {
-				has_war_with = SOV
-				NOT = { country_exists = SOV }
-			} 
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			SOV = {
-				country_event = { id = germany.75 days = 1 }
-				custom_effect_tooltip = needs_approval
-				# Actual reward effects added in event if Soviets approve
-				effect_tooltip = {
-					# Trade influence with the USSR? Or simply let the opinion mod do the work
-					give_SOV_armor_research_bonuses = yes
-				}
-			}
-
-			if = {
-				limit = { 
-					has_dlc = "No Step Back"
-				}
-				#custom_effect_tooltip = GER_soviet_treaty_research_nsb_tt #Obsolete now
-				effect_tooltip = {
-					# create_equipment_variant = {
-					# 	name = "Panzer VII Löwe"
-					# 	type = heavy_tank_chassis_2
-					# 	design_team = mio:GER_daimler_benz_organization #We feed on your tears
-					# 	parent_version = 0
-					# 	modules = {
-					# 		main_armament_slot = tank_heavy_cannon_2
-					# 		turret_type_slot = tank_heavy_two_man_tank_turret
-					# 		suspension_type_slot = tank_torsion_bar_suspension
-					# 		armor_type_slot = tank_welded_armor
-					# 		engine_type_slot = tank_gasoline_engine
-					# 		special_type_slot_1 = tank_radio_1
-					# 		special_type_slot_2 = additional_machine_guns
-					# 		special_type_slot_3 = sloped_armor
-					# 	}
-					# 	upgrades = {
-					# 		tank_nsb_engine_upgrade = 6
-					# 		tank_nsb_armor_upgrade = 6
-					# 	}
-					# 	icon = "GFX_GER_improved_heavy_tank_medium"
-					# }
-					# create_equipment_variant = {
-					# 	name = "Panzerjäger Elefant"
-					# 	type = heavy_tank_destroyer_chassis_2
-					# 	design_team = mio:GER_porsche_organization #We feed on your tears
-					# 	parent_version = 0
-					# 	modules = {
-					# 		main_armament_slot = tank_heavy_cannon_2
-					# 		turret_type_slot = tank_heavy_fixed_superstructure_turret
-					# 		suspension_type_slot = tank_torsion_bar_suspension
-					# 		armor_type_slot = tank_welded_armor
-					# 		engine_type_slot = tank_gasoline_engine
-					# 		special_type_slot_1 = tank_radio_1
-					# 		special_type_slot_2 = additional_machine_guns
-					# 		special_type_slot_3 = squeezebore_adaptor
-					# 		special_type_slot_4 = sloped_armor
-					# 	}
-					# 	upgrades = {
-					# 		tank_nsb_engine_upgrade = 6
-					# 		tank_nsb_armor_upgrade = 6
-					# 	}
-					# 	icon = "GFX_GER_improved_heavy_tank_medium"
-					# }	
-					add_tech_bonus = {
-						name = med_armor_bonus
-						bonus = 0.5
-						ahead_reduction = 0.5
-						category = cat_medium_armor
-					}
-					add_tech_bonus = {
-						name = hvy_armor_bonus
-						bonus = 0.5
-						ahead_reduction = 0.5
-						category = cat_heavy_armor
-					}
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-			}
-			else = {
-				effect_tooltip = {
-					add_tech_bonus = {
-						name = med_armor_bonus
-						ahead_reduction = 1
-						category = cat_medium_armor
-					}
-					add_tech_bonus = {
-						name = armor_bonus
-						bonus = 1.0
-						uses = 2
-						category = armor
-					}
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-			}
-
-			add_breakthrough_progress = {
-				specialization = specialization_land
-				value = 1
-			}
-
-			SOV = {
-				add_breakthrough_progress = {
-					specialization = specialization_land
-					value = 1
-				}
 			}
 		}
 	}
@@ -14234,6 +14092,49 @@ focus_tree = {
 			}
 		}
 	}
+
+	focus = {
+		id = GER_invade_lithuania
+		prerequisite = { focus = GER_danzig_or_war}
+		icon = GFX_focus_GER_eastern_grand_duchies
+		x = 4
+		y = 1
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		relative_position_id = GER_danzig_or_war
+		cost = 1
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+			NOT = { has_global_flag = sov_yes_pact }
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+			AND = {
+				owns_state = 189
+				owns_state = 815
+				owns_state = 11
+				owns_state = 814
+			}
+		}
+
+		completion_reward = {
+			add_state_claim = 189
+			add_state_claim = 815
+			add_state_claim = 11
+			add_state_claim = 814
+			
+			declare_war_on = {
+				target = LIT
+				type = annex_everything
+			}
+		}
+	}
 	
 	focus = {
 		id = GER_secure_finland
@@ -16306,6 +16207,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = GER_anti_soviet_pact
 		cost = 5
+
 		available = {
 			is_subject = no
 			NOT = { is_ally_with = SOV }
@@ -16332,6 +16234,17 @@ focus_tree = {
 		id = GER_prepare_barb
 		icon = GFX_ger_prepare_to_invade_union
 		prerequisite = { focus = GER_anti_comintern_pact }
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		bypass = {
+			OR = {
+				has_war_with = SOV
+				SOV = {
+					exists = no
+				}
+			}
+		}
 		
 		available = {
 			98 = {
@@ -16429,77 +16342,37 @@ focus_tree = {
 			}
 		}	
 		completion_reward = {
-			98 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-			88 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-			92 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-			10 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-			5 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-			763 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
+			custom_effect_tooltip = GER_start_barb_planning_tt
+
+			hidden_effect = {
+				custom_effect_tooltip = GER_generic_modify_barb_buff_tt
+
+				custom_effect_tooltip = GER_barb_buff_army_org_factor_var_10_tt
+				add_to_variable = { var = GER_barb_buff_army_org_factor_var value = 0.1 }
+
+				custom_effect_tooltip = GER_barb_buff_army_morale_factor_var_5_tt
+				add_to_variable = { var = GER_barb_buff_army_morale_factor_var value = 0.05 }
+
+				custom_effect_tooltip = GER_barb_buff_initiative_factor_var_10_tt
+				add_to_variable = { var = GER_barb_buff_initiative_factor_var value = 0.1 }
+
+				custom_effect_tooltip = GER_barb_buff_org_loss_when_moving_var_-20_tt
+				add_to_variable = { var = GER_barb_buff_org_loss_when_moving_var value = -0.2 }
+
+				custom_effect_tooltip = GER_barb_buff_army_attack_speed_factor_var_10_tt
+				add_to_variable = { var = GER_barb_buff_army_attack_speed_factor_var value = 0.1 }
+
+				custom_effect_tooltip = GER_barb_buff_air_superiority_bonus_in_combat_var_20_tt
+				add_to_variable = { var = GER_barb_buff_air_superiority_bonus_in_combat_var value = 0.2 }
+
+				custom_effect_tooltip = GER_barb_buff_air_cas_present_factor_var_15_tt
+				add_to_variable = { var = GER_barb_buff_air_cas_present_factor_var value = 0.15 }
+
+				custom_effect_tooltip = GER_barb_buff_supply_node_range_var_10_tt
+				add_to_variable = { var = GER_barb_buff_supply_node_range_var value = 0.1 }
+
+				custom_effect_tooltip = GER_barb_buff_supply_factor_var_5_tt
+				add_to_variable = { var = GER_barb_buff_supply_factor_var value = 0.05 }
 			}
 		}
 	}
@@ -16539,35 +16412,35 @@ focus_tree = {
 			}
 			OR = {
 				AND = {
-					date > 1939.3.1
+					date > 1939.4.1
 					date < 1939.8.1
 				}
 				AND = {
-					date > 1940.3.1
+					date > 1940.4.1
 					date < 1940.8.1
 				}
 				AND = {
-					date > 1941.3.1
+					date > 1941.4.1
 					date < 1941.8.1
 				}
 				AND = {
-					date > 1942.3.1
+					date > 1942.4.1
 					date < 1942.8.1
 				}
 				AND = {
-					date > 1943.3.1
+					date > 1943.4.1
 					date < 1943.8.1
 				}
 				AND = {
-					date > 1944.3.1
+					date > 1944.4.1
 					date < 1944.8.1
 				}
 				AND = {
-					date > 1945.3.1
+					date > 1945.4.1
 					date < 1945.8.1
 				}
 				AND = {
-					date > 1946.3.1
+					date > 1946.4.1
 					date < 1946.8.1
 				}
 			}
@@ -16638,14 +16511,13 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-
 			declare_war_on = {
 				target = SOV
 				type = annex_everything
 			}
-			add_timed_idea = {
-				idea = GER_barbarossa
-				days = 150
+			add_dynamic_modifier = {
+				modifier = GER_barb_buff_dynamic_modifier
+				days = 180
 			}
 			SOV = {
 				add_timed_idea = {
@@ -16653,9 +16525,8 @@ focus_tree = {
 					days = 150
 				}
 			}
-
-			remove_ideas = GER_good_weather_army
 			effect_tooltip = {
+				activate_mission = GER_barbarossa_timeline_mission
 				activate_mission = GER_barbarossa_mission_moscow
 				activate_mission = GER_barbarossa_mission_kiev
 				activate_mission = GER_barbarossa_mission_lenin
@@ -16667,47 +16538,88 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = GER_roa
-		icon = GFX_roa
-		prerequisite = { focus = GER_war_with_the_ussr }
-		
-		available = {
-			has_war_with = SOV
-		}
-
-		
-		x = 2
-		y = 1
-		relative_position_id = GER_war_with_the_ussr
-		cost = 5
-		completion_reward = {
-			custom_effect_tooltip = GER_ROA_TT
-
-			every_controlled_state = {
-				limit = {
-					is_core_of = SOV
-				}
-				add_compliance = 15
-			}
-			hidden_effect = {
-				GER = {
-					if = { 
-                        limit = {
-                            has_global_flag = allow_voice_lines_flag
-                        }
-					scoped_sound_effect = "ger_roa"
-					}
-				}
-			}
-			
-		}
-	}
+	#focus = {
+	#	id = GER_roa
+	#	icon = GFX_roa
+	#	prerequisite = { focus = GER_prepare_barb }
+	#			
+	#	x = 3
+	#	y = 1
+#
+	#	relative_position_id = GER_prepare_barb
+	#	cost = 5
+	#	completion_reward = {
+	#		custom_effect_tooltip = GER_generic_modify_barb_buff_tt
+#
+	#		custom_effect_tooltip = GER_barb_buff_army_org_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_army_org_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_army_morale_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_army_morale_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_coordination_bonus_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_coordination_bonus_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_org_loss_when_moving_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_org_loss_when_moving_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_army_attack_speed_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_army_attack_speed_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_army_speed_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_army_speed_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_air_superiority_bonus_in_combat_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_air_superiority_bonus_in_combat_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_air_cas_present_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_air_cas_present_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_air_cas_efficiency_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_air_cas_efficiency_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_air_bombing_targetting_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_air_bombing_targetting_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_air_range_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_air_range_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_max_planning_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_max_planning_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_max_planning_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_max_planning_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_planning_speed_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_planning_speed_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_winter_attrition_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_winter_attrition_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_acclimatization_cold_climate_gain_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_acclimatization_cold_climate_gain_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_out_of_supply_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_out_of_supply_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_supply_node_range_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_supply_node_range_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_supply_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_supply_factor_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_attrition_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_attrition_var value = 0.05 }
+#
+	#		custom_effect_tooltip = GER_barb_buff_initiative_factor_var_5_tt
+	#		add_to_variable = { var = GER_barb_buff_initiative_factor_var value = 0.05 }
+	#	}
+	#}
 	
 	focus = {
 		id = GER_ostwall
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = GER_roa }
+		prerequisite = { focus = GER_war_with_the_ussr }
 		available = {
 			any_country = {
 				OR = {
@@ -16729,9 +16641,9 @@ focus_tree = {
 				}
 			}
 		}
-		x = 0
+		x = 2
 		y = 1
-		relative_position_id = GER_roa
+		relative_position_id = GER_war_with_the_ussr
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -17086,11 +16998,11 @@ focus_tree = {
 	focus = {
 		id = GER_alliance_with_the_ussr
 		icon = GFX_focus_GER_alliance_with_the_ussr
-		prerequisite = { focus = GER_treaty_with_the_ussr }
+		#prerequisite = { focus = GER_treaty_with_the_ussr }
 		mutually_exclusive = { focus = GER_war_with_the_ussr }
 		x = 0
 		y = 1
-		relative_position_id = GER_treaty_with_the_ussr
+		#relative_position_id = GER_treaty_with_the_ussr
 		cost = 5
 		
 		bypass = {
