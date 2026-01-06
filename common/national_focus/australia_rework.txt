@@ -90,7 +90,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = AST_kangaroo_point_dry_dock
-		cost = 5
+		cost = 7
 		
 		prerequisite = { focus = AST_kangaroo_point_dry_dock }
 		mutually_exclusive = { focus = AST_ran_as_support }
@@ -99,7 +99,7 @@ focus_tree = {
 			add_ideas = AST_expand_our_role
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_tech_bonus = {
-				bonus = 1.0
+				bonus = 0.75
 				uses = 2
 				category = bb_tech
                 category = cv_tech
@@ -212,7 +212,7 @@ focus_tree = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = AST_ran_as_support
 			add_tech_bonus = {
-				bonus = 1.0
+				bonus = 0.75
 				uses = 2
 				category = dd_tech
 			}
@@ -225,7 +225,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = AST_expand_our_role
-		cost = 5
+		cost = 7
 		
 		prerequisite = { focus = AST_expand_our_role }
 		mutually_exclusive = { focus = AST_improve_dockyard_facilities }
@@ -258,7 +258,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = AST_armour_stacking
-		cost = 5
+		cost = 7
 		
 		prerequisite = { focus = AST_armour_stacking }
 		
@@ -288,7 +288,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = AST_expand_our_role
-		cost = 5
+		cost = 7
 		
 		prerequisite = { focus = AST_expand_our_role }
         mutually_exclusive = { focus = AST_armour_stacking }
@@ -329,7 +329,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = AST_improve_dockyard_facilities
-		cost = 5
+		cost = 7
 		
 		prerequisite = { focus = AST_improve_dockyard_facilities }
 		
@@ -359,7 +359,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = AST_legacy_of_the_hmas_australia
-		cost = 5
+		cost = 7
 		
 		prerequisite = { focus = AST_legacy_of_the_hmas_australia focus = AST_a_pacific_war }
 		
@@ -445,8 +445,10 @@ focus_tree = {
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = AST_far_east_imperial_fleet
-			ENG_bruce_fraser = { set_nationality = AST }
-			ENG_algernon_willis = { set_nationality = AST }
+			ENG = {
+				ENG_bruce_fraser = { set_nationality = AST }
+				ENG_algernon_willis = { set_nationality = AST }
+			}
 		}
 	}
 
@@ -586,7 +588,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_tech_bonus = {
-				bonus = 1.0
+				bonus = 0.75
 				uses = 2
 				category = dd_tech
 			}
@@ -1368,7 +1370,7 @@ focus_tree = {
                 path = { 12406 12435 7859 }
             }
 			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = AST_new_south_wales_railway_company
+			show_ideas_tooltip = AST_new_south_wales_rc_organization
 		}
 	}
 	
@@ -1509,13 +1511,13 @@ focus_tree = {
 		prerequisite = { focus = AST_spirit_of_progress }
 		
 		completion_reward = {
-			285 = {
+			517 = {
 				add_building_construction = {
 					type = dam
 					level = 1
 					instant_build = yes
 					province = {
-						id = 1667
+						id = 7755
 					}
 				}
 			}
@@ -1596,7 +1598,7 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			283 = {
+			519 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = steel_refinery
@@ -2230,7 +2232,7 @@ focus_tree = {
 			}
 			add_to_variable = {
 				AST_recruitable_population_factor = -0.2
-				tooltip = recruitable_population_factor_tt
+				tooltip = conscription_factor_tt
 			}
             add_doctrine_cost_reduction = {
                 name = AST_second_australian_imperial_force
@@ -2516,7 +2518,7 @@ focus_tree = {
 			}
 			add_to_variable = {
 				AST_recruitable_population_factor = 0.2
-				tooltip = recruitable_population_factor_tt
+				tooltip = conscription_factor_tt
 			}
 		}
 	}
@@ -2694,7 +2696,7 @@ focus_tree = {
 			custom_effect_tooltip = AST_modify_australian_army_modifier_tt
 			add_to_variable = {
 				AST_recruitable_population_factor = 0.1
-				tooltip = recruitable_population_factor_tt
+				tooltip = conscription_factor_tt
 			}
 		}
 	}
@@ -2914,7 +2916,15 @@ focus_tree = {
 		prerequisite = { focus = AST_policy_of_sound_finance }
 		
 		available = {
-			num_of_factories > 90
+			if = {
+				limit = {
+					has_completed_focus = AST_incorporate_new_zealand_into_the_federation
+				}
+				num_of_factories > 129
+			} else = {
+				num_of_factories > 99
+			}
+			
 		}
 		
 		completion_reward = {
@@ -3383,7 +3393,12 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 100
 			add_war_support = 0.15
-			custom_effect_tooltip = AST_war_council_advisors_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AST_john_curtin
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = AST_robert_g_menzies
 		}
 	}
 	
@@ -3443,6 +3458,7 @@ focus_tree = {
 		
 		completion_reward = {
 			add_ideas = AST_secure_our_own_defence
+			custom_effect_tooltip = will_be_removed_upon_war_with_japan_tt
 		}
 	}
 	
@@ -3616,7 +3632,11 @@ focus_tree = {
 		completion_reward = {
 			remove_ideas = AST_secure_our_own_defence
 			custom_effect_tooltip = generic_skip_one_line_tt
-			add_ideas = AST_this_is_the_enemy
+			custom_effect_tooltip = AST_this_is_the_enemy_bonus_tt
+			hidden_effect = {
+				set_technology = { AST_this_is_the_enemy = 1 }
+			}
+			
 			custom_effect_tooltip = generic_skip_one_line_tt
             if = {
                 limit = { 
@@ -3709,6 +3729,8 @@ focus_tree = {
 		available = {
 			has_capitulated = yes
 		}
+
+		available_if_capitulated = yes
 		
 		completion_reward = {
 			create_country_leader = {
@@ -3748,7 +3770,10 @@ focus_tree = {
 		completion_reward = {
 			remove_ideas = AST_secure_our_own_defence
 			custom_effect_tooltip = generic_skip_one_line_tt
-            add_ideas = AST_hes_coming_south
+			custom_effect_tooltip = AST_hes_coming_south_bonus_tt
+			hidden_effect = {
+				set_technology = { AST_hes_coming_south = 1 }
+			}
 			custom_effect_tooltip = generic_skip_one_line_tt
             if = {
                 limit = { 
