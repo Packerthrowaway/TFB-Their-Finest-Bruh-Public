@@ -521,6 +521,8 @@
   GER_FACTION_oil_under_def:0 "£oil_texticon §RFaction Oil: [?GER.num_faction_total_oil]/[?GER.GER_autarky_oil]§!"
   GER_FACTION_oil_over_def:0 "£oil_texticon §GFaction Oil: [?GER.num_faction_total_oil]/[?GER.GER_autarky_oil]§!"
 
+  autarky_progress_tooltip:0 "Autarky Progress:"
+
   GER_blitzkrieg_modifier_af: "Blitzkrieg"
   GER_blitzkrieg_modifier_af_desc: "[GER.GetNameDefCap]'s focus on swift and decisive tactics to overwhelm its enemies by striking with speed and surprise will redefine modern warfare. The Panzers crush any opposition to secure a rapid victory. While the term 'Blitzkrieg' is a rather crude oversimplification popularized by newspapers, it describes the speed of [GER.GetAdjective] troops rather well. "
   GER_blitzkrieg_modifier_lvl_2_af: "$GER_blitzkrieg_modifier_af$"
@@ -661,6 +663,14 @@
   GER_julius_streicher_power_level_stored: "[?GER_julius_streicher.inner_circle_power_stored|0]"
   GER_julius_streicher_loyalty_level_percentage: "[?GER_julius_streicher.inner_circle_loyalty|+%%]"
 
+  GER_inner_circle_loyalist_loyalty_change:0 "\n§G+0.20%§! from §GLoyalist§!"
+
+  GER_econ_slot_1_loyalty_tt: "[GetEconSlot1Name] has [?GER_fritz_todt.inner_circle_loyalty|+%%] Loyalty \n\nBase Decay: [?GER_fritz_todt.inner_circle_character_loyalty_base_decay|-%%] \n[GER_fritz_todt.InnerCircleLoyalist] \nWeekly decay: [?GER_fritz_todt.inner_circle_loyalty_decay|+%%] per week due to a power portion of [?GER_fritz_todt.inner_circle_character_power_portion|%Y]"
+  GER_econ_slot_2_loyalty_tt: "[GetEconSlot2Name] has [?GER_hermann_goring.inner_circle_loyalty|+%%] Loyalty \n\nBase Decay: [?GER_hermann_goring.inner_circle_character_loyalty_base_decay|-%%] \n[GER_hermann_goring.InnerCircleLoyalist] \nWeekly decay: [?GER_hermann_goring.inner_circle_loyalty_decay|+%%] per week due to a power portion of [?GER_hermann_goring.inner_circle_character_power_portion|%Y]"
+  GER_econ_slot_3_loyalty_tt: "[GetEconSlot3Name] has [?GER_albert_speer.inner_circle_loyalty|+%%] Loyalty \n\nBase Decay: [?GER_albert_speer.inner_circle_character_loyalty_base_decay|-%%][GER_albert_speer.InnerCircleLoyalist] \nWeekly decay: [?GER_albert_speer.inner_circle_loyalty_decay|+%%] per week due to a power portion of [?GER_albert_speer.inner_circle_character_power_portion|%Y]"
+  GER_econ_slot_4_loyalty_tt: "[GetEconSlot4Name] has [?GER_hjalmar_schacht.inner_circle_loyalty|+%%] Loyalty \n\nBase Decay: [?GER_hjalmar_schacht.inner_circle_character_loyalty_base_decay|-%%] \n[GER_hjalmar_schacht.InnerCircleLoyalist] \nWeekly decay: [?GER_hjalmar_schacht.inner_circle_loyalty_decay|+%%] per week due to a power portion of [?GER_hjalmar_schacht.inner_circle_character_power_portion|%Y]"
+
+
   GER_econ_slot_1_stored_tt: "[GetEconSlot1Name] has §Y[GetEconSlot1PowerStored]/100§! political power needed to act.\n\n[TodtPowerTotal]\n\nGain §Y[GER_fritz_todt.ICPowerGain]§! Power per week[GER_fritz_todt.CategoryLoyaltyLeader][GER_fritz_todt.OverallLoyaltyLeader]"
   GER_econ_slot_2_stored_tt: "[GetEconSlot2Name] has §Y[GetEconSlot2PowerStored]/100§! political power needed to act.\n\nGain §Y[GER_hermann_goring.ICPowerGain]§! Power per week[GER_hermann_goring.CategoryLoyaltyLeader][GER_hermann_goring.OverallLoyaltyLeader]"
   GER_econ_slot_3_stored_tt: "[GetEconSlot3Name] has §Y[GetEconSlot3PowerStored]/100§! political power needed to act.\n\nGain §Y[GER_albert_speer.ICPowerGain]§! Power per week[GER_albert_speer.CategoryLoyaltyLeader][GER_albert_speer.OverallLoyaltyLeader]"
@@ -687,7 +697,8 @@
 
 
 
-  GER_econ_slot_1_tt: "[GetEconSlot1Name] has §Y[GetEconSlot1PowerRaw]§! political power, which is [GetEconSlot1PowerPercentage] of Economical power."
+  GER_econ_slot_1_tt: "[GetEconSlot1Name] has §Y[GetEconSlot1PowerRaw]§! political power, which is [GetEconSlot1PowerPercentage] of Economical power. \n$GER_econ_slot_1_power_gain$"
+  GER_econ_slot_1_power_gain: "Gains §Y[GER_fritz_todt.ICPowerGain]§! Power per week[GER_fritz_todt.CategoryLoyaltyLeader][GER_fritz_todt.OverallLoyaltyLeader]"
   GER_econ_slot_2_tt: "[GetEconSlot2Name] has §Y[GetEconSlot2PowerRaw]§! political power, which is [GetEconSlot2PowerPercentage] of Economical power."
   GER_econ_slot_3_tt: "[GetEconSlot3Name] has §Y[GetEconSlot3PowerRaw]§! political power, which is [GetEconSlot3PowerPercentage] of Economical power."
   GER_econ_slot_4_tt: "[GetEconSlot4Name] has §Y[GetEconSlot4PowerRaw]§! political power, which is [GetEconSlot4PowerPercentage] of Economical power."
@@ -713,17 +724,32 @@
   GER_propaganda_slot_3_tt: "[GetPropagandaSlot3Name] has §Y[GetPropagandaSlot3PowerRaw]§! political power, which is [GetPropagandaSlot3PowerPercentage] of Propaganda power."
   GER_propaganda_slot_4_tt: "[GetPropagandaSlot4Name] has §Y[GetPropagandaSlot4PowerRaw]§! political power, which is [GetPropagandaSlot4PowerPercentage] of Propaganda power."
 
-  GER_average_economy_category_info: "Total Power: [?GER.inner_circle_total_economy_power|] \nAverage Loyalty: [?GER.inner_circle_average_economy_loyalty|+]"
-  GER_average_labour_category_info: "Total Power: [?GER.inner_circle_total_labour_power|] \nAverage Loyalty: [?GER.inner_circle_average_labour_loyalty|+]"
-  GER_average_administration_category_info: "Total Power: [?GER.inner_circle_total_administration_power|] \nAverage Loyalty: [?GER.inner_circle_average_administration_loyalty|+]"
-  GER_average_security_category_info: "Total Power: [?GER.inner_circle_total_security_power|] \nAverage Loyalty: [?GER.inner_circle_average_security_loyalty|+]"
-  GER_average_propaganda_category_info: "Total Power: [?GER.inner_circle_total_propaganda_power|] \nAverage Loyalty: [?GER.inner_circle_average_propaganda_loyalty|+]"
+  GER_average_economy_category_info: "Total Power: [?GER.inner_circle_total_economy_power|] \nAverage Loyalty: [?GER.inner_circle_average_economy_loyalty|+%]"
+  GER_average_labour_category_info: "Total Power: [?GER.inner_circle_total_labour_power|] \nAverage Loyalty: [?GER.inner_circle_average_labour_loyalty|+%]"
+  GER_average_administration_category_info: "Total Power: [?GER.inner_circle_total_administration_power|] \nAverage Loyalty: [?GER.inner_circle_average_administration_loyalty|+%]"
+  GER_average_security_category_info: "Total Power: [?GER.inner_circle_total_security_power|] \nAverage Loyalty: [?GER.inner_circle_average_security_loyalty|+%]"
+  GER_average_propaganda_category_info: "Total Power: [?GER.inner_circle_total_propaganda_power|] \nAverage Loyalty: [?GER.inner_circle_average_propaganda_loyalty|+%]"
 
-  GER_economy_category_title: "Economy \n\n[?GER.inner_circle_economy_portion|%1Y] of Power"
-  GER_labour_category_title: "Labour \n\n[?GER.inner_circle_labour_portion|%1Y] of Power"
-  GER_administration_category_title: "Administration \n\n[?GER.inner_circle_administration_portion|%1Y] of Power"
-  GER_security_category_title: "Security \n\n[?GER.inner_circle_security_portion|%1Y] of Power"
-  GER_propaganda_category_title: "Propaganda \n\n[?GER.inner_circle_propaganda_portion|%1Y] of Power"
+  GER_economy_category_title: "Economy"
+  GER_economy_category_trait:0 "$MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$: [?GER.GER_inner_circle_economy_category_industrial_capacity_factory|+%1]"
+  GER_economy_category_bar_text: "[?GER.inner_circle_economy_portion|%1]"
+
+  GER_labour_category_title: "Labour"
+  GER_labour_category_trait:0 "$MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$: [?GER.GER_inner_circle_labour_category_production_speed_buildings_factor|+%1]"
+  GER_labour_category_bar_text: "[?GER.inner_circle_labour_portion|%1]"
+
+  GER_administration_category_title: "Administration"
+  GER_administration_category_trait:0 "$MODIFIER_POLITICAL_POWER_FACTOR$: [?GER.GER_inner_circle_administration_category_political_power_factor|+%1]"
+  GER_administration_category_bar_text: "[?GER.inner_circle_administration_portion|%1]"
+
+  GER_security_category_title: "Security"
+  GER_security_category_trait:0 "$MODIFIER_INTELLIGENCE_AGENCY_DEFENSE$: [?GER.GER_inner_circle_security_category_intelligence_agency_defense|+2]"
+  GER_security_category_bar_text: "[?GER.inner_circle_security_portion|%1]"
+
+  GER_propaganda_category_title: "Propaganda"
+  GER_propaganda_category_trait:0 "$MODIFIER_WAR_SUPPORT_FACTOR$: [?GER.GER_inner_circle_propaganda_category_war_support_factor|+%1]"
+  GER_propaganda_category_bar_text: "[?GER.inner_circle_propaganda_portion|%1]"
+
 
   GER_todt_flavor:0 "§GLeft-Click§! to Ascend \n\nFritz Todt is an Autocrat, designer of the Reichsautobahn, Westwall and Atlantikwall. He prioritizes grand construction projects but often does this at the cost of efficiency. His vision is to make Germany a fortress that can withstand any assault, but his methods can be wasteful and impractical. As long as the Führer tolerates him, Todt will continue to push his ambitious plans, regardless of their feasibility. But if the military situation worsens, Todt's position may become untenable. Not a major political player, but he does desire power within the economy."
   GER_goring_flavor:0 "§GLeft-Click§! to Ascend \n\nGöring is charismatic and ambitious, but also economically reckless and incompetent. As head of the Luftwaffe he will not hesitate to divert resources from other branches of the military to support his air force, even if it harms Germany's overall war effort. He is also known for his extravagant lifestyle and corruption, and is rumored to have a substance abuse problem."
@@ -731,17 +757,17 @@
   GER_schacht_flavor:0 "§GLeft-Click§! to Ascend \n\nSchacht is a shrewd and experienced economist. He is primarily concerned with stabilizing the German economy and ensuring that the Reichsmark remains stable. He is skeptical of the rushed militarization effort, and is highly critical of Görings four year plan. He is also wary of Todt's grand construction projects, which he sees as wasteful and impractical. Schacht is a realist, and will not hesitate to make difficult decisions if he believes they are necessary for the long-term health of the German economy."
   GER_hierl_flavor:0 "§GLeft-Click§! to Ascend \n\n§7Loyalist§! \n\nHierl is a loyal and efficient administrator, focused on maintaining order and discipline within the Reich Labour Service, which he sees as a model of ideology and labour combined."
   GER_ley_flavor:0 "§GLeft-Click§! to Ascend \n\nNotoriously corrupt and self-serving, Ley is primarily concerned with maintaining his own power and influence within the labour economy. He is an alcoholic and is known for his extravagant lifestyle, which has led to rumors of embezzlement and corruption."
-  GER_huhnlein_flavor:0 "§GLeft-Click§! to Ascend \n\n\n §7Loyalist§! \n\nAn incompetent political player, Hühnlein is in charge of motorization of the Reich. He is primarily concerned with promoting the use of automobiles and motorcycles within the military and civilian sectors, but his efforts are often hampered by a lack of resources and support from other branches of the government."
+  GER_huhnlein_flavor:0 "§GLeft-Click§! to Ascend \n\n\n§7Loyalist§! \n\nAn incompetent political player, Hühnlein is in charge of motorization of the Reich. He is primarily concerned with promoting the use of automobiles and motorcycles within the military and civilian sectors, but his efforts are often hampered by a lack of resources and support from other branches of the government."
   GER_hess_flavor:0 "§GLeft-Click§! to Ascend \n\n§7Loyalist§! \n\nA fanatical and eccentric loyalist, Hess is primarily concerned with maintaining the Führer's vision for Germany. He is known for his erratic behavior and grandiose plans, which often put him at odds with other members of the inner circle. Hess is fiercely loyal and will never hesitate to defend the Führer, even at great personal cost."
   GER_bormann_flavor:0 "§GLeft-Click§! to Ascend \n\nBormann is a ruthless and cunning political operator. He wants to isolate the Führer from other members of the inner circle, and will not hesitate to use underhanded tactics to achieve his goals. He is highly ambitious and sees himself as the future leader of Germany, and is willing to do whatever it takes to achieve that goal."
   GER_lammers_flavor:0 "§GLeft-Click§! to Ascend \n\nAs Chief of the Reich Chancellary, Lammers seeks to be the power behind the throne. He is a skilled political operator, and is known for his ability to navigate the complex bureaucracy and vocal rants of the Führer."
-  GER_buch_flavor:0 "The Supreme Party Judge, Buch is effectively the Party Inquisitor. He maintainst the ideological purity of the Party, and keeps the various factions in check to ensure they do not become too powerful. He is a staunch loyalist, and will not hesitate to defend the Führer against any perceived threats, real or imagined."
+  GER_buch_flavor:0 "The Supreme Party Judge, Buch is effectively the Party Inquisitor. He maintainst the ideological purity of the Party, and keeps the various factions in check to ensure they do not become too powerful. He is a staunch loyalist, and will not hesitate to defend the Führer against any perceived threats, real or imagined. Given enough power, the snake may eat its own tail."
   GER_lutze_flavor:0 "§GLeft-Click§! to Ascend \n\n§7Loyalist§! \n\nA loyalist figurehead of the SA, Lutze was appointed after the Night of the Long Knives to keep the SA castrated and docile. He will never challenge the authority of the SS, unless explicitly told to by the Führer."
   GER_himmler_flavor:0 "§GLeft-Click§! to Ascend \n\nThe humble chicken farmer, Himmler is a fanatic and an ambitious one. He seeks to form a state within the state, and will use underhanded tactics and intrigue to achieve his goals. Given enough power, he will recruit his own army and police force."
   GER_heydrich_flavor:0 "§GLeft-Click§! to Ascend \n\nAfter faking his resume through reading spy novels, Heydrich is a ruthless actor toward any types of resistance. He will be able to do this autonomously, given enough power."
-  GER_amann_flavor:0 "§GLeft-Click§! to Ascend \n\n§7Loyalist§! \n\nMax Amann is a shrewd business man who slowly took over the entire German publishing industry. While not the most politically savvy, he is loyal to the Führer and will use his media empire to ensure the Führer's vision is promoted."
+  GER_amann_flavor:0 "§GLeft-Click§! to Ascend \n\nMax Amann is a shrewd business man who slowly took over the entire German publishing industry. While not the most politically savvy, he is loyal to the Führer and will use his media empire to ensure the Führer's vision is promoted."
   GER_goebbels_flavor:0 "§GLeft-Click§! to Ascend \n\nAs Minister of Propaganda, Goebbels is a master of media manipulation and public persuasion. He is fiercely loyal to the Führer, and will stop at nothing to ensure his will."
-  GER_dietrich_flavor:0 "§GLeft-Click§! to Ascend \n\n§7Loyalist§! \n\nMore of a censor than a propagandist, Dietrich is primarily concerned with stifling dissent than promotion of the Führers vision. While he is a loyalist, he dislikes Goebbels constant attempts to undermine his authority over the media."
+  GER_dietrich_flavor:0 "§GLeft-Click§! to Ascend \n\nMore of a censor than a propagandist, Dietrich is primarily concerned with stifling dissent than promotion of the Führers vision. While he is a loyalist, he dislikes Goebbels constant attempts to undermine his authority over the media."
   GER_streicher_flavor:0 "§GLeft-Click§! to Ascend \n\nA rabid agitator, Streicher is the publisher of Der Stürmer, a virulently anti-semitic newspaper. He is a dangerous radical, and is known for his inflammatory rhetoric and violent outbursts. A loose cannon, even Hitler himself distanced himself from Streicher."
 
   GER_inner_circle_focus_effect_tt:0 "§9Will effect the following Inner Circle characters by:§!"
@@ -768,9 +794,10 @@
   GER_inner_circle_streicher_cd_flag:0 "Streicher has acted"
   #GER_inner_circle_cd_flag: "Has appointed another §Y$GER_inner_circle_member_title$§!"
   #GER_inner_circle_cd_days_tt: "Days until CHARACTER can act again: [?GER_inner_circle_cd_flag:days_left|Y0]"
+  GER_economy_action_bar_title:0 "Economy Action"
   GER_no_econ_action_active:0 "No Action Active"
   GER_economy_category_action_bar_modifier_loc:0 "x[?GER.GER_inner_circle_average_economy_loyalty_bar_modifier|+]"
-  GER_economy_category_action_bar_gain_loc:0 "§Y+[?GER.GER_inner_circle_average_economy_loyalty_bar_modifier]§!"
+  GER_economy_category_action_bar_gain_loc:0 "§Y+[?GER.GER_inner_circle_economy_action_bar_growth]§!"
 
   #GER_economy_bonus:0 ""
   GER_todt_trait:0 "Reich Engineer"
@@ -804,9 +831,9 @@
   GER_streicher_trait:0 "Rabid Agitator"
 
   GER_inner_circle_bribe_loc:0 "§gBribe§!"
-  GER_inner_circle_bribe_tt:0 "Cost (£political_power_texticon ): §Y25§! \n§YPower§! §G+5§! \n§YLoyalty§! §G+5§! \n\nShift-click \nCost  (£political_power_texticon ): §Y100§! \n§YPower§! §G+20§! \n§YLoyalty§! §G+20§!"
+  GER_inner_circle_bribe_tt:0 "Cost (£political_power_texticon ): §Y5§! \n§YPower§! §G+5§! \n§YLoyalty§! §G+1§! \n\nShift-click \nCost  (£political_power_texticon ): §Y20§! \n§YPower§! §G+20§! \n§YLoyalty§! §G+5§!"
   GER_inner_circle_curb_loc:0 "§gCurb§!"
-  GER_inner_circle_curb_tt:0 "Cost (£political_power_texticon ): §Y25§! \n§YPower§! §R-5§! \n§YLoyalty§! §R-5§! \n\nShift-click \nCost  (£political_power_texticon ): §Y100§! \n§YPower§! §R-20§! \n§YLoyalty§! §R-20§!"
+  GER_inner_circle_curb_tt:0 "Cost (£political_power_texticon ): §Y5§! \n§YPower§! §R-5§! \n§YLoyalty§! §R-1§! \n\nShift-click \nCost  (£political_power_texticon ): §Y20§! \n§YPower§! §R-20§! \n§YLoyalty§! §R-5§!"
 
   GER_economy_bonus:0 "$MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$: [?GER.GER_inner_circle_production_speed_buildings_factor_bonus_calculated|+%2]"
   
@@ -823,30 +850,42 @@
 
   GER_hierl_bonus:0 "Current modifier: \n$MODIFIER_TRAINING_TIME_FACTOR$: [?GER_inner_circle_konstantin_hierl_training_time_factor|Y%2]\n$modifier_production_speed_infrastructure_factor$: [?GER_inner_circle_konstantin_hierl_production_speed_infrastructure_factor|+%2]\n$modifier_production_speed_anti_air_building_factor$: [?GER_inner_circle_konstantin_hierl_production_speed_anti_air_building_factor|+%2]\n$MODIFIER_STATIC_ANTI_AIR_HIT_CHANCE_FACTOR$: [?GER_inner_circle_konstantin_hierl_static_anti_air_hit_chance_factor|+%2]"
 
-  GER_ley_bonus:0 "Current modifier: \n$MODIFIER_CONSUMER_GOODS_FACTOR$: [?GER_inner_circle_robert_ley_consumer_goods_factor|Y%2]\n$MODIFIER_STABILITY_POPULARITY_FACTOR$: [?GER_inner_circle_robert_ley_party_popularity_stability_factor|+%2]\n$fascism_drift$: [?GER_inner_circle_robert_ley_party_fascism_drift|+2]"
+  GER_ley_bonus:0 "Current modifier: \n$MODIFIER_CONSUMER_GOODS_FACTOR$: [?GER_inner_circle_robert_ley_consumer_goods_factor|Y%2]\n$MODIFIER_STABILITY_POPULARITY_FACTOR$: [?GER_inner_circle_robert_ley_party_popularity_stability_factor|+%2]\n$fascism_drift$: [?GER_inner_circle_robert_ley_fascism_drift|+2]"
   
-  GER_huhnlein_bonus:0 "Current modifier: \n$MODIFIER_ARMY_FUEL_CONSUMPTION_FACTOR$: [?GER_inner_circle_adolf_huhnlein_army_fuel_consumption_factor|Y%2]\n$MODIFIER_TRUCK_ATTRITION_FACTOR$: [?GER_inner_circle_adolf_huhnlein_truck_attrition_factor|+%2]\n$supply_combat_penalties_on_core_factor$: [?GER_inner_circle_adolf_huhnlein_supply_combat_penalties_on_core_factor|+%2]\n$MODIFIER_SUPPLY_CONSUMPTION_FACTOR$: [?GER_inner_circle_adolf_huhnlein_supply_consumption_factor|+%2]"
+  GER_huhnlein_bonus:0 "Current modifier: \n$MODIFIER_ARMY_FUEL_CONSUMPTION_FACTOR$: [?GER_inner_circle_adolf_huhnlein_army_fuel_consumption_factor|Y-%2]\n$MODIFIER_TRUCK_ATTRITION_FACTOR$: [?GER_inner_circle_adolf_huhnlein_truck_attrition_factor|+-%2]\n$supply_combat_penalties_on_core_factor$: [?GER_inner_circle_adolf_huhnlein_supply_combat_penalties_on_core_factor|-%2]\n$MODIFIER_SUPPLY_CONSUMPTION_FACTOR$: [?GER_inner_circle_adolf_huhnlein_supply_consumption_factor|+-%2]"
+
+  GER_sauckel_bonus:0 "Current modifier: \n$MODIFIER_INDUSTRY_FREE_REPAIR_FACTOR$: [?GER_inner_circle_fritz_sauckel_industry_free_repair_factor|+%2]\n$fascism_drift$: [?GER_inner_circle_fritz_sauckel_fascism_drift|+2]\n$MODIFIER_COMPLIANCE_GROWTH$: [?GER_inner_circle_fritz_sauckel_compliance_growth|+%2]\n$MODIFIER_HEAT_ATTRITION_FACTOR$: [?GER_inner_circle_fritz_sauckel_heat_attrition_factor|-%2]\n$MODIFIER_WINTER_ATTRITION_FACTOR$: [?GER_inner_circle_fritz_sauckel_winter_attrition_factor|-%2]\n$MODIFIER_AIR_ACCIDENTS_FACTOR$: [?GER_inner_circle_fritz_sauckel_air_accidents_factor|-%2]"
   
 
   GER_admin_bonus:0 "$MODIFIER_POLITICAL_POWER_FACTOR$: [?GER.GER_inner_circle_political_power_factor_bonus_calculated|+%2]"
-  GER_hess_bonus:0 "$MODIFIER_RESEARCH_SPEED_FACTOR$: [?GER.GER_inner_circle_research_speed_factor_bonus_calculated|+%2]"
-  GER_frick_bonus:0 "$MODIFIER_DRIFT_DEFENCE_FACTOR$: [?GER.GER_inner_circle_drift_defence_factor_bonus_calculated|+%2]"
-  GER_bormann_bonus:0 "$MODIFIER_STABILITY_POPULARITY_FACTOR$: [?GER.GER_inner_circle_party_popularity_stability_factor_bonus_calculated|+%2]"
-  GER_lammers_bonus:0 "$MODIFIER_STABILITY_FACTOR$: [?GER.GER_inner_circle_stability_factor_bonus_calculated|+%2]"
-  GER_buch_bonus:0 "$MODIFIER_JUSTIFY_WAR_GOAL_TIME$: [?GER.GER_inner_circle_justify_war_goal_time_bonus_calculated|+%2]"
+
+  GER_hess_bonus:0 "Current modifier: \n$MODIFIER_MIO_FUNDS_GAIN$: [?GER_inner_circle_rudolf_hess_military_industrial_organization_funds_gain|+%2]\n$MODIFIER_POLITICAL_POWER_GAIN$: [?GER_inner_circle_rudolf_hess_political_power_gain|+2]"
+
+  GER_bormann_bonus:0 "Current modifier: \n$political_advisor_cost_factor$: [?GER_inner_circle_martin_bormann_political_advisor_cost_factor|-%2]\n$theorist_cost_factor$: [?GER_inner_circle_martin_bormann_theorist_cost_factor|-%2]\n$army_chief_cost_factor$: [?GER_inner_circle_martin_bormann_army_chief_cost_factor|-%2]\n$navy_chief_cost_factor$: [?GER_inner_circle_martin_bormann_navy_chief_cost_factor|-%2]\n$air_chief_cost_factor$: [?GER_inner_circle_martin_bormann_air_chief_cost_factor|-%2]\n$high_command_cost_factor$: [?GER_inner_circle_martin_bormann_high_command_cost_factor|-%2]"
   
+  GER_lammers_bonus:0 "Current modifier: \n$mobilization_laws_cost_factor$: [?GER_inner_circle_hans_lammers_mobilization_laws_cost_factor|-%2]\n$economy_cost_factor$: [?GER_inner_circle_hans_lammers_economy_cost_factor|-%2]\n$trade_laws_cost_factor$: [?GER_inner_circle_hans_lammers_trade_laws_cost_factor|-%2]"
+  
+  GER_buch_bonus:0 "Current modifier: \n$fascism_drift$: [?GER_inner_circle_walter_buch_fascism_drift|+2]\n$MODIFIER_CIVILIAN_INTEL_TO_OTHERS$: [?GER_inner_circle_walter_buch_civilian_intel_to_others|-%2]\n$MODIFIER_STABILITY_POPULARITY_FACTOR$: [?GER_inner_circle_walter_buch_party_popularity_stability_factor|+%2]"
 
   GER_security_bonus:0 "$MODIFIER_AIRFORCE_INTEL_TO_OTHERS$: [?GER.GER_inner_circle_airforce_intel_to_others_bonus_calculated|+%2]"
-  GER_lutze_bonus:0 "$MODIFIER_NAVY_INTEL_TO_OTHERS$: [?GER.GER_inner_circle_navy_intel_to_others_bonus_calculated|+%2]"
-  GER_himmler_bonus:0 "$MODIFIER_CIVILIAN_INTEL_TO_OTHERS$: [?GER.GER_inner_circle_civilian_intel_to_others_bonus_calculated|+%2]"
-  GER_heydrich_bonus:0 "$MODIFIER_ARMY_INTEL_TO_OTHERS$: [?GER.GER_inner_circle_army_intel_to_others_bonus_calculated|+%2]"
+  GER_lutze_bonus:0 "Current modifier: \n$MODIFIER_TRAINING_TIME_FACTOR$: [?GER_inner_circle_viktor_lutze_training_time_factor|-%2]\n$MODIFIER_ROOT_OUT_RESISTANCE_EFFECTIVENESS_FACTOR$: [?GER_inner_circle_viktor_lutze_root_out_resistance_effectiveness_factor|+%2]\n$MODIFIER_STABILITY_FACTOR$: [?GER_inner_circle_viktor_lutze_stability_factor|+%2]"
+
+  GER_himmler_bonus:0 "Current modifier: \n$MODIFIER_INTELLIGENCE_AGENCY_DEFENSE$: [?GER_inner_circle_heinrich_himmler_intelligence_agency_defense|+2]\n$MODIFIER_GLOBAL_NON_CORE_MANPOWER$: [?GER_inner_circle_heinrich_himmler_non_core_manpower|+%2]\n$RESISTANCE_TARGET_VALUE$: [?GER_inner_circle_heinrich_himmler_resistance_target|-%2]"
+
+  GER_heydrich_bonus:0 "Current modifier: \n$MODIFIER_FOREIGN_SUBVERSIVE_ACTIVITIES$: [?GER_inner_circle_reinhard_heydrich_foreign_subversive_activites|-%2]\n$MODIFIER_REQUIRED_GARRISON_FACTOR$: [?GER_inner_circle_reinhard_heydrich_required_garrison_factor|-%2]\n$RESISTANCE_TARGET_VALUE$: [?GER_inner_circle_reinhard_heydrich_resistance_target|-%2]"
+  
+  GER_daluege_bonus:0 "Current modifier: \n$MODIFIER_COMPLIANCE_GROWTH$: [?GER_inner_circle_kurt_daluege_compliance_growth|+%2]\n$MODIFIER_REQUIRED_GARRISON_FACTOR$: [?GER_inner_circle_kurt_daluege_required_garrison_factor|-%2]"
   
 
   GER_propaganda_bonus:0 "$MODIFIER_INTELLIGENCE_AGENCY_DEFENSE$: [?GER.GER_inner_circle_intelligence_agency_defense_bonus_calculated|+%2]"
-  GER_amann_bonus:0 "$MODIFIER_WAR_SUPPORT_FACTOR$: [?GER.GER_inner_circle_war_support_factor_bonus_calculated|+%2]"
-  GER_goebbels_bonus:0 "$MODIFIER_STABILITY_DEFENSIVE_WAR_FACTOR$: [?GER.GER_inner_circle_defensive_war_stability_factor_bonus_calculated|+%2]"
-  GER_dietrich_bonus:0 "$MODIFIER_COMMAND_POWER_GAIN_MULT$: [?GER.GER_inner_circle_command_power_gain_mult_bonus_calculated|+%2]"
-  GER_streicher_bonus:0 "$MODIFIER_ROOT_OUT_RESISTANCE_EFFECTIVENESS_FACTOR$: [?GER.GER_inner_circle_root_out_resistance_effectiveness_factor_bonus_calculated|+%2]"
+
+  GER_amann_bonus:0 "Current modifier: \n$MODIFIER_POLITICAL_POWER_GAIN$: [?GER_inner_circle_max_amann_political_power_gain|+2]"
+
+  GER_goebbels_bonus:0 "Current modifier: \n$MODIFIER_WAR_SUPPORT_WEEKLY_FACTOR$: [?GER_inner_circle_joseph_goebbels_war_support_weekly_factor|+%2]\n$MODIFIER_GRANT_MEDAL_COST_FACTOR$: [?GER_inner_circle_joseph_goebbels_grant_medal_cost_factor|-%2]\n$MODIFIERS_ARMY_CORE_ATTACK_FACTOR$: [?GER_inner_circle_joseph_goebbels_army_core_attack_factor|+%2]\n$MODIFIERS_ARMY_CORE_DEFENCE_FACTOR$: [?GER_inner_circle_joseph_goebbels_army_core_defense_factor|+%2]"
+
+  GER_dietrich_bonus:0 "Current modifier: \n$MODIFIER_WEEKLY_BOMBING_WAR_SUPPORT$: [?GER_inner_circle_otto_dietrich_weekly_bombing_war_support|+%2]\n$MODIFIER_DRIFT_DEFENCE_FACTOR$: [?GER_inner_circle_otto_dietrich_drift_defence_factor|+%2]"
+
+  GER_streicher_bonus:0 "Current modifier: \n$fascism_drift$: [?GER_inner_circle_julius_streicher_fascism_drift|+2]"
   
 
   GER_inner_circle_power_change_loyalty_leader_tt:0 "\n§G+1§! for having the Highest Loyalty in the category"

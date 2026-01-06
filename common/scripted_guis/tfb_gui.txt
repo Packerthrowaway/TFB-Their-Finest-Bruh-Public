@@ -74,14 +74,25 @@ scripted_gui = {
 		parent_window_token = national_focus
 		window_name = "ger_inner_circle_ui_window"
 
+		#only visible if the scoped focus tree is Germanys and you (root) are Germany or in faction with Germany
 		visible = {
+			original_tag = GER
 			ROOT = { 
-				original_tag = GER
+				OR = {
+					original_tag = GER
+					is_in_faction_with = GER
+				}
 			}
 		}
 
 		properties = {
 			# Power Progress Bars
+			inner_circle_economy_category_power_bar = { frame = power_bar_economy_category }
+			inner_circle_labour_category_power_bar = { frame = power_bar_labour_category }
+			inner_circle_administration_category_power_bar = { frame = power_bar_administration_category }
+			inner_circle_security_category_power_bar = { frame = power_bar_security_category }
+			inner_circle_propaganda_category_power_bar = { frame = power_bar_propaganda_category }
+			
 			inner_circle_economy_1_power_progressbar = { frame = power_bar_todt }
 			inner_circle_economy_1_loyalty_progressbar = { frame = loyalty_bar_todt }
 			inner_circle_economy_1_disloyalty_progressbar = { frame = disloyalty_bar_todt }
@@ -497,19 +508,25 @@ scripted_gui = {
 				GER_joseph_goebbels = { set_temp_variable = { loyalty_bar_goebbels = inner_circle_loyalty } }
 				GER_otto_dietrich = { set_temp_variable = { loyalty_bar_dietrich = inner_circle_loyalty } }
 				GER_julius_streicher = { set_temp_variable = { loyalty_bar_streicher = inner_circle_loyalty } }
+
+				GER = { set_temp_variable = { power_bar_economy_category = GER_inner_circle_economy_portion_powerbar_variable } }
+				GER = { set_temp_variable = { power_bar_labour_category = GER_inner_circle_labour_portion_powerbar_variable } }
+				GER = { set_temp_variable = { power_bar_administration_category = GER_inner_circle_administration_portion_powerbar_variable } }
+				GER = { set_temp_variable = { power_bar_security_category = GER_inner_circle_security_portion_powerbar_variable } }
+				GER = { set_temp_variable = { power_bar_propaganda_category = GER_inner_circle_propaganda_portion_powerbar_variable } }
 			}
 		}
 		#change GER_inner_circle_bribe_tt if these are changed
-		@BRIBE_PP_COST = 25
-		@NEGATIVE_BRIBE_PP_COST = -25
-		@BRIBE_HIGH_PP_COST = 100
-		@NEGATIVE_BRIBE_HIGH_PP_COST = -100
-		@LOW_LOYALTY_GAIN = 5
-		@HIGH_LOYALTY_GAIN = 20
+		@BRIBE_PP_COST = 5
+		@NEGATIVE_BRIBE_PP_COST = -5
+		@BRIBE_HIGH_PP_COST = 20
+		@NEGATIVE_BRIBE_HIGH_PP_COST = -20
+		@LOW_LOYALTY_GAIN = 1
+		@HIGH_LOYALTY_GAIN = 5
 		@LOW_POWER_GAIN = 5
 		@HIGH_POWER_GAIN = 20
-		@LOW_LOYALTY_LOSS = -5
-		@HIGH_LOYALTY_LOSS = -20
+		@LOW_LOYALTY_LOSS = -1
+		@HIGH_LOYALTY_LOSS = -5
 		@LOW_POWER_LOSS = -5
 		@HIGH_POWER_LOSS = -20
 

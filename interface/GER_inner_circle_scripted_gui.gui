@@ -211,12 +211,44 @@ guiTypes = {
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
+				iconType = {
+					name = "inner_circle_economy_category_power_bar"
+					spriteType = "GFX_inner_circle_action_bar"
+					orientation = center_up
+					position = { x = -85 y = -150 }
+					context_aware_tooltip = GER_econ_slot_4_stored_tt
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
 					position = { x = -80 y = -200 }
 					font = "hoi_36header"
 					context_aware_text =  [GetEconCategoryPortion]
+					format = center
+					maxWidth = 300
+					context_aware_tooltip = [GetEconCategoryValues]
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_economy_category_trait"
+					orientation = center_down
+					position = { x = -25 y = -235 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_economy_category_trait
+					format = center_up
+					maxWidth = 200
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_economy_category_bar_text"
+					orientation = center_up
+					position = { x = -85 y = -155 }
+					font = "hoi_36header"
+					context_aware_text =  GER_economy_category_bar_text
 					format = center
 					maxWidth = 300
 					context_aware_tooltip = [GetEconCategoryValues]
@@ -368,14 +400,14 @@ guiTypes = {
 					spriteType = "GFX_prod_progress_bar4"
 					orientation = center_down
 					position = { x = 0 y = 25 }
-					context_aware_tooltip = GER_econ_slot_1_stored_tt
+					context_aware_tooltip = GER_econ_slot_1_loyalty_tt
 				}
 				iconType = {
 					name = "inner_circle_economy_1_disloyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
-					context_aware_tooltip = GER_econ_slot_1_stored_tt
+					context_aware_tooltip = GER_econ_slot_1_loyalty_tt
 				}
 
 				# Power Options
@@ -546,14 +578,14 @@ guiTypes = {
 					spriteType = "GFX_prod_progress_bar4"
 					orientation = center_down
 					position = { x = 0 y = 25 }
-					context_aware_tooltip = GER_econ_slot_2_stored_tt
+					context_aware_tooltip = GER_econ_slot_2_loyalty_tt
 				}
 				iconType = {
 					name = "inner_circle_economy_2_disloyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
-					context_aware_tooltip = GER_econ_slot_2_stored_tt
+					context_aware_tooltip = GER_econ_slot_2_loyalty_tt
 				}
 
 				# Power Options
@@ -720,14 +752,14 @@ guiTypes = {
 					spriteType = "GFX_prod_progress_bar4"
 					orientation = center_down
 					position = { x = 0 y = 25 }
-					context_aware_tooltip = GER_econ_slot_3_stored_tt
+					context_aware_tooltip = GER_econ_slot_3_loyalty_tt
 				}
 				iconType = {
 					name = "inner_circle_economy_3_disloyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
-					context_aware_tooltip = GER_econ_slot_3_stored_tt
+					context_aware_tooltip = GER_econ_slot_3_loyalty_tt
 				}
 
 				# Power Options
@@ -894,14 +926,14 @@ guiTypes = {
 					spriteType = "GFX_prod_progress_bar4"
 					orientation = center_down
 					position = { x = -0 y = 25 }
-					context_aware_tooltip = GER_econ_slot_4_stored_tt
+					context_aware_tooltip = GER_econ_slot_4_loyalty_tt
 				}
 				iconType = {
 					name = "inner_circle_economy_4_disloyalty_progressbar"
 					spriteType = "GFX_prod_progress_bar4_reverse"
 					orientation = center_down
 					position = { x = -70 y = 25 }
-					context_aware_tooltip = GER_econ_slot_4_stored_tt
+					context_aware_tooltip = GER_econ_slot_4_loyalty_tt
 				}
 
 				# Power Options
@@ -919,176 +951,139 @@ guiTypes = {
 
 			#action
 
-			containerWindowType = {
-				name = "inner_circle_economy_action_container"
-				orientation = center_up
-				position = { x = -530 y = 850 }
-				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
-				clipping = no
+			# containerWindowType = {
+			# 	name = "inner_circle_economy_action_container"
+			# 	orientation = center_up
+			# 	position = { x = -530 y = 850 }
+			# 	size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
+			# 	clipping = no
 
-				#ASCENDED ADVISOR NAME BOX
-				iconType = {
-					name ="inner_circle_economy_action_name_box"
-					spriteType = "GFX_ascended_advisor_name_box"
-					orientation = center
-					position = { x=0	 y=11 }
-					centerposition = yes
-					context_aware_tooltip = text_here
-				}
+			# 	#ASCENDED ADVISOR NAME BOX
+			# 	iconType = {
+			# 		name ="inner_circle_economy_action_name_box"
+			# 		spriteType = "GFX_ascended_advisor_name_box"
+			# 		orientation = center
+			# 		position = { x=0	 y=11 }
+			# 		centerposition = yes
+			# 		context_aware_tooltip = text_here
+			# 	}
 
-				#NAME
-				instantTextBoxType = {
-					name ="inner_circle_economy_action_name"
-					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
-					font = "hoi_20b"
-					context_aware_text = Economy_Action #NAME OF THE ACTION
-					format = center
-					maxWidth = 150
-					alwaystransparent = yes
-				}
+			# 	#NAME
+			# 	instantTextBoxType = {
+			# 		name ="inner_circle_economy_action_name"
+			# 		orientation = center_down
+			# 		position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -60 }
+			# 		font = "hoi_20b"
+			# 		context_aware_text = GER_economy_action_bar_title #NAME OF THE ACTION
+			# 		format = center
+			# 		maxWidth = 150
+			# 		alwaystransparent = yes
+			# 	}
 
-				iconType = {
-					name = "inner_circle_economy_4_action_progressbar"
-					spriteType = "GFX_inner_circle_action_bar"
-					orientation = center_down
-					position = { x = -150 y = -35 }
-					context_aware_tooltip = GER_econ_slot_4_stored_tt
-				}
+			# 	iconType = {
+			# 		name = "inner_circle_economy_4_action_progressbar"
+			# 		spriteType = "GFX_inner_circle_action_bar"
+			# 		orientation = center_down
+			# 		position = { x = -150 y = -35 }
+			# 		context_aware_tooltip = GER_econ_slot_4_stored_tt
+			# 	}
 
-				#TRAIT
-				instantTextBoxType = {
-					name ="inner_circle_economy_action_trait"
-					orientation = center_down
-					position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -30 }
-					font = "hoi_18mbs"
-					context_aware_text = [GetCurrentEconAction]
-					format = center
-					maxWidth = 150
-					alwaystransparent = yes
-				}
+			# 	#TRAIT
+			# 	instantTextBoxType = {
+			# 		name ="inner_circle_economy_action_trait"
+			# 		orientation = center_down
+			# 		position = { x = @ASCENDED_ADVISOR_TEXT_POS_X y = -30 }
+			# 		font = "hoi_18mbs"
+			# 		context_aware_text = [GetCurrentEconAction]
+			# 		format = center
+			# 		maxWidth = 150
+			# 		alwaystransparent = yes
+			# 	}
 
-				#POWER BOX
-				iconType = {
-					name ="inner_circle_economy_4_power_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=-38	 y=@POWER_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_econ_slot_4_tt
-				}
+			# 	#POWER BOX
+			# 	iconType = {
+			# 		name ="inner_circle_economy_4_power_box"
+			# 		spriteType = "GFX_trait_box_inner_circle_stats"
+			# 		orientation = center
+			# 		position = { x=-38	 y=@POWER_LEVEL_POS_Y }
+			# 		centerposition = yes
+			# 		context_aware_tooltip = GER_econ_slot_4_tt
+			# 	}
 
-				#Power Level
-				instantTextBoxType = {
-					name ="inner_circle_economy_4_power_level"
-					orientation = center_down
-					position = { x = -135 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = GER_economy_category_action_bar_gain_loc
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
+			# 	#Power Level
+			# 	instantTextBoxType = {
+			# 		name ="inner_circle_economy_4_power_level"
+			# 		orientation = center_down
+			# 		position = { x = -135 y = 5 }
+			# 		font = "hoi_18mbs"
+			# 		context_aware_text = GER_economy_category_action_bar_gain_loc
+			# 		format = center
+			# 		maxWidth = 200
+			# 		alwaystransparent = yes
+			# 	}
 
-				#LOYALTY BOX
-				iconType = {
-					name ="inner_circle_economy_4_loyalty_box"
-					spriteType = "GFX_trait_box_inner_circle_stats"
-					orientation = center
-					position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
-					centerposition = yes
-					context_aware_tooltip = GER_econ_slot_4_tt
-				}
+			# 	#LOYALTY BOX
+			# 	iconType = {
+			# 		name ="inner_circle_economy_4_loyalty_box"
+			# 		spriteType = "GFX_trait_box_inner_circle_stats"
+			# 		orientation = center
+			# 		position = { x=38	 y=@LOYALTY_LEVEL_POS_Y }
+			# 		centerposition = yes
+			# 		context_aware_tooltip = GER_econ_slot_4_tt
+			# 	}
 
-				#Loyalty Level
-				instantTextBoxType = {
-					name ="inner_circle_economy_4_loyalty_level"
-					orientation = center_down
-					position = { x = -60 y = 5 }
-					font = "hoi_18mbs"
-					context_aware_text = GER_economy_category_action_bar_modifier_loc
-					format = center
-					maxWidth = 200
-					alwaystransparent = yes
-				}
+			# 	#Loyalty Level
+			# 	instantTextBoxType = {
+			# 		name ="inner_circle_economy_4_loyalty_level"
+			# 		orientation = center_down
+			# 		position = { x = -60 y = 5 }
+			# 		font = "hoi_18mbs"
+			# 		context_aware_text = GER_economy_category_action_bar_modifier_loc
+			# 		format = center
+			# 		maxWidth = 200
+			# 		alwaystransparent = yes
+			# 	}
 
-				dropDownBoxType = {
-					name = "economy_action_picker"
-					position = { x = -50 y = 150 }
-					size = { width = 220 height = 30 }
-					
+			# 	buttonType = {
+			# 		name = "economy_action_1_button"
+			# 		orientation = center_down
+			# 		spriteType = "GFX_NV_btn_composition_editor"
+			# 		position = { x = -100 y = 30 }
+			# 		pdx_tooltip = "OPEN_NAVAL_CALCULATOR_BUTTON"
+			# 		pdx_tooltip_delayed = "OPEN_NAVAL_CALCULATOR_BUTTON_TT"
+			# 		#shortcut = "2"
+			# 	}
 
-					containerWindowType = {
-					name = "economy_action_bg"
-					size = { width = 220 height = 30 }
+			# 	buttonType = {
+			# 		name = "economy_action_2_button"
+			# 		orientation = center_down
+			# 		spriteType = "GFX_NV_btn_composition_editor"
+			# 		position = { x = -50 y = 30 }
+			# 		pdx_tooltip = "OPEN_NAVAL_CALCULATOR_BUTTON"
+			# 		pdx_tooltip_delayed = "OPEN_NAVAL_CALCULATOR_BUTTON_TT"
+			# 		#shortcut = "2"
+			# 	}
 
-				
-					background = {
-					name = "name_bg"
-					quadTextureSprite = "GFX_generic_background"
-					position = { x = 15 y = 0 }
-					alwaystransparent = yes
-					}
+			# 	buttonType = {
+			# 		name = "economy_action_3_button"
+			# 		orientation = center_down
+			# 		spriteType = "GFX_NV_btn_composition_editor"
+			# 		position = { x = 0 y = 30 }
+			# 		pdx_tooltip = "OPEN_NAVAL_CALCULATOR_BUTTON"
+			# 		pdx_tooltip_delayed = "OPEN_NAVAL_CALCULATOR_BUTTON_TT"
+			# 		#shortcut = "2"
+			# 	}
 
-					}
-
-					iconType = {
-						name = "division_nametag_icon"
-						spriteType = "GFX_division_nametag_icon"
-						position = { x = 20 y = 2 }
-					}
-
-					instantTextboxType = {
-						name = "name"
-						position = { x = 45 y = 5 }
-						font = "hoi_18mbs"
-						text = "COMBAT_HEADER"
-						maxWidth = 164
-						maxHeight = 20
-						fixedsize = yes
-						format = left
-					}
-
-					expandButton = {
-						name = "expand_button"	
-						position = { x = -9 y = 6 }
-						quadTextureSprite ="GFX_expand_button"
-						buttonFont = "Main_14_black"
-						Orientation = "UPPER_RIGHT"
-						clicksound = click_default
-					}
-			
-					expandedWindow = {
-						name = "expanded_window"
-						position = { x=10 y= -160 }	
-						show_position = { x = 10 y = 25 }
-						show_animation_type = decelerated
-						hide_animation_type = accelerated
-						animation_time = 300
-						size = { width=230 height=260 }	
-						verticalScrollbar = "right_vertical_slider"
-						scroll_wheel_factor = 45
-						smooth_scrolling = yes
-						margin = { top = 7 bottom = 7 right = 6 }
-						#clipping = no
-						
-						background = {
-							name = "Background"		
-							quadTextureSprite ="GFX_tiled_window_1b_thin_border"
-							position = { x = 0 y = 0 }
-						}
-						
-						gridBoxType = {
-							name = "names_grid"
-							position = { x = 8 y = 0 }
-							size = { width = 199 height = 100%% }
-							slotsize = { width = 186 height = 30 }
-							max_slots_horizontal = 1
-							format = "UPPER_LEFT"
-						}
-					}
-				}
-			}
+			# 	buttonType = {
+			# 		name = "economy_action_14_button"
+			# 		orientation = center_down
+			# 		spriteType = "GFX_NV_btn_composition_editor"
+			# 		position = { x = 50 y = 30 }
+			# 		pdx_tooltip = "OPEN_NAVAL_CALCULATOR_BUTTON"
+			# 		pdx_tooltip_delayed = "OPEN_NAVAL_CALCULATOR_BUTTON_TT"
+			# 		#shortcut = "2"
+			# 	}
+			# }
 			
 		}
 
@@ -1110,12 +1105,44 @@ guiTypes = {
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
+				iconType = {
+					name = "inner_circle_labour_category_power_bar"
+					spriteType = "GFX_inner_circle_action_bar"
+					orientation = center_up
+					position = { x = -75 y = -150 }
+					context_aware_tooltip = GER_econ_slot_4_stored_tt
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
 					position = { x = -70 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetLabourCategoryPortion]
+					format = center
+					maxWidth = 300
+					context_aware_tooltip = [GetLabourCategoryValues]
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_labour_category_trait"
+					orientation = center_down
+					position = { x = -15 y = -235 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_labour_category_trait
+					format = center_up
+					maxWidth = 250
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_labour_category_bar_text"
+					orientation = center_up
+					position = { x = -75 y = -155 }
+					font = "hoi_36header"
+					context_aware_text =  GER_labour_category_bar_text
 					format = center
 					maxWidth = 300
 					context_aware_tooltip = [GetLabourCategoryValues]
@@ -1839,6 +1866,14 @@ guiTypes = {
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
+				iconType = {
+					name = "inner_circle_administration_category_power_bar"
+					spriteType = "GFX_inner_circle_action_bar"
+					orientation = center_up
+					position = { x = -75 y = -150 }
+					context_aware_tooltip = GER_admin_slot_4_stored_tt
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
@@ -1848,6 +1883,30 @@ guiTypes = {
 					format = center
 					maxWidth = 300
 					context_aware_tooltip = [GetAdminCategoryValues]
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_administration_category_trait"
+					orientation = center_down
+					position = { x = -15 y = -235 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_administration_category_trait
+					format = center_up
+					maxWidth = 250
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_administration_category_bar_text"
+					orientation = center_up
+					position = { x = -75 y = -155 }
+					font = "hoi_36header"
+					context_aware_text =  GER_administration_category_bar_text
+					format = center
+					maxWidth = 300
+					context_aware_tooltip = [GetAdministrationCategoryValues]
 				}
 				
 				containerWindowType = {
@@ -2039,7 +2098,7 @@ guiTypes = {
 						orientation = center
 						position = { x=0	 y=@ASCENDED_ADVISOR_FRAME_POS_Y }
 						centerPosition = yes
-						context_aware_tooltip = GER_frick_flavor
+						context_aware_tooltip = GER_buch_flavor
 					}
 
 					#PORTRAIT
@@ -2060,7 +2119,7 @@ guiTypes = {
 					orientation = center
 					position = { x=0	 y=11 }
 					centerposition = yes
-					context_aware_tooltip = GER_frick_flavor
+					context_aware_tooltip = GER_buch_flavor
 				}
 
 				#NAME
@@ -2560,12 +2619,44 @@ guiTypes = {
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
+				iconType = {
+					name = "inner_circle_security_category_power_bar"
+					spriteType = "GFX_inner_circle_action_bar"
+					orientation = center_up
+					position = { x = -75 y = -150 }
+					context_aware_tooltip = GER_security_slot_4_stored_tt
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
 					position = { x = -65 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetSecurityCategoryPortion]
+					format = center
+					maxWidth = 300
+					context_aware_tooltip = [GetSecurityCategoryValues]
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_security_category_trait"
+					orientation = center_down
+					position = { x = -15 y = -235 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_security_category_trait
+					format = center_up
+					maxWidth = 250
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_security_category_bar_text"
+					orientation = center_up
+					position = { x = -75 y = -155 }
+					font = "hoi_36header"
+					context_aware_text =  GER_security_category_bar_text
 					format = center
 					maxWidth = 300
 					context_aware_tooltip = [GetSecurityCategoryValues]
@@ -3108,7 +3199,7 @@ guiTypes = {
 						orientation = center
 						position = { x=0	 y=@ASCENDED_ADVISOR_FRAME_POS_Y }
 						centerPosition = yes
-						context_aware_tooltip = GER_heydrich_flavor
+						context_aware_tooltip = GER_daluege_flavor
 					}
 
 					#PORTRAIT
@@ -3151,7 +3242,7 @@ guiTypes = {
 					orientation = center
 					position = { x=0	 y=42 }
 					centerposition = yes
-					context_aware_tooltip = GER_heydrich_bonus
+					context_aware_tooltip = GER_daluege_bonus
 				}
 
 				#TRAIT
@@ -3280,12 +3371,44 @@ guiTypes = {
 				size = { width = @ASCENDED_ADVISOR_CONTAINER_WIDTH height = @ASCENDED_ADVISOR_CONTAINER_HEIGHT }
 				clipping = no
 
+				iconType = {
+					name = "inner_circle_propaganda_category_power_bar"
+					spriteType = "GFX_inner_circle_action_bar"
+					orientation = center_up
+					position = { x = -75 y = -150 }
+					context_aware_tooltip = GER_security_slot_4_stored_tt
+				}
+
 				instantTextBoxType = {
 					name ="inner_circle_title_name"
 					orientation = center_up
 					position = { x = -65 y = -200 }
 					font = "hoi_36header"
 					context_aware_text = [GetPropagandaCategoryPortion]
+					format = center
+					maxWidth = 300
+					context_aware_tooltip = [GetPropagandaCategoryValues]
+				}
+
+				#TRAIT
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_category_trait"
+					orientation = center_down
+					position = { x = -15 y = -235 }
+					font = "hoi_18mbs"
+					context_aware_text = GER_propaganda_category_trait
+					format = center_up
+					maxWidth = 250
+					fixedsize = yes
+					alwaystransparent = yes
+				}
+
+				instantTextBoxType = {
+					name ="inner_circle_propaganda_category_bar_text"
+					orientation = center_up
+					position = { x = -75 y = -155 }
+					font = "hoi_36header"
+					context_aware_text =  GER_propaganda_category_bar_text
 					format = center
 					maxWidth = 300
 					context_aware_tooltip = [GetPropagandaCategoryValues]
