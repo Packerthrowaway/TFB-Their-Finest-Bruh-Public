@@ -13152,7 +13152,7 @@ focus_tree = {
 		available = {
 			JAP_naval_faction_is_not_subdued = yes
 			NOT = { has_war_with = CHI }
-			date > 1941.1.1
+			date > 1941.7.1
 		}
 
 		bypass = {
@@ -13233,7 +13233,7 @@ focus_tree = {
 			
 			add_timed_idea = {
 				idea = JAP_battle_for_oceania
-				days = 425
+				days = 270
 			}	
 
 			# IF = {
@@ -13315,6 +13315,9 @@ focus_tree = {
 
 		available = {
 			JAP_naval_faction_is_at_least_influential = yes
+			controls_state = 523
+			controls_state = 737
+			controls_state = 634
 		}
 
 		bypass = {
@@ -14020,9 +14023,13 @@ focus_tree = {
 		}
 
 		bypass = {
-			SIA = {
-				has_war_with = ROOT
+			OR = {
+				SIA = {
+					has_war_with = ROOT
+				}
+				SIA = { exists = no }
 			}
+			
 		}
 
 		will_lead_to_war_with = SIA
@@ -14089,7 +14096,7 @@ focus_tree = {
 					has_army_manpower = { size > 999999 }
 				}
 			}
-			date > 1941.1.1
+			date > 1941.7.1
 		}
 
 		bypass = {

@@ -1667,35 +1667,35 @@ on_actions = {
 		}
 		## Capitulation of China
 		# Japan Annexes all and then we use the Decisions
-		# effect = {
-		# 	if = {
-		# 		limit = {
-		# 			original_tag = CHI
-		# 			FROM = { tag = JAP }
-		# 		}
-		# 		JAP = {
-		# 			# white_peace = CHI
-		# 			annex_country = {
-		# 				target = CHI
-		# 				transfer_troops = no
-		# 			}
-		# 			add_named_threat = {
-		# 				threat = 30
-		# 				name = JAP_threat_treaty_of_nanjing
-		# 			}
-		# 			set_country_flag = { flag = JAP_transfer_timer value = 1 days = 30 }
-		# 			country_event = {  id = japan.506 } 
-		# 		}
-		# 		if = {
-		# 			limit = {
-		# 				MAN = { has_completed_focus = MAN_crush_the_bandits }
-		# 			}
-		# 			MAN = {
-		# 				add_ideas = MAN_assert_mills
-		# 			}
-		# 		}
-		# 	}
-		# }
+		effect = {
+			if = {
+				limit = {
+					original_tag = CHI
+					FROM = { tag = JAP }
+				}
+				JAP = {
+					# white_peace = CHI
+					annex_country = {
+						target = CHI
+						transfer_troops = no
+					}
+					add_named_threat = {
+						threat = 30
+						name = JAP_threat_treaty_of_nanjing
+					}
+					set_country_flag = { flag = JAP_transfer_timer value = 1 days = 30 }
+					country_event = { id = japan.506 } 
+				}
+				if = {
+					limit = {
+						MAN = { has_completed_focus = MAN_tsr_obedience }
+					}
+					MAN = {
+						add_ideas = MAN_assert_mills
+					}
+				}
+			}
+		}
 		# # Going to the Peace Conference
 		# effect = {
 		# 	if = {
