@@ -809,18 +809,19 @@ NDefines.NFactions.MAX_NUM_LONG_TERM_GOALS = 1					-- Maximum number of long ter
 
 
 NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0				-- How much training contributes to doctrine mastery relative to combat/missions
-NDefines.NDoctrines.MASTERY_BANK_CONVERSION_RATE = 0.3 				-- The rate at which mastery gained when a track is finished or empty is "banked"
+NDefines.NDoctrines.MASTERY_BANK_CONVERSION_RATE = 0.8 				-- The rate at which mastery gained when a track is finished or empty is "banked"
 NDefines.NDoctrines.MASTERY_BANK_MAX = 400							-- The maximum amount of mastery that can be banked
-NDefines.NDoctrines.MILITARY_ATTACHE_MASTERY_TRANSFER_FACTOR = 0.2	-- For each mastery track, military attaches will add this fraction of their visiting country's mastery gain (from units only) in that track
+NDefines.NDoctrines.MAX_MONTHLY_MASTERY_GAIN = 500
+NDefines.NDoctrines.MILITARY_ATTACHE_MASTERY_TRANSFER_FACTOR = 0.25	-- For each mastery track, military attaches will add this fraction of their visiting country's mastery gain (from units only) in that track
 NDefines.NDoctrines.THEATER_COMMANDER_UNITS_MASTERY_GAIN_FACTOR_PER_SKILL = 0.02	-- Unit in a theater commander's theater will contribute this fraction of their mastery gain to the theater commander's country, for each skill point they have in attack + defense
 NDefines.NDoctrines.NAVAL_MISSION_MASTERY_GAIN_FACTORS = {  -- Mastery gain from naval missions is reduced, just like training
 		0.0, -- HOLD
-		0.15, -- PATROL
+		0.2, -- PATROL
 		0.0, -- STRIKE FORCE
-		0.5, -- CONVOY RAIDING
-		0.5, -- CONVOY ESCORT
-		0.5, -- MINES PLANTING
-		0.5, -- MINES SWEEPING
+		0.3, -- CONVOY RAIDING
+		0.3, -- CONVOY ESCORT
+		0.05, -- MINES PLANTING
+		0.05, -- MINES SWEEPING
 		0.0, -- TRAIN # NOT USED - handled by TRAINING_MASTERY_GAIN_FACTOR
 		0.0, -- RESERVE_FLEET
 		0.0, -- NAVAL_INVASION_SUPPORT
