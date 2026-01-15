@@ -473,7 +473,7 @@ NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN_FROM_EFFICIENCY = 24 -- clamped min 
 
 NDefines.NNavy.NAVAL_MINES_IN_REGION_MAX = 1000.0								-- Max number of mines that can be layed by the ships. The value should be hidden from the user as we present % so it's an abstract value that should be used for balancing.
 NDefines.NNavy.NAVAL_MINES_PLANTING_SPEED_MULT = 0.01						-- Value used to overall balance of the speed of planting naval mines
-NDefines.NNavy.NAVAL_MINES_SWEEPING_SPEED_MULT = 0.009						-- Value used to overall balance of the speed of sweeping naval mines
+NDefines.NNavy.NAVAL_MINES_SWEEPING_SPEED_MULT = 0.015						-- Value used to overall balance of the speed of sweeping naval mines
 NDefines.NNavy.NAVAL_MINES_DECAY_AT_PEACE_TIME = 0.25							-- How fast mines are decaying in peace time. Planting mines in peace time may be exploitable, so it's blocked atm. That's why after war we should decay them too.
 NDefines.NNavy.NAVAL_MINES_SWEEPERS_REDUCTION_ON_PENALTY_EFFECT = 3.3			-- How much is the task force's sweeping attribute reducing the penalty effect.
 NDefines.NNavy.NAVAL_MINES_INTEL_DIFF_FACTOR = 0.5							-- Better our decryption over enemy encryption will reduce the penalties from the enemy mines in the region. This value is a factor to be used for balancing.
