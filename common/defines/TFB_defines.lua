@@ -531,7 +531,7 @@ NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.05		-- Chance of 
 NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
 NDefines.NNavy.RESOURCE_LENDLEASE_PRIORITY = 3
 NDefines.NNavy.RESOURCE_ORIGIN_PRIORITY = 3
-NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.25 													-- multiplies supply usage
+NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.35 													-- multiplies supply usage
 NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 0.85												-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
 NDefines.NNavy.HIT_PROFILE_SPEED_BASE = 5													-- Base value added to hitprofile speed calulation
 NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO 								= 0.25	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
@@ -542,7 +542,7 @@ NDefines.NNavy.UNIT_EXPERIENCE_PER_COMBAT_HOUR = 2
 
 NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 0.1
 NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.02						-- Xp gain by non-carrier ships in the combat
-NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.25								-- Amount of exp each ship gain every 24h while training (before modifiers)
+NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.4								-- Amount of exp each ship gain every 24h while training (before modifiers)
 NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.8 -- org will clamped to this ratio on manual move
 
 NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
@@ -553,7 +553,7 @@ NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
 	1.0, -- CONVOY ESCORT
 	1.0, -- MINES PLANTING
 	1.0, -- MINES SWEEPING
-	0.5, -- TRAIN
+	0.75, -- TRAIN
 	0.0, -- RESERVE_FLEET (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
 	1.0, -- NAVAL_INVASION_SUPPORT (does not cost fuel at base, only costs while doing bombardment and escorting units)
 }
