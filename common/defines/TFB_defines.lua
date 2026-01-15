@@ -806,6 +806,8 @@ NDefines.NFactions.MAX_PROJECT_COUNT = 4 --The maximum number of projects a fact
 NDefines.NFactions.MAX_NUM_SHORT_TERM_GOALS = 3						-- Maximum number of short term goals a faction can have at any one time	
 NDefines.NFactions.MAX_NUM_MEDIUM_TERM_GOALS = 2						-- Maximum number of medium term goals a faction can have at any one time
 NDefines.NFactions.MAX_NUM_LONG_TERM_GOALS = 1					-- Maximum number of long term goals a faction can have at any one time
+NDefines.NFactions.AI_DAYS_TO_SELECT_GOAL = 9999
+NDefines.NFactions.AI_THEATER_CREATION_PENALTY = 99 -- Penalty defines how much each theater reduces the chance linearly. (The higher, the worse the penalty is)
 
 
 NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0				-- How much training contributes to doctrine mastery relative to combat/missions
