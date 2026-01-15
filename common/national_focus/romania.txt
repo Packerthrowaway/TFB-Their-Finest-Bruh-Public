@@ -26,7 +26,7 @@ focus_tree = {
 		x = 5
 		y = 0
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -63,7 +63,7 @@ focus_tree = {
 		prerequisite = { focus = ROM_great_depresion_recovery }
 		mutually_exclusive = { focus = ROM_seek_alternate_resource }
 		relative_position_id = ROM_great_depresion_recovery
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -101,7 +101,7 @@ focus_tree = {
 
 		prerequisite = { focus = ROM_expand_oil_production }
 		relative_position_id = ROM_expand_oil_production
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -140,7 +140,7 @@ focus_tree = {
 		prerequisite = { focus = ROM_great_depresion_recovery }
 		relative_position_id = ROM_great_depresion_recovery
 		mutually_exclusive = { focus = ROM_expand_oil_production	}
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -173,7 +173,7 @@ focus_tree = {
 
 		prerequisite = { focus = ROM_seek_alternate_resource }
 		relative_position_id = ROM_seek_alternate_resource
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -206,7 +206,7 @@ focus_tree = {
 		relative_position_id = ROM_expand_oil_production
 		prerequisite = {  focus = ROM_expand_oil_production	}
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 20
@@ -246,7 +246,7 @@ focus_tree = {
 			focus = ROM_seek_alternate_resource
 		}
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 20
@@ -424,7 +424,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ROM_civil_works
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -456,7 +456,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ROM_agrarian_reform
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -523,7 +523,7 @@ focus_tree = {
 		relative_position_id = ROM_agriculture_self_sufficient
 		mutually_exclusive = { focus = ROM_german_influence_over_romanian_oil }
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -556,7 +556,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ROM_agriculture_self_sufficient
 		mutually_exclusive = { focus = ROM_nationalize_oil_industry }
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -591,7 +591,7 @@ focus_tree = {
 		relative_position_id = ROM_german_influence_over_romanian_oil
 
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -784,7 +784,7 @@ focus_tree = {
 		relative_position_id = ROM_danubian_transport_network
 
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -855,7 +855,7 @@ focus_tree = {
 		relative_position_id = ROM_national_recovery
 		prerequisite = { focus = ROM_national_recovery }
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -905,7 +905,7 @@ focus_tree = {
 		relative_position_id = ROM_reduce_oil_reliance
 		prerequisite = { focus = ROM_reduce_oil_reliance }
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -986,7 +986,7 @@ focus_tree = {
 		relative_position_id = ROM_reduce_oil_reliance
 		prerequisite = { focus = ROM_reduce_oil_reliance }
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -1035,7 +1035,7 @@ focus_tree = {
 		relative_position_id = ROM_reduce_oil_reliance
 		prerequisite = { focus = ROM_reduce_oil_reliance }
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 9
@@ -1087,7 +1087,7 @@ focus_tree = {
 		prerequisite = { focus = ROM_malaxa }
 		prerequisite = { focus = ROM_domestic_industry }
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -1125,7 +1125,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = ROM_expand_oil_storage_facilities
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -1163,7 +1163,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ROM_expand_ploiesti_oil_production
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 1
@@ -2782,6 +2782,16 @@ focus_tree = {
 				category = cat_mobile_warfare
 				category = cat_mass_assault
 			}
+			add_mastery_bonus = {
+				name = ROM_the_armored_division
+				bonus = 0.2
+				days = 360
+				track = armor
+			}
+			add_mastery = {
+				amount = 50
+				track = armor
+			}
 		}
 	}
 
@@ -3056,11 +3066,34 @@ focus_tree = {
 			mio:ROM_resita_works_organization = {
 				complete_mio_trait = generic_bucharest_blast
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.3
 				uses = 2
 				category = cat_superior_firepower
 				category = cat_grand_battle_plan
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_mastery_bonus = {
+				name = ROM_great_war_tactics
+				bonus = 0.2
+				days = 360
+				grand_doctrine = grand_battleplan
+			}
+			add_mastery_bonus = {
+				name = ROM_great_war_tactics
+				bonus = 0.2
+				days = 360
+				grand_doctrine = superior_firepower
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_mastery = {
+				amount = 50
+				grand_doctrine = grand_battleplan
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = superior_firepower
 			}
 		}
 	}
@@ -3594,6 +3627,28 @@ focus_tree = {
 				uses = 2
 				category = cat_mobile_warfare
 				category = cat_mass_assault
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_mastery_bonus = {
+				name = ROM_independent_operations
+				bonus = 0.2
+				days = 360
+				grand_doctrine = mass_assault
+			}
+			add_mastery_bonus = {
+				name = ROM_independent_operations
+				bonus = 0.2
+				days = 360
+				grand_doctrine = new_mobile_warfare
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_mastery = {
+				amount = 50
+				grand_doctrine = mass_assault
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_mobile_warfare
 			}
 		}
 	}
