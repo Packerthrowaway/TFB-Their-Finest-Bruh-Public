@@ -2162,6 +2162,16 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			add_mastery_bonus = {
+				name = CAN_red_deer_training_camp
+				bonus = 0.2
+				days = 360
+				folder = land
+			}
+			add_mastery = {
+				amount = 25
+				folder = land
+			}
 		}
 	}
 
@@ -2195,6 +2205,16 @@ focus_tree = {
 
 		completion_reward = {
 			army_experience = 30
+			add_mastery_bonus = {
+				name = CAN_over_the_edge
+				bonus = 0.2
+				days = 360
+				track = infantry
+			}
+			add_mastery = {
+				amount = 25
+				track = infantry
+			}
 			add_tech_bonus = {
 				name = CAN_over_the_edge
 				bonus = 0.40
@@ -2237,11 +2257,21 @@ focus_tree = {
 
 		completion_reward = {
 			army_experience = 30
-			add_doctrine_cost_reduction = {
+			# add_doctrine_cost_reduction = {
+			# 	name = CAN_steel_not_blood
+			# 	cost_reduction = 0.40
+			# 	uses = 1
+			# 	category = land_doctrine
+			# }
+			add_mastery_bonus = {
 				name = CAN_steel_not_blood
-				cost_reduction = 0.40
-				uses = 1
-				category = land_doctrine
+				bonus = 0.2
+				days = 360
+				track = armor
+			}
+			add_mastery = {
+				amount = 25
+				track = armor
 			}
 			add_tech_bonus = {
 				name = CAN_steel_not_blood
@@ -3429,6 +3459,16 @@ focus_tree = {
 				uses = 2
 				category = air_doctrine
 			}
+			add_mastery_bonus = {
+				name = CAN_commonwealth_air_training_plan
+				bonus = 0.2
+				days = 360
+				folder = air
+			}
+			add_mastery = {
+				amount = 25
+				folder = air
+			}
 		}
 
 		completion_reward = {
@@ -3877,6 +3917,9 @@ focus_tree = {
 				specialization = specialization_naval
 				value = 0.15
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = CAN_custom_escort_bonus
+			custom_effect_tooltip = generic_skip_one_line_tt
 			if = {
 				limit = {
 					has_doctrine = convoy_escort
@@ -3884,7 +3927,11 @@ focus_tree = {
 				add_mastery_bonus = {
 					name = CAN_escort_fleet
 					bonus = 0.2
-					days = 180
+					days = 360
+					sub_doctrine = convoy_escort
+				}
+				add_mastery = {
+					amount = 100
 					sub_doctrine = convoy_escort
 				}
 			}
@@ -3895,9 +3942,13 @@ focus_tree = {
 					days = 180
 					track = screens
 				}
+				add_mastery = {
+					amount = 50
+					track = screens
+				}
 			}
 			
-			
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_doctrine_cost_reduction = {
 				name = CAN_escort_fleet
 				cost_reduction = 0.25
@@ -3943,7 +3994,7 @@ focus_tree = {
 			}
 			add_mastery_bonus = {
 				name = CAN_fleet_in_being
-				bonus = 0.1
+				bonus = 0.2
 				days = 180
 				grand_doctrine = new_fleet_in_being
 			}

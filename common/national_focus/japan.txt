@@ -5218,7 +5218,18 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
-			}	
+			}
+
+			add_mastery_bonus = {
+				name = JAP_tennoheika_banzai
+				bonus = 0.2
+				days = 360
+				track = infantry
+			}
+			add_mastery = {
+				amount = 50
+				track = infantry
+			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -5374,7 +5385,7 @@ focus_tree = {
 				days = 365
 			}	
 
-			custom_effect_tooltip = JAP_sonnou_joui_tt
+			#custom_effect_tooltip = JAP_sonnou_joui_tt
 				
 			
 		}
@@ -6063,7 +6074,7 @@ focus_tree = {
 			}	
 			add_mastery_bonus = {
 				bonus = 0.25
-				days = 240
+				days = 360
 				track = operations
 				name = JAP_the_art_of_warfare
 			}
@@ -12235,31 +12246,31 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			USA = {
-				country_event = {
-					id = SEA_japan_foreign_policy.35
-					hours = 12
-					random_hours = 24
-				}	
-			}
-			effect_tooltip = {
-				USA = {
-					IF = {
-						limit = {
-							NOT = {
-								has_war_with = JAP
-							}
-						}
-						add_war_support = -0.05
-					}
-					ELSE = {
-						add_timed_idea = {
-							idea = JAP_pro_japanese_sentiments_for_usa_idea
-							days = 180
-						}	
-					}
-				}
-			}
+			# USA = {
+			# 	country_event = {
+			# 		id = SEA_japan_foreign_policy.35
+			# 		hours = 12
+			# 		random_hours = 24
+			# 	}	
+			# }
+			# effect_tooltip = {
+			# 	USA = {
+			# 		IF = {
+			# 			limit = {
+			# 				NOT = {
+			# 					has_war_with = JAP
+			# 				}
+			# 			}
+			# 			add_war_support = -0.05
+			# 		}
+			# 		ELSE = {
+			# 			add_timed_idea = {
+			# 				idea = JAP_pro_japanese_sentiments_for_usa_idea
+			# 				days = 180
+			# 			}	
+			# 		}
+			# 	}
+			# }
 			
 			IF = {
 				limit = {
@@ -15108,6 +15119,16 @@ focus_tree = {
 					uses = 2
 					category = land_doctrine	
 				}
+				add_mastery_bonus = {
+					name = JAP_build_up_the_manchurian_army
+					bonus = 0.2
+					days = 360
+					track = infantry
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
 				custom_effect_tooltip = generic_skip_one_line_tt
 				add_autonomy_ratio = {
 					value = -0.08333
@@ -15318,6 +15339,12 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine	
+			}
+			add_mastery_bonus = {
+				name = JAP_prepare_for_war_with_the_soviet_union
+				bonus = 0.2
+				days = 360
+				track = infantry
 			}
 
 			army_experience = 25
@@ -28352,13 +28379,13 @@ focus_tree = {
 			army_experience = 15
 			add_mastery_bonus = {
 				bonus = 0.1
-				days = 240
+				days = 360
 				track = armor
 				name = JAP_reform_the_army
 			}
 			add_mastery_bonus = {
 				bonus = 0.1
-				days = 240
+				days = 360
 				track = infantry
 				name = JAP_reform_the_army
 			}
@@ -28421,6 +28448,16 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 1
 				category = land_doctrine
+			}
+			add_mastery_bonus = {
+				name = JAP_rethink_armor_doctrine
+				bonus = 0.2
+				days = 360
+				track = armor
+			}
+			add_mastery = {
+				amount = 50
+				track = armor
 			}
 			add_tech_bonus = {
 				name = JAP_rethink_armor_doctrine
@@ -28920,6 +28957,16 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 1
 				category = land_doctrine
+			}
+			add_mastery_bonus = {
+				name = JAP_adopt_new_assault_doctrine
+				bonus = 0.2
+				days = 360
+				grand_doctrine = superior_firepower
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = superior_firepower
 			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -30692,6 +30739,16 @@ focus_tree = {
 				uses = 2
 				category = air_doctrine
 			}
+			add_mastery_bonus = {
+				name = JAP_sea_unify_the_air_forces
+				bonus = 0.2
+				days = 360
+				folder = air
+			}
+			add_mastery = {
+				amount = 50
+				folder = air
+			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -31385,9 +31442,13 @@ focus_tree = {
 
 			add_mastery_bonus = {
 				bonus = 0.25
-				days = 240
+				days = 360
 				track = carriers 
 				name = JAP_focus_on_aircraft_carriers
+			}
+			add_mastery = {
+				amount = 75
+				track = carriers
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -31582,6 +31643,26 @@ focus_tree = {
 				uses = 2
 				category = naval_doctrine
 			}
+			add_mastery_bonus = {
+				name = JAP_balanced_naval_approach
+				bonus = 0.15
+				days = 360
+				track = capital_ships
+			}
+			add_mastery_bonus = {
+				name = JAP_balanced_naval_approach
+				bonus = 0.15
+				days = 360
+				track = carriers
+			}
+			add_mastery = {
+				amount = 25
+				track = capital_ships
+			}
+			add_mastery = {
+				amount = 25
+				track = carriers
+			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -31673,9 +31754,13 @@ focus_tree = {
 
 			add_mastery_bonus = {
 				bonus = 0.25
-				days = 240
+				days = 360
 				track = capital_ships
 				name = JAP_sea_battleship_initiative
+			}
+			add_mastery = {
+				amount = 75
+				track = capital_ships
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt

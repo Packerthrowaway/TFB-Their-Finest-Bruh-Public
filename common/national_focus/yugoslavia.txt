@@ -4201,6 +4201,10 @@
 				uses = 2
 				category = land_doctrine
 			}
+			add_mastery = {
+				amount = 50
+				track = operations
+			}
 			custom_effect_tooltip = YUG_modify_ustase_military_modifier_tt
 			add_to_variable = {
 				CRO_experience_gain_army_unit_factor = 0.1
@@ -4252,6 +4256,12 @@
 				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
+			}
+			add_mastery_bonus = {
+				name = YUG_army_maneuvers
+				bonus = 0.2
+				days = 360
+				track = operations
 			}
 			custom_effect_tooltip = YUG_modify_ustase_military_modifier_tt
 			add_to_variable = {
@@ -4476,11 +4486,21 @@
 		}
 
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = YUG_the_army
-				cost_reduction = 0.75
-				uses = 2
-				category = land_doctrine
+			# add_doctrine_cost_reduction = {
+			# 	name = YUG_the_army
+			# 	cost_reduction = 0.75
+			# 	uses = 2
+			# 	category = land_doctrine
+			# }
+			add_mastery_bonus = {
+				name = YUG_light_tank_doctrine
+				bonus = 0.2
+				days = 360
+				grand_doctrine = new_mobile_warfare
+			}
+			add_mastery = {
+				amount = 50
+				track = armor
 			}
 		}
 	}
@@ -4997,8 +5017,12 @@
 				uses = 2
 				category = land_doctrine
 			}
-		}
+			add_mastery = {
+				amount = 100
+				sub_doctrine = mobile_infantry
 			}
+		}
+	}
 		
 
 	focus = {
@@ -5036,15 +5060,21 @@
 		}
 
 
-			completion_reward = {
+		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = YUG_army_maneuvers
 				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
 			}
+			add_mastery_bonus = {
+				name = YUG_army_maneuvers
+				bonus = 0.1
+				days = 360
+				grand_doctrine = new_mobile_warfare
+			}
 		}
-		}
+	}
 	
 	focus = {
 		id = YUG_an_elite_army
@@ -5079,7 +5109,7 @@
 
 		completion_reward = {
 			#add_ideas = YUG_defunct_infantry
-			custom_effect_tooltip = just_hurts_inf_tt
+			#custom_effect_tooltip = just_hurts_inf_tt
 			add_doctrine_cost_reduction = {
 				name = YUG_army_maneuvers
 				cost_reduction = 0.5
@@ -5208,7 +5238,11 @@
 				name = YUG_army_maneuvers
 				cost_reduction = 0.5
 				uses = 2
-				category = land_doctrine
+				category = special_forces_doctrine
+			}
+			add_mastery = {
+				amount = 50
+				track = infantry
 			}
 		}
 	}
@@ -5248,7 +5282,17 @@
 				name = YUG_army_maneuvers
 				cost_reduction = 0.5
 				uses = 2
-				category = land_doctrine
+				category = special_forces_doctrine
+			}
+			add_mastery_bonus = {
+				name = YUG_army_maneuvers
+				bonus = 0.1
+				days = 360
+				folder = land
+			}
+			add_mastery = {
+				amount = 50
+				track = infantry
 			}
 		}
 	}
@@ -6076,8 +6120,8 @@
 		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = air_doc_bonus
-				cost_reduction = 0.25
-				uses = 1
+				cost_reduction = 0.5
+				uses = 2
 				category = air_doctrine
 			}
 		}

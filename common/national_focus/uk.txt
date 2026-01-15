@@ -611,11 +611,23 @@ focus_tree = {
 		}	
 		completion_reward = {
 			add_political_power = -25
-				add_doctrine_cost_reduction = {
-					name = doc_bonus
-					cost_reduction = 0.40
-					uses = 2
-					category = land_doctrine
+			# 	add_doctrine_cost_reduction = {
+			# 		name = doc_bonus
+			# 		cost_reduction = 0.40
+			# 		uses = 2
+			# 		category = land_doctrine
+			# }
+			add_mastery_bonus = {
+				name = doc_bonus
+				bonus = 0.25
+				days = 180
+				track = combat_support
+			}
+			add_mastery_bonus = {
+				name = doc_bonus
+				bonus = 0.25
+				days = 180
+				track = operations
 			}
 		}
 	}
@@ -972,76 +984,87 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			custom_effect_tooltip = ENG_tank_choice_tt1
-			custom_effect_tooltip = ENG_tank_choice_tt2
-			custom_effect_tooltip = ENG_tank_choice_tt3
-			custom_effect_tooltip = ENG_tank_choice_tt4
-			custom_effect_tooltip = ENG_tank_choice_tt5
+			# custom_effect_tooltip = ENG_tank_choice_tt1
+			# custom_effect_tooltip = ENG_tank_choice_tt2
+			# custom_effect_tooltip = ENG_tank_choice_tt3
+			# custom_effect_tooltip = ENG_tank_choice_tt4
+			# custom_effect_tooltip = ENG_tank_choice_tt5
 			
 			
-			hidden_effect = {
-				if = {
-					limit = { has_completed_focus = ENG_infantry_tanks }
-						division_template = { name = "Infantry Tank"
-						#division_names_group = ENG_TANK_01
-							regiments = {
-								heavy_armor = { x = 0 y = 0 }
-								heavy_armor = { x = 0 y = 1 }
-								heavy_armor = { x = 0 y = 2 }
-								heavy_armor = { x = 1 y = 0 }
-								heavy_armor = { x = 1 y = 1 }
-								motorized = { x = 2 y = 0 }
-								motorized = { x = 2 y = 1 }
-								motorized = { x = 2 y = 2 }
-								motorized = { x = 3 y = 0 }
-								motorized = { x = 3 y = 1 }
-							}
-							support = {
-								hq_company = { x = 0 y = 0 } 
-								engineer = { x = 0 y = 1 }   
-								recon = { x = 0 y = 2 }
-								logistics_company  = { x = 0 y = 3 }
-							}
-						}
-					random_owned_controlled_state = {
-						prioritize = { 126 }
-						create_unit = { division = "division_template = \"Infantry Tank\" start_experience_factor = 0.3 " owner = ENG }
-					}
-				}
-				if = {
-					limit = { has_completed_focus = ENG_cruiser_tanks }
-						division_template = { name = "Cruiser Tank"
-						#division_names_group = ENG_TANK_01
-							regiments = {
-								medium_armor = { x = 0 y = 0 }
-								medium_armor = { x = 0 y = 1 }
-								medium_armor = { x = 0 y = 2 }
-								medium_armor = { x = 1 y = 0 }
-								medium_armor = { x = 1 y = 1 }
-								medium_armor = { x = 1 y = 2 }
-								medium_armor = { x = 2 y = 0 }
-								motorized = { x = 3 y = 0 }
-								motorized = { x = 3 y = 1 }
-								motorized = { x = 3 y = 2 }
-								motorized = { x = 3 y = 3 }
-								motorized = { x = 4 y = 0 }
-								motorized = { x = 4 y = 1 }
-								motorized = { x = 4 y = 2 }
-								motorized = { x = 4 y = 3 }
-							}
-							support = {
-								hq_company = { x = 0 y = 0 } 
-								engineer = { x = 0 y = 1 }   
-								recon = { x = 0 y = 2 }
-								logistics_company  = { x = 0 y = 3 }
-							}
-						}
-					random_owned_controlled_state = {
-						prioritize = { 126 }
-						create_unit = { division = "division_template = \"Cruiser Tank\" start_experience_factor = 0.3 " owner = ENG }
-					}
-				}
-			}	
+			# hidden_effect = {
+			# 	if = {
+			# 		limit = { has_completed_focus = ENG_infantry_tanks }
+			# 			division_template = { name = "Infantry Tank"
+			# 			#division_names_group = ENG_TANK_01
+			# 				regiments = {
+			# 					heavy_armor = { x = 0 y = 0 }
+			# 					heavy_armor = { x = 0 y = 1 }
+			# 					heavy_armor = { x = 0 y = 2 }
+			# 					heavy_armor = { x = 1 y = 0 }
+			# 					heavy_armor = { x = 1 y = 1 }
+			# 					motorized = { x = 2 y = 0 }
+			# 					motorized = { x = 2 y = 1 }
+			# 					motorized = { x = 2 y = 2 }
+			# 					motorized = { x = 3 y = 0 }
+			# 					motorized = { x = 3 y = 1 }
+			# 				}
+			# 				support = {
+			# 					hq_company = { x = 0 y = 0 } 
+			# 					engineer = { x = 0 y = 1 }   
+			# 					recon = { x = 0 y = 2 }
+			# 					logistics_company  = { x = 0 y = 3 }
+			# 				}
+			# 			}
+			# 		random_owned_controlled_state = {
+			# 			prioritize = { 126 }
+			# 			create_unit = { division = "division_template = \"Infantry Tank\" start_experience_factor = 0.3 " owner = ENG }
+			# 		}
+			# 	}
+			# 	if = {
+			# 		limit = { has_completed_focus = ENG_cruiser_tanks }
+			# 			division_template = { name = "Cruiser Tank"
+			# 			#division_names_group = ENG_TANK_01
+			# 				regiments = {
+			# 					medium_armor = { x = 0 y = 0 }
+			# 					medium_armor = { x = 0 y = 1 }
+			# 					medium_armor = { x = 0 y = 2 }
+			# 					medium_armor = { x = 1 y = 0 }
+			# 					medium_armor = { x = 1 y = 1 }
+			# 					medium_armor = { x = 1 y = 2 }
+			# 					medium_armor = { x = 2 y = 0 }
+			# 					motorized = { x = 3 y = 0 }
+			# 					motorized = { x = 3 y = 1 }
+			# 					motorized = { x = 3 y = 2 }
+			# 					motorized = { x = 3 y = 3 }
+			# 					motorized = { x = 4 y = 0 }
+			# 					motorized = { x = 4 y = 1 }
+			# 					motorized = { x = 4 y = 2 }
+			# 					motorized = { x = 4 y = 3 }
+			# 				}
+			# 				support = {
+			# 					hq_company = { x = 0 y = 0 } 
+			# 					engineer = { x = 0 y = 1 }   
+			# 					recon = { x = 0 y = 2 }
+			# 					logistics_company  = { x = 0 y = 3 }
+			# 				}
+			# 			}
+			# 		random_owned_controlled_state = {
+			# 			prioritize = { 126 }
+			# 			create_unit = { division = "division_template = \"Cruiser Tank\" start_experience_factor = 0.3 " owner = ENG }
+			# 		}
+			# 	}
+			# }
+
+			add_mastery = {
+				amount = 150
+				track = armor
+			}
+			add_mastery_bonus = {
+				name = ENG_mobilise_tanks
+				bonus = 0.25
+				days = 360
+				track = armor
+			}
 		}
 	}
 	
@@ -3291,10 +3314,9 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
-				uses = 2
-				category = cat_base_strike
+			add_mastery = {
+				amount = 50
+				folder = naval
 			}
 		}
 	}

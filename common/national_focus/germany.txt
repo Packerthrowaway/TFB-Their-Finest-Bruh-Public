@@ -3538,6 +3538,18 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+
+			add_mastery_bonus = {
+				name = GER_stormtroopers
+				bonus = 0.2
+				days = 360
+				track = infantry
+			}
+			add_mastery = {
+				amount = 50
+				track = infantry
+			}
+
 			add_tech_bonus = {
 				name = GER_stormtroopers
 				bonus = 0.5
@@ -3787,6 +3799,11 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 1
 				category = land_doctrine
+			}
+
+			add_mastery = {
+				amount = 50
+				track = operations
 			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -4585,6 +4602,14 @@ focus_tree = {
 				track = infantry
 				grand_doctrine = new_mobile_warfare
 			}
+			add_mastery = {
+				amount = 50
+				track = armor
+			}
+			add_mastery = {
+				amount = 50
+				sub_doctrine = mobile_infantry
+			}
 
 			add_doctrine_cost_reduction = {
 				name = GER_adopt_new_panzer_doctrine
@@ -4655,6 +4680,13 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 2
 				category = land_doctrine
+			}
+
+			add_mastery_bonus = {
+				name = GER_adopt_new_panzer_doctrine
+				bonus = 0.2
+				days = 720
+				track = armor
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -5244,6 +5276,10 @@ focus_tree = {
 				days = 180
 				track = strike_aircraft
 			}
+			add_mastery = {
+				amount = 50
+				track = strike_aircraft
+			}
 			add_doctrine_cost_reduction = {
 				name = GER_dive_bombers
 				cost_reduction = 0.25
@@ -5389,6 +5425,10 @@ focus_tree = {
 				days = 180
 				track = medium_aircraft
 			}
+			add_mastery = {
+				amount = 50
+				track = medium_aircraft
+			}
 
 			add_doctrine_cost_reduction = {
 				name = GER_tactical_bombers
@@ -5532,6 +5572,10 @@ focus_tree = {
 				name = GER_uralbomber_program
 				bonus = 0.15
 				days = 180
+				track = heavy_aircraft
+			}
+			add_mastery = {
+				amount = 50
 				track = heavy_aircraft
 			}
 			add_doctrine_cost_reduction = {
@@ -5923,6 +5967,12 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 2
 				category = air_doctrine
+			}
+			add_mastery_bonus = {
+				name = GER_reorganize_the_luftwaffe
+				bonus = 0.2
+				days = 360
+				folder = air
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -6691,9 +6741,13 @@ focus_tree = {
 			add_mastery_bonus = {
 				name = GER_plan_z
 				bonus = 0.2
-				days = 180
+				days = 360
 				grand_doctrine = new_fleet_in_being
 				
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_fleet_in_being
 			}
 
 			add_doctrine_cost_reduction = {
@@ -7843,9 +7897,13 @@ focus_tree = {
 			add_mastery_bonus = {
 				name = GER_trade_interdiction
 				bonus = 0.2
-				days = 180
+				days = 360
 				grand_doctrine = new_convoy_raiding
 				
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_convoy_raiding
 			}
 
 			add_doctrine_cost_reduction = {
@@ -8093,7 +8151,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_MILITARY_CHARACTER }
 
 		completion_reward = {
-			
+			custom_effect_tooltip = GER_custom_raiding_bonus
 			if = {
 				limit = {
 					has_doctrine = wolfpacks
@@ -8102,14 +8160,22 @@ focus_tree = {
 				add_mastery_bonus = {
 					name = GER_wolfpack_tactics
 					bonus = 0.20
-					days = 240
+					days = 360
+					sub_doctrine = wolfpacks
+				}
+				add_mastery = {
+					amount = 100
 					sub_doctrine = wolfpacks
 				}
 				else = {
 					add_mastery_bonus = {
 						name = GER_wolfpack_tactics
 						bonus = 0.1
-						days = 240
+						days = 180
+						track = submarines
+					}
+					add_mastery = {
+						amount = 50
 						track = submarines
 					}
 				}
