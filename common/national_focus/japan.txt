@@ -4264,7 +4264,7 @@ focus_tree = {
 
 		completion_reward = {
 
-			add_stability = 0.1
+			add_stability = 0.05
 			add_popularity = {
 				ideology = neutrality
 				popularity = 0.05
@@ -4313,7 +4313,7 @@ focus_tree = {
 				
 			add_political_power = 75
 
-			add_stability = 0.1
+			add_stability = 0.075
 			
 		}
 	}
@@ -4361,8 +4361,8 @@ focus_tree = {
 				
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_production_speed_industrial_complex_factor = 0.1 tooltip = production_speed_industrial_complex_factor_tt }
-			add_to_variable = { JAP_industry_production_speed_arms_factory_factor = 0.1 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_industrial_complex_factor = 0.075 tooltip = production_speed_industrial_complex_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_arms_factory_factor = 0.075 tooltip = production_speed_arms_factory_factor_tt }
 			
 		}
 	}
@@ -4455,9 +4455,9 @@ focus_tree = {
 		completion_reward = {
 
 			JAP_add_or_modify_early_industrialization = yes
-			add_to_variable = { JAP_industry_industrial_capacity_factory = 0.075 tooltip = industrial_capacity_factory_tt }
-			add_to_variable = { JAP_industry_industrial_capacity_dockyard = 0.075 tooltip = industrial_capacity_dockyard_tt }
-			add_to_variable = { JAP_industry_production_speed_buildings_factor = 0.075 tooltip = production_speed_buildings_factor_tt }
+			add_to_variable = { JAP_industry_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { JAP_industry_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
+			add_to_variable = { JAP_industry_production_speed_buildings_factor = 0.05 tooltip = production_speed_buildings_factor_tt }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -4940,6 +4940,7 @@ focus_tree = {
 		}
 
 		available = {
+			RAJ = { has_capitulated = yes }
 			is_subject = no
 			any_country = {
 				any_state = {
@@ -5137,9 +5138,9 @@ focus_tree = {
 				add_logistics = 1
 			}
 			
-			custom_effect_tooltip = generic_skip_one_line_tt
+			#custom_effect_tooltip = generic_skip_one_line_tt
 			
-			custom_effect_tooltip = cost_reduced_last_stand_2 
+			#custom_effect_tooltip = cost_reduced_last_stand_2 
 			
 		}
 	}
@@ -5238,7 +5239,7 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
-			custom_effect_tooltip = CHI_50_cheaper_force_attack
+			#custom_effect_tooltip = CHI_50_cheaper_force_attack
 			
 		}
 	}
@@ -5571,7 +5572,7 @@ focus_tree = {
 					limit = {
 						is_core_of = KOR
 					}
-					add_compliance = 25
+					add_compliance = 15
 					add_extra_state_shared_building_slots = 1
 				}
 			}
@@ -6143,6 +6144,10 @@ focus_tree = {
 			factor = 1
 		}
 
+		allow_branch = {
+			always = no
+		}
+
 		available = {
 			POL = {
 				exists = yes
@@ -6188,7 +6193,7 @@ focus_tree = {
 		id = JAP_return_to_sakoku_ron
 		icon = GFX_focus_JAP_return_to_sakoku_ron
 		mutually_exclusive = { focus = JAP_the_enemy_of_our_enemy focus = JAP_utilize_our_polish_friendship }
-		x = 2
+		x = 1
 		y = 1
 		relative_position_id = JAP_the_imperial_colors
 
@@ -6274,7 +6279,7 @@ focus_tree = {
 		id = JAP_the_enemy_of_our_enemy
 		icon = GFX_focus_chi_mission_to_germany
 		mutually_exclusive = { focus = JAP_return_to_sakoku_ron focus = JAP_utilize_our_polish_friendship }
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = JAP_the_imperial_colors
 
@@ -6357,7 +6362,7 @@ focus_tree = {
 		id = JAP_societal_bushido
 		icon = GFX_focus_generic_japanese_imperial_glory
 		#mutually_exclusive = { focus = JAP_utilize_our_polish_friendship }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = JAP_the_enemy_of_our_enemy
 
@@ -6525,7 +6530,7 @@ focus_tree = {
 		completion_reward = {
 
 			add_political_power = 50
-			add_war_support = 0.1
+			add_war_support = 0.05
 			add_stability = 0.05
 
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -6696,7 +6701,7 @@ focus_tree = {
 
 			JAP_add_or_modify_imperial_way = yes
 
-			add_to_variable = { JAP_the_imperial_way_offensive_war_stability_factor = 0.1 tooltip = offensive_war_stability_factor_tt }
+			add_to_variable = { JAP_the_imperial_way_offensive_war_stability_factor = 0.05 tooltip = offensive_war_stability_factor_tt }
 			
 		}
 	}
@@ -8074,7 +8079,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_form_cabinet_intelligence_bureau }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8120,7 +8125,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_found_the_great_japan_press_association }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8222,10 +8227,10 @@ focus_tree = {
 					}	
 				}
 				prioritize = { 532 531 282 } 
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 2
+					level = 3
 					instant_build = yes
 				}	
 			}	
@@ -8234,7 +8239,7 @@ focus_tree = {
 
 			add_timed_idea = {
 				idea = JAP_central_economic_council_idea
-				days = 365
+				days = 730
 			}	
 			
 		}
@@ -8250,7 +8255,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_form_the_central_economic_council }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8318,7 +8323,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_form_the_central_economic_council }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8364,8 +8369,8 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_production_speed_industrial_complex_factor = 0.1 tooltip = production_speed_industrial_complex_factor_tt }
-			add_to_variable = { JAP_industry_production_speed_arms_factory_factor = 0.1 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_industrial_complex_factor = 0.125 tooltip = production_speed_industrial_complex_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_arms_factory_factor = 0.125 tooltip = production_speed_arms_factory_factor_tt }
 				
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -8411,9 +8416,9 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_production_speed_industrial_complex_factor = 0.05 tooltip = production_speed_industrial_complex_factor_tt }
-			add_to_variable = { JAP_industry_production_speed_dockyard_factor = 0.05 tooltip = production_speed_dockyard_factor_tt }
-			add_to_variable = { JAP_industry_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { JAP_industry_production_speed_industrial_complex_factor = 0.075 tooltip = production_speed_industrial_complex_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_dockyard_factor = 0.075 tooltip = production_speed_dockyard_factor_tt }
+			add_to_variable = { JAP_industry_industrial_capacity_factory = 0.075 tooltip = industrial_capacity_factory_tt }
 				
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -8467,8 +8472,8 @@ focus_tree = {
 			
 			JAP_add_or_modify_showa_statism = yes
 
-			add_to_variable = { JAP_showa_statism_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
-			add_to_variable = { JAP_showa_statism_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { JAP_showa_statism_industrial_capacity_dockyard = 0.075 tooltip = industrial_capacity_dockyard_tt }
+			add_to_variable = { JAP_showa_statism_industrial_capacity_factory = 0.075 tooltip = industrial_capacity_factory_tt }
 
 			IF = {
 				limit = {
@@ -8581,7 +8586,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_enact_religious_organizations_law }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8761,7 +8766,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_sea_tripartite_pact }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8964,7 +8969,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_imperial_rule_assistance_association }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -9049,7 +9054,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_imperial_rule_assistance_association }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -9091,15 +9096,15 @@ focus_tree = {
 					is_owned_and_controlled_by = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 1
+						size > 3
 						include_locked = yes
 					}	
 				}
 				prioritize = { 532 531 } 
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 4
 					instant_build = yes
 				}	
 			}	
@@ -9294,9 +9299,9 @@ focus_tree = {
 
 			JAP_add_or_modify_showa_statism = yes
 
-			add_to_variable = { JAP_showa_statism_weekly_casualties_war_support = 0.0002 tooltip = weekly_casualties_war_support_tt }
-			add_to_variable = { JAP_showa_statism_weekly_convoys_war_support = 0.0002 tooltip = weekly_convoys_war_support_tt }
-			add_to_variable = { JAP_showa_statism_weekly_bombing_war_support = 0.0002 tooltip = weekly_bombing_war_support_tt }
+			add_to_variable = { JAP_showa_statism_weekly_casualties_war_support = 0.0003 tooltip = weekly_casualties_war_support_tt }
+			add_to_variable = { JAP_showa_statism_weekly_convoys_war_support = 0.0003 tooltip = weekly_convoys_war_support_tt }
+			add_to_variable = { JAP_showa_statism_weekly_bombing_war_support = 0.0003 tooltip = weekly_bombing_war_support_tt }
 			
 			custom_effect_tooltip = peace_conference_spiritual_mob_modifier_japan
 			
@@ -9313,7 +9318,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_imperial_rule_assistance_association }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -9491,7 +9496,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_expand_japan_manchukuo_economic_bloc }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -9560,7 +9565,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_sea_greater_east_asian_co_properity_sphere }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -9587,7 +9592,7 @@ focus_tree = {
 
 			JAP_add_or_modify_east_asia_co_prosperity_sphere = yes
 
-			add_to_variable = { JAP_east_asia_co_prosperity_sphere_research_speed_factor = 0.02 tooltip = research_speed_factor_tt }
+			add_to_variable = { JAP_east_asia_co_prosperity_sphere_research_speed_factor = 0.05 tooltip = research_speed_factor_tt }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
@@ -9612,7 +9617,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_the_flying_geese }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -9638,11 +9643,11 @@ focus_tree = {
 			every_state = {
 				limit = {
 					is_controlled_by_ROOT_or_ally = yes
-					infrastructure < 2
+					infrastructure < 4
 				}
 				add_building_construction = {
 					type = infrastructure
-					level = 1
+					level = 2
 					instant_build = yes
 				}	
 			}
@@ -9781,7 +9786,7 @@ focus_tree = {
 			always = no
 		}
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -10129,7 +10134,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_tojos_premiership }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -10179,7 +10184,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_tojos_premiership focus = JAP_yamamotos_premiership focus = JAP_the_crysanthemum_throne focus = JAP_solidify_tohokai_rule }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -10315,7 +10320,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_found_the_boeitai }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -10410,7 +10415,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_tojos_premiership focus = JAP_yamamotos_premiership focus = JAP_the_crysanthemum_throne focus = JAP_solidify_tohokai_rule }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -10458,7 +10463,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_tojos_premiership focus = JAP_yamamotos_premiership focus = JAP_the_crysanthemum_throne focus = JAP_solidify_tohokai_rule }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -10566,7 +10571,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_fund_propaganda_films }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -10699,7 +10704,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_tojos_premiership focus = JAP_yamamotos_premiership focus = JAP_the_crysanthemum_throne focus = JAP_solidify_tohokai_rule }
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = { 
 			factor = 1
@@ -10734,29 +10739,31 @@ focus_tree = {
 		y = 1
 		relative_position_id = JAP_advance_one_hundred_million_fireballs
 
-		cost = 7
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
 		}
 
-		allow_branch = {
-			has_country_flag = JAP_tojo_or_yamamoto_resigned_flag
-			IF = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				NOT = {						
-					has_completed_focus = JAP_revere_the_emperor_destroy_the_traitors
-					has_completed_focus = JAP_okadas_military_purge_speech
-				}
-			}
-		}
+		# allow_branch = {
+		# 	has_country_flag = JAP_tojo_or_yamamoto_resigned_flag
+		# 	IF = {
+		# 		limit = {
+		# 			has_game_rule = {
+		# 				rule = obsolete_focus_branches_visibility
+		# 				option = HIDE
+		# 			}
+		# 		}
+		# 		NOT = {						
+		# 			has_completed_focus = JAP_revere_the_emperor_destroy_the_traitors
+		# 			has_completed_focus = JAP_okadas_military_purge_speech
+		# 		}
+		# 	}
+		# }
 
 		available = {
+			has_country_flag = JAP_tojo_or_yamamoto_resigned_flag
+			NOT = { has_completed_focus = JAP_revere_the_emperor_destroy_the_traitors }
 			is_subject = no
 			has_government = fascism
 			has_war = yes
@@ -11743,7 +11750,7 @@ focus_tree = {
 
 				add_days_mission_timeout = {
 				    mission = JAP_kwantung_army_impatience
-				    days = -180 
+				    days = -90 
 				}
 				custom_effect_tooltip = JAP_reinforce_the_beijing_garrison_tt
 
