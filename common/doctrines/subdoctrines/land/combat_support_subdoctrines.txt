@@ -34,7 +34,13 @@ fire_concentration = {
     artillery_brigade = {
         combat_width = -0.2
     }
+    pack_artillery_brigade = {
+        combat_width = -0.2
+    }
     rocket_artillery_brigade = {
+        combat_width = -0.2
+    }
+    heavy_artillery_brigade = {
         combat_width = -0.2
     }
     category_line_artillery = {
@@ -73,7 +79,21 @@ fire_concentration = {
                 ap_attack = 0.05
                 hard_attack = 0.05
             }
+            pack_antitank_brigade = {
+                ap_attack = 0.05
+                hard_attack = 0.05
+            }
+            heavy_anti_tank_brigade = {
+                ap_attack = 0.05
+                hard_attack = 0.05
+            }
             artillery_brigade = {
+                hard_attack = 0.05
+            }
+            pack_artillery_brigade = {
+                hard_attack = 0.05
+            }
+            heavy_artillery_brigade = {
                 hard_attack = 0.05
             }
         }
@@ -118,7 +138,7 @@ anti_tank_frontline = {
         emplacement_rotation = {
         #2
             category_anti_tank = {
-               max_organisation = 3
+                max_organisation = 3
                 max_strength = 1
             }
         }
@@ -199,8 +219,31 @@ flying_batteries = {
             }
         }
         counter_battery_tasks = {
-            
             recon = {
+                battalion_mult = {
+                    category = category_line_artillery 
+                    soft_attack = 0.03
+                    defense = 0.05
+                }
+                recon = 0.1
+            }
+            mot_recon = {
+                battalion_mult = {
+                    category = category_line_artillery 
+                    soft_attack = 0.03
+                    defense = 0.05
+                }
+                recon = 0.1
+            }
+            armored_car_recon = {
+                battalion_mult = {
+                    category = category_line_artillery 
+                    soft_attack = 0.03
+                    defense = 0.05
+                }
+                recon = 0.1
+            }
+            light_tank_recon = {
                 battalion_mult = {
                     category = category_line_artillery 
                     soft_attack = 0.03
@@ -378,6 +421,18 @@ mobile_recon_and_assault = {
             }
         }
         mobile_operational_deployments = {
+            mot_recon = {
+                battalion_mult = {
+                    category = category_all_armor
+                    breakthrough = 0.05
+                }
+            }
+            armored_car_recon = {
+                battalion_mult = {
+                    category = category_all_armor
+                    breakthrough = 0.05
+                }
+            }
             light_tank_recon = {
                 battalion_mult = {
                     category = category_all_armor
@@ -409,6 +464,14 @@ mobile_recon_and_assault = {
         deep_reconnaissance_focus = {
             category_recon = {
                 maximum_speed = 0.05
+            }
+            mot_recon = {
+                recon = 0.1
+                breakthrough = 0.05
+            }
+            armored_car_recon = {
+                recon = 0.1
+                breakthrough = 0.05
             }
             light_tank_recon = {
                 recon = 0.1
@@ -474,6 +537,18 @@ mobile_recon_and_assault_no_lar = {
             }
         }
         mobile_operational_deployments = {
+            mot_recon = {
+                battalion_mult = {
+                    category = category_all_armor
+                    breakthrough = 0.05
+                }
+            }
+            armored_car_recon = {
+                battalion_mult = {
+                    category = category_all_armor
+                    breakthrough = 0.05
+                }
+            }
             light_tank_recon = {
                 battalion_mult = {
                     category = category_all_armor
@@ -501,6 +576,14 @@ mobile_recon_and_assault_no_lar = {
         deep_reconnaissance_focus = {
             category_recon = {
                 maximum_speed = 0.05
+            }
+            mot_recon = {
+                recon = 0.1
+                breakthrough = 0.05
+            }
+            armored_car_recon = {
+                recon = 0.1
+                breakthrough = 0.05
             }
             light_tank_recon = {
                 recon = 0.1
@@ -543,7 +626,6 @@ self_propelled_support = {
 
 
     rewards = {
-
         mobile_battery_management_platoons = {
             category_self_propelled_artillery = {
                max_organisation = 3
@@ -556,7 +638,6 @@ self_propelled_support = {
             }
         }
         screening_attacks = {
-            
             recon = {
                 battalion_mult = {
                     category = category_self_propelled_artillery
@@ -624,10 +705,7 @@ self_propelled_support = {
                 default_morale = 0.2
             }
         }
-
-    }
-
-    
+    } 
 }
 
 siege_artillery = {
@@ -641,7 +719,6 @@ siege_artillery = {
 
     available = {
         is_special_project_completed = sp:sp_land_super_heavy_howitzer
-
     }
     visible = {
         has_dlc = "Gotterdammerung"
@@ -832,7 +909,6 @@ field_engineering = {
             hq_company = {
                max_organisation = 3
             }
-            
         }
         sapper_fieldcraft = {
             engineer = {
@@ -877,7 +953,6 @@ field_engineering = {
             helicopter_field_hospital = {
                 casualty_trickleback = 0.05
             } 
-
         }
         charge_and_flame = {
             engineer = {
@@ -892,6 +967,5 @@ field_engineering = {
                 max_organisation = 2.5
             }
         }
-
     }
 }

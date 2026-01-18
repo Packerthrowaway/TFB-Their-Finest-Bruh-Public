@@ -180,7 +180,7 @@ large_unit_tactics = {
         flexible_division_structures = {
         #2
            unit_infantry_design_cost_factor = -1
-           infantry = {
+            infantry = {
                 combat_width = -0.1
             }
         }
@@ -193,7 +193,7 @@ large_unit_tactics = {
         large_front_offensive = {
         #4
             category_all_infantry = {
-               max_organisation = 3
+                max_organisation = 3
                 soft_attack = 0.03
             }
             army_morale = 0.1
@@ -475,6 +475,20 @@ commandos = {
             add = yes
         }
     }
+    logistics_company_mot = {
+        battalion_mult = {
+            category = category_light_infantry
+            max_strength = 5
+            add = yes
+        }
+    }
+    logistics_company_horse = {
+        battalion_mult = {
+            category = category_light_infantry
+            max_strength = 5
+            add = yes
+        }
+    }
 
     # EFFECTS
 
@@ -503,6 +517,12 @@ commandos = {
                     defense = 0.05
                 }
             }
+            armored_signal = {
+                battalion_mult = {
+                    category = category_all_infantry
+                    defense = 0.05
+                }
+            }
             hq_company = {
                 battalion_mult = {
                     category = category_light_infantry
@@ -510,6 +530,20 @@ commandos = {
                 }
             }
             logistics_company = {
+                battalion_mult = {
+                    category = category_vehicle_infantry
+                    max_strength = 5
+                    add = yes
+                }
+            }
+            logistics_company_mot = {
+                battalion_mult = {
+                    category = category_vehicle_infantry
+                    max_strength = 5
+                    add = yes
+                }
+            }
+            logistics_company_horse = {
                 battalion_mult = {
                     category = category_vehicle_infantry
                     max_strength = 5
@@ -618,6 +652,14 @@ irregulars = {
         defense = 0.05
         supply_consumption = -0.01
     }
+    garrison = {
+        defense = 0.05
+        supply_consumption = -0.01
+    }
+    penal_battalion = {
+        soft_attack = 0.03
+        defense = 0.1
+    }
 
     # EFFECTS
 
@@ -632,32 +674,29 @@ irregulars = {
             militia = {
                 combat_width = -0.2
             }
+            garrison = {
+                combat_width = -0.2
+            }
             category_light_infantry = {
                 defense = 0.05
             }
-        }
-
-        
+        }        
         improvised_officer_groups = {
             category_light_infantry = {
                max_organisation = 3
                 soft_attack = 0.03
                 breakthrough = 0.05
             }
-            
-            
         }
         levee_en_masse = {
             conscription = 0.02
             mobilization_speed = 0.05
-
         }
         standardization_efforts = {
             category_light_infantry = {
                max_organisation = 3
                 soft_attack = 0.03
             }
-
             effect = {
                 add_tech_bonus = {
                     bonus = 0.25
@@ -667,7 +706,6 @@ irregulars = {
                 }
             }
         }
-
     }
 }
 
@@ -708,12 +746,20 @@ peoples_war = {
         soft_attack = 0.03
         defense = 0.1
     }
+    garrison = {
+        soft_attack = 0.03
+        defense = 0.1
+    }
 
     rewards = {
         revolutionary_base_area = {
         #1
             mastery = 50
             militia = {
+                defense = 0.05
+                supply_consumption = -0.02
+            }
+            garrison = {
                 defense = 0.05
                 supply_consumption = -0.02
             }
@@ -731,17 +777,22 @@ peoples_war = {
             militia = {
                 equipment_capture_factor = 0.01
             }
+            garrison = {
+                equipment_capture_factor = 0.01
+            }
         }
         quick_decision_offensive_warfare = {
         #3
             militia = {
-               initiative = 0.01
-              max_organisation = 3
-               breakthrough = 0.1
+                initiative = 0.01
+                max_organisation = 3
+                breakthrough = 0.1
             }
-            
-
-
+            garrison = {
+                initiative = 0.01
+                max_organisation = 3
+                breakthrough = 0.1
+            }
         }
         people_not_things = {
         #4
