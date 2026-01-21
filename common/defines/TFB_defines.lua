@@ -334,8 +334,9 @@ NDefines.NMilitary.UNIT_LEADER_TRAIT_SLOT_PER_LEVEL = { 			-- num extra traits o
 
 NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 500
 NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 300
-NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 300
+NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 400
 NDefines.NAir.AIR_WING_MAX_STATS_BOMBING = 300
+NDefines.NAir.AIR_WING_MAX_STATS_SPEED = 1100
 NDefines.NAir.TOP_SPEED_DAMAGE_BONUS_FACTOR = 0.2				-- A factor for scaling the top speed of a plane into damage buff --Vanilla is .02
 NDefines.NAir.COMBAT_DAMAGE_STATS_MULTILPIER = 0.35	
 NDefines.NAir.BIGGEST_AGILITY_FACTOR_DIFF = 5.0					-- biggest factor difference in agility for doing damage (caps to this) -- Vanilla is 3.0
@@ -536,7 +537,7 @@ NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.05		-- Chance of 
 NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
 NDefines.NNavy.RESOURCE_LENDLEASE_PRIORITY = 3
 NDefines.NNavy.RESOURCE_ORIGIN_PRIORITY = 3
-NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.35 													-- multiplies supply usage
+NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.5 													-- multiplies supply usage
 NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 0.85												-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
 NDefines.NNavy.HIT_PROFILE_SPEED_BASE = 5													-- Base value added to hitprofile speed calulation
 NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO 								= 0.25	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
@@ -801,6 +802,9 @@ NDefines.NIndustrialOrganisation.DEFAULT_INITIAL_ATTACH_POLICY_COOLDOWN = 365			
 NDefines.NIndustrialOrganisation.ENABLE_TASK_CAPACITY = false -- Enable limited task capacity for MIOs
 NDefines.NIndustrialOrganisation.DEFAULT_INITIAL_TASK_CAPACITY = 3			-- Default start task capacity for each MIO (may be overriden in DB)
 
+NDefines.NProject.SUPPORTIVE_SCIENTISTS_FRACTION = 0.05 -- how effective supportive scientists are compared to how strong they would be on default
+NDefines.NProject.AMOUNT_OF_SUPPORTIVE_SCIENTISTS = 4 -- The amount of supportive scientists a facility can have
+NDefines.NProject.DAYS_TO_REMOVE_SCIENTIST = 1 -- Amount of days needed for a scientist to be unassigned.
 
 NDefines.NRaids.RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.15  -- How much the disaster risk is modified when the dial is set to "medium"
 NDefines.NRaids.RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.5
@@ -815,6 +819,9 @@ NDefines.NFactions.AI_DAYS_TO_SELECT_GOAL = 9999
 NDefines.NFactions.AI_THEATER_CREATION_PENALTY = 99 -- Penalty defines how much each theater reduces the chance linearly. (The higher, the worse the penalty is)
 NDefines.NFactions.DOCTRINE_SHARING_BASE_MASTERY_GAIN_MONTHLY = 5 -- When doctrine sharing is enabled, this is the base amount of mastery gained monthly
 NDefines.NFactions.FACTION_DOCTRINE_SHARING_UNLOCK_COST = 2 -- Cost of unlocking doctrine sharing for one folder
+NDefines.NFactions.FACTION_CONTRIBUTION_DEBT_LIMIT = 500 --How much you are allowed to be in debt from spending contribution
+NDefines.NFactions.FACTION_MANPOWER_RECIEVE_CONTRIBUTION_SCALAR = 0.2 -- a scalar for how much contribution it takes to get a singular recruitable population
+NDefines.NFactions.FACTION_SCIENTIST_CONTRIBUTION_VALUE = 1 --how much contribution one scientists gives to you if it is working for somebody else.
 
 
 NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0				-- How much training contributes to doctrine mastery relative to combat/missions
