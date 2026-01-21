@@ -2012,6 +2012,18 @@
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			MAN_low_legitimacy_level_down = yes
+			if = {
+				limit = { has_idea = MAN_assert_mills }
+				remove_ideas = MAN_assert_mills
+			}
+			JAP = { 
+				set_autonomy = {
+					target = MAN
+					autonomy_state = autonomy_wtt_imperial_subject
+				}
+				custom_effect_tooltip = unlock_propaganda_campaign_tt
+				unlock_decision_tooltip = JAP_big_china_prop
+			}
 		}
 	}
 
@@ -4283,7 +4295,7 @@
 				}
 				add_country_leader_trait = nationalist_symbol
 			}
-			OVERLORD = { set_autonomy = { target = ROOT autonomy_state = autonomy_free } }
+			OVERLORD = { set_autonomy = { target = ROOT autonomy_state = autonomy_wtt_imperial_associate } }
 			# effect_tooltip = {		
 			# 	if = {
 			# 		limit = {
@@ -4309,7 +4321,7 @@
 			# 	}
 			# }
 			hidden_effect = {
-				news_event = { id = wtt_news.48 days = 2 }
+				#news_event = { id = wtt_news.48 days = 1 }
 				IF = {
 					limit = {
 						has_country_flag = MAN_xingan_government
