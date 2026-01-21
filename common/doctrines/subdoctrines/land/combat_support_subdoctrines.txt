@@ -31,20 +31,21 @@ fire_concentration = {
     # EFFECTS
     enable_tactic = tactic_overwhelming_fire
 
-    artillery_brigade = {
-        combat_width = -0.2
-    }
-    pack_artillery_brigade = {
-        combat_width = -0.2
-    }
-    rocket_artillery_brigade = {
-        combat_width = -0.2
-    }
-    heavy_artillery_brigade = {
-        combat_width = -0.2
-    }
+    # artillery_brigade = {
+    #     combat_width = -0.2
+    # }
+    # pack_artillery_brigade = {
+    #     combat_width = -0.2
+    # }
+    # rocket_artillery_brigade = {
+    #     combat_width = -0.2
+    # }
+    # heavy_artillery_brigade = {
+    #     combat_width = -0.2
+    # }
     category_line_artillery = {
         max_organisation = 1
+        max_strength = 1
     }
 
     rewards = {
@@ -718,7 +719,11 @@ siege_artillery = {
     xp_type = army
 
     available = {
-        is_special_project_completed = sp:sp_land_super_heavy_howitzer
+        OR = {
+            is_special_project_completed = sp:sp_land_super_heavy_howitzer
+            has_tech = heavy_artillery2
+        }
+        
     }
     visible = {
         has_dlc = "Gotterdammerung"

@@ -813,14 +813,16 @@ NDefines.NFactions.MAX_NUM_MEDIUM_TERM_GOALS = 2						-- Maximum number of mediu
 NDefines.NFactions.MAX_NUM_LONG_TERM_GOALS = 1					-- Maximum number of long term goals a faction can have at any one time
 NDefines.NFactions.AI_DAYS_TO_SELECT_GOAL = 9999
 NDefines.NFactions.AI_THEATER_CREATION_PENALTY = 99 -- Penalty defines how much each theater reduces the chance linearly. (The higher, the worse the penalty is)
+NDefines.NFactions.DOCTRINE_SHARING_BASE_MASTERY_GAIN_MONTHLY = 5 -- When doctrine sharing is enabled, this is the base amount of mastery gained monthly
+NDefines.NFactions.FACTION_DOCTRINE_SHARING_UNLOCK_COST = 2 -- Cost of unlocking doctrine sharing for one folder
 
 
 NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0				-- How much training contributes to doctrine mastery relative to combat/missions
 NDefines.NDoctrines.MASTERY_BANK_CONVERSION_RATE = 0.8 				-- The rate at which mastery gained when a track is finished or empty is "banked"
 NDefines.NDoctrines.MASTERY_BANK_MAX = 400							-- The maximum amount of mastery that can be banked
 NDefines.NDoctrines.MAX_MONTHLY_MASTERY_GAIN = 50
-NDefines.NDoctrines.MILITARY_ATTACHE_MASTERY_TRANSFER_FACTOR = 0.25	-- For each mastery track, military attaches will add this fraction of their visiting country's mastery gain (from units only) in that track
-NDefines.NDoctrines.THEATER_COMMANDER_UNITS_MASTERY_GAIN_FACTOR_PER_SKILL = 0.02	-- Unit in a theater commander's theater will contribute this fraction of their mastery gain to the theater commander's country, for each skill point they have in attack + defense
+NDefines.NDoctrines.MILITARY_ATTACHE_MASTERY_TRANSFER_FACTOR = 0.1	-- For each mastery track, military attaches will add this fraction of their visiting country's mastery gain (from units only) in that track
+NDefines.NDoctrines.THEATER_COMMANDER_UNITS_MASTERY_GAIN_FACTOR_PER_SKILL = 0.01	-- Unit in a theater commander's theater will contribute this fraction of their mastery gain to the theater commander's country, for each skill point they have in attack + defense
 NDefines.NDoctrines.NAVAL_MISSION_MASTERY_GAIN_FACTORS = {  -- Mastery gain from naval missions is reduced, just like training
 		0.0, -- HOLD
 		0.2, -- PATROL
