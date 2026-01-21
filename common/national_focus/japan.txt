@@ -11067,7 +11067,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_revisit_the_thirteen_demands }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -11115,7 +11115,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_revisit_the_thirteen_demands }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -11503,7 +11503,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_revisit_the_thirteen_demands }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -11644,128 +11644,128 @@ focus_tree = {
 				custom_effect_tooltip = generic_skip_one_line_tt
 			}
 
-			IF = {
-				limit = {
-					NOT = {
-						has_active_mission = JAP_kwantung_army_impatience
-					}
-				}
+			# IF = {
+			# 	limit = {
+			# 		NOT = {
+			# 			has_active_mission = JAP_kwantung_army_impatience
+			# 		}
+			# 	}
 
-				IF = {
-					limit = {
-						CHI = { #if CHI owns one of these states, they get the event
-							OR = {
-								controls_state = 608
-								controls_state = 597
-								controls_state = 614
-								controls_state = 743 
-							}
-						}
-					}
-					CHI = {
-						country_event = {
-							id = china.1
-							days = 1
-							random_days = 3
-						}	
-					}
-				}
-				# ELSE_IF = {
-				# 	limit = {
-				# 		PRC = { #only fires the event for PRC if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
-				# 			AND = {
-				# 				controls_state = 608
-				# 				controls_state = 614
-				# 			}
-				# 		}
-				# 	}
-				# 	PRC = {
-				# 		country_event = {
-				# 			id = china.1
-				# 			days = 1
-				# 			random_days = 3
-				# 		}	
-				# 	}
-				# }
-				# ELSE_IF = {
-				# 	limit = {
-				# 		SHX = { #only fires the event for SHX if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
-				# 			AND = {
-				# 				controls_state = 608
-				# 				controls_state = 614
-				# 			}
-				# 		}
-				# 	}
-				# 	SHX = {
-				# 		country_event = {
-				# 			id = china.1
-				# 			days = 1
-				# 			random_days = 3
-				# 		}	
-				# 	}
-				# }
-				# ELSE_IF = {
-				# 	limit = {
-				# 		SND = { #only fires the event for SND if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
-				# 			AND = {
-				# 				controls_state = 608
-				# 				controls_state = 597
-				# 				controls_state = 614
-				# 			}
-				# 		}
-				# 	}
-				# 	SND = {
-				# 		country_event = {
-				# 			id = china.1
-				# 			days = 1
-				# 			random_days = 3
-				# 		}	
-				# 	}
-				# }
-				# ELSE_IF = {
-				# 	limit = {
-				# 		XIC = { #only fires the event for XIC if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
-				# 			AND = {
-				# 				controls_state = 608
-				# 				controls_state = 1039 
-				# 				controls_state = 614
-				# 			}
-				# 		}
-				# 	}
-				# 	XIC = {
-				# 		country_event = {
-				# 			id = china.1
-				# 			days = 1
-				# 			random_days = 3
-				# 		}	
-				# 	}
-				# }
-				ELSE = {
-					608 = {
-						OWNER = {
-							country_event = {
-								id = china.1
-								days = 1
-								random_days = 3
-							}
-						}
-					}
-				}
-				add_named_threat = { threat = 2 name = JAP_intervene_in_china } # From threat = 1 to 2 due to no escalation tension
+			# 	IF = {
+			# 		limit = {
+			# 			CHI = { #if CHI owns one of these states, they get the event
+			# 				OR = {
+			# 					controls_state = 608
+			# 					controls_state = 597
+			# 					controls_state = 614
+			# 					controls_state = 743 
+			# 				}
+			# 			}
+			# 		}
+			# 		CHI = {
+			# 			country_event = {
+			# 				id = china.1
+			# 				days = 1
+			# 				random_days = 3
+			# 			}	
+			# 		}
+			# 	}
+			# 	# ELSE_IF = {
+			# 	# 	limit = {
+			# 	# 		PRC = { #only fires the event for PRC if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
+			# 	# 			AND = {
+			# 	# 				controls_state = 608
+			# 	# 				controls_state = 614
+			# 	# 			}
+			# 	# 		}
+			# 	# 	}
+			# 	# 	PRC = {
+			# 	# 		country_event = {
+			# 	# 			id = china.1
+			# 	# 			days = 1
+			# 	# 			random_days = 3
+			# 	# 		}	
+			# 	# 	}
+			# 	# }
+			# 	# ELSE_IF = {
+			# 	# 	limit = {
+			# 	# 		SHX = { #only fires the event for SHX if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
+			# 	# 			AND = {
+			# 	# 				controls_state = 608
+			# 	# 				controls_state = 614
+			# 	# 			}
+			# 	# 		}
+			# 	# 	}
+			# 	# 	SHX = {
+			# 	# 		country_event = {
+			# 	# 			id = china.1
+			# 	# 			days = 1
+			# 	# 			random_days = 3
+			# 	# 		}	
+			# 	# 	}
+			# 	# }
+			# 	# ELSE_IF = {
+			# 	# 	limit = {
+			# 	# 		SND = { #only fires the event for SND if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
+			# 	# 			AND = {
+			# 	# 				controls_state = 608
+			# 	# 				controls_state = 597
+			# 	# 				controls_state = 614
+			# 	# 			}
+			# 	# 		}
+			# 	# 	}
+			# 	# 	SND = {
+			# 	# 		country_event = {
+			# 	# 			id = china.1
+			# 	# 			days = 1
+			# 	# 			random_days = 3
+			# 	# 		}	
+			# 	# 	}
+			# 	# }
+			# 	# ELSE_IF = {
+			# 	# 	limit = {
+			# 	# 		XIC = { #only fires the event for XIC if they control ALL of the states (to ensure that only one of them gets it, to avoid issues when one selects to turn over the states and the other doesn't)
+			# 	# 			AND = {
+			# 	# 				controls_state = 608
+			# 	# 				controls_state = 1039 
+			# 	# 				controls_state = 614
+			# 	# 			}
+			# 	# 		}
+			# 	# 	}
+			# 	# 	XIC = {
+			# 	# 		country_event = {
+			# 	# 			id = china.1
+			# 	# 			days = 1
+			# 	# 			random_days = 3
+			# 	# 		}	
+			# 	# 	}
+			# 	# }
+			# 	ELSE = {
+			# 		608 = {
+			# 			OWNER = {
+			# 				country_event = {
+			# 					id = china.1
+			# 					days = 1
+			# 					random_days = 3
+			# 				}
+			# 			}
+			# 		}
+			# 	}
+			# 	add_named_threat = { threat = 2 name = JAP_intervene_in_china } # From threat = 1 to 2 due to no escalation tension
 
+			# }
+			# ELSE_IF = {
+			# 	limit = {
+			# 		has_active_mission = JAP_kwantung_army_impatience
+			# 	}
+
+			add_days_mission_timeout = {
+				mission = JAP_kwantung_army_impatience
+				days = -90 
 			}
-			ELSE_IF = {
-				limit = {
-					has_active_mission = JAP_kwantung_army_impatience
-				}
+			custom_effect_tooltip = JAP_reinforce_the_beijing_garrison_tt
 
-				add_days_mission_timeout = {
-				    mission = JAP_kwantung_army_impatience
-				    days = -90 
-				}
-				custom_effect_tooltip = JAP_reinforce_the_beijing_garrison_tt
-
-			}
+			# }
 
 			add_ai_strategy = {
 				type = antagonize
@@ -11817,7 +11817,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_reinforce_the_beijing_garrison }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -11875,7 +11875,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_strategic_offensives }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -11925,7 +11925,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_strategic_offensives }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -12154,7 +12154,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_reinforce_the_beijing_garrison }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -12233,7 +12233,7 @@ focus_tree = {
 
 		prerequisite = { focus = JAP_reinforce_the_beijing_garrison }
 
-		cost = 4
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -13181,7 +13181,7 @@ focus_tree = {
 		available = {
 			JAP_naval_faction_is_not_subdued = yes
 			NOT = { has_war_with = CHI }
-			date > 1941.7.1
+			date > 1941.1.1
 		}
 
 		bypass = {
@@ -14007,7 +14007,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
-
+			SIA = { add_ideas = SIA_rubber_extortion }
 			SIA = {
 				country_event = {
 					id = SEA_japan_foreign_policy.4
@@ -14125,7 +14125,7 @@ focus_tree = {
 					has_army_manpower = { size > 999999 }
 				}
 			}
-			date > 1941.7.1
+			date > 1941.1.1
 		}
 
 		bypass = {
@@ -25312,7 +25312,7 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_consumer_goods_factor = -0.1 tooltip = consumer_goods_factor_tt }
+			add_to_variable = { JAP_industry_consumer_goods_factor = -0.15 tooltip = consumer_goods_factor_tt }
 			add_to_variable = { JAP_industry_production_speed_arms_factory_factor = -0.05 tooltip = production_speed_arms_factory_factor_tt }
 			add_to_variable = { JAP_industry_production_speed_dockyard_factor = -0.05 tooltip = production_speed_dockyard_factor_tt }
 			
@@ -25382,9 +25382,9 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_consumer_goods_factor = 0.05 tooltip = consumer_goods_factor_tt }
-			add_to_variable = { JAP_industry_production_speed_arms_factory_factor = 0.05 tooltip = production_speed_arms_factory_factor_tt }
-			add_to_variable = { JAP_industry_production_speed_dockyard_factor = 0.05 tooltip = production_speed_dockyard_factor_tt }
+			add_to_variable = { JAP_industry_consumer_goods_factor = 0.075 tooltip = consumer_goods_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_arms_factory_factor = 0.075 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_dockyard_factor = 0.075 tooltip = production_speed_dockyard_factor_tt }
 			
 		}
 
@@ -25463,7 +25463,7 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { JAP_industry_industrial_capacity_factory = 0.075 tooltip = industrial_capacity_factory_tt }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -25566,7 +25566,7 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
+			add_to_variable = { JAP_industry_industrial_capacity_dockyard = 0.075 tooltip = industrial_capacity_dockyard_tt }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -25664,7 +25664,7 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_local_resources_factor = 0.05 tooltip = local_resources_factor_tt }
+			add_to_variable = { JAP_industry_local_resources_factor = 0.075 tooltip = local_resources_factor_tt }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -25751,7 +25751,7 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 
-			add_to_variable = { JAP_industry_consumer_goods_factor = -0.05 tooltip = consumer_goods_factor_tt }
+			add_to_variable = { JAP_industry_consumer_goods_factor = -0.075 tooltip = consumer_goods_factor_tt }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
@@ -25785,7 +25785,7 @@ focus_tree = {
 		}
 
 		available = {
-			num_of_civilian_factories > 124
+			num_of_civilian_factories > 109
 		}
 
 		bypass = {
@@ -27173,11 +27173,11 @@ focus_tree = {
 			328 = {
 				add_resource = {
 					type = aluminium
-					amount = 100
+					amount = 200
 				}
 				add_resource = {
 					type = steel
-					amount = 150
+					amount = 250
 				}
 				add_resource = {
 					type = Coal
@@ -27188,13 +27188,13 @@ focus_tree = {
 			IF = {
 				limit = {
 					328 = { #Kirin
-						infrastructure < 5
+						infrastructure < 10
 					}
 				}
 				328 = {
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 				}
@@ -27746,7 +27746,7 @@ focus_tree = {
 		x = 4
 		y = 1
 
-		cost = 5
+		cost = 4
 
 		ai_will_do = {
 			factor = 3
@@ -27852,7 +27852,7 @@ focus_tree = {
 		x = -1
 		y = 1
 
-		cost = 5
+		cost = 4
 
 		ai_will_do = {
 			factor = 3
@@ -27928,7 +27928,7 @@ focus_tree = {
 		x = 1
 		y = 1
 
-		cost = 5
+		cost = 4
 
 		ai_will_do = {
 			factor = 3
@@ -27993,7 +27993,7 @@ focus_tree = {
 		x = 0
 		y = 2
 
-		cost = 5
+		cost = 4
 
 		ai_will_do = {
 			factor = 2
@@ -28151,7 +28151,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 5
+		cost = 4
 
 		ai_will_do = {
 			factor = 2
@@ -29604,8 +29604,8 @@ focus_tree = {
 		}
 
 		available = {
-			has_war_with_major = yes
-			#JAP_army_faction_is_at_least_influential = yes
+			#has_war_with_major = yes
+			JAP_army_faction_is_at_least_influential = yes
 		}
 
 		bypass = {
@@ -30178,7 +30178,7 @@ focus_tree = {
 				custom_effect_tooltip = generic_skip_one_line_tt
 				add_resource = {
 				    type = aluminium
-				    amount = 50
+				    amount = 200
 				    state = 531
 				}
 			}
@@ -30671,7 +30671,7 @@ focus_tree = {
 		}
 
 		available = {
-			has_war_with_major = yes
+			#has_war_with_major = yes
 		}
 
 		bypass = {
@@ -32486,7 +32486,7 @@ focus_tree = {
 		}
 
 		available = {
-			has_war_with_major = yes
+			#has_war_with_major = yes
 			JAP_naval_faction_is_at_least_influential = yes
 		}
 
@@ -32538,7 +32538,7 @@ focus_tree = {
 		}
 
 		available = {
-			has_war_with_major = yes
+			#has_war_with_major = yes
 			JAP_naval_faction_is_at_least_influential = yes
 		}
 
@@ -32564,7 +32564,7 @@ focus_tree = {
 
 			JAP_add_or_modify_early_industrialization = yes
 			add_to_variable = { JAP_industry_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
-			add_to_variable = { JAP_industry_production_speed_dockyard_factor = 0.1 tooltip = production_speed_dockyard_factor_tt }
+			add_to_variable = { JAP_industry_production_speed_dockyard_factor = 0.05 tooltip = production_speed_dockyard_factor_tt }
 
 		}
 
