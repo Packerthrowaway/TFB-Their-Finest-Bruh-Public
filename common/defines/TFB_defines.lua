@@ -122,7 +122,7 @@ NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 15	-- Base start eff
 NDefines.NProduction.MAX_MIL_FACTORIES_PER_LINE = 200
 NDefines.NProduction.MAX_MIL_FACTORIES_VISIBLE_FOR_MIL_EQUIPMENT_LINE = 200
 NDefines.NProduction.ANNEX_FUEL_RATIO = 0.75	-- How much fuel will be transferred on annexation
-NDefines.NProduction.ANNEX_CONVOYS_RATIO = 0.25			-- How many convoys will be transferred on annexation
+NDefines.NProduction.ANNEX_CONVOYS_RATIO = 0.5			-- How many convoys will be transferred on annexation
 NDefines.NProduction.CAPITULATE_STOCKPILES_RATIO = 0.75 -- How much equipment from deployed divisions will be transferred on capitulation
 NDefines.NProduction.CAPITULATE_FUEL_RATIO = 0.75 -- How much fuel will be transferred on capitulation
 NDefines.NProduction.MIN_FIELD_TO_TRAINING_MANPOWER_RATIO = 0.65	-- Ratio which % of army in field can be trained
@@ -428,6 +428,8 @@ NDefines.NAir.CARRIER_SIZE_STAT_INCREMENT = 10					-- Each Point of carrier_size
 NDefines.NAir.AIR_DEPLOYMENT_DAYS = 1							-- Days to deploy one air wing
 NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02					-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
+NDefines.NAir.AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.2 --Reduction on XP loss over friendly territory
+
 
 NDefines.NAir.DISRUPTION_FACTOR = 4.0									-- multiplier on disruption damage to scale its effects on planes
 NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 500.0						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
@@ -531,7 +533,7 @@ NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT								= 3.75		-- multiplier 
 NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT						= 24		-- the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
 NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.25 		-- multiplies hit chance of small guns
 NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 2.0						-- Bonus to critical chance when shooter armor piercing is higher then target armor.
-NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 40		-- each ship in convoy defense mission can at most cover this many convoys without losing efficiency
+NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 30		-- each ship in convoy defense mission can at most cover this many convoys without losing efficiency
 NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT 											= 24		-- Amount of in-game-hours that takes the submarine (with position unrevealed) to hide.
 NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.05		-- Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
 NDefines.NNavy.RESOURCE_EXPORT_PRIORITY = 3 --swapped prio so imports go first
@@ -549,7 +551,7 @@ NDefines.NNavy.UNIT_EXPERIENCE_PER_COMBAT_HOUR = 2
 NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 0.1
 NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.02						-- Xp gain by non-carrier ships in the combat
 NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.4								-- Amount of exp each ship gain every 24h while training (before modifiers)
-NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.8 -- org will clamped to this ratio on manual move
+NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 0.7 -- org will clamped to this ratio on manual move
 
 NDefines.NNavy.MISSION_FUEL_COSTS = {  -- fuel cost for each mission
 	0.0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
@@ -826,7 +828,7 @@ NDefines.NFactions.FACTION_SCIENTIST_CONTRIBUTION_VALUE = 1 --how much contribut
 
 NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0				-- How much training contributes to doctrine mastery relative to combat/missions
 NDefines.NDoctrines.MASTERY_BANK_CONVERSION_RATE = 0.8 				-- The rate at which mastery gained when a track is finished or empty is "banked"
-NDefines.NDoctrines.MASTERY_BANK_MAX = 400							-- The maximum amount of mastery that can be banked
+NDefines.NDoctrines.MASTERY_BANK_MAX = 300							-- The maximum amount of mastery that can be banked
 NDefines.NDoctrines.MAX_MONTHLY_MASTERY_GAIN = 50
 NDefines.NDoctrines.MILITARY_ATTACHE_MASTERY_TRANSFER_FACTOR = 0.1	-- For each mastery track, military attaches will add this fraction of their visiting country's mastery gain (from units only) in that track
 NDefines.NDoctrines.THEATER_COMMANDER_UNITS_MASTERY_GAIN_FACTOR_PER_SKILL = 0.01	-- Unit in a theater commander's theater will contribute this fraction of their mastery gain to the theater commander's country, for each skill point they have in attack + defense
