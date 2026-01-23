@@ -26,9 +26,9 @@
 @inner_circle_very_high_cost = 100
 
 @inner_circle_focus_power_gain = 50
-@inner_circle_focus_power_loss = 50
+@inner_circle_focus_power_loss = -50
 @inner_circle_focus_loyalty_gain = 5
-@inner_circle_focus_loyalty_loss = 5
+@inner_circle_focus_loyalty_loss = -5
 
 focus_tree = {
 	id = german_focus
@@ -5417,7 +5417,7 @@ focus_tree = {
 		alternate_icon = GFX_focus_GER_sturzkampfbomber_historical
 
 		prerequisite = { focus = GER_aeronautical_research_institute }
-		mutually_exclusive = { focus = GER_tactical_bombers focus = GER_uralbomber_program }
+		
 		x = -2
 		y = 1
 		relative_position_id = GER_aeronautical_research_institute
@@ -5548,7 +5548,7 @@ focus_tree = {
 		id = GER_tactical_bombers
 		icon = GFX_goal_generic_air_bomber
 		prerequisite = { focus = GER_aeronautical_research_institute }
-		mutually_exclusive = { focus = GER_dive_bombers focus = GER_uralbomber_program }
+		
 		x = 0
 		y = 1
 		relative_position_id = GER_aeronautical_research_institute
@@ -5678,7 +5678,7 @@ focus_tree = {
 		id = GER_uralbomber_program
 		icon = GFX_focus_generic_long_range_aircraft
 		prerequisite = { focus = GER_aeronautical_research_institute }
-		mutually_exclusive = { focus = GER_dive_bombers focus = GER_tactical_bombers }
+		
 		x = 2
 		y = 1
 		relative_position_id = GER_aeronautical_research_institute
@@ -20966,6 +20966,10 @@ focus_tree = {
 		
 		alternate_icon = GFX_focus_GER_support_the_fuhrer_historical
 
+		allow_branch = {
+			always = no
+		}
+
 		icon = {
 			trigger = {
 				has_country_leader = {
@@ -21839,58 +21843,17 @@ focus_tree = {
 	focus = {
 		id = GER_wunderwaffe
 		icon = GFX_focus_GER_wunderwaffe_inner_circle
-		prerequisite = { focus = GER_autonomous_organization_todt focus = GER_plenipotentiary_of_armaments}
+		prerequisite = { focus = GER_develop_heraeus_facilities }
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 1
-		y = 1
-		relative_position_id = GER_autonomous_organization_todt
+		x = 0
+		y = 2
+		relative_position_id = GER_develop_heraeus_facilities
 		cost = @inner_circle_time_tier_3
 		
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_wunderwaffe_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_3 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				if = { #TODT working on it
-					limit = {
-						check_variable = { GER_wonder_weapons_focus_advisor = 1 }
-					}
-					custom_override_tooltip = {
-						tooltip = {
-							localization_key = GER_inner_circle_focus_in_progress_tt
-							CHARACTER = GER_fritz_todt
-							FLAG_DAYS = [?GER_wunderwaffe_in_progress_flag:days]
-						}
-						always = no 
-					}
-				}
-				else = { #SPEER working on it
-					custom_override_tooltip = {
-						tooltip = {
-							localization_key = GER_inner_circle_focus_in_progress_tt
-							CHARACTER = GER_albert_speer
-							FLAG_DAYS = [?GER_wunderwaffe_in_progress_flag:days]
-						}
-						always = no 
-					}
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_multiple_tt
-						CHARACTER = GER_fritz_todt
-						FOCUS = GER_ascension_of_todt
-						CHARACTER_2 = GER_albert_speer
-						FOCUS_2 = GER_ascension_of_speer
-					}
-					always = no
-				}
-			}
+			
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_MILITARY_CHARACTER FOCUS_FILTER_RESEARCH }
@@ -22409,46 +22372,27 @@ focus_tree = {
 	focus = {
 		id = GER_integration_of_puppet_economies
 		icon = GFX_focus_GER_integration_of_puppet_economies
-		prerequisite = { focus = GER_plenipotentiary_of_the_four_year_plan }
+		prerequisite = { focus = GER_expand_the_reichsautobahn_east }
+		prerequisite = { focus = GER_seize_foreign_industries }
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 0
+		x = 1
 		y = 1
-		relative_position_id = GER_plenipotentiary_of_the_four_year_plan
+		relative_position_id = GER_develop_heraeus_facilities
 		cost = @inner_circle_time_tier_3
 		
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_integration_of_puppet_economies_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_3 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_inner_circle_focus_in_progress_tt
-						CHARACTER = GER_hermann_goring
-						FLAG_DAYS = [?GER_integration_of_puppet_economies_in_progress_flag:days]
-					}
-					always = no 
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
-						CHARACTER = GER_hermann_goring
-						FOCUS = GER_ascension_of_goring
-					}
-					always = no
-				}
-			}
+			
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
+			GER_hermann_goring = {
+				add_to_variable = {  inner_circle_power = @inner_circle_focus_loyalty_gain tooltip = GER_loyalty_variable_tt }
+				add_to_variable = {  inner_circle_power = @inner_circle_focus_power_gain tooltip = GER_power_variable_tt }
+			}
 			custom_effect_tooltip = {
 				localization_key = unlock_decision_category_explained
 				CATEGORY = GER_integration_of_puppet_economies_dec_cat
@@ -22600,42 +22544,17 @@ focus_tree = {
 	focus = {
 		id = GER_expand_gestapo
 		icon = GFX_focus_GER_expand_gestapo
-		prerequisite = { focus = GER_ascension_of_himmler }
-		mutually_exclusive = { focus = GER_expand_ss_security_duties }
+		prerequisite = { focus = GER_subversive_infiltrators }
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = -1
+		x = 0
 		y = 1
-		relative_position_id = GER_ascension_of_himmler
+		relative_position_id = GER_subversive_infiltrators
 		cost = @inner_circle_time_tier_1
 		
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_expand_gestapo_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_inner_circle_focus_in_progress_tt
-						CHARACTER = GER_heinrich_himmler
-						FLAG_DAYS = [?GER_expand_gestapo_in_progress_flag:days]
-					}
-					always = no 
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
-						CHARACTER = GER_heinrich_himmler
-						FOCUS = GER_ascension_of_himmler
-					}
-					always = no
-				}
-			}
+			
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_INDUSTRY }
@@ -22683,31 +22602,7 @@ focus_tree = {
 		cost = @inner_circle_time_tier_2
 		
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_absorb_the_abwehr_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_2 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_inner_circle_focus_in_progress_tt
-						CHARACTER = GER_heinrich_himmler
-						FLAG_DAYS = [?GER_absorb_the_abwehr_in_progress_flag:days]
-					}
-					always = no 
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
-						CHARACTER = GER_heinrich_himmler
-						FOCUS = GER_ascension_of_himmler
-					}
-					always = no
-				}
-			}
+			
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER }
@@ -22734,42 +22629,18 @@ focus_tree = {
 	focus = {
 		id = GER_expand_ss_security_duties
 		icon = GFX_focus_GER_expand_ss_security_duties
-		prerequisite = { focus = GER_ascension_of_himmler }
-		mutually_exclusive = { focus = GER_expand_gestapo }
+		prerequisite = { focus = GER_expand_the_truppenschulen }
+		prerequisite = { focus = GER_strafbataillon }
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 1
+		x = -1
 		y = 1
-		relative_position_id = GER_ascension_of_himmler
+		relative_position_id = GER_innovative_warfare
 		cost = @inner_circle_time_tier_1
 		
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_expand_ss_security_duties_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_inner_circle_focus_in_progress_tt
-						CHARACTER = GER_heinrich_himmler
-						FLAG_DAYS = [?GER_expand_ss_security_duties_in_progress_flag:days]
-					}
-					always = no 
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
-						CHARACTER = GER_heinrich_himmler
-						FOCUS = GER_ascension_of_himmler
-					}
-					always = no
-				}
-			}
+
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_RESEARCH }
@@ -22816,31 +22687,6 @@ focus_tree = {
 		relative_position_id = GER_expand_ss_security_duties
 		cost = @inner_circle_time_tier_2
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_strengthen_the_waffen_ss_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_2 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_inner_circle_focus_in_progress_tt
-						CHARACTER = GER_heinrich_himmler
-						FLAG_DAYS = [?GER_strengthen_the_waffen_ss_in_progress_flag:days]
-					}
-					always = no 
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
-						CHARACTER = GER_heinrich_himmler
-						FOCUS = GER_ascension_of_himmler
-					}
-					always = no
-				}
-			}
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_ARMY_XP FOCUS_FILTER_MANPOWER FOCUS_FILTER_MILITARY_CHARACTER }
@@ -23143,41 +22989,17 @@ focus_tree = {
 	focus = {
 		id = GER_hegemony_of_the_ss
 		icon = GFX_focus_GER_hegemony_of_the_ss
-		prerequisite = { focus = GER_absorb_the_abwehr focus = GER_strengthen_the_waffen_ss }
+		prerequisite = { focus = GER_war_with_the_ussr }
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 1
+		x = -6
 		y = 1
-		relative_position_id = GER_absorb_the_abwehr
+		relative_position_id = GER_war_with_the_ussr
 		cost = @inner_circle_time_tier_3
 		
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_hegemony_of_the_ss_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_3 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_inner_circle_focus_in_progress_tt
-						CHARACTER = GER_heinrich_himmler
-						FLAG_DAYS = [?GER_hegemony_of_the_ss_in_progress_flag:days]
-					}
-					always = no 
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
-						CHARACTER = GER_heinrich_himmler
-						FOCUS = GER_ascension_of_himmler
-					}
-					always = no
-				}
-			}
+			
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_MILITARY_CHARACTER }
@@ -23828,64 +23650,27 @@ focus_tree = {
 	focus = {
 		id = GER_optimize_reich_labour_service
 		icon = GFX_focus_GER_optimize_reich_labour_service
-		prerequisite = { focus = GER_expand_the_reichsautobahn_east focus = GER_expand_the_reichsautobahn_south }
-
+		prerequisite = { focus = GER_expand_the_reichsautobahn_east }
+		prerequisite = { focus = GER_expand_the_reichsautobahn_south }
 		text_icon = GER_inner_circle_focus_style
 
-		x = 1
+		x = -1
 		y = 1
 		relative_position_id = GER_develop_heraeus_facilities
 		cost = @inner_circle_time_tier_1
 		
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_optimize_reich_labour_service_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_1 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				if = { #HESS working on it
-					limit = {
-						check_variable = { GER_optimize_reich_service_focus_advisor = 6 }
-					}
-					custom_override_tooltip = {
-						tooltip = {
-							localization_key = GER_inner_circle_focus_in_progress_tt
-							CHARACTER = GER_rudolf_hess
-							FLAG_DAYS = [?GER_optimize_reich_labour_service_in_progress_flag:days]
-						}
-						always = no 
-					}
-				}
-				else = { #BORMANN working on it
-					custom_override_tooltip = {
-						tooltip = {
-							localization_key = GER_inner_circle_focus_in_progress_tt
-							CHARACTER = GER_martin_bormann
-							FLAG_DAYS = [?GER_optimize_reich_labour_service_in_progress_flag:days]
-						}
-						always = no 
-					}
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_multiple_tt
-						CHARACTER = GER_rudolf_hess
-						FOCUS = GER_party_chancellor_hess
-						CHARACTER_2 = GER_martin_bormann
-						FOCUS_2 = GER_party_chancellor_bormann
-					}
-					always = no
-				}
-			}
+			
 		}
 
 		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
 			unlock_decision_category_tooltip = GER_reich_labor_service_cat
+			GER_konstantin_hierl = {
+				add_to_variable = {  inner_circle_power = @inner_circle_focus_loyalty_gain tooltip = GER_loyalty_variable_tt }
+				add_to_variable = {  inner_circle_power = @inner_circle_focus_power_gain tooltip = GER_power_variable_tt }
+			}
 		}
 	}
 
@@ -24128,7 +23913,7 @@ focus_tree = {
 	focus = {
 		id = GER_a_strong_successor
 		icon = GFX_focus_GER_a_strong_successor
-		prerequisite = { focus = GER_hegemony_of_the_ss focus = GER_wunderwaffe focus = GER_integration_of_puppet_economies focus = GER_propaganda_master focus = GER_total_control_over_domestic_affairs }
+		prerequisite = { focus = GER_propaganda_master focus = GER_total_control_over_domestic_affairs }
 		mutually_exclusive = { focus = GER_loyalty_to_the_fuhrer }
 		x = -2
 		y = 5
@@ -24240,7 +24025,7 @@ focus_tree = {
 	focus = {
 		id = GER_loyalty_to_the_fuhrer
 		icon = GFX_focus_GER_loyalty_to_the_fuhrer
-		prerequisite = { focus = GER_hegemony_of_the_ss focus = GER_wunderwaffe focus = GER_integration_of_puppet_economies focus = GER_propaganda_master focus = GER_total_control_over_domestic_affairs }
+		prerequisite = { focus = GER_propaganda_master focus = GER_total_control_over_domestic_affairs }
 		mutually_exclusive = { focus = GER_a_strong_successor }
 		x = 2
 		y = 5

@@ -88,6 +88,7 @@ scripted_gui = {
 		properties = {
 			# Power Progress Bars
 			inner_circle_economy_category_power_bar = { frame = power_bar_economy_category }
+			inner_circle_economy_category_power_bar_test = { frame = power_bar_economy_category }
 			inner_circle_labour_category_power_bar = { frame = power_bar_labour_category }
 			inner_circle_administration_category_power_bar = { frame = power_bar_administration_category }
 			inner_circle_security_category_power_bar = { frame = power_bar_security_category }
@@ -532,2710 +533,2990 @@ scripted_gui = {
 
 		effects = {
 			inner_circle_economy_1_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_economy_2_slot
-								has_character_flag = GER_inner_circle_economy_3_slot
-								has_character_flag = GER_inner_circle_economy_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_fritz_todt = { has_character_flag = inner_circle_ascended }
-						}
-						GER_fritz_todt = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_fritz_todt = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_economy_1_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_economy_1_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_economy_2_slot
+									has_character_flag = GER_inner_circle_economy_3_slot
+									has_character_flag = GER_inner_circle_economy_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_fritz_todt = { has_character_flag = inner_circle_ascended }
+							}
+							GER_fritz_todt = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_fritz_todt = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_economy_1_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_economy_1_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_1_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_1_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_1_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_1_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 
 
 			inner_circle_economy_2_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_economy_1_slot
-								has_character_flag = GER_inner_circle_economy_3_slot
-								has_character_flag = GER_inner_circle_economy_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_hermann_goring = { has_character_flag = inner_circle_ascended }
-						}
-						GER_hermann_goring = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_hermann_goring = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_economy_2_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_economy_2_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_economy_1_slot
+									has_character_flag = GER_inner_circle_economy_3_slot
+									has_character_flag = GER_inner_circle_economy_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_hermann_goring = { has_character_flag = inner_circle_ascended }
+							}
+							GER_hermann_goring = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_hermann_goring = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_economy_2_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_economy_2_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_2_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_2_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_2_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_2_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			
 			inner_circle_economy_3_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_economy_1_slot
-								has_character_flag = GER_inner_circle_economy_2_slot
-								has_character_flag = GER_inner_circle_economy_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_albert_speer = { has_character_flag = inner_circle_ascended }
-						}
-						GER_albert_speer = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_albert_speer = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_economy_3_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_economy_3_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_economy_1_slot
+									has_character_flag = GER_inner_circle_economy_2_slot
+									has_character_flag = GER_inner_circle_economy_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_albert_speer = { has_character_flag = inner_circle_ascended }
+							}
+							GER_albert_speer = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_albert_speer = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_economy_3_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_economy_3_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_3_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_3_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_3_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_3_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 
 			inner_circle_economy_4_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_economy_1_slot
-								has_character_flag = GER_inner_circle_economy_2_slot
-								has_character_flag = GER_inner_circle_economy_3_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_hjalmar_schacht = { has_character_flag = inner_circle_ascended }
-						}
-						GER_hjalmar_schacht = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_hjalmar_schacht = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_economy_4_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_economy_4_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_economy_1_slot
+									has_character_flag = GER_inner_circle_economy_2_slot
+									has_character_flag = GER_inner_circle_economy_3_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_hjalmar_schacht = { has_character_flag = inner_circle_ascended }
+							}
+							GER_hjalmar_schacht = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_hjalmar_schacht = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_economy_4_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_economy_4_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
-			inner_circle_economy_4_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_4_slot
+			inner_circle_economy_4_bribe_box_alt_click = {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
-			inner_circle_economy_4_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_4_slot
+			inner_circle_economy_4_curb_box_shift_click = {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_4_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_economy_4_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_economy_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_economy_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 
 			#LABOUR CLICKS
 			inner_circle_labour_1_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_labour_2_slot
-								has_character_flag = GER_inner_circle_labour_3_slot
-								has_character_flag = GER_inner_circle_labour_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_konstantin_hierl = { has_character_flag = inner_circle_ascended }
-						}
-						GER_konstantin_hierl = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_konstantin_hierl = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_labour_1_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_labour_1_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_labour_2_slot
+									has_character_flag = GER_inner_circle_labour_3_slot
+									has_character_flag = GER_inner_circle_labour_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_konstantin_hierl = { has_character_flag = inner_circle_ascended }
+							}
+							GER_konstantin_hierl = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_konstantin_hierl = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_labour_1_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_labour_1_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_1_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_1_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_1_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_1_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_2_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_labour_1_slot
-								has_character_flag = GER_inner_circle_labour_3_slot
-								has_character_flag = GER_inner_circle_labour_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_robert_ley = { has_character_flag = inner_circle_ascended }
-						}
-						GER_robert_ley = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_robert_ley = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_labour_2_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_labour_2_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_labour_1_slot
+									has_character_flag = GER_inner_circle_labour_3_slot
+									has_character_flag = GER_inner_circle_labour_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_robert_ley = { has_character_flag = inner_circle_ascended }
+							}
+							GER_robert_ley = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_robert_ley = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_labour_2_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_labour_2_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_2_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_2_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_2_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_2_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_3_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_labour_1_slot
-								has_character_flag = GER_inner_circle_labour_2_slot
-								has_character_flag = GER_inner_circle_labour_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_adolf_huhnlein = { has_character_flag = inner_circle_ascended }
-						}
-						GER_adolf_huhnlein = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_adolf_huhnlein = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_labour_3_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_labour_3_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_labour_1_slot
+									has_character_flag = GER_inner_circle_labour_2_slot
+									has_character_flag = GER_inner_circle_labour_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_adolf_huhnlein = { has_character_flag = inner_circle_ascended }
+							}
+							GER_adolf_huhnlein = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_adolf_huhnlein = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_labour_3_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_labour_3_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_3_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_3_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_3_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_3_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_4_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_labour_1_slot
-								has_character_flag = GER_inner_circle_labour_2_slot
-								has_character_flag = GER_inner_circle_labour_3_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_fritz_sauckel = { has_character_flag = inner_circle_ascended }
-						}
-						GER_fritz_sauckel = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_fritz_sauckel = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_labour_4_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_labour_4_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_labour_1_slot
+									has_character_flag = GER_inner_circle_labour_2_slot
+									has_character_flag = GER_inner_circle_labour_3_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_fritz_sauckel = { has_character_flag = inner_circle_ascended }
+							}
+							GER_fritz_sauckel = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_fritz_sauckel = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_labour_4_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_labour_4_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_4_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_4_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_4_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_labour_4_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_labour_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_labour_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			#Admin
 			inner_circle_administration_1_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_administration_2_slot
-								has_character_flag = GER_inner_circle_administration_3_slot
-								has_character_flag = GER_inner_circle_administration_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_rudolf_hess = { has_character_flag = inner_circle_ascended }
-						}
-						GER_rudolf_hess = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_rudolf_hess = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_administration_1_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_administration_1_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_administration_2_slot
+									has_character_flag = GER_inner_circle_administration_3_slot
+									has_character_flag = GER_inner_circle_administration_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_rudolf_hess = { has_character_flag = inner_circle_ascended }
+							}
+							GER_rudolf_hess = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_rudolf_hess = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_administration_1_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_administration_1_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_1_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_1_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_1_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_1_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_2_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_administration_1_slot
-								has_character_flag = GER_inner_circle_administration_3_slot
-								has_character_flag = GER_inner_circle_administration_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_walter_buch = { has_character_flag = inner_circle_ascended }
-						}
-						GER_walter_buch = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_walter_buch = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_administration_2_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_administration_2_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_administration_1_slot
+									has_character_flag = GER_inner_circle_administration_3_slot
+									has_character_flag = GER_inner_circle_administration_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_walter_buch = { has_character_flag = inner_circle_ascended }
+							}
+							GER_walter_buch = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_walter_buch = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_administration_2_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_administration_2_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_2_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_2_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_2_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_2_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_3_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_administration_1_slot
-								has_character_flag = GER_inner_circle_administration_2_slot
-								has_character_flag = GER_inner_circle_administration_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_martin_bormann = { has_character_flag = inner_circle_ascended }
-						}
-						GER_martin_bormann = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_martin_bormann = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_administration_3_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_administration_3_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_administration_1_slot
+									has_character_flag = GER_inner_circle_administration_2_slot
+									has_character_flag = GER_inner_circle_administration_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_martin_bormann = { has_character_flag = inner_circle_ascended }
+							}
+							GER_martin_bormann = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_martin_bormann = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_administration_3_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_administration_3_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_3_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_3_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_3_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_3_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_4_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_administration_1_slot
-								has_character_flag = GER_inner_circle_administration_2_slot
-								has_character_flag = GER_inner_circle_administration_3_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_hans_lammers = { has_character_flag = inner_circle_ascended }
-						}
-						GER_hans_lammers = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_hans_lammers = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_administration_4_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_administration_4_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_administration_1_slot
+									has_character_flag = GER_inner_circle_administration_2_slot
+									has_character_flag = GER_inner_circle_administration_3_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_hans_lammers = { has_character_flag = inner_circle_ascended }
+							}
+							GER_hans_lammers = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_hans_lammers = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_administration_4_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_administration_4_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_4_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_4_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_4_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_administration_4_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_administration_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_administration_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			#Security
 			inner_circle_security_1_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_security_2_slot
-								has_character_flag = GER_inner_circle_security_3_slot
-								has_character_flag = GER_inner_circle_security_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_viktor_lutze = { has_character_flag = inner_circle_ascended }
-						}
-						GER_viktor_lutze = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_viktor_lutze = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_security_1_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_security_1_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_security_2_slot
+									has_character_flag = GER_inner_circle_security_3_slot
+									has_character_flag = GER_inner_circle_security_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_viktor_lutze = { has_character_flag = inner_circle_ascended }
+							}
+							GER_viktor_lutze = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_viktor_lutze = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_security_1_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_security_1_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_1_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_1_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_1_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_1_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_2_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_security_1_slot
-								has_character_flag = GER_inner_circle_security_3_slot
-								has_character_flag = GER_inner_circle_security_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_heinrich_himmler = { has_character_flag = inner_circle_ascended }
-						}
-						GER_heinrich_himmler = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_heinrich_himmler = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_security_2_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_security_2_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_security_1_slot
+									has_character_flag = GER_inner_circle_security_3_slot
+									has_character_flag = GER_inner_circle_security_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_heinrich_himmler = { has_character_flag = inner_circle_ascended }
+							}
+							GER_heinrich_himmler = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_heinrich_himmler = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_security_2_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_security_2_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_2_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_2_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_2_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_2_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_3_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_security_1_slot
-								has_character_flag = GER_inner_circle_security_2_slot
-								has_character_flag = GER_inner_circle_security_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_reinhard_heydrich = { has_character_flag = inner_circle_ascended }
-						}
-						GER_reinhard_heydrich = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_reinhard_heydrich = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_security_3_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_security_3_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_security_1_slot
+									has_character_flag = GER_inner_circle_security_2_slot
+									has_character_flag = GER_inner_circle_security_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_reinhard_heydrich = { has_character_flag = inner_circle_ascended }
+							}
+							GER_reinhard_heydrich = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_reinhard_heydrich = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_security_3_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_security_3_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_3_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_3_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_3_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_3_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_4_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_security_1_slot
-								has_character_flag = GER_inner_circle_security_2_slot
-								has_character_flag = GER_inner_circle_security_3_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_kurt_daluege = { has_character_flag = inner_circle_ascended }
-						}
-						GER_kurt_daluege = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_kurt_daluege = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_security_4_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_security_4_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_security_1_slot
+									has_character_flag = GER_inner_circle_security_2_slot
+									has_character_flag = GER_inner_circle_security_3_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_kurt_daluege = { has_character_flag = inner_circle_ascended }
+							}
+							GER_kurt_daluege = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_kurt_daluege = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_security_4_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_security_4_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_4_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_4_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_4_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_security_4_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_security_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_security_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 
 			#PROPAGANDA
 			inner_circle_propaganda_1_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_propaganda_2_slot
-								has_character_flag = GER_inner_circle_propaganda_3_slot
-								has_character_flag = GER_inner_circle_propaganda_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_max_amann = { has_character_flag = inner_circle_ascended }
-						}
-						GER_max_amann = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_max_amann = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_propaganda_1_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_1_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_max_amann = { has_character_flag = inner_circle_ascended }
+							}
+							GER_max_amann = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_max_amann = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_propaganda_1_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_propaganda_1_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_1_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_1_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_1_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_1_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_1_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_2_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_propaganda_1_slot
-								has_character_flag = GER_inner_circle_propaganda_3_slot
-								has_character_flag = GER_inner_circle_propaganda_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_joseph_goebbels = { has_character_flag = inner_circle_ascended }
-						}
-						GER_joseph_goebbels = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_joseph_goebbels = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_propaganda_2_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_2_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_joseph_goebbels = { has_character_flag = inner_circle_ascended }
+							}
+							GER_joseph_goebbels = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_joseph_goebbels = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_propaganda_2_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_propaganda_2_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_2_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_2_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_2_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_2_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_2_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_3_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_propaganda_1_slot
-								has_character_flag = GER_inner_circle_propaganda_2_slot
-								has_character_flag = GER_inner_circle_propaganda_4_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_otto_dietrich = { has_character_flag = inner_circle_ascended }
-						}
-						GER_otto_dietrich = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_otto_dietrich = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_propaganda_3_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_3_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_otto_dietrich = { has_character_flag = inner_circle_ascended }
+							}
+							GER_otto_dietrich = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_otto_dietrich = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_propaganda_3_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_propaganda_3_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_3_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_3_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_3_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_3_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_3_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_4_frame_click = {
-				GER = {
-					every_character = {
-						limit = { 
-							OR = {
-								has_character_flag = GER_inner_circle_propaganda_1_slot
-								has_character_flag = GER_inner_circle_propaganda_2_slot
-								has_character_flag = GER_inner_circle_propaganda_3_slot
-							} 
-							has_character_flag = inner_circle_ascended
-						} 
-						clr_character_flag = inner_circle_ascended
-						add_to_variable = { inner_circle_loyalty = -25 }
-					}
-					if = {
-						limit = {	
-							GER_julius_streicher = { has_character_flag = inner_circle_ascended }
-						}
-						GER_julius_streicher = {
-							clr_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = -25 }
-						}
-					}
-					else = {	
-						GER_julius_streicher = {
-							set_character_flag = inner_circle_ascended
-							add_to_variable = { inner_circle_loyalty = 25 }
-						}
-					}
-					
-				}
-				calculate_inner_circle_category_values = yes
-				calculate_inner_circle_character_portions = yes
-				GER_calculate_category_effects = yes
-			}
-			inner_circle_propaganda_4_bribe_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+				if = { limit = { ROOT = { original_tag = GER } }
 					GER = {
 						every_character = {
 							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_4_slot
-							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+								OR = {
+									has_character_flag = GER_inner_circle_propaganda_1_slot
+									has_character_flag = GER_inner_circle_propaganda_2_slot
+									has_character_flag = GER_inner_circle_propaganda_3_slot
+								} 
+								has_character_flag = inner_circle_ascended
+							} 
+							clr_character_flag = inner_circle_ascended
+							add_to_variable = { inner_circle_loyalty = -25 }
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
+						if = {
+							limit = {	
+								GER_julius_streicher = { has_character_flag = inner_circle_ascended }
+							}
+							GER_julius_streicher = {
+								clr_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = -25 }
+							}
+						}
+						else = {	
+							GER_julius_streicher = {
+								set_character_flag = inner_circle_ascended
+								add_to_variable = { inner_circle_loyalty = 25 }
+							}
+						}
+						
+					}
+					calculate_inner_circle_category_values = yes
+					calculate_inner_circle_character_portions = yes
+					GER_calculate_category_effects = yes
+				}
+			}
+			inner_circle_propaganda_4_bribe_box_click= {
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							}
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
+						}
 					}
 				}
 			}
 			inner_circle_propaganda_4_bribe_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_GAIN }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_4_bribe_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
+								add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_GAIN }
-							add_to_variable = { inner_circle_power = @LOW_POWER_GAIN }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_4_curb_box_shift_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_HIGH_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @HIGH_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @HIGH_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_HIGH_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_4_curb_box_alt_click= {
-				if = { limit = { is_debug = yes }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { is_debug = yes }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
 			inner_circle_propaganda_4_curb_box_click= {
-				if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
-					GER = {
-						every_character = {
-							limit = { 
-								has_character_flag = GER_inner_circle_propaganda_4_slot
+				if = { limit = { ROOT = { original_tag = GER } }
+					if = { limit = { GER = { has_political_power > @BRIBE_PP_COST } }
+						GER = {
+							every_character = {
+								limit = { 
+									has_character_flag = GER_inner_circle_propaganda_4_slot
+								}
+								add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
+								add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
 							}
-							add_to_variable = { inner_circle_loyalty = @LOW_LOYALTY_LOSS }
-							add_to_variable = { inner_circle_power = @LOW_POWER_LOSS }
+							add_political_power = @NEGATIVE_BRIBE_PP_COST
+							calculate_inner_circle_category_values = yes
+							calculate_inner_circle_character_portions = yes
+							GER_calculate_category_effects = yes
 						}
-						add_political_power = @NEGATIVE_BRIBE_PP_COST
-						calculate_inner_circle_category_values = yes
-						calculate_inner_circle_character_portions = yes
-						GER_calculate_category_effects = yes
 					}
 				}
 			}
