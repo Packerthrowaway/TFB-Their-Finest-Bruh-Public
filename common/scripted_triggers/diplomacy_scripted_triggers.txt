@@ -126,7 +126,12 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 				NOT = { has_dlc = "Trial of Allegiance" }
 				NOT = { original_tag = CHL }
 			}
-			NOT = { original_tag = SOV }
+			OR = {
+				NOT = { original_tag = SOV }
+				FROM = {
+					SOV_is_soviet_republic_tag_strict = no
+				}
+			}
 		}
 		always = yes
 	}
@@ -143,6 +148,7 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 				original_tag = ITA
 				original_tag = MON
 				original_tag = JAP
+				original_tag = AST
 			}
 		}
 		always = no
@@ -343,6 +349,85 @@ DIPLOMACY_OFFER_MILACC_ENABLE_TRIGGER = {
 		}
 	}
 }
+
+DIPLOMACY_REVOKE_OFFER_MILACC_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			original_tag = PHI
+			FROM = {
+				original_tag = USA
+			}
+		}
+		NOT = {
+			has_country_flag = PHI_permanent_usa_land_bases
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "Graveyard of Empires"
+			original_tag = IRQ
+			FROM = {
+				original_tag = ENG
+			}
+		}
+		NOT = {
+			has_idea = IRQ_anglo_iraqi_treaty
+		}
+	}
+}
+
+DIPLOMACY_REVOKE_OFFER_DOCKING_RIGHTS_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			original_tag = PHI
+			FROM = {
+				original_tag = USA
+			}
+		}
+		NOT = {
+			has_country_flag = PHI_permanent_usa_naval_bases
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "Graveyard of Empires"
+			original_tag = IRQ
+			FROM = {
+				original_tag = ENG
+			}
+		}
+		NOT = {
+			has_idea = IRQ_anglo_iraqi_treaty
+		}
+	}
+}
+
+DIPLOMACY_REVOKE_OFFER_AIR_BASE_ACCESS_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			original_tag = PHI
+			FROM = {
+				original_tag = USA
+			}
+		}
+		NOT = {
+			has_country_flag = PHI_permanent_usa_air_bases
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "Graveyard of Empires"
+			original_tag = IRQ
+			FROM = {
+				original_tag = ENG
+			}
+		}
+		NOT = {
+			has_idea = IRQ_anglo_iraqi_treaty
+		}
+	}
+}
+
 DIPLOMACY_DOCKING_RIGHTS_ENABLE_TRIGGER = {
 	if = {
 		limit = {
@@ -902,18 +987,18 @@ DIPLOMACY_SEND_EXP_FORCE_ENABLE_TRIGGER = {
 		}
 		always = no
 	}
-	if = {
-		limit = {
-			AND = {
-				OR = {
-					tag = KSR
-					FROM = { tag = KSR }
-				}
-				NOT = { has_war_with = JAP}
-			}
-		}
-		always = no
-	}
+	# if = {
+	# 	limit = {
+	# 		AND = {
+	# 			OR = {
+	# 				tag = KSR
+	# 				FROM = { tag = KSR }
+	# 			}
+	# 			NOT = { has_war_with = JAP}
+	# 		}
+	# 	}
+	# 	always = no
+	# }
 	if = {
 		limit = {
 			AND = {

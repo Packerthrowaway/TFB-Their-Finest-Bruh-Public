@@ -558,7 +558,10 @@ country_event = {
 		days = 30
 	}
 	
-	immediate = { set_country_flag = chamberlain_died }
+	immediate = { 
+		set_country_flag = chamberlain_died 
+		hidden_effect = { set_country_flag = winston_achievement }
+	}
 
 	option = {
 		name = britain.10.a
@@ -579,6 +582,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = britain.10.b
 		kill_country_leader = yes
@@ -846,7 +850,7 @@ country_event = {
 	trigger = {
 		tag = ENG
 		date > 1936.1.19
-		has_start_date < 1936.01.02
+		has_start_date < 1936.01.09
 	}	
 
 	fire_only_once = yes

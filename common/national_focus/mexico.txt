@@ -1236,7 +1236,11 @@ focus_tree = {
 				}
 			}
 			else = {
-				create_faction = MEX_focus_community_of_nations
+				create_faction_from_template = {
+					template = faction_template_allies
+					name = MEX_focus_community_of_nations
+					icon = GFX_faction_logo_generic_2
+				}
 				ENG = {
 					country_event = generic.5
 				}
@@ -1862,7 +1866,7 @@ focus_tree = {
 				has_war_with = USA
 			}
 			USA = {
-				is_in_faction = yes
+				is_in_faction_with = ENG
 			}
 		}
 
@@ -4230,10 +4234,16 @@ focus_tree = {
 				limit = {
 					has_completed_focus = MEX_focus_crusade_against_atheism
 				}
-				create_faction = faction_mexico_synarchist_pact
+				create_faction_from_template = {
+					template = faction_template_hipanic_alliance_faction
+					name = faction_mexico_synarchist_pact
+				}
 			}
 			else = {
-				create_faction = faction_mexico_hispanic_alliance
+				create_faction_from_template = {
+					template = faction_template_hipanic_alliance_faction
+					name = faction_mexico_hispanic_alliance
+				}
 			}
 			hidden_effect = {
 				news_event = {
@@ -4498,7 +4508,11 @@ focus_tree = {
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
 			
-			create_faction = faction_mexico_bolivarian_alliance
+			create_faction_from_template = {
+				template = faction_template_pan_american
+				name = faction_mexico_bolivarian_alliance
+				icon = GFX_faction_logo_generic_14
+			}
 
 			hidden_effect = {
 				news_event = {
@@ -6319,7 +6333,7 @@ focus_tree = {
 				bonus = 0.5
 				uses = 1
 				category = dd_tech
-				category = cl_tech
+				category = ca_tech
 			}
 		}
 	}
@@ -6376,6 +6390,16 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 1
 				category = naval_doctrine
+			}
+			add_mastery_bonus = {
+				name = MEX_focus_blue_water_navy
+				bonus = 0.2
+				days = 360
+				grand_doctrine = new_fleet_in_being
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_fleet_in_being
 			}
 			add_tech_bonus = {
 				name = tooltip_capital_ships
@@ -6434,6 +6458,16 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 1
 				category = naval_doctrine
+			}
+			add_mastery_bonus = {
+				name = MEX_focus_raiding_navy
+				bonus = 0.2
+				days = 360
+				grand_doctrine = new_convoy_raiding
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_convoy_raiding
 			}
 			add_tech_bonus = {
 				name = ss_tech

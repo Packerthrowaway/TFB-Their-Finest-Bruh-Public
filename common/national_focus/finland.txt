@@ -2247,7 +2247,11 @@ focus_tree = {
 		search_filters = {}
 
 		completion_reward = {
-			create_faction = FIN_northern_defense_front_faction
+			create_faction_from_template = {
+				template = faction_template_NORDIC_alliance_democratic
+				name = FIN_northern_defense_front_faction
+				icon = GFX_faction_logo_generic_8
+			}
 			complete_national_focus = NORDIC_form_joint_alliance
 			#Just for tooltip purposes (more compact tooltip)
 			every_other_country = {
@@ -5541,7 +5545,11 @@ focus_tree = {
 		search_filters = {}
 
 		completion_reward = {
-			create_faction = FIN_northern_defense_front_faction
+			create_faction_from_template = {
+				template = faction_template_NORDIC_alliance_democratic
+				name = FIN_northern_defense_front_faction
+				icon = GFX_faction_logo_generic_8
+			}
 			IF = {
 				limit = { has_dlc = "Arms Against Tyranny" } 
 				complete_national_focus = NORDIC_form_joint_alliance
@@ -6417,6 +6425,7 @@ focus_tree = {
 			army_experience = 50
 			add_command_power = 25
 
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_doctrine_cost_reduction = {
 				name = FIN_german_military_advisors
 				cost_reduction = 0.25
@@ -6425,7 +6434,12 @@ focus_tree = {
 				category = air_doctrine
 				category = naval_doctrine
 			}
-
+			add_mastery_bonus = {
+				name = FIN_german_military_advisors
+				bonus = 0.20
+				days = 360
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = available_military_high_command
 			show_ideas_tooltip = GER_nikolaus_von_falkenhorst
 		}
@@ -6629,7 +6643,16 @@ focus_tree = {
 				category = air_doctrine
 				category = naval_doctrine
 			}
-
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_mastery_bonus = {
+				name = FIN_modernize_the_army
+				bonus = 0.20
+				days = 360
+			}
+			add_mastery = {
+				amount = 50
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			army_experience = 50
 			air_experience = 50
 			navy_experience = 50
@@ -6736,15 +6759,15 @@ focus_tree = {
 					type = annex_everything
 				}
 			}
-			if = {
-				limit = {
-					KSR = { exists = yes }
-				}
-				declare_war_on = {
-					target = KSR
-					type = annex_everything
-				}
-			}
+			# if = {
+			# 	limit = {
+			# 		KSR = { exists = yes }
+			# 	}
+			# 	declare_war_on = {
+			# 		target = KSR
+			# 		type = annex_everything
+			# 	}
+			# }
 
 			if = {
 				limit = {
@@ -6875,9 +6898,8 @@ focus_tree = {
 				NOT = { country_exists = EST }
 				is_in_faction_with = EST
 				has_subject = EST
-				any_state = {
+				any_controlled_state = {
 					is_core_of = EST
-					is_controlled_by = ROOT
 				}
 			}
 			OR = {
@@ -7954,6 +7976,11 @@ focus_tree = {
 				uses = 1
 				category = naval_doctrine
 			}
+			add_mastery_bonus = {
+				name = FIN_military_research
+				bonus = 0.20
+				days = 360
+			}
 
 			add_tech_bonus = {
 				name = FIN_military_research
@@ -8300,7 +8327,11 @@ focus_tree = {
 		search_filters = {}
 
 		completion_reward = {
-			create_faction = FIN_finnish_supremacy_league
+			create_faction_from_template = {
+				template = faction_template_european_dominance
+				name = FIN_finnish_supremacy_league
+				icon = GFX_faction_logo_generic_8
+			}
 			custom_effect_tooltip = FIN_finnish_supremacy_in_the_north_invite_to_faction_tt
 
 			if = {
@@ -13188,6 +13219,10 @@ focus_tree = {
 				uses = 1
 				category = air_doctrine
 			}
+			add_mastery = {
+				amount = 100
+				folder = air
+			}
 
 			add_ace = {
 				name = Jorma
@@ -13232,6 +13267,12 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 2
 				category = air_doctrine
+			}
+			add_mastery_bonus = {
+				name = FIN_expand_air_force_academy
+				bonus = 0.20
+				days = 360
+				folder = air
 			}
 
 			#Air Bases in VAASA state (Kauhava and Tikkakoski)
@@ -15151,7 +15192,7 @@ focus_tree = {
 					bonus = 0.5
 					uses = 2
 					category = dd_tech
-					category = cl_tech
+					category = ca_tech
 				}
 			}
 

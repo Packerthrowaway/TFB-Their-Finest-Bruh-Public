@@ -109,15 +109,15 @@ weather_extreme_hot = { # on Province
 	army_attack_factor = -0.1
 }
 weather_ground_snow_medium = { # on Province
-	army_speed_factor = -0.25
 	army_attack_factor = -0.2
+	army_speed_factor = -0.25
 	local_org_regain = -0.05
 	supply_consumption_factor = 0.1
 }
 weather_ground_snow_high = { # on Province
+	army_attack_factor = -0.4
 	army_speed_factor = -0.4
 	local_org_regain = -0.1
-	army_attack_factor = -0.4
 	naval_retreat_speed = 0.1
 	supply_consumption_factor = 0.2
 }
@@ -693,35 +693,41 @@ FRA_carry_the_revolution_south = {
 	}
 	compliance_gain = 0.4
 }
-SOV_soviet_chinese_relations = {	
-	valid_relation_trigger = {	
-		FROM = {	
-			NOT = { has_war_with = ROOT }	
-		}	
-	}	
-	license_purchase_cost = 0 #base cost reduction	
-	ai_license_acceptance = 20 #more to AI acceptance value.	
-	license_production_speed = 0.25 #speed  increase for being a license	
-	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level	
-}	
-SOV_face_western_fascism_static = {	
-	valid_relation_trigger = {	
-		FROM = {	
-			has_war_with = ROOT	
-		}	
-	}	
-	attack_bonus_against = 0.1	
-	defense_bonus_against = 0.1	
-}	
-SOV_for_the_common_good_relation = { #For Right Oppo allies	
-	valid_relation_trigger = {	
-		FROM = {	
-			NOT = { has_war_with = ROOT }	
-		}	
-	}	
-	ai_license_acceptance = 20 #more to AI acceptance value.	
-	license_production_speed = 0.25 #speed  increase for being a license	
-	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level	
+
+SOV_soviet_chinese_relations = {
+	valid_relation_trigger = {
+		FROM = {
+			NOT = { has_war_with = ROOT }
+		}
+	}
+
+	license_purchase_cost = 0 #base cost reduction
+	ai_license_acceptance = 20 #more to AI acceptance value.
+	license_production_speed = 0.25 #speed  increase for being a license
+	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level
+}
+
+SOV_face_western_fascism_static = {
+	valid_relation_trigger = {
+		FROM = {
+			has_war_with = ROOT
+		}
+	}
+
+	attack_bonus_against = 0.1
+	defense_bonus_against = 0.1
+}
+
+SOV_for_the_common_good_relation = { #For Right Oppo allies
+	valid_relation_trigger = {
+		FROM = {
+			NOT = { has_war_with = ROOT }
+		}
+	}
+
+	ai_license_acceptance = 20 #more to AI acceptance value.
+	license_production_speed = 0.25 #speed  increase for being a license
+	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level
 }
 
 ### BBA 
@@ -767,4 +773,31 @@ CHL_from_support_chile_static_modifier = {
 	send_volunteers_tension = -0.6
 	send_volunteer_divisions_required = -0.9
 	send_volunteer_factor = 0.6
+}
+
+# This is scaled based on support ratio
+naval_general_support = {
+	max_organisation = 0.2
+	navy_max_range_factor = 0.2
+	naval_morale_factor = 0.2
+}
+
+# This is scaled based on support ratio
+naval_repair_support = {
+	naval_critical_effect_factor = -0.25
+	naval_ship_recovery_chance = 0.1
+	naval_attrition = -0.075
+}
+
+### SEA 
+
+JAP_support_ethiopia_static_modifier = {
+	send_volunteers_tension = -0.5
+	send_volunteer_divisions_required = -0.25
+	send_volunteer_factor = 0.25
+}
+
+the_great_wall = {
+	dig_in_speed_factor = 0.15
+	max_dig_in_factor = 0.1
 }

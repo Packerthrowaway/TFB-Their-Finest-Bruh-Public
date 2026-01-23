@@ -254,8 +254,11 @@ country_event = {
 		ai_chance = {
 			base = 5
 			modifier = {
-				has_government = democratic
-				factor = 0.5
+				OR = {
+					has_government = democratic
+					has_government = communism
+				}
+				factor = 0
 			}
 
 			modifier = {
@@ -3159,16 +3162,16 @@ country_event = {
 					transfer_state = 443
 				}
 			}
-			if = {
-				limit = {
-					989 = {
-						is_fully_controlled_by = RAJ
-					}
-				}
-				PAK = {
-					transfer_state = 989
-				}
-			}
+			# if = {
+			# 	limit = {
+			# 		989 = {
+			# 			is_fully_controlled_by = RAJ
+			# 		}
+			# 	}
+			# 	PAK = {
+			# 		transfer_state = 989
+			# 	}
+			# }
 		# }
 		# else = {
 		# 	# release BAN before pakistan if united bengal
@@ -3853,48 +3856,48 @@ country_event = {
 
 				}
 
-				if = {
-					limit = {
-						has_dlc = "No Step Back"
-					}
+				# if = {
+				# 	limit = {
+				# 		has_dlc = "No Step Back"
+				# 	}
 
 
-					set_technology = {
-						basic_medium_tank_chassis = 1
-						popup = no
-					}
+				# 	set_technology = {
+				# 		basic_medium_tank_chassis = 1
+				# 		popup = no
+				# 	}
 
-					set_technology = {
-						improved_medium_tank_chassis = 1
-						popup = no
-					}
+				# 	set_technology = {
+				# 		improved_medium_tank_chassis = 1
+				# 		popup = no
+				# 	}
 
-					# create_equipment_variant = {
-					#     name = "M4 Sherman"
-					#     type = medium_tank_chassis_2
-					#     parent_version = 1
-					#     modules = {
-					# 		main_armament_slot=tank_medium_cannon
-					# 		engine_type_slot=tank_gasoline_engine
-					# 		special_type_slot_1=tank_radio_3
-					# 		special_type_slot_2=stabilizer
-					# 		special_type_slot_3=sloped_armor
-					# 		turret_type_slot=tank_medium_three_man_tank_turret
-					# 		suspension_type_slot=tank_bogie_suspension
-					# 		armor_type_slot=tank_welded_armor
-					#     }
-					#     upgrades = {
-					#         tank_nsb_engine_upgrade = 5
-					#         tank_nsb_armor_upgrade = 5
-					#     }
-					# }
+				# 	# create_equipment_variant = {
+				# 	#     name = "M4 Sherman"
+				# 	#     type = medium_tank_chassis_2
+				# 	#     parent_version = 1
+				# 	#     modules = {
+				# 	# 		main_armament_slot=tank_medium_cannon
+				# 	# 		engine_type_slot=tank_gasoline_engine
+				# 	# 		special_type_slot_1=tank_radio_3
+				# 	# 		special_type_slot_2=stabilizer
+				# 	# 		special_type_slot_3=sloped_armor
+				# 	# 		turret_type_slot=tank_medium_three_man_tank_turret
+				# 	# 		suspension_type_slot=tank_bogie_suspension
+				# 	# 		armor_type_slot=tank_welded_armor
+				# 	#     }
+				# 	#     upgrades = {
+				# 	#         tank_nsb_engine_upgrade = 5
+				# 	#         tank_nsb_armor_upgrade = 5
+				# 	#     }
+				# 	# }
 
-					add_equipment_to_stockpile = {
-						type = medium_tank_chassis_2
-						amount = 120
-						variant_name = "M4 Sherman"
-					}
-				}
+				# 	add_equipment_to_stockpile = {
+				# 		type = medium_tank_chassis_2
+				# 		amount = 120
+				# 		variant_name = "M4 Sherman"
+				# 	}
+				# }
 				# else = {
 				# 	set_technology = {
 				# 		basic_medium_tank = 1
@@ -4538,10 +4541,10 @@ country_event = {
 		}
 
 		custom_effect_tooltip = RAJ_modify_south_east_asia_command_dm_tt
-		add_to_variable = { RAJ_south_east_asia_command_dm_max_dig_in_factor = 0.1 tooltip = max_dig_in_factor_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_recon_factor_while_entrenched = 0.2 tooltip = recon_factor_while_entrenched_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_army_core_defence_factor = 0.1 tooltip = army_core_defence_factor_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_army_core_attack_factor = 0.1 tooltip = army_core_attack_factor_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_max_dig_in_factor = 0.05 tooltip = max_dig_in_factor_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_recon_factor_while_entrenched = 0.05 tooltip = recon_factor_while_entrenched_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_army_core_defence_factor = 0.05 tooltip = army_core_defence_factor_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_army_core_attack_factor = 0.05 tooltip = army_core_attack_factor_tt }
 		
 		custom_effect_tooltip = generic_skip_one_line_tt
 		army_experience = 50
@@ -4567,7 +4570,7 @@ country_event = {
 		add_to_variable = { RAJ_south_east_asia_command_dm_army_attack_speed_factor = 0.1 tooltip = army_attack_speed_factor_tt }
 		add_to_variable = { RAJ_south_east_asia_command_dm_breakthrough_factor = 0.05 tooltip = breakthrough_factor_tt }
 		add_to_variable = { RAJ_south_east_asia_command_dm_coordination_bonus = 0.02 tooltip = coordination_bonus_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_max_planning_factor = 0.1 tooltip = max_planning_factor_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_max_planning_factor = 0.05 tooltip = max_planning_factor_tt }
 		
 		custom_effect_tooltip = generic_skip_one_line_tt
 		army_experience = 50
@@ -4624,10 +4627,10 @@ country_event = {
 		}
 
 		custom_effect_tooltip = RAJ_modify_south_east_asia_command_dm_tt
-		add_to_variable = { RAJ_south_east_asia_command_dm_industrial_capacity_dockyard = 0.1 tooltip = industrial_capacity_dockyard_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_navy_org_factor = 0.1 tooltip = navy_org_factor_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_naval_coordination = 0.1 tooltip = naval_coordination_tt }
-		add_to_variable = { RAJ_south_east_asia_command_dm_naval_morale_factor = 0.15 tooltip = naval_morale_factor_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_navy_org_factor = 0.05 tooltip = navy_org_factor_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_naval_coordination = 0.05 tooltip = naval_coordination_tt }
+		add_to_variable = { RAJ_south_east_asia_command_dm_naval_morale_factor = 0.1 tooltip = naval_morale_factor_tt }
 		
 		custom_effect_tooltip = generic_skip_one_line_tt
 		navy_experience = 50

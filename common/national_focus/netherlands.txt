@@ -2684,6 +2684,16 @@ focus_tree = {
 				uses = 2
 				category = land_doctrine
 			}
+			add_mastery_bonus = {
+				name = HOL_lessons_from_the_last_war
+				bonus = 0.2
+				days = 360
+				folder = land
+			}
+			add_mastery = {
+				amount = 25
+				folder = land
+			}
 		}
 	}
 
@@ -2906,6 +2916,10 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			add_mastery = {
+				amount = 50
+				folder = air
+			}
 		}
 	}
 
@@ -3046,6 +3060,16 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 2
 				category = air_doctrine
+			}
+			add_mastery_bonus = {
+				name = HOL_aviatic_aspirations
+				bonus = 0.2
+				days = 360
+				folder = air
+			}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 			HOL_domestic_jet_engine_designs_level_up = yes
 		}
@@ -3205,7 +3229,6 @@ focus_tree = {
 				bonus = 1
 				#ahead_reduction = 2
 				uses = 2
-				category = cl_tech
 				category = ca_tech
 			}
 		}
@@ -3330,6 +3353,16 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 2
 				category = naval_doctrine
+			}
+			add_mastery_bonus = {
+				name = HOL_naval_heritage
+				bonus = 0.2
+				days = 360
+				folder = naval
+			}
+			add_mastery = {
+				amount = 50
+				folder = naval
 			}
 			add_ideas = HOL_naval_heritage
 		}
@@ -5865,6 +5898,16 @@ focus_tree = {
 				uses = 1
 				category = submarine_doctrine
 			}
+			add_mastery_bonus = {
+				name = HOL_naval_heritage
+				bonus = 0.2
+				days = 360
+				track = submarines
+			}
+			add_mastery = {
+				amount = 50
+				track = submarines
+			}
 			random_unit_leader = {
 				limit = {
 					has_id = 981
@@ -6188,8 +6231,14 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+
 			set_rule = { can_create_factions = yes }
-			create_faction = HOL_benelux
+			create_faction_from_template = {
+				template = faction_template_defensive_democratic
+				name = HOL_benelux
+				icon = GFX_faction_logo_generic_13
+			}
+
 			custom_effect_tooltip = generic_skip_one_line_tt
 			BEL = {
 				custom_effect_tooltip = HOL_form_the_benelux_bel_tt
@@ -6281,11 +6330,19 @@ focus_tree = {
 
 				custom_effect_tooltip = generic_skip_one_line_tt
 
-				create_faction = BEL_european_union
+				create_faction_from_template = {
+					template = faction_template_european_unity
+					name = BEL_european_union
+					icon = GFX_faction_logo_eu
+				}
 			}
 
 			ELSE = {
-				create_faction = BEL_european_union
+				create_faction_from_template = {
+					template = faction_template_european_unity
+					name = BEL_european_union
+					icon = GFX_faction_logo_eu
+				}
 			}
 
 			set_cosmetic_tag = european_union_leader

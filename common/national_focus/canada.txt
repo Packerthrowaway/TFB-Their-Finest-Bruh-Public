@@ -987,7 +987,7 @@ focus_tree = {
 		id = CAN_victory_aircraft_limited
 		icon = GFX_goal_generic_production2
 		prerequisite = { focus = CAN_department_of_munitions_and_supply }
-		x = -2
+		x = -3
 		y = 3
 		relative_position_id = CAN_defence_of_canada_regulations
 
@@ -1134,6 +1134,10 @@ focus_tree = {
 					level = 3
 					instant_build = yes
 				}
+				add_resource = {
+					type = coal
+					amount = 80
+				}	
 			}
 		}
 
@@ -1153,6 +1157,10 @@ focus_tree = {
 					level = 3
 					instant_build = yes
 				}
+				add_resource = {
+					type = coal
+					amount = 80
+				}	
 				set_state_flag = CAN_alberta_coal_towns_IC
 			}
 		}
@@ -1531,7 +1539,7 @@ focus_tree = {
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = CAN_john_inglis_and_company }
 		prerequisite = { focus = CAN_victory_aircraft_limited }
-		x = -2
+		x = -3
 		y = 5
 		relative_position_id = CAN_defence_of_canada_regulations
 
@@ -2154,6 +2162,16 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			add_mastery_bonus = {
+				name = CAN_red_deer_training_camp
+				bonus = 0.2
+				days = 360
+				folder = land
+			}
+			add_mastery = {
+				amount = 25
+				folder = land
+			}
 		}
 	}
 
@@ -2187,6 +2205,16 @@ focus_tree = {
 
 		completion_reward = {
 			army_experience = 30
+			add_mastery_bonus = {
+				name = CAN_over_the_edge
+				bonus = 0.2
+				days = 360
+				track = infantry
+			}
+			add_mastery = {
+				amount = 25
+				track = infantry
+			}
 			add_tech_bonus = {
 				name = CAN_over_the_edge
 				bonus = 0.40
@@ -2229,11 +2257,21 @@ focus_tree = {
 
 		completion_reward = {
 			army_experience = 30
-			add_doctrine_cost_reduction = {
+			# add_doctrine_cost_reduction = {
+			# 	name = CAN_steel_not_blood
+			# 	cost_reduction = 0.40
+			# 	uses = 1
+			# 	category = land_doctrine
+			# }
+			add_mastery_bonus = {
 				name = CAN_steel_not_blood
-				cost_reduction = 0.40
-				uses = 1
-				category = land_doctrine
+				bonus = 0.2
+				days = 360
+				track = armor
+			}
+			add_mastery = {
+				amount = 25
+				track = armor
 			}
 			add_tech_bonus = {
 				name = CAN_steel_not_blood
@@ -3421,6 +3459,16 @@ focus_tree = {
 				uses = 2
 				category = air_doctrine
 			}
+			add_mastery_bonus = {
+				name = CAN_commonwealth_air_training_plan
+				bonus = 0.2
+				days = 360
+				folder = air
+			}
+			add_mastery = {
+				amount = 25
+				folder = air
+			}
 		}
 
 		completion_reward = {
@@ -3764,7 +3812,7 @@ focus_tree = {
 				bonus = 1
 				ahead_reduction = 0.75
 				uses = 1
-				category = cl_tech
+				category = ca_tech
 			}
 			IF = {
 				limit = {
@@ -3869,11 +3917,43 @@ focus_tree = {
 				specialization = specialization_naval
 				value = 0.15
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = CAN_custom_escort_bonus
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = {
+					has_doctrine = convoy_escort
+				}
+				add_mastery_bonus = {
+					name = CAN_escort_fleet
+					bonus = 0.2
+					days = 360
+					sub_doctrine = convoy_escort
+				}
+				add_mastery = {
+					amount = 100
+					sub_doctrine = convoy_escort
+				}
+			}
+			else = {
+				add_mastery_bonus = {
+					name = CAN_escort_fleet
+					bonus = 0.1
+					days = 180
+					track = screens
+				}
+				add_mastery = {
+					amount = 50
+					track = screens
+				}
+			}
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_doctrine_cost_reduction = {
 				name = CAN_escort_fleet
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
-				category = convoy_defense_tree
+				category = naval_doctrine
 			}
 		}
 	}
@@ -3912,11 +3992,17 @@ focus_tree = {
 				specialization = specialization_naval
 				value = 0.15
 			}
+			add_mastery_bonus = {
+				name = CAN_fleet_in_being
+				bonus = 0.2
+				days = 180
+				grand_doctrine = new_fleet_in_being
+			}
 			add_doctrine_cost_reduction = {
 				name = CAN_fleet_in_being
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
-				category = cat_fleet_in_being
+				category = naval_doctrine
 			}			
 		}
 	}

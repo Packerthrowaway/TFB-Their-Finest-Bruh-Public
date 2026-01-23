@@ -24,7 +24,6 @@ set_technology = {
 	early_fighter = 1
 }
 
-
 set_stability = 0.6
 set_war_support = 0.1
 
@@ -41,8 +40,8 @@ set_technology = {
 	tech_support = 1		
 	tech_engineers = 1
 	tech_recon = 1
-	trench_warfare = 1
-	fleet_in_being = 1
+	#trench_warfare = 1
+	#fleet_in_being = 1
 	CAS1 = 1
 	early_fighter = 1
 	fuel_silos = 1
@@ -50,6 +49,9 @@ set_technology = {
 	support_weapons = 1
 	basic_train = 1
 }
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
 
 recruit_character = RAJ_lord_linlithgow
 recruit_character = RAJ_v_d_savarkar
@@ -170,7 +172,6 @@ if = {
 		transport = 1
 	}
 }
-
 
 if = {
 	limit = {
@@ -424,7 +425,7 @@ if = {
 #}
 
 every_owned_state = {
-	limit = { NOT = { state = 992 } } #province of Áden
+	limit = { NOT = { state = 992 } } #province of ï¿½den
 	ROOT = {
 		add_to_array = { array = owned_states_at_game_start value = PREV }
 	}
@@ -587,9 +588,9 @@ if = {
 
 
 	#South East Asia Command (& Gentleman Officers which is a precursor DM)
-	set_variable = { RAJ_south_east_asia_command_dm_org_loss_when_moving = -0.1 }
+	set_variable = { RAJ_south_east_asia_command_dm_org_loss_when_moving = -0.05 }
 	set_variable = { RAJ_south_east_asia_command_dm_army_org_regain = 0.05 }
-	set_variable = { RAJ_south_east_asia_command_dm_experience_gain_army_factor = 0.15 }
+	set_variable = { RAJ_south_east_asia_command_dm_experience_gain_army_factor = 0.05 }
 	set_variable = { RAJ_south_east_asia_command_dm_max_command_power = 0 }
 	set_variable = { RAJ_south_east_asia_command_dm_command_power_gain = 0 }
 	set_variable = { RAJ_south_east_asia_command_dm_special_forces_cap = 0 }

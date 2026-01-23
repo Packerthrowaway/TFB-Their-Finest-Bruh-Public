@@ -646,9 +646,8 @@ focus_tree = {
 			factor = 1
 		}
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 
@@ -773,7 +772,7 @@ focus_tree = {
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 
 		available_if_capitulated = yes
-				ai_will_do = {
+		ai_will_do = {
 			factor = 1
 		}
 		ai_will_do = {
@@ -790,22 +789,26 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = sub_op_bonus
-				bonus = 0.5
-				uses = 2
-				technology = convoy_interdiction_ti
-				technology = unrestricted_submarine_warfare
-				technology = wolfpacks
-				technology = advanced_submarine_warfare
-				technology = combined_operations_raiding
+
+			add_mastery_bonus = {
+				name = flexible_navy
+				bonus = 0.1
+				days = 240
+				grand_doctrine = new_convoy_raiding
 			}
-			add_tech_bonus = {
-				name = ships_bonus
-				bonus = 0.5
-				uses = 1
-				category = naval_equipment
-			}	
+			add_mastery_bonus = {
+				name = flexible_navy
+				bonus = 0.1
+				days = 240
+				grand_doctrine = new_base_strike
+			}
+
+			add_doctrine_cost_reduction = {
+				name = flexible_navy
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
+			}
 		}
 	}
 
@@ -821,6 +824,8 @@ focus_tree = {
 		search_filters = {   FOCUS_FILTER_RESEARCH }
 
 		available_if_capitulated = yes
+
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -833,19 +838,27 @@ focus_tree = {
 				}
 			}
 		}
+		
 
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = fleet_in_being_bonus
-				cost_reduction = 0.5
-				uses = 2
-				category = fleet_in_being_tree
+
+			add_mastery_bonus = {
+				name = large_navy
+				bonus = 0.1
+				days = 240
+				grand_doctrine = new_fleet_in_being
 			}
-			add_tech_bonus = {
-				name = ships_bonus
-				bonus = 0.5
-				uses = 1
-				category = naval_equipment
+			add_mastery_bonus = {
+				name = large_navy
+				bonus = 0.1
+				days = 240
+				grand_doctrine = new_base_strike
+			}
+			add_doctrine_cost_reduction = {
+				name = large_navy
+				cost_reduction = 0.25
+				uses = 2
+				category = naval_doctrine
 			}
 		}
 	}
@@ -911,7 +924,6 @@ focus_tree = {
 				name = cr_bonus
 				bonus = 0.5
 				uses = 1
-				category = cl_tech
 				category = ca_tech
 			}
 		}

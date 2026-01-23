@@ -4693,6 +4693,9 @@ ideas = {
 				land_doctrine_cost_factor = 0.2
 				naval_doctrine_cost_factor = 0.2
 				air_doctrine_cost_factor = 0.2
+				land_mastery_gain_factor = -0.1
+				air_mastery_gain_factor = -0.1
+				naval_mastery_gain_factor = -0.1
 				promote_cost_factor = 5
 				drift_defence_factor = 0.1
 				army_core_defence_factor = 0.03
@@ -4719,6 +4722,9 @@ ideas = {
 				land_doctrine_cost_factor = 0.2
 				naval_doctrine_cost_factor = 0.2
 				air_doctrine_cost_factor = 0.2
+				land_mastery_gain_factor = -0.1
+				air_mastery_gain_factor = -0.1
+				naval_mastery_gain_factor = -0.1
 				promote_cost_factor = 5
 				drift_defence_factor = 0.1
 				army_core_defence_factor = 0.03
@@ -4742,6 +4748,9 @@ ideas = {
 				land_doctrine_cost_factor = 0.2
 				naval_doctrine_cost_factor = 0.2
 				air_doctrine_cost_factor = 0.2
+				land_mastery_gain_factor = -0.1
+				air_mastery_gain_factor = -0.1
+				naval_mastery_gain_factor = -0.1
 				promote_cost_factor = 5
 				drift_defence_factor = 0.15
 				army_core_defence_factor = 0.03
@@ -4769,6 +4778,9 @@ ideas = {
 				land_doctrine_cost_factor = 0.2
 				naval_doctrine_cost_factor = 0.2
 				air_doctrine_cost_factor = 0.2
+				land_mastery_gain_factor = -0.1
+				air_mastery_gain_factor = -0.1
+				naval_mastery_gain_factor = -0.1
 				promote_cost_factor = 5
 				drift_defence_factor = 0.15
 				army_core_defence_factor = 0.03
@@ -4795,6 +4807,9 @@ ideas = {
 				land_doctrine_cost_factor = 0.1
 				naval_doctrine_cost_factor = 0.1
 				air_doctrine_cost_factor = 0.1
+				land_mastery_gain_factor = -0.05
+				air_mastery_gain_factor = -0.05
+				naval_mastery_gain_factor = -0.05
 				promote_cost_factor = 5
 				drift_defence_factor = 0.1
 				army_core_defence_factor = 0.03
@@ -4820,6 +4835,9 @@ ideas = {
 				land_doctrine_cost_factor = 0.1
 				naval_doctrine_cost_factor = 0.1
 				air_doctrine_cost_factor = 0.1
+				land_mastery_gain_factor = -0.05
+				air_mastery_gain_factor = -0.05
+				naval_mastery_gain_factor = -0.05
 				promote_cost_factor = 5
 				drift_defence_factor = 0.1
 				army_core_defence_factor = 0.03
@@ -4844,6 +4862,9 @@ ideas = {
 				land_doctrine_cost_factor = 0.2
 				naval_doctrine_cost_factor = 0.2
 				air_doctrine_cost_factor = 0.2
+				land_mastery_gain_factor = -0.1
+				air_mastery_gain_factor = -0.1
+				naval_mastery_gain_factor = -0.1
 				promote_cost_factor = 5
 				drift_defence_factor = 0.15
 				army_core_defence_factor = 0.05
@@ -6090,11 +6111,23 @@ ideas = {
 					tag = CHI
 					NOT = { tag = MAN}
 				}
-
+				IF = {
+					limit = {
+						has_dlc = "No Compromise, No Surrender"
+						FROM = { original_tag = CHI }
+					}
+					FROM = { 
+						has_completed_focus = CHI_secure_the_soviet_border 
+						NOT = {
+							has_country_flag = SOV_accepted_Astrov
+							has_country_flag = SOV_accepted_OKMO
+						}
+					}
+				}	
 			}
 
 			available = {
-				if = {
+				IF = {
 					limit = {
 						tag = SOV
 					}
@@ -6107,13 +6140,13 @@ ideas = {
 					}
 
 				}
-				if = {
+				IF = {
 					limit = {
-						tag = CHI
+						has_dlc = "No Compromise, No Surrender" 
+						original_tag = CHI
 					}
-					has_completed_focus = CHI_hire_soviet_designer
+					has_country_flag = SOV_accepted_Morozov
 				}
-
 			}
 
 			removal_cost = -1
@@ -6128,24 +6161,28 @@ ideas = {
 			}
 		}
 
-		
+
+   ##     ####   #####  #####    ####   #    #
+  #  #   #         #    #    #  #    #  #    #
+ #    #   ####     #    #    #  #    #  #    #
+ ######       #    #    #####   #    #  #    #
+ #    #  #    #    #    #   #   #    #   #  #
+ #    #   ####     #    #    #   ####     ##
 
 
-   ##     ####   #####  #####    ####   #    # 
-  #  #   #         #    #    #  #    #  #    # 
- #    #   ####     #    #    #  #    #  #    # 
- ######       #    #    #####   #    #  #    # 
- #    #  #    #    #    #   #   #    #   #  #  
- #    #   ####     #    #    #   ####     ##   
-                                               
-		
 		SOV_astrov_design_bureau = {
 			name = astrov_design_bureau
 
 			picture = astrov_design_bureau
 
 			allowed = {
-				original_tag = SOV
+				OR = {
+					original_tag = SOV
+					AND = {
+						tag = CHI
+						has_dlc = "No Compromise, No Surrender"
+					}
+				}
 			}
 
 			visible = {
@@ -6154,18 +6191,42 @@ ideas = {
 					NOT = { has_country_flag = SOV_merge_tank_astrov_2_flag }
 					NOT = { has_country_flag = SOV_merge_tank_astrov_3_flag }
 				}
-			}
-
-			available = {
-				OR = {
-					has_completed_focus = SOV_depoliticize_industry
-					AND = {
-						has_completed_focus = SOV_tank1
-						has_completed_focus = SOV_new_corps3
+				IF = {
+					limit = {
+						has_dlc = "No Compromise, No Surrender"
+						FROM = { original_tag = CHI }
+					}
+					FROM = { 
+						has_completed_focus = CHI_secure_the_soviet_border 
+						NOT = {
+							has_country_flag = SOV_accepted_Morozov
+							has_country_flag = SOV_accepted_OKMO
+						}
 					}
 				}
 			}
-			
+			available = {
+				IF = {
+					limit = {
+						original_tag = SOV
+						OR = {
+							has_completed_focus = SOV_depoliticize_industry
+							AND = {
+								has_completed_focus = SOV_tank1
+								has_completed_focus = SOV_new_corps3
+							}
+						}
+					}
+				}
+				IF = {
+					limit = {
+						has_dlc = "No Compromise, No Surrender" 
+						original_tag = CHI
+					}
+					has_country_flag = SOV_accepted_Astrov
+				}
+			}
+
 			research_bonus = {
 				armor = 0.15
 			}
@@ -6407,24 +6468,55 @@ ideas = {
 			name = okmo
 
 			picture = okmo
-			
-			allowed = {
-				original_tag = SOV				
-			}
 
-			visible = {
-				
-			}
-			available = {
+			allowed = {
 				OR = {
-					has_completed_focus = SOV_depoliticize_industry
+					original_tag = SOV
 					AND = {
-						has_completed_focus = SOV_tank1
-						has_completed_focus = SOV_new_corps4
+						tag = CHI
+						has_dlc = "No Compromise, No Surrender"
 					}
 				}
 			}
-			
+
+			visible = {
+				IF = {
+					limit = {
+						has_dlc = "No Compromise, No Surrender"
+						FROM = { original_tag = CHI }
+					}
+					FROM = { 
+						has_completed_focus = CHI_secure_the_soviet_border 
+						NOT = {
+							has_country_flag = SOV_accepted_Morozov
+							has_country_flag = SOV_accepted_Astrov
+						}
+					}
+				}		
+			}
+
+			available = {
+				IF = {
+					limit = {
+						has_dlc = "No Compromise, No Surrender" 
+						original_tag = CHI
+					}
+					has_country_flag = SOV_accepted_OKMO
+				}
+				IF = {
+					limit = {
+						original_tag = CHI
+					}
+					OR = {
+						has_completed_focus = SOV_depoliticize_industry
+						AND = {
+							has_completed_focus = SOV_tank1
+							has_completed_focus = SOV_new_corps4
+						}
+					}
+				}
+			}
+
 			research_bonus = {
 				armor = 0.15
 			}

@@ -1911,7 +1911,11 @@ focus_tree = {
 				set_rule = {
 					can_create_factions = yes
 				}
-				create_faction = FINNO_ESTONIAN_SUPREMACY_LEAGUE
+					create_faction_from_template = {
+						template = faction_template_european_dominance
+						name = FINNO_ESTONIAN_SUPREMACY_LEAGUE
+						icon = GFX_faction_logo_generic_8
+					}
 			}
 			effect_tooltip = {
 				FIN = { custom_effect_tooltip = invite_to_faction_tt }
@@ -2258,9 +2262,8 @@ focus_tree = {
 		available = {
 			has_government = fascism
 			is_subject = no
-			any_state = {
-				is_core_of = FIN
-				is_owned_by = ROOT 
+			any_owned_state = {
+				is_core_of = FIN 
 			}
 		}
 
@@ -2315,12 +2318,12 @@ focus_tree = {
 		completion_reward = {
 			create_wargoal = {
 				type = take_state_focus
-				generator = { 143 144 }
+				generator = { 143 144 923 924 925 }
 				target = NOR
 			}
 			create_wargoal = {
 				type = take_state_focus
-				generator = { 666 38 }
+				generator = { 666 917 918 }
 				target = SWE
 			}
 		}
@@ -2355,10 +2358,42 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
-			create_wargoal = {
-				type = take_state_focus
-				generator = { 213 215 216 }
-				target = SOV
+			every_state = {
+				limit = {
+					OR = {
+						state = 147
+						state = 216
+						state = 215
+						state = 146
+					}
+					NOT = {
+						OR = {
+							is_owned_by = ROOT
+							is_claimed_by = ROOT
+						}
+					}
+				}
+				add_claim_by = ROOT
+			}
+
+			custom_effect_tooltip = CHL_skip_one_line_tt
+
+			every_other_country = {
+				limit = {
+					OR = {
+						owns_state = 147
+						owns_state = 216
+						owns_state = 215
+						owns_state = 146
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						type = take_claimed_state
+						#generator = { 213 215 216 }
+						target = PREV
+					}
+				}
 			}
 		}
 	}
@@ -2453,6 +2488,18 @@ focus_tree = {
 			}
 			if = {
 				limit = {
+					879 = { owner = { is_subject_of = ROOT } }
+				}
+				transfer_state = 879
+			}
+			if = {
+				limit = {
+					880 = { owner = { is_subject_of = ROOT } }
+				}
+				transfer_state = 880
+			}
+			if = {
+				limit = {
 					215 = { owner = { is_subject_of = ROOT } }
 				}
 				transfer_state = 215
@@ -2529,6 +2576,30 @@ focus_tree = {
 				}
 				transfer_state = 208
 			}
+			if = {
+				limit = {
+					918 = { owner = { is_subject_of = ROOT } }
+				}
+				transfer_state = 918
+			}
+			if = {
+				limit = {
+					923 = { owner = { is_subject_of = ROOT } }
+				}
+				transfer_state = 923
+			}
+			if = {
+				limit = {
+					924 = { owner = { is_subject_of = ROOT } }
+				}
+				transfer_state = 924
+			}
+			if = {
+				limit = {
+					925 = { owner = { is_subject_of = ROOT } }
+				}
+				transfer_state = 925
+			}
 			143 = {
 				add_core_of = ROOT
 			}
@@ -2581,6 +2652,18 @@ focus_tree = {
 				add_core_of = ROOT
 			}
 			208 = {
+				add_core_of = ROOT
+			}
+			918 = {
+				add_core_of = ROOT
+			}
+			923 = {
+				add_core_of = ROOT
+			}
+			924 = {
+				add_core_of = ROOT
+			}
+			925 = {
 				add_core_of = ROOT
 			}
 		}

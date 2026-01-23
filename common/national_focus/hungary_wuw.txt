@@ -1078,11 +1078,17 @@ focus_tree = {
 				add_idea = HUN_hungarian_monarchy_resored_habsburgs_otto
 			}
 
+			add_mastery_bonus = {
+				name = HUN_feldmarchall_augusts_expertise
+				bonus = 0.15
+				days = 180
+			}
+
 			add_doctrine_cost_reduction = {
 				name = HUN_feldmarchall_augusts_expertise
-				cost_reduction = 0.25
+				cost_reduction = 0.2
 				uses = 1
-				category = cat_grand_battle_plan
+				category = land_doctrine
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -1617,7 +1623,11 @@ focus_tree = {
 			}
 			ELSE = {
 				set_rule = { can_create_factions = yes }
-				create_faction = GER_central_powers_faction
+				create_faction_from_template = {
+					template = faction_template_GER_mitteleuropa_alliance
+					name = GER_central_powers_faction
+					icon = GFX_faction_logo_generic_13
+				}
 				# We create our own faction and invite Germany
 				GER = {
 					country_event = {
@@ -1665,9 +1675,19 @@ focus_tree = {
 
 			add_political_power = 25
 
-			create_faction = habsburg_alliance_faction
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+				set_rule = { can_create_factions = yes }
+				create_faction_from_template = faction_template_habsburg_alliance
+				add_faction_initiative = 1
+			}
+			ELSE = {
+				set_rule = { can_create_factions = yes }
+				create_faction_from_template = faction_template_habsburg_alliance
+			}
 
-			set_rule = { can_create_factions = yes }
 
 		}
 	}
@@ -5359,12 +5379,15 @@ focus_tree = {
 
 		completion_reward = {
 
-			add_doctrine_cost_reduction = {
+
+
+			add_mastery_bonus = {
 				name = wuw_HUN_the_legacy_of_the_isonzo_front
-				cost_reduction = 0.5
-				uses = 2
-				category = cat_grand_battle_plan
+				bonus = 0.2
+				days = 180
+				track = combat_support
 			}
+
 
 			add_tech_bonus = {
 				name = wuw_HUN_the_legacy_of_the_isonzo_front
@@ -5423,9 +5446,9 @@ focus_tree = {
 
 			custom_effect_tooltip = HUN_vasyl_vyshivani_becomes_available_as_field_marshal_tt
 
-			custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = generic_skip_one_line_tt
 
-			unlock_decision_tooltip = HUN_place_a_habsburg_on_the_ukrainian_throne_decision
+			# unlock_decision_tooltip = HUN_place_a_habsburg_on_the_ukrainian_throne_decision
 
 		}
 	}
@@ -6325,10 +6348,21 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
+			add_mastery_bonus = {
+				name = wuw_HUN_a_mobile_army
+				bonus = 0.1
+				days = 360
+				grand_doctrine = new_mobile_warfare
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_mobile_warfare
+			}
+
 			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
-				category = cat_mobile_warfare
+				category = land_doctrine
 				name = wuw_HUN_a_mobile_army
 			}
 
@@ -6368,10 +6402,21 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
+			add_mastery_bonus = {
+				name = wuw_HUN_an_airforce_to_be_reckoned_with
+				bonus = 0.15
+				days = 360
+				grand_doctrine = superior_firepower
+			}
+			add_mastery = {
+				amount = 100
+				grand_doctrine = superior_firepower
+			}
+
 			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 1
-				category = cat_superior_firepower
+				category = land_doctrine
 				name = wuw_HUN_an_airforce_to_be_reckoned_with
 			}
 
@@ -6880,9 +6925,9 @@ focus_tree = {
 
 		available = {
 			is_subject = no
-			ROM = {
-				is_ai = yes
-			}
+			# ROM = {
+			# 	is_ai = yes
+			# }
 		}
 
 		bypass = {
@@ -6897,30 +6942,30 @@ focus_tree = {
 
 		completion_reward = {
 
-			every_other_country = {
-				limit = {
-					NOT = {
-						OR = {
-							is_subject_of = ROOT
-							is_in_faction_with = ROOT
-						}
-					}
-					OR = {
-						owns_state = 82
-						owns_state = 83
-						owns_state = 84
-						owns_state = 76
-					}
-				}
-				ROOT = {
-					create_wargoal = {
-						type = take_claimed_state
-						target = PREV
-					}
-				}
-			}
+			# every_other_country = {
+			# 	limit = {
+			# 		NOT = {
+			# 			OR = {
+			# 				is_subject_of = ROOT
+			# 				is_in_faction_with = ROOT
+			# 			}
+			# 		}
+			# 		OR = {
+			# 			owns_state = 82
+			# 			owns_state = 83
+			# 			owns_state = 84
+			# 			owns_state = 76
+			# 		}
+			# 	}
+			# 	ROOT = {
+			# 		create_wargoal = {
+			# 			type = take_claimed_state
+			# 			target = PREV
+			# 		}
+			# 	}
+			# }
 
-			custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = generic_skip_one_line_tt
 
 			custom_effect_tooltip = wuw_HUN_revenge_for_1919_tt
 
@@ -7008,157 +7053,157 @@ focus_tree = {
 				}
 			}
 
-			custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = generic_skip_one_line_tt
 
-			every_state = {
-				limit = {
-					NOT = {
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-							is_owned_by = ROOT
-							any_other_country = {
-								AND = {
-									is_subject_of = ROOT
-									owns_state = PREV
-								}
-							}
-						}
-					}
-					OR = {
-						state = 664
-						state = 70
-						state = 71
-						state = 73
-						state = 76
-						state = 84
-						state = 83
-						state = 82
-						state = 764
-						state = 45
-						state = 109
-						state = 102
-						state = 853
-						state = 103
-						state = 163
-						state = 104
-						state = 804
-						state = 975
-						state = 976
-						state = 4
-						state = 152
-						state = 153
-						state = 848
-						state = 72
-						state = 972
-						state = 75
-						state = 762
-						state = 74
-						state = 67
-						state = 66
-						state = 9
-						state = 69
-						state = 88
-						state = 89
-						state = 91
-						state = 90
-						state = 81
-						state = 46
-						state = 80
-						state = 79
-						state = 78
-						state = 766
-						state = 551
-						state = 883
-						state = 457
-						state = 456
-						state = 907
-						state = 447
-						state = 446
-						state = 453
-						state = 454
-						state = 455
-						state = 553
-						state = 554
-						state = 677
-						state = 799
-						state = 183
-						state = 164
-						state = 116
-						state = 797
-						state = 199
-						state = 198
-						state = 201
-						state = 202
-						state = 203
-						state = 834
-						state = 192
-						state = 197
-						state = 259
-						state = 193
-						state = 226
-						state = 196
-						state = 200
-						state = 227
-						state = 221
-						state = 228
-						state = 218
-						state = 240
-						state = 225
-						state = 245
-						state = 260
-						state = 265
-						state = 234
-						state = 235
-						state = 232
-						state = 238
-						state = 237
-						state = 236
-						state = 217
-						state = 187
-					}
-				}
-				add_claim_by = ROOT
-			}
+			# every_state = {
+			# 	limit = {
+			# 		NOT = {
+			# 			OR = {
+			# 				is_claimed_by = ROOT
+			# 				is_core_of = ROOT
+			# 				is_owned_by = ROOT
+			# 				any_other_country = {
+			# 					AND = {
+			# 						is_subject_of = ROOT
+			# 						owns_state = PREV
+			# 					}
+			# 				}
+			# 			}
+			# 		}
+			# 		OR = {
+			# 			state = 664
+			# 			state = 70
+			# 			state = 71
+			# 			state = 73
+			# 			state = 76
+			# 			state = 84
+			# 			state = 83
+			# 			state = 82
+			# 			state = 764
+			# 			state = 45
+			# 			state = 109
+			# 			state = 102
+			# 			state = 853
+			# 			state = 103
+			# 			state = 163
+			# 			state = 104
+			# 			state = 804
+			# 			state = 975
+			# 			state = 976
+			# 			state = 4
+			# 			state = 152
+			# 			state = 153
+			# 			state = 848
+			# 			state = 72
+			# 			state = 972
+			# 			state = 75
+			# 			state = 762
+			# 			state = 74
+			# 			state = 67
+			# 			state = 66
+			# 			state = 9
+			# 			state = 69
+			# 			state = 88
+			# 			state = 89
+			# 			state = 91
+			# 			state = 90
+			# 			state = 81
+			# 			state = 46
+			# 			state = 80
+			# 			state = 79
+			# 			state = 78
+			# 			state = 766
+			# 			state = 551
+			# 			state = 883
+			# 			state = 457
+			# 			state = 456
+			# 			state = 907
+			# 			state = 447
+			# 			state = 446
+			# 			state = 453
+			# 			state = 454
+			# 			state = 455
+			# 			state = 553
+			# 			state = 554
+			# 			state = 677
+			# 			state = 799
+			# 			state = 183
+			# 			state = 164
+			# 			state = 116
+			# 			state = 797
+			# 			state = 199
+			# 			state = 198
+			# 			state = 201
+			# 			state = 202
+			# 			state = 203
+			# 			state = 834
+			# 			state = 192
+			# 			state = 197
+			# 			state = 259
+			# 			state = 193
+			# 			state = 226
+			# 			state = 196
+			# 			state = 200
+			# 			state = 227
+			# 			state = 221
+			# 			state = 228
+			# 			state = 218
+			# 			state = 240
+			# 			state = 225
+			# 			state = 245
+			# 			state = 260
+			# 			state = 265
+			# 			state = 234
+			# 			state = 235
+			# 			state = 232
+			# 			state = 238
+			# 			state = 237
+			# 			state = 236
+			# 			state = 217
+			# 			state = 187
+			# 		}
+			# 	}
+			# 	add_claim_by = ROOT
+			# }
 
-			custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = generic_skip_one_line_tt
 
-			every_country = {
-				limit = {
-					OR = {
-						original_tag = ROM
-						original_tag = YUG
-						original_tag = AUS
-						original_tag = SLO
-						original_tag = CZE
-						original_tag = POL
-						original_tag = SOV
-						original_tag = UKR
-						#original_tag = MOL
-						original_tag = CRO
-						#original_tag = SER
-						# original_tag = ISR
-						# original_tag = PAL
-						original_tag = EGY
-						original_tag = ENG
-						original_tag = TUR
-						original_tag = FRA
-						original_tag = GRE
-						# original_tag = JOR
-						# original_tag = SUD
-					}
-				}
-				ROOT = {
-					create_wargoal = {
-						type = take_claimed_state
-						target = PREV
-					}
-				}
-			}
+			# every_country = {
+			# 	limit = {
+			# 		OR = {
+			# 			original_tag = ROM
+			# 			original_tag = YUG
+			# 			original_tag = AUS
+			# 			original_tag = SLO
+			# 			original_tag = CZE
+			# 			original_tag = POL
+			# 			original_tag = SOV
+			# 			original_tag = UKR
+			# 			#original_tag = MOL
+			# 			original_tag = CRO
+			# 			#original_tag = SER
+			# 			# original_tag = ISR
+			# 			# original_tag = PAL
+			# 			original_tag = EGY
+			# 			original_tag = ENG
+			# 			original_tag = TUR
+			# 			original_tag = FRA
+			# 			original_tag = GRE
+			# 			# original_tag = JOR
+			# 			# original_tag = SUD
+			# 		}
+			# 	}
+			# 	ROOT = {
+			# 		create_wargoal = {
+			# 			type = take_claimed_state
+			# 			target = PREV
+			# 		}
+			# 	}
+			# }
 
-			hidden_effect = {
-				news_event = { id = wuw_HUN_news_events.4 }
-			}
+			# hidden_effect = {
+			# 	news_event = { id = wuw_HUN_news_events.4 }
+			# }
 
 		}
 	}
@@ -7484,8 +7529,20 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			set_rule = { can_create_factions = yes }
-			create_faction = HUN_BALKAN_FACTION
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+				set_rule = { can_create_factions = yes }
+				create_faction_from_template = faction_template_balkan_pact
+				add_faction_initiative = 1
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
+			ELSE = {
+				set_rule = { can_create_factions = yes }
+				create_faction_from_template = faction_template_balkan_pact
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
 
 			IF = {
 				limit = {
@@ -11346,12 +11403,16 @@ focus_tree = {
 				}
 				ROOT = {
 					set_rule = { can_create_factions = yes }
-					create_faction = HUN_PACT_OF_ROME_FACTION
+					create_faction_from_template = {
+						template = faction_template_regional
+						name = HUN_PACT_OF_ROME_FACTION
+						icon = GFX_faction_logo_generic_11
+					}
 					ITA = {
 						country_event = generic.5
 						add_ai_strategy = {
 							type = alliance
-							id = "HUN"
+							id = HUN
 							value = 200
 						}
 					}
@@ -12718,9 +12779,12 @@ focus_tree = {
 		completion_reward = {
 
 			add_political_power = 50
-			create_faction = AUS_danubian_federation
 			set_rule = {
 				can_create_factions = yes
+			}
+			create_faction_from_template = {
+				template = faction_template_balkan_pact 
+				name = AUS_danubian_federation
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -17142,10 +17206,10 @@ focus_tree = {
 						type = industrial_complex
 						level = 2
 						instant_build = yes
-					}
+					}				
 					add_resource = {
-						type = steel
-						amount = 100
+						type = coal
+						amount = 80
 					}
 				}
 			}
@@ -17511,8 +17575,7 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_core_of = ROOT
 			}
 			#has_country_flag = HUN_activated_huba_1_flag
@@ -17724,8 +17787,7 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
-				is_owned_by = ROOT
+			any_owned_state = {
 				is_core_of = ROOT
 			}
 			#has_country_flag = HUN_activated_huba_1_flag
@@ -18242,6 +18304,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+
 		}
 	}
 
@@ -18540,6 +18603,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+
 			custom_effect_tooltip = generic_skip_one_line_tt
 
 			IF = {
@@ -20415,9 +20479,8 @@ focus_tree = {
 		}
 
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 
@@ -20526,11 +20589,22 @@ focus_tree = {
 
 			navy_experience = 15
 
+			add_mastery_bonus = {
+				name = wuw_HUN_embrace_navy_traditions
+				bonus = 0.15
+				days = 360
+				grand_doctrine = new_fleet_in_being
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_fleet_in_being
+			}
+
 			add_doctrine_cost_reduction = {
 				name = wuw_HUN_embrace_navy_traditions
-				cost_reduction = 0.5
-				uses = 2
-				category = cat_fleet_in_being
+				cost_reduction = 0.25
+				uses = 1
+				category = naval_doctrine
 			}
 
 		}
@@ -20567,12 +20641,33 @@ focus_tree = {
 
 		completion_reward = {
 			navy_experience = 15
+			
+			add_mastery_bonus = {
+				name = wuw_HUN_a_reformed_navy
+				bonus = 0.15
+				days = 360
+				grand_doctrine = new_convoy_raiding
+			}
+			add_mastery_bonus = {
+				name = wuw_HUN_a_reformed_navy
+				bonus = 0.15
+				days = 360
+				grand_doctrine = new_base_strike
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_convoy_raiding
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_base_strike
+			}
+
 			add_doctrine_cost_reduction = {
 				name = wuw_HUN_a_reformed_navy
-				cost_reduction = 0.5
+				cost_reduction = 0.25
 				uses = 2
-				category = cat_trade_interdiction
-				category = cat_base_strike
+				category = naval_doctrine
 			}
 		}
 	}
@@ -20657,7 +20752,6 @@ focus_tree = {
 				name = wuw_HUN_cruiser_investments
 				bonus = 1.0
 				uses = 2
-				category = cl_tech
 				category = ca_tech
 			}
 
@@ -20815,9 +20909,8 @@ focus_tree = {
 
 		available = {
 			has_tech = basic_ship_hull_heavy
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 

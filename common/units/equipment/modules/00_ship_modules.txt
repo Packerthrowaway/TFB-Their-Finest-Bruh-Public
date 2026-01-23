@@ -1148,7 +1148,7 @@ equipment_modules = {
 		}
 		
 		multiply_stats = {
-			anti_air_attack = 0.03
+			anti_air_attack = 0.025
 		}
 
 		can_convert_from = {
@@ -1169,7 +1169,7 @@ equipment_modules = {
 		}
 		
 		multiply_stats = {
-			anti_air_attack = 0.06
+			anti_air_attack = 0.05
 		}
 		can_convert_from = {
 			module = ship_fire_control_system_1
@@ -1193,7 +1193,7 @@ equipment_modules = {
 		}
 		
 		multiply_stats = {
-			anti_air_attack = 0.09
+			anti_air_attack = 0.075
 		}
 		can_convert_from = {
 			module = ship_fire_control_system_2
@@ -1230,7 +1230,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_sonar
 		parent = ship_radar_1
 		multiply_stats = {
-			anti_air_attack = 0.05
+			anti_air_attack = 0.025
 		}
 		add_stats = {
 			naval_light_gun_hit_chance_factor = 0.025
@@ -1251,7 +1251,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_sonar
 		parent = ship_radar_2
 		multiply_stats = {
-			anti_air_attack = 0.075
+			anti_air_attack = 0.05
 		}
 		add_stats = {
 			naval_light_gun_hit_chance_factor = 0.05
@@ -1275,7 +1275,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_sonar
 		parent = ship_radar_3
 		multiply_stats = {
-			anti_air_attack = 0.1
+			anti_air_attack = 0.075
 		}
 		add_stats = {
 			naval_light_gun_hit_chance_factor = 0.075
@@ -2576,6 +2576,53 @@ equipment_modules = {
 			steel = 2
 		}
 		dismantle_cost_ic = 1000
+	}
+
+	#ESCORT CARRIER
+
+	ship_escort_deck_space = {
+		abbreviation = "sdc"
+		category = ship_escort_deck_space
+		gfx = ship_escort_deck_space
+
+		add_equipment_type = capital_ship
+		add_stats = {
+			carrier_size = 1
+			build_cost_ic = 700
+			carrier_surface_detection = 1
+			carrier_sub_detection = 5
+		}
+		manpower = 250
+		multiply_stats = {
+			naval_speed = -0.05
+		}
+		build_cost_resources = {
+			steel = 10
+		}
+		dismantle_cost_ic = 350
+	}
+	
+	#SUBMARINE CARRIER
+
+	ship_submarine_deck_space = {
+		abbreviation = "sdd"
+		category = ship_submarine_deck_space
+		gfx = ship_deck_space
+		add_equipment_type = carrier
+
+		add_stats = {
+			submarine_carrier_size = 1
+			build_cost_ic = 350
+		}
+		manpower = 100 #outside the add_stats section for code reasons
+		multiply_stats = {
+			naval_speed = -0.05
+			sub_visibility = 0.1
+		}
+		build_cost_resources = {
+			steel = 10
+		}
+		dismantle_cost_ic = 250
 	}
 
 # Rocket Modules

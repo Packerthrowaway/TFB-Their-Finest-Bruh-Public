@@ -205,20 +205,20 @@ focus_tree = {
         available = {
             286 = {		
                 CONTROLLER = { 					
-                        OR = {
-                            tag = JAP 
-                            is_subject_of = JAP
-                            }
-                        }
-                }
+					OR = {
+						tag = JAP 
+						is_subject_of = JAP
+					}
+				}
+			}
                 
             
             671 = {		
                 CONTROLLER = { 					
-                            OR = {
-                                tag = JAP 
-                                is_subject_of = JAP
-                          }
+					OR = {
+						tag = JAP 
+						is_subject_of = JAP
+					}
                 }
             }
                 
@@ -238,6 +238,7 @@ focus_tree = {
             add_state_core = 741
             add_state_core = 670
 			add_state_core = 994
+			add_state_core = 1017
            
 		}
 	}
@@ -981,6 +982,7 @@ focus_tree = {
             owns_state = 671
             owns_state = 741
             owns_state = 286
+            owns_state = 1017
         }
         completion_reward = {
             670 = {
@@ -1029,6 +1031,21 @@ focus_tree = {
 				}
 			}
             286 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+			}
+            1017 = {
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -1338,7 +1355,7 @@ focus_tree = {
         completion_reward = {
             add_doctrine_cost_reduction = {
 				name = doc_bonus
-				cost_reduction = 0.40
+				cost_reduction = 0.50
 				uses = 2
 				category = land_doctrine
 			}
@@ -1360,11 +1377,9 @@ focus_tree = {
 		}
         
         completion_reward = {
-            add_doctrine_cost_reduction = {
-				name = doc_bonus
-				cost_reduction = 0.40
-				uses = 2
-				category = land_doctrine
+			add_mastery = {
+				amount = 50
+				folder = land
 			}
         }
     }
@@ -1839,7 +1854,7 @@ focus_tree = {
 				bonus = 0.5
 				ahead_reduction = 0.5
 				uses = 1
-				category = cl_tech
+				category = ca_tech
 			}
 		}
 	}

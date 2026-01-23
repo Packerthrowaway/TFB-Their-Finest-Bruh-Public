@@ -1304,7 +1304,7 @@ focus_tree = {
 						add_building_construction = {
 							type = bunker
 							level = 2
-							province = 13376
+							province = 13382
 							instant_build = yes
 						}						
 					}
@@ -1576,6 +1576,38 @@ focus_tree = {
 				technology = advanced_oil_processing
 				technology = modern_oil_processing
 			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -1605,77 +1637,42 @@ focus_tree = {
 				technology = advanced_rubber_processing
 				technology = modern_rubber_processing
 			}
+
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_rubber_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_rubber_refinery
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
-	}
+	}	
 	
-	focus = {
-		id = ITA_refinery_construction
-		icon = GFX_goal_generic_oil_factory
-		prerequisite = { focus = ITA_synthetic_rubber }
-		prerequisite = { focus = ITA_coal_liquification }
-		x = -1
-		y = 1
-		relative_position_id = ITA_synthetic_rubber
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 2
-						include_locked = yes
-					}
-					is_core_of = ROOT
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = synthetic_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 2
-						include_locked = yes
-					}
-					is_core_of = ROOT
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = synthetic_rubber_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 2
-						include_locked = yes
-					}
-					is_core_of = ROOT
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = synthetic_rubber_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-	}
 
 	focus = {
 		id = ITA_bank_loans
@@ -1881,96 +1878,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			build_railway = {
-				path = {
-					819 11803 883
-				}
-			}
-			build_railway = {
-				path = {
-					6788 3773 6790 3780
-				}
-			}
-			build_railway = {
-				path = {
-					6790 9752 6606
-				}
-			}
-			build_railway = {
-				path = {
-					6606 6793 9582 11584
-				}
-			}
-			build_railway = {
-				path = {
-					6626 628 11584
-				}
-			}
-			build_railway = {
-				path = {
-					11751 6862 6875 11833 6946 6973
-				}
-			}
-			build_railway = {
-				path = {
-					6606 6985 1616 9907 9879 9750 6862 11751
-				}
-			}
-			build_railway = {
-				path = {
-					782 9924 967 925 6926 9794 9904
-				}
-			}
-			build_railway = {
-				path = {
-					883 6939 3966 6831 9838 925
-				}
-			}
-			build_railway = {
-				path = {
-					11846 923 9826 819
-				}
-			}
-			build_railway = {
-				path = {
-					11773 11874 11824 9772 6891
-				}
-			}
-			build_railway = {
-				path = {
-					9990 12066 12098 10027 9856 11837
-				}
-			}
-			build_railway = {
-				path = {
-					11998 11837
-				}
-			}
-			build_railway = {
-				path = {
-					4014 4159
-				}
-			}
-		}
-	}
-	
-	focus = {
-		id = ITA_railway_expansion2
-		icon = GFX_goal_generic_construct_infrastructure
-		prerequisite = { focus = ITA_railway_expansion }
-		x = 0
-		y = 2
-		relative_position_id = ITA_railway_expansion
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
 			158 = {
 				add_building_construction = {
 					type = infrastructure
@@ -2091,6 +1998,97 @@ focus_tree = {
 			build_railway = {
 				path = {
 					11998 11837 9784 6843 883 6939 3966 6831 9838 925 967 9924 782 6606 11734 3776 603 9598 11598 9630
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = ITA_railway_expansion2
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = ITA_railway_expansion }
+		x = 0
+		y = 2
+		relative_position_id = ITA_railway_expansion
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			
+			build_railway = {
+				path = {
+					819 11803 883
+				}
+			}
+			build_railway = {
+				path = {
+					6788 3773 6790 3780
+				}
+			}
+			build_railway = {
+				path = {
+					6790 9752 6606
+				}
+			}
+			build_railway = {
+				path = {
+					6606 6793 9582 11584
+				}
+			}
+			build_railway = {
+				path = {
+					6626 628 11584
+				}
+			}
+			build_railway = {
+				path = {
+					11751 6862 6875 11833 6946 6973
+				}
+			}
+			build_railway = {
+				path = {
+					6606 6985 1616 9907 9879 9750 6862 11751
+				}
+			}
+			build_railway = {
+				path = {
+					782 9924 967 925 6926 9794 9904
+				}
+			}
+			build_railway = {
+				path = {
+					883 6939 3966 6831 9838 925
+				}
+			}
+			build_railway = {
+				path = {
+					11846 923 9826 819
+				}
+			}
+			build_railway = {
+				path = {
+					11773 11874 11824 9772 6891
+				}
+			}
+			build_railway = {
+				path = {
+					9990 12066 12098 10027 9856 11837
+				}
+			}
+			build_railway = {
+				path = {
+					11998 11837
+				}
+			}
+			build_railway = {
+				path = {
+					4014 4159
 				}
 			}
 		}
@@ -4010,6 +4008,16 @@ focus_tree = {
 				uses = 2
 				category = land_doctrine
 			}
+			add_mastery_bonus = {
+				name = mw_bonus
+				bonus = 0.2
+				days = 360
+				folder = land
+			}
+			add_mastery = {
+				amount = 50
+				folder = land
+			}
 		}
 	}
 	
@@ -4075,6 +4083,16 @@ focus_tree = {
 				uses = 2
 				category = cat_grand_battle_plan
 			}
+			add_mastery_bonus = {
+				name = doc_bonus
+				bonus = 0.2
+				days = 360
+				grand_doctrine = grand_battleplan
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = grand_battleplan
+			}
 		}
 	}
 	
@@ -4125,6 +4143,16 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 2
 				category = cat_superior_firepower
+			}
+			add_mastery_bonus = {
+				name = doc_bonus
+				bonus = 0.2
+				days = 360
+				grand_doctrine = superior_firepower
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = superior_firepower
 			}
 		}
 	}
@@ -4292,6 +4320,16 @@ focus_tree = {
 				uses = 2
 				category = cat_mobile_warfare
 			}
+			add_mastery_bonus = {
+				name = mw_bonus
+				bonus = 0.2
+				days = 360
+				grand_doctrine = new_mobile_warfare
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_mobile_warfare
+			}
 		}
 	}
 	
@@ -4353,6 +4391,26 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 2
 				category = battlefield_support_tree
+			}
+			add_mastery_bonus = {
+				name = sf_bonus
+				bonus = 0.2
+				days = 360
+				grand_doctrine = new_mobile_warfare
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_mobile_warfare
+			}
+			add_mastery_bonus = {
+				name = sf_bonus
+				bonus = 0.2
+				days = 360
+				grand_doctrine = new_battlefield_support
+			}
+			add_mastery = {
+				amount = 50
+				grand_doctrine = new_battlefield_support
 			}
 			add_ideas = german_cooperation_focus 
 		}
@@ -4548,6 +4606,16 @@ focus_tree = {
 				uses = 3
 				category = cat_fleet_in_being
 			}
+			# add_mastery_bonus = {
+			# 	name = air_bonus
+			# 	bonus = 0.2
+			# 	days = 720
+			# 	grand_doctrine = new_fleet_in_being
+			# }
+			add_mastery = {
+				amount = 100
+				grand_doctrine = new_fleet_in_being
+			}
 		}
 	}
 
@@ -4599,8 +4667,8 @@ focus_tree = {
 				name = cv_bonus
 				bonus = 0.50
 				uses = 3
-				technology = improved_medium_battery
-				technology = advanced_medium_battery
+				#technology = improved_medium_battery
+				#technology = advanced_medium_battery
 				technology = improved_heavy_battery
 				technology = advanced_heavy_battery
 				#technology = modern_heavy_battery
@@ -4629,7 +4697,6 @@ focus_tree = {
 				name = cv_bonus
 				bonus = 0.50
 				uses = 3
-				category = cl_tech
 				category = ca_tech
 			}
 		}
@@ -4699,37 +4766,7 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = ITA_sub_raiders
-		icon = GFX_goal_generic_navy_submarine
-		prerequisite = { focus = ITA_green_water_navy focus = ITA_escape_the_cage }
-		x = 3
-		y = 1
-		relative_position_id = ITA_green_water_navy
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-
-		available_if_capitulated = yes
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		completion_reward = {
-			add_tech_bonus = {
-				name = GER_u_boat_effort
-				bonus = 0.5
-				uses = 2
-				category = ss_tech
-			}
-			# if = {
-			# 	limit = {
-			# 		has_dlc = "Man the Guns"
-			# 	}
-			# 	set_technology = { cruiser_submarines = 1 }
-			# }
-		}
-	}
+	
 	
 	focus = {
 		id = ITA_new_dd
@@ -4786,6 +4823,36 @@ focus_tree = {
 				uses = 2
 				category = convoy_defense_tree
 			}
+
+			custom_effect_tooltip = CAN_custom_escort_bonus
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = {
+					has_doctrine = convoy_escort
+				}
+				add_mastery_bonus = {
+					name = CAN_escort_fleet
+					bonus = 0.2
+					days = 360
+					sub_doctrine = convoy_escort
+				}
+				add_mastery = {
+					amount = 100
+					sub_doctrine = convoy_escort
+				}
+			}
+			else = {
+				add_mastery_bonus = {
+					name = CAN_escort_fleet
+					bonus = 0.1
+					days = 180
+					track = screens
+				}
+				add_mastery = {
+					amount = 50
+					track = screens
+				}
+			}
 		}
 	}
 	
@@ -4818,15 +4885,48 @@ focus_tree = {
 			unlock_decision_tooltip = ITA_human_torpedo_raid
 		}
 	}
+
+	focus = {
+		id = ITA_sub_raiders
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = ITA_convoy_defence }
+		relative_position_id = ITA_convoy_defence
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_u_boat_effort
+				bonus = 0.5
+				uses = 2
+				category = ss_tech
+			}
+			# if = {
+			# 	limit = {
+			# 		has_dlc = "Man the Guns"
+			# 	}
+			# 	set_technology = { cruiser_submarines = 1 }
+			# }
+		}
+	}
 	
 	
 	focus = {
 		id = ITA_esploratori
 		icon = GFX_goal_generic_construct_naval_dockyard
-		prerequisite = { focus = ITA_convoy_defence }
-		x = 1
+		prerequisite = { focus = ITA_green_water_navy focus = ITA_escape_the_cage }
+		x = 3
 		y = 1
-		relative_position_id = ITA_convoy_defence
+		relative_position_id = ITA_green_water_navy
+		
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -4840,7 +4940,7 @@ focus_tree = {
 				name = ITA_escort_effort
 				bonus = 1.0
 				uses = 1
-				category = cl_tech
+				category = ca_tech
 			}
 		}
 	}
@@ -4869,6 +4969,16 @@ focus_tree = {
 				cost_reduction = 0.40
 				uses = 2
 				category = cat_base_strike
+			}
+			# add_mastery_bonus = {
+			# 	name = mw_bonus
+			# 	bonus = 0.2
+			# 	days = 720
+			# 	grand_doctrine = new_base_strike
+			# }
+			add_mastery = {
+				amount = 100
+				grand_doctrine = new_base_strike
 			}
 		}
 	}
@@ -5224,6 +5334,18 @@ focus_tree = {
 				cost_reduction = 0.40
 				uses = 2
 				category = air_doctrine
+			}
+			add_mastery = {
+				amount = 50
+				track = medium_aircraft
+			}
+			add_mastery = {
+				amount = 50
+				track = strike_aircraft
+			}
+			add_mastery = {
+				amount = 50
+				track = heavy_aircraft
 			}
 		}
 	}

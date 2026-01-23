@@ -15,7 +15,20 @@ country_event = {
 	
 	option = { # Breaking point!
 		name = china.1.a
-		ai_chance = { factor = 100 }
+		ai_chance = { 
+			base = 90 
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+
 		effect_tooltip = {
 			JAP = {
 				add_war_support = 0.05
@@ -162,7 +175,10 @@ country_event = {
 	trigger = {
 		tag = PRC
 		num_of_controlled_states > 3
-		has_country_leader = { ruling_only = yes name = "Mao Zedong" }
+		has_country_leader = { ruling_only = yes character = PRC_mao_zedong }
+		NOT = {
+			has_dlc = "No Compromise, No Surrender"
+		}
 	}
 	
 	option = {
@@ -1034,7 +1050,7 @@ country_event = {
 		}
 		OR = {
 			owns_state = 608 #Beijing
-			owns_state = 613 #Nanjing
+			owns_state = 1035 #Nanjing
 		}
 	}
 
@@ -1055,7 +1071,17 @@ country_event = {
 		trigger = {
 			owns_state = 608
 		}
-		set_capital =  { state = 608 }
+		set_capital = {
+			state = 608
+			remember_old_capital = no
+		}
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		set_province_name = { id = 9843 name = PRC_beijing_capital_name }
+		608 = {
+			set_state_name = PRC_beijing_capital_name
+		}
 	}
 
 	#Move to Nanjing
@@ -1065,15 +1091,15 @@ country_event = {
 			base = 10
 			modifier = {
 				factor = 0
-				NOT = { 613 = { is_controlled_by = PRC } }
+				NOT = { 1035 = { is_controlled_by = PRC } }
 			}
 		}
 		trigger = {
-			owns_state = 613
+			owns_state = 1035
 		}
 		custom_effect_tooltip = CHI_nanjing_tt
 		hidden_effect = {
-			set_capital =  { state = 613 }
+			set_capital = { state = 1035 }
 		}
 	}
 

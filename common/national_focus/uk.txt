@@ -611,11 +611,23 @@ focus_tree = {
 		}	
 		completion_reward = {
 			add_political_power = -25
-				add_doctrine_cost_reduction = {
-					name = doc_bonus
-					cost_reduction = 0.40
-					uses = 2
-					category = land_doctrine
+			# 	add_doctrine_cost_reduction = {
+			# 		name = doc_bonus
+			# 		cost_reduction = 0.40
+			# 		uses = 2
+			# 		category = land_doctrine
+			# }
+			add_mastery_bonus = {
+				name = doc_bonus
+				bonus = 0.25
+				days = 180
+				track = combat_support
+			}
+			add_mastery_bonus = {
+				name = doc_bonus
+				bonus = 0.25
+				days = 180
+				track = operations
 			}
 		}
 	}
@@ -972,76 +984,87 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			custom_effect_tooltip = ENG_tank_choice_tt1
-			custom_effect_tooltip = ENG_tank_choice_tt2
-			custom_effect_tooltip = ENG_tank_choice_tt3
-			custom_effect_tooltip = ENG_tank_choice_tt4
-			custom_effect_tooltip = ENG_tank_choice_tt5
+			# custom_effect_tooltip = ENG_tank_choice_tt1
+			# custom_effect_tooltip = ENG_tank_choice_tt2
+			# custom_effect_tooltip = ENG_tank_choice_tt3
+			# custom_effect_tooltip = ENG_tank_choice_tt4
+			# custom_effect_tooltip = ENG_tank_choice_tt5
 			
 			
-			hidden_effect = {
-				if = {
-					limit = { has_completed_focus = ENG_infantry_tanks }
-						division_template = { name = "Infantry Tank"
-						#division_names_group = ENG_TANK_01
-							regiments = {
-								heavy_armor = { x = 0 y = 0 }
-								heavy_armor = { x = 0 y = 1 }
-								heavy_armor = { x = 0 y = 2 }
-								heavy_armor = { x = 1 y = 0 }
-								heavy_armor = { x = 1 y = 1 }
-								motorized = { x = 2 y = 0 }
-								motorized = { x = 2 y = 1 }
-								motorized = { x = 2 y = 2 }
-								motorized = { x = 3 y = 0 }
-								motorized = { x = 3 y = 1 }
-							}
-							support = {
-								hq_company = { x = 0 y = 0 } 
-								engineer = { x = 0 y = 1 }   
-								recon = { x = 0 y = 2 }
-								logistics_company  = { x = 0 y = 3 }
-							}
-						}
-					random_owned_controlled_state = {
-						prioritize = { 126 }
-						create_unit = { division = "division_template = \"Infantry Tank\" start_experience_factor = 0.3 " owner = ENG }
-					}
-				}
-				if = {
-					limit = { has_completed_focus = ENG_cruiser_tanks }
-						division_template = { name = "Cruiser Tank"
-						#division_names_group = ENG_TANK_01
-							regiments = {
-								medium_armor = { x = 0 y = 0 }
-								medium_armor = { x = 0 y = 1 }
-								medium_armor = { x = 0 y = 2 }
-								medium_armor = { x = 1 y = 0 }
-								medium_armor = { x = 1 y = 1 }
-								medium_armor = { x = 1 y = 2 }
-								medium_armor = { x = 2 y = 0 }
-								motorized = { x = 3 y = 0 }
-								motorized = { x = 3 y = 1 }
-								motorized = { x = 3 y = 2 }
-								motorized = { x = 3 y = 3 }
-								motorized = { x = 4 y = 0 }
-								motorized = { x = 4 y = 1 }
-								motorized = { x = 4 y = 2 }
-								motorized = { x = 4 y = 3 }
-							}
-							support = {
-								hq_company = { x = 0 y = 0 } 
-								engineer = { x = 0 y = 1 }   
-								recon = { x = 0 y = 2 }
-								logistics_company  = { x = 0 y = 3 }
-							}
-						}
-					random_owned_controlled_state = {
-						prioritize = { 126 }
-						create_unit = { division = "division_template = \"Cruiser Tank\" start_experience_factor = 0.3 " owner = ENG }
-					}
-				}
-			}	
+			# hidden_effect = {
+			# 	if = {
+			# 		limit = { has_completed_focus = ENG_infantry_tanks }
+			# 			division_template = { name = "Infantry Tank"
+			# 			#division_names_group = ENG_TANK_01
+			# 				regiments = {
+			# 					heavy_armor = { x = 0 y = 0 }
+			# 					heavy_armor = { x = 0 y = 1 }
+			# 					heavy_armor = { x = 0 y = 2 }
+			# 					heavy_armor = { x = 1 y = 0 }
+			# 					heavy_armor = { x = 1 y = 1 }
+			# 					motorized = { x = 2 y = 0 }
+			# 					motorized = { x = 2 y = 1 }
+			# 					motorized = { x = 2 y = 2 }
+			# 					motorized = { x = 3 y = 0 }
+			# 					motorized = { x = 3 y = 1 }
+			# 				}
+			# 				support = {
+			# 					hq_company = { x = 0 y = 0 } 
+			# 					engineer = { x = 0 y = 1 }   
+			# 					recon = { x = 0 y = 2 }
+			# 					logistics_company  = { x = 0 y = 3 }
+			# 				}
+			# 			}
+			# 		random_owned_controlled_state = {
+			# 			prioritize = { 126 }
+			# 			create_unit = { division = "division_template = \"Infantry Tank\" start_experience_factor = 0.3 " owner = ENG }
+			# 		}
+			# 	}
+			# 	if = {
+			# 		limit = { has_completed_focus = ENG_cruiser_tanks }
+			# 			division_template = { name = "Cruiser Tank"
+			# 			#division_names_group = ENG_TANK_01
+			# 				regiments = {
+			# 					medium_armor = { x = 0 y = 0 }
+			# 					medium_armor = { x = 0 y = 1 }
+			# 					medium_armor = { x = 0 y = 2 }
+			# 					medium_armor = { x = 1 y = 0 }
+			# 					medium_armor = { x = 1 y = 1 }
+			# 					medium_armor = { x = 1 y = 2 }
+			# 					medium_armor = { x = 2 y = 0 }
+			# 					motorized = { x = 3 y = 0 }
+			# 					motorized = { x = 3 y = 1 }
+			# 					motorized = { x = 3 y = 2 }
+			# 					motorized = { x = 3 y = 3 }
+			# 					motorized = { x = 4 y = 0 }
+			# 					motorized = { x = 4 y = 1 }
+			# 					motorized = { x = 4 y = 2 }
+			# 					motorized = { x = 4 y = 3 }
+			# 				}
+			# 				support = {
+			# 					hq_company = { x = 0 y = 0 } 
+			# 					engineer = { x = 0 y = 1 }   
+			# 					recon = { x = 0 y = 2 }
+			# 					logistics_company  = { x = 0 y = 3 }
+			# 				}
+			# 			}
+			# 		random_owned_controlled_state = {
+			# 			prioritize = { 126 }
+			# 			create_unit = { division = "division_template = \"Cruiser Tank\" start_experience_factor = 0.3 " owner = ENG }
+			# 		}
+			# 	}
+			# }
+
+			add_mastery = {
+				amount = 100
+				track = armor
+			}
+			add_mastery_bonus = {
+				name = ENG_mobilise_tanks
+				bonus = 0.2
+				days = 360
+				track = armor
+			}
 		}
 	}
 	
@@ -3245,7 +3268,7 @@ focus_tree = {
 				bonus = 0.5
 				ahead_reduction = 0.25
 				uses = 1
-				category = cl_tech
+				category = ca_tech
 			}
 		}
 	}
@@ -3291,10 +3314,9 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
-				uses = 2
-				category = cat_base_strike
+			add_mastery = {
+				amount = 50
+				folder = naval
 			}
 		}
 	}
@@ -3643,6 +3665,12 @@ focus_tree = {
 		}	
 		completion_reward = {
 			add_ideas = ENG_watu_idea
+			add_mastery_bonus = {
+				name = ENG_anti_submarine_training_school
+				bonus = 0.25
+				days = 180
+				track = screens
+			}
 		}
 	}
 	
@@ -4167,7 +4195,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			1017 = {
+			1047 = {
 				add_building_construction = {
 					type = anti_air_building
 					level = 1
@@ -4203,7 +4231,7 @@ focus_tree = {
 					}
 				}
 			}
-			1017 = {
+			1047 = {
 				CONTROLLER = {
 					OR = {
 						tag = ENG
@@ -4235,7 +4263,7 @@ focus_tree = {
 				}
 				
 			}
-			1017 = {
+			1047 = {
 				set_building_level = {
 					type = fortress
 					level = 2
@@ -4870,7 +4898,7 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = ENG_develop_canada
+		id = ENG_develop_can
 		icon = GFX_focus_generic_steel
 		prerequisite = { focus = ENG_start_colonial_investment }
 		
@@ -5053,7 +5081,7 @@ focus_tree = {
 	focus = {
 		id = ENG_finish_development
 		icon = GFX_focus_generic_currency_reforms
-		prerequisite = { focus = ENG_develop_canada focus = ENG_develop_saf focus = ENG_develop_raj focus = ENG_develop_ast focus = ENG_develop_nzl }
+		prerequisite = { focus = ENG_develop_can focus = ENG_develop_saf focus = ENG_develop_raj focus = ENG_develop_ast focus = ENG_develop_nzl }
 		
 		x = 0
 		y = 2
@@ -5563,18 +5591,18 @@ focus_tree = {
 				remove_idea = ENG_great_depression_2
 			}
 			123 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
 			128 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = industrial_complex
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -5633,7 +5661,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
-					level = 3
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -5641,7 +5669,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -5649,7 +5677,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 4
 					instant_build = yes
 				}
 			}
@@ -5678,12 +5706,12 @@ focus_tree = {
 		}
 		completion_reward = {
 			remove_ideas = ENG_great_depression_3
-			add_stability = -0.05
+			#add_stability = -0.05
 			133 = {
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -5733,7 +5761,6 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			# TODO: Mil construction speed bonus
 			add_tech_bonus = {
 				name = eco_bonus
 				bonus = 0.75
@@ -5754,6 +5781,16 @@ focus_tree = {
 				technology = improved_machine_tools
 				technology = advanced_machine_tools
 				technology = assembly_line_production
+			}
+			add_tech_bonus = {
+				name = tools_bonus
+				bonus = 0.75
+				uses = 1
+				#ahead_reduction = 0.2
+				technology = construction1
+				technology = construction2
+				technology = construction3
+				technology = construction4
 			}
 		}
 	}
@@ -5781,7 +5818,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -5789,7 +5826,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 			}
@@ -6363,7 +6400,7 @@ focus_tree = {
 					OR = {
 						tag = SOV
 						is_subject_of = SOV
-						tag = KSR
+						#tag = KSR
 					}
 				}
 			}
@@ -6372,7 +6409,7 @@ focus_tree = {
 					OR = {
 						tag = SOV
 						is_subject_of = SOV
-						tag = KSR
+						#tag = KSR
 					}
 				}
 			}
@@ -6381,7 +6418,7 @@ focus_tree = {
 					OR = {
 						tag = SOV
 						is_subject_of = SOV
-						tag = KSR
+						#tag = KSR
 					}
 				}
 			}

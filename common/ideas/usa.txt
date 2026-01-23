@@ -912,6 +912,7 @@ ideas = {
 				industrial_capacity_factory = -0.4
 				cant_faction_call = 1
 				cant_faction_join = 1
+				naval_mastery_gain_factor = -1
 			}
 			rule = {
 				can_join_factions = no
@@ -942,6 +943,7 @@ ideas = {
 				industrial_capacity_factory = -0.2
 				cant_faction_call = 1
 				cant_faction_join = 1
+				naval_mastery_gain_factor = -0.8
 			}
 			rule = {
 				can_join_factions = no
@@ -972,6 +974,7 @@ ideas = {
 				industrial_capacity_factory = -0.1
 				cant_faction_call = 1
 				cant_faction_join = 1
+				naval_mastery_gain_factor = -0.6
 			}
 			rule = {
 				can_join_factions = no
@@ -2095,7 +2098,7 @@ ideas = {
 			
 			rule = {
 				can_join_opposite_factions = no
-				can_create_factions = yes
+				#can_create_factions = yes
 			}
 			modifier = {
 				drift_defence_factor = 0.2
@@ -2327,10 +2330,30 @@ ideas = {
 			
 			
 			allowed = {
-				original_tag = USA
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
 			}
 			
-
+			available = {
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+			}
 			
 			research_bonus = {
 				armor = 0.15
@@ -2345,10 +2368,39 @@ ideas = {
 			
 			picture = generic_industrial_concern_1
 			allowed = {
-				original_tag = USA
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
 			}
 			available = {
-				has_completed_focus = USA_main_battle_tanks
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+				if = {
+					limit = {
+						original_tag = USA
+					}
+					has_completed_focus = USA_main_battle_tanks
+				}
+				else = {
+					USA = {
+						has_completed_focus = USA_main_battle_tanks
+					}
+				}
 			}
 
 			
@@ -2436,7 +2488,7 @@ ideas = {
 	
 		designer = yes
 		
-		electric_boat_company = {
+		norfolk_naval_yard = {
 			
 			
 			allowed = {
@@ -2444,6 +2496,45 @@ ideas = {
 			}
 			
 
+			
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+			
+			traits = { coastal_defence_naval_manufacturer }
+			
+			modifier = {
+			}
+		}
+		
+		electric_boat_company = {
+			
+			
+			allowed = {
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
+			}
+			
+			available = {
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+			}
 			
 			research_bonus = {
 				naval_equipment = 0.15
@@ -2502,10 +2593,30 @@ ideas = {
 			
 			
 			allowed = {
-				original_tag = USA
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
 			}
 			
-
+			available = {
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+			}
 			
 			research_bonus = {
 				air_equipment = 0.15
@@ -2540,10 +2651,30 @@ ideas = {
 			
 			
 			allowed = {
-				original_tag = USA
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
 			}
 			
-
+			available = {
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+			}
 			
 			research_bonus = {
 				air_equipment = 0.15
@@ -2641,10 +2772,30 @@ ideas = {
 			
 			
 			allowed = {
-				original_tag = USA
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
 			}
 			
-
+			available = {
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+			}
 			
 			research_bonus = {
 				infantry_weapons = 0.15
@@ -2654,16 +2805,37 @@ ideas = {
 			
 			modifier = {
 			}
+
 		}
 		
 		ford_motor_company = {
 			
 			
 			allowed = {
-				original_tag = USA
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
 			}
 			
-
+			available = {
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+			}
 			
 			research_bonus = {
 				motorized_equipment = 0.15
@@ -2681,10 +2853,30 @@ ideas = {
 			
 			
 			allowed = {
-				original_tag = USA
+				OR = {
+					original_tag = USA
+					PHI_SEA = yes
+				}
 			}
 			
-
+			available = {
+				if = {
+					limit = {
+						original_tag = PHI
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_completed_focus = PHI_declare_military_emergency
+							}
+						}
+						has_completed_focus = PHI_align_with_the_usa
+						else = {
+							has_completed_focus = PHI_declare_military_emergency
+						}
+					}
+				}
+			}
 			
 			research_bonus = {
 				artillery = 0.15

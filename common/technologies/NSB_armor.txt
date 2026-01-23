@@ -196,6 +196,7 @@ technologies = {
 					tag = MAN
 					tag = SIA
 					tag = VIC
+					tag = FRA.SOUTHFRANCEOWNER
 					# Other Nations with Custom Trees
 					tag = GER
 					tag = SOV
@@ -210,7 +211,6 @@ technologies = {
 					tag = USA
 					tag = MEX
 					tag = BRA
-
 				}
 			}
 		}
@@ -665,7 +665,10 @@ technologies = {
 			OR = {
 				original_tag = FRA
 				original_tag = VIC
+				tag = FRA.SOUTHFRANCEOWNER
 			}
+			NOT = { original_tag = ITA }
+			NOT = { original_tag = GER }
 		}
 
 		categories = {
@@ -1756,6 +1759,49 @@ technologies = {
 			mio_cat_tech_all_armor_and_modules
 			cat_medium_armor
             mio_cat_tech_medium_armor_and_modules
+		}
+
+		special_project_specialization = { specialization_land }
+	}
+
+	rom_cze_tank_1 = { 
+
+		enable_equipments = {
+			rom_light_tank_chassis_hetzer
+		}
+		
+		research_cost = 2.0
+		start_year = 1943
+		folder = {
+			name = nsb_armour_folder
+			position = { x = 12 y = 14 }
+		}
+
+		allow = {
+			always = no
+		}
+		
+		categories = {
+			armor
+			mio_cat_tech_all_armor_and_modules
+			cat_light_armor
+			mio_cat_tech_light_armor_and_modules
+		}
+
+		allow_branch = {
+			OR = {
+				tag = ROM
+				tag = GER
+			}
+		}
+
+
+		on_research_complete = {
+			custom_effect_tooltip = ger_cze_tank_equipment_2_short_tt
+		}
+		
+		ai_will_do = {
+			factor = 0
 		}
 
 		special_project_specialization = { specialization_land }

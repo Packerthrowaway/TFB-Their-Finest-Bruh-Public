@@ -31,6 +31,38 @@ on_actions = {
 				}
 			}
 		}
+		
+		effect = {
+			# First remove the traits
+			every_country = {
+				every_army_leader = {
+					limit = {
+						has_trait = volunteer_xp_debuff
+						NOT = {
+							OR = {
+								is_leading_volunteer_group_with_original_country = THIS
+								is_leading_volunteer_group = THIS
+							}
+						}
+					}
+					remove_unit_leader_trait = volunteer_xp_debuff 
+				}
+			}
+			# Then Re-Add Them
+			every_country = {
+				every_army_leader = {
+					limit = {
+						NOT = { has_trait = volunteer_xp_debuff }
+						OR = {
+							is_leading_volunteer_group_with_original_country = THIS
+							is_leading_volunteer_group = THIS
+						}
+					}
+
+					add_unit_leader_trait = volunteer_xp_debuff 
+				}
+			}
+		}
 		# Update Dockyard Consumer Goods or Build Speed
 		effect = {
 			if = {
@@ -102,73 +134,73 @@ on_actions = {
 					}
 				}
 			}
-			JAP = {
-				if = {
-					limit = { has_completed_focus = JAP_early_war_intel_focus }
-					for_each_scope_loop = {
-						array = JAP.JAPAN_INTEL
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_airforce_japan_small } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_airforce_japan_small } }
-						}
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_army_japan_small } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_army_japan_small } }
-						}
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_civilian_japan_small } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_civilian_japan_small } }
-						}
-						if = {
-							limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_navy_japan_small } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_navy_japan_small } }
-						}
-					}
-				} else_if = {
-					limit = { has_completed_focus = JAP_mid_war_intel_focus }
-					for_each_scope_loop = {
-						array = JAP.JAPAN_INTEL
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_airforce_japan_medium } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_airforce_japan_medium } }
-						}
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_army_japan_medium } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_army_japan_medium } }
-						}
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_civilian_japan_medium } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_civilian_japan_medium } }
-						}
-						if = {
-							limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_navy_japan_medium } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_navy_japan_medium } }
-						}
-					}
-				} else_if = {
-					limit = { has_completed_focus = JAP_late_war_intel_focus }
-					for_each_scope_loop = {
-						array = JAP.JAPAN_INTEL
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_airforce_japan_big } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_airforce_japan_big } }
-						}
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_army_japan_big } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_army_japan_big } }
-						}
-						if = {
-							limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_civilian_japan_big } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_civilian_japan_big } }
-						}
-						if = {
-							limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_navy_japan_big } } } }
-							JAP = { add_operation_token = { tag = PREV token = token_navy_japan_big } }
-						}
-					}
-				}
+			# JAP = {
+			# 	if = {
+			# 		limit = { has_completed_focus = JAP_early_war_intel_focus }
+			# 		for_each_scope_loop = {
+			# 			array = JAP.JAPAN_INTEL
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_airforce_japan_small } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_airforce_japan_small } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_army_japan_small } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_army_japan_small } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_civilian_japan_small } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_civilian_japan_small } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_navy_japan_small } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_navy_japan_small } }
+			# 			}
+			# 		}
+			# 	} else_if = {
+			# 		limit = { has_completed_focus = JAP_mid_war_intel_focus }
+			# 		for_each_scope_loop = {
+			# 			array = JAP.JAPAN_INTEL
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_airforce_japan_medium } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_airforce_japan_medium } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_army_japan_medium } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_army_japan_medium } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_civilian_japan_medium } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_civilian_japan_medium } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_navy_japan_medium } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_navy_japan_medium } }
+			# 			}
+			# 		}
+			# 	} else_if = {
+			# 		limit = { has_completed_focus = JAP_late_war_intel_focus }
+			# 		for_each_scope_loop = {
+			# 			array = JAP.JAPAN_INTEL
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_airforce_japan_big } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_airforce_japan_big } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_army_japan_big } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_army_japan_big } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { JAP = { has_operation_token = { tag = PREV token = token_civilian_japan_big } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_civilian_japan_big } }
+			# 			}
+			# 			if = {
+			# 				limit = {  NOT = { PREV = { has_operation_token = { tag = PREV token = token_navy_japan_big } } } }
+			# 				JAP = { add_operation_token = { tag = PREV token = token_navy_japan_big } }
+			# 			}
+			# 		}
+			# 	}
 
-			}
+			# }
 		}
 
 		# Reset Friendly Intel on Hotjoin
@@ -347,6 +379,9 @@ on_actions = {
 		}
 	}
     on_startup = {
+		effect = {
+			set_global_flag = game_has_started
+		}
 		# Set all of the flags from GameRules for easier setup:
 		effect = {
 			if = {
@@ -400,6 +435,15 @@ on_actions = {
 				}
 				set_global_flag = capped_volunteers_flag
 			}
+			# else_if = {
+			# 	limit = {
+			# 		has_game_rule = {
+			# 			rule = capped_volunteers
+			# 			option = NOJAPANVOLUNTEERS
+			# 		}
+			# 	}
+			# 	set_global_flag = capped_volunteers_no_japan_flag
+			# }
 			if = {
 				limit = {
 					has_game_rule = {
@@ -670,6 +714,15 @@ on_actions = {
 				}
 				set_global_flag = soviet_air_changes_disabled_flag
 			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = italian_join_type
+						option = ITALIAN_DYNAMIC_JOIN
+					}
+				}
+				set_global_flag = italy_dynamic_join_flag
+			}
 		}
 		effect = {
 			if = {
@@ -939,9 +992,9 @@ on_actions = {
 					}
 				}
 				# Eastern Med
-				ENG = {  add_to_array = { ENG.eastern_med = 1028 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 1057 } }
 				ENG = {  add_to_array = { ENG.eastern_med = 447 } }
-				ENG = {  add_to_array = { ENG.eastern_med = 1017 } }
+				ENG = {  add_to_array = { ENG.eastern_med = 1047 } }
 				ENG = {  add_to_array = { ENG.eastern_med = 452 } }
 				ENG = {  add_to_array = { ENG.eastern_med = 451 } }
 				ENG = {  add_to_array = { ENG.eastern_med = 446 } }
@@ -1170,7 +1223,7 @@ on_actions = {
 			}
 		}
 		effect = {
-			1027 = {
+			1057 = {
 				add_dynamic_modifier = {
 					modifier =  NO_PORTS_CAN_BE_BUILT 
 				}
@@ -1402,23 +1455,23 @@ on_actions = {
 					add_mio_funds_gain_factor = -0.75
 				}
 			}
-			if = {
-				limit = {
-					KSR = { is_ai = yes }
-				}
-				SOV = {	country_event = { id = soviet.505 } }
-			}
-			if = {
-				limit = {
-					KSR = { exists = yes }
-				}
-				KSR = {
-					give_resource_rights = { receiver = SOV state = 588 }
-					give_resource_rights = { receiver = SOV state = 882 }
-					give_resource_rights = { receiver = SOV state = 402 }
-					give_resource_rights = { receiver = SOV state = 584 }
-				}
-			}
+			# if = {
+			# 	limit = {
+			# 		KSR = { is_ai = yes }
+			# 	}
+			# 	SOV = {	country_event = { id = soviet.505 } }
+			# }
+			# if = {
+			# 	limit = {
+			# 		KSR = { exists = yes }
+			# 	}
+			# 	KSR = {
+			# 		give_resource_rights = { receiver = SOV state = 588 }
+			# 		give_resource_rights = { receiver = SOV state = 882 }
+			# 		give_resource_rights = { receiver = SOV state = 402 }
+			# 		give_resource_rights = { receiver = SOV state = 584 }
+			# 	}
+			# }
 		}
 		effect = {
 			SPR = { add_to_array = { global.nationalist_spain_states = 171 } }
@@ -1433,145 +1486,145 @@ on_actions = {
 			SPR = { add_to_array = { global.nationalist_spain_states = 789 } }
 			SPR = { add_to_array = { global.nationalist_spain_states = 169 } }
 		}
-		effect = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = mio_size
-						option = MIO_SIZE_NO_NAVY
-					}
-				}
-				every_country = {
-					every_military_industrial_organization = {
-						limit = {
-							OR = {
-								has_mio_equipment_type = mio_cat_eq_all_carrier
-								has_mio_equipment_type = mio_cat_eq_all_cruiser
-								has_mio_equipment_type = mio_cat_eq_all_destroyer
-								has_mio_equipment_type = mio_cat_eq_all_battleship
-								has_mio_equipment_type = ship_hull_submarine
-								has_mio_equipment_type = capital_ship
-								has_mio_equipment_type = screen_ship
-								has_mio_equipment_type = submarine
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			has_game_rule = {
+		# 				rule = mio_size
+		# 				option = MIO_SIZE_NO_NAVY
+		# 			}
+		# 		}
+		# 		every_country = {
+		# 			every_military_industrial_organization = {
+		# 				limit = {
+		# 					OR = {
+		# 						has_mio_equipment_type = mio_cat_eq_all_carrier
+		# 						has_mio_equipment_type = mio_cat_eq_all_cruiser
+		# 						has_mio_equipment_type = mio_cat_eq_all_destroyer
+		# 						has_mio_equipment_type = mio_cat_eq_all_battleship
+		# 						has_mio_equipment_type = ship_hull_submarine
+		# 						has_mio_equipment_type = capital_ship
+		# 						has_mio_equipment_type = screen_ship
+		# 						has_mio_equipment_type = submarine
 
-								has_mio_research_category = mio_cat_tech_all_capital_ship_and_modules
-								has_mio_research_category = mio_cat_tech_all_screen_ship_and_modules
-								has_mio_research_category = mio_cat_tech_all_submarine_and_modules
-								has_mio_research_category = mio_cat_tech_all_carrier_and_modules
-								has_mio_research_category = mio_cat_tech_all_cruiser_and_modules
-								has_mio_research_category = mio_cat_tech_all_destroyer_and_modules
-								has_mio_research_category = naval_equipment
-							}
-						}
-						add_mio_task_capacity = 99
-					}
-				}
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = division_cap
-						option = DISABLED
-					}
-				}
-				every_country = {
-					every_army_leader = {
-						add_unit_leader_trait = fun_haters
-					}
-				}
-				GER = {
-					GER_heinz_guderian = { add_unit_leader_trait = fun_haters }
-					GER_erwin_rommel = { add_unit_leader_trait = fun_haters }
-					GER_hasso_von_manteuffel = { add_unit_leader_trait = fun_haters }
-					GER_walther_nehring = { add_unit_leader_trait = fun_haters }
-					GER_kurt_student = { add_unit_leader_trait = fun_haters }
-					GER_walter_model = { add_unit_leader_trait = fun_haters }
-					GER_hermann_hoth = { add_unit_leader_trait = fun_haters }
-					GER_ernsteberhard_hell = { add_unit_leader_trait = fun_haters }
-					GER_walter_kruger = { add_unit_leader_trait = fun_haters }
-					GER_sepp_dietrich = { add_unit_leader_trait = fun_haters }
-					GER_paul_hausser = { add_unit_leader_trait = fun_haters }
-					GER_alexander_von_falkenhausen = { add_unit_leader_trait = fun_haters }
-				}
-				BRA = {
-					BRA_lampiao = { add_unit_leader_trait = fun_haters }
-					BRA_olga_benario_prestes = { add_unit_leader_trait = fun_haters }
-				}
-				GRE = {
-					GRE_stylianos_gonatas = { add_unit_leader_trait = fun_haters }
-				}
-				POL = {
-					POL_wojtek = { add_unit_leader_trait = fun_haters }
-				}
-				PER = {
-					PER_jafar_kavian = { add_unit_leader_trait = fun_haters }
-					PER_ghulam_yahya_daneshian = { add_unit_leader_trait = fun_haters }
-				}
-				DEN = {
-					DEN_erik_moller = { add_unit_leader_trait = fun_haters }
-					DEN_christian_peder_kryssing = { add_unit_leader_trait = fun_haters }
-					DEN_christian_frederik_von_schalburg = { add_unit_leader_trait = fun_haters }
-				}
-				BEL = {
-					BEL_eddy_blondeel = { add_unit_leader_trait = fun_haters }
-					BEL_jean_baptise_piron = { add_unit_leader_trait = fun_haters }
-				}
-				RAJ = {
-					RAJ_GOE_ishar_singh = { add_unit_leader_trait = fun_haters }
-					RAJ_GOE_parkash_singh = { add_unit_leader_trait = fun_haters }
-				}
-				AUS = {
-					AUS_julius_deutsch = { add_unit_leader_trait = fun_haters }
-					AUS_theodor_korner = { add_unit_leader_trait = fun_haters }
-					AUS_ernst_rudiger_starhemberg = { add_unit_leader_trait = fun_haters }
-					AUS_richard_steidle = { add_unit_leader_trait = fun_haters }
-					AUS_johann_jacob_reverta = { add_unit_leader_trait = fun_haters }
-					AUS_mauritz_von_wiktorin = { add_unit_leader_trait = fun_haters }
-					AUS_wilhelm_gebauer = { add_unit_leader_trait = fun_haters }
-				}
-				FIN = {
-					FIN_aarne_sihvo = { add_unit_leader_trait = fun_haters }
-					FIN_fanni_luukkonen = { add_unit_leader_trait = fun_haters }
-					FIN_paavo_talvela = { add_unit_leader_trait = fun_haters }
-					FIN_kurt_martti_wallenius = { add_unit_leader_trait = fun_haters }
-					FIN_paavo_susitaival = { add_unit_leader_trait = fun_haters }
-					FIN_lauri_torni = { add_unit_leader_trait = fun_haters }
-					FIN_hannu_hannuksela = { add_unit_leader_trait = fun_haters }
-					FIN_hjalmar_siilasvuo = { add_unit_leader_trait = fun_haters }
-					FIN_taavetti_laatikainen = { add_unit_leader_trait = fun_haters }
-					FIN_matti_aarnio = { add_unit_leader_trait = fun_haters }
-					FIN_erkki_raappana = { add_unit_leader_trait = fun_haters }
-					FIN_ruben_lagus = { add_unit_leader_trait = fun_haters }
-					FIN_svante_sundman = { add_unit_leader_trait = fun_haters }
-				}
-			}
-		}
+		# 						has_mio_research_category = mio_cat_tech_all_capital_ship_and_modules
+		# 						has_mio_research_category = mio_cat_tech_all_screen_ship_and_modules
+		# 						has_mio_research_category = mio_cat_tech_all_submarine_and_modules
+		# 						has_mio_research_category = mio_cat_tech_all_carrier_and_modules
+		# 						has_mio_research_category = mio_cat_tech_all_cruiser_and_modules
+		# 						has_mio_research_category = mio_cat_tech_all_destroyer_and_modules
+		# 						has_mio_research_category = naval_equipment
+		# 					}
+		# 				}
+		# 				add_mio_task_capacity = 99
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			has_game_rule = {
+		# 				rule = division_cap
+		# 				option = DISABLED
+		# 			}
+		# 		}
+		# 		every_country = {
+		# 			every_army_leader = {
+		# 				add_unit_leader_trait = fun_haters
+		# 			}
+		# 		}
+		# 		GER = {
+		# 			GER_heinz_guderian = { add_unit_leader_trait = fun_haters }
+		# 			GER_erwin_rommel = { add_unit_leader_trait = fun_haters }
+		# 			GER_hasso_von_manteuffel = { add_unit_leader_trait = fun_haters }
+		# 			GER_walther_nehring = { add_unit_leader_trait = fun_haters }
+		# 			GER_kurt_student = { add_unit_leader_trait = fun_haters }
+		# 			GER_walter_model = { add_unit_leader_trait = fun_haters }
+		# 			GER_hermann_hoth = { add_unit_leader_trait = fun_haters }
+		# 			GER_ernsteberhard_hell = { add_unit_leader_trait = fun_haters }
+		# 			GER_walter_kruger = { add_unit_leader_trait = fun_haters }
+		# 			GER_sepp_dietrich = { add_unit_leader_trait = fun_haters }
+		# 			GER_paul_hausser = { add_unit_leader_trait = fun_haters }
+		# 			GER_alexander_von_falkenhausen = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		BRA = {
+		# 			BRA_lampiao = { add_unit_leader_trait = fun_haters }
+		# 			BRA_olga_benario_prestes = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		GRE = {
+		# 			GRE_stylianos_gonatas = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		POL = {
+		# 			POL_wojtek = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		PER = {
+		# 			PER_jafar_kavian = { add_unit_leader_trait = fun_haters }
+		# 			PER_ghulam_yahya_daneshian = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		DEN = {
+		# 			DEN_erik_moller = { add_unit_leader_trait = fun_haters }
+		# 			DEN_christian_peder_kryssing = { add_unit_leader_trait = fun_haters }
+		# 			DEN_christian_frederik_von_schalburg = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		BEL = {
+		# 			BEL_eddy_blondeel = { add_unit_leader_trait = fun_haters }
+		# 			BEL_jean_baptise_piron = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		RAJ = {
+		# 			RAJ_GOE_ishar_singh = { add_unit_leader_trait = fun_haters }
+		# 			RAJ_GOE_parkash_singh = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		AUS = {
+		# 			AUS_julius_deutsch = { add_unit_leader_trait = fun_haters }
+		# 			AUS_theodor_korner = { add_unit_leader_trait = fun_haters }
+		# 			AUS_ernst_rudiger_starhemberg = { add_unit_leader_trait = fun_haters }
+		# 			AUS_richard_steidle = { add_unit_leader_trait = fun_haters }
+		# 			AUS_johann_jacob_reverta = { add_unit_leader_trait = fun_haters }
+		# 			AUS_mauritz_von_wiktorin = { add_unit_leader_trait = fun_haters }
+		# 			AUS_wilhelm_gebauer = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 		FIN = {
+		# 			FIN_aarne_sihvo = { add_unit_leader_trait = fun_haters }
+		# 			FIN_fanni_luukkonen = { add_unit_leader_trait = fun_haters }
+		# 			FIN_paavo_talvela = { add_unit_leader_trait = fun_haters }
+		# 			FIN_kurt_martti_wallenius = { add_unit_leader_trait = fun_haters }
+		# 			FIN_paavo_susitaival = { add_unit_leader_trait = fun_haters }
+		# 			FIN_lauri_torni = { add_unit_leader_trait = fun_haters }
+		# 			FIN_hannu_hannuksela = { add_unit_leader_trait = fun_haters }
+		# 			FIN_hjalmar_siilasvuo = { add_unit_leader_trait = fun_haters }
+		# 			FIN_taavetti_laatikainen = { add_unit_leader_trait = fun_haters }
+		# 			FIN_matti_aarnio = { add_unit_leader_trait = fun_haters }
+		# 			FIN_erkki_raappana = { add_unit_leader_trait = fun_haters }
+		# 			FIN_ruben_lagus = { add_unit_leader_trait = fun_haters }
+		# 			FIN_svante_sundman = { add_unit_leader_trait = fun_haters }
+		# 		}
+		# 	}
+		# }
 	}
 
-	on_unit_leader_created = {
-		effect = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = division_cap
-						option = DISABLED
-					}
-				}
-				character = {
-					if = { 
-						limit = {
-							is_army_leader = yes
-						}
-						root = {
-							add_unit_leader_trait = fun_haters
-						}
-					}
-				}
-			}
-		}
-	}
+	# on_unit_leader_created = {
+	# 	effect = {
+	# 		if = {
+	# 			limit = {
+	# 				has_game_rule = {
+	# 					rule = division_cap
+	# 					option = DISABLED
+	# 				}
+	# 			}
+	# 			character = {
+	# 				if = { 
+	# 					limit = {
+	# 						is_army_leader = yes
+	# 					}
+	# 					root = {
+	# 						add_unit_leader_trait = fun_haters
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 	on_capitulation = {
 		# Denied Czechs Stuff
 		effect = {
@@ -1631,11 +1684,12 @@ on_actions = {
 						name = JAP_threat_treaty_of_nanjing
 					}
 					set_country_flag = { flag = JAP_transfer_timer value = 1 days = 30 }
-					country_event = {  id = japan.506 } 
+					country_event = { id = japan.506 } 
 				}
 				if = {
 					limit = {
-						MAN = { has_completed_focus = MAN_crush_the_bandits }
+						MAN = { has_completed_focus = MAN_tsr_obedience }
+						MAN = { NOT = { has_completed_focus = MAN_tsr_empire_of_manchukuo } }
 					}
 					MAN = {
 						add_ideas = MAN_assert_mills
@@ -1976,11 +2030,11 @@ on_actions = {
 						FROM.FROM = { state = 116 }
 						FROM.FROM = { state = 183 }
 						FROM.FROM = { state = 452 }
-						FROM.FROM = { state = 1017 }
+						FROM.FROM = { state = 1047 }
 						FROM.FROM = { state = 447 }
 						FROM.FROM = { state = 907 }
 						FROM.FROM = { state = 446 }
-						FROM.FROM = { state = 1028 }
+						FROM.FROM = { state = 1057 }
 						FROM.FROM = { state = 453 }
 						FROM.FROM = { state = 454 }
 						FROM.FROM = { state = 553 }

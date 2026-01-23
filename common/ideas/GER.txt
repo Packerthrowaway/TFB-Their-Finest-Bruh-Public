@@ -1128,7 +1128,7 @@ ideas = {
 
 			targeted_modifier = {
 				tag = SOV
-				attack_bonus_against = 0.10
+				breakthrough_bonus_against = 0.15
 				defense_bonus_against = 0.05
 			}
 
@@ -2452,7 +2452,7 @@ ideas = {
 
 			modifier = {
 				attrition = -0.05
-				supply_factor = 0.05
+				supply_consumption_factor = -0.05
 				supply_node_range = 0.1
 				naval_attrition = -0.05
 			}
@@ -4300,7 +4300,7 @@ ideas = {
 			modifier = { #REMINDER to always update these if the dynamic modifier is altered!
 				army_org_factor = 0.05
 				planning_speed = 0.25
-				supply_factor = -0.15
+				supply_consumption_factor = 0.15
 			}
 		}
 		GER_army_1939_fake_ns = { #Fake National Spirit for showing off dynamic modifier at games start-up
@@ -4584,19 +4584,19 @@ ideas = {
 			picture = expand_mefo_air
 
 			equipment_bonus = {		
+				fighter_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+				heavy_fighter_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+				cv_fighter_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
 				tac_bomber_equipment = {
 					build_cost_ic = -0.075 instant = yes
 				}
-				fighter_equipment = {
-					build_cost_ic = -0.075 instant = yes
-				}
 				CAS_equipment = {
-					build_cost_ic = -0.075 instant = yes
-				}
-				heavy_fighter_equipment = {
-					build_cost_ic = -0.075 instant = yes
-				}
-				cv_nav_bomber_equipment = {
 					build_cost_ic = -0.075 instant = yes
 				}
 				scout_plane_equipment = {
@@ -4974,6 +4974,7 @@ ideas = {
 
 		GER_germaniawerft_improved = {
 			name = germaniawerft
+			picture = germaniawerft
 			allowed = {
 				original_tag = GER
 			}
@@ -5016,6 +5017,7 @@ ideas = {
 
 		GER_blohm_und_voss_improved = {
 			name = blohm_und_voss
+			picture = blohm_und_voss
 
 			allowed = {
 				original_tag = GER
@@ -6463,9 +6465,9 @@ ideas = {
 				#production_lack_of_resource_penalty_factor = -0.05?
 				#industry_free_repair_factor = 0.15?
 				#production_factory_max_efficiency_factor = 0.05
-				production_factory_efficiency_gain_factor = 0.05
-				production_factory_start_efficiency_factor = 0.05
-				line_change_production_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.025
+				production_factory_start_efficiency_factor = 0.025
+				line_change_production_efficiency_factor = 0.025
 			}
 
 			equipment_bonus = {

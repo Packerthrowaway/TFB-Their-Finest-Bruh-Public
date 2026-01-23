@@ -1865,13 +1865,26 @@
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			remove_ideas = FRA_victors_of_wwi
+			custom_effect_tooltip = generic_skip_one_line_tt
 			army_experience = 10
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_doctrine_cost_reduction = {
 				name = FRA_army_reform
 				cost_reduction = 0.25
 				uses = 2
 				category = land_doctrine
 			}
+			add_mastery = {
+				amount = 50
+				folder = land
+			}
+			add_mastery_bonus = {
+				name = FRA_army_reform
+				bonus = 0.2
+				days = 360
+				folder = land
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			IF = {
 				limit = {
 					has_dlc = "Arms Against Tyranny"
@@ -2763,14 +2776,14 @@
 		completion_reward = {
 			custom_effect_tooltip = FRA_coalition_tt
 			add_stability = -0.1
-			create_country_leader = {
-				name = "Édouard Daladier"
-				desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
-				expire = "1965.1.1"
-				ideology = socialism
-				picture = "gfx\\leaders\\FRA\\Portrait_France_Edouard_Daladier.dds"
-				traits = {
-					stout_defender
+			
+			add_country_leader_role = {
+				character = FRA_edouard_daladier
+				promote_leader = yes
+				country_leader = {
+					ideology=socialism
+					traits={ stout_defender }
+					expire="1965.1.1.1"
 				}
 			}
 		}
@@ -2872,7 +2885,6 @@
 			}
 		}
 	}
-
 	focus = {
 		id = FRA_confirm_eastern_commitments
 		icon = GFX_goal_tripartite_pact
@@ -2965,11 +2977,25 @@
 		available = {
 			country_exists = CZE
 			is_subject = no
+			is_in_faction = no
+			CZE = {
+				has_government = ROOT
+			}
 		}
 		
-		bypass = {
-
-		}
+	 	bypass = {
+	 		CZE = {
+	 			OR = {
+	 				exists = no
+	 				is_subject = yes
+	 				has_war_with = ROOT
+	 				is_in_faction = yes
+	 				NOT = {
+	 					has_government = ROOT
+	 				}
+	 			}
+	 		}
+	 	}
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -3013,7 +3039,8 @@
 					is_in_faction = no
 				}
 				set_rule = { can_create_factions = yes }
-				create_faction = FRA_little_entente
+				create_faction_from_template = faction_template_the_little_entente
+
 				CZE = { custom_effect_tooltip = invite_to_faction_tt }
 				hidden_effect = {
 					CZE = { country_event = generic.5 }

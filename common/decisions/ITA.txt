@@ -176,7 +176,21 @@ political_actions = {
 		}
 
 		activation = {
-			GER = { has_war_with = FRA }
+			OR = {
+				AND = {
+					has_global_flag = italy_dynamic_join_flag
+					OR = {
+						FRA = { surrender_progress > 0}
+						GER = { has_war_with = BEL }
+						GER = { has_war_with = HOL }
+						GER = { has_war_with = LUX }
+					}
+				}
+				AND = {
+					NOT = { has_global_flag = italy_dynamic_join_flag }
+					GER = { has_war_with = FRA }
+				}
+			}
 		}
 		
 		timeout_effect = {
@@ -250,7 +264,21 @@ political_actions = {
 		}
 
 		activation = {
-			GER = { has_war_with = FRA }
+			OR = {
+				AND = {
+					has_global_flag = italy_dynamic_join_flag
+					OR = {
+						FRA = { surrender_progress > 0}
+						GER = { has_war_with = BEL }
+						GER = { has_war_with = HOL }
+						GER = { has_war_with = LUX }
+					}
+				}
+				AND = {
+					NOT = { has_global_flag = italy_dynamic_join_flag }
+					GER = { has_war_with = FRA }
+				}
+			}
 		}
 		
 		timeout_effect = {
@@ -277,6 +305,18 @@ political_actions = {
 				add_days_mission_timeout = {
 					mission = ITA_go_to_war_with_france
 					days = 90
+				}
+			}
+			else_if = {
+				limit = {
+					has_game_rule = {
+						rule = italian_join_type
+						option = ITALIAN_DYNAMIC_JOIN
+					}
+				}
+				add_days_mission_timeout = {
+					mission = ITA_go_to_war_with_france
+					days = -90
 				}
 			}
 		}

@@ -47,6 +47,7 @@ if = {
 set_research_slots = 7
 set_stability = 0.75
 set_war_support = 0
+add_command_power = 20
 set_variable = { dockyard_major = 1 }
 set_variable = { var = senators_support value = 48 }
 set_variable = { var = senators_total value = 96 }
@@ -87,10 +88,7 @@ set_technology = {
 	light_basic_dup_tech = 1
 	medium_basic_dup_tech = 1
 	gw_artillery = 1
-	
-	
-	superior_firepower = 1
-	base_strike = 1
+
 	motorised_infantry = 1
 	fuel_silos = 1
 	fuel_refining = 1
@@ -98,6 +96,9 @@ set_technology = {
 	basic_train = 1
 	early_transport_plane = 1
 }
+
+set_grand_doctrine = superior_firepower
+set_grand_doctrine = new_base_strike
 
 add_breakthrough_progress = {
 	specialization = specialization_land
@@ -147,7 +148,7 @@ if = {
 		basic_ship_hull_carrier = 1
 		basic_battery = 1
 		basic_light_battery = 1
-		basic_medium_battery = 1
+		#basic_medium_battery = 1
 		basic_heavy_battery = 1
 		basic_torpedo = 1
 		sonar = 1
@@ -155,7 +156,7 @@ if = {
 		basic_cruiser_armor_scheme = 1
 		#basic_heavy_armor_scheme = 1
 		mtg_transport = 1
-		improved_airplane_launcher = 1
+		#improved_airplane_launcher = 1
 		basic_dp_light_battery = 1
 	}
 	add_ideas = MTG_naval_treaty_adherent
@@ -222,14 +223,39 @@ add_ideas = {
 # DIPLOMACY
 set_autonomy = {
 	target = PHI
-	autonomous_state =  autonomy_puppet
+	autonomous_state =  autonomy_colony
 }
+give_guarantee = PHI
 
 1936.1.2 = {
 	remove_from_faction = PHI
 	set_autonomy = { target = PHI autonomy_state = autonomy_free }
 	set_global_flag = meta_game_flag
 }
+
+if = {
+	limit = { has_dlc = "La Resistance" }
+	create_operative_leader = {
+		name = "Josephine Baker"
+		GFX = GFX_portrait_josephine_baker
+		traits = { operative_well_groomed }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { USA }
+	}
+
+	create_operative_leader = {
+		name = "Virginia Hall"
+		GFX = GFX_portrait_virginia_hall
+		traits = { operative_demolition_expert }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { USA }
+	}
+}
+
 
 recruit_character = USA_franklin_delano_roosevelt
 recruit_character = USA_william_dudley_pelley
@@ -242,7 +268,7 @@ recruit_character = USA_douglas_macarthur
 recruit_character = USA_walter_krueger
 recruit_character = USA_lloyd_fredendall
 recruit_character = USA_leslie_mcnair
-recruit_character = USA_jonathan_wainwright
+#recruit_character = USA_jonathan_wainwright
 recruit_character = USA_russell_hartle
 recruit_character = USA_leonard_gerow
 recruit_character = USA_edward_brooks
@@ -257,11 +283,11 @@ recruit_character = USA_ernest_king
 recruit_character = USA_frank_jack_fletcher
 recruit_character = USA_harold_rainsford_stark
 recruit_character = USA_arleigh_burke
-recruit_character = USA_george_s._patton
-recruit_character = USA_dwight_d._eisenhower
+recruit_character = USA_george_s_patton
+recruit_character = USA_dwight_d_eisenhower
 recruit_character = USA_j._lawton_collins
-recruit_character = USA_chester_w._nimitz
-recruit_character = USA_william_halsey_jr.
+recruit_character = USA_chester_w_nimitz
+recruit_character = USA_william_halsey_jr
 recruit_character = USA_raymond_a._spruance
 recruit_character = USA_charles_m._cooke_jr
 recruit_character = USA_hiram_schofield
@@ -282,7 +308,7 @@ recruit_character = USA_john_winant
 recruit_character = USA_usa_william_donovan
 recruit_character = USA_donald_nelson
 recruit_character = USA_george_kenney
-recruit_character = USA_william_halsey
+#recruit_character = USA_william_halsey
 recruit_character = USA_john_cannon
 recruit_character = USA_carl_spaatz
 recruit_character = USA_george_marshall

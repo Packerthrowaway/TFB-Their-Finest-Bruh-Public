@@ -267,12 +267,17 @@ capped_volunteers = {
 	name = "RULE_CAPPED_VOLUNTEERS"
 	group = "RULE_GROUP_TFB"
 	icon = "GFX_text_infiltrate_air_token"
-	option = {
+	default = {
 		name = "ENABLED"
 		text = "RULE_OPTION_ENABLED"
 		desc = "RULE_OPTION_CAPPED_VOLUNTEERS_ENABLED_DESC"
 	}
-	default = {
+	# option = {
+	# 	name = "NOJAPANVOLUNTEERS"
+	# 	text = "RULE_OPTION_NOJAPAN"
+	# 	desc = "RULE_OPTION_NOJAPAN_DESC"
+	# }
+	option = {
 		name = "DISABLED"
 		text = "RULE_OPTION_DISABLED"
 		desc = "RULE_OPTION_CAPPED_VOLUNTEERS_DISABLED_DESC"
@@ -343,21 +348,21 @@ china_waves_style = {
 	}
 }
 
-division_cap = {
-	name = "RULE_DIVISION_CAP"
-	group = "RULE_GROUP_TFB"
-	icon = "GFX_text_infiltrate_air_token"
-	default = {
-		name = "ENABLED"
-		text = "RULE_OPTION_ENABLED"
-		desc = "RULE_OPTION_CAPPED_DIVISIONS_ENABLED_DESC"
-	}
-	option = {
-		name = "DISABLED"
-		text = "RULE_OPTION_DISABLED"
-		desc = "RULE_OPTION_CAPPED_DIVISIONS_DISABLED_DESC"
-	}
-}
+# division_cap = {
+# 	name = "RULE_DIVISION_CAP"
+# 	group = "RULE_GROUP_TFB"
+# 	icon = "GFX_text_infiltrate_air_token"
+# 	default = {
+# 		name = "ENABLED"
+# 		text = "RULE_OPTION_ENABLED"
+# 		desc = "RULE_OPTION_CAPPED_DIVISIONS_ENABLED_DESC"
+# 	}
+# 	option = {
+# 		name = "DISABLED"
+# 		text = "RULE_OPTION_DISABLED"
+# 		desc = "RULE_OPTION_CAPPED_DIVISIONS_DISABLED_DESC"
+# 	}
+# }
 
 soviet_air_changes = {
 	name = "RULE_SOV_AIR"
@@ -393,10 +398,15 @@ italian_join_type = {
 		text = "RULE_OPTION_ITALIAN_QUICK_JOIN"
 		desc = "RULE_ITALIAN_JOIN_90_DESC"
 	}
-	default = {
+	option = {
 		name = "ITALIAN_STANDARD_JOIN"
 		text = "RULE_OPTION_ITALIAN_STANDARD_JOIN"
 		desc = "RULE_ITALIAN_JOIN_180_DESC"
+	}
+	default = {
+		name = "ITALIAN_DYNAMIC_JOIN"
+		text = "RULE_OPTION_ITALIAN_DYNAMIC_JOIN"
+		desc = "RULE_ITALIAN_DYNAMIC_JOIN_DESC"
 	}
 	option = {
 		name = "ITALIAN_LONG_JOIN"
@@ -405,25 +415,25 @@ italian_join_type = {
 	}
 }
 
-mio_size = {
-	name = "RULE_MIO_SIZE"
-	group = "RULE_GROUP_TFB"
-	default = {
-		name = "MIO_SIZE_NORMAL"
-		text = "RULE_OPTION_MIO_SIZE_NORMAL"
-		desc = "MIO_SIZE_NORMAL_DESC"
-	}
-	option = {
-		name = "MIO_SIZE_NO_NAVY"
-		text = "RULE_OPTION_MIO_SIZE_NO_NAVY"
-		desc = "MIO_SIZE_NO_NAVY_DESC"
-	}
-	# option = {
-	# 	name = "MIO_SIZE_DISABLED"
-	# 	text = "RULE_OPTION_MIO_SIZE_DISABLED"
-	# 	desc = "MIO_SIZE_DISABLED_DESC"
-	# }
-}
+# mio_size = {
+# 	name = "RULE_MIO_SIZE"
+# 	group = "RULE_GROUP_TFB"
+# 	default = {
+# 		name = "MIO_SIZE_NORMAL"
+# 		text = "RULE_OPTION_MIO_SIZE_NORMAL"
+# 		desc = "MIO_SIZE_NORMAL_DESC"
+# 	}
+# 	option = {
+# 		name = "MIO_SIZE_NO_NAVY"
+# 		text = "RULE_OPTION_MIO_SIZE_NO_NAVY"
+# 		desc = "MIO_SIZE_NO_NAVY_DESC"
+# 	}
+# 	# option = {
+# 	# 	name = "MIO_SIZE_DISABLED"
+# 	# 	text = "RULE_OPTION_MIO_SIZE_DISABLED"
+# 	# 	desc = "MIO_SIZE_DISABLED_DESC"
+# 	# }
+# }
 
 raj_version = {
 	name = "RULE_RAJ_VERSION"
@@ -1149,6 +1159,7 @@ allow_scorched_earth = {
 	name = "RULE_ALLOW_SCORCHED_EARTH"
 	group = "RULE_GROUP_GAMEPLAY"
 	icon = "GFX_scorched_earth"
+	required_dlc = "No Step Back"
 	option = {
 		name = yes
 		text = "RULE_OPTION_ALLOWED"
@@ -1366,23 +1377,29 @@ JAP_ai_behavior = {
 	option = {
 		required_dlc = "Waking the Tiger"
 		name = COMMUNIST
-		text = "RULE_OPTION_COMMUNIST"
+		text = "RULE_OPTION_COMMUNIST_JAP_AI"
 		desc = "RULE_OPTION_COMMUNIST_JAP_AI_DESC"
 	}
 	option = {
+		required_dlc = "No Compromise, No Surrender"
+		name = COMMUNIST_2
+		text = "RULE_OPTION_COMMUNIST_RONOHA_JAP_AI"
+		desc = "RULE_OPTION_COMMUNIST_RONOHA_JAP_AI_DESC"
+	}
+	option = {
 		name = NEUTRALITY
-		text = "RULE_OPTION_NEUTRALITY"
+		text = "RULE_OPTION_JAP_NEUTRALITY"
 		desc = "RULE_OPTION_NEUTRALITY_JAP_AI_DESC"
 	}
 	option = {
 		required_dlc = "Waking the Tiger"
 		name = DEMOCRATIC
-		text = "RULE_OPTION_DEMOCRATIC"
+		text = "RULE_OPTION_JAP_DEMOCRATIC"
 		desc = "RULE_DEMOCRATIC_JAP_AI_DESC"
 	}
 	option = {
 		name = FASCIST
-		text = "RULE_OPTION_FASCIST"
+		text = "RULE_OPTION_JAP_FASCIST"
 		desc = "RULE_FASCIST_JAP_AI_DESC"
 		allow_achievements = yes
 	}
@@ -2037,18 +2054,51 @@ CHI_ai_behavior = {
 		text = "RULE_OPTION_HISTORICAL"
 		desc = "RULE_OPTION_HISTORICAL_CHI_AI_DESC"
 		allow_achievements = yes
+		exclude_dlc = "No Compromise, No Surrender"
 	}
 	option = {
 		name = ALTERNATE
 		text = "RULE_OPTION_ALTERNATE"
 		desc = "RULE_OPTION_ALTERNATE_CHI_AI_DESC"
+		exclude_dlc = "No Compromise, No Surrender"
 	}
 	option = {
 		name = RANDOM
 		text = "RULE_OPTION_RANDOM"
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
 	}
+
+	### SEA
+	option = {
+		name = HISTORICAL_SEA
+		text = "RULE_OPTION_HISTORICAL_SEA"
+		desc = "RULE_OPTION_HISTORICAL_SEA_DESC"
+		required_dlc = "No Compromise, No Surrender"
+		allow_achievements = yes
+	}
+
+	option = {
+		name = FASCIST_SEA
+		text = "RULE_OPTION_FASCIST_SEA"
+		desc = "RULE_OPTION_FASCIST_SEA_DESC"
+		required_dlc = "No Compromise, No Surrender"
+	}
+
+	option = {
+		name = WANG_JINGWEI_SEA
+		text = "RULE_OPTION_WANG_JINGWEI_SEA"
+		desc = "RULE_OPTION_WANG_JINGWEI_SEA_DESC"
+		required_dlc = "No Compromise, No Surrender"
+	}
+
+	option = {
+		name = DEMOCRATIC_SEA
+		text = "RULE_OPTION_DEMOCRATIC_SEA"
+		desc = "RULE_OPTION_DEMOCRATIC_SEA_DESC"
+		required_dlc = "No Compromise, No Surrender"
+	}
 }
+
 PRC_ai_behavior = {
 	name = "PRC_AI_BEHAVIOR"
 	required_dlc = "Waking the Tiger"
@@ -2058,22 +2108,57 @@ PRC_ai_behavior = {
 		text = "RULE_OPTION_DEFAULT"
 		desc = "RULE_OPTION_DEFAULT_AI_DESC"
 	}
+
 	option = {
 		name = HISTORICAL
 		text = "RULE_OPTION_HISTORICAL"
 		desc = "RULE_OPTION_HISTORICAL_PRC_AI_DESC"
 		allow_achievements = yes
+		exclude_dlc = "No Compromise, No Surrender"
 	}
 	option = {
 		name = ALTERNATE
 		text = "RULE_OPTION_ALTERNATE"
 		desc = "RULE_OPTION_ALTERNATE_PRC_AI_DESC"
+		exclude_dlc = "No Compromise, No Surrender"
 	}
 	option = {
 		name = RANDOM
 		text = "RULE_OPTION_RANDOM"
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
+		exclude_dlc = "No Compromise, No Surrender"
 	}
+
+	#No Compromise, No Surrender
+	
+	option = {
+		name = HISTORICAL
+		text = "RULE_OPTION_HISTORICAL"
+		desc = "RULE_OPTION_HISTORICAL_PRC_AI_DESC"
+		allow_achievements = yes
+		required_dlc = "No Compromise, No Surrender"
+	}
+	option = {
+		name = ALTERNATE_1
+		text = "RULE_OPTION_BOLSHEVIK_PRC"
+		desc = "RULE_OPTION_BOLSHEVIK_PRC_DESC"
+		required_dlc = "No Compromise, No Surrender"
+		allow_achievements = no
+	}
+	option = {
+		name = ALTERNATE_2
+		text = "RULE_OPTION_ALTERNATE_GUOMAO"
+		desc = "RULE_OPTION_ALTERNATE_GUOMAO_DESC"
+		required_dlc = "No Compromise, No Surrender"
+		allow_achievements = no
+	}
+	option = {
+		name = RANDOM
+		text = "RULE_OPTION_RANDOM"
+		desc = "RULE_OPTION_RANDOM_AI_DESC"
+		required_dlc = "No Compromise, No Surrender"
+	}
+
 }
 MAN_ai_behavior = {
 	name = "MAN_AI_BEHAVIOR"
@@ -2091,9 +2176,40 @@ MAN_ai_behavior = {
 		allow_achievements = yes
 	}
 	option = {
+		required_dlc = "No Compromise, No Surrender"
+		name = OBEDIENCE_CHINA
+		text = "RULE_OPTION_OBEDIENCE_CHINA"
+		desc = "RULE_OPTION_OBEDIENCE_CHINA_MAN_AI_DESC"
+	}
+	option = {
+		exclude_dlc = "No Compromise, No Surrender"
 		name = INDEPENDENCE
 		text = "RULE_OPTION_INDEPENDENCE"
 		desc = "RULE_OPTION_INDEPENDENCE_MAN_AI_DESC"
+	}
+	option = {
+		required_dlc = "No Compromise, No Surrender"
+		name = INDEPENDENCE_FAS
+		text = "RULE_OPTION_INDEPENDENCE_FAS"
+		desc = "RULE_OPTION_INDEPENDENCE_FAS_MAN_AI_DESC"
+	}
+	option = {
+		required_dlc = "No Compromise, No Surrender"
+		name = INDEPENDENCE_NEU
+		text = "RULE_OPTION_INDEPENDENCE_NEU"
+		desc = "RULE_OPTION_INDEPENDENCE_NEU_MAN_AI_DESC"
+	}
+	option = {
+		required_dlc = "No Compromise, No Surrender"
+		name = INDEPENDENCE_DEM
+		text = "RULE_OPTION_INDEPENDENCE_DEM"
+		desc = "RULE_OPTION_INDEPENDENCE_DEM_MAN_AI_DESC"
+	}
+	option = {
+		required_dlc = "No Compromise, No Surrender"
+		name = INDEPENDENCE_COM
+		text = "RULE_OPTION_INDEPENDENCE_COM"
+		desc = "RULE_OPTION_INDEPENDENCE_COM_MAN_AI_DESC"
 	}
 	option = {
 		name = RANDOM
@@ -3566,6 +3682,59 @@ PER_ai_behavior = {
 		name = RANDOM
 		text = "RULE_OPTION_RANDOM"
 		desc = "RULE_OPTION_RANDOM_AI_DESC"
+	}
+}
+
+PHI_AI_BEHAVIOR = {
+	name = "PHI_AI_BEHAVIOR"
+	group = "RULE_GROUP_AI_BEHAVIOR"
+	required_dlc = "No Compromise, No Surrender"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+		desc = "RULE_OPTION_DEFAULT_AI_DESC"
+	}
+	option = {
+		name = HISTORICAL
+		text = "RULE_OPTION_HISTORICAL"
+		desc = "RULE_OPTION_HISTORICAL_PHI_AI_DESC"
+		allow_achievements = yes
+	}
+	option = {
+		name = FLEXIBLE
+		text = "RULE_OPTION_FLEXIBLE_PHI_AI"
+		desc = "RULE_OPTION_FLEXIBLE_PHI_AI_DESC"
+		allow_achievements = no
+	}
+	option = {
+		name = FASCIST
+		text = "RULE_OPTION_FASCIST_PHI_AI"
+		desc = "RULE_OPTION_FASCIST_PHI_AI_DESC"
+		allow_achievements = no
+	}
+	option = {
+		name = MONARCHIST
+		text = "RULE_OPTION_MONARCHIST_PHI_AI"
+		desc = "RULE_OPTION_MONARCHIST_PHI_AI_DESC"
+		allow_achievements = no
+	}
+	option = {
+		name = COMMUNIST
+		text = "RULE_OPTION_COMMUNIST_PHI_AI"
+		desc = "RULE_OPTION_COMMUNIST_PHI_AI_DESC"
+		allow_achievements = no
+	}
+	option = {
+		name = MACARTHUR
+		text = "RULE_OPTION_MACARTHUR_PHI_AI"
+		desc = "RULE_OPTION_MACARTHUR_PHI_AI_DESC"
+		allow_achievements = no
+	}
+	option = {
+		name = RANDOM
+		text = "RULE_OPTION_RANDOM" 
+		desc = "RULE_OPTION_RANDOM_AI_DESC"
+		allow_achievements = no
 	}
 }
 

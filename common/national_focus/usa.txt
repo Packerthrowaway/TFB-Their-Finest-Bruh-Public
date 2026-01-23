@@ -1,4 +1,4 @@
-﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
 ### search_filters = {FOCUS_FILTER_STABILITY}
@@ -2949,6 +2949,15 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			every_state = {
+				limit = { has_state_flag = USA_arsenal_of_democracy_3AF }
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+				}
+			}
 		}
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
@@ -4626,12 +4635,20 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			army_experience = 25
-			add_doctrine_cost_reduction = {
-				name = USA_louisiana_maneuvers
-				cost_reduction = 0.25
-				uses = 2
-				category = land_doctrine
+			add_mastery = {
+				amount = 50
+				folder = land
 			}
+			# add_doctrine_cost_reduction = {
+			# 	name = USA_louisiana_maneuvers
+			# 	cost_reduction = 0.25
+			# 	uses = 2
+			# 	category = land_doctrine
+			# }
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_george_s_patton = {
+				add_skill_level = 1
+			}	
 		}
 	}
 	focus = {
@@ -4695,6 +4712,13 @@ focus_tree = {
 				bonus = 0.75
 				uses = 1
 				category = infantry_weapons
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_omar_bradley = {
+				add_skill_level = 1
+			}
+			USA_mark_clark = {
+				add_skill_level = 1
 			}
 		}
 	}
@@ -5265,11 +5289,27 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = USA_us_army_airforce
-				uses = 3
-				cost_reduction = 0.25
-				category = air_doctrine
+			# add_doctrine_cost_reduction = {
+			# 	name = USA_us_army_airforce
+			# 	uses = 3
+			# 	cost_reduction = 0.25
+			# 	category = air_doctrine
+			# }
+			add_mastery = {
+				amount = 75
+				track = fighter_aircraft
+			}
+			add_mastery = {
+				amount = 75
+				track = strike_aircraft
+			}
+			add_mastery = {
+				amount = 75
+				track = medium_aircraft
+			}
+			add_mastery = {
+				amount = 75
+				track = heavy_aircraft
 			}
 		}
 	}
@@ -5372,6 +5412,10 @@ focus_tree = {
 			unlock_decision_tooltip = USA_man_the_guns
 			685 = {
 				add_dynamic_modifier = { modifier = coastal_defence_battery }
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_ernest_king = {
+				add_skill_level = 1
 			}
 		}
 	}
@@ -5608,6 +5652,17 @@ focus_tree = {
 		completion_reward = {
 			navy_experience = 50
 			add_ideas = bureau_of_ships_focus
+			if = {
+				limit = { has_idea = bureau_of_ordnance_spirit }
+				remove_ideas = bureau_of_ordnance_spirit
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			USA_chester_w_nimitz = {
+				add_skill_level = 1
+			}
+			USA_william_halsey_jr = {
+				add_skill_level = 1
+			}
 		}
 	}
 	
@@ -5657,11 +5712,12 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
-			add_doctrine_cost_reduction = {
+
+			add_mastery_bonus = {
 				name = USA_advanced_mahanian_doctrine
-				cost_reduction = 0.25
-				uses = 2
-				category = cat_fleet_in_being
+				bonus = 0.1
+				days = 180
+				track = capital_ships
 			}
 		}
 	}
@@ -5815,11 +5871,15 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			navy_experience = 25
-			add_doctrine_cost_reduction = {
+			add_mastery = {
+				amount = 50
+				track = screens
+			}
+			add_mastery_bonus = {
 				name = USA_convoy_tactics
-				cost_reduction = 0.35
-				uses = 2
-				category = convoy_defense_tree
+				bonus = 0.1
+				days = 180
+				track = screens
 			}
 		}
 	}
@@ -5954,7 +6014,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		search_filters = {FOCUS_FILTER_RESEARCH}
-				completion_reward = {
+		completion_reward = {
 			add_doctrine_cost_reduction = {
 				name = USA_fund_the_navy
 				uses = 3

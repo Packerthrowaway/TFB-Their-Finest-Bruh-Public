@@ -635,12 +635,17 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-
 			add_doctrine_cost_reduction = {
 				name = FRA_naval_doctrine
 				cost_reduction = 0.40
 				uses = 3
 				category = naval_doctrine
+			}
+			add_mastery_bonus = {
+				name = FRA_naval_doctrine
+				bonus = 0.2
+				days = 360
+				folder = naval
 			}
 		}
 	}
@@ -688,7 +693,7 @@
 				name = FRA_improved_screen_ships
 				bonus = 0.75
 				uses = 1
-				category = cl_tech
+				category = ca_tech
 			}
 		}
 	}
@@ -926,6 +931,16 @@
 				category = cat_grand_battle_plan
 				category = cat_superior_firepower
 			}
+			add_mastery_bonus = {
+				name = FRA_infantry_doctrine
+				bonus = 0.2
+				days = 360
+				track = infantry
+			}
+			add_mastery = {
+				amount = 50
+				track = infantry
+			}
 		}
 	}
 	focus = {
@@ -1067,12 +1082,22 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-				add_doctrine_cost_reduction = {
-					name = FRA_methodical_battle2
-					category = land_doctrine
-					uses = 2
-					cost_reduction = 0.20
-				}
+			add_doctrine_cost_reduction = {
+				name = FRA_methodical_battle2
+				category = land_doctrine
+				uses = 2
+				cost_reduction = 0.20
+			}
+			add_mastery_bonus = {
+				name = FRA_methodical_battle2
+				bonus = 0.2
+				days = 360
+				track = operations
+			}
+			add_mastery = {
+				amount = 50
+				track = operations
+			}
 		}
 	}
 	focus = {
@@ -1180,6 +1205,16 @@
 				uses = 2
 				category = cat_mobile_warfare
 				category = cat_mass_assault
+			}
+			add_mastery_bonus = {
+				name = FRA_tank_doctrine
+				bonus = 0.2
+				days = 360
+				track = armor
+			}
+			add_mastery = {
+				amount = 50
+				track = armor
 			}
 		}
 	}
@@ -1374,6 +1409,16 @@
 				category = air_doctrine
 				uses = 2
 				cost_reduction = 0.25
+			}
+			add_mastery_bonus = {
+				name = FRA_air_ground_cooperation
+				bonus = 0.2
+				days = 360
+				folder = air
+			}
+			add_mastery = {
+				amount = 50
+				folder = air
 			}
 		}
 	}

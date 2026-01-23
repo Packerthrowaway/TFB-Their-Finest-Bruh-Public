@@ -1145,7 +1145,7 @@ country_event = {
 	title = BBA_ethiopia_exile_events.03.t
 	desc = BBA_ethiopia_exile_events.03.desc
 	is_triggered_only = yes
-	# picture = GFX_report_event_spr_anarchists2 #TODO_TA set correct image
+	picture = GFX_report_event_ETH_ethiopian_warriors
 
 	option = {
 		name = BBA_ethiopia_exile_events.03.a
@@ -1710,7 +1710,6 @@ country_event = {
 				bonus = 0.5
 				uses = 3
 				category = dd_tech
-				category = cl_tech
 				category = ca_tech
 				category = bb_tech
 			}
@@ -6734,6 +6733,14 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
+		ITA = {
+			every_allied_country = {
+				limit = {
+					has_war_with = ETH
+				}
+				white_peace = ROOT
+			}
+		}
 		white_peace = ITA
 		ETH = {
 			every_owned_state = {
@@ -7604,7 +7611,8 @@ country_event = {
 			type = infantry_equipment_1 
 			amount = 5000 
 			producer = JAP
-		}		
+		}	
+		add_manpower = 10000	
 	}
 }
 

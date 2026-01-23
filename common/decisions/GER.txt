@@ -957,7 +957,7 @@ GER_operational_planning_category = {
 		days_remove = 365
 
 		custom_cost_trigger = {
-			command_power > 24
+			command_power > 14
 			has_army_experience > 14
 		}
 
@@ -1008,7 +1008,7 @@ GER_operational_planning_category = {
 			hidden_effect = {
 				add_command_power = -15
 				army_experience = -15
-				set_country_flag = GER_operational_planning_flag
+				#set_country_flag = GER_operational_planning_flag
 			}
 			if = {
 				limit = {
@@ -3759,6 +3759,7 @@ GER_case_anton_category = {
 		}
 		ai_will_do = {
 			factor = 25
+
 			modifier = {
 				factor = 0
 				VIC = { is_ai = no }
@@ -3811,6 +3812,9 @@ GER_reichskommissariats = {
 			OR = {
 				has_completed_focus = GER_heed_von_neuraths_concerns
 				has_completed_focus = GER_reorganize_the_wehrmacht
+			}
+			NOT = {
+				has_subject = NOR # No need to create a worse Norwegian subject if you already have one 
 			}
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
@@ -4012,6 +4016,9 @@ GER_reichskommissariats = {
 				has_completed_focus = GER_heed_von_neuraths_concerns
 				has_completed_focus = GER_reorganize_the_wehrmacht
 			}
+			NOT = {
+				has_subject = HOL # No need to create a worse Dutch subject if you already have one 
+			}
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
 				7 = {
@@ -4147,7 +4154,7 @@ GER_reichskommissariats = {
 						type = support_equipment
 						amount = 300
 						producer = GER
-					}		
+					}	
 					inherit_technology = GER
 					add_offsite_building = { type = arms_factory level = 3 }
 					load_oob = "RK_OOB"
@@ -4183,6 +4190,9 @@ GER_reichskommissariats = {
 			OR = {
 				has_completed_focus = GER_heed_von_neuraths_concerns
 				has_completed_focus = GER_reorganize_the_wehrmacht
+			}
+			NOT = {
+				has_subject = BEL # No need to create a worse Belgian subject if you already have one 
 			}
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
@@ -4626,6 +4636,9 @@ GER_reichskommissariats = {
 			OR = {
 				has_completed_focus = GER_heed_von_neuraths_concerns
 				has_completed_focus = GER_reorganize_the_wehrmacht
+			}
+			NOT = {
+				has_subject = UKR # No need to create a worse Ukrainian subject if you already have one 
 			}
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
@@ -6526,6 +6539,9 @@ GER_reichskommissariats = {
 		available = {
 			is_subject = no
 			has_completed_focus = GER_reassert_eastern_claims
+			NOT = {
+				has_subject = POL # No need to create a worse Polish subject if you already have one 
+			}
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
 				88 = {
@@ -6793,6 +6809,9 @@ GER_reichskommissariats = {
 				has_completed_focus = GER_heed_von_neuraths_concerns
 				has_completed_focus = GER_reorganize_the_wehrmacht
 			}
+			NOT = {
+				has_subject = CZE # No need to create a worse Czech subject if you already have one 
+			}
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
 				9 = {
@@ -6920,7 +6939,7 @@ GER_reichskommissariats = {
 						type = support_equipment
 						amount = 300
 						producer = GER
-					}		
+					}	
 					inherit_technology = GER
 					add_offsite_building = { type = arms_factory level = 2 }
 					load_oob = "RK_OOB"
@@ -7482,7 +7501,7 @@ GER_reichskommissariats = {
 						type = support_equipment
 						amount = 300
 						producer = GER
-					}		
+					}	
 					inherit_technology = GER
 					add_offsite_building = { type = arms_factory level = 3 }
 					load_oob = "RK_OOB"
@@ -7613,6 +7632,9 @@ GER_reichskommissariats = {
 			OR = {
 				has_completed_focus = GER_heed_von_neuraths_concerns
 				has_completed_focus = GER_reorganize_the_wehrmacht
+			}
+			NOT = {
+				has_subject = ENG # No need to create a worse British subject if you already have one 
 			}
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
@@ -8396,10 +8418,10 @@ GER_reichskommissariats = {
 				446 = {
 					is_controlled_by_ROOT_or_subject = yes
 				}
-				1017 = {
+				1047 = {
 					is_controlled_by_ROOT_or_subject = yes
 				}
-				1027 = {
+				1057 = {
 					is_controlled_by_ROOT_or_subject = yes
 				}
 				452 = {
@@ -8490,8 +8512,8 @@ GER_reichskommissariats = {
 				state = 898 # Gao
 				state = 781 # Niger
 				state = 446
-				state = 1017
-				state = 1027
+				state = 1047
+				state = 1057
 			}
 		}
 
@@ -10877,6 +10899,9 @@ GER_reichskommissariats = {
 				619 = {
 					is_controlled_by_ROOT_or_subject = yes
 				}
+				1042 = {
+					is_controlled_by_ROOT_or_subject = yes
+				}
 				287 = {
 					is_controlled_by_ROOT_or_subject = yes
 				}
@@ -10909,6 +10934,7 @@ GER_reichskommissariats = {
 				state = 617
 				state = 618
 				state = 760
+				state = 1042
 				state = 329 # Tannu Tuva
 				state = 818 # Khovd
 			}
@@ -12322,6 +12348,81 @@ GER_reichskommissariats = {
 				744 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
+				1025 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1026 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1027 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1028 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1029 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1030 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1031 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1032 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1033 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1034 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1035 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1036 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1037 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1038 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1039 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1040 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1041 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1043 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1044 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1045 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1046 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1017 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1018 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1019 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1020 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
 			}
 		}
 
@@ -12425,6 +12526,31 @@ GER_reichskommissariats = {
 				state = 638
 				state = 632 
 				state = 744 
+				state = 1025
+				state = 1026
+				state = 1027
+				state = 1028
+				state = 1029
+				state = 1030
+				state = 1031
+				state = 1032
+				state = 1033
+				state = 1034
+				state = 1035
+				state = 1036
+				state = 1037
+				state = 1038
+				state = 1039
+				state = 1040
+				state = 1041
+				state = 1043
+				state = 1044
+				state = 1045
+				state = 1046
+				state = 1017
+				state = 1018
+				state = 1019
+				state = 1020
 			}
 		}
 
@@ -12594,6 +12720,18 @@ GER_reichskommissariats = {
 			custom_trigger_tooltip = {
 				tooltip = GER_reichskommissariat_highlighted_required_states
 				979 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1024 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1023 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1022 = {
+				    is_controlled_by_ROOT_or_subject = yes
+				}
+				1021 = {
 				    is_controlled_by_ROOT_or_subject = yes
 				}
 				523 = {
@@ -12766,8 +12904,12 @@ GER_reichskommissariats = {
 				state = 285
 				state = 521
 				state = 873
+				state = 1023
+				state = 1024
+				state = 1021
 				### IMPASSABLE, INCLUDED BUT NOT REQURED ###
 				state = 674
+				state = 1022
 			}
 		}
 
@@ -14589,12 +14731,18 @@ GER_austro_hungarian_empire = {
 		}
 
 		visible = {
-			GER = {
-				OR = {
-					has_completed_focus = GER_rekindle_imperial_sentiment_ww
-					has_completed_focus = GER_rekindle_imperial_sentiment
+			OR = {
+				GER = {
+					OR = {
+						has_completed_focus = GER_rekindle_imperial_sentiment_ww
+						has_completed_focus = GER_rekindle_imperial_sentiment
+					}
+					has_government = neutrality
 				}
-				has_government = neutrality
+				TUR = {
+					has_government = neutrality
+					has_completed_focus = TUR_press_the_austro_hungarian_claim
+				}
 			}
 			AUS = {
 				exists = yes
@@ -16540,7 +16688,7 @@ GER_invite_to_faction_cat = {
 							# original_tag = MNT
 							#original_tag = BOS
 							#original_tag = HRZ
-							#original_tag = SER
+							original_tag = SER
 							original_tag = ALB
 							original_tag = YUG
 							original_tag = GRE
@@ -18059,9 +18207,8 @@ GER_weltpolitik_cat = {
 		}
 
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_on_continent = africa
-				is_controlled_by = ROOT
 			}
 		}
 
@@ -18131,9 +18278,8 @@ GER_weltpolitik_cat = {
 		}
 
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_on_continent = asia
-				is_controlled_by = ROOT
 			}
 		}
 
@@ -19910,7 +20056,7 @@ GER_realpolitik_cat = {
 					limit = {
 						is_faction_leader = no
 					}
-					create_faction = GER_mitteleuropa_alliance
+					create_faction_from_template = faction_template_GER_mitteleuropa_alliance
 				}
 				HOL = {
 					add_state_claim = 977
@@ -20018,7 +20164,7 @@ GER_realpolitik_cat = {
 					limit = {
 						is_faction_leader = no
 					}
-					create_faction = GER_mitteleuropa_alliance
+					create_faction_from_template = faction_template_GER_mitteleuropa_alliance
 				}
 				BEL = {
 					add_state_claim = 35
@@ -24556,6 +24702,10 @@ GER_propaganda_campaigns = {
 			tag = MON
 			attack_bonus_against = 0.15
 		}
+		# targeted_modifier = {
+		# 	tag = KSR
+		# 	attack_bonus_against = 0.15
+		# }
 		targeted_modifier = {
 			tag = USA
 			attack_bonus_against = -0.10
@@ -24582,6 +24732,34 @@ GER_propaganda_campaigns = {
 		}
 		targeted_modifier = {
 			tag = MEX
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = RAJ
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = AST
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = FRA
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = GRE
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = BEL
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = HOL
+			attack_bonus_against = -0.10
+		}
+		targeted_modifier = {
+			tag = NZL
 			attack_bonus_against = -0.10
 		}
 
@@ -24722,6 +24900,10 @@ GER_propaganda_campaigns = {
 			tag = MON
 			attack_bonus_against = -0.15
 		}
+		# targeted_modifier = {
+		# 	tag = KSR
+		# 	attack_bonus_against = -0.15
+		# }
 		targeted_modifier = {
 			tag = USA
 			attack_bonus_against = 0.10
@@ -24748,6 +24930,34 @@ GER_propaganda_campaigns = {
 		}
 		targeted_modifier = {
 			tag = MEX
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = RAJ
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = AST
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = FRA
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = GRE
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = BEL
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = HOL
+			attack_bonus_against = 0.10
+		}
+		targeted_modifier = {
+			tag = NZL
 			attack_bonus_against = 0.10
 		}
 
