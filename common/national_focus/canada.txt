@@ -51,6 +51,31 @@ focus_tree = {
 	}
 
 	focus = {
+		id = CAN_crown_corporations
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 4
+		y = 0
+		relative_position_id = CAN_modernize_industry
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 15
+		}
+
+		available_if_capitulated = yes
+
+
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = CAN_c_d_howe
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = ENG_women_prop
+		}
+	}
+
+	focus = {
 		id = CAN_if_day
 		icon = GFX_goal_generic_consumer_goods
 		x = -2
@@ -78,31 +103,6 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = CAN_war_bonds_2
-		}
-	}
-		
-	focus = {
-		id = CAN_crown_corporations
-		icon = GFX_goal_generic_construct_civ_factory
-		x = 4
-		y = 0
-		relative_position_id = CAN_modernize_industry
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		
-		cost = 5
-
-		ai_will_do = {
-			factor = 15
-		}
-
-		available_if_capitulated = yes
-
-
-		completion_reward = {
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = CAN_c_d_howe
-			custom_effect_tooltip = unlock_propaganda_campaign_tt
-			unlock_decision_tooltip = ENG_women_prop
 		}
 	}
 		
@@ -2406,6 +2406,61 @@ focus_tree = {
 	}
 
 	focus = {
+		id = CAN_steel_not_blood
+		icon = GFX_doctrine_tank_warfare
+		prerequisite = { focus = CAN_red_deer_training_camp }
+		mutually_exclusive = { focus = CAN_over_the_edge }
+		x = 2
+		y = 1
+		relative_position_id = CAN_red_deer_training_camp 
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		available = {
+			has_war = yes
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			army_experience = 30
+			# add_doctrine_cost_reduction = {
+			# 	name = CAN_steel_not_blood
+			# 	cost_reduction = 0.40
+			# 	uses = 1
+			# 	category = land_doctrine
+			# }
+			add_mastery_bonus = {
+				name = CAN_steel_not_blood
+				bonus = 0.2
+				days = 360
+				track = armor
+			}
+			add_mastery = {
+				amount = 25
+				track = armor
+			}
+			add_tech_bonus = {
+				name = CAN_steel_not_blood
+				bonus = 0.5
+				uses = 1
+				category = armor
+			}
+		}
+	}
+
+	focus = {
 		id = CAN_cmp_truck
 		icon = GFX_focus_generic_mechanized
 		x = -2
@@ -2481,61 +2536,6 @@ focus_tree = {
 				bonus = 0.75
 				uses = 1
 				technology = eng_light_tank_3
-			}
-		}
-	}
-
-	focus = {
-		id = CAN_steel_not_blood
-		icon = GFX_doctrine_tank_warfare
-		prerequisite = { focus = CAN_red_deer_training_camp }
-		mutually_exclusive = { focus = CAN_over_the_edge }
-		x = 2
-		y = 1
-		relative_position_id = CAN_red_deer_training_camp 
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 25
-		}
-
-		available = {
-			has_war = yes
-		}
-		
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			army_experience = 30
-			# add_doctrine_cost_reduction = {
-			# 	name = CAN_steel_not_blood
-			# 	cost_reduction = 0.40
-			# 	uses = 1
-			# 	category = land_doctrine
-			# }
-			add_mastery_bonus = {
-				name = CAN_steel_not_blood
-				bonus = 0.2
-				days = 360
-				track = armor
-			}
-			add_mastery = {
-				amount = 25
-				track = armor
-			}
-			add_tech_bonus = {
-				name = CAN_steel_not_blood
-				bonus = 0.5
-				uses = 1
-				category = armor
 			}
 		}
 	}
