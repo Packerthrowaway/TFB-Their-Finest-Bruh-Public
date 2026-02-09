@@ -1626,9 +1626,25 @@ on_actions = {
 	# 	}
 	# }
 	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = POL
+				}
+				POL = { # Give Poland the factories they're due once capitulated
+					add_offsite_building = { type = arms_factory level = POL_num_of_civs }
+					add_offsite_building = { type = arms_factory level = POL_num_of_mils }
+				}
+			}
+		}
 		# Denied Czechs Stuff
 		effect = {
 			if = {
+				limit = {
+					original_tag = CZE
+					has_global_flag = DENIED_CZE
+				}
+				if = {
 				limit = {
 					original_tag = CZE
 					has_global_flag = DENIED_CZE
@@ -2192,6 +2208,32 @@ on_actions = {
 					NOT = { has_completed_focus = ROM_preserve_greater_romania }
 				}
 				complete_national_focus = ROM_national_humiliation
+			}
+		}
+	}
+	on_declare_war = {
+		effect = {
+			if = { # Calculate how many factories Poland gets on cap & remove eastern construction blocker
+				limit = {
+					ROOT = { original_tag = GER }
+					FROM = { original_tag = POL }
+				}
+				POL = {
+					hidden_effect = {
+						every_owned_state = {
+							limit = {
+								has_state_flag = POL_cant_build_in_eastern_poland_flag
+							}
+							remove_dynamic_modifier = { modifier = POL_cant_build_in_eastern_poland_modifier }
+							clr_state_flag = POL_cant_build_in_eastern_poland_flag
+						}
+
+						set_variable = { POL_num_of_civs = num_of_civilian_factories }
+						set_variable = { POL_num_of_mils = num_of_military_factories }
+						multiply_variable = { POL_num_of_civs = POL_extra_factories_precent } # Percentage from focuses
+						multiply_variable = { POL_num_of_mils = POL_extra_factories_precent } # Percentage from focuses
+					}
+				}
 			}
 		}
 	}

@@ -47,6 +47,12 @@
 				idea = POL_four_year_plan_idea
 				days = 1460
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_variable = {
+				var = POL_extra_factories_precent
+				value = 1
+				tooltip = POL_5_precent_more_industry_tt
+			}
 		}
 	}
 
@@ -183,6 +189,16 @@
 				uses = 1
 				category = industry
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
+			}
+			set_variable = { POL_num_of_civs = num_of_civilian_factories }
+			set_variable = { POL_num_of_mils = num_of_military_factories }
+			multiply_variable = { POL_num_of_civs = POL_extra_factories_precent } # Percentage from focuses
+			multiply_variable = { POL_num_of_mils = POL_extra_factories_precent } # Percentage from focuses
 		}
 	}
 
@@ -274,6 +290,12 @@
 				start_province = 9508 
 				target_province = 6558
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
+			}
 		}
 	}
 
@@ -342,6 +364,12 @@
 					instant_build = yes
 				}
 				set_state_flag = POL_start_central_industrial_region_1
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
 			}
 		}
 
@@ -428,6 +456,12 @@
 				}
 				set_state_flag = POL_start_central_industrial_region_1
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
+			}
 		}
 	}
 
@@ -464,13 +498,19 @@
 			}
 			add_resource = {
 				type = steel
-				amount = 200
+				amount = 300
 				state = 762
 			}
 			add_resource = {
 				type = aluminium
-				amount = 100
+				amount = 150
 				state = 762
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
 			}
 		}
 	}
@@ -738,7 +778,7 @@
 				limit = { has_state_flag = POL_develop_upper_silesia_1 }
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -758,13 +798,19 @@
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = POL_develop_upper_silesia_1
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
 			}
 		}
 	}
@@ -951,6 +997,12 @@
 				}
 				set_state_flag = POL_develop_east_poland_4
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
+			}
 		}
 	}
 
@@ -1008,6 +1060,12 @@
 					instant_build = yes
 				}
 				set_state_flag = POL_invest_in_the_old_polish_region_1
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
 			}
 		}
 	}
@@ -1128,6 +1186,12 @@
 					instant_build = yes
 				}
 				set_state_flag = POL_modernize_congressional_factories_3
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_to_variable = {
+				var = POL_extra_factories_precent
+				value = 0.05
+				tooltip = POL_5_precent_more_industry_tt
 			}
 		}
 	}
@@ -1298,13 +1362,13 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			army_experience = 10
 			add_tech_bonus = {
 				name = POL_standardisation_of_equipment
-				bonus = 1.0
+				bonus = 1
 				uses = 1
 				category = infantry_weapons
 			}
-			army_experience = 10
 		}
 	}
 
@@ -1328,7 +1392,7 @@
 			add_doctrine_cost_reduction = {
 				name = POL_army_modernisation
 				cost_reduction = 0.25
-				uses = 1
+				uses = 2
 				category = land_doctrine
 			}
 			add_mastery = {
@@ -1353,7 +1417,7 @@
 		x = -3
 		y = 1
 		relative_position_id = POL_army_modernisation
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 10
@@ -1380,7 +1444,7 @@
 		x = -1
 		y = 1
 		relative_position_id = POL_army_modernisation
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 10
@@ -1472,8 +1536,8 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = POL_artillery_modernisation
-				bonus = 1.0
-				uses = 1
+				bonus = 0.5
+				uses = 2
 				category = artillery
 			}
 			#1 x 50% for Artillery Equipment
@@ -1488,7 +1552,7 @@
 		x = 1
 		y = 1
 		relative_position_id = POL_army_modernisation
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 10
@@ -1637,7 +1701,7 @@
 		
 		x = 3
 		y = 1
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -1662,7 +1726,22 @@
 				limit = {
 					free_building_slots = {
 						building = air_base
-						size > 1
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = POL_air_base_expansion_1
+			}
+			random_owned_controlled_state = {
+				prioritize = { 807 }
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 0
 					}
 				}
 				add_building_construction = {
@@ -1730,7 +1809,7 @@
 		x = -1
 		y = 1
 		relative_position_id = POL_air_base_expansion
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 10
@@ -2009,8 +2088,10 @@
 	focus = {
 		id = POL_complete_april_constitution
 		icon = GFX_focus_POL_complete_april_constitution
+
+		relative_position_id = POL_prepare_for_the_next_war
 		
-		x = 49
+		x = 17
 		y = 0
 		cost = 10
 
@@ -3467,10 +3548,10 @@
 		id = POL_plan_west
 		icon = GFX_focus_POL_plan_west
 		prerequisite = { focus = POL_prepare_for_the_next_war }
-		x = -14
+		x = 2
 		y = 1
-		relative_position_id = POL_complete_april_constitution
-		cost = 10
+		relative_position_id = POL_prepare_for_the_next_war
+		cost = 5
 
 		ai_will_do = {
 			factor = 10
@@ -3515,7 +3596,7 @@
 		x = 4
 		y = 1
 		relative_position_id = POL_plan_west
-		cost = 10
+		cost = 5
 		
 		available = {
 			NOT = { has_completed_focus = POL_complete_plan_west }
@@ -3674,7 +3755,7 @@
 		x = 1
 		y = 1
 		relative_position_id = POL_the_prusya_line
-		cost = 10
+		cost = 5
 		
 		available = {
 			NOT = { has_completed_focus = POL_complete_plan_west }
@@ -3916,7 +3997,7 @@
 		x = 6
 		y = 1
 		relative_position_id = POL_plan_west
-		cost = 10
+		cost = 5
 
 		available = {
 			NOT = { has_completed_focus = POL_complete_plan_west }
@@ -4007,6 +4088,10 @@
 			focus = POL_expand_poznan_forts
 			focus = POL_hel_fortified_area
 		}
+
+		allow_branch = { # Useless
+			always = no
+		}
 		
 		available = {
 			has_completed_focus = POL_plan_west
@@ -4049,6 +4134,10 @@
 
 		ai_will_do = {
 			factor = 10
+		}
+
+		allow_branch = { # Game balance
+			always = no
 		}
 		
 		available = {
@@ -4601,10 +4690,13 @@
 	focus = {
 		id = POL_sabotage_polish_industry
 		icon = GFX_goal_generic_major_war
-		prerequisite = { focus = POL_plan_east focus = POL_plan_west }
-		x = 1
-		y = 2
-		relative_position_id = POL_plan_east
+		prerequisite = { 
+			#focus = POL_plan_east 
+			focus = POL_plan_west
+		}
+		x = 8
+		y = 1
+		relative_position_id = POL_plan_west
 		cost = 10
 
 		ai_will_do = {
@@ -6179,7 +6271,7 @@
 			#Add 2 Dockyards at Gdynia	
 			add_victory_points = {
 			  province = 9263
-			  value = 5
+			  value = 0.5
 			}
 		}
 	}
@@ -6223,6 +6315,7 @@
 		}
 		
 		available = {
+			date > 1938.1.1
 			owns_state = 85
 			controls_state = 85
 			85 = {
@@ -6231,7 +6324,7 @@
 						compliance > 80
 						resistance < 50
 					}
-					#NOT = { is_core_of = DNZ }
+					is_core_of = POL
 				}
 			}
 		}
