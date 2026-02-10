@@ -3214,7 +3214,7 @@ focus_tree = {
 	focus = {
 		id = CAN_carrier_aircraft
 		icon = GFX_goal_generic_air_naval_bomber
-		x = 3
+		x = 2
 		y = 1
 		relative_position_id = CAN_the_plan
 
@@ -3246,6 +3246,28 @@ focus_tree = {
 				bonus = 0.5
 				uses = 2
 				category = naval_air
+			}
+
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = CAN_handley_page_organization
+				mio:CAN_fairchild_aircraft_ltd_organization = {
+					add_mio_size = 1
+					add_mio_funds = 500
+
+				#	unlock_mio_trait_tooltip  = {
+				#		department = CAN_mio_department_design_plane_heavy_combat
+				#		trait = CAN_mio_trait_cookie_carriers
+				#	}
+				}
+			}
+
+			else = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = CAN_fairchild_aircraft_ltd
 			}
 		}
 	}
@@ -3351,21 +3373,21 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			IF = {
-				limit = {
-					has_dlc = "Arms Against Tyranny"
-				}
-				custom_effect_tooltip = available_mio_tt
-				show_mio_tooltip = CAN_fairchild_aircraft_ltd_organization
-				mio:CAN_fairchild_aircraft_ltd_organization = {
-					add_mio_funds = 2500
-				}
-			}
+			#IF = {
+			#	limit = {
+			#		has_dlc = "Arms Against Tyranny"
+			#	}
+			#	custom_effect_tooltip = available_mio_tt
+			#	show_mio_tooltip = CAN_fairchild_aircraft_ltd_organization
+			#	mio:CAN_fairchild_aircraft_ltd_organization = {
+			#		add_mio_funds = 2500
+			#	}
+			#}
 
-			else = {
-				custom_effect_tooltip = available_designer
-				show_ideas_tooltip = CAN_fairchild_aircraft_ltd
-			}
+			#else = {
+			#	custom_effect_tooltip = available_designer
+			#	show_ideas_tooltip = CAN_fairchild_aircraft_ltd
+			#}
 		}
 	}
 
@@ -4070,6 +4092,25 @@ focus_tree = {
 				uses = 1
 				category = bb_tech
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = ENG_cammell_laird_organization
+				mio:ENG_cammell_laird_organization = {
+					add_mio_size = 1
+					add_mio_funds = 500
+
+				#	unlock_mio_trait_tooltip  = {
+				#		department = CAN_mio_department_design_plane_heavy_combat
+				#		trait = CAN_mio_trait_cookie_carriers
+				#	}
+				}
+			}
 		}
 	}
 
@@ -4111,6 +4152,106 @@ focus_tree = {
 				uses = 1
 				category = cv_tech
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt 
+
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}
+				custom_effect_tooltip = available_mio_tt
+				show_mio_tooltip = CAN_kingston_shipbuilding_organization
+				mio:CAN_kingston_shipbuilding_organization = {
+					add_mio_size = 1
+					add_mio_funds = 500
+
+				#	unlock_mio_trait_tooltip  = {
+				#		department = CAN_mio_department_design_plane_heavy_combat
+				#		trait = CAN_mio_trait_cookie_carriers
+				#	}
+				}
+			}
+
+			#else = {
+			#	custom_effect_tooltip = available_designer
+			#	show_ideas_tooltip = CAN_halifax_shipyards
+			#}
+		}
+	}
+
+	focus = {
+		id = CAN_habakkuk_carrier
+		icon = GFX_goal_generic_navy_carrier
+		prerequisite = { focus = CAN_carrier_primacy }
+		x = 0
+		y = 1
+		relative_position_id = CAN_carrier_primacy
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_naval
+				value = 0.5
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			if = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					add_ideas = habakkuk_carriers_ns_mtg
+					custom_effect_tooltip = generic_skip_one_line_tt
+					
+					add_tech_bonus = {
+						name = CAN_habakkuk_carrier
+						bonus = 0.5
+						uses = 1 
+						category = pykrete_tech
+					}
+				}
+				else = {
+					add_ideas = habakkuk_carriers_ns
+					custom_effect_tooltip = generic_skip_one_line_tt
+				}
+
+				add_tech_bonus = {
+					name = CAN_habakkuk_carrier
+					bonus = 1.0
+					uses = 1
+					category = cv_tech
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = CAN_habakkuk_carrier
+					bonus = 1.0
+					uses = 2
+					category = cv_tech
+				}
+			}
 		}
 	}
 
@@ -4130,7 +4271,7 @@ focus_tree = {
 		}
 
 		available = {
-			threat > 0.15
+			threat > 0.2
 		}
 		
 		bypass = {
@@ -4152,10 +4293,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = CAN_united_shipyards_DY
@@ -4169,10 +4310,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
-					level = 3
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = CAN_united_shipyards_DY
@@ -4271,7 +4412,7 @@ focus_tree = {
 
 		available = {
 			has_navy_size = {
-				size > 29
+				size > 39
 			}
 		}
 		
