@@ -2012,15 +2012,8 @@
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			MAN_low_legitimacy_level_down = yes
-			if = {
-				limit = { has_idea = MAN_assert_mills }
-				remove_ideas = MAN_assert_mills
-			}
+
 			JAP = { 
-				set_autonomy = {
-					target = MAN
-					autonomy_state = autonomy_wtt_imperial_subject
-				}
 				custom_effect_tooltip = unlock_propaganda_campaign_tt
 				unlock_decision_tooltip = JAP_big_china_prop
 			}
@@ -2216,6 +2209,21 @@
 		completion_reward = {
 			MAN_low_legitimacy_level_down = yes
 			set_cosmetic_tag = MAN_empire_of_manchukuo
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = MAN_will_remove_mills
+			show_ideas_tooltip = MAN_assert_mills
+			hidden_effect = {
+				if = {
+					limit = { has_idea = MAN_assert_mills }
+					remove_ideas = MAN_assert_mills
+				}
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			OVERLORD = { set_autonomy = { target = ROOT autonomy_state = autonomy_wtt_imperial_subject } }
 		}
 	}
 
