@@ -2822,7 +2822,7 @@ leader_traits = {
 			destroyer = {
 				naval_damage_factor = 0.05
 				naval_torpedo_hit_chance_factor = 0.05
-				navy_visibility = -0.05
+				naval_speed_factor = 0.05
 			}
 		}	
 		ai_will_do = {
@@ -2939,9 +2939,11 @@ leader_traits = {
 
 	concealment_expert = { 
 		type = navy
-		modifier = {
-			navy_visibility = -0.05
-		}
+		sub_unit_modifiers = {
+			submarine = {
+				navy_visibility = -0.05
+			}
+		}	
 				
 		ai_will_do = {
 			factor = 0
@@ -3169,7 +3171,8 @@ leader_traits = {
 		type = navy
 		sub_unit_modifiers = {
 			cv_cas = {
-				air_attack_factor = 0.1
+				navy_carrier_air_targetting_factor = 0.2
+				naval_strike_attack_factor = 0.1
 				air_mission_efficiency = 0.1
 			}
 		}	
@@ -3194,7 +3197,8 @@ leader_traits = {
 		type = navy
 		sub_unit_modifiers = {
 			cv_nav_bomber = {
-				air_attack_factor = 0.1
+				naval_strike_attack_factor = 0.1
+				navy_carrier_air_targetting_factor = 0.1
 				air_mission_efficiency = 0.1
 			}
 		}	

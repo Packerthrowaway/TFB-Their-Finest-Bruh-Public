@@ -471,7 +471,18 @@ NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 30
 NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 100
 NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCALE = 4                         -- how much score factor from low health (scales between 0->this number)
 NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCALE = 6                           -- how much score factor from low AA guns (scales between 0->this number)
+
 NDefines.NNavy.NAVAL_COMBAT_PLANE_MIN_STACKING_PENALTY = 200
+NDefines.NNavy.NAVAL_COMBAT_PLANE_STACKING_PENALTY_EFFECT = 0.001				-- Each plane above the optimal amount decreases the amount of airplanes being able to takeoff by such %. Subject to diminishing returns
+	
+NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_CAPITAL = 20						-- For dynamic plane efficacy, silhouette value (nominally in planes, but very abstract)
+NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_SCREEN = 10					    	-- As Above. This one would be nice to split by type, but that's problematic.
+NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_CARRIER = 35						-- As Above
+NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_SUPPORT = 0							-- As Above
+NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_CONVOY = 0						    -- As Above
+NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_SUBMARINE = 10						-- As Above
+	
+NDefines.NNavy.SCREEN_CAP_REDUCTION_FACTOR = 0.005							-- Reduces screen silhouette weight if there are caps present, screenval * 1/(1+caps*weight)
 
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN = 48 -- minimum cooldown time
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN_FROM_EFFICIENCY = 24 -- clamped min value after screening efficiency has been applied
@@ -505,7 +516,7 @@ NDefines.NNavy.MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION					= 0.05  -- will 
 NDefines.NNavy.HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.4 -- if one side has more ships than the other that side will get this penalty for each +100% ship ratio it has
 --NDefines.NNavy.POSITIONING_PENALTY_FOR_SHIPS_JOINED_COMBAT_AFTER_IT_STARTS		= 0.015 -- each ship that joins the combat will have this penalty to be added into positioning
 NDefines.NNavy.MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO					= 1.2  -- maximum penalty to get from larger fleets
-NDefines.NNavy.MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 61    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
+NDefines.NNavy.MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 99    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
 
 NDefines.NNavy.UNDERWAY_REPLENISHMENT_CONVOY_COST_PER_FUEL = 0.05	-- Cost in convoys for underway replenishment multiplied by max daily fuel consumption (rounded up)
 
