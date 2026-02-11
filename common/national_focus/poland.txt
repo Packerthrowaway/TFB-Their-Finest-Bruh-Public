@@ -5138,7 +5138,8 @@
 			}
 		}
 		allow_branch = { has_dlc = "Man the Guns" }
-		x = 65
+		relative_position_id = POL_complete_april_constitution
+		x = 15
 		y = 0
 		offset = {
 			x = -27
@@ -5241,27 +5242,17 @@
 
 	focus = {
 		id = POL_foreign_air_support
-		icon = GFX_goal_generic_air_fighter
+		icon = GFX_focus_BEL_polish_licences
 		prerequisite = { focus = POL_prepare_for_the_inevitable }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			FRA = {
 				has_capitulated = yes
 			}
 
 		}
 
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = POL_prepare_for_the_inevitable
 		cost = 10
@@ -5287,17 +5278,7 @@
 		icon = GFX_focus_generic_manpower
 		prerequisite = { focus = POL_prepare_for_the_inevitable }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 		}
 
 		x = -3
@@ -5321,17 +5302,7 @@
 		icon = GFX_focus_generic_manpower
 		prerequisite = { focus = POL_foreign_army_support }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			SOV = {
 				has_war_with = ger
 			}
@@ -5357,17 +5328,7 @@
 		icon = GFX_focus_generic_military_academy
 		prerequisite = { focus = POL_foreign_army_support }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			
 		}
 
@@ -5401,97 +5362,52 @@
 		}
 	}
 
-	focus = {
-		id = POL_modernize_our_army
-		icon = GFX_goal_generic_air_doctrine
-		prerequisite = { focus = POL_learn_from_defeat }
-		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
-			
-		}
-
-		x = 1
-		y = 2
-		relative_position_id = POL_learn_from_defeat
-		cost = 10
-
-		ai_will_do = {
-			factor = 10
-		}
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		completion_reward = {
-			custom_effect_tooltip = available_chief_of_army
-			show_ideas_tooltip = POL_roman_abraham
-		}
-	}
-
-	focus = {
-		id = POL_new_cav
-		icon = GFX_goal_generic_cavalry
-		prerequisite = { focus = POL_learn_from_defeat }
-		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
-			
-		}
-
-		x = -1
-		y = 2
-		relative_position_id = POL_learn_from_defeat
-		cost = 10
-
-		ai_will_do = {
-			factor = 10
-		}
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		completion_reward = {
-			custom_effect_tooltip = available_military_high_command
-			show_ideas_tooltip = POL_wladyslaw_anders
-		}
-	}
+	#focus = {
+	#	id = POL_modernize_our_army
+	#	icon = GFX_goal_generic_air_doctrine
+	#	prerequisite = { focus = POL_learn_from_defeat }
+	#	available = {
+	#		OR = {
+	#			has_capitulated = yes
+	#			AND = {
+	#				OR = {
+	#					has_war_with = GER
+	#					has_war_with = SOV
+	#				}
+	#				is_in_faction = yes
+	#				surrender_progress < 0.5
+	#			}
+	#		}
+	#		
+	#	}
+	#
+	#	x = 1
+	#	y = 2
+	#	relative_position_id = POL_learn_from_defeat
+	#	cost = 10
+	#
+	#	ai_will_do = {
+	#		factor = 10
+	#	}
+	#	available_if_capitulated = yes
+	#	search_filters = { FOCUS_FILTER_INDUSTRY }
+	#	completion_reward = {
+	#		custom_effect_tooltip = available_chief_of_army
+	#		show_ideas_tooltip = POL_roman_abraham
+	#	}
+	#}
 
 	focus = {
 		id = POL_new_tank
 		icon = GFX_goal_generic_army_tanks
 		prerequisite = { focus = POL_learn_from_defeat }
+		mutually_exclusive = { focus = POL_spec_ops }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
-			
+			has_capitulated = yes
 		}
 
-		x = -3
-		y = 2
+		x = -2
+		y = 1
 		relative_position_id = POL_learn_from_defeat
 		cost = 10
 
@@ -5501,75 +5417,55 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			add_tech_bonus = {
+				name = POL_new_tank
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
 			custom_effect_tooltip = available_military_high_command
 			show_ideas_tooltip = POL_stanislav_maczek
 		}
 	}
 
 	focus = {
-		id = POL_spec_ops
-		icon = GFX_goal_generic_major_war
-		prerequisite = { focus = POL_learn_from_defeat }
-		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
-			
-		}
-
-		x = 3
+		id = POL_streamlined_tank_production
+		text = FRA_tank_refit
+		icon = GFX_focus_generic_tank_assembly
+		prerequisite = { focus = POL_new_tank }
+		x = 0
 		y = 2
-		relative_position_id = POL_learn_from_defeat
-		cost = 10
+		relative_position_id = POL_new_tank
+		cost = 5
 
-		ai_will_do = {
-			factor = 10
-		}
 		available_if_capitulated = yes
+
 		search_filters = { FOCUS_FILTER_INDUSTRY }
+
 		completion_reward = {
-			custom_effect_tooltip = available_military_high_command
-			show_ideas_tooltip = POL_stanislaw_pawluc
+			add_ideas = FRA_tank_conversion_spirit
 		}
 	}
 
 	focus = {
 		id = POL_purchase_equipment
 		icon = GFX_goal_generic_build_tank
-		prerequisite = { focus = POL_learn_from_defeat }
+		prerequisite = { focus = POL_new_tank focus = POL_spec_ops }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			
 		}
 
-		x = 0
-		y = 3
-		relative_position_id = POL_learn_from_defeat
+		x = 2
+		y = 1
+		relative_position_id = POL_new_tank
 		cost = 5
 
 		ai_will_do = {
 			factor = 10
 		}
 		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_ideas = {
 				POL_buy_equipment
@@ -5578,99 +5474,252 @@
 	}
 
 	focus = {
-		id = POL_purchase_usa
-		icon = GFX_goal_generic_build_tank
-		prerequisite = { focus = POL_purchase_equipment }
+		id = POL_new_cav
+		icon = GFX_focus_generic_mechanized
+		prerequisite = { focus = POL_new_tank }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
-			is_in_faction_with = USA
+			has_capitulated = yes
 			
 		}
 
 		x = -1
 		y = 1
-		relative_position_id = POL_purchase_equipment
-		cost = 5
+		relative_position_id = POL_new_tank
+		cost = 10
 
 		ai_will_do = {
 			factor = 10
 		}
 		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_relation_modifier = {
-				target = USA
-				modifier = POL_license_equipment
+			add_tech_bonus = {
+				name = CAN_cmp_truck
+				ahead_reduction = 0.5
+				bonus = 0.75
+				uses = 1
+				category = cat_mechanized_equipment
 			}
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = POL_wladyslaw_anders
 		}
 	}
 
 	focus = {
-		id = POL_purchase_commonwealth
-		icon = GFX_goal_generic_build_tank
-		prerequisite = { focus = POL_purchase_equipment }
+		id = POL_spec_ops
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = POL_learn_from_defeat }
+		mutually_exclusive = { focus = POL_new_tank }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
-			is_in_faction_with = ENG
+			has_capitulated = yes
 		}
 
-		x = 1
+		x = 2
 		y = 1
-		relative_position_id = POL_purchase_equipment
-		cost = 5
+		relative_position_id = POL_learn_from_defeat
+		cost = 10
 
 		ai_will_do = {
 			factor = 10
 		}
 		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_relation_modifier = {
-				target = ENG
-				modifier = POL_license_equipment
-			}
-			add_relation_modifier = {
-				target = CAN
-				modifier = POL_license_equipment
-			}
-			add_relation_modifier = {
-				target = SAF
-				modifier = POL_license_equipment
-			}
-			add_relation_modifier = {
-				target = AST
-				modifier = POL_license_equipment
-			}
-			add_relation_modifier = {
-				target = RAJ
-				modifier = POL_license_equipment
-			}
-			add_relation_modifier = {
-				target = NZL
-				modifier = POL_license_equipment
-			}
+			add_doctrine_cost_reduction = {
+                cost_reduction = 0.5
+                uses = 2
+                category = special_forces_doctrine
+            }
+			add_ideas = POL_special_forces_of_poland
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = POL_stanislaw_pawluc
 		}
 	}
+
+	focus = {
+		id = POL_polish_commandos
+		icon = GFX_SOV_naval_infantry_ccp_2d_sov_compatibility
+		prerequisite = { focus = POL_spec_ops }
+		available = {
+			has_capitulated = yes
+			OR = {
+				has_tech = marines3
+				ENG = { has_completed_focus = ENG_commandos }
+			}
+		}
+
+		x = 1
+		y = 1
+		relative_position_id = POL_spec_ops
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			hidden_effect = {
+				set_technology = {
+					commandos = 1
+				}
+			}
+			custom_effect_tooltip = ENG_commandos_tt
+		}
+	}
+
+	focus = {
+		id = POL_tank_hunter_teams
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = POL_spec_ops }
+		available = {
+			has_capitulated = yes
+		}
+
+		x = 0
+		y = 2
+		relative_position_id = POL_spec_ops
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = tank_hunter_teams
+		}
+	}
+
+	focus = {
+		id = POL_arms_purchases_USA
+		text = CAN_arms_purchases_USA
+		icon = GFX_focus_generic_american_investments
+		prerequisite = { focus = POL_purchase_equipment }
+		x = 0
+		y = 1
+		relative_position_id = POL_purchase_equipment
+
+		cost = 10
+
+		available = {
+			country_exists = USA
+			USA = {
+				OR = {
+					NOT = { has_completed_focus = USA_neutrality_act }
+					has_completed_focus = USA_lend_lease_act
+				}
+			}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_country_flag = FRA_arms_purchases_permitted
+			unlock_decision_category_tooltip = FRA_weapons_purchases_category
+		}
+	}
+
+	#focus = {
+	#	id = POL_purchase_usa
+	#	icon = GFX_goal_generic_build_tank
+	#	prerequisite = { focus = POL_purchase_equipment }
+	#	available = {
+	#		OR = {
+	#			has_capitulated = yes
+	#			AND = {
+	#				OR = {
+	#					has_war_with = GER
+	#					has_war_with = SOV
+	#				}
+	#				is_in_faction = yes
+	#				surrender_progress < 0.5
+	#			}
+	#		}
+	#		is_in_faction_with = USA
+	#		
+	#	}
+	#
+	#	x = -1
+	#	y = 1
+	#	relative_position_id = POL_purchase_equipment
+	#	cost = 5
+	#
+	#	ai_will_do = {
+	#		factor = 10
+	#	}
+	#	available_if_capitulated = yes
+	#	search_filters = { FOCUS_FILTER_INDUSTRY }
+	#	completion_reward = {
+	#		add_relation_modifier = {
+	#			target = USA
+	#			modifier = POL_license_equipment
+	#		}
+	#	}
+	#}
+
+	#focus = {
+	#	id = POL_purchase_commonwealth
+	#	icon = GFX_goal_generic_build_tank
+	#	prerequisite = { focus = POL_purchase_equipment }
+	#	available = {
+	#		OR = {
+	#			has_capitulated = yes
+	#			AND = {
+	#				OR = {
+	#					has_war_with = GER
+	#					has_war_with = SOV
+	#				}
+	#				is_in_faction = yes
+	#				surrender_progress < 0.5
+	#			}
+	#		}
+	#		is_in_faction_with = ENG
+	#	}
+	#
+	#	x = 1
+	#	y = 1
+	#	relative_position_id = POL_purchase_equipment
+	#	cost = 5
+	#
+	#	ai_will_do = {
+	#		factor = 10
+	#	}
+	#	available_if_capitulated = yes
+	#	search_filters = { FOCUS_FILTER_INDUSTRY }
+	#	completion_reward = {
+	#		add_relation_modifier = {
+	#			target = ENG
+	#			modifier = POL_license_equipment
+	#		}
+	#		add_relation_modifier = {
+	#			target = CAN
+	#			modifier = POL_license_equipment
+	#		}
+	#		add_relation_modifier = {
+	#			target = SAF
+	#			modifier = POL_license_equipment
+	#		}
+	#		add_relation_modifier = {
+	#			target = AST
+	#			modifier = POL_license_equipment
+	#		}
+	#		add_relation_modifier = {
+	#			target = RAJ
+	#			modifier = POL_license_equipment
+	#		}
+	#		add_relation_modifier = {
+	#			target = NZL
+	#			modifier = POL_license_equipment
+	#		}
+	#	}
+	#}
 
 
 
@@ -5679,17 +5728,7 @@
 		icon = GFX_goal_generic_air_fighter2
 		prerequisite = { focus = POL_foreign_air_support }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 		}
 
 		x = 0
@@ -5718,20 +5757,10 @@
 		icon = GFX_goal_generic_construct_naval_dockyard
 		prerequisite = { focus = POL_prepare_for_the_inevitable }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 		}
 
-		x = 6
+		x = 4
 		y = 1
 		relative_position_id = POL_prepare_for_the_inevitable
 		cost = 10
@@ -5751,17 +5780,7 @@
 		icon = GFX_focus_generic_industry_1
 		prerequisite = { focus = POL_prepare_for_the_inevitable }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 		}
 
 		x = 2
@@ -5785,17 +5804,7 @@
 		icon = GFX_focus_generic_industry_2
 		prerequisite = { focus = POL_resistance_industries }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			date > 1940.1.1
 		}
 
@@ -5820,17 +5829,7 @@
 		icon = GFX_focus_generic_industry_2
 		prerequisite = { focus = POL_exile_industries }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			date > 1941.1.1
 		}
 
@@ -5855,17 +5854,7 @@
 		icon = GFX_focus_generic_industry_2
 		prerequisite = { focus = POL_allied_support }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			date > 1942.1.1
 		}
 
@@ -5890,17 +5879,7 @@
 		icon = GFX_focus_generic_industry_2
 		prerequisite = { focus = POL_allied_industry }
 		available = {
-			OR = {
-				has_capitulated = yes
-				AND = {
-					OR = {
-						has_war_with = GER
-						has_war_with = SOV
-					}
-					is_in_faction = yes
-					surrender_progress < 0.5
-				}
-			}
+			has_capitulated = yes
 			date > 1943.1.1
 		}
 
@@ -5921,15 +5900,15 @@
 	}
 
 	focus = {
-		id = POL_expand_polish_intelligence
-		icon = GFX_focus_POL_expand_polish_intelligence
+		id = POL_the_home_army
+		icon = GFX_focus_POL_resistance
 		prerequisite = { focus = POL_prepare_for_the_inevitable }
 		available = {
-			has_intelligence_agency = yes
+
 		}
 		allow_branch = { has_dlc = "La Resistance" }
 
-		x = 4
+		x = 6
 		y = 1
 		relative_position_id = POL_prepare_for_the_inevitable
 		cost = 10
@@ -5940,6 +5919,116 @@
 		available_if_capitulated = yes
 		search_filters = {  }
 		completion_reward = {
+			add_ideas = POL_the_home_army
+		}
+	}
+
+	focus = {
+		id = POL_cooperation_with_communists
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = POL_the_home_army }
+		available = {
+			has_capitulated = yes
+			GER = {
+				has_war_with = SOV
+			}
+		}
+
+		x = -2
+		y = 1
+		relative_position_id = POL_the_home_army
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = {  }
+		completion_reward = {
+			add_ideas = POL_cooperation_with_communists
+		}
+	}
+
+	focus = {
+		id = POL_committee_of_national_liberation
+		icon = GFX_focus_POL_common_organization_of_society
+		prerequisite = { focus = POL_cooperation_with_communists }
+		available = {
+			has_capitulated = yes
+			GER = {
+				has_war_with = SOV
+			}
+		}
+
+		x = 0
+		y = 1
+		relative_position_id = POL_cooperation_with_communists
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = {  }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = POL_cooperation_with_communists
+				add_idea = POL_committee_of_national_liberation
+			}
+		}
+	}
+
+	focus = {
+		id = POL_weapon_caches
+		icon = GFX_focus_FIN_weapon_caches
+		prerequisite = { focus = POL_the_home_army }
+		available = {
+			has_capitulated = yes
+		}
+
+		x = 0
+		y = 1
+		relative_position_id = POL_the_home_army
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = {  }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = POL_the_home_army
+				add_idea = POL_the_home_army_2
+			}
+		}
+	}
+
+	focus = {
+		id = POL_expand_polish_intelligence
+		icon = GFX_focus_POL_expand_polish_intelligence
+		prerequisite = { focus = POL_the_home_army }
+		available = {
+			has_intelligence_agency = yes
+		}
+
+		x = 2
+		y = 1
+		relative_position_id = POL_the_home_army
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = {  }
+		completion_reward = {
+			if = {
+				limit = {
+					has_intelligence_agency = no
+				}
+				create_intelligence_agency = yes
+			}
 			add_ideas = { POL_expand_intelligence_idea }
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = POL_marian_rejewski
@@ -5956,9 +6045,36 @@
 	}
 
 	focus = {
-		id = POL_niech_zyje_opor
-		icon = GFX_focus_POL_resistance
+		id = POL_sabotage_operations
+		icon = GFX_focus_generic_sabotage
+		prerequisite = { focus = POL_weapon_caches  }
 		prerequisite = { focus = POL_expand_polish_intelligence }
+		available = {
+			has_capitulated = yes
+		}
+
+		x = -2
+		y = 1
+		relative_position_id = POL_expand_polish_intelligence
+		cost = 10
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = {  }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = POL_expand_intelligence_idea_2
+				remove_idea = POL_expand_intelligence_idea
+			}
+		}
+	}
+
+	focus = {
+		id = POL_niech_zyje_opor
+		icon = GFX_focus_POL_reach_out_to_underground_state
+		prerequisite = { focus = POL_sabotage_operations }
 		available = {
 			has_intelligence_agency = yes
 			has_capitulated = yes
@@ -5966,7 +6082,7 @@
 
 		x = 0
 		y = 1
-		relative_position_id = POL_expand_polish_intelligence
+		relative_position_id = POL_sabotage_operations
 		cost = 10
 
 		ai_will_do = {
@@ -5998,7 +6114,7 @@
 		available = {
 		}
 
-		x = 4
+		x = 0
 		y = 1
 		relative_position_id = POL_expand_polish_intelligence
 		cost = 10
@@ -6012,9 +6128,9 @@
 		completion_reward = {
 			add_tech_bonus = {
 				name = POL_the_bombe
-				bonus = 1.0
-				uses = 1
-				category = computing_tech
+				bonus = 0.75
+				uses = 2
+				category = electronics
 			}
 		}
 	}
@@ -6022,14 +6138,14 @@
 	focus = {
 		id = POL_the_cyclometer
 		icon = GFX_goal_generic_production2
-		prerequisite = { focus = POL_expand_polish_intelligence }
+		prerequisite = { focus = POL_the_bombe }
 		available = {
 		}
 
-		x = 2
+		x = 0
 		y = 1
-		relative_position_id = POL_expand_polish_intelligence
-		cost = 10
+		relative_position_id = POL_the_bombe
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
