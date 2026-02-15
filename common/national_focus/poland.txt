@@ -5241,6 +5241,48 @@
 	}
 
 	focus = {
+		id = POL_liberia_forward_base
+		icon = GFX_focus_generic_africa_liberation
+		available = {
+			has_capitulated = yes
+			OR = {
+				298 = {
+					OWNER = {
+						is_ally_with = ROOT
+					}
+				}
+				700 = {
+					OWNER = {
+						is_ally_with = ROOT
+					}
+				}
+			}
+		}
+		relative_position_id = POL_prepare_for_the_inevitable
+		x = 3
+		y = 0
+		cost = 5
+
+		ai_will_do = {
+			factor = 10
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			every_country = {
+				limit = {
+					#is_ally_with = ROOT
+					OR = {
+						has_full_control_of_state = 298
+						has_full_control_of_state = 700
+					}
+				}
+				country_event = { id = tfb_poland.1 hours = 6 }
+			}
+		}
+	}
+
+	focus = {
 		id = POL_foreign_air_support
 		icon = GFX_focus_BEL_polish_licences
 		prerequisite = { focus = POL_prepare_for_the_inevitable }
