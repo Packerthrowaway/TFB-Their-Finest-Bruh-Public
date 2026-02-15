@@ -381,11 +381,6 @@ on_actions = {
     on_startup = {
 		effect = {
 			set_global_flag = game_has_started
-			POL = { # Calculate starting Polish industry
-				set_variable = { POL_num_of_starting_civs = num_of_civilian_factories }
-				set_variable = { POL_num_of_starting_mils = num_of_military_factories }
-				set_variable = { POL_num_of_starting_docs = num_of_naval_factories }
-			}
 		}
 		# Set all of the flags from GameRules for easier setup:
 		effect = {
@@ -1631,18 +1626,6 @@ on_actions = {
 	# 	}
 	# }
 	on_capitulation = {
-		effect = {
-			if = {
-				limit = {
-					original_tag = POL
-				}
-				POL = { # Give Poland the factories they're due once capitulated
-					add_offsite_building = { type = industrial_complex level = POL_num_of_war_civs }
-					add_offsite_building = { type = arms_factory level = POL_num_of_war_mils }
-					add_offsite_building = { type = dockyard level = POL_num_of_war_docs }
-				}
-			}
-		}
 		# Denied Czechs Stuff
 		effect = {
 			if = {
@@ -2209,47 +2192,6 @@ on_actions = {
 					NOT = { has_completed_focus = ROM_preserve_greater_romania }
 				}
 				complete_national_focus = ROM_national_humiliation
-			}
-		}
-	}
-	on_declare_war = {
-		effect = {
-			if = { # Calculate how many factories Poland gets on cap & remove eastern construction blocker
-				limit = {
-					ROOT = { original_tag = GER }
-					FROM = { original_tag = POL }
-				}
-				POL = {
-					hidden_effect = {
-						every_owned_state = {
-							limit = {
-								has_state_flag = POL_cant_build_in_eastern_poland_flag
-							}
-							remove_dynamic_modifier = { modifier = POL_cant_build_in_eastern_poland_modifier }
-							clr_state_flag = POL_cant_build_in_eastern_poland_flag
-						}
-
-						# Calculate factories on war dec
-						set_variable = { POL_num_of_war_civs = num_of_civilian_factories }
-						set_variable = { POL_num_of_war_mils = num_of_military_factories }
-						set_variable = { POL_num_of_war_docs = num_of_naval_factories }
-
-						# Subtract the war factories from starting ones to find the difference between starting/built
-						subtract_from_variable = { POL_num_of_war_civs = POL_num_of_starting_civs }
-						subtract_from_variable = { POL_num_of_war_mils = POL_num_of_starting_mils }
-						subtract_from_variable = { POL_num_of_war_docs = POL_num_of_starting_docs }
-
-						# Multiply the starting factories by the precent gained from focuses
-						multiply_variable = { POL_num_of_starting_civs = POL_extra_factories_precent } # Percentage from focuses
-						multiply_variable = { POL_num_of_starting_mils = POL_extra_factories_precent } # Percentage from focuses
-						multiply_variable = { POL_num_of_starting_docs = POL_extra_factories_precent } # Percentage from focuses
-
-						# Add them both together to get the total be added
-						add_to_variable = { POL_num_of_war_civs = POL_num_of_starting_civs }
-						add_to_variable = { POL_num_of_war_mils = POL_num_of_starting_mils }
-						add_to_variable = { POL_num_of_war_docs = POL_num_of_starting_docs }
-					}
-				}
 			}
 		}
 	}
