@@ -603,6 +603,76 @@ ideas = {
 			}
 		}
 
+		SOV_winter_war_soviet_nerf = {
+			picture = FIN_opposition_to_winter_war
+			allowed = {
+				always = no
+			}
+		
+			allowed_civil_war = {
+				always = no
+			}
+		
+			cancel = {
+				OR = {
+					NOT = { has_war_with = FIN }
+					has_war_with = GER 
+				}
+			}
+		
+			removal_cost = -1
+			
+			modifier = {
+				air_close_air_support_org_damage_factor = 4
+				air_strategic_bomber_bombing_factor = -0.15
+				ground_attack_factor = -0.90
+				custom_modifier_tooltip = SOV_winter_war_soviet_nerf_tt
+			}
+		}
+
+		SOV_break_finland = { #Break Mannerheim
+			name = SOV_break_finland
+			removal_cost = -1
+			picture = SWE_marauder_bombers
+			
+			allowed = {
+				always = no # Added via focus
+			}
+	
+			available = {
+				NOT = { GER = { has_war_with = SOV} }
+			}
+	
+			modifier = {
+				air_strategic_bomber_bombing_factor = 0.1
+			}
+
+			targeted_modifier = {
+				tag = FIN
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+	
+		SOV_break_finland_2 = { #Take Oulu
+			name = SOV_break_finland_2
+			removal_cost = -1
+			picture = SOV_the_road_of_life
+		
+			allowed = {
+				always = no # Added via focus
+			}
+	
+			available = {
+				NOT = { GER = { has_war_with = SOV} }
+			}
+	
+			modifier = {
+				supply_node_range = 0.2
+				winter_attrition = -0.05
+			}
+		}
+
 		SOV_winter_war_adapt = {
 
 			picture = generic_intel_bonus

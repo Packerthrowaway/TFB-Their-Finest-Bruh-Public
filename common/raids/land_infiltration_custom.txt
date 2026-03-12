@@ -1,5 +1,378 @@
 types = {
-
+	#FINLAND RAIDS
+	FIN_infiltrate_state = {
+	
+		days_to_prepare = 7
+	
+		speed_multiplier = 60
+		
+		days_re_enable = 60
+		
+		category = land_infiltration_raids
+	
+		custom_map_icon = GFX_raid_target_icon_guerilla_raid
+	
+		target_icon = GFX_other_target_icon
+	
+		target_loc_key = raid_target_name_finnish_infiltration
+	
+		launch_sound = raid_land_launchable_sound
+	
+		arrow = {
+		    type = land
+		}
+	
+		unit_model = {
+			#entity = FIN_infantry_alt_2_entity_snow
+			entity = FIN_motorized_snow_entity
+			default_entity = motorized_vehicle_entity
+		}
+		
+		
+		ai_will_do = {
+			base = 5 
+			modifier = {
+				factor = 2
+				command_power > 25
+			}
+			modifier = {
+				factor = 1.5
+				has_war = yes
+			}
+			#modifier = {
+			#	factor = 0
+			#	is_historical_focus_on = yes
+			#}
+		}
+	
+		command_power = 25
+	
+		allowed = {
+			has_dlc = "No Compromise, No Surrender"
+			original_tag = FIN
+		}
+	
+		fire_only_once = no
+	
+		visible = {
+			has_completed_focus = FIN_long_range_patrols
+			has_war = yes
+			NOT = {
+				has_country_flag = {
+					flag = FIN_infiltrate_flag
+					value > 2 #Can Only Do So Many Of These
+				}
+			}
+		}
+		
+		show_target = {
+			var:target_state = {
+				any_neighbor_state = { is_controlled_by = FIN } 
+				FIN_state_is_valid_for_raid_infiltration = yes
+				controller = {
+					NOT = { is_in_faction_with = GER }
+				}
+			}
+			NOT = {
+				has_country_flag = {
+					flag = FIN_infiltrate_flag
+					value > 2 #Can Only Do So Many Of These
+				}
+			}
+		}
+	
+		available = {
+			var:target_state = {
+				any_neighbor_state = { is_controlled_by = FIN }
+			}
+		}
+	
+		launchable = {
+			var:target_state = {
+				#NOT = { has_state_flag = FIN_infiltrate_state_flag }
+				controller = {
+					has_war_with = ROOT
+				}
+			}
+		}
+		
+		starting_point = {
+		    building_types = { supply_node }
+		}
+	
+		target_type = { 
+			state = { 
+				FIN_state_is_valid_for_raid_infiltration = yes
+			}
+		}
+		
+		unit_requirements = {
+			battalion_types = {
+				mountaineers = { min = 10 }
+			}
+		}
+		
+		unit_requirements = {
+			battalion_types = {
+				ranger_battalion = { min = 10 }
+			}
+		}
+		
+		essential_equipment = {
+			sf_equipment = 50
+		}
+	
+		additional_equipment = {
+			# list of equipment archetypes and numbers
+			#support_equipment = 25
+			#infantry_equipment = 100
+		}
+	
+		success_factors = {
+			success = {
+				base = 0.75
+	
+				# Raiding unit modifiers
+				experience = {
+					weight = 0.25
+					start_weight = -0.25
+					reference = 1.0
+				}
+	
+				organisation = {
+					weight = 0.1
+					start_weight = -0.1
+					reference = 100
+				}
+				strength = { #This modifier does NOT work correctly for whatever reason
+					weight = 0.1
+					start_weight = -0.1
+					reference = 1
+				}
+				recon = {
+					weight = 0.05
+					reference = 10
+				}
+	
+				### Target Modifiers
+	
+				resistance = { #Doesnt matter unless youre doing it on your own core states
+					reference = 100
+					start_reference = 10 # Resistance below 10 doesn't help
+					weight = 0.4
+				}
+				air_superiority = {
+					reference = 1
+					start_reference = 0.5
+					weight = 0.2
+				}
+				intel = {
+					weight = 0.2
+					#start_reference = 50
+					reference = 10
+				}
+			}
+		}
+	
+		success_levels = {
+			failure = {
+				victim_effects = {
+					#var:target_state = {
+					#	set_state_flag = FIN_infiltrate_state_flag
+					#}
+				}
+				actor_effects = {
+					var:actor_country = {
+						if = {
+							limit = {
+								NOT = { has_country_flag = FIN_infiltrate_flag }
+							}
+							set_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+						else = {
+							modify_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+					}
+	
+					# Damage to unit
+					raid_damage_units = {
+						org_damage = 0.95
+						str_damage = 0.15
+						ratio = yes
+					}
+	
+					# Unit Experience
+					raid_add_unit_experience = 0.025
+					#add_raid_history_entry = yes
+				}
+				# Other unit effects
+				division_effects = {
+					add_divisional_commander_xp = 10
+				}
+				visual_effect = {
+					entity = "raid_failed_entity"
+					animation = "attack"
+				}
+			}
+			limited_success = {
+			   victim_effects = {
+					var:target_state = {
+						add_dynamic_modifier = {
+							modifier = FIN_raid_stat_modifier
+							scope = FIN
+							days = 55
+						}
+						#set_state_flag = FIN_infiltrate_state_flag
+					}
+				}
+				actor_effects = {
+					var:actor_country = {
+						if = {
+							limit = {
+								NOT = { has_country_flag = FIN_infiltrate_flag }
+							}
+							set_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+						else = {
+							modify_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+					}
+	
+					# Damage to unit
+					raid_damage_units = {
+						org_damage = 0.65
+						str_damage = 0.1
+						ratio = yes
+					}
+	
+					# Unit Experience
+					raid_add_unit_experience = 0.05
+					#add_raid_history_entry = yes
+				}
+				# Other unit effects
+				division_effects = {
+					add_divisional_commander_xp = 15
+				}
+				visual_effect = {
+					entity = "land_raids_limited_success_entity"
+					animation = "attack"
+				}
+			}
+			success = {
+			   victim_effects = {
+			    	var:target_state = {
+						add_dynamic_modifier = {
+							modifier = FIN_raid_stat_modifier
+							scope = FIN
+							days = 65
+						}
+						#set_state_flag = FIN_infiltrate_state_flag
+			    	}
+				}
+				actor_effects = {
+					var:actor_country = {
+						if = {
+							limit = {
+								NOT = { has_country_flag = FIN_infiltrate_flag }
+							}
+							set_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+						else = {
+							modify_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+					}
+					# Damage to unit
+					raid_damage_units = {
+						org_damage = 0.45
+						str_damage = 0.05
+						ratio = yes
+					}
+	
+					# Unit Experience
+					raid_add_unit_experience = 0.1
+					#add_raid_history_entry = yes
+				}
+				# Other unit effects
+				division_effects = {
+					add_divisional_commander_xp = 15
+				}
+				visual_effect = {
+					entity = "land_raids_success_entity"
+					animation = "attack"
+				}
+			}
+			critical_success = {
+			   victim_effects = {
+					var:target_state = {
+						add_dynamic_modifier = {
+							modifier = FIN_raid_stat_modifier
+							scope = FIN
+							days = 70
+						}
+						#set_state_flag = FIN_infiltrate_state_flag
+					}
+				}
+				actor_effects = {
+					var:actor_country = {
+						if = {
+							limit = {
+								NOT = { has_country_flag = FIN_infiltrate_flag }
+							}
+							set_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+						else = {
+							modify_country_flag = {
+								flag = FIN_infiltrate_flag
+								value = 1
+							}
+						}
+					}
+	
+					# Damage to unit
+					raid_damage_units = {
+						org_damage = 0.25
+						str_damage = 0
+						ratio = yes
+					}
+	
+					# Unit Experience
+					raid_add_unit_experience = 0.35
+					#add_raid_history_entry = yes
+				}
+				# Other unit effects
+				division_effects = {
+					add_divisional_commander_xp = 20
+				}
+				visual_effect = {
+					entity = "land_raids_critical_success_entity"
+					animation = "attack"
+				}
+			}
+		}
+	}
+	
+	#BASEGAME RAIDS
 	PRC_weapons_depot_raid = {
 
 		days_to_prepare = 15
@@ -485,7 +858,7 @@ types = {
 			#	is_historical_focus_on = yes
 			#}
 		}
-	
+		
 		command_power = 25
 	
 		allowed = {

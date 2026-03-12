@@ -4676,7 +4676,7 @@
 		x = -2
 		y = 1
 		relative_position_id = SOV_anti_fascist_diplomacy
-		cost = 5
+		cost = 3
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -4693,9 +4693,9 @@
 				threat > 0.8
 			}
 			OR = {
-				GER = { has_war_with = POL }
-				NOT = { country_exists = POL }
-				POL = { is_subject_of = GER}
+				GER = { 
+					has_war = yes
+				}
 				date > 1940.1.1
 			}
 		}
@@ -4742,6 +4742,20 @@
 				date < 1939.1.1
 			}	
 		}
+		available = {
+			OR = {
+				OR = {
+					date > 1938.11.1
+					date < 1939.1.1
+				}
+				OR = {
+					date > 1939.11.1
+					date < 1940.1.1
+				}
+				date > 1940.8.1
+			}
+		}
+		continue_if_invalid = yes
 		bypass = {
 			AND = {
 				owns_state = 146
@@ -4749,28 +4763,96 @@
 			}
 		}
 		completion_reward = {
-			add_state_claim = 146 # Karjala
-			add_state_claim = 147
-			declare_war_on = {
-				target = FIN
-				type = annex_everything
-			}
-			add_named_threat = { threat = 3 name = SOV_baltic_security }
+			custom_effect_tooltip = SOV_declare_war_on_fin_tt
 			activate_mission = SOV_winter_war
-			activate_mission = SOV_winter_war_lessons_mission
-			activate_mission = SOV_winter_war_catastrophe_mission
+			add_named_threat = { threat = 3 name = SOV_baltic_security }
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_ideas = SOV_winter_war_soviet_nerf
 			hidden_effect = {
+				add_state_claim = 146 # Karjala
+				add_state_claim = 147 # Salla
+				declare_war_on = {
+					target = FIN
+					type = annex_everything
+				}
 				MON = {
 					add_ideas = MON_brothers_war
 				}
-				# if = {
-				# 	limit = {
-				# 		country_exists = KSR
-				# 	}
-				# 	KSR = {
-				# 		add_ideas = MON_brothers_war
-				# 	}
-				# }
+				OBG = { #Decisions moved to impassable country for visual clog
+					activate_mission = SOV_winter_war_lessons_mission
+					activate_mission = SOV_winter_war_catastrophe_mission
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_winter_war_crush_finland
+		icon = GFX_focus_GER_liberate_exploited_colonial_workers
+		prerequisite = { focus = SOV_baltic_security }
+		relative_position_id = SOV_baltic_security
+		x = -1
+		y = 1
+		cost = 3
+		ai_will_do = {
+			factor = 5
+		}
+		mutually_exclusive = {focus = SOV_winter_war_skewer_finland}
+
+		available = {
+			NOT = {
+				OR = {
+					has_global_flag = SOV_winter_war_loss
+					has_global_flag = SOV_winter_war_win
+					has_war_with = GER
+					AND = {
+						owns_state = 146
+						owns_state = 147
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_break_finland
+				days = 90
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_winter_war_skewer_finland
+		icon = GFX_focus_SOV_the_road_of_life
+		prerequisite = { focus = SOV_baltic_security }
+		relative_position_id = SOV_baltic_security
+		x = 1
+		y = 1
+		cost = 3
+		ai_will_do = {
+			factor = 5
+		}
+		
+		mutually_exclusive = {focus = SOV_winter_war_crush_finland}
+
+		available = {
+			NOT = {
+				OR = {
+					has_global_flag = SOV_winter_war_loss
+					has_global_flag = SOV_winter_war_win
+					has_war_with = GER
+					AND = {
+						owns_state = 146
+						owns_state = 147
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_break_finland_2
+				days = 180
 			}
 		}
 	}
@@ -4778,10 +4860,11 @@
 	focus = {
 		id = SOV_claim_bessarabia
 		icon = GFX_SOV_moldavia
+		#prerequisite = { focus = SOV_winter_war_crush_finland focus = SOV_winter_war_skewer_finland }
 		prerequisite = { focus = SOV_baltic_security }
-		x = 0
+		x = 1
 		y = 1
-		relative_position_id = SOV_baltic_security
+		relative_position_id = SOV_winter_war_crush_finland
 		cost = 2
 
 		bypass = {
@@ -4841,6 +4924,7 @@
 				add_state_claim = 80
 			}
 			add_named_threat = { threat = 1 name = SOV_claim_on_bessarabia }
+			custom_effect_tooltip = generic_skip_one_line_tt
 			random_other_country = {
 				limit = { owns_state = 78 }
 				add_opinion_modifier = { target = SOV modifier = claimed_bessarabia }
@@ -4918,7 +5002,6 @@
 			owns_state = 13
 			owns_state = 191
 			NOT = { has_war_with = GER }
-
 		}
 		
 		completion_reward = {
@@ -4944,6 +5027,18 @@
 					province = 3293
 				}
 			}
+			198 = {
+				remove_building = {
+					type = bunker
+					level = 3
+					province = 9481
+				}
+				remove_building = {
+					type = bunker
+					level = 3
+					province = 9423
+				}
+			}
 			201 = {
 				remove_building = {
 					type = bunker
@@ -4959,6 +5054,13 @@
 					type = bunker
 					level = 3
 					province = 6593
+				}
+			}
+			204 = {
+				remove_building = {
+					type = bunker
+					level = 3
+					province = 3759
 				}
 			}
 			206 = {
@@ -4977,18 +5079,6 @@
 					level = 3
 					province = 3267
 				}
-				remove_building = {
-					type = bunker
-					level = 3
-					province = 3759
-				}
-			}
-			204 = {
-				remove_building = {
-					type = bunker
-					level = 3
-					province = 11313
-				}
 			}
 			207 = {
 				remove_building = {
@@ -5002,7 +5092,7 @@
 					province = 6326
 				}
 			}
-			207 = {
+			208 = {
 				remove_building = {
 					type = bunker
 					level = 3
@@ -5018,16 +5108,6 @@
 				remove_building = {
 					type = bunker
 					level = 3
-					province = 11392
-				}
-				remove_building = {
-					type = bunker
-					level = 3
-					province = 6324
-				}
-				remove_building = {
-					type = bunker
-					level = 3
 					province = 11202
 				}
 				remove_building = {
@@ -5036,19 +5116,6 @@
 					province = 9120
 				}
 			}
-			210 = {
-				remove_building = {
-					type = bunker
-					level = 3
-					province = 11259
-				}
-				remove_building = {
-					type = bunker
-					level = 3
-					province = 6242
-				}
-			}
-			custom_effect_tooltip = dismantle_surrender_tt
 		}
 	}
 	
@@ -5057,7 +5124,7 @@
 		icon = GFX_SOV_goal_NKVD
 		prerequisite = { focus = SOV_dismantle_stalin_line }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = SOV_dismantle_stalin_line
 		cost = 5
 		ai_will_do = {
@@ -5115,10 +5182,10 @@
 	focus = {
 		id = SOV_molotov_line
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = SOV_secure_new_conquests focus = SOV_plunder_new_conquests }
+		prerequisite = { focus = SOV_secure_new_conquests }
 		x = 0
-		y = 4
-		relative_position_id = SOV_claim_bessarabia
+		y = 1
+		relative_position_id = SOV_secure_new_conquests
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -5272,8 +5339,8 @@
 	focus = {
 		id = SOV_prepare_invade_germany
 		icon = GFX_goal_generic_construct_infrastructure
-		prerequisite = { focus = SOV_molotov_line }
-		x = 0
+		prerequisite = { focus = SOV_molotov_line focus = SOV_plunder_new_conquests }
+		x = 1
 		y = 1
 		relative_position_id = SOV_molotov_line
 		cost = 4

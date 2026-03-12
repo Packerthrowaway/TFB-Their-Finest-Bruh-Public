@@ -1526,6 +1526,20 @@ technologies = {
 		}
 		special_project_specialization = { specialization_air }
 		
+		on_research_complete = {
+			# FIN effect from focus Blenheim Bombers
+			if = {
+				limit = {
+					tag = FIN
+					has_completed_focus = FIN_foreign_aircraft
+				}
+				add_equipment_to_stockpile = {
+					type = tac_bomber_equipment_1
+					amount = 84
+				}
+			}
+		}
+		
 		ai_will_do = {
 			factor = 1
 			
