@@ -226,6 +226,28 @@ political_actions = {
         }
     }
 
+	allow_leaving_the_comintern = {
+		priority = 200
+		icon = GFX_decision_SOV_socialism_in_one_country
+		allowed = { }
+		visible = {
+			has_country_flag = hosttool_enabled
+		}
+		cost = 0
+		days_remove = 30
+
+		complete_effect = {
+			set_global_flag = allow_leaving_com
+		}
+
+		remove_effect = {
+			clr_global_flag = allow_leaving_com
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
 }
 
 economy_decisions = {
