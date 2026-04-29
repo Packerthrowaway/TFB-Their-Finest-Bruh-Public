@@ -1350,6 +1350,20 @@ country_event = {	#puppet Hungary, but they get expanded
 	is_triggered_only = yes
 
 	option = {
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					is_faction_leader = yes
+					is_major = yes
+					strength_ratio = {
+						tag = FROM
+						ratio > 1
+					}
+				}
+			}
+		}
 		name = MUN_czech.1013.a
 		FROM = {
 			add_named_threat = {
@@ -1385,17 +1399,6 @@ country_event = {	#puppet Hungary, but they get expanded
 	option = {
 		ai_chance = {
 			base = 1
-			modifier = {
-				factor = 0
-				OR = {
-					is_faction_leader = yes
-					is_major = yes
-					strength_ratio = {
-						tag = FROM
-						ratio > 1
-					}
-				}
-			}
 		}
 		name = MUN_czech.1007.b
 		FROM = {
@@ -1854,7 +1857,7 @@ country_event = {	#event to Poland to demand Katowice
 	}
 
 	option = {		#no
-		name = MUN_czech.1022.b		#reused
+		name = MUN_czech.1020.b		#reused
 		FROM = {
 			762 = {
 				add_claim_by = FROM
@@ -3024,6 +3027,7 @@ country_event = {
 						has_cosmetic_tag = CZE_fall_of_the_republic
 					}
 				}
+				set_country_flag = achievement_became_second_cze_republic
 				set_cosmetic_tag = CZE_second_republic
 			}
 			set_country_flag = CZE_gave_in_to_hlinka_guard
@@ -3107,6 +3111,7 @@ country_event = {
 						has_cosmetic_tag = CZE_fall_of_the_republic
 					}
 				}
+				set_country_flag = achievement_became_second_cze_republic
 				set_cosmetic_tag = CZE_second_republic
 			}
 			set_country_flag = CZE_gave_in_to_hlinka_guard
@@ -3744,6 +3749,19 @@ country_event = { #divided nation is over
 
 	is_triggered_only = yes
 
+	immediate = {
+		hidden_effect = {	#this is for if the very last decision was interrupted by releasing
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = CZE_a_divided_nation_dynamic_modifier
+					}
+				}
+				remove_dynamic_modifier = { modifier = CZE_a_divided_nation_dynamic_modifier }
+			}
+		}
+	}
+
 	option = { #good news
 		name = MUN_czech.1046.a
 		custom_effect_tooltip = generic_has_happen_tt
@@ -3861,6 +3879,16 @@ country_event = {
 	option = {
 		name = MUN_czech.1046.a		#reused
 		trigger = {
+			check_variable = { global.CZE_origin_event = 1056 }
+		}
+		custom_effect_tooltip = generic_has_happen_tt
+		effect_tooltip = {
+			transfer_state = 975
+		}
+	}
+	option = {
+		name = MUN_czech.1046.a		#reused
+		trigger = {
 			check_variable = { global.CZE_origin_event = 1024 }
 		}
 		custom_effect_tooltip = generic_has_happen_tt
@@ -3880,6 +3908,7 @@ country_event = {
 			NOT = {
 				check_variable = { global.CZE_origin_event = 1019 }
 				check_variable = { global.CZE_origin_event = 1024 }
+				check_variable = { global.CZE_origin_event = 1056 }
 			}
 		}
 	}
@@ -4070,11 +4099,28 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				original_tag = ROM
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+		}
 		name = MUN_czech.1052.a
 		give_military_access = SOV
 		add_ideas = CZE_soviet_influence
 	}
 	option = {
+		ai_chance = {
+			base = 2
+		}
 		name = MUN_czech.1007.b
 	}
 }
@@ -4089,6 +4135,30 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0.25
+				any_other_country = {
+					OR = {
+						is_in_faction_with = ROOT
+						AND = {
+							has_guaranteed = ROOT
+							NOT = {
+								has_guaranteed = FROM
+							}
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 3
+				strength_ratio = {
+					tag = ROOT
+					ratio < 0.66
+				}
+			}
+		}
 		name = MUN_czech.1012.a
 		FROM = {
 			add_named_threat = {
@@ -4099,6 +4169,9 @@ country_event = {
 		}
 	}
 	option = {
+		ai_chance = {
+			base = 1
+		}
 		name = MUN_czech.1012.b
 		FROM = {
 			country_event = MUN_czech.1003
@@ -4193,6 +4266,70 @@ country_event = {
 	}
 }
 
+country_event = {	#event to Austria to demand Burgenland
+	id = MUN_czech.1056
+	title = MUN_czech.1056.t
+	desc = MUN_czech.1056.d
+	picture = GFX_report_event_czech_soldiers_02
+
+	is_triggered_only = yes
+
+	option = {		#sure
+		name = MUN_czech.1019.a		#reused
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 0.5
+				any_other_country = {
+					OR = {
+						is_in_faction_with = ROOT
+						AND = {
+							has_guaranteed = ROOT
+							NOT = {
+								has_guaranteed = FROM
+							}
+						}
+					}
+				}
+			}
+			modifier = {	#slightly more sympathetic to same ideology CZE protecting itself
+				factor = 2
+				has_government = democratic
+				FROM = {
+					has_government = democratic
+				}
+			}
+			modifier = {
+				factor = 3
+				strength_ratio = {
+					tag = ROOT
+					ratio < 0.5
+				}
+			}
+		}
+		975 = {
+			transfer_state_to = FROM
+		}
+		FROM = {
+			set_variable = { global.CZE_origin_event = 1056 }
+			country_event = MUN_czech.1048
+		}
+	}
+
+	option = {		#no
+		name = MUN_czech.1020.b		#reused
+		ai_chance = {
+			base = 2
+		}
+		FROM = {
+			975 = {
+				add_claim_by = FROM
+			}
+			country_event = MUN_czech.1003
+		}
+	}
+}
+
 #KAAS - marijn211: let's me easily find this line
 
 ########################
@@ -4258,6 +4395,7 @@ country_event = { #The government is on its last legs
 				limit = {
 					has_government = democratic
 				}
+				set_country_flag = achievement_became_second_cze_republic
 				set_cosmetic_tag = CZE_second_republic
 				set_party_name = {
 					ideology = neutrality
@@ -4339,6 +4477,7 @@ country_event = { #The government is on its last legs
 	 			promote_character = yes
 			}
 			add_country_leader_trait = CZE_3rd_prezident
+			set_country_flag = achievement_became_second_cze_republic
 			set_cosmetic_tag = CZE_fall_of_the_republic
 		}
 		effect_tooltip = {

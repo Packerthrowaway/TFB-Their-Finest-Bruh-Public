@@ -126,6 +126,35 @@ CZE_tatra_organization = {
 		OR = {
 			tag = CZE
 			tag = RKH
+			tag = POL
+		}
+	}
+
+	available = {
+		FROM = {
+			if = {
+				limit = {
+					original_tag = POL
+				}
+				has_completed_focus = POL_join_CZE_military
+				OR = {
+					controls_state = 9
+					any_subject_country = {
+						controls_state = 9
+					}	
+				}
+			}
+		}
+	}
+
+	visible = {
+		FROM = {
+			if = {
+				limit = {
+					original_tag = POL
+				}
+				has_completed_focus = POL_join_CZE_military
+			}
 		}
 	}
 
@@ -341,6 +370,7 @@ CZE_skoda_plzen_tank_destroyer_organization = {
 			tag = CZE
 			tag = AUS
 			tag = SLO
+			tag = POL
 		}
 		has_dlc = "Peace For Our Time"
 	}
@@ -364,6 +394,35 @@ CZE_skoda_plzen_tank_destroyer_organization = {
 			}
 			FROM = {
 				controls_state = 9
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					original_tag = POL
+				}
+			}
+			FROM = {
+				has_completed_focus = POL_join_CZE_military
+				OR = {
+					controls_state = 9
+					any_subject_country = {
+						controls_state = 9
+					}	
+				}
+			}
+		}
+	}
+
+	visible = {
+		if = {
+			limit = {
+				FROM = {
+					original_tag = POL
+				}
+			}
+			FROM = {
+				has_completed_focus = POL_join_CZE_military
 			}
 		}
 	}
@@ -1492,6 +1551,7 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 			tag = SLO
 			tag = GER
 			tag = RKH
+			tag = POL
 		}
 	}
 
@@ -1514,6 +1574,16 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 					has_completed_focus = GER_integrate_czech_manufacturers
 				}
 			}
+			if = {
+				limit = {
+					FROM = {
+						original_tag = POL
+					}
+				}
+				FROM = {
+					has_completed_focus = POL_join_CZE_military
+				}
+			}
 		}
 	}
 
@@ -1534,6 +1604,7 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 					OR = {
 						original_tag = GER
 						original_tag = SLO
+						original_tag = POL
 					}
 				}
 			}
@@ -1544,6 +1615,16 @@ CZE_ceska_zbrojovka_uhersky_brod_organization = {
 						controls_state = 75
 					}	
 				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					original_tag = POL
+				}
+			}
+			FROM = {
+				has_completed_focus = POL_join_CZE_military
 			}
 		}
 	}
@@ -1980,7 +2061,36 @@ CZE_zbrojovka_vsetin_organization = {
 		has_dlc = "Peace For Our Time"
 		OR = {
 			tag = CZE
+			tag = POL
 			tag = RKH
+		}
+	}
+
+	available = {
+		FROM = {
+			if = {
+				limit = {
+					original_tag = POL
+				}
+				has_completed_focus = POL_join_CZE_industry
+				OR = {
+					controls_state = 9
+					any_subject_country = {
+						controls_state = 9
+					}	
+				}
+			}
+		}
+	}
+
+	visible = {
+		FROM = {
+			if = {
+				limit = {
+					original_tag = POL
+				}
+				has_completed_focus = POL_join_CZE_industry
+			}
 		}
 	}
 
@@ -2029,7 +2139,38 @@ CZE_CKD_plzen_organization = {
 	icon = GFX_idea_CZE_ckd_plzen
 	allowed = {
 		has_dlc = "Peace For Our Time"
-		tag = CZE
+		OR = {
+			tag = CZE
+			tag = POL
+		}
+	}
+
+	available = {
+		FROM = {
+			if = {
+				limit = {
+					original_tag = POL
+				}
+				has_completed_focus = POL_join_CZE_rails
+				OR = {
+					controls_state = 9
+					any_subject_country = {
+						controls_state = 9
+					}	
+				}
+			}
+		}
+	}
+
+	visible = {
+		FROM = {
+			if = {
+				limit = {
+					original_tag = POL
+				}
+				has_completed_focus = POL_join_CZE_rails
+			}
+		}
 	}
 
 	initial_trait = {

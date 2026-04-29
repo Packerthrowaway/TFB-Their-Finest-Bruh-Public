@@ -176,7 +176,7 @@ equipments = {
 		maximum_speed = 4
 
 		#Defensive Abilities
-		defense = 3
+		defense = 4
 		breakthrough = 2
 
 		#Offensive Abilities
@@ -213,7 +213,7 @@ equipments = {
 		visual_level = 1
 
 		#Defensive Abilities
-		defense = 4
+		defense = 6
 		breakthrough = 4
 
 		#Offensive Abilities
@@ -234,7 +234,7 @@ equipments = {
 		visual_level = 1
 
 		#Defensive Abilities
-		defense = 5
+		defense = 8
 		breakthrough = 6
 
 		#Offensive Abilities
@@ -255,7 +255,7 @@ equipments = {
 		visual_level = 1
 
 		#Defensive Abilities
-		defense = 6
+		defense = 10
 		breakthrough = 8
 
 		#Offensive Abilities
@@ -352,7 +352,7 @@ equipments = {
 	}
 	
 	radio_equipment = {
-		year = 1938
+		year = 1918
 		
 		is_archetype = yes
 		is_buildable = no
@@ -366,27 +366,109 @@ equipments = {
 			infantry_quantity_upgrade
 		}
 		
-		breakthrough = 2
+		breakthrough = 1
 		soft_attack = 1
 		hard_attack = 0.5
 		defense = 4
 		
 		reliability = 0.75
 		
-		build_cost_ic = 3.75
+		build_cost_ic = 3
+
+	}
+
+	radio_equipment_0 = {
+		year = 1918
+	
+		archetype = radio_equipment
+		priority = 05
+		visual_level = 0
+
+		breakthrough = 3 #higher breakthrough since field telephones cant be intercepted
+		soft_attack = 1
+		hard_attack = 0.5
+		defense = 3
+		
+		reliability = 0.75
+		
+		build_cost_ic = 4
+		
+		resources = {
+		    steel = 5
+			aluminium = 5
+		}
+		
+	}
+
+	radio_equipment_1 = {
+		year = 1938
+	
+		archetype = radio_equipment
+		parent = radio_equipment_0
+		priority = 05
+		visual_level = 0
+
+		breakthrough = 3
+		soft_attack = 1.5
+		hard_attack = 1
+		defense = 6
+		
+		reliability = 0.75
+		
+		build_cost_ic = 5
 		
 		resources = {
 		    chromium = 5
 			aluminium = 10
 		}
+		
 	}
 
-	radio_equipment_0 = {
-		year = 1938
+	radio_equipment_2 = {
+		year = 1942
 	
 		archetype = radio_equipment
+		parent = radio_equipment_1
+		priority = 05
+		visual_level = 0
+
+		breakthrough = 4
+		soft_attack = 2
+		hard_attack = 1.5
+		defense = 8
+		
+		reliability = 0.75
+		
+		build_cost_ic = 6
+		
+		resources = {
+		    chromium = 5
+			aluminium = 10
+		}
+		
+	}
+
+	radio_equipment_3 = {
+		year = 1944
+	
+		archetype = radio_equipment
+		parent = radio_equipment_2
 		priority = 05
 		visual_level = 0
 		
+		breakthrough = 5
+		soft_attack = 2.5
+		hard_attack = 2
+		defense = 10
+		
+		reliability = 0.75
+		
+		build_cost_ic = 7
+		
+		resources = {
+		    chromium = 10
+			aluminium = 10
+		}
+
 	}
 }
