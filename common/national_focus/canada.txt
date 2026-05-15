@@ -218,9 +218,15 @@ focus_tree = {
 
 
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = CAN_great_depression_1
-				add_idea = CAN_great_depression_2		
+			if = {
+				limit = { has_idea = CAN_great_depression_1 }
+				swap_ideas = {
+					remove_idea = CAN_great_depression_1
+					add_idea = CAN_great_depression_2		
+				}
+			} else_if = {
+				limit = { has_idea = CAN_great_depression_2 }
+				remove_ideas = CAN_great_depression_2
 			}
 		}
 	}
@@ -294,6 +300,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+			hidden_effect = { remove_ideas = CAN_great_depression_1 }
 			remove_ideas = CAN_great_depression_2
 			random_owned_controlled_state = {
 				limit = {
