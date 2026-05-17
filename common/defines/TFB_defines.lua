@@ -440,7 +440,7 @@ NDefines.NAir.AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.2 --
 
 
 NDefines.NAir.DISRUPTION_FACTOR = 4.0									-- multiplier on disruption damage to scale its effects on planes
-NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 100.0						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
+NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 8.0						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
 NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.5
 NDefines.NAir.DISRUPTION_AGILITY_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_ATTACK_FACTOR = 1.0
@@ -462,7 +462,7 @@ NDefines.NNavy.COMBAT_MAX_GROUPS = 2										-- Max amount of "Fire Exchange" g
 NDefines.NNavy.CONVOY_EFFICIENCY_LOSS_MODIFIER = 1.00							-- How much efficiency drops when losing convoys. If modifier is 0.5 then losing 100% of convoys in short period the efficiency will drop by 50%.
 NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 3						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
 NDefines.NNavy.CONVOY_SINKING_SPILLOVER = 0.1								-- Damaged convoys roll for if they sink in the end of combat by accumulating the damage. This scales that chance.
-NDefines.NNavy.CONVOY_HIT_PROFILE = 90										-- convoys has this contant hit profile
+NDefines.NNavy.CONVOY_HIT_PROFILE = 120										-- convoys has this contant hit profile
 NDefines.NNavy.COORDINATION_EFFECT_ON_CONVOY_RAID_EFFICIENCY = 1.0			-- coordination will increase the number of areas you can cover in convoy raid
 NDefines.NNavy.BASE_CARRIER_SORTIE_EFFICIENCY = 0.2							-- factor of planes that can sortie by default from a carrier
 NDefines.NNavy.NAVAL_SPEED_MODIFIER = 0.08	                    				-- basic speed control
@@ -521,18 +521,18 @@ NDefines.NNavy.NAVAL_INVASION_SPOTTING_SPEED_MULT = 1.0						-- spotting speed m
 NDefines.NNavy.UNIT_TRANSFER_DETECTION_CHANCE_BASE = 4.12							-- unit transfer and naval invasion base chance detection percentage (if this fails no detection is done on that tick)
 NDefines.NNavy.BASE_JOIN_COMBAT_HOURS						= 24				-- the taskforces that wants to join existing combats will wait for at least this amount
 NDefines.NNavy.MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION					= 0.05  -- will clamp the bonus that you get from detection
-NDefines.NNavy.HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.4 -- if one side has more ships than the other that side will get this penalty for each +100% ship ratio it has
+NDefines.NNavy.HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.3 -- if one side has more ships than the other that side will get this penalty for each +100% ship ratio it has
 --NDefines.NNavy.POSITIONING_PENALTY_FOR_SHIPS_JOINED_COMBAT_AFTER_IT_STARTS		= 0.015 -- each ship that joins the combat will have this penalty to be added into positioning
 NDefines.NNavy.MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO					= 1.2  -- maximum penalty to get from larger fleets
-NDefines.NNavy.MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 99    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
+NDefines.NNavy.MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 60    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
 
 NDefines.NNavy.UNDERWAY_REPLENISHMENT_CONVOY_COST_PER_FUEL = 0.05	-- Cost in convoys for underway replenishment multiplied by max daily fuel consumption (rounded up)
 
 NDefines.NNavy.DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.75	-- damage penalty at 0% positioning
-NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.40	-- screening efficiency (screen to capital ratio) at 0% positioning
+NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.10	-- screening efficiency (screen to capital ratio) at 0% positioning
 NDefines.NNavy.AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING						= 0.40  -- AA penalty at 0% positioning
 
-NDefines.NNavy.MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.80  -- the accumulated penalty from new ships will be clamped to this value
+NDefines.NNavy.MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS 					= 0.40  -- the accumulated penalty from new ships will be clamped to this value
 NDefines.NNavy.POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS			= 0.02  -- the accumulated penalty from new ships will decay hourly by this value
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS 					= 3.0	-- this screen ratio to num capital/carriers is needed for full screening beyond screen line
 NDefines.NNavy.LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.02 -- light gun attack value is divided by this value * 100 and added to shore bombardment modifier 
@@ -544,11 +544,11 @@ NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns if target ih profil
 NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE 										= 80	-- hit profile for depth charges
 NDefines.NNavy.BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
 	3.0,	-- big guns
-	12.0,	-- torpedoes
+	8.0,	-- torpedoes
 	2.0,	-- small guns
 }
 NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_CHANCE 									= 0.8		-- chance for critical hit from torpedo.
-NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT								= 64		-- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usually torpedo_attack are pretty high base values)
+NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT								= 32		-- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usually torpedo_attack are pretty high base values)
 NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT						= 24		-- the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
 NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.25 		-- multiplies hit chance of small guns
 NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 2.0						-- Bonus to critical chance when shooter armor piercing is higher then target armor.
