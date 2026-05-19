@@ -12,7 +12,7 @@
 	
 	default = no
 	
-	continuous_focus_position = { x = 50 y = 1200 }
+	continuous_focus_position = { x = 50 y = 1075 }
 
 
 	# focus = {
@@ -230,8 +230,8 @@
 		}
 
 		available = {
-        has_political_power > 100
-    }
+			has_political_power > 100
+		}
 
 		available_if_capitulated = yes
 
@@ -362,13 +362,13 @@
 			# 	ROLE = political_advisor
 			# }
 			# show_ideas_tooltip = SOV_grigory_semyonov
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = {
-				localization_key = remove_character_as_tt
-				CHARACTER = SOV_lev_kamenev
-				ROLE = political_advisor
-			}
-			show_ideas_tooltip = SOV_lev_kamenev
+			# custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = {
+			# 	localization_key = remove_character_as_tt
+			# 	CHARACTER = SOV_lev_kamenev
+			# 	ROLE = political_advisor
+			# }
+			# show_ideas_tooltip = SOV_lev_kamenev
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = {
 				localization_key = remove_character_as_tt
@@ -421,13 +421,13 @@
 			# 	ROLE = political_advisor
 			# }
 			# show_ideas_tooltip = SOV_grigory_semyonov
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = {
-				localization_key = remove_character_as_tt
-				CHARACTER = SOV_lev_kamenev
-				ROLE = political_advisor
-			}
-			show_ideas_tooltip = SOV_lev_kamenev
+			# custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = {
+			# 	localization_key = remove_character_as_tt
+			# 	CHARACTER = SOV_lev_kamenev
+			# 	ROLE = political_advisor
+			# }
+			# show_ideas_tooltip = SOV_lev_kamenev
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = {
 				localization_key = remove_character_as_tt
@@ -926,7 +926,7 @@
 		prerequisite = { focus = SOV_pol_socialism_in_one_country }
 		mutually_exclusive = { focus = SOV_spain_small}
 		icon = GFX_SOV_goal_military_in_spain
-		x = 2
+		x = 1
 		y = 1
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP}
@@ -997,7 +997,7 @@
 		prerequisite = { focus = SOV_pol_socialism_in_one_country }
 		mutually_exclusive = { focus = SOV_spain_big}
 		icon = GFX_SOV_rework65
-		x = -2
+		x = -1
 		y = 1
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP}
@@ -1063,7 +1063,7 @@
 		id = SOV_spanish_gold
 		prerequisite = { focus = SOV_spain_small  focus = SOV_spain_big }
 		icon = GFX_SOV_borrow_spanish_gold
-		x = 6
+		x = 4
 		y = 1
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -1134,7 +1134,7 @@
 		prerequisite = { focus = SOV_spain_big focus = SOV_spain_small }
 		mutually_exclusive = { focus = SOV_china_big }
 		icon = GFX_SOV_goal_operation_zet
-		x = -2
+		x = -1
 		y = 2
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP}
@@ -1214,7 +1214,7 @@
 		prerequisite = { focus = SOV_spain_small focus = SOV_spain_big }
 		mutually_exclusive = { focus = SOV_china_small}
 		icon = GFX_SOV_protect_the_east
-		x = 2
+		x = 1
 		y = 2
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP}
@@ -3102,7 +3102,11 @@
 			
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = SOV_nikolay_yezhov
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = SOV_lavrenty_beriya
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = SOV_genrikh_yagoda
 		}
 	}
@@ -5967,12 +5971,6 @@
 			add_ideas = stalingrad_tractor_factory
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_volga_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_volga_dev_map_counter = 20 }
-			SOV_upgrade_region_volga = yes
-
-			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
 			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
 			clamp_variable = {
@@ -5982,8 +5980,92 @@
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
 		}
 	}
-	
-	
+
+	focus = {
+		id = SOV_start_the_third_five_year_plan
+		prerequisite = { focus = SOV_heavy_national_specialists focus = SOV_eco_empower_tolkachi }
+		icon = GFX_SOV_5_year_plan_phase_3_MIC
+		x = -9
+		y = 1
+
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL  FOCUS_FILTER_RESEARCH }
+
+		relative_position_id = SOV_heavy_national_specialists
+		cost = 1
+		
+		available = {
+			OR = {
+				has_country_flag = SOV_second_5_year_plan_completed
+				GER = { has_completed_focus = GER_demand_sudetenland }
+			}
+		}
+
+		completion_reward = {
+			event_option_tooltip = soviet.600.a
+			hidden_effect = { country_event = { id = soviet.600 } }
+			set_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 0 }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_third_5_year_plan_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			effect_tooltip = {
+				if = {
+					limit = { NOT = { has_country_flag = SOV_second_5_year_plan_achieved } }
+					custom_effect_tooltip = SOV_if_completed_second_5_tt
+					custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
+					add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 5 }
+					clamp_variable = {
+						var = var_SOV_second_5_year_plan_progress_bar_counter
+						max = 100
+					}
+					add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
+				}
+			}
+			if = {
+				limit = { has_country_flag = SOV_second_5_year_plan_achieved }
+				custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
+				add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 5 }
+				clamp_variable = {
+					var = var_SOV_second_5_year_plan_progress_bar_counter
+					max = 100
+				}
+				add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
+			}
+			set_country_flag = SOV_third_5_year_plan_started
+		}
+	}
+
+	focus = {
+		id = SOV_finish_the_third_five_year_plan
+		prerequisite = { focus = SOV_start_the_third_five_year_plan }
+		icon = GFX_SOV_5_year_plan_phase_3_MIC
+		x = 0
+		y = 1
+
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL  FOCUS_FILTER_RESEARCH }
+
+		relative_position_id = SOV_start_the_third_five_year_plan
+		cost = 1
+		
+		available = {
+			has_country_flag = SOV_third_5_year_plan_completed
+		}
+
+		bypass = {
+			has_country_flag = SOV_third_5_year_plan_completed
+		}
+
+		bypass_effect = {
+			event_option_tooltip = soviet.699.a
+			hidden_effect = { country_event = { id = soviet.699 } }
+		}
+
+		completion_reward = {
+			event_option_tooltip = soviet.699.a
+			hidden_effect = { country_event = { id = soviet.699 } }
+		}
+	}	
 
 	# focus = {
 	# 	id = SOV_eco_women_workers
@@ -6071,7 +6153,7 @@
 		id = SOV_light_commissariat_light_industry
 		prerequisite = { focus = SOV_heavy_national_specialists focus = SOV_eco_empower_tolkachi }
 		icon = GFX_SOV_rework157
-		x = -15
+		x = -16
 		y = 1
 		relative_position_id = SOV_heavy_national_specialists
 		cost = 2
@@ -6088,10 +6170,6 @@
 		}
 
 		completion_reward = {
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
 			
 			custom_effect_tooltip = SOV_stability_5_tt
@@ -6129,18 +6207,7 @@
 			add_to_variable = { SOV_command_economy_industrial_capacity_factory_var = 0.05 }
 			custom_effect_tooltip = SOV_consumer_good_factor_-2_tt
 			add_to_variable = { SOV_command_economy_consumer_goods_factor_var = -0.02 }
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
-			
-			SOV_check_plan_completion = yes
+
 		}
 	}
 	
@@ -6152,16 +6219,20 @@
 		y = 1
 		relative_position_id = SOV_light_modernise_textile_industry
 		cost = 5
-		
-		available = {
-			NOT = { has_completed_focus = SOV_light_fabric_of_new_society }
-		}
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		
 		completion_reward = {
-			202 = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 202
+						state = 198
+						state = 405
+					}
+				}
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
@@ -6169,65 +6240,6 @@
 					instant_build = yes
 				}
 			}
-			if = {
-				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				198 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-				405 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			} else = {
-				198 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-				405 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_completed_focus = SOV_light_solve_raw_material_issue
-				}
-				reduce_focus_completion_cost = {
-					focus = { SOV_light_fabric_of_new_society }
-					cost = -35
-				}
-			}
-			
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-			add_to_variable = { var_ukraine_west_dev_map_counter = 10 }
-			SOV_upgrade_region_ukraine_west = yes
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
@@ -6251,10 +6263,6 @@
 		y = 1
 		relative_position_id = SOV_light_modernise_textile_industry
 		cost = 5
-		
-		available = {
-			NOT = { has_completed_focus = SOV_light_fabric_of_new_society }
-		}
 
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 	
@@ -6273,8 +6281,15 @@
 				category = excavation_tech
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
-			
-			405 = {
+
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 405
+						state = 823
+					}
+				}
+				random_select_amount = 2
 				add_building_construction = {
 					type = infrastructure
 					level = 2
@@ -6286,13 +6301,6 @@
 				amount = 150
 				state = 405
 			}
-			823 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
 	 		add_resource = {
 				type = rubber
 				amount = 150
@@ -6300,31 +6308,13 @@
 			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
-			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
+			custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 3 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
 				max = 100
 			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
-
-			if = {
-				limit = {
-					has_completed_focus = SOV_light_new_textile_mills
-				}
-				reduce_focus_completion_cost = {
-					focus = { SOV_light_fabric_of_new_society }
-					cost = -35
-				}
-			}
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
 			
 			SOV_check_plan_completion = yes
 		}
@@ -6332,78 +6322,37 @@
 
 	focus = {
 		id = SOV_light_fabric_of_new_society
-		prerequisite = { focus = SOV_light_new_textile_mills focus = SOV_light_solve_raw_material_issue }
+		prerequisite = { focus = SOV_light_new_textile_mills }
+		prerequisite = { focus = SOV_light_solve_raw_material_issue }
 		icon = GFX_focus_AFG_integrate_tajik_and_uzbek_republics
 		x = -1
 		y = 1
 
-		available = {
-			communism > 0.95
-		}
-
-
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
 
 		relative_position_id = SOV_light_solve_raw_material_issue
-		cost = 5 # TODO: MAKE DYNAMIC IF POSSIBLE (35 days if one previous focus has been done, 70 if both) (Add Tooltip)
+		cost = 5
 		
 		completion_reward = {
 			custom_effect_tooltip = SOV_more_decisions_generic_tt
 			unlock_decision_tooltip = { decision = SOV_standardize_clothing show_effect_tooltip = no }
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-
-			custom_effect_tooltip = SOV_generic_previous_improve_tt
+			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
+		 	custom_effect_tooltip = SOV_consumer_good_factor_-5_tt
+		 	add_to_variable = { SOV_command_economy_consumer_goods_factor_var = -0.05 }
+			custom_effect_tooltip = SOV_political_power_gain_factor_05_tt
+			add_to_variable = { SOV_command_economy_political_power_factor_var = 0.05 }
+			custom_effect_tooltip = SOV_weekly_stability_01_tt
+			add_to_variable = { SOV_command_economy_stability_gain_factor_var = 0.001 }
 			custom_effect_tooltip = generic_skip_one_line_tt
-			
-			if = {
-				limit = {
-					has_completed_focus = SOV_light_new_textile_mills
-				}
-				
-				
-				if = {
-					limit = {
-						NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-					}
-					custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-					custom_effect_tooltip = SOV_consumer_good_factor_-5_tt
-					add_to_variable = { SOV_command_economy_consumer_goods_factor_var = -0.05 }
-				} else = {
-					custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-					custom_effect_tooltip = SOV_factory_output_5_tt
-					add_to_variable = { SOV_command_economy_industrial_capacity_factory_var = 0.05 }
-				}
-				
-				# Regional Dev
-				add_to_variable = { var_ukraine_west_dev_map_counter  = 30 }
-				SOV_upgrade_region_ukraine_west = yes
 
-				custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-				custom_effect_tooltip = SOV_regional_development_30_tt
-				custom_effect_tooltip = generic_skip_one_line_tt
-			}
-			
-			if = {
-				limit = {
-					has_completed_focus = SOV_light_solve_raw_material_issue
-				}
-				custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-				custom_effect_tooltip = SOV_political_power_gain_factor_05_tt
-				add_to_variable = { SOV_command_economy_political_power_factor_var = 0.05 }
-				custom_effect_tooltip = SOV_weekly_stability_01_tt
-				add_to_variable = { SOV_command_economy_stability_gain_factor_var = 0.001 }
-
-				add_to_variable = { var_urals_dev_map_counter = 10 }
-				SOV_upgrade_region_urals = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_urals_tt
-				custom_effect_tooltip = SOV_regional_development_10_tt
-			}
+			# Regional Dev
+			custom_effect_tooltip = SOV_generic_modify_ukraine_west_level_tt
+			SOV_upgrade_region_ukraine_west = yes
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
-			
 			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 5 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
@@ -6424,6 +6373,10 @@
 		y = 2
 		relative_position_id = SOV_light_commissariat_light_industry
 		cost = 1
+
+		allow_branch = {
+			always = no
+		}
 		
 		available = {
 			NOT = { has_completed_focus = SOV_light_new_soviet_man }
@@ -6491,6 +6444,11 @@
 				idea = SOV_restructure_society
 				days = 500
 			}
+
+			custom_effect_tooltip = SOV_more_decisions_generic_tt
+			unlock_decision_tooltip = { decision = SOV_improved_worker_conditions show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = SOV_increase_production_quotas show_effect_tooltip = no }
+
 		}
 	}
 
@@ -6506,6 +6464,10 @@
 
 
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+
+		allow_branch = {
+			always = no
+		}
 		
 		available = {
 			NOT = { has_completed_focus = SOV_light_new_soviet_man }
@@ -6547,7 +6509,7 @@
 		id = SOV_light_concession_committee
 		prerequisite = { focus = SOV_light_commissariat_light_industry }
 		icon = GFX_SOV_rework261 
-		x = 2
+		x = 4
 		y = 1
 		relative_position_id = SOV_light_commissariat_light_industry
 		cost = 5
@@ -6555,13 +6517,10 @@
 
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
 		
-		available = {
-			has_political_power > 100
-		}
 		
 		completion_reward = {
-			add_political_power = -100
-			add_ideas = SOV_gosproyektstroy_1
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = SOV_gosproyektstroy_1
 		}
 	}
 
@@ -6570,7 +6529,7 @@
 		prerequisite = { focus = SOV_light_concession_committee }
 		mutually_exclusive = { focus = SOV_light_state_trade_monopoly }
 		icon = GFX_SOV_rework251
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = SOV_light_concession_committee
 		cost = 5
@@ -6584,6 +6543,10 @@
 		
 		completion_reward = {
 			add_ideas = sov_limited_foreign_concessions
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_more_decisions_generic_tt
+			unlock_decision_tooltip = { decision = SOV_gosproyektstroy_bring_foreign_experts show_effect_tooltip = no }
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_-5_tt 
@@ -6602,7 +6565,7 @@
 		id = SOV_light_reduce_foreign_reliance
 		prerequisite = { focus = SOV_light_commissariat_light_industry }
 		icon = GFX_focus_spr_masters_of_our_own_fate
-		x = 4
+		x = 2
 		y = 1
 		relative_position_id = SOV_light_commissariat_light_industry
 		cost = 5
@@ -6621,17 +6584,6 @@
 			add_to_variable = { SOV_command_economy_political_power_factor_var = 0.1 }
 			custom_effect_tooltip = SOV_consumer_good_factor_-5_tt
 			add_to_variable = { SOV_command_economy_consumer_goods_factor_var = -0.05 }
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
-			
-			SOV_check_plan_completion = yes
 		}
 	}
 	
@@ -6640,7 +6592,7 @@
 		prerequisite = { focus = SOV_light_reduce_foreign_reliance }
 		mutually_exclusive = { focus = SOV_light_limited_foreign_concessions }
 		icon = GFX_HUN_autarky
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id  = SOV_light_reduce_foreign_reliance
 		cost = 5
@@ -6656,8 +6608,11 @@
 			add_ideas = sov_state_trade_monopoly
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 3 }
+			custom_effect_tooltip = SOV_gosproyektstroy_modification_enable_tt
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_increase_5_year_plan_4_tt 
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 4 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
 				max = 100
@@ -6677,16 +6632,18 @@
 		relative_position_id = SOV_light_limited_foreign_concessions
 		cost = 5
 
+		allow_branch = {
+			always = no
+		}
+
 
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNATIONAL_TRADE }
 		
 		completion_reward = {
 			custom_effect_tooltip = SOV_more_decisions_generic_tt
-			unlock_decision_tooltip = { decision = SOV_increase_exports show_effect_tooltip = no }
-			unlock_decision_tooltip = { decision = SOV_decrease_exports show_effect_tooltip = no }
+			# unlock_decision_tooltip = { decision = SOV_increase_exports show_effect_tooltip = no }
+			# unlock_decision_tooltip = { decision = SOV_decrease_exports show_effect_tooltip = no }
 			unlock_decision_tooltip = { decision = SOV_gosproyektstroy_bring_foreign_experts show_effect_tooltip = no }
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_gosproyektstroy_modification_enable_tt
 			custom_effect_tooltip = SOV_trade_policy_tt
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -6704,10 +6661,10 @@
 	
 	focus = {
 		id = SOV_light_crush_black_market
-		prerequisite = { focus = SOV_light_increase_consumer_goods }
+		#prerequisite = { focus = SOV_light_increase_consumer_goods }
 		prerequisite = { focus = SOV_light_limited_foreign_concessions }
 		icon = GFX_focus_ARG_anti_corruption_policies
-		x = 1
+		x = 3
 		y = 1
 		relative_position_id = SOV_light_increase_consumer_goods
 		cost = 5
@@ -6734,7 +6691,7 @@
 		prerequisite = { focus = SOV_light_restructure_society }
 		icon = GFX_focus_ARG_women_in_industry
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = SOV_light_restructure_society
 		cost = 8
 
@@ -6879,18 +6836,6 @@
 				remove_idea = SOV_new_soviet_man
 				add_idea = SOV_new_soviet_man_political_power
 			}
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
-			
-			SOV_check_plan_completion = yes
 		}
 	}
 	
@@ -6928,130 +6873,48 @@
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			custom_effect_tooltip = SOV_second_vs_third_5_year_cos_tt
-			if = {
+			every_owned_state = {
 				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				if = {
-					limit = { controls_state = 195 }
-					195 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 3
-							instant_build = yes
-						}
+					OR = {
+						state = 195
+						state = 219
+						state = 217
 					}
 				}
-				if = {
-					limit = { controls_state = 219 }
-					219 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 5
-							instant_build = yes
-						}
-					}
+				random_select_amount = 3
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
 				}
-				if = {
-					limit = { controls_state = 217 }
-					217 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 3
-							instant_build = yes
-						}
-					}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
 				}
-			} else = {
-				if = {
-					limit = { controls_state = 195 }
-					195 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
-				}
-				if = {
-					limit = { controls_state = 219 }
-					219 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 5
-							instant_build = yes
-						}
-					}
-				}
-				if = {
-					limit = { controls_state = 217 }
-					217 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
 				}
 			}
-			
+
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_leningrad_tt
-			custom_effect_tooltip = SOV_regional_development_30_tt
-			add_to_variable = { var_leningrad_dev_map_counter = 30 }
+
+			custom_effect_tooltip = SOV_generic_modify_leningrad_level_tt
 			SOV_upgrade_region_leningrad = yes
-			
-			custom_effect_tooltip = SOV_generic_modify_moscow_tt
-			custom_effect_tooltip = SOV_regional_development_50_tt
-			add_to_variable = { var_moscow_dev_map_counter = 50 }
+
+			custom_effect_tooltip = SOV_generic_modify_moscow_level_tt
 			SOV_upgrade_region_moscow = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_volga_tt
-			custom_effect_tooltip = SOV_regional_development_30_tt
-			add_to_variable = { var_volga_dev_map_counter = 30 }
+			custom_effect_tooltip = SOV_generic_modify_volga_level_tt
 			SOV_upgrade_region_volga = yes
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
+			custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
 			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 3 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
 				max = 100
@@ -7066,7 +6929,7 @@
 		id = SOV_light_popovs_legacy
 		prerequisite = { focus = SOV_light_capitals_of_socialism }
 		icon = GFX_SOV_improve_signals
-		x = 1
+		x = -1
 		y = 1
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -7092,7 +6955,7 @@
 		id = SOV_light_expand_belarusian_science_academy
 		prerequisite = { focus = SOV_light_capitals_of_socialism }
 		icon = GFX_focus_generic_socialist_science
-		x = 3
+		x = 1
 		y = 1
 
 		relative_position_id = SOV_light_capitals_of_socialism
@@ -7102,10 +6965,14 @@
 			custom_effect_tooltip = SOV_more_decisions_generic_tt
 			unlock_decision_tooltip = { decision = SOV_increase_research_funding show_effect_tooltip = no }
 			custom_effect_tooltip = generic_skip_one_line_tt
-		
-            add_to_variable = { var_belarus_dev_map_counter = 50 }
+
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = { decision = SOV_propaganda_knowledge show_effect_tooltip = no }
+			custom_effect_tooltip = generic_skip_one_line_tt	
+
+			custom_effect_tooltip = SOV_generic_modify_belarus_level_tt
 			SOV_upgrade_region_belarus = yes
-			
+			custom_effect_tooltip = generic_skip_one_line_tt
 			206 = {
 				add_building_construction = {
 					type = infrastructure
@@ -7113,19 +6980,6 @@
 					instant_build = yes
 				}
 			}
-			custom_effect_tooltip = SOV_generic_modify_belarus_tt
-			custom_effect_tooltip = SOV_regional_development_50_tt
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
-			
-			SOV_check_plan_completion = yes
 		}
 	}
 
@@ -7184,10 +7038,6 @@
 			unlock_decision_tooltip = { decision = SOV_long_term_science show_effect_tooltip = no }
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = unlock_propaganda_campaign_tt
-			unlock_decision_tooltip = { decision = SOV_propaganda_knowledge show_effect_tooltip = no }
-
-			custom_effect_tooltip = generic_skip_one_line_tt
 		
 			add_research_slot = 1
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
@@ -7211,7 +7061,7 @@
 		id = SOV_soviet_atomic_bomb_project
 		prerequisite = { focus = SOV_light_capitals_of_socialism }
 		icon = GFX_SOV_rework46
-		x = -1
+		x = 3
 		y = 1
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -7296,14 +7146,6 @@
 			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			
-
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-
-			custom_effect_tooltip = generic_skip_one_line_tt
 
 			if = {
 				limit = {
@@ -7321,55 +7163,6 @@
 				add_ideas = SOV_soviet_atomic_bomb_project_ns
 			}
 			custom_effect_tooltip = SOV_soviet_atomic_bomb_project_unlock_operation_tt
-		}
-	}
-	
-	focus = {
-		id = SOV_light_uranium_mines
-		prerequisite = { focus = SOV_soviet_atomic_bomb_project }
-		icon = GFX_focus_generic_uranium_extraction
-		x = 0
-		y = 1
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		relative_position_id = SOV_soviet_atomic_bomb_project
-		cost = 5
-
-		available = {
-			OR = {
-				USA = { has_completed_focus = USA_manhattan_project }
-				date > 1943.1.1
-			}
-		}
-
-		completion_reward = {
-			add_ideas = SOV_uranium_mines
-			custom_effect_tooltip = generic_skip_one_line_tt
-			
-			881 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 4
-					instant_build = yes
-				}
-			}
-			590 = {
-			add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			custom_effect_tooltip = generic_skip_one_line_tt
-			
-			add_to_variable = { var_urals_dev_map_counter = 15 }
-			SOV_upgrade_region_urals = yes
-			
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_15_tt
 		}
 	}
 	
@@ -7421,17 +7214,6 @@
 			add_to_variable = { SOV_command_economy_stability_factor_var = -0.05 }
 			custom_effect_tooltip = SOV_construction_speed_5_tt
 			add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = 0.05 }
-
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			remove_ideas = SOV_soviet_backwards_science_base
-			custom_effect_tooltip = generic_skip_one_line_tt
-			add_tech_bonus = {
-				name = SOV_dispersed_industry
-				bonus = 0.1
-				uses = 1
-				technology = dispersed_industry
-			}
 		}
 	}
 
@@ -7462,8 +7244,17 @@
 			add_to_variable = { SOV_command_economy_local_resources_factor_var = 0.05 }
 			custom_effect_tooltip = SOV_construction_speed_infra_5_tt
 			add_to_variable = { SOV_command_economy_production_speed_infrastructure_factor_var = 0.05 }	
-			custom_effect_tooltip = SOV_efficiency_base_2_tt
-			add_to_variable = { SOV_command_economy_production_factory_start_efficiency_factor_var = 0.02 }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
+			clamp_variable = {
+				var = var_SOV_second_5_year_plan_progress_bar_counter
+				max = 100
+			}
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }		
+			
+			SOV_check_plan_completion = yes
 		}
 	}
 
@@ -7480,11 +7271,6 @@
 		relative_position_id = SOV_heavy_wealth_of_the_motherland
 		cost = 3
 		completion_reward = {
-			add_resource = {
-				type = oil
-				amount = 300
-				state = 229
-			}
 			229 = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -7493,53 +7279,40 @@
 					instant_build = yes
 				}
 			}
-
-			239 = {
+			add_resource = {
+				type = oil
+				amount = 300
+				state = 229
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 239
+						state = 251
+						state = 829
+					}
+				}
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = synthetic_refinery
 					level = 2
 					instant_build = yes
-				}
+				} 
 			}
-			251 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = synthetic_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			829 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = synthetic_refinery
-					level = 2
-					instant_build = yes
-				}
-			}
-			
-			add_to_variable = { var_caucasus_dev_map_counter = 20 }
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_generic_modify_caucasus_level_tt
 			SOV_upgrade_region_caucasus = yes
-
-			add_to_variable = { var_volga_dev_map_counter = 20 }
-			SOV_upgrade_region_volga = yes
-
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_caucasus_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
 
-			
-			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
+			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
 				max = 100
 			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }		
 			
 			SOV_check_plan_completion = yes
 		}
@@ -7547,10 +7320,10 @@
 
 	focus = {
 		id = SOV_heavy_build_aluminium_mills
-		prerequisite = { focus = SOV_heavy_expand_baku_oil }
+		prerequisite = { focus = SOV_heavy_expand_baku_oil focus = SOV_heavy_breadbasket_of_the_union}
 		icon = GFX_HUN_joint_aluminum_mining_company
 		x = 0
-		y = 2
+		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
@@ -7564,7 +7337,15 @@
 		}
 
 		completion_reward = {
-			200 = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 200
+						state = 653
+						state = 569
+					}
+				}
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = infrastructure
@@ -7577,50 +7358,20 @@
 				amount = 200
 				state = 200
 			}
-			653 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
 			add_resource = {
 				type = aluminium
 				amount = 300
 				state = 653
-			}
-			569 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
 			}
 			add_resource = {
 				type = aluminium
 				amount = 300
 				state = 569
 			}
+			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
-			SOV_upgrade_region_ukraine_west = yes
-
-			
-			add_to_variable = { var_urals_dev_map_counter = 20 }
-			SOV_upgrade_region_urals = yes
-
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			
-			add_to_variable = { var_siberia_dev_map_counter = 20 }
+			custom_effect_tooltip = SOV_generic_modify_siberia_level_tt
 			SOV_upgrade_region_siberia = yes
-
-			custom_effect_tooltip = SOV_generic_modify_siberia_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
@@ -7641,7 +7392,7 @@
 		prerequisite = { focus = SOV_heavy_build_aluminium_mills }
 		icon = GFX_SOV_goals_renovation_of_siberia
 		x = 0
-		y = 2
+		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
@@ -7655,7 +7406,15 @@
 		}
 
 		completion_reward = {
-			573 = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 573
+						state = 651
+						state = 398
+					}
+				}
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = infrastructure
@@ -7668,26 +7427,10 @@
 				amount = 300
 				state = 233
 			}
-			651 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
 			add_resource = {
 				type = tungsten
 				amount = 200
 				state = 651
-			}
-			398 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
 			}
 			add_resource = {
 				type = steel
@@ -7695,12 +7438,9 @@
 				state = 398
 			}
 	 		
-			add_to_variable = { var_urals_dev_map_counter = 20 }
-			SOV_upgrade_region_urals = yes
-
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
+			custom_effect_tooltip = SOV_generic_modify_urals_level_tt
+			SOV_upgrade_region_urals = yes
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
@@ -7713,6 +7453,47 @@
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
 
 			SOV_check_plan_completion = yes		
+		}
+	}
+
+	focus = {
+		id = SOV_light_uranium_mines
+		prerequisite = { focus = SOV_heavy_new_mines_urals }
+		icon = GFX_focus_generic_uranium_extraction
+		x = -1
+		y = 1
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		relative_position_id = SOV_heavy_new_mines_urals
+		cost = 5
+
+		available = {
+			OR = {
+				USA = { has_completed_focus = USA_manhattan_project }
+				date > 1943.1.1
+			}
+		}
+
+		completion_reward = {
+			add_ideas = SOV_uranium_mines
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 881
+						state = 590
+					}
+				}
+				random_select_amount = 2
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+			
 		}
 	}
 
@@ -7733,7 +7514,28 @@
 			add_to_variable = { SOV_command_economy_consumer_goods_factor_var = -0.03 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			199 = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 199
+						state = 201
+						state = 202
+						state = 198
+						state = 834
+						state = 192
+						state = 197
+						state = 203
+						state = 193
+						state = 225
+						state = 259
+						state = 226
+						state = 196
+						state = 200
+						state = 221
+						state = 227
+					}
+				}
+				random_select_amount = 16
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = infrastructure
@@ -7741,165 +7543,33 @@
 					instant_build = yes
 				}
 			}
-
-			201 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			202 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			198 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			834 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			192 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			197 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			203 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			193 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			225 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			259 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			226 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			196 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			200 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			221 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			227 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-
-			add_to_variable = { var_ukraine_west_dev_map_counter = 50 }
-			SOV_upgrade_region_ukraine_west = yes
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_50_tt
+			custom_effect_tooltip = SOV_generic_modify_ukraine_west_level_tt
+			SOV_upgrade_region_ukraine_west = yes
 
-			add_to_variable = { var_ukraine_east_dev_map_counter = 30 }
+			custom_effect_tooltip = SOV_generic_modify_ukraine_east_level_tt
 			SOV_upgrade_region_ukraine_east = yes
 
-			custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-			custom_effect_tooltip = SOV_regional_development_30_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
+			clamp_variable = {
+				var = var_SOV_second_5_year_plan_progress_bar_counter
+				max = 100
+			}
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }		
 
-			SOV_check_plan_completion = yes		
+			SOV_check_plan_completion = yes	
 		}
 	}
 	
 	focus = {
 		id = SOV_heavy_develop_northern_ports
-		prerequisite = { focus = SOV_heavy_breadbasket_of_the_union }
+		prerequisite = { focus = SOV_heavy_expand_baku_oil focus = SOV_heavy_breadbasket_of_the_union}
 		icon = GFX_focus_POL_develop_polish_shipbuilding
 		x = 0
-		y = 2
+		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
@@ -7911,8 +7581,15 @@
 			controls_state = 214
 		}
 
-		completion_reward = {			
-			213 = {
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 213
+						state = 214
+					}
+				}
+				random_select_amount = 2
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure
@@ -7924,6 +7601,8 @@
 					level = 2
 					instant_build = yes
 				}
+			}
+			213 = {
 				add_building_construction = {
 					type = naval_base
 					level = 6
@@ -7932,17 +7611,6 @@
 				}
 			}
 			214 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
 				add_building_construction = {
 					type = naval_base
 					level = 6
@@ -7950,22 +7618,19 @@
 					province = 3338
 				}
 			}
-			add_to_variable = { var_northwest_dev_map_counter = 50 }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_generic_modify_northwest_level_tt
 			SOV_upgrade_region_northwest = yes
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_northwest_tt
-			custom_effect_tooltip = SOV_regional_development_50_tt
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
-			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
+			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
 				max = 100
 			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }		
 
 			SOV_check_plan_completion = yes			
 		}
@@ -7976,7 +7641,7 @@
 		prerequisite = { focus = SOV_heavy_build_aluminium_mills focus = SOV_heavy_develop_northern_ports }
 		icon = GFX_focus_generic_coal_mining
 		x = 0
-		y = 2
+		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
@@ -7990,7 +7655,15 @@
 		}
 
 		completion_reward = {
-			233 = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 233
+						state = 827
+						state = 828
+					}
+				}
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = infrastructure
@@ -8003,26 +7676,10 @@
 				amount = 200
 				state = 233
 			}
-			827 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
 			add_resource = {
 				type = tungsten
 				amount = 250
 				state = 827
-			}
-			828 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
 			}
 			add_resource = {
 				type = chromium
@@ -8030,16 +7687,12 @@
 				state = 828
 			}
 	 		
-			add_to_variable = { var_caucasus_dev_map_counter = 30 }
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_generic_modify_caucasus_level_tt
 			SOV_upgrade_region_caucasus = yes
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_caucasus_tt
-			custom_effect_tooltip = SOV_regional_development_30_tt
-
-			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			
 			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
@@ -8072,14 +7725,10 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-			custom_effect_tooltip = SOV_weekly_stability_-01_tt
-			add_to_variable = { SOV_command_economy_stability_gain_factor_var = -0.001 }
 			custom_effect_tooltip = SOV_consumer_good_factor_-5_tt
 			add_to_variable = { SOV_command_economy_consumer_goods_factor_var = -0.05 }
 			custom_effect_tooltip = SOV_construction_speed_5_tt
 			add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = 0.05 }
-			custom_effect_tooltip = SOV_efficiency_retention_2_tt
-			add_to_variable = { SOV_command_economy_line_change_production_efficiency_factor_var = 0.02 }
 
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -8120,22 +7769,11 @@
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
-			if = {
-				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-				custom_effect_tooltip = SOV_construction_speed_infra_5_tt
-				add_to_variable = { SOV_command_economy_production_speed_infrastructure_factor_var = 0.05 }
-				custom_effect_tooltip = SOV_construction_speed_civ_5_tt
-				add_to_variable = { SOV_command_economy_production_speed_industrial_complex_factor_var = 0.05 }
-			} else = {
-				custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-				custom_effect_tooltip = SOV_construction_speed_mil_5_tt
-				add_to_variable = { SOV_command_economy_production_speed_arms_factory_factor_var = 0.05 }
-				custom_effect_tooltip = SOV_construction_speed_dock_5_tt
-				add_to_variable = { SOV_command_economy_production_speed_dockyard_factor_var = 0.05 }
-			}
+			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
+			custom_effect_tooltip = SOV_construction_speed_infra_5_tt
+			add_to_variable = { SOV_command_economy_production_speed_infrastructure_factor_var = 0.05 }
+			custom_effect_tooltip = SOV_construction_speed_civ_5_tt
+			add_to_variable = { SOV_command_economy_production_speed_industrial_complex_factor_var = 0.05 }
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
@@ -8163,101 +7801,29 @@
 		relative_position_id = SOV_heavy_industrial_build_up
 		cost = 5
 		completion_reward = {
-			if = {
+			every_owned_state = {
 				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
+					OR = {
+						state = 242
+						state = 241
+						state = 221
+					}
 				}
-				242 = {
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				241 = {
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				221 = {
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-			} else = {
-				242 = {
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-				241 = {
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-				221 = {
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
 				}
 			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_moscow_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_moscow_dev_map_counter = 20 }
-			SOV_upgrade_region_moscow = yes
-			
-			custom_effect_tooltip = SOV_generic_modify_belarus_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_belarus_dev_map_counter = 20 }
+			custom_effect_tooltip = SOV_generic_modify_belarus_level_tt
 			SOV_upgrade_region_belarus = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_ukraine_east_dev_map_counter = 20 }
+			custom_effect_tooltip = SOV_generic_modify_ukraine_east_level_tt
 			SOV_upgrade_region_ukraine_east = yes
-
-			if = {
-				limit = {
-					has_completed_focus = SOV_heavy_western_industrial_expansion
-				}
-				reduce_focus_completion_cost = {
-					focus = { SOV_heavy_urbanization_of_society }
-					cost = -35
-				}
-			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
@@ -8286,131 +7852,34 @@
 		relative_position_id = SOV_heavy_industrial_build_up
 		cost = 5
 		completion_reward = {
-			if = {
+			every_owned_state = {
 				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
+					OR = {
+						state = 206
+						state = 223
+						state = 192
+					}
 				}
-				206 = {
+				random_select_amount = 3
 				add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
 				}
-				223 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-				192 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			} else = {
-				206 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-				223 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-				192 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
 				}
 			}
-			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_belarus_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_belarus_dev_map_counter = 20 }
+
+			custom_effect_tooltip = SOV_generic_modify_belarus_level_tt
 			SOV_upgrade_region_belarus = yes
 
-			custom_effect_tooltip = SOV_generic_modify_moscow_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_moscow_dev_map_counter = 20 }
-			SOV_upgrade_region_moscow = yes
-			
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
+			custom_effect_tooltip = SOV_generic_modify_ukraine_west_level_tt
 			SOV_upgrade_region_ukraine_west = yes
-
-			if = {
-				limit = {
-					has_completed_focus = SOV_heavy_tractor_factories
-				}
-				reduce_focus_completion_cost = {
-					focus = { SOV_heavy_urbanization_of_society }
-					cost = -35
-				}
-			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
@@ -8428,7 +7897,8 @@
 	
 	focus = {
 		id = SOV_heavy_urbanization_of_society
-		prerequisite = { focus = SOV_heavy_tractor_factories focus = SOV_heavy_western_industrial_expansion }
+		prerequisite = { focus = SOV_heavy_tractor_factories }
+		prerequisite = { focus = SOV_heavy_western_industrial_expansion }
 		icon = GFX_focus_generic_low_cost_housing
 		x = 1
 		y = 1
@@ -8436,485 +7906,61 @@
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		relative_position_id = SOV_heavy_tractor_factories
-		cost = 5 # TODO: MAKE DYNAMIC IF POSSIBLE (35 days if one previous focus has been done, 70 if both) (Add Tooltip)
+		cost = 10
 		
 		completion_reward = {
-			custom_effect_tooltip = SOV_generic_previous_improve_tt
-			if = {
+			every_owned_state = {
 				limit = {
-					AND = {
-						has_completed_focus = SOV_heavy_tractor_factories
-						NOT = { has_completed_focus = SOV_heavy_western_industrial_expansion }
+					OR = {
+						state = 195
+						state = 219
+						state = 217
+						state = 224
+						state = 220
+						state = 226
 					}
 				}
-				if = {
-					limit = {
-						NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-					}
-					195 = {
-					add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 3
-							instant_build = yes
-						}
-					}
-					219 = {
-						add_extra_state_shared_building_slots = 2
-						add_building_construction = {
-							type = industrial_complex
-							level = 3
-							instant_build = yes
-						}
-					}
-					217 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 3
-							instant_build = yes
-						}
-					}
-				} else = {
-					195 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-					219 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-					217 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
+				random_select_amount = 36
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
 				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = SOV_generic_modify_leningrad_tt
-				custom_effect_tooltip = SOV_regional_development_30_tt
-				add_to_variable = { var_leningrad_dev_map_counter = 30 }
-				SOV_upgrade_region_leningrad = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_moscow_tt
-				custom_effect_tooltip = SOV_regional_development_30_tt
-				add_to_variable = { var_moscow_dev_map_counter = 30 }
-				SOV_upgrade_region_moscow = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_volga_tt
-				custom_effect_tooltip = SOV_regional_development_30_tt
-				add_to_variable = { var_volga_dev_map_counter = 30 }
-				SOV_upgrade_region_volga = yes
-				
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
-				
-				add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 5 }
-				clamp_variable = {
-					var = var_SOV_second_5_year_plan_progress_bar_counter
-					max = 100
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
 				}
-				add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-				
-				SOV_check_plan_completion = yes
-			} 
-			if = {
-				limit = {
-					AND = {
-						has_completed_focus = SOV_heavy_western_industrial_expansion
-						NOT = { has_completed_focus = SOV_heavy_tractor_factories }
-					}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
 				}
-				if = {
-					limit = {
-						NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-					}
-					224 = {
-					add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-					}
-					220 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-					}
-					226 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-					}
-				} else = {
-					224 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					220 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					226 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-				custom_effect_tooltip = SOV_regional_development_40_tt
-				add_to_variable = { var_ukraine_east_dev_map_counter = 40 }
-				SOV_upgrade_region_ukraine_east = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-				custom_effect_tooltip = SOV_regional_development_20_tt
-				add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
-				SOV_upgrade_region_ukraine_west = yes
+			}
 
-				custom_effect_tooltip = SOV_generic_modify_moscow_tt
-				custom_effect_tooltip = SOV_regional_development_20_tt
-				add_to_variable = { var_moscow_dev_map_counter = 20 }
-				SOV_upgrade_region_moscow = yes
-				
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
-				
-				add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 5 }
-				clamp_variable = {
-					var = var_SOV_second_5_year_plan_progress_bar_counter
-					max = 100
-				}
-				add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-				
-				SOV_check_plan_completion = yes
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = SOV_generic_modify_leningrad_level_tt
+			SOV_upgrade_region_leningrad = yes
+
+			custom_effect_tooltip = SOV_generic_modify_moscow_level_tt
+			SOV_upgrade_region_moscow = yes
+			
+			custom_effect_tooltip = SOV_generic_modify_volga_level_tt
+			SOV_upgrade_region_volga = yes
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_increase_5_year_plan_10_tt 
+			
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 10 }
+			clamp_variable = {
+				var = var_SOV_second_5_year_plan_progress_bar_counter
+				max = 100
 			}
-			if = {
-				limit = {
-					AND = {
-						has_completed_focus = SOV_heavy_western_industrial_expansion
-						has_completed_focus = SOV_heavy_tractor_factories
-					}
-				}
-				if = {
-				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				195 = {
-				add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				219 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				217 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				224 = {
-				add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				220 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				226 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 3
-						instant_build = yes
-					}
-				}
-				} else = {
-					195 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-					219 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-					217 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-					224 = {
-					add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-					220 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-					226 = {
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 2
-							instant_build = yes
-						}
-					}
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = SOV_generic_modify_leningrad_tt
-				custom_effect_tooltip = SOV_regional_development_30_tt
-				add_to_variable = { var_leningrad_dev_map_counter = 30 }
-				SOV_upgrade_region_leningrad = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_moscow_tt
-				custom_effect_tooltip = SOV_regional_development_40_tt
-				add_to_variable = { var_moscow_dev_map_counter = 40 }
-				SOV_upgrade_region_moscow = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_volga_tt
-				custom_effect_tooltip = SOV_regional_development_30_tt
-				add_to_variable = { var_volga_dev_map_counter = 30 }
-				SOV_upgrade_region_volga = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-				custom_effect_tooltip = SOV_regional_development_40_tt
-				add_to_variable = { var_ukraine_east_dev_map_counter = 40 }
-				SOV_upgrade_region_ukraine_east = yes
-				
-				custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-				custom_effect_tooltip = SOV_regional_development_20_tt
-				add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
-				SOV_upgrade_region_ukraine_west = yes
-				
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = SOV_increase_5_year_plan_10_tt 
-				
-				add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 10 }
-				clamp_variable = {
-					var = var_SOV_second_5_year_plan_progress_bar_counter
-					max = 100
-				}
-				add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-				
-				SOV_check_plan_completion = yes
-			}
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
+			
+			SOV_check_plan_completion = yes
 		}
 	}
 				
@@ -8936,6 +7982,42 @@
 
 
 		completion_reward = {			
+			add_tech_bonus = {
+				name = SOV_industrial_modernization
+				bonus = 0.5
+				uses = 1
+				technology = concentrated_industry2
+        		technology = concentrated_industry3
+        		technology = concentrated_industry4
+				technology = dispersed_industry2
+        		technology = dispersed_industry3
+        		technology = dispersed_industry4
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 219
+						state = 227
+						state = 252
+					}
+				}
+				random_select_amount = 3
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
 			custom_effect_tooltip = SOV_factories_in_state_factor_10_tt
 			add_to_variable = { SOV_command_economy_global_building_slots_factor_var = 0.1 }
@@ -8943,6 +8025,13 @@
 			add_to_variable = { SOV_command_economy_global_building_slots_var = 1 }
 			
 			hidden_effect = { remove_ideas = SOV_new_construction_sites }
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_generic_modify_ukraine_east_level_tt
+			SOV_upgrade_region_ukraine_east = yes
+			
+			custom_effect_tooltip = SOV_generic_modify_volga_level_tt
+			SOV_upgrade_region_volga = yes
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
@@ -8972,7 +8061,7 @@
 		y = 1
 		
 		available = {
-			has_country_flag = SOV_second_5_year_plan_completed
+			has_country_flag = SOV_third_5_year_plan_started
 		}
 		
 		relative_position_id = SOV_heavy_industrial_expansion
@@ -9039,14 +8128,18 @@
 
 	focus = {
 		id = SOV_heavy_PC_mechanical_engineering
-		prerequisite = { focus = SOV_heavy_shift_to_armaments_production focus = SOV_heavy_balanced_industrial_approach }
+		prerequisite = { focus = SOV_heavy_industrial_expansion }
 		icon = GFX_SOV_rework106
-		x = -2
-		y = 1
+		x = -1
+		y = 2
 
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 
-		relative_position_id = SOV_heavy_shift_to_armaments_production
+		allow_branch = {
+			always = no
+		}
+
+		relative_position_id = SOV_heavy_industrial_expansion
 		cost = 5
 
 		completion_reward = {
@@ -9197,160 +8290,98 @@
 	# 	}
 	# }
 	
-	focus = {
-		id = SOV_heavy_industrial_modernization
-		prerequisite = { focus = SOV_heavy_PC_mechanical_engineering }
-		prerequisite = { focus = SOV_heavy_develop_northern_ports }
-		icon = GFX_focus_SWE_landsverk
-		x = -1
-		y = 1
+	# focus = {
+	# 	id = SOV_heavy_industrial_modernization
+	# 	prerequisite = { focus = SOV_heavy_PC_mechanical_engineering }
+	# 	prerequisite = { focus = SOV_heavy_develop_northern_ports }
+	# 	icon = GFX_focus_SWE_landsverk
+	# 	x = -1
+	# 	y = 1
 
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	# 	search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 
-		relative_position_id = SOV_heavy_PC_mechanical_engineering
-		cost = 5
-		completion_reward = {
-			add_tech_bonus = {
-				name = SOV_industrial_modernization
-				bonus = 0.25
-				uses = 1
-				technology = concentrated_industry2
-        		technology = concentrated_industry3
-        		technology = concentrated_industry4
-				technology = dispersed_industry2
-        		technology = dispersed_industry3
-        		technology = dispersed_industry4
-			}
+	# 	allow_branch = {
+	# 		always = no
+	# 	}
+
+	# 	relative_position_id = SOV_heavy_PC_mechanical_engineering
+	# 	cost = 5
+	# 	completion_reward = {
+	# 		add_tech_bonus = {
+	# 			name = SOV_industrial_modernization
+	# 			bonus = 0.5
+	# 			uses = 1
+	# 			technology = concentrated_industry2
+    #     		technology = concentrated_industry3
+    #     		technology = concentrated_industry4
+	# 			technology = dispersed_industry2
+    #     		technology = dispersed_industry3
+    #     		technology = dispersed_industry4
+	# 		}
+
+	# 		every_owned_state = {
+	# 			limit = {
+	# 				OR = {
+	# 					state = 219
+	# 					state = 227
+	# 					state = 252
+	# 				}
+	# 			}
+	# 			random_select_amount = 3
+	# 			add_extra_state_shared_building_slots = 3
+	# 			add_building_construction = {
+	# 				type = industrial_complex
+	# 				level = 2
+	# 				instant_build = yes
+	# 			}
+	# 			add_building_construction = {
+	# 				type = arms_factory
+	# 				level = 1
+	# 				instant_build = yes
+	# 			}
+	# 		}
 			
-			if = {
-				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				if = { 
-					limit = { controls_state = 219 }
-					219 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				if = { 
-					limit = { controls_state = 227 }
-					227 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				if = { 
-					limit = { controls_state = 252 }
-					252 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-			} else = {
-				if = { 
-					limit = { controls_state = 252 }
-					219 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
-				}
-				if = { 
-					limit = { controls_state = 227 }
-					219 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
-				}
-				if = { 
-					limit = { controls_state = 252 }
-					219 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
-				}
-			}
+	# 		custom_effect_tooltip = generic_skip_one_line_tt
+	# 		custom_effect_tooltip = SOV_generic_modify_moscow_tt
+	# 		custom_effect_tooltip = SOV_regional_development_20_tt
+	# 		add_to_variable = { var_moscow_dev_map_counter = 20 }
+	# 		SOV_upgrade_region_moscow = yes
 			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_moscow_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_moscow_dev_map_counter = 20 }
-			SOV_upgrade_region_moscow = yes
+	# 		custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
+	# 		custom_effect_tooltip = SOV_regional_development_20_tt
+	# 		add_to_variable = { var_ukraine_east_dev_map_counter = 20 }
+	# 		SOV_upgrade_region_ukraine_east = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_ukraine_east_dev_map_counter = 20 }
-			SOV_upgrade_region_ukraine_east = yes
+	# 		custom_effect_tooltip = SOV_generic_modify_volga_tt
+	# 		custom_effect_tooltip = SOV_regional_development_20_tt
+	# 		add_to_variable = { var_volga_dev_map_counter = 20 }
+	# 		SOV_upgrade_region_volga = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_volga_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_volga_dev_map_counter = 20 }
-			SOV_upgrade_region_volga = yes
+	# 		custom_effect_tooltip = generic_skip_one_line_tt
+	# 		custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
 			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
+	# 		add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
+	# 		clamp_variable = {
+	# 			var = var_SOV_second_5_year_plan_progress_bar_counter
+	# 			max = 100
+	# 		}
+	# 		add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
 			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
-			
-			SOV_check_plan_completion = yes
-		}
-	}
+	# 		SOV_check_plan_completion = yes
+	# 	}
+	# }
 	
 	focus = {
 		id = SOV_heavy_standardize_factory_blueprints
-		prerequisite = { focus = SOV_heavy_PC_mechanical_engineering }
+		prerequisite = { focus = SOV_heavy_shift_to_armaments_production focus = SOV_heavy_balanced_industrial_approach }
 		mutually_exclusive = { focus = SOV_heavy_increase_production_targets }
 		icon = GFX_SOV_rework33
-		x = 1
+		x = 0
 		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
-		relative_position_id = SOV_heavy_PC_mechanical_engineering
+		relative_position_id = SOV_heavy_balanced_industrial_approach
 		cost = 5
 		completion_reward = {
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
@@ -9358,31 +8389,20 @@
 			add_to_variable = { SOV_command_economy_production_factory_start_efficiency_factor_var = 0.05 }
 			custom_effect_tooltip = SOV_efficiency_retention_10_tt
 			add_to_variable = { SOV_command_economy_line_change_production_efficiency_factor_var = 0.1 }
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-
-			SOV_check_plan_completion = yes
 		}
 	}
 	
 	focus = {
 
 		id = SOV_heavy_electrification_drive
-		prerequisite = { focus = SOV_heavy_shift_to_armaments_production focus = SOV_heavy_balanced_industrial_approach }
+		prerequisite = { focus = SOV_heavy_new_mines_caucasus focus = SOV_heavy_balanced_industrial_approach }
 		icon = GFX_focus_AFG_helmand_river_authority
-		x = 0
+		x = 1
 		y = 1
 
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL  FOCUS_FILTER_RESEARCH }
 
-		relative_position_id = SOV_heavy_shift_to_armaments_production
+		relative_position_id = SOV_heavy_new_mines_caucasus
 		cost = 5
 		completion_reward = {
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
@@ -9395,23 +8415,14 @@
 			custom_effect_tooltip = SOV_research_speed_5_tt
 			add_to_variable = { SOV_command_economy_research_speed_factor_var = 0.05 }
 			custom_effect_tooltip = generic_skip_one_line_tt
-			add_tech_bonus = {
-				name = SOV_electrification
-				bonus = 0.50
-				uses = 1
-				category = electronics
-			}
+			# add_tech_bonus = {
+			# 	name = SOV_electrification
+			# 	bonus = 0.50
+			# 	uses = 1
+			# 	category = electronics
+			# }
 
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-
-			SOV_check_plan_completion = yes
+			add_ideas = SOV_powerhouse_of_europe_idea
 		}
 	}
 	
@@ -9472,9 +8483,9 @@
 	
 	focus = {
 		id = SOV_heavy_productive_forces
-		prerequisite = { focus = SOV_heavy_siberian_colonization focus = SOV_heavy_model_cities }
+		prerequisite = { focus = SOV_heavy_siberian_colonization }
 		icon = GFX_HUN_support_domestic_industry
-		x = 2
+		x = 3
 		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -9482,111 +8493,36 @@
 		relative_position_id = SOV_heavy_shift_to_armaments_production
 		cost = 5
 
+		available = {
+			NOT = { has_completed_focus = SOV_heavy_industrial_powerhouses }
+		}
+
 		completion_reward = {
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
 			custom_effect_tooltip = SOV_factory_output_3_tt
 			add_to_variable = { SOV_command_economy_industrial_capacity_factory_var = 0.03 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
-			custom_effect_tooltip = SOV_second_vs_third_5_year_hpf_tt
-			if = {
+			every_owned_state = {
 				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				if = {
-					limit = { controls_state = 224 }
-					224 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
+					OR = {
+						state = 224
+						state = 227
+						state = 263
 					}
 				}
-				if = {
-					limit = { controls_state = 227 }
-					227 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-				if = {
-					limit = { controls_state = 263 }
-					263 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = industrial_complex
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-			} else = {
-				if = {
-					limit = { controls_state = 224 }
-					224 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
-				}
-				if = {
-					limit = { controls_state = 227 }
-					227 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
-				}
-				if = {
-					limit = { controls_state = 263 }
-					263 = {
-						add_extra_state_shared_building_slots = 3
-						add_building_construction = {
-							type = arms_factory
-							level = 3
-							instant_build = yes
-						}
-					}
+				random_select_amount = 3
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
 				}
 			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-			custom_effect_tooltip = SOV_regional_development_30_tt
-			add_to_variable = { var_ukraine_east_dev_map_counter = 30 }
+			custom_effect_tooltip = SOV_generic_modify_ukraine_east_level_tt
 			SOV_upgrade_region_ukraine_east = yes
-			
-			custom_effect_tooltip = SOV_generic_modify_leningrad_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_leningrad_dev_map_counter = 20 }
-			SOV_upgrade_region_leningrad = yes
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
@@ -9605,15 +8541,15 @@
 	focus = {
 		id = SOV_heavy_increase_production_targets
 		mutually_exclusive = { focus = SOV_heavy_standardize_factory_blueprints }
-		prerequisite = { focus = SOV_heavy_electrification_drive }
-		prerequisite = { focus = SOV_heavy_productive_forces }
+		prerequisite = { focus = SOV_heavy_shift_to_armaments_production focus = SOV_heavy_balanced_industrial_approach }
+		#prerequisite = { focus = SOV_heavy_productive_forces }
 		icon = GFX_SOV_rework264
-		x = 1
+		x = 0
 		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
-		relative_position_id = SOV_heavy_electrification_drive
+		relative_position_id = SOV_heavy_shift_to_armaments_production
 		cost = 5
 
 		completion_reward = {
@@ -9626,17 +8562,6 @@
 			add_to_variable = { SOV_command_economy_production_factory_start_efficiency_factor_var = -0.05 }
 			custom_effect_tooltip = SOV_efficiency_retention_-5_tt
 			add_to_variable = { SOV_command_economy_line_change_production_efficiency_factor_var = -0.05 }
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-
-			SOV_check_plan_completion = yes
 		}
 	}
 	
@@ -9646,7 +8571,7 @@
 		prerequisite = { focus = SOV_heavy_new_mines_caucasus }
 		icon = GFX_focus_AUS_danubian_socialist_communes
 		x = -1
-		y = 1
+		y = 2
 
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 		
@@ -9749,21 +8674,15 @@
 					}
 				}
 			}
-			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_volga_tt
-			custom_effect_tooltip = SOV_regional_development_40_tt
-			add_to_variable = { var_volga_dev_map_counter = 40 }
+			
+			custom_effect_tooltip = SOV_generic_modify_volga_level_tt
 			SOV_upgrade_region_volga = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
+			custom_effect_tooltip = SOV_generic_modify_ukraine_west_level_tt
 			SOV_upgrade_region_ukraine_west = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_ukraine_east_dev_map_counter = 20 }
+			custom_effect_tooltip = SOV_generic_modify_ukraine_east_level_tt
 			SOV_upgrade_region_ukraine_east = yes
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -9810,9 +8729,9 @@
 			add_to_variable = { SOV_command_economy_line_change_production_efficiency_factor_var = 0.03 }
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_8_tt 
+			custom_effect_tooltip = SOV_increase_5_year_plan_10_tt 
 			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 8 }
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 10 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
 				max = 100
@@ -9827,7 +8746,7 @@
 		id = SOV_heavy_architects_of_communism
 		prerequisite = { focus = SOV_heavy_transformation_of_nature }
 		prerequisite = { focus = SOV_heavy_mastery_of_production }
-		prerequisite = { focus = SOV_heavy_special_industrial_directorate }
+		prerequisite = { focus = SOV_heavy_industrial_powerhouses }
 		icon = GFX_SOV_rework59
 		x = 0
 		y = 1
@@ -9839,28 +8758,26 @@
 			num_of_factories > 650
 			has_stability > 0.7
 			has_war = no
-			communism > 0.95
 		}
 		
 		relative_position_id = SOV_heavy_mastery_of_production
 		
 		cost = 10
 		
-		completion_reward = {			
-			195 = {
-			add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
+		completion_reward = {		
+
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 195
+						state = 219
+						state = 217
+						state = 570
+						state = 203
+						state = 219
+					}
 				}
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			219 = {
+				random_select_amount = 6
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = industrial_complex
@@ -9872,46 +8789,7 @@
 					level = 2
 					instant_build = yes
 				}
-			}
-			217 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			570 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			203 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
+			}	
 			
 			every_owned_state = {
 				add_extra_state_shared_building_slots = 1
@@ -9925,60 +8803,85 @@
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_country_leader_trait = stalin_architect_of_communism
 			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_northwest_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_northwest_dev_map_counter = 10 }
+			# custom_effect_tooltip = generic_skip_one_line_tt
+			# custom_effect_tooltip = SOV_generic_modify_northwest_tt
+			# custom_effect_tooltip = SOV_regional_development_10_tt
+			# add_to_variable = { var_northwest_dev_map_counter = 10 }
+			# SOV_upgrade_region_northwest = yes
+
+			custom_effect_tooltip = SOV_generic_modify_northwest_level_tt
 			SOV_upgrade_region_northwest = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_moscow_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_moscow_dev_map_counter = 20 }
+			# custom_effect_tooltip = SOV_generic_modify_moscow_tt
+			# custom_effect_tooltip = SOV_regional_development_20_tt
+			# add_to_variable = { var_moscow_dev_map_counter = 20 }
+			# SOV_upgrade_region_moscow = yes
+
+			custom_effect_tooltip = SOV_generic_modify_moscow_level_tt
 			SOV_upgrade_region_moscow = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_volga_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_volga_dev_map_counter = 10 }
+			# custom_effect_tooltip = SOV_generic_modify_volga_tt
+			# custom_effect_tooltip = SOV_regional_development_10_tt
+			# add_to_variable = { var_volga_dev_map_counter = 10 }
+			# SOV_upgrade_region_volga = yes
+
+			custom_effect_tooltip = SOV_generic_modify_volga_level_tt
 			SOV_upgrade_region_volga = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_leningrad_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_leningrad_dev_map_counter = 20 }
+			# custom_effect_tooltip = SOV_generic_modify_leningrad_tt
+			# custom_effect_tooltip = SOV_regional_development_20_tt
+			# add_to_variable = { var_leningrad_dev_map_counter = 20 }
+			# SOV_upgrade_region_leningrad = yes
+
+			custom_effect_tooltip = SOV_generic_modify_leningrad_level_tt
 			SOV_upgrade_region_leningrad = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_belarus_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_belarus_dev_map_counter = 10 }
+			# custom_effect_tooltip = SOV_generic_modify_belarus_tt
+			# custom_effect_tooltip = SOV_regional_development_10_tt
+			# add_to_variable = { var_belarus_dev_map_counter = 10 }
+			# SOV_upgrade_region_belarus = yes
+
+			custom_effect_tooltip = SOV_generic_modify_belarus_level_tt
 			SOV_upgrade_region_belarus = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
+			# custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
+			# custom_effect_tooltip = SOV_regional_development_20_tt
+			# add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
+			# SOV_upgrade_region_ukraine_west = yes
+
+			custom_effect_tooltip = SOV_generic_modify_ukraine_west_level_tt
 			SOV_upgrade_region_ukraine_west = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_ukraine_east_dev_map_counter = 10 }
+			# custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
+			# custom_effect_tooltip = SOV_regional_development_10_tt
+			# add_to_variable = { var_ukraine_east_dev_map_counter = 10 }
+			# SOV_upgrade_region_ukraine_east = yes
+
+			custom_effect_tooltip = SOV_generic_modify_ukraine_east_level_tt
 			SOV_upgrade_region_ukraine_east = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_caucasus_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_caucasus_dev_map_counter = 10 }
+			# custom_effect_tooltip = SOV_generic_modify_caucasus_tt
+			# custom_effect_tooltip = SOV_regional_development_10_tt
+			# add_to_variable = { var_caucasus_dev_map_counter = 10 }
+			# SOV_upgrade_region_caucasus = yes
+
+			custom_effect_tooltip = SOV_generic_modify_caucasus_level_tt
 			SOV_upgrade_region_caucasus = yes
 			
-			custom_effect_tooltip = SOV_generic_modify_volga_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			add_to_variable = { var_volga_dev_map_counter = 20 }
-			SOV_upgrade_region_volga = yes
-			
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_urals_dev_map_counter = 10 }
+			# custom_effect_tooltip = SOV_generic_modify_urals_tt
+			# custom_effect_tooltip = SOV_regional_development_10_tt
+			# add_to_variable = { var_urals_dev_map_counter = 10 }
+			# SOV_upgrade_region_urals = yes
+
+			custom_effect_tooltip = SOV_generic_modify_urals_level_tt
 			SOV_upgrade_region_urals = yes
 
-			custom_effect_tooltip = SOV_generic_modify_siberia_tt
-			custom_effect_tooltip = SOV_regional_development_15_tt
-			add_to_variable = { var_siberia_dev_map_counter = 15 }
+			# custom_effect_tooltip = SOV_generic_modify_siberia_tt
+			# custom_effect_tooltip = SOV_regional_development_15_tt
+			# add_to_variable = { var_siberia_dev_map_counter = 15 }
+			# SOV_upgrade_region_siberia = yes
+
+			custom_effect_tooltip = SOV_generic_modify_siberia_level_tt
 			SOV_upgrade_region_siberia = yes
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -9997,11 +8900,10 @@
 	
 	focus = {
 		id = SOV_heavy_special_industrial_directorate
-		prerequisite = { focus = SOV_heavy_increase_production_targets focus = SOV_heavy_standardize_factory_blueprints}
-		prerequisite = { focus = SOV_heavy_industrial_powerhouses }
+		prerequisite = { focus = SOV_heavy_increase_production_targets focus = SOV_heavy_productive_forces }
 		icon = GFX_SOV_rework54
-		x = 6
-		y = 0
+		x = -1
+		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 
@@ -10013,18 +8915,18 @@
 			}
 		}
 		
-		relative_position_id = SOV_heavy_mastery_of_production
+		relative_position_id = SOV_heavy_productive_forces
 		cost = 8
 		completion_reward = {			
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-			custom_effect_tooltip = SOV_construction_speed_10_tt
-			add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = 0.1 }
+			custom_effect_tooltip = SOV_construction_speed_5_tt
+			add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = 0.05 }
 			custom_effect_tooltip = SOV_factories_in_state_2_tt
 			add_to_variable = { SOV_command_economy_global_building_slots_var = 2 }
-			custom_effect_tooltip = SOV_civ_to_mil_conversion_10_tt
-			add_to_variable = { SOV_command_economy_conversion_cost_civ_to_mil_factor_var = -0.10 }
-			custom_effect_tooltip = SOV_mil_to_civ_conversion_10_tt
-			add_to_variable = { SOV_command_economy_conversion_cost_mil_to_civ_factor_var = -0.10 }
+			custom_effect_tooltip = SOV_civ_to_mil_conversion_20_tt
+			add_to_variable = { SOV_command_economy_conversion_cost_civ_to_mil_factor_var = -0.20 }
+			custom_effect_tooltip = SOV_mil_to_civ_conversion_20_tt
+			add_to_variable = { SOV_command_economy_conversion_cost_mil_to_civ_factor_var = -0.20 }
 			
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -10053,10 +8955,6 @@
 		relative_position_id = SOV_heavy1
 		cost = 4
 		completion_reward = {
-			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-			custom_effect_tooltip = SOV_efficiency_growth_5_tt
-			add_to_variable = { SOV_command_economy_production_factory_efficiency_gain_factor_var = 0.05 }
-
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_more_decisions_generic_tt
 			unlock_decision_tooltip = { decision = SOV_gosplan_decisions_heavy_expand_magnitogorsk_steel show_effect_tooltip = no }
@@ -10064,18 +8962,6 @@
 			unlock_decision_tooltip = { decision = SOV_gosplan_decisions_heavy_move_labour_to_norilsk show_effect_tooltip = no }
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-		
-			add_to_variable = { var_siberia_dev_map_counter = 10 }
-			SOV_upgrade_region_siberia = yes
-			
-			custom_effect_tooltip = SOV_generic_modify_siberia_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt			
 		}
 	}
 	
@@ -10115,13 +9001,6 @@
 				state = 579
 			}
 			
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
 			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
@@ -10157,8 +9036,19 @@
 			unlock_decision_tooltip = { decision = SOV_gosplan_decisions_far_eastern_resource_extraction show_effect_tooltip = no }
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			579 = {
-				add_extra_state_shared_building_slots = 4
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 579
+						state = 562
+						state = 560
+						state = 657
+						state = 568
+						state = 570
+					}
+				}
+				random_select_amount = 6
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = infrastructure
 					level = 2
@@ -10169,59 +9059,10 @@
 				province = 7689
 				value = 1
 			}
-			562 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			560 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			657 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			568 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			570 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			
+
 			custom_effect_tooltip = generic_skip_one_line_tt
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-
-			add_to_variable = { var_siberia_dev_map_counter = 10 }
+			custom_effect_tooltip = SOV_generic_modify_siberia_level_tt
 			SOV_upgrade_region_siberia = yes
-
-			custom_effect_tooltip = SOV_generic_modify_siberia_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
@@ -10263,235 +9104,36 @@
 			add_to_variable = { SOV_command_economy_production_speed_infrastructure_factor_var = 0.25 }
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			if = {
+			every_owned_state = {
 				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-					579 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-
-					562 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-					560 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-					657 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-					568 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-					570 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-					564 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-					408 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-				} else = {
-					579 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-
-					562 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					560 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					657 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					568 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					570 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					564 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
-					}
-					408 = {
-						add_extra_state_shared_building_slots = 5
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = arms_factory
-							level = 1
-							instant_build = yes
-						}
+					OR = {
+						state = 579
+						state = 562
+						state = 560
+						state = 657
+						state = 568
+						state = 570
+						state = 564
+						state = 408
 					}
 				}
+				random_select_amount = 8
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			
-			add_to_variable = { var_siberia_dev_map_counter = 30 }
+			custom_effect_tooltip = SOV_generic_modify_siberia_level_tt
 			SOV_upgrade_region_siberia = yes
-
-			custom_effect_tooltip = SOV_generic_modify_siberia_tt
-			custom_effect_tooltip = SOV_regional_development_30_tt	
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
@@ -10527,8 +9169,15 @@
 			}
 		}
 		
-		completion_reward = {			
-			582 = {
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 582
+						state = 572
+					}
+				}
+				random_select_amount = 2
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = steel_refinery
@@ -10540,29 +9189,10 @@
 					level = 1
 					instant_build = yes
 				}
-			}		
-			572 = {
-				add_extra_state_shared_building_slots = 3
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
 			}
 			
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 } 			
-			
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
+
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
@@ -10602,7 +9232,7 @@
 			
 			if = {
 				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
+					NOT = { has_country_flag = SOV_third_5_year_plan_started }
 				}
 				582 = {
 					add_extra_state_shared_building_slots = 4
@@ -10638,13 +9268,6 @@
 				amount = 300
 				state = 582
 			}			
-			
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
@@ -10658,11 +9281,11 @@
 			SOV_check_plan_completion = yes
 		}
 	}
-	
+
 	focus = {
-		id = SOV_heavy_construct_chelyabinsk_factories
+		id = SOV_heavy_tankograd
 		prerequisite = { focus = SOV_heavy_enlargen_industrial_cities }
-		icon = GFX_SOV_rework132
+		icon = GFX_SOV_rework136
 		x = 1
 		y = 1
 
@@ -10671,207 +9294,13 @@
 		
 		available = {
 			NOT = { has_completed_focus = SOV_heavy_industrial_powerhouses }
+			custom_trigger_tooltip = {
+				tooltip = SOV_need_chelyabinsk_3_tt
+				check_variable = { SOV_var_chelyabinsk_development = 3 compare = greater_than_or_equals }
+			}
 		}
 		
 		relative_position_id = SOV_heavy_enlargen_industrial_cities
-		cost = 5
-		completion_reward = {
-			
-			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-			custom_effect_tooltip = SOV_efficiency_base_5_tt
-			add_to_variable = { SOV_command_economy_production_factory_start_efficiency_factor_var = 0.05 }
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			if = {
-				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				572 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = industrial_complex
-						level = 4
-						instant_build = yes
-					}
-				}
-			} else = {
-				572 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = arms_factory
-						level = 4
-						instant_build = yes
-					}
-				}
-			}
-
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-
-			SOV_check_plan_completion = yes
-		}
-	}
-	
-	focus = {
-		id = SOV_heavy_model_cities
-		prerequisite = { focus = SOV_heavy_steel_powerhouse }
-		prerequisite = { focus = SOV_heavy_construct_chelyabinsk_factories }
-		mutually_exclusive = { focus = SOV_heavy_siberian_colonization }
-		icon = GFX_SOV_rework38
-		x = 1
-		y = 1
-
-		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY}
-
-		
-		available = {
-			NOT = { has_completed_focus = SOV_heavy_industrial_powerhouses }
-			custom_trigger_tooltip = {
-				tooltip = SOV_need_magnitogorsk_3_tt
-				check_variable = { SOV_var_magnitogorsk_development = 3 compare = greater_than_or_equals }
-			}
-			custom_trigger_tooltip = {
-				tooltip = SOV_need_chelyabinsk_3_tt
-				check_variable = { SOV_var_chelyabinsk_development = 3 compare = greater_than_or_equals }
-			}
-		}
-		
-		relative_position_id = SOV_heavy_steel_powerhouse
-		cost = 5
-		completion_reward = {	
-			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-			
-			custom_effect_tooltip = SOV_weekly_stability_01_tt
-			add_to_variable = { SOV_command_economy_stability_gain_factor_var = 0.001 }
-			custom_effect_tooltip = generic_skip_one_line_tt
-			
-			if = {
-				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				582 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-				}
-			} else = {
-				582 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-		completion_reward = {
-
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-			
-			if = {
-				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
-				}
-				572 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-				}
-			} else = {
-				572 = {
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_15_tt
-			add_to_variable = { var_urals_dev_map_counter = 15 }
-			SOV_upgrade_region_urals = yes
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
-			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
-			clamp_variable = {
-				var = var_SOV_second_5_year_plan_progress_bar_counter
-				max = 100
-			}
-			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
-			
-			SOV_check_plan_completion = yes
-		}
-	}
-	
-	focus = {
-		id = SOV_heavy_tankograd
-		prerequisite = { focus = SOV_heavy_construct_chelyabinsk_factories }
-		icon = GFX_SOV_rework136
-		x = 0
-		y = 2
-
-		search_filters = {FOCUS_FILTER_INDUSTRY}
-
-		
-		available = {
-			NOT = { has_completed_focus = SOV_heavy_industrial_powerhouses }
-			custom_trigger_tooltip = {
-				tooltip = SOV_need_chelyabinsk_3_tt
-				check_variable = { SOV_var_chelyabinsk_development = 3 compare = greater_than_or_equals }
-			}
-		}
-		
-		relative_position_id = SOV_heavy_construct_chelyabinsk_factories
 		cost = 5
 		completion_reward = {
 			mio:SOV_tankograd_plant_organization = {
@@ -10905,7 +9334,7 @@
 			
 			if = {
 				limit = {
-					NOT = { has_country_flag = SOV_second_5_year_plan_completed }
+					NOT = { has_country_flag = SOV_third_5_year_plan_started }
 				}
 				572 = {
 					add_extra_state_shared_building_slots = 2
@@ -10926,13 +9355,6 @@
 				}
 			}
 
-			
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_10_tt
-			add_to_variable = { var_urals_dev_map_counter = 10 }
-			SOV_upgrade_region_urals = yes
-
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
 			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
@@ -10945,6 +9367,141 @@
 			SOV_check_plan_completion = yes
 		}
 	}
+
+	focus = {
+		id = SOV_heavy_model_cities
+		prerequisite = { focus = SOV_heavy_steel_powerhouse }
+		prerequisite = { focus = SOV_heavy_tankograd }
+		mutually_exclusive = { focus = SOV_heavy_siberian_colonization }
+		icon = GFX_SOV_rework38
+		x = 1
+		y = 1
+
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY}
+
+		
+		available = {
+			NOT = { has_completed_focus = SOV_heavy_industrial_powerhouses }
+			custom_trigger_tooltip = {
+				tooltip = SOV_need_magnitogorsk_3_tt
+				check_variable = { SOV_var_magnitogorsk_development = 3 compare = greater_than_or_equals }
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_need_chelyabinsk_3_tt
+				check_variable = { SOV_var_chelyabinsk_development = 3 compare = greater_than_or_equals }
+			}
+		}
+		
+		relative_position_id = SOV_heavy_steel_powerhouse
+		cost = 5
+		completion_reward = {	
+			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
+			
+			custom_effect_tooltip = SOV_weekly_stability_01_tt
+			add_to_variable = { SOV_command_economy_stability_gain_factor_var = 0.001 }
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 582
+						state = 572
+					}
+				}
+				random_select_amount = 2
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_generic_modify_urals_level_tt
+			SOV_upgrade_region_urals = yes
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_increase_5_year_plan_2_tt 
+			
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 2 }
+			clamp_variable = {
+				var = var_SOV_second_5_year_plan_progress_bar_counter
+				max = 100
+			}
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
+			
+			SOV_check_plan_completion = yes
+		}
+	}
+	
+
+
+	
+	focus = {
+		id = SOV_heavy_construct_chelyabinsk_factories
+		prerequisite = { focus = SOV_heavy_model_cities }
+		icon = GFX_SOV_rework132
+		x = 1
+		y = 1
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		
+		available = {
+			NOT = { has_completed_focus = SOV_heavy_industrial_powerhouses }
+		}
+		
+		relative_position_id = SOV_heavy_model_cities
+		cost = 5
+		completion_reward = {
+			
+			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
+			custom_effect_tooltip = SOV_efficiency_base_5_tt
+			add_to_variable = { SOV_command_economy_production_factory_start_efficiency_factor_var = 0.05 }
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			if = {
+				limit = {
+					NOT = { has_country_flag = SOV_third_5_year_plan_started }
+				}
+				572 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = industrial_complex
+						level = 4
+						instant_build = yes
+					}
+				}
+			} else = {
+				572 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 4
+						instant_build = yes
+					}
+				}
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_increase_5_year_plan_1_tt 
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 1 }
+			clamp_variable = {
+				var = var_SOV_second_5_year_plan_progress_bar_counter
+				max = 100
+			}
+			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
+
+			SOV_check_plan_completion = yes
+		}
+	}
+	
 	
 	focus = {
 		id = SOV_heavy_mining_combines
@@ -10963,73 +9520,50 @@
 		relative_position_id = SOV_heavy_steel_powerhouse
 		cost = 5
 		completion_reward = {
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_heavy_mining_combines1_tt			
 			effect_tooltip = {
+				custom_effect_tooltip = SOV_heavy_mining_combines1_tt		
 				if = {
 					limit = {
 						NOT = { has_completed_focus = SOV_heavy_siberian_colonization }
 						NOT = { has_completed_focus = SOV_heavy_model_cities }
 					}
-					562 = {
+					every_owned_state = {
+						limit = {
+							OR = {
+								state = 562
+								state = 560
+								state = 657
+								state = 568
+								state = 570
+							}
+						}
+						random_select_amount = 5
 						add_extra_state_shared_building_slots = 2
 						add_building_construction = {
 							type = infrastructure
 							level = 2
 							instant_build = yes
 						}
-					}
+					}	
 					add_resource = {
 						type = chromium
 						amount = 100
 						state = 562
-					}
-					560 = {
-						add_extra_state_shared_building_slots = 2
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
 					}
 					add_resource = {
 						type = steel
 						amount = 100
 						state = 560
 					}
-					657 = {
-						add_extra_state_shared_building_slots = 2
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-					}
 					add_resource = {
 						type = steel
 						amount = 100
 						state = 657
 					}
-					568 = {
-						add_extra_state_shared_building_slots = 2
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-					}
 					add_resource = {
 						type = aluminium
 						amount = 150
 						state = 568
-					}
-					570 = {
-						add_extra_state_shared_building_slots = 2
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
 					}
 					add_resource = {
 						type = chromium
@@ -11037,16 +9571,18 @@
 						state = 570
 					}
 					custom_effect_tooltip = generic_skip_one_line_tt
+					custom_effect_tooltip = SOV_generic_modify_siberia_level_tt
+					SOV_upgrade_region_siberia = yes
+					custom_effect_tooltip = generic_skip_one_line_tt
 					custom_effect_tooltip = SOV_heavy_mining_combines2_tt
-					651 = {
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = steel_refinery
-							level = 1
-							instant_build = yes
+					every_owned_state = {
+						limit = {
+							OR = {
+								state = 651
+								state = 249
+							}
 						}
-					}
-					249 = {
+						random_select_amount = 2
 						add_extra_state_shared_building_slots = 1
 						add_building_construction = {
 							type = steel_refinery
@@ -11056,15 +9592,8 @@
 					}
 					
 					custom_effect_tooltip = generic_skip_one_line_tt
-					custom_effect_tooltip = SOV_generic_modify_urals_tt
-					custom_effect_tooltip = SOV_regional_development_10_tt
-					add_to_variable = { var_urals_dev_map_counter = 10 }
+					custom_effect_tooltip = SOV_generic_modify_urals_level_tt
 					SOV_upgrade_region_urals = yes
-
-					custom_effect_tooltip = SOV_generic_modify_volga_tt
-					custom_effect_tooltip = SOV_regional_development_10_tt
-					add_to_variable = { var_volga_dev_map_counter = 10 }
-					SOV_upgrade_region_volga = yes
 
 					custom_effect_tooltip = generic_skip_one_line_tt
 					custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
@@ -11079,70 +9608,47 @@
 				}
 			}
 
-
 			if = {
 				limit = {
 					has_completed_focus = SOV_heavy_siberian_colonization
 				}
-				562 = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 562
+							state = 560
+							state = 657
+							state = 568
+							state = 570
+						}
+					}
+					random_select_amount = 5
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = infrastructure
 						level = 2
 						instant_build = yes
 					}
-				}
+				}	
 				add_resource = {
 					type = chromium
 					amount = 100
 					state = 562
-				}
-				560 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
 				}
 				add_resource = {
 					type = steel
 					amount = 100
 					state = 560
 				}
-				657 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-				}
 				add_resource = {
 					type = steel
 					amount = 100
 					state = 657
 				}
-				568 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
-				}
 				add_resource = {
 					type = aluminium
 					amount = 150
 					state = 568
-				}
-				570 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = infrastructure
-						level = 2
-						instant_build = yes
-					}
 				}
 				add_resource = {
 					type = chromium
@@ -11150,11 +9656,9 @@
 					state = 570
 				}
 
-				add_to_variable = { var_siberia_dev_map_counter = 10 }
+				custom_effect_tooltip = generic_skip_one_line_tt
+				custom_effect_tooltip = SOV_generic_modify_siberia_level_tt
 				SOV_upgrade_region_siberia = yes
-
-				custom_effect_tooltip = SOV_generic_modify_siberia_tt
-				custom_effect_tooltip = SOV_regional_development_10_tt
 
 				custom_effect_tooltip = generic_skip_one_line_tt
 				custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
@@ -11165,16 +9669,18 @@
 				}
 				add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
 			}
-			else = {
-				651 = {
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = steel_refinery
-						level = 1
-						instant_build = yes
-					}
+			else_if = {
+				limit = {
+					has_completed_focus = SOV_heavy_model_cities
 				}
-				249 = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 651
+							state = 249
+						}
+					}
+					random_select_amount = 2
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = steel_refinery
@@ -11184,15 +9690,8 @@
 				}
 				
 				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = SOV_generic_modify_urals_tt
-				custom_effect_tooltip = SOV_regional_development_10_tt
-				add_to_variable = { var_urals_dev_map_counter = 10 }
+				custom_effect_tooltip = SOV_generic_modify_urals_level_tt
 				SOV_upgrade_region_urals = yes
-
-				custom_effect_tooltip = SOV_generic_modify_volga_tt
-				custom_effect_tooltip = SOV_regional_development_10_tt
-				add_to_variable = { var_volga_dev_map_counter = 10 }
-				SOV_upgrade_region_volga = yes
 
 				custom_effect_tooltip = generic_skip_one_line_tt
 				custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
@@ -11212,9 +9711,9 @@
 	
 	focus = {
 		id = SOV_heavy_industrial_powerhouses
-		prerequisite = { focus = SOV_heavy_tankograd focus = SOV_heavy_mining_combines }
+		prerequisite = { focus = SOV_heavy_construct_chelyabinsk_factories focus = SOV_heavy_mining_combines focus = SOV_heavy_productive_forces}
 		icon = GFX_SOV_rework226
-		x = 1
+		x = 0
 		y = 1
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -11638,9 +10137,7 @@
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_generic_modify_urals_tt
-			custom_effect_tooltip = SOV_regional_development_30_tt
-			add_to_variable = { var_urals_dev_map_counter = 30 }
+			custom_effect_tooltip = SOV_generic_modify_urals_level_tt
 			SOV_upgrade_region_urals = yes
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -11713,7 +10210,7 @@
 		#prerequisite = { focus = SOV_defence1 }
 		icon = GFX_SOV_rework30
 		x = 45
-		y = 12
+		y = 11
 		#relative_position_id = SOV_defence1
 		cost = 4
 
@@ -11820,11 +10317,8 @@
 				add_idea = SOV_Fragmented_Red_Fleet_2
 			}
 
-			add_to_variable = { var_northwest_dev_map_counter = 20 }
+			custom_effect_tooltip = SOV_generic_modify_northwest_level_tt
 			SOV_upgrade_region_northwest = yes
-
-			custom_effect_tooltip = SOV_generic_modify_northwest_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
 		}
 	}
 
@@ -11917,13 +10411,6 @@
 					rear_1_custom_slot = ship_light_battery_2
 				}
 			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
-			SOV_upgrade_region_ukraine_west = yes
-
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
 		}
 		
 	}
@@ -11987,31 +10474,24 @@
 				set_state_flag = SOV_naval_bases_reinforced_flag
 			}
 			create_equipment_variant = {
-					name = "Kirov Class"		
-					type = ship_hull_cruiser_2
-					parent_version = 0
-					allow_without_tech = yes #Makes no difference since focus requires appropriate tech (above), but it improves tooltip
-					modules = {
-						fixed_ship_battery_slot = ship_medium_battery_2
-						fixed_ship_anti_air_slot = ship_anti_air_2
-						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-						fixed_ship_radar_slot = empty
-						fixed_ship_engine_slot = cruiser_ship_engine_2
-						fixed_ship_secondaries_slot = ship_secondaries_2
-						fixed_ship_armor_slot = ship_armor_cruiser_1
-						front_1_custom_slot = ship_anti_air_2
-						mid_1_custom_slot = ship_torpedo_2
-						mid_2_custom_slot = ship_torpedo_2
-						rear_1_custom_slot = ship_airplane_launcher_2
-					}
+				name = "Kirov Class"		
+				type = ship_hull_cruiser_2
+				parent_version = 0
+				allow_without_tech = yes #Makes no difference since focus requires appropriate tech (above), but it improves tooltip
+				modules = {
+					fixed_ship_battery_slot = ship_medium_battery_2
+					fixed_ship_anti_air_slot = ship_anti_air_2
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = cruiser_ship_engine_2
+					fixed_ship_secondaries_slot = ship_secondaries_2
+					fixed_ship_armor_slot = ship_armor_cruiser_1
+					front_1_custom_slot = ship_anti_air_2
+					mid_1_custom_slot = ship_torpedo_2
+					mid_2_custom_slot = ship_torpedo_2
+					rear_1_custom_slot = ship_airplane_launcher_2
 				}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			add_to_variable = { var_leningrad_dev_map_counter = 20 }
-			SOV_upgrade_region_leningrad = yes
-
-			custom_effect_tooltip = SOV_generic_modify_leningrad_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
+			}
 		}
 	}
 
@@ -12143,13 +10623,6 @@
 					}
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			add_to_variable = { var_siberia_dev_map_counter = 20 }
-			SOV_upgrade_region_siberia = yes
-
-			custom_effect_tooltip = SOV_generic_modify_siberia_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
 		}
 	}
 
@@ -12222,41 +10695,34 @@
 						province = 719
 					}
 					set_state_flag = SOV_naval_bases_reinforced_flag
-			}
-
-			create_equipment_variant = {
-			name = "Tashkent Class"				
-			type = ship_hull_light_2
-			name_group = SOV_DD_HISTORICAL
-			parent_version = 0
-			modules = {
-				fixed_ship_battery_slot = ship_light_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_2
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_1
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = light_ship_engine_2
-				fixed_ship_torpedo_slot = ship_torpedo_2
-				mid_1_custom_slot = ship_anti_air_2
-				rear_1_custom_slot = ship_depth_charge_2
-			}
-		}
-		add_equipment_production = {
-					equipment = {
-						type = ship_hull_light_2
-						creator = "SOV"
-						version_name = "Tashkent Class"
-					}
-					requested_factories = 1
-					progress = 0.95
-					amount = 1 #Tooltip purposes
 				}
 
-			custom_effect_tooltip = generic_skip_one_line_tt
-			add_to_variable = { var_ukraine_west_dev_map_counter = 20 }
-			SOV_upgrade_region_ukraine_west = yes
-
-			custom_effect_tooltip = SOV_generic_modify_ukraine_west_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
+			create_equipment_variant = {
+				name = "Tashkent Class"				
+				type = ship_hull_light_2
+				name_group = SOV_DD_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_battery_slot = ship_light_battery_2
+					fixed_ship_anti_air_slot = ship_anti_air_2
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = light_ship_engine_2
+					fixed_ship_torpedo_slot = ship_torpedo_2
+					mid_1_custom_slot = ship_anti_air_2
+					rear_1_custom_slot = ship_depth_charge_2
+				}
+			}
+			add_equipment_production = {
+				equipment = {
+					type = ship_hull_light_2
+					creator = "SOV"
+					version_name = "Tashkent Class"
+				}
+				requested_factories = 1
+				progress = 0.95
+				amount = 1 #Tooltip purposes
+			}
 		}
 	}
 
@@ -12406,16 +10872,7 @@
 					progress = 0.35
 					amount = 1
 				}
-			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			add_to_variable = { var_siberia_dev_map_counter = 20 }
-			SOV_upgrade_region_siberia = yes
-
-			custom_effect_tooltip = SOV_generic_modify_siberia_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
-			
+			}			
 		}
 	}
 	
@@ -12551,12 +11008,6 @@
 				custom_effect_tooltip = SOV_merge_naval_plants_tt
 			}
 
-			custom_effect_tooltip = generic_skip_one_line_tt
-			add_to_variable = { var_ukraine_east_dev_map_counter = 20 }
-			SOV_upgrade_region_ukraine_east = yes
-
-			custom_effect_tooltip = SOV_generic_modify_ukraine_east_tt
-			custom_effect_tooltip = SOV_regional_development_20_tt
 		}
 	}
 
@@ -12709,7 +11160,7 @@
 		#prerequisite = { focus = SOV_defence1 }
 		icon = GFX_SOV_rework51
 		x = 18
-		y = 12
+		y = 11
 
 		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER FOCUS_FILTER_ARMY_XP  FOCUS_FILTER_RESEARCH }
 
@@ -14181,7 +12632,7 @@
 		#prerequisite = { focus = SOV_air1}
 		icon = GFX_SOV_rework184
 		x = 32
-		y = 12
+		y = 11
 		#relative_position_id = SOV_air1
 		cost = 3
 		ai_will_do = {
@@ -14532,33 +12983,33 @@
 			custom_effect_tooltip = generic_skip_one_line_tt
 			air_experience = 75
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_modernize_aircraft_facilities_tt
+			#custom_effect_tooltip = SOV_modernize_aircraft_facilities_tt
 			add_breakthrough_progress = {
 				specialization = specialization_air
 				value = 0.75
 			}
-			hidden_effect = {
-				IF = {
-					limit = { 
-						260 = {
-							is_fully_controlled_by = ROOT
-							air_facility < 1
-							land_facility < 1
-							naval_facility < 1
-							nuclear_facility < 1
-						}
-					}
+			# hidden_effect = {
+			# 	IF = {
+			# 		limit = { 
+			# 			260 = {
+			# 				is_fully_controlled_by = ROOT
+			# 				air_facility < 1
+			# 				land_facility < 1
+			# 				naval_facility < 1
+			# 				nuclear_facility < 1
+			# 			}
+			# 		}
 
-					260 = {
-						add_building_construction = {
-							type = air_facility
-							level = 1
-							instant_build = yes
-							province = 9448 # East of Voronezh
-						}
-					}
-				}
-			}
+			# 		260 = {
+			# 			add_building_construction = {
+			# 				type = air_facility
+			# 				level = 1
+			# 				instant_build = yes
+			# 				province = 9448 # East of Voronezh
+			# 			}
+			# 		}
+			# 	}
+			# }
 		}
 	}
 
@@ -14858,7 +13309,7 @@
 		id = SOV_war_mobilisation
 		icon = GFX_SOV_rework124
 		x = -11
-		y = 12
+		y = 11
 		cost = 1
 
 		# offset = {
@@ -15104,183 +13555,34 @@
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			249 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 249
+						state = 251
+						state = 651
+						state = 582
+						state = 572
+						state = 403
+						state = 571
+						state = 569
+						state = 568
+						state = 567
+						state = 566
+						state = 564
+						state = 563
+						state = 561
+						state = 657
+						state = 409
+						state = 408
+						state = 405
+						state = 586
+						state = 653
+						state = 403
+						state = 398
+					}
 				}
-			}
-			251 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			651 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			582 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			572 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			403 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			571 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			570 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			569 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			568 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			567 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			566 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			564 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			563 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			561 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			657 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			409 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			408 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			405 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			586 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			653 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			403 = {
-				add_extra_state_shared_building_slots = 4
-				add_building_construction = {
-					type = infrastructure
-					level = 2
-					instant_build = yes
-				}
-			}
-			398 = {
+				random_select_amount = 22
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
 					type = infrastructure

@@ -105,8 +105,8 @@ NDefines.NResistance.GARRISON_MANPOWER_MIN_DELIVERY_SPEED = 2	-- Minimum base de
 NDefines.NResistance.GARRISON_MANPOWER_REINFORCEMENT_SPEED = 2000.0	-- Modifier for garrison manpower reinforcement.  This value is the maximum to be delivered which is then modified by distance
 NDefines.NResistance.GARRISON_EQUIPMENT_DELIVERY_SPEED = 10	-- Modifier for garrison equipment reinforcement speed
 
-NDefines.NMarket.PURCHASE_CONTRACT_DELIVERY_TOTAL_DAYS = 15                   	-- Number of days between purchase contract deliveries
-NDefines.NMarket.IC_TO_CIC_FACTOR = 1.1                    					-- The factor for mapping IC cost to CIC cost. Should be a positive number.
+NDefines.NMarket.PURCHASE_CONTRACT_DELIVERY_TOTAL_DAYS = 7                   	-- Number of days between purchase contract deliveries
+NDefines.NMarket.IC_TO_CIC_FACTOR = 0.8                    					-- The factor for mapping IC cost to CIC cost. Should be a positive number.
 NDefines.NMarket.MAX_CIV_FACTORIES_PER_CONTRACT = 30							-- Max number of factories that can be assigned for paying single contract.
 NDefines.NMarket.PURCHASE_CONTRACT_SUBSIDY_BONUS_SPEED_FACTOR = 4				-- The factor of speed bonus from subsidies
 

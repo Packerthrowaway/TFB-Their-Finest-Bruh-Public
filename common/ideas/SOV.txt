@@ -2,7 +2,7 @@
 ideas = {
 	country= {
 
-######################## USED IN NEW TREE ##########################
+  ######################## USED IN NEW TREE ##########################
 	
 	
 	SOV_disorganized_airforce = {
@@ -365,6 +365,8 @@ ideas = {
 		# Makes it autovanish when civil war over
 		available = {
 			NOT = { has_global_flag = scw_over }
+			NOT = { has_completed_focus = SOV_china_big}
+			NOT = { has_completed_focus = SOV_china_small}
 		}
 
 		picture = por_volunteers_in_the_war2
@@ -386,8 +388,8 @@ ideas = {
 		picture = man_five_year_plan_industry
 
 		modifier = {
-			consumer_goods_factor = 0.075
-			industrial_capacity_factory = -0.15
+			consumer_goods_factor = 0.1
+			industrial_capacity_factory = -0.1
 		}		
 	}
 	
@@ -403,7 +405,7 @@ ideas = {
 
 		modifier = {
 			consumer_goods_factor = 0.05
-			industrial_capacity_factory = -0.075
+			industrial_capacity_factory = -0.05
 		}		
 	}
 	
@@ -593,7 +595,9 @@ ideas = {
 		picture = ger_bulwark_against_bolshevism
 		
 		modifier = {
-			industrial_capacity_factory = 0.15
+			industrial_capacity_factory = 0.05
+			production_speed_bunker_factor = 0.25
+			production_speed_coastal_bunker_factor = 0.25
 		}
 	}
 
@@ -688,7 +692,6 @@ ideas = {
 		modifier = {
 			stability_weekly = -0.001
 			political_power_factor = -0.1
-			weekly_manpower = -100
 			communism_drift = 0.1
 		}
 	}
@@ -852,6 +855,27 @@ ideas = {
 			production_speed_buildings_factor = -0.1
 			production_speed_synthetic_rubber_refinery_factor = 0.4
 		}
+	}
+
+	SOV_powerhouse_of_europe_idea = {
+		picture = PRC_nanjing_wireless_electronics_plant
+		name = "CZE_powerhouse_of_europe"
+
+		allowed = {
+			always = no
+		}
+
+		allowed_civil_war = {
+			always = yes
+		}
+
+		removal_cost = -1
+
+		modifier = {
+			production_speed_energy_infrastructure_factor = 0.2
+			production_speed_industrial_infrastructure_factor = 0.2
+		}
+		
 	}
 
 	######## DEFENSE 
@@ -6223,10 +6247,12 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
+			#traits = { construction_company }
 
 			modifier = {
 				custom_modifier_tooltip = SOV_gosproyektstroy_1_tt
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.1
 				production_speed_dockyard_factor = 0.15
 			}
@@ -6249,10 +6275,10 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
 				custom_modifier_tooltip = SOV_gosproyektstroy_1_tt
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.15
 				production_speed_dockyard_factor = 0.2
 				license_purchase_cost = -0.25
@@ -6278,9 +6304,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.25
 				production_speed_dockyard_factor = 0.2
 				license_purchase_cost = -0.25
@@ -6307,9 +6333,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_buildings_factor = -0.05
 				production_speed_industrial_complex_factor = 0.10
 				production_speed_arms_factory_factor = 0.10
@@ -6336,10 +6362,10 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
 				custom_modifier_tooltip = SOV_gosproyektstroy_1_tt
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.1
 				production_speed_arms_factory_factor = 0.05
 				production_speed_dockyard_factor = 0.2
@@ -6366,9 +6392,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.20
 				production_speed_arms_factory_factor = 0.05
 				production_speed_dockyard_factor = 0.2
@@ -6396,9 +6422,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_buildings_factor = -0.05
 				production_speed_industrial_complex_factor = 0.1
 				production_speed_arms_factory_factor = 0.15
@@ -6425,10 +6451,10 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
 				custom_modifier_tooltip = SOV_gosproyektstroy_1_tt
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_arms_factory_factor = 0.1
 				production_speed_dockyard_factor = 0.05
 				license_purchase_cost = -0.25
@@ -6455,9 +6481,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.10
 				production_speed_arms_factory_factor = 0.1
 				production_speed_dockyard_factor = 0.05
@@ -6487,9 +6513,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_buildings_factor = -0.05
 				production_speed_arms_factory_factor = 0.2
 				production_speed_dockyard_factor = 0.05
@@ -6516,10 +6542,10 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
 				custom_modifier_tooltip = SOV_gosproyektstroy_1_tt
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.05
 				production_speed_arms_factory_factor = 0.1
 				production_speed_dockyard_factor = 0.25
@@ -6546,9 +6572,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_industrial_complex_factor = 0.15
 				production_speed_arms_factory_factor = 0.1
 				production_speed_dockyard_factor = 0.25
@@ -6576,9 +6602,9 @@ ideas = {
 
 			cost = 100
 
-			traits = { construction_company }
-
 			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
 				production_speed_buildings_factor = -0.05
 				production_speed_industrial_complex_factor = 0.05
 				production_speed_arms_factory_factor = 0.20
@@ -6607,7 +6633,7 @@ ideas = {
 			}
 
 			modifier = {
-				industrial_capacity_factory = 0.075
+				industrial_capacity_factory = 0.05
 				consumer_goods_factor = -0.03
 				local_resources_factor = 0.05
 			}
@@ -6705,6 +6731,11 @@ ideas = {
 				tag = SOV
 			}
 			
+
+			visible = {
+				tag = SOV
+			}
+			
 			cost = 0
 			
 			allowed_to_remove = {
@@ -6735,6 +6766,10 @@ ideas = {
 			available = {
 				tag = SOV
 			}
+
+			visible = {
+				tag = SOV
+			}
 			
 			cost = 0
 			
@@ -6746,7 +6781,7 @@ ideas = {
 				min_export = 0.3
 				production_factory_efficiency_gain_factor = 0.1
 				industrial_capacity_dockyard = 0.1
-				production_speed_buildings_factor = 0.1
+				#production_speed_buildings_factor = 0.1
 				production_speed_arms_factory_factor = -0.05
 				research_speed_factor = 0.1
 				civilian_intel_to_others = 5
@@ -6767,6 +6802,10 @@ ideas = {
 			available = {
 				tag = SOV
 			}
+
+			visible = {
+				tag = SOV
+			}
 			
 			cost = 0
 			
@@ -6778,7 +6817,7 @@ ideas = {
 				min_export = 0.1
 				industrial_capacity_factory = 0.05
 				production_speed_arms_factory_factor = 0.05
-				production_factory_max_efficiency_factor = 0.05
+				#production_factory_max_efficiency_factor = 0.05
 				cic_construction_boost = -0.5
 				lend_lease_tension = 0.15
 				faction_trade_opinion_factor = 0.15		
