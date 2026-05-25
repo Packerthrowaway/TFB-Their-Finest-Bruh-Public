@@ -63,10 +63,14 @@ mobile_infantry = {
                 soft_attack = 0.03
             }
         }
+        
         maneuver_warfare = {
             category_all_infantry = {
                 max_organisation = 2
                 maximum_speed = 0.1
+            }
+            category_vehicle_infantry = {
+                max_strength = 1
             }
         }
 
@@ -109,6 +113,9 @@ defensive_postures = {
     rewards = {
         improvised_fighting_position = {
             dig_in_speed_factor = 0.05
+            category_light_infantry = {
+                supply_consumption = -0.05
+            }
         }
         elastic_operations = {
             category_all_infantry = {
@@ -128,6 +135,9 @@ defensive_postures = {
         }
         field_construction_training = {
             dig_in_speed_factor = 0.05
+            category_frontline_infantry = {
+                max_strength = 1
+            }
         }
 
     }
@@ -441,11 +451,17 @@ mounted_infantry = {
             rocket_artillery_brigade = {
                 maximum_speed = 0.25
             }
+            heavy_anti_tank_brigade = {
+                maximum_speed = 0.35
+            }
+            heavy_artillery_brigade = {
+                maximum_speed = 0.35
+            }
         }
         beasts_of_war = {
             category_cavalry = {
                 maximum_speed = 0.25 
-                max_strength = 0.05 
+                max_strength = 0.75 
             }
             recon = {
                 maximum_speed = 0.25

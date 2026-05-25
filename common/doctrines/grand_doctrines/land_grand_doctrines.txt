@@ -30,6 +30,12 @@ new_mobile_warfare = {
     # EFFECTS
 	planning_speed = 0.15
 	army_speed_factor = 0.05
+	category_vehicle_infantry = {
+		max_strength = 1
+	}
+	category_tanks = {
+		max_strength = 0.5
+	}
 	enable_tactic = tactic_unexpected_thrust
 	
 
@@ -39,6 +45,9 @@ new_mobile_warfare = {
 	        org_loss_when_moving = -0.1
             land_reinforce_rate = 0.03
             enable_tactic = tactic_delay
+            category_vehicle_infantry = {
+	    	max_strength = 1
+        }
 
             effect = {
                 if = {
@@ -77,6 +86,10 @@ new_mobile_warfare = {
             #Armor
 	        #additional_brigade_column_size = 1
             enable_tactic = tactic_blitz
+            category_tanks = {
+                max_strength = 0.5
+                hard_attack = 0.03
+            }
 
             effect = {
                 if = {
@@ -96,6 +109,9 @@ new_mobile_warfare = {
             #Operations
 	        planning_speed = 0.1
             enable_tactic = tactic_backhand_blow   
+            category_vehicle_infantry = {
+                max_strength = 1
+            }
 
             effect = {
                 if = {
@@ -144,9 +160,10 @@ superior_firepower = {
 
     # EFFECTS
     enable_tactic = tactic_overwhelming_fire
-    category_line_artillery = {
-        soft_attack = 0.04
+    category_army = {
+        soft_attack = 0.05
     }
+
     # category_support_artillery = {
     #     soft_attack = 0.05
     # }
@@ -157,6 +174,10 @@ superior_firepower = {
             #Infantry
             enable_tactic = tactic_elastic_defense
             supply_consumption_factor = -0.05
+
+            category_all_infantry = {
+                max_strength = 1
+            }
 
             effect = {
                 if = {
@@ -177,6 +198,15 @@ superior_firepower = {
             #additional_brigade_column_size = 1
             category_support_battalions = {
                 max_organisation = 3
+            }
+            category_tank_destroyers = {
+                max_strength = 0.5
+            }
+            category_self_propelled_artillery = {
+                max_strength = 0.5
+            }
+            category_artillery = {
+                breakthrough = 0.30
             }
             planning_decay_rate_factor = -0.05
             enable_tactic = tactic_barrage
@@ -202,6 +232,9 @@ superior_firepower = {
             category_army = {
                 default_morale = 0.015
             }
+            category_assault_gun = {
+                max_strength = 1.0
+            }
 
             effect = {
                 if = {
@@ -222,6 +255,9 @@ superior_firepower = {
             enable_tactic = tactic_tactical_withdrawal
             category_army = {
                 default_morale = 0.015
+            }
+            category_vehicle_infantry = {
+                max_strength = 1.0
             }
             planning_decay_rate_factor = -0.05
 
@@ -269,6 +305,10 @@ grand_battleplan = {
 
     # EFFECTS
     enable_tactic = tactic_planned_attack
+
+    category_frontline_infantry = {
+        max_strength = 1
+    }
     
     max_planning = 0.05
     max_dig_in = 2.5
@@ -280,6 +320,9 @@ grand_battleplan = {
             #additional_brigade_column_size = 1
             enable_tactic = tactic_elastic_defense
             max_dig_in_factor = 0.05
+            category_frontline_infantry = {
+            max_strength = 1
+            }
 
             effect = {
                 if = {
@@ -338,6 +381,10 @@ grand_battleplan = {
             coordination_bonus = 0.05
             max_command_power = 15
 
+            category_frontline_infantry = {
+            max_strength = 1
+            }
+
             effect = {
                 if = {
                     limit = {
@@ -383,6 +430,9 @@ mass_assault = {
     no_supply_grace = 48
     out_of_supply_factor = -0.05
     enable_tactic = tactic_relentless_assault
+    category_all_infantry = {
+        max_strength = 2
+    }
     
 
     milestones = {
@@ -391,7 +441,7 @@ mass_assault = {
             enable_tactic = tactic_human_wave_tactics
             #additional_brigade_column_size = 1
             category_all_infantry = {
-                max_strength = 0.03
+                max_strength = 1
             }
 
             effect = {
@@ -432,6 +482,9 @@ mass_assault = {
             #Armor
             land_reinforce_rate = 0.02
             enable_tactic = tactic_overwhelming_fire
+            category_all_armor = {
+                max_strength = 0.5
+            }
 
             effect = {
                 if = {
@@ -453,6 +506,9 @@ mass_assault = {
             weekly_casualties_war_support = 0.001
             minimum_training_level = -0.025
             dig_in_speed_factor = 0.05
+            category_all_infantry = {
+                max_strength = 1
+            }
 
             effect = {
                 if = {
