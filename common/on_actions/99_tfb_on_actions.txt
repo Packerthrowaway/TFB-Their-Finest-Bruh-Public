@@ -2228,7 +2228,6 @@ on_actions = {
 						transfer_troops = no
 					}
 					add_named_threat = { threat = -0.3 name = ITA_treaty_of_addis }
-					271 = { set_compliance = 60 }
 					271 = { add_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
 					550 = { add_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
 					559 = { add_dynamic_modifier = { modifier = ITA_ethiopia_local_supply } }
@@ -2258,16 +2257,16 @@ on_actions = {
 					# 	amount = 5000
 					# 	producer = ITA
 					# }
-					create_corps_commander = {
-						name = "Fresh Prince Amedeo"
-						portrait_path = GFX_Portrait_Duke_of_Aosta
-						traits = { politically_connected }
-						skill = 2
-						attack_skill = 2
-						defense_skill = 3
-						planning_skill = 1
-						logistics_skill = 2
-					}
+					# create_corps_commander = {
+					# 	name = "Fresh Prince Amedeo"
+					# 	portrait_path = GFX_Portrait_Duke_of_Aosta
+					# 	traits = { politically_connected }
+					# 	skill = 2
+					# 	attack_skill = 2
+					# 	defense_skill = 3
+					# 	planning_skill = 1
+					# 	logistics_skill = 2
+					# }
 					add_victory_points = {
 						province = 5010
 						value = 25
@@ -2824,6 +2823,29 @@ on_actions = {
 					set_country_flag = { flag = SOV_enforced_fanaticism_in_progress_flag days = 14 value = 1 }
 					country_event = { id = SOV_auto_complete_focus.20 days = 14 }
 				}
+			}
+		}
+	}
+
+	on_daily_ITA = {
+		effect = {
+			if = {
+				limit = {
+					AND = {
+						has_idea = ITA_lib_excav_idea_5
+						has_completed_focus = ITA_muslim_italians
+					}
+				}
+				remove_ideas = ITA_muslim_italians
+			}
+			else_if = {
+				limit = {
+					AND = {
+					NOT = { has_idea = ITA_lib_excav_idea_5 }
+						has_completed_focus = ITA_muslim_italians
+					}
+				}
+				add_ideas = ITA_muslim_italians
 			}
 		}
 	}
