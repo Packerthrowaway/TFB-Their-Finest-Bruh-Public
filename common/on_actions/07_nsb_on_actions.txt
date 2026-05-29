@@ -1602,20 +1602,6 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					AND = {
-						FROM = { original_tag = FIN }
-						ROOT = { original_tag = SOV }
-						SOV = { has_completed_focus = SOV_pol_invade_bessarabia}
-					}
-				}
-				FIN = {
-					hidden_effect = {
-						FIN = { country_event = { id =  finland.500 hours = 1} }
-					}
-				}
-			}
-			if = {
-				limit = {
 					OR = {
 						AND = {
 							FROM = { original_tag = GER }
@@ -1694,26 +1680,19 @@ on_actions = {
 						}
 					}
 				}
-
-				if = {
-					limit = {
-						has_country_flag = FINLAND_JOIN_FACTION
-						SOV = { has_war_with = FIN }
-					}
-					remove_ideas = {
-						FIN_the_lone_wolf
-					}
-					GER = {
-						add_to_faction = FIN
-					}
-				}
-
+				
+				#Lone Wolf no longer removed, code now for removing volunteers if barb starts early
 				FIN = {
-					hidden_effect = {
-						FIN = { country_event = { id =  finland.500 } }
+					if = {
+						limit = {
+							has_template = "Svenska Frivilligkåren"
+						}
+						delete_unit_template_and_units = {
+							division_template = "Svenska Frivilligkåren"
+							disband = no #will refund equipment and manpower
+						}
 					}
 				}
-
 				# State of the Pacific
 				set_temp_variable = { num_captures = JAP.PACIFIC_COMMONWEALTH_BASES_LEVEL}
 				subtract_from_temp_variable = {

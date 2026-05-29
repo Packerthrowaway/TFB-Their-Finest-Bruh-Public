@@ -2849,4 +2849,27 @@ on_actions = {
 			}
 		}
 	}
+
+	on_daily_ITA = {
+		effect = {
+			if = {
+				limit = {
+					AND = {
+						has_idea = ITA_lib_excav_idea_5
+						has_completed_focus = ITA_muslim_italians
+					}
+				}
+				remove_ideas = ITA_muslim_italians
+			}
+			else_if = {
+				limit = {
+					AND = {
+					NOT = { has_idea = ITA_lib_excav_idea_5 }
+						has_completed_focus = ITA_muslim_italians
+					}
+				}
+				add_ideas = ITA_muslim_italians
+			}
+		}
+	}
 }
