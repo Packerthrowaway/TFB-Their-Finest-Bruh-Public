@@ -3546,6 +3546,39 @@ focus_tree = {
 			unlock_decision_tooltip = ITA_demand_ticino
 		}
 	}
+
+	focus = {
+		id = ITA_scramble
+		prerequisite = { focus = ITA_rome_berlin_axis }
+		icon = GFX_focus_generic_coastal_fort
+		x = 2
+		y = 2
+		relative_position_id = ITA_rome_berlin_axis
+		cost = 0.2
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			451 = {
+				CONTROLLER = {
+					NOT = {
+						OR = {
+							tag = ITA
+							is_subject_of = ITA
+						}
+					}
+
+				}
+			}
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			ITA = { add_ideas = ENG_scramble_from_africa }
+		}
+	}
 	
 	focus = {
 		id = ITA_albania_war_goal

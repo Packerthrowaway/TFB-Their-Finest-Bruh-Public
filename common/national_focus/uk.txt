@@ -4312,6 +4312,48 @@ focus_tree = {
 			}
 		}
 	}
+
+	focus = {
+		id = ENG_scramble
+		prerequisite = { focus = ENG_fortify_suez }
+		icon = GFX_focus_generic_coastal_fort
+		x = -1
+		y = 1
+		relative_position_id = ENG_fortify_suez
+		cost = 0.2
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			1047 = {
+				CONTROLLER = {
+					NOT = {
+						OR = {
+							tag = ENG
+							is_subject_of = ENG
+						}
+					}
+
+				}
+			}
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = ENG_scramble_tt
+			ENG = { add_ideas = ENG_scramble_from_africa }
+			hidden_effect = {
+				RAJ = { add_ideas = ENG_scramble_from_africa }
+				AST = { add_ideas = ENG_scramble_from_africa }
+				SAF = { add_ideas = ENG_scramble_from_africa }
+				CAN = { add_ideas = ENG_scramble_from_africa }
+				IRE = { add_ideas = ENG_scramble_from_africa }
+				NZL = { add_ideas = ENG_scramble_from_africa }
+			}
+		}
+	}
 	
 	focus = {
 		id = ENG_suez_base
