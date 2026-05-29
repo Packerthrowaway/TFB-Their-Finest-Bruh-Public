@@ -995,6 +995,16 @@ DIPLOMACY_LEAVE_FACTION_ENABLE_TRIGGER = {
 			always = no
 		}
 	}
+	if = {
+		limit = {
+			original_tag = MON
+			NOT = { has_global_flag = allow_leaving_com }
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ANTI_COMINTERN_TROLL_TT
+			always = no
+		}
+	}
 }
  DIPLOMACY_ASSUME_FACTION_LEADERSHIP_ENABLE_TRIGGER = {
 	if = {
@@ -1020,6 +1030,18 @@ DIPLOMACY_KICK_FROM_FACTION_ENABLE_TRIGGER = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = RULE_KICK_FROM_FACTION_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				original_tag = MON
+				NOT = { has_global_flag = allow_leaving_com }
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ANTI_COMINTERN_TROLL_KICK_TT
 			always = no
 		}
 	}

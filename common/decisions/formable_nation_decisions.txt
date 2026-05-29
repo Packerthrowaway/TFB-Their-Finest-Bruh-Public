@@ -5947,6 +5947,12 @@ form_byzantine_empire_category = {
 		visible = {
 			original_tag = GRE
 			NOT = { has_global_flag = triumph_for_italy }
+			if = {
+				limit = {
+					has_dlc = "Battle for the Bosporus"
+				}
+				has_completed_focus = GRE_byzantine_themata
+			}
 		}
 
 		complete_effect = {
@@ -6054,6 +6060,10 @@ form_byzantine_empire_category = {
 
 		available = {
 			is_subject = no
+			if = {
+				limit = { has_dlc = "Battle for the Bosporus"}
+				has_completed_focus = GRE_reviving_the_double_headed_eagle
+			}
 			# French North Africa
 			controls_state = 458
 			controls_state = 665
@@ -6077,6 +6087,12 @@ form_byzantine_empire_category = {
 		visible = {
 			
 			NOT = { has_global_flag = triumph_for_egypt_and_tunis }
+			if = {
+				limit = {
+					has_dlc = "Battle for the Bosporus"
+				}
+				has_completed_focus = GRE_byzantine_themata
+			}
 		}
 
 		complete_effect = {
@@ -7591,7 +7607,7 @@ form_greater_german_reich_category = {
 		available = {
 			is_subject = no
 			16 = { #Paris
-				state_is_fully_controlled_by_ROOT_or_subject = yes
+				state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes
 			}
 			9 = { #Prague
 				state_is_fully_controlled_by_ROOT_or_subject = yes
@@ -7600,13 +7616,13 @@ form_greater_german_reich_category = {
 				state_is_fully_controlled_by_ROOT_or_subject = yes
 			}
 			195 = { #Leningrad
-				state_is_fully_controlled_by_ROOT_or_subject = yes
+				state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes
 			}
 			219 = { #Moscow
-				state_is_fully_controlled_by_ROOT_or_subject = yes
+				state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes
 			}
 			217 = { #Stalingrad
-				state_is_fully_controlled_by_ROOT_or_subject = yes
+				state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes
 			}
 			all_owned_state = {
 				is_fully_controlled_by = ROOT
@@ -7634,7 +7650,7 @@ form_greater_german_reich_category = {
 					has_full_control_of_state = 16
 				}
 				219 = {
-					state_is_fully_controlled_by_ROOT_or_subject = yes
+					state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes
 				}
 			}
 		}
@@ -7762,6 +7778,17 @@ form_greater_german_reich_category = {
 			}
 			if = {
 				limit = {
+					85 = {
+						owner = {
+							NOT = { tag = GER }
+						}
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				transfer_state = 85
+			}
+			if = {
+				limit = {
 					807 = { #Gdynia
 						NOT = { is_core_of = GER}
 						state_is_fully_controlled_by_ROOT_or_subject = yes
@@ -7775,6 +7802,17 @@ form_greater_german_reich_category = {
 					}
 					add_state_core = 807
 				}
+			}
+			if = {
+				limit = {
+					807 = {
+						owner = {
+							NOT = { tag = GER }
+						}
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				transfer_state = 807
 			}
 			if = {
 				limit = {
@@ -7794,6 +7832,17 @@ form_greater_german_reich_category = {
 			}
 			if = {
 				limit = {
+					86 = {
+						owner = {
+							NOT = { tag = GER }
+						}
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				transfer_state = 86
+			}
+			if = {
+				limit = {
 					762 = { #Katowice
 						NOT = { is_core_of = GER}
 						state_is_fully_controlled_by_ROOT_or_subject = yes
@@ -7807,6 +7856,44 @@ form_greater_german_reich_category = {
 					}
 					add_state_core = 762
 				}
+			}
+			if = {
+				limit = {
+					762 = {
+						owner = {
+							NOT = { tag = GER }
+						}
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				transfer_state = 762
+			}
+			if = {
+				limit = {
+					72 = { #Trans-Olza
+						NOT = { is_core_of = GER}
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				if = {
+					limit = {
+						72 = {
+							state_is_fully_controlled_by_ROOT_or_subject = yes
+						}
+					}
+					add_state_core = 72
+				}
+			}
+			if = {
+				limit = {
+					72 = {
+						owner = {
+							NOT = { tag = GER }
+						}
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				transfer_state = 72
 			}
 			if = {
 				limit = {
@@ -7842,6 +7929,20 @@ form_greater_german_reich_category = {
 					}
 					add_state_core = 102
 				}
+			}
+			if = {
+				limit = {
+					102 = {
+						owner = {
+							NOT = { tag = GER }
+						}
+						any_neighbor_state = {
+							is_core_of = GER
+						}
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				transfer_state = 102
 			}
 		}
 
@@ -9393,6 +9494,7 @@ form_macedonian_empire_category = {
 		allowed = {
 			original_tag = GRE
 			has_dlc = "Battle for the Bosporus"
+			always = no
 		}
 
 		available = {
@@ -9555,6 +9657,7 @@ form_macedonian_empire_category = {
 				}
 			}
 			NOT = { has_global_flag = form_macedonian_empire_flag }
+			always = no
 		}
 
 		complete_effect = {
