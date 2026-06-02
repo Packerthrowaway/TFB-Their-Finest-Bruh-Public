@@ -2182,19 +2182,21 @@
 
 		available = {
 			OR = {
-				OR = {
+				AND = {
 					date > 1938.11.1
 					date < 1939.1.1
 				}
-				OR = {
+				AND = {
 					date > 1939.11.1
 					date < 1940.2.1
 				}
 				date > 1940.10.1
-				POL = { has_capitulated = yes }
+				# POL = { has_capitulated = yes }
+				# Personally I think this needs to go back in.
+				# The larp is not worth how abusable this is
 			}
 		}
-
+		continue_if_invalid = yes
 		ai_will_do = {
 			factor = 10
 			modifier = {
