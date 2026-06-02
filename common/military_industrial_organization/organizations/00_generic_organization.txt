@@ -10228,30 +10228,30 @@ generic_motorized_mechanized_organization = {
 		}
 	}
 
-	trait = {
-		token = generic_mio_trait_armored_pulpit_mount
-		name = generic_mio_trait_armored_pulpit_mount
-		icon = GFX_generic_mio_trait_icon_hardness
+	# trait = {
+	# 	token = generic_mio_trait_armored_pulpit_mount
+	# 	name = generic_mio_trait_armored_pulpit_mount
+	# 	icon = GFX_generic_mio_trait_icon_hardness
 		
-		position = { x=0 y=2 }
-		relative_position_id = generic_mio_trait_medium_machinegun_mounts
+	# 	position = { x=0 y=2 }
+	# 	relative_position_id = generic_mio_trait_medium_machinegun_mounts
 
-		all_parents = { generic_mio_trait_medium_machinegun_mounts }
+	# 	all_parents = { generic_mio_trait_medium_machinegun_mounts }
 
-		equipment_bonus = {
-			hardness = 0.1
-		}
-	}
+	# 	equipment_bonus = {
+	# 		hardness = 0.1
+	# 	}
+	# }
 
 	trait = {
 		token = generic_mio_trait_advanced_artillery_racks
 		name = generic_mio_trait_advanced_artillery_racks
 		icon = GFX_generic_mio_trait_icon_soft_attack
 		
-		position = { x=-1 y=2 }
-		relative_position_id = generic_mio_trait_armored_pulpit_mount
+		position = { x=-1 y=3 }
+		relative_position_id = generic_mio_trait_medium_machinegun_mounts
 		
-		all_parents = { generic_mio_trait_armored_pulpit_mount }
+		all_parents = { generic_mio_trait_medium_machinegun_mounts }
 		
 		mutually_exclusive = { generic_mio_trait_heavy_machinegun_mount generic_mio_trait_mounted_light_anti_tank_gun }
 		
@@ -10271,7 +10271,7 @@ generic_motorized_mechanized_organization = {
 		position = { x=2 y=0 }
 		relative_position_id = generic_mio_trait_advanced_artillery_racks
 		
-		all_parents = { generic_mio_trait_armored_pulpit_mount }
+		all_parents = { generic_mio_trait_medium_machinegun_mounts }
 		
 		mutually_exclusive = { generic_mio_trait_advanced_artillery_racks generic_mio_trait_mounted_light_anti_tank_gun }
 		
@@ -10293,7 +10293,7 @@ generic_motorized_mechanized_organization = {
 		
 		mutually_exclusive = { generic_mio_trait_advanced_artillery_racks generic_mio_trait_heavy_machinegun_mount }
 		
-		all_parents = { generic_mio_trait_bulletproof_panels }
+		any_parent = { generic_mio_trait_closed_chassi generic_mio_trait_open_chassi }
 		
 		limit_to_equipment_type = { mechanized_equipment amphibious_mechanized_equipment }
 
@@ -10339,34 +10339,34 @@ generic_motorized_mechanized_organization = {
 	}
 
 
-	trait = {
-		token = generic_mio_trait_bulletproof_panels
-		name = generic_mio_trait_bulletproof_panels
-		icon = GFX_generic_mio_trait_icon_hardness
-		
-		position = { x=-1 y=2 }
-		relative_position_id = generic_mio_trait_closed_chassi
-		
-		limit_to_equipment_type = {  mechanized_equipment }
-		
-		any_parent = { generic_mio_trait_closed_chassi generic_mio_trait_open_chassi }
-
-		equipment_bonus = {
-			hardness = 0.05
-		}
-	}
+#	trait = {
+#		token = generic_mio_trait_bulletproof_panels
+#		name = generic_mio_trait_bulletproof_panels
+#		icon = GFX_generic_mio_trait_icon_hardness
+#		
+#		position = { x=-1 y=2 }
+#		relative_position_id = generic_mio_trait_closed_chassi
+#		
+#		limit_to_equipment_type = {  mechanized_equipment }
+#		
+#		any_parent = { generic_mio_trait_closed_chassi generic_mio_trait_open_chassi }
+#
+	#	equipment_bonus = {
+	#		hardness = 0.05
+	#	}
+	#}
 
 	trait = {
 		token = generic_mio_trait_light_flame_projectors
 		name = generic_mio_trait_light_flame_projectors
 		icon = GFX_generic_mio_trait_icon_breakthrough
 		
-		position = { x=0 y=2 }
-		relative_position_id = generic_mio_trait_bulletproof_panels
+		position = { x=2 y=0 }
+		relative_position_id = generic_mio_trait_heavy_machinegun_mount
 		
 		limit_to_equipment_type = { mechanized_equipment amphibious_mechanized_equipment }
 		
-		all_parents = { generic_mio_trait_bulletproof_panels }
+		any_parent = { generic_mio_trait_closed_chassi generic_mio_trait_open_chassi }
 
 		equipment_bonus = {
 			breakthrough = 0.035
@@ -10383,7 +10383,7 @@ generic_motorized_mechanized_organization = {
 		
 		limit_to_equipment_type = { mechanized_equipment amphibious_mechanized_equipment }
 		
-		all_parents = { generic_mio_trait_bulletproof_panels }
+		any_parent = { generic_mio_trait_closed_chassi generic_mio_trait_open_chassi }
 
 		equipment_bonus = {
 			defense = 0.06
