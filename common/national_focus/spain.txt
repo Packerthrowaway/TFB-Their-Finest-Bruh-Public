@@ -2193,7 +2193,31 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = SPA_defenses_against_invasion_tt
-			
+			every_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					is_in_home_area = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -5008,8 +5032,8 @@ focus_tree = {
 
 		available = {
 			OR = {
-				owns_state = 112
-				owns_state = 500
+				controls_state = 112
+				controls_state = 500
 			}
 		}
 
