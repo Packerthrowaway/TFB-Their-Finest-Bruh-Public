@@ -811,7 +811,7 @@ focus_tree = {
 			}			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			450 = {
-				set_state_category = rural
+				set_state_category = city
 			}			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			451 = {
@@ -1027,7 +1027,7 @@ focus_tree = {
 			}			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			450 = {
-				set_state_category = large_town
+				set_state_category = large_city
 			}			
 			custom_effect_tooltip = generic_skip_one_line_tt
 			451 = {
@@ -1220,6 +1220,34 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = ITA_evac_libya_tt
+			every_state = {
+				limit = {
+					OR = {
+						state = 663
+						state = 662
+						state = 661
+						state = 448
+						state = 449
+						state = 450
+						state = 451
+					}
+				}
+				add_dynamic_modifier = { modifier = ITA_libyan_evac }
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 663
+						state = 662
+						state = 661
+						state = 448
+						state = 449
+						state = 450
+						state = 451
+					}
+				}
+				remove_dynamic_modifier = { modifier = ITA_libyan_local_construction }
+			}
 		}
 	}
 
