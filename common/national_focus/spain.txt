@@ -781,6 +781,175 @@ focus_tree = {
 		}
 	}
 
+#  #  ##  ### ###  ##  #  #  ##  #   ###  ## ###  ##            ### ###   ##  #  #  ##   ##  
+## # #  #  #   #  #  # ## # #  # #    #  #    #  #              #   #  # #  # ## # #  # #  # 
+# ## ####  #   #  #  # # ## #### #    #   #   #   #      ##     ##  ###  #### # ## #    #  # 
+#  # #  #  #   #  #  # #  # #  # #    #    #  #    #            #   #  # #  # #  # #  # #  # 
+#  # #  #  #  ###  ##  #  # #  # ### ### ##   #  ##             #   #  # #  # #  #  ##   ##  
+
+	focus = {
+		id = SPA_foment_a_carlist_split
+		available = {
+		}
+		prerequisite = { focus = SPA_unify_the_nationalist_front }
+		
+		icon = GFX_focus_spa_eliminate_the_carlists
+		x = 1
+		y = 1
+		relative_position_id = SPA_unify_the_nationalist_front
+		cost = 6
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_SPA_CARLIST_UPRISING}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SPA_carlism_1
+				add_idea = SPA_carlism_2
+			}
+		}
+	}
+
+	focus = {
+		id = SPA_save_the_alcazar
+		available = {
+		}
+		bypass = {
+			has_global_flag = scw_over
+		}
+		prerequisite = { focus = SPA_unify_the_nationalist_front }
+		
+		icon = GFX_focus_spa_save_the_alcazar
+		x = 3
+		y = 1
+		relative_position_id = SPA_unify_the_nationalist_front
+		cost = 6
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			activate_mission = SPA_save_the_alcazar_mission
+		}
+	}
+
+	focus = {
+		id = SPA_martyrdom_for_primo_de_rivera
+		prerequisite = { focus = SPA_save_the_alcazar }
+		mutually_exclusive = {
+			focus = SPA_fall_of_the_alcazar
+		}
+
+		bypass = {
+			has_global_flag = scw_over
+		}
+		
+		icon = GFX_goal_generic_secret_weapon
+		x = 0
+		y = 1
+		relative_position_id = SPA_save_the_alcazar
+		cost = 6
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.1
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = SPA_utilize_carlist_militias
+		available = {
+		}
+		bypass = {
+			has_global_flag = scw_over
+		}
+		prerequisite = { focus = SPA_unify_the_nationalist_front }
+		
+		icon = GFX_focus_JAP_push_to_limit_military_power
+		x = -1
+		y = 1
+		relative_position_id = SPA_unify_the_nationalist_front
+		cost = 6
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = SPA_use_carlit_militias
+			custom_effect_tooltip = SPR_seize_public_transport_tt
+		}
+	}
+
+	focus = {
+		id = SPA_banish_the_party_leaders
+		available = {
+			NOT = { has_completed_focus = SPA_fall_of_the_alcazar }
+		}
+		prerequisite = { focus = SPA_utilize_carlist_militias  focus = SPA_foment_a_carlist_split }
+		
+		icon = GFX_focus_generic_support_the_left_right
+		x = 1
+		y = 1
+		relative_position_id = SPA_utilize_carlist_militias
+		cost = 6
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SPA_CARLIST_UPRISING}
+		completion_reward = {
+			add_political_power = 200
+			custom_effect_tooltip = remove_political_advisor
+			show_ideas_tooltip = SPA_manuel_hedilla
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = SPA_raimundo_fernandez_cuesta
+		}
+	}
+
+	focus = {
+		id = SPA_caudillo_of_spain
+		available = {
+		}
+		bypass = {
+		}
+		prerequisite = { focus = SPA_banish_the_party_leaders }
+		
+		icon = GFX_focus_spa_caudillo_of_spain
+		x = 0
+		y = 1
+		relative_position_id = SPA_banish_the_party_leaders
+		cost = 6
+
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_STABILITY}
+		completion_reward = {
+			add_stability = 0.05
+			hidden_effect = {
+				kill_country_leader = yes
+				kill_ideology_leader = fascism
+			}
+			add_country_leader_role = {
+				character = "SPA_francisco_franco"
+				country_leader = {
+				  ideology=despotism
+				  traits = { caudillo_1 }
+				  expire="1965.1.1"
+				}
+				promote_leader = yes
+			}
+			add_country_leader_role = {
+				character = "SPA_francisco_franco"
+				country_leader = {
+				  ideology=fascism_ideology
+				  traits = { caudillo_1 }
+				  expire="1965.1.1"
+				}
+				promote_leader = yes
+			}
+		}
+	}
+
 	focus = {
 		id = SPA_espana_rescatada
 		available = {
@@ -1426,171 +1595,35 @@ focus_tree = {
 		}
 	}
 
-#  #  ##  ### ###  ##  #  #  ##  #   ###  ## ###  ##            ### ###   ##  #  #  ##   ##  
-## # #  #  #   #  #  # ## # #  # #    #  #    #  #              #   #  # #  # ## # #  # #  # 
-# ## ####  #   #  #  # # ## #### #    #   #   #   #      ##     ##  ###  #### # ## #    #  # 
-#  # #  #  #   #  #  # #  # #  # #    #    #  #    #            #   #  # #  # #  # #  # #  # 
-#  # #  #  #  ###  ##  #  # #  # ### ### ##   #  ##             #   #  # #  # #  #  ##   ##  
-
 	focus = {
-		id = SPA_foment_a_carlist_split
+		id = SPA_fuse_the_parties
 		available = {
-		}
-		prerequisite = { focus = SPA_unify_the_nationalist_front }
-		
-		icon = GFX_focus_spa_eliminate_the_carlists
-		x = 1
-		y = 1
-		relative_position_id = SPA_unify_the_nationalist_front
-		cost = 6
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_SPA_CARLIST_UPRISING}
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = SPA_carlism_1
-				add_idea = SPA_carlism_2
-			}
-		}
-	}
-
-	focus = {
-		id = SPA_save_the_alcazar
-		available = {
-		}
-		bypass = {
 			has_global_flag = scw_over
 		}
-		prerequisite = { focus = SPA_unify_the_nationalist_front }
+		prerequisite = {focus = SPA_caudillo_of_spain }
 		
-		icon = GFX_focus_spa_save_the_alcazar
-		x = 3
+		icon = GFX_focus_spa_fuse_the_parties
+		x = 4
 		y = 1
-		relative_position_id = SPA_unify_the_nationalist_front
+		relative_position_id = SPA_caudillo_of_spain
 		cost = 6
 
 		available_if_capitulated = yes
-
+		search_filters = {FOCUS_FILTER_MANPOWER}
 		completion_reward = {
-			activate_mission = SPA_save_the_alcazar_mission
-		}
-	}
-
-	focus = {
-		id = SPA_martyrdom_for_primo_de_rivera
-		prerequisite = { focus = SPA_save_the_alcazar }
-		mutually_exclusive = {
-			focus = SPA_fall_of_the_alcazar
-		}
-
-		bypass = {
-			has_global_flag = scw_over
-		}
-		
-		icon = GFX_goal_generic_secret_weapon
-		x = 0
-		y = 1
-		relative_position_id = SPA_save_the_alcazar
-		cost = 6
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL}
-		completion_reward = {
-			add_stability = 0.05
-			add_war_support = 0.1
-			add_popularity = {
-			    ideology = fascism
-			    popularity = 0.05
-			}
-		}
-	}
-
-	focus = {
-		id = SPA_utilize_carlist_militias
-		available = {
-		}
-		bypass = {
-			has_global_flag = scw_over
-		}
-		prerequisite = { focus = SPA_unify_the_nationalist_front }
-		
-		icon = GFX_focus_JAP_push_to_limit_military_power
-		x = -1
-		y = 1
-		relative_position_id = SPA_unify_the_nationalist_front
-		cost = 6
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			add_ideas = SPA_use_carlit_militias
-			custom_effect_tooltip = SPR_seize_public_transport_tt
-		}
-	}
-
-	focus = {
-		id = SPA_banish_the_party_leaders
-		available = {
-			NOT = { has_completed_focus = SPA_fall_of_the_alcazar }
-		}
-		prerequisite = { focus = SPA_utilize_carlist_militias  focus = SPA_foment_a_carlist_split }
-		
-		icon = GFX_focus_generic_support_the_left_right
-		x = 1
-		y = 1
-		relative_position_id = SPA_utilize_carlist_militias
-		cost = 6
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SPA_CARLIST_UPRISING}
-		completion_reward = {
-			add_political_power = 200
-			custom_effect_tooltip = remove_political_advisor
-			show_ideas_tooltip = SPA_manuel_hedilla
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = SPA_raimundo_fernandez_cuesta
-		}
-	}
-
-	focus = {
-		id = SPA_caudillo_of_spain
-		available = {
-		}
-		bypass = {
-		}
-		prerequisite = { focus = SPA_banish_the_party_leaders }
-		
-		icon = GFX_focus_spa_caudillo_of_spain
-		x = 0
-		y = 1
-		relative_position_id = SPA_banish_the_party_leaders
-		cost = 6
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_STABILITY}
-		completion_reward = {
-			add_stability = 0.05
-			hidden_effect = {
-				kill_country_leader = yes
-				kill_ideology_leader = fascism
-			}
-			add_country_leader_role = {
-				character = "SPA_francisco_franco"
-				country_leader = {
-				  ideology=despotism
-				  traits = { caudillo_1 }
-				  expire="1965.1.1"
+			set_party_name = { ideology = fascism long_name = SPR_fascism_francoist_party_long name = SPR_fascism_francoist_party }
+			set_party_name = { ideology = neutrality long_name = SPR_fascism_francoist_party_long name = SPR_fascism_francoist_party }
+			if = {
+				limit = {
+					has_idea = SPA_carlism_1
 				}
-				promote_leader = yes
+				remove_ideas = SPA_carlism_1
 			}
-			add_country_leader_role = {
-				character = "SPA_francisco_franco"
-				country_leader = {
-				  ideology=fascism_ideology
-				  traits = { caudillo_1 }
-				  expire="1965.1.1"
+			if = {
+				limit = {
+					has_idea = SPA_carlism_2
 				}
-				promote_leader = yes
+				remove_ideas = SPA_carlism_2
 			}
 		}
 	}
@@ -1740,39 +1773,6 @@ focus_tree = {
 					controls_state = 513
 				}
 				country_event = { id = lar_spain.39 hours = 1 random_hours = 2 }
-			}
-		}
-	}
-
-	focus = {
-		id = SPA_fuse_the_parties
-		available = {
-			has_global_flag = scw_over
-		}
-		prerequisite = {focus = SPA_caudillo_of_spain }
-		
-		icon = GFX_focus_spa_fuse_the_parties
-		x = 4
-		y = 1
-		relative_position_id = SPA_caudillo_of_spain
-		cost = 6
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_MANPOWER}
-		completion_reward = {
-			set_party_name = { ideology = fascism long_name = SPR_fascism_francoist_party_long name = SPR_fascism_francoist_party }
-			set_party_name = { ideology = neutrality long_name = SPR_fascism_francoist_party_long name = SPR_fascism_francoist_party }
-			if = {
-				limit = {
-					has_idea = SPA_carlism_1
-				}
-				remove_ideas = SPA_carlism_1
-			}
-			if = {
-				limit = {
-					has_idea = SPA_carlism_2
-				}
-				remove_ideas = SPA_carlism_2
 			}
 		}
 	}
