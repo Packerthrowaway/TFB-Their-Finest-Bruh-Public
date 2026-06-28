@@ -532,6 +532,25 @@ on_actions = {
 			if = {
 				limit = {
 					has_game_rule = {
+						rule = vanilla_australia
+						option = DISABLED
+					}
+				}
+				set_global_flag = tfb_australia_flag
+				AST = {
+					set_country_flag = AST_tfb_focus_tree
+					promote_character = AST_joseph_lyons
+					set_stability = 0.8
+					set_war_support = 0.35
+				}
+			}
+			else = {
+				set_global_flag = vanilla_australia_flag
+				AST = { load_focus_tree = australia_taog_focus }
+			}
+			if = {
+				limit = {
+					has_game_rule = {
 						rule = vp_system
 						option = ENABLED
 					}
@@ -1903,6 +1922,9 @@ on_actions = {
 				set_variable = {gosplan_help_industry = 1 }
 			}
 		}
+		# effect = {
+		# 	AST = { set_country_flag = AST_tfb_focus_tree }
+		# }
 	}
 	# on_unit_leader_created = {
 	# 	effect = {
@@ -2847,6 +2869,12 @@ on_actions = {
 				}
 				add_ideas = ITA_muslim_italians
 			}
+		}
+	}
+
+	on_capitulation_immediate = {
+		effect = {
+			AST = { set_country_flag = AST_capitulated }
 		}
 	}
 }
