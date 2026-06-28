@@ -14,7 +14,7 @@ sub_units = {
 			anti_tank
 		}
 		
-		group = artillery
+		group = combat_support
 		
 		categories = {
 			category_front_line
@@ -82,6 +82,7 @@ sub_units = {
 			attack = -0.2
 		}
 	}
+
 	mot_anti_tank_brigade = {
 		abbreviation = "MAT"
 		sprite = anti_tank
@@ -96,7 +97,7 @@ sub_units = {
 			anti_tank
 		}
 		
-		group = artillery
+		group = mobile_combat_support
 		
 		categories = {
 			category_front_line
@@ -183,7 +184,7 @@ sub_units = {
 			anti_tank
 		}
 		
-		group = artillery
+		group = combat_support
 		
 		categories = {
 			category_front_line
@@ -247,6 +248,52 @@ sub_units = {
 			attack = -0.4
 		}
 	}
+	
+	heavy_anti_tank_support = {
+		sprite = anti_tank
+		map_icon_category = infantry
+		priority = 100
+		ai_priority = 100
+		active = yes
+		
+		type = {
+			motorized
+			artillery
+			anti_tank
+			support
+		}
+		
+		group = support
+		allowed_battalion_groups = { combat_support }
+		
+		categories = {
+			category_front_line
+			category_army
+			category_line_artillery
+			category_anti_tank
+			category_heavy_anti_tank
+			category_support_battalions
+			category_regimental_support_battalions
+		}		
+
+		divisional = no
+
+		need = {
+			heavy_anti_tank_equipment = 6
+			support_equipment = 2
+			#horse_equipment = 35
+		}
+		manpower = 250
+		training_time = 60
+		weight = 0.25
+
+		supply_consumption = 0.1
+		supply_consumption_factor = 0.02
+
+		maximum_speed = -0.25
+		hard_attack = -0.5
+		ap_attack = -0.5
+	}
 
 	mot_heavy_anti_tank_brigade = {
 		sprite = anti_tank
@@ -261,7 +308,7 @@ sub_units = {
 			anti_tank
 		}
 		
-		group = artillery
+		group = mobile_combat_support
 		
 		categories = {
 			category_front_line
@@ -331,6 +378,58 @@ sub_units = {
 		}
 	}
 
+	mot_heavy_anti_tank_support = {
+		sprite = anti_tank
+		map_icon_category = infantry
+		priority = 100
+		ai_priority = 100
+		active = yes
+		
+		type = {
+			motorized
+			artillery
+			anti_tank
+			support
+		}
+		
+		group = support
+		allowed_battalion_groups = { combat_support mobile_combat_support}
+		
+		categories = {
+			category_front_line
+			category_army
+			category_line_artillery
+			category_anti_tank
+			category_heavy_anti_tank
+			category_mobile_anti_tank
+			category_mobile
+			category_mobile_and_mobile_combat_sup
+			category_support_battalions
+			category_regimental_support_battalions
+		}
+
+		divisional = no
+
+		transport = motorized_equipment
+		need = {
+			heavy_anti_tank_equipment = 6
+			motorized_equipment = 10
+		}
+		manpower = 250
+		training_time = 60
+		weight = 0.25
+
+		own_equipment_fuel_consumption_mult = 0.15
+
+		supply_consumption = 0.1
+		supply_consumption_factor = 0.02
+		
+		maximum_speed = -0.375
+		hard_attack = -0.5
+		ap_attack = -0.5
+
+	}
+
 	pack_antitank_brigade = {
 		sprite = anti_tank
 		map_icon_category = infantry
@@ -344,7 +443,7 @@ sub_units = {
 			anti_tank
 		}
 
-		group = artillery
+		group = combat_support
 		
 		categories = {
 			category_front_line
@@ -378,6 +477,53 @@ sub_units = {
 		
 	}
 
+	pack_antitank_support = {
+		sprite = anti_tank
+		map_icon_category = infantry
+		priority = 100
+		ai_priority = 100
+		active = yes
+		
+		type = {
+			infantry
+			artillery
+			anti_tank
+			support
+		}
+
+		group = support
+		allowed_battalion_groups = { infantry combat_support }
+		
+		categories = {
+			category_front_line
+			category_army
+			category_line_artillery
+			category_anti_tank
+			category_light_anti_tank
+			category_support_battalions
+			category_regimental_support_battalions
+		}
+
+		divisional = no
+
+		manpower = 250
+		need = {
+			anti_tank_equipment_squeeze = 6
+		}
+		
+		training_time = 60
+		weight = 0.25
+
+		hard_attack = -0.5
+		ap_attack = -0.5
+		
+		can_be_parachuted = yes
+		
+		supply_consumption = 0.07
+		supply_consumption_factor = 0.01			
+		
+	}
+
 	mechanized_td_brigade = {
 		sprite = mechanized
 		map_icon_category = infantry
@@ -391,7 +537,7 @@ sub_units = {
 			anti_tank
 		}
 
-		group = artillery
+		group = mobile_combat_support
 
 		categories = {
 			category_front_line
