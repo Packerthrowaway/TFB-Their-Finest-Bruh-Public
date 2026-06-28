@@ -633,6 +633,7 @@ characters={
 
 				allowed = {
 					original_tag = SIA
+					always = no
 				}
 
 				available = {
@@ -715,6 +716,7 @@ characters={
 
 				allowed = {
 					original_tag = SIA
+					always = no
 				}
 
 				traits = {
@@ -1731,6 +1733,7 @@ characters={
 				ai_will_do = {
 					factor = 1.000
 				}
+			visible = { NOT = { has_country_flag = SIA_tfb_focus_tree } }
 		}
 # TODO[ PORTRAIT LARGE ]: Missing large portrait please check!
 		name="Phraya Chitnasongkhla"
@@ -2110,4 +2113,320 @@ characters={
 			visible = { has_completed_focus = SIA_seri_thai }
 		}
 	}
+
+
+	# TFB:
+	SIA_prawat_chumsai={
+		name="Prawat Chumsai"
+		portraits={
+			army={
+				small="gfx/interface/ideas/idea_asia_generic_land_4.dds"
+			}
+			army={
+				large="gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+			}
+		}
+		corps_commander={
+			traits={ infantry_leader }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=4
+			legacy_id=-1
+			visible = { SIA = { has_country_flag = SIA_tfb_focus_tree } }
+		}
+	}
+	# SIA_greg={
+	# 	name="Greg"
+	# 	portraits={
+	# 		army={
+	# 			small="gfx/interface/ideas/idea_asia_generic_land_5.dds"
+	# 		}
+	# 		army={
+	# 			large="gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+	# 		}
+	# 	}
+	# 	corps_commander={
+	# 		traits={ cavalry_leader }
+	# 		skill=2
+	# 		attack_skill=2
+	# 		defense_skill=2
+	# 		planning_skill=1
+	# 		logistics_skill=3
+	# 		legacy_id=-1
+	# 		#visible = { has_character_flag = SIA_tfb_focus_tree }
+	# 	}
+	# }
+
+	SIA_chulalongkorn_phonphayuhasena={
+		name="Chulalongkorn Phonphayuhasena"
+		portraits={
+			civilian={
+				large="GFX_portrait_asia_generic_4"
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits={ fortification_engineer }
+			expire="1956.1.1.12"
+			id=-1
+		}
+	}
+	SIA_plaek_chichalerm={
+		name="Plaek Chichalerm"
+		portraits={
+			civilian={
+				large="GFX_portrait_asia_generic_4"
+			}
+		}
+		country_leader={
+			ideology=marxism
+			traits={ dealbroker smooth_talking_charmer }
+			expire="1950.1.1.12"
+			id=-1
+		}
+	}
+	SIA_nangklao_saovabha={
+		name="Nangklao Saovabha"
+		portraits={
+			civilian={
+				large="GFX_Portrait_Asia_Generic_3"
+			}
+		}
+		country_leader={
+			ideology=falangism
+			traits={ appeaser }
+			expire="1945.1.1.12"
+			id=-1
+		}
+	}
+	SIA_army_commando={
+		advisor={
+			slot = high_command
+			idea_token = SIA_army_commando
+			ledger  = army 
+			allowed  = {
+				original_tag  = SIA
+			}
+			visible = { has_country_flag = SIA_tfb_focus_tree }
+			available  = {
+				has_completed_focus  = SIA_embrace_bushido 
+			}
+			traits  = {
+				army_commando_2 
+			}
+			cost = 100
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		name="Phraya Preechacholayudha"
+		portraits={
+			army={
+				small="GFX_idea_generic_army_asia_5"
+			}
+		}
+	}
+	SIA_songsuradet={
+		advisor={
+			slot = army_chief
+			idea_token = SIA_songsuradet
+			allowed  = {
+				original_tag  = SIA
+			}
+			available  = {
+				has_completed_focus  = SIA_promote_songsuradet 
+			}
+			visible = { has_country_flag = SIA_tfb_focus_tree }
+			traits  = {
+				army_chief_offensive_2 
+			}
+			cost = 100
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		name="SIA_songsuradet"
+		portraits={
+			army={
+				small="GFX_idea_generic_army_asia_6"
+			}
+		}
+	}
+	# SIA_commerce_raiding={
+	# 	advisor={
+	# 		slot = navy_chief
+	# 		idea_token = SIA_commerce_raiding
+	# 		allowed  = {
+	# 			original_tag  = SIA
+	# 		}
+	# 		traits  = {
+	# 			navy_chief_commerce_raiding_2 
+	# 		}
+	# 		cost = 100
+	# 		ai_will_do  = {
+	# 			factor  = 1.000
+	# 		}
+	# 	}
+	# 	name="Thawon Thamrongnawasawat"
+	# 	portraits={
+	# 		army={
+	# 			small="GFX_idea_generic_navy_asia_2"
+	# 		}
+	# 	}
+	# }
+	# SIA_air_superiority={
+	# 	advisor={
+	# 		slot = high_command
+	# 		idea_token = SIA_air_superiority
+	# 		ledger  = army 
+	# 		allowed  = {
+	# 			original_tag  = SIA
+	# 		}
+	# 		available  = {
+	# 			has_completed_focus  = SIA_western_military 
+	# 		}
+	# 		traits  = {
+	# 			army_infantry_3 
+	# 		}
+	# 		cost = 150
+	# 		ai_will_do  = {
+	# 			factor  = 1.000
+	# 		}
+	# 	}
+	# 	name="Phraya Thayarnpikart"
+	# 	portraits={
+	# 		army={
+	# 			small="GFX_idea_generic_air_asia_2"
+	# 		}
+	# 	}
+	# }
+	# SIA_chief_drill={
+	# 	advisor={
+	# 		slot = army_chief
+	# 		idea_token = SIA_chief_drill
+	# 		allowed  = {
+	# 			original_tag  = SIA
+	# 		}
+	# 		traits  = {
+	# 			army_chief_drill_2 
+	# 		}
+	# 		cost = 100
+	# 		ai_will_do  = {
+	# 			factor  = 1.000
+	# 		}
+	# 	}
+	# 	name="Phraya Chitnasongkhla"
+	# 	portraits={
+	# 		army={
+	# 			small="GFX_idea_generic_army_asia_2"
+	# 		}
+	# 	}
+	# }
+	SIA_seni_pramoja={
+		advisor={
+			slot = political_advisor
+			idea_token = SIA_seni_pramoja
+			allowed  = {
+				original_tag  = SIA
+			}
+			traits  = {
+				ideological_crusader 
+			}
+			visible = { has_country_flag = SIA_tfb_focus_tree }
+		}
+		name="Thawee Punyaketu"
+		portraits={
+			army={
+				small="GFX_idea_generic_political_advisor_asia_1"
+			}
+		}
+	}
+	# SIA_chief_defensive={
+	# 	advisor={
+	# 		slot = army_chief
+	# 		idea_token = SIA_chief_defensive
+	# 		allowed  = {
+	# 			original_tag  = SIA
+	# 		}
+	# 		traits  = {
+	# 			army_chief_defensive_2 
+	# 		}
+	# 		cost = 100
+	# 		ai_will_do  = {
+	# 			factor  = 1.000
+	# 		}
+	# 	}
+	# 	name="Luang Phibunsongkhram"
+	# 	portraits={
+	# 		army={
+	# 			small="GFX_idea_generic_army_asia_4"
+	# 		}
+	# 	}
+	# }
+	# SIA_all_weather={
+	# 	advisor={
+	# 		slot = air_chief
+	# 		idea_token = SIA_all_weather
+	# 		allowed  = {
+	# 			original_tag  = SIA
+	# 		}
+	# 		traits  = {
+	# 			air_chief_all_weather_2 
+	# 		}
+	# 		cost = 100
+	# 		ai_will_do  = {
+	# 			factor  = 1.000
+	# 		}
+	# 	}
+	# 	name="Phra Vechayanrangsarit"
+	# 	portraits={
+	# 		army={
+	# 			small="GFX_idea_generic_air_asia_2"
+	# 		}
+	# 	}
+	# }
+	SIA_wichit_wichitwathakarn={
+		advisor={
+			slot = political_advisor
+			idea_token = SIA_wichit_wichitwathakarn
+			allowed  = {
+				original_tag  = SIA
+			}
+			visible = { has_country_flag = SIA_tfb_focus_tree }
+			traits  = {
+				war_industrialist 
+			}
+		}
+		name="Kuang Abhayavongsa"
+		portraits={
+			army={
+				small="GFX_idea_generic_political_advisor_asia_2"
+			}
+		}
+	}
+	# SIA_army_regrouping={
+	# 	advisor={
+	# 		slot = high_command
+	# 		idea_token = SIA_army_regrouping
+	# 		ledger  = army 
+	# 		allowed  = {
+	# 			original_tag  = SIA
+	# 		}
+	# 		traits  = {
+	# 			army_regrouping_2 
+	# 		}
+	# 		cost = 100
+	# 		ai_will_do  = {
+	# 			factor  = 1.000
+	# 		}
+	# 	}
+	# 	name="Sindhu Kamalanavin"
+	# 	portraits={
+	# 		army={
+	# 			small="GFX_idea_generic_army_asia_3"
+	# 		}
+	# 	}
+	# }
 }

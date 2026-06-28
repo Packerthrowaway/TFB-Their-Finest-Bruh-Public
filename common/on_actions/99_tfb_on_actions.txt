@@ -550,6 +550,29 @@ on_actions = {
 			}
 			if = {
 				limit = {
+					OR = {
+						has_game_rule = {
+							rule = vanilla_siam
+							option = DISABLED
+						}
+						NOT = { has_dlc = "Thunder at Our Gates" }
+					}
+				}
+				set_global_flag = tfb_siam_flag
+				SIA = {
+					set_country_flag = SIA_tfb_focus_tree
+					load_focus_tree = siam_tfb_focus
+					add_ideas = idea_SIA_army_of_siam
+					set_stability = 0.4
+					set_war_support = 0.4
+					set_variable = { axis_poster_center_icon_frame = 1 }
+				}
+			}
+			else = {
+				set_global_flag = vanilla_siam_flag
+			}
+			if = {
+				limit = {
 					has_game_rule = {
 						rule = vp_system
 						option = ENABLED
