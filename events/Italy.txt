@@ -390,12 +390,27 @@ country_event = {
 	
 	option = {
 		name = italy.10.a
-		ITA = { transfer_state = 177 }
-		FROM = {
-			if = {
-				limit = { has_opinion_modifier = ita_supported_spain_civil_war }
-				remove_opinion_modifier = { target = ITA modifier = ita_supported_spain_civil_war }
+		ITA = { 
+			add_timed_idea = {
+				idea = ITA_balearic_purchase days = 180 
+			} 
+		}
+		ITA = { 
+			transfer_state = 177 
+		}
+		SPR = { 
+			add_timed_idea = { 
+				idea = SPR_balearic_sale days = 180 
+			} 
+		}
+		hidden_effect = {
+			FROM = {
+				if = {
+					limit = { has_opinion_modifier = ita_supported_spain_civil_war }
+					remove_opinion_modifier = { target = ITA modifier = ita_supported_spain_civil_war }
+				}
 			}
+			177 = { remove_core_of = SPR }
 		}
 	}
 }
