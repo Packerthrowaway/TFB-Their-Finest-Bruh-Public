@@ -834,7 +834,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = at_bonus
 				bonus = 0.75
-				ahead_reduction = 0.3
+				ahead_reduction = 0.5
 				uses = 1
 				category = cat_heavy_armor
 			}
@@ -857,8 +857,8 @@ focus_tree = {
 		}	
 		completion_reward = {
 			mio:ENG_vauxhall_organization = {
-				add_mio_size = 2
-				add_mio_funds_gain_factor = 0.1
+				add_mio_size = 3
+				add_mio_funds_gain_factor = 0.15
 			}
 		}
 	}
@@ -932,8 +932,8 @@ focus_tree = {
 		
 		completion_reward = {
 			mio:ENG_vickers_armstrong_eng_organization = {
-				add_mio_size = 2
-				add_mio_funds_gain_factor = 0.1
+				add_mio_size = 3
+				add_mio_funds_gain_factor = 0.15
 			}
 		}
 	}
@@ -1969,7 +1969,7 @@ focus_tree = {
 				add_tech_bonus = {
 					name = fighter_bonus
 					bonus = 0.5
-					ahead_reduction = 0.25
+					ahead_reduction = 0.4
 					uses = 1
 					category = light_fighter
 				}
@@ -1997,7 +1997,7 @@ focus_tree = {
 					add_tech_bonus = {
 						name = fighter_bonus
 						bonus = 0.5
-						ahead_reduction = 0.25
+						ahead_reduction = 0.4
 						uses = 1
 						category = light_fighter
 					}
@@ -2053,7 +2053,7 @@ focus_tree = {
 					has_country_flag = ENG_research_path_strong
 				}
 				mio:ENG_supermarine_organization = {
-					add_mio_research_bonus = 0.15
+					add_mio_research_bonus = 0.2
 				}
 				#add_ideas = ENG_fighter_research_strong1
 				air_experience = 100
@@ -2069,7 +2069,7 @@ focus_tree = {
 				custom_effect_tooltip = if_picked_as_main_branch_tt
 				effect_tooltip = { 
 					mio:ENG_supermarine_organization = {
-						add_mio_research_bonus = 0.15
+						add_mio_research_bonus = 0.2
 					}
 					#add_ideas = ENG_fighter_research_strong1
 					air_experience = 100
@@ -2122,7 +2122,7 @@ focus_tree = {
 				add_tech_bonus = {
 					name = fighter_bonus
 					bonus = 0.75
-					ahead_reduction = 0.25
+					ahead_reduction = 0.4
 					uses = 1
 					technology = fighter3
 				}
@@ -2141,7 +2141,7 @@ focus_tree = {
 					add_tech_bonus = {
 						name = fighter_bonus
 						bonus = 0.75
-						ahead_reduction = 0.25
+						ahead_reduction = 0.4
 						uses = 1
 						technology = fighter3
 					}
@@ -4223,6 +4223,18 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			183 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -4479,7 +4491,7 @@ focus_tree = {
 				}
 				add_building_construction = {
 					type = anti_air_building
-					level = 2
+					level = 3
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -4487,7 +4499,38 @@ focus_tree = {
 					level = 4
 					instant_build = yes
 				}
+				set_building_level = {
+					type = coastal_fortress
+					level = 1
+					province = 12003
+					instant_build = yes
+				}
 			}
+			IF = {
+				limit = {
+					116 = {
+						is_fully_controlled_by = ROOT
+						any_province_building_level = {
+							province = {
+								id = 12003
+							}
+							building = naval_supply_hub
+							level < 1
+						}
+					}
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				116 = {		
+					add_building_construction = {
+						type = naval_supply_hub
+						level = 1
+						instant_build = yes
+						province = 12003
+					}	
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			116 = { add_dynamic_modifier = { modifier = island_defences } }
 		}
 	}
 	
@@ -4950,7 +4993,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_focus_empire
 		
-		cost = 1
+		cost = 0.5
 		
 		ai_will_do = {
 			factor = 1
@@ -4976,7 +5019,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 0.5
+		cost = 0.4
 		
 		ai_will_do = {
 			factor = 1
@@ -5012,7 +5055,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 0.5
+		cost = 0.4
 		
 		ai_will_do = {
 			factor = 1
@@ -5049,7 +5092,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 0.5
+		cost = 0.4
 		
 		ai_will_do = {
 			factor = 1
@@ -5085,7 +5128,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 0.5
+		cost = 0.4
 		
 		ai_will_do = {
 			factor = 1
@@ -5121,7 +5164,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = ENG_start_colonial_investment
 		
-		cost = 0.5
+		cost = 0.4
 		
 		ai_will_do = {
 			factor = 1
@@ -5155,7 +5198,7 @@ focus_tree = {
 		y = 2
 		relative_position_id = ENG_develop_raj
 		
-		cost = 5
+		cost = 4
 		
 		ai_will_do = {
 			factor = 1
@@ -5724,7 +5767,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = available_industrial_concern
 			show_ideas_tooltip = John_Laing
-		
+			custom_effect_tooltip = generic_skip_one_line_tt
 			130 = {
 				add_extra_state_shared_building_slots = 4
 				add_building_construction = {
@@ -5980,11 +6023,11 @@ focus_tree = {
 		cost = 2
 
 		completion_reward = {
-			unlock_decision_tooltip = ENG_develop_ast
-			unlock_decision_tooltip = ENG_develop_can
-			unlock_decision_tooltip = ENG_develop_nzl
-			unlock_decision_tooltip = ENG_develop_saf
-			unlock_decision_tooltip = ENG_develop_raj
+			unlock_decision_tooltip = { decision = ENG_develop_ast show_effect_tooltip = yes }
+			unlock_decision_tooltip = { decision = ENG_develop_can show_effect_tooltip = yes }
+			unlock_decision_tooltip = { decision = ENG_develop_nzl show_effect_tooltip = yes }
+			unlock_decision_tooltip = { decision = ENG_develop_saf show_effect_tooltip = yes }
+			unlock_decision_tooltip = { decision = ENG_develop_raj show_effect_tooltip = yes }
 		}
 	}
 	
