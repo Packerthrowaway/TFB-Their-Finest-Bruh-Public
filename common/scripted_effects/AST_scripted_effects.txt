@@ -1224,56 +1224,80 @@ AST_nauru_pact_effect = {
 
 	IF = {
 		limit = {
-			original_tag = AST
-			OR = {
-				has_idea = AST_phosphate_commission
-				has_country_flag = AST_phosphate_commission_flag
+			GER = {
+				OR = { 
+					has_country_flag = AST_ast_to_ger_faction_flag #tt reasons
+					AND = {
+						is_in_faction = yes
+						is_faction_leader = yes
+					}
+				} 
 			}
 		}
 		custom_effect_tooltip = generic_skip_one_line_tt
-		set_country_flag = AST_phosphate_commission_flag
-		remove_ideas = {
-			AST_phosphate_commission
-		}
-	}
-
-	custom_effect_tooltip = generic_skip_one_line_tt
-	GER = { 
-		give_guarantee = AST 
-	}
-
-	IF = {
-		limit = {
-			AST = {
-				is_subject = yes
-			}
-		}
 		IF = {
 			limit = {
-				GER = {
-					is_in_faction = yes
-					is_faction_leader = yes
-				}
-			}
-			custom_effect_tooltip = generic_skip_one_line_tt
-			GER = {
-				add_to_faction = AST 
-			}
-		}
-		ELSE_IF = {
-			limit = {	
 				AST = {
-					is_in_faction_with = OVERLORD
+					is_subject = no
 				}
 			}
-			custom_effect_tooltip = generic_skip_one_line_tt
-			ROOT.OVERLORD = {
+			effect_tooltip = {
 				set_autonomy = {
 					target = AST
 					autonomy_state = autonomy_free
 				}
-				remove_from_faction = AST
 			}
+		}
+		GER = {
+			add_to_faction = AST 
+			set_country_flag = AST_ast_to_ger_faction_flag #tt reasons
+		}
+	}
+	ELSE = {
+		custom_effect_tooltip = generic_skip_one_line_tt
+		IF = {
+			limit = {
+				AST = {
+					OR = {
+						has_country_flag = AST_nauru_pact_leave_faction_flag #tt reasons
+						is_in_faction_with = ROOT.OVERLORD
+					}
+				}
+			}
+			AST = {
+				ROOT.OVERLORD = {
+					set_autonomy = {
+						target = AST
+						autonomy_state = autonomy_free
+					}
+					remove_from_faction = AST
+				}
+				set_country_flag = AST_nauru_pact_leave_faction_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+		}
+		ELSE_IF = {
+			limit = {
+				AST = {
+					OR = {
+						has_country_flag = AST_nauru_pact_autonomy_free_flag #tt reasons
+						is_subject = yes
+					}
+				}
+			}
+			AST = {
+				ROOT.OVERLORD = {
+					set_autonomy = {
+						target = AST
+						autonomy_state = autonomy_free
+					}
+				}
+				set_country_flag = AST_nauru_pact_autonomy_free_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+		}
+		GER = { 
+			give_guarantee = AST 
 		}
 	}
 }

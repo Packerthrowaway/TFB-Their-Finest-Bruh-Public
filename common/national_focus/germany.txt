@@ -13137,6 +13137,14 @@ focus_tree = {
 					has_war_with = ROOT
 				}
 			}
+			INS = {
+				OR = {
+					exists = no
+					NOT = {
+						has_cosmetic_tag = INS_UNION
+					}
+				}
+			}
 			BEL = {
 				OR = {
 					exists = no
@@ -13157,6 +13165,14 @@ focus_tree = {
 			is_subject = no
 			OR = {
 				NOT = { HOL = { is_in_faction_with = GER } }
+				if = {
+					limit = {
+						INS = {
+							has_cosmetic_tag = INS_UNION
+						}
+					}
+					NOT = { INS = { is_in_faction_with = GER } }
+				}
 				NOT = { BEL = { is_in_faction_with = GER } }
 				NOT = { LUX = { is_in_faction_with = GER } }
 			}
@@ -13240,6 +13256,22 @@ focus_tree = {
 				}
 				HOL = {
 					country_event = { id = mtg_germany.1 hours = 6 }
+				}
+			}
+			if = {
+				limit = {
+					country_exists = INS
+					INS = {
+						has_cosmetic_tag = INS_UNION
+					}
+					NOT = { has_war_with = INS }
+					NOT = { INS = { is_in_faction_with = GER } }
+				}
+				create_wargoal = {
+					type = take_state_focus
+					target = INS
+					expire = 0
+					generator = { 7 }
 				}
 			}
 			if = {
@@ -36586,7 +36618,7 @@ focus_tree = {
 					state = 737
 					state = 684
 					state = 633
-					state = 634 # If Bougainville is ever made it's own state switch this and the associated decision from 634 to that!
+					state = 1070
 					state = 646
 					state = 726
 					state = 725
@@ -36635,7 +36667,7 @@ focus_tree = {
 							state = 737
 							state = 684
 							state = 633
-							state = 634 # If Bougainville is ever made it's own state switch this and the associated decision from 634 to that!
+							state = 1070
 							state = 646
 							state = 726
 							state = 725
@@ -37553,6 +37585,7 @@ focus_tree = {
 					523 = { state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes }
 					979 = { state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes }
 					737 = { state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes }
+					1070 = { state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes }
 				}
 			}
 		}
@@ -37604,6 +37637,7 @@ focus_tree = {
 						controls_state = 894
 						controls_state = 893
 						controls_state = 634
+						controls_state = 1070
 					}
 				}
 				display_individual_scopes = yes
@@ -37628,6 +37662,7 @@ focus_tree = {
 							state = 894
 							state = 893
 							state = 634
+							state = 1070
 						}
 					}
 					add_to_array = {

@@ -178,8 +178,8 @@ ideas = {
 			picture = citizen_militia_1
 
 			modifier = {
-				army_non_core_attack_factor = -0.25
-				army_non_core_defence_factor = -0.25
+				army_non_core_attack_factor = -0.15
+				army_non_core_defence_factor = -0.15
 			}
    		}
 
@@ -292,11 +292,15 @@ ideas = {
 			}
 
 			cancel = {
-				NOT = {
-					ENG = {
-	  					controls_state = 1021 #Singapore
+				OR = {
+					ENG = {	
+						NOT = { controls_state = 1021 } #Singapore
+						has_idea = AST_singapore_strategy_idea
 					}
-					is_subject_of = ENG
+					AST = {	
+						NOT = { controls_state = 1021 } #Singapore
+						has_idea = AST_singapore_strategy_idea
+					}
 				}
 			}
 
@@ -498,6 +502,7 @@ ideas = {
 				experience_gain_army_factor = 0.05
 				experience_gain_navy_factor = 0.05
 				experience_gain_air_factor = 0.05
+				custom_modifier_tooltip = AST_faction_training_initiative_idea_1_tt
 			}
 
 		}
@@ -527,6 +532,7 @@ ideas = {
 				experience_gain_army_factor = 0.1
 				experience_gain_navy_factor = 0.1
 				experience_gain_air_factor = 0.1
+				custom_modifier_tooltip = AST_faction_training_initiative_idea_2_tt
 			}
 
 		}
@@ -1242,10 +1248,9 @@ ideas = {
 			picture = ICE_general_strike
 
 			cancel = {
-				725 = {
-					NOT = {
-						is_owned_by = AST
-					}
+				OR = {
+					has_completed_focus = AST_all_for_one_one_for_all
+					has_government = communism
 				}
 			}
 
@@ -2252,7 +2257,7 @@ ideas = {
 
 		AST_mount_isa_mines_ic = { 
 
-			picture = AST_mount_isa_mines
+			picture = AST_mount_isa_mines_ic
 
 			allowed = {
 				original_tag = AST
@@ -2281,7 +2286,7 @@ ideas = {
 
 		AST_mount_isa_mines_improved_ic = { 
 
-			picture = PLACEHOLDER_idea_icon #AST_mount_isa_mines
+			picture = AST_mount_isa_mines_ic
 
 			allowed = {
 				original_tag = AST
@@ -2511,6 +2516,23 @@ ideas = {
 				}
 			}
 					
+			modifier = {
+			}
+		}
+
+		AST_kirov = {
+			name = kirov
+			picture = SOV_kirov
+			allowed = {
+				original_tag = AST
+			}
+			visible = {
+				has_completed_focus = AST_westward_battles
+			}
+			research_bonus = {
+				armor = 0.15
+			}
+			traits = { heavy_tank_manufacturer }
 			modifier = {
 			}
 		}
@@ -3109,23 +3131,6 @@ ideas = {
 					
 			modifier = {
 			}
-		}
-
-		AST_kirov = {
-		    name = kirov
-		    picture = kirov
-		    allowed = {
-		        original_tag = AST
-		    }
-		    visible = {
-		        has_completed_focus = AST_westward_battles
-		    }
-		    research_bonus = {
-		        armor = 0.15
-		    }
-		    traits = { heavy_tank_manufacturer }
-		    modifier = {
-		    }
 		}
 		
 		AST_yakovlev_design_bureau = {

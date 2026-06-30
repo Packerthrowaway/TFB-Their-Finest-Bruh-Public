@@ -941,6 +941,7 @@ abandon_colony_tag = {
 				original_tag = INS
 				NOT = {
 					has_cosmetic_tag = INS_HOL_FLAG
+					has_cosmetic_tag = INS_UNION
 				}
 			}
 			set_cosmetic_tag = INS_HOL
@@ -994,6 +995,21 @@ abandon_colony_tag = {
 				OR = {
 					is_using_old_raj = yes
 					NOT = { has_dlc = "Graveyard of Empires" }
+				} 
+			}
+			drop_cosmetic_tag = yes
+		}
+		else_if = {
+			limit = { 
+				NOT = { 
+					AND = {
+						has_dlc = "Graveyard of Empires" 
+						original_tag = RAJ 
+					}
+					AND = {
+						has_dlc = "Thunder at Our Gates"
+						original_tag = INS
+					}
 				} 
 			}
 			drop_cosmetic_tag = yes
