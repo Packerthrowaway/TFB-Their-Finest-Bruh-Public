@@ -82,6 +82,7 @@ NDefines.NCountry.INTEL_FROM_ALLIANCE_FACTOR = 0.45				-- Multiplied to the diff
 NDefines.NCountry.HEROES_BEING_KILLED_WAR_SUPPORT_PENALTY_SCALE = -0.04			-- Scaling of war heroes manpower lost to war support impact, will be added weekly as a war support penalty
 NDefines.NCountry.MAX_HEROES_BEING_KILLED_WEEKLY_WAR_SUPPORT_PENALTY = -0.01		-- Max penalty that will gained per week from war heroes manpower lost
 NDefines.NCountry.MAX_HEROES_BEING_KILLED_WAR_SUPPORT_IMPACT = -0.4				-- Max total penalty from war heroes manpower lost
+NDefines.NCountry.DEFAULT_COASTAL_PROTECTION_STABILITY = 0.05			-- Default stability when the coastal states are fully protected
 
 NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_OCCUPIED_IS_EXILE_MAX = 10 -- max resistance target modifier resistance target modifier for exile countries. interpolated using legitimacy
 NDefines.NResistance.COMPLIANCE_DECAY_PER_EXILE_LEGITIMACY = -0.010 -- higher legitimacy will give higher decay to compliance
