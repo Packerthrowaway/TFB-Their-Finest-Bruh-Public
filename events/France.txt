@@ -426,6 +426,24 @@ country_event = {
 					}
 					event_target:vichy_france = { transfer_state = PREV }
 				}
+				every_state = { #Vichy keeps Morocco and Algeria
+					limit = {
+						OR = {
+							is_controlled_by = ITA
+							is_controlled_by = GER
+							controller = { is_in_faction_with = GER }
+							controller = { is_in_faction_with = ITA }
+						}
+						is_owned_by = FRA
+						is_core_of = MOR
+						# Only Tunisia may stay
+						NOT = {
+							state = 458
+							state = 665
+						}
+					}
+					event_target:vichy_france = { transfer_state = PREV }
+				}
 				every_state = {
 					limit = { #set up Vichy continental holdings
 						OR = {
