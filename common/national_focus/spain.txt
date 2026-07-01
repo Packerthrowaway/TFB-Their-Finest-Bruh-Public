@@ -101,10 +101,10 @@ focus_tree = {
 		icon = GFX_focus_generic_concessions
 		x = 0
 		y = 1
-		offset = {
-			x = 15
-			y = 0
-		}
+		# offset = {
+		# 	x = 15
+		# 	y = 0
+		# }
 		relative_position_id = SPA_a_great_spain
 		cost = 5
 
@@ -182,6 +182,11 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_STABILITY}
 		completion_reward = {
 			add_stability = 0.1
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SPR_appeasement_tick_franco_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SPR_appeasement_tick_franco_list_tt
+			hidden_effect = { set_variable = { spanish_tick = 0.0008 } }
 		}
 	}
 
@@ -1736,9 +1741,9 @@ focus_tree = {
 				has_focus_tree = vichy_french_focus
 				controls_state = 461
 				controls_state = 462
-				controls_state = 459
-				controls_state = 460
-				controls_state = 513
+				# controls_state = 459
+				# controls_state = 460
+				# controls_state = 513
 			}
 		}
 		bypass = {
@@ -1762,18 +1767,27 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+
 			random_other_country = {
 				limit = {
 					original_tag = FRA
 					has_focus_tree = vichy_french_focus
 					controls_state = 461
 					controls_state = 462
-					controls_state = 459
-					controls_state = 460
-					controls_state = 513
+					# controls_state = 459
+					# controls_state = 460
+					# controls_state = 513
 				}
 				country_event = { id = lar_spain.39 hours = 1 random_hours = 2 }
 			}
+			custom_effect_tooltip = SPA_demand_morocco_tt
+			effect_tooltip = {
+				add_power_balance_value = {
+					id = SPR_spain_appeasement_struggle
+					value = 0.25
+				}
+			}
+
 		}
 	}
 
@@ -3344,6 +3358,10 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
 		completion_reward = {
+			custom_effect_tooltip = SPR_appeasement_tick_carlist_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			hidden_effect = { set_variable = { spanish_tick = 0.0013 } }
+
 			add_popularity = {
 			    ideology = neutrality
 			    popularity = 0.05
