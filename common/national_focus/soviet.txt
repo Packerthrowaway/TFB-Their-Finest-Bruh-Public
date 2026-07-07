@@ -632,9 +632,10 @@
 			add_political_power = 25
 			custom_effect_tooltip = SOV_big_purge_4_tt
 			set_country_flag = SOV_big_purge_decision4_flag
-			remove_power_balance = {
-    		id = SOV_purge_bop 
-		}
+				remove_power_balance = {
+				id = SOV_purge_bop 
+			}
+			set_variable = { global.sov_purge_finish_date = global.date }
 		}
 	}
 
@@ -2273,6 +2274,7 @@
 					}
 				}
 			}
+			set_variable = { global.winter_war_start_date = global.date }
 		}
 	}
 
@@ -3289,6 +3291,7 @@
             }
 
             set_global_flag = trotsky_dead
+			set_variable = { global.sov_trotsky_dead_date = global.date }
         }
 	}
 
@@ -6965,6 +6968,7 @@
 				}
 			}
 			set_country_flag = SOV_third_5_year_plan_started
+			set_variable = { global.sov_third_year_plan_start_date = global.date }
 		}
 	}
 
@@ -6998,6 +7002,7 @@
 		completion_reward = {
 			event_option_tooltip = soviet.699.a
 			hidden_effect = { country_event = { id = soviet.699 } }
+			set_variable = { global.sov_third_year_plan_finish_date = global.date }
 		}
 	}	
 
@@ -7664,6 +7669,7 @@
 			custom_effect_tooltip = generic_skip_one_line_tt
 			
 			add_ideas = SOV_new_soviet_man
+			set_variable = { global.sov_light_new_soviet_man_date = global.date }
 		}
 	}
 	
@@ -9868,6 +9874,8 @@
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }	
 			
 			SOV_check_plan_completion = yes
+
+			set_variable = { global.sov_architects_date = global.date }
 		}
 	}
 	
@@ -10118,6 +10126,7 @@
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
 			
 			SOV_check_plan_completion = yes
+			set_variable = { global.SOV_siberian_colonization_date = global.date }
 		}
 	}
 	
@@ -10408,6 +10417,7 @@
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }
 			
 			SOV_check_plan_completion = yes
+			set_variable = { global.SOV_heavy_model_cities_date = global.date }
 		}
 	}
 	
@@ -11399,6 +11409,7 @@
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }		
 			
 			SOV_check_plan_completion = yes
+			set_variable = { global.small_navy_date = global.date }
 		}
 		
 	}
@@ -11741,6 +11752,7 @@
 			add_to_variable = { SOV_gosplan_gui_dirty_var = 1 }		
 			
 			SOV_check_plan_completion = yes
+			set_variable = { global.big_navy_date = global.date }
 		}
 	}
 
@@ -12383,8 +12395,8 @@
 
 		completion_reward = {
 			mio:SOV_grabin_design_bureau_organization = {
-					add_mio_funds = 1500
-				}
+				add_mio_funds = 1500
+			}
 			add_ideas = SOV_kulik_arty1
 			add_tech_bonus = {
 				name = art_bonus
@@ -12398,6 +12410,7 @@
 				uses = 1
 				technology = art_radio1
 			}
+			set_variable = { global.khulik_artillery_date = global.date }
 		}
 	}
 
@@ -12427,7 +12440,8 @@
 				uses = 1
 				bonus = 0.5
 				category = artillery
-		}
+			}
+			set_variable = { global.stalin_artillery_date = global.date }
 		}
 	}
 
@@ -13128,6 +13142,7 @@
 			}
 			custom_effect_tooltip = available_mio_tt
 			show_mio_tooltip = SOV_okmo_organization
+			set_variable = { global.medium_tank_date = global.date }
 		}
 	}
 
@@ -13156,6 +13171,7 @@
 			}
 			custom_effect_tooltip = available_mio_tt
 			show_mio_tooltip = SOV_kirov_organization
+			set_variable = { global.heavy_tank_date = global.date }
 		}
 	}
 
@@ -13184,6 +13200,7 @@
 			}
 			custom_effect_tooltip = available_mio_tt
 			show_mio_tooltip = SOV_morozov_design_bureau_organization
+			set_variable = { global.light_tank_date = global.date }
 		}
 	}
 
@@ -13702,6 +13719,7 @@
 				amount = 75
 				grand_doctrine = new_strategic_destruction
 			}
+			set_variable = { global.fighter_research_date = global.date }
         }
 	}
 	focus = {
@@ -13827,6 +13845,7 @@
 				uses = 1
 				category = cas_bomber
 			}
+			set_variable = { global.cas_research_date = global.date }
         }
 	}
 
@@ -14262,6 +14281,7 @@
 				amount = 75
 				grand_doctrine = new_operational_integrity
 			}
+			set_variable = { global.tac_research_date = global.date }
         }
 	}
 
@@ -15566,6 +15586,7 @@
 					country_event = {  id = soviet.3100 }
 				}
 			}
+			set_variable = { global.order_270_date = global.date }
 		}
 	}
 
@@ -15609,6 +15630,7 @@
 			add_timed_idea = { idea = SOV_coordinate_industry_idea days = 270 }
 			add_offsite_building = { type = industrial_complex level = 10 }
 			add_offsite_building = { type = arms_factory level = 15 }
+			set_variable = { global.sov_coordinate_industry_date = global.date }
 		}
 	}
 
@@ -15706,6 +15728,8 @@
 			add_to_variable = { SOV_command_economy_industrial_capacity_factory_var = 0.1 }
 			add_offsite_building = { type = industrial_complex level = 15 }
 			add_offsite_building = { type = arms_factory level = 15 }
+
+			set_variable = { global.sov_forced_labour_date = global.date }
 		}
 	}
 
@@ -16968,6 +16992,7 @@
 
 			}
 			custom_effect_tooltip = SOV_frontline_mob_tt
+			set_variable = { global.sov_first_wave_date = global.date }
 		}
 	}
 
@@ -17078,6 +17103,7 @@
 				}
 			}
 			custom_effect_tooltip = SOV_frontline_mob_tt2
+			set_variable = { global.sov_second_wave_date = global.date }
 		}
 	}
 

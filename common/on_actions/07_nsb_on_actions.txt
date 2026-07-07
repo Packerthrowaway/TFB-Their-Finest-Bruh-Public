@@ -1628,7 +1628,9 @@ on_actions = {
 				}
 
 				set_global_flag = soviets_are_at_war_with_germany
-
+				set_variable = { global.barb_start_date = global.date }
+				log = "Barb Start Eco"
+				eco_log = yes
 
 				if = {
 					limit = {
@@ -2156,6 +2158,13 @@ on_actions = {
 				        # Nothing happens
 				    }
 				}
+			}
+			if = {
+				limit = {
+					has_war_with = GER
+					check_variable = { global.sov_surrender_progress_max < surrender_progress }
+				}
+				set_variable = {global.sov_surrender_progress_max = surrender_progress }
 			}
 		} 
 	}
