@@ -2971,6 +2971,7 @@ SOV_gosplan_decisions_category = {
 			custom_effect_tooltip = SOV_construction_speed_-5_tt
 			add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = -0.05 }
 			set_country_flag = SOV_contruction_focus_taken
+			set_country_flag = SOV_military_construction_focus_taken
 		}
 		
 		remove_effect = {
@@ -3012,6 +3013,7 @@ SOV_gosplan_decisions_category = {
 			custom_effect_tooltip = SOV_construction_speed_-5_tt
 			add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = -0.05 }
 			set_country_flag = SOV_contruction_focus_taken
+			set_country_flag = SOV_civilian_construction_focus_taken
 		}
 		
 		remove_effect = {
@@ -3022,12 +3024,46 @@ SOV_gosplan_decisions_category = {
 			add_to_variable = { SOV_command_economy_production_speed_arms_factory_factor_var = -0.05 }
 			custom_effect_tooltip = SOV_construction_speed_civ_5_tt
 			add_to_variable = { SOV_command_economy_production_speed_industrial_complex_factor_var = 0.05 }
+			set_country_flag = SOV_civilian_construction_focus_completed
 		}
 
 		days_remove = 180
 
 		cost = 25
 	}
+
+    SOV_military_construction_refocus = {
+        icon = generic_industry
+        priority = 1
+        visible = {
+            has_variable = gosplan_heavy_industry
+            has_completed_focus = SOV_heavy_industrial_expansion
+            has_country_flag = SOV_civilian_construction_focus_completed
+            NOT = { has_country_flag = SOV_military_construction_focus_taken }
+            NOT = { has_country_flag = SOV_military_construction_refocus_taken }
+        }
+        available = {
+            has_completed_focus = SOV_heavy_industrial_expansion
+            has_war_with_major = no
+        }
+        fire_only_once = yes
+        complete_effect = {
+            custom_effect_tooltip = SOV_generic_modify_command_economy_tt
+            custom_effect_tooltip = SOV_remove_civilian_construction_focus_tt
+            hidden_effect = {
+                # Cancel the final modifiers from Focus on Civilian Construction.
+                add_to_variable = { SOV_command_economy_production_speed_arms_factory_factor_var = 0.05 }
+                add_to_variable = { SOV_command_economy_production_speed_industrial_complex_factor_var = -0.05 }
+            }
+            custom_effect_tooltip = SOV_construction_speed_mil_5_tt
+            add_to_variable = { SOV_command_economy_production_speed_arms_factory_factor_var = 0.05 }
+            custom_effect_tooltip = SOV_construction_speedciv-5_tt
+            add_to_variable = { SOV_command_economy_production_speed_industrial_complex_factor_var = -0.05 }
+            set_country_flag = SOV_military_construction_refocus_taken
+        }
+        cost = 25
+    }
+
 	
 	### LIGHT ###
 
@@ -12352,6 +12388,92 @@ SOV_industry_relocation = {
 
 
 SOV_great_patriotic_war = {
+
+	SOV_blow_up_oil = {
+
+        icon = generic_scorched_earth
+
+        state_target = yes
+
+        on_map_mode = map_and_decisions_view
+
+        targets = {
+            827
+        }
+
+        allowed = { 
+            original_tag = SOV
+        }
+
+        available = {
+            OR = {
+                NOT = { has_full_control_of_state = 137 }
+                NOT = { has_full_control_of_state = 218 }
+            }
+        }
+
+        days_remove = 30
+        fire_only_once = yes
+
+
+        visible = {
+        }
+
+        cancel_trigger = {
+            AND = {
+                NOT = { controls_state = 234 }
+                NOT = { controls_state = 232 }
+                NOT = { controls_state = 229 }
+            }
+        }
+
+        remove_effect = {
+            add_stability = -0.05
+            #set_dynamic_modifier = { modifier = SOV_state_resources_oil_factor_var }
+            if = {
+                limit = {
+                    controls_state = 234
+                }
+                every_core_state = {
+                    limit = {
+                        state = 234
+                    }
+                    add_dynamic_modifier = { 
+                        modifier = SOV_oil_blow_up
+                        days = 360
+                    }
+                }
+            }
+			if = {
+                limit = {
+                    controls_state = 232
+                }
+                every_core_state = {
+                    limit = {
+                        state = 232
+                    }
+                    add_dynamic_modifier = { 
+                        modifier = SOV_oil_blow_up
+                        days = 360
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    controls_state = 229
+                }
+                every_core_state = {
+                    limit = {
+                        state = 229
+                    }
+                    add_dynamic_modifier = { 
+                        modifier = SOV_oil_blow_up
+                        days = 360
+                    }
+                }
+            }
+        }
+    }
 
 	SOV_raise_penal_units = {
 		priority = 21

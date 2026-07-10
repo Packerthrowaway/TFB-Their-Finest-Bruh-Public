@@ -25648,3 +25648,77 @@ GER_propaganda_campaigns = {
 		}
 	}	
 }
+prospect_for_resources = {
+    GER_repair_oil_field = {
+
+        icon = GFX_decision_eng_trade_unions_support
+        priority = 86
+
+        fire_only_once = no 
+
+        days_remove = 180 
+
+        allowed = { 
+            original_tag = GER
+        }
+
+
+        visible = {
+            any_controlled_state = {
+                has_dynamic_modifier = { modifier = SOV_oil_blow_up }
+            }
+        }
+
+        modifier = {
+            civilian_factory_use = 10
+        }
+
+		available = {
+            has_tech = advanced_oil_processing
+            OR = {
+                AND = {
+                    controls_state = 234
+                    234 = { has_dynamic_modifier = { modifier = SOV_oil_blow_up } }
+                }
+                AND = {
+                    controls_state = 232
+                    232 = { has_dynamic_modifier = { modifier = SOV_oil_blow_up } }
+                }
+                AND = {
+                    controls_state = 229
+                    229 = { has_dynamic_modifier = { modifier = SOV_oil_blow_up } }
+                }
+            }
+        }
+
+        cancel_trigger = {
+            NOT = {
+                OR = {
+                    AND = {
+                        controls_state = 234
+                        234 = { has_dynamic_modifier = { modifier = SOV_oil_blow_up } }
+                    }
+                    AND = {
+                        controls_state = 232
+                        232 = { has_dynamic_modifier = { modifier = SOV_oil_blow_up } }
+                    }
+                    AND = {
+                        controls_state = 229
+                        229 = { has_dynamic_modifier = { modifier = SOV_oil_blow_up } }
+                    }
+                }
+            }
+        }
+
+        remove_effect = {
+            every_controlled_state = {
+                limit = {
+                    has_dynamic_modifier = { modifier = SOV_oil_blow_up }
+                }
+                remove_dynamic_modifier = { 
+                    modifier = SOV_oil_blow_up 
+                }
+            }
+        }
+    }
+}
