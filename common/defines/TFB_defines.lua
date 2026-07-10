@@ -360,7 +360,7 @@ NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.1						-- Higher value = more shot down pl
 NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 8          -- how often carrier planes do battle inside naval combat
 NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.4			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
 NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 1.25					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
-NDefines.NAir.NAVAL_STRIKE_CARRIER_MULTIPLIER = 4              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
+NDefines.NAir.NAVAL_STRIKE_CARRIER_MULTIPLIER = 5              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 NDefines.NAir.ACE_EARN_CHANCE_BASE = 0.01						-- Base chance % for ace pilot to be created. Happens only when successfully kill airplane/ship or damage the buildings.
 NDefines.NAir.ACE_EARN_CHANCE_PLANES_MULT = 0.002				-- The more airplanes the wing shots the higher chance of earning Ace.
 NDefines.NAir.AIR_NAVAL_KAMIKAZE_DAMAGE_MULT = 10.0				-- Balancing value to increase usual damage to Strength for Kamikaze
@@ -445,7 +445,7 @@ NDefines.NAir.AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.2 --
 
 
 NDefines.NAir.DISRUPTION_FACTOR = 4.0									-- multiplier on disruption damage to scale its effects on planes
-NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 6.0						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
+NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 2.0						-- multiplier on disruption damage to scale its effects on carrier vs carrier planes
 NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.5
 NDefines.NAir.DISRUPTION_AGILITY_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_ATTACK_FACTOR = 1.0
@@ -479,11 +479,14 @@ NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 8                          --
 NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 12                                    -- hours where all get to attack
 NDefines.NNavy.HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR	= 0.1  		-- penalty if other side has stronger carrier air force
 NDefines.NNavy.MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR = 0.2  			-- max penalty from stronger carrier air force
-NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_TARGET_SCALE = 10                             -- scoring for target picking for planes inside naval combat, one define per ship typ
-NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 30
-NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 100
-NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCALE = 4                         -- how much score factor from low health (scales between 0->this number)
-NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCALE = 6                           -- how much score factor from low AA guns (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_SCREEN_TARGET_BASE = 10						-- base scoring for target picking for planes inside naval combat based on screening efficency, one define per ship type
+NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_BASE = 50
+NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_BASE = 200                   -- scaled scoring for target picking for planes inside naval combat, max value when zero screening efficency, one define per ship type
+NDefines.NNavy.NAVAL_COMBAT_AIR_SCREEN_TARGET_SCALE = 5
+NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 100
+NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 600
+NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCALE = 3                         -- how much score factor from low health (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCALE = 4                           -- how much score factor from low AA guns (scales between 0->this number)
 
 NDefines.NNavy.NAVAL_COMBAT_PLANE_MIN_STACKING_PENALTY = 200
 NDefines.NNavy.NAVAL_COMBAT_PLANE_STACKING_PENALTY_EFFECT = 0.001				-- Each plane above the optimal amount decreases the amount of airplanes being able to takeoff by such %. Subject to diminishing returns
@@ -496,6 +499,9 @@ NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_CONVOY = 0						    -- As Above
 NDefines.NNavy.SHIP_SILHOUETTE_VALUE_PLANES_SUBMARINE = 10						-- As Above
 	
 NDefines.NNavy.SCREEN_CAP_REDUCTION_FACTOR = 0.005							-- Reduces screen silhouette weight if there are caps present, screenval * 1/(1+caps*weight)
+
+NDefines.NNavy.CARRIER_OFFENSIVE_STANCE_SORTIE_RATIO = {1.0, 1.0, 1.0, 1.0, 1.0}	-- The defensive stance sortie is 1.0 - value in index so their sum equals 1
+NDefines.NNavy.CARRIER_OFFENSIVE_STANCE_DEFAULT_INDEX = 4						-- The default offensive sortie index in CARRIER_OFFENSIVE_STANCE_SORTIE_RATIO
 
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN = 48 -- minimum cooldown time
 NDefines.NNavy.CONVOY_SPOTTING_COOLDOWN_MIN_FROM_EFFICIENCY = 24 -- clamped min value after screening efficiency has been applied
