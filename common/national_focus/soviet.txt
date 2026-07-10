@@ -4686,10 +4686,43 @@
 				days = 720
 				grand_doctrine = new_mobile_warfare
 			}
-			add_mastery = {
-				amount = 150
-				track = armor
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = armor } } 
+				set_sub_doctrine = armored_spearhead
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_spearhead
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
 			}
+			else_if = {
+				limit = {
+					has_doctrine = armored_spearhead
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_spearhead
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = armor
+				}		
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_mikhail_tukhachevsky = { 
 				promote_leader = yes 
 				clr_character_flag = SOV_exiled_flag
@@ -4792,9 +4825,45 @@
 			# 	technology = nd_conscription
 			# 	technology = werwolf_guerillas
 			# }
-
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = armor } } 
+				set_sub_doctrine = armored_spearhead
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_spearhead
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
+			}
+			else_if = {
+				limit = {
+					has_doctrine = armored_spearhead
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_spearhead
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = armor
+				}		
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_semyon_timoshenko = { 
-			promote_leader = yes 
+				promote_leader = yes 
 			}
 		}
 	}
@@ -4915,12 +4984,45 @@
 				name = doc_bonus
 				bonus = 0.1
 				days = 720
-				grand_doctrine = grand_battleplan
+				grand_doctrine = mass_assault
 			}
-			add_mastery = {
-				amount = 150
-				track = infantry
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = armor } } 
+				set_sub_doctrine = armored_infantry_support
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_infantry_support
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
 			}
+			else_if = {
+				limit = {
+					has_doctrine = armored_infantry_support
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_infantry_support
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = armor
+				}		
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}		
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_kliment_voroshilov = { 
 				promote_leader = yes 
 			}
@@ -4955,11 +5057,16 @@
 				days = 720
 				grand_doctrine = mass_assault
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_mastery = {
 				amount = 150
+				track = armor
+			}		
+			add_mastery = {
+				amount = 50
 				track = infantry
 			}
-			
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_boris_shaposhnikov = { 
 				promote_leader = yes 
 			}
@@ -5066,9 +5173,41 @@
 				days = 720
 				grand_doctrine = mass_assault
 			}
-			add_mastery = {
-				amount = 150
-				track = infantry
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = armor } } 
+				set_sub_doctrine = armored_cavalry
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_cavalry
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
+			}
+			else_if = {
+				limit = {
+					has_doctrine = armored_cavalry
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = armored_cavalry
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = armor
+				}		
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}		
 			}
 		}
 	}
@@ -5098,12 +5237,45 @@
 				name = doc_bonus
 				bonus = 0.1
 				days = 720
-				grand_doctrine = mass_assault
+				grand_doctrine = grand_battleplan
 			}
-			add_mastery = {
-				amount = 150
-				track = infantry
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = armor } } 
+				set_sub_doctrine = mobile_defense
+				add_mastery = {
+					amount = 150
+					sub_doctrine = mobile_defense
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
 			}
+			else_if = {
+				limit = {
+					has_doctrine = mobile_defense
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = mobile_defense
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = armor
+				}		
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}		
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_semyon_timoshenko = { 
 				promote_leader = yes 
 			}
@@ -5181,10 +5353,44 @@
 				days = 720
 				grand_doctrine = superior_firepower
 			}
-			add_mastery = {
-				amount = 150
-				track = infantry
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = armor } } 
+				set_sub_doctrine = tank_destroyer_force
+				add_mastery = {
+					amount = 150
+					sub_doctrine = tank_destroyer_force
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
 			}
+			else_if = {
+				limit = {
+					has_doctrine = tank_destroyer_force
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = tank_destroyer_force
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = infantry
+				}		
+				add_mastery = {
+					amount = 50
+					track = armor
+				}		
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_aleksandr_yegorov = { 
 				promote_leader = yes 
 				clr_character_flag = SOV_exiled_flag 
@@ -5266,10 +5472,43 @@
 				days = 720
 				grand_doctrine = superior_firepower
 			}
-			add_mastery = {
-				amount = 150
-				track = infantry
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = combat_support } } 
+				set_sub_doctrine = siege_artillery
+				add_mastery = {
+					amount = 150
+					sub_doctrine = siege_artillery
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}
 			}
+			else_if = {
+				limit = {
+					has_doctrine = siege_artillery
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = siege_artillery
+				}
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = combat_support
+				}		
+				add_mastery = {
+					amount = 50
+					track = infantry
+				}		
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_grigory_kulik = { 
 				promote_leader = yes 
 			}
@@ -5392,11 +5631,43 @@
 				days = 720
 				grand_doctrine = mass_assault
 			}
-			add_mastery = {
-				amount = 150
-				track = infantry
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = armor } } 
+				set_sub_doctrine = streamlined_deployment
+				add_mastery = {
+					amount = 150
+					sub_doctrine = streamlined_deployment
+				}
+				add_mastery = {
+					amount = 50
+					track = operations
+				}
 			}
-
+			else_if = {
+				limit = {
+					has_doctrine = streamlined_deployment
+				}
+				add_mastery = {
+					amount = 150
+					sub_doctrine = streamlined_deployment
+				}
+				add_mastery = {
+					amount = 50
+					track = operations
+				}	
+			} else = {
+				add_mastery = {
+					amount = 100
+					track = armor
+				}		
+				add_mastery = {
+					amount = 50
+					track = operations
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_vasily_blyukher = { 
 				clr_character_flag = SOV_exiled_flag
 			}
@@ -5535,9 +5806,29 @@
 				days = 720
 				grand_doctrine = grand_battleplan
 			}
-			add_mastery = {
-				amount = 150
-				track = infantry
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_grant_doctrine2_tt
+			if = { 
+				limit = { NOT = { has_subdoctrine_in_track = infantry } } 
+				set_sub_doctrine = mounted_infantry
+				add_mastery = {
+					amount = 200
+					sub_doctrine = mounted_infantry
+				}
+			}
+			else_if = {
+				limit = {
+					has_doctrine = mounted_infantry
+				}
+				add_mastery = {
+					amount = 200
+					sub_doctrine = mounted_infantry
+				}
+			} else = {
+				add_mastery = {
+					amount = 150
+					track = infantry
+				}		
 			}
 		}
 	}
