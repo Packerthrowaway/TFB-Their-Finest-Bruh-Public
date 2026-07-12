@@ -485,8 +485,8 @@ NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_BASE = 200                   -- s
 NDefines.NNavy.NAVAL_COMBAT_AIR_SCREEN_TARGET_SCALE = 5
 NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 100
 NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 600
-NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCALE = 3                         -- how much score factor from low health (scales between 0->this number)
-NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCALE = 4                           -- how much score factor from low AA guns (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 3                         -- how much score factor from low health (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 4                           -- how much score factor from low AA guns (scales between 0->this number)
 
 NDefines.NNavy.NAVAL_COMBAT_PLANE_MIN_STACKING_PENALTY = 200
 NDefines.NNavy.NAVAL_COMBAT_PLANE_STACKING_PENALTY_EFFECT = 0.001				-- Each plane above the optimal amount decreases the amount of airplanes being able to takeoff by such %. Subject to diminishing returns
