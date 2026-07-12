@@ -1598,19 +1598,19 @@ focus_tree = {
 		y = 1
 		relative_position_id = MON_armour
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 27
 		}
 
 		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = MONgaria
-				cost_reduction = 0.40
-				uses = 3
-				category = land_doctrine
-			}
+			# add_doctrine_cost_reduction = {
+			# 	name = MONgaria
+			# 	cost_reduction = 0.40
+			# 	uses = 3
+			# 	category = land_doctrine
+			# }
 			add_mastery_bonus = {
 				name = doc_bonus
 				bonus = 0.1
@@ -1721,5 +1721,126 @@ focus_tree = {
 			show_ideas_tooltip = MON_buyannmeh
 		}
 	}
+
+	focus = {
+		id = MON_soviet_doctrine
+		icon = GFX_focus_NOR_moscows_education_centers
+		prerequisite = { focus = MON_tactical_innovations }
+		x = 0
+		y = 1
+		relative_position_id = MON_tactical_innovations
+
+		cost = 5
+
+		available = {
+			SOV = { 
+				OR = {
+					has_war_with = GER
+					has_war_with = JAP
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 27
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = MON_soviet_doctrine_tt
+			# Will grant 50 mastery for every mastery level the soviets have in their doctrine track
+			custom_effect_tooltip = generic_skip_one_line_tt
+			# Army
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = infantry } } } add_mastery = { amount = 250 track = infantry } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = infantry } } } add_mastery = { amount = 200 track = infantry } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = infantry } } } add_mastery = { amount = 150 track = infantry } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = infantry } } } add_mastery = { amount = 100 track = infantry } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = infantry } } } add_mastery = { amount = 50 track = infantry } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = combat_support } } } add_mastery = { amount = 250 track = combat_support } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = combat_support } } } add_mastery = { amount = 200 track = combat_support } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = combat_support } } } add_mastery = { amount = 150 track = combat_support } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = combat_support } } } add_mastery = { amount = 100 track = combat_support } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = combat_support } } } add_mastery = { amount = 50 track = combat_support } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = armor } } } add_mastery = { amount = 250 track = armor } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = armor } } } add_mastery = { amount = 200 track = armor } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = armor } } } add_mastery = { amount = 150 track = armor } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = armor } } } add_mastery = { amount = 100 track = armor } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = armor } } } add_mastery = { amount = 50 track = armor } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = operations } } } add_mastery = { amount = 250 track = operations } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = operations } } } add_mastery = { amount = 200 track = operations } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = operations } } } add_mastery = { amount = 150 track = operations } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = operations } } } add_mastery = { amount = 100 track = operations } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = operations } } } add_mastery = { amount = 50 track = operations } }
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+            # Navy
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = submarines } } } add_mastery = { amount = 250 track = submarines } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = submarines } } } add_mastery = { amount = 200 track = submarines } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = submarines } } } add_mastery = { amount = 150 track = submarines } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = submarines } } } add_mastery = { amount = 100 track = submarines } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = submarines } } } add_mastery = { amount = 50 track = submarines } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = screens } } } add_mastery = { amount = 250 track = screens } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = screens } } } add_mastery = { amount = 200 track = screens } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = screens } } } add_mastery = { amount = 150 track = screens } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = screens } } } add_mastery = { amount = 100 track = screens } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = screens } } } add_mastery = { amount = 50 track = screens } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = carriers } } } add_mastery = { amount = 250 track = carriers } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = carriers } } } add_mastery = { amount = 200 track = carriers } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = carriers } } } add_mastery = { amount = 150 track = carriers } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = carriers } } } add_mastery = { amount = 100 track = carriers } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = carriers } } } add_mastery = { amount = 50 track = carriers } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = capital_ships } } } add_mastery = { amount = 250 track = capital_ships } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = capital_ships } } } add_mastery = { amount = 200 track = capital_ships } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = capital_ships } } } add_mastery = { amount = 150 track = capital_ships } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = capital_ships } } } add_mastery = { amount = 100 track = capital_ships } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = capital_ships } } } add_mastery = { amount = 50 track = capital_ships } }
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+            # Air
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = fighter_aircraft } } } add_mastery = { amount = 250 track = fighter_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = fighter_aircraft } } } add_mastery = { amount = 200 track = fighter_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = fighter_aircraft } } } add_mastery = { amount = 150 track = fighter_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = fighter_aircraft } } } add_mastery = { amount = 100 track = fighter_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = fighter_aircraft } } } add_mastery = { amount = 50 track = fighter_aircraft } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = strike_aircraft } } } add_mastery = { amount = 250 track = strike_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = strike_aircraft } } } add_mastery = { amount = 200 track = strike_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = strike_aircraft } } } add_mastery = { amount = 150 track = strike_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = strike_aircraft } } } add_mastery = { amount = 100 track = strike_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = strike_aircraft } } } add_mastery = { amount = 50 track = strike_aircraft } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = medium_aircraft } } } add_mastery = { amount = 250 track = medium_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = medium_aircraft } } } add_mastery = { amount = 200 track = medium_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = medium_aircraft } } } add_mastery = { amount = 150 track = medium_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = medium_aircraft } } } add_mastery = { amount = 100 track = medium_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = medium_aircraft } } } add_mastery = { amount = 50 track = medium_aircraft } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = heavy_aircraft } } } add_mastery = { amount = 250 track = heavy_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = heavy_aircraft } } } add_mastery = { amount = 200 track = heavy_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = heavy_aircraft } } } add_mastery = { amount = 150 track = heavy_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = heavy_aircraft } } } add_mastery = { amount = 100 track = heavy_aircraft } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = heavy_aircraft } } } add_mastery = { amount = 50 track = heavy_aircraft } }
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+            # Special Forces
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = special_forces_first } } } add_mastery = { amount = 250 track = special_forces_first } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = special_forces_first } } } add_mastery = { amount = 200 track = special_forces_first } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = special_forces_first } } } add_mastery = { amount = 150 track = special_forces_first } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = special_forces_first } } } add_mastery = { amount = 100 track = special_forces_first } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = special_forces_first } } } add_mastery = { amount = 50 track = special_forces_first } }
+
+            if = { limit = { SOV = { has_mastery = { amount = 500 track = special_forces_second } } } add_mastery = { amount = 250 track = special_forces_second } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 400 track = special_forces_second } } } add_mastery = { amount = 200 track = special_forces_second } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 300 track = special_forces_second } } } add_mastery = { amount = 150 track = special_forces_second } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 200 track = special_forces_second } } } add_mastery = { amount = 100 track = special_forces_second } }
+            else_if = { limit = { SOV = { has_mastery = { amount = 100 track = special_forces_second } } } add_mastery = { amount = 50 track = special_forces_second } }
+		}
+	}
+	
 
 }		
