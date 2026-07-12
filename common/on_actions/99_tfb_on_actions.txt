@@ -2847,6 +2847,42 @@ on_actions = {
 					set_country_flag = { flag = SOV_enforced_fanaticism_in_progress_flag days = 14 value = 1 }
 					country_event = { id = SOV_auto_complete_focus.20 days = 14 }
 				}
+				if = { 
+					limit = { 
+						NOT = { has_completed_focus = SOV_defend_kiev } 
+						has_completed_focus = SOV_found_state_defense_committee 
+						OR = {
+							NOT = { controls_state = 201 }
+							NOT = { controls_state = 198 }
+							NOT = { controls_state = 203 }
+							NOT = { controls_state = 194 }
+						}
+						controls_state = 202
+						NOT = { has_country_flag = started_kiev }
+					}
+					set_country_flag = started_kiev
+					activate_shine_on_focus = SOV_defend_kiev
+					set_country_flag = { flag = SOV_defend_kiev_in_progress_flag days = 14 value = 1 }
+					country_event = { id = SOV_auto_complete_focus.21 days = 14 }
+				}
+				if = { 
+					limit = { 
+						NOT = { has_completed_focus = SOV_defend_crimea } 
+						has_completed_focus = SOV_found_state_defense_committee 
+						OR = {
+							NOT = { controls_state = 196 }
+							NOT = { controls_state = 200 }
+							NOT = { controls_state = 227 }
+							NOT = { controls_state = 234 }
+						}
+						controls_state = 137
+						NOT = { has_country_flag = started_crimea }
+					}
+					set_country_flag = started_crimea
+					activate_shine_on_focus = SOV_defend_crimea
+					set_country_flag = { flag = SOV_defend_crimea_in_progress_flag days = 14 value = 1 }
+					country_event = { id = SOV_auto_complete_focus.22 days = 14 }
+				}
 			}
 		}
 	}
