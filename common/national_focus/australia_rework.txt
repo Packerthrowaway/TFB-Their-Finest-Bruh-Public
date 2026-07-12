@@ -516,18 +516,44 @@ focus_tree = {
 
 			custom_effect_tooltip = ROM_potential_bonus_tt
 			custom_effect_tooltip = AST_has_completed_expand_our_role
-			effect_tooltip = {
-				mio:AST_evans_deakin_co_organization = {
-					complete_mio_trait = AST_mio_trait_cruise_group_evans
+			if = {
+				limit = {
+					has_dlc = "Thunder at Our Gates"
+				}
+				effect_tooltip = {
+					mio:AST_evan_deakin_and_company_organization = {
+						complete_mio_trait = AST_mio_trait_cruise_group_evans2
+					}
 				}
 			}
+			else = {
+				effect_tooltip = {
+					mio:AST_evans_deakin_co_organization = {
+						complete_mio_trait = AST_mio_trait_cruise_group_evans
+					}
+				}
+			}
+
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = AST_has_completed_ran_as_support
-			effect_tooltip = {
-				mio:AST_cockatoo_doe_organization = {
-					complete_mio_trait = AST_mio_trait_cruise_group_cockatoo
+			if = {
+				limit = {
+					has_dlc = "Thunder at Our Gates"
+				}
+				effect_tooltip = {
+					mio:AST_cockatoo_docks_organization = {
+						complete_mio_trait = AST_mio_trait_cruise_group_cockatoo2
+					}
 				}
 			}
+			else = {
+				effect_tooltip = {
+					mio:AST_cockatoo_doe_organization = {
+						complete_mio_trait = AST_mio_trait_cruise_group_cockatoo
+					}
+				}
+			}
+
 		}
 	}
 	
