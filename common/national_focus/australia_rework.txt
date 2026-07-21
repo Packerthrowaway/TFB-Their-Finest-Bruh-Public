@@ -3746,8 +3746,11 @@ focus_tree = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = tot_economic_mobilisation
 			custom_effect_tooltip = generic_skip_one_line_tt
-			activate_decision = women_in_the_workforce
-			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { NOT = { has_decision = women_in_the_workforce } }
+				activate_decision = women_in_the_workforce
+				custom_effect_tooltip = generic_skip_one_line_tt
+			}
 			custom_effect_tooltip = allows_service_by_requirement
 		}
 	}
