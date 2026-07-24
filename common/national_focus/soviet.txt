@@ -3539,8 +3539,6 @@
 		}
 
 		bypass_effect = {
-			
-
 			add_to_variable = { SOV_red_army_experience_gain_army_factor_var = 0.1 }
 			add_to_variable = { SOV_red_army_land_doctrine_cost_factor_var = -0.05 }
 		}
@@ -3549,6 +3547,7 @@
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			army_experience = 50
 			if = {
 				limit = { has_idea = SOV_modernisation_cav_1 }
 				swap_ideas = {
@@ -5038,6 +5037,19 @@
 			SOV_kliment_voroshilov = { 
 				promote_leader = yes 
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil27
+				}
+				cost = 7
+			}
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil34 SOV_mil42 SOV_mil43
+				}
+				cost = 14
+			}
 		}
 	}
 	
@@ -5155,6 +5167,25 @@
 				category = heavy_artillery
 			}
 			SOV_refresh_RG_cap_heavy = yes
+			custom_effect_tooltip = generic_skip_one_line_tt
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil27
+				}
+				cost = 7
+			}
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil34
+				}
+				cost = 14
+			}
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil42 SOV_mil43
+				}
+				cost = 21
+			}
 		}
 	}
 
@@ -5329,6 +5360,21 @@
 				add_unit_leader_trait = trait_head_red_army
 			}
 			SOV_refresh_RG_cap_light = yes
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil4 SOV_mil6 SOV_mil13 SOV_mil12
+				}
+				cost = 7
+			}
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil17 SOV_mil16 SOV_mil18
+				}
+				cost = 21
+			}
+
 		}
 	}
 
@@ -5406,6 +5452,14 @@
 			SOV_aleksandr_yegorov = { 
 				promote_leader = yes 
 				clr_character_flag = SOV_exiled_flag 
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil19 SOV_mil21 SOV_mil23 SOV_mil25 SOV_mil20 SOV_mil24
+				}
+				cost = 14
 			}
 		}
 	}
@@ -5523,6 +5577,20 @@
 			custom_effect_tooltip = generic_skip_one_line_tt
 			SOV_grigory_kulik = { 
 				promote_leader = yes 
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil4 SOV_mil6 SOV_mil13 SOV_mil12
+				}
+				cost = 7
+			}
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil17 SOV_mil16 SOV_mil18
+				}
+				cost = 14
 			}
 		}
 	}
@@ -6422,6 +6490,14 @@
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = available_military_high_command
 			show_ideas_tooltip = grigory_kulik
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil4 SOV_mil6 SOV_mil13 SOV_mil12 SOV_mil17 SOV_mil16 SOV_mil18
+				}
+				cost = 7
+			}
 		}
 	}
 
@@ -6493,6 +6569,14 @@
 			#custom_effect_tooltip = army_chief_defensive_1
 			custom_effect_tooltip = available_chief_of_army
 			show_ideas_tooltip = SOV_aleksandr_yegorov
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil19 SOV_mil21 SOV_mil23 SOV_mil25 SOV_mil20 SOV_mil24
+				}
+				cost = 7
+			}
 		}
 	}
 
@@ -6563,6 +6647,13 @@
 					#promote_leader = yes 
 					add_unit_leader_trait = trait_head_red_army
 				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			reduce_focus_completion_cost = {
+				focus = {
+					SOV_mil27 SOV_mil34 SOV_mil42 SOV_mil43
+				}
+				cost = 7
 			}
 		}
 	}
@@ -10044,13 +10135,13 @@
 			}
 			
 			has_stability > 0.9
-			date > 1941.1.1
+			date > 1941.8.1
 			has_war = no
 		}
 		
 		relative_position_id = SOV_heavy_mastery_of_production
 		
-		cost = 10
+		cost = 4
 		
 		completion_reward = {		
 
@@ -17043,18 +17134,18 @@
 		}
 
 		completion_reward = {
-			custom_effect_tooltip = SOV_generic_modify_red_army_tt
+			#custom_effect_tooltip = SOV_generic_modify_red_army_tt
 
 			# custom_effect_tooltip = SOV_red_army_land_doctrine_cost_factor_-10_tt
 			# add_to_variable = { SOV_red_army_land_doctrine_cost_factor_var = -0.1 }
 			add_mastery_bonus = {
 				name = SOV_new_doctrine
-				bonus = 0.2
+				bonus = 0.1
 				days = 360
 				folder = land
 			}
 			add_mastery = {
-				amount = 100
+				amount = 50
 				folder = land
 			}
 		}
@@ -17097,10 +17188,10 @@
 		}
 
 		completion_reward = {
-			custom_effect_tooltip = SOV_generic_modify_red_army_tt
+			# custom_effect_tooltip = SOV_generic_modify_red_army_tt
 
-			custom_effect_tooltip = SOV_red_army_land_doctrine_cost_factor_-5_tt
-			add_to_variable = { SOV_red_army_land_doctrine_cost_factor_var = -0.05 }
+			# custom_effect_tooltip = SOV_red_army_land_doctrine_cost_factor_-5_tt
+			# add_to_variable = { SOV_red_army_land_doctrine_cost_factor_var = -0.05 }
 
 			# add_doctrine_cost_reduction = {
 			# 	name = doc_bonus
@@ -17110,12 +17201,12 @@
 			# }
 			add_mastery_bonus = {
 				name = SOV_learn_from_our_losses
-				bonus = 0.4
+				bonus = 0.2
 				days = 360
 				folder = land
 			}
 			add_mastery = {
-				amount = 200
+				amount = 100
 				folder = land
 			}
 		}
@@ -17171,12 +17262,12 @@
 			# }
 			add_mastery_bonus = {
 				name = SOV_learn_from_losses_2
-				bonus = 0.6
+				bonus = 0.3
 				days = 360
 				folder = land
 			}
 			add_mastery = {
-				amount = 300
+				amount = 150
 				folder = land
 			}
 		}
