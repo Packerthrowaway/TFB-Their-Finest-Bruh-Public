@@ -266,6 +266,8 @@ NDefines.NMilitary.LOW_ORG_FOR_ATTACK = 0.5                      -- at what org 
 NDefines.NMilitary.PLANNING_DECAY = 0.02
 NDefines.NMilitary.PLAYER_ORDER_PLANNING_DECAY = 0.1				-- Amount of planning lost due to player manual order
 NDefines.NMilitary.PLANNING_MAX = 0.2                           	-- can get more from techs
+NDefines.NMilitary.NAVAL_INVASION_PLANNING_BONUS_MALUS = -1		-- Multiplicative malus applied on top of the planning bonus gain for naval invasions. With deployable generals the HQ-distance comms scaling is the primary "no HQ / far HQ" malus; this define is kept at 0 by default and can be tuned by designers if a flat malus is desired.
+
 NDefines.NMilitary.CIVILWAR_ORGANIZATION_FACTOR = 0.4			  	-- Multiplier of org for both sides when civilwar.	
 NDefines.NMilitary.PLAN_MIN_AUTOMATED_EMPTY_POCKET_SIZE = 5		-- The battle plan system will only automatically attack provinces in pockets that has no resistance and are no bigger than these many provinces
 NDefines.NMilitary.PLAN_SPREAD_ATTACK_WEIGHT = 5.0				-- The higher the value the less it should crowd provinces with multiple attacks.
