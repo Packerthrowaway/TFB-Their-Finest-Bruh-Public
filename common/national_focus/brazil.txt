@@ -2573,13 +2573,20 @@ focus_tree = {
 		}
 		available = {
 			is_subject = no
-			USA = {
-				has_war = yes
-				is_in_faction = yes
-				any_allied_country = {
-					is_major = yes 
+			OR = {
+				date > 1941.1.1
+				USA = {
+					has_war = yes
+					#is_in_faction = yes
+					# any_allied_country = {
+					# 	is_major = yes 
+					# }
+				}
+				JAP = {
+					has_war_with = ENG
 				}
 			}
+
 		}
 
 		search_filters = { FOCUS_FILTER_HISTORICAL }
