@@ -101,14 +101,14 @@ last_stand = {
         werwolf_groups = {
         #1
             resistance_damage_to_garrison_on_our_occupied_states = 0.25
-            pocket_penalty = -0.05
-            out_of_supply_factor = -0.05
+            pocket_penalty = -0.1
+            out_of_supply_factor = -0.1
         }
 
         pocket_consolidation = {
         #2
-            category_militia = {
-                defense = 0.075
+            category_light_infantry = {
+                defense = 0.1
                 breakthrough = -0.1
             }
         }
@@ -127,6 +127,7 @@ last_stand = {
             category_army = {
                 soft_attack = 0.05
             }
+            army_core_defence_factor = 0.05
         }
     }
 }
@@ -265,9 +266,9 @@ grand_assault = {
     }
 
     # EFFECTS
-    max_planning = 0.1
+    max_planning = 0.05
     category_army = {
-        breakthrough = 0.05
+        breakthrough = 0.03
         soft_attack = 0.03
     }
 
@@ -687,19 +688,19 @@ guerilla_war = {
     # EFFECTS
     enable_tactic = tactic_guerrilla_tactics
     irregular_infantry = {
-        soft_attack = 0.03
+        soft_attack = 0.05
         defense = 0.1
     }
     militia = {
-        soft_attack = 0.03
+        soft_attack = 0.05
         defense = 0.1
     }
     garrison = {
-        soft_attack = 0.03
+        soft_attack = 0.05
         defense = 0.1
     }
     penal_battalion = {
-        soft_attack = 0.03
+        soft_attack = 0.05
         defense = 0.1
     }
 
@@ -744,6 +745,10 @@ guerilla_war = {
                     defence = 0.1
                 }
                 urban = {
+                    attack = 0.075
+                    defence = 0.075
+                }
+                town = {
                     attack = 0.05
                     defence = 0.05
                 }
@@ -754,6 +759,10 @@ guerilla_war = {
                     defence = 0.1
                 }
                 urban = {
+                    attack = 0.075
+                    defence = 0.075
+                }
+                town = {
                     attack = 0.05
                     defence = 0.05
                 }
@@ -764,6 +773,10 @@ guerilla_war = {
                     defence = 0.1
                 }
                 urban = {
+                    attack = 0.075
+                    defence = 0.075
+                }
+                town = {
                     attack = 0.05
                     defence = 0.05
                 }
@@ -774,6 +787,10 @@ guerilla_war = {
                     defence = 0.1
                 }
                 urban = {
+                    attack = 0.075
+                    defence = 0.075
+                }
+                town = {
                     attack = 0.05
                     defence = 0.05
                 }
@@ -932,7 +949,7 @@ expeditionary_warfare = {
     send_volunteer_factor = 0.125
     send_volunteers_tension = -0.05
     special_forces_training_time_factor = -0.25
-    special_forces_cap_flat = 11
+    special_forces_cap_flat = 22
 
     ai_will_do = { }
 
@@ -959,6 +976,9 @@ expeditionary_warfare = {
         shore_fire_control_parties = {
         #3
             shore_bombardment_bonus = 0.25
+			category_marines_and_amphibious = {
+				breakthrough = 0.05
+			}
         }
         breakout_emphasis = {
         #4
@@ -1020,6 +1040,11 @@ dispersed_operations = {
         #2
             logistics_company = {
                 max_organisation = 2
+                battalion_mult = {
+                    category = category_all_infantry
+                    max_strength = 1
+                    add = yes
+                }
             }
 			no_supply_grace = 24
         }

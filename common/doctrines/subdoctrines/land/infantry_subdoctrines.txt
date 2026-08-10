@@ -45,10 +45,13 @@ mobile_infantry = {
                 breakthrough = 0.10
                 maximum_speed = 0.05
             }
+            category_vehicle_infantry = {
+                maximum_speed = 0.05
+            }
         }
         combined_arms_planning = {
             category_all_infantry = {
-                max_organisation = 2
+                max_organisation = 3
                 maximum_speed = 0.05
             }
         }
@@ -60,7 +63,7 @@ mobile_infantry = {
         delegated_authority = {
             category_vehicle_infantry = {
                 default_morale = 0.05
-                soft_attack = 0.03
+                soft_attack = 0.05
             }
         }
         
@@ -130,7 +133,7 @@ defensive_postures = {
         }
         field_emplacements = {
             category_all_infantry = {
-                soft_attack = 0.03
+                soft_attack = 0.05
             }
         }
         field_construction_training = {
@@ -185,25 +188,25 @@ large_unit_tactics = {
     unit_artillery_brigade_design_cost_factor = -1
     unit_anti_tank_brigade_design_cost_factor = -1
     category_light_infantry = {
-        combat_width = -0.2
+        combat_width = -0.1
     }
     category_artillery = {
-        combat_width = -0.2
+        combat_width = -0.1
     }
     category_anti_tank = {
-        combat_width = -0.2
+        combat_width = -0.1
     }
     category_tank_destroyers = {
-        combat_width = -0.2
+        combat_width = -0.1
     }
     category_regimental_support_battalions_combat_width = {
-        combat_width = 0.2
+        combat_width = 0.1
     }
     motorized = {
-        combat_width = -0.2
+        combat_width = -0.1
     }
     mechanized = {
-        combat_width = -0.2
+        combat_width = -0.1
     }
 
     
@@ -408,7 +411,7 @@ mounted_infantry = {
         }
     }
     category_cavalry = {
-        soft_attack = 0.03
+        soft_attack = 0.05
         breakthrough = 0.05
     }
 
@@ -425,11 +428,11 @@ mounted_infantry = {
         }
         mounted_skirmish_groups = {
             recon = {
-               max_organisation = 3
-                soft_attack = 0.08
+                max_organisation = 3
+                soft_attack = 0.1
                 battalion_mult = {
                     category = category_light_infantry
-                    soft_attack = 0.03
+                    soft_attack = 0.5
                     defense = 0.05
                 }
                 battalion_mult = {
@@ -465,7 +468,7 @@ mounted_infantry = {
         beasts_of_war = {
             category_cavalry = {
                 maximum_speed = 0.25 
-                max_strength = 0.75 
+                max_strength = 1
             }
             recon = {
                 maximum_speed = 0.25
@@ -729,7 +732,10 @@ peoples_war = {
     xp_type = army
 
     available = {
-        has_government = communism
+        OR = {
+            has_government = communism
+            tag = CHI
+        }
     }
     visible = {
         has_dlc = "No Compromise, No Surrender"
@@ -763,7 +769,7 @@ peoples_war = {
             mastery = 50
             category_militia = {
                 defense = 0.05
-                supply_consumption = -0.04
+                supply_consumption = -0.05
             }
             category_light_infantry = {
                 max_organisation = 3
@@ -795,6 +801,13 @@ peoples_war = {
             category_light_infantry = {
                 soft_attack = 0.05
             }
+        }
+        werwolf_groups = {
+        #5
+            mastery = 50
+            resistance_damage_to_garrison_on_our_occupied_states = 0.1
+            pocket_penalty = -0.05
+            out_of_supply_factor = -0.05
         }
     }
 }
