@@ -73,6 +73,7 @@ BUL_befriend_GER = {
 					is_subject = yes
 				}
 			}
+			YUG = { has_completed_focus = YUG_yugoslavia_first }
 		}
 	}
 
@@ -121,6 +122,7 @@ BUL_befriend_ITA = {
 					is_subject = yes
 				}
 			}
+			YUG = { has_completed_focus = YUG_yugoslavia_first }
 		}
 	}
 
@@ -291,6 +293,7 @@ BUL_befriend_YUG = {
 					is_subject = yes
 				}
 			}
+			YUG = { has_completed_focus = YUG_yugoslavia_first }
 		}
 	}
 
@@ -469,5 +472,60 @@ BUL_reject_bulgarian_aggressive_ai = {
 		id = BUL
 		target = join_allies
 		value = -99999
+	}
+}
+
+BUL_player_yugo = {
+	allowed = {
+		original_tag = BUL
+		has_dlc = "Battle for the Bosporus"
+	}
+	enable = {
+		YUG = { has_completed_focus = YUG_yugoslavia_first }
+	}
+	abort = { always = no }
+
+	ai_strategy = {
+		type = befriend
+		id = GER
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = GER
+		value = -1000
+	}
+
+	ai_strategy = {
+		type = befriend
+		id = ITA
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = ITA
+		value = -1000
+	}
+
+	ai_strategy = {
+		type = befriend
+		id = HUN
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = HUN
+		value = -1000
+	}
+
+	ai_strategy = {
+		type = befriend
+		id = ROM
+		value = -1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = ROM
+		value = -1000
 	}
 }
