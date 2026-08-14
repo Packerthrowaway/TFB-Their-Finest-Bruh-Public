@@ -14094,8 +14094,9 @@ focus_tree = {
 		}
 
 		bypass = {
-			SIA = {
-				is_ally_with = ROOT
+			OR = {
+				SIA = {	is_ally_with = ROOT }
+				NOT = { country_exists = SIA}
 			}
 		}
 
@@ -14151,9 +14152,8 @@ focus_tree = {
 		}
 
 		bypass = {
-			SIA = {
-				has_war_with = ROOT
-			}
+			SIA = { has_war_with = ROOT }
+			NOT = { country_exists = SIA}
 		}
 
 		will_lead_to_war_with = SIA
