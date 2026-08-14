@@ -7522,7 +7522,7 @@
 			custom_effect_tooltip = generic_skip_one_line_tt
 			add_timed_idea = {
 				idea = SOV_restructure_society
-				days = 500
+				days = 365
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = SOV_more_decisions_generic_tt
@@ -7795,7 +7795,7 @@
             }
 			add_timed_idea = {
 				idea = SOV_restructure_society
-				days = 500
+				days = 365
 			}
 
 			custom_effect_tooltip = SOV_more_decisions_generic_tt
@@ -8649,6 +8649,16 @@
 			}
 			add_resource = {
 				type = oil
+				amount = 250
+				state = 232
+			}
+ 			add_resource = {
+				type = rubber
+				amount = 250
+				state = 229
+			}
+	 		add_resource = {
+				type = rubber
 				amount = 250
 				state = 232
 			}
@@ -10297,11 +10307,11 @@
 		}
 		
 		relative_position_id = SOV_heavy_productive_forces
-		cost = 5
+		cost = 3
 		completion_reward = {			
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-			custom_effect_tooltip = SOV_construction_speed_5_tt
-			add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = 0.05 }
+			# custom_effect_tooltip = SOV_construction_speed_5_tt
+			# add_to_variable = { SOV_command_economy_production_speed_buildings_factor_var = 0.05 }
 			custom_effect_tooltip = SOV_factories_in_state_2_tt
 			add_to_variable = { SOV_command_economy_global_building_slots_var = 2 }
 			custom_effect_tooltip = SOV_civ_to_mil_conversion_20_tt
@@ -10311,9 +10321,9 @@
 			
 			
 			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = SOV_increase_5_year_plan_5_tt 
+			custom_effect_tooltip = SOV_increase_5_year_plan_3_tt 
 			
-			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 5 }
+			add_to_variable = { var_SOV_second_5_year_plan_progress_bar_counter = 3 }
 			clamp_variable = {
 				var = var_SOV_second_5_year_plan_progress_bar_counter
 				max = 105
@@ -11104,8 +11114,8 @@
 		cost = 5
 		completion_reward = {			
 			custom_effect_tooltip = SOV_generic_modify_command_economy_tt
-			custom_effect_tooltip = SOV_factory_output_5_tt
-			add_to_variable = { SOV_command_economy_industrial_capacity_factory_var = 0.05 }
+			custom_effect_tooltip = SOV_factory_output_025_tt
+			add_to_variable = { SOV_command_economy_industrial_capacity_factory_var = 0.025 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 
 			custom_effect_tooltip = SOV_heavy_industrial_powerhouses_tt
@@ -12783,6 +12793,8 @@
 				bonus = 0.8
 				uses = 1
 				technology = art_radio1
+				technology = art_radio2
+				technology = art_radio3
 			}
 			set_variable = { global.khulik_artillery_date = global.date }
 		}
@@ -12846,6 +12858,8 @@
 				bonus = 0.8
 				uses = 1
 				technology = art_radio1
+				technology = art_radio2
+				technology = art_radio3
 			}
 		}
 	}
@@ -14857,6 +14871,9 @@
 				}
 			}
 
+			custom_effect_tooltip = generic_skip_one_line_tt
+			remove_ideas = home_of_revolution
+
 		}
 	}
 
@@ -14968,7 +14985,7 @@
 			add_to_variable = { SOV_red_army_supply_combat_penalties_on_core_factor_var = -0.15 }	
 
 			custom_effect_tooltip = SOV_red_army_out_of_supply_factor_var_-15_tt
-			add_to_variable = { SOV_army_force_out_of_supply_factor_var = -0.15 }
+			add_to_variable = { SOV_red_army_out_of_supply_factor_var = -0.15 }
 		}
 	}
 	
@@ -15993,7 +16010,7 @@
 				custom_override_tooltip = {
 					tooltip = {
 						localization_key = SOV_focus_will_auto_start_at_surrender_level_tt
-						PROGRESS = "25% Surrender Progress"
+						PROGRESS = "30% Surrender Progress"
 					}
 					always = no
 				}
@@ -16037,7 +16054,7 @@
 				custom_override_tooltip = {
 					tooltip = {
 						localization_key = SOV_focus_will_auto_start_at_surrender_level_tt
-						PROGRESS = "30% Surrender Progress"
+						PROGRESS = "35% Surrender Progress"
 					}
 					always = no
 				}
@@ -16084,7 +16101,7 @@
 				custom_override_tooltip = {
 					tooltip = {
 						localization_key = SOV_focus_will_auto_start_at_surrender_level_tt
-						PROGRESS = "35% Surrender Progress"
+						PROGRESS = "40% Surrender Progress"
 					}
 					always = no
 				}
@@ -16993,7 +17010,7 @@
 
 		relative_position_id = SOV_slacken_training_standarts
 		available = {
-			surrender_progress > 0.35
+			surrender_progress > 0.45
 		}
 		completion_reward = {
 			
@@ -17019,7 +17036,7 @@
 		relative_position_id = SOV_slacken_training_standarts
 
 		available = {
-			surrender_progress > 0.35
+			surrender_progress > 0.40
 		}
 
 		completion_reward = {
@@ -17042,8 +17059,32 @@
 		y = 1
 		relative_position_id = SOV_reorganize_red_army
 		cost = 2
+		overlay = GFX_focus_fast_overlay_generic_clock
 
-
+		available = {
+			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
+				limit = {
+					has_country_flag = SOV_guards_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = 2 } #For tooltip purposes
+				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = SOV_focus_in_progress_tt
+						FLAG_DAYS = [?SOV_guards_in_progress_flag:days]
+					}
+					always = no 
+				}
+			}
+			else = { #NOT BEEN WORKED ON (Just Explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = SOV_focus_will_auto_start_on_reorganize_finish_tt
+					}
+					always = no
+				}
+			}
+		}
 
 		completion_reward = {
 			custom_effect_tooltip = SOV_generic_modify_red_army_tt
@@ -17789,7 +17830,7 @@
 			
 			add_equipment_to_stockpile = {
 				type = fighter_equipment_1
-				amount = 400
+				amount = 300
 				producer = SOV
 			}
 
@@ -17813,15 +17854,15 @@
 
 			252 = {
 				create_unit = { 
-					division = "division_template = \"Tank Division\" start_experience_factor = 0.40 start_manpower_factor = 0.80 force_equipment_variants = { sov_medium_tank_chassis_t34 = { owner = \"SOV\" version_name = \"T34 (L-11)\" } } force_equipment_variants = { sov_heavy_tank_chassis_kv1 = { owner = \"SOV\" version_name = \"KV-1 (L-11)\" } } force_equipment_variants = { gw_armored_car_chassis = { owner = \"SOV\" version_name = \"BA-11\" } } force_equipment_variants = { sov_light_tank_chassis_bt7 = { owner = \"SOV\" version_name = \"BT-7\" } }" 
+					division = "division_template = \"Tank Division\" start_experience_factor = 0.40 start_manpower_factor = 0.60 force_equipment_variants = { sov_medium_tank_chassis_t34 = { owner = \"SOV\" version_name = \"T34 (L-11)\" } } force_equipment_variants = { sov_heavy_tank_chassis_kv1 = { owner = \"SOV\" version_name = \"KV-1 (L-11)\" } } force_equipment_variants = { gw_armored_car_chassis = { owner = \"SOV\" version_name = \"BA-11\" } } force_equipment_variants = { sov_light_tank_chassis_bt7 = { owner = \"SOV\" version_name = \"BT-7\" } }" 
 					owner = SOV 
 				}
 				create_unit = { 
-					division = "division_template = \"Tank Division\" start_experience_factor = 0.40 start_manpower_factor = 0.80 force_equipment_variants = { sov_medium_tank_chassis_t34 = { owner = \"SOV\" version_name = \"T34 (L-11)\" } } force_equipment_variants = { sov_heavy_tank_chassis_kv1 = { owner = \"SOV\" version_name = \"KV-1 (L-11)\" } } force_equipment_variants = { gw_armored_car_chassis = { owner = \"SOV\" version_name = \"BA-11\" } } force_equipment_variants = { sov_light_tank_chassis_bt7 = { owner = \"SOV\" version_name = \"BT-7\" } }" 
+					division = "division_template = \"Tank Division\" start_experience_factor = 0.40 start_manpower_factor = 0.60 force_equipment_variants = { sov_medium_tank_chassis_t34 = { owner = \"SOV\" version_name = \"T34 (L-11)\" } } force_equipment_variants = { sov_heavy_tank_chassis_kv1 = { owner = \"SOV\" version_name = \"KV-1 (L-11)\" } } force_equipment_variants = { gw_armored_car_chassis = { owner = \"SOV\" version_name = \"BA-11\" } } force_equipment_variants = { sov_light_tank_chassis_bt7 = { owner = \"SOV\" version_name = \"BT-7\" } }" 
 					owner = SOV 
 				}
 				create_unit = { 
-					division = "division_template = \"Tank Division\" start_experience_factor = 0.40 start_manpower_factor = 0.80 force_equipment_variants = { sov_medium_tank_chassis_t34 = { owner = \"SOV\" version_name = \"T34 (L-11)\" } } force_equipment_variants = { sov_heavy_tank_chassis_kv1 = { owner = \"SOV\" version_name = \"KV-1 (L-11)\" } } force_equipment_variants = { gw_armored_car_chassis = { owner = \"SOV\" version_name = \"BA-11\" } } force_equipment_variants = { sov_light_tank_chassis_bt7 = { owner = \"SOV\" version_name = \"BT-7\" } }" 
+					division = "division_template = \"Tank Division\" start_experience_factor = 0.40 start_manpower_factor = 0.60 force_equipment_variants = { sov_medium_tank_chassis_t34 = { owner = \"SOV\" version_name = \"T34 (L-11)\" } } force_equipment_variants = { sov_heavy_tank_chassis_kv1 = { owner = \"SOV\" version_name = \"KV-1 (L-11)\" } } force_equipment_variants = { gw_armored_car_chassis = { owner = \"SOV\" version_name = \"BA-11\" } } force_equipment_variants = { sov_light_tank_chassis_bt7 = { owner = \"SOV\" version_name = \"BT-7\" } }" 
 					owner = SOV 
 				}
 			}

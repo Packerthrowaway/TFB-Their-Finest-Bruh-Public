@@ -2069,15 +2069,17 @@ SOV_tankograd_plant_organization = {
 
 		visible = {
 			IF = {
-				limit = { FROM = { original_tag = MON } } 
-				FROM = { has_completed_focus = SOV_army_04 }
+				limit = { FROM = { original_tag = SOV } }
+				FROM = {
+					has_completed_focus = SOV_army_voro
+				}
 			}
 		}
 		
 		available = {
-			FROM = {
-				OR = {
-					has_completed_focus = SOV_army_04
+			IF = {
+				limit = { FROM = { original_tag = SOV } }
+				FROM = {
 					has_completed_focus = SOV_army_voro
 				}
 			}
