@@ -1,10 +1,10 @@
 guiTypes = {
 
 	containerWindowType = {
-		name = "ger_autarky_ui_window"
+		name = "GER_Autarky_GUI"
 		orientation = lower_left
-		position = { x = 0 y = 0 }
-		size = { width = 600 height = 300 }
+		position = { x = 2500 y = 850 }
+		size = { width = 900 height = 600 }
 		clipping = no
 
 		#BACKGROUND
@@ -18,7 +18,7 @@ guiTypes = {
 		instantTextBoxType = {
 			name ="autarky_title_name"
 			orientation = center_up
-			position = { x = -280 y = 20 }
+			position = { x = -280 y = 15 }
 			font = "hoi_36header"
 			text = "GER_autarky_title_text"
 			format = center
@@ -26,165 +26,495 @@ guiTypes = {
 			maxHeight = 30
 		}
 
+
+		instantTextBoxType = {
+			name ="autarky_load_description"
+			orientation = center_up
+			position = { x = -150 y = 55 }
+			font = "hoi_24header"
+			context_aware_text = "[GetFactionResource]"
+			format = center
+			maxWidth = 350
+			maxHeight = 50
+		}
+
+		iconType = {
+			name = "GER_resource_progress_bar_red"
+			spriteType = "GFX_GER_full_autarky_not_met_progress_bar"
+			position = { x = 50 y = 85 }
+		}
+		iconType = {
+			name = "GER_resource_progress_bar"
+			spriteType = "GFX_GER_full_autarky_met_progress_bar"
+			position = { x = 50 y = 85 }
+		}
+
+		instantTextBoxType = {
+			name ="cg_desc"
+			orientation = center_up
+			position = { x = -430 y = 130 }
+			font = "hoi_16mbs"
+			text = "GER_cg_desc"
+			format = center
+			maxWidth = 380
+			maxHeight = 100
+		}
+
+		instantTextBoxType = {
+			name ="cg_ticking_desc"
+			orientation = center_up
+			position = { x = -420 y = 200 }
+			font = "hoi_16mbs"
+			text = "GER_cg_eco"
+			pdx_tooltip = GER_cg_eco_desc
+			format = left
+			maxWidth = 150
+			maxHeight = 100
+		}
+
+		instantTextBoxType = {
+			name ="cg_desc_curr"
+			orientation = center_up
+			position = { x = -250 y = 200 }
+			font = "hoi_16mbs"
+			text = "GER_cg_curr_desc"
+			pdx_tooltip = GER_cg_prev_desc
+			format = center
+			maxWidth = 100
+			maxHeight = 100
+		}
+
+		instantTextBoxType = {
+			name ="factory_desc_ger"
+			orientation = center_up
+			position = { x = 20 y = 130 }
+			font = "hoi_16mbs"
+			text = "GER_factory1_desc"
+			format = center
+			maxWidth = 400
+			maxHeight = 100
+		}
+
+		instantTextBoxType = {
+			name ="factory_desc_curr"
+			orientation = center_up
+			position = { x = 120 y = 195 }
+			font = "hoi_16mbs"
+			text = "GER_factory3_desc"
+			format = center
+			maxWidth = 250
+			maxHeight = 100
+		}
+
+
+		iconType = {
+			name = "autarky_bonus"
+			position = { x=415 y=190 }
+			spriteType = "GFX_focus_GER_autarky_achieved_gray"
+			scale=0.75
+			context_aware_tooltip = GER_autarky_bonus_desc
+		}
+
+		iconType = {
+			name = "autarky_bonus1"
+			position = { x=415 y=190 }
+			spriteType = "GFX_focus_GER_autarky_achieved"
+			scale=0.75
+			context_aware_tooltip = GER_autarky_bonus_desc
+		}
+
+		iconType = {
+			name = "steel_icon"
+			position = { x=20 y=255 }
+			spriteType = "GFX_resources_strip"
+			frame = 5
+			scale=1
+			alwaystransparent=yes
+		}
+		iconType = {
+			name = "GER_steel_progress_bar_red"
+			spriteType = "GFX_GER_steel_autarky_not_met_progress_bar"
+			position = { x = 50 y = 260 }
+		}
+		iconType = {
+			name = "GER_steel_progress_bar"
+			spriteType = "GFX_GER_steel_autarky_met_progress_bar"
+			position = { x = 50 y = 260 }
+		}
+
+		iconType = {
+			name = "aluminium_icon"
+			position = { x=20 y=280 }
+			spriteType = "GFX_resources_strip"
+			frame = 2
+			scale=1
+			alwaystransparent=yes
+		}
+		iconType = {
+			name = "GER_aluminium_progress_bar_red"
+			spriteType = "GFX_GER_steel_autarky_not_met_progress_bar"
+			position = { x = 50 y = 285 }
+		}
+		iconType = {
+			name = "GER_aluminium_progress_bar"
+			spriteType = "GFX_GER_steel_autarky_met_progress_bar"
+			position = { x = 50 y = 285 }
+		}
+
+		iconType = {
+			name = "tungsten_icon"
+			position = { x=20 y=305 }
+			spriteType = "GFX_resources_strip"
+			frame = 4
+			scale=1
+			alwaystransparent=yes
+		}
+		iconType = {
+			name = "GER_tungsten_progress_bar_red"
+			spriteType = "GFX_GER_steel_autarky_not_met_progress_bar"
+			position = { x = 50 y = 310 }
+		}
+		iconType = {
+			name = "GER_tungsten_progress_bar"
+			spriteType = "GFX_GER_steel_autarky_met_progress_bar"
+			position = { x = 50 y = 310 }
+		}
+
+		iconType = {
+			name = "chromium_icon"
+			position = { x=20 y=330 }
+			spriteType = "GFX_resources_strip"
+			frame = 6
+			scale=1
+			alwaystransparent=yes
+		}
+		iconType = {
+			name = "GER_chromium_progress_bar_red"
+			spriteType = "GFX_GER_steel_autarky_not_met_progress_bar"
+			position = { x = 50 y = 335 }
+		}
+		iconType = {
+			name = "GER_chromium_progress_bar"
+			spriteType = "GFX_GER_steel_autarky_met_progress_bar"
+			position = { x = 50 y = 335 }
+		}
+
+		iconType = {
+			name = "oil_icon"
+			position = { x=20 y=355 }
+			spriteType = "GFX_resources_strip"
+			frame = 1
+			scale=1
+			alwaystransparent=yes
+		}
+		iconType = {
+			name = "GER_oil_progress_bar_red"
+			spriteType = "GFX_GER_steel_autarky_not_met_progress_bar"
+			position = { x = 50 y = 360 }
+		}
+		iconType = {
+			name = "GER_oil_progress_bar"
+			spriteType = "GFX_GER_steel_autarky_met_progress_bar"
+			position = { x = 50 y = 360 }
+		}
+		iconType = {
+			name = "coal_icon"
+			position = { x=20 y=380 }
+			spriteType = "GFX_resources_strip"
+			frame = 7
+			scale=1
+			alwaystransparent=yes
+		}
+		iconType = {
+			name = "GER_coal_progress_bar_red"
+			spriteType = "GFX_GER_steel_autarky_not_met_progress_bar"
+			position = { x = 50 y = 385 }
+		}
+		iconType = {
+			name = "GER_coal_progress_bar"
+			spriteType = "GFX_GER_steel_autarky_met_progress_bar"
+			position = { x = 50 y = 385 }
+		}
+
+		iconType = {
+			name = "rubber_icon"
+			position = { x=20 y=405 }
+			spriteType = "GFX_resources_strip"
+			frame = 3
+			scale=1
+			alwaystransparent=yes
+		}
+		iconType = {
+			name = "GER_rubber_progress_bar_red"
+			spriteType = "GFX_GER_steel_autarky_not_met_progress_bar"
+			position = { x = 50 y = 3410 }
+		}
+		iconType = {
+			name = "GER_rubber_progress_bar"
+			spriteType = "GFX_GER_steel_autarky_met_progress_bar"
+			position = { x = 50 y = 410 }
+		}
+
+		iconType = {
+			name = "GFX_autarky_bar"
+			spriteType = "GFX_autarky_bar"
+			position = { x = 560 y = 265 }
+			scale = 0.8
+		}
+
+
+		instantTextBoxType = {
+			name ="resource_count_title"
+			orientation = center_up
+			position = { x = 300 y = 240 }
+			font = "hoi_16mbs"
+			context_aware_text = "Resource Count"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_steel"
+			orientation = center_up
+			position = { x = 300 y = 261 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionSteel]"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_aluminium"
+			orientation = center_up
+			position = { x = 300 y = 286 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionAluminium]"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_tungsten"
+			orientation = center_up
+			position = { x = 300 y = 311 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionTungsten]"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_chromium"
+			orientation = center_up
+			position = { x = 300 y = 336 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionChromium]"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_oil"
+			orientation = center_up
+			position = { x = 300 y = 361 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionOil]"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_coal"
+			orientation = center_up
+			position = { x = 300 y = 385 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionCoal]"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_rubber"
+			orientation = center_up
+			position = { x = 300 y = 411 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionRubber]"
+			format = right
+			maxWidth = 110
+			maxHeight = 50
+		}
+
+		# % Achieved
+		instantTextBoxType = {
+			name ="resource_count_title_percent"
+			orientation = center_up
+			position = { x = 210 y = 240 }
+			font = "hoi_16mbs"
+			context_aware_text = "% Achieved"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_steel_percent"
+			orientation = center_up
+			position = { x = 210 y = 260 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionSteelPercent]"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_aluminium_percent"
+			orientation = center_up
+			position = { x = 210 y = 285 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionAluminiumPercent]"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_tungsten_percent"
+			orientation = center_up
+			position = { x = 210 y = 310 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionTungstenPercent]"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_chromium_percent"
+			orientation = center_up
+			position = { x = 210 y = 335 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionChromiumPercent]"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_oil_percent"
+			orientation = center_up
+			position = { x = 210 y = 360 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionOilPercent]"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_coal_percent"
+			orientation = center_up
+			position = { x = 210 y = 385 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionCoalPercent]"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
+		instantTextBoxType = {
+			name ="resource_count_ger_rubber_percent"
+			orientation = center_up
+			position = { x = 210 y = 410 }
+			font = "hoi_16mbs"
+			context_aware_text = "[GetFactionRubberPercent]"
+			format = center
+			maxWidth = 80
+			maxHeight = 50
+		}
+
 		#Statement Text
 		instantTextBoxType = {
 			name ="autarky_description"
 			orientation = center_up
-			position = { x = -280 y = 230 }
-			font = "hoi_16mbs"
+			position = { x = -430 y = 440 }
+			font = "hoi_18mbs"
 			text = "GER_autarky_description_text"
 			format = center
-			maxWidth = 550
+			maxWidth = 850
 			maxHeight = 50
 		}
 
-		# Steel
-		instantTextBoxType = {
-			name ="steel_text"
-			orientation = upper_left
-			position = { x = 20 y = 65 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetGermanSteel]"
-			context_aware_tooltip = "Counts all Steel owned by Germany, Vichy, and any Germany Puppets, not counting any resources in Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
-		}
-		# Aluminium
-		instantTextBoxType = {
-			name ="aluminium_text"
-			orientation = upper_left
-			position = { x = 20 y = 115 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetGermanAluminium]"
-			context_aware_tooltip = "Counts all Aluminium owned by Germany, Vichy, and any Germany Puppets, not counting any resources in Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
-		}
-		# Rubber
-		instantTextBoxType = {
-			name ="rubber_text"
-			orientation = upper_left
-			position = { x = 20 y = 165 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetGermanRubber]"
-			context_aware_tooltip = "Counts all Rubber owned by Germany, Vichy, and any Germany Puppets, not counting any resources in Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
-		}
-		# Tungsten
-		instantTextBoxType = {
-			name ="tungsten_text"
-			orientation = upper_left
-			position = { x = 350 y = 65 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetGermanTungsten]"
-			context_aware_tooltip = "Counts all Tungsten owned by Germany, Vichy, and any Germany Puppets, not counting any resources in Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
-		}
-		# Chromium
-		instantTextBoxType = {
-			name ="chromium_text"
-			orientation = upper_left
-			position = { x = 350 y = 115 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetGermanChromium]"
-			context_aware_tooltip = "Counts all Chromium owned by Germany, Vichy, and any Germany Puppets, not counting any resources in Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
-		}
-		# Oil
-		instantTextBoxType = {
-			name ="oil_text"
-			orientation = upper_left
-			position = { x = 350 y = 165 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetGermanOil]"
-			context_aware_tooltip = "Counts all Oil owned by Germany, Vichy, and any Germany Puppets, not counting any resources in Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
+		iconType = {
+			name = "spr_resource1"
+			position = { x=90 y=500 }
+			spriteType = "GFX_focus_GER_factories_for_resources_gray"
+			scale=0.75
+			context_aware_tooltip = [GetSpainGerSecure]
 		}
 
-		##########################
-		# Faction
+		iconType = {
+			name = "spr_resource12"
+			position = { x=90 y=500 }
+			spriteType = "GFX_focus_GER_factories_for_resources"
+			scale=0.75
+			context_aware_tooltip = [GetSpainGerSecure]
+		}
 
-		# Steel Faction
-		instantTextBoxType = {
-			name ="steel_faction_text"
-			orientation = upper_left
-			position = { x = 45 y = 90 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetFactionSteel]"
-			context_aware_tooltip = "Counts all Steel in the Faction not in a Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
+
+		iconType = {
+			name = "spr_resource2"
+			position = { x=310 y=500 }
+			spriteType = "GFX_focus_usa_reestablish_the_gold_standard_gray"
+			scale=0.75
+			context_aware_tooltip = [GetSpainGoldTrade]
 		}
-		# Aluminium Faction
-		instantTextBoxType = {
-			name ="aluminium_faction_text"
-			orientation = upper_left
-			position = { x = 45 y = 140 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetFactionAluminium]"
-			context_aware_tooltip = "Counts all Aluminium in the Faction not in a Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
+
+		iconType = {
+			name = "spr_resource22"
+			position = { x=310 y=500 }
+			spriteType = "GFX_focus_usa_reestablish_the_gold_standard"
+			scale=0.75
+			context_aware_tooltip = [GetSpainGoldTrade]
 		}
-		# Rubber Faction
-		instantTextBoxType = {
-			name ="rubber_faction_text"
-			orientation = upper_left
-			position = { x = 45 y = 190 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetFactionRubber]"
-			context_aware_tooltip = "Counts all Rubber in the Faction not in a Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
+
+		iconType = {
+			name = "spr_resource3"
+			position = { x=510 y=500 }
+			spriteType = "GFX_focus_focus_fra_intervention_spain_gray"
+			scale=0.75
+			context_aware_tooltip = [GetSpainFactionResources]
 		}
-		# Tungsten Faction
-		instantTextBoxType = {
-			name ="tungsten_faction_text"
-			orientation = upper_left
-			position = { x = 375 y = 90 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetFactionTungsten]"
-			context_aware_tooltip = "Counts all Tungsten in the Faction not in a Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
+
+		iconType = {
+			name = "spr_resource32"
+			position = { x=510 y=500 }
+			spriteType = "GFX_focus_focus_fra_intervention_spain"
+			scale=0.75
+			context_aware_tooltip = [GetSpainFactionResources]
 		}
-		# Chromium Faction
-		instantTextBoxType = {
-			name ="chromium_faction_text"
-			orientation = upper_left
-			position = { x = 375 y = 140 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetFactionChromium]"
-			context_aware_tooltip = "Counts all Chromium in the Faction not in a Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
+
+		iconType = {
+			name = "spr_resource4"
+			position = { x=730 y=500 }
+			spriteType = "GFX_focus_generic_invade_sweden_gray"
+			scale=0.75
+			context_aware_tooltip = [GetOsloResources]
 		}
-		# Oil Faction
-		instantTextBoxType = {
-			name ="oil_faction_text"
-			orientation = upper_left
-			position = { x = 375 y = 190 }
-			font = "hoi_18mbs"
-			context_aware_text = "[GetFactionOil]"
-			context_aware_tooltip = "Counts all Oil in the Faction not in a Spanish or Portugese Core"
-			format = left
-			maxWidth = 250
-			maxHeight = 20
+
+		iconType = {
+			name = "spr_resource42"
+			position = { x=730 y=500 }
+			spriteType = "GFX_focus_generic_invade_sweden"
+			scale=0.75
+			context_aware_tooltip = [GetOsloResources]
 		}
 
 	}

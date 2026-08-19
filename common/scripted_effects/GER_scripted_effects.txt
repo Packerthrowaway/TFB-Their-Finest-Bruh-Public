@@ -2187,7 +2187,7 @@ GER_remove_replaced_advisor_1_effects = {
 			}
 			GER_remove_speer_effects = yes
 		}
-		else_if = { # GÖRING REPLACED
+		else_if = { # Goring REPLACED
 			limit = {
 				check_variable = { GER_ascended_advisor_1 = 3 }
 			}
@@ -2242,7 +2242,7 @@ GER_remove_replaced_advisor_2_effects = {
 			}
 			GER_remove_speer_effects = yes
 		}
-		else_if = { # GÖRING REPLACED
+		else_if = { # Goring REPLACED
 			limit = {
 				check_variable = { GER_ascended_advisor_2 = 3 }
 			}
@@ -2297,7 +2297,7 @@ GER_remove_replaced_advisor_3_effects = {
 			}
 			GER_remove_speer_effects = yes
 		}
-		else_if = { # GÖRING REPLACED
+		else_if = { # Goring REPLACED
 			limit = {
 				check_variable = { GER_ascended_advisor_3 = 3 }
 			}
@@ -2347,7 +2347,7 @@ GER_add_replacing_advisor_effects = {
 		}
 		GER_add_speer_effects = yes
 	}
-	else_if = { # GÖRING ADDED
+	else_if = { # Goring ADDED
 		limit = {
 			check_variable = { GER_ascending_advisor = 3 }
 		}
@@ -2547,7 +2547,7 @@ GER_remove_speer_effects = {
 	}
 }
 
-# ADD/REMOVE GÖRING EFFECTS
+# ADD/REMOVE Goring EFFECTS
 GER_add_goring_effects = {
 	if = {
 		limit = {
@@ -2606,7 +2606,7 @@ GER_remove_goring_effects = {
 		refund_political_power = no
 	}
 
-	if = { # REMOVE GÖRING FROM ASCENDED ADVISOR
+	if = { # REMOVE Goring FROM ASCENDED ADVISOR
 		limit = {
 			check_variable = { GER_ascended_advisor_1 = 3 }
 		}
@@ -3070,7 +3070,7 @@ GER_remove_bormann_effects = {
 	}
 }
 
-# For when Göring can be promoted to country leader via content outside of Inner Circle - make sure that if he was the prevailing industrialist but didn't complete focus, someone else will be enabled
+# For when Goring can be promoted to country leader via content outside of Inner Circle - make sure that if he was the prevailing industrialist but didn't complete focus, someone else will be enabled
 GER_replace_goring_as_prevailing_industrialist = {
 	#ASSIGN SOMEONE ELSE AS PREVAILING INDUSTRIALIST if he was chosen to prevail but didn't complete his focus before promoting to country leader. Pick a new Prevailing Advisor (very arbitrarily but better than nothing)
 	if = { #Only applicable if he was Prevailing Industrialist and didnt complete his focus before promoting
@@ -3174,401 +3174,642 @@ GER_set_up_colonial_resistance_states = {
 	}
 }
 
+# This section is just for updating the GUI
 GER_check_steel = {
-	set_variable = { GER.num_ger_steel = GER.resource_produced@steel }
-	set_variable = { GER.num_faction_steel = 0 }
-	set_variable = { GER.num_faction_total_steel = 0 }
-
+	set_variable = { GER.num_ger_steel = faction_resource_extracted@steel }
+	set_temp_variable = { GER.faction_steel_temp = GER.num_ger_steel }
 	# Add all Puppets
 	every_subject_country = {
-		add_to_variable = { GER.num_ger_steel = resource_produced@steel }
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_temp_variable = { GER.faction_steel_temp = resource_produced@steel }
+		}	
 	}
 	# Add Vichy 
 	if = {
-		limit = { country_exists = VIC }
-		VIC = { add_to_variable = { GER.num_ger_steel = resource_produced@steel } }
+		limit = { country_exists = VIC VIC = { NOT = { is_in_faction_with = ROOT } }}
+		VIC = { add_to_temp_variable = { GER.faction_steel_temp = resource_produced@steel } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D04 } } }
-		D04 = { add_to_variable = { GER.num_ger_steel = resource_produced@steel } }
+		limit = { 26 = { CONTROLLER = { tag = D04 } } D04 = { NOT = { is_in_faction_with = ROOT } } }
+		D04 = { add_to_temp_variable = { GER.faction_steel_temp = resource_produced@steel } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D05 } } }
-		D05 = { add_to_variable = { GER.num_ger_steel = resource_produced@steel } }
+		limit = { 26 = { CONTROLLER = { tag = D05 } }  D05 = { NOT = { is_in_faction_with = ROOT } } }
+		D05 = { add_to_temp_variable = { GER.faction_steel_temp = resource_produced@steel } }
+	}
+	# Add Spain
+	if = {
+		limit = { SPR = { is_in_faction_with = GER } }
+	} else = {
+		if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources } SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade} }
+			SPR = { 
+				set_temp_variable = { spr_temp_steel = resource_produced@steel }
+				divide_temp_variable = { spr_temp_steel = 4 }
+				multiply_temp_variable = { spr_temp_steel = 3 }
+				add_to_temp_variable = { GER.faction_steel_temp = spr_temp_steel }
+			}
+		}
+		else_if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources }}
+			SPR = { 
+				set_temp_variable = { spr_temp_steel = resource_produced@steel }
+				divide_temp_variable = { spr_temp_steel = 2 }
+				add_to_temp_variable = { GER.faction_steel_temp = spr_temp_steel }
+			}
+		}
+		else_if = {
+			limit = { SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade } }
+			SPR = { 
+				set_temp_variable = { spr_temp_steel = resource_produced@steel }
+				divide_temp_variable = { spr_temp_steel = 4 }
+				add_to_temp_variable = { GER.faction_steel_temp = spr_temp_steel }
+			}
+		}
+		else = {
+			# Nothing
+		}
 	}
 
-	# Check against non Spain to see if Germany has more Steel than anyone else in the faction
-	every_other_country = {
-		if = {
-			limit = {
-				NOT = { original_tag = SPR }
-				is_in_faction_with = GER
-			}
-			set_variable = { country_steel_amount = resource_produced@steel }
-			# Find the ally with the most Steel
-			if = {
-				limit = {
-					check_variable = { country_steel_amount > GER.num_faction_steel }
+	# Add Sweden
+	if = {
+		limit = {
+			110 = { 
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
 				}
-				set_variable = { GER.num_faction_steel = country_steel_amount }
 			}
-			add_to_variable = {	GER.num_faction_total_steel = country_steel_amount }
+		}
+		SWE = { 
+			set_temp_variable = { swe_temp_steel = resource_produced@steel }
+			divide_temp_variable = { swe_temp_steel = 2 }
+			add_to_temp_variable = { GER.faction_steel_temp = swe_temp_steel }
 		}
 	}
 
-	# Remove Iberia
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = POR
-			}
-			add_to_variable = { num_iberian_steel = resource@steel }
-		}
-	}
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = SPR
-			}
-			add_to_variable = { num_iberian_steel = resource@steel }
-		}
-	}
-	# Remove half for being Non-Core
-	multiply_variable = { num_iberian_steel = 0.5 }
-	subtract_from_variable = { GER.num_ger_steel = num_iberian_steel }
-
-	add_to_variable = {	GER.num_faction_total_steel = GER.num_ger_steel }
+	set_variable = { GER.GER_autarky_steel_current = GER.faction_steel_temp}
+	divide_temp_variable = { GER.faction_steel_temp = GER.GER_autarky_steel}
+	multiply_temp_variable = { GER.faction_steel_temp = 100 }
+	set_variable = { GER.faction_steel_percent = GER.faction_steel_temp }
 }
-
 
 GER_check_aluminium = {
-	set_variable = { GER.num_ger_aluminium = GER.resource_produced@aluminium }
-	set_variable = { GER.num_faction_aluminium = 0 }
-	set_variable = { GER.num_faction_total_aluminium = 0 }
-
+	set_variable = { GER.num_ger_aluminium = faction_resource_extracted@aluminium }
+	set_temp_variable = { faction_aluminium_temp = GER.num_ger_aluminium }
 	# Add all Puppets
 	every_subject_country = {
-		add_to_variable = { GER.num_ger_aluminium = resource_produced@aluminium }
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_temp_variable = { GER.faction_aluminium_temp = resource_produced@aluminium }
+		}	
 	}
 	# Add Vichy 
 	if = {
-		limit = { country_exists = VIC }
-		VIC = { add_to_variable = { GER.num_ger_aluminium = resource_produced@aluminium } }
+		limit = { country_exists = VIC VIC = { NOT = { is_in_faction_with = ROOT } }}
+		VIC = { add_to_temp_variable = { GER.faction_aluminium_temp = resource_produced@aluminium } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D04 } } }
-		D04 = { add_to_variable = { GER.num_ger_aluminium = resource_produced@aluminium } }
+		limit = { 26 = { CONTROLLER = { tag = D04 } } D04 = { NOT = { is_in_faction_with = ROOT } } }
+		D04 = { add_to_temp_variable = { GER.faction_aluminium_temp = resource_produced@aluminium } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D05 } } }
-		D05 = { add_to_variable = { GER.num_ger_aluminium = resource_produced@aluminium } }
+		limit = { 26 = { CONTROLLER = { tag = D05 } }  D05 = { NOT = { is_in_faction_with = ROOT } } }
+		D05 = { add_to_temp_variable = { GER.faction_aluminium_temp = resource_produced@aluminium } }
 	}
-
-	# Check against non Spain to see if Germany has more aluminium than anyone else in the faction
-	every_other_country = {
-		if = {
-			limit = {
-				NOT = { original_tag = SPR }
-				is_in_faction_with = GER
-			}
-			set_variable = { country_aluminium_amount = resource_produced@aluminium }
-			# Find the ally with the most aluminium
-			if = {
-				limit = {
-					check_variable = { country_aluminium_amount > GER.num_faction_aluminium }
-				}
-				set_variable = { GER.num_faction_aluminium = country_aluminium_amount }
-			}
-			add_to_variable = {	GER.num_faction_total_aluminium = country_aluminium_amount }
-		}
-	}
-	# Remove Iberia
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = POR
-			}
-			add_to_variable = { num_iberian_aluminium = resource@aluminium }
-		}
-	}
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = SPR
-			}
-			add_to_variable = { num_iberian_aluminium = resource@aluminium }
-		}
-	}
-	# Remove half for being Non-Core
-	multiply_variable = { num_iberian_aluminium = 0.5 }
-	subtract_from_variable = { GER.num_ger_aluminium = num_iberian_aluminium }
-
-	add_to_variable = {	GER.num_faction_total_aluminium = GER.num_ger_aluminium }
-}
-
-GER_check_rubber = {
-	set_variable = { GER.num_ger_rubber = GER.resource_produced@rubber }
-	set_variable = { GER.num_faction_rubber = 0 }
-	set_variable = { GER.num_faction_total_rubber = 0 }
-
-	# Add all Puppets
-	every_subject_country = {
-		add_to_variable = { GER.num_ger_rubber = resource_produced@rubber }
-	}
-	# Add Vichy 
+	# Add Spain
 	if = {
-		limit = { country_exists = VIC }
-		VIC = { add_to_variable = { GER.num_ger_rubber = resource_produced@rubber } }
-	}
-	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D04 } } }
-		D04 = { add_to_variable = { GER.num_ger_rubber = resource_produced@rubber } }
-	}
-	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D05 } } }
-		D05 = { add_to_variable = { GER.num_ger_rubber = resource_produced@rubber } }
+		limit = { SPR = { is_in_faction_with = GER } }
+	} else = {
+		if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources } SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade} }
+			SPR = { 
+				set_temp_variable = { spr_temp_aluminium = resource_produced@aluminium }
+				divide_temp_variable = { spr_temp_aluminium = 4 }
+				multiply_temp_variable = { spr_temp_aluminium = 3 }
+				add_to_temp_variable = { GER.faction_aluminium_temp = spr_temp_aluminium }
+			}
+		}
+		else_if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources }}
+			SPR = { 
+				set_temp_variable = { spr_temp_aluminium = resource_produced@aluminium }
+				divide_temp_variable = { spr_temp_aluminium = 2 }
+				add_to_temp_variable = { GER.faction_aluminium_temp = spr_temp_aluminium }
+			}
+		}
+		else_if = {
+			limit = { SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade } }
+			SPR = { 
+				set_temp_variable = { spr_temp_aluminium = resource_produced@aluminium }
+				divide_temp_variable = { spr_temp_aluminium = 4 }
+				add_to_temp_variable = { GER.faction_aluminium_temp = spr_temp_aluminium }
+			}
+		}
+		else = {
+			# Nothing
+		}
 	}
 
-	# Check against non Spain to see if Germany has more rubber than anyone else in the faction
-	every_other_country = {
-		if = {
-			limit = {
-				NOT = { original_tag = SPR }
-				is_in_faction_with = GER
-			}
-			set_variable = { country_rubber_amount = resource_produced@rubber }
-			# Find the ally with the most rubber
-			if = {
-				limit = {
-					check_variable = { country_rubber_amount > GER.num_faction_rubber }
+	# Add Sweden
+	if = {
+		limit = {
+			110 = { 
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
 				}
-				set_variable = { GER.num_faction_rubber = country_rubber_amount }
 			}
-			add_to_variable = {	GER.num_faction_total_rubber = country_rubber_amount }
+		}
+		SWE = { 
+			set_temp_variable = { swe_temp_aluminium = resource_produced@aluminium }
+			divide_temp_variable = { swe_temp_aluminium = 2 }
+			add_to_temp_variable = { GER.faction_aluminium_temp = swe_temp_aluminium }
 		}
 	}
 
-	# Remove Iberia
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = POR
-			}
-			add_to_variable = { num_iberian_rubber = resource@rubber }
-		}
-	}
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = SPR
-			}
-			add_to_variable = { num_iberian_rubber = resource@rubber }
-		}
-	}
-	# Remove half for being Non-Core
-	multiply_variable = { num_iberian_rubber = 0.5 }
-	subtract_from_variable = { GER.num_ger_rubber = num_iberian_rubber }
-
-	add_to_variable = {	GER.num_faction_total_rubber = GER.num_ger_rubber }
+	set_variable = { GER.GER_autarky_aluminium_current = GER.faction_aluminium_temp}
+	divide_temp_variable = { faction_aluminium_temp = GER.GER_autarky_aluminium}
+	multiply_temp_variable = { faction_aluminium_temp = 100 }
+	set_variable = { GER.faction_aluminium_percent = faction_aluminium_temp }
 }
 
 GER_check_tungsten = {
-	set_variable = { GER.num_ger_tungsten = GER.resource_produced@tungsten }
-	set_variable = { GER.num_faction_tungsten = 0 }
-	set_variable = { GER.num_faction_total_tungsten = 0 }
-
+	set_variable = { GER.num_ger_tungsten = faction_resource_extracted@tungsten }
+	set_temp_variable = { faction_tungsten_temp = GER.num_ger_tungsten }
 	# Add all Puppets
 	every_subject_country = {
-		add_to_variable = { GER.num_ger_tungsten = resource_produced@tungsten }
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_temp_variable = { GER.faction_tungsten_temp = resource_produced@tungsten }
+		}	
 	}
 	# Add Vichy 
 	if = {
-		limit = { country_exists = VIC }
-		VIC = { add_to_variable = { GER.num_ger_tungsten = resource_produced@tungsten } }
+		limit = { country_exists = VIC VIC = { NOT = { is_in_faction_with = ROOT } }}
+		VIC = { add_to_temp_variable = { GER.faction_tungsten_temp = resource_produced@tungsten } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D04 } } }
-		D04 = { add_to_variable = { GER.num_ger_tungsten = resource_produced@tungsten } }
+		limit = { 26 = { CONTROLLER = { tag = D04 } } D04 = { NOT = { is_in_faction_with = ROOT } } }
+		D04 = { add_to_temp_variable = { GER.faction_tungsten_temp = resource_produced@tungsten } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D05 } } }
-		D05 = { add_to_variable = { GER.num_ger_tungsten = resource_produced@tungsten } }
+		limit = { 26 = { CONTROLLER = { tag = D05 } }  D05 = { NOT = { is_in_faction_with = ROOT } } }
+		D05 = { add_to_temp_variable = { GER.faction_tungsten_temp = resource_produced@tungsten } }
+	}
+	# Add Spain
+	if = {
+		limit = { SPR = { is_in_faction_with = GER } }
+	} else = {
+		if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources } SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade} }
+			SPR = { 
+				set_temp_variable = { spr_temp_tungsten = resource_produced@tungsten }
+				divide_temp_variable = { spr_temp_tungsten = 4 }
+				multiply_temp_variable = { spr_temp_tungsten = 3 }
+				add_to_temp_variable = { GER.faction_tungsten_temp = spr_temp_tungsten }
+			}
+		}
+		else_if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources }}
+			SPR = { 
+				set_temp_variable = { spr_temp_tungsten = resource_produced@tungsten }
+				divide_temp_variable = { spr_temp_tungsten = 2 }
+				add_to_temp_variable = { GER.faction_tungsten_temp = spr_temp_tungsten }
+			}
+		}
+		else_if = {
+			limit = { SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade } }
+			SPR = { 
+				set_temp_variable = { spr_temp_tungsten = resource_produced@tungsten }
+				divide_temp_variable = { spr_temp_tungsten = 4 }
+				add_to_temp_variable = { GER.faction_tungsten_temp = spr_temp_tungsten }
+			}
+		}
+		else = {
+			# Nothing
+		}
 	}
 
-	# Check against non Spain to see if Germany has more tungsten than anyone else in the faction
-	every_other_country = {
-		if = {
-			limit = {
-				NOT = { original_tag = SPR }
-				is_in_faction_with = GER
-			}
-			set_variable = { country_tungsten_amount = resource_produced@tungsten }
-			# Find the ally with the most tungsten
-			if = {
-				limit = {
-					check_variable = { country_tungsten_amount > GER.num_faction_tungsten }
+	# Add Sweden
+	if = {
+		limit = {
+			110 = { 
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
 				}
-				set_variable = { GER.num_faction_tungsten = country_tungsten_amount }
 			}
-			add_to_variable = {	GER.num_faction_total_tungsten = country_tungsten_amount }
+		}
+		SWE = { 
+			set_temp_variable = { swe_temp_tungsten = resource_produced@tungsten }
+			divide_temp_variable = { swe_temp_tungsten = 2 }
+			add_to_temp_variable = { GER.faction_tungsten_temp = swe_temp_tungsten }
 		}
 	}
-	# Remove Iberia
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = POR
-			}
-			add_to_variable = { num_iberian_tungsten = resource@tungsten }
-		}
-	}
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = SPR
-			}
-			add_to_variable = { num_iberian_tungsten = resource@tungsten }
-		}
-	}
-	# Remove half for being Non-Core
-	multiply_variable = { num_iberian_tungsten = 0.5 }
-	subtract_from_variable = { GER.num_ger_tungsten = num_iberian_tungsten }
 
-	add_to_variable = {	GER.num_faction_total_tungsten = GER.num_ger_tungsten }
-
+	set_variable = { GER.GER_autarky_tungsten_current = GER.faction_tungsten_temp}
+	divide_temp_variable = { faction_tungsten_temp = GER.GER_autarky_tungsten}
+	multiply_temp_variable = { faction_tungsten_temp = 100 }
+	set_variable = { GER.faction_tungsten_percent = faction_tungsten_temp }
 }
 
 GER_check_chromium = {
-	set_variable = { GER.num_ger_chromium = GER.resource_produced@chromium }
-	set_variable = { GER.num_faction_chromium = 0 }
-	set_variable = { GER.num_faction_total_chromium = 0 }
-
+	set_variable = { GER.num_ger_chromium = faction_resource_extracted@chromium }
+	set_temp_variable = { faction_chromium_temp = GER.num_ger_chromium }
 	# Add all Puppets
 	every_subject_country = {
-		add_to_variable = { GER.num_ger_chromium = resource_produced@chromium }
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_temp_variable = { GER.faction_chromium_temp = resource_produced@chromium }
+		}	
 	}
 	# Add Vichy 
 	if = {
-		limit = { country_exists = VIC }
-		VIC = { add_to_variable = { GER.num_ger_chromium = resource_produced@chromium } }
+		limit = { country_exists = VIC VIC = { NOT = { is_in_faction_with = ROOT } }}
+		VIC = { add_to_temp_variable = { GER.faction_chromium_temp = resource_produced@chromium } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D04 } } }
-		D04 = { add_to_variable = { GER.num_ger_chromium = resource_produced@chromium } }
+		limit = { 26 = { CONTROLLER = { tag = D04 } } D04 = { NOT = { is_in_faction_with = ROOT } } }
+		D04 = { add_to_temp_variable = { GER.faction_chromium_temp = resource_produced@chromium } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D05 } } }
-		D05 = { add_to_variable = { GER.num_ger_chromium = resource_produced@chromium } }
+		limit = { 26 = { CONTROLLER = { tag = D05 } }  D05 = { NOT = { is_in_faction_with = ROOT } } }
+		D05 = { add_to_temp_variable = { GER.faction_chromium_temp = resource_produced@chromium } }
 	}
-
-
-
-	# Check against non Spain to see if Germany has more chromium than anyone else in the faction
-	every_other_country = {
+	# Add Spain
+	if = {
+		limit = { SPR = { is_in_faction_with = GER } }
+	} else = {
 		if = {
-			limit = {
-				NOT = { original_tag = SPR }
-				is_in_faction_with = GER
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources } SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade} }
+			SPR = { 
+				set_temp_variable = { spr_temp_chromium = resource_produced@chromium }
+				divide_temp_variable = { spr_temp_chromium = 4 }
+				multiply_temp_variable = { spr_temp_chromium = 3 }
+				add_to_temp_variable = { GER.faction_chromium_temp = spr_temp_chromium }
 			}
-			set_variable = { country_chromium_amount = resource_produced@chromium }
-			# Find the ally with the most chromium
-			if = {
-				limit = {
-					check_variable = { country_chromium_amount > GER.num_faction_chromium }
+		}
+		else_if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources }}
+			SPR = { 
+				set_temp_variable = { spr_temp_chromium = resource_produced@chromium }
+				divide_temp_variable = { spr_temp_chromium = 2 }
+				add_to_temp_variable = { GER.faction_chromium_temp = spr_temp_chromium }
+			}
+		}
+		else_if = {
+			limit = { SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade } }
+			SPR = { 
+				set_temp_variable = { spr_temp_chromium = resource_produced@chromium }
+				divide_temp_variable = { spr_temp_chromium = 4 }
+				add_to_temp_variable = { GER.faction_chromium_temp = spr_temp_chromium }
+			}
+		}
+		else = {
+			# Nothing
+		}
+	}
+
+	# Add Sweden
+	if = {
+		limit = {
+			110 = { 
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
 				}
-				set_variable = { GER.num_faction_chromium = country_chromium_amount }
 			}
-			add_to_variable = {	GER.num_faction_total_chromium = country_chromium_amount }
+		}
+		SWE = { 
+			set_temp_variable = { swe_temp_chromium = resource_produced@chromium }
+			divide_temp_variable = { swe_temp_chromium = 2 }
+			add_to_temp_variable = { GER.faction_chromium_temp = swe_temp_chromium }
 		}
 	}
 
-	# Remove Iberia
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = POR
-			}
-			add_to_variable = { num_iberian_chromium = resource@chromium }
-		}
-	}
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = SPR
-			}
-			add_to_variable = { num_iberian_chromium = resource@chromium }
-		}
-	}
-	# Remove half for being Non-Core
-	multiply_variable = { num_iberian_chromium = 0.5 }
-	subtract_from_variable = { GER.num_ger_chromium = num_iberian_chromium }
-	
-	add_to_variable = {	GER.num_faction_total_chromium = GER.num_ger_chromium }
+	set_variable = { GER.GER_autarky_chromium_current = GER.faction_chromium_temp}
+	divide_temp_variable = { faction_chromium_temp = GER.GER_autarky_chromium}
+	multiply_temp_variable = { faction_chromium_temp = 100 }
+	set_variable = { GER.faction_chromium_percent = faction_chromium_temp }
 }
 
 GER_check_oil = {
-	set_variable = { GER.num_ger_oil = GER.resource_produced@oil }
-	set_variable = { GER.num_faction_oil = 0 }
-	set_variable = { GER.num_faction_total_oil = 0 }
-
+	set_variable = { GER.num_ger_oil = faction_resource_extracted@oil }
+	set_temp_variable = { faction_oil_temp = GER.num_ger_oil }
 	# Add all Puppets
 	every_subject_country = {
-		add_to_variable = { GER.num_ger_oil = resource_produced@oil }
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_temp_variable = { GER.faction_oil_temp = resource_produced@oil }
+		}	
 	}
 	# Add Vichy 
 	if = {
-		limit = { country_exists = VIC }
-		VIC = { add_to_variable = { GER.num_ger_oil = resource_produced@oil } }
+		limit = { country_exists = VIC VIC = { NOT = { is_in_faction_with = ROOT } }}
+		VIC = { add_to_temp_variable = { GER.faction_oil_temp = resource_produced@oil } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D04 } } }
-		D04 = { add_to_variable = { GER.num_ger_oil = resource_produced@oil } }
+		limit = { 26 = { CONTROLLER = { tag = D04 } } D04 = { NOT = { is_in_faction_with = ROOT } } }
+		D04 = { add_to_temp_variable = { GER.faction_oil_temp = resource_produced@oil } }
 	}
 	else_if = {
-		limit = { 26 = { CONTROLLER = { tag = D05 } } }
-		D05 = { add_to_variable = { GER.num_ger_oil = resource_produced@oil } }
+		limit = { 26 = { CONTROLLER = { tag = D05 } }  D05 = { NOT = { is_in_faction_with = ROOT } } }
+		D05 = { add_to_temp_variable = { GER.faction_oil_temp = resource_produced@oil } }
 	}
-
-
-	# Check against non Spain to see if Germany has more oil than anyone else in the faction
-	every_other_country = {
+	# Add Spain
+	if = {
+		limit = { SPR = { is_in_faction_with = GER } }
+	} else = {
 		if = {
-			limit = {
-				NOT = { original_tag = SPR }
-				is_in_faction_with = GER
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources } SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade} }
+			SPR = { 
+				set_temp_variable = { spr_temp_oil = resource_produced@oil }
+				divide_temp_variable = { spr_temp_oil = 4 }
+				multiply_temp_variable = { spr_temp_oil = 3 }
+				add_to_temp_variable = { GER.faction_oil_temp = spr_temp_oil }
 			}
-			set_variable = { country_oil_amount = resource_produced@oil }
-			# Find the ally with the most oil
-			if = {
-				limit = {
-					check_variable = { country_oil_amount > GER.num_faction_oil }
+		}
+		else_if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources }}
+			SPR = { 
+				set_temp_variable = { spr_temp_oil = resource_produced@oil }
+				divide_temp_variable = { spr_temp_oil = 2 }
+				add_to_temp_variable = { GER.faction_oil_temp = spr_temp_oil }
+			}
+		}
+		else_if = {
+			limit = { SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade } }
+			SPR = { 
+				set_temp_variable = { spr_temp_oil = resource_produced@oil }
+				divide_temp_variable = { spr_temp_oil = 4 }
+				add_to_temp_variable = { GER.faction_oil_temp = spr_temp_oil }
+			}
+		}
+		else = {
+			# Nothing
+		}
+	}
+
+	# Add Sweden
+	if = {
+		limit = {
+			110 = { 
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
 				}
-				set_variable = { GER.num_faction_oil = country_oil_amount }
 			}
-			add_to_variable = {	GER.num_faction_total_oil = country_oil_amount }
+		}
+		SWE = { 
+			set_temp_variable = { swe_temp_oil = resource_produced@oil }
+			divide_temp_variable = { swe_temp_oil = 2 }
+			add_to_temp_variable = { GER.faction_oil_temp = swe_temp_oil }
 		}
 	}
 
-	# Remove Iberia
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = POR
-			}
-			add_to_variable = { num_iberian_oil = resource@oil }
-		}
-	}
-	every_controlled_state = {
-		if = {
-			limit = {
-				is_core_of = SPR
-			}
-			add_to_variable = { num_iberian_oil = resource@oil }
-		}
-	}
-	# Remove half for being Non-Core
-	multiply_variable = { num_iberian_oil = 0.5 }
-	subtract_from_variable = { GER.num_ger_oil = num_iberian_oil }
+	set_variable = { GER.GER_autarky_oil_current = GER.faction_oil_temp}
+	divide_temp_variable = { faction_oil_temp = GER.GER_autarky_oil}
+	multiply_temp_variable = { faction_oil_temp = 100 }
+	set_variable = { GER.faction_oil_percent = faction_oil_temp }
+}
 
-	add_to_variable = {	GER.num_faction_total_oil = GER.num_ger_oil }
+GER_check_coal = {
+	set_variable = { GER.num_ger_coal = faction_resource_extracted@coal }
+	set_temp_variable = { faction_coal_temp = GER.num_ger_coal }
+	# Add all Puppets
+	every_subject_country = {
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_temp_variable = { GER.faction_coal_temp = resource_produced@coal }
+		}	
+	}
+	# Add Vichy 
+	if = {
+		limit = { country_exists = VIC VIC = { NOT = { is_in_faction_with = ROOT } }}
+		VIC = { add_to_temp_variable = { GER.faction_coal_temp = resource_produced@coal } }
+	}
+	else_if = {
+		limit = { 26 = { CONTROLLER = { tag = D04 } } D04 = { NOT = { is_in_faction_with = ROOT } } }
+		D04 = { add_to_temp_variable = { GER.faction_coal_temp = resource_produced@coal } }
+	}
+	else_if = {
+		limit = { 26 = { CONTROLLER = { tag = D05 } }  D05 = { NOT = { is_in_faction_with = ROOT } } }
+		D05 = { add_to_temp_variable = { GER.faction_coal_temp = resource_produced@coal } }
+	}
+	# Add Spain
+	if = {
+		limit = { SPR = { is_in_faction_with = GER } }
+	} else = {
+		if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources } SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade} }
+			SPR = { 
+				set_temp_variable = { spr_temp_coal = resource_produced@coal }
+				divide_temp_variable = { spr_temp_coal = 4 }
+				multiply_temp_variable = { spr_temp_coal = 3 }
+				add_to_temp_variable = { GER.faction_coal_temp = spr_temp_coal }
+			}
+		}
+		else_if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources }}
+			SPR = { 
+				set_temp_variable = { spr_temp_coal = resource_produced@coal }
+				divide_temp_variable = { spr_temp_coal = 2 }
+				add_to_temp_variable = { GER.faction_coal_temp = spr_temp_coal }
+			}
+		}
+		else_if = {
+			limit = { SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade } }
+			SPR = { 
+				set_temp_variable = { spr_temp_coal = resource_produced@coal }
+				divide_temp_variable = { spr_temp_coal = 4 }
+				add_to_temp_variable = { GER.faction_coal_temp = spr_temp_coal }
+			}
+		}
+		else = {
+			# Nothing
+		}
+	}
+
+	# Add Sweden
+	if = {
+		limit = {
+			110 = { 
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		SWE = { 
+			set_temp_variable = { swe_temp_coal = resource_produced@coal }
+			divide_temp_variable = { swe_temp_coal = 2 }
+			add_to_temp_variable = { GER.faction_coal_temp = swe_temp_coal }
+		}
+	}
+
+	set_variable = { GER.GER_autarky_coal_current = GER.faction_coal_temp}
+	divide_temp_variable = { faction_coal_temp = GER.GER_autarky_coal}
+	multiply_temp_variable = { faction_coal_temp = 100 }
+	set_variable = { GER.faction_coal_percent = faction_coal_temp }
+}
+
+GER_check_rubber = {
+	set_variable = { GER.num_ger_rubber = faction_resource_extracted@rubber }
+	set_temp_variable = { faction_rubber_temp = GER.num_ger_rubber }
+	# Add all Puppets
+	every_subject_country = {
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_temp_variable = { GER.faction_rubber_temp = resource_produced@rubber }
+		}	
+	}
+	# Add Vichy 
+	if = {
+		limit = { country_exists = VIC VIC = { NOT = { is_in_faction_with = ROOT } }}
+		VIC = { add_to_temp_variable = { GER.faction_rubber_temp = resource_produced@rubber } }
+	}
+	else_if = {
+		limit = { 26 = { CONTROLLER = { tag = D04 } } D04 = { NOT = { is_in_faction_with = ROOT } } }
+		D04 = { add_to_temp_variable = { GER.faction_rubber_temp = resource_produced@rubber } }
+	}
+	else_if = {
+		limit = { 26 = { CONTROLLER = { tag = D05 } }  D05 = { NOT = { is_in_faction_with = ROOT } } }
+		D05 = { add_to_temp_variable = { GER.faction_rubber_temp = resource_produced@rubber } }
+	}
+	# Add Spain
+	if = {
+		limit = { SPR = { is_in_faction_with = GER } }
+	} else = {
+		if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources } SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade} }
+			SPR = { 
+				set_temp_variable = { spr_temp_rubber = resource_produced@rubber }
+				divide_temp_variable = { spr_temp_rubber = 4 }
+				multiply_temp_variable = { spr_temp_rubber = 3 }
+				add_to_temp_variable = { GER.faction_rubber_temp = spr_temp_rubber }
+			}
+		}
+		else_if = {
+			limit = { GER = { has_completed_focus = GER_secure_spanish_resources }}
+			SPR = { 
+				set_temp_variable = { spr_temp_rubber = resource_produced@rubber }
+				divide_temp_variable = { spr_temp_rubber = 2 }
+				add_to_temp_variable = { GER.faction_rubber_temp = spr_temp_rubber }
+			}
+		}
+		else_if = {
+			limit = { SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade } }
+			SPR = { 
+				set_temp_variable = { spr_temp_rubber = resource_produced@rubber }
+				divide_temp_variable = { spr_temp_rubber = 4 }
+				add_to_temp_variable = { GER.faction_rubber_temp = spr_temp_rubber }
+			}
+		}
+		else = {
+			# Nothing
+		}
+	}
+
+	# Add Sweden
+	if = {
+		limit = {
+			110 = { 
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		SWE = { 
+			set_temp_variable = { swe_temp_rubber = resource_produced@rubber }
+			divide_temp_variable = { swe_temp_rubber = 2 }
+			add_to_temp_variable = { GER.faction_rubber_temp = swe_temp_rubber }
+		}
+	}
+
+	set_variable = { GER.GER_autarky_rubber_current = GER.faction_rubber_temp}
+	divide_temp_variable = { faction_rubber_temp = GER.GER_autarky_rubber}
+	multiply_temp_variable = { faction_rubber_temp = 100 }
+	set_variable = { GER.faction_rubber_percent = faction_rubber_temp }
+}
+
+GER_check_total = {
+	set_variable = { GER.faction_resource_count = 7 }
+
+	set_temp_variable = { GER_resources_met = 7 }
+	if = { limit = { GER_axis_has_enough_steel = no } subtract_from_temp_variable = { GER_resources_met = 1 } }
+	if = { limit = { GER_axis_has_enough_aluminium = no } subtract_from_temp_variable = { GER_resources_met = 1 } }
+	if = { limit = { GER_axis_has_enough_tungsten = no } subtract_from_temp_variable = { GER_resources_met = 1 } }
+	if = { limit = { GER_axis_has_enough_chromium = no } subtract_from_temp_variable = { GER_resources_met = 1 } }
+	if = { limit = { GER_axis_has_enough_oil = no } subtract_from_temp_variable = { GER_resources_met = 1 } }
+	if = { limit = { GER_axis_has_enough_coal = no } subtract_from_temp_variable = { GER_resources_met = 1 } }
+	if = { limit = { GER_axis_has_enough_rubber = no } subtract_from_temp_variable = { GER_resources_met = 1 } }
+
+	set_variable = { GER.faction_resource_count = GER_resources_met }
+}
+
+GER_calculate_increase = {
+	set_variable = { GER.num_ger_fac_fact_temp = 0 }
+	# Add all Puppets
+	every_subject_country = {
+		if = { 
+			limit = { NOT = { is_in_faction_with = ROOT } } 
+			add_to_variable = { GER.num_ger_fac_fact_temp = THIS.num_of_factories }
+		}	
+	}
+	every_faction_member = {
+		if = { 
+			limit = { NOT = { is_subject_of = ROOT } } 
+			add_to_variable = { GER.num_ger_fac_fact_temp = THIS.num_of_factories }
+		}	
+	}
+	# Rubber
+	set_variable = { GER.GER_increase_current_t1 = GER.num_ger_fac_fact_temp }
+	multiply_variable = { GER.GER_increase_current_t1 = GER.GER_increase_current_l1 }
+	# Chromium, Oil, Coal
+	set_variable = { GER.GER_increase_current_t2 = GER.num_ger_fac_fact_temp }
+	multiply_variable = { GER.GER_increase_current_t2 = GER.GER_increase_current_l2 }
+	# Steel, Aluminum, Tungsten
+	set_variable = { GER.GER_increase_current_t3 = GER.num_ger_fac_fact_temp }
+	multiply_variable = { GER.GER_increase_current_t3 = GER.GER_increase_current_l3 }
+
+	set_variable = { GER_autarky_steel = GER.GER_autarky_steel_base }
+	add_to_variable = { GER_autarky_steel = GER.GER_increase_current_t3 }
+	set_variable = { GER_autarky_aluminium = GER.GER_autarky_aluminium_base }
+	add_to_variable = { GER_autarky_aluminium = GER.GER_increase_current_t3 }
+	set_variable = { GER_autarky_tungsten = GER.GER_autarky_tungsten_base }
+	add_to_variable = { GER_autarky_tungsten = GER.GER_increase_current_t3 }
+
+	set_variable = { GER_autarky_chromium = GER.GER_autarky_chromium_base }
+	add_to_variable = { GER_autarky_chromium = GER.GER_increase_current_t2 }
+	set_variable = { GER_autarky_oil = GER.GER_autarky_oil_base }
+	add_to_variable = { GER_autarky_oil = GER.GER_increase_current_t2 }
+	set_variable = { GER_autarky_coal = GER.GER_autarky_coal_base }
+	add_to_variable = { GER_autarky_coal = GER.GER_increase_current_t2 }
+
+	set_variable = { GER_autarky_rubber = GER.GER_autarky_rubber_base }
+	add_to_variable = { GER_autarky_rubber = GER.GER_increase_current_t1 }
 }

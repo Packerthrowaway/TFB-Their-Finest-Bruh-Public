@@ -5549,167 +5549,167 @@ on_actions = {
 				
 			}
 		}
-		#MEFO BILLS AND ECONOMY OF CONQUEST MODIFIER
-		effect = {
-			if = {
-				limit = {
-					ROOT = { #New Controller
-						original_tag = GER
-						OR = {
-							has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
-							has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
-						}
-						FROM.FROM = {
-							NOT = {
-								is_core_of = PREV
-							}
-						}
-					}
-				}
-				add_to_variable = { GER_num_of_occupied_states = 1 }
-				if = {
-					limit = { #Advance to Level 1 Occupied States
-						GER_occupied_states_level_1 = yes
-					}
-					if = {
-						limit = {
-							check_variable = { GER_num_of_occupied_states_level < 1 }
-						}
-						add_to_variable = { GER_num_of_occupied_states_level = 1 }
-						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states }
-					}
-				}
-				else_if = {
-					limit = { #Advance to Level 2 Occupied States
-						GER_occupied_states_level_2 = yes
-					}
-					if = {
-						limit = {
-							check_variable = { GER_num_of_occupied_states_level < 2 }
-						}
-						add_to_variable = { GER_num_of_occupied_states_level = 1 }
-						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
-					}
-				}
-				else_if = {
-					limit = { #Advance to Level 3 Occupied States
-						GER_occupied_states_level_3 = yes						
-					}
-					if = {
-						limit = {
-							check_variable = { GER_num_of_occupied_states_level < 3 }
-						}
-						add_to_variable = { GER_num_of_occupied_states_level = 1 }
-						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
-					}
-				}
-				else_if = {
-					limit = { #Advance to Level 4 Occupied States
-						GER_occupied_states_level_4 = yes
-					}
-					if = {
-						limit = {
-							check_variable = { GER_num_of_occupied_states_level < 4 }
-						}
-						add_to_variable = { GER_num_of_occupied_states_level = 1 }
-						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
-					}
-				}
-				else_if = {
-					limit = { #Much wow, so large empire, plz advance to Level 5 Occupied States
-						GER_occupied_states_level_5 = yes
-					}
-					if = {
-						limit = {
-							check_variable = { GER_num_of_occupied_states_level < 5 }
-						}
-						add_to_variable = { GER_num_of_occupied_states_level = 1 }
-						add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
-					}
-				}
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					FROM = { #Old Controller
-						original_tag = GER
-						OR = {
-							has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
-							has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
-						}
-						FROM.FROM = {
-							NOT = {
-								is_core_of = PREV
-							}
-						}
-					}
-				}
-				FROM = { 
-					subtract_from_variable = { GER_num_of_occupied_states = 1 }
-					if = {
-						limit = { #no wow, so smol empire, get outta here and return to level 0
-							GER_occupied_states_level_0 = yes
-						}
-						if = {
-							limit = {
-								check_variable = { GER_num_of_occupied_states_level > 0 }
-							}
-							set_variable = { GER_num_of_occupied_states_level = 0 }
-							subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states }
-						}
-					}
-					else_if = {
-						limit = { #Return to Level 1 Occupied States
-							GER_occupied_states_level_1 = yes
-						}
-						if = {
-							limit = {
-								check_variable = { GER_num_of_occupied_states_level > 1 }
-							}
-							set_variable = { GER_num_of_occupied_states_level = 1 }
-							subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
-						}
-					}
-					else_if = {
-						limit = { #Return to Level 2 Occupied States
-							GER_occupied_states_level_2 = yes						
-						}
-						if = {
-							limit = {
-								check_variable = { GER_num_of_occupied_states_level > 2 }
-							}
-							set_variable = { GER_num_of_occupied_states_level = 2 }
-							subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
-						}
-					}
-					else_if = {
-						limit = { #Return to Level 3 Occupied States
-							GER_occupied_states_level_3 = yes
-						}
-						if = {
-							limit = {
-								check_variable = { GER_num_of_occupied_states_level >3 }
-							}
-							set_variable = { GER_num_of_occupied_states_level = 3 }
-							subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
-						}
-					}
-					else_if = {
-						limit = { #Return to Level 4 Occupied States
-							GER_occupied_states_level_4 = yes
-						}
-						if = {
-							limit = {
-								check_variable = { GER_num_of_occupied_states_level > 4 }
-							}
-							set_variable = { GER_num_of_occupied_states_level = 4 }
-							subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
-						}
-					}
-				}
-			}
-		}
+		# #MEFO BILLS AND ECONOMY OF CONQUEST MODIFIER
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			ROOT = { #New Controller
+		# 				original_tag = GER
+		# 				OR = {
+		# 					has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+		# 					has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+		# 				}
+		# 				FROM.FROM = {
+		# 					NOT = {
+		# 						is_core_of = PREV
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 		add_to_variable = { GER_num_of_occupied_states = 1 }
+		# 		if = {
+		# 			limit = { #Advance to Level 1 Occupied States
+		# 				GER_occupied_states_level_1 = yes
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					check_variable = { GER_num_of_occupied_states_level < 1 }
+		# 				}
+		# 				add_to_variable = { GER_num_of_occupied_states_level = 1 }
+		# 				add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states }
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = { #Advance to Level 2 Occupied States
+		# 				GER_occupied_states_level_2 = yes
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					check_variable = { GER_num_of_occupied_states_level < 2 }
+		# 				}
+		# 				add_to_variable = { GER_num_of_occupied_states_level = 1 }
+		# 				add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = { #Advance to Level 3 Occupied States
+		# 				GER_occupied_states_level_3 = yes						
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					check_variable = { GER_num_of_occupied_states_level < 3 }
+		# 				}
+		# 				add_to_variable = { GER_num_of_occupied_states_level = 1 }
+		# 				add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = { #Advance to Level 4 Occupied States
+		# 				GER_occupied_states_level_4 = yes
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					check_variable = { GER_num_of_occupied_states_level < 4 }
+		# 				}
+		# 				add_to_variable = { GER_num_of_occupied_states_level = 1 }
+		# 				add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = { #Much wow, so large empire, plz advance to Level 5 Occupied States
+		# 				GER_occupied_states_level_5 = yes
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					check_variable = { GER_num_of_occupied_states_level < 5 }
+		# 				}
+		# 				add_to_variable = { GER_num_of_occupied_states_level = 1 }
+		# 				add_to_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Increase monthly CG change
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			FROM = { #Old Controller
+		# 				original_tag = GER
+		# 				OR = {
+		# 					has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+		# 					has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+		# 				}
+		# 				FROM.FROM = {
+		# 					NOT = {
+		# 						is_core_of = PREV
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 		FROM = { 
+		# 			subtract_from_variable = { GER_num_of_occupied_states = 1 }
+		# 			if = {
+		# 				limit = { #no wow, so smol empire, get outta here and return to level 0
+		# 					GER_occupied_states_level_0 = yes
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						check_variable = { GER_num_of_occupied_states_level > 0 }
+		# 					}
+		# 					set_variable = { GER_num_of_occupied_states_level = 0 }
+		# 					subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states }
+		# 				}
+		# 			}
+		# 			else_if = {
+		# 				limit = { #Return to Level 1 Occupied States
+		# 					GER_occupied_states_level_1 = yes
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						check_variable = { GER_num_of_occupied_states_level > 1 }
+		# 					}
+		# 					set_variable = { GER_num_of_occupied_states_level = 1 }
+		# 					subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
+		# 				}
+		# 			}
+		# 			else_if = {
+		# 				limit = { #Return to Level 2 Occupied States
+		# 					GER_occupied_states_level_2 = yes						
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						check_variable = { GER_num_of_occupied_states_level > 2 }
+		# 					}
+		# 					set_variable = { GER_num_of_occupied_states_level = 2 }
+		# 					subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
+		# 				}
+		# 			}
+		# 			else_if = {
+		# 				limit = { #Return to Level 3 Occupied States
+		# 					GER_occupied_states_level_3 = yes
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						check_variable = { GER_num_of_occupied_states_level >3 }
+		# 					}
+		# 					set_variable = { GER_num_of_occupied_states_level = 3 }
+		# 					subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
+		# 				}
+		# 			}
+		# 			else_if = {
+		# 				limit = { #Return to Level 4 Occupied States
+		# 					GER_occupied_states_level_4 = yes
+		# 				}
+		# 				if = {
+		# 					limit = {
+		# 						check_variable = { GER_num_of_occupied_states_level > 4 }
+		# 					}
+		# 					set_variable = { GER_num_of_occupied_states_level = 4 }
+		# 					subtract_from_variable = {	GER_monthly_consumer_goods_increase = GER_change_monthly_CG_occupied_states } #Reduce monthly CG change
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
 		#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
 		#Modify Colonial Powers
 		effect = {
@@ -6224,10 +6224,141 @@ on_actions = {
 					limit = {
 						check_variable = { GER_industrial_consumer_goods_factor < 1 }
 					}
+					set_variable = { GER_monthly_consumer_goods_increase = 0 }
+					if = {
+						limit = { GER_axis_has_enough_steel = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_aluminium = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_tungsten = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_chromium = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_oil = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_coal = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_rubber = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = {
+							check_variable = { GER_monthly_consumer_goods_increase = 0 }
+						}
+						subtract_from_variable = { GER_monthly_consumer_goods_increase = GER_change_per_resoruce_current }
+					}
 					add_to_variable = { GER_industrial_consumer_goods_factor = GER_monthly_consumer_goods_increase }
 					GER_add_mefo_bills_penalty = yes #Clamps CGFF too 100% and adds penalties
 				}
 				GER_reduce_mefo_bills_penalty = yes #This is a fail-safe, in case it wasn't lowered elsewhere but should have been
+			}
+		}
+	}
+
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_completed_focus = GER_prioritize_economic_growth }
+				}
+				# Update German Stuff
+				GER_check_steel = yes
+				GER_check_aluminium = yes
+				GER_check_tungsten = yes
+				GER_check_chromium = yes
+				GER_check_oil = yes
+				GER_check_coal = yes
+				GER_check_rubber = yes
+				GER_check_total = yes
+				GER_calculate_increase = yes
+			}
+		}
+		effect = {
+			#MEFO BILLS and ECONOMY OF CONQUEST increasing CG
+			if = {
+				limit = {
+					OR = {
+						has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+						has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+					}
+				}
+				if = {
+					limit = {
+						check_variable = { GER_industrial_consumer_goods_factor < 1 }
+					}
+					set_variable = { GER_monthly_consumer_goods_increase_current = 0 }
+					if = {
+						limit = { GER_axis_has_enough_steel = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_aluminium = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_tungsten = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_chromium = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_oil = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_coal = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = { GER_axis_has_enough_rubber = no }
+						add_to_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					}
+					if = {
+						limit = {
+							check_variable = { GER_monthly_consumer_goods_increase_current = 0 }
+						}
+						if = {
+							limit = {
+								NOT = { has_idea = GER_has_autarky }
+							}
+							add_ideas = GER_has_autarky
+							if = { 
+								limit = {
+									has_idea = autarkic_economy
+								}
+								add_ideas = autarkic_economy_improved
+							}
+						}
+						subtract_from_variable = { GER_monthly_consumer_goods_increase_current = GER_change_per_resoruce_current }
+					} else = {
+						if = {
+							limit = {
+								has_idea = GER_has_autarky
+							}
+							remove_ideas = GER_has_autarky
+							if = { 
+								limit = {
+									has_idea = autarkic_economy_improved
+								}
+								add_ideas = autarkic_economy
+							}
+						}
+					}
+				}
 			}
 		}
 	}

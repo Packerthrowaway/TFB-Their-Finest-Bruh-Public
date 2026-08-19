@@ -1,0 +1,103 @@
+scripted_gui = {
+	GER_Autarky_GUI = {
+        window_name = "GER_Autarky_GUI"
+        context_type = national_focus_context
+		parent_window_token = national_focus
+
+		visible = {
+			original_tag = GER
+		}
+        
+        properties = {
+			GER_resource_progress_bar = { frame = faction_resource_count }
+			GER_resource_progress_bar_red = { frame = faction_resource_count }
+			GER_steel_progress_bar = { frame = faction_steel_percent }
+			GER_steel_progress_bar_red = { frame = faction_steel_percent }
+			GER_aluminium_progress_bar = { frame = faction_aluminium_percent }
+			GER_aluminium_progress_bar_red = { frame = faction_aluminium_percent }
+			GER_rubber_progress_bar = { frame = faction_rubber_percent }
+			GER_rubber_progress_bar_red = { frame = faction_rubber_percent }
+			GER_tungsten_progress_bar = { frame = faction_tungsten_percent }
+			GER_tungsten_progress_bar_red = { frame = faction_tungsten_percent }
+			GER_chromium_progress_bar = { frame = faction_chromium_percent }
+			GER_chromium_progress_bar_red = { frame = faction_chromium_percent }
+			GER_oil_progress_bar = { frame = faction_oil_percent }
+			GER_oil_progress_bar_red = { frame = faction_oil_percent }
+			GER_coal_progress_bar = { frame = faction_coal_percent }
+			GER_coal_progress_bar_red = { frame = faction_coal_percent }
+        }
+
+		triggers = {
+			GER_steel_progress_bar_visible = {
+				OR = {
+					check_variable = { faction_steel_percent > 100 }
+					check_variable = { faction_steel_percent = 1 }
+				}
+			}
+			GER_aluminium_progress_bar_visible = {
+				OR = {
+					check_variable = { faction_aluminium_percent > 100 }
+					check_variable = { faction_aluminium_percent = 1 }
+				}
+			}
+			GER_rubber_progress_bar_visible = {
+				OR = {
+					check_variable = { faction_rubber_percent > 100 }
+					check_variable = { faction_rubber_percent = 1 }
+				}
+			}
+			GER_tungsten_progress_bar_visible = {
+				OR = {
+					check_variable = { faction_tungsten_percent > 100 }
+					check_variable = { faction_tungsten_percent = 1 }
+				}
+			}
+			GER_chromium_progress_bar_visible = {
+				OR = {
+					check_variable = { faction_chromium_percent > 100 }
+					check_variable = { faction_chromium_percent = 1 }
+				}
+			}
+			GER_oil_progress_bar_visible = {
+				OR = {
+					check_variable = { faction_oil_percent > 100 }
+					check_variable = { faction_oil_percent = 1 }
+				}
+			}
+			GER_coal_progress_bar_visible = {
+				OR = {
+					check_variable = { faction_coal_percent > 100 }
+					check_variable = { faction_coal_percent = 1 }
+				}
+			}
+			GER_resource_progress_bar_visible = {
+				check_variable = { faction_resource_count > 6 }
+			}
+			spr_resource12_visible = {
+				NOT = { SPR = { is_in_faction_with = GER } }
+				GER = { has_completed_focus = GER_secure_spanish_resources }
+			}
+			spr_resource22_visible = {
+				NOT = { SPR = { is_in_faction_with = GER } }
+				SPR = { has_completed_focus = SPA_expand_the_axis_gold_trade }
+			}
+			spr_resource32_visible = {
+				SPR = { is_in_faction_with = GER }
+			}
+			spr_resource42_visible = {
+				110 = { 
+					CONTROLLER = {
+						OR = {
+							tag = GER
+							is_subject_of = GER
+							is_in_faction_with = GER
+						}
+					}
+				}
+			}
+			autarky_bonus1_visible = {
+				has_idea = GER_has_autarky
+			}
+		}
+	}
+}
