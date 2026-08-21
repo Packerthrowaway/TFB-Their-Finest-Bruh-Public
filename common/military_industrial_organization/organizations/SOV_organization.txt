@@ -105,12 +105,12 @@ SOV_morozov_design_bureau_organization = {
 
 
 		# When in a Foreign MIO, countries need to be at peace with original country
-# 		IF = {
-# 			limit = {
-# 				FROM = { NOT = { original_tag = SOV } }
-# 			}
-# #			FROM = { NOT = { has_war_with = SOV } }
-# 		}
+		# IF = {
+		# 	limit = {
+		# 		FROM = { NOT = { original_tag = SOV } }
+		# 	}
+		# 	FROM = { NOT = { has_war_with = SOV } }
+		# }
 		# ELSE = {
 		# 	OR = {
 		# 		FROM = { has_completed_focus = SOV_depoliticize_industry }
@@ -188,24 +188,21 @@ SOV_morozov_design_bureau_organization = {
 		name = morozov_mio_trait_mass_small_arms_ammunition_production
 		icon = GFX_generic_mio_trait_icon_build_cost_ic
 
-		position = { x=4 y=0 }
-		
-		visible = {
-			IF = {
-				limit = { FROM = { original_tag = MON } } 
-				FROM = { has_completed_focus = SOV_army_04 }
-			}
-		}		
+		position = { x=4 y=0 }	
 		
 		available = {
-			FROM = {
-				OR = {
-					has_completed_focus = SOV_army_04
+			if = {
+				limit = { FROM = { original_tag = SOV } }
+				FROM = {
 					has_completed_focus = SOV_army_voro
+				}
+			}
+			else_if = {
+				limit = { FROM = { original_tag = CHI } }
+				FROM = {
 					has_completed_focus = CHI_hire_soviet_designer
 				}
 			}
-
 		}
 
 		production_bonus = {
@@ -578,16 +575,13 @@ SOV_astrov_design_bureau_organization = {
 		position = { x=3 y=0 }
 		
 		visible = {
-			IF = {
-				limit = { FROM = { original_tag = MON } } 
-				FROM = { has_completed_focus = SOV_army_04 }
-			}
-		}		
+
+		}
 		
 		available = {
-			FROM = {
-				OR = {
-					has_completed_focus = SOV_army_04
+			IF = {
+				limit = { FROM = { original_tag = SOV } }
+				FROM = {
 					has_completed_focus = SOV_army_voro
 				}
 			}
@@ -1026,19 +1020,14 @@ SOV_okmo_organization = {
 		position = { x=8 y=0 }
 		
 		visible = {
-			IF = {
-				limit = { FROM = { original_tag = MON } } 
-				FROM = { has_completed_focus = SOV_army_04 }
-			}
-		}		
+
+		}
 		
 		available = {
-			OR = {
+			IF = {
+				limit = { FROM = { original_tag = SOV } }
 				FROM = {
-					OR = {
-						has_completed_focus = SOV_army_04
-						has_completed_focus = SOV_army_voro
-					}
+					has_completed_focus = SOV_army_voro
 				}
 			}
 		}
@@ -1515,17 +1504,14 @@ SOV_morozov_design_bureau_ac_organization = {
 
 		position = { x=3 y=0 }
 
-	visible = {
-		IF = {
-			limit = { FROM = { original_tag = MON } } 
-			FROM = { has_completed_focus = SOV_army_04 }
+		visible = {
+
 		}
-	}
 		
 		available = {
-			FROM = {
-				OR = {
-					has_completed_focus = SOV_army_04
+			IF = {
+				limit = { FROM = { original_tag = SOV } }
+				FROM = {
 					has_completed_focus = SOV_army_voro
 				}
 			}
@@ -2394,16 +2380,13 @@ SOV_kirov_organization = {
 		position = { x=0 y=0 }
 
 		visible = {
-			IF = {
-				limit = { FROM = { original_tag = MON } } 
-				FROM = { has_completed_focus = SOV_army_04 }
-			}
+
 		}
 		
 		available = {
-			FROM = {
-				OR = {
-					has_completed_focus = SOV_army_04
+			IF = {
+				limit = { FROM = { original_tag = SOV } }
+				FROM = {
 					has_completed_focus = SOV_army_voro
 				}
 			}
