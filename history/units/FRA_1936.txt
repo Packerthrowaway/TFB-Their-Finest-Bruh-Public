@@ -426,16 +426,16 @@ units = {
 		start_equipment_factor = 0.95
 
 	}
-#	division= {	# "3ème Div. d'Inf. Coloniale"			# missing from OOB, insterted code but commented out -- balance?
-#		division_name = {
-#			is_name_ordered = yes
-#			name_order = 3
-#		}
-#		location = 11506
-#		division_template = "Division Coloniale"	 	# Second line, reserve equipment
-#		start_experience_factor = 0.2
-#		start_equipment_factor = 0.95
-#	}
+	# division= {	# "3ème Div. d'Inf. Coloniale"			# missing from OOB, insterted code but commented out -- balance?
+	# 	division_name = {
+	# 		is_name_ordered = yes
+	# 		name_order = 3
+	# 	}
+	# 	location = 11506
+	# 	division_template = "Division Coloniale"	 	# Second line, reserve equipment
+	# 	start_experience_factor = 0.2
+	# 	start_equipment_factor = 0.95
+	# }
 	division= {	# "3ème Division de Cavalerie"
 		division_name = {
 			is_name_ordered = yes
@@ -972,91 +972,282 @@ instant_effect = {
 	add_equipment_production = {
 		equipment = {
 			type = infantry_equipment_1
-			creator = "FRA"
+			creator = FRA
 		}
-		requested_factories = 2
+		requested_factories = 1
 		progress = 0.1
-		efficiency = 50
+		efficiency = 58
+		industrial_manufacturer = mio:FRA_mas_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = squad_equipment_0
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_mas_organization
 	}
 
 	add_equipment_production = {
 		equipment = {
 			type = support_equipment_1
-			creator = "FRA" 
+			creator = FRA
 		}
 		requested_factories = 1
 		progress = 0.3
-		efficiency = 50
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_alsthom_organization
 	}
 
 	add_equipment_production = {
 		equipment = {
-			type = artillery_equipment_1
-			creator = "FRA" 
+			type = sf_equipment_0
+			creator = FRA 
 		}
 		requested_factories = 1
 		progress = 0.3
-		efficiency = 50
+		efficiency = 55
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = radio_equipment_0
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 55
 	}
 
 	add_equipment_production = {
 		equipment = {
 			type = motorized_equipment_1
-			creator = "FRA" 
+			creator = FRA 
 		}
 		requested_factories = 1
 		progress = 0.4
-		efficiency = 50
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_somua_organization
 	}
-	
-	add_equipment_production = {
-		equipment = {
-			type = train_equipment_1
-			creator = "FRA" 
-		}
-		requested_factories = 1
-		progress = 0.3
-		efficiency = 50
-	}
-	# add_equipment_production = {
-	# 	equipment = {
-	# 		type = horse_equipment_0
-	# 		creator = "FRA" 
-	# 	}
-	# 	requested_factories = 1
-	# 	progress = 0.1
-	# 	efficiency = 50
-	# }
 
 	add_equipment_production = {
 		equipment = {
-			type = squad_equipment_0
-			creator = "FRA" 
+			type = train_equipment_1
+			creator = FRA 
 		}
 		requested_factories = 1
-		progress = 0.1
-		efficiency = 50
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_alsthom_organization
 	}
-	
+
 	add_equipment_production = {
 		equipment = {
-			type = radio_equipment_0
-			creator = "FRA" 
+			type = pack_artillery_equipment_1
+			creator = FRA
 		}
 		requested_factories = 1
-		progress = 0.1
-		efficiency = 50
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_schneider_organization
 	}
-	
+
 	add_equipment_production = {
 		equipment = {
-			type = sf_equipment_0
-			creator = "FRA" 
+			type = artillery_equipment_1
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_schneider_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = heavy_artillery_equipment_1
+			creator = FRA
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_schneider_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = anti_air_equipment_1
+			creator = FRA
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_schneider_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = heavy_anti_air_equipment_0
+			creator = FRA
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_schneider_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = anti_tank_equipment_1
+			creator = FRA
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_schneider_organization
+	}
+
+	add_equipment_production = {
+		equipment = { 
+			type = gw_armored_car_chassis
+			creator = FRA
+			version_name = "S15"
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_panhard_organization
+	}
+
+	add_equipment_production = {
+		equipment = { 
+			type = fra_light_tank_chassis_ft
+			creator = FRA 
+			version_name = "FT-17"
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_renault_organization
+	}
+
+	add_equipment_production = {
+		equipment = { 
+			type = fra_light_tank_chassis_r35
+			creator = FRA 
+			version_name = "Renault R35"
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_renault_organization
+	}
+
+	add_equipment_production = {
+		equipment = { 
+			type = fra_light_tank_chassis_h35
+			creator = FRA 
+			version_name = "Hotchkiss H35"
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_renault_organization
+	}
+
+	add_equipment_production = {
+		equipment = { 
+			type = fra_medium_tank_chassis_s35
+			creator = FRA 
+			version_name = "Somua S35"
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_renault_organization
+	}
+
+	add_equipment_production = {
+		equipment = { 
+			type = heavy_assault_gun_chassisfra_heavy_tank_chassis_2c
+			creator = FRA 
+			version_name = "Char 2C"
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_renault_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = fighter_equipment_0
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_morane_saulnier_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = cv_fighter_equipment_0
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_levasseur_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = CAS_equipment_1
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.2
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_morane_saulnier_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = tac_bomber_equipment_1
+			creator = FRA 
 		}
 		requested_factories = 1
 		progress = 0.1
-		efficiency = 50
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_bloch_organization
 	}
+
+	add_equipment_production = {
+		equipment = {
+			type = transport_plane_equipment_1
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_bloch_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = cv_nav_bomber_equipment_1
+			creator = FRA 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 55
+		industrial_manufacturer = mio:FRA_levasseur_organization
+	}
+	
 	add_equipment_to_stockpile = {
 		type = infantry_equipment_0
 		amount = 6000
@@ -1077,11 +1268,6 @@ instant_effect = {
 		amount = 500
 		producer = FRA
 	}
-	# add_equipment_to_stockpile = {
-	# 	type = horse_equipment_0
-	# 	amount = 2000
-	# 	producer = FRA
-	# }
 	add_equipment_to_stockpile = {
 		type = fra_light_tank_chassis_ft
 		amount = 600
@@ -1093,5 +1279,4 @@ instant_effect = {
 		producer = FRA
 	}
 
-###################
 }

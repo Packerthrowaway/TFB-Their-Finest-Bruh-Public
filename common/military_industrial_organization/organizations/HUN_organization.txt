@@ -8,90 +8,90 @@
 
  #################### 
 
- HUN_hti_turan_organization = {
- 	include = axis_medium_tank_organization
- 	icon = GFX_idea_mw_aircraft #GFX_idea_HUN_hti_turan
- 	
- 	allowed = {	
- 		original_tag = HUN
- 		has_dlc = "Arms Against Tyranny"
- 	}
- 	
- 	available = {
- 		IF = {
- 			limit = {
- 				has_dlc = "Gotterdammerung"
- 			}
- 			FROM = {
- 				has_completed_focus = wuw_HUN_the_turan
- 			}
- 		}
- 		ELSE = {
- 			FROM = {
- 				has_completed_focus = HUN_develop_tanks
- 			}
- 		}
- 	}
- }
+HUN_hti_turan_organization = {
+	include = axis_medium_tank_organization
+	icon = GFX_idea_mw_aircraft #GFX_idea_HUN_hti_turan
 
- HUN_mavag_assault_guns_organization = {
- 	include = generic_assault_guns_organization
- 	icon = GFX_idea_HUN_mavag_assault_gun
- 	
- 	allowed = {	
- 		original_tag = HUN
- 		has_dlc = "Arms Against Tyranny"
- 	}
- 	
- 	available = {
- 		IF = {
- 			limit = {
- 				has_dlc = "Gotterdammerung"
- 			}
- 			FROM = {
- 				has_completed_focus = wuw_HUN_establish_the_mavag_army_division
- 			}
- 		}
- 		ELSE = {
- 			FROM = {
- 				has_completed_focus = HUN_assault_gun_focus
- 			}
- 		}
- 	}
- }
+	allowed = {	
+		original_tag = HUN
+		has_dlc = "Arms Against Tyranny"
+	}
 
- HUN_fiat_tankettes_organization = {
- 	include = generic_mobile_tank_organization
- 	icon = GFX_idea_fiat
- 	
- 	allowed = {	
- 		original_tag = HUN 
- 		has_dlc = "Arms Against Tyranny"
- 	}
+	available = {
+		IF = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			FROM = {
+				has_completed_focus = wuw_HUN_the_turan
+			}
+		}
+		ELSE = {
+			FROM = {
+				has_completed_focus = HUN_develop_tanks
+			}
+		}
+	}
+}
 
- 	visible = {
- 		IF = {
- 			limit = {
- 				FROM = {
- 					original_tag = HUN
- 				}
- 			}
- 			FROM = {
- 				has_completed_focus = wuw_HUN_license_fiat_tankettes
- 			}
- 		}
- 	}
- 	
- 	available = {
- 		# When in a Foreign MIO, countries need to be at peace with original country
- 		IF = {
- 			limit = {
- 				FROM = { NOT = { original_tag = ITA } }
- 			}
-# 			FROM = { NOT = { has_war_with = ITA } }
- 		}
- 	}
- }
+HUN_mavag_assault_guns_organization = {
+	include = generic_assault_guns_organization
+	icon = GFX_idea_HUN_mavag_assault_gun
+
+	allowed = {	
+		original_tag = HUN
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	available = {
+		IF = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			FROM = {
+				has_completed_focus = wuw_HUN_establish_the_mavag_army_division
+			}
+		}
+		ELSE = {
+			FROM = {
+				has_completed_focus = HUN_assault_gun_focus
+			}
+		}
+	}
+}
+
+HUN_fiat_tankettes_organization = {
+	include = generic_mobile_tank_organization
+	icon = GFX_idea_fiat
+
+	allowed = {	
+		original_tag = HUN 
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	visible = {
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = HUN
+				}
+			}
+			FROM = {
+				has_completed_focus = wuw_HUN_license_fiat_tankettes
+			}
+		}
+	}
+
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		IF = {
+			limit = {
+				FROM = { NOT = { original_tag = ITA } }
+			}
+			#FROM = { NOT = { has_war_with = ITA } }
+		}
+	}
+}
 
 # HUN_henschel_organization = { #changed to be Daimler-Benz in the GER_organization file
 #	include = generic_heavy_tank_organization

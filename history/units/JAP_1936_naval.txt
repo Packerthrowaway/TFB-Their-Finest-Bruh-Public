@@ -3,7 +3,7 @@
 
 ##### OOB #####
 units = {
-### IJN ###
+  ### IJN ###
 	#Yokosuka (Tokyo)
 	fleet = {
 		name = "Dai 1 Kantai"			
@@ -359,168 +359,189 @@ units = {
 #########################
 ## STARTING PRODUCTION ##
 #########################
-instant_effect = 
-{
-	
-### Ongoing Naval Production Jan 1 1936 ###
-		# BB (x1): "Hiei"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_heavy_1
-				creator = "JAP"
-				version_name = "Kongo Class"
-			}
-			requested_factories = 1
-			progress = 0.2
-			amount = 1
-		}
-		# CV (x1): "Soryu"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_carrier_1
-				creator = "JAP" 
-				version_name = "Soryu Class"
-			}
-			requested_factories = 1
-			progress = 0.66
+instant_effect = {
 
-			amount = 2
+	add_equipment_production = {
+		equipment = {
+			type = convoy_1
+			creator = JAP 
 		}
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_carrier_conversion_ca
-				creator = "JAP" 
-				version_name = "Zuiho Class"
-			}
-			requested_factories = 1
-			progress = 0.15
+		requested_factories = 1
+		progress = 0
+	}
 
-			amount = 2
+	### Ongoing Naval Production Jan 1 1936 ###
+	# BB (x1): "Hiei"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_heavy_1
+			creator = "JAP"
+			version_name = "Kongo Class"
 		}
-		# CA (x1): "Suzuya"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_cruiser_2
-				creator = "JAP" 
-				version_name = "Mogami Class"
-			}
-			requested_factories = 1
-			progress = 0.2
-			amount = 2
-		}		
-		# CL(CM) (x1): "Okinoshima"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_cruiser_1
-				creator = "JAP" 
-				version_name = "Okinoshima Class"
-			}
-			requested_factories = 1
-			progress = 0.15
-			amount = 1
-		}		
-		# DD (x5): "Shiratsuyu" "Shigure" "Murasame" "Harusame" "Samidare"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_light_1
-				creator = "JAP" 
-				version_name = "Fubuki Class"
-			}
-			requested_factories = 1
-			progress = 0.7
-			amount = 2
-		}		
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_light_1
-				creator = "JAP" 
-				version_name = "Fubuki Class"
-			}
-			requested_factories = 1
-			progress = 0.6
-			amount = 1
-		}		
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_light_1
-				creator = "JAP" 
-				version_name = "Fubuki Class"
-			}
-			requested_factories = 1
-			progress = 0.5
-			amount = 2
-		}		
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_light_1
-				creator = "JAP" 
-				version_name = "Fubuki Class"
-			}
-			requested_factories = 1
-			progress = 0.4
-			amount = 1
-		}		
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_light_1
-				creator = "JAP" 
-				version_name = "Fubuki Class"
-			}
-			requested_factories = 1
-			progress = 0.3
-			amount = 1
-		}		
-		# SS (x4): "I-172" "I-73" "I-174" "I-175"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_submarine_1
-				creator = "JAP" 
-				version_name = "Kaidai III Class"
-			}
-			requested_factories = 1
-			progress = 0.7
-			amount = 2
+		requested_factories = 1
+		progress = 0.2
+		amount = 1
+		industrial_manufacturer = mio:JAP_sasebo_naval_arsenal_organization
+	}
+	# CV (x1): "Soryu"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_carrier_1
+			creator = "JAP" 
+			version_name = "Soryu Class"
 		}
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_submarine_1
-				creator = "JAP" 
-				version_name = "Kaidai III Class"
-			}
-			requested_factories = 1
-			progress = 0.6
-			amount = 2
+		requested_factories = 1
+		progress = 0.66
+		amount = 2
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_carrier_conversion_ca
+			creator = "JAP" 
+			version_name = "Zuiho Class"
 		}
-		# SS (x2): "I-7" "I-8"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_submarine_1
-				creator = "JAP" 
-				version_name = "Kaidai III Class"
-			}
-			requested_factories = 1
-			progress = 0.7
-			amount = 1
+		requested_factories = 1
+		progress = 0.15
+		amount = 2
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}
+	# CA (x1): "Suzuya"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_cruiser_2
+			creator = "JAP" 
+			version_name = "Mogami Class"
 		}
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_submarine_1
-				creator = "JAP" 
-				version_name = "Kaidai III Class"
-			}
-			requested_factories = 1
-			progress = 0.6
-			amount = 1
+		requested_factories = 1
+		progress = 0.2
+		amount = 2
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}		
+	# CL(CM) (x1): "Okinoshima"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_cruiser_1
+			creator = "JAP" 
+			version_name = "Okinoshima Class"
 		}
-		# SS (x1): "Ro-34"
-		add_equipment_production = {				
-			equipment = {
-				type = ship_hull_submarine_1
-				creator = "JAP" 
-				version_name = "Ro-26 Class"
-			}
-			requested_factories = 1
-			progress = 0.80
-			amount = 1
+		requested_factories = 1
+		progress = 0.15
+		amount = 1
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}		
+	# DD (x5): "Shiratsuyu" "Shigure" "Murasame" "Harusame" "Samidare"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_light_1
+			creator = "JAP" 
+			version_name = "Fubuki Class"
 		}
+		requested_factories = 1
+		progress = 0.7
+		amount = 2
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}		
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_light_1
+			creator = "JAP" 
+			version_name = "Fubuki Class"
+		}
+		requested_factories = 1
+		progress = 0.6
+		amount = 1
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}		
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_light_1
+			creator = "JAP" 
+			version_name = "Fubuki Class"
+		}
+		requested_factories = 1
+		progress = 0.5
+		amount = 2
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}		
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_light_1
+			creator = "JAP" 
+			version_name = "Fubuki Class"
+		}
+		requested_factories = 1
+		progress = 0.4
+		amount = 1
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}		
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_light_1
+			creator = "JAP" 
+			version_name = "Fubuki Class"
+		}
+		requested_factories = 1
+		progress = 0.3
+		amount = 1
+		industrial_manufacturer = mio:JAP_yokosuka_naval_arsenal_organization
+	}		
+	# SS (x4): "I-172" "I-73" "I-174" "I-175"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_submarine_1
+			creator = "JAP" 
+			version_name = "Kaidai III Class"
+		}
+		requested_factories = 1
+		progress = 0.7
+		amount = 2
+		industrial_manufacturer = mio:JAP_sasebo_naval_arsenal_organization
+	}
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_submarine_1
+			creator = "JAP" 
+			version_name = "Kaidai III Class"
+		}
+		requested_factories = 1
+		progress = 0.6
+		amount = 2
+		industrial_manufacturer = mio:JAP_sasebo_naval_arsenal_organization
+	}
+	# SS (x2): "I-7" "I-8"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_submarine_1
+			creator = "JAP" 
+			version_name = "Kaidai III Class"
+		}
+		requested_factories = 1
+		progress = 0.7
+		amount = 1
+		industrial_manufacturer = mio:JAP_sasebo_naval_arsenal_organization
+	}
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_submarine_1
+			creator = "JAP" 
+			version_name = "Kaidai III Class"
+		}
+		requested_factories = 1
+		progress = 0.6
+		amount = 1
+		industrial_manufacturer = mio:JAP_sasebo_naval_arsenal_organization
+	}
+	# SS (x1): "Ro-34"
+	add_equipment_production = {				
+		equipment = {
+			type = ship_hull_submarine_1
+			creator = "JAP" 
+			version_name = "Ro-26 Class"
+		}
+		requested_factories = 1
+		progress = 0.80
+		amount = 1
+		industrial_manufacturer = mio:JAP_sasebo_naval_arsenal_organization
+	}
 }

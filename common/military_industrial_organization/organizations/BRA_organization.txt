@@ -8,31 +8,31 @@
 
  #################### 
 
- BRA_bernadini_organization = {
- 	include = generic_medium_tank_organization
- 	icon = GFX_idea_BRA_bernardini
- 	allowed = {	
- 		#has_dlc = "Trial of Allegiance"
- 		tag = BRA 
- 	}
+BRA_bernadini_organization = {
+	include = generic_medium_tank_organization
+	icon = GFX_idea_BRA_bernardini
+	allowed = {	
+		#has_dlc = "Trial of Allegiance"
+		tag = BRA 
+	}
 
- 	available = {
- 		IF = {
- 			limit = {
- 				FROM = { NOT = { original_tag = BRA } }
- 			}
-# 			FROM = { NOT = { has_war_with = BRA } }
- 		}
- 		ELSE = { #original_tag = BRA
- 			FROM = {
- 				OR = {
- 					has_completed_focus = SMB_domestic_production
- 					has_completed_focus = SMB_foreign_designs
- 				}
- 			}
- 		} 
- 	}
- }
+	available = {
+		IF = {
+			limit = {
+				FROM = { NOT = { original_tag = BRA } }
+			}
+			#FROM = { NOT = { has_war_with = BRA } }
+		}
+		ELSE = { #original_tag = BRA
+			FROM = {
+				OR = {
+					has_completed_focus = SMB_domestic_production
+					has_completed_focus = SMB_foreign_designs
+				}
+			}
+		} 
+	}
+}
 
 
 #####################
@@ -61,7 +61,7 @@ BRA_amrj_organization = {
 			limit = {
 				FROM = { NOT = { original_tag = BRA } }
 			}
-#			FROM = { NOT = { has_war_with = BRA } }
+			#FROM = { NOT = { has_war_with = BRA } }
 		}
 		ELSE = { #original_tag = BRA
 			FROM = {
@@ -98,7 +98,7 @@ BRA_embraer_organization = {
 			limit = {
 				FROM = { NOT = { original_tag = BRA } }
 			}
-#			FROM = { NOT = { has_war_with = BRA } }
+			#FROM = { NOT = { has_war_with = BRA } }
 		}
 		ELSE = {
 			FROM = {
@@ -166,7 +166,7 @@ BRA_fnm_organization = {
 			limit = {
 				FROM = { NOT = { original_tag = BRA } }
 			}
-#			FROM = { NOT = { has_war_with = BRA } }
+			#FROM = { NOT = { has_war_with = BRA } }
 		}
 		ELSE = {
 			FROM = { 

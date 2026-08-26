@@ -444,12 +444,23 @@ if = {
 	recruit_character = ENG_jack_churchill 
 }
 
-
+create_equipment_variant = {
+	name = "Dingo"
+	type = gw_armored_car_chassis
+	parent_version = 0
+	design_team = mio:ENG_crossley_motors_organization
+	modules = {
+		main_armament_slot = tank_small_gun_1
+		turret_type_slot = tank_light_turret_1
+		engine_type_slot = tank_diesel_engine
+	}
+}
 
 create_equipment_variant = {
 	name = "Light Tank Mk. IV"
 	type = eng_light_tank_chassis_mk6
 	parent_version = 0
+	design_team = mio:ENG_vauxhall_organization
 	modules = {
 		main_armament_slot = tank_heavy_machine_gun
 		turret_type_slot = tank_light_turret_1
@@ -463,6 +474,7 @@ create_equipment_variant = {
 	name = "Tank, Cruiser, Mk II"
 	type = eng_medium_tank_chassis_a10
 	parent_version = 0
+	design_team = mio:ENG_vauxhall_organization
 	modules = {
 		main_armament_slot = tank_small_gun_2
 		turret_type_slot = tank_medium_turret_1
@@ -476,6 +488,7 @@ create_equipment_variant = {
 	name = "Tank, Infantry, Mk I, Matilda I"
 	type = eng_heavy_tank_chassis_a11
 	parent_version = 0
+	design_team = mio:ENG_vauxhall_organization
 	modules = {
 		main_armament_slot = tank_small_gun_1
 		turret_type_slot = tank_medium_turret_1
@@ -486,6 +499,142 @@ create_equipment_variant = {
 	icon = "gfx/interface/technologies/tanks/eng/eng_medium_tank_1.dds"
 }
 
+# Materials
+
+create_equipment_variant = {
+	type = squad_equipment_0
+	design_team = mio:ENG_rsaf_enfield_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = infantry_equipment_0
+	design_team = mio:ENG_rsaf_enfield_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = infantry_equipment_1
+	design_team = mio:ENG_rsaf_enfield_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = support_equipment_1
+	design_team = mio:ENG_crewe_works_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = motorized_equipment_0
+	design_team = mio:ENG_vauxhall_automotive_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = motorized_equipment_1
+	design_team = mio:ENG_vauxhall_automotive_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = train_equipment_1
+	design_team = mio:ENG_crewe_works_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = pack_artillery_equipment_1
+	design_team = mio:ENG_royal_arsenal_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = artillery_equipment_1
+	design_team = mio:ENG_royal_arsenal_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = heavy_artillery_equipment_1
+	design_team = mio:ENG_royal_arsenal_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = anti_air_equipment_1
+	design_team = mio:ENG_royal_arsenal_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = heavy_anti_air_equipment_0
+	design_team = mio:ENG_royal_arsenal_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = anti_tank_equipment_1
+	design_team = mio:ENG_royal_arsenal_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+# AIR
+
+create_equipment_variant = {
+	type = transport_plane_equipment_1
+	design_team = mio:ENG_de_havilland_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = CAS_equipment_1
+	design_team = mio:ENG_hawker_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = fighter_equipment_0
+	design_team = mio:ENG_supermarine_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = cv_fighter_equipment_0
+	design_team = mio:ENG_fairey_aviation_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = cv_nav_bomber_equipment_1
+	design_team = mio:ENG_fairey_aviation_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
+
+create_equipment_variant = {
+	type = tac_bomber_equipment_0
+	design_team = mio:ENG_de_havilland_organization
+	show_position = no
+	mark_older_equipment_obsolete = yes
+}
 
 ### Ship Variants ###
 
@@ -829,32 +978,32 @@ if = {
 		}
 	}
 	create_equipment_variant = {
-			name = "Town Class"
-			type = ship_hull_cruiser_2
-			name_group = ENG_CL_HISTORICAL
-			parent_version = 0
-			design_team = mio:ENG_harland_wolff_organization
-			modules = {
-				fixed_ship_battery_slot = ship_light_medium_battery_2
-				fixed_ship_anti_air_slot = ship_anti_air_2
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = cruiser_ship_engine_2
-				fixed_ship_armor_slot = ship_armor_cruiser_2
-				fixed_ship_secondaries_slot = dp_ship_secondaries_1
-				front_1_custom_slot = ship_anti_air_2
-				mid_1_custom_slot = ship_torpedo_1
-				mid_2_custom_slot = empty
-				rear_1_custom_slot = empty
-			}
+		name = "Town Class"
+		type = ship_hull_cruiser_2
+		name_group = ENG_CL_HISTORICAL
+		parent_version = 0
+		design_team = mio:ENG_cammell_laird_organization
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_secondaries_slot = dp_ship_secondaries_1
+			front_1_custom_slot = ship_anti_air_2
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = empty
 		}
+	}
 	# Heavy Cruisers #
 	create_equipment_variant = {
 		name = "County Class"
 		type = ship_hull_cruiser_1
 		name_group = ENG_CA_HISTORICAL
 		parent_version = 0
-		design_team = mio:ENG_john_brown_organization
+		design_team = mio:ENG_cammell_laird_organization
 		modules = {
 			fixed_ship_battery_slot = ship_medium_battery_2
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -898,7 +1047,7 @@ if = {
 		type = ship_hull_cruiser_1
 		name_group = ENG_CA_HISTORICAL
 		parent_version = 0
-		design_team = mio:ENG_harland_wolff_organization
+		design_team = mio:ENG_cammell_laird_organization
 		modules = {
 			fixed_ship_battery_slot = ship_medium_battery_1
 			fixed_ship_anti_air_slot = ship_anti_air_2
@@ -941,7 +1090,7 @@ if = {
 		type = ship_hull_heavy_1
 		name_group = ENG_BC_HISTORICAL
 		parent_version = 0
-		design_team = mio:ENG_harland_wolff_organization
+		design_team = mio:ENG_cammell_laird_organization
 		modules = {
 			fixed_ship_battery_slot = ship_heavy_battery_1
 			fixed_ship_anti_air_slot = ship_anti_air_2
@@ -962,7 +1111,7 @@ if = {
 		type = ship_hull_heavy_1
 		name_group = ENG_BC_HISTORICAL
 		parent_version = 0
-		design_team = mio:ENG_harland_wolff_organization
+		design_team = mio:ENG_cammell_laird_organization
 		modules = {
 			fixed_ship_battery_slot = ship_heavy_battery_2
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -984,7 +1133,7 @@ if = {
 		type = ship_hull_cruiser_coastal_defense_ship
 		name_group = ENG_BM_HISTORICAL
 		parent_version = 0
-		design_team = mio:ENG_harland_wolff_organization
+		design_team = mio:ENG_cammell_laird_organization
 		modules = {
 			fixed_ship_battery_slot = ship_heavy_battery_1
 			fixed_ship_anti_air_slot = empty
@@ -1295,7 +1444,7 @@ if = {
 			type = ship_hull_cruiser_2
 			name_group = ENG_CLAA_HISTORICAL
 			parent_version = 1
-			design_team = mio:ENG_harland_wolff_organization
+			design_team = mio:ENG_cammell_laird_organization
 			modules = {
 				fixed_ship_battery_slot = dp_light_battery_3
 				fixed_ship_anti_air_slot = ship_anti_air_1
@@ -1415,7 +1564,7 @@ if = {
 			type = ship_hull_cruiser_coastal_defense_ship
 			name_group = ENG_BM_HISTORICAL
 			parent_version = 0
-			design_team = mio:ENG_harland_wolff_organization
+			design_team = mio:ENG_cammell_laird_organization
 			modules = {
 				fixed_ship_battery_slot = ship_heavy_battery_1
 				fixed_ship_anti_air_slot = ship_anti_air_2
