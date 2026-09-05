@@ -12879,9 +12879,11 @@ focus_tree = {
 					declare_war_on = { 
 						type = take_state_focus
 						target = POL
-						generator = { 85 807 }
+						generator = { 85 86 762 807 }
 					}
 					add_state_core = 85
+					add_state_core = 86
+					add_state_core = 762
 					add_state_core = 807
 					if = {
 						limit = {
@@ -13655,6 +13657,27 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = triumphant_will
 			add_political_power = 200
+		}
+	}
+
+	focus = {
+		id = GER_wunderwaffe_weapons
+		icon = GFX_ger_loyalty_to_the_fuhrer
+		prerequisite = { focus = GER_avenge_versailles }
+		x = -4
+		y = 1
+		relative_position_id = GER_avenge_versailles
+		cost = 5
+		available = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			custom_effect_tooltip = GER_wunderwaffe_tt
 		}
 	}
 
@@ -14447,6 +14470,7 @@ focus_tree = {
 		relative_position_id = GER_avenge_versailles
 		cost = 5
 		available = {
+			SPR = { NOT = { has_government = democratic } }
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
