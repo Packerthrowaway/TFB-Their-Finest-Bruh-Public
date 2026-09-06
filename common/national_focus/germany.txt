@@ -12828,8 +12828,10 @@ focus_tree = {
 						add_state_core = 85
 						transfer_state = 807
 						add_state_core = 807
-						remove_state_claim = 86
-						remove_state_claim = 762
+						transfer_state = 86
+						add_state_core = 86
+						transfer_state = 762
+						add_state_core = 762
 					}
 					POL = {
 						country_event = { id = germany.86 }
@@ -13657,6 +13659,12 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = triumphant_will
 			add_political_power = 200
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = GER_core_pol_tt
+			if = { limit = { controls_state = 85 } transfer_state = 85 }
+			if = { limit = { controls_state = 86 } transfer_state = 86 }
+			if = { limit = { controls_state = 762 } transfer_state = 762 }
+			if = { limit = { controls_state = 807 } transfer_state = 807 }
 		}
 	}
 
@@ -14471,6 +14479,7 @@ focus_tree = {
 		cost = 5
 		available = {
 			SPR = { NOT = { has_government = democratic } }
+			SPR = { NOT = { has_government = communism } }
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
