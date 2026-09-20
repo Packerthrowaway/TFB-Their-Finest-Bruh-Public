@@ -41,7 +41,7 @@ country_event = {
 				is_in_faction_with = FROM
 			}
 		}
-		create_wargoal = {
+		declare_war_on = {
 			target = FROM
 			type = puppet_wargoal_focus
 		}
@@ -62,6 +62,13 @@ country_event = {
 				id = IRQ_political_events.11
 				days = 1
 			}
+			custom_effect_tooltip = IRQ_join_with_no_war_eng
+			hidden_effect = {
+				add_timed_idea = {
+					idea = IRQ_no_factions_for_you
+					days = 90
+				}
+			}
 		}
 	}
 }
@@ -80,6 +87,7 @@ country_event = {
 			base = 10
 		}
 		add_political_power = 50
+		custom_effect_tooltip = IRQ_join_with_no_war_irq
 	}	
 }
 
