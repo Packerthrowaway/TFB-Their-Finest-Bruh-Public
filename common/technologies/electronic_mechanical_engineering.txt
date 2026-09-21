@@ -28,13 +28,10 @@ technologies = {
 		}
 
 		path = {
-			leads_to_tech = cavity_magnatron 
+			leads_to_tech = radio_detection 
 			research_cost_coeff = 1
 		}
 		
-		enable_equipments = {
-			
-		}
 
 		enable_equipment_modules = { 
 			ship_fire_control_system_0
@@ -136,6 +133,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	hq_radio1 = {
@@ -195,6 +194,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	hq_radio2 = {
@@ -233,6 +234,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	inf_radio1 = {
@@ -313,6 +316,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	inf_radio2 = {
@@ -389,6 +394,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	inf_radio3 = {
@@ -464,6 +471,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	art_radio1 = {
@@ -514,6 +523,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	art_radio2 = {
@@ -564,6 +575,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	art_radio3 = {
@@ -609,6 +622,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	mot_radio1 = {
@@ -617,7 +632,7 @@ technologies = {
 			max_organisation = 2
 			need = {
 			   radio_equipment = 2
-		    }
+			}
 		}
 
 		enable_equipment_modules = { 
@@ -652,6 +667,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	mot_radio2 = {
@@ -710,6 +727,8 @@ technologies = {
 		categories = {
 			electronics
 		}
+
+		special_project_specialization = { specialization_land }
 	}
 	
 	mot_radio3 = {
@@ -764,46 +783,57 @@ technologies = {
 			electronics
 		}
 
-		special_project_specialization = { specialization_air }
+		special_project_specialization = { specialization_land }
 	}
 	
 	radio_detection = {
-		# Unused
 		# allow = {
 	 	# 	ROOT = {
 		# 		is_special_project_completed = sp:sp_air_radar
 		# 	}
 		# }
 
-		allow = {
-			always = no
+		on_research_complete = {
+			complete_special_project = {
+				project = sp:sp_air_radar
+				show_modifiers = no
+			}
 		}
 
 		enable_building = {
 			building = radar_station
 			level = 1
 		}
-		
-		# path = {
-		# 	leads_to_tech = cavity_magnatron 
-		# 	research_cost_coeff = 1
-		# }
-		#enable_equipment_modules = {
-		#	ship_radar_1
-		#	radio_navigation_1
-		#}
+
+
+		special_project_specialization = { specialization_air specialization_nuclear }
+
+		path = {
+			leads_to_tech = cavity_magnatron 
+			research_cost_coeff = 1
+		}
+
+		enable_equipment_modules = {
+			ship_radar_1
+			radio_navigation_1
+			lc_radar
+		}
 		research_cost = 2
+		start_year = 1936
 		
-		#folder = {
-		#	name = electronics_folder
-		#	position = { x = @radar y = 2 }
-		#}
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 2 }
+		}
 		
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				tag = USA
-				factor = 4
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
 			}
 		}
 		
@@ -822,13 +852,13 @@ technologies = {
 		# 		is_special_project_completed = sp:sp_air_radar
 		# 	}
 		# }
-		on_research_complete = {
-			complete_special_project = {
-				project = sp:sp_air_radar
-			}
-		}
+		# on_research_complete = {
+		# 	complete_special_project = {
+		# 		project = sp:sp_air_radar
+		# 	}
+		# }
 
-		is_special_project_tech = yes
+		# is_special_project_tech = yes
 		
 		research_cost = 2
 		start_year = 1938
@@ -923,17 +953,17 @@ technologies = {
 	
 	centimetric_radar = {
 
-		allow = {
-	 		ROOT = {
-				is_special_project_completed = sp:sp_air_radar
-			}
-		}
+		# allow = {
+	 	# 	ROOT = {
+		# 		is_special_project_completed = sp:sp_air_radar
+		# 	}
+		# }
 		# radar boost in air/sea combat depends on radar level
 		enable_building = {
 			building = radar_station
 			level = 4
 		}
-		is_special_project_tech = yes
+		# is_special_project_tech = yes
 		special_project_specialization = { specialization_air specialization_nuclear }
 		coordination_bonus = 0.02
 		static_anti_air_hit_chance_factor = 0.2
@@ -978,13 +1008,13 @@ technologies = {
 	}
 	
 	phased_array = {
-		is_special_project_tech = yes
+		# is_special_project_tech = yes
 		# radar boost in air/sea combat depends on radar level
-		allow = {
-			ROOT = {
-				is_special_project_completed = sp:sp_air_radar
-			}
-		}
+		# allow = {
+		# 	ROOT = {
+		# 		is_special_project_completed = sp:sp_air_radar
+		# 	}
+		# }
 		enable_building = {
 			building = radar_station
 			level = 5
@@ -1034,13 +1064,13 @@ technologies = {
 	}
 	
 	monopulse_radar = {
-		is_special_project_tech = yes
+		# is_special_project_tech = yes
 		# radar boost in air/sea combat depends on radar level
-		allow = {
-			ROOT = {
-				is_special_project_completed = sp:sp_air_radar
-			}
-		}
+		# allow = {
+		# 	ROOT = {
+		# 		is_special_project_completed = sp:sp_air_radar
+		# 	}
+		# }
 		enable_building = {
 			building = radar_station
 			level = 6
@@ -1289,7 +1319,7 @@ technologies = {
 			position = { x = 2 y = 6 }
 		}
 		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
+		# 	NOT = { has_dlc = "La Resistance" }
 			always = no
 		}
 		
@@ -1334,7 +1364,7 @@ technologies = {
 			position = { x = 2 y = 10 }
 		}
 		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
+		# 	NOT = { has_dlc = "La Resistance" }
 			always = no
 		}
 		
@@ -1379,7 +1409,7 @@ technologies = {
 			position = { x = 2 y = 14 }
 		}
 		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
+		# 	NOT = { has_dlc = "La Resistance" }
 			always = no
 		}
 		
@@ -1424,7 +1454,7 @@ technologies = {
 			position = { x = 6 y = 6 }
 		}
 		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
+		# 	NOT = { has_dlc = "La Resistance" }
 			always = no
 		}
 		
@@ -1465,7 +1495,7 @@ technologies = {
 			position = { x = 6 y = 10 }
 		}
 		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
+		# 	NOT = { has_dlc = "La Resistance" }
 			always = no
 		}
 		
@@ -1506,7 +1536,7 @@ technologies = {
 			position = { x = 6 y = 14 }
 		}
 		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
+		# 	NOT = { has_dlc = "La Resistance" }
 			always = no
 		}
 		
