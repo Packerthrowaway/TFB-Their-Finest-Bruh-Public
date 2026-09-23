@@ -1149,6 +1149,7 @@ country_event = {
 	option = {
 		name = britain.501.a
 		ENG = { country_event = { id = britain.502 hours = 6 } }
+		set_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
 	}
 	
 	option = {
@@ -1169,16 +1170,41 @@ country_event = {
 		name = britain.502.a
 		SOV = {
 			transfer_state= 416
-			transfer_state= 418
+			# transfer_state= 418
 			transfer_state= 266
 			transfer_state= 420
 			transfer_state= 419
 			transfer_state= 1000
 			transfer_state= 1004
 		}
+		transfer_state = 412
+		transfer_state = 413
+		transfer_state = 421
 		set_autonomy = {
 			target = PER
 			autonomous_state = autonomy_protectorate
+		}
+		hidden_effect = {
+			PER = {
+				set_capital = { state = 411 }
+				unlock_national_focus = PER_fight_for_iran
+				add_manpower = 10000
+				unlock_national_focus = PER_dig_and_defend
+				unlock_national_focus = PER_capital_protect
+				unlock_national_focus = PER_swear_fealty
+				mark_focus_tree_layout_dirty = yes
+				IF = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = PER_opposition_modifier
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PER_opposition_modifier
+					}
+				}
+				give_military_access = SOU
+			}
 		}
 	}
 	
