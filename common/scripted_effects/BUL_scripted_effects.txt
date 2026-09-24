@@ -518,6 +518,10 @@ BUL_communists_try_to_form_ff_effect = {
 		if = { #Having war against SOV is significant
 			limit = {
 				has_war_with = SOV
+				OR = {
+					NOT = { has_country_flag = BUL_at_war_with_the_soviets_flag }
+					has_country_flag = { flag = BUL_at_war_with_the_soviets_flag days > 180 }
+				}	
 			}
 			add_to_variable = { BUL_ff_forming_probability = 10 }
 			if = { #Having war against communist SOV is very important
@@ -591,7 +595,7 @@ BUL_communists_try_to_form_ff_effect = {
 		# country_event = { id = bftb_bulgaria_fatherland_front.1 hours = 16 random_hours = 16 }
 	}
 	#log = "Fatherland Front probability: [?BUL.BUL_ff_forming_probability]"
-	#log = "Fatherland Frot Random chance: [?BUL.BUL_random_ff_forming_chance]"
+	#log = "Fatherland Front Random chance: [?BUL.BUL_random_ff_forming_chance]"
 }
 
 BUL_ff_approaches_a_faction_effect = {
@@ -639,13 +643,17 @@ BUL_ff_tries_to_stage_a_coup_effect = {
 			if = { #Having war against SOV is significant
 				limit = {
 					has_war_with = SOV
+					OR = {
+						NOT = { has_country_flag = BUL_at_war_with_the_soviets_flag }
+						has_country_flag = { flag = BUL_at_war_with_the_soviets_flag days > 180 }
+					}
 				}
 				add_to_variable = { BUL_ff_coup_probability = 10 }
 				if = { #Having war against communist SOV is very important
 					limit = {
 						SOV = { has_government = communism }
 					}
-					add_to_variable = { BUL_ff_coup_probability = 50 }
+					add_to_variable = { BUL_ff_coup_probability = 40 } #Prev 50
 				}
 			}
 		}
@@ -656,12 +664,12 @@ BUL_ff_tries_to_stage_a_coup_effect = {
 					has_war_with = SOV
 				}
 			}
-			add_to_variable = { BUL_ff_coup_probability = 25 }
+			add_to_variable = { BUL_ff_coup_probability = 10 } #Prev 25
 			if = { #If SOV is communist then it becomes very important
 				limit = {
 					SOV = { has_government = communism }
 				}
-				add_to_variable = { BUL_ff_coup_probability = 75 }
+				add_to_variable = { BUL_ff_coup_probability = 15 } #Prev 75
 			}
 		}
 
@@ -670,27 +678,78 @@ BUL_ff_tries_to_stage_a_coup_effect = {
 				any_neighbor_country = {
 					tag = SOV
 				}
-				SOV = { has_government = communism }
+				has_government = communism
+			}
+			add_to_variable = { BUL_ff_coup_probability = 5 }
+			if = { #SOV controls one of our key states
+				limit = {
+					SOV = {
+						any_controlled_state = {
+							has_state_flag = BUL_initial_bulgarian_state_flag
+							is_in_home_area = yes
+						}
+					}
+				}
+				add_to_variable = { BUL_ff_coup_probability = 15 }
+				if= { #Neighbor SOV being at war with Bulgaria or her allies is critical
+					limit = {
+						OR = {
+							any_allied_country = {
+								has_war_with = SOV
+							}
+							has_war_with = SOV
+						}			
+					}
+					add_to_variable = { BUL_ff_coup_probability = 100 }
+				}
+			}
+		}
+
+		if = { #SOV conquering Germany
+			limit = {
+				SOV = {
+					any_controlled_state = {
+						is_core_of = GER
+					}
+				}
+			}
+			add_to_variable = { BUL_ff_coup_probability = 5 }
+			if = { #SOV conquering initial German states
+				limit = {
+					SOV = {
+						any_controlled_state = {
+							is_core_of = GER
+							NOT = {
+								state = 188
+								state = 763
+								state = 5
+								state = 807
+								state = 85
+							}
+						}
+					}
+				}
+				add_to_variable = { BUL_ff_coup_probability = 15 }
+			}
+		}
+
+		if = { #BUL losing key territory
+			limit = {
+				any_state = {
+					has_state_flag = BUL_initial_bulgarian_state_flag
+					controller = {
+						has_war_with = ROOT
+					}
+				}
 			}
 			add_to_variable = { BUL_ff_coup_probability = 15 }
-			if= { #Neighbor SOV being at war with Bulgaria or her allies is critical
-				limit = {
-					OR = {
-						any_allied_country = {
-							has_war_with = SOV
-						}
-						has_war_with = SOV
-					}			
-				}
-				add_to_variable = { BUL_ff_coup_probability = 100 }
-			}
 		}
 
 		if = { #SOV being communist is relatively important
 			limit = {
 				SOV = { has_government = communism }
 			}
-			add_to_variable = { BUL_ff_coup_probability = 15 }
+			add_to_variable = { BUL_ff_coup_probability = 10 } #Prev 15
 		}
 
 		randomize_temp_variable = {
@@ -711,8 +770,8 @@ BUL_ff_tries_to_stage_a_coup_effect = {
 			# Fatherland doesn't exist I don't think
 			# country_event = { id = bftb_bulgaria_fatherland_front.2 hours = 4 random_hours = 4 }
 		}
-		#log = "Fatherland Front probability: [?BUL.BUL_ff_forming_probability]"
-		#log = "Fatherland Frot Random chance: [?BUL.BUL_random_ff_forming_chance]"
+		#log = "[GetDateText] - Fatherland Front coup probability: [?BUL.BUL_ff_coup_probability]"
+		#log = "[GetDateText] - Fatherland Front coup Random chance: [?BUL.BUL_random_ff_coup_chance]"
 	}
 }
 
@@ -917,6 +976,7 @@ BUL_start_ff_civil_war = {
 			name = "Fatherland Front Militia"
 			priority = 1
 			is_locked = yes
+			division_names_group = BUL_INF_04
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
@@ -928,6 +988,7 @@ BUL_start_ff_civil_war = {
 			name = "Fatherland Front Partisans"
 			priority = 1
 			is_locked = yes
+			division_names_group = BUL_INF_06
 			regiments = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
@@ -1139,6 +1200,7 @@ BUL_start_ff_civil_war = {
 	#FF joins SOV's faction and wars and give Military Access
 	if = {
 		limit = {
+			country_exists = SOV
 			has_war_with = SOV
 			SOV = { has_government = communism }
 		}
@@ -1152,14 +1214,23 @@ BUL_start_ff_civil_war = {
 				}
 			}
 		}
-		every_country = {
+		if = {
 			limit = {
-				has_war_with = SOV
-				is_in_faction_with = BUL
-				NOT = {	has_country_flag = BUL_ff_civil_war_flag }
+				any_country = {
+					has_war_with = SOV
+					is_in_faction_with = BUL
+					NOT = {	has_country_flag = BUL_ff_civil_war_flag }
+				}
 			}
-			BUF = {
-				add_to_war = { targeted_alliance = SOV enemy = PREV hostility_reason = asked_to_join }
+			every_country = {
+				limit = {
+					has_war_with = SOV
+					is_in_faction_with = BUL
+					NOT = {	has_country_flag = BUL_ff_civil_war_flag }
+				}
+				BUF = {
+					add_to_war = { targeted_alliance = SOV enemy = PREV hostility_reason = asked_to_join }
+				}
 			}
 		}
 	}
@@ -1369,6 +1440,102 @@ BUL_get_random_bulgarian_destination_march = { #This works together with scripte
 	}
 }
 
+BUL_replace_national_industrial_designer = {
+	if = {
+		limit = {
+			has_idea =  BUL_petrol_ad
+		}
+		swap_ideas = {
+			remove_idea = BUL_petrol_ad
+			add_idea = BUL_petrol_ad_improved
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = BUL_ira
+		}
+		swap_ideas = {
+			remove_idea = BUL_ira
+			add_idea = BUL_ira_improved
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = BUL_pirin
+		}
+		swap_ideas = {
+			remove_idea = BUL_pirin
+			add_idea = BUL_pirin_improved
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = BUL_vulkan_cement
+		}
+		swap_ideas = {
+			remove_idea = BUL_vulkan_cement
+			add_idea = BUL_vulkan_cement_improved
+		}
+	}	
+}
+
+BUL_replace_national_naval_designer = {
+	if = {
+		limit = {
+			has_idea = BUL_varna_naval_dockyard
+		}
+		custom_effect_tooltip = BUL_replace_national_naval_designer_tt
+		hidden_effect = {
+			swap_ideas = {
+				remove_idea = BUL_varna_naval_dockyard
+				add_idea = BUL_varna_naval_dockyard_improved
+			}
+		}
+	}
+	else = {
+		custom_effect_tooltip = BUL_replace_national_naval_designer_tt
+	}
+}
+
+BUL_replace_national_aircraft_designer = {
+	if = {
+		limit = {
+			has_idea = BUL_dar
+		}
+		swap_ideas = {
+			remove_idea = BUL_dar
+			add_idea = BUL_dar_improved
+		}
+	}
+	if = {
+		limit = {
+			has_idea = BUL_kaproni_bulgarski
+		}
+		swap_ideas = {
+			remove_idea = BUL_kaproni_bulgarski
+			add_idea = BUL_kaproni_bulgarski_improved
+		}
+	}
+	if = {
+		limit = {
+			has_idea = BUL_dvf
+		}
+		swap_ideas = {
+			remove_idea = BUL_dvf
+			add_idea = BUL_dvf_improved
+		}
+	}
+	if = {
+		limit = {
+			has_idea = BUL_dvf_sopot
+		}
+		swap_ideas = {
+			remove_idea = BUL_dvf_sopot
+			add_idea = BUL_dvf_sopot_improved
+		}
+	}
+}
+
 BUL_set_buz_faction_values = {
 	set_country_flag = BUL_factions_unlocked_flag
 	set_variable = { BUL_zveno_loyalty = 15 }
@@ -1396,9 +1563,9 @@ BUL_set_buz_faction_values = {
 	set_variable = { BUL_faction_low_decrease = -5 }
 	set_variable = { BUL_faction_medium_decrease = -10 }
 	set_variable = { BUL_faction_high_decrease = -15 }
-	set_variable = { BUL_ff_missions_base_days_to_add = 90 } #Base amount of days to be added to Impending FF Coup mission
-	set_variable = { BUL_ff_missions_popularity_factor = 5 } #More popularity means more days to add
-	set_variable = { BUL_ff_missions_loyalty_factor = -2 } #More loyalty means less days to add
+	set_variable = { BUL_ff_missions_base_days_to_add = 60 } #Base amount of days to be added to Impending FF Coup mission
+	set_variable = { BUL_ff_missions_popularity_factor = 1 } #More popularity means more days to add
+	set_variable = { BUL_ff_missions_loyalty_factor = 1 } #More loyalty means less days to add
 	set_variable = { BUL_ff_preventive_actions_against_coup = 0 } #This will be used to reduce the chances of the FF staging the coup after they have planned it
 	set_variable = { BUL_ff_preventive_actions_base_value = 5 } #The value added to the variable above every time a decision to prevent the coup is taken
 	set_variable = { BUL_ff_preventive_actions_cap_value = 50 } #This is a cap to the player's ability to prevent the coup
@@ -1433,7 +1600,7 @@ BUL_set_buz_faction_values = {
 	#Plot Against Boris
 	set_variable = { BUL_regicide_execution_time = 90 }
 	#Free Balkan States dynamic modifier (NS)
-	set_variable = { BUL_our_duty_in_the_balkans_consumer_goods_modifier = -0.01 }
+	set_variable = { BUL_our_duty_in_the_balkans_consumer_goods_modifier = -0.03 }
 	set_variable = { BUL_our_duty_in_the_balkans_stability_modifier = 0.05 }
 	#Monthly extra chance of Boris dieing of "natural causes" (increased by 5 each month from 1943.1.1)
 	set_variable = { BUL_tsar_boris_death_monthly_probability_factor = 0 }
@@ -1452,6 +1619,234 @@ BUL_set_buz_faction_values = {
 		max = 13
 	}
 	round_variable = BUL_march_destination
+}
+
+#Adds hidden NS granting attack & defense bonuses against the appropriate country (FROM - scope comes from "The Anti-Capitalist Fight" or "Toppling Giants" Focus)
+BUL_add_hidden_targeted_ns = {
+	if = {
+		limit = {
+			original_tag = ENG
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_eng
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = FRA
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_fra
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = GER
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_ger
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = ITA
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_ita
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = SOV
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_sov
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = POR
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_por
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = SPR
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_spr
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = IRE
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_ire
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = HOL
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_hol
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = BEL
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_bel
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = LUX
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_lux
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = SWI
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_swi
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = AUS
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_aus
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = CZE
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_cze
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = HUN
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_hun
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = YUG
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_yug
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = ALB
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_alb
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = GRE
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_gre
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = TUR
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_tur
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = ROM
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_rom
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = POL
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_pol
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = EST
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_est
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = LAT
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_lat
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = LIT
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_lit
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = SWE
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_swe
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = FIN
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_fin
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = NOR
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_nor
+		}
+	}
+	else_if = {
+		limit = {
+			original_tag = DEN
+		}
+		ROOT = {
+			add_ideas = BUL_anti_capitalism_den
+		}
+	}
 }
 
 BUL_add_improved_prussia_of_the_balkans_ns = {
