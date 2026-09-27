@@ -2118,7 +2118,7 @@ technologies = {
 		start_year = 1910
 		folder = {
 			name = support_folder
-			position = { x = -14 y = 28 }
+			position = { x = 0 y = 0 }
 		}
 
 		path = {
@@ -2158,23 +2158,19 @@ technologies = {
 		}
 	}
 
-	railway_gun = {
+	railway_gun_0 = {
 		enable_equipments = {
-			railway_gun_equipment_1
-		}
-
-		enable_equipment_modules = {
-			lc_hull_mounted_railway_gun #Module for Land Cruiser
+			railway_gun_equipment_0
 		}
 
 		research_cost = 1.5
 		start_year = 1936
 		folder = {
 			name = support_folder
-			position = { x = -12 y = 24 }
+			position = { x = -2 y = 4 }
 		}
 		path = {	
-			leads_to_tech = railway_gun_2	
+			leads_to_tech = railway_gun
 			research_cost_coeff = 1	
 		}
 
@@ -2184,8 +2180,54 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 1
-			
+			base = 1
+
+			modifier = {
+				is_major = yes
+				factor = 2
+			}
+
+			modifier = {
+				OR = {
+					TAG = GER
+					tag = SOV
+				}
+				factor = 1.5
+			}
+		}
+	}
+
+	railway_gun = {
+		enable_equipments = {
+			railway_gun_equipment_1
+		}
+
+		enable_equipment_modules = {
+			lc_hull_mounted_railway_gun #Module for Land Cruiser
+		}
+
+		on_research_complete = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_PROJECT
+				PROJECT = sp_land_super_heavy_railway_gun
+			}
+		}
+
+		research_cost = 1.5
+		start_year = 1939
+		folder = {
+			name = support_folder
+			position = { x = -2 y = 6 }
+		}
+
+		categories = {
+			train_tech
+			heavy_artillery
+		}
+
+		ai_will_do = {
+			base = 1
+
 			modifier = {
 				is_major = yes
 				factor = 2
@@ -2210,7 +2252,7 @@ technologies = {
 		start_year = 1939
 		folder = {
 			name = support_folder
-			position = { x = -10 y = 30 }
+			position = { x = 1 y = 6 }
 		}
 
 		categories = {
@@ -2251,7 +2293,7 @@ technologies = {
 		}
 
 		path = {
-			leads_to_tech = railway_gun
+			leads_to_tech = railway_gun_0
 			research_cost_coeff = 1
 		}
 
@@ -2259,7 +2301,7 @@ technologies = {
 		start_year = 1936
 		folder = {
 			name = support_folder
-			position = { x = -12 y = 27 }
+			position = { x = -2 y = 2 }
 		}
 
 		categories = {
@@ -2310,31 +2352,6 @@ technologies = {
 
 		ai_will_do = {
 			factor = 0
-		}
-	}
-
-	railway_gun_2 = {
-		enable_equipments = {
-			railway_gun_equipment_2
-		}
-
-		on_research_complete = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_PROJECT
-				PROJECT = sp_land_super_heavy_railway_gun
-			}
-		}
-
-		research_cost = 1.5
-		start_year = 1939
-		folder = {
-			name = support_folder
-			position = { x = -10 y = 24 }
-		}
-		
-		categories = {
-			train_tech
-			heavy_artillery
 		}
 	}
 
@@ -2728,6 +2745,19 @@ technologies = {
 		}
 	}
 
+	carl_gerat = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1943
+
+		enable_equipments = {
+			railway_gun_equipment_2
+		}		
+	}
 
 	light_amphibious_tank_recon_support_tech = {
 
