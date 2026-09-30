@@ -15,7 +15,7 @@ technologies = {
 		start_year = 1933
 		folder = {
 			name = air_techs_folder
-			position = { x = 7 y = 2 } 
+			position = { x = 1 y = 2 } 
 		}
 		
 		categories = {
@@ -48,7 +48,7 @@ technologies = {
 		start_year = 1939
 		folder = {
 			name = air_techs_folder
-			position = { x = 7 y = 6 } 
+			position = { x = 1 y = 6 } 
 		}
 		
 		categories = {
@@ -76,7 +76,7 @@ technologies = {
 		start_year = 1945
 		folder = {
 			name = air_techs_folder
-			position = { x = 7 y = 16 } 
+			position = { x = 1 y = 10 } 
 		}
 		
 		categories = {
@@ -219,9 +219,9 @@ technologies = {
 		}
 		special_project_specialization = { specialization_air }
 		
-		sub_technologies = {
-			scout_plane1
-		}
+		# sub_technologies = {
+		# 	scout_plane1
+		# }
 		
 		ai_will_do = {
 			factor = 4
@@ -350,9 +350,9 @@ technologies = {
 		}
 		special_project_specialization = { specialization_air }
 		
-		sub_technologies = {
-			scout_plane2
-		}
+		# sub_technologies = {
+		# 	scout_plane2
+		# }
 		
 		ai_will_do = {
 			factor = 4
@@ -662,6 +662,17 @@ technologies = {
 	
 	jet_fighter1 = {
 
+		allow = { 	 		
+			ROOT = {
+				is_special_project_completed = sp:sp_air_jet_engine
+			} 
+		}
+		on_research_complete = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_PROJECT
+				PROJECT = sp_air_axial_jet_engine	
+			}
+		}
 		enable_equipments = {
 			jet_fighter_equipment_1
 		}
@@ -676,25 +687,13 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		on_research_complete = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_PROJECT
-				PROJECT = sp_air_axial_jet_engine	
-			}
-		}
-
-		allow = {
-			ROOT = {
-				is_special_project_completed = sp:sp_air_jet_engine
-			} 
-		}
-		
+		is_special_project_tech = yes
 		research_cost = 2
 		start_year = 1946
 
 		folder = {
 			name = air_techs_folder
-			position = { x = 2 y = 14 }
+			position = { x = 2 y = 12 }
 		}
 		
 		categories = {
@@ -704,7 +703,7 @@ technologies = {
 			mio_cat_all_light_aircraft_and_modules
 		}
 		special_project_specialization = { specialization_air }
-		is_special_project_tech = yes		
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -720,6 +719,12 @@ technologies = {
 	
 	jet_fighter2 = {
 
+		allow = { 	 		
+			ROOT = {
+				is_special_project_completed = sp:sp_air_axial_jet_engine
+			} 
+		}
+
 		enable_equipments = {
 			jet_fighter_equipment_2
 		}
@@ -729,7 +734,7 @@ technologies = {
 
 		folder = {
 			name = air_techs_folder
-			position = { x = 2 y = 16 }
+			position = { x = 2 y = 14 }
 		}
 		
 		categories = {
@@ -1162,10 +1167,10 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		path = {
-			leads_to_tech = flying_boat1
-			research_cost_coeff = 1
-		}
+		# path = {
+		# 	leads_to_tech = flying_boat1
+		# 	research_cost_coeff = 1
+		# }
 		
 		research_cost = 2
 		start_year = 1936
@@ -1359,7 +1364,12 @@ technologies = {
 		#	leads_to_tech = scout_plane1
 		#	research_cost_coeff = 1
 		#}
-		
+
+		path = {
+			leads_to_tech = maritime_patrol_plane1
+			research_cost_coeff = 1
+		}
+
 		research_cost = 2
 		start_year = 1933
 		folder = {
@@ -1498,6 +1508,95 @@ technologies = {
 			factor = 1
 		}
 	}
+
+	scout_plane1 = {
+
+		enable_equipments = {
+			scout_plane_equipment_1
+		}
+	
+		path = {
+			leads_to_tech = scout_plane2
+			research_cost_coeff = 1
+		}
+		allow_branch = { has_dlc = "La Resistance" }
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = air_techs_folder
+			position = { x = 0 y = 4 }
+		}
+		
+		categories = {
+			medium_air
+			air_equipment
+			cat_scout_plane
+			mio_cat_all_medium_aircraft_and_modules
+		}
+		special_project_specialization = { specialization_air }
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_major = yes
+				factor = 2
+			}
+			modifier = {
+				has_war = yes
+				factor = 1.5
+			}
+			modifier = {
+				has_tech = fighter1
+				has_tech = tactical_bomber1
+				has_tech = CAS1
+				factor = 3
+			}
+			modifier = {
+				factor = 4
+				original_tag = GER
+			}
+		}
+	}
+	
+	scout_plane2 = {
+
+		enable_equipments = {
+			scout_plane_equipment_2
+		}
+		
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = air_techs_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		categories = {
+			medium_air
+			air_equipment
+			cat_scout_plane
+			mio_cat_all_medium_aircraft_and_modules
+		}
+		special_project_specialization = { specialization_air }
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_major = yes
+				factor = 2
+			}
+			modifier = {
+				has_war = yes
+				factor = 1.5
+			}
+			modifier = {
+				has_tech = fighter2
+				has_tech = tactical_bomber2
+				has_tech = CAS2
+				factor = 3
+			}
+		}
+	}
 	
 	tactical_bomber1 = {
 
@@ -1587,7 +1686,7 @@ technologies = {
 				}
 				custom_effect_tooltip = {
 					localization_key = SP_UNLOCK_PROJECT
-					PROJECT = sp_air_specialiced_bombs	
+					PROJECT = sp_air_bouncing_bomb	
 				}
 			}
 		}
@@ -1721,7 +1820,7 @@ technologies = {
 		}
 		folder = {
 			name = air_techs_folder
-			position = { x = 2 y = 14 }
+			position = { x = 2 y = 12 }
 		}
 		
 		categories = {
@@ -1761,7 +1860,7 @@ technologies = {
 		start_year = 1948
 		folder = {
 			name = air_techs_folder
-			position = { x = 2 y = 16 }
+			position = { x = 2 y = 14 }
 		}
 		
 		categories = {
@@ -1837,8 +1936,12 @@ technologies = {
 				}
 				custom_effect_tooltip = {
 					localization_key = SP_UNLOCK_PROJECT
-					PROJECT = sp_air_specialiced_bombs	
-				}													
+					PROJECT = sp_air_bouncing_bomb	
+				}	
+				custom_effect_tooltip = {
+					localization_key = SP_UNLOCK_PROJECT
+					PROJECT = sp_air_earthshaker_bomb	
+				}														
 			}
 		}
 	
@@ -1970,7 +2073,7 @@ technologies = {
 
 		folder = {
 			name = air_techs_folder
-			position = { x = 0 y = 16 }
+			position = { x = 0 y = 14 }
 		}
 		
 		categories = {
@@ -2018,23 +2121,102 @@ technologies = {
 		################
 	}
 	
-	flying_boat1 = {
-
+	maritime_patrol_plane1 = {
+		
 		enable_equipments = {
-			flying_boat_equipment_1
+			maritime_patrol_plane_equipment_1
 		}
-	
+
 		path = {
-			leads_to_tech = flying_boat2
+			leads_to_tech = maritime_patrol_plane2
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 2
 		start_year = 1936
 		folder = {
 			name = air_techs_folder
 			position = { x = 12 y = 4 }
 		}
+		
+		categories = {
+			heavy_air
+			cat_maritime_patrol
+			air_equipment
+			mio_cat_all_heavy_aircraft_and_modules
+		}
+		special_project_specialization = { specialization_air }
+		
+	}
+
+	maritime_patrol_plane2 = {
+		
+		enable_equipments = {
+			maritime_patrol_plane_equipment_2
+		}
+
+		path = {
+			leads_to_tech = maritime_patrol_plane3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1939
+		folder = {
+			name = air_techs_folder
+			position = { x = 12 y = 6 }
+		}
+		
+		categories = {
+			heavy_air
+			cat_maritime_patrol
+			air_equipment
+			mio_cat_all_heavy_aircraft_and_modules
+		}
+		special_project_specialization = { specialization_air }
+		
+	}
+
+	maritime_patrol_plane3 = {
+		
+		enable_equipments = {
+			maritime_patrol_plane_equipment_3
+		}
+
+		research_cost = 2
+		start_year = 1942
+		folder = {
+			name = air_techs_folder
+			position = { x = 12 y = 8 }
+		}
+		
+		categories = {
+			heavy_air
+			cat_maritime_patrol
+			air_equipment
+			mio_cat_all_heavy_aircraft_and_modules
+		}
+		special_project_specialization = { specialization_air }
+		
+	}
+
+	flying_boat1 = {
+
+		enable_equipments = {
+			flying_boat_equipment_1
+		}
+	
+		# path = {
+		# 	leads_to_tech = flying_boat2
+		# 	research_cost_coeff = 1
+		# }
+		
+		research_cost = 2
+		start_year = 1936
+		# folder = {
+		# 	name = air_techs_folder
+		# 	position = { x = 12 y = 4 }
+		# }
 		
 		categories = {
 			naval_bomber
@@ -2052,17 +2234,17 @@ technologies = {
 			flying_boat_equipment_2
 		}
 	
-		path = {
-			leads_to_tech = flying_boat3
-			research_cost_coeff = 1
-		}
+		# path = {
+		# 	leads_to_tech = flying_boat3
+		# 	research_cost_coeff = 1
+		# }
 		
 		research_cost = 2
 		start_year = 1939
-		folder = {
-			name = air_techs_folder
-			position = { x = 12 y = 6 }
-		}
+		# folder = {
+		# 	name = air_techs_folder
+		# 	position = { x = 12 y = 6 }
+		# }
 		
 		categories = {
 			air_equipment
@@ -2082,10 +2264,10 @@ technologies = {
 		
 		research_cost = 2
 		start_year = 1942
-		folder = {
-			name = air_techs_folder
-			position = { x = 12 y = 8 }
-		}
+		# folder = {
+		# 	name = air_techs_folder
+		# 	position = { x = 12 y = 8 }
+		# }
 		
 		categories = {
 			naval_bomber
@@ -2117,42 +2299,5 @@ technologies = {
 		
 	}
 	
-	scout_plane1 = {
-
-		enable_equipments = {
-			scout_plane_equipment_1
-		}
-	
-		allow_branch = { has_dlc = "La Resistance" }
-		research_cost = 1
-		start_year = 1936
-		
-		categories = {
-			medium_air
-			air_equipment
-			cat_scout_plane
-			mio_cat_all_medium_aircraft_and_modules
-		}
-		
-	}
-	
-	scout_plane2 = {
-
-		enable_equipments = {
-			scout_plane_equipment_2
-		}
-		
-		allow_branch = { has_dlc = "La Resistance" }
-		research_cost = 1
-		start_year = 1939
-		
-		categories = {
-			medium_air
-			air_equipment
-			cat_scout_plane
-			mio_cat_all_medium_aircraft_and_modules
-		}
-		
-	}
 
 }
