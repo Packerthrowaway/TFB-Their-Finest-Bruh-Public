@@ -1604,75 +1604,75 @@ improving_our_army_category = {
 				limit = {
 					has_country_flag = JUNO_fighters_flag
 				}
-				IF = {
-					limit = {
-						NOT = { has_dlc = "By Blood Alone" }
-					}
+				# IF = {
+				# 	limit = {
+				# 		NOT = { has_dlc = "By Blood Alone" }
+				# 	}
 					add_equipment_to_stockpile = {
 						producer = USA
 						type = fighter_equipment_1
 						amount = 100
 					}
-				}
-				ELSE = {
+				# }
+				# ELSE = {
 					
-					create_equipment_variant = {
-						name = "P-40" #
-						type = small_plane_airframe_2
-						allow_without_tech = yes #For tooltip purposes, doesn't affect anything really
-						modules = {
-							fixed_main_weapon_slot = heavy_mg_4x
-							fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
-							fixed_auxiliary_weapon_slot_2 = bomb_locks
-							engine_type_slot = engine_3_1x
-							special_type_slot_1 = drop_tanks
-						}
-					}
-					add_equipment_to_stockpile = {
-						producer = USA
-						type = small_plane_airframe_2
-						amount = 100
-						variant_name = "P-40"
-					}
+				# 	create_equipment_variant = {
+				# 		name = "P-40" #
+				# 		type = small_plane_airframe_2
+				# 		allow_without_tech = yes #For tooltip purposes, doesn't affect anything really
+				# 		modules = {
+				# 			fixed_main_weapon_slot = heavy_mg_4x
+				# 			fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
+				# 			fixed_auxiliary_weapon_slot_2 = bomb_locks
+				# 			engine_type_slot = engine_3_1x
+				# 			special_type_slot_1 = drop_tanks
+				# 		}
+				# 	}
+				# 	add_equipment_to_stockpile = {
+				# 		producer = USA
+				# 		type = small_plane_airframe_2
+				# 		amount = 100
+				# 		variant_name = "P-40"
+				# 	}
 					
-				}
+				# }
 				clr_country_flag = JUNO_fighters_flag
 			}
 			ELSE_IF = {
 				limit = {
 					has_country_flag = JUNO_tactical_bomber_flag
 				}
-				IF = {
-					limit = {
-						NOT = {
-							has_dlc = "By Blood Alone"
-						}
-					}
+				# IF = {
+				# 	limit = {
+				# 		NOT = {
+				# 			has_dlc = "By Blood Alone"
+				# 		}
+				# 	}
 					add_equipment_to_stockpile = {
 						producer = SOV
 						type = tac_bomber_equipment_1
 						amount = 100
 					}	
-				}
-				ELSE = {
-					create_equipment_variant = {
-						name = "DB-3" #
-						type = medium_plane_airframe_0
-						allow_without_tech = yes #For tooltip purposes, doesn't affect anything really
-						modules = {
-							fixed_main_weapon_slot = bomb_locks
-							fixed_auxiliary_weapon_slot_1 = bomb_locks
-							engine_type_slot = engine_3_1x
-							special_type_slot_1 = drop_tanks
-						}
-					}
-					add_equipment_to_stockpile = {
-						producer = SOV
-						type = medium_plane_airframe_0
-						amount = 100
-						variant_name = "DB-3"
-					}	
-				}
+				# }
+				# ELSE = {
+				# 	create_equipment_variant = {
+				# 		name = "DB-3" #
+				# 		type = medium_plane_airframe_0
+				# 		allow_without_tech = yes #For tooltip purposes, doesn't affect anything really
+				# 		modules = {
+				# 			fixed_main_weapon_slot = bomb_locks
+				# 			fixed_auxiliary_weapon_slot_1 = bomb_locks
+				# 			engine_type_slot = engine_3_1x
+				# 			special_type_slot_1 = drop_tanks
+				# 		}
+				# 	}
+				# 	add_equipment_to_stockpile = {
+				# 		producer = SOV
+				# 		type = medium_plane_airframe_0
+				# 		amount = 100
+				# 		variant_name = "DB-3"
+				# 	}	
+				# }
 				clr_country_flag = JUNO_tactical_bomber_flag
 			}
 			clr_country_flag = JUNO_purchasing_aircraft_flag 
