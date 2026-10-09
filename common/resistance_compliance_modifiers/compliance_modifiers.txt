@@ -18,6 +18,23 @@ compliance_25 = {
 	small_icon = "GFX_occupation_compliance_modifier_small_strip:2"
 	threshold = 25
 	margin = 2
+	visible = {
+		NOT = {
+			AND = {
+				ROOT = {
+					original_tag = FRA
+					has_government = fascism
+				}
+				FROM = {
+					original_tag = FRA
+					OR = {
+						has_government = democratic
+						has_government = communism
+					}
+				}
+			}
+		}
+	}
 	state_modifier = {
 		required_garrison_factor = -0.15
 		recruitable_population = 0.005
@@ -30,6 +47,23 @@ compliance_40 = {
 	small_icon = "GFX_occupation_compliance_modifier_small_strip:3"
 	threshold = 40
 	margin = 2
+	visible = {
+		NOT = {
+			AND = {
+				ROOT = {
+					original_tag = FRA
+					has_government = fascism
+				}
+				FROM = {
+					original_tag = FRA
+					OR = {
+						has_government = democratic
+						has_government = communism
+					}
+				}
+			}
+		}
+	}
 	state_modifier = {
 		local_factories = 0.15
 		local_resources = 0.15
@@ -41,6 +75,23 @@ compliance_60 = {
 	small_icon = "GFX_occupation_compliance_modifier_small_strip:4"
 	threshold = 60
 	margin = 2
+	visible = {
+		NOT = {
+			AND = {
+				ROOT = {
+					original_tag = FRA
+					has_government = fascism
+				}
+				FROM = {
+					original_tag = FRA
+					OR = {
+						has_government = democratic
+						has_government = communism
+					}
+				}
+			}
+		}
+	}
 	state_modifier = {
 		required_garrison_factor = -0.15
 		recruitable_population_factor = 0.2
@@ -87,10 +138,112 @@ compliance_90 = {
 	small_icon = "GFX_occupation_compliance_modifier_small_strip:5"
 	threshold = 90
 	margin = 2
+	visible = {
+		NOT = {
+			AND = {
+				ROOT = {
+					original_tag = FRA
+					has_government = fascism
+				}
+				FROM = {
+					original_tag = FRA
+					OR = {
+						has_government = democratic
+						has_government = communism
+					}
+				}
+			}
+		}
+	}
 	
 	state_modifier = {
 		recruitable_population_factor = 0.125
 		required_garrison_factor = -0.2
 	}
 	
+}
+
+compliance_0_vichy = {
+	type = core_compliance_modifier
+	icon = "GFX_occupation_resistance_modifier_strip:4"
+	small_icon = "GFX_occupation_resistance_modifier_small_strip:4"
+	threshold = 0
+	margin = 0
+	visible = {
+		ROOT = {
+			original_tag = FRA
+			has_government = fascism
+		}
+		FROM = {
+			original_tag = FRA
+		}
+	}
+	state_modifier = {
+		local_factories = -0.5
+		local_resources = -0.4
+		compliance_growth = 0.1
+	}
+}
+
+compliance_25_vichy = {
+	type = core_compliance_modifier
+	icon = "GFX_occupation_compliance_modifier_strip:2"
+	small_icon = "GFX_occupation_compliance_modifier_small_strip:2"
+	threshold = 25
+	margin = 2
+	visible = {
+		ROOT = {
+			original_tag = FRA
+			has_government = fascism
+		}
+		FROM = {
+			original_tag = FRA
+		}
+	}
+	state_modifier = {
+		required_garrison_factor = -0.15
+		resistance_garrison_penetration_chance = -0.25
+	}
+}
+
+compliance_60_vichy = {
+	type = core_compliance_modifier
+	icon = "GFX_occupation_compliance_modifier_strip:4"
+	small_icon = "GFX_occupation_compliance_modifier_small_strip:4"
+	threshold = 60
+	margin = 2
+	visible = {
+		ROOT = {
+			original_tag = FRA
+			has_government = fascism
+		}
+		FROM = {
+			original_tag = FRA
+		}
+	}
+	state_modifier = {
+		required_garrison_factor = -0.15
+		resistance_damage_to_garrison = -0.1
+	}
+}
+
+compliance_90_vichy = {
+	type = core_compliance_modifier
+	icon = "GFX_occupation_compliance_modifier_strip:5"
+	small_icon = "GFX_occupation_compliance_modifier_small_strip:5"
+	threshold = 90
+	margin = 2
+	visible = {
+		ROOT = {
+			original_tag = FRA
+			has_government = fascism
+		}
+		FROM = {
+			original_tag = FRA
+		}
+	}
+	state_modifier = {
+		recruitable_population_factor = 0.125
+		required_garrison_factor = -0.2
+	}
 }

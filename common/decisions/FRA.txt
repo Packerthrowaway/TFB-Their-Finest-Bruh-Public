@@ -96,6 +96,12 @@ FRA_vichy_france = {
 							transfer_state_to = GER.transfer_target
 						}
 					}
+					every_core_state = {
+						remove_contested_owner = ROOT
+						ROOT = {
+							remove_contested_owner = GER.transfer_target
+						}
+					}
 					# transfer non-core states to Free France if Germany does not have troops in them 
 					ROOT  = {
 						every_owned_state = {
@@ -104,71 +110,163 @@ FRA_vichy_france = {
 								is_controlled_by_ROOT_or_ally = yes 
 							}
 							set_variable = { GER.state_to_target = THIS}
+							# If Jordan or Palestine is Axis or GEACPS controlled, do not give away Syria and Lebanon
 							IF = {
 								limit = {
 									OR = {
-										state = 553
-										state = 554
-										state = 677
-										state = 680
+										state = 553 #Lebanon
+										state = 554 #Demascus
+										state = 677 #Aleppo
+										state = 680 #Deir-az-Zur
 									}
+									#is_fully_controlled_by = ROOT
 									OR = {
-										454 = {
-											OR = {
-												is_controlled_by = GER
-												is_controlled_by = ITA
-												is_controlled_by = SPA
-												is_controlled_by = ROM
-												is_controlled_by = HUN
-												is_controlled_by = FIN
-												is_controlled_by = YUG
-												is_controlled_by = BUL
+										454 = { #Palestine
+											CONTROLLER = {
+												OR = {
+													is_in_faction_with = GER
+													is_in_faction_with = JAP
+												}
 											}
 										}
-										455 = {
-											OR = {
-												is_controlled_by = GER
-												is_controlled_by = ITA
-												is_controlled_by = SPA
-												is_controlled_by = ROM
-												is_controlled_by = HUN
-												is_controlled_by = FIN
-												is_controlled_by = YUG
-												is_controlled_by = BUL
+										455 = { #Jordan
+											CONTROLLER = {
+												OR = {
+													is_in_faction_with = GER
+													is_in_faction_with = JAP
+												}
 											}
 										}
-									} 
-
-								}
-							}
-							ELSE_IF = {
-								limit = {
-									OR = {
-										state = 459
-										state = 460
-										state = 513
-										state = 461
-										state = 462
 									}
 								}
+								set_state_flag = anton_keep_german
 							}
-							ELSE_IF = {
+							# Italy gets Tunisia if Tripoli or Constantine is controlled by Axis or GEACPS
+							IF = {
 								limit = {
-
 									OR = {
-										is_controlled_by = GER
-										is_controlled_by = ITA
-										is_controlled_by = SPA
-										is_controlled_by = ROM
-										is_controlled_by = HUN
-										is_controlled_by = FIN
-										is_controlled_by = YUG
-										is_controlled_by = BUL
+										state = 458 #Tunisia
+										state = 665 #Gabès
+									}
+									#is_fully_controlled_by = ROOT
+									OR = {
+										448 = { #Tripoli
+											CONTROLLER = {
+												OR = {
+													is_in_faction_with = GER
+													is_in_faction_with = JAP
+												}
+											}
+										}
+										460 = { #Constantine
+											CONTROLLER = {
+												OR = {
+													is_in_faction_with = GER
+													is_in_faction_with = JAP
+												}
+											}
+										}
 									}
 								}
+								set_state_flag = anton_give_to_italy
 							}
-							ELSE_IF = {
+							# Germany gets Algeria if either Casablanca or Tunis is controlled by Axis or GEACPS
+							IF = {
 								limit = {
+									OR = {
+										state = 459 #Algiers
+										state = 460 #Constantine
+										state = 513 #Tlemcen
+									}
+									#is_fully_controlled_by = ROOT
+									OR = {
+										AND = {
+											458 = { #Tunisia
+												CONTROLLER = {
+													OR = {
+														is_in_faction_with = GER
+														is_in_faction_with = JAP
+													}
+												}
+											}
+											665 = { #Gabès
+												CONTROLLER = {
+													OR = {
+														is_in_faction_with = GER
+														is_in_faction_with = JAP
+													}
+												}
+											}
+										}
+										461 = { #Casablanca
+											CONTROLLER = {
+												OR = {
+													is_in_faction_with = GER
+													is_in_faction_with = JAP
+												}
+											}
+										}
+									}
+								}
+								set_state_flag = anton_keep_german
+							}
+							# If Spanish Africa or Algiers is controlled by Axis or GEACPS, either Spain or Germany gets Morocco
+							IF = {
+								limit = {
+									OR = {
+										state = 461 #Casablanca
+										state = 462 #Marrakech
+									}
+									#is_fully_controlled_by = ROOT
+									OR = {
+										290 = { #Spanish Africa
+											CONTROLLER = {
+												OR = {
+													is_in_faction_with = GER
+													is_in_faction_with = JAP
+												}
+											}
+										}
+										459 = { #Algiers
+											CONTROLLER = {
+												OR = {
+													is_in_faction_with = GER
+													is_in_faction_with = JAP
+												}
+											}
+										}
+									}
+								}
+								IF = {
+									limit = {
+										SPR = { is_in_faction_with = GER }
+									}
+									set_state_flag = anton_give_to_spain
+								}
+								ELSE_IF = {
+									limit = {
+										NOT = { SPR = { is_in_faction_with = GER } }
+									}
+									set_state_flag = anton_keep_german
+								}
+							}
+							IF = {
+								limit = {
+									NOT = {
+										OR = {
+											state = 553 #Lebanon
+											state = 554 #Demascus
+											state = 677 #Aleppo
+											state = 680 #Deir-az-Zur
+											state = 458 #Tunisia
+											state = 665 #Gabès
+											state = 459 #Algiers
+											state = 460 #Constantine
+											state = 513 #Tlemcen
+											state = 461 #Casablanca
+											state = 462 #Marrakech
+										}
+									}
 									GER = {
 										divisions_in_state = {
 											state = GER.state_to_target
@@ -196,10 +294,74 @@ FRA_vichy_france = {
 						set_state_flag =  VIC_dont_loot
 					}
 				}
+				IF = {
+					limit = {
+						NOT = { has_country_flag = scuttled_fleet }
+					}
+					transfer_navy = { target = GER }
+				}
 				GER = { annex_country = { target = ROOT } }
+				GER = {
+					every_owned_state = {
+						limit = {
+							is_core_of = FRA
+							NOT = { state = 28 } #Alsace-Lorraine
+						}
+						set_state_owner_to = FRA
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								state = 553 #Lebanon
+								state = 554 #Demascus
+								state = 677 #Aleppo
+								state = 680 #Deir-az-Zur
+								state = 458 #Tunisia
+								state = 665 #Gabès
+								state = 459 #Algiers
+								state = 460 #Constantine
+								state = 513 #Tlemcen
+								state = 461 #Casablanca
+								state = 462 #Marrakech
+							}
+						}
+						IF = {
+							limit = {
+								has_state_flag = anton_keep_german
+							}
+							transfer_state_to = GER
+							set_state_owner_to = GER.transfer_target
+						}
+						IF = {
+							limit = {
+								has_state_flag = anton_give_to_italy
+							}
+							transfer_state_to = ITA
+							set_state_owner_to = GER.transfer_target
+						}
+						IF = {
+							limit = {
+								has_state_flag = anton_give_to_spain
+							}
+							transfer_state_to = SPR
+							set_state_owner_to = GER.transfer_target
+						}
+						ELSE_IF = {
+							limit = {
+								NOT = {
+									OR = {
+										has_state_flag = anton_keep_german
+										has_state_flag = anton_give_to_italy
+										has_state_flag = anton_give_to_spain
+									}
+								}
+							}
+							transfer_state_to = GER.transfer_target
+						}
+					}
+				}
 			}
 
-			transfer_navy = { target = GER }
 			effect_tooltip = {
 				GER = { annex_country = { target = ROOT } }
 			}
@@ -333,17 +495,18 @@ category_test_decisions = {
 							state = 25
 							state = 33
 							state = 1
-							state = 310
-							state = 694
 						}
 					}
+					add_contested_owner = FRA
 					add_core_of = PREV
 					event_target:france_vichy = { transfer_state = PREV }
 				}
 				310 = {
+					transfer_state_to = event_target:vichy_france
 					set_demilitarized_zone = yes
 				}
 				694 = {
+					transfer_state_to = event_target:vichy_france
 					set_demilitarized_zone = yes
 				}
 				every_state = {
@@ -353,8 +516,19 @@ category_test_decisions = {
 						NOT = {
 							is_controlled_by = event_target:france_vichy
 						}
+						NOT = { state = 730 }
 					}
 					add_core_of = PREV
+				}
+				every_state = { #start resistance regardless of cores
+					limit = {
+						is_core_of = FRA
+					}
+					force_enable_resistance = {
+						occupier = PREV
+						occupied = FRA
+					}
+					start_resistance = PREV
 				}
 				set_capital = { state = 26 }
 				set_politics = {
@@ -376,6 +550,9 @@ category_test_decisions = {
 					FRA_philippe_petain= {
 						set_nationality = event_target:france_vichy	
 					}
+					FRA_pierre_laval= {
+						set_nationality = event_target:france_vichy	
+					}
 				}
 				FRA_philippe_petain= {
 					add_country_leader_role = {
@@ -390,16 +567,6 @@ category_test_decisions = {
 					}
 				}
 				set_cosmetic_tag = FRA_VICHY
-				# create_country_leader = {
-				# 	name = "Philippe Pétain"
-				# 	desc = "POLITICS_PHILIPPE_PÉTAIN_DESC"
-				# 	picture = "Portrait_France_Philippe_Petain.dds"
-				# 	expire = "1965.1.1"
-				# 	ideology = fascism_ideology
-				# 	traits = {
-						
-				# 	}
-				# }
 				add_ideas = FRA_occupation_costs_4
 				load_focus_tree = vichy_french_focus
 				FRA = {
@@ -1346,9 +1513,102 @@ VIC_concessions_to_the_germans = {
 
 		available = {
 			has_global_flag = VIC_ask_later
+			16 = {
+				NOT = {
+					is_controlled_by = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 16
+				is_in_faction_with = GER
+			}
+			any_country = {
+				has_full_control_of_state = 15
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 14
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 29
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 785
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 30
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 23
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 19
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 806
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 24
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 27
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 18
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 17
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
 		}
 
-		cost = 1
+		cost = 0
 		ai_will_do = {
 			factor = 0
 		}

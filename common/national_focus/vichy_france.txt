@@ -47,6 +47,13 @@
 				}
 				remove_ideas = { FRA_disjointed_government }
 			}
+			every_core_state = {
+				limit = {
+					is_controlled_by = ROOT
+					compliance < 50
+				}
+				set_compliance = 50
+			}
 		}
 	}
 	focus = {
@@ -479,123 +486,94 @@
 					is_controlled_by = ROOT
 				}
 			}
-			16 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 16
+				is_in_faction_with = GER
+			}
+			any_country = {
+				has_full_control_of_state = 15
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			15 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 14
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			14 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 29
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			29 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 785
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			785 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 30
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			30 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 23
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			23 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 19
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			19 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 806
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			806 = {
-				CONTROLLER = {
-					OR = {
-						tag = GER
-						is_in_faction_with = GER
-						is_subject_of = GER
-					}
+			any_country = {
+				has_full_control_of_state = 24
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
 				}
 			}
-			# 24 = {
-			# 	CONTROLLER = {
-			# 		OR = {
-			# 			tag = GER
-			# 			is_in_faction_with = GER
-			# 			is_subject_of = GER
-			# 		}
-			# 	}
-			# }
-			# 27 = {
-			# 	CONTROLLER = {
-			# 		OR = {
-			# 			tag = GER
-			# 			is_in_faction_with = GER
-			# 			is_subject_of = GER
-			# 		}
-			# 	}
-			# }
-			# 18 = {
-			# 	CONTROLLER = {
-			# 		OR = {
-			# 			tag = GER
-			# 			is_in_faction_with = GER
-			# 			is_subject_of = GER
-			# 		}
-			# 	}
-			# }
-			# 17 = {
-			# 	CONTROLLER = {
-			# 		OR = {
-			# 			tag = GER
-			# 			is_in_faction_with = GER
-			# 			is_subject_of = GER
-			# 		}
-			# 	}
-			# }
+			any_country = {
+				has_full_control_of_state = 27
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 18
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
+			any_country = {
+				has_full_control_of_state = 17
+				OR = {
+					is_in_faction_with = GER
+					tag = ROOT
+				}
+			}
 		}
 		
 		bypass = {
@@ -608,7 +586,7 @@
 			set_rule = {
 				can_join_factions = yes
 				can_not_declare_war = no
-				can_create_factions = yes
+				# can_create_factions = yes
 			}
 			remove_occupation_cost_effect = yes
 			if = {
@@ -621,6 +599,15 @@
 				country_event = lar_end_the_occupation.1 
 				if = { limit = { has_idea = VIC_aircraft_parts }
 					remove_ideas = VIC_aircraft_parts
+				}
+			}
+			add_country_leader_role = {
+				character = FRA_pierre_laval
+				promote_leader = yes
+				country_leader = {
+					ideology = gen_nazism
+					expire = "1965.1.1.1"
+					traits = { fascist_sympathies }
 				}
 			}
 		}

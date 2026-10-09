@@ -445,6 +445,16 @@ country_event = {
 					}
 					event_target:vichy_france = { transfer_state = PREV }
 				}
+				every_state = { #start resistance regardless of cores
+					limit = {
+						is_core_of = FRA
+					}
+					force_enable_resistance = {
+						occupier = PREV
+						occupied = FRA
+					}
+					start_resistance = PREV
+				}
 				every_state = {
 					limit = { #set up Vichy continental holdings
 						OR = {
@@ -459,8 +469,6 @@ country_event = {
 							state = 25
 							state = 33
 							state = 1
-							state = 310
-							state = 694
 						}
 						CONTROLLER = { 
 							OR = {
@@ -474,13 +482,16 @@ country_event = {
 							}
 						} #failsafe for weird shit (tm)
 					}
+					add_contested_owner = FRA
 					add_core_of = PREV
 					event_target:vichy_france = { transfer_state = PREV }
 				}
 				310 = {
+					transfer_state_to = event_target:vichy_france
 					set_demilitarized_zone = yes
 				}
 				694 = {
+					transfer_state_to = event_target:vichy_france
 					set_demilitarized_zone = yes
 				}
 				every_state = { #set up cores for French cores
@@ -489,6 +500,7 @@ country_event = {
 						NOT = {
 							is_controlled_by = event_target:vichy_france
 						}
+						NOT = { state = 730 }
 					}
 					add_core_of = PREV
 				}
@@ -504,7 +516,10 @@ country_event = {
 							}
 							has_state_flag = vichy_italian_conquest
 						}
-						ITA = { transfer_state = PREV }
+						set_state_owner_to = FRA
+						set_state_controller_to = ITA
+						add_contested_owner = event_target:vichy_france
+						# ITA = { transfer_state = PREV }
 					}
 					
 					if = {
@@ -513,9 +528,22 @@ country_event = {
 							851 = { is_controlled_by = ITA }
 							735 = { is_controlled_by = ITA } 
 						}
-						ITA = { transfer_state = 32 }
+						32 = {
+							set_state_owner_to = FRA
+							set_state_controller_to = ITA
+							add_contested_owner = event_target:vichy_france
+						}
+						# ITA = { transfer_state = 32 }
 					}
 					
+				}
+				every_owned_state = {
+					limit = {
+						NOT = {
+							is_core_of = FRA
+						}
+					}
+					FRA = { add_state_claim = PREV } #Free France gets claims on all of Vichy, primarily so they can demand that shit back in a peacedeal
 				}
 				set_rule = { 
 					can_join_factions = no 
@@ -533,14 +561,12 @@ country_event = {
 					neutrality = 30
 					communism = 2
 				}
-				set_rule = { 
-					can_join_factions = no 
-					can_create_factions = no
-					can_not_declare_war = yes
-				}
 				set_cosmetic_tag = FRA_VICHY
 				FRA = {
 					FRA_philippe_petain= {
+						set_nationality = event_target:vichy_france	
+					}
+					FRA_pierre_laval= {
 						set_nationality = event_target:vichy_france	
 					}
 				}
@@ -751,6 +777,18 @@ country_event = {
 				}
 				portraits = { 
 					army = { small = GFX_idea_dudley_pound }
+				}
+			}
+			generate_character = {
+				token_base = eugene_birdoux_generated
+				name = VIC_eugene_bridoux
+				advisor = {
+					slot = army_chief
+					traits = { army_chief_reform_2 }
+					cost = 100
+				}
+				portraits = {
+					army = { small = GFX_idea_generic_army_europe_1 }
 				}
 			}
 			generate_character = {
@@ -1030,15 +1068,15 @@ country_event = {
 		custom_effect_tooltip = france.20.a_tt
 		set_country_flag = france_de_gaulle
 		hidden_effect =  {
-			create_country_leader = {
-				name = "Charles de Gaulle"
-				desc = "POLITICS_CHARLES_DE_GAULLE_DESC"
-				picture = "Portrait_France_Charles_De_Gaulle.dds"
-				expire = "1965.1.1"
-				ideology = conservatism
-				traits = {
-					
+			add_country_leader_role = {
+				character = FRA_charles_de_gaulle
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = {
+					}	
 				}
+				promote_leader = yes				
 			}
 		}
 		name = france.20.a
@@ -1234,7 +1272,7 @@ country_event = {
 				create_wargoal = {
 					type = take_state_focus
 					target = YUG
-					generator = { 102 }
+					generator = { 102 853 }
 				}
 			}
 		}
@@ -1316,10 +1354,11 @@ country_event = {
 		}
 		if = {
 			limit = {
-				is_in_faction = yes
-				NOT = { is_in_faction_with = ENG }
+				NOT = {
+					has_guaranteed = YUG
+				}
 			}
-			remove_from_faction = FRA
+			give_guarantee = YUG
 		}
 		if = {
 			limit = { NOT = { is_in_faction_with = ENG } }
@@ -1355,6 +1394,16 @@ country_event = {
 		trigger = { NOT = { is_in_faction_with = ENG } }
 		ai_chance = { factor = 10 }
 		set_global_flag = FRA_abandoned_yugoslavia
+		if = {
+			limit = {
+				has_guaranteed = YUG
+			}
+			diplomatic_relation = {
+   				country = YUG
+   				relation = guarantee
+   				active = no
+  			}
+		}
 		YUG = {
 			country_event = { id = yugoslavia.3 hours = 6 }
 			add_opinion_modifier = { target = FRA modifier = western_betrayal }
@@ -1484,38 +1533,39 @@ country_event = {
 
 # Édouard Daladier Resigns
 country_event = {
-    id = france.31
-    title = france.31.t
-    desc = france.31.d
-    picture = GFX_report_event_german_parade_paris
- 
-    fire_only_once = yes
- 
-    trigger = {
-        original_tag = FRA
-        has_government = democratic
-        has_global_flag = fall_of_france
-        NOT = { has_country_flag = france_de_gaulle }
-    } 
+	id = france.31
+	title = france.31.t
+	desc = france.31.d
+	picture = GFX_report_event_german_parade_paris
 
-    mean_time_to_happen = {
-        days = 7
-    }
+	fire_only_once = yes
 
-    option = {
-        name = france.31.a
-        retire_country_leader = yes
-        create_country_leader = {
-        	name = "Paul Reynaud"
-        	desc = "POLITICS_PAUL_REYNAUD_DESC"
-        	picture = "Portrait_France_Paul_Reynaud.dds"
-        	expire = "1965.1.1"
-        	ideology = liberalism
-        	traits = {
-            }
-        }
-        set_country_flag = daladier_resigned
-      }
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		has_global_flag = fall_of_france
+		NOT = { has_country_flag = france_de_gaulle }
+	} 
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = france.31.a
+		retire_country_leader = yes
+		add_country_leader_role = {
+			character = FRA_paul_reynaud
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+				}
+			}
+			promote_leader = yes
+		}
+		set_country_flag = daladier_resigned
+	}
 }
 
 # Hidden event to add AI values for nationalist spain if France is going fascist

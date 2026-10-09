@@ -2977,15 +2977,65 @@ country_event = {
 			factor = 100
 		}
 		FROM = { country_event = lar_end_the_occupation.2 }
-		effect_tooltip = {
-			every_state = {
+		if = {
+			limit = {
+				NOT = { is_in_faction_with = FROM }
+			}
+			add_to_faction = FROM
+			if = {
 				limit = {
-					is_core_of = FROM
-					is_controlled_by = ROOT
+					FROM = {
+						NOT = { has_war_with = FRA }
+					}
 				}
-				FROM = { transfer_state = PREV }
+				FROM = {
+					add_to_war = {
+						targeted_alliance = ROOT
+						enemy = FRA
+						hostility_reason = war
+					}
+				}
 			}
 		}
+		every_state = {
+			limit = {
+				OR = {
+					state = 17 #Franche-Comte
+					state = 18 #Champagne
+					state = 24 #Centre
+					state = 27 #Bourgogne
+				}
+			}
+			transfer_state_to = FROM
+			add_contested_owner = FRA
+		}
+		every_state = {
+			limit = {
+				OR = {
+					state = 14 #Brittany
+					state = 15 #Normandy
+					state = 29 #Nord-Pas-de-Calais
+					state = 785 #Picardy
+					state = 16 #Ile de France
+					state = 30 #Loire
+					state = 23 #Poitou
+					state = 19 #Aquitaine
+					state = 806 #Pyrénées-Atlantique
+				}
+				NOT = { is_controlled_by = FROM }
+			}
+			set_state_controller_to = FROM
+			add_contested_owner = FROM
+		}
+		# effect_tooltip = {
+		# 	every_state = {
+		# 		limit = {
+		# 			is_core_of = FROM
+		# 			is_controlled_by = ROOT
+		# 		}
+		# 		FROM = { transfer_state = PREV }
+		# 	}
+		# }
 		clr_global_flag = VIC_ask_later
 	}
 	option = {
@@ -3030,27 +3080,59 @@ country_event = {
 			factor = 50
 		}
 		hidden_effect = { news_event = { id = lar_news.4 days = 3 random_days = 5 } }
-		every_state = { #take over core french territory that is being held by Germany
-			limit = {
-				is_core_of = ROOT
-				NOT = { state = 28 } #Elsass-Lothringen ist deutsch!
-				NOT = { state = 735 } #Savoy is Italian
-				NOT = { state = 1 }
-				OR = {
-					is_controlled_by = FROM
-					CONTROLLER = {
-						is_in_faction_with = FROM 
+		effect_tooltip = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 17 #Franche-Comte
+						state = 18 #Champagne
+						state = 24 #Centre
+						state = 27 #Bourgogne
 					}
 				}
+				transfer_state_to = ROOT
+				add_contested_owner = FRA
+				}
+			every_state = {
+				limit = {
+					OR = {
+						state = 14 #Brittany
+						state = 15 #Normandy
+						state = 29 #Nord-Pas-de-Calais
+						state = 785 #Picardy
+						state = 16 #Ile de France
+						state = 30 #Loire
+						state = 23 #Poitou
+						state = 19 #Aquitaine
+						state = 806 #Pyrénées-Atlantique
+					}
+					# NOT = { is_controlled_by = ROOT }
+				}
+				set_state_controller_to = ROOT
 			}
-			ROOT = { transfer_state = PREV }
 		}
-		if = {
-			limit = {
-				NOT = { is_in_faction_with = FROM }
-			}
-			FROM = { add_to_faction = ROOT }
-		}
+		# every_state = { #take over core french territory that is being held by Germany
+		# 	limit = {
+		# 		is_core_of = ROOT
+		# 		NOT = { state = 28 } #Elsass-Lothringen ist deutsch!
+		# 		NOT = { state = 735 } #Savoy is Italian
+		# 		NOT = { state = 1 }
+		# 		OR = {
+		# 			is_controlled_by = FROM
+		# 			CONTROLLER = {
+		# 				is_in_faction_with = FROM 
+		# 			}
+		# 		}
+		# 	}
+		# 	ROOT = { transfer_state = PREV }
+		# }
+		# if = {
+		# 	limit = {
+		# 		NOT = { is_in_faction_with = FROM }
+		# 	}
+		# 	FROM = { add_to_faction = ROOT }
+		# }
+		set_capital = { state = 16 }
 		load_focus_tree = french_focus
 		set_global_flag = VIC_regains_france
 		# unlock_national_focus = FRA_revive_the_national_bloc
