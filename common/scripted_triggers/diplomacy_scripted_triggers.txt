@@ -1418,6 +1418,16 @@ DIPLOMACY_JOIN_FACTION_ENABLE_TRIGGER = {
 			always = no
 		}
 	}
+	if = {
+		limit = {
+			original_tag = DEN
+			NOT = { has_country_flag = DEN_attacked }
+		}
+		custom_trigger_tooltip = {
+			tooltip = NO_FACTION_JOINING_DENMARK_ASK
+			always = no
+		}
+	}
 }
 DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = {
 	if = { 
@@ -1432,6 +1442,18 @@ DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = DENMARK_IS_A_PUPPET_FACTION
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				original_tag = DEN
+				NOT = { has_country_flag = DEN_attacked }
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = NO_FACTION_JOINING_DENMARK_OFFER
 			always = no
 		}
 	}
