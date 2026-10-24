@@ -1,0 +1,140 @@
+equipments = {
+
+#AXIS
+ 	jap_heavy_tank_chassis_type95 = {
+		visual_level = 0
+		year = 1934
+		archetype = heavy_tank_chassis
+		parent = ger_heavy_tank_chassis_neub
+		priority = 2000
+		module_slots = 	{
+			main_armament_slot = inherit
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_light_turret_type_1
+					tank_light_turret_type_2
+					tank_light_turret_type_3
+					tank_medium_turret_type_1
+					#could maybe make it heavy open top?
+					tank_medium_turret_type_open 
+					tank_medium_turret_type_casemate
+					tank_medium_turret_type_open_superstructure
+				}
+			}
+			suspension_type_slot = inherit
+			armor_type_slot = inherit
+			engine_type_slot = inherit
+			special_type_slot_1 = inherit
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					tank_secondary_turret
+					tank_secondary_turret_2
+				}
+			}
+			special_type_slot_3 = inherit
+			special_type_slot_4 = inherit
+		}
+		build_cost_ic = 28
+		reliability = 0.7
+		armor_value = 35
+	}
+
+#Allies
+ # COM
+	com_heavy_tank_chassis_tog2 = {
+		abbreviation = "tog2"
+		visual_level = 0
+		year = 1939
+		archetype = heavy_tank_chassis
+		parent = eng_heavy_tank_chassis_a12
+		priority = 1500
+		module_slots = 	{
+			main_armament_slot = inherit
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_medium_turret_type_1
+					tank_medium_turret_type_2
+					tank_medium_turret_type_3
+					tank_heavy_turret_type_1
+				}
+			}
+			suspension_type_slot = inherit
+			armor_type_slot = inherit
+			engine_type_slot = inherit
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
+			special_type_slot_2 = {
+				required = yes
+				allowed_module_categories = {
+					tank_com_sponsons
+				}
+			}
+			special_type_slot_3 = inherit
+			special_type_slot_4 = inherit
+		}
+		maximum_speed = 3
+		build_cost_ic = 85
+		reliability = 0.7
+		armor_value = 65
+		defense = 10
+		breakthrough = 60
+	}
+ # USA
+
+ 	usa_heavy_tank_chassis_t14 = {
+		abbreviation = "t14"
+		visual_level = 1
+		year = 1942
+		archetype = heavy_tank_chassis
+		parent = usa_medium_tank_chassis_mm4
+		priority = 2000
+		module_slots = {
+			main_armament_slot = inherit
+			turret_type_slot = 	{		
+				required = yes
+				allowed_module_categories = {
+					# Medium Turrets
+					tank_medium_turret_type_1
+					tank_medium_turret_type_2
+					tank_medium_turret_type_3
+					tank_medium_turret_type_open
+					tank_medium_turret_type_casemate
+					tank_medium_turret_type_open_superstructure
+					#tank_modern_turret_type
+				}
+			}
+			suspension_type_slot = inherit
+			armor_type_slot = inherit
+			engine_type_slot = inherit
+			special_type_slot_1 = inherit
+			special_type_slot_2 = inherit
+			special_type_slot_3 = inherit
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+		}
+		upgrades = {
+		}
+		maximum_speed = 6
+		build_cost_ic = 29
+		reliability = 0.8
+		armor_value = 65
+		defense = 8
+		breakthrough = 55
+	}
+
+ # Other
+
+
+
+}

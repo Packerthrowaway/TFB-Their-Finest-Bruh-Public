@@ -399,7 +399,7 @@ sp_air_specialiced_bombs = {
 		# 	}
 		# }
 		# else = {
-			OR = {
+		 	OR = {
 				FROM = { has_tech = tactical_bomber2 }
 				FROM = { has_tech = strategic_bomber2 }
 			}
@@ -409,7 +409,7 @@ sp_air_specialiced_bombs = {
 	breakthrough_cost = {
 		specialization_air = 1
 	}
-
+	
 	resource_cost = {
 		resources = {
 			steel = 80
@@ -667,11 +667,11 @@ sp_air_specialiced_bombs = {
 			}
 		}
 	}
-}
+ }
 
-sp_air_guided_missile_old = {
+ sp_air_guided_missile_old = {
 	specialization = specialization_air 	
-	icon = GFX_sp_air_guided_missile_old
+	icon = GFX_sp_air_Guided_missile_old
 
 	project_tags = {
 		sp_tag_aircraft
@@ -680,7 +680,7 @@ sp_air_guided_missile_old = {
 	special_project_parent = {
 		sp_rockets_flying_bomb
 	}
-
+	
 	available = {
 		from = {
 			has_tech = advanced_computing_machine 
@@ -690,11 +690,11 @@ sp_air_guided_missile_old = {
 	allowed = {
 		has_dlc = "Gotterdammerung"		
 	}
-
+	
 	breakthrough_cost = {
 		specialization_air = 2
 	}
-
+	
 	resource_cost = {
 		resources = {
 			steel = 80
@@ -704,12 +704,12 @@ sp_air_guided_missile_old = {
 			rubber = 35
 		}
 	}
-	complexity = sp_complexity.medium 
+    complexity = sp_complexity.medium 
 	prototype_time = sp_time.prototype.medium 
 
 	project_output = {
 		country_effects = {
-			add_ideas = sp_guided_rocket
+			add_ideas = SP_Guided_Rocket
 		}
 	}
 
@@ -734,7 +734,7 @@ sp_air_guided_missile_old = {
 
 		
 	}
-}
+ }
 
    ##    #  #####    ####   #####     ##    ######  ##### 
   #  #   #  #    #  #    #  #    #   #  #   #         #   
@@ -742,9 +742,399 @@ sp_air_guided_missile_old = {
  ######  #  #####   #       #####   ######  #         #   
  #    #  #  #   #   #    #  #   #   #    #  #         #   
  #    #  #  #    #   ####   #    #  #    #  #         #   
+  sp_air_AXIS_Moskito = {
+	specialization = specialization_air 	
+	icon = GFX_sp_GER_TA154
+	project_tags = {
+		sp_tag_aircraft
+	}
+
+	special_project_parent = {
+	}
+
+	visible = {
+
+	}
+
+	allowed = {
+		has_dlc = "Gotterdammerung"		
+		from = {     #Script triggers doesnt work....
+		 or = {
+	      tag = HUN
+          tag = VIC
+          tag = SLO
+          tag = CZE
+          tag = AUS
+	 	  tag = ROM
+	 	  tag = BUL
+	 	  tag = YUG
+	 	  tag = SPR
+	 	  tag = FIN
+	 	  tag = ITA
+	 	  tag = GER
+	 	  tag = DEN
+		 }
+		}
+	}
+	available = { 
+		ENG = {
+			is_special_project_completed = sp:sp_air_ENG_Moskito
+		}
+	}
+	breakthrough_cost = {
+		specialization_air = 2
+	}
+	
+	resource_cost = {
+		resources = {
+			aluminium = 240
+			chromium = 160
+			rubber = 80
+		}
+	}
+    complexity = sp_complexity.medium
+	prototype_time = sp_time.prototype.medium	
+
+	project_output = {
+		enable_equipments = {
+			Heavy_fighter_mosquito_equipment_1
+		}	
+	}
+
+	generic_prototype_rewards = {
+		sp_air_political_interference_generic_reward
+		sp_air_generic_discoveries_reward
+		sp_air_generic_aerodynamics_advancements_reward
+		sp_air_generic_reward_scientist_xp_1
+		sp_air_generic_reward_scientist_xp_2
+		sp_air_generic_reward_scientist_xp_3
+		sp_air_generic_reward_air_xp_1
+		sp_air_generic_reward_air_xp_2
+		sp_air_generic_reward_air_xp_3
+		sp_air_generic_reward_major_progress_1
+		sp_air_generic_reward_major_progress_2
+		sp_air_generic_reward_major_progress_3
+		sp_air_generic_reward_test_failure_1
+		sp_air_generic_reward_test_failure_2
+		sp_air_generic_reward_test_failure_3		
+	}
+
+	unique_prototype_rewards = {
+		#bad
+        sp_air_AXIS_air_raid_warning_delays_unique_reward = {
+        	fire_only_once = no
+        	
+        	threshold = { 
+        		min = 0
+        		max = 100
+        	}
+        	
+        	weight = {
+        		base = 0.5
+        	}
+        	
+        	option = {
+        		token =  sp_air_ENG_air_raid_warning_unique_option
+        				
+        		iteration_output = {
+        			country_effects = {
+        				FROM = { add_project_progress_ratio = constant:sp_progress.loss.low }
+        			}
+        		}
+        	}
+        }
+        sp_air_AXIS_glue_shortage_delays_unique_reward = {
+        	fire_only_once = no
+        	
+        	threshold = { 
+        		min = 0
+        		max = 100
+        	}
+        	
+        	weight = {
+        		base = 1
+        	}
+        	
+        	option = {
+        		token =  sp_air_AXIS_glue_shortage_unique_option
+        				
+        		iteration_output = {
+        			country_effects = {
+        				FROM = { add_project_progress_ratio = constant:sp_progress.loss.low }
+        			}
+        		}
+        	}
+        }		
+	}
+  }
+  sp_air_ENG_Moskito = {
+	specialization = specialization_air 	
+	icon = GFX_sp_ENG_mosqueto
+	project_tags = {
+		sp_tag_aircraft
+	}
+
+	special_project_parent = {
+	}
+
+	visible = {
+
+	}
+
+	allowed = {
+		has_dlc = "Gotterdammerung"		
+		from = {     #Script triggers doesnt work....
+		 or = {
+	      tag = ENG
+          #tag = GER #FOR TESTING ONLY
+          tag = CAN
+          tag = AST
+          tag = NZL
+	 	  tag = SAF
+	 	  tag = IRE
+	 	  tag = NOR
+		 }
+		}
+	}
+	available = { 
+		or = {
+		    FROM = {
+				tag = ENG
+		    	has_war_with = GER
+		    }
+			#is_debug = yes
+		    ENG = {
+		    	is_special_project_completed = sp:sp_air_ENG_Moskito
+		    }
+		}
+
+	}
+	breakthrough_cost = {
+		specialization_air = 2
+	}
+	
+	resource_cost = {
+		resources = {
+			aluminium = 240
+			chromium = 160
+			rubber = 80
+		}
+	}
+    complexity = sp_complexity.medium
+	prototype_time = sp_time.prototype.medium	
+
+	project_output = {
+		country_effects = {
+		    IF = {
+		    	limit = {
+		    		is_debug = yes
+		    		not = {
+		    			or = {
+		    				has_global_flag = ENG_Moskito_heavyfighter
+		    				has_global_flag = ENG_Moskito_multiroll
+		    				has_global_flag = ENG_Moskito_tacbomber 
+		    			}	
+		    		}
+		    	}
+
+				set_technology = {
+					sp_air_ENG_Moskito_debug = 1
+					popup = no
+				}
+		    }
+		    else_if = {
+		    	limit = {
+		    	    has_global_flag = ENG_Moskito_heavyfighter
+		    	}
+				    set_technology = {
+				    	sp_air_ENG_Moskito_fighter = 1
+				    	popup = no
+				    }
+		    	
+		    }
+		    else_if = {
+		    	limit = {
+		    		has_global_flag = ENG_Moskito_multiroll
+		    	}
+		    		set_technology = {
+				    	sp_air_ENG_Moskito_DP = 1
+				    	popup = no
+				    }	
+		    	
+    
+		    }
+		    else_if = {
+		    	limit = {
+		    		has_global_flag = ENG_Moskito_tacbomber 
+		    	}
+    
+		    		set_technology = {
+				    	sp_air_ENG_Moskito_tac = 1
+				    	popup = no
+				    }		
+		    	
+		    }
+		    ELSE = {
+				custom_effect_tooltip = SP_AIR_PLANE_OUTCOME_tt
+				custom_effect_tooltip = {
+					localization_key = SP_UNLOCK_TECH
+					TECH = sp_air_ENG_Moskito_debug
+				}
+		    }
+
+	    }
+	}
+
+	generic_prototype_rewards = {
+		sp_air_political_interference_generic_reward
+		sp_air_generic_discoveries_reward
+		sp_air_generic_aerodynamics_advancements_reward
+		sp_air_generic_reward_scientist_xp_1
+		sp_air_generic_reward_scientist_xp_2
+		sp_air_generic_reward_scientist_xp_3
+		sp_air_generic_reward_air_xp_1
+		sp_air_generic_reward_air_xp_2
+		sp_air_generic_reward_air_xp_3
+		sp_air_generic_reward_major_progress_1
+		sp_air_generic_reward_major_progress_2
+		sp_air_generic_reward_major_progress_3
+		sp_air_generic_reward_test_failure_1
+		sp_air_generic_reward_test_failure_2
+		sp_air_generic_reward_test_failure_3		
+	}
+	unique_prototype_rewards = {
+
+		sp_air_change_style_ENG_Moskito_unique_reward = {
+			fire_only_once = yes
+			threshold = { 
+				min = 0
+				max = 100
+			}
+
+			weight = {
+				base = 0
+				modifier = {
+					add = 99999999
+					FROM = { tag = ENG }
+				}
+			}
+
+			option = {
+				token = sp_air_ENG_Moskito_go_for_fighter
+				
+				iteration_output = {
+					country_effects = {
+				        set_global_flag = { flag = ENG_Moskito_heavyfighter value = 1 }
+					}
+				}
+			}
+
+			option = {
+				token = sp_air_ENG_Moskito_go_for_a_multiroll
+				
+				iteration_output = {
+					country_effects = {
+				        set_global_flag = { flag = ENG_Moskito_multiroll value = 1 }
+					}
+				}
+			}
+
+			option = {
+				token = sp_air_ENG_Moskito_go_for_bomber
+				
+				iteration_output = {
+					country_effects = {
+				        set_global_flag = { flag = ENG_Moskito_tacbomber value = 1 }
+					}
+				}
+			}
+		}
 
 
-sp_air_intercontinental_bomber = {
+		#good
+
+        sp_air_ENG_Moskito_No_issues_unique_reward = {
+        	fire_only_once = yes
+        	
+        	threshold = { 
+        		min = 30
+        		max = 100
+        	}
+        	
+        	weight = {
+        		base = 1
+        		modifier = {
+        			factor = 5
+			        FROM = {
+						or = {
+					        mio:ENG_de_havilland_organization = {
+			        		has_mio_size > 2
+			        	    }
+						}
+			        }
+        		}
+        		modifier = {
+        			factor = 10
+			        FROM = {
+						or = {
+					        mio:ENG_de_havilland_organization = {
+			        		has_mio_size > 4
+			        	    }
+						}
+			        }
+        		}
+        	}
+        	
+        	option = {
+        		token =  sp_air_ENG_Moskito_No_issues_unique_option
+        				
+        		iteration_output = {
+        			country_effects = {
+        				FROM = { add_project_progress_ratio = constant:sp_progress.gain.medium }
+						If = {
+							limit = {
+								tag = ENG
+							}
+							ENG = {
+								mio:ENG_de_havilland_organization = { add_mio_funds = 500 } 
+							}
+						}
+        			}
+        		}
+        	}
+        }
+
+		#bad
+            sp_air_ENG_air_raid_warning_delays_unique_reward = {
+            	fire_only_once = no
+            	
+            	threshold = { 
+            		min = 0
+            		max = 100
+            	}
+            	
+            	weight = {
+            		base = 2
+					modifier = {
+						add = -3
+						FROM = { has_war = no }
+					}
+            	}
+            	
+            	option = {
+            		token =  sp_air_ENG_air_raid_warning_unique_option
+            				
+            		iteration_output = {
+            			country_effects = {
+            				FROM = { add_project_progress_ratio = constant:sp_progress.loss.low }
+            			}
+            		}
+            	}
+            }
+	}
+  }
+
+ sp_air_intercontinental_bomber = {
 	specialization = specialization_air 	
 	icon = GFX_sp_air_intercontinental_bomber
 
@@ -941,9 +1331,9 @@ sp_air_intercontinental_bomber = {
 			}
 		}
 	}
-}
-
-sp_air_mothership_aircraft = {
+ }
+ 
+ sp_air_mothership_aircraft = {
 	specialization = specialization_air 	
 	icon = GFX_sp_air_mothership_aircraft
 
@@ -1137,7 +1527,7 @@ sp_air_mothership_aircraft = {
 			}		
 		}	
 	}
-}
+ }
 
 
 
@@ -1147,9 +1537,9 @@ sp_air_mothership_aircraft = {
       #  #         #         # 
  #    #  #         #    #    # 
   ####   ######    #     ####  
-sp_air_volksjager = {
+  sp_air_Volksjager = {
 	specialization = specialization_air 	
-	icon = GFX_sp_air_volksjager
+	icon = GFX_sp_air_Volksjager
 
 	project_tags = {
 		sp_tag_aircraft
@@ -1166,22 +1556,22 @@ sp_air_volksjager = {
 
 	allowed = {
 		has_dlc = "Gotterdammerung"		
-		FROM = {     #Script triggers doesnt work....
-			OR = {
-				tag = HUN
-				tag = VIC
-				tag = SLO
-				tag = CZE
-				tag = AUS
-				tag = ROM
-				tag = BUL
-				tag = YUG
-				tag = SPR
-				tag = FIN
-				tag = ITA
-				tag = GER
-				tag = DEN
-			}
+		from = {     #Script triggers doesnt work....
+		 or = {
+	      tag = HUN
+          tag = VIC
+          tag = SLO
+          tag = CZE
+          tag = AUS
+	 	  tag = ROM
+	 	  tag = BUL
+	 	  tag = YUG
+	 	  tag = SPR
+	 	  tag = FIN
+	 	  tag = ITA
+	 	  tag = GER
+	 	  tag = DEN
+		 }
 		}
 	}
 	available = { 
@@ -1192,7 +1582,7 @@ sp_air_volksjager = {
 	breakthrough_cost = {
 		specialization_air = 2
 	}
-
+	
 	resource_cost = {
 		resources = {
 			aluminium = 240
@@ -1200,12 +1590,12 @@ sp_air_volksjager = {
 			rubber = 80
 		}
 	}
-	complexity = sp_complexity.medium
+    complexity = sp_complexity.medium
 	prototype_time = sp_time.prototype.medium	
 
 	project_output = {
 		enable_equipments = {
-			jet_fighter_volksjager_equipment_1
+			Jet_fighter_Volksjager_equipment_1
 		}	
 	}
 
@@ -1230,10 +1620,10 @@ sp_air_volksjager = {
 	unique_prototype_rewards = {
 
 	}
-}
-sp_air_jet_cas = {
+  }
+  sp_air_jet_cas = {
 	specialization = specialization_air 	
-	icon = GFX_sp_air_jet_cas
+	icon = GFX_sp_air_Jet_cas
 
 	project_tags = {
 		sp_tag_aircraft
@@ -1246,18 +1636,18 @@ sp_air_jet_cas = {
 
 	complexity = sp_complexity.large
 	available = {
-		FROM = {
+		from = {
 			has_tech = CAS3
 		}
 	}
 	allowed = {
 		has_dlc = "Gotterdammerung"		
 	}
-
+	
 	breakthrough_cost = {
 		specialization_air = 3
 	}
-
+	
 	resource_cost = {
 		resources = {
 			aluminium = 200
@@ -1292,7 +1682,7 @@ sp_air_jet_cas = {
 	}
 
 	unique_prototype_rewards = {
-		
+	    
 		sp_air_Hs132_unique_reward = { #Atlan wanted it.....
 			fire_only_once = yes
 
@@ -1311,7 +1701,7 @@ sp_air_jet_cas = {
 				iteration_output = {
 					country_effects = {
 						add_equipment_bonus = {
-							name = sp_air_hs132_a_variant
+							name = sp_air_Hs132_A_variant
 							bonus = {
 								jet_CAS_equipment = { 
 									air_ground_attack = 0.1
@@ -1328,12 +1718,12 @@ sp_air_jet_cas = {
 		
 
 			option = { #Buff cas, nerf jet cas, rato?
-				token = sp_air_hs132_b_variant
+				token = sp_air_Hs132_B_variant
 				default = yes
 				iteration_output = {
 					country_effects = {
 							add_equipment_bonus = {
-								name = sp_air_hs132_b_variant
+								name = sp_air_Hs132_B_variant
 								bonus = {
 									small_plane_cas_airframe = {
 										air_ground_attack = 0.075
@@ -1342,21 +1732,21 @@ sp_air_jet_cas = {
 									}
 									mio_cat_eq_only_tactical_bomber = {
 										air_ground_attack = 0.025
-										air_bombing = 0.10
+		                                air_bombing = 0.10
 										reliability = -0.05
 										build_cost_ic = 0.025
 									}
 								}
 							}
 							add_equipment_bonus = {	
-								name = sp_air_hs132_b_variant
+								name = sp_air_Hs132_B_variant
 								bonus = {
 									jet_CAS_equipment = { #I am aware this stacks with "CAS_equipment"
-										air_ground_attack = -0.15
-										reliability = -0.10
-										air_agility = -0.05
-										air_range = -0.1
-										build_cost_ic = 0.05
+									  air_ground_attack = -0.15
+									  reliability = -0.10
+									  air_agility = -0.05
+									  air_range = -0.1
+									  build_cost_ic = 0.05
 									}	
 								}
 							}						
@@ -1365,22 +1755,22 @@ sp_air_jet_cas = {
 			}
 
 			option = {
-				token = sp_air_hs132_c_variant
+				token = sp_air_Hs132_C_variant
 				
 				iteration_output = { #Buff research bonus
-					country_effects = {
-						add_tech_bonus = {
-							name = sp_air_hs132_c_variant
-							bonus = 0.25
-							uses = 2
-							category = air_equipment
-						} 
+			        country_effects = {
+			        	add_tech_bonus = {
+			        		name = sp_air_Hs132_C_variant
+			        		bonus = 0.25
+			        		uses = 2
+			        		category = air_equipment
+			        	} 
 			
 						add_equipment_bonus = {
-							name = sp_air_hs132_c_variant
+							name = sp_air_Hs132_C_variant
 							bonus = {
 								jet_CAS_equipment = {
-									reliability = 0.075
+								  reliability = 0.075
 								}
 							}
 						}					
@@ -1390,10 +1780,10 @@ sp_air_jet_cas = {
 		}	
 		
 	}
-}
-
-
-sp_air_jet_engine = {
+  }
+  
+  
+  sp_air_jet_engine = {
 	specialization = specialization_air 	
 	icon = GFX_sp_air_jet_engine
 
@@ -1667,9 +2057,9 @@ sp_air_jet_engine = {
 			}		
 		}	
 	}
-}
-
-sp_air_axial_jet_engine = {
+  }
+  
+  sp_air_axial_jet_engine = {
 	specialization = specialization_air 	
 	icon = GFX_sp_air_axial_jet_engine
 
@@ -1955,9 +2345,9 @@ sp_air_axial_jet_engine = {
 			}		
 		}	
 	}
-}
-
-sp_air_supersonic_jet = {
+  }
+  
+  sp_air_supersonic_jet = {
 	specialization = specialization_air 	
 	icon = GFX_sp_air_supersonic_jet
 
@@ -2152,7 +2542,7 @@ sp_air_supersonic_jet = {
 			}		
 		}	
 	}
-}
+  }
 
 
 

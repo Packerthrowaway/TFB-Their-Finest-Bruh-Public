@@ -53,6 +53,7 @@ sp_land_jerrycan = {
 				jerrycan = 1
 				popup = no
 			}
+			custom_effect_tooltip = SP_Jerrycan_tt
 		}
 
 		enable_equipment_modules = {
@@ -169,7 +170,7 @@ sp_land_night_vision = {
 	
 	available = {
 		FROM = {
-			has_tech = improved_computing_machine 
+			has_tech = advanced_computing_machine 
 		}
 	}
 
@@ -226,8 +227,6 @@ sp_land_night_vision = {
 		sp_land_generic_reward_resource_scarcity
 	}
 }
-
-
 sp_land_assault_rifle = { 
 	specialization = specialization_land
 	icon = GFX_sp_land_assault_rifle
@@ -239,7 +238,7 @@ sp_land_assault_rifle = {
 	}
 
 	visible = {
-		FROM = { tag = GER }
+		FROM = { tag = GER } #Could be made availble to all majors? Just germany gets a bigger bonus to the stg
 	}
 
 	allowed = {
@@ -472,7 +471,824 @@ sp_land_flamethrower_tank = {
 		sp_land_generic_reward_resource_scarcity
 	}
 }
+# sp_land_sov_IS6 = {
+# 	specialization = specialization_land
 
+# 	project_tags = sp_tag_tank
+
+# 	ai_will_do = {
+# 		base = 1
+# 	}
+
+# 	visible = {
+# 		FROM = {
+# 			or = {
+# 				tag = SOV
+# 				tag = MON
+# 			}
+
+# 		}
+# 	}
+
+# 	allowed = {
+# 		has_dlc = "No Step Back"
+# 	}
+	
+# 	available = {
+# 		FROM = {
+# 			has_tech = sov_heavy_tank_5
+# 		}
+# 	}
+
+# 	breakthrough_cost = {
+# 		specialization_land = 2
+# 	}
+# 	resource_cost = {
+# 		resources = { 
+# 			steel = 120
+# 			tungsten = 50
+# 			chromium = 40
+# 		}
+# 	}
+#     complexity = sp_complexity.medium
+# 	prototype_time = sp_time.prototype.medium	
+# 	project_output = {
+# 		country_effects = {
+# 				IF = {
+# 					limit = {
+# 						has_country_flag = TANK_IS_flag
+# 					}
+# 				    set_technology = {
+# 						sov_heavy_tank_IS4_sp = 1
+# 						popup = no
+# 					}
+# 					#equipment_bonus = {
+# 					#	#Factory 100 was meant to upgrade the is2,
+# 					#	sov_heavy_tank_chassis_is = {
+# 					#		reliability = -0.05
+# 					#		armor_value = 0.15
+# 					#	}
+# 					#}
+
+# 				}
+# 				ELSE = {
+# 				    set_technology = {
+# 						sov_heavy_tank_IS6_sp = 1
+# 						popup = no
+# 					}
+
+# 				}
+# 		        hidden_effect = {
+# 		        	#SP_create_variant_of_IS67_for_production_line = yes
+# 		        }
+# 				IF = {
+# 					    FROM = {
+# 							and = {
+# 							 has_country_flag = TANK_IS_flag
+# 					    	 has_country_flag = Production_knowledge_isM
+# 							}
+# 					    }
+# 			            create_equipment_variant = {
+# 			            	name = "Iosif Stalin 4"
+# 			            	type = sov_heavy_tank_chassis_is4
+# 			            	modules = {
+# 	 	                     	main_armament_slot = tank_large_gun_1
+# 	 	                     	turret_type_slot = tank_modern_tank_turret
+# 	 	                     	suspension_type_slot = tank_christie_suspension
+# 	 	                     	armor_type_slot = tank_welded_armor
+# 	 	                     	engine_type_slot = tank_diesel_engine
+# 	 	                     	special_type_slot_1 = empty
+# 	 	                     	special_type_slot_2 = extra_ammo_storage
+# 	 	                     	special_type_slot_3 = smoke_launchers
+# 	 	                     	special_type_slot_4 = empty
+# 	 	                     	special_type_slot_5 = sloped_armor
+# 			            	}
+# 			            }
+# 				        add_equipment_production = {
+# 				        	equipment = {
+# 				        		type = sov_heavy_tank_chassis_is4
+# 				        	}
+# 				        	requested_factories = 25 #optional
+# 				        	progress = 0.95 #optional
+# 				        	amount = 5
+# 				        	efficiency = 35
+# 				        }
+# 				}
+# 				ELSE = {
+# 					    FROM = {
+# 					        limit = {
+# 					        	has_country_flag = Production_knowledge_isM
+# 					        }
+# 					    }
+# 			            create_equipment_variant = {
+# 			            	name = "Iosif Stalin 6"
+# 			            	type = sov_heavy_tank_chassis_is6
+# 			            	modules = {
+# 	 	                     	main_armament_slot = tank_large_gun_1
+# 	 	                     	turret_type_slot = tank_modern_tank_turret
+# 	 	                     	suspension_type_slot = tank_christie_suspension
+# 	 	                     	armor_type_slot = tank_welded_armor
+# 	 	                     	engine_type_slot = tank_diesel_engine
+# 	 	                     	special_type_slot_1 = empty
+# 	 	                     	special_type_slot_2 = extra_ammo_storage
+# 	 	                     	special_type_slot_3 = smoke_launchers
+# 	 	                     	special_type_slot_4 = empty
+# 	 	                     	special_type_slot_5 = sloped_armor
+# 			            	}
+# 			            }
+# 				        add_equipment_production = {
+# 				        	equipment = {
+# 				        		type = sov_heavy_tank_chassis_is6
+# 				        	}
+# 				        	requested_factories = 25 #optional
+# 				        	progress = 0.95 #optional
+# 				        	amount = 5
+# 				        	efficiency = 35
+# 				        }
+# 			    }
+	
+# 		}
+# 	    enable_equipment_modules = {
+# 			tank_modern_tank_turret
+# 		}
+# 	}
+
+# 	generic_prototype_rewards = {
+# 		sp_land_generic_reward_scientist_xp_1
+# 		sp_land_generic_reward_scientist_xp_2
+# 		sp_land_generic_reward_scientist_xp_3
+# 		sp_land_generic_reward_army_xp_1
+# 		sp_land_generic_reward_army_xp_2
+# 		sp_land_generic_reward_army_xp_3
+# 		sp_land_generic_reward_major_progress_1
+# 		sp_land_generic_reward_major_progress_2
+# 		sp_land_generic_reward_major_progress_3
+# 		sp_land_generic_reward_test_failure_1
+# 		sp_land_generic_reward_test_failure_2
+# 		sp_land_generic_reward_test_failure_3
+# 		sp_land_generic_reward_resource_scarcity
+# 	}
+# 	unique_prototype_rewards = {
+
+# 		sp_land_reward_factory_100s_design = {
+# 			fire_only_once = yes
+
+# 			threshold = { 
+# 				min = 20
+# 				max = 100
+# 			}
+
+# 			weight = {
+# 				base = 100000.0
+# 			}
+
+# 			option = {
+# 				token = land_reward_option_go_with_is6
+				
+# 				iteration_output = {
+# 					custom_effect_tooltip = {
+# 					    enable_equipments = {
+# 					    	sov_heavy_tank_chassis_is6 
+# 					    }
+# 					}
+# 				}
+# 			}
+
+# 			option = {
+# 				token = land_reward_option_go_with_is4
+				
+# 				iteration_output = {
+# 					custom_effect_tooltip = {
+# 					    enable_equipments = {
+# 					     	sov_heavy_tank_chassis_is4 
+# 					    }
+# 					}
+# 					country_effects = {
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.loss.medium
+# 						}
+# 						set_country_flag = TANK_IS_flag
+# 					}
+# 					equipment_bonus = {
+# 						#Factory 100 was meant to upgrade the is2, 
+# 						sov_heavy_tank_chassis_is = {
+# 							armor_value = 0.05
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		sp_land_reward_Press_prototypes_into_service = {
+# 			fire_only_once = yes
+
+# 			threshold = { 
+# 				min = 50
+# 				max = 99
+# 			}
+
+# 			weight = {
+# 				base = 1000
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_no_tanks
+				
+# 				iteration_output = {
+# 				}
+# 			}
+
+
+# 			option = {
+# 				token = sp_land_reward_option_few_tanks
+				
+# 				iteration_output = {
+# 				    IF = {
+# 				    	limit = {
+# 				    		has_country_flag = TANK_IS_flag
+# 				    	}
+# 					    equipment_bonus = {
+# 					        sov_heavy_tank_chassis_is4 = {
+# 					    		reliability = 0.05
+# 					    		build_cost_ic = -0.02
+# 					        }
+# 					    }
+
+# 				    }
+# 				    ELSE = {
+# 					    equipment_bonus = {
+# 					        sov_heavy_tank_chassis_is6 = {
+# 					        	reliability = 0.05
+# 					    		build_cost_ic = -0.01
+# 					        }
+# 					    }
+
+# 				    }
+
+# 					country_effects = {
+# 						#hidden_effect = {  does not work
+# 						#	From = {
+# 						#        If = {
+# 						#        	limit = {
+# 				    	#        	 has_country_flag = TANK_IS_flag
+# 				    	#            }
+# 						#        	add_equipment_to_stockpile = { #Breaks the game 3:
+# 			            #        	    type = sov_heavy_tank_chassis_is4
+# 			            #        	    amount = 15
+# 			            #        	    producer = "OBG"
+# 			            #            }
+# 						#        }
+# 						#        Else = {
+# 						#            add_equipment_to_stockpile = {
+# 			            #            	type = sov_heavy_tank_chassis_is6
+# 			            #            	amount = 10
+# 			            #            	producer = "OBG"
+# 			            #            }
+# 						#        }
+                        
+                        
+# 						#	}
+# 					    #}
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.loss.high
+# 						}
+# 						hidden_effect = {
+# 							set_country_flag = Production_knowledge_isM
+# 						}
+# 					}
+# 				}
+# 			}
+
+
+
+
+# 		}
+
+# 		sp_land_reward_armour_layout = {
+# 			fire_only_once = yes
+
+# 			threshold = { 
+# 				min = 20
+# 				max = 70
+# 			}
+
+# 			weight = {
+# 				base = 25
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_go_proposal_15
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_go_proposal_ufo
+				
+# 				iteration_output = {
+# 					equipment_bonus = {
+# 						#name = sp_land_reward_option_land_cruiser_engine_modify_bonus_name
+# 						sov_heavy_tank_chassis_is6 = {
+# 							reliability = 0.1
+# 							maximum_speed = -0.05
+# 							armor = 0.15
+# 							build_cost_ic = 0.25
+# 						}
+# 						sov_heavy_tank_chassis_is4 = {
+# 						 	reliability = 0.1
+# 						 	maximum_speed = -0.05
+# 						 	armor = 0.15
+# 						 	build_cost_ic = 0.25
+# 						}
+# 					}
+
+# 					country_effects = {
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.loss.high
+# 						}
+# 					}
+# 				}
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_go_proposal_crew
+				
+# 				iteration_output = {
+# 					equipment_bonus = {
+# 						#name = sp_land_reward_option_land_cruiser_engine_new_bonus_name
+# 						sov_heavy_tank_chassis_is6 = {
+# 							reliability = 0.1
+# 							maximum_speed = 0.05
+# 							armor = -0.15
+# 							build_cost_ic = -0.05
+# 						}
+# 						sov_heavy_tank_chassis_is4 = {
+# 						 	reliability = 0.1
+# 						 	maximum_speed = 0.05
+# 						 	armor = -0.15
+# 						 	build_cost_ic = -0.05
+# 					    }
+						
+
+
+# 					}
+
+# 					country_effects = {
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.loss.medium
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		sp_land_reward_impenetrable_to_the_88 = {
+# 			fire_only_once = yes
+
+# 			threshold = { 
+# 				min = 50
+# 				max = 100
+# 			}
+
+# 			weight = {
+# 				base = 25
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_Perfect
+				
+# 				iteration_output = {
+# 					country_effects = {
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.gain.low
+# 							add_war_support = 0.05
+# 						}
+# 					}
+# 				}
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_less_armoured
+				
+# 				iteration_output = {
+# 				    IF = {
+# 						FROM = {
+# 				    	    limit = {
+# 				    	    	has_country_flag = TANK_IS_flag
+# 				    	    }
+# 						}
+
+# 					    equipment_bonus = {
+# 					        sov_heavy_tank_chassis_is4 = {
+# 					    		maximum_speed = 0.07
+# 					    		armor_value = -0.05
+# 					    		build_cost_ic = -0.05
+# 					        }
+# 					    }
+# 				    }
+# 				    ELSE = {
+# 					    equipment_bonus = {
+# 					        sov_heavy_tank_chassis_is6 = {
+# 					        	reliability = 0.05
+# 					    		maximum_speed = 0.03
+# 					    		armor_value = -0.05
+# 					    		build_cost_ic = -0.05
+# 					        }
+# 					    }
+# 				    }
+
+					
+
+# 					country_effects = {
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.loss.medium
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		sp_land_reward_land_is6_extra_funding = {
+# 			fire_only_once = yes
+
+# 			threshold = { 
+# 				min = 0
+# 				max = 50
+# 			}
+
+# 			weight = {
+# 				base = 100
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_no_funding
+				
+# 				iteration_output = {
+# 					hidden_effect = {
+# 						equipment_bonus = {
+# 					        sov_heavy_tank_chassis_is6 = {
+# 					        	reliability = -0.1
+# 					        }
+# 							sov_heavy_tank_chassis_is4 = {
+# 					        	reliability = -0.1
+# 					        }
+# 						}
+# 					}
+# 					country_effects = {
+# 						#Do nothing, this is the default option
+# 					}
+# 				}
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_all_in
+				
+# 				iteration_output = {
+# 					country_effects = {
+# 						hidden_effect = {
+# 							equipment_bonus = {
+# 						        sov_heavy_tank_chassis_is6 = {
+# 						        	reliability = 0.05
+# 									armor_value = 0.01
+# 									breakthrough = 0.10
+# 						        }
+# 							}
+# 						}
+# 						#custom_effect_tooltip = sp_nuclear_isotope_separation_choice_reward_tt
+# 						add_timed_idea = {
+# 							idea = special_project_consumer_costs_high
+# 							days = 365
+# 						}
+# 						FROM = { add_project_progress_ratio = constant:sp_progress.gain.medium }
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		sp_land_reward_land_is6M = {
+# 			fire_only_once = yes
+
+# 			threshold = { 
+# 				min = 70
+# 				max = 99
+# 			}
+
+# 			weight = {
+# 				base = 100
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_is6_assembly_all
+				
+# 				iteration_output = {
+# 					country_effects = {
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.gain.low
+# 						}
+# 					}
+# 				}
+# 			}
+
+# 			option = {
+# 				token = sp_land_reward_option_is6_assembly_key
+				
+# 				iteration_output = {
+# 						#name = sp_land_reward_option_land_cruiser_turret_redesign_bonus_name
+# 				        IF = {
+# 				        	limit = {
+# 				        		has_country_flag = TANK_IS_flag
+# 				        	}
+# 						    equipment_bonus = {
+# 						        sov_heavy_tank_chassis_is4 = {
+# 								  armor = 0.1
+# 							      breakthrough = 0.05
+# 							      reliability = 0.10
+# 								  maximum_speed = 0.025
+# 							      build_cost_ic = 0.1
+# 						        }
+# 						    }
+# 				        }
+# 				        ELSE = {
+# 						    equipment_bonus = {
+# 						        sov_heavy_tank_chassis_is6 = {
+# 								  armor = 0.05
+# 							      breakthrough = 0.05
+# 							      reliability = 0.10
+# 							      build_cost_ic = 0.15
+# 						        }
+# 						    }
+# 				        }
+# 					country_effects = {
+# 						FROM = {
+# 							add_project_progress_ratio = constant:sp_progress.loss.medium
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 	}
+# }
+sp_land_com_tog2 = { 
+	specialization = specialization_land
+    icon = GFX_sp_com_tog_tank
+	project_tags = sp_tag_tank
+
+	ai_will_do = {
+		base = 1
+	}
+
+	visible = {
+		FROM = {
+		 or = {
+	      tag = ENG
+          tag = CAN
+          tag = AST
+          tag = NZL
+	 	  tag = SAF
+	 	  tag = IRE
+	 	  tag = NOR
+		 }
+		}
+	}
+
+	allowed = {
+		has_dlc = "No Step Back"
+	}
+	
+	available = {
+		or = {
+			date > 1940.1.1
+			FRA = {
+				has_capitulated = yes				
+			}
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_land = 1
+	}
+	resource_cost = {
+		resources = { 
+			steel = 140
+			chromium = 40
+		}
+	}
+    complexity = sp_complexity.medium
+	prototype_time = sp_time.prototype.medium	
+	project_output = {
+		country_effects = {
+				set_technology = {
+					com_heavy_tank_chassis_tog2 = 1
+					popup = no
+				}
+
+		}
+
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_resource_scarcity
+	}
+	unique_prototype_rewards = {
+
+	}
+}
+sp_land_USA_T14 = { 
+	specialization = specialization_land
+    icon = GFX_sp_usa_t14
+	project_tags = sp_tag_tank
+
+	ai_will_do = {
+		base = 1
+	}
+
+	visible = {
+		or = {
+			FROM = {
+			    or = {
+			        tag = USA
+			        tag = BRA
+			        tag = MEX
+			    }
+		    }
+			and = {
+			    From = {
+			    	or = {
+	                    tag = ENG
+                        tag = CAN
+                        tag = AST
+                        tag = NZL
+	 	                tag = SAF
+	 	                tag = IRE  
+						tag = RAJ
+			    	}
+			    }
+			    ENG = {
+			    	has_completed_focus = ENG_tizard_mission		
+			    }
+			}
+
+
+		}
+
+	}
+
+	allowed = {
+		has_dlc = "No Step Back"
+	}
+	
+	available = {
+
+		    FROM = {
+				or = {
+		    	    has_tech = usa_medium_tank_3
+				    has_tech = usa_heavy_tank_1
+				    has_tech = eng_medium_tank_4
+				    has_tech = eng_heavy_tank_4
+				}
+		    }
+
+		or = {
+			FROM = {
+				or = {
+			        tag = USA
+			        tag = BRA
+			        tag = MEX
+				    #tag = CAN #could give them the tank?
+				}
+			}
+			and = {
+			    From = {
+			    	or = {
+	                    tag = ENG
+                        tag = CAN
+                        tag = AST
+                        tag = NZL
+	 	                tag = SAF
+	 	                tag = IRE  
+						tag = RAJ
+			    	}
+			    }
+			    ENG = {
+			    	has_completed_focus = ENG_tizard_mission		
+			    }
+			}
+		}
+	}
+
+	breakthrough_cost = {
+		specialization_land = 2
+	}
+	resource_cost = {
+		resources = { 
+			steel = 100
+			chromium = 40
+		}
+	}
+    complexity = sp_complexity.medium
+	prototype_time = sp_time.prototype.medium	
+	
+	project_output = {
+		country_effects = { #could make it so you get the a33 or the t14?
+
+				set_technology = {
+					usa_medium_tank_chassis_t14 = 1
+					popup = no
+				}
+	
+		}
+
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_resource_scarcity
+	}
+	unique_prototype_rewards = {
+
+	}
+}
+sp_land_cumtrack = { 
+	specialization = specialization_land
+    icon = GFX_sp_cumtrack
+	project_tags = sp_tag_tank
+
+	ai_will_do = {
+		base = 1
+	}
+
+	visible = {
+	}
+
+	allowed = {
+		has_dlc = "No Step Back"
+	}
+	
+	available = {
+
+	}
+
+	breakthrough_cost = {
+		specialization_land = 1
+	}
+	resource_cost = {
+		resources = { 
+			steel = 100
+			tungsten = 70
+			chromium = 40
+		}
+	}
+	prototype_time = sp_time.prototype.medium
+
+	complexity = sp_complexity.small
+	
+	project_output = {
+	    enable_equipment_modules = {
+			tank_cum_track_suspension
+		}
+	}
+
+	generic_prototype_rewards = {
+		sp_land_generic_reward_scientist_xp_1
+		sp_land_generic_reward_scientist_xp_2
+		sp_land_generic_reward_scientist_xp_3
+		sp_land_generic_reward_army_xp_1
+		sp_land_generic_reward_army_xp_2
+		sp_land_generic_reward_army_xp_3
+		sp_land_generic_reward_major_progress_1
+		sp_land_generic_reward_major_progress_2
+		sp_land_generic_reward_major_progress_3
+		sp_land_generic_reward_test_failure_1
+		sp_land_generic_reward_test_failure_2
+		sp_land_generic_reward_test_failure_3
+		sp_land_generic_reward_resource_scarcity
+	}
+	unique_prototype_rewards = {
+
+	}
+}
 
   #####                                                                       #                                                         #     #                                                    
  #     #  #####   ######   ####   #    ##    #       #   ####   #####        # #    #####   #    #   ####   #####   ######  #####       #     #  ######  #    #  #   ####   #       ######   ####  
@@ -2200,7 +3016,7 @@ sp_land_stronghold_network = {
 			}
 		}
 
-		sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_01 = { #Scientist working from Office
+		sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_01 = { #Scientist working FROM Office
 			fire_only_once = yes
 
 			threshold = { 
@@ -2255,7 +3071,7 @@ sp_land_stronghold_network = {
 			}
 		}
 
-		sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_02 = { #Scientist working from Office
+		sp_land_reward_stronghold_network_breakthrough_in_concrete_reinforcement_02 = { #Scientist working FROM Office
 			fire_only_once = yes
 
 			threshold = { 
@@ -2350,7 +3166,7 @@ sp_land_stronghold_network = {
 			}
 		}
 
-		sp_land_reward_option_stronghold_network_collapse_01 = { #Scientist working from Office
+		sp_land_reward_option_stronghold_network_collapse_01 = { #Scientist working FROM Office
 			fire_only_once = yes
 
 			threshold = { 
@@ -2422,7 +3238,7 @@ sp_land_stronghold_network = {
 			}
 		}
 
-		sp_land_reward_option_stronghold_network_collapse_02 = { #Scientist working from Office
+		sp_land_reward_option_stronghold_network_collapse_02 = { #Scientist working FROM Office
 			fire_only_once = yes
 
 			threshold = { 

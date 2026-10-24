@@ -1007,26 +1007,44 @@ ENG_hawker_organization = {
 
 }
 
+ENG_blackburn_organization = {
+	include = generic_light_Naval_Aircraft_Manufacturer_organization
+	icon = GFX_idea_blackburn
+	allowed = {	
+		has_dlc = "Arms Against Tyranny"
+		tag = ENG	
+	}
+	initial_trait = {
+		name = generic_mio_initial_trait_Naval_Aircraft_Manufacturer
+		equipment_bonus = {
+			air_agility = 0.05
+			maximum_speed = 0.05
+			air_attack = 0.05
+		}
+	}
+}
+
 ENG_de_havilland_organization = {
-	include = generic_medium_aircraft_organization
+	include = ENG_de_havilland_wood_aircraft_organization
 	icon = GFX_idea_de_havilland
 	allowed = {	
 		has_dlc = "Arms Against Tyranny"
+		tag = ENG	
+	}
+}
+
+ENG_bristol_organization = {
+	include = generic_medium_aircraft_organization
+	icon = GFX_idea_bristol
+	allowed = {	#will look into this more with air rework
+		has_dlc = "Arms Against Tyranny"
 		OR = {
-			tag = ENG
-			tag = NOR 		
+			tag = ENG	
+			tag = NOR 	
 		}
 	}
 
 	available = {
-		# When in a Foreign MIO, countries need to be at peace with original country
-		IF = {
-			limit = {
-				FROM = { NOT = { original_tag = ENG } }
-			}
-			#FROM = { NOT = { has_war_with = ENG } }
-		}
-
 		if = {
 			limit = {
 				FROM = { tag = NOR }
@@ -1077,6 +1095,36 @@ ENG_fairey_aviation_organization = {
 				#is_in_faction_with = ENG
 				#NOT = { has_completed_focus = BUL_nationalization }
 			}
+		}
+	}
+	add_trait = {
+		token = ENG_mio_trait_the_swordfish
+		name = ENG_mio_trait_the_swordfish
+		icon = GFX_generic_mio_trait_icon_air_ground_attack
+		special_trait_background = yes
+
+		relative_position_id = generic_mio_trait_navigation_equipment
+
+		all_parents = { generic_mio_trait_navigation_equipment }
+
+		position = { x = 2 y = 1 }  
+		
+		visible = {
+			FROM = { original_tag = ENG }
+		}
+
+		on_complete = {
+		}
+		limit_to_equipment_type = {
+			cv_nav_bomber_equipment_1
+		}
+		equipment_bonus = {
+			naval_strike_attack = 0.1
+			naval_strike_targetting = 0.05
+		}
+
+		ai_will_do = {
+			base = 5
 		}
 	}
 }

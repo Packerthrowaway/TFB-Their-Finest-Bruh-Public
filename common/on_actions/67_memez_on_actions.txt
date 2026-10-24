@@ -1,0 +1,38 @@
+on_actions = {
+
+    on_startup = {
+		effect = {
+			JAP = {
+				set_technology = {
+					jap_heavy_tank_chassis_type95 = 1
+					popup = no
+				}
+			}
+			GER = {
+				set_technology = {
+					GER_JU52 = 1
+					popup = no
+				}
+			}
+		}
+
+	}
+
+	on_monthly_ENG = {
+		effect = {
+			if = {
+				limit = {
+					mio:ENG_de_havilland_organization = {
+						is_mio_trait_completed = ENG_mio_trait_produce_prop_civilians
+					}
+					FROM = { has_war = no }
+				}
+				mio:ENG_de_havilland_organization = {
+					add_mio_funds = 250
+				}
+			}
+		}
+	}
+}
+	
+
