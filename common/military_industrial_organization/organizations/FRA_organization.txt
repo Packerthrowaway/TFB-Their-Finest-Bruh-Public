@@ -163,7 +163,11 @@ FRA_amx_organization = {
 			limit = {
 				FROM = { original_tag = FRA } 
 			}
-			FROM = { has_completed_focus = FRA_form_the_state_arsenals }
+			OR = {
+				FROM = { has_completed_focus = FRA_form_the_state_arsenals }
+				FROM = { has_focus_tree = free_french_focus }
+			}
+			
 		}
 	}
 }
