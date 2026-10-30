@@ -1469,6 +1469,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
+			is_in_faction = yes
 		}
 
 		available_if_capitulated = yes
@@ -2639,7 +2640,11 @@ focus_tree = {
 							hours = 6
 						}
 
-						set_country_flag = sent_eu_invitation_flag
+						set_country_flag = {
+							flag = sent_eu_invitation_flag
+							days = 365
+							value = 1
+						}
 					}
 				}
 
@@ -2662,7 +2667,11 @@ focus_tree = {
 							hours = 6
 						}
 
-						set_country_flag = sent_eu_invitation_flag
+						set_country_flag = {
+							flag = sent_eu_invitation_flag
+							days = 365
+							value = 1
+						}
 					}
 				}
 			}						
@@ -4640,8 +4649,8 @@ focus = {
 
 			IF = {
 				limit = {
-					any_country = {
-						original_tag = ENG
+					any_country_with_original_tag = {
+						original_tag_to_check = ENG
 						has_government = democratic
 						is_subject = no
 					}
@@ -4664,8 +4673,8 @@ focus = {
 
 			ELSE_IF = {
 				limit = {
-					any_country = {
-						original_tag = FRA
+					any_country_with_original_tag = {
+						original_tag_to_check = FRA
 						has_government = democratic
 						is_subject = no
 					}
@@ -4863,6 +4872,7 @@ focus = {
 			}
 			
 		}
+		enable_automatic_bypass = no
 	
 		completion_reward = {
 
@@ -4981,8 +4991,8 @@ focus = {
 		cost = 5
 
 		available = {
-			any_country = {
-				original_tag = SOV
+			any_country_with_original_tag = {
+				original_tag_to_check = SOV
 				has_government = communism
 				is_subject = no
 				NOT = {
@@ -4993,13 +5003,17 @@ focus = {
 
 		bypass = {
 			OR = {
-				any_country = {
-					original_tag = SOV
+				any_country_with_original_tag = {
+					original_tag_to_check = SOV
 					exists = no
-					NOT = { has_government = communism }
+					NOT = {
+						has_government = communism
+					}
 				}
 				has_capitulated = yes
 			}
+
+			
 		}
 	
 		completion_reward = {
@@ -5205,8 +5219,8 @@ focus = {
 		completion_reward = {
 			IF = {
 				limit = {
-					any_country = {
-						original_tag = ENG
+					any_country_with_original_tag = {
+						original_tag_to_check = ENG
 						has_government = democratic
 						is_faction_leader = yes
 					}
@@ -5221,8 +5235,8 @@ focus = {
 
 			ELSE_IF = {
 				limit = {
-					any_country = {
-						original_tag = FRA
+					any_country_with_original_tag = {
+						original_tag_to_check = FRA
 						has_government = democratic
 						is_faction_leader = yes
 					}
@@ -5237,8 +5251,8 @@ focus = {
 
 			ELSE_IF = {
 				limit = {
-					any_country = {
-						original_tag = USA
+					any_country_with_original_tag = {
+						original_tag_to_check = USA
 						has_government = democratic
 						is_faction_leader = yes
 					}
@@ -5254,9 +5268,9 @@ focus = {
 			ELSE = { #this likely won't happen, but, if it does
 				random_other_country = {
 					limit = {
+						is_major = yes
 						has_government = democratic
 						is_faction_leader = yes
-						is_major = yes
 					}
 
 					country_event = {
@@ -5381,8 +5395,8 @@ focus = {
 		cost = 5
 
 		available = {
-			any_country = {
-				original_tag = SOV
+			any_country_with_original_tag = {
+				original_tag_to_check = SOV
 				exists = yes
 				has_government = communism 
 			}
@@ -5655,8 +5669,8 @@ focus = {
 
 		available = {
 			SPR_scw_in_progress = yes
-			any_country = {
-				original_tag = SPR
+			any_country_with_original_tag = {
+				original_tag_to_check = SPR
 				OR = {
 					has_government = democratic
 					has_government = communism
@@ -5668,8 +5682,8 @@ focus = {
 		completion_reward = {
 			IF = {
 				limit = {
-					any_country = {
-						original_tag = SPR
+					any_country_with_original_tag = {
+						original_tag_to_check = SPR
 						OR = {
 							has_government = democratic
 							has_government = communism
@@ -6243,7 +6257,11 @@ focus = {
 						hours = 6
 					}
 
-					set_country_flag = sent_eu_invitation_flag
+					set_country_flag = {
+						flag = sent_eu_invitation_flag
+						days = 365
+						value = 1
+					}
 				}
 			}
 
@@ -6266,7 +6284,11 @@ focus = {
 						hours = 6
 					}
 
-					set_country_flag = sent_eu_invitation_flag
+					set_country_flag = {
+						flag = sent_eu_invitation_flag
+						days = 365
+						value = 1
+					}
 				}
 			}
 
@@ -6289,7 +6311,11 @@ focus = {
 						hours = 6
 					}
 
-					set_country_flag = sent_eu_invitation_flag
+					set_country_flag = {
+						flag = sent_eu_invitation_flag
+						days = 365
+						value = 1
+					}
 				}
 			}
 
@@ -6312,7 +6338,11 @@ focus = {
 						hours = 6
 					}
 
-					set_country_flag = sent_eu_invitation_flag
+					set_country_flag = {
+						flag = sent_eu_invitation_flag
+						days = 365
+						value = 1
+					}
 				}
 			}
 
@@ -6335,7 +6365,11 @@ focus = {
 						hours = 6
 					}
 
-					set_country_flag = sent_eu_invitation_flag
+					set_country_flag = {
+						flag = sent_eu_invitation_flag
+						days = 365
+						value = 1
+					}
 				}
 			}
 
@@ -6867,9 +6901,9 @@ focus = {
 		completion_reward = {
 			custom_effect_tooltip = BEL_modify_belgian_resistance_state_dynamic_modifier_tt
 			add_to_variable = { 
-				BEL_belgian_resistance_resistance_damage_to_garrison_on_our_occupied_states = 0.2
-				tooltip = resistance_damage_to_garrison_on_our_occupied_states_tt				
-			}	
+				BEL_belgian_resistance_resistance_damage_to_garrison = 0.2
+				tooltip = resistance_damage_to_garrison_tt				
+			}
 		}
 
 	}
@@ -7028,8 +7062,8 @@ focus = {
 		completion_reward = {
 			custom_effect_tooltip = BEL_modify_belgian_resistance_state_dynamic_modifier_tt
 			add_to_variable = { 
-				BEL_belgian_resistance_resistance_growth_on_our_occupied_states = 0.2
-				tooltip = resistance_growth_on_our_occupied_states_tt				
+				BEL_belgian_resistance_resistance_growth = 0.2
+				tooltip = resistance_growth_tt				
 			}	
 		}
 

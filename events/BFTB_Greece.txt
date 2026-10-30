@@ -248,7 +248,7 @@ country_event = {
 				factor = 0
 				NOT = { original_tag = GRE } 
 				OR = {
-					has_war_support < 20
+					has_war_support < 0.2
 					has_war = yes
 				}
 			}
@@ -2502,7 +2502,7 @@ country_event = {
 			modifier = {
 				factor = 3
 				OR = {
-					has_war_support < 20
+					has_war_support < 0.2
 					has_war = yes
 				}
 			}
@@ -3012,8 +3012,8 @@ country_event = {
 		ai_chance = {
 			base = 4
 			modifier = {
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					has_guaranteed = TUR
 				}
 				factor = 0.5
@@ -3776,7 +3776,7 @@ country_event = {
 			add_equipment_to_stockpile = { 
 				type = infantry_equipment
 				amount = 1250
-				producer = FROM
+				producer = GRE
 			}
 		}
 	}
@@ -3802,7 +3802,7 @@ country_event = {
 			add_equipment_to_stockpile = { 
 				type = support_equipment
 				amount = 150
-				producer = FROM
+				producer = GRE
 			}
 		}
 	}
@@ -3983,15 +3983,13 @@ country_event = {
 
 	option = {
 		name = bftb_greece.220.a 
-		effect_tooltip = {
-			183 = {
-				#if = {
-					#limit = { is_owned_by = ENG }
-					add_core_of = GRE
-					transfer_state_to = GRE
-				#}
+		183 = {
+			if = {
+				limit = { is_owned_by = ENG }
+				add_core_of = GRE
 			}
 		}
+		GRE = { transfer_state = 183 }
 		add_stability = 0.1
 		add_war_support = 0.05
 	}
@@ -4046,11 +4044,8 @@ country_event = {
 
 	option = {
 		name = bftb_greece.61.a
-		effect_tooltip = {
-			183 = { add_core_of = GRE }
-		}
+		GRE = { add_state_claim = 183 }
 		add_stability = -0.1
-		custom_effect_tooltip = return_cyprus_later_greece_tt
 	}
 }
 #Hellenoturkism events
@@ -5336,7 +5331,7 @@ country_event = {
 			base = 5
 			modifier = {
 				factor = 10
-				num_of_available_civilian_factories < 15
+				num_of_civilian_factories_available_for_projects < 15
 			}
 		}
 		GRE = { 
@@ -5401,7 +5396,7 @@ country_event = {
 			base = 5
 			modifier = {
 				factor = 10
-				num_of_available_civilian_factories < 20
+				num_of_civilian_factories_available_for_projects < 20
 			}
 		}
 		GRE = { 
@@ -5696,7 +5691,7 @@ country_event = {
 			base = 5
 			modifier = {
 				factor = 10
-				num_of_available_civilian_factories < 15
+				num_of_civilian_factories_available_for_projects < 15
 			}
 		}
 		GRE = { 
@@ -5761,7 +5756,7 @@ country_event = {
 			base = 5
 			modifier = {
 				factor = 10
-				num_of_available_civilian_factories < 20
+				num_of_civilian_factories_available_for_projects < 20
 			}
 		}
 		GRE = { 
@@ -5817,9 +5812,9 @@ country_event = {
 					value = 25
 				}
 			}
-		}
-		GRE = {
-			country_event = { id = bftb_greece.176 days = 2 }
+			GRE = {
+				country_event = { id = bftb_greece.176 days = 2 }
+			}
 		}
 	}
 	option = {
@@ -5982,7 +5977,7 @@ country_event = {
 			base = 5
 			modifier = {
 				factor = 10
-				num_of_available_civilian_factories < 15
+				num_of_civilian_factories_available_for_projects < 15
 			}
 		}
 		GRE = { 
@@ -6047,7 +6042,7 @@ country_event = {
 			base = 5
 			modifier = {
 				factor = 10
-				num_of_available_civilian_factories < 20
+				num_of_civilian_factories_available_for_projects < 20
 			}
 		}
 		GRE = { 
@@ -6546,9 +6541,9 @@ country_event = {
 					value = 25
 				}
 			}
-		}
-		GRE = {
-			country_event = { id = bftb_greece.187 days = 2 }
+			GRE = {
+				country_event = { id = bftb_greece.187 days = 2 }
+			}
 		}
 	}
 	option = { #No investment at this time

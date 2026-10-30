@@ -1831,8 +1831,7 @@ focus_tree = {
 		y = 0
 
 		available = {
-			any_other_country = {
-				is_subject_of = ROOT
+			any_subject_country = {
 				OR = {
 					has_autonomy_state = autonomy_dominion
 					has_autonomy_state = autonomy_puppet
@@ -4617,8 +4616,8 @@ focus_tree = {
 
 		available = {
 			is_subject_of = GER
-			any_other_country = {
-				is_major = yes
+			any_collection_element = {
+				collection = game:all_majors
 				has_war_with = GER
 				has_government = democratic
 				NOT = {
@@ -4764,6 +4763,43 @@ focus_tree = {
 							owner = ROOT
 						}
 					}
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			add_ace = {
+				name = "Leopold"
+				surname = "Šrom"
+				callsign = "Orel"		#made up based on coat of arms
+				type = fighter_unique
+				is_female = no
+			}
+			add_ace = {
+				name = "Václav"
+				surname = "Jícha"
+				callsign = "Lev"		#made up based on coat of arms
+				type = fighter_unique
+				is_female = no
+			}
+			if = {
+				limit = {
+					is_ally_with = FRA
+				}
+				add_ace = {
+					name = "František"
+					surname = "Peřina"
+					callsign = "François"
+					type = fighter_unique
+					is_female = no
+				}
+			}
+			else = {
+				add_ace = {
+					name = "František"
+					surname = "Peřina"
+					callsign = "Medvěd"	#made up based on coat of arms
+					type = fighter_unique
+					is_female = no
 				}
 			}
 		}
@@ -9864,7 +9900,7 @@ focus_tree = {
 			
 			hidden_effect = {
 				create_corps_commander = {
-					traits = { JAP_communist_sympathizer politically_connected }
+					traits = { communist_sympathizer politically_connected }
 					attack_skill = 2
 					defense_skill = 2
 					planning_skill = 2
@@ -10968,8 +11004,8 @@ focus_tree = {
 			
 		available = {
 			is_subject = no
-			any_country = {
-				original_tag = SOV
+			any_country_with_original_tag = {
+				original_tag_to_check = SOV
 				has_civil_war = yes
 				NOT = {
 					has_war_with = ROOT
@@ -10979,8 +11015,8 @@ focus_tree = {
 		}
 
 		bypass = {
-			any_country = {
-				original_tag = SOV
+			any_country_with_original_tag = {
+				original_tag_to_check = SOV
 				has_war_with = ROOT
 			}
 		}
@@ -12643,11 +12679,17 @@ focus_tree = {
 		available = {
 			91 = {
 				is_controlled_by = ROOT
-				compliance > 30
+				OR = {
+					compliance > 30
+					is_core_of = ROOT
+				}
 			}
 			89 = {
 				is_controlled_by = ROOT
-				compliance > 30
+				OR = {
+					compliance > 30
+					is_core_of = ROOT
+				}
 			}
 		}
 
@@ -22839,9 +22881,8 @@ focus_tree = {
 	
 		available = {
 			#CZE_has_a_skoda_naval_focus_focus = yes
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 	
@@ -22910,9 +22951,8 @@ focus_tree = {
 	
 		available = {
 			CZE_has_a_skoda_naval_focus_focus = yes
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 	
@@ -22959,9 +22999,8 @@ focus_tree = {
 	
 		available = {
 			CZE_has_a_skoda_naval_focus_focus = yes
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 	
@@ -23010,9 +23049,8 @@ focus_tree = {
 		}
 	
 		available = {
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 			
@@ -23083,9 +23121,8 @@ focus_tree = {
 	
 		available = {
 			CZE_has_a_skoda_naval_focus_focus = yes
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 	
@@ -23204,9 +23241,8 @@ focus_tree = {
 	
 		available = {
 			CZE_has_a_skoda_naval_focus_focus = yes
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 	
@@ -23354,9 +23390,8 @@ focus_tree = {
 	
 		available = {
 			CZE_has_a_skoda_naval_focus_focus = yes
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 	
@@ -23408,9 +23443,8 @@ focus_tree = {
 	
 		available = {
 			CZE_has_a_skoda_naval_focus_focus = yes
-			any_state = {
+			any_controlled_state = {
 				is_coastal = yes
-				is_controlled_by = ROOT
 			}
 		}
 	

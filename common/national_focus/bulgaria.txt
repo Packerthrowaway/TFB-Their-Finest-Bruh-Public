@@ -2051,8 +2051,8 @@ focus_tree = {
 		cost = 5
 
 		available = {
-			any_country = {
-				is_major = yes
+			any_collection_element = {
+				collection = game:all_majors
 				is_neighbor_of = ROOT
 				NOT = { is_in_faction_with = ROOT }
 			}
@@ -2064,8 +2064,8 @@ focus_tree = {
 			add_war_support = 0.1
 			if = {
 				limit = {
-					any_country = {
-						is_major = yes
+					any_collection_element = {
+						collection = game:all_majors
 						is_neighbor_of = ROOT
 						NOT = { is_in_faction_with = ROOT }
 					}
@@ -2622,8 +2622,8 @@ focus_tree = {
 				NOT = { has_war_with = SPA }
 			}
 			else = {
-				any_country = {
-					original_tag = SPR
+				any_country_with_original_tag = {
+					original_tag_to_check = SPR
 					has_civil_war = yes
 					NOT = { has_war_with = ROOT }
 					OR = {

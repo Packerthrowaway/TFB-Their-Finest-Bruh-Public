@@ -1325,8 +1325,8 @@ country_event = {
 				factor = 5 #i've got friends
 			}
 			modifier = {
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					has_guaranteed = AUS
 				}
 				factor = 5 #i've got big friends
@@ -1442,7 +1442,10 @@ country_event = {
 	title = germany.40.t
 	desc = {
 		text = germany.40.d
-		trigger = { NOT = { has_war_with = GER } }
+		trigger = {
+			NOT = { has_war_with = GER }
+			tag = ENG
+		}
 	}
 	desc = {
 		text = germany.40.d_2
@@ -1568,7 +1571,9 @@ country_event = {
 		}
 		else_if = {
 			limit = {
-				tag = HOL
+				NOT = {
+					tag = ENG
+				}
 			}
 			ENG = { 
 				country_event = {
@@ -1613,8 +1618,26 @@ country_event = {
 			remove_from_faction = CZE
 		}
 
-		CZE = {
-			add_opinion_modifier = { target = ROOT modifier = western_betrayal }
+		if = {
+			limit = {
+				OR = {
+					original_tag = HOL
+					original_tag = BEL
+					original_tag = LUX
+					original_tag = FRA
+					original_tag = ENG
+					original_tag = IRE
+					original_tag = USA
+				}
+			}
+			CZE = {
+				add_opinion_modifier = { target = ROOT modifier = western_betrayal }
+			}
+		}
+		else = {
+			CZE = {
+				add_opinion_modifier = { target = ROOT modifier = refused_help }
+			}
 		}
 	}
 
@@ -4592,9 +4615,8 @@ country_event = {
 
 		if = {
 			limit = {
-				any_state = {
+				any_controlled_state = {
 					is_core_of = CZE
-					is_fully_controlled_by = ROOT
 				}
 			}
 			GER_czechoslovakia_modify_mefo_bills_or_economy_of_conquest = yes
@@ -7121,9 +7143,10 @@ country_event = {
 				has_war_with = ENG
 			}
 			NOT = {
-				any_other_country = {
-					is_in_faction_with = ENG
-					has_war_with = TUR
+				TUR = {
+					any_enemy_country = {
+						is_in_faction_with = ENG
+					}
 				}
 			}
 			ENG = {
@@ -7246,6 +7269,10 @@ country_event = {
 				limit = { GER = { owns_state = 664 } }
 				transfer_state = 664
 			}
+			if = {
+				limit = { GER = { owns_state = 72 } }
+				transfer_state = 72
+			}
 			GER = { transfer_state = 85 }
 			GER = { transfer_state = 807 }
 			807 = { add_core_of = GER }
@@ -7326,6 +7353,10 @@ country_event = {
 			limit = { owns_state = 664 }
 			POL = { transfer_state = 664 }
 		}
+		if = {
+			limit = { owns_state = 72 }
+			POL = { transfer_state = 72 }
+		}
 		transfer_state = 85
 		transfer_state = 807
 		807 = { add_core_of = GER }
@@ -7404,7 +7435,7 @@ country_event = {
 
 	option = {
 		name = germany.83.b		#refuse
-		trigger = { NOT = { is_puppet_of = GER } }
+		trigger = { NOT = { is_subject_of = GER } }
 		ai_chance = {
 			factor = 2
 		}
@@ -7465,8 +7496,8 @@ country_event = {
 			}
 			modifier = {
 				factor = 10
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					is_in_faction_with = POL
 				}
 			}
@@ -9796,8 +9827,8 @@ country_event = {
 			}
 			modifier = {
 				factor = 0
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					OR = {
 						has_guaranteed = CZE
 						is_in_faction_with = CZE
@@ -10540,9 +10571,10 @@ country_event = {
 	trigger = {
 		original_tag = GER
 		GER_has_mefo_bills = yes
-		any_other_country = {
-			has_war_with = GER
-			NOT = { original_tag = GER }
+		GER = {
+			any_enemy_country = {
+				NOT = { original_tag = GER }
+			}
 		}
 	}
 

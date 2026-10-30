@@ -1893,8 +1893,8 @@ shared_focus = {
 	ai_will_do = {
 		factor = 1
 		modifier = {
-			any_country = {
-				is_major = yes
+			any_collection_element = {
+				collection = game:all_majors
 				is_in_faction_with = MON
 			}
 			factor = 0
@@ -2685,6 +2685,7 @@ shared_focus = {
 		}
 		set_variable = { CHI_ledo_road_current_level = 3 }
 		add_offsite_building = { type = arms_factory level = 5 }
+		set_global_flag = CHI_ledo_road_focus_taken
 	}
 }
 
@@ -3236,8 +3237,24 @@ shared_focus = {
 				value = 100
 			}
 		}
-		USA = { unlock_decision_tooltip = USA_support_the_anti_fascist_war }
-		custom_effect_tooltip = CHI_mission_to_the_us_soong_us_decision
+		if = {
+			limit = {
+				USA = {
+					has_government = democratic
+				}
+				NOT = {
+					original_tag = MAN	#no easy way to change ideology without NCNS
+					original_tag = RNG
+				}
+			}
+			USA = { unlock_decision_tooltip = USA_support_the_anti_fascist_war }
+			if = {
+				limit = {
+					original_tag = CHI
+				}
+				custom_effect_tooltip = CHI_mission_to_the_us_soong_us_decision
+			}
+		}
 	}
 }
 

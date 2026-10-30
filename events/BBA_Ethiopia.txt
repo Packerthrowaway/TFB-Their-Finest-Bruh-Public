@@ -2060,13 +2060,14 @@ country_event = {
 			base = 10
 		}
 		trigger = {
-			any_country = {
-				is_faction_leader = yes 
-				NOT = { has_war_with = ROOT }
-				has_war_with = ITA
-				NOT = { 
-					any_allied_country = {
-						has_war_with = ROOT 
+			ITA = {
+				any_enemy_country = {
+					NOT = {has_war_with = ROOT }
+					is_faction_leader = yes
+					NOT = {
+						any_allied_country = {
+							has_war_with = ROOT
+						}
 					}
 				}
 			}
@@ -5820,19 +5821,18 @@ country_event = {
 			base = 0
 			modifier = {
 				add = 50
-				any_other_country = {
-					is_major = yes
-					NOT = { tag = SOV }
+				any_collection_element = {
+					collection = game:all_majors
+					NOT = { tag = ROOT tag = SOV }
 					is_in_faction_with = ITA
 				}
 			}
 			modifier = {
 				add = 50
-				any_other_country = {
-					AND = {
-						is_major = yes
-						has_guaranteed = ITA
-					}
+				any_collection_element = {
+					collection = game:all_majors
+					NOT = { tag = ROOT }
+					has_guaranteed = ITA
 				}
 			}
 			modifier = {
@@ -5866,16 +5866,16 @@ country_event = {
 			}
 			modifier = {
 				add = 100
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					NOT = { tag = SOV }
 					is_in_faction_with = SOV
 				}
 			}
 			modifier = {
 				add = 100
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					NOT = { tag = SOV }
 					has_guaranteed = SOV
 				}
@@ -6401,8 +6401,8 @@ country_event = {
 			base = 10
 			modifier = {
 				add = 100
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					NOT = { tag = SOV }
 					is_in_faction_with = ITA
 					strength_ratio = {
@@ -6538,8 +6538,8 @@ country_event = {
 			}
 			modifier = {
 				add = 100
-				any_other_country = {
-					is_major = yes
+				any_collection_element = {
+					collection = game:all_majors
 					NOT = { tag = SOV }
 					is_in_faction_with = ITA
 					strength_ratio = {
@@ -7827,8 +7827,9 @@ country_event = {
 			every_core_state = {
 				IF = {
 					limit = {
-						is_controlled_by = FROM
+						is_core_of = FROM
 					}
+					set_state_flag = ETH_restore_core
 				}
 			}
 			#FROM is ETH				
@@ -7853,6 +7854,13 @@ country_event = {
 							transfer_state = PREV
 						}
 						
+					}
+					every_core_state = {
+						limit = {
+							has_state_flag = ETH_restore_core
+						}
+						add_core_of = ETH
+						clr_state_flag = ETH
 					}
 				}
 				country_event = {

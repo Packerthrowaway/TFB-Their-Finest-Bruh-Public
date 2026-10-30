@@ -111,6 +111,7 @@ NDefines.NMarket.PURCHASE_CONTRACT_DELIVERY_TOTAL_DAYS = 7                   	--
 NDefines.NMarket.IC_TO_CIC_FACTOR = 0.8                    					-- The factor for mapping IC cost to CIC cost. Should be a positive number.
 NDefines.NMarket.MAX_CIV_FACTORIES_PER_CONTRACT = 30							-- Max number of factories that can be assigned for paying single contract.
 NDefines.NMarket.PURCHASE_CONTRACT_SUBSIDY_BONUS_SPEED_FACTOR = 4				-- The factor of speed bonus from subsidies
+NDefines.NMarket.NMarket = false		-- Whether by default should accept purchase requests from other countries.
 
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 5 	-- Max number of different strategic resources an equipment can be dependent on.
 NDefines.NProduction.EFFICIENCY_LOSS_PER_UNUSED_DAY = 1		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )

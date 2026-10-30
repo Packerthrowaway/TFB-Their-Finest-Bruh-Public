@@ -658,6 +658,12 @@ USA_torch_boost = {
 	}
 
 	ai_strategy = {
+		type = naval_dominance
+		id = 48
+		value = 80
+	}
+
+	ai_strategy = {
 		type = area_priority
 		id = vichy_mainland
 		value = -200
@@ -684,7 +690,7 @@ USA_torch_boost = {
 		value = 200
 	}
 }
-
+	
 
 
 USA_save_the_aussies = {
@@ -1337,6 +1343,24 @@ USA_home_guard_invaded = {
 	}
 }
 
+# Push atomic research, otherwise the AI leaves it until 1942-43
+USA_manhattan_research_push = {
+	allowed = { original_tag = USA }
+	enable = {
+		date > 1939.8.1
+		NOT = {
+			has_tech = atomic_research
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = research_weight_factor
+		id = atomic_research
+		value = 2000
+	}
+}
+
 # Modest standing synthetic capacity: the USA is rubber-poor regardless of the war.
 USA_synthetic_industry_baseline = {
 	allowed = { original_tag = USA }
@@ -1630,7 +1654,153 @@ USA_lets_do_a_navy = {
 	ai_strategy = {
 		type = build_building
 		id = dockyard
-		value = 75
+		value = 20
+	}
+}
+
+USA_peacetime_capital_bias = {
+	allowed = { original_tag = USA }
+	enable = {
+		has_government = democratic
+		has_war = no
+	}
+	abort_when_not_enabled = yes
+
+	# Capitals take ~3-4 years to build, so start them in peacetime — they need to be
+	# in commission well before Pearl Harbor or they will not contribute to the Pacific war.
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = 20
+	}
+}
+
+USA_avoid_med_for_escort = {
+	allowed = { original_tag = USA }
+	enable = {
+		date < 1945.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = naval_avoid_region id = 30  value = 500 } # Black Sea
+	ai_strategy = { type = naval_avoid_region id = 168 value = 500 } # Adriatic Sea
+	ai_strategy = { type = naval_avoid_region id = 69  value = 500 } # Eastern Mediterranean Sea
+	ai_strategy = { type = naval_avoid_region id = 202 value = 500 } # Aegean Sea
+	ai_strategy = { type = naval_avoid_region id = 232 value = 500 } # Levant
+	ai_strategy = { type = naval_avoid_region id = 29  value = 500 } # Central Mediterranean Sea
+	ai_strategy = { type = naval_avoid_region id = 169 value = 500 } # Tyrrhenian Sea
+}
+
+# SPECIAL PROJECT FACILITIES
+USA_build_a_naval_facility = {
+	allowed = { original_tag = USA }
+	enable = {
+		has_government = democratic
+		date > 1937.3.1
+		naval_facility < 1 # one is enough
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = naval_facility
+		value = 25
+	}
+}
+
+USA_build_an_air_facility = {
+	allowed = { original_tag = USA }
+	enable = {
+		has_government = democratic
+		date > 1936.6.1
+		air_facility < 1 # one is enough
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = air_facility
+		value = 25
+	}
+}
+
+# Los Alamos. Not before 1940, or a 1936 start gets the bomb years early
+USA_build_a_nuclear_facility = {
+	allowed = { original_tag = USA }
+	enable = {
+		date > 1940.1.1
+		nuclear_facility < 1 # one is enough
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = nuclear_facility
+		target = 12684
+		value = 150
+	}
+}
+
+# Hanford. Only once the reactor project is done, a second site is useless before that
+USA_build_a_second_nuclear_facility = {
+	allowed = { original_tag = USA }
+	enable = {
+		has_country_flag = {
+			flag = USA_nuclear_reactor_done_flag
+			days > 180
+		}
+		nuclear_facility < 2
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = nuclear_facility
+		target = 4747
+		value = 100
+	}
+}
+
+# Cancels the default nuclear facility strategy until 1940
+USA_no_untargeted_nuclear_facility_before_1940 = {
+	allowed = { original_tag = USA }
+	enable = {
+		date < 1940.1.1
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = nuclear_facility
+		value = -10
+	}
+}
+
+# More reactors, so the bombs come faster
+USA_build_nuclear_reactors = {
+	allowed = { original_tag = USA }
+	enable = {
+		is_special_project_completed = sp:sp_nuclear_reactor
+		NOT = {
+			has_country_flag = nuclear_reactor_heavy_water_flag
+		}
+		nuclear_reactor < 4
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = nuclear_reactor
+		value = 50
+	}
+}
+
+USA_build_nuclear_reactors_heavy_water = {
+	allowed = { original_tag = USA }
+	enable = {
+		is_special_project_completed = sp:sp_nuclear_reactor
+		has_country_flag = nuclear_reactor_heavy_water_flag
+		nuclear_reactor_heavy_water < 4
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = nuclear_reactor_heavy_water
+		value = 50
 	}
 }
 
@@ -1728,11 +1898,64 @@ USA_go_time = {
 		value = 75
 	}
 
-	# ai_strategy = {
-	# 	type = naval_invasion_supremacy_weight
-	# 	value = 40
-	# }
+	ai_strategy = {
+		type = naval_invasion_dominance_weight
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = naval_dominance
+		id = 78 #Philippine Sea
+		value = 82
+	}
 
+	ai_strategy = {
+		type = naval_dominance
+		id = 94 #Mariana Sea Region
+		value = 82
+	}
+	
+	ai_strategy = {
+		type = naval_dominance
+		id = 76 #East China Sea
+		value = 82
+	}
+
+	ai_strategy = {
+		type = naval_dominance
+		id = 84 #Bismarck Sea
+		value = 82
+	}
+	
+	ai_strategy = {
+		type = naval_dominance
+		id = 177 #Western North Pacific
+		value = 81
+	}
+
+	ai_strategy = {
+		type = naval_dominance
+		id = 90 #Japanese Coast
+		value = 81
+	}
+	
+	ai_strategy = {
+		type = naval_dominance
+		id = 95 # Western Emperor Seamount Chain
+		value = 80
+	}
+
+	ai_strategy = {
+		type = naval_dominance
+		id = 75 # South China Sea
+		value = 80
+	}
+
+	ai_strategy = {
+		type = naval_dominance
+		id = 80 # Celebes Sea
+		value = 80
+	}
 }
 
 USA_start_buffering_in_pacific = {
@@ -1822,10 +2045,10 @@ USA_start_buffering_in_pacific = {
 		value = 2
 	}
 
-	# ai_strategy = {
-	# 	type = naval_invasion_supremacy_weight
-	# 	value = 50
-	# }
+	ai_strategy = {
+		type = naval_invasion_dominance_weight
+		value = 50
+	}
 }
 
 USA_start_buffering_in_australia = {
@@ -1951,6 +2174,12 @@ USA_sugar_daddy_for_UK = {
 		id = ENG
 		value = 500
 	}
+		
+	ai_strategy = {
+		type = support
+		id = ENG
+		value = 75
+	}
 }
 
 USA_sugar_daddy_for_SOV = {
@@ -1969,6 +2198,30 @@ USA_sugar_daddy_for_SOV = {
 		type = send_lend_lease_desire
 		id = SOV
 		value = 500
+	}
+	
+	ai_strategy = {
+		type = support
+		id = SOV
+		value = 60
+	}
+}
+
+USA_west_coast_defense = {
+	allowed = {
+		original_tag = USA
+	}
+	
+	enable = {
+		has_war = yes
+	}
+	
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_dominance
+		id = us_west_coast
+		value = 100
 	}
 }
 
@@ -2097,3 +2350,341 @@ USA_dont_guarantee_SA_unless_everyhting_is_shit = {
 	}
 }
 
+
+### PACIFIC BUILDUP STRATEGIES
+
+# GUAM NAVAL BASE 
+USA_prepare_guam = {
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		date > 1940.1.1
+		638 = {
+			naval_base < 4
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = naval_base
+		target = 12140
+		value = 100
+	}
+}
+
+USA_prepare_guam_2 = {
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		date > 1943.1.1
+		638 = {
+			naval_base < 8
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = naval_base
+		target = 12140
+		value = 100
+	}
+}
+
+# GUAM HEADQUARTERS
+USA_prepare_guam_3_naval_hq_supply = { 
+	allowed = {
+		original_tag = USA
+		has_dlc = "No Compromise, No Surrender"
+	}
+	enable = {
+		date > 1943.1.1
+		638 = {
+			OR = {
+				naval_headquarters < 1
+				naval_supply_hub < 1
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = naval_headquarters
+		target = 12140
+		value = 100
+	}
+	ai_strategy = {
+		type = build_building
+		id = naval_supply_hub
+		target = 12140
+		value = 100
+	}
+
+}
+
+USA_prepare_wake = {
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		date > 1940.1.1
+		632 = {
+			naval_base < 3
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = naval_base
+		target = 13047
+		value = 50
+	}
+}
+
+USA_prepare_iwo_jima = {
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		date > 1943.3.1
+		OR = {
+			645 = {
+				naval_base < 6
+			}
+			645 = {
+				air_base < 4
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_building
+		id = naval_base
+		target = 13025
+		value = 100
+	}
+	ai_strategy = {
+		type = build_building
+		id = air_base
+		target = 645
+		value = 100
+	}
+}
+
+
+### FACTION RELATED STRATEGIES
+
+USA_base_faction_priorities = {
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = spent_faction_initiative_priority
+		id = program
+		value = 25
+	}
+	ai_strategy = {
+		type = spent_faction_initiative_priority
+		id = unlock_faction_commander
+		value = 5
+	}
+}
+
+### JAPAN ASSISTANCE ###
+
+USA_dont_send_lend_lease_to_japan_except_certain_scenarios = {
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		JAP = { 
+			OR = {
+				has_government = neutrality
+				has_government = fascism
+			}
+			NOT = {
+				has_completed_focus = JAP_form_the_jikyoku_iinkai
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = JAP
+		value = -999
+	}
+}
+
+USA_maybe_send_some_lend_lease_to_japan = {
+	allowed = {
+		original_tag = USA
+	}
+	enable = {
+		JAP = { 
+			OR = {
+				has_government = neutrality
+				has_government = fascism
+			}
+			has_completed_focus = JAP_form_the_jikyoku_iinkai
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = JAP
+		value = 25  
+	}
+}
+
+### Pacific war strategies
+
+USA_scared_of_navy_early = {
+	allowed = { original_tag = USA }
+	enable = {
+		is_historical_focus_on = yes
+		has_war_with = JAP
+		date < 1942.3.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = naval_avoid_region id = 90 value = 500 } # Coast of Japan
+	ai_strategy = { type = naval_avoid_region id = 75 value = 500 } # South China Sea
+	ai_strategy = { type = naval_avoid_region id = 76 value = 500 } # East China Sea
+	ai_strategy = { type = naval_avoid_region id = 77 value = 500 } # Yellow Sea
+	ai_strategy = { type = naval_avoid_region id = 78 value = 500 } # Philippine Sea
+	ai_strategy = { type = naval_avoid_region id = 79 value = 500 } # Sea of Japan
+	ai_strategy = { type = naval_avoid_region id = 87 value = 500 } # Sea of Okhotsk
+	ai_strategy = { type = naval_avoid_region id = 94 value = 500 } # Mariana
+	ai_strategy = { type = naval_avoid_region id = 84 value = 500 } # Bismarck Sea
+}
+
+USA_block_japanese_waters_early = {
+	allowed = { original_tag = USA }
+	enable = {
+		is_historical_focus_on = yes
+		has_war_with = JAP
+		date < 1943.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = naval_avoid_region id = 79 value = 500 } # Sea of Japan
+	ai_strategy = { type = naval_avoid_region id = 90 value = 500 } # Coast of Japan
+	ai_strategy = { type = naval_avoid_region id = 76 value = 500 } # East China Sea
+	ai_strategy = { type = naval_avoid_region id = 77 value = 500 } # Yellow Sea
+	ai_strategy = { type = naval_avoid_region id = 87 value = 500 } # Sea of Okhotsk
+	ai_strategy = { type = naval_avoid_region id = 94 value = 500 } # Mariana
+}
+
+# Outer-ring focus before the inner Japanese seas.
+USA_early_island_hopping = {
+	allowed = { original_tag = USA }
+	enable = {
+		is_historical_focus_on = yes
+		has_war_with = JAP
+		date < 1943.8.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = naval_dominance id = 84 value = 100 } # Bismarck Sea
+	ai_strategy = { type = naval_dominance id = 97 value = 100 } # Eastern Micronesia
+}
+
+USA_dominate_the_home_islands = {
+	allowed = {
+		original_tag = USA
+	}
+	
+	enable = {
+		has_war_with = JAP
+		OR = {
+			date > 1943.8.1
+			controls_state = 645 #Iwo Jima
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = naval_dominance
+		id = home_islands_control_zone
+		value = 100
+	}
+}
+
+USA_build_tank_destroyers = {
+	allowed = { original_tag = USA }
+	enable = {
+		has_tech = basic_medium_tank_chassis
+		date > 1942.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_production_min_factories_archetype
+		id = medium_tank_destroyer_chassis
+		value = 1
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories_archetype
+		id = modern_tank_destroyer_chassis
+		value = 1
+	}
+}
+
+USA_leave_england_to_the_brits = {
+	allowed = { original_tag = USA }
+	enable = {
+		has_war_with = GER
+		ENG = {
+			exists = yes
+			set_temp_variable = { t = num_ships }
+			check_variable = { t > 80 }
+		}
+	}
+	abort = {
+		date > 1943.6.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = naval_dominance
+		id = 18
+		value = -100
+	}
+	ai_strategy = {
+		type = naval_dominance
+		id = 16
+		value = -100
+	}
+	ai_strategy = {
+		type = naval_dominance
+		id = 173
+		value = -100
+	}
+}
+
+USA_maintenance_company_research = {
+	allowed = { original_tag = USA }
+	enable = {
+		NOT = { has_tech = tech_maintenance_company2 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = research_weight_factor
+		id = tech_maintenance_company
+		value = 400
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = tech_maintenance_company2
+		value = 400
+	}
+}
