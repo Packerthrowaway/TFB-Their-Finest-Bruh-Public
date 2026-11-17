@@ -4940,9 +4940,18 @@ focus_tree = {
 				uses = 1
 				category = mountaineers_tech
 			}
-			swap_ideas = {
-				add_idea = ITA_arditi_legacy2
-				remove_idea = ITA_arditi_legacy
+			if = {
+				limit = { has_idea = ITA_arditi_legacy2_planning }
+				swap_ideas = {
+					add_idea = ITA_arditi_legacy3
+					remove_idea = ITA_arditi_legacy2_planning
+				}
+			}
+			else = {
+				swap_ideas = {
+					add_idea = ITA_arditi_legacy2
+					remove_idea = ITA_arditi_legacy
+				}
 			}
 		}
 	}
@@ -5075,9 +5084,18 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			swap_ideas = {
-				add_idea = ITA_arditi_legacy3
-				remove_idea = ITA_arditi_legacy2
+			if = {
+				limit = { has_idea = ITA_arditi_legacy2 }
+				swap_ideas = {
+					add_idea = ITA_arditi_legacy3
+					remove_idea = ITA_arditi_legacy2
+				}
+			}
+			else = {
+				swap_ideas = {
+					add_idea = ITA_arditi_legacy2_planning
+					remove_idea = ITA_arditi_legacy
+				}
 			}
 		}
 	}
@@ -6182,8 +6200,8 @@ focus_tree = {
 				bonus = 0.75
 				ahead_reduction = 0.5
 				uses = 1
-				technology = flying_boat1
-				technology = flying_boat2
+				technology = maritime_patrol_plane1
+				technology = maritime_patrol_plane2
 			}
 			add_tech_bonus = {
 				name = doc_bonus

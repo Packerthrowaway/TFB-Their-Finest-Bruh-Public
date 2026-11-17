@@ -84,51 +84,6 @@ on_actions = {
 	#ROOT is winner #FROM gets annexed - This will also fire on_annex
 	on_civil_war_end = {
 		effect = {
-			#End of British Fascist Civil War
-			if = {
-				limit = {
-					original_tag = ENG
-					has_government = fascism
-				}
-				set_country_flag = { flag = won_british_civil_war value = 1 days = 365 }
-				country_event = { id = mtg_britain.34 }
-			}
-			#End of British Fascist Civil War - Democrats won
-			if = {
-				limit = {
-					original_tag = ENG
-					has_government = democratic
-					FROM = {
-						has_government = fascism
-					}
-				}
-				delete_unit_template_and_units = { division_template = "Loyalist Brigade" }
-				load_focus_tree = { tree = british_focus keep_completed = no }
-				unlock_national_focus = ENG_steady_as_she_goes
-				unlock_national_focus = limited_rearmament_focus
-				unlock_national_focus = shadow_scheme
-				unlock_national_focus = uk_industrial_focus
-				unlock_national_focus = royal_ordnance_factories
-				if = {
-					limit = {
-						amount_research_slots > 4
-					}
-					unlock_national_focus = uk_extra_tech_slot
-				}
-			}
-			# Give back ENG focus tree to Communist ENG if they win a civil war.
-			if = {
-				limit = {
-					original_tag = ENG
-					has_government = communism
-					has_focus_tree = generic_focus
-					FROM = {
-						original_tag = ENG
-						has_government = communism
-					}
-				}
-				load_focus_tree = { tree = british_focus keep_completed = yes }
-			}
 			# Give back MEX focus tree to rebel MEX if they win a civil war.
 			if = {
 				limit = {

@@ -1,0 +1,258 @@
+@anthropoid_network_step = 20 # each 20% of network strength in Bohemia fills one step of the modifier
+
+types = {
+	ENG_operation_anthropoid = {
+
+		days_to_prepare = 30
+
+		range_factor = 0.2 # 20% extra range for the transport wing
+
+		category = paratrooper_raids
+		custom_map_icon = GFX_raid_type_icon_other_raid
+
+		ai_will_do = {
+			base = 100 # Unique raid, AI should always go for it
+		}
+
+		command_power = 25
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		days_re_enable = 90
+
+		visible = {
+			has_completed_focus = ENG_assasinate_heydrich
+			NOT = { has_global_flag = heydrich_killed }
+		}
+
+		show_target = {
+			9 = { # Bohemia, where Heydrich governs from Prague
+				is_controlled_by = GER
+			}
+		}
+
+		available = {
+			9 = { # Bohemia, where Heydrich governs from Prague
+				is_controlled_by = GER
+			}
+		}
+
+		launchable = {
+			has_war_with = GER
+		}
+
+		# Agents are dropped by a transport wing, no paratrooper battalions needed
+		unit_requirements = {
+			equipment = {
+				type = { transport_plane_equipment }
+				amount = { min = 10 }
+			}
+		}
+
+		additional_equipment = {
+			infantry_equipment = 50
+		}
+
+		target_type = {
+			province = 11542
+		}
+		target_icon = GFX_other_target_icon
+		target_loc_key = raid_target_name_ENG_operation_anthropoid
+
+		launch_sound = raid_launch_paratrooper
+		arrow = {
+			type = air
+		}
+		unit_model = {
+			equipment = air_transport
+		}
+
+		starting_point = {
+			types = { air_base }
+		}
+
+		success_factors = {
+			success = {
+				base = 0.4
+
+				# Raiding unit modifiers
+				experience = {
+					weight = 0.1
+					start_weight = -0.1
+					reference = 1.0
+				}
+				reliability = {
+					reference = 1
+					weight = 0.05
+					start_weight = -0.05
+				}
+
+				### Target Modifiers
+
+				# Czech resistance hides and guides the agents
+				resistance = {
+					reference = 100
+					start_reference = 10
+					weight = 0.3
+				}
+				intel = {
+					weight = 0.2
+					reference = 100
+				}
+				# Spy network in Bohemia, measured in steps of 20 strength
+				ENG_anthropoid_prague_network = {
+					scope = country
+					formula = {
+						base = 0
+						modifier = {
+							network_strength = {
+								state = 9
+								value > 19
+							}
+							add = @anthropoid_network_step
+						}
+						modifier = {
+							network_strength = {
+								state = 9
+								value > 39
+							}
+							add = @anthropoid_network_step
+						}
+						modifier = {
+							network_strength = {
+								state = 9
+								value > 59
+							}
+							add = @anthropoid_network_step
+						}
+						modifier = {
+							network_strength = {
+								state = 9
+								value > 79
+							}
+							add = @anthropoid_network_step
+						}
+						modifier = {
+							network_strength = {
+								state = 9
+								value > 99
+							}
+							add = @anthropoid_network_step
+						}
+					}
+					weight = 0.25
+					reference = 100
+					can_actor_affect = yes
+					can_target_affect = yes
+				}
+				air_superiority = {
+					reference = 1
+					weight = 0.05
+					start_weight = -0.05
+				}
+				anti_air = {
+					reference = 5
+					weight = -0.05
+				}
+				interception = {
+					reference = 500
+					weight = -0.1
+				}
+			}
+
+			critical = {
+				base = 0.1
+
+				intel = {
+					weight = 0.1
+					reference = 100
+				}
+			}
+
+			# Critical failure: the raid exposes the resistance cells
+			disaster = {
+				base = 0.1
+
+				intel = {
+					weight = -0.05
+					reference = 100
+				}
+			}
+		}
+
+		success_levels = {
+			# Critical failure: the Germans roll up the resistance
+			failure = {
+				actor_effects = {
+					var:actor_country = {
+						add_to_variable = { ENG_anthropoid_failures = 1 }
+						country_event = tfb_kill_heydrich.5
+					}
+					raid_damage_units = {
+						plane_loss = 0.3
+						ratio = yes
+					}
+					raid_add_unit_experience = 0.05
+					add_raid_history_entry = yes
+				}
+				visual_effect = {
+					entity = "raid_failed_entity"
+					animation = "attack"
+				}
+			}
+			# Failure: Heydrich survives (shown as Limited Success)
+			limited_success = {
+				actor_effects = {
+					var:actor_country = {
+						add_to_variable = { ENG_anthropoid_failures = 1 }
+						country_event = tfb_kill_heydrich.3
+					}
+					raid_damage_units = {
+						plane_loss = 0.15
+						ratio = yes
+					}
+					raid_add_unit_experience = 0.1
+					add_raid_history_entry = yes
+				}
+				visual_effect = {
+					entity = "air_raids_paradrop_limited_success_entity"
+					animation = "attack"
+				}
+			}
+			# Success: Heydrich is mortally wounded
+			success = {
+				actor_effects = {
+					var:actor_country = {
+						country_event = tfb_kill_heydrich.2
+					}
+					raid_damage_units = {
+						plane_loss = 0.05
+						ratio = yes
+					}
+					raid_add_unit_experience = 0.15
+					add_raid_history_entry = yes
+				}
+				visual_effect = {
+					entity = "air_raids_paradrop_success_entity"
+					animation = "attack"
+				}
+			}
+			# Critical success: Heydrich is killed on the spot
+			critical_success = {
+				actor_effects = {
+					var:actor_country = {
+						country_event = tfb_kill_heydrich.1
+					}
+					raid_add_unit_experience = 0.2
+					add_raid_history_entry = yes
+				}
+				visual_effect = {
+					entity = "air_raids_paradrop_critical_success_entity"
+					animation = "attack"
+				}
+			}
+		}
+	}
+}

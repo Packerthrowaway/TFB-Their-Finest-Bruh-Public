@@ -707,6 +707,23 @@ characters={
 			logistics_skill=3
 			legacy_id=0
 		}
+		advisor={
+			slot = high_command
+			idea_token = ENG_brian_horrocks
+			ledger = army
+			allowed = {
+				original_tag = ENG
+			}
+			traits = {
+				army_armored_2
+			}
+			available = {
+				has_completed_focus = ENG_outfit_the_british_expeditionary_force
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
 	}
 
 	ENG_archibald_wavell={
@@ -1051,9 +1068,7 @@ characters={
 				secretary_colonies 
 			}
 			available = {
-				if = {
-					has_completed_focus = ENG_focus_empire
-				}
+				has_completed_focus = ENG_the_sun_that_never_set
 			}
 			ai_will_do = {
 				factor = 0
@@ -1157,9 +1172,32 @@ characters={
 			}
 			
 			available = {
-				if = {
-					has_completed_focus = ENG_focus_home
-				}
+				has_completed_focus = ENG_legacy_of_the_industrial_revolution
+			}
+		}
+	}
+
+	ENG_john_maynard_keynes={
+		name=ENG_john_maynard_keynes
+		portraits={
+			army={
+				small="GFX_idea_ENG_john_maynard_keynes"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = ENG_john_maynard_keynes
+			allowed = {
+				original_tag = ENG
+			}
+			traits = {
+				ENG_keynesian_economist
+			}
+			available = {
+				has_completed_focus = ENG_the_general_theory_of_employment_interes
+			}
+			ai_will_do = {
+				factor = 1
 			}
 		}
 	}
@@ -1362,9 +1400,7 @@ characters={
 			}
 			
 			available = {
-				if = {
-					has_completed_focus = ENG_tactical_bombing
-				}
+				has_completed_focus = ENG_tactical_bombing_doctrine
 			}
 			
 			traits = {
@@ -1565,7 +1601,7 @@ characters={
 			idea_token = ENG_david_stirling
 			ledger = army
 			available = {
-				has_completed_focus = ENG_improved_training
+				has_completed_focus = ENG_foundations_of_the_sas
 			}
 			allowed = {
 				original_tag = ENG
@@ -1648,15 +1684,18 @@ characters={
 		}
 		advisor={
 			cost = 150
-			slot = theorist
+			slot = high_command
 			idea_token = arthur_harris
 			ledger = air
+			available = {
+				has_completed_focus = ENG_let_bomber_harris_loose
+			}
 			allowed = {
 				original_tag = ENG
 			}
 			
 			traits = {
-				victory_through_airpower
+				air_strategic_bombing_2
 			}
 		}
 	}
@@ -1674,7 +1713,10 @@ characters={
 			idea_token = ENG_jfc_fuller
 			ledger = army
 			available = {
-				has_government = fascism
+				OR = {
+					has_government = fascism
+					has_completed_focus = ENG_a_domestic_tank_program
+				}
 			}
 			allowed = {
 				original_tag = ENG

@@ -1035,6 +1035,10 @@ focus_tree = {
 			factor = 5
 		}
 
+		available = {
+			NOT = { is_subject_of = ENG }
+		}
+
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
@@ -2618,17 +2622,17 @@ focus_tree = {
 					has_dlc = "Arms Against Tyranny"
 				}
 				add_equipment_subsidy = {
-					cic = 1000
+					cic = 10000
 					equipment_type = small_plane_airframe
 					seller_tags = { ENG } 
 				}
 				add_equipment_subsidy = {
-					cic = 1000
+					cic = 10000
 					equipment_type = medium_plane_airframe
 					seller_tags = { ENG } 
 				}
 				add_equipment_subsidy = {
-					cic = 1000
+					cic = 10000
 					equipment_type = large_plane_airframe
 					seller_tags = { ENG } 
 				}
@@ -2700,17 +2704,17 @@ focus_tree = {
 					has_dlc = "Arms Against Tyranny"
 				}
 				add_equipment_subsidy = {
-					cic = 1000
+					cic = 10000
 					equipment_type = small_plane_airframe
 					seller_tags = { GER } 
 				}
 				add_equipment_subsidy = {
-					cic = 1000
+					cic = 10000
 					equipment_type = medium_plane_airframe
 					seller_tags = { GER } 
 				}
 				add_equipment_subsidy = {
-					cic = 1000
+					cic = 10000
 					equipment_type = large_plane_airframe
 					seller_tags = { GER } 
 				}
@@ -3209,7 +3213,7 @@ focus_tree = {
 		id = PER_persian_gulf_fleet
 		icon = GFX_focus_PER_persian_gulf_fleet
 		prerequisite = { focus = PER_officers_to_italy focus = PER_construct_naval_bases }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = PER_officers_to_italy
 		mutually_exclusive = { focus = PER_bolster_the_caspian }
@@ -3315,7 +3319,7 @@ focus_tree = {
 		id = PER_coastal_defense_initiative
 		icon = GFX_focus_FIN_coastal_defense
 		prerequisite = { focus = PER_construct_naval_bases }
-		x = 2
+		x = 1
 		y = 1
 		relative_position_id = PER_construct_naval_bases
 		cost = 5
@@ -3336,7 +3340,7 @@ focus_tree = {
 		id = PER_bolster_the_caspian
 		icon = GFX_focus_PER_bolster_the_caspian
 		prerequisite = { focus = PER_construct_naval_bases focus = PER_officers_to_italy }
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = PER_construct_naval_bases
 		mutually_exclusive = { focus = PER_persian_gulf_fleet }
@@ -3377,7 +3381,7 @@ focus_tree = {
 		id = PER_purchase_foreign_ships
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = PER_bolster_the_caspian focus = PER_persian_gulf_fleet }
-		x = 2
+		x = 1
 		y = 1
 		relative_position_id = PER_persian_gulf_fleet
 		cost = 10
@@ -4180,6 +4184,7 @@ focus_tree = {
 		available = {
 			has_government = neutrality
 			has_war = no
+			NOT = { is_subject_of = ENG }
 		}
 
 		bypass = {
@@ -5735,12 +5740,12 @@ focus_tree = {
 			IF = {
 				limit = { has_dlc = "Arms Against Tyranny" }
 				add_equipment_subsidy = {
-					cic = 1500
+					cic = 15000
 					equipment_type = infantry_equipment
 					seller_tags  = { overlord }
 				}
 				add_equipment_subsidy = {
-					cic = 700
+					cic = 7000
 					equipment_type = artillery_equipment
 					seller_tags  = { overlord }
 				}
@@ -5834,6 +5839,7 @@ focus_tree = {
 			NOT = {
 				has_war_with = SOU
 			}
+			is_subject = no
 		}
 
 		bypass = {
@@ -5888,7 +5894,11 @@ focus_tree = {
 		}
 
 		allow_branch = {
-
+			is_ai = no
+			OR = {
+				is_subject = yes
+				has_completed_focus = PER_azadi
+			}
 		}
 
 		ai_will_do = {
@@ -6136,8 +6146,8 @@ focus_tree = {
 		}
 
 		allow_branch = {
-			has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
-			has_completed_focus = PER_swear_fealty
+			# has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+			# has_completed_focus = PER_swear_fealty
 		}
 
 		ai_will_do = {
@@ -6862,6 +6872,7 @@ focus_tree = {
 			NOT = {
 				has_completed_focus = PER_form_oil_company
 			}
+			NOT = { is_subject_of = ENG }
 		}
 
 		bypass = {
@@ -7217,7 +7228,7 @@ focus_tree = {
 		}
 
 		ai_will_do = {
-			factor = 100
+			factor = 0
 		}
 
 		search_filters = {
@@ -10349,6 +10360,7 @@ focus_tree = {
 				412 = { is_owned_and_controlled_by = ROOT }
 				413 = { is_owned_and_controlled_by = ROOT }
 			}
+			NOT = { is_subject_of = ENG }
 		}
 
 		bypass = {
@@ -12985,7 +12997,7 @@ focus_tree = {
 		cost = 5
 		
 		available = {
-
+			has_government = communism
 		}
 
 		bypass = {

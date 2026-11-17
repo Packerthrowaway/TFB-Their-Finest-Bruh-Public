@@ -1333,6 +1333,13 @@ operations = {
 				set_country_flag = blew_up_suez
 				set_global_flag = SUEZ_CANAL_BLOCKED
 				country_event = { id = wtt_news.40 hours = 6}
+				# State of the Empire: a blocked canal counts as lost for the UK
+				hidden_effect = {
+					if = {
+						limit = { ENG_has_state_of_the_empire = yes }
+						ENG = { ENG_update_state_of_the_empire = yes }
+					}
+				}
 				446 = {
 					remove_building = {
 						type = industrial_complex
@@ -1796,6 +1803,13 @@ special_projects = {
 				set_country_flag = rebuilt_suez
 				clr_global_flag = SUEZ_CANAL_BLOCKED
 				country_event = { id = wtt_news.42 hours = 6}
+				# State of the Empire: the reopened canal counts again for the UK
+				hidden_effect = {
+					if = {
+						limit = { ENG_has_state_of_the_empire = yes }
+						ENG = { ENG_update_state_of_the_empire = yes }
+					}
+				}
 			}
 		}
 

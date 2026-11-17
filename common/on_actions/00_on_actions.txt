@@ -243,6 +243,38 @@ on_actions = {
 			}
 		}
 
+		# thrawn gamble mechanic, assigns him to random nation
+		effect = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = thrawn_spawning
+						option = ENABLED
+					}
+				}
+				random_country = {
+					limit = { is_ai = no }
+					USA = {
+						tactics_Thrawn = {
+							set_nationality = PREV.PREV
+						}
+					}
+				}
+			}
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = thrawn_spawning
+						option = DISABLED
+					}
+				}
+				USA = {
+					tactics_Thrawn = {
+						set_nationality = OBG
+					}
+				}
+			}
+		}
 	}
 	# country
 	on_new_term_election = {

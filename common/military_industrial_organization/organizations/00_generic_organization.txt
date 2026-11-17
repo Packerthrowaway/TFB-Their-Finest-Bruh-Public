@@ -6028,7 +6028,6 @@ generic_general_aircraft_organization = {
 		mio_cat_eq_all_small_plane
 		mio_cat_eq_all_medium_plane
 		mio_cat_eq_all_large_plane
-		mio_cat_eq_only_strategic_bomber
 	}
 
 	research_categories = { air_equipment }
@@ -6083,9 +6082,8 @@ generic_general_aircraft_organization = {
 
 		limit_to_equipment_type = { 
 			mio_cat_eq_only_light_fighter_no_cv
-			heavy_fighter_equipment
-			# medium_plane_fighter_airframe 
-			# medium_plane_scout_plane_airframe 
+			medium_plane_fighter_airframe 
+			medium_plane_scout_plane_airframe 
 		}
 
 		equipment_bonus = {
@@ -6107,9 +6105,8 @@ generic_general_aircraft_organization = {
 
 		limit_to_equipment_type = { 
 			mio_cat_eq_only_light_fighter_no_cv
-			heavy_fighter_equipment
-			# medium_plane_fighter_airframe 
-			# medium_plane_scout_plane_airframe 
+			medium_plane_fighter_airframe 
+			medium_plane_scout_plane_airframe 
 		}
 
 		equipment_bonus = {
@@ -6131,9 +6128,8 @@ generic_general_aircraft_organization = {
 
 		limit_to_equipment_type = { 
 			mio_cat_eq_only_light_fighter_no_cv
-			heavy_fighter_equipment
-			# medium_plane_fighter_airframe 
-			# medium_plane_scout_plane_airframe 
+			medium_plane_fighter_airframe 
+			medium_plane_scout_plane_airframe 
 		}
 
 		equipment_bonus = {
@@ -6153,9 +6149,8 @@ generic_general_aircraft_organization = {
 
 		limit_to_equipment_type = { 
 			mio_cat_eq_only_light_fighter_no_cv
-			heavy_fighter_equipment
-			# medium_plane_fighter_airframe 
-			# medium_plane_scout_plane_airframe 
+			medium_plane_fighter_airframe 
+			medium_plane_scout_plane_airframe 
 		}
 
 		production_bonus = {
@@ -6174,9 +6169,8 @@ generic_general_aircraft_organization = {
 		all_parents = { generic_mio_trait_conservative_designs }
 
 		limit_to_equipment_type = { 
-			#small_plane_cas_airframe 
-			CAS_equipment
-			cv_CAS_equipment
+			small_plane_cas_airframe 
+			#cv_small_plane_cas_airframe
 			mio_cat_eq_only_tactical_bomber 
 			mio_cat_eq_only_strategic_bomber 
 		}
@@ -6199,13 +6193,11 @@ generic_general_aircraft_organization = {
 		mutually_exclusive = { generic_mio_trait_fast_bombers }
 
 		limit_to_equipment_type = { 
-			#small_plane_cas_airframe 
-			CAS_equipment
-			cv_CAS_equipment
+			small_plane_cas_airframe 
+			#cv_small_plane_cas_airframe
 			mio_cat_eq_only_tactical_bomber 
 			mio_cat_eq_only_strategic_bomber 
 		}
-
 
 		equipment_bonus = {
 			air_defence = 0.03
@@ -6225,13 +6217,11 @@ generic_general_aircraft_organization = {
 		mutually_exclusive = { generic_mio_trait_bomb_trucks }
 
 		limit_to_equipment_type = { 
-			#small_plane_cas_airframe 
-			CAS_equipment
-			cv_CAS_equipment
+			small_plane_cas_airframe 
+			#cv_small_plane_cas_airframe
 			mio_cat_eq_only_tactical_bomber 
 			mio_cat_eq_only_strategic_bomber 
 		}
-
 
 		equipment_bonus = {
 			maximum_speed = 0.05
@@ -6249,13 +6239,11 @@ generic_general_aircraft_organization = {
 		any_parent = { generic_mio_trait_bomb_trucks generic_mio_trait_fast_bombers }
 
 		limit_to_equipment_type = { 
-			#small_plane_cas_airframe 
-			CAS_equipment
-			cv_CAS_equipment
+			small_plane_cas_airframe 
+			#cv_small_plane_cas_airframe
 			mio_cat_eq_only_tactical_bomber 
 			mio_cat_eq_only_strategic_bomber 
 		}
-
 
 		production_bonus = {
 			production_capacity_factor = 0.05
@@ -6272,10 +6260,7 @@ generic_general_aircraft_organization = {
 
 		all_parents = { generic_mio_trait_conservative_designs }
 
-		limit_to_equipment_type = { 
-			#small_plane_naval_bomber_airframe 
-			mio_cat_eq_all_cv_aircraft 
-		}
+		limit_to_equipment_type = { small_plane_naval_bomber_airframe mio_cat_eq_all_cv_aircraft large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_range = 0.1
@@ -6294,10 +6279,7 @@ generic_general_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_naval_air_patrol }
 
-		limit_to_equipment_type = { 
-			#small_plane_naval_bomber_airframe 
-			mio_cat_eq_all_cv_aircraft 
-		}
+		limit_to_equipment_type = { small_plane_naval_bomber_airframe mio_cat_eq_all_cv_aircraft large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			naval_strike_targetting = 0.05
@@ -6316,10 +6298,7 @@ generic_general_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_naval_strike }
 
-		limit_to_equipment_type = { 
-			#small_plane_naval_bomber_airframe 
-			mio_cat_eq_all_cv_aircraft 
-		}
+		limit_to_equipment_type = { small_plane_naval_bomber_airframe mio_cat_eq_all_cv_aircraft large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			surface_detection = 0.05
@@ -6337,10 +6316,7 @@ generic_general_aircraft_organization = {
 
 		any_parent = { generic_mio_trait_naval_strike generic_mio_trait_naval_air_patrol }
 
-		limit_to_equipment_type = { 
-			#small_plane_naval_bomber_airframe 
-			mio_cat_eq_all_cv_aircraft 
-		}
+		limit_to_equipment_type = { small_plane_naval_bomber_airframe mio_cat_eq_all_cv_aircraft large_plane_maritime_patrol_plane_airframe }
 
 		production_bonus = {
 			production_capacity_factor = 0.05
@@ -6358,7 +6334,8 @@ generic_light_aircraft_organization = {
 
 	equipment_type = {
 		mio_cat_eq_only_light_fighter
-		mio_cat_all_cas_and_modules
+		mio_cat_eq_only_light_cas
+		#mio_cat_all_cas_and_modules
 	}
 
 	research_categories = {	
@@ -6702,7 +6679,7 @@ generic_medium_aircraft_organization = {
 		transport_plane_equipment
 	}
 
-	research_categories = { mio_cat_eq_all_medium_plane }
+	research_categories = { mio_cat_all_medium_aircraft_and_modules }
 	
 	tree_header_text = {
 		text = mio_header_production
@@ -7021,12 +6998,12 @@ generic_heavy_aircraft_organization = {
 	}
 
 	equipment_type = {
-		#large_plane_airframe
 		mio_cat_eq_only_strategic_bomber
+		large_plane_maritime_patrol_plane_airframe
 		transport_plane_equipment
 	}
 
-	research_categories = { mio_cat_eq_all_large_plane }
+	research_categories = { mio_cat_all_heavy_aircraft_and_modules }
 	
 	tree_header_text = {
 		text = mio_header_design_department
@@ -7041,13 +7018,7 @@ generic_heavy_aircraft_organization = {
 	initial_trait = {
 		name = generic_mio_initial_trait_heavy_aircraft_designer
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.05
@@ -7065,13 +7036,7 @@ generic_heavy_aircraft_organization = {
 
 		position = { x=2 y=0 }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_defence = 0.05
@@ -7121,13 +7086,7 @@ generic_heavy_aircraft_organization = {
 
 		any_parent = { generic_mio_trait_standardized_alloys }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_defence = 0.05
@@ -7147,13 +7106,7 @@ generic_heavy_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_high_quality_aluminium_alloys }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		production_bonus = {
 			production_capacity_factor = 0.05
@@ -7173,13 +7126,7 @@ generic_heavy_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_refined_secondary_aluminium }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_agility = 0.05
@@ -7197,13 +7144,7 @@ generic_heavy_aircraft_organization = {
 
 		any_parent = { generic_mio_trait_reinforced_frames generic_mio_trait_extended_rear_fuselage }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_range = 0.1
@@ -7220,13 +7161,7 @@ generic_heavy_aircraft_organization = {
 
 		any_parent = { generic_mio_trait_pressurized_cockpit }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_agility = 0.05
@@ -7241,13 +7176,7 @@ generic_heavy_aircraft_organization = {
 		position = { x=6 y=0 }
 		relative_position_id = generic_mio_trait_reinforced_frames
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_bombing = 0.05
@@ -7267,13 +7196,7 @@ generic_heavy_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_air_deployed_sonobuoys }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_bombing = 0.05
@@ -7292,13 +7215,7 @@ generic_heavy_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_auto_levelled_bombsights }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			sub_detection = 0.05
@@ -7316,13 +7233,7 @@ generic_heavy_aircraft_organization = {
 
 		any_parent = { generic_mio_trait_auto_levelled_bombsights generic_mio_trait_air_deployed_sonobuoys }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_attack = 0.05
@@ -7341,13 +7252,7 @@ generic_heavy_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_advanced_instruments }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_defence = 0.15
@@ -7369,13 +7274,7 @@ generic_heavy_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_flying_fortress }
 
-		# limit_to_equipment_type = { 
-		# 	strat_bomber_equipment
-		# 	jet_strat_bomber_equipment
-		# 	transport_plane_equipment
-		# 	amerikabomber_equipment
-		# 	#large_plane_airframe 
-		# }
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber large_plane_maritime_patrol_plane_airframe }
 
 		equipment_bonus = {
 			air_bombing = 0.05
@@ -7394,9 +7293,9 @@ generic_cas_aircraft_organization = {
 	}
 
 	equipment_type = {
-		#small_plane_cas_airframe
-		#cv_small_plane_cas_airframe
-		mio_cat_all_cas_and_modules
+		small_plane_cas_airframe
+		cv_small_plane_cas_airframe
+		# mio_cat_all_cas_and_modules
 	}
 
 	research_categories = {	mio_cat_all_cas_and_modules }
@@ -7718,7 +7617,7 @@ generic_naval_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_internal_torpedo_mountings }
 
-		limit_to_equipment_type = { mio_cat_all_naval_bomber_and_modules }
+		# limit_to_equipment_type = { small_plane_naval_bomber_airframe cv_small_plane_naval_bomber_airframe } #mio_cat_all_naval_bomber_and_modules
 
 		equipment_bonus = {
 			air_range = 0.1
@@ -7737,7 +7636,7 @@ generic_naval_aircraft_organization = {
 
 		mutually_exclusive = { generic_mio_trait_patrol_fuel_tanks }
 
-		limit_to_equipment_type = { mio_cat_all_naval_bomber_and_modules }
+		# limit_to_equipment_type = { small_plane_naval_bomber_airframe cv_small_plane_naval_bomber_airframe } #mio_cat_all_naval_bomber_and_modules
 
 		equipment_bonus = {
 			maximum_speed = 0.05
@@ -7755,7 +7654,7 @@ generic_naval_aircraft_organization = {
 
 		any_parent = { generic_mio_trait_patrol_fuel_tanks generic_mio_trait_internal_torpedo_mountings }
 
-		limit_to_equipment_type = { mio_cat_all_naval_bomber_and_modules }
+		# limit_to_equipment_type = { small_plane_naval_bomber_airframe cv_small_plane_naval_bomber_airframe } #mio_cat_all_naval_bomber_and_modules
 
 		equipment_bonus = {
 			surface_detection = 0.05
@@ -7860,9 +7759,9 @@ generic_naval_aircraft_organization = {
 		all_parents = { generic_mio_trait_navigation_equipment }
 
 		# limit_to_equipment_type = {
-		# 	cv_fighter_equipment
-		# 	cv_CAS_equipment
-		# 	cv_nav_bomber_equipment
+		# 	cv_small_plane_airframe #cv_fighter_equipment
+		# 	cv_small_plane_cas_airframe #cv_CAS_equipment
+		# 	cv_small_plane_naval_bomber_airframe #cv_nav_bomber_equipment
 		# }
 
 		equipment_bonus = {
@@ -7882,7 +7781,7 @@ generic_naval_aircraft_organization = {
 		all_parents = { generic_mio_air_cooled_engines }
 
 		limit_to_equipment_type = {
-			cv_fighter_equipment
+			mio_cat_eq_only_light_fighter_only_cv #cv_fighter_equipment
 		}
 
 		equipment_bonus = {

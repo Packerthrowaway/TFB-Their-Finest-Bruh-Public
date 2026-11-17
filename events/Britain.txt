@@ -264,7 +264,6 @@ country_event = {
 	option = {
 		name = britain.1.a	#sounds good
 		ai_chance = { factor = 90 }
-		add_political_power = -10
 		ENG = {
 			country_event = { days = 1 id = britain.2 }
 			add_opinion_modifier = {
@@ -272,23 +271,7 @@ country_event = {
 				modifier = tizard_relations
 			}
 		}
-		add_breakthrough_progress = {
-			specialization = specialization_air
-			value = 0.75
-		}
-		add_tech_bonus = {
-			name = tizard_mission_focus
-			uses = 1
-			bonus = 1
-			category = light_fighter
-		}
-		add_tech_bonus = {
-			name = tizard_mission_focus
-			bonus = 1.0
-			uses = 2
-			category = radar_tech
-		}
-		add_ideas = USA_tizard
+		ENG_tizard_mission_usa_reward = yes
 	}
 	
 	# option = {
@@ -327,21 +310,7 @@ country_event = {
 	
 	option = {
 		name = britain.2.a
-		add_breakthrough_progress = {
-			specialization = specialization_air
-			value = 0.75
-		}
-		add_tech_bonus = {
-			name = tizard_mission_focus
-			bonus = 0.5 # was 1
-			category = light_fighter
-		}
-		add_tech_bonus = {
-			name = tizard_mission_focus
-			bonus = 0.5 # was 1
-			uses = 1 # was 2
-			category = radar_tech
-		}
+		ENG_tizard_mission_uk_reward = yes
 		USA = {
 			add_opinion_modifier = { target = ENG modifier = tizard_relations }
 		}
@@ -483,57 +452,6 @@ country_event = {
 	}
 }
 
-# Chamberlain Resigns
-country_event = {
-	id = britain.9
-	title = britain.9.t
-	desc = britain.9.d
-	picture = GFX_report_event_chamberlain
-
-	fire_only_once = yes
-
-	trigger = {
-		tag = ENG
-		has_war = yes
-		has_government = democratic
-		POL = { has_capitulated = yes }
-		OR = {
-			has_global_flag = fall_of_france
-			FRA = { surrender_progress > 0.1 }
-			HOL = { surrender_progress > 0.1 }
-			BEL = { surrender_progress > 0.1 }
-			LUX = { surrender_progress > 0.1 }
-			DEN = { surrender_progress > 0.1 }
-			NOR = { surrender_progress > 0.1 }
-			AND = {
-				110 = { is_controlled_by = GER }
-				NOT = { is_in_faction_with = GER }
-			}
-		}
-		NOT = { has_country_flag = chamberlain_died }
-		has_country_leader = {
-			character = ENG_neville_chamberlain
-			ruling_only = yes
-		}
-	}
-
-	mean_time_to_happen = {
-		days = 2
-	}
-
-	immediate = { set_country_flag = chamberlain_resigned }
-	
-	option = {
-		name = britain.9.a
-		promote_character = ENG_winston_churchill
-		retire_character = ENG_neville_chamberlain
-		add_stability = 0.1
-		add_war_support = 0.1
-
-	}
-}
-
-
 # Chamberlain Passes Away
 country_event = {
 	id = britain.10
@@ -571,16 +489,7 @@ country_event = {
 		}
 
 		kill_country_leader = yes
-		create_country_leader = {
-			name = "Winston Churchill"
-			desc = "POLITICS_WINSTON_CHURCHILL_DESC"
-			picture = GFX_portrait_Winston_Churchill
-			expire = "1965.1.1"
-			ideology = conservatism
-			traits = {
-				british_bulldog
-			}
-		}
+		promote_character = ENG_winston_churchill
 	}
 
 	option = {
@@ -1058,64 +967,6 @@ country_event = {
 	}
 }
 
-# Shadow Scheme Factories # TODO prob needs fixing
-country_event = {
-    id = britain.24
-    title = britain.24.t
-    desc = britain.24.d
-    picture = GFX_report_event_generic_factory
- 
-    fire_only_once = yes
- 
-    trigger = {
-        original_tag = ENG
-        has_completed_focus = shadow_scheme
-        has_war = yes
-    }
-
-    mean_time_to_happen = {
-        days = 7
-    }
-
-    option = {
-        name = britain.24.a
-        random_owned_controlled_state = {
-			limit = {
-				is_in_home_area = yes
-				free_building_slots = {
-					building = arms_factory
-					size > 1
-					include_locked = yes
-				}
-			}
-			add_extra_state_shared_building_slots = 2
-			add_building_construction = {
-				type = arms_factory
-				level = 2
-				instant_build = yes
-			}
-			set_state_flag = shadow_scheme_2AF
-		}
-		random_owned_controlled_state = {
-			limit = {
-				is_in_home_area = yes
-				free_building_slots = {
-					building = arms_factory
-					size > 1
-					include_locked = yes
-				}
-			}
-			add_extra_state_shared_building_slots = 2
-			add_building_construction = {
-				type = arms_factory
-				level = 2
-				instant_build = yes
-			}
-			set_state_flag = shadow_scheme_2AF
-		}
-    }
-}
-
 ### Anglo-Soviet Agreement
 country_event = {
 	id = britain.500
@@ -1149,6 +1000,7 @@ country_event = {
 	option = {
 		name = britain.501.a
 		ENG = { country_event = { id = britain.502 hours = 6 } }
+		set_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
 	}
 	
 	option = {
@@ -1169,16 +1021,41 @@ country_event = {
 		name = britain.502.a
 		SOV = {
 			transfer_state= 416
-			transfer_state= 418
+			# transfer_state= 418
 			transfer_state= 266
 			transfer_state= 420
 			transfer_state= 419
 			transfer_state= 1000
 			transfer_state= 1004
 		}
+		transfer_state = 412
+		transfer_state = 413
+		transfer_state = 421
 		set_autonomy = {
 			target = PER
 			autonomous_state = autonomy_protectorate
+		}
+		hidden_effect = {
+			PER = {
+				set_capital = { state = 411 }
+				unlock_national_focus = PER_fight_for_iran
+				add_manpower = 10000
+				unlock_national_focus = PER_dig_and_defend
+				unlock_national_focus = PER_capital_protect
+				unlock_national_focus = PER_swear_fealty
+				mark_focus_tree_layout_dirty = yes
+				IF = {
+					limit = {
+						has_dynamic_modifier = {
+							modifier = PER_opposition_modifier
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PER_opposition_modifier
+					}
+				}
+				give_military_access = SOU
+			}
 		}
 	}
 	
@@ -1225,3 +1102,237 @@ country_event = {
 		}
 	}
 }
+
+# Readmit Italy into the naval treaties: Italy decides
+country_event = {
+	id = britain.710
+	title = britain.710.t
+	desc = britain.710.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = { # rejoin
+		name = britain.710.a
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 0.25
+				is_in_faction_with = GER
+			}
+			modifier = {
+				factor = 3
+				has_government = democratic
+			}
+		}
+		ENG_rejoin_naval_treaty = yes
+		effect_tooltip = {
+			FROM = { break_embargo = ROOT }
+		}
+		FROM = { country_event = { id = britain.711 hours = 6 } }
+	}
+
+	option = { # refuse
+		name = britain.710.b
+		ai_chance = {
+			base = 75
+		}
+		FROM = { country_event = { id = britain.712 hours = 6 } }
+	}
+}
+
+# Readmit Italy into the naval treaties: Italy rejoins
+country_event = {
+	id = britain.711
+	title = britain.711.t
+	desc = britain.711.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = {
+		name = britain.711.a
+		break_embargo = FROM
+	}
+}
+
+# Readmit Italy into the naval treaties: Italy refuses
+country_event = {
+	id = britain.712
+	title = britain.712.t
+	desc = britain.712.d
+	picture = GFX_report_event_ast_navy
+
+	is_triggered_only = yes
+
+	option = { # leave the treaty
+		name = britain.712.a
+		ai_chance = {
+			base = 50
+		}
+		leave_naval_treaty_effect = yes
+	}
+
+	option = { # stay
+		name = britain.712.b
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+# Anglo-German Naval Treaty: Germany decides
+country_event = {
+	id = britain.713
+	title = britain.713.t
+	desc = britain.713.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = { # accept
+		name = britain.713.a
+		ai_chance = {
+			base = 70
+		}
+		add_ideas = ENG_anglo_german_naval_agreement
+		FROM = { country_event = { id = britain.714 hours = 6 } }
+	}
+
+	option = { # refuse
+		name = britain.713.b
+		ai_chance = {
+			base = 30
+		}
+		effect_tooltip = {
+			FROM = { ENG_anglo_german_naval_treaty_refused = yes }
+		}
+		FROM = { country_event = { id = britain.715 hours = 6 } }
+	}
+}
+
+# Anglo-German Naval Treaty: Germany accepts
+country_event = {
+	id = britain.714
+	title = britain.714.t
+	desc = britain.714.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = {
+		name = britain.714.a
+		effect_tooltip = {
+			FROM = { add_ideas = ENG_anglo_german_naval_agreement }
+		}
+	}
+}
+
+# Anglo-German Naval Treaty: Germany refuses
+country_event = {
+	id = britain.715
+	title = britain.715.t
+	desc = britain.715.d
+	picture = GFX_report_event_ast_navy
+
+	is_triggered_only = yes
+
+	option = {
+		name = britain.715.a
+		ENG_anglo_german_naval_treaty_refused = yes
+	}
+}
+
+# Winston the Platypus dies on the voyage from Australia
+country_event = {
+	id = britain.716
+	title = britain.716.t
+	desc = britain.716.d
+	picture = GFX_report_event_ast_navy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = ENG
+		date > 1943.11.3
+		has_war_with = GER
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = { # blame the U-boats, whatever really happened
+		name = britain.716.a
+		add_war_support = 0.05
+		ai_chance = { factor = 3 }
+	}
+
+	option = { # admit the animal died in our care
+		name = britain.716.b
+		add_stability = 0.02
+		ai_chance = { factor = 1 }
+	}
+}
+
+# Containment: pacifists riot against punishing Germany or Italy in peacetime
+country_event = {
+	id = britain.717
+	title = britain.717.t
+	desc = {
+		text = britain.717.d_germany
+		trigger = { ENG_pacifist_riots_over_germany = yes }
+	}
+	desc = {
+		text = britain.717.d_italy
+		trigger = { NOT = { ENG_pacifist_riots_over_germany = yes } }
+	}
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	option = {
+		name = britain.717.a
+		effect_tooltip = {
+			add_ideas = ENG_pacifist_riots
+		}
+	}
+}
+
+# Learn from the Great War: one lesson joins The Royal Army
+country_event = {
+	id = britain.718
+	title = britain.718.t
+	desc = britain.718.d
+	picture = GFX_report_event_british_artillery
+
+	is_triggered_only = yes
+
+	option = { # camouflage
+		name = britain.718.a
+		ENG_add_or_modify_royal_army = yes
+		add_to_variable = { ENG_royal_army_enemy_air_superiority_factor = constant:ENG_royal_army.camouflage_enemy_air_support tooltip = ENG_enemy_army_bonus_air_superiority_factor_tt }
+		set_country_flag = ENG_great_war_lesson_camouflage
+		ai_chance = { factor = 1 }
+	}
+
+	option = { # big guns
+		name = britain.718.b
+		ENG_add_or_modify_royal_army = yes
+		add_to_variable = { ENG_royal_army_railway_gun_bombardment_factor = constant:ENG_royal_army.big_gun_bombardment tooltip = ENG_railway_gun_bombardment_factor_tt }
+		ENG_spawn_siege_battery = yes
+		set_country_flag = ENG_great_war_lesson_big_guns
+		ai_chance = { factor = 1 }
+	}
+
+	option = { # night infiltration
+		name = britain.718.c
+		ENG_add_or_modify_royal_army = yes
+		add_to_variable = { ENG_royal_army_land_night_attack = constant:ENG_royal_army.night_attack tooltip = land_night_attack_tt }
+		set_country_flag = ENG_great_war_lesson_night
+		ai_chance = { factor = 1 }
+	}
+}
+
+
+

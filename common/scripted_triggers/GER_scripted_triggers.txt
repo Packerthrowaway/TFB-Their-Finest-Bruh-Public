@@ -2180,3 +2180,14 @@ GER_axis_has_enough_coal = {
 
 	check_variable = { num_faction_coal > GER_autarky_coal }
 }
+
+# State scope: controlled by Germany, Vichy France or a German faction member
+GER_state_held_by_germany_vichy_or_faction = {
+	controller = {
+		OR = {
+			tag = GER
+			has_focus_tree = vichy_french_focus
+			is_in_faction_with = GER
+		}
+	}
+}

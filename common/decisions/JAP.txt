@@ -355,6 +355,7 @@ JAP_intervene_in_china = {
 		icon = jap_conquer_china
 
 		visible = {
+			always = no
 			has_completed_focus = JAP_strategic_offensives #JAP_secure_china
 			any_enemy_country = {
 				is_literally_china = yes
@@ -3350,7 +3351,291 @@ operations = {
 		}
 	
 		complete_effect = {
-			add_timed_idea = { idea = JAP_tora_tora_tora_idea days = 180 }
+			if = {
+				limit = {
+					has_completed_focus = JAP_early_war_military_focus
+				}
+				add_timed_idea = { idea = JAP_tora_tora_tora_idea days = 90 }
+			} else = {
+				add_timed_idea = { idea = JAP_tora_tora_tora_idea days = 180 }
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						has_completed_focus = JAP_late_war_intel_focus
+					}
+					add_collaboration = {
+						target = MAL
+						value = 0.8
+					}
+					add_collaboration = {
+						target = INS
+						value = 0.8
+					}
+					add_collaboration = {
+						target = HOL
+						value = 0.8
+					}
+					add_collaboration = {
+						target = PHI
+						value = 0.8
+					}
+				}
+				# Late War Destruction
+				if = {
+					limit = {
+						has_completed_focus = JAP_late_war_destruction_focus
+					}
+					if = {
+						limit = {
+							has_country_flag = JAP_usa1
+						}
+						629 = {
+							damage_building = {
+								type = air_base
+								damage = 2
+							}
+							damage_building = {
+								type = anti_air_building
+								damage = 2
+							}
+							damage_building = {
+								type = radar_station
+								damage = 2
+							}
+							damage_building = {
+								type = naval_base
+								damage = 2
+							}
+						}
+						638 = {
+							damage_building = {
+								type = bunker
+								damage = 4
+							}
+							damage_building = {
+								type = coastal_bunker
+								damage = 4
+							}
+							damage_building = {
+								type = air_base
+								damage = 4
+							}
+							damage_building = {
+								type = anti_air_building
+								damage = 4
+							}
+							damage_building = {
+								type = radar_station
+								damage = 4
+							}
+						}
+						632 = {
+							damage_building = {
+								type = bunker
+								damage = 4
+							}
+							damage_building = {
+								type = coastal_bunker
+								damage = 4
+							}
+							damage_building = {
+								type = air_base
+								damage = 4
+							}
+							damage_building = {
+								type = anti_air_building
+								damage = 4
+							}
+							damage_building = {
+								type = radar_station
+								damage = 4
+							}
+						}
+						every_state = {
+							limit = {
+								is_core_of = PHI
+							}
+							damage_building = {
+								type = bunker
+								damage = 4
+							}
+							damage_building = {
+								type = coastal_bunker
+								damage = 4
+							}
+							damage_building = {
+								type = air_base
+								damage = 4
+							}
+							damage_building = {
+								type = anti_air_building
+								damage = 4
+							}
+							damage_building = {
+								type = radar_station
+								damage = 4
+							}
+						}
+					}
+					every_state = {
+						limit = {
+							OR = {
+								is_core_of = INS
+								is_core_of = MAL
+							}
+						}
+						damage_building = {
+							type = bunker
+							damage = 4
+						}
+						damage_building = {
+							type = coastal_bunker
+							damage = 4
+						}
+						damage_building = {
+							type = air_base
+							damage = 4
+						}
+					}
+				}
+				
+				# Mid War Destruction
+				if = {
+					limit = {
+						has_completed_focus = JAP_mid_war_destruction_focus
+					}
+					if = {
+						limit = {
+							has_country_flag = JAP_usa1
+						}
+						638 = {
+							damage_building = {
+								type = bunker
+								damage = 2
+							}
+							damage_building = {
+								type = coastal_bunker
+								damage = 2
+							}
+							damage_building = {
+								type = air_base
+								damage = 2
+							}
+							damage_building = {
+								type = anti_air_building
+								damage = 2
+							}
+							damage_building = {
+								type = radar_station
+								damage = 2
+							}
+						}
+						632 = {
+							damage_building = {
+								type = bunker
+								damage = 2
+							}
+							damage_building = {
+								type = coastal_bunker
+								damage = 2
+							}
+							damage_building = {
+								type = air_base
+								damage = 2
+							}
+							damage_building = {
+								type = anti_air_building
+								damage = 2
+							}
+							damage_building = {
+								type = radar_station
+								damage = 2
+							}
+						}
+						every_state = {
+							limit = {
+								is_core_of = PHI
+							}
+							damage_building = {
+								type = bunker
+								damage = 2
+							}
+							damage_building = {
+								type = coastal_bunker
+								damage = 2
+							}
+							damage_building = {
+								type = air_base
+								damage = 2
+							}
+						}
+					}
+					every_state = {
+						limit = {
+							OR = {
+								is_core_of = INS
+								is_core_of = MAL
+							}
+						}
+						damage_building = {
+							type = bunker
+							damage = 2
+						}
+						damage_building = {
+							type = coastal_bunker
+							damage = 2
+						}
+						damage_building = {
+							type = air_base
+							damage = 2
+						}
+						damage_building = {
+							type = anti_air_building
+							damage = 2
+						}
+						damage_building = {
+							type = radar_station
+							damage = 2
+						}
+					}
+				}
+				
+				# Early War Destruction
+				if = {
+					limit = {
+						has_completed_focus = JAP_early_war_destruction_focus
+					}
+					every_state = {
+						limit = {
+							OR = {
+								is_core_of = INS
+								is_core_of = MAL
+							}
+						}
+						damage_building = {
+							type = bunker
+							damage = 1
+						}
+						damage_building = {
+							type = coastal_bunker
+							damage = 1
+						}
+						damage_building = {
+							type = air_base
+							damage = 1
+						}
+						damage_building = {
+							type = anti_air_building
+							damage = 1
+						}
+						damage_building = {
+							type = radar_station
+							damage = 1
+						}
+					}
+				}
+			}
 		}
 	}
 

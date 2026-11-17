@@ -1,6 +1,10 @@
-﻿add_namespace = tfb_kill_heydrich
+﻿@heydrich_crackdown_resistance = -10
+@heydrich_cheated_death_failures = 1 # more failed attempts than this and Heydrich has cheated death again
+@heydrich_blame_failures = 2 # more failed attempts than this and someone has to answer for it
 
-# kill heydrich - raid succeeds
+add_namespace = tfb_kill_heydrich
+
+# Operation Anthropoid - raid succeeds
 country_event = {
 	id = tfb_kill_heydrich.1
 	title = tfb_kill_heydrich.1.t
@@ -12,21 +16,18 @@ country_event = {
 	# acknowledge
 	option = {
 		name = tfb_kill_heydrich.1.a
-		set_global_flag = heydrich_killed
+		ENG_kill_heydrich = yes
 		every_state = {
 			limit = {
 				is_core_of = CZE
 			}
-			add_resistance_target = {
-				amount = 25
-				tooltip = tfb_heydrich_killed_tt
-			}
+			add_resistance = 25
 		}
 	}
 
 }
 
-# kill heydrich - heydrich wounded
+# Operation Anthropoid - Heydrich mortally wounded
 country_event = {
 	id = tfb_kill_heydrich.2
 	title = tfb_kill_heydrich.2.t
@@ -38,15 +39,12 @@ country_event = {
 	# acknowledge
 	option = {
 		name = tfb_kill_heydrich.2.a
-		set_global_flag = heydrich_killed
+		ENG_kill_heydrich = yes
 		every_state = {
 			limit = {
 				is_core_of = CZE
 			}
-			add_resistance_target = {
-				amount = 15
-				tooltip = tfb_heydrich_wounded_tt
-			}
+			add_resistance = 15
 		}
 		# hidden_effect = {
 		# 	GER = {
@@ -57,18 +55,98 @@ country_event = {
 
 }
 
-# kill heydrich - raid fails
+# Operation Anthropoid - raid fails, Heydrich survives
 country_event = {
 	id = tfb_kill_heydrich.3
 	title = tfb_kill_heydrich.3.t
-	desc = tfb_kill_heydrich.3.desc
+	desc = {
+		text = tfb_kill_heydrich.3.desc
+		trigger = {
+			NOT = { check_variable = { ENG_anthropoid_failures > @heydrich_cheated_death_failures } }
+		}
+	}
+	desc = {
+		text = tfb_kill_heydrich.3.desc_again
+		trigger = {
+			check_variable = { ENG_anthropoid_failures > @heydrich_cheated_death_failures }
+			NOT = { check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures } }
+		}
+	}
+	desc = {
+		text = tfb_kill_heydrich.3.desc_third
+		trigger = {
+			check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures }
+		}
+	}
 	picture = GFX_report_event_german_troops
 
 	is_triggered_only = yes
-	
-	# acknowledge
+
 	option = {
 		name = tfb_kill_heydrich.3.a
+		trigger = {
+			NOT = { check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures } }
+		}
 	}
 
+	option = {
+		name = tfb_kill_heydrich.blame_the_planner
+		trigger = {
+			check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures }
+		}
+	}
+}
+
+# Operation Anthropoid - catastrophic failure, the Germans crack down on the resistance
+country_event = {
+	id = tfb_kill_heydrich.5
+	title = tfb_kill_heydrich.5.t
+	desc = {
+		text = tfb_kill_heydrich.5.desc
+		trigger = {
+			NOT = { check_variable = { ENG_anthropoid_failures > @heydrich_cheated_death_failures } }
+		}
+	}
+	desc = {
+		text = tfb_kill_heydrich.5.desc_again
+		trigger = {
+			check_variable = { ENG_anthropoid_failures > @heydrich_cheated_death_failures }
+			NOT = { check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures } }
+		}
+	}
+	desc = {
+		text = tfb_kill_heydrich.5.desc_third
+		trigger = {
+			check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures }
+		}
+	}
+	picture = GFX_report_event_german_troops
+
+	is_triggered_only = yes
+
+	option = {
+		name = tfb_kill_heydrich.5.a
+		trigger = {
+			NOT = { check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures } }
+		}
+		every_state = {
+			limit = {
+				is_core_of = CZE
+			}
+			add_resistance = @heydrich_crackdown_resistance
+		}
+	}
+
+	option = {
+		name = tfb_kill_heydrich.blame_the_planner
+		trigger = {
+			check_variable = { ENG_anthropoid_failures > @heydrich_blame_failures }
+		}
+		every_state = {
+			limit = {
+				is_core_of = CZE
+			}
+			add_resistance = @heydrich_crackdown_resistance
+		}
+	}
 }

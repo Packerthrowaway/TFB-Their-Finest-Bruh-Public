@@ -1,0 +1,144 @@
+# States on mainland Great Britain
+ENG_is_mainland_state = {
+	OR = {
+		state = 127
+		state = 123
+		state = 126
+		state = 338
+		state = 125
+		state = 122
+		state = 128
+		state = 129
+		state = 132
+		state = 130
+		state = 931
+		state = 131
+		state = 121
+		state = 133
+		state = 136
+		state = 120
+	}
+}
+
+# States in Scotland
+ENG_is_scottish_state = {
+	OR = {
+		state = 120
+		state = 121
+		state = 133
+		state = 136
+	}
+}
+
+# The Military Industrialization Plan: mainland UK state that can still take a full share of the plan's factories (scope: state)
+ENG_is_mil_plan_candidate = {
+	ENG_is_mainland_state = yes
+	is_core_of = ENG
+	is_controlled_by = ENG
+	free_building_slots = {
+		building = arms_factory
+		size > 4
+		include_locked = yes
+	}
+}
+
+# Cash and Carry: the UK is paying off a loan
+ENG_has_loan = {
+	OR = {
+		has_idea = ENG_small_loan
+		has_idea = ENG_medium_loan
+		has_idea = ENG_large_loan
+	}
+}
+
+# Combined Operations: one of the operations is still under way
+ENG_operation_in_progress = {
+	OR = {
+		has_idea = ENG_operation_compass_idea
+		has_idea = ENG_operation_torch_idea
+		has_idea = ENG_operation_dracula_idea
+		has_idea = ENG_operation_overlord_idea
+	}
+}
+
+# Country is Germany, Italy or Japan, or fights alongside them
+ENG_is_axis_member = {
+	OR = {
+		tag = GER
+		tag = ITA
+		tag = JAP
+		is_in_faction_with = GER
+		is_in_faction_with = ITA
+		is_in_faction_with = JAP
+	}
+}
+
+# Operation Compass: Benghazi is still held by Italy or another Axis member
+ENG_axis_holds_benghazi = {
+	any_country = {
+		controls_province = 11954 # Benghazi
+		ENG_is_axis_member = yes
+	}
+}
+
+# Operation Torch: Casablanca is held by Vichy France or an Axis member
+ENG_axis_holds_casablanca = {
+	any_country = {
+		controls_province = 7069 # Casablanca
+		OR = {
+			tag = VIC
+			ENG_is_axis_member = yes
+		}
+	}
+}
+
+# Containment: pacifists riot when we keep punishing Germany in a calm world
+ENG_pacifist_riots_over_germany = {
+	has_completed_focus = ENG_reign_in_the_reich
+	GER = { exists = yes }
+	NOT = { has_war_with = GER }
+	check_variable = { threat < constant:ENG_pacifist_riots.germany_threat }
+}
+
+# Containment: pacifists riot when we keep the Italian embargo in a calm world
+ENG_pacifist_riots_over_italy = {
+	has_completed_focus = ENG_embargo_the_italians
+	ITA = {
+		exists = yes
+		is_embargoed_by = ROOT
+	}
+	NOT = { has_war_with = ITA }
+	check_variable = { threat < constant:ENG_pacifist_riots.italy_threat }
+}
+
+ENG_pacifist_riots_active = {
+	OR = {
+		ENG_pacifist_riots_over_germany = yes
+		ENG_pacifist_riots_over_italy = yes
+	}
+}
+
+# State of the Empire: the UK itself controls Gibraltar
+ENG_holds_gibraltar = {
+	ENG = { controls_state = 118 }
+}
+
+# State of the Empire: the UK itself controls both banks of the Suez Canal and the canal is open
+ENG_holds_suez = {
+	ENG = {
+		controls_state = 446
+		controls_state = 1091
+	}
+	NOT = { has_global_flag = SUEZ_CANAL_BLOCKED }
+}
+
+# State of the Empire is running (any level)
+ENG_has_state_of_the_empire = {
+	ENG = {
+		OR = {
+			has_idea = ENG_state_of_the_empire_idea_1
+			has_idea = ENG_state_of_the_empire_idea_2
+			has_idea = ENG_state_of_the_empire_idea_3
+		}
+	}
+}

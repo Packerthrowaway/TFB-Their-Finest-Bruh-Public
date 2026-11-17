@@ -119,6 +119,56 @@ ENG_vickers_armstrong_eng_organization = {
 		}
 		
 	}
+
+	add_trait = {
+		token = ENG_mio_trait_vickers_firepower
+		name = ENG_mio_trait_vickers_firepower
+		icon = GFX_generic_mio_trait_icon_soft_attack
+		special_trait_background = yes
+
+		position = { x=2 y=0 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_expand_vickers_armstrong
+			}
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.05
+		}
+	}
+
+	add_trait = {
+		token = ENG_mio_trait_vickers_speed
+		name = ENG_mio_trait_vickers_speed
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		special_trait_background = yes
+
+		position = { x=4 y=0 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_expand_vickers_armstrong
+			}
+		}
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+		}
+	}
 }
 
 ENG_vauxhall_organization = {
@@ -228,6 +278,56 @@ ENG_vauxhall_organization = {
 	initial_trait = {
 		equipment_bonus = {
 			armor_value = 0.05
+		}
+	}
+
+	add_trait = {
+		token = ENG_mio_trait_infantry_support_firepower
+		name = ENG_mio_trait_infantry_support_firepower
+		icon = GFX_generic_mio_trait_icon_soft_attack
+		special_trait_background = yes
+
+		position = { x=4 y=1 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_focus_on_infantry_support_tanks
+			}
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.05
+		}
+	}
+
+	add_trait = {
+		token = ENG_mio_trait_infantry_support_armour
+		name = ENG_mio_trait_infantry_support_armour
+		icon = GFX_generic_mio_trait_icon_armor_value
+		special_trait_background = yes
+
+		position = { x=8 y=1 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_focus_on_infantry_support_tanks
+			}
+		}
+
+		equipment_bonus = {
+			armor_value = 0.1
 		}
 	}
 }
@@ -415,6 +515,58 @@ ENG_cammell_laird_organization = {
 			lg_armor_piercing = 0.05
 		}
 	}
+
+	add_trait = {
+		token = ENG_mio_trait_thicker_armour
+		name = ENG_mio_trait_thicker_armour
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_armor
+		special_trait_background = yes
+
+		position = { x=2 y=2 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_thicker_armour
+			}
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_battleship }
+
+		equipment_bonus = {
+			armor_value = 0.05
+		}
+	}
+
+	add_trait = {
+		token = ENG_mio_trait_portsmouth_refits
+		name = ENG_mio_trait_portsmouth_refits
+		icon = GFX_generic_mio_trait_icon_conversion_speed
+		special_trait_background = yes
+
+		position = { x=3 y=2 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_his_majesty_s_dockyard_portsmouth
+			}
+		}
+
+		production_bonus = {
+			production_conversion_speed_factor = 0.10
+		}
+	}
 }
 
 ENG_yarrow_shipbuilders_organization = {
@@ -531,10 +683,8 @@ ENG_supermarine_organization = {
 
 	equipment_type = {
 		#mio_cat_eq_all_small_plane
-		fighter_equipment
-		jet_fighter_equipment
-		flying_boat_equipment
-		#maritime_patrol_plane
+		mio_cat_eq_only_light_fighter_no_cv
+		maritime_patrol_plane
 	}	
 
 	research_categories = {	
@@ -550,10 +700,6 @@ ENG_supermarine_organization = {
 			air_agility = 0.15
 			air_defence = 0.05
 			air_range = -0.10
-		}
-
-		production_bonus = {
-			production_efficiency_cap_factor = -0.15
 		}
 
 	}
@@ -631,36 +777,36 @@ ENG_supermarine_organization = {
 		}
 	}
 
-	add_trait = { 
-		token = ENG_mio_trait_supermarine_prod_cap
-		name = ENG_mio_trait_supermarine_prod_cap
-		icon = GFX_generic_mio_trait_icon_production_capacity
+	add_trait = {
+		token = ENG_mio_trait_hunter_armament
+		name = ENG_mio_trait_hunter_armament
+		icon = GFX_generic_mio_trait_icon_air_attack
 		special_trait_background = yes
+		relative_position_id = ENG_mio_trait_seaplane_origins
 
-		available = {
-			OR = {
-				ENG = {
-					OR = {
-						has_completed_focus = ENG_subsidies_supermarine
-						has_completed_focus = shadow_scheme
-						has_completed_focus = ENG_military_buildup
-					}
-				}
-				has_mio_size > 4
+		position = { x=0 y=1 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
 			}
 		}
 
-		position = { x=2 y=1 }
-		relative_position_id = generic_mio_trait_gunboat
+		available = {
+			FROM = {
+				has_completed_focus = ENG_hunt_the_messerschmitt
+			}
+		}
 
-		all_parents = {  }
+		limit_to_equipment_type = { fighter_equipment jet_fighter_equipment }
 
-		production_bonus = {
-			production_efficiency_cap_factor = 0.15
+		equipment_bonus = {
+			air_attack = 0.05
+			air_agility = 0.05
 		}
 	}
 
-	# add_trait = { 
+	# add_trait = {
 	# 	token = ENG_mio_trait_research_funding
 	# 	name = ENG_mio_trait_research_funding
 	# 	icon = GFX_generic_mio_trait_icon_defense
@@ -965,6 +1111,33 @@ ENG_avro_organization = {
 			}
 		}
 	}
+
+	add_trait = {
+		token = ENG_mio_trait_sustained_bombing
+		name = ENG_mio_trait_sustained_bombing
+		icon = GFX_generic_mio_trait_icon_strategic_attack
+		special_trait_background = yes
+
+		position = { x=0 y=0 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_sustained_bombing_campaign
+			}
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_only_strategic_bomber }
+
+		equipment_bonus = {
+			air_bombing = 0.10
+		}
+	}
 }
 
 
@@ -1049,10 +1222,48 @@ ENG_rsaf_enfield_organization = {
 
 		any_parent = { generic_mio_trait_reinforced_stocks generic_mio_trait_drum_pattern_sights }
 
+		# the UK gets it from the Develop the Sten Gun focus
+		available = {
+			FROM = {
+				if = {
+					limit = { original_tag = ENG }
+					has_completed_focus = ENG_develop_the_sten_gun
+				}
+			}
+		}
+
 		equipment_bonus = {
-			reliability = 0.05
-			soft_attack = 0.03
-			ap_attack = 0.05
+			breakthrough = 0.10
+			soft_attack = 0.15
+		}
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.05
+		}
+	}
+
+	add_trait = {
+		token = ENG_mio_trait_bsa_rifles
+		name = ENG_mio_trait_bsa_rifles
+		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		special_trait_background = yes
+
+		position = { x=0 y=0 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_birmingham_small_arms
+			}
+		}
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.05
 		}
 	}
 }
@@ -1182,6 +1393,57 @@ ENG_royal_arsenal_organization = {
 			FROM = {
 				has_completed_focus = BALTIC_british_designers
 			}
+		}
+	}
+
+	add_trait = {
+		token = ENG_mio_trait_royal_arsenal_efficiency
+		name = ENG_mio_trait_royal_arsenal_efficiency
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+		special_trait_background = yes
+
+		position = { x=9 y=0 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_open_up_the_royal_arsenal
+			}
+		}
+
+		production_bonus = {
+			production_cost_factor = -0.05
+		}
+	}
+
+	add_trait = {
+		token = ENG_mio_trait_royal_arsenal_firepower
+		name = ENG_mio_trait_royal_arsenal_firepower
+		icon = GFX_generic_mio_trait_icon_soft_attack
+		special_trait_background = yes
+
+		position = { x=9 y=1 }
+
+		visible = {
+			FROM = {
+				original_tag = ENG
+			}
+		}
+
+		available = {
+			FROM = {
+				has_completed_focus = ENG_open_up_the_royal_arsenal
+			}
+		}
+
+		equipment_bonus = {
+			soft_attack = 0.05
+			air_attack = 0.15
 		}
 	}
 }
@@ -1372,7 +1634,7 @@ ENG_crewe_works_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = shadow_scheme
+				has_completed_focus = ENG_the_shadow_scheme
 			}
 		}
 
@@ -1426,13 +1688,6 @@ ENG_crewe_works_organization = {
 		visible = {
 			FROM = { 
 				original_tag = ENG
-			}
-		}
-
-		available = {
-			FROM = {
-				has_completed_focus = ENG_rearmament
-
 			}
 		}
 
@@ -1548,7 +1803,7 @@ ENG_crewe_works_organization = {
 
 		available = {
 			FROM = {
-				has_completed_focus = shadow_scheme
+				has_completed_focus = ENG_the_shadow_scheme
 			}
 		}
 
@@ -1629,3 +1884,10 @@ ENG_crewe_works_organization = {
 	}
 }
 
+ENG_pye_organization = {
+	include = generic_support_equipment_organization
+	icon = GFX_idea_ENG_pye
+	allowed = {
+		original_tag = ENG
+	}
+}

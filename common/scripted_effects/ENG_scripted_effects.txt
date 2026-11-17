@@ -1,3 +1,15 @@
+@strategic_reserve_silos = 3
+@commonwealth_trade_civs = 3
+@commonwealth_trade_min_free_slots = 2
+@mainland_mils = 2
+@lessons_from_france_mastery_1 = 150
+@lessons_from_france_gain_1 = 50
+@lessons_from_france_mastery_2 = 300
+@lessons_from_france_gain_2 = 100
+@lessons_from_france_mastery_3 = 450
+@lessons_from_france_gain_3 = 150
+@tizard_air_breakthrough = 0.75
+
 # Reduce Mosley's pacifism
 ENG_mosley_pacifism_level_down = {
 	if = {
@@ -665,6 +677,562 @@ UK_bases_level_up = {
 		swap_ideas = {
 			remove_idea = ENG_the_sun_never_sets_idea_4
 			add_idea = ENG_the_sun_never_sets_idea_3
+		}
+	}
+}
+
+# Expand the Strategic Reserve: fuel silos in the scoped state
+ENG_add_strategic_reserve_silos = {
+	add_extra_state_shared_building_slots = @strategic_reserve_silos
+	add_building_construction = {
+		type = fuel_silo
+		level = @strategic_reserve_silos
+		instant_build = yes
+	}
+}
+
+# Civilian factories in a random mainland British state (scope: ENG)
+ENG_add_mainland_civs = {
+	random_owned_controlled_state = {
+		limit = {
+			ENG_is_mainland_state = yes
+			free_building_slots = {
+				building = industrial_complex
+				size > @commonwealth_trade_min_free_slots
+				include_locked = yes
+			}
+		}
+		add_extra_state_shared_building_slots = @commonwealth_trade_civs
+		add_building_construction = {
+			type = industrial_complex
+			level = @commonwealth_trade_civs
+			instant_build = yes
+		}
+		hidden_effect = { owner = { add_to_variable = { mil_plan_civs_spawned = @commonwealth_trade_civs } } }
+	}
+}
+
+# Commonwealth trade focuses: civilian factories in a random core state of the scoped dominion
+ENG_add_commonwealth_trade_civs_dominion = {
+	random_owned_controlled_state = {
+		limit = {
+			is_core_of = PREV
+			free_building_slots = {
+				building = industrial_complex
+				size > @commonwealth_trade_min_free_slots
+				include_locked = yes
+			}
+		}
+		add_extra_state_shared_building_slots = @commonwealth_trade_civs
+		add_building_construction = {
+			type = industrial_complex
+			level = @commonwealth_trade_civs
+			instant_build = yes
+		}
+	}
+}
+
+# The Shadow Scheme: count the civilian factories the UK has constructed this game (instantly built
+# rewards are not constructions and do not count), work out how many military factories each country
+# taking part is owed, and keep a target state picked for every country (scope: ENG)
+ENG_shadow_scheme_track = {
+	set_variable = { shadow_scheme_civs_built = total_constructed_civilian_factory }
+	set_variable = { shadow_scheme_rounds = 0 }
+	set_temp_variable = { shadow_scheme_next = shadow_scheme_civs_per_mil }
+	while_loop_effect = {
+		limit = {
+			check_variable = { shadow_scheme_rounds < shadow_scheme_max_mils }
+			check_variable = {
+				var = shadow_scheme_civs_built
+				value = shadow_scheme_next
+				compare = greater_than_or_equals
+			}
+		}
+		add_to_variable = { shadow_scheme_rounds = 1 }
+		add_to_temp_variable = { shadow_scheme_next = shadow_scheme_civs_per_mil }
+	}
+	ENG_shadow_scheme_pick_target = yes
+	CAN = { ENG_shadow_scheme_pick_target = yes }
+	SAF = { ENG_shadow_scheme_pick_target = yes }
+	AST = { ENG_shadow_scheme_pick_target = yes }
+	NZL = { ENG_shadow_scheme_pick_target = yes }
+	RAJ = { ENG_shadow_scheme_pick_target = yes }
+}
+
+# The Shadow Scheme: keep a core state with room for the factories flagged for the scoped country
+ENG_shadow_scheme_pick_target = {
+	if = {
+		limit = {
+			exists = yes
+			NOT = {
+				any_owned_state = {
+					has_state_flag = ENG_shadow_scheme_target
+					is_controlled_by = PREV
+					is_core_of = PREV
+				}
+			}
+		}
+		every_owned_state = {
+			limit = { has_state_flag = ENG_shadow_scheme_target }
+			clr_state_flag = ENG_shadow_scheme_target
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = PREV
+				free_building_slots = {
+					building = arms_factory
+					size > 4
+					include_locked = yes
+				}
+			}
+			set_state_flag = ENG_shadow_scheme_target
+		}
+	}
+}
+
+# The Shadow Scheme: building slots and military factories in the scoped country's flagged state.
+# meta_effect writes the amount in as a plain number so the tooltip shows the building lines for any amount
+ENG_shadow_scheme_grant = {
+	every_owned_state = {
+		limit = { has_state_flag = ENG_shadow_scheme_target }
+		meta_effect = {
+			text = {
+				add_extra_state_shared_building_slots = [AMOUNT]
+				add_building_construction = {
+					type = arms_factory
+					level = [AMOUNT]
+					instant_build = yes
+				}
+			}
+			AMOUNT = "[?ENG.shadow_scheme_rounds|0]"
+		}
+	}
+}
+
+# The Military Industrialization Plan: count the civilian factories the UK has constructed this game, work out
+# how many military factories it is owed, keep target states flagged and split the factories between them:
+# full states get mil_plan_mils_per_state each, one partial state gets the remainder (mil_plan_last) (scope: ENG)
+ENG_mil_plan_track = {
+	set_variable = { mil_plan_civs_built = total_constructed_civilian_factory }
+	# civs spawned by focuses count as built too
+	add_to_variable = { mil_plan_civs_built = mil_plan_civs_spawned }
+	set_variable = { mil_plan_mils = 0 }
+	set_temp_variable = { mil_plan_next = mil_plan_civs_per_mil }
+	while_loop_effect = {
+		limit = {
+			check_variable = { mil_plan_mils < mil_plan_max_mils }
+			check_variable = {
+				var = mil_plan_civs_built
+				value = mil_plan_next
+				compare = greater_than_or_equals
+			}
+		}
+		add_to_variable = { mil_plan_mils = 1 }
+		add_to_temp_variable = { mil_plan_next = mil_plan_civs_per_mil }
+	}
+
+	every_owned_state = {
+		limit = {
+			has_state_flag = ENG_mil_plan_target
+			NOT = { ENG_is_mil_plan_candidate = yes }
+		}
+		clr_state_flag = ENG_mil_plan_target
+	}
+	set_temp_variable = { mil_plan_states_wanted = mil_plan_max_mils }
+	divide_temp_variable = { mil_plan_states_wanted = mil_plan_mils_per_state }
+	set_temp_variable = { mil_plan_states = 0 }
+	every_owned_state = {
+		limit = { has_state_flag = ENG_mil_plan_target }
+		add_to_temp_variable = { mil_plan_states = 1 }
+	}
+	while_loop_effect = {
+		limit = {
+			check_variable = { mil_plan_states < mil_plan_states_wanted }
+			any_owned_state = {
+				ENG_is_mil_plan_candidate = yes
+				NOT = { has_state_flag = ENG_mil_plan_target }
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				ENG_is_mil_plan_candidate = yes
+				NOT = { has_state_flag = ENG_mil_plan_target }
+			}
+			set_state_flag = ENG_mil_plan_target
+		}
+		add_to_temp_variable = { mil_plan_states = 1 }
+	}
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				has_state_flag = ENG_mil_plan_full
+				has_state_flag = ENG_mil_plan_partial
+			}
+		}
+		clr_state_flag = ENG_mil_plan_full
+		clr_state_flag = ENG_mil_plan_partial
+	}
+	set_variable = { mil_plan_last = 0 }
+	set_temp_variable = { mil_plan_remaining = mil_plan_mils }
+	every_owned_state = {
+		limit = { has_state_flag = ENG_mil_plan_target }
+		if = {
+			limit = {
+				check_variable = {
+					var = mil_plan_remaining
+					value = ROOT.mil_plan_mils_per_state
+					compare = greater_than_or_equals
+				}
+			}
+			set_state_flag = ENG_mil_plan_full
+			subtract_from_temp_variable = { mil_plan_remaining = ROOT.mil_plan_mils_per_state }
+		}
+		else_if = {
+			limit = { check_variable = { mil_plan_remaining > 0 } }
+			set_state_flag = ENG_mil_plan_partial
+			set_variable = { ROOT.mil_plan_last = mil_plan_remaining }
+			set_temp_variable = { mil_plan_remaining = 0 }
+		}
+	}
+}
+
+# The Military Industrialization Plan: building slots and military factories in the flagged states.
+# meta_effect writes the amounts in as plain numbers so the tooltip shows the building lines (scope: ENG)
+ENG_mil_plan_grant = {
+	every_owned_state = {
+		limit = { has_state_flag = ENG_mil_plan_full }
+		meta_effect = {
+			text = {
+				add_extra_state_shared_building_slots = [AMOUNT]
+				add_building_construction = {
+					type = arms_factory
+					level = [AMOUNT]
+					instant_build = yes
+				}
+			}
+			AMOUNT = "[?ENG.mil_plan_mils_per_state|0]"
+		}
+	}
+	every_owned_state = {
+		limit = { has_state_flag = ENG_mil_plan_partial }
+		meta_effect = {
+			text = {
+				add_extra_state_shared_building_slots = [AMOUNT]
+				add_building_construction = {
+					type = arms_factory
+					level = [AMOUNT]
+					instant_build = yes
+				}
+			}
+			AMOUNT = "[?ENG.mil_plan_last|0]"
+		}
+	}
+}
+
+# Military factories in a random mainland British state (scope: ENG)
+ENG_add_mainland_mils = {
+	random_owned_controlled_state = {
+		limit = {
+			ENG_is_mainland_state = yes
+			free_building_slots = {
+				building = arms_factory
+				size > 1
+				include_locked = yes
+			}
+		}
+		add_extra_state_shared_building_slots = @mainland_mils
+		add_building_construction = {
+			type = arms_factory
+			level = @mainland_mils
+			instant_build = yes
+		}
+	}
+}
+
+# Lessons from France: for every step of mastery the UK has in a land doctrine track, the scoped
+# country gains a share of it in that track (scope: dominion, ROOT: ENG)
+ENG_lessons_from_france = {
+	if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_3 track = infantry } } } add_mastery = { amount = @lessons_from_france_gain_3 track = infantry } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_2 track = infantry } } } add_mastery = { amount = @lessons_from_france_gain_2 track = infantry } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_1 track = infantry } } } add_mastery = { amount = @lessons_from_france_gain_1 track = infantry } }
+
+	if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_3 track = armor } } } add_mastery = { amount = @lessons_from_france_gain_3 track = armor } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_2 track = armor } } } add_mastery = { amount = @lessons_from_france_gain_2 track = armor } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_1 track = armor } } } add_mastery = { amount = @lessons_from_france_gain_1 track = armor } }
+
+	if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_3 track = operations } } } add_mastery = { amount = @lessons_from_france_gain_3 track = operations } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_2 track = operations } } } add_mastery = { amount = @lessons_from_france_gain_2 track = operations } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_1 track = operations } } } add_mastery = { amount = @lessons_from_france_gain_1 track = operations } }
+
+	if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_3 track = combat_support } } } add_mastery = { amount = @lessons_from_france_gain_3 track = combat_support } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_2 track = combat_support } } } add_mastery = { amount = @lessons_from_france_gain_2 track = combat_support } }
+	else_if = { limit = { ROOT = { has_mastery = { amount = @lessons_from_france_mastery_1 track = combat_support } } } add_mastery = { amount = @lessons_from_france_gain_1 track = combat_support } }
+}
+
+# Lessons from France: ladder values for ENG_lessons_from_france_tt
+ENG_lessons_from_france_tooltip_values = {
+	set_temp_variable = { lessons_from_france_step = @lessons_from_france_mastery_1 }
+	set_temp_variable = { lessons_from_france_gain = @lessons_from_france_gain_1 }
+	set_temp_variable = { lessons_from_france_max = @lessons_from_france_mastery_3 }
+}
+
+# Readmit Italy: the scoped country rejoins the naval treaty at the tier the other signatories hold
+ENG_rejoin_naval_treaty = {
+	clr_country_flag = MTG_naval_treaty_abandoned
+	set_country_flag = ENG_readmitted_to_naval_treaty
+	if = {
+		limit = {
+			any_other_country = {
+				OR = {
+					has_idea = MTG_naval_treaty_adherent_reduced
+					has_idea = MTG_naval_treaty_cheating_reduced
+				}
+			}
+		}
+		add_ideas = MTG_naval_treaty_adherent_reduced
+	}
+	else = {
+		add_ideas = MTG_naval_treaty_adherent
+	}
+	if = {
+		limit = { has_global_flag = MTG_naval_treaty_signatories }
+		modify_global_flag = {
+			flag = MTG_naval_treaty_signatories
+			value = 1
+		}
+	}
+}
+
+# Anglo-German Naval Treaty: Germany refused, the UK moves to partial mobilisation if it is below it
+ENG_anglo_german_naval_treaty_refused = {
+	add_war_support = 0.05
+	if = {
+		limit = {
+			OR = {
+				has_idea = undisturbed_isolation
+				has_idea = isolation
+				has_idea = civilian_economy
+				has_idea = low_economic_mobilisation
+			}
+		}
+		add_ideas = partial_economic_mobilisation
+	}
+}
+
+# Tizard Mission: what the United States receives for accepting (britain.1), also shown in the focus tooltip
+ENG_tizard_mission_usa_reward = {
+	add_political_power = -10
+	add_breakthrough_progress = {
+		specialization = specialization_air
+		value = @tizard_air_breakthrough
+	}
+	add_tech_bonus = {
+		name = tizard_mission_focus
+		bonus = 1
+		uses = 1
+		category = light_fighter
+	}
+	add_tech_bonus = {
+		name = tizard_mission_focus
+		bonus = 1
+		uses = 2
+		category = radar_tech
+	}
+	add_ideas = USA_tizard
+}
+
+# Tizard Mission: what the United Kingdom receives once the United States accepts (britain.2), also shown in the focus tooltip
+ENG_tizard_mission_uk_reward = {
+	add_breakthrough_progress = {
+		specialization = specialization_air
+		value = @tizard_air_breakthrough
+	}
+	add_tech_bonus = {
+		name = tizard_mission_focus
+		bonus = 0.5
+		uses = 1
+		category = light_fighter
+	}
+	add_tech_bonus = {
+		name = tizard_mission_focus
+		bonus = 0.5
+		uses = 1
+		category = radar_tech
+	}
+}
+
+# Operation Anthropoid: Heydrich is dead, Germany loses him as an advisor
+ENG_kill_heydrich = {
+	set_global_flag = heydrich_killed
+	if = {
+		limit = {
+			GER = { has_character = GER_reinhard_heydrich }
+		}
+		GER = { retire_character = GER_reinhard_heydrich }
+	}
+}
+
+# Commonwealth dominion: first trade deal gives Commonwealth Trade, a second one deepens it
+ENG_add_commonwealth_trade = {
+	if = {
+		limit = { has_idea = ENG_commonwealth_domestic_trade }
+		swap_ideas = {
+			remove_idea = ENG_commonwealth_domestic_trade
+			add_idea = ENG_deepened_commonwealth_trade
+		}
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ENG_deepened_commonwealth_trade } }
+		add_ideas = ENG_commonwealth_domestic_trade
+	}
+}
+
+# The Royal Army: add the dynamic modifier the first time, otherwise just say it changes
+ENG_add_or_modify_royal_army = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ENG_royal_army_dm } }
+		}
+		custom_effect_tooltip = ENG_add_royal_army_tt
+		hidden_effect = { add_dynamic_modifier = { modifier = ENG_royal_army_dm } }
+	}
+	else = {
+		custom_effect_tooltip = ENG_modify_royal_army_tt
+	}
+}
+
+# Learn from the Great War, big guns: the railway gun technology and one railway gun at the capital
+ENG_spawn_siege_battery = {
+	set_technology = { railway_gun = 1 }
+	create_railway_gun = {
+		equipment = railway_gun_equipment_1
+	}
+}
+
+# The Red Berets: how much extra special forces equipment the change needs, like the radio techs
+ENG_red_berets_sf_equipment_tooltip = {
+	set_temp_variable = { total_unit = num_battalions_with_type@marine }
+	add_to_temp_variable = { total_unit = num_battalions_with_type@marine_commando }
+	add_to_temp_variable = { total_unit = num_battalions_with_type@mountaineers }
+	add_to_temp_variable = { total_unit = num_battalions_with_type@paratrooper }
+	add_to_temp_variable = { total_unit = num_battalions_with_type@ranger_battalion }
+	set_temp_variable = { sf_per_battalion = 5 } # matches the need in ENG_red_berets_tech
+	multiply_temp_variable = { total_unit = sf_per_battalion }
+	set_temp_variable = { sf_equipment_stored = num_equipment@sf_equipment }
+	custom_effect_tooltip = ENG_red_berets_sf_equipment_tt
+}
+
+# His Majesty's Royal Air Force: add the dynamic modifier the first time, otherwise just say it changes
+ENG_add_or_modify_raf = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ENG_raf_dm } }
+		}
+		custom_effect_tooltip = ENG_add_raf_tt
+		hidden_effect = { add_dynamic_modifier = { modifier = ENG_raf_dm } }
+	}
+	else = {
+		custom_effect_tooltip = ENG_modify_raf_tt
+	}
+}
+
+# The Royal Navy: add the dynamic modifier the first time, otherwise just say it changes
+ENG_add_or_modify_royal_navy = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ENG_royal_navy_dm } }
+		}
+		custom_effect_tooltip = ENG_add_royal_navy_tt
+		hidden_effect = { add_dynamic_modifier = { modifier = ENG_royal_navy_dm } }
+	}
+	else = {
+		custom_effect_tooltip = ENG_modify_royal_navy_tt
+	}
+}
+
+# Industrial Legacy: add the dynamic modifier the first time, otherwise just say it changes
+ENG_add_or_modify_industrial_legacy = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ENG_industrial_legacy_dm } }
+		}
+		custom_effect_tooltip = ENG_add_industrial_legacy_tt
+		hidden_effect = { add_dynamic_modifier = { modifier = ENG_industrial_legacy_dm } }
+	}
+	else = {
+		custom_effect_tooltip = ENG_modify_industrial_legacy_tt
+	}
+}
+
+# State of the Empire: trade bonus by how much of Gibraltar and the Suez the UK holds (scope: ENG)
+ENG_update_state_of_the_empire = {
+	if = {
+		limit = {
+			ENG_holds_gibraltar = yes
+			ENG_holds_suez = yes
+		}
+		if = {
+			limit = { NOT = { has_idea = ENG_state_of_the_empire_idea_1 } }
+			ENG_clear_state_of_the_empire = yes
+			add_ideas = ENG_state_of_the_empire_idea_1
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				ENG_holds_gibraltar = yes
+				ENG_holds_suez = yes
+			}
+		}
+		if = {
+			limit = { NOT = { has_idea = ENG_state_of_the_empire_idea_2 } }
+			ENG_clear_state_of_the_empire = yes
+			add_ideas = ENG_state_of_the_empire_idea_2
+		}
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ENG_state_of_the_empire_idea_3 } }
+		ENG_clear_state_of_the_empire = yes
+		add_ideas = ENG_state_of_the_empire_idea_3
+	}
+}
+
+ENG_clear_state_of_the_empire = {
+	if = {
+		limit = { has_idea = ENG_state_of_the_empire_idea_1 }
+		remove_ideas = ENG_state_of_the_empire_idea_1
+	}
+	if = {
+		limit = { has_idea = ENG_state_of_the_empire_idea_2 }
+		remove_ideas = ENG_state_of_the_empire_idea_2
+	}
+	if = {
+		limit = { has_idea = ENG_state_of_the_empire_idea_3 }
+		remove_ideas = ENG_state_of_the_empire_idea_3
+	}
+}
+
+# The Neutrality Acts end once France falls; the Tizard Mission focus eases them (scope: ENG)
+ENG_end_neutrality_acts = {
+	if = {
+		limit = { has_idea = ENG_neutrality_acts }
+		remove_ideas = ENG_neutrality_acts
+	}
+	if = {
+		limit = { has_idea = ENG_neutrality_acts_eased }
+		remove_ideas = ENG_neutrality_acts_eased
+	}
+	hidden_effect = {
+		USA = {
+			if = {
+				limit = { has_idea = ENG_neutrality_acts_usa }
+				remove_ideas = ENG_neutrality_acts_usa
+			}
+			if = {
+				limit = { has_idea = ENG_neutrality_acts_eased_usa }
+				remove_ideas = ENG_neutrality_acts_eased_usa
+			}
 		}
 	}
 }

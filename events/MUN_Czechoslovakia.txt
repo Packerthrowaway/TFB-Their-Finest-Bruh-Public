@@ -6337,12 +6337,13 @@ country_event = { #Exile event for when Czech dies, more sanity checks are on ev
 
 			if = {
 				limit = {
-					CZE = {
+					ENG = {
 						NOT = {
-							has_completed_focus = CZE_contact_the_czech_and_slovak_legion
+							has_completed_focus = ENG_invite_exile_aces
 						}
 					}
 				}
+				set_global_flag = CZE_exile_aces_joined_FRA
 				FRA = {
 					add_ace = {
 						name = "František"
@@ -6409,22 +6410,25 @@ country_event = { #Exile event for when Czech dies, more sanity checks are on ev
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
+			ENG = {
+				add_ace = {
+					name = "Karel"
+					surname = "Kuttelwascher"
+					callsign = "Kut"
+					type = fighter_good
+					is_female = no
+				}
+			}
 			if = {
 				limit = {
-					CZE = {
+					ENG = {
 						NOT = {
-							has_completed_focus = CZE_contact_the_czech_and_slovak_legion
+							has_completed_focus = ENG_invite_exile_aces
 						}
 					}
 				}
+				set_global_flag = CZE_exile_aces_joined_ENG
 				ENG = {
-					add_ace = {
-						name = "Karel"
-						surname = "Kuttelwascher"
-						callsign = "Kut"
-						type = fighter_good
-						is_female = no
-					}
 					add_ace = {
 						name = "Leopold"
 						surname = "Šrom"

@@ -1,3 +1,5 @@
+@operation_dracula_days = 80
+@operation_compass_days = 90
 # ENG_narvik_crisis_cat = {
 # 	ENG_narvik_crisis = {
 # 		icon = generic_operation
@@ -510,6 +512,314 @@ ENG_imperial_conference_decision = {
 		}
 	}
 
+}
+
+ENG_war_economy = {
+
+	ENG_take_loan = {
+		icon = hol_attract_foreign_investors
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		visible = {
+			has_completed_focus = ENG_cash_and_carry
+			NOT = { has_idea = ENG_large_loan }
+			NOT = { has_country_flag = ENG_loan_repaid }
+		}
+
+		cost = 15
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			if = {
+				limit = { has_idea = ENG_medium_loan }
+				swap_ideas = {
+					remove_idea = ENG_medium_loan
+					add_idea = ENG_large_loan
+				}
+			}
+			else_if = {
+				limit = { has_idea = ENG_small_loan }
+				swap_ideas = {
+					remove_idea = ENG_small_loan
+					add_idea = ENG_medium_loan
+				}
+			}
+			else = {
+				add_ideas = ENG_small_loan
+			}
+		}
+	}
+
+	ENG_repay_loan = {
+		icon = gre_paying_ifc_debt
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		visible = {
+			has_completed_focus = ENG_cash_and_carry
+		}
+
+		available = {
+			ENG_has_loan = yes
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = ENG_loan_repaid
+			remove_ideas = {
+				ENG_small_loan
+				ENG_medium_loan
+				ENG_large_loan
+			}
+			add_timed_idea = {
+				idea = ENG_loan_repayment
+				days = 60
+			}
+		}
+	}
+
+	ENG_reshuffle_machine_tooling = {
+		icon = generic_industry
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		visible = {
+			has_completed_focus = ENG_losing_the_battle_winning_the_war
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			add_timed_idea = {
+				idea = ENG_reshuffled_machine_tooling
+				days = 230
+			}
+		}
+	}
+}
+
+ENG_combined_operations = {
+
+	ENG_launch_operation_compass = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		visible = {
+			has_completed_focus = ENG_operation_compass
+		}
+
+		available = {
+			has_war_with = ITA
+			custom_trigger_tooltip = {
+				tooltip = ENG_axis_holds_benghazi_tt
+				ENG_axis_holds_benghazi = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = ENG_no_operation_in_progress_tt
+				NOT = { ENG_operation_in_progress = yes }
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			add_timed_idea = {
+				idea = ENG_operation_compass_idea
+				days = @operation_compass_days
+			}
+			every_country = {
+				limit = { COMMONWEALTH_is_commonwealth = yes }
+				add_timed_idea = {
+					idea = ENG_operation_compass_idea
+					days = @operation_compass_days
+				}
+			}
+		}
+	}
+
+	ENG_launch_operation_torch = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		visible = {
+			has_completed_focus = ENG_operation_torch
+		}
+
+		available = {
+			has_war = yes
+			custom_trigger_tooltip = {
+				tooltip = ENG_axis_holds_casablanca_tt
+				ENG_axis_holds_casablanca = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = ENG_no_operation_in_progress_tt
+				NOT = { ENG_operation_in_progress = yes }
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = ENG_torch_declare_war_on_vichy_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = VIC
+						NOT = { has_war_with = VIC }
+					}
+					declare_war_on = {
+						target = VIC
+						type = annex_everything
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+				add_timed_idea = {
+					idea = ENG_operation_torch_idea
+					days = 120
+				}
+			}
+		}
+	}
+
+	ENG_launch_operation_dracula = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		visible = {
+			has_completed_focus = ENG_operation_dracula
+		}
+
+		available = {
+			has_war_with = JAP
+			custom_trigger_tooltip = {
+				tooltip = ENG_no_operation_in_progress_tt
+				NOT = { ENG_operation_in_progress = yes }
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			add_timed_idea = {
+				idea = ENG_operation_dracula_idea
+				days = @operation_dracula_days
+			}
+			if = {
+				limit = { AST = { exists = yes } }
+				AST = {
+					add_timed_idea = {
+						idea = ENG_operation_dracula_idea
+						days = @operation_dracula_days
+					}
+				}
+			}
+		}
+	}
+
+	ENG_launch_operation_overlord = {
+		icon = generic_operation
+
+		allowed = {
+			original_tag = ENG
+		}
+
+		visible = {
+			has_completed_focus = ENG_operation_overlord
+		}
+
+		available = {
+			has_war_with = GER
+			GER = { has_war_with = SOV }
+			custom_trigger_tooltip = {
+				tooltip = ENG_no_operation_in_progress_tt
+				NOT = { ENG_operation_in_progress = yes }
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+				add_timed_idea = {
+					idea = ENG_operation_overlord_idea
+					days = 60
+				}
+			}
+		}
+	}
 }
 
 political_actions = {
@@ -1118,10 +1428,12 @@ ENG_homeland_defense_decision_cat = {
 		days_remove = 35
 
 		remove_effect = {
-			swap_ideas = {
-				remove_idea = ENG_general_rearmament_idea
-				add_idea = ENG_blitz_spirit_idea
-			}	
+			# the blitz spirit replaces General Rearmament's consumer goods cut in Industrial Legacy
+			ENG_add_or_modify_industrial_legacy = yes
+			set_temp_variable = { rearmament_consumer_goods = constant:ENG_industrial_legacy.consumer_goods }
+			multiply_temp_variable = { rearmament_consumer_goods = -1 }
+			add_to_variable = { ENG_industrial_legacy_consumer_goods = rearmament_consumer_goods tooltip = consumer_goods_factor_tt }
+			add_ideas = ENG_blitz_spirit_idea
 		}
 		
 		ai_will_do = {
@@ -2098,6 +2410,39 @@ ENG_enforce_the_naval_treaties = {
 
 }
 
+MTG_naval_treaties = {
+
+	# A country readmitted through Readmit Italy into the Naval Treaties can withdraw again on the democratic terms
+	ENG_leave_readmitted_naval_treaty = {
+
+		icon = generic
+
+		visible = {
+			has_country_flag = ENG_readmitted_to_naval_treaty
+			has_naval_treaty_trigger = yes
+		}
+
+		available = {
+			threat > 0.2 # matches MTG_abandon_treaty_democratic
+		}
+
+		cost = 200 # matches MTG_abandon_treaty_democratic
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				has_government = fascism
+				add = 3
+			}
+		}
+
+		complete_effect = {
+			leave_naval_treaty_effect = yes
+		}
+	}
+}
+
 ENG_develop_the_empire = {
 
 	ENG_develop_ast = {
@@ -2140,23 +2485,6 @@ ENG_develop_the_empire = {
 						free_building_slots = {
 							building = industrial_complex
 							size > 3
-							include_locked = yes
-						}
-						is_controlled_by = AST
-						is_core_of = AST
-					}
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = industrial_complex
-						level = 4
-						instant_build = yes
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
 							include_locked = yes
 						}
 						is_controlled_by = AST
@@ -2243,23 +2571,6 @@ ENG_develop_the_empire = {
 							instant_build = yes
 						}
 					}
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 3
-								include_locked = yes
-							}
-							is_controlled_by = AST
-							is_core_of = NZL
-						}
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = industrial_complex
-							level = 4
-							instant_build = yes
-						}
-					}
 					add_autonomy_ratio = {
 						value = -0.05
 						localization = uk_new_zealand_focus
@@ -2268,23 +2579,6 @@ ENG_develop_the_empire = {
 			}
 			else = {
 				NZL = {
-					random_owned_controlled_state = {
-						limit = {
-							free_building_slots = {
-								building = industrial_complex
-								size > 3
-								include_locked = yes
-							}
-							is_controlled_by = NZL
-							is_core_of = NZL
-						}
-						add_extra_state_shared_building_slots = 4
-						add_building_construction = {
-							type = industrial_complex
-							level = 4
-							instant_build = yes
-						}
-					}
 					random_owned_controlled_state = {
 						limit = {
 							free_building_slots = {
@@ -2363,23 +2657,6 @@ ENG_develop_the_empire = {
 						instant_build = yes
 					}
 				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 3
-							include_locked = yes
-						}
-						is_controlled_by = CAN
-						is_core_of = CAN
-					}
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = industrial_complex
-						level = 4
-						instant_build = yes
-					}
-				}
 				add_autonomy_ratio = {
 					value = -0.05
 					localization = uk_canada_focus
@@ -2423,23 +2700,6 @@ ENG_develop_the_empire = {
 		}
 		remove_effect = { 
 			SAF = {
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 3
-							include_locked = yes
-						}
-						is_controlled_by = SAF
-						is_core_of = SAF
-					}
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = industrial_complex
-						level = 4
-						instant_build = yes
-					}
-				}
 				random_owned_controlled_state = {
 					limit = {
 						free_building_slots = {
@@ -2517,443 +2777,9 @@ ENG_develop_the_empire = {
 						instant_build = yes
 					}
 				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 3
-							include_locked = yes
-						}
-						is_controlled_by = RAJ
-						is_core_of = RAJ
-					}
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = industrial_complex
-						level = 4
-						instant_build = yes
-					}
-				}
 				add_autonomy_ratio = {
 					value = -0.05
 					localization = uk_india_focus
-				}
-			}
-		}
-	}
-
-	ENG_invest_ast = {
-		allowed = {
-			original_tag = ENG
-		}
-		available = {
-			OR = {
-				has_completed_focus = ENG_finish_development
-				custom_trigger_tooltip = {
-					tooltip = ENG_develop_no_more_cores_tt
-					AST = {
-						all_core_state = {
-							has_state_flag = ENG_development_marker 
-						}
-					}
-				}
-			}
-		}
-
-		activation = {
-			has_completed_focus = ENG_develop_ast
-			AST = {
-				NOT = {
-					all_core_state = {
-						has_state_flag = ENG_development_marker 
-					}
-				}
-			}
-		}
-
-		is_good = yes
-
-		selectable_mission = no
-
-		days_mission_timeout = 90
-
-		modifier = {
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		timeout_effect = {
-			AST = {
-				random_core_state = {
-					limit = {
-						NOT = { has_state_flag = ENG_development_marker }
-						is_fully_controlled_by = AST
-						
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					
-					set_state_flag = ENG_development_marker # Marks the selected state
-					custom_effect_tooltip = ENG_ast_dev_tt5
-				}
-				
-			}
-			hidden_effect = {
-				add_to_variable = { AST_investments = 1 }
-				if = {
-					limit = {
-						check_variable = {
-							var = AST_investments
-							value = AST.num_core_states
-							compare = greater_than_or_equals
-						}
-					}
-					add_to_variable = { ENG_industrial_consumer_goods_expected_value = -0.04 tooltip = consumer_goods_expected_value_tt }
-				}
-				else = {
-					activate_mission = ENG_invest_ast
-				}
-			}
-		}
-	}
-
-	ENG_invest_nzl = {
-		allowed = {
-			original_tag = ENG
-		}
-		available = {
-			OR = {
-				has_completed_focus = ENG_finish_development
-				custom_trigger_tooltip = {
-					tooltip = ENG_develop_no_more_cores_tt
-					NZL = {
-						all_core_state = {
-							has_state_flag = ENG_development_marker 
-						}
-					}
-				}
-			}
-		}
-
-		activation = {
-			has_completed_focus = ENG_develop_nzl
-			NZL = {
-				NOT = {
-					all_core_state = {
-						has_state_flag = ENG_development_marker 
-					}
-				}
-			}
-		}
-
-		is_good = yes
-
-		selectable_mission = no
-
-		days_mission_timeout = 90
-
-		modifier = {
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		timeout_effect = {
-			NZL = {
-				random_core_state = {
-					limit = {
-						NOT = { has_state_flag = ENG_development_marker }
-						is_fully_controlled_by = NZL
-						
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					
-					set_state_flag = ENG_development_marker # Marks the selected state
-					custom_effect_tooltip = ENG_nzl_dev_tt5
-				}
-				
-			}
-			hidden_effect = {
-				add_to_variable = { NZL_investments = 1 }
-				if = {
-					limit = {
-						check_variable = {
-							var = NZL_investments
-							value = NZL.num_core_states
-							compare = greater_than_or_equals
-						}
-					}
-					add_to_variable = { ENG_industrial_consumer_goods_expected_value = -0.04 tooltip = consumer_goods_expected_value_tt }
-				}
-				else = {
-					activate_mission = ENG_invest_nzl
-				}
-			}
-		}
-	}
-
-	ENG_invest_can = {
-		allowed = {
-			original_tag = ENG
-		}
-		available = {
-			OR = {
-				has_completed_focus = ENG_finish_development
-				custom_trigger_tooltip = {
-					tooltip = ENG_develop_no_more_cores_tt
-					CAN = {
-						all_core_state = {
-							has_state_flag = ENG_development_marker 
-						}
-					}
-				}
-			}
-		}
-
-		activation = {
-			has_completed_focus = ENG_develop_can
-			CAN = {
-				NOT = {
-					all_core_state = {
-						has_state_flag = ENG_development_marker 
-					}
-				}
-			}
-		}
-
-		is_good = yes
-
-		selectable_mission = no
-
-		days_mission_timeout = 90
-
-		modifier = {
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		timeout_effect = {
-			CAN = {
-				random_core_state = {
-					limit = {
-						NOT = { has_state_flag = ENG_development_marker }
-						is_fully_controlled_by = CAN
-						
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					set_state_flag = ENG_development_marker # Marks the selected state
-					custom_effect_tooltip = ENG_can_dev_tt5
-				}
-				
-			}
-			hidden_effect = {
-				add_to_variable = { CAN_investments = 1 }
-				if = {
-					limit = {
-						check_variable = {
-							var = CAN_investments
-							value = CAN.num_core_states
-							compare = greater_than_or_equals
-						}
-					}
-					add_to_variable = { ENG_industrial_consumer_goods_expected_value = -0.04 tooltip = consumer_goods_expected_value_tt }
-				}
-				else = {
-					activate_mission = ENG_invest_can
-				}
-			}
-		}
-	}
-
-	ENG_invest_saf = {
-		allowed = {
-			original_tag = ENG
-		}
-		available = {
-			OR = {
-				has_completed_focus = ENG_finish_development
-				custom_trigger_tooltip = {
-					tooltip = ENG_develop_no_more_cores_tt
-					SAF = {
-						all_core_state = {
-							has_state_flag = ENG_development_marker 
-						}
-					}
-				}
-			}
-		}
-
-		activation = {
-			has_completed_focus = ENG_develop_saf
-			SAF = {
-				NOT = {
-					all_core_state = {
-						has_state_flag = ENG_development_marker 
-					}
-				}
-			}
-		}
-
-		is_good = yes
-
-		selectable_mission = no
-
-		days_mission_timeout = 90
-
-		modifier = {
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		timeout_effect = {
-			SAF = {
-				random_core_state = {
-					limit = {
-						NOT = { has_state_flag = ENG_development_marker }
-						is_fully_controlled_by = SAF
-						
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					set_state_flag = ENG_development_marker # Marks the selected state
-					custom_effect_tooltip = ENG_saf_dev_tt5
-				}
-				
-			}
-			hidden_effect = {
-				add_to_variable = { SAF_investments = 1 }
-				if = {
-					limit = {
-						check_variable = {
-							var = SAF_investments
-							value = SAF.num_core_states
-							compare = greater_than_or_equals
-						}
-					}
-					add_to_variable = { ENG_industrial_consumer_goods_expected_value = -0.04 tooltip = consumer_goods_expected_value_tt }
-				}
-				else = {
-					activate_mission = ENG_invest_saf
-				}
-			}
-		}
-	}
-
-	ENG_invest_raj = {
-		allowed = {
-			original_tag = ENG
-		}
-		available = {
-			OR = {
-				has_completed_focus = ENG_finish_development
-				custom_trigger_tooltip = {
-					tooltip = ENG_develop_no_more_cores_tt
-					RAJ = {
-						all_core_state = {
-							has_state_flag = ENG_development_marker 
-						}
-					}
-				}
-			}
-		}
-
-		activation = {
-			has_completed_focus = ENG_develop_raj
-			RAJ = {
-				NOT = {
-					all_core_state = {
-						has_state_flag = ENG_development_marker 
-					}
-				}
-			}
-		}
-
-		is_good = yes
-
-		selectable_mission = no
-
-		days_mission_timeout = 90
-
-		modifier = {
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-		timeout_effect = {
-			RAJ = {
-				random_core_state = {
-					limit = {
-						NOT = { has_state_flag = ENG_development_marker }
-						is_fully_controlled_by = RAJ
-						
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					
-					set_state_flag = ENG_development_marker # Marks the selected state
-					custom_effect_tooltip = ENG_raj_dev_tt5
-				}
-			}
-			hidden_effect = {
-				add_to_variable = { RAJ_investments = 1 }
-				if = {
-					limit = {
-						check_variable = {
-							var = RAJ_investments
-							value = RAJ.num_core_states
-							compare = greater_than_or_equals
-						}
-					}
-					add_to_variable = { ENG_industrial_consumer_goods_expected_value = -0.04 tooltip = consumer_goods_expected_value_tt }
-				}
-				else = {
-					activate_mission = ENG_invest_raj
 				}
 			}
 		}
@@ -3503,7 +3329,7 @@ ENG_persian_corridor = {
 				}
 			}
 			has_equipment = {
-				fighter_equipment > 500
+				small_plane_airframe > 499
 			}
 		}
 		visible = {
@@ -3519,7 +3345,7 @@ ENG_persian_corridor = {
 		
 		remove_effect = {
 			send_equipment = {
-				equipment = fighter_equipment
+				equipment = small_plane_airframe
 				amount = 500
 				target = SOV
 			}
@@ -3544,7 +3370,7 @@ ENG_special_research = {
 			factor = 0
 		}
 		visible = {
-			has_completed_focus = ENG_special_research_department
+			has_completed_focus = ENG_end_of_the_beginning
 		}
 		days_remove = 180
 		modifier = {
@@ -3575,7 +3401,7 @@ ENG_special_research = {
 			factor = 0
 		}
 		visible = {
-			has_completed_focus = ENG_special_research_department
+			has_completed_focus = ENG_end_of_the_beginning
 		}
 		days_remove = 365
 		modifier = {
@@ -3605,7 +3431,7 @@ ENG_special_research = {
 			factor = 0
 		}
 		visible = {
-			has_completed_focus = ENG_special_research_department
+			has_completed_focus = ENG_end_of_the_beginning
 		}
 		days_remove = 180
 		modifier = {
@@ -3635,7 +3461,7 @@ ENG_special_research = {
 			factor = 0
 		}
 		visible = {
-			has_completed_focus = ENG_special_research_department
+			has_completed_focus = ENG_end_of_the_beginning
 			always = no
 		}
 		days_remove = 180
@@ -3663,10 +3489,7 @@ ENG_propaganda_campaigns = {
 
 		available = {
 			ENG_propaganda_poster_slot_available = yes
-			OR = {
-				has_completed_focus = ENG_develop_the_empire
-				has_completed_focus = ENG_start_colonial_investment
-			}
+			has_completed_focus = ENG_domestic_affairs_of_the_commonwealth
 		}
 
 		days_remove = 365
@@ -3862,7 +3685,7 @@ ENG_propaganda_campaigns = {
 
 		available = {
 			ENG_propaganda_poster_slot_available = yes
-			has_completed_focus = ENG_war_cabinet
+			has_completed_focus = ENG_end_of_the_beginning
 		}
 
 		days_remove = 365
@@ -3942,7 +3765,7 @@ ENG_propaganda_campaigns = {
 
 		available = {
 			ENG_propaganda_poster_slot_available = yes
-			has_completed_focus = ENG_inchindown_fuel
+			has_completed_focus = ENG_expand_the_strategic_reserve
 		}
 
 		days_remove = 365

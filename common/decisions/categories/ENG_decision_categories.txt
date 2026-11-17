@@ -19,6 +19,35 @@ ENG_imperial_conference_decision = {
 	}
 }
 
+ENG_war_economy = {
+	priority = 85
+	icon = generic_industry
+
+	allowed = {
+		original_tag = ENG
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = ENG_cash_and_carry
+			has_completed_focus = ENG_losing_the_battle_winning_the_war
+		}
+	}
+}
+
+ENG_combined_operations = {
+	priority = 95
+	icon = GFX_decision_category_military_operation
+
+	allowed = {
+		original_tag = ENG
+	}
+
+	visible = {
+		has_completed_focus = ENG_commonwealth_supreme_command
+	}
+}
+
 ENG_enforce_the_naval_treaties = {
 	icon = generic_political_actions
 
@@ -66,6 +95,10 @@ ENG_special_research = {
 
 	allowed = {
 		original_tag = ENG
+	}
+
+	visible = {
+		always = no # Hidden until Proximity Fuse and Bouncing Bombs have real effects
 	}
 }
 

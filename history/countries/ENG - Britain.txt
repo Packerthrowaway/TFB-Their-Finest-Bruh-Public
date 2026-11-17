@@ -31,13 +31,6 @@ if = {
 	}
 }
 
-
-set_variable = { AST_investments = 0 } #Used for Left side Eco
-set_variable = { CAN_investments = 0 } #Used for Left side Eco
-set_variable = { NZL_investments = 0 } #Used for Left side Eco
-set_variable = { SAF_investments = 0 } #Used for Left side Eco
-set_variable = { RAJ_investments = 0 } #Used for Left side Eco
-
 load_oob = "ENG_Motorized"
 if = {
 	limit = {
@@ -245,7 +238,11 @@ IF = {
 # }
 
 set_variable = { var = eng_gateway_to_europe_influence value = 0 }
-set_variable = { ENG_industrial_consumer_goods_expected_value = 0 }
+set_variable = { shadow_scheme_civs_per_mil = constant:ENG_shadow_scheme.civs_per_mil }
+set_variable = { shadow_scheme_max_mils = constant:ENG_shadow_scheme.max_mils }
+set_variable = { mil_plan_civs_per_mil = constant:ENG_mil_plan.civs_per_mil }
+set_variable = { mil_plan_max_mils = constant:ENG_mil_plan.max_mils }
+set_variable = { mil_plan_mils_per_state = constant:ENG_mil_plan.mils_per_state }
 
 add_ideas = {
 	stiff_upper_lip
@@ -253,7 +250,17 @@ add_ideas = {
 	george_v
 	ENG_great_depression_1
 	ENG_the_sun_never_sets_idea_1
+	ENG_neutrality_acts
 }
+
+# State of the Empire: trade bonus from holding Gibraltar and the Suez
+ENG_update_state_of_the_empire = yes
+
+# The Royal Army, His Majesty's Royal Air Force, The Royal Navy and Industrial Legacy start empty and grow with the focuses
+add_dynamic_modifier = { modifier = ENG_royal_army_dm }
+add_dynamic_modifier = { modifier = ENG_raf_dm }
+add_dynamic_modifier = { modifier = ENG_royal_navy_dm }
+add_dynamic_modifier = { modifier = ENG_industrial_legacy_dm }
 	
 
 set_convoys = 1000
@@ -401,6 +408,7 @@ recruit_character = ENG_philip_kerr
 recruit_character = ENG_nevile_henderson
 recruit_character = ENG_maxwell_aitken
 recruit_character = ENG_leslie_hore_belisha
+recruit_character = ENG_john_maynard_keynes
 recruit_character = ENG_ernest_bevin
 recruit_character = ENG_stewart_menzies
 recruit_character = ENG_alan_turing

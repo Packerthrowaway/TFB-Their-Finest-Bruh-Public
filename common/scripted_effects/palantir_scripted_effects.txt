@@ -206,25 +206,35 @@ palantir_log = {
     else_if = { limit = { JAP = { has_completed_focus = JAP_the_crysanthemum_throne } } log = "JAP: Crysanthemum Throne" }
 
   # ENG
-    if = { limit = { ENG = { has_completed_focus = ENG_appeasement } } log = "UK: Appeasement" } else = { log = "UK: Containment" }
-    if = { limit = { ENG = { has_completed_focus = ENG_focus_empire } } log = "UK: Left Side Eco (generous)" } else = { log = "UK: Right Side Eco (selfish)" }
-    if = { limit = { ENG = { has_completed_focus = ENG_stick_our_guns } } log = "UK: Left Side Navy" } else = { log = "UK: Right Side Navy" }
+    # Politics
+    if = { limit = { ENG = { has_completed_focus = ENG_appeasement } } log = "UK: Appeasement" } else_if = { limit = { ENG = { has_completed_focus = ENG_containment } } log = "UK: Containment" } else = { log = "UK: No Appeasement/Containment" }
+    if = { limit = { ENG = { has_completed_focus = ENG_continue_free_trade } } log = "UK: Continue Free Trade" } else_if = { limit = { ENG = { has_completed_focus = ENG_anglo_german_naval_treaty } } log = "UK: Anglo-German Naval Treaty" }
+    if = { limit = { ENG = { has_completed_focus = ENG_front_occidental } } log = "UK: Front Occidental" } else_if = { limit = { ENG = { has_completed_focus = ENG_embargo_the_italians } } log = "UK: Embargo the Italians" }
+    if = { limit = { ENG = { has_completed_focus = ENG_assasinate_heydrich } } log = "UK: Operation Anthropoid" } else_if = { limit = { ENG = { has_completed_focus = ENG_international_agency } } log = "UK: International Agency" } else = { log = "UK: No Intelligence Choice" }
+    if = { limit = { ENG = { has_completed_focus = ENG_centralized_military_command } } log = "UK: Centralized Military Command" } else_if = { limit = { ENG = { has_completed_focus = ENG_imperial_defense_conference } } log = "UK: Imperial Defense Conference" } else = { log = "UK: No Commonwealth Military Choice" }
     if = { limit = { ENG = { has_completed_focus = ENG_operation_countenance } } log = "UK: Iran Invasion" }
-    if = { limit = { ENG = { has_country_flag = ENG_strategic_bombing_path_strong } } log = "UK: Strat Bombing Primary" }
-    else_if = { limit = { ENG = { has_country_flag = ENG_tactical_bombing_path_strong } } log = "UK: Tactical Bombing Primary" }
-    else_if = { limit = { ENG = { has_country_flag = ENG_production_path_strong } } log = "UK: Fighter Production Primary" }
-    else_if = { limit = { ENG = { has_country_flag = ENG_research_path_strong } } log = "UK: Fighter Research Primary" }
-    else_if = { limit = { ENG = { has_country_flag = ENG_quality_path_strong } } log = "UK: Fighter Quality Primary" }
-    else_if = { limit = { ENG = { has_country_flag = ENG_cas_path_strong } } log = "UK: Cas Bombing Primary" }
-    else_if = { limit = { ENG = { has_country_flag = ENG_faa_path_strong } } log = "UK: Naval Bombing Primary" }
 
-    if = { limit = { ENG = { has_idea = ENG_bomber_command_weak2 } } log = "UK: Strat Bombing Secondary" }
-    if = { limit = { ENG = { has_idea = ENG_tactical_bomber_command_weak2 } } log = "UK: Tactical Bombing Secondary" }
-    if = { limit = { ENG = { has_idea = ENG_fighter_production_weak2 } } log = "UK: Fighter Production Secondary" }
-    if = { limit = { ENG = { has_idea = ENG_fighter_research_weak2 } } log = "UK: Fighter Research Secondary" }
-    if = { limit = { ENG = { has_idea = ENG_fighter_design_weak3 } } log = "UK: Fighter Quality Secondary" }
-    if = { limit = { ENG = { has_idea = ENG_cas_command_weak2 } } log = "UK: Cas Bombing Secondary" }
-    if = { limit = { ENG = { has_idea = ENG_naval_aviation_weak2 } } log = "UK: Naval Bombing Secondary" }
+    # Economy
+    if = { limit = { ENG = { has_completed_focus = ENG_legacy_of_the_industrial_revolution } } log = "UK: Home Eco (Legacy of the Industrial Revolution)" } else_if = { limit = { ENG = { has_completed_focus = ENG_the_sun_that_never_set } } log = "UK: Empire Eco (The Sun that Never Set)" } else = { log = "UK: No Eco Choice" }
+    if = { limit = { ENG = { has_completed_focus = ENG_a_need_for_arms } } log = "UK: A Need for Arms" } else_if = { limit = { ENG = { has_completed_focus = ENG_swarm_the_skies } } log = "UK: Swarm the Skies" }
+
+    # Army
+    if = { limit = { ENG = { has_completed_focus = ENG_special_forces_theory } } log = "UK: Special Forces Theory" } else_if = { limit = { ENG = { has_completed_focus = ENG_learn_from_the_great_war } } log = "UK: Learn from the Great War" } else = { log = "UK: No Army Theory Choice" }
+    if = { limit = { ENG = { has_country_flag = ENG_great_war_lesson_camouflage } } log = "UK: Lesson - Camouflage" } else_if = { limit = { ENG = { has_country_flag = ENG_great_war_lesson_big_guns } } log = "UK: Lesson - Big Guns" } else_if = { limit = { ENG = { has_country_flag = ENG_great_war_lesson_night } } log = "UK: Lesson - Night Infiltration" }
+    if = { limit = { ENG = { has_completed_focus = ENG_a_domestic_tank_program } } log = "UK: Domestic Tank Program" } else_if = { limit = { ENG = { has_completed_focus = ENG_commonwealth_armour_development } } log = "UK: Commonwealth Armour Development" } else = { log = "UK: No Armour Choice" }
+    if = { limit = { ENG = { has_completed_focus = ENG_focus_on_infantry_support_tanks } } log = "UK: Infantry Support Tanks" } else_if = { limit = { ENG = { has_completed_focus = ENG_expand_vickers_armstrong } } log = "UK: Expand Vickers-Armstrong" }
+
+    # Air
+    if = { limit = { ENG = { has_completed_focus = ENG_tactical_bombing_doctrine } } log = "UK: Tactical Bombing" } else_if = { limit = { ENG = { has_completed_focus = ENG_turn_germany_into_rubble } } log = "UK: Strategic Bombing" }
+    if = { limit = { ENG = { has_completed_focus = ENG_increase_material_mixing } } log = "UK: Fighter Production (Material Mixing)" } else_if = { limit = { ENG = { has_completed_focus = ENG_hunt_the_messerschmitt } } log = "UK: Fighter Quality (Hunt the Messerschmitt)" }
+    if = { limit = { ENG = { has_completed_focus = ENG_air_support } } log = "UK: CAS Path" } else_if = { limit = { ENG = { has_completed_focus = ENG_establish_FAA } } log = "UK: Fleet Air Arm Path" }
+
+    # Navy
+    if = { limit = { ENG = { has_completed_focus = ENG_stick_our_guns } } log = "UK: Traditional Navy (Britannia Rules the Waves)" } else_if = { limit = { ENG = { has_completed_focus = ENG_reform_navy } } log = "UK: Reformed Navy (A Change in Course)" } else = { log = "UK: No Navy Choice" }
+    if = { limit = { ENG = { has_completed_focus = ENG_focus_cruiser } } log = "UK: Focus on Cruisers" } else_if = { limit = { ENG = { has_completed_focus = ENG_focus_carrier } } log = "UK: Focus on Carriers" }
+    if = { limit = { ENG = { has_completed_focus = ENG_perfect_cruisers } } log = "UK: Perfect Cruiser Designs" } else_if = { limit = { ENG = { has_completed_focus = ENG_perfect_carriers } } log = "UK: Perfect our Doctrine" }
+    if = { limit = { ENG = { has_completed_focus = ENG_not_a_penny_wasted } } log = "UK: Not a Penny Wasted" } else_if = { limit = { ENG = { has_completed_focus = ENG_modern_shipbuilding } } log = "UK: Modern Shipbuilding" }
+    if = { limit = { ENG = { has_completed_focus = ENG_suez_base } } log = "UK: Fleet Based at Alexandria" } else_if = { limit = { ENG = { has_completed_focus = ENG_malta_base } } log = "UK: Fleet Based at Malta" }
 
    # FRA
     if = { limit = { check_variable = { global.FRA_socialist_date > 0 } } log = "FRA: Right Side Political" }
